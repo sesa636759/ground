@@ -1,0 +1,145 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Anchor</h1>
+      <p class="description">Display a hyperlinked list of sections on the current page.</p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Basic Usage</h3>
+            </div>
+            <p class="showcase-desc">Automatic highlighting of current section.</p>
+
+            <div class="showcase-preview">
+              <div style="display: flex; gap: 40px; height: 300px; overflow: hidden">
+                <div style="width: 200px; border-right: 1px solid #ddd; padding-right: 20px">
+                  <h4 style="margin-top: 0; color: #666">On this page</h4>
+                  <ui-anchor>
+                    <div
+                      style="
+                        padding: 8px;
+                        color: #007bff;
+                        border-left: 2px solid #007bff;
+                        background: #f0f7ff;
+                      "
+                    >
+                      Section 1
+                    </div>
+                    <div style="padding: 8px; color: #666; border-left: 2px solid transparent">
+                      Section 2
+                    </div>
+                    <div style="padding: 8px; color: #666; border-left: 2px solid transparent">
+                      Section 3
+                    </div>
+                  </ui-anchor>
+                </div>
+                <div style="flex: 1; padding: 20px; background: #f9f9f9; overflow-y: scroll">
+                  <h3 id="section1">Section 1</h3>
+                  <p>Content for section 1...</p>
+                  <div style="height: 200px"></div>
+                  <h3 id="section2">Section 2</h3>
+                  <p>Content for section 2...</p>
+                  <div style="height: 200px"></div>
+                  <h3 id="section3">Section 3</h3>
+                  <p>Content for section 3...</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['basic'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['basic']"
+                title="Anchor Implementation"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <app-playground-editor [config]="anchorConfig"></app-playground-editor>
+    </div>
+
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of anchorConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

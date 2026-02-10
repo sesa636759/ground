@@ -1,0 +1,156 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Layout Manager</h1>
+      <p class="description">
+        Orchestrate your page structure with flexible, responsive regions for headers, sidebars, and
+        main content.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Dashboard Layout</h3>
+            </div>
+            <p class="showcase-desc">
+              A classic dashboard layout with header, sidebar, footer, and main content area.
+            </p>
+
+            <div
+              class="showcase-preview"
+              style="
+                height: 400px;
+                padding: 0;
+                background: #e2e8f0;
+                display: grid;
+                grid-template-rows: auto 1fr auto;
+                grid-template-columns: 200px 1fr;
+              "
+            >
+              <!-- Simulation -->
+              <div style="grid-column: 1 / -1; background: #3b82f6; color: white; padding: 10px">
+                Header
+              </div>
+              <div style="background: white; padding: 10px; border-right: 1px solid #cbd5e1">
+                Sidebar
+              </div>
+              <div style="background: #f8fafc; padding: 20px">
+                <h3 style="margin-top: 0">Main Content</h3>
+                <p>Content goes here.</p>
+              </div>
+              <div
+                style="
+                  grid-column: 1 / -1;
+                  background: #cbd5e1;
+                  padding: 5px;
+                  font-size: 12px;
+                  text-align: center;
+                "
+              >
+                Footer
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['dashboard'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['dashboard']"
+                title="Layout Implementation"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Configure layout regions.</p>
+      </div>
+      <app-playground-editor [config]="layoutManagerConfig"></app-playground-editor>
+    </div>
+
+    <!-- API -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of layoutManagerConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

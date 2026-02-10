@@ -1,0 +1,242 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Splitter</h1>
+      <p class="description">
+        Resizeable split panes for complex application layouts like IDEs and Dashboards.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Horizontal"
+          icon="↔️"
+          [selected]="activeExample === 'horizontal'"
+          [clickable]="true"
+          (pillClick)="setExample('horizontal')"
+        ></ui-pill>
+        <ui-pill
+          label="Vertical (IDE)"
+          icon="↕️"
+          [selected]="activeExample === 'vertical'"
+          [clickable]="true"
+          (pillClick)="setExample('vertical')"
+        ></ui-pill>
+        <ui-pill
+          label="Nested Layouts"
+          icon="🪟"
+          [selected]="activeExample === 'nested'"
+          [clickable]="true"
+          (pillClick)="setExample('nested')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>{{ activeExample | titlecase }} Splitter</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'horizontal'"
+                >Standard left/right split with draggable divider.</span
+              >
+              <span *ngSwitchCase="'vertical'"
+                >Vertical top/bottom split, perfect for code editors and terminals.</span
+              >
+              <span *ngSwitchCase="'nested'"
+                >Complex layouts by nesting splitters inside one another.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <!-- Horizontal -->
+              <div
+                *ngSwitchCase="'horizontal'"
+                class="preview-box"
+                style="height: 400px; padding: 0"
+              >
+                <ui-splitter
+                  orientation="horizontal"
+                  initial-split="50"
+                  min-size="20"
+                  style="height: 100%; width: 100%"
+                >
+                  <div slot="start" class="pane-content start-pane">
+                    <h4>Start Pane</h4>
+                    <p>Resize me →</p>
+                  </div>
+                  <div slot="end" class="pane-content end-pane">
+                    <h4>End Pane</h4>
+                    <p>← Resize me</p>
+                  </div>
+                </ui-splitter>
+              </div>
+
+              <!-- Vertical -->
+              <div *ngSwitchCase="'vertical'" class="preview-box" style="height: 500px; padding: 0">
+                <ui-splitter
+                  orientation="vertical"
+                  initial-split="70"
+                  style="height: 100%; width: 100%"
+                >
+                  <div slot="start" class="pane-content dark-pane">
+                    <div class="code-header">app.tsx</div>
+                    <pre
+                      style="margin: 0; padding: 20px; color: #d4d4d4"
+                    ><code>import &#123; Component &#125; from '@stencil/core';
+
+@Component(&#123;
+  tag: 'my-component',
+  shadow: true
+&#125;)
+export class MyComponent &#123;
+  render() &#123;
+    return &lt;div&gt;Hello World&lt;/div&gt;;
+  &#125;
+&#125;</code></pre>
+                  </div>
+                  <div slot="end" class="pane-content terminal-pane">
+                    <div class="term-header">Terminal</div>
+                    <pre style="margin: 0; padding: 10px; color: #3b82f6"><code>> npm run build
+> Build finished in 200ms
+> Watching for changes...</code></pre>
+                  </div>
+                </ui-splitter>
+              </div>
+
+              <!-- Nested -->
+              <div *ngSwitchCase="'nested'" class="preview-box" style="height: 500px; padding: 0">
+                <ui-splitter initial-split="30" style="height: 100%; width: 100%">
+                  <div slot="start" class="pane-content sidebar-pane">
+                    <ul>
+                      <li>Dashboard</li>
+                      <li>Projects</li>
+                      <li>Settings</li>
+                    </ul>
+                  </div>
+                  <div slot="end" style="height: 100%; width: 100%">
+                    <ui-splitter
+                      orientation="vertical"
+                      initial-split="60"
+                      style="height: 100%; width: 100%"
+                    >
+                      <div slot="start" class="pane-content main-pane">
+                        <h3 style="margin-top: 0">Workspace</h3>
+                        <p>Main working area.</p>
+                      </div>
+                      <div slot="end" class="pane-content logs-pane">
+                        <small>System Logs...</small>
+                        <div style="font-family: monospace; font-size: 11px; margin-top: 10px">
+                          [INFO] Service started<br />
+                          [WARN] Connection slow
+                        </div>
+                      </div>
+                    </ui-splitter>
+                  </div>
+                </ui-splitter>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Experiment with orientation and resizing behavior.</p>
+      </div>
+      <app-playground-editor [config]="splitterConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of splitterConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

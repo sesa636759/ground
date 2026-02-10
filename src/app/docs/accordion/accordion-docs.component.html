@@ -2,203 +2,428 @@
   <header class="page-header">
     <div class="header-content">
       <div class="header-actions">
+        <!-- Button label must be passed via attribute, not inner text -->
         <a routerLink="/docs" class="back-link">← Components</a>
-        <a [routerLink]="['/playground', 'accordion']" class="playground-link">
-          Open in Playground ↗
-        </a>
       </div>
       <h1>Accordion</h1>
-      <p class="description">Expandable list of items for organizing content.</p>
+      <p class="description">
+        Expandable list of items for organizing content with 15+ advanced features.
+      </p>
     </div>
   </header>
 
-  <nav class="gallery-nav">
-    <ui-pill
-      label="Basic"
-      color="primary"
-      clickable
-      (pillClick)="scrollToSection('basic')"
-    ></ui-pill>
-    <ui-pill
-      label="Variants"
-      color="secondary"
-      clickable
-      (pillClick)="scrollToSection('variants')"
-    ></ui-pill>
-    <ui-pill
-      label="Features"
-      color="success"
-      clickable
-      (pillClick)="scrollToSection('features')"
-    ></ui-pill>
-    <ui-pill
-      label="Advanced"
-      color="warning"
-      clickable
-      (pillClick)="scrollToSection('advanced')"
-    ></ui-pill>
-    <ui-pill
-      label="Styling"
-      color="info"
-      clickable
-      (pillClick)="scrollToSection('styling')"
-    ></ui-pill>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    >
+    </ui-button>
   </nav>
 
-  <div class="gallery-container">
-    <!-- Basic -->
-    <section id="basic" class="gallery-section">
-      <h2 class="section-title">Playground</h2>
-      <p class="summary-text">Interactive demo. Modify properties to see changes and get code.</p>
-      <div class="editor-container">
-        <app-playground-editor [config]="accordionConfig"></app-playground-editor>
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <!-- ui-pill and ui-button in this library use 'label' property for text, not inner HTML slots -->
+        <ui-pill
+          label="Basic Concepts"
+          color="primary"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="Numbered Steps"
+          color="warning"
+          icon="🔢"
+          [selected]="activeExample === 'numbered'"
+          [clickable]="true"
+          (pillClick)="setExample('numbered')"
+        ></ui-pill>
+        <ui-pill
+          label="Multiple Panels"
+          color="success"
+          icon="📑"
+          [selected]="activeExample === 'multiple'"
+          [clickable]="true"
+          (pillClick)="setExample('multiple')"
+        ></ui-pill>
+        <ui-pill
+          label="Live Search"
+          color="warning"
+          icon="🔍"
+          [selected]="activeExample === 'search'"
+          [clickable]="true"
+          (pillClick)="setExample('search')"
+        ></ui-pill>
+        <ui-pill
+          label="Item Actions"
+          color="danger"
+          icon="⚡"
+          [selected]="activeExample === 'actions'"
+          [clickable]="true"
+          (pillClick)="setExample('actions')"
+        ></ui-pill>
+        <ui-pill
+          label="Nested Groups"
+          color="info"
+          icon="🌲"
+          [selected]="activeExample === 'nested'"
+          [clickable]="true"
+          (pillClick)="setExample('nested')"
+        ></ui-pill>
+        <ui-pill
+          label="Drag & Drop"
+          color="secondary"
+          icon="🎯"
+          [selected]="activeExample === 'dragdrop'"
+          [clickable]="true"
+          (pillClick)="setExample('dragdrop')"
+        ></ui-pill>
+        <ui-pill
+          label="Persistence"
+          color="success"
+          icon="💾"
+          [selected]="activeExample === 'persistence'"
+          [clickable]="true"
+          (pillClick)="setExample('persistence')"
+        ></ui-pill>
+        <ui-pill
+          label="Loading States"
+          color="primary"
+          icon="⏳"
+          [selected]="activeExample === 'loading'"
+          [clickable]="true"
+          (pillClick)="setExample('loading')"
+        ></ui-pill>
+        <ui-pill
+          label="RTL Support"
+          color="info"
+          icon="🌍"
+          [selected]="activeExample === 'rtl'"
+          [clickable]="true"
+          (pillClick)="setExample('rtl')"
+        ></ui-pill>
+        <ui-pill
+          label="Dense Layout"
+          color="secondary"
+          icon="📦"
+          [selected]="activeExample === 'dense'"
+          [clickable]="true"
+          (pillClick)="setExample('dense')"
+        ></ui-pill>
+        <ui-pill
+          label="Lifecycle Events"
+          color="warning"
+          icon="📡"
+          [selected]="activeExample === 'events'"
+          [clickable]="true"
+          (pillClick)="setExample('events')"
+        ></ui-pill>
+        <ui-pill
+          label="Controlled"
+          color="primary"
+          icon="🎮"
+          [selected]="activeExample === 'controlled'"
+          [clickable]="true"
+          (pillClick)="setExample('controlled')"
+        ></ui-pill>
+        <ui-pill
+          label="Async Data"
+          color="info"
+          icon="☁️"
+          [selected]="activeExample === 'async'"
+          [clickable]="true"
+          (pillClick)="setExample('async')"
+        ></ui-pill>
       </div>
-    </section>
-    <!-- Variants -->
-    <section id="variants" class="gallery-section">
-      <h2 class="section-title">Variants</h2>
-      <div class="gallery-grid">
-        <div class="variant-example">
-          <h3>Bordered</h3>
-          <ui-accordion [attr.items]="basicItems" variant="bordered"></ui-accordion>
-        </div>
-        <div class="variant-example">
-          <h3>Splitted</h3>
-          <ui-accordion [attr.items]="basicItems" variant="splitted"></ui-accordion>
-        </div>
-        <div class="variant-example">
-          <h3>Shadow</h3>
-          <ui-accordion [attr.items]="basicItems" variant="shadow"></ui-accordion>
-        </div>
-        <div class="variant-example">
-          <h3>Light</h3>
-          <ui-accordion [attr.items]="basicItems" variant="light"></ui-accordion>
-        </div>
-      </div>
-    </section>
 
-    <!-- Features -->
-    <section id="features" class="gallery-section">
-      <h2 class="section-title">Features</h2>
-      <div class="gallery-grid">
-        <!-- Search -->
-        <div class="variant-example">
-          <h3>Search & Filter</h3>
-          <p class="summary-text">Built-in search functionality.</p>
-          <ui-accordion
-            [attr.items]="searchableItems"
-            enable-search
-            search-placeholder="Filter..."
-            variant="bordered"
-          ></ui-accordion>
-        </div>
+      <div class="examples-main">
+        <!-- Dynamic Showcase Card -->
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <span class="showcase-icon" [ngSwitch]="activeExample">
+                <span *ngSwitchCase="'basic'">📋</span>
+                <span *ngSwitchCase="'numbered'">🔢</span>
+                <span *ngSwitchCase="'multiple'">📑</span>
+                <span *ngSwitchCase="'search'">🔍</span>
+                <span *ngSwitchCase="'actions'">⚡</span>
+                <span *ngSwitchCase="'nested'">🌲</span>
+                <span *ngSwitchCase="'dragdrop'">🎯</span>
+                <span *ngSwitchCase="'persistence'">💾</span>
+                <span *ngSwitchCase="'loading'">⏳</span>
+                <span *ngSwitchCase="'rtl'">🌍</span>
+                <span *ngSwitchCase="'dense'">📦</span>
+                <span *ngSwitchCase="'events'">📡</span>
+                <span *ngSwitchCase="'controlled'">🎮</span>
+                <span *ngSwitchCase="'async'">☁️</span>
+                <span *ngSwitchDefault>⏳</span>
+              </span>
+              <h3>{{ activeExample | titlecase }} Feature</h3>
+            </div>
 
-        <!-- Numbers -->
-        <div class="variant-example">
-          <h3>Numbered Items</h3>
-          <p class="summary-text">Auto-generated numbers.</p>
-          <ui-accordion [attr.items]="basicItems" show-numbers></ui-accordion>
-        </div>
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'"
+                >Standard accordion with custom icons and rich content support.</span
+              >
+              <span *ngSwitchCase="'numbered'"
+                >Automated numerical indexing for sequential content like tutorials or steps.</span
+              >
+              <span *ngSwitchCase="'multiple'"
+                >Productivity mode allowing multiple information panels to be visible
+                simultaneously.</span
+              >
+              <span *ngSwitchCase="'search'"
+                >Integrated search engine with high-performance filtering for large datasets.</span
+              >
+              <span *ngSwitchCase="'actions'"
+                >Integrated toolbar in the header for rapid item management (Edit, Delete,
+                etc).</span
+              >
+              <span *ngSwitchCase="'nested'"
+                >Hierarchical multi-level support for complex organizational structures.</span
+              >
+              <span *ngSwitchCase="'dragdrop'"
+                >Enable native browser-based reordering for dynamic item lists.</span
+              >
+              <span *ngSwitchCase="'persistence'"
+                >Intelligent state management that persists toggle states across page reloads.</span
+              >
+              <span *ngSwitchCase="'loading'"
+                >Built-in skeleton loading indicators for asynchronous data operations.</span
+              >
+              <span *ngSwitchCase="'rtl'"
+                >Full support for right-to-left language locales and flipped layouts.</span
+              >
+              <span *ngSwitchCase="'dense'"
+                >Compact operational mode to maximize information density in dashboards.</span
+              >
+              <span *ngSwitchCase="'events'"
+                >Advanced lifecycle hooks for triggering external logic during transitions.</span
+              >
+              <span *ngSwitchCase="'controlled'"
+                >Programmatic state control through external Angular properties.</span
+              >
+              <span *ngSwitchCase="'async'"
+                >Performance-optimized lazy rendering for component initialization.</span
+              >
+              <span *ngSwitchDefault>Loading high-fidelity feature demonstration...</span>
+            </p>
 
-        <!-- Controls -->
-        <div class="variant-example">
-          <h3>Expand/Collapse All</h3>
-          <p class="summary-text">Bulk actions (Requires 'multiple').</p>
-          <div style="margin-bottom: 12px; display: flex; gap: 8px">
-            <ui-button (click)="$any(accordion).openAll()">Expand All</ui-button>
-            <ui-button (click)="$any(accordion).closeAll()" variant="secondary"
-              >Collapse All</ui-button
-            >
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <ui-accordion
+                *ngSwitchCase="'basic'"
+                [attr.items]="basicItems"
+                variant="default"
+                default-open='["item1"]'
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'numbered'"
+                [attr.items]="numberedItems"
+                show-numbers="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'multiple'"
+                [attr.items]="multiItems"
+                multiple="true"
+                variant="bordered"
+                default-open='["multi1", "multi2"]'
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'search'"
+                [attr.items]="searchableItems"
+                enable-search="true"
+                search-placeholder="Filter Library..."
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'actions'"
+                [attr.items]="actionItems"
+                variant="light"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'nested'"
+                [attr.items]="nestedItems"
+                enable-nested="true"
+                variant="shadow"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'dragdrop'"
+                [attr.items]="dragDropItems"
+                enable-drag-drop="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'persistence'"
+                [attr.items]="persistenceItems"
+                enable-persistence="true"
+                persistence-key="doc-demo-persistence"
+                multiple="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'loading'"
+                [attr.items]="loadingItems"
+                variant="light"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'rtl'"
+                [attr.items]="rtlItems"
+                rtl="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'dense'"
+                [attr.items]="denseItems"
+                dense="true"
+                multiple="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'events'"
+                [attr.items]="eventItems"
+                variant="bordered"
+                (beforeOpen)="onEvent($event)"
+                (afterOpen)="onEvent($event)"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'controlled'"
+                [attr.items]="controlledItems"
+                [expandedItems]="['c1', 'c2']"
+                multiple="true"
+                variant="shadow"
+              ></ui-accordion>
+              <ui-accordion
+                *ngSwitchCase="'async'"
+                [attr.items]="asyncItems"
+                [loading]="isAsyncLoading"
+                lazy="true"
+                variant="bordered"
+              ></ui-accordion>
+              <ui-accordion *ngSwitchDefault loading="true"></ui-accordion>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                >
+                </ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                >
+                </ui-button>
+                <ui-button
+                  *ngIf="activeExample === 'async'"
+                  label="Refresh Data"
+                  variant="outline"
+                  size="md"
+                  (click)="reloadAsyncData()"
+                  icon="refresh"
+                >
+                </ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
           </div>
-          <ui-accordion
-            #accordion
-            [attr.items]="basicItems"
-            multiple
-            enable-expand-collapse-all
-            variant="splitted"
-          ></ui-accordion>
-        </div>
+        </section>
+      </div>
+    </div>
 
-        <!-- Actions -->
-        <div class="variant-example">
-          <h3>Custom Header Actions</h3>
-          <p class="summary-text">Buttons in headers.</p>
-          <ui-accordion [attr.items]="actionItems"></ui-accordion>
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Experiment with all accordion properties and generate production-ready code.</p>
+      </div>
+      <app-playground-editor [config]="accordionConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of accordionConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
 
-    <!-- Styling -->
-    <section id="styling" class="gallery-section">
-      <h2 class="section-title">Styling & Customization</h2>
-      <div class="gallery-grid">
-        <div class="variant-example">
-          <h3>Dense Mode</h3>
-          <p class="summary-text">Compact spacing.</p>
-          <ui-accordion [attr.items]="basicItems" dense></ui-accordion>
-        </div>
-
-        <div class="variant-example">
-          <h3>RTL Mode</h3>
-          <p class="summary-text">Right-to-left layout.</p>
-          <ui-accordion [attr.items]="basicItems" rtl></ui-accordion>
-        </div>
-
-        <div class="variant-example">
-          <h3>Custom Icons</h3>
-          <p class="summary-text">Custom expand/collapse icons.</p>
-          <ui-accordion
-            [attr.items]="basicItems"
-            arrow-icon-expanded="➖"
-            arrow-icon-collapsed="➕"
-            icon-position="start"
-          ></ui-accordion>
-        </div>
-
-        <div class="variant-example">
-          <h3>Sizes</h3>
-          <p class="summary-text">Large vs Small.</p>
-          <div style="margin-bottom: 12px">
-            <strong>Large:</strong>
-            <ui-accordion [attr.items]="basicItems" size="lg"></ui-accordion>
-          </div>
-          <div>
-            <strong>Small:</strong>
-            <ui-accordion [attr.items]="basicItems" size="sm"></ui-accordion>
-          </div>
+      <div class="doc-section" *ngIf="accordionConfig.events?.length">
+        <h3>Events API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of accordionConfig.events">
+                <td>
+                  <code>{{ event.name }}</code>
+                </td>
+                <td>{{ event.description || 'Event trigger.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-
-    <!-- Advanced -->
-    <section id="advanced" class="gallery-section">
-      <h2 class="section-title">Advanced Features</h2>
-      <div class="gallery-grid">
-        <!-- Nested -->
-        <div class="variant-example">
-          <h3>Nested Items</h3>
-          <p class="summary-text">Recursive structures.</p>
-          <ui-accordion [attr.items]="nestedItems" enable-nested></ui-accordion>
-        </div>
-
-        <!-- Drag & Drop -->
-        <div class="variant-example">
-          <h3>Drag & Drop</h3>
-          <p class="summary-text">Reorder items.</p>
-          <ui-accordion
-            [attr.items]="basicItems"
-            enable-drag-drop
-            variant="bordered"
-          ></ui-accordion>
-        </div>
-
-        <!-- Loading -->
-        <div class="variant-example">
-          <h3>Loading State</h3>
-          <p class="summary-text">Skeleton loader.</p>
-          <ui-accordion loading></ui-accordion>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>

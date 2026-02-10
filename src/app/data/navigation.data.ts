@@ -34,7 +34,6 @@ export const categoryNavItems: NavItem[] = [
     icon: '🏗️',
     children: [
       { id: 'accordion', label: 'Accordion', icon: '📂' },
-      { id: 'app-library', label: 'Component Library', badge: 'New', icon: '📚' },
       { id: 'aside', label: 'Aside Panel', icon: '📱' },
       { id: 'card', label: 'Card', icon: '🃏' },
       { id: 'divider', label: 'Divider', icon: '➖' },

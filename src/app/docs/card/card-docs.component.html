@@ -1,113 +1,384 @@
 <div class="docs-page">
-  <!-- Header -->
   <header class="page-header">
     <div class="header-content">
-      <div class="back-link">← BACK</div>
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
       <h1>Card</h1>
-      <p class="description">A versatile container for displaying content, actions, and media.</p>
-    </div>
-    <div class="header-actions">
-      <button class="action-btn">🏠</button>
-      <button class="action-btn primary">📄</button>
+      <p class="description">
+        Versatile containers for content with support for headers, footers, cover images, and
+        premium interactive features.
+      </p>
     </div>
   </header>
 
-  <!-- Navigation Pills -->
-  <nav class="gallery-nav">
-    <button class="nav-pill purple" (click)="scrollToSection('variants')">Variants</button>
-    <button class="nav-pill blue" (click)="scrollToSection('interactivity')">Interactivity</button>
-    <button class="nav-pill orange" (click)="scrollToSection('features')">Features</button>
-    <button class="nav-pill pink" (click)="scrollToSection('loading')">Loading</button>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    >
+    </ui-button>
   </nav>
 
-  <!-- Gallery Content -->
-  <div class="gallery-container">
-    <!-- Variants -->
-    <section id="variants" class="gallery-section">
-      <h2 class="section-title">Variants</h2>
-      <div class="gallery-grid">
-        <ui-card variant="default">
-          <div slot="header"><h3>Default</h3></div>
-          <div slot="content">Default card with standard border and shadow.</div>
-        </ui-card>
-
-        <ui-card variant="elevated">
-          <div slot="header"><h3>Elevated</h3></div>
-          <div slot="content">Card with increased elevation/shadow.</div>
-        </ui-card>
-
-        <ui-card variant="outlined">
-          <div slot="header"><h3>Outlined</h3></div>
-          <div slot="content">Card with border but no shadow.</div>
-        </ui-card>
-
-        <ui-card variant="filled" style="background: #f3f4f6">
-          <div slot="header"><h3>Filled</h3></div>
-          <div slot="content">Card with background color.</div>
-        </ui-card>
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Basic Layout"
+          color="primary"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="Style Variants"
+          color="info"
+          [selected]="activeExample === 'variants'"
+          [clickable]="true"
+          (pillClick)="setExample('variants')"
+        ></ui-pill>
+        <ui-pill
+          label="Flippable"
+          icon="🔄"
+          color="warning"
+          [selected]="activeExample === 'flippable'"
+          [clickable]="true"
+          (pillClick)="setExample('flippable')"
+        ></ui-pill>
+        <ui-pill
+          label="Premium Features"
+          icon="✨"
+          color="success"
+          [selected]="activeExample === 'premium'"
+          [clickable]="true"
+          (pillClick)="setExample('premium')"
+        ></ui-pill>
+        <ui-pill
+          label="Cover Images"
+          icon="🖼️"
+          color="primary"
+          [selected]="activeExample === 'cover'"
+          [clickable]="true"
+          (pillClick)="setExample('cover')"
+        ></ui-pill>
       </div>
-    </section>
 
-    <!-- Interactivity -->
-    <section id="interactivity" class="gallery-section">
-      <h2 class="section-title">Interactivity</h2>
-      <div class="gallery-grid">
-        <ui-card hoverable>
-          <div slot="header"><h3>Hoverable</h3></div>
-          <div slot="content">Hover over me to see the effect!</div>
-        </ui-card>
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <span class="showcase-icon" [ngSwitch]="activeExample">
+                <span *ngSwitchCase="'basic'">📄</span>
+                <span *ngSwitchCase="'variants'">🎭</span>
+                <span *ngSwitchCase="'flippable'">🔄</span>
+                <span *ngSwitchCase="'premium'">✨</span>
+                <span *ngSwitchCase="'cover'">🖼️</span>
+              </span>
+              <h3>{{ activeExample | titlecase }} Showcase</h3>
+            </div>
 
-        <ui-card clickable>
-          <div slot="header"><h3>Clickable</h3></div>
-          <div slot="content">I behave like a button when clicked.</div>
-        </ui-card>
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'"
+                >Standard container with defined slots for headers, main content, and action
+                footers.</span
+              >
+              <span *ngSwitchCase="'variants'"
+                >Visual styles including Default, Elevated, Outlined, and Filled backgrounds.</span
+              >
+              <span *ngSwitchCase="'flippable'"
+                >Support for double-sided content with a high-performance 3D flip animation.</span
+              >
+              <span *ngSwitchCase="'premium'"
+                >Advanced features like contextual menus, skeleton loading, and selection
+                modes.</span
+              >
+              <span *ngSwitchCase="'cover'"
+                >Full-width cover image support, perfect for blog posts, products, or
+                portfolios.</span
+              >
+            </p>
 
-        <ui-card selectable>
-          <div slot="header"><h3>Selectable</h3></div>
-          <div slot="content">Click to select/deselect me.</div>
-        </ui-card>
-      </div>
-    </section>
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div *ngSwitchCase="'basic'" class="card-gallery grid-3">
+                <ui-card width="100%" variant="default">
+                  <div slot="header"><h3 class="m-0 text-lg">Project Info</h3></div>
+                  <div slot="content">
+                    <p class="text-secondary">
+                      Track the development progress and resource allocation for the current sprint.
+                    </p>
+                  </div>
+                  <div slot="footer">
+                    <ui-button label="View More" variant="outline" size="sm"></ui-button>
+                  </div>
+                </ui-card>
+                <ui-card width="100%" variant="default" [hoverable]="true">
+                  <div slot="header"><h3 class="m-0 text-lg">Hover Me</h3></div>
+                  <div slot="content">
+                    <p class="text-secondary">
+                      This card has a subtle elevation effect when hovered.
+                    </p>
+                  </div>
+                </ui-card>
+              </div>
 
-    <!-- Features -->
-    <section id="features" class="gallery-section">
-      <h2 class="section-title">Features</h2>
-      <div class="gallery-grid">
-        <!-- Flippable Card -->
-        <ui-card flippable height="200px">
-          <div slot="content" style="text-align: center; padding: 20px">
-            <h3>Front</h3>
-            <p>Click "Flip" button below</p>
+              <div *ngSwitchCase="'variants'" class="card-gallery grid-4">
+                <ui-card variant="default">
+                  <div slot="header"><h4>Default</h4></div>
+                  <div slot="content"><p class="text-xs">Standard border and shadow.</p></div>
+                </ui-card>
+                <ui-card variant="elevated">
+                  <div slot="header"><h4>Elevated</h4></div>
+                  <div slot="content"><p class="text-xs">Deeper shadow for hierarchy.</p></div>
+                </ui-card>
+                <ui-card variant="outlined">
+                  <div slot="header"><h4>Outlined</h4></div>
+                  <div slot="content"><p class="text-xs">Modern border-only style.</p></div>
+                </ui-card>
+                <ui-card variant="filled">
+                  <div slot="header"><h4>Filled</h4></div>
+                  <div slot="content"><p class="text-xs">Subtle background color.</p></div>
+                </ui-card>
+              </div>
+
+              <div *ngSwitchCase="'flippable'" class="card-gallery grid-2">
+                <ui-card width="100%" height="240px" [flippable]="true" variant="elevated">
+                  <div slot="header"><h3>🔄 Interactive Card</h3></div>
+                  <div slot="content" class="flex-center h-full">
+                    <p class="text-secondary text-center">Click to see the back side</p>
+                  </div>
+                  <div slot="back">
+                    <div class="card-back-content">
+                      <span class="icon-lg">✨</span>
+                      <h3>Secret Side</h3>
+                      <p>Premium content revealed here!</p>
+                    </div>
+                  </div>
+                </ui-card>
+                <ui-card width="100%" height="240px" [flippable]="true" variant="default">
+                  <div slot="header"><h3>Product Specs</h3></div>
+                  <div slot="content" class="flex-center h-full">
+                    <span class="icon-lg">📦</span>
+                    <p class="font-bold text-success">$199.00</p>
+                  </div>
+                  <div slot="back">
+                    <div class="px-4 py-2">
+                      <h4 class="m-0 mb-2">Technical Data</h4>
+                      <ul class="text-sm text-secondary list-none p-0">
+                        <li>Weight: 2.5kg</li>
+                        <li>Dimensions: 30x20cm</li>
+                        <li>Warranty: 2 Years</li>
+                      </ul>
+                    </div>
+                  </div>
+                </ui-card>
+              </div>
+
+              <div *ngSwitchCase="'premium'" class="card-gallery grid-3">
+                <ui-card
+                  width="100%"
+                  [showMenu]="true"
+                  [menuItems]="menuItems"
+                  (menuItemClick)="onMenuItemClick($event)"
+                >
+                  <div slot="header"><h3>Contextual Menu</h3></div>
+                  <div slot="content"><p>Click the ⋮ icon to see actions.</p></div>
+                </ui-card>
+                <ui-card width="100%" [loading]="true">
+                  <div slot="header"><h3>Loading</h3></div>
+                  <div slot="content"><p>Content will appear soon.</p></div>
+                </ui-card>
+                <ui-card width="100%" [selectable]="true" (click)="activeExample = 'premium'">
+                  <div slot="content" class="flex items-center gap-4">
+                    <span class="icon-md">🏢</span>
+                    <div>
+                      <h4>Selectable</h4>
+                      <p class="text-xs text-secondary">Click to select</p>
+                    </div>
+                  </div>
+                </ui-card>
+              </div>
+
+              <div *ngSwitchCase="'cover'" class="card-gallery grid-2">
+                <ui-card variant="elevated" [hoverable]="true">
+                  <img
+                    slot="cover"
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+                    alt="Architecture"
+                  />
+                  <div slot="header"><h3>Modern Cities</h3></div>
+                  <div slot="content">
+                    <p class="text-secondary">
+                      Discover the innovative architectural wonders of the modern world.
+                    </p>
+                  </div>
+                  <div slot="footer"><ui-button label="Explore" fullWidth="true"></ui-button></div>
+                </ui-card>
+                <ui-card variant="default" [hoverable]="true">
+                  <img
+                    slot="cover"
+                    src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80"
+                    alt="Abstract"
+                  />
+                  <div slot="header"><h3>Abstract Art</h3></div>
+                  <div slot="content">
+                    <p class="text-secondary">
+                      A curated collection of modern digital art and expressions.
+                    </p>
+                  </div>
+                  <div slot="footer">
+                    <ui-button label="Download" variant="secondary" fullWidth="true"></ui-button>
+                  </div>
+                </ui-card>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Code' : 'Show Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                >
+                </ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                >
+                </ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Source'"
+              ></app-code-viewer>
+            </div>
           </div>
-          <div slot="back-content" style="text-align: center; padding: 20px">
-            <h3>Back</h3>
-            <p>This is the back side!</p>
-          </div>
-        </ui-card>
-
-        <!-- With Menu -->
-        <ui-card show-menu [attr.menu-items]="menuItems">
-          <div slot="header"><h3>With Menu</h3></div>
-          <div slot="content">Click the 3-dot menu icon in top right.</div>
-        </ui-card>
-
-        <!-- Expandable -->
-        <ui-card expandable>
-          <div slot="header"><h3>Expandable</h3></div>
-          <div slot="content">
-            <p>Standard content always visible.</p>
-            <div class="expand-content">This content is revealed when expanded!</div>
-          </div>
-        </ui-card>
+        </section>
       </div>
-    </section>
+    </div>
 
-    <!-- Loading -->
-    <section id="loading" class="gallery-section">
-      <h2 class="section-title">Loading State</h2>
-      <div class="gallery-card">
-        <ui-card loading style="width: 100%; max-width: 400px; height: 150px"></ui-card>
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Card Creator</h3>
+        <p>Design and customize complex card layouts with interactive features.</p>
       </div>
-    </section>
+      <app-playground-editor [config]="cardConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of cardConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Card property.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section">
+        <h3>Slots</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Slot Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>header</code></td>
+                <td>Top section, usually for titles or action markers.</td>
+              </tr>
+              <tr>
+                <td><code>content</code></td>
+                <td>Main body area for text, forms, or media.</td>
+              </tr>
+              <tr>
+                <td><code>footer</code></td>
+                <td>Bottom section for primary/secondary actions.</td>
+              </tr>
+              <tr>
+                <td><code>cover</code></td>
+                <td>Full-width image/media container at the top.</td>
+              </tr>
+              <tr>
+                <td><code>back</code></td>
+                <td>Content for the reverse side of flippable cards.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="doc-section" *ngIf="cardConfig.events?.length">
+        <h3>Events API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of cardConfig.events">
+                <td>
+                  <code>{{ event.name }}</code>
+                </td>
+                <td>{{ event.description }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

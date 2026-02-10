@@ -1,0 +1,393 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Panel</h1>
+      <p class="description">
+        A content container that supports themes, dragging, resizing, modals, and window-like
+        behaviors.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Basic"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="Themes"
+          [selected]="activeExample === 'themes'"
+          [clickable]="true"
+          (pillClick)="setExample('themes')"
+        ></ui-pill>
+        <ui-pill
+          label="Badges"
+          [selected]="activeExample === 'badges'"
+          [clickable]="true"
+          (pillClick)="setExample('badges')"
+        ></ui-pill>
+        <ui-pill
+          label="Draggable"
+          [selected]="activeExample === 'draggable'"
+          [clickable]="true"
+          (pillClick)="setExample('draggable')"
+        ></ui-pill>
+        <ui-pill
+          label="Resizable"
+          [selected]="activeExample === 'resizable'"
+          [clickable]="true"
+          (pillClick)="setExample('resizable')"
+        ></ui-pill>
+        <ui-pill
+          label="Min/Max"
+          [selected]="activeExample === 'minmax'"
+          [clickable]="true"
+          (pillClick)="setExample('minmax')"
+        ></ui-pill>
+        <ui-pill
+          label="Glass"
+          [selected]="activeExample === 'glass'"
+          [clickable]="true"
+          (pillClick)="setExample('glass')"
+        ></ui-pill>
+        <ui-pill
+          label="Modal"
+          [selected]="activeExample === 'modal'"
+          [clickable]="true"
+          (pillClick)="setExample('modal')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>{{ activeExample | titlecase }} Features</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'"
+                >Simple container with header, content, and footer slots.</span
+              >
+              <span *ngSwitchCase="'themes'">Built-in color variants for different contexts.</span>
+              <span *ngSwitchCase="'badges'"
+                >Display count or status indicators in the header.</span
+              >
+              <span *ngSwitchCase="'draggable'"
+                >Users can reposition the panel by dragging the header.</span
+              >
+              <span *ngSwitchCase="'resizable'"
+                >Resize handles allow users to customize dimensions.</span
+              >
+              <span *ngSwitchCase="'minmax'"
+                >Window-like controls for minimizing and maximizing content.</span
+              >
+              <span *ngSwitchCase="'glass'">Frosted glass effect using backdrop-filter blur.</span>
+              <span *ngSwitchCase="'modal'"
+                >Overlay panel that demands user attention with a backdrop.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div
+                class="preview-box"
+                style="min-height: 400px; position: relative; overflow: hidden; background: #f8fafc"
+              >
+                <!-- Basic -->
+                <ui-panel
+                  *ngSwitchCase="'basic'"
+                  panel-title="Welcome Panel"
+                  panel-subtitle="A clean starting point"
+                  width="400px"
+                >
+                  <div slot="content">
+                    <p style="margin-top: 0; line-height: 1.6; color: #475569">
+                      Panels provide a consistent container for organising related content. They
+                      support rich HTML content via slots.
+                    </p>
+                  </div>
+                  <div slot="footer" style="display: flex; gap: 8px; justify-content: flex-end">
+                    <ui-button label="Secondary" variant="secondary" size="sm"></ui-button>
+                    <ui-button label="Primary Action" variant="primary" size="sm"></ui-button>
+                  </div>
+                </ui-panel>
+
+                <!-- Themes -->
+                <div
+                  *ngSwitchCase="'themes'"
+                  style="
+                    display: grid;
+                    gap: 16px;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    width: 100%;
+                  "
+                >
+                  <ui-panel panel-title="Primary Theme" theme="primary" width="100%">
+                    <div slot="content">Primary color (blue)</div>
+                  </ui-panel>
+                  <ui-panel panel-title="Success Theme" theme="success" width="100%">
+                    <div slot="content">Success color (green)</div>
+                  </ui-panel>
+                  <ui-panel panel-title="Warning Theme" theme="warning" width="100%">
+                    <div slot="content">Warning color (orange)</div>
+                  </ui-panel>
+                  <ui-panel panel-title="Danger Theme" theme="danger" width="100%">
+                    <div slot="content">Danger color (red)</div>
+                  </ui-panel>
+                </div>
+
+                <!-- Badges -->
+                <div *ngSwitchCase="'badges'" style="display: flex; gap: 16px; flex-wrap: wrap">
+                  <ui-panel panel-title="Inbox" badge="3" badge-variant="count" theme="primary">
+                    <div slot="content">You have 3 unread messages.</div>
+                  </ui-panel>
+                  <ui-panel panel-title="Updates" badge="New" badge-variant="text" theme="success">
+                    <div slot="content">Version 2.0 available.</div>
+                  </ui-panel>
+                  <ui-panel panel-title="Status" badge="1" badge-variant="dot" theme="warning">
+                    <div slot="content">System maintenance scheduled.</div>
+                  </ui-panel>
+                </div>
+
+                <!-- Draggable -->
+                <ui-panel
+                  *ngSwitchCase="'draggable'"
+                  panel-title="Drag Me!"
+                  is-draggable="true"
+                  width="350px"
+                  theme="info"
+                  style="top: 20px; left: 20px"
+                >
+                  <div slot="content">
+                    <p>Click and hold the header to drag this panel around the container.</p>
+                  </div>
+                </ui-panel>
+
+                <!-- Resizable -->
+                <div
+                  *ngSwitchCase="'resizable'"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <ui-panel
+                    panel-title="Resize Me"
+                    resizable="true"
+                    width="300px"
+                    height="200px"
+                    theme="default"
+                  >
+                    <div slot="content">
+                      <p>Grab the edges or corners to resize this panel.</p>
+                    </div>
+                  </ui-panel>
+                </div>
+
+                <!-- MinMax -->
+                <div
+                  *ngSwitchCase="'minmax'"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <ui-panel
+                    panel-title="Window Behavior"
+                    minimizable="true"
+                    maximizable="true"
+                    width="400px"
+                    theme="secondary"
+                  >
+                    <div slot="content">
+                      <p>Use the buttons in the header to minimize or maximize this panel.</p>
+                    </div>
+                  </ui-panel>
+                </div>
+
+                <!-- Glass -->
+                <div
+                  *ngSwitchCase="'glass'"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    background: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80')
+                      center/cover;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <ui-panel panel-title="Glass Effect" glass="true" theme="default" width="350px">
+                    <div
+                      slot="content"
+                      style="
+                        color: white;
+                        text-align: center;
+                        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                      "
+                    >
+                      <h3 style="margin-top: 0">Frosted Glass</h3>
+                      <p>Premium UI effect using backdrop-filter blur.</p>
+                      <ui-button
+                        label="Explore"
+                        variant="outline"
+                        style="color: white; border-color: rgba(255, 255, 255, 0.5)"
+                      ></ui-button>
+                    </div>
+                  </ui-panel>
+                </div>
+
+                <!-- Modal -->
+                <div
+                  *ngSwitchCase="'modal'"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                  "
+                >
+                  <ui-button label="Open Modal Panel" (click)="isModalOpen = true"></ui-button>
+                  <p style="margin-top: 10px; color: #64748b">Click to view the modal overlay.</p>
+
+                  <ui-panel
+                    *ngIf="isModalOpen"
+                    panel-title="System Alert"
+                    modal="true"
+                    position="center"
+                    (panelClose)="isModalOpen = false"
+                    width="400px"
+                    theme="danger"
+                  >
+                    <div slot="content">
+                      <p>
+                        This is a modal panel. It focuses user attention by dimming the background.
+                      </p>
+                    </div>
+                    <div slot="footer" style="display: flex; justify-content: flex-end; gap: 10px">
+                      <ui-button
+                        label="Cancel"
+                        variant="secondary"
+                        (click)="isModalOpen = false"
+                      ></ui-button>
+                      <ui-button
+                        label="Confirm"
+                        variant="primary"
+                        (click)="isModalOpen = false"
+                      ></ui-button>
+                    </div>
+                  </ui-panel>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Configure panel appearance and behavior.</p>
+      </div>
+      <app-playground-editor [config]="panelConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of panelConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

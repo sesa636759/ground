@@ -1,94 +1,262 @@
 <div class="docs-page">
   <header class="page-header">
     <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
       <h1>Pill</h1>
-      <p class="description">Compact, rounded elements for labeling, status, or selection.</p>
+      <p class="description">
+        Compact interactive labels for categorization, selection, status indicators, and complex
+        metadata displays.
+      </p>
     </div>
   </header>
 
-  <div class="gallery-container">
-    <section class="gallery-section">
-      <h2 class="section-title">Playground</h2>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    >
+    </ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Visual Variants"
+          color="primary"
+          [selected]="activeExample === 'variants'"
+          [clickable]="true"
+          (pillClick)="setExample('variants')"
+        ></ui-pill>
+        <ui-pill
+          label="Orientations"
+          color="info"
+          [selected]="activeExample === 'orientations'"
+          [clickable]="true"
+          (pillClick)="setExample('orientations')"
+        ></ui-pill>
+        <ui-pill
+          label="Media & Stats"
+          color="success"
+          [selected]="activeExample === 'media'"
+          [clickable]="true"
+          (pillClick)="setExample('media')"
+        ></ui-pill>
+        <ui-pill
+          label="Interactivity"
+          color="warning"
+          [selected]="activeExample === 'interaction'"
+          [clickable]="true"
+          (pillClick)="setExample('interaction')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <span class="showcase-icon" [ngSwitch]="activeExample">
+                <span *ngSwitchCase="'variants'">🎭</span>
+                <span *ngSwitchCase="'orientations'">🔄</span>
+                <span *ngSwitchCase="'media'">🖼️</span>
+                <span *ngSwitchCase="'interaction'">👆</span>
+              </span>
+              <h3>{{ activeExample | titlecase }} Showcase</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'variants'"
+                >Filled, Outlined, Soft, and high-performance Gradient variants for visual
+                hierarchy.</span
+              >
+              <span *ngSwitchCase="'orientations'"
+                >Unique layout support for Vertical, Vertical-Text, and sideways Rotated
+                pills.</span
+              >
+              <span *ngSwitchCase="'media'"
+                >Enrich labels with system icons, user avatars, or notification counters.</span
+              >
+              <span *ngSwitchCase="'interaction'"
+                >Support for removal actions, selection toggles, and loading placeholders.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div *ngSwitchCase="'variants'" class="pill-gallery grid-wrap">
+                <ui-pill label="Primary" color="primary"></ui-pill>
+                <ui-pill label="Success Soft" color="success" variant="soft"></ui-pill>
+                <ui-pill label="Danger Outline" color="danger" variant="outlined"></ui-pill>
+                <ui-pill label="Blue Gradient" variant="gradient" gradient="blue-purple"></ui-pill>
+                <ui-pill label="Sunset Gradient" variant="gradient" gradient="orange-red"></ui-pill>
+              </div>
+
+              <div *ngSwitchCase="'orientations'" class="pill-gallery grid-wrap items-start">
+                <div class="orient-item">
+                  <label>Vertical</label>
+                  <ui-pill label="Home" icon="🏠" orientation="vertical" color="primary"></ui-pill>
+                </div>
+                <div class="orient-item">
+                  <label>Vertical Text</label>
+                  <ui-pill
+                    label="JAPAN"
+                    icon="🇯🇵"
+                    orientation="vertical-text"
+                    color="danger"
+                  ></ui-pill>
+                </div>
+                <div class="orient-item">
+                  <label>Rotated</label>
+                  <ui-pill
+                    label="SIDEWAYS"
+                    icon="➡️"
+                    orientation="vertical-rotated"
+                    color="success"
+                  ></ui-pill>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'media'" class="pill-gallery grid-wrap">
+                <ui-pill label="Settings" icon="⚙️" color="secondary"></ui-pill>
+                <ui-pill
+                  label="Jane Cooper"
+                  avatar="https://i.pravatar.cc/150?img=32"
+                  color="success"
+                ></ui-pill>
+                <ui-pill label="Notifications" counter="12" color="warning"></ui-pill>
+                <ui-pill label="Active" icon="●" color="success" size="sm"></ui-pill>
+              </div>
+
+              <div *ngSwitchCase="'interaction'" class="pill-gallery grid-wrap">
+                <ui-pill
+                  label="Removable Item"
+                  [removable]="true"
+                  color="danger"
+                  (pillRemove)="onPillRemove()"
+                ></ui-pill>
+                <ui-pill
+                  label="Selectable Tag"
+                  [clickable]="true"
+                  color="primary"
+                  (pillClick)="onPillClick()"
+                ></ui-pill>
+                <ui-pill label="Processing" [loading]="true" color="warning"></ui-pill>
+                <ui-pill label="Read Only" [disabled]="true" color="info"></ui-pill>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Code' : 'Show Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                >
+                </ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                >
+                </ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Source'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Pill Designer</h3>
+        <p>Customize variants, orientations, and media features in real-time.</p>
+      </div>
       <app-playground-editor [config]="pillConfig"></app-playground-editor>
-    </section>
+    </div>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Variants & Styles</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Color Palette</div>
-          <div class="pill-rack">
-            <ui-pill label="Primary" color="primary"></ui-pill>
-            <ui-pill label="Secondary" color="secondary"></ui-pill>
-            <ui-pill label="Success" color="success"></ui-pill>
-            <ui-pill label="Danger" color="danger"></ui-pill>
-            <ui-pill label="Warning" color="warning"></ui-pill>
-            <ui-pill label="Info" color="info"></ui-pill>
-          </div>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Visual Variants</div>
-          <div class="pill-rack">
-            <ui-pill label="Filled" variant="filled" color="primary"></ui-pill>
-            <ui-pill label="Outlined" variant="outlined" color="primary"></ui-pill>
-            <ui-pill label="Soft" variant="soft" color="primary"></ui-pill>
-          </div>
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of pillConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Pill property.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Special Features</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Icons & Avatars</div>
-          <div class="pill-rack">
-            <ui-pill label="Profile" avatar="https://i.pravatar.cc/150?img=12"></ui-pill>
-            <ui-pill label="Settings" icon="⚙️" color="secondary"></ui-pill>
-            <ui-pill label="Drafts" counter="5" color="warning"></ui-pill>
-          </div>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Interactions</div>
-          <div class="pill-rack">
-            <ui-pill label="Clickable" clickable="true" color="success"></ui-pill>
-            <ui-pill label="Selected" selected="true" color="primary"></ui-pill>
-            <ui-pill label="Removable" removable="true" color="danger"></ui-pill>
-            <ui-pill label="Loading" loading="true"></ui-pill>
-          </div>
+      <div class="doc-section" *ngIf="pillConfig.events?.length">
+        <h3>Events API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of pillConfig.events">
+                <td>
+                  <code>{{ event.name }}</code>
+                </td>
+                <td>{{ event.description }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-
-    <section class="gallery-section">
-      <h2 class="section-title">Vertical Orientations</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Vertical</div>
-          <div class="pill-rack" style="align-items: flex-start">
-            <ui-pill label="HOME" icon="🏠" orientation="vertical" color="primary"></ui-pill>
-            <ui-pill
-              label="APPS"
-              icon="📂"
-              orientation="vertical"
-              variant="outlined"
-              color="success"
-            ></ui-pill>
-          </div>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Vertical Text</div>
-          <div class="pill-rack" style="align-items: flex-start">
-            <ui-pill label="JAPAN" icon="🇯🇵" orientation="vertical-text" color="danger"></ui-pill>
-            <ui-pill
-              label="ROTATED"
-              icon="➡️"
-              orientation="vertical-rotated"
-              color="warning"
-            ></ui-pill>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>

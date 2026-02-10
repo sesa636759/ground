@@ -1,0 +1,261 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Stack</h1>
+      <p class="description">
+        A precise layout primitive for managing vertical and horizontal spacing between elements.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Horizontal"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="Vertical"
+          [selected]="activeExample === 'vertical'"
+          [clickable]="true"
+          (pillClick)="setExample('vertical')"
+        ></ui-pill>
+        <ui-pill
+          label="Wrap"
+          [selected]="activeExample === 'wrap'"
+          [clickable]="true"
+          (pillClick)="setExample('wrap')"
+        ></ui-pill>
+        <ui-pill
+          label="Dividers"
+          [selected]="activeExample === 'dividers'"
+          [clickable]="true"
+          (pillClick)="setExample('dividers')"
+        ></ui-pill>
+        <ui-pill
+          label="Overlap"
+          [selected]="activeExample === 'overlap'"
+          [clickable]="true"
+          (pillClick)="setExample('overlap')"
+        ></ui-pill>
+        <ui-pill
+          label="Interactive Limits"
+          [selected]="activeExample === 'interactive'"
+          [clickable]="true"
+          (pillClick)="setExample('interactive')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>{{ activeExample | titlecase }} Layout</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'"
+                >Default horizontal stack layout with consistent spacing.</span
+              >
+              <span *ngSwitchCase="'vertical'">Vertical stacking for lists and forms.</span>
+              <span *ngSwitchCase="'wrap'"
+                >Items wrap to the next line when container width is exceeded.</span
+              >
+              <span *ngSwitchCase="'dividers'">Automatic separators between items.</span>
+              <span *ngSwitchCase="'overlap'"
+                >Negative spacing creates overlapping effects (great for avatars).</span
+              >
+              <span *ngSwitchCase="'interactive'"
+                >Limit the number of visible items with automatic overflow handling.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div class="preview-box">
+                <!-- Basic Horizontal -->
+                <ui-stack *ngSwitchCase="'basic'" spacing="1rem">
+                  <div class="demo-box box-1">Item 1</div>
+                  <div class="demo-box box-2">Item 2</div>
+                  <div class="demo-box box-3">Item 3</div>
+                </ui-stack>
+
+                <!-- Vertical -->
+                <ui-stack
+                  *ngSwitchCase="'vertical'"
+                  direction="vertical"
+                  spacing="1rem"
+                  align="stretch"
+                  style="width: 300px"
+                >
+                  <div class="demo-box box-1">Header Section</div>
+                  <div class="demo-box box-2" style="height: 100px">Body Content</div>
+                  <div class="demo-box box-3">Footer Actions</div>
+                </ui-stack>
+
+                <!-- Wrap -->
+                <div
+                  *ngSwitchCase="'wrap'"
+                  style="
+                    width: 300px;
+                    padding: 20px;
+                    border: 1px dashed #cbd5e1;
+                    border-radius: 8px;
+                  "
+                >
+                  <ui-stack wrap="wrap" spacing="8px" justify="center">
+                    <ui-chip label="React"></ui-chip>
+                    <ui-chip label="Angular"></ui-chip>
+                    <ui-chip label="Vue"></ui-chip>
+                    <ui-chip label="Svelte"></ui-chip>
+                    <ui-chip label="Ember"></ui-chip>
+                    <ui-chip label="Solid"></ui-chip>
+                    <ui-chip label="Qwik"></ui-chip>
+                    <ui-chip label="Stencil"></ui-chip>
+                  </ui-stack>
+                </div>
+
+                <!-- Dividers -->
+                <ui-stack
+                  *ngSwitchCase="'dividers'"
+                  show-dividers="true"
+                  divider-type="solid"
+                  spacing="16px"
+                >
+                  <span style="padding: 0 8px">Dashboard</span>
+                  <span style="padding: 0 8px">Settings</span>
+                  <span style="padding: 0 8px">Profile</span>
+                </ui-stack>
+
+                <!-- Overlap -->
+                <ui-stack *ngSwitchCase="'overlap'" [overlap]="true" spacing="-15px">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    style="border: 2px solid white; border-radius: 50%"
+                  ></ui-avatar>
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=2"
+                    style="border: 2px solid white; border-radius: 50%"
+                  ></ui-avatar>
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=3"
+                    style="border: 2px solid white; border-radius: 50%"
+                  ></ui-avatar>
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=4"
+                    style="border: 2px solid white; border-radius: 50%"
+                  ></ui-avatar>
+                </ui-stack>
+
+                <!-- Interactive -->
+                <ui-stack *ngSwitchCase="'interactive'" [max]="3" spacing="10px">
+                  <div class="demo-box box-1">1</div>
+                  <div class="demo-box box-2">2</div>
+                  <div class="demo-box box-3">3</div>
+                  <div class="demo-box box-1">4</div>
+                  <div class="demo-box box-2">5</div>
+                  <div class="demo-box box-3">6</div>
+                </ui-stack>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Test layout combinations in real-time.</p>
+      </div>
+      <app-playground-editor [config]="stackConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of stackConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

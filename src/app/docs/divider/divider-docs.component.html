@@ -1,110 +1,246 @@
 <div class="docs-page">
   <header class="page-header">
     <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
       <h1>Divider</h1>
       <p class="description">
-        Enhanced structural component for separating content. Featuring 30+ capabilities including
-        custom SVG shapes, animations, and interactive patterns.
+        Stylized separators for grouping content with support for text, icons, and SVG shapes.
       </p>
     </div>
   </header>
 
-  <div class="gallery-container">
-    <section class="gallery-section">
-      <h2 class="section-title">Playground</h2>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Basic"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="With Text"
+          [selected]="activeExample === 'text'"
+          [clickable]="true"
+          (pillClick)="setExample('text')"
+        ></ui-pill>
+        <ui-pill
+          label="Icons"
+          [selected]="activeExample === 'icons'"
+          [clickable]="true"
+          (pillClick)="setExample('icons')"
+        ></ui-pill>
+        <ui-pill
+          label="Vertical"
+          [selected]="activeExample === 'vertical'"
+          [clickable]="true"
+          (pillClick)="setExample('vertical')"
+        ></ui-pill>
+        <ui-pill
+          label="Variants"
+          [selected]="activeExample === 'variants'"
+          [clickable]="true"
+          (pillClick)="setExample('variants')"
+        ></ui-pill>
+        <ui-pill
+          label="Shapes"
+          [selected]="activeExample === 'shapes'"
+          [clickable]="true"
+          (pillClick)="setExample('shapes')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>{{ activeExample | titlecase }} Style</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'">Standard full-width horizontal rules.</span>
+              <span *ngSwitchCase="'text'">Dividers with centered or aligned text labels.</span>
+              <span *ngSwitchCase="'icons'">Use icons or emojis as separators.</span>
+              <span *ngSwitchCase="'vertical'"
+                >Vertical orientation for separating inline elements.</span
+              >
+              <span *ngSwitchCase="'variants'">Dashed, dotted, and gradient line styles.</span>
+              <span *ngSwitchCase="'shapes'">SVG shape dividers for creative section breaks.</span>
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div class="preview-box">
+                <!-- Basic -->
+                <div *ngSwitchCase="'basic'" style="width: 100%">
+                  <p>Paragraph 1</p>
+                  <ui-divider></ui-divider>
+                  <p>Paragraph 2</p>
+                </div>
+
+                <!-- Text -->
+                <div
+                  *ngSwitchCase="'text'"
+                  style="width: 100%; display: flex; flex-direction: column; gap: 20px"
+                >
+                  <ui-divider text="Center Text" text-align="center"></ui-divider>
+                  <ui-divider text="Left Text" text-align="left"></ui-divider>
+                  <ui-divider text="Right Text" text-align="right"></ui-divider>
+                </div>
+
+                <!-- Icons -->
+                <div
+                  *ngSwitchCase="'icons'"
+                  style="width: 100%; display: flex; flex-direction: column; gap: 20px"
+                >
+                  <ui-divider icon="⭐" text="Premium Feature" color="warning"></ui-divider>
+                  <ui-divider icon="🔒" text="Security Locked" color="danger"></ui-divider>
+                  <ui-divider icon="✓" text="Completed" color="success"></ui-divider>
+                </div>
+
+                <!-- Vertical -->
+                <div
+                  *ngSwitchCase="'vertical'"
+                  style="
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                  "
+                >
+                  <ui-button label="Edit" variant="ghost"></ui-button>
+                  <ui-divider
+                    orientation="vertical"
+                    style="height: 24px; margin: 0 8px"
+                  ></ui-divider>
+                  <ui-button label="Copy" variant="ghost"></ui-button>
+                  <ui-divider
+                    orientation="vertical"
+                    style="height: 24px; margin: 0 8px"
+                  ></ui-divider>
+                  <ui-button label="Delete" variant="ghost" color="danger"></ui-button>
+                </div>
+
+                <!-- Variants -->
+                <div
+                  *ngSwitchCase="'variants'"
+                  style="width: 100%; display: flex; flex-direction: column; gap: 30px"
+                >
+                  <ui-divider variant="dashed" text="Dashed"></ui-divider>
+                  <ui-divider variant="dotted" text="Dotted"></ui-divider>
+                  <ui-divider variant="solid" thickness="4px" text="Thick"></ui-divider>
+                  <ui-divider variant="gradient" text="Gradient"></ui-divider>
+                </div>
+
+                <!-- Shapes -->
+                <div
+                  *ngSwitchCase="'shapes'"
+                  style="width: 100%; display: flex; flex-direction: column; gap: 40px"
+                >
+                  <ui-divider shape="wave" color="primary"></ui-divider>
+                  <ui-divider shape="triangle" color="success"></ui-divider>
+                  <ui-divider shape="arrow" color="danger"></ui-divider>
+                  <ui-divider shape="zigzag" color="warning"></ui-divider>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Customize divider styles and content.</p>
+      </div>
       <app-playground-editor [config]="dividerConfig"></app-playground-editor>
-    </section>
+    </div>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Visual Variations</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Basic Styles</div>
-          <div class="divider-stack">
-            <ui-divider text="Solid"></ui-divider>
-            <ui-divider text="Dashed" variant="dashed" color="primary"></ui-divider>
-            <ui-divider text="Dotted" variant="dotted" color="success"></ui-divider>
-            <ui-divider text="Gradient" variant="gradient" color="info"></ui-divider>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="card-title">Align & Badges</div>
-          <div class="divider-stack">
-            <ui-divider text="Left Align" text-align="left"></ui-divider>
-            <ui-divider text="With Badge" badge="New" color="danger"></ui-divider>
-            <ui-divider text="With Icon" icon="⭐" color="warning"></ui-divider>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="card-title">Creative Patterns</div>
-          <div class="divider-stack">
-            <ui-divider pattern="dots" text="Dotted Line" color="primary"></ui-divider>
-            <ui-divider pattern="zigzag" text="Zigzag" color="danger"></ui-divider>
-            <ui-divider pattern="wavy" text="Wavy" color="info"></ui-divider>
-          </div>
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of dividerConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-
-    <section class="gallery-section">
-      <h2 class="section-title">Vertical & Layout</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Toolbar Separation</div>
-          <div class="horizontal-flex">
-            <button class="icon-btn">💾</button>
-            <ui-divider orientation="vertical"></ui-divider>
-            <button class="icon-btn">📁</button>
-            <button class="icon-btn">📤</button>
-            <ui-divider orientation="vertical" color="primary"></ui-divider>
-            <button class="icon-btn">⚙️</button>
-          </div>
-        </div>
-
-        <div class="demo-card">
-          <div class="card-title">Complex Splitter</div>
-          <div class="center-content-flex">
-            <div class="side-box">A</div>
-            <ui-divider
-              orientation="vertical"
-              text="VS"
-              color="success"
-              thickness="3px"
-            ></ui-divider>
-            <div class="side-box">B</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="gallery-section">
-      <h2 class="section-title">Premium SVG Shapes</h2>
-      <div class="premium-demo-card">
-        <div class="card-header">
-          <h3>Section Breakers</h3>
-          <p>Use SVG shapes for creative vertical transitions between large content blocks.</p>
-        </div>
-        <div class="shape-grid">
-          <div class="shape-item">
-            <p>Wave</p>
-            <ui-divider shape="wave" color="primary"></ui-divider>
-          </div>
-          <div class="shape-item">
-            <p>Triangle</p>
-            <ui-divider shape="triangle" color="success"></ui-divider>
-          </div>
-          <div class="shape-item">
-            <p>Tilt</p>
-            <ui-divider shape="tilt" color="info"></ui-divider>
-          </div>
-          <div class="shape-item">
-            <p>Zigzag</p>
-            <ui-divider shape="zigzag" color="danger"></ui-divider>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>

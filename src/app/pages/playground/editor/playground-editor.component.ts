@@ -182,6 +182,13 @@ import { ComponentConfig } from '../component-configs';
               </ng-container>
             </div>
           </div>
+
+          <!-- Manual Action Trigger -->
+          <div class="trigger-actions" *ngIf="config?.allowTrigger">
+            <button class="trigger-btn" (click)="triggerShow()">
+              {{ config?.triggerLabel || 'Open Component' }}
+            </button>
+          </div>
         </aside>
       </div>
     </div>
@@ -258,6 +265,37 @@ import { ComponentConfig } from '../component-configs';
 
       .controls-list {
         flex: 1;
+      }
+
+      .trigger-actions {
+        padding-top: 16px;
+        margin-top: auto;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .trigger-btn {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+
+        &:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 12px -1px rgba(99, 102, 241, 0.3);
+          filter: brightness(1.1);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
       }
 
       .control-group {
@@ -485,6 +523,17 @@ export class PlaygroundEditorComponent implements OnInit, OnChanges {
     if (!contentStr) contentStr = '...';
 
     return `<${config.tagName}${propsStr}>${contentStr}</${config.tagName}>`;
+  }
+
+  triggerShow() {
+    if (!this.previewContainer) return;
+    const el = this.previewContainer.nativeElement.querySelector(this.config?.tagName || '');
+    if (el && typeof (el as any).show === 'function') {
+      (el as any).show();
+    } else if (el) {
+      // Fallback for components that might use 'open' property
+      this.updateControl('open', true);
+    }
   }
 
   copyCode() {

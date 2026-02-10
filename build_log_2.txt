@@ -1,0 +1,112 @@
+
+> ground@0.0.0 build
+> ng build
+
+[33m❯[39m Building...
+[32m✔[39m Building...
+[1mInitial chunk files[22m  [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-OE7CJLXF.js[39m    [2m | [22m[2m-[22m                           [2m | [22m[36m168.70 kB[39m[2m | [22m               [36m48.36 kB[39m
+[32mchunk-HYC6A74H.js[39m    [2m | [22m[2m-[22m                           [2m | [22m [36m90.71 kB[39m[2m | [22m               [36m22.76 kB[39m
+[32mmain-YEQTMKA7.js[39m     [2m | [22m[2mmain[22m                        [2m | [22m [36m80.89 kB[39m[2m | [22m               [36m16.61 kB[39m
+[32mpolyfills-6ISPNSXF.js[39m[2m | [22m[2mpolyfills[22m                   [2m | [22m [36m35.68 kB[39m[2m | [22m               [36m11.57 kB[39m
+[32mchunk-YPISRAO6.js[39m    [2m | [22m[2m-[22m                           [2m | [22m [36m28.32 kB[39m[2m | [22m                [36m9.69 kB[39m
+[32mchunk-H7KQJFFN.js[39m    [2m | [22m[2m-[22m                           [2m | [22m [36m28.15 kB[39m[2m | [22m                [36m9.82 kB[39m
+[32mchunk-I73ST3JH.js[39m    [2m | [22m[2m-[22m                           [2m | [22m  [36m4.06 kB[39m[2m | [22m                [36m1.10 kB[39m
+[32mchunk-L7VHYXEQ.js[39m    [2m | [22m[2m-[22m                           [2m | [22m  [36m1.40 kB[39m[2m | [22m              [36m552 bytes[39m
+[32mchunk-RINRXYSM.js[39m    [2m | [22m[2m-[22m                           [2m | [22m[36m962 bytes[39m[2m | [22m              [36m962 bytes[39m
+[32mstyles-3NTV5IJR.css[39m  [2m | [22m[2mstyles[22m                      [2m | [22m[36m562 bytes[39m[2m | [22m              [36m562 bytes[39m
+
+[1m [22m                    [2m | [22m[1mInitial total[22m               [2m | [22m[1m439.42 kB[22m[2m | [22m              [1m121.99 kB[22m
+
+[1mLazy chunk files[22m     [2m | [22m[1mNames[22m                       [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-AAMN7R42.js[39m    [2m | [22m[2mapp-chart-entry[22m             [2m | [22m[36m208.00 kB[39m[2m | [22m               [36m62.08 kB[39m
+[32mchunk-QVPVDRTI.js[39m    [2m | [22m[2mui-advanced-data-table-entry[22m[2m | [22m[36m114.16 kB[39m[2m | [22m               [36m21.74 kB[39m
+[32mchunk-BO2DJ4TH.js[39m    [2m | [22m[2mapp-layout-manager-entry[22m    [2m | [22m [36m50.65 kB[39m[2m | [22m                [36m9.12 kB[39m
+[32mchunk-N2335O6K.js[39m    [2m | [22m[2mapp-code-editor-entry[22m       [2m | [22m [36m49.60 kB[39m[2m | [22m               [36m11.52 kB[39m
+[32mchunk-KZ2LSEQE.js[39m    [2m | [22m[2mui-context-menu_3-entry[22m     [2m | [22m [36m40.55 kB[39m[2m | [22m               [36m10.06 kB[39m
+[32mchunk-25OBV5XR.js[39m    [2m | [22m[2mui-pagination-entry[22m         [2m | [22m [36m38.70 kB[39m[2m | [22m                [36m6.44 kB[39m
+[32mchunk-ZHDAN6PL.js[39m    [2m | [22m[2mapp-context-menu-entry[22m      [2m | [22m [36m37.24 kB[39m[2m | [22m                [36m8.70 kB[39m
+[32mchunk-SIEUST2Z.js[39m    [2m | [22m[2maccordion-docs-component[22m    [2m | [22m [36m35.80 kB[39m[2m | [22m                [36m6.45 kB[39m
+[32mchunk-67OPVG5D.js[39m    [2m | [22m[2mapp-input-entry[22m             [2m | [22m [36m35.09 kB[39m[2m | [22m                [36m7.49 kB[39m
+[32mchunk-7YX42BJW.js[39m    [2m | [22m[2mapp-timeline-entry[22m          [2m | [22m [36m34.41 kB[39m[2m | [22m                [36m4.21 kB[39m
+[32mchunk-M5RQADKZ.js[39m    [2m | [22m[2mapp-dashboard-entry[22m         [2m | [22m [36m34.41 kB[39m[2m | [22m                [36m8.63 kB[39m
+[32mchunk-SNX5QHTM.js[39m    [2m | [22m[2m-[22m                           [2m | [22m [36m32.24 kB[39m[2m | [22m                [36m5.70 kB[39m
+[32mchunk-IA4CYKFN.js[39m    [2m | [22m[2mbadge-docs-component[22m        [2m | [22m [36m30.11 kB[39m[2m | [22m                [36m5.25 kB[39m
+[32mchunk-ZMEXOYQC.js[39m    [2m | [22m[2mcard-docs-component[22m         [2m | [22m [36m28.43 kB[39m[2m | [22m                [36m5.64 kB[39m
+[32mchunk-QUHKSKEZ.js[39m    [2m | [22m[2mbutton-docs-component[22m       [2m | [22m [36m28.17 kB[39m[2m | [22m                [36m4.82 kB[39m
+[2m...and 129 more lazy chunks files. Use "--verbose" to show all the files.[22m
+
+Application bundle generation failed. [9.028 seconds] - 2026-02-10T21:09:32.906Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mangular:styles/component:scss;07236d735ac4276e16241b26d2e021bce6a3209da005271592704a2e6f7672bf;C:/Praveen/Personal-repo/angular/ground/src/app/pages/home/home.component.ts exceeded maximum budget. Budget 4.00 kB was not met by 3.24 kB with a total of 7.24 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mangular:styles/component:scss;c3c0f7190008f99e9c985eddb1ac86c7318ce91cc6f99be4f6c7f1d6f41d9f7a;C:/Praveen/Personal-repo/angular/ground/src/app/pages/overview/overview.component.ts exceeded maximum budget. Budget 4.00 kB was not met by 520 bytes with a total of 4.52 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/pages/playground/playground.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 2.67 kB with a total of 6.67 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1msrc/app/app.scss exceeded maximum budget. Budget 4.00 kB was not met by 1.24 kB with a total of 5.24 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.75 kB with a total of 11.74 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 6.64 kB with a total of 10.64 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 6.39 kB with a total of 10.39 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.15 kB with a total of 11.15 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.91 kB with a total of 11.91 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 6.17 kB with a total of 10.17 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.21 kB with a total of 11.21 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 6.99 kB with a total of 10.99 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.21 kB with a total of 11.21 kB.[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 4.00 kB was not met by 7.31 kB with a total of 11.31 kB.[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.75 kB with a total of 11.74 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 2.65 kB with a total of 10.64 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 2.39 kB with a total of 10.39 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.15 kB with a total of 11.15 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.91 kB with a total of 11.91 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 2.17 kB with a total of 10.17 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.21 kB with a total of 11.21 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 2.99 kB with a total of 10.99 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.21 kB with a total of 11.21 kB.[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mcss-inline-fonts:https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap exceeded maximum budget. Budget 8.00 kB was not met by 3.31 kB with a total of 11.31 kB.[0m
+
+[39m[22m

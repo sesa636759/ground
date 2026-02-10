@@ -1,130 +1,303 @@
 <div class="docs-page">
   <header class="page-header">
     <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
       <h1>Aside Panel</h1>
       <p class="description">
-        Slide-out panels for navigation, settings, or detail views. Supports all directions,
-        resizability, and state persistence.
+        Slide-out panels for navigation, details, or settings with support for multiple directions
+        and premium effects.
       </p>
     </div>
   </header>
 
-  <div class="gallery-container">
-    <section class="gallery-section">
-      <h2 class="section-title">Playground</h2>
-      <button class="open-btn primary" (click)="openAside('playgroundAside')">
-        Open Playground Panel
-      </button>
-      <app-playground-editor id="playgroundAside" [config]="asideConfig"></app-playground-editor>
-    </section>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Visual Examples</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Basic Drawer (Right)</div>
-          <p>Standard side panel for secondary actions or information.</p>
-          <button class="open-btn" (click)="openAside('basicRight')">Open Right Panel</button>
-
-          <aside-panel id="basicRight" direction="right" size="400px">
-            <div slot="header"><h3>User Profile</h3></div>
-            <div slot="content">
-              <div class="profile-preview">
-                <div class="avatar-large">JD</div>
-                <h4>John Doe</h4>
-                <p>System Administrator</p>
-              </div>
-            </div>
-            <div slot="footer">
-              <button class="btn primary full-width">Refresh Data</button>
-            </div>
-          </aside-panel>
-        </div>
-
-        <div class="demo-card">
-          <div class="card-title">Navigation Style (Left)</div>
-          <p>Ideal for collapsible menus or tool palettes.</p>
-          <button class="open-btn success" (click)="openAside('basicLeft')">Open Left Menu</button>
-
-          <aside-panel id="basicLeft" direction="left" size="300px">
-            <div slot="header"><h3>Navigation</h3></div>
-            <div slot="content">
-              <ul class="nav-list">
-                <li><i class="icon">🏠</i> Dashboard</li>
-                <li><i class="icon">📊</i> Analytics</li>
-                <li><i class="icon">⚙️</i> Settings</li>
-              </ul>
-            </div>
-          </aside-panel>
-        </div>
-
-        <div class="demo-card">
-          <div class="card-title">Resizable Panel</div>
-          <p>Allows users to adjust the width manualy.</p>
-          <button class="open-btn purple" (click)="openAside('resizableAside')">
-            Open Resizable
-          </button>
-
-          <aside-panel
-            id="resizableAside"
-            resizable="true"
-            min-size="300"
-            max-size="600"
-            direction="right"
-            size="400px"
-          >
-            <div slot="header"><h3>Editor Tools</h3></div>
-            <div slot="content">
-              <p>Grab the left edge to resize me.</p>
-              <div class="tool-grid">
-                <div class="tool">Brush</div>
-                <div class="tool">Eraser</div>
-                <div class="tool">Fill</div>
-              </div>
-            </div>
-          </aside-panel>
-        </div>
+  <div class="tab-content" [ngClass]="activeTab">
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Directions"
+          color="primary"
+          [selected]="activeExample === 'directions'"
+          [clickable]="true"
+          (pillClick)="setExample('directions')"
+        ></ui-pill>
+        <ui-pill
+          label="Premium Effects"
+          color="info"
+          [selected]="activeExample === 'premium'"
+          [clickable]="true"
+          (pillClick)="setExample('premium')"
+        ></ui-pill>
+        <ui-pill
+          label="Resizable"
+          color="success"
+          [selected]="activeExample === 'resizable'"
+          [clickable]="true"
+          (pillClick)="setExample('resizable')"
+        ></ui-pill>
+        <ui-pill
+          label="States & Logic"
+          color="warning"
+          [selected]="activeExample === 'states'"
+          [clickable]="true"
+          (pillClick)="setExample('states')"
+        ></ui-pill>
       </div>
-    </section>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Premium Features</h2>
-      <div class="premium-demo-card">
-        <div class="card-header">
-          <h3>Glassmorphism UI</h3>
-          <p>Blurs the background for a sleek, modern, high-depth appearance.</p>
-        </div>
-        <div class="glass-preview">
-          <button class="open-btn glass" (click)="openAside('glassAside')">
-            Experience Glass Effect
-          </button>
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <span class="showcase-icon" [ngSwitch]="activeExample">
+                <span *ngSwitchCase="'directions'">⬅️</span>
+                <span *ngSwitchCase="'premium'">✨</span>
+                <span *ngSwitchCase="'resizable'">↔️</span>
+                <span *ngSwitchCase="'states'">⚙️</span>
+              </span>
+              <h3>{{ activeExample | titlecase }} Showcase</h3>
+            </div>
 
-          <aside-panel
-            id="glassAside"
-            variant="glass"
-            backdrop-blur="8px"
-            direction="right"
-            size="450px"
-          >
-            <div slot="header" style="color: white"><h3>Glass Panel</h3></div>
-            <div slot="content" style="color: rgba(255, 255, 255, 0.9)">
-              <div class="glass-content-card">
-                <h4>Real-time Processing</h4>
-                <div class="chart-mock">
-                  <div class="bar" style="height: 60%"></div>
-                  <div class="bar" style="height: 80%"></div>
-                  <div class="bar" style="height: 40%"></div>
-                  <div class="bar" style="height: 90%"></div>
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'directions'"
+                >Slide in from Left, Right, Top, or Bottom to suit your layout needs.</span
+              >
+              <span *ngSwitchCase="'premium'"
+                >Sophisticated Glassmorphism with real-time backdrop filtering.</span
+              >
+              <span *ngSwitchCase="'resizable'"
+                >Enable user-controlled width or height with custom boundaries.</span
+              >
+              <span *ngSwitchCase="'states'"
+                >Built-in loading indicators and localStorage persistence for open state.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div *ngSwitchCase="'directions'" class="gallery">
+                <ui-button
+                  label="Open Right"
+                  variant="primary"
+                  (click)="openAside('rightAsideDoc')"
+                ></ui-button>
+                <ui-button
+                  label="Open Left"
+                  variant="success"
+                  (click)="openAside('leftAsideDoc')"
+                ></ui-button>
+                <ui-button
+                  label="Open Top"
+                  variant="info"
+                  (click)="openAside('topAsideDoc')"
+                ></ui-button>
+                <ui-button
+                  label="Open Bottom"
+                  variant="warning"
+                  (click)="openAside('bottomAsideDoc')"
+                ></ui-button>
+              </div>
+
+              <div *ngSwitchCase="'premium'" class="gallery vertical">
+                <div
+                  class="premium-card"
+                  style="
+                    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+                    padding: 32px;
+                    border-radius: 20px;
+                    color: white;
+                    text-align: center;
+                  "
+                >
+                  <h4>Glassmorphism Panel</h4>
+                  <p style="opacity: 0.8; margin-bottom: 24px">
+                    Ultra-modern visual style with real-time blur.
+                  </p>
+                  <ui-button
+                    label="Launch Premium Panel"
+                    variant="outline"
+                    style="--ui-button-text: white; --ui-button-border: white"
+                    (click)="openAside('glassAsideDoc')"
+                  ></ui-button>
                 </div>
               </div>
-              <p>
-                The glass variant uses advanced CSS filters to maintain context while focusing user
-                attention.
-              </p>
+
+              <div *ngSwitchCase="'resizable'" class="gallery">
+                <ui-button
+                  label="Open Resizable Panel"
+                  variant="primary"
+                  (click)="openAside('resizableAsideDoc')"
+                ></ui-button>
+              </div>
+
+              <div *ngSwitchCase="'states'" class="gallery">
+                <ui-button
+                  label="Launch Loading Panel"
+                  variant="info"
+                  (click)="openAside('loadingAsideDoc')"
+                ></ui-button>
+              </div>
             </div>
-          </aside-panel>
+
+            <div class="showcase-footer">
+              <ui-button
+                [label]="isCodeVisible ? 'Hide Code' : 'Show Code'"
+                variant="secondary"
+                (click)="toggleCode()"
+                icon="code"
+              ></ui-button>
+              <ui-button
+                label="Copy Snippet"
+                variant="primary"
+                (click)="copyCode(exampleCodes[activeExample])"
+                icon="copy"
+              ></ui-button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Source'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <app-playground-editor [config]="asideConfig"></app-playground-editor>
+    </div>
+
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of asideConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Aside panel property.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </div>
   </div>
+
+  <!-- Panels moved outside category switching to prevent layout shifts and ensure proper visibility handling -->
+  <aside-panel [attr.direction]="'right'" id="rightAsideDoc">
+    <div slot="header"><h3>Right Panel</h3></div>
+    <div slot="content"><p>Common for settings, filters, or additional details.</p></div>
+  </aside-panel>
+
+  <aside-panel [attr.direction]="'left'" id="leftAsideDoc">
+    <div slot="header"><h3>Left Panel</h3></div>
+    <div slot="content"><p>Perfect for navigation menus or tool palettes.</p></div>
+  </aside-panel>
+
+  <aside-panel [attr.direction]="'top'" id="topAsideDoc">
+    <div slot="header"><h3>Top Panel</h3></div>
+    <div slot="content"><p>Useful for notifications or temporary messages.</p></div>
+  </aside-panel>
+
+  <aside-panel [attr.direction]="'bottom'" id="bottomAsideDoc">
+    <div slot="header"><h3>Bottom Panel</h3></div>
+    <div slot="content"><p>Great for cookie notices or chat widgets.</p></div>
+  </aside-panel>
+
+  <aside-panel
+    variant="glass"
+    [attr.backdrop-blur]="'8px'"
+    id="glassAsideDoc"
+    [attr.direction]="'right'"
+    size="450px"
+  >
+    <div slot="header" style="color: inherit">
+      <h3 style="margin: 0">✨ Premium Glass</h3>
+    </div>
+    <div slot="content">
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 20px;
+          border-radius: 12px;
+          margin-bottom: 20px;
+        "
+      >
+        <h4 style="margin: 0 0 10px">Modern Aesthetics</h4>
+        <p style="margin: 0; font-size: 14px; opacity: 0.8">
+          The glass variant uses CSS <code>backdrop-filter</code> and semi-transparent backgrounds
+          to create a depth effect.
+        </p>
+      </div>
+    </div>
+  </aside-panel>
+
+  <aside-panel [attr.resizable]="true" min-size="250" max-size="600" id="resizableAsideDoc">
+    <div slot="header"><h3>Resizable Panel</h3></div>
+    <div slot="content">
+      <p>Drag the left edge to resize this panel.</p>
+      <div
+        style="
+          padding: 12px;
+          background-color: #f0fdf4;
+          border-radius: 8px;
+          margin-top: 16px;
+          font-size: 14px;
+          color: #166534;
+        "
+      >
+        <strong>Constraints:</strong> 250px to 600px
+      </div>
+    </div>
+  </aside-panel>
+
+  <aside-panel [attr.loading]="true" id="loadingAsideDoc" size="400px">
+    <div slot="header"><h3>⏳ Loading Data...</h3></div>
+    <div slot="content"><p>Content is currently being fetched.</p></div>
+    <div slot="footer">
+      <ui-button
+        label="Stop Loading"
+        variant="primary"
+        (click)="stopLoading('loadingAsideDoc')"
+        style="width: 100%"
+      ></ui-button>
+    </div>
+  </aside-panel>
 </div>

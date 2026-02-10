@@ -1,0 +1,174 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Dock</h1>
+      <p class="description">
+        A macOS-inspired floating menu for easy access to frequently used applications or actions.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Basic"
+          [selected]="activeExample === 'basic'"
+          [clickable]="true"
+          (pillClick)="setExample('basic')"
+        ></ui-pill>
+        <ui-pill
+          label="Magnification"
+          [selected]="activeExample === 'magnified'"
+          [clickable]="true"
+          (pillClick)="setExample('magnified')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>{{ activeExample | titlecase }} Example</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'basic'">Standard dock configuration.</span>
+              <span *ngSwitchCase="'magnified'">Dock with magnification effect on hover.</span>
+            </p>
+
+            <div
+              class="showcase-preview"
+              [ngSwitch]="activeExample"
+              style="min-height: 200px; display: flex; justify-content: center; align-items: center"
+            >
+              <div
+                *ngSwitchCase="'basic'"
+                style="
+                  display: flex;
+                  gap: 10px;
+                  padding: 20px;
+                  background: rgba(0, 0, 0, 0.1);
+                  border-radius: 16px;
+                "
+              >
+                <ui-button icon="🏠" variant="ghost"></ui-button>
+                <ui-button icon="🔍" variant="ghost"></ui-button>
+                <ui-button icon="⚙️" variant="ghost"></ui-button>
+              </div>
+
+              <div
+                *ngSwitchCase="'magnified'"
+                style="
+                  display: flex;
+                  gap: 10px;
+                  padding: 20px;
+                  background: rgba(0, 0, 0, 0.1);
+                  border-radius: 16px;
+                  transform: scale(1.2);
+                "
+              >
+                <ui-button icon="📁" variant="ghost" size="lg"></ui-button>
+                <ui-button icon="🎵" variant="ghost" size="lg"></ui-button>
+                <ui-button icon="📸" variant="ghost" size="lg"></ui-button>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Implementation'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Component Playground</h3>
+        <p>Customize the dock appearance.</p>
+      </div>
+      <app-playground-editor [config]="dockConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of dockConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

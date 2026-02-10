@@ -126,13 +126,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./docs/tag/tag-docs.component').then((m) => m.TagDocsComponent),
       },
-      {
-        path: 'app-library',
-        loadComponent: () =>
-          import('./docs/app-library/app-library-docs.component').then(
-            (m) => m.AppLibraryDocsComponent,
-          ),
-      },
+
       {
         path: 'breadcrumb',
         loadComponent: () =>
@@ -166,14 +160,74 @@ export const routes: Routes = [
           import('./docs/dialog/dialog-docs.component').then((m) => m.DialogDocsComponent),
       },
       {
-        path: 'aside',
+        path: 'stack',
         loadComponent: () =>
-          import('./docs/aside/aside-docs.component').then((m) => m.AsideDocsComponent),
+          import('./docs/stack/stack-docs.component').then((m) => m.StackDocsComponent),
       },
       {
-        path: 'divider',
+        path: 'splitter',
         loadComponent: () =>
-          import('./docs/divider/divider-docs.component').then((m) => m.DividerDocsComponent),
+          import('./docs/splitter/splitter-docs.component').then((m) => m.SplitterDocsComponent),
+      },
+      {
+        path: 'panel',
+        loadComponent: () =>
+          import('./docs/panel/panel-docs.component').then((m) => m.PanelDocsComponent),
+      },
+      {
+        path: 'dock',
+        loadComponent: () =>
+          import('./docs/dock/dock-docs.component').then((m) => m.DockDocsComponent),
+      },
+      {
+        path: 'dock-host',
+        loadComponent: () =>
+          import('./docs/dock-host/dock-host-docs.component').then((m) => m.DockHostDocsComponent),
+      },
+      {
+        path: 'layout-manager',
+        loadComponent: () =>
+          import('./docs/layout-manager/layout-manager-docs.component').then(
+            (m) => m.LayoutManagerDocsComponent,
+          ),
+      },
+      {
+        path: 'anchor',
+        loadComponent: () =>
+          import('./docs/anchor/anchor-docs.component').then((m) => m.AnchorDocsComponent),
+      },
+      {
+        path: 'context-menu',
+        loadComponent: () =>
+          import('./docs/context-menu/context-menu-docs.component').then(
+            (m) => m.ContextMenuDocsComponent,
+          ),
+      },
+      {
+        path: 'horizontal-nav',
+        loadComponent: () =>
+          import('./docs/horizontal-nav/horizontal-nav-docs.component').then(
+            (m) => m.HorizontalNavDocsComponent,
+          ),
+      },
+      {
+        path: 'nav-bar',
+        loadComponent: () =>
+          import('./docs/nav-bar/nav-bar-docs.component').then((m) => m.NavBarDocsComponent),
+      },
+      {
+        path: 'pagination',
+        loadComponent: () =>
+          import('./docs/pagination/pagination-docs.component').then(
+            (m) => m.PaginationDocsComponent,
+          ),
+      },
+      {
+        path: 'scroll-top',
+        loadComponent: () =>
+          import('./docs/scroll-top/scroll-top-docs.component').then(
+            (m) => m.ScrollTopDocsComponent,
+          ),
       },
       {
         path: ':id',

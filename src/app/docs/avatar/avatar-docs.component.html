@@ -1,77 +1,278 @@
 <div class="docs-page">
   <header class="page-header">
     <div class="header-content">
-      <div class="back-link">← BACK</div>
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
       <h1>Avatar</h1>
-      <p class="description">Circle or square image representation of a user or entity.</p>
+      <p class="description">
+        Versatile user profile representations with support for images, initials, icons, and
+        presence status.
+      </p>
     </div>
   </header>
 
-  <nav class="gallery-nav">
-    <button class="nav-pill purple" (click)="scrollToSection('shapes')">Shapes</button>
-    <button class="nav-pill blue" (click)="scrollToSection('content')">Content</button>
-    <button class="nav-pill pink" (click)="scrollToSection('status')">Status</button>
-    <button class="nav-pill green" (click)="scrollToSection('sizes')">Sizes</button>
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    >
+    </ui-button>
+    <ui-button
+      [label]="'Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    >
+    </ui-button>
   </nav>
 
-  <div class="gallery-container">
-    <!-- Shapes -->
-    <section id="shapes" class="gallery-section">
-      <h2 class="section-title">Shapes</h2>
-      <div class="gallery-card">
-        <div class="avatar-row">
-          <ui-avatar name="Circle" shape="circle"></ui-avatar>
-          <ui-avatar name="Square" shape="square"></ui-avatar>
-          <ui-avatar name="Squircle" shape="squircle"></ui-avatar>
-          <ui-avatar name="Hexagon" shape="hexagon"></ui-avatar>
+  <div class="tab-content" [ngClass]="activeTab">
+    <!-- Examples Tab -->
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="pill-navigation">
+        <ui-pill
+          label="Base Variants"
+          color="primary"
+          [selected]="activeExample === 'variants'"
+          [clickable]="true"
+          (pillClick)="setExample('variants')"
+        ></ui-pill>
+        <ui-pill
+          label="Creative Shapes"
+          color="info"
+          [selected]="activeExample === 'shapes'"
+          [clickable]="true"
+          (pillClick)="setExample('shapes')"
+        ></ui-pill>
+        <ui-pill
+          label="Presence Status"
+          color="success"
+          [selected]="activeExample === 'status'"
+          [clickable]="true"
+          (pillClick)="setExample('status')"
+        ></ui-pill>
+        <ui-pill
+          label="Avatar Groups"
+          color="warning"
+          [selected]="activeExample === 'groups'"
+          [clickable]="true"
+          (pillClick)="setExample('groups')"
+        ></ui-pill>
+      </div>
+
+      <div class="examples-main">
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <span class="showcase-icon" [ngSwitch]="activeExample">
+                <span *ngSwitchCase="'variants'">👤</span>
+                <span *ngSwitchCase="'shapes'">📐</span>
+                <span *ngSwitchCase="'status'">🟢</span>
+                <span *ngSwitchCase="'groups'">👥</span>
+              </span>
+              <h3>{{ activeExample | titlecase }} Showcase</h3>
+            </div>
+
+            <p class="showcase-desc" [ngSwitch]="activeExample">
+              <span *ngSwitchCase="'variants'"
+                >Support for user initials, high-performance image loading, and system icon
+                placeholders.</span
+              >
+              <span *ngSwitchCase="'shapes'"
+                >Beyond circles: Square, premium Hexagon, and Apple-style Squircle shapes
+                available.</span
+              >
+              <span *ngSwitchCase="'status'"
+                >Integrated status indicators for Online, Busy, Away, and Offline presence.</span
+              >
+              <span *ngSwitchCase="'groups'"
+                >Stacked avatar groups with intelligent overflow logic and maximum display
+                limits.</span
+              >
+            </p>
+
+            <div class="showcase-preview" [ngSwitch]="activeExample">
+              <div *ngSwitchCase="'variants'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar content="JD" bg-color="#6366f1" size="56px"></ui-avatar>
+                  <label>Letters</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=12" size="56px"></ui-avatar>
+                  <label>Image</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="👤" bg-color="#94a3b8" size="56px"></ui-avatar>
+                  <label>Icon</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'shapes'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=1"
+                    shape="circle"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Circle</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=2"
+                    shape="square"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Square</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=3"
+                    shape="hexagon"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Hexagon</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=4"
+                    shape="squircle"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Squircle</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'status'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=5"
+                    status="online"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Online</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=6"
+                    status="busy"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Busy</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=7"
+                    status="away"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Away</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar
+                    src="https://i.pravatar.cc/150?img=8"
+                    status="offline"
+                    size="56px"
+                  ></ui-avatar>
+                  <label>Offline</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'groups'" class="avatar-group-preview">
+                <ui-avatar-group max="5" size="48px">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=11"></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=12"></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=13"></ui-avatar>
+                  <ui-avatar content="AB" bg-color="#8b5cf6"></ui-avatar>
+                  <ui-avatar content="CD" bg-color="#ec4899"></ui-avatar>
+                  <ui-avatar content="EF" bg-color="#06b6d4"></ui-avatar>
+                  <ui-avatar content="GH" bg-color="#10b981"></ui-avatar>
+                </ui-avatar-group>
+                <p class="group-label">Team Project (7 members)</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="isCodeVisible ? 'Hide Code' : 'Show Code'"
+                  variant="secondary"
+                  size="md"
+                  (click)="toggleCode()"
+                  icon="code"
+                >
+                </ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes[activeExample])"
+                  icon="copy"
+                >
+                </ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                [title]="(activeExample | titlecase) + ' Source'"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Tab -->
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <div class="playground-intro">
+        <h3>Avatar Designer</h3>
+        <p>Experiment with sizes, shapes, and statuses in real-time.</p>
+      </div>
+      <app-playground-editor [config]="avatarConfig"></app-playground-editor>
+    </div>
+
+    <!-- Documentation Tab -->
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of avatarConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Avatar property.' }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
-
-    <!-- Content Types -->
-    <section id="content" class="gallery-section">
-      <h2 class="section-title">Content Types</h2>
-      <div class="gallery-card">
-        <div class="avatar-row">
-          <!-- Initials -->
-          <ui-avatar name="John Doe"></ui-avatar>
-
-          <!-- Image -->
-          <ui-avatar src="https://i.pravatar.cc/150?u=1" name="User"></ui-avatar>
-
-          <!-- Icon -->
-          <ui-avatar icon="👤"></ui-avatar>
-        </div>
-      </div>
-    </section>
-
-    <!-- Status & Badges -->
-    <section id="status" class="gallery-section">
-      <h2 class="section-title">Status & Badges</h2>
-      <div class="gallery-card">
-        <div class="avatar-row">
-          <ui-avatar name="Online" status="online"></ui-avatar>
-          <ui-avatar name="Busy" status="busy"></ui-avatar>
-          <ui-avatar name="Away" status="away"></ui-avatar>
-          <ui-avatar name="Offline" status="offline"></ui-avatar>
-
-          <!-- Badge -->
-          <ui-avatar name="Badge" badge="3" badge-color="#ef4444"></ui-avatar>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sizes -->
-    <section id="sizes" class="gallery-section">
-      <h2 class="section-title">Sizes</h2>
-      <div class="gallery-card">
-        <div class="avatar-row" style="align-items: flex-end">
-          <ui-avatar name="SM" size="24px"></ui-avatar>
-          <ui-avatar name="MD" size="40px"></ui-avatar>
-          <ui-avatar name="LG" size="64px"></ui-avatar>
-          <ui-avatar name="XL" size="96px"></ui-avatar>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>
