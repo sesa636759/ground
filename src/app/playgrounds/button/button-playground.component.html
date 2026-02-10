@@ -1,0 +1,96 @@
+<div class="playground-container">
+  <div class="playground-header">
+    <h1>🔘 Button Component</h1>
+    <p>Interactive button component with multiple variants, sizes, and states</p>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div class="tab-nav">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'preview'"
+      (click)="activeTab.set('preview')"
+    >
+      👁️ Preview
+    </button>
+    <button class="tab-btn" [class.active]="activeTab() === 'code'" (click)="activeTab.set('code')">
+      💻 Code
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab() === 'props'"
+      (click)="activeTab.set('props')"
+    >
+      📋 Props
+    </button>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="tab-content">
+    <!-- Preview Tab -->
+    <div *ngIf="activeTab() === 'preview'" class="tab-panel">
+      <!-- Interactive Controls -->
+      <app-playground-controls
+        [config]="playgroundConfig"
+        (valuesChange)="onValuesChange($event)"
+      ></app-playground-controls>
+
+      <!-- Live Preview -->
+      <div class="preview-section">
+        <h3>Live Preview</h3>
+        <div class="preview-area">
+          <ui-button id="playgroundButton">Click Me</ui-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Tab -->
+    <div *ngIf="activeTab() === 'code'" class="tab-panel">
+      <app-code-viewer [code]="generatedCode" title="HTML Code" language="html"></app-code-viewer>
+
+      <div class="usage-section">
+        <h3>Usage Example</h3>
+        <app-code-viewer
+          [code]="usageExample"
+          title="Angular Component"
+          language="typescript"
+        ></app-code-viewer>
+      </div>
+    </div>
+
+    <!-- Props Tab -->
+    <div *ngIf="activeTab() === 'props'" class="tab-panel">
+      <div class="props-documentation">
+        <h3>Component Properties</h3>
+        <div class="props-table">
+          <div class="props-row header">
+            <div>Property</div>
+            <div>Type</div>
+            <div>Default</div>
+            <div>Description</div>
+          </div>
+          <div *ngFor="let prop of propsDocumentation" class="props-row">
+            <div>
+              <code>{{ prop.name }}</code>
+            </div>
+            <div>
+              <span class="type-badge">{{ prop.type }}</span>
+            </div>
+            <div>
+              <code>{{ prop.default }}</code>
+            </div>
+            <div>{{ prop.description }}</div>
+          </div>
+        </div>
+
+        <div class="events-section">
+          <h3>Events</h3>
+          <div class="event-item">
+            <code>click</code>
+            <p>Emitted when the button is clicked</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

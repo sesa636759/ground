@@ -1,5 +1,12 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+  provideAppInitializer,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { defineCustomElements as setUiLoader } from 'set-ui-lib/loader';
+import { defineCustomElements as appUiLibrary } from 'app-ui-library/loader';
 
 import { routes } from './app.routes';
 
@@ -7,6 +14,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
-  ]
+    provideRouter(routes),
+    provideAppInitializer(() => setUiLoader(window)),
+    provideAppInitializer(() => appUiLibrary(window)),
+  ],
 };

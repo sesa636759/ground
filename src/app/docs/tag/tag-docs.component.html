@@ -1,0 +1,103 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Tag</h1>
+      <p class="description">
+        Versatile labels for categorization, status indicators, and metadata management.
+      </p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <div class="playground-stack">
+        <div class="playground-item">
+          <h3>Single Tag</h3>
+          <app-playground-editor [config]="tagConfig"></app-playground-editor>
+        </div>
+        <div class="playground-item">
+          <h3>Tag Group</h3>
+          <app-playground-editor [config]="tagGroupConfig"></app-playground-editor>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Visual Variations</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Color Palette</div>
+          <div class="tag-rack">
+            <ui-tag label="Primary" color="primary"></ui-tag>
+            <ui-tag label="Success" color="success"></ui-tag>
+            <ui-tag label="Danger" color="danger"></ui-tag>
+            <ui-tag label="Warning" color="warning"></ui-tag>
+            <ui-tag label="Info" color="info"></ui-tag>
+            <ui-tag label="Secondary" color="secondary"></ui-tag>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Variants</div>
+          <div class="tag-rack">
+            <ui-tag label="Filled" variant="filled" color="primary"></ui-tag>
+            <ui-tag label="Outlined" variant="outlined" color="primary"></ui-tag>
+            <ui-tag label="Light" variant="light" color="primary"></ui-tag>
+            <ui-tag label="Dot" variant="dot" color="primary"></ui-tag>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Premium Features</div>
+          <div class="tag-rack">
+            <ui-tag label="Processing" loading="true" color="primary"></ui-tag>
+            <ui-tag label="Live" pulse="true" color="danger" variant="dot"></ui-tag>
+            <ui-tag label="Elevated" elevation="2" color="success"></ui-tag>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Tag Groups</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Overlapping Group</div>
+          <p class="card-desc">Compact layout for assigned members.</p>
+          <ui-tag-group overlap="true" spacing="-12px">
+            <ui-tag
+              *ngFor="let m of members"
+              [attr.label]="m.label"
+              rounded="true"
+              [attr.color]="m.color"
+              [attr.image]="m.image"
+            ></ui-tag>
+          </ui-tag-group>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Selection Mode</div>
+          <p class="card-desc">Filter chips behavior (Single / Multiple).</p>
+          <ui-tag-group selection-mode="multiple" color="info" variant="light">
+            <ui-tag label="React"></ui-tag>
+            <ui-tag label="Vue"></ui-tag>
+            <ui-tag label="Angular"></ui-tag>
+            <ui-tag label="Stencil"></ui-tag>
+          </ui-tag-group>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Advanced Groups</div>
+          <p class="card-desc">Searchable, creatable, and collapsible.</p>
+          <ui-tag-group
+            searchable="true"
+            creatable="true"
+            removable="true"
+            color="secondary"
+            variant="light"
+          >
+            <ui-tag label="Engineering"></ui-tag>
+            <ui-tag label="Design"></ui-tag>
+          </ui-tag-group>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

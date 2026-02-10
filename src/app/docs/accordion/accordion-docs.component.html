@@ -1,0 +1,204 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+        <a [routerLink]="['/playground', 'accordion']" class="playground-link">
+          Open in Playground ↗
+        </a>
+      </div>
+      <h1>Accordion</h1>
+      <p class="description">Expandable list of items for organizing content.</p>
+    </div>
+  </header>
+
+  <nav class="gallery-nav">
+    <ui-pill
+      label="Basic"
+      color="primary"
+      clickable
+      (pillClick)="scrollToSection('basic')"
+    ></ui-pill>
+    <ui-pill
+      label="Variants"
+      color="secondary"
+      clickable
+      (pillClick)="scrollToSection('variants')"
+    ></ui-pill>
+    <ui-pill
+      label="Features"
+      color="success"
+      clickable
+      (pillClick)="scrollToSection('features')"
+    ></ui-pill>
+    <ui-pill
+      label="Advanced"
+      color="warning"
+      clickable
+      (pillClick)="scrollToSection('advanced')"
+    ></ui-pill>
+    <ui-pill
+      label="Styling"
+      color="info"
+      clickable
+      (pillClick)="scrollToSection('styling')"
+    ></ui-pill>
+  </nav>
+
+  <div class="gallery-container">
+    <!-- Basic -->
+    <section id="basic" class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <p class="summary-text">Interactive demo. Modify properties to see changes and get code.</p>
+      <div class="editor-container">
+        <app-playground-editor [config]="accordionConfig"></app-playground-editor>
+      </div>
+    </section>
+    <!-- Variants -->
+    <section id="variants" class="gallery-section">
+      <h2 class="section-title">Variants</h2>
+      <div class="gallery-grid">
+        <div class="variant-example">
+          <h3>Bordered</h3>
+          <ui-accordion [attr.items]="basicItems" variant="bordered"></ui-accordion>
+        </div>
+        <div class="variant-example">
+          <h3>Splitted</h3>
+          <ui-accordion [attr.items]="basicItems" variant="splitted"></ui-accordion>
+        </div>
+        <div class="variant-example">
+          <h3>Shadow</h3>
+          <ui-accordion [attr.items]="basicItems" variant="shadow"></ui-accordion>
+        </div>
+        <div class="variant-example">
+          <h3>Light</h3>
+          <ui-accordion [attr.items]="basicItems" variant="light"></ui-accordion>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="gallery-section">
+      <h2 class="section-title">Features</h2>
+      <div class="gallery-grid">
+        <!-- Search -->
+        <div class="variant-example">
+          <h3>Search & Filter</h3>
+          <p class="summary-text">Built-in search functionality.</p>
+          <ui-accordion
+            [attr.items]="searchableItems"
+            enable-search
+            search-placeholder="Filter..."
+            variant="bordered"
+          ></ui-accordion>
+        </div>
+
+        <!-- Numbers -->
+        <div class="variant-example">
+          <h3>Numbered Items</h3>
+          <p class="summary-text">Auto-generated numbers.</p>
+          <ui-accordion [attr.items]="basicItems" show-numbers></ui-accordion>
+        </div>
+
+        <!-- Controls -->
+        <div class="variant-example">
+          <h3>Expand/Collapse All</h3>
+          <p class="summary-text">Bulk actions (Requires 'multiple').</p>
+          <div style="margin-bottom: 12px; display: flex; gap: 8px">
+            <ui-button (click)="$any(accordion).openAll()">Expand All</ui-button>
+            <ui-button (click)="$any(accordion).closeAll()" variant="secondary"
+              >Collapse All</ui-button
+            >
+          </div>
+          <ui-accordion
+            #accordion
+            [attr.items]="basicItems"
+            multiple
+            enable-expand-collapse-all
+            variant="splitted"
+          ></ui-accordion>
+        </div>
+
+        <!-- Actions -->
+        <div class="variant-example">
+          <h3>Custom Header Actions</h3>
+          <p class="summary-text">Buttons in headers.</p>
+          <ui-accordion [attr.items]="actionItems"></ui-accordion>
+        </div>
+      </div>
+    </section>
+
+    <!-- Styling -->
+    <section id="styling" class="gallery-section">
+      <h2 class="section-title">Styling & Customization</h2>
+      <div class="gallery-grid">
+        <div class="variant-example">
+          <h3>Dense Mode</h3>
+          <p class="summary-text">Compact spacing.</p>
+          <ui-accordion [attr.items]="basicItems" dense></ui-accordion>
+        </div>
+
+        <div class="variant-example">
+          <h3>RTL Mode</h3>
+          <p class="summary-text">Right-to-left layout.</p>
+          <ui-accordion [attr.items]="basicItems" rtl></ui-accordion>
+        </div>
+
+        <div class="variant-example">
+          <h3>Custom Icons</h3>
+          <p class="summary-text">Custom expand/collapse icons.</p>
+          <ui-accordion
+            [attr.items]="basicItems"
+            arrow-icon-expanded="➖"
+            arrow-icon-collapsed="➕"
+            icon-position="start"
+          ></ui-accordion>
+        </div>
+
+        <div class="variant-example">
+          <h3>Sizes</h3>
+          <p class="summary-text">Large vs Small.</p>
+          <div style="margin-bottom: 12px">
+            <strong>Large:</strong>
+            <ui-accordion [attr.items]="basicItems" size="lg"></ui-accordion>
+          </div>
+          <div>
+            <strong>Small:</strong>
+            <ui-accordion [attr.items]="basicItems" size="sm"></ui-accordion>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced -->
+    <section id="advanced" class="gallery-section">
+      <h2 class="section-title">Advanced Features</h2>
+      <div class="gallery-grid">
+        <!-- Nested -->
+        <div class="variant-example">
+          <h3>Nested Items</h3>
+          <p class="summary-text">Recursive structures.</p>
+          <ui-accordion [attr.items]="nestedItems" enable-nested></ui-accordion>
+        </div>
+
+        <!-- Drag & Drop -->
+        <div class="variant-example">
+          <h3>Drag & Drop</h3>
+          <p class="summary-text">Reorder items.</p>
+          <ui-accordion
+            [attr.items]="basicItems"
+            enable-drag-drop
+            variant="bordered"
+          ></ui-accordion>
+        </div>
+
+        <!-- Loading -->
+        <div class="variant-example">
+          <h3>Loading State</h3>
+          <p class="summary-text">Skeleton loader.</p>
+          <ui-accordion loading></ui-accordion>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

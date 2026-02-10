@@ -1,0 +1,152 @@
+<div class="docs-page">
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <div class="back-link">← BACK</div>
+      <h1>Button</h1>
+      <p class="description">
+        Comprehensive button component with multiple variants, sizes, states, and features.
+      </p>
+    </div>
+    <div class="header-actions">
+      <!-- Placeholder actions -->
+      <button class="action-btn">🏠</button>
+      <button class="action-btn">🎨</button>
+      <button class="action-btn">☀️</button>
+      <button class="action-btn primary">📄</button>
+    </div>
+  </header>
+
+  <!-- Navigation Pills -->
+  <nav class="gallery-nav">
+    <button class="nav-pill purple" (click)="openPlayground()">🎮 Playground</button>
+    <button class="nav-pill blue" (click)="scrollToSection('variants')">Variants</button>
+    <button class="nav-pill orange" (click)="scrollToSection('sizes')">Sizes & Shapes</button>
+    <button class="nav-pill pink" (click)="scrollToSection('icons')">Icons & Layouts</button>
+    <button class="nav-pill green" (click)="scrollToSection('states')">States</button>
+  </nav>
+
+  <!-- Main Gallery Content -->
+  <div class="gallery-container">
+    <!-- Variants Section -->
+    <section id="variants" class="gallery-section">
+      <h2 class="section-title">Variants</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <ui-button variant="primary">Primary</ui-button>
+          <ui-button variant="secondary">Secondary</ui-button>
+          <ui-button variant="outline">Outline</ui-button>
+          <ui-button variant="ghost">Ghost</ui-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sizes Section -->
+    <section id="sizes" class="gallery-section">
+      <h2 class="section-title">Sizes</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <ui-button size="sm">Small</ui-button>
+          <ui-button size="md">Medium</ui-button>
+          <ui-button size="lg">Large</ui-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icons & Layouts Section -->
+    <section id="icons" class="gallery-section">
+      <h2 class="section-title">Icon Positions</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <ui-button variant="outline">
+            <span style="font-size: 1.2em; margin-right: 8px">⬅</span> Left Icon
+          </ui-button>
+          <ui-button variant="outline">
+            Right Icon <span style="font-size: 1.2em; margin-left: 8px">➡</span>
+          </ui-button>
+
+          <ui-button variant="outline" class="stack-btn">
+            <div
+              style="display: flex; flex-direction: column; align-items: center; line-height: 1.2"
+            >
+              <span style="font-size: 1.2em; margin-bottom: 4px">⬆</span>
+              <span>Top Icon</span>
+            </div>
+          </ui-button>
+
+          <ui-button variant="outline" class="stack-btn">
+            <div
+              style="display: flex; flex-direction: column; align-items: center; line-height: 1.2"
+            >
+              <span>Bottom Icon</span>
+              <span style="font-size: 1.2em; margin-top: 4px">⬇</span>
+            </div>
+          </ui-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Icon Only</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <button class="circle-btn orange"><span class="icon">✏️</span></button>
+          <button class="circle-btn red"><span class="icon">🗑️</span></button>
+          <button class="circle-btn blue"><span class="icon">💾</span></button>
+          <button class="circle-btn grey"><span class="icon">🔍</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Badges & Elevation</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <ui-button variant="primary" class="badge-btn-wrapper">
+            <span>📥 Inbox</span>
+            <span class="badge red">3</span>
+          </ui-button>
+
+          <ui-button class="icon-only-btn relative">
+            🔔
+            <span class="badge-dot">9+</span>
+          </ui-button>
+
+          <ui-button variant="outline" class="badge-btn-wrapper success">
+            Updates
+            <span class="badge green">New</span>
+          </ui-button>
+
+          <ui-button variant="primary" style="box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39)">
+            Elevated
+          </ui-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Fab / Circle Style</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <button class="fab-btn blue">
+            <span>+</span>
+          </button>
+          <button class="fab-btn green">
+            <span>💬</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- States Section -->
+    <section id="states" class="gallery-section">
+      <h2 class="section-title">States</h2>
+      <div class="gallery-card">
+        <div class="button-row">
+          <ui-button loading>Loading</ui-button>
+          <ui-button disabled>Disabled</ui-button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

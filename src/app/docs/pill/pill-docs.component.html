@@ -1,0 +1,94 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Pill</h1>
+      <p class="description">Compact, rounded elements for labeling, status, or selection.</p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <app-playground-editor [config]="pillConfig"></app-playground-editor>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Variants & Styles</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Color Palette</div>
+          <div class="pill-rack">
+            <ui-pill label="Primary" color="primary"></ui-pill>
+            <ui-pill label="Secondary" color="secondary"></ui-pill>
+            <ui-pill label="Success" color="success"></ui-pill>
+            <ui-pill label="Danger" color="danger"></ui-pill>
+            <ui-pill label="Warning" color="warning"></ui-pill>
+            <ui-pill label="Info" color="info"></ui-pill>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Visual Variants</div>
+          <div class="pill-rack">
+            <ui-pill label="Filled" variant="filled" color="primary"></ui-pill>
+            <ui-pill label="Outlined" variant="outlined" color="primary"></ui-pill>
+            <ui-pill label="Soft" variant="soft" color="primary"></ui-pill>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Special Features</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Icons & Avatars</div>
+          <div class="pill-rack">
+            <ui-pill label="Profile" avatar="https://i.pravatar.cc/150?img=12"></ui-pill>
+            <ui-pill label="Settings" icon="⚙️" color="secondary"></ui-pill>
+            <ui-pill label="Drafts" counter="5" color="warning"></ui-pill>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Interactions</div>
+          <div class="pill-rack">
+            <ui-pill label="Clickable" clickable="true" color="success"></ui-pill>
+            <ui-pill label="Selected" selected="true" color="primary"></ui-pill>
+            <ui-pill label="Removable" removable="true" color="danger"></ui-pill>
+            <ui-pill label="Loading" loading="true"></ui-pill>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Vertical Orientations</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Vertical</div>
+          <div class="pill-rack" style="align-items: flex-start">
+            <ui-pill label="HOME" icon="🏠" orientation="vertical" color="primary"></ui-pill>
+            <ui-pill
+              label="APPS"
+              icon="📂"
+              orientation="vertical"
+              variant="outlined"
+              color="success"
+            ></ui-pill>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Vertical Text</div>
+          <div class="pill-rack" style="align-items: flex-start">
+            <ui-pill label="JAPAN" icon="🇯🇵" orientation="vertical-text" color="danger"></ui-pill>
+            <ui-pill
+              label="ROTATED"
+              icon="➡️"
+              orientation="vertical-rotated"
+              color="warning"
+            ></ui-pill>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

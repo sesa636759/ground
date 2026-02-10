@@ -1,0 +1,68 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Timeline</h1>
+      <p class="description">
+        Display a sequence of events in chronological order. Supports vertical, horizontal,
+        alternating layouts, and various marker styles.
+      </p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <app-playground-editor [config]="timelineConfig"></app-playground-editor>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Visual Examples</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Vertical Standard</div>
+          <div class="timeline-wrapper">
+            <ui-timeline [attr.events]="standardEvents"></ui-timeline>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Alternating Side-by-Side</div>
+          <div class="timeline-wrapper">
+            <ui-timeline align="alternate" [attr.events]="standardEvents"></ui-timeline>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Custom Markers (Numbers & Icons)</div>
+          <div class="timeline-wrapper">
+            <ui-timeline marker="number" [attr.events]="markerEvents"></ui-timeline>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Horizontal Flow</div>
+          <div class="timeline-wrapper wide">
+            <ui-timeline
+              mode="horizontal"
+              align="alternate"
+              [attr.events]="horizontalEvents"
+            ></ui-timeline>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Premium Panel Layout</h2>
+      <div class="premium-demo-card">
+        <div class="card-header">
+          <h3>Advanced Process Tracking</h3>
+          <p>Using card-like panels for a more substantial event display.</p>
+        </div>
+        <div class="panel-preview">
+          <ui-timeline variant="panel" align="alternate" [attr.events]="panelEvents"></ui-timeline>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

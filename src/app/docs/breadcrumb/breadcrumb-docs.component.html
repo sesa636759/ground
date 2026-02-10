@@ -1,0 +1,70 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Breadcrumb</h1>
+      <p class="description">
+        A navigation aid that allows users to keep track and maintain awareness of their locations
+        within programs, documents, or websites.
+      </p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <app-playground-editor [config]="breadcrumbConfig"></app-playground-editor>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Visual Examples</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Default (Slash)</div>
+          <div class="breadcrumb-container">
+            <ui-breadcrumb [attr.items]="basicItems"></ui-breadcrumb>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Arrow Separator</div>
+          <div class="breadcrumb-container">
+            <ui-breadcrumb separator="arrow" [attr.items]="arrowItems"></ui-breadcrumb>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Greater Than (>)</div>
+          <div class="breadcrumb-container">
+            <ui-breadcrumb separator=">" [attr.items]="basicItems"></ui-breadcrumb>
+          </div>
+        </div>
+        <div class="demo-card">
+          <div class="card-title">Icons & Mixed Content</div>
+          <div class="breadcrumb-container">
+            <ui-breadcrumb [attr.items]="customItems"></ui-breadcrumb>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Real-world Layout</h2>
+      <div class="layout-preview">
+        <header class="app-header-mock">
+          <div class="header-top">
+            <div class="app-logo">🎨 UI Pro</div>
+            <div class="user-profile">👤 John Doe</div>
+          </div>
+          <div class="header-bottom">
+            <ui-breadcrumb separator="arrow" [attr.items]="layoutItems"></ui-breadcrumb>
+          </div>
+        </header>
+        <div class="mock-content">
+          <h3>Angular Ground Project</h3>
+          <p>
+            This is a mock representation of how breadcrumbs fit into a professional application
+            header.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

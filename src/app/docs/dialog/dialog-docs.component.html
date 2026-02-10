@@ -1,0 +1,125 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Dialog</h1>
+      <p class="description">
+        Versatile modal dialogs with support for sizes, positioning, dragging, scrolling, and rich
+        status indicators.
+      </p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <button class="open-btn primary" (click)="openDialog('playgroundDialog')">
+        Open Playground Dialog
+      </button>
+      <app-playground-editor id="playgroundDialog" [config]="dialogConfig"></app-playground-editor>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Visual Examples</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Basic Information</div>
+          <p>Standard modal with header, content, and footer.</p>
+          <button class="open-btn" (click)="openDialog('basicDialog')">Open Basic</button>
+
+          <dialog-box id="basicDialog" dialog-title="Welcome">
+            <div><p>This is a high-fidelity modal dialog for important interactions.</p></div>
+            <div slot="footer">
+              <button class="btn ghost" (click)="closeDialog('basicDialog')">Cancel</button>
+              <button class="btn primary" (click)="closeDialog('basicDialog')">Confirm</button>
+            </div>
+          </dialog-box>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Status Indicators</div>
+          <p>Themed styles for feedback (Success, Warning, Error).</p>
+          <div class="btn-group">
+            <button class="open-btn success" (click)="openDialog('successDialog')">Success</button>
+            <button class="open-btn error" (click)="openDialog('errorDialog')">Error</button>
+          </div>
+
+          <dialog-box id="successDialog" status="success" dialog-title="Transaction Complete">
+            <div><p>Your payment has been processed successfully.</p></div>
+          </dialog-box>
+
+          <dialog-box id="errorDialog" status="error" dialog-title="Access Denied">
+            <div><p>You do not have permission to perform this action.</p></div>
+          </dialog-box>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Advanced Interactions</div>
+          <p>Draggable, resizable, and side-panel positions.</p>
+          <button class="open-btn purple" (click)="openDialog('sideDialog')">
+            Open Side Panel
+          </button>
+
+          <dialog-box
+            id="sideDialog"
+            position="right"
+            height="100vh"
+            animation="slide-right"
+            dialog-title="Settings Drawer"
+            style="--dialog-border-radius: 0"
+          >
+            <div>
+              <p>This dialog acts as a side drawer.</p>
+              <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px">
+                <label>Notification Priority <input type="range" /></label>
+                <label><input type="checkbox" /> Dark Mode Enabled</label>
+              </div>
+            </div>
+          </dialog-box>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Premium Experience</h2>
+      <div class="premium-demo-card">
+        <div class="card-header">
+          <h3>Glassmorphism Backdrop</h3>
+          <p>Modern design with blurred overlays for enhanced depth.</p>
+        </div>
+        <div class="glass-preview">
+          <button class="open-btn glass" (click)="openDialog('glassDialog')">
+            View Premium Dialog
+          </button>
+
+          <dialog-box
+            id="glassDialog"
+            backdrop-blur="12px"
+            variant="filled"
+            status="info"
+            dialog-title="System Architecture"
+          >
+            <div style="padding: 20px">
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <h4>CPU</h4>
+                  <p>24%</p>
+                </div>
+                <div class="stat-item">
+                  <h4>RAM</h4>
+                  <p>4.2GB</p>
+                </div>
+                <div class="stat-item">
+                  <h4>Latency</h4>
+                  <p>12ms</p>
+                </div>
+              </div>
+              <p style="margin-top: 20px; opacity: 0.8">
+                The system is currently operating within optimal parameters.
+              </p>
+            </div>
+          </dialog-box>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

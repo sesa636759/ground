@@ -1,0 +1,77 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="back-link">← BACK</div>
+      <h1>Avatar</h1>
+      <p class="description">Circle or square image representation of a user or entity.</p>
+    </div>
+  </header>
+
+  <nav class="gallery-nav">
+    <button class="nav-pill purple" (click)="scrollToSection('shapes')">Shapes</button>
+    <button class="nav-pill blue" (click)="scrollToSection('content')">Content</button>
+    <button class="nav-pill pink" (click)="scrollToSection('status')">Status</button>
+    <button class="nav-pill green" (click)="scrollToSection('sizes')">Sizes</button>
+  </nav>
+
+  <div class="gallery-container">
+    <!-- Shapes -->
+    <section id="shapes" class="gallery-section">
+      <h2 class="section-title">Shapes</h2>
+      <div class="gallery-card">
+        <div class="avatar-row">
+          <ui-avatar name="Circle" shape="circle"></ui-avatar>
+          <ui-avatar name="Square" shape="square"></ui-avatar>
+          <ui-avatar name="Squircle" shape="squircle"></ui-avatar>
+          <ui-avatar name="Hexagon" shape="hexagon"></ui-avatar>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Types -->
+    <section id="content" class="gallery-section">
+      <h2 class="section-title">Content Types</h2>
+      <div class="gallery-card">
+        <div class="avatar-row">
+          <!-- Initials -->
+          <ui-avatar name="John Doe"></ui-avatar>
+
+          <!-- Image -->
+          <ui-avatar src="https://i.pravatar.cc/150?u=1" name="User"></ui-avatar>
+
+          <!-- Icon -->
+          <ui-avatar icon="👤"></ui-avatar>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status & Badges -->
+    <section id="status" class="gallery-section">
+      <h2 class="section-title">Status & Badges</h2>
+      <div class="gallery-card">
+        <div class="avatar-row">
+          <ui-avatar name="Online" status="online"></ui-avatar>
+          <ui-avatar name="Busy" status="busy"></ui-avatar>
+          <ui-avatar name="Away" status="away"></ui-avatar>
+          <ui-avatar name="Offline" status="offline"></ui-avatar>
+
+          <!-- Badge -->
+          <ui-avatar name="Badge" badge="3" badge-color="#ef4444"></ui-avatar>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section id="sizes" class="gallery-section">
+      <h2 class="section-title">Sizes</h2>
+      <div class="gallery-card">
+        <div class="avatar-row" style="align-items: flex-end">
+          <ui-avatar name="SM" size="24px"></ui-avatar>
+          <ui-avatar name="MD" size="40px"></ui-avatar>
+          <ui-avatar name="LG" size="64px"></ui-avatar>
+          <ui-avatar name="XL" size="96px"></ui-avatar>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

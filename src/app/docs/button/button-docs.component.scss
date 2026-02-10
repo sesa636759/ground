@@ -1,0 +1,268 @@
+.docs-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #111827;
+  background: #f9fafb;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+/* Header */
+.page-header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.back-link {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #111827;
+}
+
+.description {
+  color: #6b7280;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0;
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: #f3f4f6;
+}
+
+.action-btn.primary {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+
+/* Navigation Pills */
+.gallery-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.nav-pill {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav-pill:hover {
+  transform: translateY(-2px);
+}
+
+.nav-pill.purple { background: #8b5cf6; }
+.nav-pill.blue { background: #3b82f6; }
+.nav-pill.orange { background: #f59e0b; }
+.nav-pill.pink { background: #ec4899; }
+.nav-pill.green { background: #10b981; }
+
+
+/* Gallery Content */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #374151;
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.button-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Custom Components Styles */
+
+/* Ensure ui-button has correct shape/layout */
+ui-button {
+  display: inline-block; /* Changed from inline-flex to avoid Shadow DOM conflict */
+  vertical-align: middle;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s;
+  /* Ensure text is visible */
+  color: inherit; 
+  line-height: 1.5;
+}
+
+/* Shim for missing component styles if necessary */
+ui-button[variant="outline"] {
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+}
+
+ui-button[size="lg"] {
+  font-size: 1.125rem;
+  padding: 0.75rem 1.5rem;
+}
+
+ui-button[size="md"] {
+  padding: 0.5rem 1rem;
+}
+
+ui-button[size="sm"] {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Stack Button (Top/Bottom Icon) */
+.stack-btn {
+  height: auto;
+  min-height: 80px;
+  min-width: 100px;
+  padding: 16px;
+}
+
+/* Circle Buttons */
+.circle-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background: #f3f4f6;
+}
+
+.circle-btn:hover { transform: scale(1.1); }
+
+.circle-btn.orange { color: #f59e0b; background: #fffbeb; }
+.circle-btn.red { color: #ef4444; background: #fef2f2; }
+.circle-btn.blue { color: #3b82f6; background: #eff6ff; }
+.circle-btn.grey { color: #6b7280; background: #f3f4f6; }
+
+
+/* Badges */
+.badge-btn-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.badge.red { background: #ef4444; }
+.badge.green { background: #10b981; }
+
+.badge-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 4px;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 2px solid white;
+}
+
+.icon-only-btn.relative {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+
+/* FAB */
+.fab-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px; /* Squircle */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.fab-btn:hover { transform: translateY(-2px); }
+
+.fab-btn.blue { background: #3b82f6; }
+.fab-btn.green { background: #10b981; }

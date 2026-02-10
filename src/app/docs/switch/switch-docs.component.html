@@ -1,0 +1,78 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="back-link">← BACK</div>
+      <h1>Switch</h1>
+      <p class="description">Toggle switch for binary settings or activation.</p>
+    </div>
+  </header>
+
+  <nav class="gallery-nav">
+    <button class="nav-pill purple" (click)="scrollToSection('basic')">Basic</button>
+    <button class="nav-pill blue" (click)="scrollToSection('variants')">Variants</button>
+    <button class="nav-pill green" (click)="scrollToSection('sizes')">Sizes</button>
+    <button class="nav-pill orange" (click)="scrollToSection('states')">States</button>
+  </nav>
+
+  <div class="gallery-container">
+    <!-- Basic -->
+    <section id="basic" class="gallery-section">
+      <h2 class="section-title">Basic Usage</h2>
+      <div class="gallery-card">
+        <div class="switch-row">
+          <ui-switch label="Notifications"></ui-switch>
+          <ui-switch label="Dark Mode" checked></ui-switch>
+        </div>
+      </div>
+    </section>
+
+    <!-- Variants -->
+    <section id="variants" class="gallery-section">
+      <h2 class="section-title">Variants</h2>
+      <div class="gallery-card">
+        <div class="switch-row">
+          <ui-switch label="Primary" variant="primary" checked></ui-switch>
+          <ui-switch label="Success" variant="success" checked></ui-switch>
+          <ui-switch label="Warning" variant="warning" checked></ui-switch>
+          <ui-switch label="Danger" variant="danger" checked></ui-switch>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sizes -->
+    <section id="sizes" class="gallery-section">
+      <h2 class="section-title">Sizes</h2>
+      <div class="gallery-card">
+        <div class="switch-row" style="align-items: center">
+          <ui-switch size="sm" label="Small" checked></ui-switch>
+          <ui-switch size="md" label="Medium" checked></ui-switch>
+          <ui-switch size="lg" label="Large" checked></ui-switch>
+        </div>
+      </div>
+    </section>
+
+    <!-- States -->
+    <section id="states" class="gallery-section">
+      <h2 class="section-title">States</h2>
+      <div class="gallery-card">
+        <div class="switch-row">
+          <ui-switch label="Disabled On" checked disabled></ui-switch>
+          <ui-switch label="Disabled Off" disabled></ui-switch>
+          <ui-switch label="Loading" loading checked></ui-switch>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icons/Shapes -->
+    <section class="gallery-section">
+      <h2 class="section-title">Icons & Shapes</h2>
+      <div class="gallery-card">
+        <div class="switch-row">
+          <ui-switch label="Square" shape="square" checked></ui-switch>
+          <ui-switch label="With Icons" show-default-icons checked></ui-switch>
+          <ui-switch label="Custom Icons" icon-on="🌜" icon-off="☀️" checked></ui-switch>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

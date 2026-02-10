@@ -1,0 +1,130 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Aside Panel</h1>
+      <p class="description">
+        Slide-out panels for navigation, settings, or detail views. Supports all directions,
+        resizability, and state persistence.
+      </p>
+    </div>
+  </header>
+
+  <div class="gallery-container">
+    <section class="gallery-section">
+      <h2 class="section-title">Playground</h2>
+      <button class="open-btn primary" (click)="openAside('playgroundAside')">
+        Open Playground Panel
+      </button>
+      <app-playground-editor id="playgroundAside" [config]="asideConfig"></app-playground-editor>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Visual Examples</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="card-title">Basic Drawer (Right)</div>
+          <p>Standard side panel for secondary actions or information.</p>
+          <button class="open-btn" (click)="openAside('basicRight')">Open Right Panel</button>
+
+          <aside-panel id="basicRight" direction="right" size="400px">
+            <div slot="header"><h3>User Profile</h3></div>
+            <div slot="content">
+              <div class="profile-preview">
+                <div class="avatar-large">JD</div>
+                <h4>John Doe</h4>
+                <p>System Administrator</p>
+              </div>
+            </div>
+            <div slot="footer">
+              <button class="btn primary full-width">Refresh Data</button>
+            </div>
+          </aside-panel>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Navigation Style (Left)</div>
+          <p>Ideal for collapsible menus or tool palettes.</p>
+          <button class="open-btn success" (click)="openAside('basicLeft')">Open Left Menu</button>
+
+          <aside-panel id="basicLeft" direction="left" size="300px">
+            <div slot="header"><h3>Navigation</h3></div>
+            <div slot="content">
+              <ul class="nav-list">
+                <li><i class="icon">🏠</i> Dashboard</li>
+                <li><i class="icon">📊</i> Analytics</li>
+                <li><i class="icon">⚙️</i> Settings</li>
+              </ul>
+            </div>
+          </aside-panel>
+        </div>
+
+        <div class="demo-card">
+          <div class="card-title">Resizable Panel</div>
+          <p>Allows users to adjust the width manualy.</p>
+          <button class="open-btn purple" (click)="openAside('resizableAside')">
+            Open Resizable
+          </button>
+
+          <aside-panel
+            id="resizableAside"
+            resizable="true"
+            min-size="300"
+            max-size="600"
+            direction="right"
+            size="400px"
+          >
+            <div slot="header"><h3>Editor Tools</h3></div>
+            <div slot="content">
+              <p>Grab the left edge to resize me.</p>
+              <div class="tool-grid">
+                <div class="tool">Brush</div>
+                <div class="tool">Eraser</div>
+                <div class="tool">Fill</div>
+              </div>
+            </div>
+          </aside-panel>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <h2 class="section-title">Premium Features</h2>
+      <div class="premium-demo-card">
+        <div class="card-header">
+          <h3>Glassmorphism UI</h3>
+          <p>Blurs the background for a sleek, modern, high-depth appearance.</p>
+        </div>
+        <div class="glass-preview">
+          <button class="open-btn glass" (click)="openAside('glassAside')">
+            Experience Glass Effect
+          </button>
+
+          <aside-panel
+            id="glassAside"
+            variant="glass"
+            backdrop-blur="8px"
+            direction="right"
+            size="450px"
+          >
+            <div slot="header" style="color: white"><h3>Glass Panel</h3></div>
+            <div slot="content" style="color: rgba(255, 255, 255, 0.9)">
+              <div class="glass-content-card">
+                <h4>Real-time Processing</h4>
+                <div class="chart-mock">
+                  <div class="bar" style="height: 60%"></div>
+                  <div class="bar" style="height: 80%"></div>
+                  <div class="bar" style="height: 40%"></div>
+                  <div class="bar" style="height: 90%"></div>
+                </div>
+              </div>
+              <p>
+                The glass variant uses advanced CSS filters to maintain context while focusing user
+                attention.
+              </p>
+            </div>
+          </aside-panel>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

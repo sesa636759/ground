@@ -1,0 +1,93 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="back-link">← BACK</div>
+      <h1>Badge</h1>
+      <p class="description">Small status indicators for avatars, cards, and navigation.</p>
+    </div>
+  </header>
+
+  <nav class="gallery-nav">
+    <button class="nav-pill purple" (click)="scrollToSection('colors')">Colors</button>
+    <button class="nav-pill blue" (click)="scrollToSection('variants')">Variants</button>
+    <button class="nav-pill pink" (click)="scrollToSection('animations')">Animations</button>
+    <button class="nav-pill green" (click)="scrollToSection('positions')">Positions</button>
+  </nav>
+
+  <div class="gallery-container">
+    <!-- Colors -->
+    <section id="colors" class="gallery-section">
+      <h2 class="section-title">Colors</h2>
+      <div class="gallery-card">
+        <div class="badge-row">
+          <ui-badge color="primary" value="Primary"></ui-badge>
+          <ui-badge color="secondary" value="Secondary"></ui-badge>
+          <ui-badge color="success" value="Success"></ui-badge>
+          <ui-badge color="danger" value="Danger"></ui-badge>
+          <ui-badge color="warning" value="Warning"></ui-badge>
+          <ui-badge color="info" value="Info"></ui-badge>
+        </div>
+      </div>
+    </section>
+
+    <!-- Variants -->
+    <section id="variants" class="gallery-section">
+      <h2 class="section-title">Variants</h2>
+      <div class="gallery-card">
+        <div class="badge-row">
+          <ui-badge variant="standard" value="Standard"></ui-badge>
+          <ui-badge variant="outlined" value="Outlined"></ui-badge>
+          <ui-badge variant="soft" value="Soft"></ui-badge>
+          <ui-badge variant="bordered" value="Bordered"></ui-badge>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shapes & Dot -->
+    <section class="gallery-section">
+      <h2 class="section-title">Shapes & Dots</h2>
+      <div class="gallery-card">
+        <div class="badge-row">
+          <ui-badge shape="circle" value="12"></ui-badge>
+          <ui-badge shape="square" value="12"></ui-badge>
+          <ui-badge shape="default" value="Default"></ui-badge>
+          <span>Dot:</span>
+          <ui-badge dot color="success"></ui-badge>
+          <ui-badge dot color="danger" glow></ui-badge>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animations -->
+    <section id="animations" class="gallery-section">
+      <h2 class="section-title">Animations</h2>
+      <div class="gallery-card">
+        <div class="badge-row">
+          <ui-badge animation="pulse" value="Pulse" color="success"></ui-badge>
+          <ui-badge animation="bounce" value="Bounce" color="warning"></ui-badge>
+          <ui-badge animation="shake" value="Shake" color="danger"></ui-badge>
+        </div>
+      </div>
+    </section>
+
+    <!-- Positions (on wrapper) -->
+    <section id="positions" class="gallery-section">
+      <h2 class="section-title">Positioning</h2>
+      <div class="gallery-card">
+        <div class="badge-row">
+          <ui-badge value="5" position="top-right" color="danger">
+            <button class="demo-btn">Inbox</button>
+          </ui-badge>
+
+          <ui-badge value="New" position="top-left" color="success">
+            <button class="demo-btn">Store</button>
+          </ui-badge>
+
+          <ui-badge dot position="bottom-right" color="warning">
+            <div class="demo-avatar">User</div>
+          </ui-badge>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

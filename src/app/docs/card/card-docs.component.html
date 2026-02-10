@@ -1,0 +1,113 @@
+<div class="docs-page">
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <div class="back-link">← BACK</div>
+      <h1>Card</h1>
+      <p class="description">A versatile container for displaying content, actions, and media.</p>
+    </div>
+    <div class="header-actions">
+      <button class="action-btn">🏠</button>
+      <button class="action-btn primary">📄</button>
+    </div>
+  </header>
+
+  <!-- Navigation Pills -->
+  <nav class="gallery-nav">
+    <button class="nav-pill purple" (click)="scrollToSection('variants')">Variants</button>
+    <button class="nav-pill blue" (click)="scrollToSection('interactivity')">Interactivity</button>
+    <button class="nav-pill orange" (click)="scrollToSection('features')">Features</button>
+    <button class="nav-pill pink" (click)="scrollToSection('loading')">Loading</button>
+  </nav>
+
+  <!-- Gallery Content -->
+  <div class="gallery-container">
+    <!-- Variants -->
+    <section id="variants" class="gallery-section">
+      <h2 class="section-title">Variants</h2>
+      <div class="gallery-grid">
+        <ui-card variant="default">
+          <div slot="header"><h3>Default</h3></div>
+          <div slot="content">Default card with standard border and shadow.</div>
+        </ui-card>
+
+        <ui-card variant="elevated">
+          <div slot="header"><h3>Elevated</h3></div>
+          <div slot="content">Card with increased elevation/shadow.</div>
+        </ui-card>
+
+        <ui-card variant="outlined">
+          <div slot="header"><h3>Outlined</h3></div>
+          <div slot="content">Card with border but no shadow.</div>
+        </ui-card>
+
+        <ui-card variant="filled" style="background: #f3f4f6">
+          <div slot="header"><h3>Filled</h3></div>
+          <div slot="content">Card with background color.</div>
+        </ui-card>
+      </div>
+    </section>
+
+    <!-- Interactivity -->
+    <section id="interactivity" class="gallery-section">
+      <h2 class="section-title">Interactivity</h2>
+      <div class="gallery-grid">
+        <ui-card hoverable>
+          <div slot="header"><h3>Hoverable</h3></div>
+          <div slot="content">Hover over me to see the effect!</div>
+        </ui-card>
+
+        <ui-card clickable>
+          <div slot="header"><h3>Clickable</h3></div>
+          <div slot="content">I behave like a button when clicked.</div>
+        </ui-card>
+
+        <ui-card selectable>
+          <div slot="header"><h3>Selectable</h3></div>
+          <div slot="content">Click to select/deselect me.</div>
+        </ui-card>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="gallery-section">
+      <h2 class="section-title">Features</h2>
+      <div class="gallery-grid">
+        <!-- Flippable Card -->
+        <ui-card flippable height="200px">
+          <div slot="content" style="text-align: center; padding: 20px">
+            <h3>Front</h3>
+            <p>Click "Flip" button below</p>
+          </div>
+          <div slot="back-content" style="text-align: center; padding: 20px">
+            <h3>Back</h3>
+            <p>This is the back side!</p>
+          </div>
+        </ui-card>
+
+        <!-- With Menu -->
+        <ui-card show-menu [attr.menu-items]="menuItems">
+          <div slot="header"><h3>With Menu</h3></div>
+          <div slot="content">Click the 3-dot menu icon in top right.</div>
+        </ui-card>
+
+        <!-- Expandable -->
+        <ui-card expandable>
+          <div slot="header"><h3>Expandable</h3></div>
+          <div slot="content">
+            <p>Standard content always visible.</p>
+            <div class="expand-content">This content is revealed when expanded!</div>
+          </div>
+        </ui-card>
+      </div>
+    </section>
+
+    <!-- Loading -->
+    <section id="loading" class="gallery-section">
+      <h2 class="section-title">Loading State</h2>
+      <div class="gallery-card">
+        <ui-card loading style="width: 100%; max-width: 400px; height: 150px"></ui-card>
+      </div>
+    </section>
+  </div>
+</div>

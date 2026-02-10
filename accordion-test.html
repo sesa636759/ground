@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Test</title>
+    <script
+      type="module"
+      src="http://localhost:4200/node_modules/app-ui-library/loader/index.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Accordion Component Test</h1>
+
+    <ui-accordion id="testAccordion"></ui-accordion>
+
+    <script>
+      setTimeout(() => {
+        const accordion = document.getElementById('testAccordion');
+        console.log('Accordion element:', accordion);
+
+        if (accordion) {
+          try {
+            accordion.items = JSON.stringify([
+              {
+                id: 'item1',
+                title: 'Test Item',
+                content: 'Test content',
+                icon: '📄',
+              },
+            ]);
+            console.log('Items set successfully');
+          } catch (error) {
+            console.error('Error setting items:', error);
+          }
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
