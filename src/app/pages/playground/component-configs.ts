@@ -1807,9 +1807,105 @@ export const COMPONENT_CONFIGS: Record<string, ComponentConfig> = {
     id: 'set-button-toggle',
     tagName: 'app-button-toggle-group',
     label: 'Button Toggle',
-    description: 'A group of buttons that can be toggled on or off.',
+    description:
+      'A versatile group of buttons that can be toggled on or off, with support for advanced modes like dropdown and split button.',
     props: [
+      {
+        name: 'variant',
+        type: 'select',
+        options: ['filled', 'outlined', 'soft', 'text', 'classic', 'solid', 'surface'],
+        defaultValue: 'filled',
+      },
+      {
+        name: 'size',
+        type: 'select',
+        options: ['small', 'medium', 'large'],
+        defaultValue: 'medium',
+      },
+      {
+        name: 'color',
+        type: 'select',
+        options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info'],
+        defaultValue: 'primary',
+      },
+      { name: 'gliding', type: 'boolean', defaultValue: false },
       { name: 'multiSelect', type: 'boolean', defaultValue: false },
+      {
+        name: 'orientation',
+        type: 'select',
+        options: ['horizontal', 'vertical'],
+        defaultValue: 'horizontal',
+      },
+      { name: 'full-width', type: 'boolean', defaultValue: false },
+      {
+        name: 'mode',
+        type: 'select',
+        options: ['default', 'dropdown', 'split'],
+        defaultValue: 'default',
+      },
+      {
+        name: 'display-mode',
+        type: 'select',
+        options: ['label-only', 'icon-only', 'icon-label', 'both-sides'],
+        defaultValue: 'icon-label',
+      },
+      {
+        name: 'icon-position',
+        type: 'select',
+        options: ['left', 'right', 'top'],
+        defaultValue: 'left',
+      },
+      { name: 'label', type: 'string', defaultValue: '' },
+      { name: 'button-action-label', type: 'string', defaultValue: '' },
+      { name: 'helper-text', type: 'string', defaultValue: '' },
+      { name: 'keep-button-label', type: 'boolean', defaultValue: false },
+      { name: 'custom-content', type: 'boolean', defaultValue: false },
+      { name: 'loading', type: 'boolean', defaultValue: false },
+      { name: 'disabled', type: 'boolean', defaultValue: false },
+      { name: 'readonly', type: 'boolean', defaultValue: false },
+      { name: 'error', type: 'boolean', defaultValue: false },
+      { name: 'error-message', type: 'string', defaultValue: '' },
+    ],
+    slots: [
+      {
+        name: '',
+        content: `
+  <button value="list">📋 List</button>
+  <button value="grid">🔲 Grid</button>
+  <button value="table">▤ Table</button>
+`,
+      },
+    ],
+    events: [
+      { name: 'buttonToggleGroupChange', description: 'Emitted when the selection changes.' },
+      {
+        name: 'buttonToggleGroupAction',
+        description: 'Emitted when the action button is clicked (in dropdown/split modes).',
+      },
+    ],
+  },
+  'set-checkbox': {
+    id: 'set-checkbox',
+    tagName: 'app-checkbox',
+    label: 'Checkbox',
+    description:
+      'A versatile checkbox component with support for labels, states, colors, and custom icons.',
+    props: [
+      { name: 'label', type: 'string', defaultValue: 'Checkbox Label' },
+      { name: 'helper-text', type: 'string', defaultValue: '' },
+      { name: 'checked', type: 'boolean', defaultValue: false },
+      { name: 'disabled', type: 'boolean', defaultValue: false },
+      { name: 'indeterminate', type: 'boolean', defaultValue: false },
+      { name: 'readonly', type: 'boolean', defaultValue: false },
+      { name: 'required', type: 'boolean', defaultValue: false },
+      { name: 'invalid', type: 'boolean', defaultValue: false },
+      { name: 'error-message', type: 'string', defaultValue: '' },
+      {
+        name: 'color',
+        type: 'select',
+        options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info'],
+        defaultValue: 'primary',
+      },
       {
         name: 'size',
         type: 'select',
@@ -1819,19 +1915,24 @@ export const COMPONENT_CONFIGS: Record<string, ComponentConfig> = {
       {
         name: 'variant',
         type: 'select',
-        options: ['filled', 'outlined', 'soft'],
-        defaultValue: 'filled',
+        options: ['default', 'rounded', 'square', 'button', 'chip'],
+        defaultValue: 'default',
       },
+      {
+        name: 'label-position',
+        type: 'select',
+        options: ['left', 'right'],
+        defaultValue: 'right',
+      },
+      { name: 'enable-animation', type: 'boolean', defaultValue: true },
+      { name: 'ripple-effect', type: 'boolean', defaultValue: true },
+      { name: 'skeleton', type: 'boolean', defaultValue: false },
+      { name: 'icon', type: 'string', defaultValue: '' },
     ],
-  },
-  'set-checkbox': {
-    id: 'set-checkbox',
-    tagName: 'app-checkbox-group',
-    label: 'Checkbox',
-    description: 'A group of checkboxes for multiple selection.',
-    props: [
-      { name: 'label', type: 'string', defaultValue: 'Options' },
-      { name: 'required', type: 'boolean', defaultValue: false },
+    events: [
+      { name: 'checkboxChange', description: 'Emitted when checked state changes.' },
+      { name: 'checkboxFocus', description: 'Emitted when checkbox is focused.' },
+      { name: 'checkboxBlur', description: 'Emitted when checkbox loses focus.' },
     ],
   },
   radio: {

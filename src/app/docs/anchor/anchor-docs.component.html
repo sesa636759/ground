@@ -32,77 +32,507 @@
 
   <div class="tab-content" [ngClass]="activeTab">
     <div *ngIf="activeTab === 'examples'" class="examples-container">
-      <div class="examples-main">
-        <section class="feature-showcase">
-          <div class="showcase-card">
-            <div class="showcase-header">
-              <h3>Basic Usage</h3>
-            </div>
-            <p class="showcase-desc">Automatic highlighting of current section.</p>
+      <div class="demo-dashboard">
+        <aside class="demo-sidebar">
+          <h3>Variations</h3>
+          <ul class="demo-nav">
+            <li [class.active]="activeExample === 'vertical-badges'" (click)="setExample('vertical-badges')">
+              Vertical with Badges
+            </li>
+            <li [class.active]="activeExample === 'horizontal-events'" (click)="setExample('horizontal-events')">
+              Horizontal Events
+            </li>
+            <li [class.active]="activeExample === 'size-small'" (click)="setExample('size-small')">
+              Size: Small
+            </li>
+            <li [class.active]="activeExample === 'size-medium'" (click)="setExample('size-medium')">
+              Size: Medium
+            </li>
+            <li [class.active]="activeExample === 'size-large'" (click)="setExample('size-large')">
+              Size: Large
+            </li>
+            <li [class.active]="activeExample === 'theme-light'" (click)="setExample('theme-light')">
+              Theme: Light
+            </li>
+            <li [class.active]="activeExample === 'theme-dark'" (click)="setExample('theme-dark')">
+              Theme: Dark
+            </li>
+            <li [class.active]="activeExample === 'number-numeric'" (click)="setExample('number-numeric')">
+              Numbers: Numeric
+            </li>
+            <li [class.active]="activeExample === 'number-decimal'" (click)="setExample('number-decimal')">
+              Numbers: Decimal
+            </li>
+            <li [class.active]="activeExample === 'number-alpha'" (click)="setExample('number-alpha')">
+              Numbers: Alpha
+            </li>
+            <li [class.active]="activeExample === 'number-roman'" (click)="setExample('number-roman')">
+              Numbers: Roman
+            </li>
+            <li [class.active]="activeExample === 'affix'" (click)="setExample('affix')">
+              Affix Behavior
+            </li>
+            <li [class.active]="activeExample === 'progress'" (click)="setExample('progress')">
+              Progress Indicator
+            </li>
+            <li [class.active]="activeExample === 'hash-sync'" (click)="setExample('hash-sync')">
+              Hash/URL Sync
+            </li>
+            <li [class.active]="activeExample === 'keyboard-nav'" (click)="setExample('keyboard-nav')">
+              Keyboard Navigation
+            </li>
+            <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+              Nested Items
+            </li>
+          </ul>
+        </aside>
 
-            <div class="showcase-preview">
-              <div style="display: flex; gap: 40px; height: 300px; overflow: hidden">
-                <div style="width: 200px; border-right: 1px solid #ddd; padding-right: 20px">
-                  <h4 style="margin-top: 0; color: #666">On this page</h4>
-                  <ui-anchor>
-                    <div
-                      style="
-                        padding: 8px;
-                        color: #007bff;
-                        border-left: 2px solid #007bff;
-                        background: #f0f7ff;
-                      "
-                    >
-                      Section 1
-                    </div>
-                    <div style="padding: 8px; color: #666; border-left: 2px solid transparent">
-                      Section 2
-                    </div>
-                    <div style="padding: 8px; color: #666; border-left: 2px solid transparent">
-                      Section 3
-                    </div>
-                  </ui-anchor>
-                </div>
-                <div style="flex: 1; padding: 20px; background: #f9f9f9; overflow-y: scroll">
-                  <h3 id="section1">Section 1</h3>
-                  <p>Content for section 1...</p>
-                  <div style="height: 200px"></div>
-                  <h3 id="section2">Section 2</h3>
-                  <p>Content for section 2...</p>
-                  <div style="height: 200px"></div>
-                  <h3 id="section3">Section 3</h3>
-                  <p>Content for section 3...</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="showcase-footer">
-              <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
-                ></ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes['basic'])"
-                  icon="copy"
-                ></ui-button>
-              </div>
-            </div>
-
-            <div *ngIf="isCodeVisible" class="code-section">
-              <app-code-viewer
-                [code]="exampleCodes['basic']"
-                title="Anchor Implementation"
-              ></app-code-viewer>
+        <main class="demo-viewport">
+          <div class="viewport-header">
+            <h3>{{ getActiveExampleLabel() }} Showcase</h3>
+            <div class="viewport-actions">
+              <button class="action-btn" (click)="toggleCode()">
+                <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+              </button>
+              <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                <i class="fas fa-copy"></i>
+              </button>
             </div>
           </div>
-        </section>
+
+          <div class="viewport-canvas">
+            <div class="canvas-item" [ngSwitch]="activeExample">
+              
+              <!-- Vertical with Badges -->
+              <div *ngSwitchCase="'vertical-badges'" style="display: flex; gap: 2rem; padding: 2rem; min-height: 400px;">
+                <div style="width: 200px;">
+                  <app-anchor mode="vertical" position="left">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Main Content" target="main" badge="5"></app-anchor-item>
+                    <app-anchor-item label="Conclusion" target="conclusion"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; overflow-y: auto; max-height: 400px; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <div id="intro" style="margin-bottom: 2rem;">
+                    <h3>Introduction</h3>
+                    <p>This is the introduction section with some sample content.</p>
+                  </div>
+                  <div id="main" style="margin-bottom: 2rem;">
+                    <h3>Main Content</h3>
+                    <p>Notice the badge indicator showing "5" on this section's anchor item.</p>
+                  </div>
+                  <div id="conclusion">
+                    <h3>Conclusion</h3>
+                    <p>This is the conclusion section wrapping up the content.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Horizontal Events -->
+              <div *ngSwitchCase="'horizontal-events'" style="padding: 2rem;">
+                <div style="margin-bottom: 2rem;">
+                  <app-anchor mode="horizontal" position="top">
+                    <app-anchor-item label="Home" target="home"></app-anchor-item>
+                    <app-anchor-item label="About" target="about" badge="!"></app-anchor-item>
+                    <app-anchor-item label="Services" target="services"></app-anchor-item>
+                    <app-anchor-item label="Contact" target="contact"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="overflow-y: auto; max-height: 350px; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <div id="home" style="margin-bottom: 2rem;">
+                    <h3>Home Section</h3>
+                    <p>Welcome to the home section!</p>
+                  </div>
+                  <div id="about" style="margin-bottom: 2rem;">
+                    <h3>About Section</h3>
+                    <p>Notice the badge indicator "!" on this section's anchor item.</p>
+                  </div>
+                  <div id="services" style="margin-bottom: 2rem;">
+                    <h3>Services Section</h3>
+                    <p>Discover our services.</p>
+                  </div>
+                  <div id="contact">
+                    <h3>Contact Section</h3>
+                    <p>Get in touch with us.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Size Small -->
+              <div *ngSwitchCase="'size-small'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 180px;">
+                  <app-anchor size="small">
+                    <app-anchor-item label="Section 1" target="s1"></app-anchor-item>
+                    <app-anchor-item label="Section 2" target="s2"></app-anchor-item>
+                    <app-anchor-item label="Section 3" target="s3"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="s1">Section 1</h4>
+                  <p>Compact size for sidebars</p>
+                  <h4 id="s2">Section 2</h4>
+                  <p>Perfect for narrow spaces</p>
+                  <h4 id="s3">Section 3</h4>
+                  <p>Reduced padding and font size</p>
+                </div>
+              </div>
+
+              <!-- Size Medium -->
+              <div *ngSwitchCase="'size-medium'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 200px;">
+                  <app-anchor size="medium">
+                    <app-anchor-item label="Section 1" target="s1"></app-anchor-item>
+                    <app-anchor-item label="Section 2" target="s2"></app-anchor-item>
+                    <app-anchor-item label="Section 3" target="s3"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="s1">Section 1</h4>
+                  <p>Standard size for most uses</p>
+                  <h4 id="s2">Section 2</h4>
+                  <p>Balanced spacing and readability</p>
+                  <h4 id="s3">Section 3</h4>
+                  <p>Default anchor size</p>
+                </div>
+              </div>
+
+              <!-- Size Large -->
+              <div *ngSwitchCase="'size-large'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 220px;">
+                  <app-anchor size="large">
+                    <app-anchor-item label="Section 1" target="s1"></app-anchor-item>
+                    <app-anchor-item label="Section 2" target="s2"></app-anchor-item>
+                    <app-anchor-item label="Section 3" target="s3"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="s1">Section 1</h4>
+                  <p>Larger size for better visibility</p>
+                  <h4 id="s2">Section 2</h4>
+                  <p>Increased padding and font size</p>
+                  <h4 id="s3">Section 3</h4>
+                  <p>Great for main navigation</p>
+                </div>
+              </div>
+
+              <!-- Theme Light -->
+              <div *ngSwitchCase="'theme-light'" style="display: flex; gap: 2rem; padding: 2rem; background: #fff;">
+                <div style="width: 200px;">
+                  <app-anchor theme="light">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Light theme for bright interfaces</p>
+                  <h4 id="features">Features</h4>
+                  <p>Clean and minimal appearance</p>
+                </div>
+              </div>
+
+              <!-- Theme Dark -->
+              <div *ngSwitchCase="'theme-dark'" style="display: flex; gap: 2rem; padding: 2rem; background: #1e1e1e;">
+                <div style="width: 200px;">
+                  <app-anchor theme="dark">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #2a2a2a; border-radius: 8px; color: #fff;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Dark theme for low-light environments</p>
+                  <h4 id="features">Features</h4>
+                  <p>Reduces eye strain</p>
+                </div>
+              </div>
+
+              <!-- Number Numeric -->
+              <div *ngSwitchCase="'number-numeric'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 220px;">
+                  <app-anchor show-numbers number-style="numeric">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                    <app-anchor-item label="Installation" target="install"></app-anchor-item>
+                    <app-anchor-item label="Usage" target="usage"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Numeric style: 1, 2, 3...</p>
+                  <h4 id="features">Features</h4>
+                  <p>Simple and clear numbering</p>
+                  <h4 id="install">Installation</h4>
+                  <p>Easy to configure</p>
+                  <h4 id="usage">Usage</h4>
+                  <p>Just add show-numbers prop</p>
+                </div>
+              </div>
+
+              <!-- Number Decimal -->
+              <div *ngSwitchCase="'number-decimal'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 220px;">
+                  <app-anchor show-numbers number-style="decimal">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                    <app-anchor-item label="Installation" target="install"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Decimal style: 01, 02, 03...</p>
+                  <h4 id="features">Features</h4>
+                  <p>Padded with zeros</p>
+                  <h4 id="install">Installation</h4>
+                  <p>Professional appearance</p>
+                </div>
+              </div>
+
+              <!-- Number Alpha -->
+              <div *ngSwitchCase="'number-alpha'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 220px;">
+                  <app-anchor show-numbers number-style="alphabetic">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                    <app-anchor-item label="Installation" target="install"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Alphabetic style: a, b, c...</p>
+                  <h4 id="features">Features</h4>
+                  <p>Letter-based numbering</p>
+                  <h4 id="install">Installation</h4>
+                  <p>Great for appendices</p>
+                </div>
+              </div>
+
+              <!-- Number Roman -->
+              <div *ngSwitchCase="'number-roman'" style="display: flex; gap: 2rem; padding: 2rem;">
+                <div style="width: 220px;">
+                  <app-anchor show-numbers number-style="roman">
+                    <app-anchor-item label="Introduction" target="intro"></app-anchor-item>
+                    <app-anchor-item label="Features" target="features"></app-anchor-item>
+                    <app-anchor-item label="Installation" target="install"></app-anchor-item>
+                  </app-anchor>
+                </div>
+                <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                  <h4 id="intro">Introduction</h4>
+                  <p>Roman style: i, ii, iii...</p>
+                  <h4 id="features">Features</h4>
+                  <p>Classic numbering system</p>
+                  <h4 id="install">Installation</h4>
+                  <p>Elegant and formal</p>
+                </div>
+              </div>
+
+              <!-- Affix -->
+              <div *ngSwitchCase="'affix'" style="padding: 2rem;">
+                <p style="margin-bottom: 1rem; color: #666; font-style: italic;">Scroll down to see the anchor affix to the top at 50px offset</p>
+                <div style="display: flex; gap: 2rem; height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; position: relative;">
+                  <div style="width: 200px; position: sticky; top: 50px;">
+                    <app-anchor affix affix-offset="50">
+                      <app-anchor-item label="Section 1" target="s1"></app-anchor-item>
+                      <app-anchor-item label="Section 2" target="s2"></app-anchor-item>
+                      <app-anchor-item label="Section 3" target="s3"></app-anchor-item>
+                      <app-anchor-item label="Section 4" target="s4"></app-anchor-item>
+                    </app-anchor>
+                  </div>
+                  <div style="flex: 1; padding: 1rem;">
+                    <div id="s1" style="height: 200px; margin-bottom: 2rem;">
+                      <h4>Section 1: Introduction</h4>
+                      <p>Scroll down to see the anchor affix...</p>
+                    </div>
+                    <div id="s2" style="height: 200px; margin-bottom: 2rem;">
+                      <h4>Section 2: Features</h4>
+                      <p>The anchor navigation is now affixed.</p>
+                    </div>
+                    <div id="s3" style="height: 200px; margin-bottom: 2rem;">
+                      <h4>Section 3: Usage</h4>
+                      <p>Continue scrolling...</p>
+                    </div>
+                    <div id="s4" style="height: 200px;">
+                      <h4>Section 4: Summary</h4>
+                      <p>Final section with affixed navigation.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress Indicator -->
+              <div *ngSwitchCase="'progress'" style="padding: 2rem;">
+                <p style="margin-bottom: 1rem; color: #666; font-style: italic;">Watch the progress bar at the bottom of the anchor as you scroll</p>
+                <div style="display: flex; gap: 2rem; height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px;">
+                  <div style="width: 200px;">
+                    <app-anchor show-progress>
+                      <app-anchor-item label="Chapter 1" target="ch1"></app-anchor-item>
+                      <app-anchor-item label="Chapter 2" target="ch2"></app-anchor-item>
+                      <app-anchor-item label="Chapter 3" target="ch3"></app-anchor-item>
+                    </app-anchor>
+                  </div>
+                  <div style="flex: 1; padding: 1rem;">
+                    <div id="ch1" style="height: 250px; margin-bottom: 2rem;">
+                      <h4>Chapter 1</h4>
+                      <p>Watch the progress bar at the bottom of the anchor navigation as you scroll.</p>
+                    </div>
+                    <div id="ch2" style="height: 250px; margin-bottom: 2rem;">
+                      <h4>Chapter 2</h4>
+                      <p>The progress bar fills up based on your scroll position.</p>
+                    </div>
+                    <div id="ch3" style="height: 250px;">
+                      <h4>Chapter 3</h4>
+                      <p>Scroll to the bottom to see 100% progress.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hash Sync -->
+              <div *ngSwitchCase="'hash-sync'" style="padding: 2rem;">
+                <p style="margin-bottom: 1rem; color: #666; font-style: italic;">Click any anchor item and notice the URL hash changes</p>
+                <div style="display: flex; gap: 2rem;">
+                  <div style="width: 250px;">
+                    <app-anchor update-hash>
+                      <app-anchor-item label="01. Introduction" target="hash-intro"></app-anchor-item>
+                      <app-anchor-item label="02. Features" target="hash-features"></app-anchor-item>
+                      <app-anchor-item label="03. Examples" target="hash-examples"></app-anchor-item>
+                      <app-anchor-item label="04. API Reference" target="hash-api"></app-anchor-item>
+                    </app-anchor>
+                  </div>
+                  <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <div id="hash-intro" style="margin-bottom: 2rem;">
+                      <h4>01. Introduction</h4>
+                      <p>Click any anchor item above and notice the URL hash changes.</p>
+                    </div>
+                    <div id="hash-features" style="margin-bottom: 2rem;">
+                      <h4>02. Features</h4>
+                      <p>The update-hash property enables URL synchronization.</p>
+                    </div>
+                    <div id="hash-examples" style="margin-bottom: 2rem;">
+                      <h4>03. Examples</h4>
+                      <p>Perfect for documentation sites and long-form content.</p>
+                    </div>
+                    <div id="hash-api">
+                      <h4>04. API Reference</h4>
+                      <p>Enable URL synchronization with the update-hash attribute.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Keyboard Navigation -->
+              <div *ngSwitchCase="'keyboard-nav'" style="padding: 2rem;">
+                <p style="margin-bottom: 1rem; color: #666; font-style: italic;">Click on any anchor item, then use arrow keys ↑↓ to navigate</p>
+                <div style="display: flex; gap: 2rem;">
+                  <div style="width: 220px;">
+                    <app-anchor arrow-navigation>
+                      <app-anchor-item label="1. Setup" target="step1"></app-anchor-item>
+                      <app-anchor-item label="2. Configure" target="step2"></app-anchor-item>
+                      <app-anchor-item label="3. Build" target="step3"></app-anchor-item>
+                      <app-anchor-item label="4. Deploy" target="step4"></app-anchor-item>
+                    </app-anchor>
+                  </div>
+                  <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <div id="step1" style="margin-bottom: 2rem;">
+                      <h4>1. Setup</h4>
+                      <p>Use arrow keys ↑↓ to navigate between sections.</p>
+                    </div>
+                    <div id="step2" style="margin-bottom: 2rem;">
+                      <h4>2. Configure</h4>
+                      <p>Arrow navigation provides better accessibility.</p>
+                    </div>
+                    <div id="step3" style="margin-bottom: 2rem;">
+                      <h4>3. Build</h4>
+                      <p>Navigate efficiently without using the mouse.</p>
+                    </div>
+                    <div id="step4">
+                      <h4>4. Deploy</h4>
+                      <p>Press Enter on the focused item to scroll smoothly.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nested -->
+              <div *ngSwitchCase="'nested'" style="padding: 2rem;">
+                <p style="margin-bottom: 1rem; color: #666; font-style: italic;">Recursive nested items with collapsible capabilities</p>
+                <div style="display: flex; gap: 2rem; max-height: 500px; overflow-y: auto;">
+                  <div style="width: 280px;">
+                    <app-anchor collapsible>
+                      <app-anchor-item label="1. Getting Started" target="start">
+                        <app-anchor-item label="1.1 Installation" target="install"></app-anchor-item>
+                        <app-anchor-item label="1.2 Setup" target="setup"></app-anchor-item>
+                      </app-anchor-item>
+                      <app-anchor-item label="2. Components" target="components">
+                        <app-anchor-item label="2.1 Basics" target="basics">
+                          <app-anchor-item label="2.1.1 Button" target="button"></app-anchor-item>
+                          <app-anchor-item label="2.1.2 Input" target="input"></app-anchor-item>
+                        </app-anchor-item>
+                        <app-anchor-item label="2.2 Advanced" target="advanced">
+                          <app-anchor-item label="2.2.1 Data Table" target="table"></app-anchor-item>
+                          <app-anchor-item label="2.2.2 Tree View" target="tree"></app-anchor-item>
+                        </app-anchor-item>
+                      </app-anchor-item>
+                      <app-anchor-item label="3. Conclusion" target="conclusion"></app-anchor-item>
+                    </app-anchor>
+                  </div>
+                  <div style="flex: 1; padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <div id="start" style="margin-bottom: 1.5rem;">
+                      <h4>1. Getting Started</h4>
+                      <p>Main section content...</p>
+                    </div>
+                    <div id="install" style="margin-bottom: 1.5rem; margin-left: 1rem;">
+                      <h5>1.1 Installation</h5>
+                      <p>npm install set-ui-lib</p>
+                    </div>
+                    <div id="setup" style="margin-bottom: 1.5rem; margin-left: 1rem;">
+                      <h5>1.2 Setup</h5>
+                      <p>Import the styles and scripts...</p>
+                    </div>
+                    <div id="components" style="margin-bottom: 1.5rem;">
+                      <h4>2. Components</h4>
+                      <p>We provide a wide range of components.</p>
+                    </div>
+                    <div id="basics" style="margin-bottom: 1.5rem; margin-left: 1rem;">
+                      <h5>2.1 Basics</h5>
+                    </div>
+                    <div id="button" style="margin-bottom: 1.5rem; margin-left: 2rem;">
+                      <h6>2.1.1 Button</h6>
+                      <p>Standard button component...</p>
+                    </div>
+                    <div id="input" style="margin-bottom: 1.5rem; margin-left: 2rem;">
+                      <h6>2.1.2 Input</h6>
+                      <p>Input field with validation...</p>
+                    </div>
+                    <div id="advanced" style="margin-bottom: 1.5rem; margin-left: 1rem;">
+                      <h5>2.2 Advanced</h5>
+                    </div>
+                    <div id="table" style="margin-bottom: 1.5rem; margin-left: 2rem;">
+                      <h6>2.2.1 Data Table</h6>
+                      <p>Sortable, filterable table...</p>
+                    </div>
+                    <div id="tree" style="margin-bottom: 1.5rem; margin-left: 2rem;">
+                      <h6>2.2.2 Tree View</h6>
+                      <p>Hierarchical data display...</p>
+                    </div>
+                    <div id="conclusion">
+                      <h4>3. Conclusion</h4>
+                      <p>That wraps up the nested demo.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div *ngIf="isCodeVisible" class="viewport-code">
+            <app-code-viewer
+              [code]="exampleCodes[activeExample]"
+              title="Implementation"
+            ></app-code-viewer>
+          </div>
+        </main>
       </div>
     </div>
 

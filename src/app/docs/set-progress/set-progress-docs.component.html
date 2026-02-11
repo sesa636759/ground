@@ -37,26 +37,17 @@
           <aside class="demo-sidebar">
             <h3>Variations</h3>
             <ul class="demo-nav">
-              <li [class.active]="activeExample === 'linear'" (click)="setExample('linear')">
-                Linear Progress
+              <li [class.active]="activeExample === 'line'" (click)="setExample('line')">
+                Line Progress
               </li>
-              <li [class.active]="activeExample === 'circular'" (click)="setExample('circular')">
-                Circular Progress
+              <li [class.active]="activeExample === 'circle'" (click)="setExample('circle')">
+                Circle Progress
               </li>
-              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
-                Colored
+              <li [class.active]="activeExample === 'dashboard'" (click)="setExample('dashboard')">
+                Dashboard Config
               </li>
-              <li [class.active]="activeExample === 'labeled'" (click)="setExample('labeled')">
-                With Label
-              </li>
-              <li [class.active]="activeExample === 'striped'" (click)="setExample('striped')">
-                Striped & Animated
-              </li>
-              <li [class.active]="activeExample === 'gradient'" (click)="setExample('gradient')">
-                Gradient
-              </li>
-              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
-                Multiple Segments
+              <li [class.active]="activeExample === 'status'" (click)="setExample('status')">
+                Progress Status
               </li>
               <li
                 [class.active]="activeExample === 'indeterminate'"
@@ -64,12 +55,36 @@
               >
                 Indeterminate
               </li>
+              <li [class.active]="activeExample === 'premium'" (click)="setExample('premium')">
+                Premium Styles
+              </li>
+              <li [class.active]="activeExample === 'colors'" (click)="setExample('colors')">
+                Custom Colors
+              </li>
+              <li [class.active]="activeExample === 'gradient'" (click)="setExample('gradient')">
+                Gradient
+              </li>
+              <li [class.active]="activeExample === 'steps'" (click)="setExample('steps')">
+                Steps Progress
+              </li>
+              <li [class.active]="activeExample === 'strokeWidth'" (click)="setExample('strokeWidth')">
+                Stroke Width
+              </li>
+              <li [class.active]="activeExample === 'strokeLinecap'" (click)="setExample('strokeLinecap')">
+                Stroke Linecap
+              </li>
+              <li [class.active]="activeExample === 'hideInfo'" (click)="setExample('hideInfo')">
+                Hide Info
+              </li>
+              <li [class.active]="activeExample === 'interactive'" (click)="setExample('interactive')">
+                Interactive Demo
+              </li>
             </ul>
           </aside>
 
           <main class="demo-viewport">
             <div class="viewport-header">
-              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <h3>{{ getActiveExampleLabel() }} Showcase</h3>
               <div class="viewport-actions">
                 <button class="action-btn" (click)="toggleCode()">
                   <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
@@ -82,58 +97,213 @@
 
             <div class="viewport-canvas">
               <div class="canvas-item" [ngSwitch]="activeExample">
-                <div style="width: 100%; max-width: 500px; margin: 0 auto; padding: 2rem">
-                  <app-progress
-                    *ngSwitchCase="'linear'"
-                    value="65"
-                    max="100"
-                    variant="linear"
-                  ></app-progress>
-                  <app-progress
-                    *ngSwitchCase="'circular'"
-                    value="75"
-                    max="100"
-                    variant="circular"
-                    size="120"
-                  ></app-progress>
-                  <app-progress
-                    *ngSwitchCase="'colored'"
-                    value="80"
-                    max="100"
-                    color="success"
-                    variant="linear"
-                  ></app-progress>
-                  <app-progress
-                    *ngSwitchCase="'labeled'"
-                    value="45"
-                    max="100"
-                    showLabel="true"
-                    label="Uploading..."
-                  ></app-progress>
-                  <app-progress
-                    *ngSwitchCase="'striped'"
-                    value="60"
-                    max="100"
-                    striped="true"
-                    animated="true"
-                  ></app-progress>
-                  <app-progress
-                    *ngSwitchCase="'gradient'"
-                    value="70"
-                    max="100"
-                    gradient="true"
-                    color="primary"
-                  ></app-progress>
-                  <app-progress *ngSwitchCase="'multiple'" max="100">
-                    <app-progress-segment value="30" color="success"></app-progress-segment>
-                    <app-progress-segment value="25" color="warning"></app-progress-segment>
-                    <app-progress-segment value="20" color="danger"></app-progress-segment>
-                  </app-progress>
-                  <app-progress
-                    *ngSwitchCase="'indeterminate'"
-                    indeterminate="true"
-                    color="info"
-                  ></app-progress>
+                <!-- Line Progress -->
+                <div *ngSwitchCase="'line'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">30% Progress</p>
+                    <app-progress percent="30" type="line"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">50% Progress (Active)</p>
+                    <app-progress percent="50" type="line" status="active"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">70% Progress (Exception)</p>
+                    <app-progress percent="70" type="line" status="exception"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">100% Success</p>
+                    <app-progress percent="100" type="line"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Circle Progress -->
+                <div *ngSwitchCase="'circle'" style="display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Default Size - 75%</p>
+                    <app-progress percent="75" type="circle"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Default Size - 100%</p>
+                    <app-progress percent="100" type="circle" width="100"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Small Size - 50%</p>
+                    <app-progress percent="50" type="circle" width="80"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Dashboard -->
+                <div *ngSwitchCase="'dashboard'" style="display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Gap Position: Top</p>
+                    <app-progress percent="75" type="dashboard"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Gap Position: Bottom</p>
+                    <app-progress percent="75" type="dashboard" gap-position="bottom"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Gap Position: Left</p>
+                    <app-progress percent="75" type="dashboard" gap-position="left"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Gap Position: Right</p>
+                    <app-progress percent="75" type="dashboard" gap-position="right"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Status -->
+                <div *ngSwitchCase="'status'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Active Status (Animated)</p>
+                    <app-progress percent="60" type="line" status="active"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Success Status</p>
+                    <app-progress percent="100" type="line" status="success"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Exception Status</p>
+                    <app-progress percent="70" type="line" status="exception"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Indeterminate -->
+                <div *ngSwitchCase="'indeterminate'" style="display: flex; flex-direction: column; gap: 3rem; align-items: center; padding: 2rem;">
+                  <div style="width: 100%; max-width: 600px;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem; text-align: center;">Line Indeterminate</p>
+                    <app-progress type="line" indeterminate></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Circle Indeterminate</p>
+                    <app-progress type="circle" indeterminate width="120"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Dashboard Indeterminate</p>
+                    <app-progress type="dashboard" indeterminate width="120"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Premium Styles -->
+                <div *ngSwitchCase="'premium'" style="display: flex; gap: 3rem; align-items: flex-start; flex-wrap: wrap; justify-content: center; padding: 2rem;">
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Liquid Wave Animation</p>
+                    <app-progress percent="65" type="circle" width="120" style-variant="liquid-wave"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Glassmorphism Effect</p>
+                    <app-progress percent="75" type="circle" width="120" style-variant="glassmorphism"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Dynamic Glow Effect</p>
+                    <app-progress percent="85" type="circle" width="120" style-variant="glow"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Decimal Precision (2.55%)</p>
+                    <app-progress percent="92.5" type="circle" width="120" show-decimals></app-progress>
+                  </div>
+                </div>
+
+                <!-- Custom Colors -->
+                <div *ngSwitchCase="'colors'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Custom Purple</p>
+                    <app-progress percent="60" type="line" stroke-color="#722ed1"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Custom Orange</p>
+                    <app-progress percent="75" type="line" stroke-color="#fa8c16"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Custom Pink</p>
+                    <app-progress percent="85" type="line" stroke-color="#eb2f96"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Gradient -->
+                <div *ngSwitchCase="'gradient'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Blue to Cyan Gradient</p>
+                    <app-progress percent="80" type="line" [attr.stroke-color]='"{\"0%\": \"#108ee9\", \"100%\": \"#87d068\"}"'></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Purple to Pink Gradient</p>
+                    <app-progress percent="90" type="line" [attr.stroke-color]='"{\"0%\": \"#722ed1\", \"100%\": \"#eb2f96\"}"'></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Orange to Red Gradient</p>
+                    <app-progress percent="70" type="line" [attr.stroke-color]='"{\"0%\": \"#fa8c16\", \"100%\": \"#f5222d\"}"'></app-progress>
+                  </div>
+                </div>
+
+                <!-- Steps -->
+                <div *ngSwitchCase="'steps'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">5 Steps - 60%</p>
+                    <app-progress percent="60" type="line" steps="5"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">10 Steps - 80%</p>
+                    <app-progress percent="80" type="line" steps="10"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">8 Steps - Success</p>
+                    <app-progress percent="75" type="line" steps="8" stroke-color="#52c41a"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Stroke Width -->
+                <div *ngSwitchCase="'strokeWidth'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Thin (4px)</p>
+                    <app-progress percent="60" type="line" stroke-width="4"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Normal (10px)</p>
+                    <app-progress percent="60" type="line" stroke-width="10"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Thick (20px)</p>
+                    <app-progress percent="60" type="line" stroke-width="20"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Stroke Linecap -->
+                <div *ngSwitchCase="'strokeLinecap'" style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Round Linecap</p>
+                    <app-progress percent="75" type="line" stroke-linecap="round"></app-progress>
+                  </div>
+                  <div>
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Square Linecap</p>
+                    <app-progress percent="75" type="line" stroke-linecap="square"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Hide Info -->
+                <div *ngSwitchCase="'hideInfo'" style="display: flex; flex-direction: column; gap: 3rem; align-items: center; padding: 2rem;">
+                  <div style="width: 100%; max-width: 600px;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem; text-align: center;">Line Progress without Info</p>
+                    <app-progress percent="70" type="line" show-info="false"></app-progress>
+                  </div>
+                  <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">Circle Progress without Info</p>
+                    <app-progress percent="75" type="circle" show-info="false"></app-progress>
+                  </div>
+                </div>
+
+                <!-- Interactive Demo -->
+                <div *ngSwitchCase="'interactive'" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 2rem;">
+                  <p style="margin-bottom: 1.5rem; color: #666; font-size: 0.9rem; text-align: center;">Control progress dynamically with the buttons below</p>
+                  <div style="margin-bottom: 1rem;">
+                    <p style="margin-bottom: 0.5rem; color: #666; font-size: 0.9rem;">Line Progress</p>
+                    <app-progress percent="50" type="line"></app-progress>
+                  </div>
+                  <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center;">
+                    <button class="btn-demo" (click)="decreaseProgress($event)" style="padding: 0.5rem 1rem; background: #f5222d; color: white; border: none; border-radius: 4px; cursor: pointer;">- Decrease</button>
+                    <button class="btn-demo" (click)="increaseProgress($event)" style="padding: 0.5rem 1rem; background: #52c41a; color: white; border: none; border-radius: 4px; cursor: pointer;">+ Increase</button>
+                  </div>
                 </div>
               </div>
             </div>

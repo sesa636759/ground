@@ -1,2 +1,59 @@
-/* Set Button Toggle Specific Styles - Building on Docs Premium Shared Styles */
 @import '../../../docs-premium.scss';
+
+/* Set Button Toggle Specific Styles */
+.example-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.avatar-img {
+  margin-right: 8px;
+}
+
+.count {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.icons-top {
+  button {
+    flex-direction: column;
+    height: auto !important;
+    padding: 12px 20px !important;
+    line-height: 1.4;
+    
+    br {
+      display: block;
+      content: "";
+      margin-top: 4px;
+    }
+  }
+}
+
+:host-context(.dark-theme) {
+  .count {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

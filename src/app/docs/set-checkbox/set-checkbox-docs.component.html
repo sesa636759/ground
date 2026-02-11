@@ -37,7 +37,7 @@
             <h3>Variations</h3>
             <ul class="demo-nav">
               <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
-                Basic Checkbox
+                Basic
               </li>
               <li [class.active]="activeExample === 'checked'" (click)="setExample('checked')">
                 Checked
@@ -51,17 +51,47 @@
               >
                 Indeterminate
               </li>
-              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
-                Colored
+              <li [class.active]="activeExample === 'colors'" (click)="setExample('colors')">
+                Colors
               </li>
               <li [class.active]="activeExample === 'sizes'" (click)="setExample('sizes')">
                 Sizes
               </li>
               <li
-                [class.active]="activeExample === 'custom_icon'"
-                (click)="setExample('custom_icon')"
+                [class.active]="activeExample === 'premium_button'"
+                (click)="setExample('premium_button')"
               >
-                Custom Icon
+                Button Variant
+              </li>
+              <li
+                [class.active]="activeExample === 'premium_chip'"
+                (click)="setExample('premium_chip')"
+              >
+                Chip Variant
+              </li>
+              <li [class.active]="activeExample === 'skeleton'" (click)="setExample('skeleton')">
+                Skeleton
+              </li>
+              <li [class.active]="activeExample === 'readonly'" (click)="setExample('readonly')">
+                Readonly
+              </li>
+              <li
+                [class.active]="activeExample === 'helper_text'"
+                (click)="setExample('helper_text')"
+              >
+                Helper Text
+              </li>
+              <li [class.active]="activeExample === 'invalid'" (click)="setExample('invalid')">
+                Invalid/Error
+              </li>
+              <li
+                [class.active]="activeExample === 'label_position'"
+                (click)="setExample('label_position')"
+              >
+                Label Position
+              </li>
+              <li [class.active]="activeExample === 'shapes'" (click)="setExample('shapes')">
+                Shapes
               </li>
               <li [class.active]="activeExample === 'group'" (click)="setExample('group')">
                 Checkbox Group
@@ -103,25 +133,69 @@
                   label="Select all"
                   [indeterminate]="true"
                 ></app-checkbox>
+                <div *ngSwitchCase="'colors'" class="checkbox-demo-stack">
+                  <app-checkbox label="Primary" color="primary" checked></app-checkbox>
+                  <app-checkbox label="Secondary" color="secondary" checked></app-checkbox>
+                  <app-checkbox label="Success" color="success" checked></app-checkbox>
+                  <app-checkbox label="Danger" color="danger" checked></app-checkbox>
+                  <app-checkbox label="Warning" color="warning" checked></app-checkbox>
+                  <app-checkbox label="Info" color="info" checked></app-checkbox>
+                </div>
+                <div *ngSwitchCase="'sizes'" class="checkbox-demo-stack">
+                  <app-checkbox label="Small" size="small" checked></app-checkbox>
+                  <app-checkbox label="Medium" size="medium" checked></app-checkbox>
+                  <app-checkbox label="Large" size="large" checked></app-checkbox>
+                </div>
+                <div *ngSwitchCase="'premium_button'" class="checkbox-demo-row">
+                  <app-checkbox
+                    label="Frontend"
+                    variant="button"
+                    color="primary"
+                    checked
+                  ></app-checkbox>
+                  <app-checkbox label="Backend" variant="button" color="primary"></app-checkbox>
+                </div>
+                <div *ngSwitchCase="'premium_chip'" class="checkbox-demo-row">
+                  <app-checkbox label="React" variant="chip" color="info" checked></app-checkbox>
+                  <app-checkbox label="Vue" variant="chip" color="success"></app-checkbox>
+                  <app-checkbox label="Angular" variant="chip" color="danger"></app-checkbox>
+                </div>
+                <app-checkbox *ngSwitchCase="'skeleton'" skeleton size="medium"></app-checkbox>
                 <app-checkbox
-                  *ngSwitchCase="'colored'"
-                  label="Primary color"
-                  color="primary"
+                  *ngSwitchCase="'readonly'"
+                  label="Readonly Checked"
+                  readonly
+                  checked
                 ></app-checkbox>
                 <app-checkbox
-                  *ngSwitchCase="'sizes'"
-                  label="Large checkbox"
-                  size="large"
+                  *ngSwitchCase="'helper_text'"
+                  label="Newsletter"
+                  helper-text="Receive weekly updates"
                 ></app-checkbox>
                 <app-checkbox
-                  *ngSwitchCase="'custom_icon'"
-                  label="Custom icon"
-                  icon="✓"
+                  *ngSwitchCase="'invalid'"
+                  label="Agree to terms"
+                  invalid
+                  error-message="Required field"
                 ></app-checkbox>
-                <app-checkbox-group *ngSwitchCase="'group'" label="Select preferences">
-                  <app-checkbox value="email">Email notifications</app-checkbox>
-                  <app-checkbox value="sms">SMS alerts</app-checkbox>
-                  <app-checkbox value="push">Push notifications</app-checkbox>
+                <div *ngSwitchCase="'label_position'" class="checkbox-demo-stack">
+                  <app-checkbox label="Right Position" label-position="right"></app-checkbox>
+                  <app-checkbox label="Left Position" label-position="left"></app-checkbox>
+                </div>
+                <div *ngSwitchCase="'shapes'" class="checkbox-demo-stack">
+                  <app-checkbox
+                    label="Default (Rounded-ish)"
+                    variant="default"
+                    checked
+                  ></app-checkbox>
+                  <app-checkbox label="Fully Rounded" variant="rounded" checked></app-checkbox>
+                  <app-checkbox label="Sharp Square" variant="square" checked></app-checkbox>
+                </div>
+                <app-checkbox-group
+                  *ngSwitchCase="'group'"
+                  label="Select preferences"
+                  [attr.options]="checkboxOptions"
+                >
                 </app-checkbox-group>
               </div>
             </div>

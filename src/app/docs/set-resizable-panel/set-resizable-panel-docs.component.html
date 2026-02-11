@@ -88,103 +88,151 @@
               </div>
             </div>
 
-            <div class="viewport-canvas">
-              <div class="canvas-item" [ngSwitch]="activeExample">
-                <app-resizable-container
-                  *ngSwitchCase="'basic'"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Default Vertical Resize</h3>
-                    <p>Try dragging the bottom edge of this panel.</p>
-                  </div>
-                </app-resizable-container>
+            <div class="viewport-canvas" style="padding: 0; overflow: hidden; min-height: 400px">
+              <div class="canvas-item" [ngSwitch]="activeExample" style="height: 100%; width: 100%">
+                <div *ngSwitchCase="'basic'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="vertical"
+                    initial-split="30"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Default Vertical Resize</h3>
+                      <p>Try dragging the divider to resize.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Bottom panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'horizontal'"
-                  direction="horizontal"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 300px"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Horizontal Resize</h3>
-                    <p>Try dragging the right edge.</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'horizontal'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="40"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Horizontal Resize</h3>
+                      <p>Try dragging the divider.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Right panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'with_handle'"
-                  [show-handle]="true"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Visible Handle</h3>
-                    <p>The resize handle is explicitly shown here.</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'with_handle'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="vertical"
+                    initial-split="50"
+                    handle-size="8"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Visible Handle</h3>
+                      <p>The resize handle is visible here.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Bottom panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'min_max'"
-                  min-width="200"
-                  max-width="600"
-                  direction="horizontal"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 300px"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Constraints</h3>
-                    <p>Min: 200px, Max: 600px</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'min_max'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="50"
+                    min-size="20"
+                    max-size="80"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Constraints</h3>
+                      <p>Min: 20%, Max: 80%</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Right panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'collapsible'"
-                  [collapsible]="true"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Collapsible</h3>
-                    <p>Can be fully collapsed using the toggle.</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'collapsible'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="vertical"
+                    initial-split="40"
+                    collapsible="true"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Collapsible</h3>
+                      <p>Can be collapsed using the button.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Bottom panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'nested'"
-                  style="height: 400px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 10px; height: 100%">
-                    <app-resizable-container
-                      direction="horizontal"
-                      style="
-                        height: 100%;
-                        width: 200px;
-                        border-right: 1px dashed var(--border-color);
-                      "
-                    >
-                      <div panel-content style="padding: 20px">Nested Left</div>
-                    </app-resizable-container>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'nested'" style="height: 500px; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="30"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 10px; height: 100%; background: var(--surface-1)">
+                      <h4>Sidebar</h4>
+                    </div>
+                    <div slot="end" style="height: 100%; padding: 0;">
+                      <ui-splitter
+                        orientation="vertical"
+                        initial-split="60"
+                        style="height: 100%; width: 100%"
+                      >
+                        <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                          <h4>Main Content</h4>
+                        </div>
+                        <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-3)">
+                          <h4>Footer Panel</h4>
+                        </div>
+                      </ui-splitter>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'styled'"
-                  theme="dark"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Styled Theme</h3>
-                    <p>Dark theme variant applied.</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'styled'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="vertical"
+                    initial-split="50"
+                    theme="dark"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Styled Theme</h3>
+                      <p>Dark theme variant applied.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Bottom panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
 
-                <app-resizable-container
-                  *ngSwitchCase="'persistent'"
-                  [persist-size]="true"
-                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
-                >
-                  <div panel-content style="padding: 20px">
-                    <h3>Persistent Size</h3>
-                    <p>Your size adjustments will be remembered.</p>
-                  </div>
-                </app-resizable-container>
+                <div *ngSwitchCase="'persistent'" style="height: 400px; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="50"
+                    persist-state="true"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div slot="start" style="padding: 20px; height: 100%; background: var(--surface-1)">
+                      <h3>Persistent Size</h3>
+                      <p>Your size adjustments will be remembered.</p>
+                    </div>
+                    <div slot="end" style="padding: 20px; height: 100%; background: var(--surface-2)">
+                      <p>Right panel content</p>
+                    </div>
+                  </ui-splitter>
+                </div>
               </div>
             </div>
 

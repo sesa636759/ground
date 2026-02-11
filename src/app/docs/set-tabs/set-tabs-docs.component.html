@@ -83,116 +83,28 @@
             <div class="viewport-canvas">
               <div class="canvas-item" [ngSwitch]="activeExample">
                 <!-- Basic Example -->
-                <app-tab-stack *ngSwitchCase="'basic'">
-                  <app-tab-panel label="Home" icon="🏠">
-                    <div style="padding: 20px">
-                      <h4>Home View</h4>
-                      <p>Welcome to the main dashboard. This is the basic tab configuration.</p>
-                    </div>
-                  </app-tab-panel>
-                  <app-tab-panel label="Profile" icon="👤">
-                    <div style="padding: 20px">
-                      <h4>User Profile</h4>
-                      <p>Manage your account settings and personal information here.</p>
-                    </div>
-                  </app-tab-panel>
-                  <app-tab-panel label="Settings" icon="⚙️">
-                    <div style="padding: 20px">
-                      <h4>System Settings</h4>
-                      <p>Configure preferences and application-wide parameters.</p>
-                    </div>
-                  </app-tab-panel>
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'basic'" [attr.items]="basicTabs"></ui-tabs>
 
                 <!-- Vertical Example -->
-                <app-tab-stack *ngSwitchCase="'vertical'" orientation="vertical">
-                  <app-tab-panel label="General">
-                    <div style="padding: 20px">
-                      <h4>General</h4>
-                      <p>General application settings.</p>
-                    </div>
-                  </app-tab-panel>
-                  <app-tab-panel label="Security">
-                    <div style="padding: 20px">
-                      <h4>Security</h4>
-                      <p>Privacy and authentication controls.</p>
-                    </div>
-                  </app-tab-panel>
-                  <app-tab-panel label="Notifications">
-                    <div style="padding: 20px">
-                      <h4>Notifications</h4>
-                      <p>Alert and mailing preferences.</p>
-                    </div>
-                  </app-tab-panel>
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'vertical'" orientation="vertical" [attr.items]="verticalTabs"></ui-tabs>
 
                 <!-- Pills Example -->
-                <app-tab-stack *ngSwitchCase="'pills'" variant="pills">
-                  <app-tab-panel label="All Projects"
-                    ><div style="padding: 20px">Showing all active projects.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Ongoing"
-                    ><div style="padding: 20px">Current tasks in progress.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Completed"
-                    ><div style="padding: 20px">Archive of finished work.</div></app-tab-panel
-                  >
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'pills'" variant="pill" [attr.items]="pillsTabs"></ui-tabs>
 
                 <!-- Bordered Example -->
-                <app-tab-stack *ngSwitchCase="'bordered'" variant="bordered">
-                  <app-tab-panel label="Basic Info"
-                    ><div style="padding: 20px">Primary metadata details.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Extended Info"
-                    ><div style="padding: 20px">Additional auxiliary data.</div></app-tab-panel
-                  >
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'bordered'" variant="card" [attr.items]="borderedTabs"></ui-tabs>
 
                 <!-- Colored Example -->
-                <app-tab-stack *ngSwitchCase="'colored'" color="primary">
-                  <app-tab-panel label="Status A"
-                    ><div style="padding: 20px">Content for status A.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Status B"
-                    ><div style="padding: 20px">Content for status B.</div></app-tab-panel
-                  >
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'colored'" variant="line" [attr.items]="coloredTabs"></ui-tabs>
 
                 <!-- Icons Example -->
-                <app-tab-stack *ngSwitchCase="'icons'">
-                  <app-tab-panel label="Gallery" icon="🖼️"
-                    ><div style="padding: 20px">Asset collection.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Movies" icon="🎥"
-                    ><div style="padding: 20px">Media vault.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Notes" icon="📄"
-                    ><div style="padding: 20px">Document stack.</div></app-tab-panel
-                  >
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'icons'" [attr.items]="iconsTabs"></ui-tabs>
 
                 <!-- Closable Example -->
-                <app-tab-stack *ngSwitchCase="'closable'" [closable]="true">
-                  <app-tab-panel label="Dynamic 1"
-                    ><div style="padding: 20px">You can close this tab.</div></app-tab-panel
-                  >
-                  <app-tab-panel label="Dynamic 2"
-                    ><div style="padding: 20px">Try the close button.</div></app-tab-panel
-                  >
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'closable'" [attr.items]="closableTabs"></ui-tabs>
 
                 <!-- Scrollable Example -->
-                <app-tab-stack *ngSwitchCase="'scrollable'" [scrollable]="true">
-                  <app-tab-panel label="Tab 1"><p style="padding: 20px">Panel 1</p></app-tab-panel>
-                  <app-tab-panel label="Tab 2"><p style="padding: 20px">Panel 2</p></app-tab-panel>
-                  <app-tab-panel label="Tab 3"><p style="padding: 20px">Panel 3</p></app-tab-panel>
-                  <app-tab-panel label="Tab 4"><p style="padding: 20px">Panel 4</p></app-tab-panel>
-                  <app-tab-panel label="Tab 5"><p style="padding: 20px">Panel 5</p></app-tab-panel>
-                  <app-tab-panel label="Tab 6"><p style="padding: 20px">Panel 6</p></app-tab-panel>
-                  <app-tab-panel label="Tab 7"><p style="padding: 20px">Panel 7</p></app-tab-panel>
-                  <app-tab-panel label="Tab 8"><p style="padding: 20px">Panel 8</p></app-tab-panel>
-                </app-tab-stack>
+                <ui-tabs *ngSwitchCase="'scrollable'" [attr.items]="scrollableTabs"></ui-tabs>
               </div>
             </div>
 

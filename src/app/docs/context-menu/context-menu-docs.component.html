@@ -32,62 +32,571 @@
 
   <div class="tab-content" [ngClass]="activeTab">
     <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="examples-sidebar">
+        <h3>Variations</h3>
+        <ul class="demo-nav">
+          <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+            Basic Context Menu
+          </li>
+          <li [class.active]="activeExample === 'click'" (click)="setExample('click')">
+            Click Trigger Menu
+          </li>
+          <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+            5-Level Deep Nested
+          </li>
+          <li [class.active]="activeExample === 'list'" (click)="setExample('list')">
+            Context Menu in List
+          </li>
+          <li [class.active]="activeExample === 'commandPalette'" (click)="setExample('commandPalette')">
+            ⚡ Command Palette
+          </li>
+          <li [class.active]="activeExample === 'checkbox'" (click)="setExample('checkbox')">
+            ✅ Checkbox & Radio Items
+          </li>
+          <li [class.active]="activeExample === 'avatar'" (click)="setExample('avatar')">
+            👤 Avatar & Description
+          </li>
+          <li [class.active]="activeExample === 'grouped'" (click)="setExample('grouped')">
+            📑 Grouped Menu Items
+          </li>
+          <li [class.active]="activeExample === 'multiSelect'" (click)="setExample('multiSelect')">
+            🎯 Multi-Select Mode
+          </li>
+          <li [class.active]="activeExample === 'dark'" (click)="setExample('dark')">
+            🌙 Dark Theme
+          </li>
+          <li [class.active]="activeExample === 'glass'" (click)="setExample('glass')">
+            💎 Glassmorphism
+          </li>
+          <li [class.active]="activeExample === 'staggered'" (click)="setExample('staggered')">
+            Staggered Entry
+          </li>
+          <li [class.active]="activeExample === 'zoom'" (click)="setExample('zoom')">
+            Zoom Animation
+          </li>
+          <li [class.active]="activeExample === 'highlight'" (click)="setExample('highlight')">
+            Search Highlighting
+          </li>
+          <li [class.active]="activeExample === 'backdrop'" (click)="setExample('backdrop')">
+            Backdrop Focus
+          </li>
+          <li [class.active]="activeExample === 'pinned'" (click)="setExample('pinned')">
+            🚀 Pinned Items
+          </li>
+          <li [class.active]="activeExample === 'richContent'" (click)="setExample('richContent')">
+            Rich Content
+          </li>
+          <li [class.active]="activeExample === 'breadcrumbs'" (click)="setExample('breadcrumbs')">
+            Breadcrumbs
+          </li>
+          <li [class.active]="activeExample === 'gestures'" (click)="setExample('gestures')">
+            Touch Gestures
+          </li>
+        </ul>
+      </div>
+
       <div class="examples-main">
-        <section class="feature-showcase">
+        <!-- Basic Context Menu -->
+        <section *ngIf="activeExample === 'basic'" class="feature-showcase">
           <div class="showcase-card">
             <div class="showcase-header">
-              <h3>Right-Click Menu</h3>
+              <h3>Basic Context Menu (Right Click)</h3>
             </div>
-            <p class="showcase-desc">Context menu triggered by right-clicking the area below.</p>
+            <p class="showcase-desc">Right-click anywhere in the area below to open the context menu</p>
 
-            <div
-              class="showcase-preview"
-              style="height: 300px; display: flex; align-items: center; justify-content: center"
-            >
-              <div
-                id="cm-target"
-                style="
-                  width: 100%;
-                  height: 100%;
-                  border: 2px dashed #ccc;
-                  border-radius: 8px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background: #fafafa;
-                "
-              >
-                <span style="color: #666; font-weight: 500">Right Click Inside This Box</span>
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <div id="cm-target" style="width: 100%; height: 100%; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fafafa;">
+                <span style="color: #666; font-weight: 500">Right-click here to open context menu</span>
               </div>
-
-              <!-- Note: real implementation would need actual items data binding -->
-              <ui-context-menu target="#cm-target"></ui-context-menu>
+              <ui-context-menu target="#cm-target" [model]="basicItems"></ui-context-menu>
             </div>
 
             <div class="showcase-footer">
               <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
-                ></ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes['basic'])"
-                  icon="copy"
-                ></ui-button>
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['basic'])" icon="copy"></ui-button>
               </div>
             </div>
 
             <div *ngIf="isCodeVisible" class="code-section">
-              <app-code-viewer
-                [code]="exampleCodes['basic']"
-                title="Context Menu Implementation"
-              ></app-code-viewer>
+              <app-code-viewer [code]="exampleCodes['basic']" title="Basic Context Menu"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Click Trigger -->
+        <section *ngIf="activeExample === 'click'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Click Trigger Context Menu</h3>
+            </div>
+            <p class="showcase-desc">Click the button to open the context menu</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="click-trigger" label="Click Me" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#click-trigger" trigger="click" [model]="basicItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['click'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['click']" title="Click Trigger Menu"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5-Level Deep Nested Menu -->
+        <section *ngIf="activeExample === 'nested'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>5-Level Deep Nested Menu</h3>
+            </div>
+            <p class="showcase-desc">Right-click to open a context menu with 5 levels of nested submenus with edge detection</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <div id="nested-target" style="width: 100%; height: 100%; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fafafa;">
+                <span style="color: #666; font-weight: 500">Right-click here for 5-level deep menu</span>
+              </div>
+              <ui-context-menu target="#nested-target" [model]="nestedItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['nested'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['nested']" title="Nested Menu"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Context Menu in List -->
+        <section *ngIf="activeExample === 'list'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Context Menu in List Component</h3>
+            </div>
+            <p class="showcase-desc">Right-click on list items to open their context menus</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ul id="list-container" style="list-style: none; padding: 0; width: 300px;">
+                <li *ngFor="let item of listItems" style="padding: 12px; border: 1px solid #e0e0e0; margin-bottom: 8px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                  <i [class]="item.icon"></i>
+                  {{ item.name }}
+                </li>
+              </ul>
+              <ui-context-menu target="#list-container" [model]="basicItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['list'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['list']" title="List Context Menu"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Command Palette Mode -->
+        <section *ngIf="activeExample === 'commandPalette'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>⚡ Command Palette Mode (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Quick command launcher with searchable actions and keyboard navigation</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="cmd-palette-trigger" label="Open Command Palette (Ctrl+K)" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#cmd-palette-trigger" trigger="click" [model]="commandItems" mode="command-palette" [searchable]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['commandPalette'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['commandPalette']" title="Command Palette"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Checkbox & Radio Menu Items -->
+        <section *ngIf="activeExample === 'checkbox'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>✅ Checkbox & Radio Menu Items (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Interactive checkbox and radio menu items with state management</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="settings-trigger" label="Open Settings Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#settings-trigger" trigger="click" [model]="checkboxItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['checkbox'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['checkbox']" title="Checkbox & Radio Items"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Avatar & Description Items -->
+        <section *ngIf="activeExample === 'avatar'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>👤 Avatar & Description Items (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Rich menu items with avatars, descriptions, and badges</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="team-trigger" label="Select Team Member" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#team-trigger" trigger="click" [model]="avatarItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['avatar'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['avatar']" title="Avatar & Description Items"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Grouped Menu Items -->
+        <section *ngIf="activeExample === 'grouped'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>📑 Grouped Menu Items (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Automatically organize menu items with group headers and separators</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="file-trigger" label="Open File Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#file-trigger" trigger="click" [model]="groupedItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['grouped'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['grouped']" title="Grouped Menu Items"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Multi-Select Mode -->
+        <section *ngIf="activeExample === 'multiSelect'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>🎯 Multi-Select Mode (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Select multiple items with selection counter and batch actions</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="tags-trigger" label="Select Tags" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#tags-trigger" trigger="click" [model]="tagItems" [multiSelect]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['multiSelect'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['multiSelect']" title="Multi-Select Mode"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dark Theme -->
+        <section *ngIf="activeExample === 'dark'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>🌙 Dark Theme (Premium)</h3>
+            </div>
+            <p class="showcase-desc">Beautiful dark mode with smooth transitions</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center; background: #1a1a1a;">
+              <ui-button id="dark-trigger" label="Open Dark Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#dark-trigger" trigger="click" [model]="basicItems" theme="dark"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['dark'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['dark']" title="Dark Theme"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Glassmorphism -->
+        <section *ngIf="activeExample === 'glass'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>💎 Glassmorphism</h3>
+            </div>
+            <p class="showcase-desc">Frosted glass effect with backdrop blur</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="glass-trigger" label="Glass Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#glass-trigger" trigger="click" [model]="basicItems" effect="glassmorphism"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['glass'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['glass']" title="Glassmorphism"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Staggered Entry -->
+        <section *ngIf="activeExample === 'staggered'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Staggered Entry</h3>
+            </div>
+            <p class="showcase-desc">Items animate sequentially for a premium feel</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="staggered-trigger" label="Staggered Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#staggered-trigger" trigger="click" [model]="basicItems" animation="staggered"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['staggered'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['staggered']" title="Staggered Entry"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Zoom Animation -->
+        <section *ngIf="activeExample === 'zoom'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Zoom Entry</h3>
+            </div>
+            <p class="showcase-desc">Dynamic scale-based entry animation</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="zoom-trigger" label="Zoom Animation" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#zoom-trigger" trigger="click" [model]="basicItems" animation="zoom"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['zoom'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['zoom']" title="Zoom Animation"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Highlighting -->
+        <section *ngIf="activeExample === 'highlight'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Search Highlighting</h3>
+            </div>
+            <p class="showcase-desc">Visual feedback for search matches</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="highlight-trigger" label="Highlight Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#highlight-trigger" trigger="click" [model]="basicItems" [searchable]="true" [highlightMatches]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['highlight'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['highlight']" title="Search Highlighting"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Backdrop Focus -->
+        <section *ngIf="activeExample === 'backdrop'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Backdrop Focus</h3>
+            </div>
+            <p class="showcase-desc">Page dimming for focused interaction</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="backdrop-trigger" label="Backdrop Menu" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#backdrop-trigger" trigger="click" [model]="basicItems" [backdrop]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['backdrop'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['backdrop']" title="Backdrop Focus"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pinned Items -->
+        <section *ngIf="activeExample === 'pinned'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>🚀 Pinned Items</h3>
+            </div>
+            <p class="showcase-desc">Pin your favorite items to the top</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="pinned-trigger" label="Pinned Items" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#pinned-trigger" trigger="click" [model]="pinnedItems" [allowPinning]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['pinned'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['pinned']" title="Pinned Items"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rich Content -->
+        <section *ngIf="activeExample === 'richContent'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Rich Content</h3>
+            </div>
+            <p class="showcase-desc">Images, colors, and progress bars</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="rich-trigger" label="Rich Content" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#rich-trigger" trigger="click" [model]="richContentItems"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['richContent'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['richContent']" title="Rich Content"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Breadcrumbs -->
+        <section *ngIf="activeExample === 'breadcrumbs'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Breadcrumbs</h3>
+            </div>
+            <p class="showcase-desc">Navigation trail for deep menus</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <ui-button id="breadcrumb-trigger" label="Breadcrumbs" variant="primary" size="lg"></ui-button>
+              <ui-context-menu target="#breadcrumb-trigger" trigger="click" [model]="nestedItems" [showBreadcrumbs]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['breadcrumbs'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['breadcrumbs']" title="Breadcrumbs"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Touch Gestures -->
+        <section *ngIf="activeExample === 'gestures'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Touch Gestures</h3>
+            </div>
+            <p class="showcase-desc">Swipe to close, long-press options</p>
+
+            <div class="showcase-preview" style="height: 300px; display: flex; align-items: center; justify-content: center">
+              <div id="gesture-target" style="width: 100%; height: 100%; border: 2px dashed #ccc; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: #fafafa;">
+                <span style="color: #666; font-weight: 500">Long-press or swipe</span>
+              </div>
+              <ui-context-menu target="#gesture-target" [model]="basicItems" [touchGestures]="true"></ui-context-menu>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'" variant="secondary" size="md" (click)="toggleCode()" icon="code"></ui-button>
+                <ui-button label="Copy Snippet" variant="primary" size="md" (click)="copyCode(exampleCodes['gestures'])" icon="copy"></ui-button>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['gestures']" title="Touch Gestures"></app-code-viewer>
             </div>
           </div>
         </section>

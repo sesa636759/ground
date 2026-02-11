@@ -34,31 +34,55 @@
       <div *ngIf="activeTab === 'examples'" class="premium-examples">
         <div class="demo-dashboard">
           <aside class="demo-sidebar">
-            <h3>Variations</h3>
-            <ul class="demo-nav">
-              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
-                Basic Toggle
+            <h3>Examples</h3>
+            <ul class="demo-nav pills">
+              <li [class.active]="activeExample === 'avatars'" (click)="setExample('avatars')">
+                Avatar Support
               </li>
-              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
-                Multiple Select
+              <li [class.active]="activeExample === 'gliding'" (click)="setExample('gliding')">
+                Gliding Pill
               </li>
-              <li [class.active]="activeExample === 'vertical'" (click)="setExample('vertical')">
-                Vertical
+              <li [class.active]="activeExample === 'colors'" (click)="setExample('colors')">
+                Color Variants
               </li>
-              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
-                Colored
-              </li>
-              <li [class.active]="activeExample === 'icons'" (click)="setExample('icons')">
-                With Icons
-              </li>
-              <li [class.active]="activeExample === 'disabled'" (click)="setExample('disabled')">
-                Disabled State
+              <li [class.active]="activeExample === 'variants'" (click)="setExample('variants')">
+                Style Variants
               </li>
               <li [class.active]="activeExample === 'sizes'" (click)="setExample('sizes')">
                 Sizes
               </li>
-              <li [class.active]="activeExample === 'exclusive'" (click)="setExample('exclusive')">
-                Exclusive
+              <li [class.active]="activeExample === 'icons'" (click)="setExample('icons')">
+                With Icons
+              </li>
+              <li [class.active]="activeExample === 'dropdown'" (click)="setExample('dropdown')">
+                Dropdown Mode
+              </li>
+              <li [class.active]="activeExample === 'split'" (click)="setExample('split')">
+                Split Button
+              </li>
+              <li [class.active]="activeExample === 'display'" (click)="setExample('display')">
+                Display Modes
+              </li>
+              <li
+                [class.active]="activeExample === 'orientation'"
+                (click)="setExample('orientation')"
+              >
+                Orientations
+              </li>
+              <li [class.active]="activeExample === 'custom'" (click)="setExample('custom')">
+                Custom Content
+              </li>
+              <li [class.active]="activeExample === 'loading'" (click)="setExample('loading')">
+                Loading States
+              </li>
+              <li [class.active]="activeExample === 'states'" (click)="setExample('states')">
+                States
+              </li>
+              <li [class.active]="activeExample === 'realworld'" (click)="setExample('realworld')">
+                Real-World
+              </li>
+              <li [class.active]="activeExample === 'dark'" (click)="setExample('dark')">
+                Dark Theme
               </li>
             </ul>
           </aside>
@@ -78,45 +102,423 @@
 
             <div class="viewport-canvas">
               <div class="canvas-item" [ngSwitch]="activeExample">
-                <app-button-toggle-group *ngSwitchCase="'basic'">
-                  <button value="left">Left</button>
-                  <button value="center">Center</button>
-                  <button value="right">Right</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'multiple'" [multiSelect]="true">
-                  <button value="bold">Bold</button>
-                  <button value="italic">Italic</button>
-                  <button value="underline">Underline</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'vertical'" orientation="vertical">
-                  <button value="top">Top</button>
-                  <button value="middle">Middle</button>
-                  <button value="bottom">Bottom</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'colored'" variant="filled" color="primary">
-                  <button value="option1">Option 1</button>
-                  <button value="option2">Option 2</button>
-                  <button value="option3">Option 3</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'icons'">
-                  <button value="list">📋 List</button>
-                  <button value="grid">🔲 Grid</button>
-                  <button value="card">🃏 Card</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'disabled'">
-                  <button value="enabled">Enabled</button>
-                  <button value="disabled" disabled>Disabled</button>
-                  <button value="active">Active</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'sizes'" size="large">
-                  <button value="small">Small</button>
-                  <button value="medium">Medium</button>
-                  <button value="large">Large</button>
-                </app-button-toggle-group>
-                <app-button-toggle-group *ngSwitchCase="'exclusive'" [multiSelect]="false">
-                  <button value="yes">Yes</button>
-                  <button value="no">No</button>
-                </app-button-toggle-group>
+                <!-- Avatar Support & Status -->
+                <div
+                  *ngSwitchCase="'avatars'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div>
+                    <div class="example-label">Team Presence with Avatars</div>
+                    <app-button-toggle-group
+                      variant="outlined"
+                      color="primary"
+                      [attr.options]="avatarsOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'gliding'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div>
+                    <div class="example-label">Horizontal Gliding Pill</div>
+                    <app-button-toggle-group
+                      gliding
+                      variant="soft"
+                      color="info"
+                      [attr.options]="timeOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Vertical Gliding Pill</div>
+                    <app-button-toggle-group
+                      gliding
+                      variant="soft"
+                      orientation="vertical"
+                      color="danger"
+                      [attr.options]="priorityOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'colors'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                      gap: 1.5rem;
+                    "
+                  >
+                    <div>
+                      <div class="example-label">Primary</div>
+                      <app-button-toggle-group
+                        color="primary"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Success</div>
+                      <app-button-toggle-group
+                        color="success"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Danger</div>
+                      <app-button-toggle-group
+                        color="danger"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Warning</div>
+                      <app-button-toggle-group
+                        color="warning"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Info</div>
+                      <app-button-toggle-group
+                        color="info"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'variants'"
+                  style="display: flex; flex-direction: column; gap: 1.5rem"
+                >
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                      gap: 1rem;
+                    "
+                  >
+                    <div>
+                      <div class="example-label">Filled</div>
+                      <app-button-toggle-group
+                        variant="filled"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Outlined</div>
+                      <app-button-toggle-group
+                        variant="outlined"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Text</div>
+                      <app-button-toggle-group
+                        variant="text"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Soft</div>
+                      <app-button-toggle-group
+                        variant="soft"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Classic</div>
+                      <app-button-toggle-group
+                        variant="classic"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Solid</div>
+                      <app-button-toggle-group
+                        variant="solid"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                    <div>
+                      <div class="example-label">Surface</div>
+                      <app-button-toggle-group
+                        variant="surface"
+                        [attr.options]="basicOptions"
+                      ></app-button-toggle-group>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'sizes'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div>
+                    <div class="example-label">Small</div>
+                    <app-button-toggle-group
+                      size="small"
+                      [attr.options]="optionsData.basic"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Medium</div>
+                    <app-button-toggle-group
+                      size="medium"
+                      [attr.options]="optionsData.basic"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Large</div>
+                    <app-button-toggle-group
+                      size="large"
+                      [attr.options]="optionsData.basic"
+                    ></app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'icons'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div>
+                    <div class="example-label">View Modes</div>
+                    <app-button-toggle-group
+                      [attr.options]="viewModesOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Alignment</div>
+                    <app-button-toggle-group
+                      variant="outlined"
+                      [attr.options]="alignmentOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Icons on Top</div>
+                    <app-button-toggle-group
+                      icon-position="top"
+                      [attr.options]="toolsOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'dropdown'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    mode="dropdown"
+                    label="Export"
+                    button-action-label="Export"
+                    [attr.options]="exportOptions"
+                  ></app-button-toggle-group>
+                  <app-button-toggle-group
+                    mode="dropdown"
+                    label="Actions"
+                    button-action-label="Actions"
+                    keep-button-label
+                    [attr.options]="actionsOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <div
+                  *ngSwitchCase="'split'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    mode="dropdown"
+                    label="File"
+                    button-action-label="File"
+                    keep-button-label
+                    [attr.options]="fileOptions"
+                  ></app-button-toggle-group>
+                  <app-button-toggle-group
+                    mode="dropdown"
+                    label="Delete"
+                    button-action-label="Delete"
+                    color="danger"
+                    keep-button-label
+                    [attr.options]="dangerOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <div
+                  *ngSwitchCase="'display'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <div>
+                    <div class="example-label">Label Only</div>
+                    <app-button-toggle-group
+                      display-mode="label-only"
+                      [attr.options]="displayOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Icon Only</div>
+                    <app-button-toggle-group
+                      display-mode="icon-only"
+                      [attr.options]="displayOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Both Sides</div>
+                    <app-button-toggle-group
+                      display-mode="both-sides"
+                      [attr.options]="bothSidesOptions"
+                    ></app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'orientation'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    orientation="vertical"
+                    [attr.options]="priorityOptions"
+                  ></app-button-toggle-group>
+                  <app-button-toggle-group
+                    full-width
+                    [attr.options]="billingOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <!-- Custom Content/Slots -->
+                <div
+                  *ngSwitchCase="'custom'"
+                  style="display: flex; flex-direction: column; gap: 2rem; max-width: 600px"
+                >
+                  <div>
+                    <div class="example-label">Filter Form Slot</div>
+                    <app-button-toggle-group
+                      color="primary"
+                      mode="dropdown"
+                      button-action-label="Apply Filters"
+                      custom-content
+                    >
+                      <div
+                        slot="dropdown-content"
+                        style="padding: 12px; display: flex; flex-direction: column; gap: 8px"
+                      >
+                        <label style="font-size: 0.8rem; font-weight: 600">Date Range</label>
+                        <select
+                          style="
+                            width: 100%;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            padding: 4px;
+                          "
+                        >
+                          <option>Last 7 days</option>
+                          <option>Last 30 days</option>
+                        </select>
+                        <label style="font-size: 0.8rem; font-weight: 600">Status</label>
+                        <select
+                          style="
+                            width: 100%;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            padding: 4px;
+                          "
+                        >
+                          <option>Active</option>
+                          <option>Inactive</option>
+                        </select>
+                      </div>
+                    </app-button-toggle-group>
+                  </div>
+                  <div>
+                    <div class="example-label">Settings Panel Slot</div>
+                    <app-button-toggle-group
+                      color="info"
+                      mode="dropdown"
+                      button-action-label="Settings"
+                      custom-content
+                      keep-button-label
+                    >
+                      <div
+                        slot="dropdown-content"
+                        style="
+                          padding: 12px;
+                          display: flex;
+                          flex-direction: column;
+                          gap: 8px;
+                          min-width: 200px;
+                        "
+                      >
+                        <div
+                          style="display: flex; justify-content: space-between; align-items: center"
+                        >
+                          <span style="font-size: 0.9rem">Notifications</span>
+                          <input type="checkbox" />
+                        </div>
+                        <div
+                          style="display: flex; justify-content: space-between; align-items: center"
+                        >
+                          <span style="font-size: 0.9rem">Auto-save</span>
+                          <input type="checkbox" checked />
+                        </div>
+                      </div>
+                    </app-button-toggle-group>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'loading'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    loading
+                    [attr.options]="basicOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <div
+                  *ngSwitchCase="'states'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    disabled
+                    [attr.options]="basicOptions"
+                  ></app-button-toggle-group>
+                  <app-button-toggle-group
+                    readonly
+                    [attr.options]="basicOptions"
+                  ></app-button-toggle-group>
+                  <app-button-toggle-group
+                    invalid
+                    error-message="Selection is required"
+                    [attr.options]="basicOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <div
+                  *ngSwitchCase="'realworld'"
+                  style="display: flex; flex-direction: column; gap: 2rem"
+                >
+                  <app-button-toggle-group
+                    full-width
+                    color="primary"
+                    [attr.options]="billingOptions"
+                  ></app-button-toggle-group>
+                </div>
+
+                <div
+                  *ngSwitchCase="'dark'"
+                  class="dark-theme"
+                  style="padding: 2.5rem; background: #0f172a; border-radius: 16px; margin: 1rem"
+                >
+                  <app-button-toggle-group
+                    color="primary"
+                    variant="soft"
+                    [attr.options]="basicOptions"
+                  ></app-button-toggle-group>
+                </div>
               </div>
             </div>
 

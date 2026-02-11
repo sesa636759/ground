@@ -72,6 +72,60 @@ h1 {
   padding-top: 24px;
 }
 
+.examples-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.examples-sidebar {
+  position: sticky;
+  top: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: #0f172a;
+  }
+
+  .demo-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px 12px;
+      margin-bottom: 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #64748b;
+      font-size: 14px;
+
+      &:hover {
+        background: #f8fafc;
+        color: #0f172a;
+      }
+
+      &.active {
+        background: #3b82f6;
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.examples-main {
+  min-width: 0;
+}
+
 .doc-table {
   width: 100%;
   border-collapse: collapse;

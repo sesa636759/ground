@@ -40,34 +40,18 @@
     <!-- Examples Tab -->
     <div *ngIf="activeTab === 'examples'" class="examples-container">
       <div class="pill-navigation">
-        <ui-pill
-          label="Base Variants"
-          color="primary"
-          [selected]="activeExample === 'variants'"
-          [clickable]="true"
-          (pillClick)="setExample('variants')"
-        ></ui-pill>
-        <ui-pill
-          label="Creative Shapes"
-          color="info"
-          [selected]="activeExample === 'shapes'"
-          [clickable]="true"
-          (pillClick)="setExample('shapes')"
-        ></ui-pill>
-        <ui-pill
-          label="Presence Status"
-          color="success"
-          [selected]="activeExample === 'status'"
-          [clickable]="true"
-          (pillClick)="setExample('status')"
-        ></ui-pill>
-        <ui-pill
-          label="Avatar Groups"
-          color="warning"
-          [selected]="activeExample === 'groups'"
-          [clickable]="true"
-          (pillClick)="setExample('groups')"
-        ></ui-pill>
+        <ui-pill label="Variants" color="primary" [selected]="activeExample === 'variants'" [clickable]="true" (pillClick)="setExample('variants')"></ui-pill>
+        <ui-pill label="Shapes" color="info" [selected]="activeExample === 'shapes'" [clickable]="true" (pillClick)="setExample('shapes')"></ui-pill>
+        <ui-pill label="Sizes" color="success" [selected]="activeExample === 'sizes'" [clickable]="true" (pillClick)="setExample('sizes')"></ui-pill>
+        <ui-pill label="Status" color="warning" [selected]="activeExample === 'status'" [clickable]="true" (pillClick)="setExample('status')"></ui-pill>
+        <ui-pill label="Groups" color="danger" [selected]="activeExample === 'groups'" [clickable]="true" (pillClick)="setExample('groups')"></ui-pill>
+        <ui-pill label="Badges" color="primary" [selected]="activeExample === 'badges'" [clickable]="true" (pillClick)="setExample('badges')"></ui-pill>
+        <ui-pill label="Borders" color="info" [selected]="activeExample === 'borders'" [clickable]="true" (pillClick)="setExample('borders')"></ui-pill>
+        <ui-pill label="Icons" color="success" [selected]="activeExample === 'icons'" [clickable]="true" (pillClick)="setExample('icons')"></ui-pill>
+        <ui-pill label="Colors" color="warning" [selected]="activeExample === 'colors'" [clickable]="true" (pillClick)="setExample('colors')"></ui-pill>
+        <ui-pill label="Gradients" color="danger" [selected]="activeExample === 'gradients'" [clickable]="true" (pillClick)="setExample('gradients')"></ui-pill>
+        <ui-pill label="Animations" color="primary" [selected]="activeExample === 'animations'" [clickable]="true" (pillClick)="setExample('animations')"></ui-pill>
+        <ui-pill label="Premium" color="info" [selected]="activeExample === 'premium'" [clickable]="true" (pillClick)="setExample('premium')"></ui-pill>
       </div>
 
       <div class="examples-main">
@@ -77,127 +61,310 @@
               <span class="showcase-icon" [ngSwitch]="activeExample">
                 <span *ngSwitchCase="'variants'">👤</span>
                 <span *ngSwitchCase="'shapes'">📐</span>
+                <span *ngSwitchCase="'sizes'">📏</span>
                 <span *ngSwitchCase="'status'">🟢</span>
                 <span *ngSwitchCase="'groups'">👥</span>
+                <span *ngSwitchCase="'badges'">🔔</span>
+                <span *ngSwitchCase="'borders'">💍</span>
+                <span *ngSwitchCase="'icons'">⭐</span>
+                <span *ngSwitchCase="'colors'">🎨</span>
+                <span *ngSwitchCase="'gradients'">🌈</span>
+                <span *ngSwitchCase="'animations'">✨</span>
+                <span *ngSwitchCase="'premium'">🌟</span>
               </span>
               <h3>{{ activeExample | titlecase }} Showcase</h3>
             </div>
 
             <p class="showcase-desc" [ngSwitch]="activeExample">
-              <span *ngSwitchCase="'variants'"
-                >Support for user initials, high-performance image loading, and system icon
-                placeholders.</span
-              >
-              <span *ngSwitchCase="'shapes'"
-                >Beyond circles: Square, premium Hexagon, and Apple-style Squircle shapes
-                available.</span
-              >
-              <span *ngSwitchCase="'status'"
-                >Integrated status indicators for Online, Busy, Away, and Offline presence.</span
-              >
-              <span *ngSwitchCase="'groups'"
-                >Stacked avatar groups with intelligent overflow logic and maximum display
-                limits.</span
-              >
+              <span *ngSwitchCase="'variants'">Image, Icon and letter types with tooltip support.</span>
+              <span *ngSwitchCase="'shapes'">Circle, Square, Hexagon, and Squircle shapes available.</span>
+              <span *ngSwitchCase="'sizes'">Standard t-shirt sizes (XS to XL) and custom numeric values.</span>
+              <span *ngSwitchCase="'status'">Online, Busy, Away, Offline, and DND status indicators.</span>
+              <span *ngSwitchCase="'groups'">Stacked avatar groups with overlap effect and max count.</span>
+              <span *ngSwitchCase="'badges'">Badge notifications with customizable positions and colors.</span>
+              <span *ngSwitchCase="'borders'">Custom borders and ring colors around avatars.</span>
+              <span *ngSwitchCase="'icons'">Various Font Awesome icons in avatars.</span>
+              <span *ngSwitchCase="'colors'">Automatically generate colors from names or use custom colors.</span>
+              <span *ngSwitchCase="'gradients'">Beautiful gradient backgrounds for avatars.</span>
+              <span *ngSwitchCase="'animations'">Pulse, ring, and glow animations.</span>
+              <span *ngSwitchCase="'premium'">Story rings, glass effects, 3D transforms, and shimmer loading.</span>
             </p>
 
             <div class="showcase-preview" [ngSwitch]="activeExample">
               <div *ngSwitchCase="'variants'" class="avatar-gallery">
                 <div class="avatar-item">
-                  <ui-avatar content="JD" bg-color="#6366f1" size="56px"></ui-avatar>
-                  <label>Letters</label>
-                </div>
-                <div class="avatar-item">
-                  <ui-avatar src="https://i.pravatar.cc/150?img=12" size="56px"></ui-avatar>
-                  <label>Image</label>
-                </div>
-                <div class="avatar-item">
-                  <ui-avatar icon="👤" bg-color="#94a3b8" size="56px"></ui-avatar>
+                  <ui-avatar icon="👤" bg-color="#94a3b8" size="56px" tooltip="Icon Avatar"></ui-avatar>
                   <label>Icon</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="AB" bg-color="#6366f1" size="56px" tooltip="Text Avatar"></ui-avatar>
+                  <label>Text</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="John Smith" bg-color="#ec4899" size="56px" tooltip="Long Name"></ui-avatar>
+                  <label>Long Name</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" size="56px" tooltip="Image Avatar"></ui-avatar>
+                  <label>Image</label>
                 </div>
               </div>
 
               <div *ngSwitchCase="'shapes'" class="avatar-gallery">
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=1"
-                    shape="circle"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=1" shape="circle" size="56px"></ui-avatar>
                   <label>Circle</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=2"
-                    shape="square"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=2" shape="square" size="56px"></ui-avatar>
                   <label>Square</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=3"
-                    shape="hexagon"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=3" shape="hexagon" size="56px"></ui-avatar>
                   <label>Hexagon</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=4"
-                    shape="squircle"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=4" shape="squircle" size="56px"></ui-avatar>
                   <label>Squircle</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'sizes'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar content="XS" bg-color="#6366f1" size="24px"></ui-avatar>
+                  <label>XS (24px)</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="S" bg-color="#8b5cf6" size="32px"></ui-avatar>
+                  <label>S (32px)</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="M" bg-color="#ec4899" size="40px"></ui-avatar>
+                  <label>M (40px)</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="L" bg-color="#f59e0b" size="48px"></ui-avatar>
+                  <label>L (48px)</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="XL" bg-color="#10b981" size="64px"></ui-avatar>
+                  <label>XL (64px)</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="C" bg-color="#06b6d4" size="80px"></ui-avatar>
+                  <label>Custom (80px)</label>
                 </div>
               </div>
 
               <div *ngSwitchCase="'status'" class="avatar-gallery">
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=5"
-                    status="online"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=5" status="online" size="56px"></ui-avatar>
                   <label>Online</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=6"
-                    status="busy"
-                    size="56px"
-                  ></ui-avatar>
-                  <label>Busy</label>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=8" status="offline" size="56px"></ui-avatar>
+                  <label>Offline</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=7"
-                    status="away"
-                    size="56px"
-                  ></ui-avatar>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=7" status="away" size="56px"></ui-avatar>
                   <label>Away</label>
                 </div>
                 <div class="avatar-item">
-                  <ui-avatar
-                    src="https://i.pravatar.cc/150?img=8"
-                    status="offline"
-                    size="56px"
-                  ></ui-avatar>
-                  <label>Offline</label>
+                  <ui-avatar src="https://i.pravatar.cc/150?img=6" status="busy" size="56px"></ui-avatar>
+                  <label>Busy</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=9" status="dnd" size="56px"></ui-avatar>
+                  <label>DND</label>
                 </div>
               </div>
 
               <div *ngSwitchCase="'groups'" class="avatar-group-preview">
-                <ui-avatar-group max="5" size="48px">
-                  <ui-avatar src="https://i.pravatar.cc/150?img=11"></ui-avatar>
-                  <ui-avatar src="https://i.pravatar.cc/150?img=12"></ui-avatar>
-                  <ui-avatar src="https://i.pravatar.cc/150?img=13"></ui-avatar>
-                  <ui-avatar content="AB" bg-color="#8b5cf6"></ui-avatar>
-                  <ui-avatar content="CD" bg-color="#ec4899"></ui-avatar>
-                  <ui-avatar content="EF" bg-color="#06b6d4"></ui-avatar>
-                  <ui-avatar content="GH" bg-color="#10b981"></ui-avatar>
-                </ui-avatar-group>
-                <p class="group-label">Team Project (7 members)</p>
+                <div style="margin-bottom: 20px">
+                  <ui-avatar-group max="4" size="48px">
+                    <ui-avatar src="https://i.pravatar.cc/150?img=11"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=12"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=13"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=14"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=15"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=16"></ui-avatar>
+                  </ui-avatar-group>
+                  <p class="group-label">With Max Count</p>
+                </div>
+                <div style="margin-bottom: 20px">
+                  <ui-avatar-group max="5" size="44px">
+                    <ui-avatar content="AJ" bg-color="#6366f1"></ui-avatar>
+                    <ui-avatar content="BK" bg-color="#8b5cf6"></ui-avatar>
+                    <ui-avatar content="CM" bg-color="#ec4899"></ui-avatar>
+                    <ui-avatar content="DN" bg-color="#f59e0b"></ui-avatar>
+                    <ui-avatar content="EO" bg-color="#10b981"></ui-avatar>
+                    <ui-avatar content="FP" bg-color="#06b6d4"></ui-avatar>
+                    <ui-avatar content="GQ" bg-color="#ef4444"></ui-avatar>
+                  </ui-avatar-group>
+                  <p class="group-label">Text Avatars</p>
+                </div>
+                <div>
+                  <ui-avatar-group max="4" size="40px" animated="true">
+                    <ui-avatar src="https://i.pravatar.cc/150?img=21" status="online"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=22" status="away"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=23" status="busy"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?img=24"></ui-avatar>
+                  </ui-avatar-group>
+                  <p class="group-label">With Status & Animation</p>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'badges'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=1" size="56px" badge="3" badge-position="top-right"></ui-avatar>
+                  <label>Top Right</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=2" size="56px" badge="99+" badge-position="bottom-right"></ui-avatar>
+                  <label>Bottom Right</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=3" size="56px" badge="NEW" badge-position="top-left" badge-color="#ef4444"></ui-avatar>
+                  <label>Top Left</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=4" size="56px" badge="!" badge-position="bottom-left" badge-color="#f59e0b"></ui-avatar>
+                  <label>Bottom Left</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="JD" bg-color="#6366f1" size="56px" verified="true"></ui-avatar>
+                  <label>Verified</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'borders'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=5" size="56px" border="2px solid #3b82f6"></ui-avatar>
+                  <label>Blue Border</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=6" size="56px" ring-color="#ef4444" ring-width="3"></ui-avatar>
+                  <label>Red Ring</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=7" size="56px" ring-color="#10b981" ring-width="4"></ui-avatar>
+                  <label>Green Ring</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=8" size="56px" ring-color="#f59e0b" ring-width="3"></ui-avatar>
+                  <label>Gold Ring</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'icons'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar icon="👤" bg-color="#6366f1" size="48px"></ui-avatar>
+                  <label>User</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="👥" bg-color="#8b5cf6" size="48px"></ui-avatar>
+                  <label>Users</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="⚙️" bg-color="#64748b" size="48px"></ui-avatar>
+                  <label>Settings</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="🔔" bg-color="#f59e0b" size="48px"></ui-avatar>
+                  <label>Bell</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="⭐" bg-color="#eab308" size="48px"></ui-avatar>
+                  <label>Star</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar icon="💼" bg-color="#06b6d4" size="48px"></ui-avatar>
+                  <label>Business</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'colors'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar content="Alice Anderson" auto-color="true" size="48px"></ui-avatar>
+                  <label>Alice</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="Bob Baker" auto-color="true" size="48px"></ui-avatar>
+                  <label>Bob</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="Charlie Clark" auto-color="true" size="48px"></ui-avatar>
+                  <label>Charlie</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="Diana Davis" auto-color="true" size="48px"></ui-avatar>
+                  <label>Diana</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="JD" bg-color="#6366f1" color="#ffffff" size="48px"></ui-avatar>
+                  <label>Custom</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'gradients'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar content="A" gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" size="56px"></ui-avatar>
+                  <label>Purple</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="B" gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" size="56px"></ui-avatar>
+                  <label>Pink</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="C" gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" size="56px"></ui-avatar>
+                  <label>Blue</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="D" gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" size="56px"></ui-avatar>
+                  <label>Green</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'animations'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=31" size="56px" animation="pulse"></ui-avatar>
+                  <label>Pulse</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=32" size="56px" animation="ring"></ui-avatar>
+                  <label>Ring</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=33" size="56px" animation="glow"></ui-avatar>
+                  <label>Glow</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="AB" bg-color="#6366f1" size="56px" animation="bounce"></ui-avatar>
+                  <label>Bounce</label>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'premium'" class="avatar-gallery">
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=41" size="64px" story-ring="true" ring-color="#ec4899"></ui-avatar>
+                  <label>Story Ring</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=42" size="64px" story-ring="true" story-seen="true" ring-color="#94a3b8"></ui-avatar>
+                  <label>Story Seen</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar src="https://i.pravatar.cc/150?img=43" size="64px" active-speaker="true"></ui-avatar>
+                  <label>Active Speaker</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar content="John Doe" bg-color="#6366f1" size="64px" smart-initials="true"></ui-avatar>
+                  <label>Smart Initials</label>
+                </div>
+                <div class="avatar-item">
+                  <ui-avatar loading="true" size="64px" skeleton="shimmer"></ui-avatar>
+                  <label>Shimmer Loading</label>
+                </div>
               </div>
             </div>
 
