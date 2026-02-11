@@ -9,8 +9,7 @@
     [theme]="themeService.resolvedTheme()"
     [selected-item]="currentRoute()"
     [show-search]="true"
-    [max-items]="10"
-    width="15%"
+    max-items="10"
     (navItemClick)="onNavItemClick($event)"
   ></ui-navigation>
 
@@ -18,12 +17,12 @@
   <main class="main-content">
     <!-- Header -->
     <header class="content-header">
-      <button class="toggle-btn-header" (click)="toggleSidebar()">
+      <!-- <button class="toggle-btn-header" (click)="toggleSidebar()">
         {{ sidebarCollapsed() ? '☰' : '✕' }}
-      </button>
-      <h1>{{ title() }}</h1>
+      </button> -->
+      <h1><fa-icon [icon]="faCoffee" class="me-2"></fa-icon> {{ title() }}</h1>
       <button class="theme-toggle-btn" (click)="themeService.toggleTheme()" title="Toggle theme">
-        {{ themeService.getThemeIcon() }}
+        <fa-icon [icon]="themeService.resolvedTheme() === 'dark' ? faSun : faMoon"></fa-icon>
       </button>
     </header>
 

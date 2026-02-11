@@ -1,0 +1,184 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📝</span>
+        <h1>List (Enterprise)</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic List
+              </li>
+              <li [class.active]="activeExample === 'avatars'" (click)="setExample('avatars')">
+                With Avatars
+              </li>
+              <li [class.active]="activeExample === 'actions'" (click)="setExample('actions')">
+                With Actions
+              </li>
+              <li [class.active]="activeExample === 'dividers'" (click)="setExample('dividers')">
+                With Dividers
+              </li>
+              <li
+                [class.active]="activeExample === 'selectable'"
+                (click)="setExample('selectable')"
+              >
+                Selectable Items
+              </li>
+              <li [class.active]="activeExample === 'virtual'" (click)="setExample('virtual')">
+                Virtual Scroll
+              </li>
+              <li [class.active]="activeExample === 'grouped'" (click)="setExample('grouped')">
+                Grouped List
+              </li>
+              <li
+                [class.active]="activeExample === 'interactive'"
+                (click)="setExample('interactive')"
+              >
+                Interactive List
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-list *ngSwitchCase="'basic'" [attr.items]="basicItems"></app-list>
+                <app-list
+                  *ngSwitchCase="'avatars'"
+                  [attr.items]="avatarItems"
+                  [show-avatars]="true"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'actions'"
+                  [attr.items]="actionItems"
+                  [show-actions]="true"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'dividers'"
+                  [attr.items]="dividerItems"
+                  [show-dividers]="true"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'selectable'"
+                  [attr.items]="selectableItems"
+                  [selectable]="true"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'virtual'"
+                  [attr.items]="virtualItems"
+                  [virtual-scroll]="true"
+                  [item-height]="60"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'grouped'"
+                  [attr.items]="groupedItems"
+                  [grouped]="true"
+                ></app-list>
+                <app-list
+                  *ngSwitchCase="'interactive'"
+                  [attr.items]="interactiveItems"
+                  [interactive]="true"
+                  [hoverable]="true"
+                ></app-list>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="setListConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of setListConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

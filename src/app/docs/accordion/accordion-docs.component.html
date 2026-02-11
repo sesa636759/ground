@@ -1,427 +1,188 @@
-<div class="docs-page">
-  <header class="page-header">
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
     <div class="header-content">
-      <div class="header-actions">
-        <!-- Button label must be passed via attribute, not inner text -->
-        <a routerLink="/docs" class="back-link">← Components</a>
+      <div class="title-section">
+        <span class="component-icon">📑</span>
+        <h1>Accordion</h1>
       </div>
-      <h1>Accordion</h1>
-      <p class="description">
-        Expandable list of items for organizing content with 15+ advanced features.
-      </p>
     </div>
   </header>
 
-  <nav class="docs-tabs">
-    <ui-button
-      [label]="'Examples Demos'"
-      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('examples')"
-    >
-    </ui-button>
-    <ui-button
-      [label]="'Interactive Playground'"
-      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('playground')"
-    >
-    </ui-button>
-    <ui-button
-      [label]="'API Documentation'"
-      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('documentation')"
-    >
-    </ui-button>
-  </nav>
-
-  <div class="tab-content" [ngClass]="activeTab">
-    <!-- Examples Tab -->
-    <div *ngIf="activeTab === 'examples'" class="examples-container">
-      <div class="pill-navigation">
-        <!-- ui-pill and ui-button in this library use 'label' property for text, not inner HTML slots -->
-        <ui-pill
-          label="Basic Concepts"
-          color="primary"
-          [selected]="activeExample === 'basic'"
-          [clickable]="true"
-          (pillClick)="setExample('basic')"
-        ></ui-pill>
-        <ui-pill
-          label="Numbered Steps"
-          color="warning"
-          icon="🔢"
-          [selected]="activeExample === 'numbered'"
-          [clickable]="true"
-          (pillClick)="setExample('numbered')"
-        ></ui-pill>
-        <ui-pill
-          label="Multiple Panels"
-          color="success"
-          icon="📑"
-          [selected]="activeExample === 'multiple'"
-          [clickable]="true"
-          (pillClick)="setExample('multiple')"
-        ></ui-pill>
-        <ui-pill
-          label="Live Search"
-          color="warning"
-          icon="🔍"
-          [selected]="activeExample === 'search'"
-          [clickable]="true"
-          (pillClick)="setExample('search')"
-        ></ui-pill>
-        <ui-pill
-          label="Item Actions"
-          color="danger"
-          icon="⚡"
-          [selected]="activeExample === 'actions'"
-          [clickable]="true"
-          (pillClick)="setExample('actions')"
-        ></ui-pill>
-        <ui-pill
-          label="Nested Groups"
-          color="info"
-          icon="🌲"
-          [selected]="activeExample === 'nested'"
-          [clickable]="true"
-          (pillClick)="setExample('nested')"
-        ></ui-pill>
-        <ui-pill
-          label="Drag & Drop"
-          color="secondary"
-          icon="🎯"
-          [selected]="activeExample === 'dragdrop'"
-          [clickable]="true"
-          (pillClick)="setExample('dragdrop')"
-        ></ui-pill>
-        <ui-pill
-          label="Persistence"
-          color="success"
-          icon="💾"
-          [selected]="activeExample === 'persistence'"
-          [clickable]="true"
-          (pillClick)="setExample('persistence')"
-        ></ui-pill>
-        <ui-pill
-          label="Loading States"
-          color="primary"
-          icon="⏳"
-          [selected]="activeExample === 'loading'"
-          [clickable]="true"
-          (pillClick)="setExample('loading')"
-        ></ui-pill>
-        <ui-pill
-          label="RTL Support"
-          color="info"
-          icon="🌍"
-          [selected]="activeExample === 'rtl'"
-          [clickable]="true"
-          (pillClick)="setExample('rtl')"
-        ></ui-pill>
-        <ui-pill
-          label="Dense Layout"
-          color="secondary"
-          icon="📦"
-          [selected]="activeExample === 'dense'"
-          [clickable]="true"
-          (pillClick)="setExample('dense')"
-        ></ui-pill>
-        <ui-pill
-          label="Lifecycle Events"
-          color="warning"
-          icon="📡"
-          [selected]="activeExample === 'events'"
-          [clickable]="true"
-          (pillClick)="setExample('events')"
-        ></ui-pill>
-        <ui-pill
-          label="Controlled"
-          color="primary"
-          icon="🎮"
-          [selected]="activeExample === 'controlled'"
-          [clickable]="true"
-          (pillClick)="setExample('controlled')"
-        ></ui-pill>
-        <ui-pill
-          label="Async Data"
-          color="info"
-          icon="☁️"
-          [selected]="activeExample === 'async'"
-          [clickable]="true"
-          (pillClick)="setExample('async')"
-        ></ui-pill>
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
       </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
 
-      <div class="examples-main">
-        <!-- Dynamic Showcase Card -->
-        <section class="feature-showcase">
-          <div class="showcase-card">
-            <div class="showcase-header">
-              <span class="showcase-icon" [ngSwitch]="activeExample">
-                <span *ngSwitchCase="'basic'">📋</span>
-                <span *ngSwitchCase="'numbered'">🔢</span>
-                <span *ngSwitchCase="'multiple'">📑</span>
-                <span *ngSwitchCase="'search'">🔍</span>
-                <span *ngSwitchCase="'actions'">⚡</span>
-                <span *ngSwitchCase="'nested'">🌲</span>
-                <span *ngSwitchCase="'dragdrop'">🎯</span>
-                <span *ngSwitchCase="'persistence'">💾</span>
-                <span *ngSwitchCase="'loading'">⏳</span>
-                <span *ngSwitchCase="'rtl'">🌍</span>
-                <span *ngSwitchCase="'dense'">📦</span>
-                <span *ngSwitchCase="'events'">📡</span>
-                <span *ngSwitchCase="'controlled'">🎮</span>
-                <span *ngSwitchCase="'async'">☁️</span>
-                <span *ngSwitchDefault>⏳</span>
-              </span>
-              <h3>{{ activeExample | titlecase }} Feature</h3>
-            </div>
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Features</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Concepts
+              </li>
+              <li [class.active]="activeExample === 'numbered'" (click)="setExample('numbered')">
+                Numbered Steps
+              </li>
+              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
+                Multiple Panels
+              </li>
+              <li [class.active]="activeExample === 'search'" (click)="setExample('search')">
+                Live Search
+              </li>
+              <li [class.active]="activeExample === 'actions'" (click)="setExample('actions')">
+                Item Actions
+              </li>
+              <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+                Nested Groups
+              </li>
+              <li [class.active]="activeExample === 'dragdrop'" (click)="setExample('dragdrop')">
+                Drag & Drop
+              </li>
+              <li [class.active]="activeExample === 'loading'" (click)="setExample('loading')">
+                Loading States
+              </li>
+            </ul>
+          </aside>
 
-            <p class="showcase-desc" [ngSwitch]="activeExample">
-              <span *ngSwitchCase="'basic'"
-                >Standard accordion with custom icons and rich content support.</span
-              >
-              <span *ngSwitchCase="'numbered'"
-                >Automated numerical indexing for sequential content like tutorials or steps.</span
-              >
-              <span *ngSwitchCase="'multiple'"
-                >Productivity mode allowing multiple information panels to be visible
-                simultaneously.</span
-              >
-              <span *ngSwitchCase="'search'"
-                >Integrated search engine with high-performance filtering for large datasets.</span
-              >
-              <span *ngSwitchCase="'actions'"
-                >Integrated toolbar in the header for rapid item management (Edit, Delete,
-                etc).</span
-              >
-              <span *ngSwitchCase="'nested'"
-                >Hierarchical multi-level support for complex organizational structures.</span
-              >
-              <span *ngSwitchCase="'dragdrop'"
-                >Enable native browser-based reordering for dynamic item lists.</span
-              >
-              <span *ngSwitchCase="'persistence'"
-                >Intelligent state management that persists toggle states across page reloads.</span
-              >
-              <span *ngSwitchCase="'loading'"
-                >Built-in skeleton loading indicators for asynchronous data operations.</span
-              >
-              <span *ngSwitchCase="'rtl'"
-                >Full support for right-to-left language locales and flipped layouts.</span
-              >
-              <span *ngSwitchCase="'dense'"
-                >Compact operational mode to maximize information density in dashboards.</span
-              >
-              <span *ngSwitchCase="'events'"
-                >Advanced lifecycle hooks for triggering external logic during transitions.</span
-              >
-              <span *ngSwitchCase="'controlled'"
-                >Programmatic state control through external Angular properties.</span
-              >
-              <span *ngSwitchCase="'async'"
-                >Performance-optimized lazy rendering for component initialization.</span
-              >
-              <span *ngSwitchDefault>Loading high-fidelity feature demonstration...</span>
-            </p>
-
-            <div class="showcase-preview" [ngSwitch]="activeExample">
-              <ui-accordion
-                *ngSwitchCase="'basic'"
-                [attr.items]="basicItems"
-                variant="default"
-                default-open='["item1"]'
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'numbered'"
-                [attr.items]="numberedItems"
-                show-numbers="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'multiple'"
-                [attr.items]="multiItems"
-                multiple="true"
-                variant="bordered"
-                default-open='["multi1", "multi2"]'
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'search'"
-                [attr.items]="searchableItems"
-                enable-search="true"
-                search-placeholder="Filter Library..."
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'actions'"
-                [attr.items]="actionItems"
-                variant="light"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'nested'"
-                [attr.items]="nestedItems"
-                enable-nested="true"
-                variant="shadow"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'dragdrop'"
-                [attr.items]="dragDropItems"
-                enable-drag-drop="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'persistence'"
-                [attr.items]="persistenceItems"
-                enable-persistence="true"
-                persistence-key="doc-demo-persistence"
-                multiple="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'loading'"
-                [attr.items]="loadingItems"
-                variant="light"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'rtl'"
-                [attr.items]="rtlItems"
-                rtl="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'dense'"
-                [attr.items]="denseItems"
-                dense="true"
-                multiple="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'events'"
-                [attr.items]="eventItems"
-                variant="bordered"
-                (beforeOpen)="onEvent($event)"
-                (afterOpen)="onEvent($event)"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'controlled'"
-                [attr.items]="controlledItems"
-                [expandedItems]="['c1', 'c2']"
-                multiple="true"
-                variant="shadow"
-              ></ui-accordion>
-              <ui-accordion
-                *ngSwitchCase="'async'"
-                [attr.items]="asyncItems"
-                [loading]="isAsyncLoading"
-                lazy="true"
-                variant="bordered"
-              ></ui-accordion>
-              <ui-accordion *ngSwitchDefault loading="true"></ui-accordion>
-            </div>
-
-            <div class="showcase-footer">
-              <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
-                >
-                </ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes[activeExample])"
-                  icon="copy"
-                >
-                </ui-button>
-                <ui-button
-                  *ngIf="activeExample === 'async'"
-                  label="Refresh Data"
-                  variant="outline"
-                  size="md"
-                  (click)="reloadAsyncData()"
-                  icon="refresh"
-                >
-                </ui-button>
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
               </div>
             </div>
 
-            <div *ngIf="isCodeVisible" class="code-section">
+            <div class="viewport-canvas">
+              <div
+                class="canvas-item"
+                [ngSwitch]="activeExample"
+                style="width: 100%; max-width: 600px"
+              >
+                <ui-accordion
+                  *ngSwitchCase="'basic'"
+                  [attr.items]="basicItems"
+                  variant="default"
+                  default-open='["item1"]'
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'numbered'"
+                  [attr.items]="numberedItems"
+                  show-numbers="true"
+                  variant="bordered"
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'multiple'"
+                  [attr.items]="multiItems"
+                  multiple="true"
+                  variant="bordered"
+                  default-open='["multi1", "multi2"]'
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'search'"
+                  [attr.items]="searchableItems"
+                  enable-search="true"
+                  search-placeholder="Filter Library..."
+                  variant="bordered"
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'actions'"
+                  [attr.items]="actionItems"
+                  variant="light"
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'nested'"
+                  [attr.items]="nestedItems"
+                  enable-nested="true"
+                  variant="shadow"
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'dragdrop'"
+                  [attr.items]="dragDropItems"
+                  enable-drag-drop="true"
+                  variant="bordered"
+                ></ui-accordion>
+                <ui-accordion
+                  *ngSwitchCase="'loading'"
+                  [attr.items]="loadingItems"
+                  variant="light"
+                ></ui-accordion>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
               <app-code-viewer
                 [code]="exampleCodes[activeExample]"
-                [title]="(activeExample | titlecase) + ' Implementation'"
+                title="Implementation"
               ></app-code-viewer>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Tab -->
-    <div *ngIf="activeTab === 'playground'" class="playground-tab">
-      <div class="playground-intro">
-        <h3>Component Playground</h3>
-        <p>Experiment with all accordion properties and generate production-ready code.</p>
-      </div>
-      <app-playground-editor [config]="accordionConfig"></app-playground-editor>
-    </div>
-
-    <!-- Documentation Tab -->
-    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
-      <div class="doc-section">
-        <h3>Properties API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let prop of accordionConfig.props">
-                <td>
-                  <code>{{ prop.name }}</code>
-                </td>
-                <td>
-                  <span class="type-badge">{{ prop.type }}</span>
-                </td>
-                <td>
-                  <code>{{ prop.defaultValue }}</code>
-                </td>
-                <td>{{ prop.description || 'Property specification.' }}</td>
-              </tr>
-            </tbody>
-          </table>
+          </main>
         </div>
       </div>
 
-      <div class="doc-section" *ngIf="accordionConfig.events?.length">
-        <h3>Events API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let event of accordionConfig.events">
-                <td>
-                  <code>{{ event.name }}</code>
-                </td>
-                <td>{{ event.description || 'Event trigger.' }}</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <h3>Interactive Playground</h3>
+          <p>Experiment with all accordion properties and generate production-ready code.</p>
+          <app-playground-editor [config]="accordionConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of accordionConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Property specification.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

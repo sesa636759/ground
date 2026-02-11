@@ -1,0 +1,221 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">✂️</span>
+        <h1>Splitter</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Splitter
+              </li>
+              <li [class.active]="activeExample === 'vertical'" (click)="setExample('vertical')">
+                Vertical
+              </li>
+              <li
+                [class.active]="activeExample === 'three_panels'"
+                (click)="setExample('three_panels')"
+              >
+                Three Panels
+              </li>
+              <li
+                [class.active]="activeExample === 'with_sizes'"
+                (click)="setExample('with_sizes')"
+              >
+                Custom Sizes
+              </li>
+              <li [class.active]="activeExample === 'min_sizes'" (click)="setExample('min_sizes')">
+                Min Sizes
+              </li>
+              <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+                Nested
+              </li>
+              <li [class.active]="activeExample === 'gutters'" (click)="setExample('gutters')">
+                Custom Gutters
+              </li>
+              <li
+                [class.active]="activeExample === 'collapsible'"
+                (click)="setExample('collapsible')"
+              >
+                Collapsible
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-splitter-host
+                  *ngSwitchCase="'basic'"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">Left Panel</div>
+                  <div panel-2 style="padding: 20px">Right Panel</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'vertical'"
+                  orientation="vertical"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">Top Panel</div>
+                  <div panel-2 style="padding: 20px">Bottom Panel</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'three_panels'"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">Left</div>
+                  <div panel-2 style="padding: 20px">Center</div>
+                  <div panel-3 style="padding: 20px">Right</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'with_sizes'"
+                  panel-sizes="30,70"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">30% width</div>
+                  <div panel-2 style="padding: 20px">70% width</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'min_sizes'"
+                  min-sizes="200,300"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">Min 200px</div>
+                  <div panel-2 style="padding: 20px">Min 300px</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'nested'"
+                  style="height: 400px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px; background: var(--surface-1)">
+                    Left Content
+                  </div>
+                  <app-splitter-host orientation="vertical" panel-2>
+                    <div panel-1 style="padding: 20px; background: var(--bg-secondary)">
+                      Top Right
+                    </div>
+                    <div panel-2 style="padding: 20px; background: var(--bg-tertiary)">
+                      Bottom Right
+                    </div>
+                  </app-splitter-host>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'gutters'"
+                  gutter-size="12"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px">Panel with 12px Gutter</div>
+                  <div panel-2 style="padding: 20px">Panel 2</div>
+                </app-splitter-host>
+                <app-splitter-host
+                  *ngSwitchCase="'collapsible'"
+                  [collapsible]="true"
+                  style="height: 300px; border: 1px solid var(--border-color)"
+                >
+                  <div panel-1 style="padding: 20px; background: var(--surface-2)">
+                    Sidebar Content
+                  </div>
+                  <div panel-2 style="padding: 20px">
+                    Main Workspace Content area that expands when sidebar is collapsed.
+                  </div>
+                </app-splitter-host>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="splitterConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of splitterConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

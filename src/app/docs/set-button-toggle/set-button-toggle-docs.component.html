@@ -1,0 +1,176 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">🔲</span>
+        <h1>Button Toggle</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Toggle
+              </li>
+              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
+                Multiple Select
+              </li>
+              <li [class.active]="activeExample === 'vertical'" (click)="setExample('vertical')">
+                Vertical
+              </li>
+              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
+                Colored
+              </li>
+              <li [class.active]="activeExample === 'icons'" (click)="setExample('icons')">
+                With Icons
+              </li>
+              <li [class.active]="activeExample === 'disabled'" (click)="setExample('disabled')">
+                Disabled State
+              </li>
+              <li [class.active]="activeExample === 'sizes'" (click)="setExample('sizes')">
+                Sizes
+              </li>
+              <li [class.active]="activeExample === 'exclusive'" (click)="setExample('exclusive')">
+                Exclusive
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-button-toggle-group *ngSwitchCase="'basic'">
+                  <button value="left">Left</button>
+                  <button value="center">Center</button>
+                  <button value="right">Right</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'multiple'" [multiSelect]="true">
+                  <button value="bold">Bold</button>
+                  <button value="italic">Italic</button>
+                  <button value="underline">Underline</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'vertical'" orientation="vertical">
+                  <button value="top">Top</button>
+                  <button value="middle">Middle</button>
+                  <button value="bottom">Bottom</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'colored'" variant="filled" color="primary">
+                  <button value="option1">Option 1</button>
+                  <button value="option2">Option 2</button>
+                  <button value="option3">Option 3</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'icons'">
+                  <button value="list">📋 List</button>
+                  <button value="grid">🔲 Grid</button>
+                  <button value="card">🃏 Card</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'disabled'">
+                  <button value="enabled">Enabled</button>
+                  <button value="disabled" disabled>Disabled</button>
+                  <button value="active">Active</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'sizes'" size="large">
+                  <button value="small">Small</button>
+                  <button value="medium">Medium</button>
+                  <button value="large">Large</button>
+                </app-button-toggle-group>
+                <app-button-toggle-group *ngSwitchCase="'exclusive'" [multiSelect]="false">
+                  <button value="yes">Yes</button>
+                  <button value="no">No</button>
+                </app-button-toggle-group>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="toggleConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of toggleConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

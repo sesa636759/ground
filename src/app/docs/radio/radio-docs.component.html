@@ -1,0 +1,234 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">🔘</span>
+        <h1>Radio Group</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <!-- Dashboard Style Examples -->
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic List
+              </li>
+              <li
+                [class.active]="activeExample === 'horizontal'"
+                (click)="setExample('horizontal')"
+              >
+                Horizontal
+              </li>
+              <li [class.active]="activeExample === 'bordered'" (click)="setExample('bordered')">
+                Bordered
+              </li>
+              <li [class.active]="activeExample === 'buttons'" (click)="setExample('buttons')">
+                Button Group
+              </li>
+              <li [class.active]="activeExample === 'cards'" (click)="setExample('cards')">
+                Selection Cards
+              </li>
+              <li
+                [class.active]="activeExample === 'validation'"
+                (click)="setExample('validation')"
+              >
+                Validation
+              </li>
+              <li [class.active]="activeExample === 'skeleton'" (click)="setExample('skeleton')">
+                Loading State
+              </li>
+              <li [class.active]="activeExample === 'card_rich'" (click)="setExample('card_rich')">
+                Rich Selection Cards
+              </li>
+              <li [class.active]="activeExample === 'segmented'" (click)="setExample('segmented')">
+                Segmented Control
+              </li>
+              <li
+                [class.active]="activeExample === 'chip_selection'"
+                (click)="setExample('chip_selection')"
+              >
+                Chip Selection
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-radio-group
+                  *ngSwitchCase="'basic'"
+                  label="Select Notification"
+                  [attr.options]="standardOptions"
+                  value="1"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'horizontal'"
+                  label="Choose Option"
+                  layout="horizontal"
+                  [attr.options]="standardOptions"
+                  value="2"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'bordered'"
+                  label="Settings"
+                  variant="bordered"
+                  color="success"
+                  [attr.options]="standardOptions"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'buttons'"
+                  label="Switch Mode"
+                  button-group="true"
+                  color="info"
+                  [attr.options]="standardOptions"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'cards'"
+                  label="Select a Plan"
+                  variant="card"
+                  layout="grid"
+                  [attr.columns]="3"
+                  [attr.options]="planOptions"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'validation'"
+                  label="Payment Method"
+                  required="true"
+                  invalid="true"
+                  error-message="Selection required"
+                  [attr.options]="paymentOptions"
+                ></app-radio-group>
+                <app-radio-group
+                  *ngSwitchCase="'skeleton'"
+                  label="Syncing Data..."
+                  [skeleton]="true"
+                  [attr.options]="standardOptions"
+                ></app-radio-group>
+
+                <app-radio-group
+                  *ngSwitchCase="'card_rich'"
+                  label="Subscription Plans"
+                  variant="card"
+                  layout="grid"
+                  [attr.columns]="2"
+                  [attr.options]="planOptions"
+                  value="pro"
+                ></app-radio-group>
+
+                <app-radio-group
+                  *ngSwitchCase="'segmented'"
+                  label="Toggle Display"
+                  button-group="true"
+                  layout="horizontal"
+                  color="primary"
+                  [attr.options]="standardOptions"
+                  value="1"
+                ></app-radio-group>
+
+                <app-radio-group
+                  *ngSwitchCase="'chip_selection'"
+                  label="Category Chips"
+                  variant="bordered"
+                  layout="horizontal"
+                  color="info"
+                  [attr.options]="standardOptions"
+                ></app-radio-group>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="radioConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of radioConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,13 +32,17 @@ export class DividerDocsComponent {
   <ui-divider orientation="vertical"></ui-divider>
   <span>Delete</span>
 </div>`,
-    variants: `<ui-divider variant="dashed" text="Dashed"></ui-divider>
-<ui-divider variant="dotted" text="Dotted"></ui-divider>
-<ui-divider variant="gradient" text="Gradient"></ui-divider>`,
-    shapes: `<ui-divider shape="wave" color="primary"></ui-divider>
-<ui-divider shape="triangle" color="success"></ui-divider>
-<ui-divider shape="arrow" color="danger"></ui-divider>`,
+    style_dashed: `<ui-divider variant="dashed" text="Dashed Style"></ui-divider>`,
+    style_dotted: `<ui-divider variant="dotted" text="Dotted Style"></ui-divider>`,
+    style_gradient: `<ui-divider variant="gradient" text="Premium Gradient"></ui-divider>`,
+    shape_wave: `<ui-divider shape="wave" color="primary"></ui-divider>`,
+    shape_zigzag: `<ui-divider shape="zigzag" color="warning"></ui-divider>`,
+    shape_triangle: `<ui-divider shape="triangle" color="success"></ui-divider>`,
   };
+
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
 
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;

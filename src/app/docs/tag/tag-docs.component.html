@@ -1,103 +1,215 @@
-<div class="docs-page">
-  <header class="page-header">
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
     <div class="header-content">
-      <h1>Tag</h1>
-      <p class="description">
-        Versatile labels for categorization, status indicators, and metadata management.
-      </p>
+      <div class="title-section">
+        <span class="component-icon">🏷️</span>
+        <h1>Tag</h1>
+      </div>
     </div>
   </header>
 
-  <div class="gallery-container">
-    <section class="gallery-section">
-      <h2 class="section-title">Playground</h2>
-      <div class="playground-stack">
-        <div class="playground-item">
-          <h3>Single Tag</h3>
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'colors'" (click)="setExample('colors')">
+                Palette Gallery
+              </li>
+              <li [class.active]="activeExample === 'variants'" (click)="setExample('variants')">
+                Visual Variants
+              </li>
+              <li [class.active]="activeExample === 'groups'" (click)="setExample('groups')">
+                Tag Collections
+              </li>
+              <li
+                [class.active]="activeExample === 'interactive_states'"
+                (click)="setExample('interactive_states')"
+              >
+                Interactive States
+              </li>
+              <li
+                [class.active]="activeExample === 'managed_groups'"
+                (click)="setExample('managed_groups')"
+              >
+                Managed Groups
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <!-- Colors -->
+                <div *ngSwitchCase="'colors'" style="display: flex; gap: 12px; flex-wrap: wrap">
+                  <ui-tag label="Primary" color="primary"></ui-tag>
+                  <ui-tag label="Success" color="success"></ui-tag>
+                  <ui-tag label="Warning" color="warning"></ui-tag>
+                  <ui-tag label="Danger" color="danger"></ui-tag>
+                  <ui-tag label="Info" color="info"></ui-tag>
+                  <ui-tag label="Secondary" color="secondary"></ui-tag>
+                </div>
+
+                <!-- Variants -->
+                <div
+                  *ngSwitchCase="'variants'"
+                  style="display: flex; gap: 24px; flex-direction: column"
+                >
+                  <div style="display: flex; gap: 12px">
+                    <ui-tag label="Filled" variant="filled" color="primary"></ui-tag>
+                    <ui-tag label="Filled" variant="filled" color="success"></ui-tag>
+                  </div>
+                  <div style="display: flex; gap: 12px">
+                    <ui-tag label="Outlined" variant="outlined" color="primary"></ui-tag>
+                    <ui-tag label="Outlined" variant="outlined" color="success"></ui-tag>
+                  </div>
+                  <div style="display: flex; gap: 12px">
+                    <ui-tag label="Dot" variant="dot" color="primary"></ui-tag>
+                    <ui-tag label="Dot" variant="dot" color="success"></ui-tag>
+                  </div>
+                </div>
+
+                <!-- Groups -->
+                <div
+                  *ngSwitchCase="'groups'"
+                  style="display: flex; gap: 32px; flex-direction: column"
+                >
+                  <ui-tag-group overlap="true" spacing="-12px">
+                    <ui-tag
+                      *ngFor="let m of members"
+                      [label]="m.label"
+                      rounded="true"
+                      [image]="m.image"
+                      [color]="m.color"
+                    ></ui-tag>
+                  </ui-tag-group>
+                  <ui-tag-group selection-mode="multiple">
+                    <ui-tag label="Technology" clickable="true"></ui-tag>
+                    <ui-tag label="Design" clickable="true" color="success"></ui-tag>
+                    <ui-tag label="Strategy" clickable="true" color="warning"></ui-tag>
+                  </ui-tag-group>
+                </div>
+
+                <!-- Interactive States -->
+                <div
+                  *ngSwitchCase="'interactive_states'"
+                  style="display: flex; gap: 16px; flex-wrap: wrap"
+                >
+                  <ui-tag
+                    label="Uploading..."
+                    [loading]="true"
+                    color="primary"
+                    variant="filled"
+                  ></ui-tag>
+                  <ui-tag label="Live Feed" [pulse]="true" color="danger" variant="dot"></ui-tag>
+                  <ui-tag label="Dismissible" [removable]="true" color="secondary"></ui-tag>
+                </div>
+
+                <!-- Managed Groups -->
+                <div *ngSwitchCase="'managed_groups'" style="width: 100%; max-width: 400px">
+                  <ui-tag-group
+                    searchable="true"
+                    creatable="true"
+                    removable="true"
+                    [attr.items]="members | json"
+                  >
+                  </ui-tag-group>
+                  <p style="margin-top: 16px; color: var(--text-tertiary); font-size: 0.85rem">
+                    Dynamic group with search and member management.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Tag Architect</h3>
+            <p>Customize shapes, states, and group behaviors.</p>
+          </header>
           <app-playground-editor [config]="tagConfig"></app-playground-editor>
         </div>
-        <div class="playground-item">
-          <h3>Tag Group</h3>
-          <app-playground-editor [config]="tagGroupConfig"></app-playground-editor>
-        </div>
       </div>
-    </section>
 
-    <section class="gallery-section">
-      <h2 class="section-title">Visual Variations</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Color Palette</div>
-          <div class="tag-rack">
-            <ui-tag label="Primary" color="primary"></ui-tag>
-            <ui-tag label="Success" color="success"></ui-tag>
-            <ui-tag label="Danger" color="danger"></ui-tag>
-            <ui-tag label="Warning" color="warning"></ui-tag>
-            <ui-tag label="Info" color="info"></ui-tag>
-            <ui-tag label="Secondary" color="secondary"></ui-tag>
-          </div>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Variants</div>
-          <div class="tag-rack">
-            <ui-tag label="Filled" variant="filled" color="primary"></ui-tag>
-            <ui-tag label="Outlined" variant="outlined" color="primary"></ui-tag>
-            <ui-tag label="Light" variant="light" color="primary"></ui-tag>
-            <ui-tag label="Dot" variant="dot" color="primary"></ui-tag>
-          </div>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Premium Features</div>
-          <div class="tag-rack">
-            <ui-tag label="Processing" loading="true" color="primary"></ui-tag>
-            <ui-tag label="Live" pulse="true" color="danger" variant="dot"></ui-tag>
-            <ui-tag label="Elevated" elevation="2" color="success"></ui-tag>
+      <!-- API -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Component API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of tagConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures the tag.' }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="gallery-section">
-      <h2 class="section-title">Tag Groups</h2>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <div class="card-title">Overlapping Group</div>
-          <p class="card-desc">Compact layout for assigned members.</p>
-          <ui-tag-group overlap="true" spacing="-12px">
-            <ui-tag
-              *ngFor="let m of members"
-              [attr.label]="m.label"
-              rounded="true"
-              [attr.color]="m.color"
-              [attr.image]="m.image"
-            ></ui-tag>
-          </ui-tag-group>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Selection Mode</div>
-          <p class="card-desc">Filter chips behavior (Single / Multiple).</p>
-          <ui-tag-group selection-mode="multiple" color="info" variant="light">
-            <ui-tag label="React"></ui-tag>
-            <ui-tag label="Vue"></ui-tag>
-            <ui-tag label="Angular"></ui-tag>
-            <ui-tag label="Stencil"></ui-tag>
-          </ui-tag-group>
-        </div>
-        <div class="demo-card">
-          <div class="card-title">Advanced Groups</div>
-          <p class="card-desc">Searchable, creatable, and collapsible.</p>
-          <ui-tag-group
-            searchable="true"
-            creatable="true"
-            removable="true"
-            color="secondary"
-            variant="light"
-          >
-            <ui-tag label="Engineering"></ui-tag>
-            <ui-tag label="Design"></ui-tag>
-          </ui-tag-group>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>

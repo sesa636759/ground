@@ -33,13 +33,21 @@ export class CardDocsComponent {
   <div slot="content">Front Side (Click to Flip)</div>
   <div slot="back">Back Side Content</div>
 </ui-card>`,
-    premium: `<ui-card loading="true"></ui-card>
-<ui-card selectable="true"></ui-card>
-<ui-card show-menu="true" [menuItems]='[...]'>...</ui-card>`,
+    context_menu: `<ui-card show-menu="true" [attr.menu-items]="menuItems">
+  <div slot="header"><h3>Contextual Actions</h3></div>
+  <div slot="content"><p>Cards can feature advanced drop-down menus for record operations.</p></div>
+</ui-card>`,
+    async_loading: `<ui-card [loading]="true" height="200px">
+  <div slot="header"><h3>Fetching Data...</h3></div>
+</ui-card>`,
+    selectable: `<ui-card selectable="true" variant="elevated">
+  <div slot="header"><h3>Selection Mode</h3></div>
+  <div slot="content"><p>Interactive state for multi-item picking with visual feedback.</p></div>
+</ui-card>`,
     cover: `<ui-card variant="elevated">
-  <img slot="cover" src="..." alt="Cover" />
+  <img slot="cover" src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80" alt="Cover" />
   <div slot="header"><h3>Article Title</h3></div>
-  <div slot="content"><p>Summary text...</p></div>
+  <div slot="content"><p>Cards can feature rich cover images for editorial content.</p></div>
 </ui-card>`,
   };
 
@@ -49,6 +57,10 @@ export class CardDocsComponent {
     { separator: true },
     { id: 'delete', label: 'Delete', icon: '🗑️' },
   ]);
+
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
 
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;

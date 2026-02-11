@@ -1,6 +1,6 @@
 import { Injectable, signal, effect } from '@angular/core';
 
-export type Theme = 'light' | 'dark' | 'auto';
+export type Theme = 'light' | 'dark' | 'auto' | 'schneider-green' | 'high-contrast';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class ThemeService {
   currentTheme = signal<Theme>(this.getInitialTheme());
 
   // Resolved theme (what's actually applied)
-  resolvedTheme = signal<'light' | 'dark'>('dark');
+  resolvedTheme = signal<string>('dark');
 
   constructor() {
     // Apply theme whenever it changes
@@ -26,10 +26,16 @@ export class ThemeService {
 
   private getInitialTheme(): Theme {
     const saved = localStorage.getItem(this.THEME_KEY);
-    if (saved === 'light' || saved === 'dark' || saved === 'auto') {
-      return saved;
+    if (
+      saved === 'light' ||
+      saved === 'dark' ||
+      saved === 'auto' ||
+      saved === 'schneider-green' ||
+      saved === 'high-contrast'
+    ) {
+      return saved as Theme;
     }
-    return 'dark'; // Default theme
+    return 'schneider-green'; // Default theme
   }
 
   setTheme(theme: Theme) {
@@ -39,14 +45,14 @@ export class ThemeService {
 
   toggleTheme() {
     const current = this.currentTheme();
-    const themes: Theme[] = ['light', 'dark', 'auto'];
+    const themes: Theme[] = ['light', 'dark', 'auto', 'schneider-green', 'high-contrast'];
     const currentIndex = themes.indexOf(current);
     const nextIndex = (currentIndex + 1) % themes.length;
     this.setTheme(themes[nextIndex]);
   }
 
   private applyTheme(theme: Theme) {
-    let resolved: 'light' | 'dark';
+    let resolved: string;
 
     if (theme === 'auto') {
       resolved = this.getSystemTheme();
@@ -58,7 +64,7 @@ export class ThemeService {
 
     // Apply to document
     const root = document.documentElement;
-    root.classList.remove('light', 'dark');
+    root.classList.remove('light', 'dark', 'schneider-green', 'high-contrast');
     root.classList.add(resolved);
     root.setAttribute('data-theme', resolved);
   }
@@ -83,7 +89,12 @@ export class ThemeService {
         return '☀️';
       case 'dark':
         return '🌙';
+      case 'schneider-green':
+        return '🌿';
+      case 'high-contrast':
+        return '👁️';
       case 'auto':
+      default:
         return '🔄';
     }
   }
@@ -92,11 +103,16 @@ export class ThemeService {
     const theme = this.currentTheme();
     switch (theme) {
       case 'light':
-        return 'Light Mode';
+        return 'Light';
       case 'dark':
-        return 'Dark Mode';
+        return 'Dark';
+      case 'schneider-green':
+        return 'Enterprise';
+      case 'high-contrast':
+        return 'Contrast';
       case 'auto':
-        return 'Auto Mode';
+      default:
+        return 'Auto';
     }
   }
 }

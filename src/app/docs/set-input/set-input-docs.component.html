@@ -1,0 +1,186 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">⌨️</span>
+        <h1>Input</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Input
+              </li>
+              <li [class.active]="activeExample === 'labeled'" (click)="setExample('labeled')">
+                With Label
+              </li>
+              <li [class.active]="activeExample === 'with_icon'" (click)="setExample('with_icon')">
+                With Icon
+              </li>
+              <li [class.active]="activeExample === 'password'" (click)="setExample('password')">
+                Password
+              </li>
+              <li
+                [class.active]="activeExample === 'validation'"
+                (click)="setExample('validation')"
+              >
+                Validation
+              </li>
+              <li [class.active]="activeExample === 'disabled'" (click)="setExample('disabled')">
+                Disabled
+              </li>
+              <li [class.active]="activeExample === 'multiline'" (click)="setExample('multiline')">
+                Multiline
+              </li>
+              <li
+                [class.active]="activeExample === 'with_helper'"
+                (click)="setExample('with_helper')"
+              >
+                With Helper
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-input *ngSwitchCase="'basic'" placeholder="Enter your name"></app-input>
+                <app-input
+                  *ngSwitchCase="'labeled'"
+                  label="Email Address"
+                  placeholder="you@example.com"
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'with_icon'"
+                  label="Search"
+                  icon="🔍"
+                  placeholder="Search..."
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'password'"
+                  type="password"
+                  label="Password"
+                  placeholder="Enter password"
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'validation'"
+                  label="Username"
+                  [required]="true"
+                  error="Username is required"
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'disabled'"
+                  label="Disabled Field"
+                  [disabled]="true"
+                  value="Cannot edit"
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'multiline'"
+                  type="textarea"
+                  label="Comments"
+                  [rows]="4"
+                  placeholder="Enter comments..."
+                ></app-input>
+                <app-input
+                  *ngSwitchCase="'with_helper'"
+                  label="Phone"
+                  helper-text="Format: (123) 456-7890"
+                  placeholder="(___) ___-____"
+                ></app-input>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="inputConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of inputConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

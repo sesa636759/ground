@@ -1,240 +1,270 @@
-<div class="docs-page">
-  <header class="page-header">
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
     <div class="header-content">
-      <div class="header-actions">
-        <a routerLink="/docs" class="back-link">← Components</a>
+      <div class="title-section">
+        <span class="component-icon">✂️</span>
+        <h1>Splitter</h1>
       </div>
-      <h1>Splitter</h1>
-      <p class="description">
-        Resizeable split panes for complex application layouts like IDEs and Dashboards.
-      </p>
     </div>
   </header>
 
-  <nav class="docs-tabs">
-    <ui-button
-      [label]="'Examples Demos'"
-      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('examples')"
-    ></ui-button>
-    <ui-button
-      [label]="'Interactive Playground'"
-      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('playground')"
-    ></ui-button>
-    <ui-button
-      [label]="'API Documentation'"
-      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('documentation')"
-    ></ui-button>
-  </nav>
-
-  <div class="tab-content" [ngClass]="activeTab">
-    <!-- Examples Tab -->
-    <div *ngIf="activeTab === 'examples'" class="examples-container">
-      <div class="pill-navigation">
-        <ui-pill
-          label="Horizontal"
-          icon="↔️"
-          [selected]="activeExample === 'horizontal'"
-          [clickable]="true"
-          (pillClick)="setExample('horizontal')"
-        ></ui-pill>
-        <ui-pill
-          label="Vertical (IDE)"
-          icon="↕️"
-          [selected]="activeExample === 'vertical'"
-          [clickable]="true"
-          (pillClick)="setExample('vertical')"
-        ></ui-pill>
-        <ui-pill
-          label="Nested Layouts"
-          icon="🪟"
-          [selected]="activeExample === 'nested'"
-          [clickable]="true"
-          (pillClick)="setExample('nested')"
-        ></ui-pill>
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
       </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
 
-      <div class="examples-main">
-        <section class="feature-showcase">
-          <div class="showcase-card">
-            <div class="showcase-header">
-              <h3>{{ activeExample | titlecase }} Splitter</h3>
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li
+                [class.active]="activeExample === 'horizontal'"
+                (click)="setExample('horizontal')"
+              >
+                Horizontal Split
+              </li>
+              <li [class.active]="activeExample === 'vertical'" (click)="setExample('vertical')">
+                Vertical Split
+              </li>
+              <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+                Nested Layouts
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
             </div>
 
-            <p class="showcase-desc" [ngSwitch]="activeExample">
-              <span *ngSwitchCase="'horizontal'"
-                >Standard left/right split with draggable divider.</span
-              >
-              <span *ngSwitchCase="'vertical'"
-                >Vertical top/bottom split, perfect for code editors and terminals.</span
-              >
-              <span *ngSwitchCase="'nested'"
-                >Complex layouts by nesting splitters inside one another.</span
-              >
-            </p>
-
-            <div class="showcase-preview" [ngSwitch]="activeExample">
-              <!-- Horizontal -->
-              <div
-                *ngSwitchCase="'horizontal'"
-                class="preview-box"
-                style="height: 400px; padding: 0"
-              >
-                <ui-splitter
-                  orientation="horizontal"
-                  initial-split="50"
-                  min-size="20"
-                  style="height: 100%; width: 100%"
-                >
-                  <div slot="start" class="pane-content start-pane">
-                    <h4>Start Pane</h4>
-                    <p>Resize me →</p>
-                  </div>
-                  <div slot="end" class="pane-content end-pane">
-                    <h4>End Pane</h4>
-                    <p>← Resize me</p>
-                  </div>
-                </ui-splitter>
-              </div>
-
-              <!-- Vertical -->
-              <div *ngSwitchCase="'vertical'" class="preview-box" style="height: 500px; padding: 0">
-                <ui-splitter
-                  orientation="vertical"
-                  initial-split="70"
-                  style="height: 100%; width: 100%"
-                >
-                  <div slot="start" class="pane-content dark-pane">
-                    <div class="code-header">app.tsx</div>
-                    <pre
-                      style="margin: 0; padding: 20px; color: #d4d4d4"
-                    ><code>import &#123; Component &#125; from '@stencil/core';
-
-@Component(&#123;
-  tag: 'my-component',
-  shadow: true
-&#125;)
-export class MyComponent &#123;
-  render() &#123;
-    return &lt;div&gt;Hello World&lt;/div&gt;;
-  &#125;
-&#125;</code></pre>
-                  </div>
-                  <div slot="end" class="pane-content terminal-pane">
-                    <div class="term-header">Terminal</div>
-                    <pre style="margin: 0; padding: 10px; color: #3b82f6"><code>> npm run build
-> Build finished in 200ms
-> Watching for changes...</code></pre>
-                  </div>
-                </ui-splitter>
-              </div>
-
-              <!-- Nested -->
-              <div *ngSwitchCase="'nested'" class="preview-box" style="height: 500px; padding: 0">
-                <ui-splitter initial-split="30" style="height: 100%; width: 100%">
-                  <div slot="start" class="pane-content sidebar-pane">
-                    <ul>
-                      <li>Dashboard</li>
-                      <li>Projects</li>
-                      <li>Settings</li>
-                    </ul>
-                  </div>
-                  <div slot="end" style="height: 100%; width: 100%">
-                    <ui-splitter
-                      orientation="vertical"
-                      initial-split="60"
-                      style="height: 100%; width: 100%"
+            <div class="viewport-canvas" style="padding: 0; overflow: hidden; height: 500px">
+              <div class="canvas-item" [ngSwitch]="activeExample" style="height: 100%; width: 100%">
+                <!-- Horizontal -->
+                <div *ngSwitchCase="'horizontal'" style="height: 100%; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="50"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div
+                      slot="start"
+                      style="
+                        height: 100%;
+                        background: var(--surface-1);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-right: 1px solid var(--border-color);
+                      "
                     >
-                      <div slot="start" class="pane-content main-pane">
-                        <h3 style="margin-top: 0">Workspace</h3>
-                        <p>Main working area.</p>
+                      <div style="text-align: center">
+                        <span style="font-size: 2rem">👈</span>
+                        <h4>Explore Files</h4>
                       </div>
-                      <div slot="end" class="pane-content logs-pane">
-                        <small>System Logs...</small>
-                        <div style="font-family: monospace; font-size: 11px; margin-top: 10px">
-                          [INFO] Service started<br />
-                          [WARN] Connection slow
+                    </div>
+                    <div
+                      slot="end"
+                      style="
+                        height: 100%;
+                        background: var(--surface-2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                      "
+                    >
+                      <div style="text-align: center">
+                        <h4>Code Editor</h4>
+                        <span style="font-size: 2rem">👉</span>
+                      </div>
+                    </div>
+                  </ui-splitter>
+                </div>
+
+                <!-- Vertical -->
+                <div *ngSwitchCase="'vertical'" style="height: 100%; width: 100%">
+                  <ui-splitter
+                    orientation="vertical"
+                    initial-split="70"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div
+                      slot="start"
+                      style="height: 100%; background: var(--surface-1); padding: 20px"
+                    >
+                      <h4 style="margin-top: 0">Main Content Area</h4>
+                      <p style="color: var(--text-secondary); line-height: 1.6">
+                        Maximize focus on the workspace while keeping auxiliary tools accessible in
+                        the bottom pane.
+                      </p>
+                    </div>
+                    <div
+                      slot="end"
+                      style="
+                        height: 100%;
+                        background: #1e1e1e;
+                        color: #4ade80;
+                        font-family: monospace;
+                        padding: 12px;
+                      "
+                    >
+                      <div>[SYSTEM] Booting...</div>
+                      <div>[SYSTEM] Kernel ready</div>
+                      <div>[SYSTEM] Connected to remote host 192.168.1.1</div>
+                      <div style="margin-top: 8px">user@angular-ground:~$ _</div>
+                    </div>
+                  </ui-splitter>
+                </div>
+
+                <!-- Nested -->
+                <div *ngSwitchCase="'nested'" style="height: 100%; width: 100%">
+                  <ui-splitter
+                    orientation="horizontal"
+                    initial-split="25"
+                    style="height: 100%; width: 100%"
+                  >
+                    <div
+                      slot="start"
+                      style="
+                        height: 100%;
+                        background: var(--surface-2);
+                        border-right: 1px solid var(--border-color);
+                        padding: 12px;
+                      "
+                    >
+                      <ul
+                        style="
+                          list-style: none;
+                          padding: 0;
+                          margin: 0;
+                          display: flex;
+                          flex-direction: column;
+                          gap: 8px;
+                        "
+                      >
+                        <li
+                          style="
+                            padding: 8px;
+                            background: var(--surface-3);
+                            border-radius: 4px;
+                            font-size: 0.9rem;
+                          "
+                        >
+                          📂 Projects
+                        </li>
+                        <li style="padding: 8px; font-size: 0.9rem">📁 Sources</li>
+                        <li style="padding: 8px; font-size: 0.9rem">⚙️ Config</li>
+                      </ul>
+                    </div>
+                    <div slot="end" style="height: 100%; width: 100%">
+                      <ui-splitter
+                        orientation="vertical"
+                        initial-split="65"
+                        style="height: 100%; width: 100%"
+                      >
+                        <div
+                          slot="start"
+                          style="height: 100%; background: var(--surface-1); padding: 20px"
+                        >
+                          <h4>Nested Hierarchy</h4>
+                          <p>Complex IDE layouts can be built by composing splitters.</p>
                         </div>
-                      </div>
-                    </ui-splitter>
-                  </div>
-                </ui-splitter>
+                        <div
+                          slot="end"
+                          style="
+                            height: 100%;
+                            background: var(--surface-2);
+                            border-top: 1px solid var(--border-color);
+                            padding: 12px;
+                          "
+                        >
+                          <h5 style="margin: 0; color: var(--text-tertiary)">Build Logs</h5>
+                        </div>
+                      </ui-splitter>
+                    </div>
+                  </ui-splitter>
+                </div>
               </div>
             </div>
 
-            <div class="showcase-footer">
-              <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
-                ></ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes[activeExample])"
-                  icon="copy"
-                ></ui-button>
-              </div>
-            </div>
-
-            <div *ngIf="isCodeVisible" class="code-section">
+            <div *ngIf="isCodeVisible" class="viewport-code">
               <app-code-viewer
                 [code]="exampleCodes[activeExample]"
-                [title]="(activeExample | titlecase) + ' Implementation'"
+                title="Implementation"
               ></app-code-viewer>
             </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Layout Engine</h3>
+            <p>Adjust orientation, initial distribution, and size constraints.</p>
+          </header>
+          <app-playground-editor [config]="splitterConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Component API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of splitterConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures the splitter.' }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Tab -->
-    <div *ngIf="activeTab === 'playground'" class="playground-tab">
-      <div class="playground-intro">
-        <h3>Component Playground</h3>
-        <p>Experiment with orientation and resizing behavior.</p>
-      </div>
-      <app-playground-editor [config]="splitterConfig"></app-playground-editor>
-    </div>
-
-    <!-- Documentation Tab -->
-    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
-      <div class="doc-section">
-        <h3>Properties API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let prop of splitterConfig.props">
-                <td>
-                  <code>{{ prop.name }}</code>
-                </td>
-                <td>
-                  <span class="type-badge">{{ prop.type }}</span>
-                </td>
-                <td>
-                  <code>{{ prop.defaultValue }}</code>
-                </td>
-                <td>{{ prop.description || 'Property specification.' }}</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>

@@ -4,19 +4,29 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { topNavItems, categoryNavItems, bottomNavItems } from './data/navigation.data';
 import { ThemeService } from './services/theme.service';
 import { filter } from 'rxjs/operators';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCoffee, faMoon, faSun, faHome, faBook, faVial } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, FontAwesomeModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
   title = signal('Component Playground');
-  sidebarCollapsed = signal(false);
+  sidebarCollapsed = signal(true);
   currentRoute = signal('home');
+
+  // FontAwesome Icons
+  faCoffee = faCoffee;
+  faMoon = faMoon;
+  faSun = faSun;
+  faHome = faHome;
+  faBook = faBook;
+  faVial = faVial;
 
   // Expose navigation data for template
   topItems = topNavItems;

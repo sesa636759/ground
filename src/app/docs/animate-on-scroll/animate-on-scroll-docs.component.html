@@ -1,0 +1,252 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📜</span>
+        <h1>Animate on Scroll</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <!-- Dashboard Style Examples -->
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'fadeIn'" (click)="setExample('fadeIn')">
+                Fade In
+              </li>
+              <li [class.active]="activeExample === 'slideUp'" (click)="setExample('slideUp')">
+                Slide Up
+              </li>
+              <li [class.active]="activeExample === 'slideLeft'" (click)="setExample('slideLeft')">
+                Slide Left
+              </li>
+              <li [class.active]="activeExample === 'zoomIn'" (click)="setExample('zoomIn')">
+                Zoom In
+              </li>
+              <li [class.active]="activeExample === 'rotate'" (click)="setExample('rotate')">
+                Rotate In
+              </li>
+              <li [class.active]="activeExample === 'stagger'" (click)="setExample('stagger')">
+                Stagger Effect
+              </li>
+              <li [class.active]="activeExample === 'bounce'" (click)="setExample('bounce')">
+                Bounce In
+              </li>
+              <li [class.active]="activeExample === 'flip'" (click)="setExample('flip')">
+                Flip In
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas" style="min-height: 600px; overflow-y: auto;">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <div *ngSwitchCase="'fadeIn'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box fade-in-demo">
+                    <h3>Fade In Animation</h3>
+                    <p>This content smoothly fades into view as you scroll</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'slideUp'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box slide-up-demo">
+                    <h3>Slide Up Animation</h3>
+                    <p>Content slides up from below the viewport</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'slideLeft'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box slide-left-demo">
+                    <h3>Slide Left Animation</h3>
+                    <p>Slides in from the right side</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'zoomIn'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box zoom-in-demo">
+                    <h3>Zoom In Animation</h3>
+                    <p>Scales up from a smaller size</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'rotate'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box rotate-in-demo">
+                    <h3>Rotate In Animation</h3>
+                    <p>Rotates while fading in</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'stagger'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="stagger-container">
+                    <div *ngFor="let item of items; let i = index" 
+                         class="animate-box stagger-item"
+                         [style.animation-delay]="(i * 100) + 'ms'">
+                      <h4>Item {{ item }}</h4>
+                      <p>Staggered animation effect</p>
+                    </div>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'bounce'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box bounce-in-demo">
+                    <h3>Bounce In Animation</h3>
+                    <p>Bounces into the viewport</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+
+                <div *ngSwitchCase="'flip'" class="scroll-container">
+                  <div class="scroll-spacer"></div>
+                  <div class="animate-box flip-in-demo">
+                    <h3>Flip In Animation</h3>
+                    <p>3D flip effect on scroll</p>
+                  </div>
+                  <div class="scroll-spacer"></div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="animateConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="prop-name">animation</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'fade-in'</code></td>
+                  <td>Animation type (fade-in, slide-up, zoom-in, etc.)</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">duration</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'600ms'</code></td>
+                  <td>Animation duration</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">delay</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'0ms'</code></td>
+                  <td>Animation delay before starting</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">threshold</code></td>
+                  <td><span class="type-pill">number</span></td>
+                  <td><code class="default-val">0.1</code></td>
+                  <td>Percentage of element visibility before animation triggers</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">easing</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'ease'</code></td>
+                  <td>CSS easing function</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">once</code></td>
+                  <td><span class="type-pill">boolean</span></td>
+                  <td><code class="default-val">true</code></td>
+                  <td>Whether animation should happen only once</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">offset</code></td>
+                  <td><span class="type-pill">number</span></td>
+                  <td><code class="default-val">0</code></td>
+                  <td>Offset in pixels from trigger point</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">disabled</code></td>
+                  <td><span class="type-pill">boolean</span></td>
+                  <td><code class="default-val">false</code></td>
+                  <td>Disable animations</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

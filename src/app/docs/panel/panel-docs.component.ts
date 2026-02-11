@@ -64,6 +64,10 @@ export class PanelDocsComponent {
 </ui-panel>`,
   };
 
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
+
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;
   }

@@ -1,0 +1,254 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📑</span>
+        <h1>Tabs</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Tabs
+              </li>
+              <li [class.active]="activeExample === 'vertical'" (click)="setExample('vertical')">
+                Vertical Layout
+              </li>
+              <li [class.active]="activeExample === 'pills'" (click)="setExample('pills')">
+                Pills Style
+              </li>
+              <li [class.active]="activeExample === 'bordered'" (click)="setExample('bordered')">
+                Bordered
+              </li>
+              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
+                Colored
+              </li>
+              <li [class.active]="activeExample === 'icons'" (click)="setExample('icons')">
+                With Icons
+              </li>
+              <li [class.active]="activeExample === 'closable'" (click)="setExample('closable')">
+                Closable Tabs
+              </li>
+              <li
+                [class.active]="activeExample === 'scrollable'"
+                (click)="setExample('scrollable')"
+              >
+                Scrollable
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <!-- Basic Example -->
+                <app-tab-stack *ngSwitchCase="'basic'">
+                  <app-tab-panel label="Home" icon="🏠">
+                    <div style="padding: 20px">
+                      <h4>Home View</h4>
+                      <p>Welcome to the main dashboard. This is the basic tab configuration.</p>
+                    </div>
+                  </app-tab-panel>
+                  <app-tab-panel label="Profile" icon="👤">
+                    <div style="padding: 20px">
+                      <h4>User Profile</h4>
+                      <p>Manage your account settings and personal information here.</p>
+                    </div>
+                  </app-tab-panel>
+                  <app-tab-panel label="Settings" icon="⚙️">
+                    <div style="padding: 20px">
+                      <h4>System Settings</h4>
+                      <p>Configure preferences and application-wide parameters.</p>
+                    </div>
+                  </app-tab-panel>
+                </app-tab-stack>
+
+                <!-- Vertical Example -->
+                <app-tab-stack *ngSwitchCase="'vertical'" orientation="vertical">
+                  <app-tab-panel label="General">
+                    <div style="padding: 20px">
+                      <h4>General</h4>
+                      <p>General application settings.</p>
+                    </div>
+                  </app-tab-panel>
+                  <app-tab-panel label="Security">
+                    <div style="padding: 20px">
+                      <h4>Security</h4>
+                      <p>Privacy and authentication controls.</p>
+                    </div>
+                  </app-tab-panel>
+                  <app-tab-panel label="Notifications">
+                    <div style="padding: 20px">
+                      <h4>Notifications</h4>
+                      <p>Alert and mailing preferences.</p>
+                    </div>
+                  </app-tab-panel>
+                </app-tab-stack>
+
+                <!-- Pills Example -->
+                <app-tab-stack *ngSwitchCase="'pills'" variant="pills">
+                  <app-tab-panel label="All Projects"
+                    ><div style="padding: 20px">Showing all active projects.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Ongoing"
+                    ><div style="padding: 20px">Current tasks in progress.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Completed"
+                    ><div style="padding: 20px">Archive of finished work.</div></app-tab-panel
+                  >
+                </app-tab-stack>
+
+                <!-- Bordered Example -->
+                <app-tab-stack *ngSwitchCase="'bordered'" variant="bordered">
+                  <app-tab-panel label="Basic Info"
+                    ><div style="padding: 20px">Primary metadata details.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Extended Info"
+                    ><div style="padding: 20px">Additional auxiliary data.</div></app-tab-panel
+                  >
+                </app-tab-stack>
+
+                <!-- Colored Example -->
+                <app-tab-stack *ngSwitchCase="'colored'" color="primary">
+                  <app-tab-panel label="Status A"
+                    ><div style="padding: 20px">Content for status A.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Status B"
+                    ><div style="padding: 20px">Content for status B.</div></app-tab-panel
+                  >
+                </app-tab-stack>
+
+                <!-- Icons Example -->
+                <app-tab-stack *ngSwitchCase="'icons'">
+                  <app-tab-panel label="Gallery" icon="🖼️"
+                    ><div style="padding: 20px">Asset collection.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Movies" icon="🎥"
+                    ><div style="padding: 20px">Media vault.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Notes" icon="📄"
+                    ><div style="padding: 20px">Document stack.</div></app-tab-panel
+                  >
+                </app-tab-stack>
+
+                <!-- Closable Example -->
+                <app-tab-stack *ngSwitchCase="'closable'" [closable]="true">
+                  <app-tab-panel label="Dynamic 1"
+                    ><div style="padding: 20px">You can close this tab.</div></app-tab-panel
+                  >
+                  <app-tab-panel label="Dynamic 2"
+                    ><div style="padding: 20px">Try the close button.</div></app-tab-panel
+                  >
+                </app-tab-stack>
+
+                <!-- Scrollable Example -->
+                <app-tab-stack *ngSwitchCase="'scrollable'" [scrollable]="true">
+                  <app-tab-panel label="Tab 1"><p style="padding: 20px">Panel 1</p></app-tab-panel>
+                  <app-tab-panel label="Tab 2"><p style="padding: 20px">Panel 2</p></app-tab-panel>
+                  <app-tab-panel label="Tab 3"><p style="padding: 20px">Panel 3</p></app-tab-panel>
+                  <app-tab-panel label="Tab 4"><p style="padding: 20px">Panel 4</p></app-tab-panel>
+                  <app-tab-panel label="Tab 5"><p style="padding: 20px">Panel 5</p></app-tab-panel>
+                  <app-tab-panel label="Tab 6"><p style="padding: 20px">Panel 6</p></app-tab-panel>
+                  <app-tab-panel label="Tab 7"><p style="padding: 20px">Panel 7</p></app-tab-panel>
+                  <app-tab-panel label="Tab 8"><p style="padding: 20px">Panel 8</p></app-tab-panel>
+                </app-tab-stack>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="tabsConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of tabsConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures tab behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

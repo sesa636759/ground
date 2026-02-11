@@ -2,11 +2,23 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { categoryNavItems } from '../../data/navigation.data';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  faCode,
+  faLayerGroup,
+  faGaugeHigh,
+  faBookOpen,
+  faMobileScreenButton,
+  faCheckDouble,
+  faRocket,
+  faTerminal,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
+
   template: `
     <div class="home-container">
       <!-- Hero Section with Animated Background -->
@@ -216,6 +228,49 @@ import { categoryNavItems } from '../../data/navigation.data';
         </div>
       </section>
 
+      <!-- FontAwesome Icons Showcase -->
+      <section class="icons-section">
+        <div class="section-header">
+          <h2>Premium Icon Support</h2>
+          <p>Integrated with FontAwesome for beautiful, scalable vector icons</p>
+        </div>
+
+        <div class="icons-grid">
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faCode" size="2x"></fa-icon>
+            <span>faCode</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faLayerGroup" size="2x"></fa-icon>
+            <span>faLayerGroup</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faGaugeHigh" size="2x"></fa-icon>
+            <span>faGaugeHigh</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faBookOpen" size="2x"></fa-icon>
+            <span>faBookOpen</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faMobileScreenButton" size="2x"></fa-icon>
+            <span>faMobileScreenButton</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faCheckDouble" size="2x"></fa-icon>
+            <span>faCheckDouble</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faRocket" size="2x"></fa-icon>
+            <span>faRocket</span>
+          </div>
+          <div class="icon-demo-card">
+            <fa-icon [icon]="faTerminal" size="2x"></fa-icon>
+            <span>faTerminal</span>
+          </div>
+        </div>
+      </section>
+
       <!-- Categories Showcase -->
       <section class="categories-section">
         <div class="section-header">
@@ -270,6 +325,55 @@ import { categoryNavItems } from '../../data/navigation.data';
         overflow-y: auto;
       }
 
+      /* Icons Section */
+      .icons-section {
+        padding: 80px 60px;
+        background: var(--surface-2);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .icons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .icon-demo-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 24px;
+        background: var(--surface-1);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        transition: all 0.3s;
+        color: var(--text-secondary);
+      }
+
+      .icon-demo-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary);
+        color: var(--primary);
+        box-shadow: var(--shadow-md);
+      }
+
+      .icon-demo-card fa-icon {
+        transition: transform 0.3s;
+      }
+
+      .icon-demo-card:hover fa-icon {
+        transform: scale(1.1);
+      }
+
+      .icon-demo-card span {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
       /* Hero Section */
       .hero-section {
         position: relative;
@@ -298,7 +402,7 @@ import { categoryNavItems } from '../../data/navigation.data';
       .orb-1 {
         width: 500px;
         height: 500px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+        background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
         top: -250px;
         left: -100px;
         animation-delay: 0s;
@@ -307,7 +411,7 @@ import { categoryNavItems } from '../../data/navigation.data';
       .orb-2 {
         width: 400px;
         height: 400px;
-        background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
         bottom: -200px;
         right: -100px;
         animation-delay: 7s;
@@ -316,7 +420,7 @@ import { categoryNavItems } from '../../data/navigation.data';
       .orb-3 {
         width: 300px;
         height: 300px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+        background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
         top: 50%;
         right: 20%;
         animation-delay: 14s;
@@ -347,8 +451,8 @@ import { categoryNavItems } from '../../data/navigation.data';
         align-items: center;
         gap: 8px;
         padding: 8px 20px;
-        background: var(--primary-bg);
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
         border-radius: 100px;
         margin-bottom: 32px;
         animation: slideDown 0.6s ease-out;
@@ -357,13 +461,13 @@ import { categoryNavItems } from '../../data/navigation.data';
       .status-dot {
         width: 8px;
         height: 8px;
-        background: var(--primary-color);
+        background: var(--primary);
         border-radius: 50%;
         animation: pulse 2s infinite;
       }
 
       .badge-text {
-        color: var(--primary-color);
+        color: var(--primary);
         font-size: 0.875rem;
         font-weight: 600;
         letter-spacing: 0.02em;
@@ -380,7 +484,7 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .gradient-text {
-        background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #8b5cf6 100%);
+        background: var(--gradient-premium);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -422,25 +526,25 @@ import { categoryNavItems } from '../../data/navigation.data';
       .btn-secondary {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 16px 32px;
+        gap: 14px;
+        padding: 16px 36px;
         font-size: 1rem;
         font-weight: 600;
-        border-radius: 12px;
+        border-radius: 16px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all var(--transition-base);
         border: none;
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: var(--gradient-premium);
         color: white;
-        box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.5);
+        box-shadow: 0 10px 40px -10px var(--primary-glow);
       }
 
       .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 50px -10px rgba(99, 102, 241, 0.6);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 50px -10px var(--primary-glow);
       }
 
       .btn-primary svg {
@@ -452,14 +556,16 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .btn-secondary {
-        background: var(--surface-2);
+        background: var(--surface-1);
         color: var(--text-primary);
         border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
       }
 
       .btn-secondary:hover {
-        background: var(--surface-1);
-        transform: translateY(-2px);
+        background: var(--bg-secondary);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
       }
 
       .hero-stats {
@@ -467,10 +573,11 @@ import { categoryNavItems } from '../../data/navigation.data';
         align-items: center;
         justify-content: center;
         gap: 32px;
-        padding: 32px;
-        background: var(--surface-2);
+        padding: 32px 48px;
+        background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
+        border-radius: 24px;
+        box-shadow: var(--shadow-lg);
         animation: slideUp 0.8s ease-out 0.8s both;
       }
 
@@ -479,21 +586,23 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .stat-value {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: 800;
-        color: var(--text-primary);
+        color: var(--primary);
         margin-bottom: 4px;
       }
 
       .stat-label {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        font-weight: 500;
+        font-size: 0.85rem;
+        color: var(--text-tertiary);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
 
       .stat-divider {
         width: 1px;
-        height: 40px;
+        height: 48px;
         background: var(--border-color);
       }
 
@@ -501,6 +610,7 @@ import { categoryNavItems } from '../../data/navigation.data';
       .features-section,
       .categories-section {
         padding: 100px 60px;
+        background: var(--bg-primary);
       }
 
       .section-header {
@@ -509,37 +619,40 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .section-header h2 {
-        font-size: 2.5rem;
+        font-size: 2.75rem;
         font-weight: 800;
         color: var(--text-primary);
         margin-bottom: 16px;
       }
 
       .section-header p {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
       }
 
       .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 32px;
-        max-width: 1200px;
+        max-width: 1300px;
         margin: 0 auto;
       }
 
       .feature-card {
-        padding: 32px;
-        background: var(--surface-2);
+        padding: 40px;
+        background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 24px;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow-sm);
       }
 
       .feature-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 60px -15px rgba(99, 102, 241, 0.3);
-        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: var(--shadow-premium);
+        border-color: var(--primary);
       }
 
       .feature-icon {
@@ -548,14 +661,15 @@ import { categoryNavItems } from '../../data/navigation.data';
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--primary-bg);
-        border-radius: 16px;
+        background: var(--bg-secondary);
+        border-radius: 18px;
         margin-bottom: 24px;
-        color: var(--primary-color);
+        color: var(--primary);
+        border: 1px solid var(--border-color);
       }
 
       .feature-card h3 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 12px;
@@ -564,81 +678,81 @@ import { categoryNavItems } from '../../data/navigation.data';
       .feature-card p {
         color: var(--text-secondary);
         line-height: 1.6;
+        font-size: 1.05rem;
       }
 
       /* Categories Section */
       .categories-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 24px;
-        max-width: 1200px;
+        max-width: 1300px;
         margin: 0 auto;
       }
 
       .category-card {
-        padding: 28px;
-        background: var(--surface-2);
+        padding: 32px;
+        background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
+        border-radius: 24px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all var(--transition-base);
         position: relative;
         overflow: hidden;
+        box-shadow: var(--shadow-sm);
       }
 
       .category-card::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(236, 72, 153, 0.1) 100%
-        );
+        background: var(--gradient-premium);
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity 0.4s;
       }
 
       .category-card:hover::before {
-        opacity: 1;
+        opacity: 0.05;
       }
 
       .category-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 12px 40px -10px rgba(99, 102, 241, 0.3);
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-lg);
       }
 
       .category-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         position: relative;
       }
 
       .category-icon {
-        width: 48px;
-        height: 48px;
+        width: 56px;
+        height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--primary-bg);
-        border-radius: 12px;
-        color: var(--primary-color);
+        background: var(--bg-secondary);
+        border-radius: 14px;
+        color: var(--primary);
+        border: 1px solid var(--border-color);
       }
 
       .component-count {
-        padding: 4px 12px;
-        background: var(--primary-bg);
-        color: var(--primary-color);
+        padding: 6px 14px;
+        background: var(--bg-secondary);
+        color: var(--primary);
         border-radius: 100px;
-        font-size: 0.875rem;
-        font-weight: 600;
+        font-size: 0.85rem;
+        font-weight: 700;
+        border: 1px solid var(--border-color);
       }
 
       .category-card h3 {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 8px;
@@ -647,9 +761,9 @@ import { categoryNavItems } from '../../data/navigation.data';
 
       .category-card p {
         color: var(--text-secondary);
-        font-size: 0.9375rem;
+        font-size: 0.95rem;
         line-height: 1.5;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         position: relative;
       }
 
@@ -658,26 +772,26 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .explore-link {
-        color: var(--primary-color);
-        font-weight: 600;
-        font-size: 0.9375rem;
-        transition: transform 0.3s;
-        display: inline-block;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .category-card:hover .explore-link {
-        transform: translateX(4px);
+        transform: translateX(8px);
       }
 
       /* CTA Section */
       .cta-section {
-        padding: 100px 60px;
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
-        );
+        padding: 120px 60px;
+        background: var(--bg-secondary);
         border-top: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
       }
 
       .cta-content {
@@ -792,6 +906,15 @@ import { categoryNavItems } from '../../data/navigation.data';
   ],
 })
 export class HomeComponent {
+  faCheckDouble = faCheckDouble;
+  faRocket = faRocket;
+  faTerminal = faTerminal;
+  faCode = faCode;
+  faLayerGroup = faLayerGroup;
+  faGaugeHigh = faGaugeHigh;
+  faBookOpen = faBookOpen;
+  faMobileScreenButton = faMobileScreenButton;
+
   categories = categoryNavItems;
 
   constructor(private router: Router) {}

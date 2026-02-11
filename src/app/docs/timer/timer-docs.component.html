@@ -1,0 +1,361 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Timer</h1>
+      <p class="description">
+        Display elapsed time or countdowns with multiple modes and customization options.
+      </p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <ui-button
+      [label]="'Examples Demos'"
+      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('examples')"
+    ></ui-button>
+    <ui-button
+      [label]="'Interactive Playground'"
+      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('playground')"
+    ></ui-button>
+    <ui-button
+      [label]="'API Documentation'"
+      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
+      size="md"
+      (click)="setTab('documentation')"
+    ></ui-button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="examples-main">
+        <!-- Basic Usage -->
+        <section class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Basic Usage</h3>
+            </div>
+            <p class="showcase-desc">Simple countdown timer with default formatting.</p>
+            <div class="showcase-preview timer-preview">
+              <ui-timer duration="300" format="default" autoStart="true"></ui-timer>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'basic'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('basic'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['basic'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'basic'" class="code-section">
+              <app-code-viewer [code]="exampleCodes['basic']" title="Basic Usage"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stopwatch -->
+        <section class="feature-showcase" style="margin-top: 24px">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Stopwatch</h3>
+            </div>
+            <p class="showcase-desc">Count-up timer with millisecond precision.</p>
+            <div class="showcase-preview timer-preview">
+              <ui-timer mode="stopwatch" precision="milliseconds" autoStart="true"></ui-timer>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'stopwatch'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('stopwatch'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['stopwatch'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'stopwatch'" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['stopwatch']"
+                title="Stopwatch Mode"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Themes -->
+        <section class="feature-showcase" style="margin-top: 24px">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Themes</h3>
+            </div>
+            <p class="showcase-desc">Customizable color themes for different contexts.</p>
+            <div class="showcase-preview timer-themes-preview">
+              <ui-timer
+                duration="3600"
+                [theme]="{ primary: '#10b981', track: '#d1fae5' }"
+                autoStart="true"
+              ></ui-timer>
+              <ui-timer
+                duration="3600"
+                [theme]="{ primary: '#f59e0b', track: '#fef3c7' }"
+                autoStart="true"
+              ></ui-timer>
+              <ui-timer
+                duration="3600"
+                [theme]="{ primary: '#ef4444', track: '#fee2e2' }"
+                autoStart="true"
+              ></ui-timer>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'themes'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('themes'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['themes'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'themes'" class="code-section">
+              <app-code-viewer [code]="exampleCodes['themes']" title="Theming"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Progress & Precision -->
+        <section class="feature-showcase" style="margin-top: 24px">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Progress & Precision</h3>
+            </div>
+            <p class="showcase-desc">Linear progress visualization and high precision display.</p>
+            <div class="showcase-preview timer-progress-preview">
+              <div class="timer-demo-section">
+                <p class="timer-demo-label">Linear Progress</p>
+                <ui-timer
+                  duration="60"
+                  progressType="linear"
+                  variant="full"
+                  autoStart="true"
+                ></ui-timer>
+              </div>
+              <div class="timer-demo-section">
+                <p class="timer-demo-label">Millisecond Precision</p>
+                <ui-timer duration="60" precision="milliseconds" autoStart="true"></ui-timer>
+              </div>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'progress'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('progress'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['progress'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'progress'" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['progress']"
+                title="Progress Type"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="feature-showcase" style="margin-top: 24px">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Steps & Stages</h3>
+            </div>
+            <p class="showcase-desc">Define multiple intervals or stages for interval training.</p>
+            <div class="showcase-preview timer-preview">
+              <ui-timer [steps]="timerSteps" autoStart="true" variant="full"></ui-timer>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'steps'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('steps'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['steps'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'steps'" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['steps']"
+                title="Multi-Step Timer"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Controls -->
+        <section class="feature-showcase" style="margin-top: 24px">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Interactive Controls</h3>
+            </div>
+            <p class="showcase-desc">
+              Control the timer programmatically with start, pause, and reset.
+            </p>
+            <div class="showcase-preview timer-controls-preview">
+              <ui-timer id="control-timer-demo" duration="60"></ui-timer>
+              <div class="timer-controls">
+                <ui-button
+                  label="Start"
+                  variant="primary"
+                  (click)="startTimer('control-timer-demo')"
+                ></ui-button>
+                <ui-button
+                  label="Pause"
+                  variant="outline"
+                  (click)="pauseTimer('control-timer-demo')"
+                ></ui-button>
+                <ui-button
+                  label="Reset"
+                  variant="outline"
+                  (click)="resetTimer('control-timer-demo')"
+                ></ui-button>
+              </div>
+            </div>
+            <div class="showcase-footer">
+              <div class="action-buttons">
+                <ui-button
+                  [label]="
+                    isCodeVisible && activeExample === 'controls'
+                      ? 'Hide Source Code'
+                      : 'Show Source Code'
+                  "
+                  variant="secondary"
+                  size="md"
+                  (click)="setExample('controls'); toggleCode()"
+                  icon="code"
+                ></ui-button>
+                <ui-button
+                  label="Copy Snippet"
+                  variant="primary"
+                  size="md"
+                  (click)="copyCode(exampleCodes['controls'])"
+                  icon="copy"
+                ></ui-button>
+              </div>
+            </div>
+            <div *ngIf="isCodeVisible && activeExample === 'controls'" class="code-section">
+              <app-code-viewer
+                [code]="exampleCodes['controls']"
+                title="Controlled Timer"
+              ></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'playground'" class="playground-tab">
+      <app-playground-editor [config]="componentConfig"></app-playground-editor>
+    </div>
+
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Properties API</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prop of componentConfig.props">
+                <td>
+                  <code>{{ prop.name }}</code>
+                </td>
+                <td>
+                  <span class="type-badge">{{ prop.type }}</span>
+                </td>
+                <td>
+                  <code>{{ prop.defaultValue }}</code>
+                </td>
+                <td>{{ prop.description || 'Property specification.' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

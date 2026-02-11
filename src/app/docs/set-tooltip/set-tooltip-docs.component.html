@@ -1,0 +1,247 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">💬</span>
+        <h1>Tooltip</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic
+              </li>
+              <li [class.active]="activeExample === 'positions'" (click)="setExample('positions')">
+                Positions
+              </li>
+              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
+                Colored
+              </li>
+              <li
+                [class.active]="activeExample === 'interactive'"
+                (click)="setExample('interactive')"
+              >
+                Interactive
+              </li>
+              <li [class.active]="activeExample === 'delay'" (click)="setExample('delay')">
+                With Delay
+              </li>
+              <li [class.active]="activeExample === 'arrow'" (click)="setExample('arrow')">
+                With Arrow
+              </li>
+              <li [class.active]="activeExample === 'rich'" (click)="setExample('rich')">
+                Rich Content
+              </li>
+              <li [class.active]="activeExample === 'disabled'" (click)="setExample('disabled')">
+                On Disabled
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <div *ngSwitchCase="'basic'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn">Hover me</button>
+                    <div class="tooltip">This is a helpful tooltip</div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'positions'" style="padding: 4rem">
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(2, 1fr);
+                      gap: 3rem;
+                      max-width: 600px;
+                      margin: 0 auto;
+                    "
+                  >
+                    <div class="tooltip-container">
+                      <button class="demo-btn">Top</button>
+                      <div class="tooltip tooltip-top">Top tooltip</div>
+                    </div>
+                    <div class="tooltip-container">
+                      <button class="demo-btn">Right</button>
+                      <div class="tooltip tooltip-right">Right tooltip</div>
+                    </div>
+                    <div class="tooltip-container">
+                      <button class="demo-btn">Bottom</button>
+                      <div class="tooltip tooltip-bottom">Bottom tooltip</div>
+                    </div>
+                    <div class="tooltip-container">
+                      <button class="demo-btn">Left</button>
+                      <div class="tooltip tooltip-left">Left tooltip</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngSwitchCase="'colored'"
+                  style="
+                    padding: 4rem;
+                    display: flex;
+                    gap: 2rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div class="tooltip-container">
+                    <button class="demo-btn success">Success</button>
+                    <div class="tooltip tooltip-success">Success message</div>
+                  </div>
+                  <div class="tooltip-container">
+                    <button class="demo-btn warning">Warning</button>
+                    <div class="tooltip tooltip-warning">Warning message</div>
+                  </div>
+                  <div class="tooltip-container">
+                    <button class="demo-btn danger">Danger</button>
+                    <div class="tooltip tooltip-danger">Error message</div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'interactive'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn">Click me</button>
+                    <div class="tooltip tooltip-interactive">
+                      Interactive tooltip - click outside to close
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'delay'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn">Hover (500ms delay)</button>
+                    <div class="tooltip">Delayed appearance</div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'arrow'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn">With Arrow</button>
+                    <div class="tooltip tooltip-arrow">
+                      Tooltip with arrow
+                      <div class="tooltip-arrow-element"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'rich'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn">Rich Content</button>
+                    <div class="tooltip tooltip-rich">
+                      <strong>Bold</strong> and <em>italic</em> text<br />
+                      <span style="color: #60a5fa">Colored text</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'disabled'" style="padding: 4rem; text-align: center">
+                  <div class="tooltip-container">
+                    <button class="demo-btn" disabled style="opacity: 0.5; cursor: not-allowed">
+                      Disabled Button
+                    </button>
+                    <div class="tooltip">This button is disabled</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="tooltipConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of tooltipConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures tooltip behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

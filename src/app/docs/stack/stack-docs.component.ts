@@ -59,6 +59,10 @@ export class StackDocsComponent {
 </ui-stack>`,
   };
 
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
+
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;
   }

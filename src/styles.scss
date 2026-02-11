@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import './_theme-tokens.scss';
+@import './docs-premium.scss';
 
 /* Reset and Base Styles */
 * {
@@ -8,9 +10,13 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Material Icons Support */

@@ -54,6 +54,10 @@ export class ButtonDocsComponent {
 <ui-button label="No Ripple" [noRipple]="true" variant="outline"></ui-button>`,
   };
 
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
+
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;
   }

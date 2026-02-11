@@ -182,13 +182,11 @@ import { categoryNavItems } from '../../data/navigation.data';
 
       /* Header */
       .overview-header {
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
-        );
+        background: var(--gradient-premium);
         border-bottom: 1px solid var(--border-color);
-        padding: 48px 60px;
+        padding: 64px 60px 100px;
+        position: relative;
+        overflow: hidden;
       }
 
       .header-content {
@@ -201,26 +199,28 @@ import { categoryNavItems } from '../../data/navigation.data';
         align-items: center;
         gap: 8px;
         padding: 8px 16px;
-        background: var(--primary-bg);
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 100px;
-        color: var(--primary-color);
-        font-size: 0.875rem;
-        font-weight: 600;
+        color: white;
+        font-size: 0.85rem;
+        font-weight: 700;
         margin-bottom: 24px;
+        backdrop-filter: blur(10px);
       }
 
       .overview-header h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-weight: 900;
-        color: var(--text-primary);
+        color: white;
         margin-bottom: 12px;
         letter-spacing: -0.02em;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .overview-header > p {
-        font-size: 1.125rem;
-        color: var(--text-secondary);
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
         margin-bottom: 32px;
       }
 
@@ -232,21 +232,23 @@ import { categoryNavItems } from '../../data/navigation.data';
 
       .search-box {
         flex: 1;
-        max-width: 500px;
+        max-width: 600px;
         position: relative;
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 14px 20px;
-        background: var(--surface-2);
+        padding: 16px 24px;
+        background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 12px;
-        transition: all 0.3s;
+        border-radius: 16px;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow-md);
       }
 
       .search-box:focus-within {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px var(--primary-bg);
+        transform: translateY(-2px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-lg);
       }
 
       .search-box svg {
@@ -270,49 +272,52 @@ import { categoryNavItems } from '../../data/navigation.data';
       .view-toggle {
         display: flex;
         gap: 4px;
-        padding: 4px;
-        background: var(--surface-2);
-        border: 1px solid var(--border-color);
-        border-radius: 10px;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 14px;
+        backdrop-filter: blur(10px);
       }
 
       .view-toggle button {
-        padding: 10px;
+        width: 44px;
+        height: 44px;
         background: transparent;
         border: none;
-        border-radius: 8px;
-        color: var(--text-secondary);
+        border-radius: 10px;
+        color: white;
         cursor: pointer;
         transition: all 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 0.7;
       }
 
       .view-toggle button:hover {
-        background: var(--surface-1);
-        color: var(--text-primary);
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.1);
       }
 
       .view-toggle button.active {
-        background: var(--primary-bg);
-        color: var(--primary-color);
+        background: white;
+        color: var(--primary);
+        opacity: 1;
+        box-shadow: var(--shadow-sm);
       }
 
       /* Content */
       .overview-content {
         flex: 1;
         overflow-y: auto;
-        padding: 60px;
+        padding: 0 60px 80px;
+        margin-top: -40px;
+        position: relative;
+        z-index: 10;
       }
 
       .category-section {
         max-width: 1400px;
         margin: 0 auto 80px;
-      }
-
-      .category-section:last-child {
-        margin-bottom: 0;
       }
 
       .category-header {
@@ -322,22 +327,24 @@ import { categoryNavItems } from '../../data/navigation.data';
       .category-title {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 20px;
       }
 
       .category-icon {
-        width: 56px;
-        height: 56px;
+        width: 64px;
+        height: 64px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--primary-bg);
-        border-radius: 14px;
-        color: var(--primary-color);
+        background: var(--surface-1);
+        border-radius: 18px;
+        color: var(--primary);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
       }
 
       .category-title h2 {
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: 800;
         color: var(--text-primary);
         margin-bottom: 4px;
@@ -360,37 +367,21 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .component-card {
-        padding: 24px;
-        background: var(--surface-2);
+        padding: 32px;
+        background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
+        border-radius: 24px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all var(--transition-base);
         position: relative;
         overflow: hidden;
-      }
-
-      .component-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.05) 0%,
-          rgba(236, 72, 153, 0.05) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .component-card:hover::before {
-        opacity: 1;
+        box-shadow: var(--shadow-sm);
       }
 
       .component-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 12px 40px -10px rgba(99, 102, 241, 0.3);
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-premium);
       }
 
       .list-view .component-card {
@@ -419,12 +410,13 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .badge {
-        padding: 4px 10px;
-        background: rgba(236, 72, 153, 0.15);
-        color: #f472b6;
-        border-radius: 6px;
+        padding: 6px 12px;
+        background: var(--bg-secondary);
+        color: var(--primary);
+        border-radius: 100px;
         font-size: 0.75rem;
-        font-weight: 600;
+        font-weight: 700;
+        border: 1px solid var(--border-color);
       }
 
       .card-description {
@@ -449,27 +441,29 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .view-demo {
-        color: var(--primary-color);
-        font-weight: 600;
-        font-size: 0.9375rem;
-        transition: transform 0.3s;
-        display: inline-block;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .component-card:hover .view-demo {
-        transform: translateX(4px);
+        transform: translateX(8px);
       }
 
       /* No Results */
       .no-results {
         text-align: center;
-        padding: 80px 20px;
-        color: var(--text-secondary);
+        padding: 120px 20px;
+        color: var(--text-tertiary);
       }
 
       .no-results svg {
         margin-bottom: 24px;
-        opacity: 0.3;
+        opacity: 0.2;
       }
 
       .no-results h3 {

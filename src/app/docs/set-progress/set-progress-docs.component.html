@@ -1,0 +1,196 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">⏳</span>
+        <h1>Progress</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'linear'" (click)="setExample('linear')">
+                Linear Progress
+              </li>
+              <li [class.active]="activeExample === 'circular'" (click)="setExample('circular')">
+                Circular Progress
+              </li>
+              <li [class.active]="activeExample === 'colored'" (click)="setExample('colored')">
+                Colored
+              </li>
+              <li [class.active]="activeExample === 'labeled'" (click)="setExample('labeled')">
+                With Label
+              </li>
+              <li [class.active]="activeExample === 'striped'" (click)="setExample('striped')">
+                Striped & Animated
+              </li>
+              <li [class.active]="activeExample === 'gradient'" (click)="setExample('gradient')">
+                Gradient
+              </li>
+              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
+                Multiple Segments
+              </li>
+              <li
+                [class.active]="activeExample === 'indeterminate'"
+                (click)="setExample('indeterminate')"
+              >
+                Indeterminate
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <div style="width: 100%; max-width: 500px; margin: 0 auto; padding: 2rem">
+                  <app-progress
+                    *ngSwitchCase="'linear'"
+                    value="65"
+                    max="100"
+                    variant="linear"
+                  ></app-progress>
+                  <app-progress
+                    *ngSwitchCase="'circular'"
+                    value="75"
+                    max="100"
+                    variant="circular"
+                    size="120"
+                  ></app-progress>
+                  <app-progress
+                    *ngSwitchCase="'colored'"
+                    value="80"
+                    max="100"
+                    color="success"
+                    variant="linear"
+                  ></app-progress>
+                  <app-progress
+                    *ngSwitchCase="'labeled'"
+                    value="45"
+                    max="100"
+                    showLabel="true"
+                    label="Uploading..."
+                  ></app-progress>
+                  <app-progress
+                    *ngSwitchCase="'striped'"
+                    value="60"
+                    max="100"
+                    striped="true"
+                    animated="true"
+                  ></app-progress>
+                  <app-progress
+                    *ngSwitchCase="'gradient'"
+                    value="70"
+                    max="100"
+                    gradient="true"
+                    color="primary"
+                  ></app-progress>
+                  <app-progress *ngSwitchCase="'multiple'" max="100">
+                    <app-progress-segment value="30" color="success"></app-progress-segment>
+                    <app-progress-segment value="25" color="warning"></app-progress-segment>
+                    <app-progress-segment value="20" color="danger"></app-progress-segment>
+                  </app-progress>
+                  <app-progress
+                    *ngSwitchCase="'indeterminate'"
+                    indeterminate="true"
+                    color="info"
+                  ></app-progress>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="progressConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of progressConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures progress behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

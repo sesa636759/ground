@@ -1,0 +1,244 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📐</span>
+        <h1>Resizable Panel</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Panel
+              </li>
+              <li
+                [class.active]="activeExample === 'horizontal'"
+                (click)="setExample('horizontal')"
+              >
+                Horizontal
+              </li>
+              <li
+                [class.active]="activeExample === 'with_handle'"
+                (click)="setExample('with_handle')"
+              >
+                With Handle
+              </li>
+              <li [class.active]="activeExample === 'min_max'" (click)="setExample('min_max')">
+                Min/Max Size
+              </li>
+              <li
+                [class.active]="activeExample === 'collapsible'"
+                (click)="setExample('collapsible')"
+              >
+                Collapsible
+              </li>
+              <li [class.active]="activeExample === 'nested'" (click)="setExample('nested')">
+                Nested Panels
+              </li>
+              <li [class.active]="activeExample === 'styled'" (click)="setExample('styled')">
+                Styled
+              </li>
+              <li
+                [class.active]="activeExample === 'persistent'"
+                (click)="setExample('persistent')"
+              >
+                Persistent Size
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <app-resizable-container
+                  *ngSwitchCase="'basic'"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Default Vertical Resize</h3>
+                    <p>Try dragging the bottom edge of this panel.</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'horizontal'"
+                  direction="horizontal"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 300px"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Horizontal Resize</h3>
+                    <p>Try dragging the right edge.</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'with_handle'"
+                  [show-handle]="true"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Visible Handle</h3>
+                    <p>The resize handle is explicitly shown here.</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'min_max'"
+                  min-width="200"
+                  max-width="600"
+                  direction="horizontal"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 300px"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Constraints</h3>
+                    <p>Min: 200px, Max: 600px</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'collapsible'"
+                  [collapsible]="true"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Collapsible</h3>
+                    <p>Can be fully collapsed using the toggle.</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'nested'"
+                  style="height: 400px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 10px; height: 100%">
+                    <app-resizable-container
+                      direction="horizontal"
+                      style="
+                        height: 100%;
+                        width: 200px;
+                        border-right: 1px dashed var(--border-color);
+                      "
+                    >
+                      <div panel-content style="padding: 20px">Nested Left</div>
+                    </app-resizable-container>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'styled'"
+                  theme="dark"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Styled Theme</h3>
+                    <p>Dark theme variant applied.</p>
+                  </div>
+                </app-resizable-container>
+
+                <app-resizable-container
+                  *ngSwitchCase="'persistent'"
+                  [persist-size]="true"
+                  style="height: 200px; border: 1px solid var(--border-color); width: 100%"
+                >
+                  <div panel-content style="padding: 20px">
+                    <h3>Persistent Size</h3>
+                    <p>Your size adjustments will be remembered.</p>
+                  </div>
+                </app-resizable-container>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="panelConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of panelConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

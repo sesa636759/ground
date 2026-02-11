@@ -1,0 +1,236 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">🎠</span>
+        <h1>Carousel</h1>
+      </div>
+      <p class="premium-subtitle">
+        A high-performance, responsive carousel component for immersive content delivery.
+      </p>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Carousel
+              </li>
+              <li [class.active]="activeExample === 'fade'" (click)="setExample('fade')">
+                Fade Transition
+              </li>
+              <li [class.active]="activeExample === 'autoplay'" (click)="setExample('autoplay')">
+                Autoplay Mode
+              </li>
+              <li [class.active]="activeExample === 'multiple'" (click)="setExample('multiple')">
+                Multiple Items
+              </li>
+              <li [class.active]="activeExample === 'center'" (click)="setExample('center')">
+                Center Mode
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <!-- Basic Example -->
+                <div *ngSwitchCase="'basic'" class="carousel-wrapper">
+                  <app-carousel [arrows]="true" [indicators]="true" [height]="'400px'">
+                    <div class="slide bg-gradient-premium">
+                      <h3>Exquisite Design</h3>
+                      <p>Crafted with precision for premium user experiences.</p>
+                    </div>
+                    <div class="slide bg-gradient-success">
+                      <h3>Seamless Motion</h3>
+                      <p>Silky smooth transitions that delight every user.</p>
+                    </div>
+                  </app-carousel>
+                </div>
+
+                <!-- Fade Example -->
+                <div *ngSwitchCase="'fade'" class="carousel-wrapper">
+                  <app-carousel
+                    [arrows]="true"
+                    [indicators]="true"
+                    [effect]="'fade'"
+                    [height]="'400px'"
+                  >
+                    <div class="slide full-slide">
+                      <img
+                        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80"
+                        alt="Nature"
+                      />
+                      <div class="slide-caption">
+                        <h3>Horizon Peak</h3>
+                        <p>Where the sky meets the earth in perfect harmony.</p>
+                      </div>
+                    </div>
+                    <div class="slide full-slide">
+                      <img
+                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+                        alt="Forest"
+                      />
+                      <div class="slide-caption">
+                        <h3>Emerald Canopy</h3>
+                        <p>Breathe in the ancient wisdom of the wild forest.</p>
+                      </div>
+                    </div>
+                  </app-carousel>
+                </div>
+
+                <!-- Autoplay Example -->
+                <div *ngSwitchCase="'autoplay'" class="carousel-wrapper">
+                  <app-carousel
+                    [arrows]="true"
+                    [indicators]="true"
+                    [autoplay]="true"
+                    [autoplayInterval]="3000"
+                    [infinite]="true"
+                    [height]="'400px'"
+                  >
+                    <div class="slide bg-dark">
+                      <h3>Continuous Flow</h3>
+                      <p>Effortlessly showcase your best work on a loop.</p>
+                    </div>
+                    <div class="slide bg-primary">
+                      <h3>Automated Clarity</h3>
+                      <p>Focus on what matters while the content guides you.</p>
+                    </div>
+                  </app-carousel>
+                </div>
+
+                <!-- Multiple Example -->
+                <div *ngSwitchCase="'multiple'" class="carousel-wrapper">
+                  <app-carousel
+                    [arrows]="true"
+                    [indicators]="true"
+                    [slidesToShow]="3"
+                    [slidesToScroll]="1"
+                    [infinite]="true"
+                    [height]="'300px'"
+                  >
+                    <div class="slide-item" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+                      <div class="item-card">
+                        <div class="item-id">{{ i }}</div>
+                        <h4>Asset #{{ i }}</h4>
+                      </div>
+                    </div>
+                  </app-carousel>
+                </div>
+
+                <!-- Center Mode Example -->
+                <div *ngSwitchCase="'center'" class="carousel-wrapper">
+                  <app-carousel
+                    [arrows]="true"
+                    [indicators]="false"
+                    [centerMode]="true"
+                    [slidesToShow]="3"
+                    [height]="'300px'"
+                  >
+                    <div class="slide-item" *ngFor="let i of [1, 2, 3, 4, 5]">
+                      <div class="item-card featured">
+                        <div class="item-id">#{{ i }}</div>
+                        <h4>Feature {{ i }}</h4>
+                      </div>
+                    </div>
+                  </app-carousel>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Fine-tune every transition and navigation parameter in real-time.</p>
+          </header>
+          <app-playground-editor [config]="carouselConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of carouselConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures carousel behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

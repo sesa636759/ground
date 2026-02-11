@@ -1,116 +1,47 @@
 <div class="docs-page">
   <header class="page-header">
     <div class="header-content">
-      <div class="header-actions">
-        <a routerLink="/docs" class="back-link">← Components</a>
-      </div>
       <h1>App Library</h1>
-      <p class="description">Comprehensive component directory and gallery.</p>
+      <p class="description">
+        The central hub for exploring, searching, and discovering all UI components in the design
+        system.
+      </p>
     </div>
   </header>
 
-  <nav class="docs-tabs">
-    <ui-button
-      [label]="'Examples Demos'"
-      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('examples')"
-    ></ui-button>
-    <ui-button
-      [label]="'Interactive Playground'"
-      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('playground')"
-    ></ui-button>
-    <ui-button
-      [label]="'API Documentation'"
-      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('documentation')"
-    ></ui-button>
-  </nav>
+  <section class="gallery-section">
+    <h2 class="section-title">Live Preview</h2>
+    <div class="library-container-preview">
+      <app-library mode="demo"></app-library>
+    </div>
+  </section>
 
-  <div class="tab-content" [ngClass]="activeTab">
-    <div *ngIf="activeTab === 'examples'" class="examples-container">
-      <div class="examples-main">
-        <section class="feature-showcase">
-          <div class="showcase-card">
-            <div class="showcase-header">
-              <h3>Component Gallery</h3>
-            </div>
-            <p class="showcase-desc">Visual listing of available components.</p>
+  <section class="gallery-section">
+    <h2 class="section-title">Playground</h2>
+    <app-playground-editor [config]="config"></app-playground-editor>
+  </section>
 
-            <div class="showcase-preview" style="height: 400px; padding: 0">
-              <app-library
-                mode="demo"
-                style="height: 100%; display: block; overflow: auto"
-              ></app-library>
-            </div>
-
-            <div class="showcase-footer">
-              <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Source Code' : 'Show Source Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
-                ></ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes['basic'])"
-                  icon="copy"
-                ></ui-button>
-              </div>
-            </div>
-
-            <div *ngIf="isCodeVisible" class="code-section">
-              <app-code-viewer
-                [code]="exampleCodes['basic']"
-                title="App Library Usage"
-              ></app-code-viewer>
-            </div>
-          </div>
-        </section>
+  <section class="gallery-section">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Search & Filter</h3>
+        <p>Instant search across all components by name, category, or description.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏷️</div>
+        <h3>Category Organization</h3>
+        <p>
+          Components are logically grouped into Foundation, Navigation, Inputs, Data Display, and
+          Feedback.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Documentation Links</h3>
+        <p>Direct access to documentation for every component in the library.</p>
       </div>
     </div>
-
-    <div *ngIf="activeTab === 'playground'" class="playground-tab">
-      <app-playground-editor [config]="componentConfig"></app-playground-editor>
-    </div>
-
-    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
-      <div class="doc-section">
-        <h3>Properties API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let prop of componentConfig.props">
-                <td>
-                  <code>{{ prop.name }}</code>
-                </td>
-                <td>
-                  <span class="type-badge">{{ prop.type }}</span>
-                </td>
-                <td>
-                  <code>{{ prop.defaultValue }}</code>
-                </td>
-                <td>{{ prop.description || 'Property specification.' }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </div>

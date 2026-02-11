@@ -1,14 +1,15 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+import { CodeViewerComponent } from '../../shared/code-viewer.component';
 import { PlaygroundEditorComponent } from '../../pages/playground/editor/playground-editor.component';
 import { COMPONENT_CONFIGS } from '../../pages/playground/component-configs';
-import { CodeViewerComponent } from '../../shared/code-viewer.component';
 
 @Component({
   selector: 'app-splitter-docs',
   standalone: true,
-  imports: [CommonModule, RouterModule, PlaygroundEditorComponent, CodeViewerComponent],
+  imports: [CommonModule, RouterModule, CodeViewerComponent, PlaygroundEditorComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './splitter-docs.component.html',
   styleUrls: ['./splitter-docs.component.scss'],
@@ -64,6 +65,10 @@ export class SplitterDocsComponent {
   </div>
 </ui-splitter>`,
   };
+
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
 
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;

@@ -1,0 +1,235 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📭</span>
+        <h1>Empty State</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <!-- Dashboard Style Examples -->
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic
+              </li>
+              <li [class.active]="activeExample === 'withAction'" (click)="setExample('withAction')">
+                With Action
+              </li>
+              <li [class.active]="activeExample === 'search'" (click)="setExample('search')">
+                Search Empty
+              </li>
+              <li [class.active]="activeExample === 'error'" (click)="setExample('error')">
+                Error State
+              </li>
+              <li [class.active]="activeExample === 'illustration'" (click)="setExample('illustration')">
+                With Illustration
+              </li>
+              <li [class.active]="activeExample === 'compact'" (click)="setExample('compact')">
+                Compact
+              </li>
+              <li [class.active]="activeExample === 'multiAction'" (click)="setExample('multiAction')">
+                Multiple Actions
+              </li>
+              <li [class.active]="activeExample === 'loading'" (click)="setExample('loading')">
+                Loading State
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <div *ngSwitchCase="'basic'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem;">📭</div>
+                  <h3 style="margin-bottom: 0.5rem;">No messages yet</h3>
+                  <p style="color: #666;">Start a conversation to see your messages here</p>
+                </div>
+                
+                <div *ngSwitchCase="'withAction'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem;">📁</div>
+                  <h3 style="margin-bottom: 0.5rem;">No files found</h3>
+                  <p style="color: #666; margin-bottom: 1.5rem;">Upload your first file to get started</p>
+                  <button style="padding: 0.75rem 1.5rem; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer;">Upload File</button>
+                </div>
+
+                <div *ngSwitchCase="'search'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+                  <h3 style="margin-bottom: 0.5rem;">No results found</h3>
+                  <p style="color: #666; margin-bottom: 1.5rem;">Try adjusting your search to find what you're looking for</p>
+                  <button style="padding: 0.75rem 1.5rem; background: transparent; color: #0066ff; border: 1px solid #0066ff; border-radius: 6px; cursor: pointer;">Clear Search</button>
+                </div>
+
+                <div *ngSwitchCase="'error'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem;">⚠️</div>
+                  <h3 style="margin-bottom: 0.5rem; color: #dc2626;">Something went wrong</h3>
+                  <p style="color: #666; margin-bottom: 1.5rem;">We couldn't load your data. Please try again.</p>
+                  <button style="padding: 0.75rem 1.5rem; background: #dc2626; color: white; border: none; border-radius: 6px; cursor: pointer;">Retry</button>
+                </div>
+
+                <div *ngSwitchCase="'illustration'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 6rem; margin-bottom: 1rem;">📮</div>
+                  <h2 style="margin-bottom: 0.75rem;">Your inbox is empty</h2>
+                  <p style="color: #666; font-size: 1.125rem;">All caught up! Check back later for new messages.</p>
+                </div>
+
+                <div *ngSwitchCase="'compact'" style="text-align: center; padding: 1.5rem;">
+                  <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
+                  <h4 style="margin-bottom: 0.25rem;">No notes</h4>
+                  <p style="color: #666; font-size: 0.875rem; margin-bottom: 1rem;">Create your first note</p>
+                  <button style="padding: 0.5rem 1rem; background: #0066ff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.875rem;">New Note</button>
+                </div>
+
+                <div *ngSwitchCase="'multiAction'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem;">👥</div>
+                  <h3 style="margin-bottom: 0.5rem;">No team members yet</h3>
+                  <p style="color: #666; margin-bottom: 1.5rem;">Invite people to collaborate on your project</p>
+                  <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <button style="padding: 0.75rem 1.5rem; background: #0066ff; color: white; border: none; border-radius: 6px; cursor: pointer;">Invite Members</button>
+                    <button style="padding: 0.75rem 1.5rem; background: transparent; color: #0066ff; border: 1px solid #0066ff; border-radius: 6px; cursor: pointer;">Learn More</button>
+                  </div>
+                </div>
+
+                <div *ngSwitchCase="'loading'" style="text-align: center; padding: 3rem;">
+                  <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">⏳</div>
+                  <h3 style="margin-bottom: 0.5rem;">Loading your content</h3>
+                  <p style="color: #666;">This won't take long...</p>
+                  <div style="margin-top: 1.5rem; width: 200px; height: 4px; background: #e5e7eb; border-radius: 2px; overflow: hidden; margin-left: auto; margin-right: auto;">
+                    <div style="width: 60%; height: 100%; background: #0066ff; animation: loading 1.5s ease-in-out infinite;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="emptyStateConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="prop-name">icon</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">-</code></td>
+                  <td>Icon or emoji to display</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">title</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">-</code></td>
+                  <td>Main heading text</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">description</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">-</code></td>
+                  <td>Supporting description text</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">actionLabel</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">-</code></td>
+                  <td>Label for action button</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">variant</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'default'</code></td>
+                  <td>Visual variant (default, error, success)</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">size</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">'medium'</code></td>
+                  <td>Size variant (compact, medium, large)</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">loading</code></td>
+                  <td><span class="type-pill">boolean</span></td>
+                  <td><code class="default-val">false</code></td>
+                  <td>Show loading state</td>
+                </tr>
+                <tr>
+                  <td><code class="prop-name">illustration</code></td>
+                  <td><span class="type-pill">string</span></td>
+                  <td><code class="default-val">-</code></td>
+                  <td>Path to custom illustration</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

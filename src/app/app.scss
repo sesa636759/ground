@@ -1,173 +1,88 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
+@import '../_theme-tokens.scss';
 
 .app-container {
   display: flex;
+  flex-direction: row; /* Explicitly set row layout */
+  flex-wrap: nowrap; /* Prevent content from wrapping below sidebar */
   height: 100vh;
   overflow: hidden;
-  transition: all 0.3s ease;
   background: var(--bg-primary);
 
-  // Sidebar - Expanded: 15%, Collapsed: 5%
-  .sidebar {
-    width: 15%;
-    min-width: 15%;
-    background: var(--bg-secondary);
+  // Expanded Sidebar
+  .sidebar-nav {
+    display: block; /* Ensure custom element respects flex */
+    flex: 0 0 280px;
+    height: 100%;
+    background: var(--surface-1);
     border-right: 1px solid var(--border-color);
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-
-    .sidebar-header {
-      padding: 24px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-
-      h2 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .toggle-btn {
-        background: var(--primary-bg);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        color: var(--primary-color);
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s;
-        flex-shrink: 0;
-
-        &:hover {
-          background: rgba(99, 102, 241, 0.2);
-          transform: scale(1.1);
-        }
-      }
-    }
-
-    .sidebar-nav {
-      flex: 1;
-      padding: 16px 0;
-
-      ul {
-        list-style: none;
-
-        li {
-          padding: 12px 24px;
-          cursor: pointer;
-          color: var(--text-secondary);
-          font-weight: 500;
-          transition: all 0.2s;
-          display: flex;
-          align-items: center;
-
-          .nav-label {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          &:hover {
-            background: var(--surface-2);
-            color: var(--text-primary);
-          }
-
-          &.active {
-            background: var(--primary-bg);
-            color: var(--primary-color);
-            border-left: 3px solid var(--primary-color);
-          }
-        }
-      }
-    }
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+    transition: all var(--transition-base);
   }
 
-  // Main Content - Expanded: 85%, Collapsed: 95%
   .main-content {
-    width: 85%;
     flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: all 0.3s ease;
     background: var(--bg-primary);
 
     .content-header {
-      padding: 20px 40px;
-      background: var(--surface-2);
-      border-bottom: 1px solid var(--border-color);
+      @extend .glass;
+      height: 72px;
+      padding: 0 40px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
 
       .toggle-btn-header {
-        background: var(--primary-bg);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        color: var(--primary-color);
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
         cursor: pointer;
-        font-size: 1.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.2s;
+        transition: all var(--transition-fast);
 
         &:hover {
-          background: rgba(99, 102, 241, 0.2);
+          background: var(--bg-tertiary);
           transform: scale(1.05);
         }
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--text-primary);
         flex: 1;
       }
 
       .theme-toggle-btn {
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--primary);
+        color: white;
+        border: none;
         cursor: pointer;
-        font-size: 1.3rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.2s;
+        font-size: 1.25rem;
+        transition: all var(--transition-base);
+        box-shadow: var(--shadow-md);
 
         &:hover {
-          background: var(--primary-bg);
-          border-color: var(--primary-color);
-          transform: scale(1.1) rotate(15deg);
+          transform: translateY(-2px) rotate(15deg);
+          box-shadow: var(--shadow-lg);
         }
       }
     }
@@ -175,141 +90,42 @@ body {
     .content-body {
       flex: 1;
       overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+      padding: 0;
+      scroll-behavior: smooth;
 
-      router-outlet {
-        display: none; // Router outlet doesn't render itself
-      }
-
-      // Routed components will be siblings of router-outlet
       > * {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+      //min-height: 100%;
+        display: block;
       }
     }
   }
 
-  // Collapsed State: Sidebar 5%, Content 95%
+  // Collapsed Sidebar Logic
   &.sidebar-collapsed {
-    .sidebar {
-      width: 5%;
-      min-width: 5%;
-
-      .sidebar-header {
-        h2 {
-          display: none;
-        }
-      }
-
-      .sidebar-nav {
-        ul li {
-          padding: 12px 8px;
-          justify-content: center;
-
-          .nav-label {
-            display: none;
-          }
-
-          // Show first letter only
-          &::before {
-            content: attr(data-label);
-            font-weight: 700;
-            font-size: 1.1rem;
-          }
-        }
-      }
-    }
-
-    .main-content {
-      width: 95%;
+    .sidebar-nav {
+      flex: 0 0 80px;
     }
   }
 }
 
-// Scrollbar styling
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
+// Global Reusable Classes for Demos
+.card-premium {
   background: var(--surface-1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--surface-2);
-  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
 
   &:hover {
-    background: var(--border-color);
+    box-shadow: var(--shadow-premium);
+    transform: translateY(-4px);
   }
 }
 
-// Simple Sidebar Styles
-.simple-sidebar {
-  width: 250px;
-  min-width: 250px;
-  background: var(--bg-secondary);
-  border-right: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-
-  .sidebar-header {
-    padding: 24px;
-    border-bottom: 1px solid var(--border-color);
-
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-  }
-
-  .sidebar-menu {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .nav-section {
-    margin-top: 24px;
-
-    .section-title {
-      padding: 8px 12px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-  }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: transparent;
-    border: none;
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-size: 0.9375rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    width: 100%;
-
-    &:hover {
-      background: var(--surface-1);
-    }
-
-    &.active {
-      background: var(--primary-color);
-      color: white;
-      font-weight: 600;
-    }
-  }
+.text-gradient {
+  background: var(--gradient-premium);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

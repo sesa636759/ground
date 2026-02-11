@@ -178,6 +178,10 @@ export class AccordionDocsComponent {
     { id: 'a2', title: 'Lazy 2', content: 'Rendered only when opened.', icon: '⚡' },
   ]);
 
+  getActiveExampleLabel() {
+    return this.activeExample.replace(/_/g, ' ');
+  }
+
   setTab(tab: 'examples' | 'playground' | 'documentation') {
     this.activeTab = tab;
   }

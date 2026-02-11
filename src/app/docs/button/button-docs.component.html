@@ -1,365 +1,219 @@
-<div class="docs-page">
-  <header class="page-header">
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
     <div class="header-content">
-      <div class="header-actions">
-        <a routerLink="/docs" class="back-link">← Components</a>
+      <div class="title-section">
+        <span class="component-icon">🔘</span>
+        <h1>Button</h1>
       </div>
-      <h1>Button</h1>
-      <p class="description">
-        A comprehensive button component with support for variants, sizes, icons, badges, and
-        professional states.
-      </p>
     </div>
   </header>
 
-  <nav class="docs-tabs">
-    <ui-button
-      [label]="'Examples'"
-      [variant]="activeTab === 'examples' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('examples')"
-    >
-    </ui-button>
-    <ui-button
-      [label]="'Playground'"
-      [variant]="activeTab === 'playground' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('playground')"
-    >
-    </ui-button>
-    <ui-button
-      [label]="'Documentation'"
-      [variant]="activeTab === 'documentation' ? 'primary' : 'outline'"
-      size="md"
-      (click)="setTab('documentation')"
-    >
-    </ui-button>
-  </nav>
-
-  <div class="tab-content" [ngClass]="activeTab">
-    <!-- Examples Tab -->
-    <div *ngIf="activeTab === 'examples'" class="examples-container">
-      <div class="pill-navigation">
-        <ui-pill
-          label="Variants"
-          color="primary"
-          [selected]="activeExample === 'variants'"
-          [clickable]="true"
-          (pillClick)="setExample('variants')"
-        ></ui-pill>
-        <ui-pill
-          label="Sizes"
-          color="info"
-          [selected]="activeExample === 'sizes'"
-          [clickable]="true"
-          (pillClick)="setExample('sizes')"
-        ></ui-pill>
-        <ui-pill
-          label="Shapes"
-          color="success"
-          [selected]="activeExample === 'shapes'"
-          [clickable]="true"
-          (pillClick)="setExample('shapes')"
-        ></ui-pill>
-        <ui-pill
-          label="Icons"
-          icon="🎨"
-          color="warning"
-          [selected]="activeExample === 'icons'"
-          [clickable]="true"
-          (pillClick)="setExample('icons')"
-        ></ui-pill>
-        <ui-pill
-          label="Icon Only"
-          icon="✨"
-          color="secondary"
-          [selected]="activeExample === 'iconOnly'"
-          [clickable]="true"
-          (pillClick)="setExample('iconOnly')"
-        ></ui-pill>
-        <ui-pill
-          label="Loading"
-          icon="⏳"
-          color="danger"
-          [selected]="activeExample === 'loading'"
-          [clickable]="true"
-          (pillClick)="setExample('loading')"
-        ></ui-pill>
-        <ui-pill
-          label="Badges"
-          icon="🏷️"
-          color="info"
-          [selected]="activeExample === 'badges'"
-          [clickable]="true"
-          (pillClick)="setExample('badges')"
-        ></ui-pill>
-        <ui-pill
-          label="Advanced"
-          icon="⚙️"
-          color="primary"
-          [selected]="activeExample === 'advanced'"
-          [clickable]="true"
-          (pillClick)="setExample('advanced')"
-        ></ui-pill>
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
       </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
 
-      <div class="examples-main">
-        <section class="feature-showcase">
-          <div class="showcase-card">
-            <div class="showcase-header">
-              <span class="showcase-icon" [ngSwitch]="activeExample">
-                <span *ngSwitchCase="'variants'">🎭</span>
-                <span *ngSwitchCase="'sizes'">📐</span>
-                <span *ngSwitchCase="'shapes'">⬛</span>
-                <span *ngSwitchCase="'icons'">🎨</span>
-                <span *ngSwitchCase="'iconOnly'">✨</span>
-                <span *ngSwitchCase="'loading'">⏳</span>
-                <span *ngSwitchCase="'badges'">🏷️</span>
-                <span *ngSwitchCase="'advanced'">⚙️</span>
-              </span>
-              <h3>{{ activeExample | titlecase }} Showcase</h3>
-            </div>
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <!-- Examples Tab -->
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'variants'" (click)="setExample('variants')">
+                Semantic Variants
+              </li>
+              <li [class.active]="activeExample === 'sizes'" (click)="setExample('sizes')">
+                Sizing Options
+              </li>
+              <li [class.active]="activeExample === 'shapes'" (click)="setExample('shapes')">
+                Form Shapes
+              </li>
+              <li [class.active]="activeExample === 'icons'" (click)="setExample('icons')">
+                Icon Layouts
+              </li>
+              <li [class.active]="activeExample === 'loading'" (click)="setExample('loading')">
+                Loading States
+              </li>
+              <li [class.active]="activeExample === 'badges'" (click)="setExample('badges')">
+                Badge Overlays
+              </li>
+            </ul>
+          </aside>
 
-            <p class="showcase-desc" [ngSwitch]="activeExample">
-              <span *ngSwitchCase="'variants'"
-                >Comprehensive semantic variants for different contextual actions.</span
-              >
-              <span *ngSwitchCase="'sizes'"
-                >Available in 5 sizes from Extra Small (xs) to Extra Large (xl).</span
-              >
-              <span *ngSwitchCase="'shapes'">Support for default, rounded, and pill shapes.</span>
-              <span *ngSwitchCase="'icons'"
-                >Flexible icon positioning: Left, Right, Top, and Bottom.</span
-              >
-              <span *ngSwitchCase="'iconOnly'"
-                >Actionable icon-only buttons with proper circular/rounded styles.</span
-              >
-              <span *ngSwitchCase="'loading'"
-                >Professional loading states with 4 distinct spinner positions.</span
-              >
-              <span *ngSwitchCase="'badges'"
-                >Integrated badge overlays for notifications and counts.</span
-              >
-              <span *ngSwitchCase="'advanced'"
-                >Advanced features like elevation shadows and full-width layouts.</span
-              >
-            </p>
-
-            <div class="showcase-preview" [ngSwitch]="activeExample">
-              <div *ngSwitchCase="'variants'" class="button-gallery horizontal">
-                <ui-button label="Primary" variant="primary"></ui-button>
-                <ui-button label="Secondary" variant="secondary"></ui-button>
-                <ui-button label="Success" variant="success"></ui-button>
-                <ui-button label="Danger" variant="danger"></ui-button>
-                <ui-button label="Outline" variant="outline"></ui-button>
-                <ui-button label="Ghost" variant="ghost"></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'sizes'" class="button-gallery horizontal items-center">
-                <ui-button label="Extra Small" size="xs" variant="primary"></ui-button>
-                <ui-button label="Small" size="sm" variant="primary"></ui-button>
-                <ui-button label="Medium" size="md" variant="primary"></ui-button>
-                <ui-button label="Large" size="lg" variant="primary"></ui-button>
-                <ui-button label="Extra Large" size="xl" variant="primary"></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'shapes'" class="button-gallery horizontal">
-                <ui-button label="Default" variant="secondary"></ui-button>
-                <ui-button label="Rounded" [rounded]="true" variant="secondary"></ui-button>
-                <ui-button label="Pill" [pill]="true" variant="secondary"></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'icons'" class="button-gallery horizontal">
-                <ui-button
-                  label="Left Icon"
-                  icon="⬅️"
-                  icon-position="left"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  label="Right Icon"
-                  icon="➡️"
-                  icon-position="right"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  label="Top Icon"
-                  icon="⬆️"
-                  icon-position="top"
-                  variant="outline"
-                ></ui-button>
-                <ui-button
-                  label="Bottom Icon"
-                  icon="⬇️"
-                  icon-position="bottom"
-                  variant="outline"
-                ></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'iconOnly'" class="button-gallery horizontal">
-                <ui-button icon="✏️" [iconOnly]="true" variant="ghost"></ui-button>
-                <ui-button
-                  icon="🗑️"
-                  [iconOnly]="true"
-                  variant="danger"
-                  [rounded]="true"
-                ></ui-button>
-                <ui-button icon="💾" [iconOnly]="true" variant="primary" [pill]="true"></ui-button>
-                <ui-button
-                  icon="🔍"
-                  [iconOnly]="true"
-                  variant="secondary"
-                  size="lg"
-                  [rounded]="true"
-                ></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'loading'" class="button-gallery horizontal">
-                <ui-button
-                  label="Loading Left"
-                  [loading]="true"
-                  loading-position="left"
-                  variant="primary"
-                ></ui-button>
-                <ui-button
-                  label="Loading Right"
-                  [loading]="true"
-                  loading-position="right"
-                  variant="success"
-                ></ui-button>
-                <ui-button
-                  label="Loading Top"
-                  [loading]="true"
-                  loading-position="top"
-                  variant="info"
-                ></ui-button>
-                <ui-button
-                  label="Loading Bottom"
-                  [loading]="true"
-                  loading-position="bottom"
-                  variant="warning"
-                ></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'badges'" class="button-gallery horizontal">
-                <ui-button label="Inbox" icon="📥" badge="3" variant="primary"></ui-button>
-                <ui-button
-                  icon="🔔"
-                  [iconOnly]="true"
-                  badge="9+"
-                  variant="secondary"
-                  [rounded]="true"
-                ></ui-button>
-                <ui-button label="Updates" badge="New" variant="success" size="sm"></ui-button>
-              </div>
-
-              <div *ngSwitchCase="'advanced'" class="button-gallery vertical w-full max-w-sm">
-                <ui-button label="Elevated Primary" elevation="3" variant="primary"></ui-button>
-                <ui-button
-                  label="Full Width Button"
-                  [fullWidth]="true"
-                  variant="secondary"
-                ></ui-button>
-                <ui-button
-                  label="No Ripple Interaction"
-                  [noRipple]="true"
-                  variant="outline"
-                ></ui-button>
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
               </div>
             </div>
 
-            <div class="showcase-footer">
-              <div class="action-buttons">
-                <ui-button
-                  [label]="isCodeVisible ? 'Hide Code' : 'Show Code'"
-                  variant="secondary"
-                  size="md"
-                  (click)="toggleCode()"
-                  icon="code"
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <!-- Content from original template gallery -->
+                <div
+                  *ngSwitchCase="'variants'"
+                  class="button-gallery horizontal"
+                  style="display: flex; gap: 12px; flex-wrap: wrap"
                 >
-                </ui-button>
-                <ui-button
-                  label="Copy Snippet"
-                  variant="primary"
-                  size="md"
-                  (click)="copyCode(exampleCodes[activeExample])"
-                  icon="copy"
+                  <ui-button label="Primary" variant="primary"></ui-button>
+                  <ui-button label="Secondary" variant="secondary"></ui-button>
+                  <ui-button label="Success" variant="success"></ui-button>
+                  <ui-button label="Danger" variant="danger"></ui-button>
+                  <ui-button label="Outline" variant="outline"></ui-button>
+                  <ui-button label="Ghost" variant="ghost"></ui-button>
+                </div>
+
+                <div
+                  *ngSwitchCase="'sizes'"
+                  class="button-gallery horizontal items-center"
+                  style="display: flex; gap: 12px; align-items: center"
                 >
-                </ui-button>
+                  <ui-button label="XS" size="xs" variant="primary"></ui-button>
+                  <ui-button label="Small" size="sm" variant="primary"></ui-button>
+                  <ui-button label="Medium" size="md" variant="primary"></ui-button>
+                  <ui-button label="Large" size="lg" variant="primary"></ui-button>
+                  <ui-button label="XL" size="xl" variant="primary"></ui-button>
+                </div>
+
+                <div
+                  *ngSwitchCase="'shapes'"
+                  class="button-gallery horizontal"
+                  style="display: flex; gap: 12px"
+                >
+                  <ui-button label="Default" variant="secondary"></ui-button>
+                  <ui-button label="Rounded" [rounded]="true" variant="secondary"></ui-button>
+                  <ui-button label="Pill" [pill]="true" variant="secondary"></ui-button>
+                </div>
+
+                <div
+                  *ngSwitchCase="'icons'"
+                  class="button-gallery horizontal"
+                  style="display: flex; gap: 12px; flex-wrap: wrap"
+                >
+                  <ui-button
+                    label="Search"
+                    icon="🔍"
+                    icon-position="left"
+                    variant="outline"
+                  ></ui-button>
+                  <ui-button
+                    label="Send"
+                    icon="🚀"
+                    icon-position="right"
+                    variant="primary"
+                  ></ui-button>
+                  <ui-button
+                    icon="⚙️"
+                    [iconOnly]="true"
+                    variant="ghost"
+                    [rounded]="true"
+                  ></ui-button>
+                </div>
+
+                <div
+                  *ngSwitchCase="'loading'"
+                  class="button-gallery horizontal"
+                  style="display: flex; gap: 12px"
+                >
+                  <ui-button label="Processing" [loading]="true" variant="primary"></ui-button>
+                  <ui-button
+                    label="Saving"
+                    [loading]="true"
+                    loading-position="right"
+                    variant="success"
+                  ></ui-button>
+                </div>
+
+                <div
+                  *ngSwitchCase="'badges'"
+                  class="button-gallery horizontal"
+                  style="display: flex; gap: 12px"
+                >
+                  <ui-button label="Inbox" icon="📥" badge="3" variant="primary"></ui-button>
+                  <ui-button
+                    icon="🔔"
+                    [iconOnly]="true"
+                    badge="9+"
+                    variant="secondary"
+                    [rounded]="true"
+                  ></ui-button>
+                </div>
               </div>
             </div>
 
-            <div *ngIf="isCodeVisible" class="code-section">
+            <div *ngIf="isCodeVisible" class="viewport-code">
               <app-code-viewer
                 [code]="exampleCodes[activeExample]"
-                [title]="(activeExample | titlecase) + ' Source'"
+                title="Implementation"
               ></app-code-viewer>
             </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Playground Tab -->
-    <div *ngIf="activeTab === 'playground'" class="playground-tab">
-      <div class="playground-intro">
-        <h3>Button Creator</h3>
-        <p>Experiment with variants, sizes, icons, and states in real-time.</p>
-      </div>
-      <app-playground-editor [config]="buttonConfig"></app-playground-editor>
-    </div>
-
-    <!-- Documentation Tab -->
-    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
-      <div class="doc-section">
-        <h3>Properties API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Property</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let prop of buttonConfig.props">
-                <td>
-                  <code>{{ prop.name }}</code>
-                </td>
-                <td>
-                  <span class="type-badge">{{ prop.type }}</span>
-                </td>
-                <td>
-                  <code>{{ prop.defaultValue }}</code>
-                </td>
-                <td>{{ prop.description || 'Button property.' }}</td>
-              </tr>
-            </tbody>
-          </table>
+          </main>
         </div>
       </div>
 
-      <div class="doc-section" *ngIf="buttonConfig.events?.length">
-        <h3>Events API</h3>
-        <div class="table-container">
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let event of buttonConfig.events">
-                <td>
-                  <code>{{ event.name }}</code>
-                </td>
-                <td>{{ event.description }}</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Playground Tab -->
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <h3>Button Creator</h3>
+          <p>Experiment with variants, sizes, icons, and states in real-time.</p>
+          <app-playground-editor [config]="buttonConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <!-- API Tab -->
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of buttonConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Property specification.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

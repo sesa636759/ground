@@ -1,0 +1,243 @@
+<div class="docs-premium-page">
+  <header class="premium-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="title-section">
+        <span class="component-icon">📑</span>
+        <h1>Sidebar</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="premium-container">
+    <nav class="premium-tabs">
+      <div class="tab-item" [class.active]="activeTab === 'examples'" (click)="setTab('examples')">
+        <i class="fas fa-vial"></i> Demos
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'playground'"
+        (click)="setTab('playground')"
+      >
+        <i class="fas fa-gamepad"></i> Playground
+      </div>
+      <div
+        class="tab-item"
+        [class.active]="activeTab === 'documentation'"
+        (click)="setTab('documentation')"
+      >
+        <i class="fas fa-book"></i> API
+      </div>
+    </nav>
+
+    <div class="tab-content-area" [ngClass]="activeTab">
+      <div *ngIf="activeTab === 'examples'" class="premium-examples">
+        <div class="demo-dashboard">
+          <aside class="demo-sidebar">
+            <h3>Variations</h3>
+            <ul class="demo-nav">
+              <li [class.active]="activeExample === 'basic'" (click)="setExample('basic')">
+                Basic Sidebar
+              </li>
+              <li
+                [class.active]="activeExample === 'right_side'"
+                (click)="setExample('right_side')"
+              >
+                Right Side
+              </li>
+              <li
+                [class.active]="activeExample === 'collapsible'"
+                (click)="setExample('collapsible')"
+              >
+                Collapsible
+              </li>
+              <li
+                [class.active]="activeExample === 'with_header'"
+                (click)="setExample('with_header')"
+              >
+                With Header
+              </li>
+              <li [class.active]="activeExample === 'overlay'" (click)="setExample('overlay')">
+                Overlay
+              </li>
+              <li
+                [class.active]="activeExample === 'responsive'"
+                (click)="setExample('responsive')"
+              >
+                Responsive
+              </li>
+              <li [class.active]="activeExample === 'fixed'" (click)="setExample('fixed')">
+                Fixed
+              </li>
+              <li [class.active]="activeExample === 'themed'" (click)="setExample('themed')">
+                Themed
+              </li>
+            </ul>
+          </aside>
+
+          <main class="demo-viewport">
+            <div class="viewport-header">
+              <h3>{{ getActiveExampleLabel() | titlecase }} Showcase</h3>
+              <div class="viewport-actions">
+                <button class="action-btn" (click)="toggleCode()">
+                  <i class="fas" [ngClass]="isCodeVisible ? 'fa-eye-slash' : 'fa-code'"></i>
+                </button>
+                <button class="action-btn primary" (click)="copyCode(exampleCodes[activeExample])">
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="viewport-canvas">
+              <div class="canvas-item" [ngSwitch]="activeExample">
+                <div
+                  style="
+                    height: 400px;
+                    display: flex;
+                    border: 1px solid var(--border-color);
+                    overflow: hidden;
+                    position: relative;
+                  "
+                >
+                  <app-aside-panel *ngSwitchCase="'basic'" style="height: 100%">
+                    <nav sidebar-content>
+                      <a
+                        href="javascript:void(0)"
+                        style="
+                          display: block;
+                          padding: 12px 20px;
+                          color: var(--text-primary);
+                          text-decoration: none;
+                          border-bottom: 1px solid var(--border-color);
+                        "
+                        >Menu Item 1</a
+                      >
+                      <a
+                        href="javascript:void(0)"
+                        style="
+                          display: block;
+                          padding: 12px 20px;
+                          color: var(--text-primary);
+                          text-decoration: none;
+                          border-bottom: 1px solid var(--border-color);
+                        "
+                        >Menu Item 2</a
+                      >
+                    </nav>
+                  </app-aside-panel>
+
+                  <app-aside-panel
+                    *ngSwitchCase="'right_side'"
+                    position="right"
+                    style="height: 100%; order: 2"
+                  >
+                    <nav sidebar-content>
+                      <a
+                        href="javascript:void(0)"
+                        style="
+                          display: block;
+                          padding: 12px 20px;
+                          color: var(--text-primary);
+                          text-decoration: none;
+                        "
+                        >Right Side Menu</a
+                      >
+                    </nav>
+                  </app-aside-panel>
+
+                  <app-aside-panel
+                    *ngSwitchCase="'collapsible'"
+                    [collapsible]="true"
+                    style="height: 100%"
+                  >
+                    <nav sidebar-content>
+                      <a
+                        href="javascript:void(0)"
+                        style="
+                          display: block;
+                          padding: 12px 20px;
+                          color: var(--text-primary);
+                          text-decoration: none;
+                        "
+                        >Click to Collapse</a
+                      >
+                    </nav>
+                  </app-aside-panel>
+
+                  <app-aside-panel *ngSwitchCase="'themed'" theme="dark" style="height: 100%">
+                    <nav sidebar-content>
+                      <a
+                        href="javascript:void(0)"
+                        style="
+                          display: block;
+                          padding: 12px 20px;
+                          color: white;
+                          text-decoration: none;
+                        "
+                        >Dark Theme Content</a
+                      >
+                    </nav>
+                  </app-aside-panel>
+
+                  <div style="flex: 1; padding: 40px; background: var(--bg-primary)">
+                    <h2>Content Viewport</h2>
+                    <p>The sidebar interacts with the layout according to its properties.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="viewport-code">
+              <app-code-viewer
+                [code]="exampleCodes[activeExample]"
+                title="Implementation"
+              ></app-code-viewer>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'playground'" class="premium-playground">
+        <div class="playground-card">
+          <header class="card-header">
+            <h3>Interactive Playground</h3>
+            <p>Customize every property and see the code update instantly.</p>
+          </header>
+          <app-playground-editor [config]="sidebarConfig"></app-playground-editor>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'documentation'" class="premium-api">
+        <div class="api-card">
+          <h3>Properties API</h3>
+          <div class="api-table-wrapper">
+            <table class="premium-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of sidebarConfig.props">
+                  <td>
+                    <code class="prop-name">{{ prop.name }}</code>
+                  </td>
+                  <td>
+                    <span class="type-pill">{{ prop.type }}</span>
+                  </td>
+                  <td>
+                    <code class="default-val">{{ prop.defaultValue }}</code>
+                  </td>
+                  <td>{{ prop.description || 'Configures component behavior.' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
