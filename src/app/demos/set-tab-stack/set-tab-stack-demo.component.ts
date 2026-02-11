@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabStackPlaygroundComponent } from './components/tab-stack-playground/tab-stack-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-tab-stack-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TabStackPlaygroundComponent],
+  imports: [CommonModule, FormsModule, TabStackPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tab-stack-demo.component.html',
   styleUrl: './set-tab-stack-demo.component.scss',
@@ -18,6 +19,11 @@ export class SetTabStackDemoComponent implements OnInit {
     { id: 'tab3', label: 'Settings', icon: 'fas fa-cog', content: 'Settings content' },
     { id: 'tab4', label: 'Profile', icon: 'fas fa-user', content: 'Profile content' },
   ];
+
+  playgroundCode = `<app-tab-stack
+  [tabs]="tabs"
+  [closable]="true"
+></app-tab-stack>`;
 
   ngOnInit() {}
 }

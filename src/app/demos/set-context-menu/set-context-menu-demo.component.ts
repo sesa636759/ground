@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-context-menu-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ContextMenuPlaygroundComponent],
+  imports: [CommonModule, FormsModule, ContextMenuPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-context-menu-demo.component.html',
   styleUrl: './set-context-menu-demo.component.scss',
@@ -49,6 +50,11 @@ export class SetContextMenuDemoComponent implements OnInit {
       ],
     },
   ];
+
+  playgroundCode = `<app-context-menu
+  [items]="menuItems"
+  (itemClick)="onMenuClick($event)"
+></app-context-menu>`;
 
   ngOnInit() {}
 }

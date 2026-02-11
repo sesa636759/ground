@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-timeline-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TimelinePlaygroundComponent],
+  imports: [CommonModule, FormsModule, TimelinePlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',
@@ -58,6 +59,11 @@ export class SetTimelineDemoComponent implements OnInit {
     icon: 'fas fa-circle-small',
     dotColor: i % 2 === 0 ? '#10b981' : '#3b82f6',
   }));
+
+  playgroundCode = `<app-timeline
+  [items]="timelineItems"
+  layout="vertical"
+></app-timeline>`;
 
   ngOnInit() {}
 }

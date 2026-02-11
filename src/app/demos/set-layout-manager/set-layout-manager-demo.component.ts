@@ -7,16 +7,22 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',
 })
 export class SetLayoutManagerDemoComponent implements AfterViewInit {
+  playgroundCode = `<app-layout-manager
+  [regions]="regions"
+  (layoutChange)="onLayoutChange($event)"
+></app-layout-manager>`;
+
   @ViewChild('basicLayout') basicLayout!: ElementRef;
   @ViewChild('ideLayout') ideLayout!: ElementRef;
   @ViewChild('dashboardLayout') dashboardLayout!: ElementRef;

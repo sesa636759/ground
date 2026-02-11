@@ -8,6 +8,7 @@
       <p>Test all input properties in real-time</p>
     </div>
     <app-input-playground></app-input-playground>
+    <app-code-block [code]="playgroundCode" title="Input Usage" language="html"></app-code-block>
   </section>
 
   <!-- Basic Input Types -->
@@ -66,6 +67,11 @@
         <app-input type="date" label="Birth Date" full-width></app-input>
       </div>
     </div>
+    <app-code-block
+      [code]="basicInputsCode"
+      title="Basic Input Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Variants -->
@@ -83,6 +89,7 @@
         <app-input [attr.label]="v | titlecase" [attr.variant]="v" full-width></app-input>
       </div>
     </div>
+    <app-code-block [code]="variantsCode" title="Input Variants" language="html"></app-code-block>
   </section>
 
   <!-- Sizes -->
@@ -97,6 +104,7 @@
         <app-input [attr.label]="s | titlecase" [attr.size]="s" full-width></app-input>
       </div>
     </div>
+    <app-code-block [code]="sizesCode" title="Input Sizes" language="html"></app-code-block>
   </section>
 
   <!-- Validation States -->
@@ -147,6 +155,11 @@
         ></app-input>
       </div>
     </div>
+    <app-code-block
+      [code]="validationCode"
+      title="Validation Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Prefix/Suffix -->
@@ -196,6 +209,11 @@
         ></app-input>
       </div>
     </div>
+    <app-code-block
+      [code]="prefixSuffixCode"
+      title="Prefix & Suffix Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Advanced Features -->
@@ -249,6 +267,11 @@
         <button class="btn-toggle" (click)="toggleSkeleton()">Toggle Loading</button>
       </div>
     </div>
+    <app-code-block
+      [code]="advancedCode"
+      title="Advanced Features"
+      language="html"
+    ></app-code-block>
 
     <!-- Addons -->
     <div class="section-header" style="margin-top: 40px">
@@ -269,5 +292,6 @@
         </app-input>
       </div>
     </div>
+    <app-code-block [code]="addonsCode" title="Addons (Slots)" language="html"></app-code-block>
   </section>
 </div>

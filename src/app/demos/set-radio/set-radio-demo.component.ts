@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-radio-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, RadioPlaygroundComponent],
+  imports: [CommonModule, FormsModule, RadioPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-radio-demo.component.html',
   styleUrl: './set-radio-demo.component.scss',
@@ -56,6 +57,97 @@ export class SetRadioDemoComponent implements OnInit {
   formMessageColor = signal('inherit');
   shippingInvalid = false;
   paymentInvalid = false;
+
+  playgroundCode = `<app-radio
+  name="options"
+  [(ngModel)]="selected"
+  [options]="options"
+></app-radio>`;
+
+  premiumVariantsCode = `<app-radio-group
+  name="premium-cards"
+  variant="card"
+  layout="grid"
+  columns="2"
+  [options]="planOptions"
+></app-radio-group>
+
+<app-radio-group
+  name="bordered"
+  variant="bordered"
+  [options]="options"
+></app-radio-group>
+
+<app-radio-group
+  name="underlined"
+  variant="underlined"
+  color="success"
+  [options]="options"
+></app-radio-group>`;
+
+  buttonGroupsCode = `<app-radio-group
+  name="h-buttons"
+  button-group="true"
+  layout="horizontal"
+  [options]="options"
+></app-radio-group>
+
+<app-radio-group
+  name="v-buttons"
+  button-group="true"
+  layout="vertical"
+  color="danger"
+  [options]="options"
+></app-radio-group>`;
+
+  layoutsCode = `<app-radio-group
+  layout="vertical"
+  [options]="options"
+></app-radio-group>
+
+<app-radio-group
+  layout="horizontal"
+  [options]="options"
+></app-radio-group>
+
+<app-radio-group
+  layout="grid"
+  columns="2"
+  [options]="options"
+></app-radio-group>`;
+
+  slottedRadioCode = `<app-radio-group name="custom-group">
+  <app-radio value="1" label="Option 1"></app-radio>
+  <app-radio value="2" label="Option 2"></app-radio>
+  <app-radio value="3" label="Option 3"></app-radio>
+</app-radio-group>`;
+
+  statesCode = `<app-radio-group disabled [options]="options"></app-radio-group>
+
+<app-radio-group readonly [options]="options"></app-radio-group>
+
+<app-radio-group
+  required
+  invalid
+  error-message="Selection required"
+  [options]="options"
+></app-radio-group>`;
+
+  formExampleCode = `<app-radio-group
+  [(ngModel)]="shipping"
+  name="shipping"
+  required
+  helper-text="Select delivery speed"
+  [options]="deliveryOptions"
+></app-radio-group>
+
+<app-radio-group
+  [(ngModel)]="payment"
+  name="payment"
+  layout="grid"
+  columns="2"
+  [options]="paymentOptions"
+></app-radio-group>`;
 
   ngOnInit() {}
 

@@ -8,6 +8,7 @@
       <p>Test all card properties in real-time</p>
     </div>
     <app-card-playground></app-card-playground>
+    <app-code-block [code]="playgroundCode" title="Card Usage" language="html"></app-code-block>
   </section>
 
   <!-- Basic Cards -->
@@ -37,6 +38,11 @@
         </app-card>
       </div>
     </div>
+    <app-code-block
+      [code]="basicCardsCode"
+      title="Basic Card Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Media & Cover -->
@@ -81,6 +87,11 @@
         </app-card>
       </div>
     </div>
+    <app-code-block
+      [code]="mediaCoversCode"
+      title="Media & Cover Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Flippable Cards -->
@@ -118,6 +129,11 @@
         </app-card>
       </div>
     </div>
+    <app-code-block
+      [code]="flippableCardsCode"
+      title="Flippable Card Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Premium Features -->
@@ -158,6 +174,11 @@
         </div>
       </app-card>
     </div>
+    <app-code-block
+      [code]="premiumLayoutsCode"
+      title="Premium Layout Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- States & Interactive -->
@@ -190,5 +211,10 @@
         </app-card>
       </div>
     </div>
+    <app-code-block
+      [code]="statesInteractionCode"
+      title="States & Interaction Examples"
+      language="html"
+    ></app-code-block>
   </section>
 </div>

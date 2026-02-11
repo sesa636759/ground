@@ -17,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAppInitializer(() => setUiLoader(window)),
     provideAppInitializer(() => appUiLibrary(window)),
+    
   ],
 };

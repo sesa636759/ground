@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StepperPlaygroundComponent } from './components/stepper-playground/stepper-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-stepper-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, StepperPlaygroundComponent],
+  imports: [CommonModule, FormsModule, StepperPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-stepper-demo.component.html',
   styleUrl: './set-stepper-demo.component.scss',
@@ -30,6 +31,12 @@ export class SetStepperDemoComponent implements OnInit {
     {"label": "1"}, {"label": "2"}, {"label": "3"}, {"label": "4"}, {"label": "5"},
     {"label": "6"}, {"label": "7"}, {"label": "8"}, {"label": "9"}, {"label": "10"}
   ]`;
+
+  playgroundCode = `<app-stepper
+  [steps]="steps"
+  [currentStep]="0"
+  orientation="horizontal"
+></app-stepper>`;
 
   ngOnInit() {}
 }

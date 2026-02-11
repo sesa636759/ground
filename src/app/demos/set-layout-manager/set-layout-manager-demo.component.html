@@ -17,8 +17,13 @@
         (layoutChange)="handleLayoutChange($event)"
         (panelAdded)="handlePanelAdded($event)"
         (panelRemoved)="handlePanelRemoved($event)"
-        style="height: 500px; display: block;"
+        style="height: 500px; display: block"
       ></app-layout-manager>
+      <app-code-block
+        [code]="playgroundCode"
+        title="Layout Manager Usage"
+        language="html"
+      ></app-code-block>
     </div>
   </section>
 
@@ -36,7 +41,7 @@
         save-state
         state-key="basic-layout"
         (layoutChange)="handleLayoutChange($event)"
-        style="height: 400px; display: block;"
+        style="height: 400px; display: block"
       ></app-layout-manager>
     </div>
   </section>
@@ -55,7 +60,7 @@
         save-state
         state-key="ide-layout"
         (layoutChange)="handleLayoutChange($event)"
-        style="height: 500px; display: block;"
+        style="height: 500px; display: block"
       ></app-layout-manager>
     </div>
   </section>
@@ -74,7 +79,7 @@
         save-state
         state-key="dashboard-layout"
         (layoutChange)="handleLayoutChange($event)"
-        style="height: 450px; display: block;"
+        style="height: 450px; display: block"
       ></app-layout-manager>
     </div>
   </section>

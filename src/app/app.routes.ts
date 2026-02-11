@@ -105,6 +105,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'accordian',
+        loadComponent: () =>
+          import('./demos/app-accordian/app-accordian-demo.component').then(
+            (m) => m.SetAccordianDemoComponent,
+          ),
+      },
+      {
         path: 'set-anchor',
         loadComponent: () =>
           import('./demos/set-anchor/set-anchor-demo.component').then(

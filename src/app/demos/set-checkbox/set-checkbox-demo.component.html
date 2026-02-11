@@ -8,6 +8,7 @@
       <p>Test all checkbox properties in real-time</p>
     </div>
     <app-checkbox-playground></app-checkbox-playground>
+    <app-code-block [code]="playgroundCode" title="Checkbox Usage" language="html"></app-code-block>
   </section>
 
   <!-- Color Variants -->
@@ -25,6 +26,11 @@
         <app-checkbox [attr.label]="c | titlecase" [attr.color]="c" checked></app-checkbox>
       </div>
     </div>
+    <app-code-block
+      [code]="colorVariantsCode"
+      title="Color Variant Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Premium Variants -->
@@ -51,6 +57,11 @@
         </div>
       </div>
     </div>
+    <app-code-block
+      [code]="premiumVariantsCode"
+      title="Premium Variant Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Skeleton State -->
@@ -73,6 +84,11 @@
         <app-checkbox skeleton size="large"></app-checkbox>
       </div>
     </div>
+    <app-code-block
+      [code]="skeletonCode"
+      title="Skeleton State Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Sizes & Variants -->
@@ -91,6 +107,11 @@
         </div>
       </div>
     </div>
+    <app-code-block
+      [code]="sizesVariantsCode"
+      title="Size & Shape Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- States -->
@@ -156,6 +177,11 @@
         </div>
       </div>
     </div>
+    <app-code-block
+      [code]="statesCode"
+      title="State Configuration Examples"
+      language="html"
+    ></app-code-block>
   </section>
 
   <!-- Form Example -->
@@ -207,5 +233,10 @@
         </div>
       </div>
     </div>
+    <app-code-block
+      [code]="formExampleCode"
+      title="Form Integration Example"
+      language="html"
+    ></app-code-block>
   </section>
 </div>

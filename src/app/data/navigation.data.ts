@@ -32,7 +32,7 @@ export const categoryNavItems: NavItem[] = [
     label: 'Foundation & Layout',
     icon: '🏗️',
     children: [
-      { id: 'accordion', label: 'Accordion', icon: '📂' },
+      { id: 'accordian', label: 'Accordian', icon: '📂' },
       { id: 'aside', label: 'Aside Panel', icon: '📱' },
       { id: 'card', label: 'Card', icon: '🃏' },
       { id: 'divider', label: 'Divider', icon: '➖' },

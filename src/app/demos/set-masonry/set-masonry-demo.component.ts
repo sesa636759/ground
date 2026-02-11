@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MasonryPlaygroundComponent } from './components/masonry-playground/masonry-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-masonry-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, MasonryPlaygroundComponent],
+  imports: [CommonModule, FormsModule, MasonryPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
@@ -16,6 +17,50 @@ export class SetMasonryDemoComponent implements OnInit {
   galleryItems = this.generateItems(12, 'gallery');
   newsItems = this.generateItems(8, 'news');
   productItems = this.generateItems(8, 'product');
+
+  // Code examples
+  basicMasonryCode = `<app-masonry
+  columns="3"
+  gap="16"
+>
+  <div class="masonry-item" *ngFor="let item of galleryItems">
+    <img [src]="item.image" [alt]="item.title">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+  </div>
+</app-masonry>`;
+
+  playgroundCode = `<app-masonry
+  layout-type="masonry"
+  columns="3"
+  gap="16"
+  [items]="items"
+>
+  <!-- Content -->
+</app-masonry>`;
+
+  responsiveMasonryCode = `<app-masonry
+  [columns]="{ xs: 1, sm: 2, md: 3, lg: 4 }"
+  gap="20"
+  responsive
+>
+  <div class="masonry-item" *ngFor="let item of newsItems">
+    <div class="item-content">
+      <img [src]="item.image" [alt]="item.title">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+</app-masonry>`;
+
+  customGapCode = `<app-masonry
+  columns="4"
+  gap="24"
+  column-gap="32"
+  row-gap="16"
+>
+  <!-- Your items -->
+</app-masonry>`;
 
   ngOnInit() {}
 

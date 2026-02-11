@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SplitterPlaygroundComponent } from './components/splitter-playground/splitter-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-splitter-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, SplitterPlaygroundComponent],
+  imports: [CommonModule, FormsModule, SplitterPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-splitter-demo.component.html',
   styleUrl: './set-splitter-demo.component.scss',
@@ -25,6 +26,11 @@ export class SetSplitterDemoComponent implements OnInit {
   ];
 
   threePanels = [{}, {}, {}];
+
+  playgroundCode = `<app-splitter
+  direction="horizontal"
+  [panels]="panels"
+></app-splitter>`;
 
   ngOnInit() {}
 

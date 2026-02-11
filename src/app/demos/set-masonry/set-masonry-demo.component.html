@@ -12,6 +12,7 @@
       <p>Configure and test all masonry layout properties</p>
     </div>
     <app-masonry-playground></app-masonry-playground>
+    <app-code-block [code]="playgroundCode" title="Masonry Usage" language="html"></app-code-block>
   </section>
 
   <!-- Gallery Demo -->
@@ -32,6 +33,11 @@
           [items]="galleryItems"
         ></app-masonry>
       </div>
+      <app-code-block
+        [code]="basicMasonryCode"
+        title="Premium Gallery with Lightbox"
+        language="html"
+      ></app-code-block>
     </div>
   </section>
 
@@ -53,6 +59,11 @@
             [items]="productItems"
           ></app-masonry>
         </div>
+        <app-code-block
+          [code]="responsiveMasonryCode"
+          title="Responsive Grid Layout"
+          language="html"
+        ></app-code-block>
       </div>
 
       <div class="demo-card">
@@ -66,6 +77,11 @@
             [items]="newsItems"
           ></app-masonry>
         </div>
+        <app-code-block
+          [code]="customGapCode"
+          title="Custom Gap Configuration"
+          language="html"
+        ></app-code-block>
       </div>
     </div>
   </section>

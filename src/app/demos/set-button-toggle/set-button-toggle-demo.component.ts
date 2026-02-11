@@ -2,16 +2,22 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-button-toggle-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent],
+  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',
 })
 export class SetButtonToggleDemoComponent implements OnInit {
+  playgroundCode = `<app-button-toggle
+  [options]="options"
+  [(ngModel)]="selected"
+></app-button-toggle>`;
+
   // Options Data (Core sets)
   basicOptions = [
     { value: 'option1', label: 'Option 1' },

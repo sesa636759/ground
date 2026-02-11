@@ -2,15 +2,23 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TooltipPlaygroundComponent } from './components/tooltip-playground/tooltip-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-tooltip-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TooltipPlaygroundComponent],
+  imports: [CommonModule, FormsModule, TooltipPlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tooltip-demo.component.html',
   styleUrl: './set-tooltip-demo.component.scss',
 })
 export class SetTooltipDemoComponent implements OnInit {
+  playgroundCode = `<app-tooltip
+  content="Tooltip text"
+  position="top"
+>
+  <button>Hover me</button>
+</app-tooltip>`;
+
   ngOnInit() {}
 }

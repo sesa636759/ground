@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-set-empty-state-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, EmptyStatePlaygroundComponent],
+  imports: [CommonModule, FormsModule, EmptyStatePlaygroundComponent, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-empty-state-demo.component.html',
   styleUrl: './set-empty-state-demo.component.scss',
@@ -23,4 +24,10 @@ export class SetEmptyStateDemoComponent implements OnInit {
     { label: 'Create New Project', value: 'create', variant: 'primary', icon: 'fas fa-plus' },
     { label: 'Import Project', value: 'import', variant: 'secondary', icon: 'fas fa-file-import' },
   ]);
+
+  playgroundCode = `<app-empty-state
+  title="No data found"
+  description="Try adjusting your filters"
+  icon="fas fa-inbox"
+></app-empty-state>`;
 }
