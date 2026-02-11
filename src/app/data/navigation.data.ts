@@ -17,7 +17,6 @@ export const topNavItems: NavItem[] = [
   {
     id: 'overview',
     label: 'Overview',
-    badge: '5',
     icon: '📋',
   },
   {

@@ -1,0 +1,195 @@
+.demo-container {
+  padding: 40px;
+  max-width: 90%;
+  margin: 0 auto;
+  color: var(--text-primary);
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    text-align: center;
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.demo-section {
+  background: var(--surface-1);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+
+  .section-header {
+    margin-bottom: 32px;
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+  }
+
+  &.dark-verification-bg {
+    background: #1e293b;
+    border-color: #334155;
+    
+    .section-header h2 { color: white; }
+    .section-header p { color: #94a3b8; }
+  }
+}
+
+.dark-card {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+/* Common Demo Elements */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.demo-card {
+  padding: 24px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-toggle {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    
+    &:hover {
+      background: var(--bg-secondary);
+      border-color: var(--primary);
+    }
+  }
+
+  .status-msg {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+}
+
+.demo-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .color-item, .variant-item {
+    flex: 1 1 250px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+
+    h3 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text-tertiary);
+    }
+  }
+}
+
+/* Slot Content Styles */
+.custom-slot-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+
+  p { margin: 0; font-weight: 700; font-size: 0.95rem; }
+  input { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-1); }
+  
+  .slot-actions {
+    display: flex; gap: 8px;
+    button {
+      flex: 1; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer;
+      &.btn-confirm { background: var(--primary); color: white; border: none; }
+      &.btn-cancel { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); }
+    }
+  }
+}
+
+.custom-slot-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 250px;
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    
+    label { font-size: 0.85rem; font-weight: 600; }
+    select { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-1); }
+  }
+
+  .btn-apply {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+.custom-slot-colors {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  
+  .color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+    &:hover { transform: scale(1.2); }
+  }
+
+  input { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.9rem; }
+}
