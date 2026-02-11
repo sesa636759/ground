@@ -94,7 +94,7 @@ export class App implements OnInit {
         this.router.navigate([itemId]);
       } else {
         // Component routes allow generic handling -> Docs
-        this.router.navigate(['docs', itemId]);
+        this.router.navigate(['demos', itemId]);
       }
     }
   }
