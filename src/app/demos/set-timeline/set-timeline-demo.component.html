@@ -1,0 +1,126 @@
+<div class="demo-container">
+  <h1>📅 Timeline Component</h1>
+  <p class="intro-text">
+    An interactive timeline component supporting vertical, horizontal, and snake layouts with
+    extensive customization options.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all timeline features</p>
+    </div>
+    <app-timeline-playground></app-timeline-playground>
+  </section>
+
+  <!-- Layouts -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Versatile Layouts</h2>
+      <p>Standard layouts for any use case</p>
+    </div>
+    <div class="demo-grid col-2">
+      <!-- Vertical Alternate -->
+      <div class="demo-card">
+        <h3>Vertical Alternate</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            align="alternate"
+            [items]="roadmapItems"
+          ></app-timeline>
+        </div>
+      </div>
+
+      <!-- Vertical Left -->
+      <div class="demo-card">
+        <h3>Vertical Left</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            align="left"
+            [items]="historyItems"
+            variant="filled"
+          ></app-timeline>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal -->
+    <div class="demo-card mt-4">
+      <h3>Horizontal Scroll</h3>
+      <div class="preview-box">
+        <app-timeline orientation="horizontal" [items]="historyItems" align="top"></app-timeline>
+      </div>
+    </div>
+  </section>
+
+  <!-- Snake Layout -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🐍 Snake Layout</h2>
+      <p>Perfect for long processes or step-by-step guides using `wrap="true"`</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box h-auto">
+        <app-timeline
+          orientation="horizontal"
+          wrap="true"
+          align="alternate"
+          [items]="snakeItems"
+        ></app-timeline>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Style Variants</h2>
+      <p>Different visual styles for various contexts</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Filled</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            variant="filled"
+            [items]="roadmapItems.slice(0, 2)"
+          ></app-timeline>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Outlined</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            variant="outlined"
+            [items]="roadmapItems.slice(0, 2)"
+          ></app-timeline>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Minimal</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            variant="minimal"
+            [items]="roadmapItems.slice(0, 2)"
+          ></app-timeline>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Dots Only</h3>
+        <div class="preview-box h-auto">
+          <app-timeline
+            orientation="vertical"
+            variant="dots-only"
+            [items]="roadmapItems.slice(0, 2)"
+          ></app-timeline>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,211 @@
+<div class="demo-container">
+  <h1>☑️ Checkbox Demo</h1>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test all checkbox properties in real-time</p>
+    </div>
+    <app-checkbox-playground></app-checkbox-playground>
+  </section>
+
+  <!-- Color Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Color Variants</h2>
+      <p>Different color schemes for various contexts</p>
+    </div>
+    <div class="demo-grid">
+      <div
+        class="demo-card"
+        *ngFor="let c of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']"
+      >
+        <h3>{{ c | titlecase }}</h3>
+        <app-checkbox [attr.label]="c | titlecase" [attr.color]="c" checked></app-checkbox>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>✨ Premium Variants</h2>
+      <p>Modern button and chip styles for high-end interfaces</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Button Variant</h3>
+        <div class="checkbox-group row">
+          <app-checkbox label="Frontend" variant="button" color="primary" checked></app-checkbox>
+          <app-checkbox label="Backend" variant="button" color="primary"></app-checkbox>
+          <app-checkbox label="DevOps" variant="button" color="primary"></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Chip Variant</h3>
+        <div class="checkbox-group row">
+          <app-checkbox label="React" variant="chip" color="info" checked></app-checkbox>
+          <app-checkbox label="Vue" variant="chip" color="success"></app-checkbox>
+          <app-checkbox label="Angular" variant="chip" color="danger"></app-checkbox>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skeleton State -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>⏳ Skeleton State</h2>
+      <p>Loading placeholders for asynchronous data</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Small Skeleton</h3>
+        <app-checkbox skeleton size="small"></app-checkbox>
+      </div>
+      <div class="demo-card">
+        <h3>Medium Skeleton</h3>
+        <app-checkbox skeleton size="medium"></app-checkbox>
+      </div>
+      <div class="demo-card">
+        <h3>Large Skeleton</h3>
+        <app-checkbox skeleton size="large"></app-checkbox>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sizes & Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Sizes & Variants</h2>
+      <p>Different sizes and shape variants</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card" *ngFor="let s of ['small', 'medium', 'large']">
+        <h3>{{ s | titlecase }} Size</h3>
+        <div class="checkbox-group">
+          <app-checkbox label="Default" [attr.size]="s" checked></app-checkbox>
+          <app-checkbox label="Rounded" [attr.size]="s" variant="rounded" checked></app-checkbox>
+          <app-checkbox label="Square" [attr.size]="s" variant="square" checked></app-checkbox>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- States -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🔄 States</h2>
+      <p>Different checkbox states and configurations</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Basic States</h3>
+        <div class="checkbox-group">
+          <app-checkbox label="Unchecked"></app-checkbox>
+          <app-checkbox label="Checked" checked></app-checkbox>
+          <app-checkbox label="Indeterminate" indeterminate></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Disabled States</h3>
+        <div class="checkbox-group">
+          <app-checkbox label="Disabled Unchecked" disabled></app-checkbox>
+          <app-checkbox label="Disabled Checked" disabled checked></app-checkbox>
+          <app-checkbox label="Disabled Indeterminate" disabled indeterminate></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>With Helper Text</h3>
+        <div class="checkbox-group">
+          <app-checkbox
+            label="Subscribe to newsletter"
+            helper-text="You can unsubscribe anytime"
+          ></app-checkbox>
+          <app-checkbox
+            label="Accept terms"
+            required
+            helper-text="This field is required"
+          ></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Error State</h3>
+        <div class="checkbox-group">
+          <app-checkbox
+            label="I agree to terms"
+            invalid
+            error-message="You must accept the terms"
+          ></app-checkbox>
+          <app-checkbox label="Valid checkbox" checked helper-text="This is valid"></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Label Positions</h3>
+        <div class="checkbox-group">
+          <app-checkbox label="Label on Right" label-position="right"></app-checkbox>
+          <app-checkbox label="Label on Left" label-position="left"></app-checkbox>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Readonly State</h3>
+        <div class="checkbox-group">
+          <app-checkbox label="Readonly Checked" readonly checked></app-checkbox>
+          <app-checkbox label="Readonly Unchecked" readonly></app-checkbox>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Example -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📋 Form Example</h2>
+      <p>Checkbox group in a form context</p>
+    </div>
+    <div class="form-container">
+      <div class="form-card">
+        <h3>Create Account</h3>
+        <div class="checkbox-group">
+          <app-checkbox
+            [(ngModel)]="formTerms"
+            label="I accept the terms and conditions"
+            required
+            color="primary"
+            [invalid]="termsInvalid"
+            [attr.error-message]="termsInvalid ? 'You must accept the terms' : null"
+          >
+          </app-checkbox>
+          <app-checkbox
+            [(ngModel)]="formPrivacy"
+            label="I have read the privacy policy"
+            required
+            color="primary"
+            [invalid]="privacyInvalid"
+            [attr.error-message]="privacyInvalid ? 'You must accept the privacy policy' : null"
+          >
+          </app-checkbox>
+          <app-checkbox
+            [(ngModel)]="formNewsletter"
+            label="Subscribe to newsletter"
+            helper-text="Get updates about new features"
+            color="success"
+          >
+          </app-checkbox>
+          <app-checkbox
+            [(ngModel)]="formMarketing"
+            label="Receive marketing emails"
+            helper-text="Special offers and promotions"
+            color="info"
+          >
+          </app-checkbox>
+        </div>
+        <div class="form-footer">
+          <button class="btn-submit" (click)="onSubmit()">Create Account</button>
+          <p class="form-message" [style.color]="formMessageColor()">{{ formMessage() }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

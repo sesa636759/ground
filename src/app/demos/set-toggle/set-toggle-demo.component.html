@@ -1,0 +1,162 @@
+<div class="demo-container">
+  <h1>🔄 Toggle Component</h1>
+  <p class="intro-text">
+    A versatile toggle component for switching between states or selecting options, with support for
+    grouping, icons, and various styles.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all toggle group properties</p>
+    </div>
+    <app-toggle-playground></app-toggle-playground>
+  </section>
+
+  <!-- Layouts -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Layout Options</h2>
+      <p>Different layout configurations for toggle groups</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Horizontal (Single Selection)</h3>
+        <div class="preview-box">
+          <app-toggle-group
+            label="Notification Type"
+            selection-mode="single"
+            layout="horizontal"
+            color="primary"
+            [options]="notificationOptions"
+          ></app-toggle-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Vertical (Multiple Selection)</h3>
+        <div class="preview-box h-auto">
+          <app-toggle-group
+            label="Enable Features"
+            selection-mode="multiple"
+            layout="vertical"
+            color="success"
+            [options]="featureOptions"
+          ></app-toggle-group>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card mt-4">
+      <h3>Grid Layout (3 Columns)</h3>
+      <div class="preview-box h-auto">
+        <app-toggle-group
+          label="Privacy Settings"
+          selection-mode="multiple"
+          layout="grid"
+          columns="3"
+          color="info"
+          [options]="privacyOptions"
+        ></app-toggle-group>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Visual Variants</h2>
+      <p>Different styles for diverse UI needs</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Default</h3>
+        <div class="preview-box center-content">
+          <app-toggle label="Default Style" variant="default" checked color="primary"></app-toggle>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Rounded</h3>
+        <div class="preview-box center-content">
+          <app-toggle label="Rounded Style" variant="rounded" checked color="success"></app-toggle>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Outlined</h3>
+        <div class="preview-box center-content">
+          <app-toggle label="Outlined Style" variant="outlined" checked color="info"></app-toggle>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Features -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Features</h2>
+      <p>Advanced effects like Glassmorphism and Elevation</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+        <h3 style="color: white">Glassmorphism</h3>
+        <div
+          class="preview-box center-content"
+          style="background: rgba(255, 255, 255, 0.1); border: none"
+        >
+          <app-toggle label="Glass Variant" variant="glass" checked color="success"></app-toggle>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Elevation Levels</h3>
+        <div class="preview-box center-content flex-col gap-4">
+          <app-toggle label="Elevation 1" elevation="1" checked></app-toggle>
+          <app-toggle label="Elevation 3" elevation="3" checked color="warning"></app-toggle>
+          <app-toggle label="Elevation 5" elevation="5" checked color="danger"></app-toggle>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Custom Thumb</h3>
+        <div class="preview-box center-content flex-col gap-4">
+          <app-toggle label="Circle Thumb" thumb-shape="circle" checked></app-toggle>
+          <app-toggle label="Square Thumb" thumb-shape="square" checked color="info"></app-toggle>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skeleton -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🦴 Skeleton States</h2>
+      <p>Loading placeholders for async data</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>List Skeletons</h3>
+        <div class="preview-box h-auto">
+          <app-toggle-group
+            show-skeleton="true"
+            skeleton-count="4"
+            layout="vertical"
+          ></app-toggle-group>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Grid Skeletons</h3>
+        <div class="preview-box h-auto">
+          <app-toggle-group
+            show-skeleton="true"
+            skeleton-count="6"
+            layout="grid"
+            columns="2"
+          ></app-toggle-group>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

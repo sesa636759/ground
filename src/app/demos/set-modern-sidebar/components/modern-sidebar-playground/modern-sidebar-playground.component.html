@@ -1,0 +1,81 @@
+<div class="playground-layout">
+  <div class="playground-controls">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Brand Name</label>
+        <input type="text" [(ngModel)]="pgConfig.brandName" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Accent Color</label>
+        <input type="color" [(ngModel)]="pgConfig.accentColor" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>User Name</label>
+        <input type="text" [(ngModel)]="pgConfig.userName" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>User Role</label>
+        <input type="text" [(ngModel)]="pgConfig.userRole" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Theme</label>
+        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
+        Collapsed
+      </label>
+    </div>
+  </div>
+
+  <div class="playground-preview">
+    <div class="event-log-container">
+      <strong>Event Log</strong>
+      <div class="log-items">
+        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+      </div>
+    </div>
+
+    <div class="preview-stage">
+      <div class="sidebar-container" [style.width]="pgConfig.collapsed ? '80px' : '280px'">
+        <app-modern-sidebar
+          [brandName]="pgConfig.brandName"
+          [selectedId]="pgConfig.selectedId"
+          [accentColor]="pgConfig.accentColor"
+          [userName]="pgConfig.userName"
+          [userRole]="pgConfig.userRole"
+          [userAvatar]="pgConfig.userAvatar"
+          [collapsed]="pgConfig.collapsed"
+          [items]="sidebarItems"
+          (itemSelected)="onItemSelected($event)"
+          (sidebarToggled)="onSidebarToggled($event.detail)"
+          (profileClicked)="onProfileClick()"
+        ></app-modern-sidebar>
+      </div>
+
+      <div class="content-placeholder">
+        <h3>Main Content Area</h3>
+        <p>This is where your app content goes.</p>
+        <div class="dummy-card" *ngFor="let i of [1, 2]"></div>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>Generated Code</span>
+        <button class="copy-btn" (click)="copyCode()">Copy</button>
+      </div>
+      <pre><code>{{ generatedCode() }}</code></pre>
+    </div>
+  </div>
+</div>

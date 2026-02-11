@@ -1,0 +1,117 @@
+<div class="demo-container">
+  <h1>🚀 Progress Component</h1>
+  <p class="intro-text">
+    Display the current progress of an operation flow with line, circle, and dashboard styles.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the progress bar settings and see changes in real-time</p>
+    </div>
+    <app-progress-playground></app-progress-playground>
+  </section>
+
+  <!-- Line Progress -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>Line Progress</h2>
+      <p>Standard progress bar with different statuses</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Standard</h3>
+        <div class="preview-box">
+          <div style="width: 100%; display: flex; flex-direction: column; gap: 20px">
+            <app-progress percent="30"></app-progress>
+            <app-progress percent="70" status="active"></app-progress>
+            <app-progress percent="100" status="success"></app-progress>
+            <app-progress percent="50" status="exception"></app-progress>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Steps & Gradients</h3>
+        <div class="preview-box">
+          <div style="width: 100%; display: flex; flex-direction: column; gap: 20px">
+            <app-progress percent="50" steps="5"></app-progress>
+            <div class="gradient-demo">
+              <app-progress percent="80" stroke-color="#667eea"></app-progress>
+            </div>
+            <app-progress percent="100" stroke-width="20" stroke-linecap="square"></app-progress>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Circular & Dashboard -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>Circular & Dashboard</h2>
+      <p>Circular progress indicators for compact displays</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Circle</h3>
+        <div class="preview-box center-content">
+          <app-progress type="circle" percent="75"></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Dashboard</h3>
+        <div class="preview-box center-content">
+          <app-progress type="dashboard" percent="75"></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Small Size</h3>
+        <div class="preview-box center-content">
+          <div style="display: flex; gap: 20px">
+            <app-progress type="circle" percent="30" width="80"></app-progress>
+            <app-progress type="dashboard" percent="70" width="80" status="success"></app-progress>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Features -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Effects</h2>
+      <p>Advanced visual effects for modern interfaces</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Liquid Wave</h3>
+        <div class="preview-box">
+          <app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card" style="background: linear-gradient(135deg, #1e293b, #334155)">
+        <h3>Glassmorphism</h3>
+        <div class="preview-box" style="background: rgba(255, 255, 255, 0.05)">
+          <app-progress
+            percent="50"
+            glass="true"
+            stroke-color="#fff"
+            trail-color="rgba(255,255,255,0.2)"
+          ></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Glow Effect</h3>
+        <div class="preview-box">
+          <app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

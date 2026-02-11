@@ -1,0 +1,128 @@
+<div class="playground-layout">
+  <div class="playground-controls">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Size</label>
+        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Color</label>
+        <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
+          <option value="primary">Primary</option>
+          <option value="secondary">Secondary</option>
+          <option value="success">Success</option>
+          <option value="danger">Danger</option>
+          <option value="warning">Warning</option>
+          <option value="info">Info</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Variant</label>
+        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
+          <option value="default">Default</option>
+          <option value="rounded">Rounded</option>
+          <option value="square">Square</option>
+          <option value="button">Button</option>
+          <option value="chip">Chip</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Label Position</label>
+        <select [(ngModel)]="pgConfig.labelPosition" (change)="updateConfig()">
+          <option value="left">Left</option>
+          <option value="right">Right</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Label Text</label>
+        <input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Helper Text</label>
+        <input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.checked" (change)="updateConfig()" /> Checked
+      </label>
+      <label class="checkbox-item">
+        <input
+          type="checkbox"
+          [(ngModel)]="pgConfig.indeterminate"
+          (change)="pgConfig.checked = false; updateConfig()"
+        />
+        Indeterminate
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
+        Animation
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.rippleEffect" (change)="updateConfig()" />
+        Ripple
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
+      </label>
+    </div>
+  </div>
+
+  <div class="playground-preview">
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+    <div class="preview-stage">
+      <app-checkbox
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.variant]="pgConfig.variant"
+        [attr.label-position]="pgConfig.labelPosition"
+        [attr.label]="pgConfig.label"
+        [attr.helper-text]="pgConfig.helperText"
+        [checked]="pgConfig.checked"
+        [indeterminate]="pgConfig.indeterminate"
+        [disabled]="pgConfig.disabled"
+        [readonly]="pgConfig.readonly"
+        [required]="pgConfig.required"
+        [invalid]="pgConfig.invalid"
+        [skeleton]="pgConfig.skeleton"
+        [attr.enable-animation]="pgConfig.enableAnimation.toString()"
+        [attr.ripple-effect]="pgConfig.rippleEffect.toString()"
+        [attr.error-message]="pgConfig.invalid ? 'This field has an error' : null"
+        (checkboxChange)="onCheckboxChange($event)"
+        (checkboxFocus)="onCheckboxFocus()"
+        (checkboxBlur)="onCheckboxBlur()"
+      >
+      </app-checkbox>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>Generated Code</span>
+        <button class="copy-btn" (click)="copyCode()">Copy</button>
+      </div>
+      <pre><code>{{ generatedCode() }}</code></pre>
+    </div>
+  </div>
+</div>
