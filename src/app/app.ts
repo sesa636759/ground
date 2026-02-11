@@ -71,7 +71,7 @@ export class App implements OnInit {
     } else if (url.startsWith('/playground/')) {
       const componentId = url.split('/')[2]?.split('?')[0];
       this.currentRoute.set(componentId);
-    } else if (url.startsWith('/docs/')) {
+    } else if (url.startsWith('/demos/')) {
       const componentId = url.split('/')[2]?.split('?')[0];
       this.currentRoute.set(componentId);
     } else if (url.startsWith('/playground')) {

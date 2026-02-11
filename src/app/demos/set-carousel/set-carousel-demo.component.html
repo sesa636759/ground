@@ -1,0 +1,93 @@
+<div class="demo-container">
+  <h1>🖼️ Carousel Component</h1>
+  <p class="intro-text">
+    An interactive slideshow component for cycling through elements like images or text or card
+    content.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure carousel animations, layout, and behaviors</p>
+    </div>
+    <app-carousel-playground></app-carousel-playground>
+  </section>
+
+  <!-- Fade Effect -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>✨ Fade Transition</h2>
+      <p>Smooth cross-fade effect for elegant presentations</p>
+    </div>
+    <div class="demo-card full-width">
+      <div class="carousel-wrapper">
+        <app-carousel effect="fade" autoplay="true" show-progress="true" autoplay-interval="4000">
+          <div class="slide" style="background: #1e293b">
+            <div class="content">
+              <h3>First Slide</h3>
+              <p>With fade transition</p>
+            </div>
+          </div>
+          <div class="slide" style="background: #0f172a">
+            <div class="content">
+              <h3>Second Slide</h3>
+              <p>Smoothly blending</p>
+            </div>
+          </div>
+          <div class="slide" style="background: #334155">
+            <div class="content">
+              <h3>Third Slide</h3>
+              <p>Into the next</p>
+            </div>
+          </div>
+        </app-carousel>
+      </div>
+    </div>
+  </section>
+
+  <!-- Center Mode -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎯 Center Mode</h2>
+      <p>Highlight the active slide with partial visibility of previous and next slides</p>
+    </div>
+    <div class="demo-card full-width">
+      <div class="carousel-wrapper">
+        <app-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+          <div class="slide card-slide" style="background: #e11d48">1</div>
+          <div class="slide card-slide" style="background: #db2777">2</div>
+          <div class="slide card-slide" style="background: #c026d3">3</div>
+          <div class="slide card-slide" style="background: #9333ea">4</div>
+          <div class="slide card-slide" style="background: #7c3aed">5</div>
+        </app-carousel>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multiple Slides -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🔢 Multiple Slides</h2>
+      <p>Display multiple items at once in a responsive grid-like view</p>
+    </div>
+    <div class="demo-card full-width">
+      <div class="carousel-wrapper">
+        <app-carousel
+          slides-to-show="3"
+          slides-to-scroll="1"
+          infinite="true"
+          arrows="true"
+          indicators="true"
+        >
+          <div class="slide item-slide">Item 1</div>
+          <div class="slide item-slide">Item 2</div>
+          <div class="slide item-slide">Item 3</div>
+          <div class="slide item-slide">Item 4</div>
+          <div class="slide item-slide">Item 5</div>
+          <div class="slide item-slide">Item 6</div>
+        </app-carousel>
+      </div>
+    </div>
+  </section>
+</div>

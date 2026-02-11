@@ -1,0 +1,578 @@
+<div class="docs-page">
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-actions">
+        <a routerLink="/docs" class="back-link">← Components</a>
+      </div>
+      <h1>Animate on Scroll</h1>
+      <p class="description">Add scroll-triggered animations to any element with a simple directive.</p>
+    </div>
+  </header>
+
+  <nav class="docs-tabs">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'examples'"
+      (click)="setTab('examples')"
+    >
+      Examples
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'documentation'"
+      (click)="setTab('documentation')"
+    >
+      API Documentation
+    </button>
+  </nav>
+
+  <div class="tab-content" [ngClass]="activeTab">
+    <div *ngIf="activeTab === 'examples'" class="examples-container">
+      <div class="examples-sidebar">
+        <h3>Animation Types</h3>
+        <ul class="demo-nav">
+          <li [class.active]="activeExample === 'fade-in'" (click)="setExample('fade-in')">
+            Fade In
+          </li>
+          <li [class.active]="activeExample === 'slide-up'" (click)="setExample('slide-up')">
+            Slide Up
+          </li>
+          <li [class.active]="activeExample === 'slide-down'" (click)="setExample('slide-down')">
+            Slide Down
+          </li>
+          <li [class.active]="activeExample === 'slide-left'" (click)="setExample('slide-left')">
+            Slide Left
+          </li>
+          <li [class.active]="activeExample === 'slide-right'" (click)="setExample('slide-right')">
+            Slide Right
+          </li>
+          <li [class.active]="activeExample === 'zoom-in'" (click)="setExample('zoom-in')">
+            Zoom In
+          </li>
+          <li [class.active]="activeExample === 'zoom-out'" (click)="setExample('zoom-out')">
+            Zoom Out
+          </li>
+          <li [class.active]="activeExample === 'flip-up'" (click)="setExample('flip-up')">
+            Flip Up
+          </li>
+          <li [class.active]="activeExample === 'flip-down'" (click)="setExample('flip-down')">
+            Flip Down
+          </li>
+          <li [class.active]="activeExample === 'rotate-in'" (click)="setExample('rotate-in')">
+            Rotate In
+          </li>
+          <li [class.active]="activeExample === 'staggered'" (click)="setExample('staggered')">
+            Staggered (Multiple)
+          </li>
+          <li [class.active]="activeExample === 'repeat'" (click)="setExample('repeat')">
+            Repeat Animation
+          </li>
+        </ul>
+      </div>
+
+      <div class="examples-main">
+        <!-- Fade In -->
+        <section *ngIf="activeExample === 'fade-in'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Fade In Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements smoothly fade in as they enter the viewport</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="fade-in">
+                <h4>Fade In</h4>
+                <p>This box fades in when scrolled into view</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['fade-in'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['fade-in']" title="Fade In Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide Up -->
+        <section *ngIf="activeExample === 'slide-up'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Slide Up Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements slide up from below with customizable delay</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="slide-up" [delay]="200">
+                <h4>Slide Up</h4>
+                <p>This box slides up with a 200ms delay</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['slide-up'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['slide-up']" title="Slide Up Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide Down -->
+        <section *ngIf="activeExample === 'slide-down'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Slide Down Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements slide down from above</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="slide-down">
+                <h4>Slide Down</h4>
+                <p>This box slides down into view</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['slide-down'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['slide-down']" title="Slide Down Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide Left -->
+        <section *ngIf="activeExample === 'slide-left'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Slide Left Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements slide from right to left</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="slide-left">
+                <h4>Slide Left</h4>
+                <p>This box slides from right to left</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['slide-left'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['slide-left']" title="Slide Left Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide Right -->
+        <section *ngIf="activeExample === 'slide-right'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Slide Right Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements slide from left to right</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="slide-right">
+                <h4>Slide Right</h4>
+                <p>This box slides from left to right</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['slide-right'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['slide-right']" title="Slide Right Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Zoom In -->
+        <section *ngIf="activeExample === 'zoom-in'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Zoom In Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements scale up from smaller size</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="zoom-in">
+                <h4>Zoom In</h4>
+                <p>This box zooms in</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['zoom-in'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['zoom-in']" title="Zoom In Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Zoom Out -->
+        <section *ngIf="activeExample === 'zoom-out'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Zoom Out Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements scale down from larger size</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="zoom-out">
+                <h4>Zoom Out</h4>
+                <p>This box zooms out</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['zoom-out'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['zoom-out']" title="Zoom Out Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Flip Up -->
+        <section *ngIf="activeExample === 'flip-up'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Flip Up Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements flip up with 3D perspective</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="flip-up">
+                <h4>Flip Up</h4>
+                <p>This box flips up with perspective</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['flip-up'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['flip-up']" title="Flip Up Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Flip Down -->
+        <section *ngIf="activeExample === 'flip-down'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Flip Down Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements flip down with 3D perspective</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="flip-down">
+                <h4>Flip Down</h4>
+                <p>This box flips down with perspective</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['flip-down'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['flip-down']" title="Flip Down Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rotate In -->
+        <section *ngIf="activeExample === 'rotate-in'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Rotate In Animation</h3>
+            </div>
+            <p class="showcase-desc">Elements rotate and scale in simultaneously</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="rotate-in">
+                <h4>Rotate In</h4>
+                <p>This box rotates and scales in</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['rotate-in'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['rotate-in']" title="Rotate In Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Staggered -->
+        <section *ngIf="activeExample === 'staggered'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Staggered Animation</h3>
+            </div>
+            <p class="showcase-desc">Multiple elements animate in sequence with delays</p>
+
+            <div class="showcase-preview" style="min-height: 500px; padding: 60px 20px;">
+              <div 
+                *ngFor="let n of [1,2,3,4,5]; let i = index" 
+                class="demo-box-small" 
+                appAnimateOnScroll 
+                animation="slide-up" 
+                [delay]="i * 100"
+                style="margin-bottom: 16px;">
+                <h4>Item {{ n }}</h4>
+                <p>Animated with {{ i * 100 }}ms delay</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['staggered'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['staggered']" title="Staggered Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+
+        <!-- Repeat -->
+        <section *ngIf="activeExample === 'repeat'" class="feature-showcase">
+          <div class="showcase-card">
+            <div class="showcase-header">
+              <h3>Repeat Animation</h3>
+            </div>
+            <p class="showcase-desc">Animation triggers every time element enters viewport (scroll up and down)</p>
+
+            <div class="showcase-preview" style="min-height: 400px; padding: 60px 20px;">
+              <div class="demo-box" appAnimateOnScroll animation="fade-in" [once]="false">
+                <h4>Repeat Animation</h4>
+                <p>Scroll up and down to see the animation repeat</p>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <button class="btn-secondary" (click)="toggleCode()">
+                {{ isCodeVisible ? 'Hide' : 'Show' }} Code
+              </button>
+              <button class="btn-primary" (click)="copyCode(exampleCodes['repeat'])">
+                Copy Code
+              </button>
+            </div>
+
+            <div *ngIf="isCodeVisible" class="code-section">
+              <app-code-viewer [code]="exampleCodes['repeat']" title="Repeat Example"></app-code-viewer>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'documentation'" class="documentation-tab">
+      <div class="doc-section">
+        <h3>Directive</h3>
+        <p>Apply the <code>appAnimateOnScroll</code> directive to any element to add scroll-triggered animations.</p>
+        
+        <h3 style="margin-top: 32px;">Input Properties</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>animation</code></td>
+                <td><span class="type-badge">AnimationType</span></td>
+                <td><code>'fade-in'</code></td>
+                <td>Type of animation to apply</td>
+              </tr>
+              <tr>
+                <td><code>delay</code></td>
+                <td><span class="type-badge">number</span></td>
+                <td><code>0</code></td>
+                <td>Delay before animation starts (in milliseconds)</td>
+              </tr>
+              <tr>
+                <td><code>duration</code></td>
+                <td><span class="type-badge">number</span></td>
+                <td><code>600</code></td>
+                <td>Animation duration (in milliseconds)</td>
+              </tr>
+              <tr>
+                <td><code>threshold</code></td>
+                <td><span class="type-badge">number</span></td>
+                <td><code>0.1</code></td>
+                <td>Intersection threshold (0-1) - how much of element must be visible</td>
+              </tr>
+              <tr>
+                <td><code>once</code></td>
+                <td><span class="type-badge">boolean</span></td>
+                <td><code>true</code></td>
+                <td>If true, animates only once. If false, animates every time element enters viewport</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 32px;">Animation Types</h3>
+        <div class="table-container">
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>'fade-in'</code></td>
+                <td>Element fades in</td>
+              </tr>
+              <tr>
+                <td><code>'slide-up'</code></td>
+                <td>Element slides up from below</td>
+              </tr>
+              <tr>
+                <td><code>'slide-down'</code></td>
+                <td>Element slides down from above</td>
+              </tr>
+              <tr>
+                <td><code>'slide-left'</code></td>
+                <td>Element slides from right to left</td>
+              </tr>
+              <tr>
+                <td><code>'slide-right'</code></td>
+                <td>Element slides from left to right</td>
+              </tr>
+              <tr>
+                <td><code>'zoom-in'</code></td>
+                <td>Element scales up from smaller size</td>
+              </tr>
+              <tr>
+                <td><code>'zoom-out'</code></td>
+                <td>Element scales down from larger size</td>
+              </tr>
+              <tr>
+                <td><code>'flip-up'</code></td>
+                <td>Element flips up with 3D perspective</td>
+              </tr>
+              <tr>
+                <td><code>'flip-down'</code></td>
+                <td>Element flips down with 3D perspective</td>
+              </tr>
+              <tr>
+                <td><code>'rotate-in'</code></td>
+                <td>Element rotates and scales in</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top: 32px;">Usage Examples</h3>
+        <div class="code-example">
+          <pre ngNonBindable><code>// Basic usage
+&lt;div appAnimateOnScroll&gt;Content&lt;/div&gt;
+
+// With animation type
+&lt;div appAnimateOnScroll animation="slide-up"&gt;Content&lt;/div&gt;
+
+// With delay
+&lt;div appAnimateOnScroll animation="fade-in" [delay]="300"&gt;Content&lt;/div&gt;
+
+// Custom duration and threshold
+&lt;div appAnimateOnScroll 
+     animation="zoom-in" 
+     [duration]="800" 
+     [threshold]="0.5"&gt;Content&lt;/div&gt;
+
+// Repeat animation
+&lt;div appAnimateOnScroll animation="fade-in" [once]="false"&gt;Content&lt;/div&gt;
+
+// Staggered animations
+&lt;div *ngFor="let item of items; let i = index"
+     appAnimateOnScroll
+     animation="slide-up"
+     [delay]="i * 100"&gt;
+  {{ item }}
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

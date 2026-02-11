@@ -1,0 +1,155 @@
+<div class="demo-container">
+  <h1>📚 Tab Stack Component</h1>
+  <p class="intro-text">
+    Advanced tab stacking component with drag-and-drop, grouping, and multi-level tab support for
+    complex interfaces.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all tab stack properties</p>
+    </div>
+    <app-tab-stack-playground></app-tab-stack-playground>
+  </section>
+
+  <!-- Orientations -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Orientation Options</h2>
+      <p>Horizontal and vertical tab stacks</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Horizontal</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack orientation="horizontal" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Vertical</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack orientation="vertical" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Visual Variants</h2>
+      <p>Different styles for tab stacks</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Default</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack variant="default" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Pills</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack variant="pills" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Underline</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack variant="underline" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>⚙️ Advanced Features</h2>
+      <p>Closable, draggable, and scrollable tabs</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Closable Tabs</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack closable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Draggable</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack draggable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Scrollable</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack scrollable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sizes -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Size Variants</h2>
+      <p>Different sizes for tab stacks</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Small</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="small" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Medium</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="medium" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Large</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="large" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Features -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Features</h2>
+      <p>Grouped tabs and custom styling</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Grouped Tabs</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack grouped="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+        <h3 style="color: white">Glass Variant</h3>
+        <div
+          class="preview-box tab-demo"
+          style="background: rgba(255, 255, 255, 0.1); border: none"
+        >
+          <app-tab-stack variant="glass" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

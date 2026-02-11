@@ -50,7 +50,7 @@ export const routes: Routes = [
           import('./demos/set-input/set-input-demo.component').then((m) => m.SetInputDemoComponent),
       },
       {
-        path: 'radio',
+        path: 'set-radio',
         loadComponent: () =>
           import('./demos/set-radio/set-radio-demo.component').then((m) => m.SetRadioDemoComponent),
       },
@@ -119,6 +119,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'set-tree',
+        loadComponent: () =>
+          import('./demos/set-tree/set-tree-demo.component').then((m) => m.SetTreeDemoComponent),
+      },
+      {
         path: 'set-timeline',
         loadComponent: () =>
           import('./demos/set-timeline/set-timeline-demo.component').then(
@@ -139,6 +144,12 @@ export const routes: Routes = [
             (m) => m.SetToggleDemoComponent,
           ),
       },
+
+      {
+        path: 'set-list',
+        loadComponent: () =>
+          import('./demos/set-list/set-list-demo.component').then((m) => m.SetListDemoComponent),
+      },
       {
         path: 'set-masonry',
         loadComponent: () =>
@@ -146,11 +157,112 @@ export const routes: Routes = [
             (m) => m.SetMasonryDemoComponent,
           ),
       },
-    ],
-  },
-  {
-    path: 'docs',
-    children: [
+      {
+        path: 'set-empty-state',
+        loadComponent: () =>
+          import('./demos/set-empty-state/set-empty-state-demo.component').then(
+            (m) => m.SetEmptyStateDemoComponent,
+          ),
+      },
+      {
+        path: 'set-avatar',
+        loadComponent: () =>
+          import('./demos/set-avatar/set-avatar-demo.component').then(
+            (m) => m.SetAvatarDemoComponent,
+          ),
+      },
+      {
+        path: 'set-carousel',
+        loadComponent: () =>
+          import('./demos/set-carousel/set-carousel-demo.component').then(
+            (m) => m.SetCarouselDemoComponent,
+          ),
+      },
+      {
+        path: 'set-stepper',
+        loadComponent: () =>
+          import('./demos/set-stepper/set-stepper-demo.component').then(
+            (m) => m.SetStepperDemoComponent,
+          ),
+      },
+      {
+        path: 'set-otp-input',
+        loadComponent: () =>
+          import('./demos/set-otp-input/set-otp-input-demo.component').then(
+            (m) => m.SetOtpInputDemoComponent,
+          ),
+      },
+      {
+        path: 'set-code-editor',
+        loadComponent: () =>
+          import('./demos/set-code-editor/set-code-editor-demo.component').then(
+            (m) => m.SetCodeEditorDemoComponent,
+          ),
+      },
+      {
+        path: 'set-dashboard',
+        loadComponent: () =>
+          import('./demos/set-dashboard/set-dashboard-demo.component').then(
+            (m) => m.SetDashboardDemoComponent,
+          ),
+      },
+      {
+        path: 'set-tags-input',
+        loadComponent: () =>
+          import('./demos/set-tags-input/set-tags-input-demo.component').then(
+            (m) => m.SetTagsInputDemoComponent,
+          ),
+      },
+      {
+        path: 'set-theme-switcher',
+        loadComponent: () =>
+          import('./demos/set-theme-switcher/set-theme-switcher-demo.component').then(
+            (m) => m.SetThemeSwitcherDemoComponent,
+          ),
+      },
+      {
+        path: 'set-sidebar',
+        loadComponent: () =>
+          import('./demos/set-sidebar/set-sidebar-demo.component').then(
+            (m) => m.SetSidebarDemoComponent,
+          ),
+      },
+      {
+        path: 'set-animate-on-scroll',
+        loadComponent: () =>
+          import('./demos/set-animate-on-scroll/set-animate-on-scroll-demo.component').then(
+            (m) => m.SetAnimateOnScrollDemoComponent,
+          ),
+      },
+      {
+        path: 'set-dock-overlay',
+        loadComponent: () =>
+          import('./demos/set-dock-overlay/set-dock-overlay-demo.component').then(
+            (m) => m.SetDockOverlayDemoComponent,
+          ),
+      },
+      {
+        path: 'set-avatar-group',
+        loadComponent: () =>
+          import('./demos/set-avatar-group/set-avatar-group-demo.component').then(
+            (m) => m.SetAvatarGroupDemoComponent,
+          ),
+      },
+      {
+        path: 'set-tab-stack',
+        loadComponent: () =>
+          import('./demos/set-tab-stack/set-tab-stack-demo.component').then(
+            (m) => m.SetTabStackDemoComponent,
+          ),
+      },
+      {
+        path: 'set-layout-manager',
+        loadComponent: () =>
+          import('./demos/set-layout-manager/set-layout-manager-demo.component').then(
+            (m) => m.SetLayoutManagerDemoComponent,
+          ),
+      },
+
       {
         path: 'set-button-toggle',
         loadComponent: () =>
@@ -260,11 +372,53 @@ export const routes: Routes = [
             (m) => m.SetToggleDemoComponent,
           ),
       },
+
       {
-        path: 'set-masonry',
+        path: 'set-list',
         loadComponent: () =>
-          import('./demos/set-masonry/set-masonry-demo.component').then(
-            (m) => m.SetMasonryDemoComponent,
+          import('./demos/set-list/set-list-demo.component').then((m) => m.SetListDemoComponent),
+      },
+      {
+        path: 'set-empty-state',
+        loadComponent: () =>
+          import('./demos/set-empty-state/set-empty-state-demo.component').then(
+            (m) => m.SetEmptyStateDemoComponent,
+          ),
+      },
+      {
+        path: 'set-avatar',
+        loadComponent: () =>
+          import('./demos/set-avatar/set-avatar-demo.component').then(
+            (m) => m.SetAvatarDemoComponent,
+          ),
+      },
+      {
+        path: 'set-carousel',
+        loadComponent: () =>
+          import('./demos/set-carousel/set-carousel-demo.component').then(
+            (m) => m.SetCarouselDemoComponent,
+          ),
+      },
+      {
+        path: 'set-stepper',
+        loadComponent: () =>
+          import('./demos/set-stepper/set-stepper-demo.component').then(
+            (m) => m.SetStepperDemoComponent,
+          ),
+      },
+      {
+        path: 'set-otp-input',
+        loadComponent: () =>
+          import('./demos/set-otp-input/set-otp-input-demo.component').then(
+            (m) => m.SetOtpInputDemoComponent,
+          ),
+      },
+
+      {
+        path: 'set-dashboard',
+        loadComponent: () =>
+          import('./demos/set-dashboard/set-dashboard-demo.component').then(
+            (m) => m.SetDashboardDemoComponent,
           ),
       },
     ],

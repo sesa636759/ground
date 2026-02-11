@@ -1,0 +1,137 @@
+<div class="demo-container">
+  <h1>🎯 Empty State Component</h1>
+  <p class="intro-text">
+    Communicate empty states, errors, and feedback with illustration and action support.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure type, variant, and content</p>
+    </div>
+    <app-empty-state-playground></app-empty-state-playground>
+  </section>
+
+  <!-- Standard Types -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📋 Standard Types</h2>
+      <p>Pre-configured states for common scenarios</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="no-data"
+            variant="outlined"
+            primary-action="Add Data"
+            primary-action-icon="fas fa-plus"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="no-results"
+            variant="outlined"
+            primary-action="Clear Filters"
+            primary-action-icon="fas fa-times"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="error"
+            variant="outlined"
+            primary-action="Try Again"
+            primary-action-icon="fas fa-redo"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="404"
+            variant="outlined"
+            primary-action="Go Home"
+            show-back-button
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="coming-soon"
+            variant="outlined"
+            secondary-action="Notify Me"
+            secondary-action-icon="fas fa-bell"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="preview-box">
+          <app-empty-state
+            type="maintenance"
+            variant="outlined"
+            message="We are upgrading our servers."
+          ></app-empty-state>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Usage -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🚀 Advanced Usage</h2>
+      <p>Custom illustrations, suggestions, and multiple actions</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>With Suggestions List</h3>
+        <div class="preview-box">
+          <app-empty-state
+            type="no-results"
+            variant="filled"
+            items-title="Try these:"
+            [attr.items]="suggestions"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Multiple Actions</h3>
+        <div class="preview-box">
+          <app-empty-state
+            heading="No Projects"
+            message="Get started by creating a new project."
+            icon="fas fa-folder-open"
+            variant="outlined"
+            rounded
+            [attr.actions]="multiActions"
+          ></app-empty-state>
+        </div>
+      </div>
+
+      <div class="demo-card full-width">
+        <h3>Premium Glass Variant</h3>
+        <div class="preview-box glass-bg">
+          <app-empty-state
+            variant="glass"
+            heading="Premium Experience"
+            message="Frosted glass effect for modern UIs."
+            primary-action="Explore"
+            secondary-action="Dismiss"
+          ></app-empty-state>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

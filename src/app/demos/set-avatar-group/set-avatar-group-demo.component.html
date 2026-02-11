@@ -1,0 +1,156 @@
+<div class="demo-container">
+  <h1>👥 Avatar Group Component</h1>
+  <p class="intro-text">
+    Group component for displaying multiple avatars with overflow handling, tooltips, and
+    customizable layouts.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all avatar group properties</p>
+    </div>
+    <app-avatar-group-playground></app-avatar-group-playground>
+  </section>
+
+  <!-- Sizes -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Size Variants</h2>
+      <p>Different sizes for avatar groups</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Small</h3>
+        <div class="preview-box">
+          <app-avatar-group size="small" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Medium</h3>
+        <div class="preview-box">
+          <app-avatar-group size="medium" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Large</h3>
+        <div class="preview-box">
+          <app-avatar-group size="large" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Max Display -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🔢 Max Display Count</h2>
+      <p>Control how many avatars to show</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Max 3</h3>
+        <div class="preview-box">
+          <app-avatar-group max="3" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Max 4</h3>
+        <div class="preview-box">
+          <app-avatar-group max="4" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Show All</h3>
+        <div class="preview-box">
+          <app-avatar-group [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layouts -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Layout Options</h2>
+      <p>Different stacking and spacing options</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Stacked</h3>
+        <div class="preview-box">
+          <app-avatar-group layout="stacked" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Spaced</h3>
+        <div class="preview-box">
+          <app-avatar-group layout="spaced" spacing="8" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Variants -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Visual Variants</h2>
+      <p>Different styles and borders</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Default</h3>
+        <div class="preview-box">
+          <app-avatar-group variant="default" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Bordered</h3>
+        <div class="preview-box">
+          <app-avatar-group
+            variant="bordered"
+            border-color="primary"
+            [users]="users"
+          ></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Rounded</h3>
+        <div class="preview-box">
+          <app-avatar-group shape="rounded" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Features -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Features</h2>
+      <p>Advanced features and interactions</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>With Tooltips</h3>
+        <div class="preview-box">
+          <app-avatar-group show-tooltips="true" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Clickable</h3>
+        <div class="preview-box">
+          <app-avatar-group clickable="true" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

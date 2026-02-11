@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import './_theme-tokens.scss';
-@import './docs-premium.scss';
+@use './_theme-tokens.scss';
+@use './docs-premium.scss';
 
 /* Reset and Base Styles */
 * {

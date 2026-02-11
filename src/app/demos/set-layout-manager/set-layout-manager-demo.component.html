@@ -1,0 +1,173 @@
+<div class="demo-container">
+  <h1>🏗️ Layout Manager Demo</h1>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Build custom layouts with resizable, collapsible regions</p>
+    </div>
+    <div class="playground-wrapper">
+      <app-layout-manager
+        #customLayout
+        [regions]="basicRegions"
+        direction="horizontal"
+        save-state
+        state-key="custom-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        (panelAdded)="handlePanelAdded($event)"
+        (panelRemoved)="handlePanelRemoved($event)"
+        style="height: 500px; display: block;"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+  <!-- Basic Three-Column Layout -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Basic Three-Column Layout</h2>
+      <p>Classic sidebar-content-sidebar pattern</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #basicLayout
+        [regions]="basicRegions"
+        direction="horizontal"
+        save-state
+        state-key="basic-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 400px; display: block;"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+  <!-- IDE-Style Layout -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💻 IDE-Style Layout</h2>
+      <p>Code editor with explorer and terminal panels</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #ideLayout
+        [regions]="ideRegions"
+        direction="horizontal"
+        save-state
+        state-key="ide-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 500px; display: block;"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+  <!-- Dashboard Layout -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📊 Dashboard Layout</h2>
+      <p>Navigation, main content, and widgets</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #dashboardLayout
+        [regions]="dashboardRegions"
+        direction="horizontal"
+        save-state
+        state-key="dashboard-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 450px; display: block;"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+  <!-- Features Overview -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>✨ Key Features</h2>
+      <p>Powerful capabilities of the Layout Manager</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>🔄 Resizable Regions</h3>
+        <p>Drag dividers to resize regions dynamically</p>
+      </div>
+      <div class="demo-card">
+        <h3>📌 Collapsible Panels</h3>
+        <p>Minimize regions to maximize workspace</p>
+      </div>
+      <div class="demo-card">
+        <h3>🎯 Drag & Drop</h3>
+        <p>Move panels between regions with drag and drop</p>
+      </div>
+      <div class="demo-card">
+        <h3>💾 State Persistence</h3>
+        <p>Layout automatically saved to localStorage</p>
+      </div>
+      <div class="demo-card">
+        <h3>🪟 Pop-out Windows</h3>
+        <p>Detach panels into floating windows</p>
+      </div>
+      <div class="demo-card">
+        <h3>⚡ Split Regions</h3>
+        <p>Split any region horizontally or vertically</p>
+      </div>
+      <div class="demo-card">
+        <h3>📱 Responsive</h3>
+        <p>Adapts to different screen sizes</p>
+      </div>
+      <div class="demo-card">
+        <h3>🎨 Customizable</h3>
+        <p>Full control over regions and panels</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- API Methods -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🔧 API Methods</h2>
+      <p>Programmatic control over layouts</p>
+    </div>
+    <div class="api-grid">
+      <div class="api-card">
+        <h4>addPanel()</h4>
+        <p>Add a new panel to a region</p>
+        <code>await layout.addPanel({{ '{' }} regionId, title, html {{ '}' }})</code>
+      </div>
+      <div class="api-card">
+        <h4>removePanel()</h4>
+        <p>Remove a panel by ID</p>
+        <code>await layout.removePanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>movePanel()</h4>
+        <p>Move panel to another region</p>
+        <code>await layout.movePanel(panelId, targetRegionId)</code>
+      </div>
+      <div class="api-card">
+        <h4>splitRegion()</h4>
+        <p>Split a region into two</p>
+        <code>await layout.splitRegion(regionId, 'horizontal')</code>
+      </div>
+      <div class="api-card">
+        <h4>popoutPanel()</h4>
+        <p>Detach panel to floating window</p>
+        <code>await layout.popoutPanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>maximizePanel()</h4>
+        <p>Maximize panel to full layout</p>
+        <code>await layout.maximizePanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>addRegion()</h4>
+        <p>Add a new region to layout</p>
+        <code>await layout.addRegion({{ '{' }} id, title, size {{ '}' }})</code>
+      </div>
+      <div class="api-card">
+        <h4>getLayoutState()</h4>
+        <p>Get current layout configuration</p>
+        <code>const state = await layout.getLayoutState()</code>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,111 @@
+<div class="playground-container">
+  <div class="sidebar">
+    <!-- Header Stats -->
+    <div class="stats-panel">
+      <div class="stat-item">
+        <span class="label">Regions</span>
+        <span class="value">{{ regions.length }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="label">Panels</span>
+        <span class="value">{{ panelCount() }}</span>
+      </div>
+    </div>
+
+    <!-- Quick Add -->
+    <div class="control-panel">
+      <h3>Quick Add Panel</h3>
+      <div class="control-group">
+        <label>Target Region</label>
+        <select [(ngModel)]="quickAddRegionId">
+          <option value="">Select Region...</option>
+          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }} ({{ r.id }})</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>Title</label>
+        <input [(ngModel)]="quickAddTitle" placeholder="Panel Title" />
+      </div>
+      <button (click)="quickAddPanel()" class="btn primary">Add Panel</button>
+    </div>
+
+    <!-- Manage Regions -->
+    <div class="control-panel">
+      <h3>Manage Regions</h3>
+      <div class="control-group">
+        <label>New Region Name</label>
+        <input [(ngModel)]="newRegionName" placeholder="Region Name" />
+      </div>
+      <div class="control-group">
+        <label>Type</label>
+        <select [(ngModel)]="newRegionType">
+          <option value="default">Default</option>
+          <option value="navigation">Navigation</option>
+          <option value="header-only">Header Only</option>
+          <option value="content-only">Content Only</option>
+          <option value="title-only">Title Only</option>
+        </select>
+      </div>
+      <div class="btn-row">
+        <button (click)="addRegion('start')" class="btn secondary">Add Start</button>
+        <button (click)="addRegion('end')" class="btn secondary">Add End</button>
+      </div>
+      <div class="control-group" style="margin-top: 10px">
+        <label>Remove Region</label>
+        <select [(ngModel)]="removeRegionId">
+          <option value="">Select Region...</option>
+          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }} ({{ r.id }})</option>
+        </select>
+        <button (click)="removeRegion()" class="btn danger" [disabled]="!removeRegionId">
+          Remove
+        </button>
+      </div>
+    </div>
+
+    <!-- Split & Merge -->
+    <div class="control-panel">
+      <h3>Split & Merge (Center)</h3>
+      <div class="btn-row">
+        <button (click)="splitCenter('horizontal')" class="btn">Split H</button>
+        <button (click)="splitCenter('vertical')" class="btn">Split V</button>
+        <button (click)="mergeCenter()" class="btn">Merge</button>
+      </div>
+    </div>
+
+    <!-- Panel Actions -->
+    <div class="control-panel">
+      <h3>Panel Actions</h3>
+      <div class="control-group">
+        <label>Panel ID</label>
+        <input [(ngModel)]="panelIdInput" placeholder="Panel ID" />
+      </div>
+      <div class="control-group">
+        <label>Target Region</label>
+        <select [(ngModel)]="targetMoveRegion">
+          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }}</option>
+        </select>
+      </div>
+      <div class="btn-grid">
+        <button (click)="performPanelAction('move')" class="btn">Move</button>
+        <button (click)="performPanelAction('dock')" class="btn">Dock</button>
+        <button (click)="performPanelAction('popout')" class="btn">Popout</button>
+        <button (click)="performPanelAction('maximize')" class="btn">Maximize</button>
+        <button (click)="performPanelAction('restore')" class="btn">Restore</button>
+        <button (click)="performPanelAction('remove')" class="btn danger">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-area">
+    <div class="status-bar" [class.ready]="statusClass() === 'ready'">Status: {{ status() }}</div>
+    <div class="layout-container">
+      <app-layout-manager #lm id="lm" direction="horizontal" regions="[]"></app-layout-manager>
+    </div>
+  </div>
+
+  <div class="toast-container">
+    <div *ngFor="let t of toasts()" class="toast" [class]="t.type">
+      {{ t.msg }}
+    </div>
+  </div>
+</div>

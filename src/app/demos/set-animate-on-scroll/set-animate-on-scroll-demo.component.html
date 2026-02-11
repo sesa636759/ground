@@ -1,0 +1,142 @@
+<div class="demo-container">
+  <h1>✨ Animate On Scroll Component</h1>
+  <p class="intro-text">
+    Animation utility component for triggering smooth animations based on scroll position with
+    customizable effects and timing.
+  </p>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all animation properties</p>
+    </div>
+    <app-animate-on-scroll-playground></app-animate-on-scroll-playground>
+  </section>
+
+  <!-- Animation Types -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Animation Types</h2>
+      <p>Different animation effects on scroll</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Fade In</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="fade-in">
+            <div class="animated-box">Fade In</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Slide Up</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="slide-up">
+            <div class="animated-box">Slide Up</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Zoom In</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="zoom-in">
+            <div class="animated-box">Zoom In</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directions -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Animation Directions</h2>
+      <p>Animations from different directions</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>From Left</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="slide" direction="left">
+            <div class="animated-box">From Left</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>From Right</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="slide" direction="right">
+            <div class="animated-box">From Right</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timing -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>⏱️ Timing Options</h2>
+      <p>Different durations and delays</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Fast (300ms)</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="fade-in" duration="300">
+            <div class="animated-box">Fast</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Normal (600ms)</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="fade-in" duration="600">
+            <div class="animated-box">Normal</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Slow (1000ms)</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="fade-in" duration="1000">
+            <div class="animated-box">Slow</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced -->
+  <section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Advanced Features</h2>
+      <p>Repeat, offset, and easing options</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>With Repeat</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="bounce" repeat="true">
+            <div class="animated-box">Repeating</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Custom Easing</h3>
+        <div class="preview-box scrollable">
+          <app-animate-on-scroll animation="slide-up" easing="ease-in-out">
+            <div class="animated-box">Smooth</div>
+          </app-animate-on-scroll>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
