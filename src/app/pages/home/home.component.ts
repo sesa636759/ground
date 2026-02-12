@@ -32,14 +32,14 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         </div>
 
         <div class="hero-content">
-          <app-animate-on-scroll animation="fade-in" delay="0">
+          <app-animate-on-scroll animation="fade-in" [delay]="0">
             <div class="badge-container">
               <span class="status-dot"></span>
               <span class="badge-text">Version 1.0.0 • Production Ready</span>
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="100">
+          <app-animate-on-scroll animation="slide-up" [delay]="100">
             <h1 class="hero-title">
               Build Exceptional
               <span class="gradient-text">User Experiences</span>
@@ -47,7 +47,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </h1>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="200">
+          <app-animate-on-scroll animation="slide-up" [delay]="200">
             <p class="hero-description">
               A comprehensive library of 53+ production-ready components designed for modern
               enterprise applications. Built with accessibility, performance, and developer experience
@@ -55,7 +55,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </p>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="300">
+          <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="hero-actions">
             <button class="btn-primary" (click)="navigateTo('overview')">
               <span>Explore Components</span>
@@ -88,7 +88,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="400">
+          <app-animate-on-scroll animation="slide-up" [delay]="400">
             <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-value">53+</div>
@@ -116,7 +116,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       <!-- Features Grid -->
       <section class="features-section">
-        <app-animate-on-scroll animation="fade-in" delay="0">
+        <app-animate-on-scroll animation="fade-in" [delay]="0">
           <div class="section-header">
             <h2>Why Choose Our Component Library</h2>
             <p>Enterprise-grade features built for scale and performance</p>
@@ -124,7 +124,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         </app-animate-on-scroll>
 
         <div class="features-grid">
-          <app-animate-on-scroll animation="slide-up" delay="0">
+          <app-animate-on-scroll animation="slide-up" [delay]="0">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -156,7 +156,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="100">
+          <app-animate-on-scroll animation="slide-up" [delay]="100">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -176,7 +176,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
           </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="200">
+          <app-animate-on-scroll animation="slide-up" [delay]="200">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -195,7 +195,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="300">
+          <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -213,7 +213,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="400">
+          <app-animate-on-scroll animation="slide-up" [delay]="400">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -235,7 +235,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" delay="500">
+          <app-animate-on-scroll animation="slide-up" [delay]="500">
             <div class="feature-card">
             <div class="feature-icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -256,14 +256,14 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       <!-- FontAwesome Icons Showcase -->
       <section class="icons-section">
-        <app-animate-on-scroll animation="fade-in" delay="0">
+        <app-animate-on-scroll animation="fade-in" [delay]="0">
           <div class="section-header">
             <h2>Premium Icon Support</h2>
             <p>Integrated with FontAwesome for beautiful, scalable vector icons</p>
           </div>
         </app-animate-on-scroll>
 
-        <app-animate-on-scroll animation="zoom-in" delay="100">
+        <app-animate-on-scroll animation="zoom-in" [delay]="100">
           <div class="icons-grid">
           <div class="icon-demo-card">
             <fa-icon [icon]="faCode" size="2x"></fa-icon>
@@ -303,7 +303,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       <!-- Categories Showcase -->
       <section class="categories-section">
-        <app-animate-on-scroll animation="fade-in" delay="0">
+        <app-animate-on-scroll animation="fade-in" [delay]="0">
           <div class="section-header">
             <h2>Explore by Category</h2>
             <p>Organized components for every use case</p>
@@ -312,7 +312,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
         <div class="categories-grid">
           @for (category of categories; track category.id; let i = $index) {
-            <app-animate-on-scroll animation="slide-up" [attr.delay]="i * 100">
+            <app-animate-on-scroll animation="slide-up" [delay]="i * 100">
               <div
                 class="category-card"
                 (click)="navigateTo('playground')"
@@ -1233,3 +1233,5 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
+
+

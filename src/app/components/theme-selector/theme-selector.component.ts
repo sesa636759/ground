@@ -47,6 +47,54 @@ import { ThemeService } from '../../services/theme.service';
 
         <div
           class="theme-option"
+          [class.active]="themeService.currentTheme() === 'schneider-green'"
+          (click)="themeService.setTheme('schneider-green')"
+        >
+          <div class="theme-preview schneider-green-preview">
+            <div class="preview-header"></div>
+            <div class="preview-sidebar"></div>
+            <div class="preview-content"></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-icon">🌿</span>
+            <span class="theme-name">Schneider Green</span>
+          </div>
+        </div>
+
+        <div
+          class="theme-option"
+          [class.active]="themeService.currentTheme() === 'schneider-blue'"
+          (click)="themeService.setTheme('schneider-blue')"
+        >
+          <div class="theme-preview schneider-blue-preview">
+            <div class="preview-header"></div>
+            <div class="preview-sidebar"></div>
+            <div class="preview-content"></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-icon">💙</span>
+            <span class="theme-name">Schneider Blue</span>
+          </div>
+        </div>
+
+        <div
+          class="theme-option"
+          [class.active]="themeService.currentTheme() === 'high-contrast'"
+          (click)="themeService.setTheme('high-contrast')"
+        >
+          <div class="theme-preview high-contrast-preview">
+            <div class="preview-header"></div>
+            <div class="preview-sidebar"></div>
+            <div class="preview-content"></div>
+          </div>
+          <div class="theme-info">
+            <span class="theme-icon">👁️</span>
+            <span class="theme-name">High Contrast</span>
+          </div>
+        </div>
+
+        <div
+          class="theme-option"
           [class.active]="themeService.currentTheme() === 'auto'"
           (click)="themeService.setTheme('auto')"
         >
@@ -194,6 +242,48 @@ import { ThemeService } from '../../services/theme.service';
                 }
                 .preview-content {
                   background: linear-gradient(135deg, #ffffff 50%, #1e293b 50%);
+                }
+              }
+
+              &.schneider-green-preview {
+                background: #f0fdf4;
+
+                .preview-header {
+                  background: #3DCD58;
+                }
+                .preview-sidebar {
+                  background: #34d399;
+                }
+                .preview-content {
+                  background: #ffffff;
+                }
+              }
+
+              &.schneider-blue-preview {
+                background: #e0f2fe;
+
+                .preview-header {
+                  background: #0ea5e9;
+                }
+                .preview-sidebar {
+                  background: #38bdf8;
+                }
+                .preview-content {
+                  background: #ffffff;
+                }
+              }
+
+              &.high-contrast-preview {
+                background: #000000;
+
+                .preview-header {
+                  background: #facc15;
+                }
+                .preview-sidebar {
+                  background: #ffffff;
+                }
+                .preview-content {
+                  background: #171717;
                 }
               }
             }

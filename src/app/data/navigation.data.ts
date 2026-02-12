@@ -171,6 +171,12 @@ export const categoryNavItems: NavItem[] = [
 
 export const bottomNavItems: NavItem[] = [
   {
+    id: 'user-management',
+    label: 'User Management',
+    icon: '👥',
+    badge: 'New',
+  },
+  {
     id: 'analytics',
     label: 'Analytics',
     icon: '📊',

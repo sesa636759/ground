@@ -5,7 +5,20 @@ import { topNavItems, categoryNavItems, bottomNavItems } from './data/navigation
 import { ThemeService } from './services/theme.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faMoon, faSun, faHome, faBook, faVial } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCoffee,
+  faMoon,
+  faSun,
+  faHome,
+  faBook,
+  faVial,
+  faUser,
+  faCog,
+  faUsers,
+  faSignOutAlt,
+  faChevronDown,
+  faChevronUp,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -27,11 +40,27 @@ export class App implements OnInit {
   faHome = faHome;
   faBook = faBook;
   faVial = faVial;
+  faUser = faUser;
+  faCog = faCog;
+  faUsers = faUsers;
+  faSignOutAlt = faSignOutAlt;
+  faChevronDown = faChevronDown;
+  faChevronUp = faChevronUp;
 
   // Expose navigation data for template
   topItems = topNavItems;
   categoryItems = categoryNavItems;
   bottomItems = bottomNavItems;
+
+  // User Profile
+  userMenuOpen = signal(false);
+  currentUser = signal({
+    name: 'John Doe',
+    role: 'Administrator',
+    avatar: 'https://i.pravatar.cc/150?img=12',
+    isOnline: true,
+    email: 'john.doe@example.com',
+  });
 
   constructor(
     public router: Router,
@@ -78,6 +107,8 @@ export class App implements OnInit {
       this.currentRoute.set('playground');
     } else if (url.startsWith('/theme-selector')) {
       this.currentRoute.set('theme-selector');
+    } else if (url.startsWith('/user-management')) {
+      this.currentRoute.set('user-management');
     }
   }
 
@@ -90,12 +121,51 @@ export class App implements OnInit {
     const itemId = event.detail?.id;
     if (itemId) {
       // Top-level routes
-      if (['home', 'overview', 'documentation', 'theme-selector', 'playground'].includes(itemId)) {
+      if (
+        [
+          'home',
+          'overview',
+          'documentation',
+          'theme-selector',
+          'playground',
+          'user-management',
+        ].includes(itemId)
+      ) {
         this.router.navigate([itemId]);
       } else {
         // Component routes allow generic handling -> Docs
         this.router.navigate(['demos', itemId]);
       }
     }
+  }
+
+  // User Menu Methods
+  toggleUserMenu() {
+    this.userMenuOpen.set(!this.userMenuOpen());
+  }
+
+  navigateToProfile() {
+    this.userMenuOpen.set(false);
+    this.router.navigate(['/user-management']);
+    console.log('Navigate to profile');
+  }
+
+  navigateToSettings() {
+    this.userMenuOpen.set(false);
+    this.router.navigate(['/theme-selector']);
+    console.log('Navigate to settings');
+  }
+
+  navigateToUserManagement() {
+    this.userMenuOpen.set(false);
+    this.router.navigate(['/user-management']);
+    console.log('Navigate to user management');
+  }
+
+  logout() {
+    this.userMenuOpen.set(false);
+    console.log('Logout clicked');
+    // Add your logout logic here
+    alert('Logout functionality - Implement your authentication logout here');
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable, signal, effect } from '@angular/core';
 
-export type Theme = 'light' | 'dark' | 'auto' | 'schneider-green' | 'high-contrast';
+export type Theme = 'light' | 'dark' | 'auto' | 'schneider-green' | 'schneider-blue' | 'high-contrast';
 
 @Injectable({
   providedIn: 'root',
@@ -31,11 +31,12 @@ export class ThemeService {
       saved === 'dark' ||
       saved === 'auto' ||
       saved === 'schneider-green' ||
+      saved === 'schneider-blue' ||
       saved === 'high-contrast'
     ) {
       return saved as Theme;
     }
-    return 'schneider-green'; // Default theme
+    return 'schneider-blue'; // Default theme
   }
 
   setTheme(theme: Theme) {
@@ -45,7 +46,7 @@ export class ThemeService {
 
   toggleTheme() {
     const current = this.currentTheme();
-    const themes: Theme[] = ['light', 'dark', 'auto', 'schneider-green', 'high-contrast'];
+    const themes: Theme[] = ['light', 'dark', 'auto', 'schneider-green', 'schneider-blue', 'high-contrast'];
     const currentIndex = themes.indexOf(current);
     const nextIndex = (currentIndex + 1) % themes.length;
     this.setTheme(themes[nextIndex]);
@@ -64,7 +65,7 @@ export class ThemeService {
 
     // Apply to document
     const root = document.documentElement;
-    root.classList.remove('light', 'dark', 'schneider-green', 'high-contrast');
+    root.classList.remove('light', 'dark', 'schneider-green', 'schneider-blue', 'high-contrast');
     root.classList.add(resolved);
     root.setAttribute('data-theme', resolved);
   }
@@ -91,6 +92,8 @@ export class ThemeService {
         return '🌙';
       case 'schneider-green':
         return '🌿';
+      case 'schneider-blue':
+        return '💙';
       case 'high-contrast':
         return '👁️';
       case 'auto':
@@ -107,9 +110,11 @@ export class ThemeService {
       case 'dark':
         return 'Dark';
       case 'schneider-green':
-        return 'Enterprise';
+        return 'Schneider Green';
+      case 'schneider-blue':
+        return 'Schneider Blue';
       case 'high-contrast':
-        return 'Contrast';
+        return 'High Contrast';
       case 'auto':
       default:
         return 'Auto';

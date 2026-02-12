@@ -1,0 +1,315 @@
+<div class="user-management-container">
+  <!-- Header with Statistics -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1>👥 User Management</h1>
+      <p class="subtitle">Manage users, roles, and permissions</p>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="openCreateDialog()"><span>➕</span> Add User</button>
+      <button class="btn btn-secondary" (click)="showImportDialog = true">
+        <span>📥</span> Import
+      </button>
+      <button class="btn btn-secondary" (click)="exportUsers('csv')"><span>📤</span> Export</button>
+    </div>
+  </div>
+
+  <!-- Statistics Cards -->
+  <div class="statistics-grid" *ngIf="statistics">
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ statistics.total }}</div>
+        <div class="stat-label">Total Users</div>
+      </div>
+    </div>
+
+    <div class="stat-card active">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ statistics.active }}</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+    </div>
+
+    <div class="stat-card inactive">
+      <div class="stat-icon">⏸️</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ statistics.inactive }}</div>
+        <div class="stat-label">Inactive Users</div>
+      </div>
+    </div>
+
+    <div class="stat-card locked">
+      <div class="stat-icon">🔒</div>
+      <div class="stat-content">
+        <div class="stat-value">{{ statistics.locked }}</div>
+        <div class="stat-label">Locked Accounts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters and Search -->
+  <div class="filters-section">
+    <div class="search-box">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch()"
+        placeholder="Search users by name, email, username..."
+        class="search-input"
+      />
+      <button class="btn-search" (click)="onSearch()">🔍</button>
+    </div>
+
+    <div class="filter-controls">
+      <select [(ngModel)]="selectedRole" (change)="onFilterChange()" class="filter-select">
+        <option value="">All Roles</option>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+
+      <select [(ngModel)]="selectedStatus" (change)="onFilterChange()" class="filter-select">
+        <option value="">All Statuses</option>
+        <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+      </select>
+
+      <select [(ngModel)]="selectedDepartment" (change)="onFilterChange()" class="filter-select">
+        <option value="">All Departments</option>
+        <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+      </select>
+
+      <button
+        class="btn btn-clear"
+        (click)="clearFilters()"
+        *ngIf="searchTerm || selectedRole || selectedStatus || selectedDepartment"
+      >
+        Clear Filters
+      </button>
+    </div>
+
+    <div class="view-controls">
+      <button
+        class="view-btn"
+        [class.active]="viewMode === 'table'"
+        (click)="setViewMode('table')"
+        title="Table View"
+      >
+        📊
+      </button>
+      <button
+        class="view-btn"
+        [class.active]="viewMode === 'grid'"
+        (click)="setViewMode('grid')"
+        title="Grid View"
+      >
+        ⊞
+      </button>
+      <button
+        class="view-btn"
+        [class.active]="viewMode === 'list'"
+        (click)="setViewMode('list')"
+        title="List View"
+      >
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <!-- Bulk Actions Bar -->
+  <div class="bulk-actions-bar" *ngIf="selectedUsers.size > 0">
+    <div class="selected-count">{{ selectedUsers.size }} user(s) selected</div>
+    <div class="bulk-buttons">
+      <button class="btn btn-sm" (click)="bulkOperation = 'activate'; executeBulkOperation()">
+        ✅ Activate
+      </button>
+      <button class="btn btn-sm" (click)="bulkOperation = 'deactivate'; executeBulkOperation()">
+        ⏸️ Deactivate
+      </button>
+      <button class="btn btn-sm" (click)="bulkOperation = 'lock'; executeBulkOperation()">
+        🔒 Lock
+      </button>
+      <button class="btn btn-sm btn-danger" (click)="openBulkDialog()">🗑️ Delete</button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Loading users...</p>
+  </div>
+
+  <!-- Table View -->
+  <div class="table-container" *ngIf="viewMode === 'table' && !loading">
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th width="40">
+            <input
+              type="checkbox"
+              [checked]="selectedUsers.size === users.length && users.length > 0"
+              (change)="toggleSelectAll()"
+            />
+          </th>
+          <th>User</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th width="200">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" [class.selected]="isSelected(user.id)">
+          <td>
+            <input
+              type="checkbox"
+              [checked]="isSelected(user.id)"
+              (change)="toggleSelectUser(user.id)"
+            />
+          </td>
+          <td>
+            <div class="user-cell">
+              <img
+                [src]="user.avatar || 'https://via.placeholder.com/40'"
+                alt="{{ user.fullName }}"
+                class="user-avatar"
+              />
+              <div class="user-info">
+                <div class="user-name">{{ user.fullName }}</div>
+                <div class="user-username">@{{ user.username }}</div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="email-cell">
+              {{ user.email }}
+              <span class="verified-badge" *ngIf="user.isEmailVerified">✓</span>
+            </div>
+          </td>
+          <td>
+            <span class="badge" [ngClass]="getRoleBadgeClass(user.role)">
+              {{ user.role }}
+            </span>
+          </td>
+          <td>{{ user.department || '-' }}</td>
+          <td>
+            <span class="badge" [ngClass]="getStatusBadgeClass(user.status)">
+              {{ user.status }}
+            </span>
+            <span class="lock-icon" *ngIf="user.isLocked" title="Account Locked">🔒</span>
+          </td>
+          <td>{{ user.createdAt | date: 'short' }}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn-icon" (click)="openEditDialog(user)" title="Edit">✏️</button>
+              <button class="btn-icon" (click)="resetPassword(user)" title="Reset Password">
+                🔑
+              </button>
+              <button class="btn-icon" *ngIf="!user.isLocked" (click)="lockUser(user)" title="Lock">
+                🔒
+              </button>
+              <button
+                class="btn-icon"
+                *ngIf="user.isLocked"
+                (click)="unlockUser(user)"
+                title="Unlock"
+              >
+                🔓
+              </button>
+              <button class="btn-icon btn-danger" (click)="openDeleteDialog(user)" title="Delete">
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="empty-state" *ngIf="users.length === 0">
+      <div class="empty-icon">👤</div>
+      <h3>No users found</h3>
+      <p>Try adjusting your filters or create a new user</p>
+    </div>
+  </div>
+
+  <!-- Grid View -->
+  <div class="users-grid" *ngIf="viewMode === 'grid' && !loading">
+    <div class="user-card" *ngFor="let user of users" [class.selected]="isSelected(user.id)">
+      <div class="card-header">
+        <input
+          type="checkbox"
+          [checked]="isSelected(user.id)"
+          (change)="toggleSelectUser(user.id)"
+          class="card-checkbox"
+        />
+        <span class="badge" [ngClass]="getStatusBadgeClass(user.status)">{{ user.status }}</span>
+      </div>
+
+      <div class="card-avatar">
+        <img [src]="user.avatar || 'https://via.placeholder.com/100'" alt="{{ user.fullName }}" />
+        <span class="verified-badge" *ngIf="user.isEmailVerified">✓</span>
+      </div>
+
+      <div class="card-content">
+        <h3>{{ user.fullName }}</h3>
+        <p class="username">@{{ user.username }}</p>
+        <p class="email">{{ user.email }}</p>
+        <div class="card-meta">
+          <span class="badge" [ngClass]="getRoleBadgeClass(user.role)">{{ user.role }}</span>
+          <span class="department">{{ user.department }}</span>
+        </div>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn btn-sm" (click)="openEditDialog(user)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="openDeleteDialog(user)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <div class="pagination-info">
+      Showing {{ (currentPage - 1) * pageSize + 1 }} to
+      {{ Math.min(currentPage * pageSize, totalUsers) }} of {{ totalUsers }} users
+    </div>
+
+    <div class="pagination-controls">
+      <button class="btn-page" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+        Previous
+      </button>
+
+      <button
+        *ngFor="let page of getPageNumbers()"
+        class="btn-page"
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+
+      <button
+        class="btn-page"
+        [disabled]="currentPage === totalPages"
+        (click)="goToPage(currentPage + 1)"
+      >
+        Next
+      </button>
+    </div>
+
+    <div class="page-size-selector">
+      <label>Per page:</label>
+      <select [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+        <option [value]="10">10</option>
+        <option [value]="25">25</option>
+        <option [value]="50">50</option>
+        <option [value]="100">100</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- Dialogs would go here - Create, Edit, Delete, Bulk, Import -->
+<!-- For brevity, I'll create these as separate components -->

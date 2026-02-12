@@ -83,6 +83,25 @@
   --gradient-main: var(--gradient-premium);
 }
 
+/* Schneider Blue - Enterprise Premium */
+[data-theme="schneider-blue"] {
+  --bg-primary: #f0f9ff;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e0f2fe;
+  --surface-1: #ffffff;
+  --surface-2: #f0f9ff;
+  --text-primary: #0c4a6e;
+  --text-secondary: #0369a1;
+  --text-tertiary: #0ea5e9;
+  --border-color: #bae6fd;
+  --border-strong: #38bdf8;
+  
+  --primary: #0284c7;
+  --primary-glow: rgba(2, 132, 199, 0.4);
+  --gradient-premium: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  --gradient-main: var(--gradient-premium);
+}
+
 /* High Contrast - Accessibility Theme */
 [data-theme="high-contrast"] {
   --bg-primary: #000000;
@@ -113,6 +132,11 @@
 [data-theme="schneider-green"] .glass {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(61, 205, 88, 0.1);
+}
+
+[data-theme="schneider-blue"] .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(2, 132, 199, 0.1);
 }
 
 .dark .glass {

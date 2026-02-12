@@ -28,6 +28,13 @@ export const routes: Routes = [
       import('./pages/settings/settings.component').then((m) => m.ThemeSettingsComponent),
   },
   {
+    path: 'user-management',
+    loadComponent: () =>
+      import('./features/user-management/components/user-list.component').then(
+        (m) => m.UserListComponent,
+      ),
+  },
+  {
     path: 'demos',
     children: [
       {

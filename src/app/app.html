@@ -11,7 +11,45 @@
     [show-search]="true"
     max-items="10"
     (navItemClick)="onNavItemClick($event)"
-  ></ui-navigation>
+  >
+    <!-- User Profile in Footer Slot -->
+    <div slot="footer" class="sidebar-user-profile">
+      <div class="user-profile-container" (click)="toggleUserMenu()">
+        <div class="user-avatar">
+          <img [src]="currentUser().avatar" [alt]="currentUser().name" />
+          <span class="user-status" [class.online]="currentUser().isOnline"></span>
+        </div>
+        <div class="user-info" *ngIf="!sidebarCollapsed()">
+          <div class="user-name">{{ currentUser().name }}</div>
+          <div class="user-role">{{ currentUser().role }}</div>
+        </div>
+        <button class="user-menu-toggle" *ngIf="!sidebarCollapsed()">
+          <fa-icon [icon]="userMenuOpen() ? faChevronUp : faChevronDown"></fa-icon>
+        </button>
+      </div>
+
+      <!-- User Dropdown Menu -->
+      <div class="user-menu" *ngIf="userMenuOpen() && !sidebarCollapsed()">
+        <button class="menu-item" (click)="navigateToProfile()">
+          <fa-icon [icon]="faUser" class="menu-icon"></fa-icon>
+          <span>My Profile</span>
+        </button>
+        <button class="menu-item" (click)="navigateToSettings()">
+          <fa-icon [icon]="faCog" class="menu-icon"></fa-icon>
+          <span>Settings</span>
+        </button>
+        <button class="menu-item" (click)="navigateToUserManagement()">
+          <fa-icon [icon]="faUsers" class="menu-icon"></fa-icon>
+          <span>User Management</span>
+        </button>
+        <div class="menu-divider"></div>
+        <button class="menu-item logout" (click)="logout()">
+          <fa-icon [icon]="faSignOutAlt" class="menu-icon"></fa-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </ui-navigation>
 
   <!-- Main Content with Router Outlet -->
   <main class="main-content">
@@ -21,9 +59,6 @@
         {{ sidebarCollapsed() ? '☰' : '✕' }}
       </button> -->
       <h1><fa-icon [icon]="faCoffee" class="me-2"></fa-icon> {{ title() }}</h1>
-      <button class="theme-toggle-btn" (click)="themeService.toggleTheme()" title="Toggle theme">
-        <fa-icon [icon]="themeService.resolvedTheme() === 'dark' ? faSun : faMoon"></fa-icon>
-      </button>
     </header>
 
     <!-- Router Outlet for Page Content -->
