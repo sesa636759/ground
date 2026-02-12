@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Content</h3>
             <div class="control-group">
               <label>Heading</label>
-              <input type="text" [(ngModel)]="pgConfig.heading" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.heading" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Body Content (HTML)</label>
@@ -58,7 +58,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Width</label>
-              <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

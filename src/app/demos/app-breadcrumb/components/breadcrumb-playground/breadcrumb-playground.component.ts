@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Separator</label>
-              <input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max Items (Collapse)</label>
-              <input type="number" [(ngModel)]="pgConfig.maxItems" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.maxItems" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Size</label>

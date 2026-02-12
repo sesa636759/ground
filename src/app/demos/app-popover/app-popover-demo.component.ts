@@ -33,7 +33,7 @@ export class AppPopoverDemoComponent {
 </ui-popover>
 
 <ui-popover trigger="focus" heading="Focus Trigger" content="Visible on focus">
-  <input type="text" placeholder="Focus Me" />
+  <app-input type="text" placeholder="Focus Me" />
 </ui-popover>`;
 
   placementsCode = `<ui-popover placement="top" content="Top Popover">...</ui-popover>

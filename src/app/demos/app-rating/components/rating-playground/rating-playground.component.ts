@@ -24,11 +24,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max (Stars/Smiley)</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
             </div>
           </div>
 

@@ -59,12 +59,12 @@
 
       <div class="control-group">
         <label>Label Text</label>
-        <input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Helper Text</label>
-        <input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
       </div>
     </div>
 

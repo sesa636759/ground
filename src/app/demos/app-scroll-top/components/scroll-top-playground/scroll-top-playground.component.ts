@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Threshold (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.threshold" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.threshold" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Scroll Speed (ms)</label>
-              <input type="number" [(ngModel)]="pgConfig.speed" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.speed" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.icon" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Shape</label>

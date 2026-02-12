@@ -37,7 +37,7 @@ import { categoryNavItems } from '../../data/navigation.data';
                   stroke-linecap="round"
                 />
               </svg>
-              <input
+              <app-input
                 type="text"
                 placeholder="Search components..."
                 [(ngModel)]="searchQuery"

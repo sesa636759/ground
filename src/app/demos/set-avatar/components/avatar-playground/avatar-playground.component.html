@@ -3,7 +3,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Name</label>
-        <input
+        <app-input
           type="text"
           [(ngModel)]="pgConfig.name"
           (input)="updateConfig()"
@@ -13,7 +13,7 @@
 
       <div class="control-group">
         <label>Image Source (URL)</label>
-        <input
+        <app-input
           type="text"
           [(ngModel)]="pgConfig.src"
           (input)="updateConfig()"
@@ -51,7 +51,7 @@
 
       <div class="control-group">
         <label>Icon Class</label>
-        <input
+        <app-input
           type="text"
           [(ngModel)]="pgConfig.icon"
           (input)="updateConfig()"
@@ -61,12 +61,12 @@
 
       <div class="control-group">
         <label>Tooltip Text</label>
-        <input type="text" [(ngModel)]="pgConfig.tooltipText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.tooltipText" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Background Color</label>
-        <input
+        <app-input
           type="color"
           [(ngModel)]="pgConfig.bgColor"
           (input)="updateConfig()"
@@ -76,7 +76,7 @@
 
       <div class="control-group">
         <label>Text Color</label>
-        <input
+        <app-input
           type="color"
           [(ngModel)]="pgConfig.textColor"
           (input)="updateConfig()"

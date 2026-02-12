@@ -23,11 +23,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Border Radius</label>
-              <input type="text" [(ngModel)]="pgConfig.borderRadius" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.borderRadius" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Width</label>
-              <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
             </div>
           </div>
 

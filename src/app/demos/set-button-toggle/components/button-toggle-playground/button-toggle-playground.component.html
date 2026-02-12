@@ -93,11 +93,11 @@
       </div>
       <div class="control-group">
         <label>Group Label</label>
-        <input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
       </div>
       <div class="control-group" style="grid-column: span 2">
         <label>Helper Text</label>
-        <input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
       </div>
     </div>
 
@@ -164,7 +164,7 @@
       >
         <div *ngIf="pgConfig.customContent" slot="dropdown-content" class="custom-slot-content">
           <p>Custom Playground Content</p>
-          <input type="text" placeholder="Enter something..." />
+          <app-input type="text" placeholder="Enter something..." />
           <div class="slot-actions">
             <ui-button class="btn-confirm" label="Confirm"></ui-button>
             <ui-button class="btn-cancel" label="Cancel"></ui-button>

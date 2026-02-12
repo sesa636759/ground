@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -8,8 +8,9 @@ import { AuthService, RegisterData } from '../../services/auth.service';
   selector: 'app-register',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   formData: RegisterData = {
@@ -17,7 +18,7 @@ export class RegisterComponent {
     email: '',
     password: '',
     fullName: '',
-    acceptTerms: false
+    acceptTerms: false,
   };
 
   confirmPassword = '';
@@ -26,12 +27,12 @@ export class RegisterComponent {
   success = signal<string | null>(null);
   showPassword = signal(false);
   showConfirmPassword = signal(false);
-  
+
   passwordStrength = signal<'weak' | 'medium' | 'strong'>('weak');
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   onPasswordChange(): void {
@@ -57,8 +58,12 @@ export class RegisterComponent {
     this.success.set(null);
 
     // Validation
-    if (!this.formData.username || !this.formData.email || 
-        !this.formData.password || !this.formData.fullName) {
+    if (
+      !this.formData.username ||
+      !this.formData.email ||
+      !this.formData.password ||
+      !this.formData.fullName
+    ) {
       this.error.set('Please fill in all required fields');
       return;
     }

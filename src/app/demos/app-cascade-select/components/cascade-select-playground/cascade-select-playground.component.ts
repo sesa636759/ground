@@ -15,7 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Basic Config</h3>
             <div class="control-group">
               <label>Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.placeholder" (change)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.placeholder"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Size</label>
@@ -47,7 +51,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Separator</label>
-              <input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.separator"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="checkbox-group">
               <app-checkbox

@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Structure</h3>
             <div class="control-group">
               <label>Header Text</label>
-              <input type="text" [(ngModel)]="pgConfig.header" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.header" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Width</label>
-              <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

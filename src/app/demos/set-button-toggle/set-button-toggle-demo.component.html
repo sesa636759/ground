@@ -586,7 +586,7 @@
                 (click)="pickColor(col)"
               ></ui-button>
             </div>
-            <input type="text" [(ngModel)]="customColorHex" placeholder="#000000" />
+            <app-input type="text" [(ngModel)]="customColorHex" placeholder="#000000" />
           </div>
         </app-button-toggle-group>
         <p class="status-msg" [style.color]="selectedColor">{{ customColorLog() }}</p>
@@ -637,7 +637,7 @@
           <div slot="dropdown-content" class="custom-slot-form">
             <div class="form-field">
               <label>Search Query</label>
-              <input type="text" [(ngModel)]="searchQuery" placeholder="Enter keywords..." />
+              <app-input type="text" [(ngModel)]="searchQuery" placeholder="Enter keywords..." />
             </div>
             <div class="form-field">
               <label style="display: flex; align-items: center; gap: 8px">

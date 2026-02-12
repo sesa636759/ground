@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Search Placeholder</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.searchPlaceholder"
                 (change)="updateConfig()"

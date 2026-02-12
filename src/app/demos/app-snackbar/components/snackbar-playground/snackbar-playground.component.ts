@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Max Visible</label>
-              <input type="number" [(ngModel)]="pgConfig.maxVisible" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.maxVisible" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Stack Mode</label>
@@ -61,15 +61,15 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Title</label>
-              <input type="text" [(ngModel)]="notiConfig.title" />
+              <app-input type="text" [(ngModel)]="notiConfig.title" />
             </div>
             <div class="control-group">
               <label>Message</label>
-              <input type="text" [(ngModel)]="notiConfig.message" />
+              <app-input type="text" [(ngModel)]="notiConfig.message" />
             </div>
             <div class="control-group">
               <label>Duration (ms)</label>
-              <input type="number" [(ngModel)]="notiConfig.duration" />
+              <app-input type="number" [(ngModel)]="notiConfig.duration" />
             </div>
           </div>
         </div>

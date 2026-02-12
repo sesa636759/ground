@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import {
@@ -8,6 +8,7 @@ import {
   userProfileNavItems,
 } from './data/navigation.data';
 import { ThemeService } from './services/theme.service';
+import { AuthService } from './services/auth.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -60,17 +61,31 @@ export class App implements OnInit {
 
   // User Profile
   userMenuOpen = signal(false);
-  currentUser = signal({
-    name: 'John Doe',
-    role: 'Administrator',
-    avatar: 'https://i.pravatar.cc/150?img=12',
-    isOnline: true,
-    email: 'john.doe@example.com',
+
+  currentUser = computed(() => {
+    const user = this.authService.currentUser();
+    if (user) {
+      return {
+        name: user.fullName,
+        role: user.role,
+        avatar: user.avatar || 'https://i.pravatar.cc/150?img=12',
+        isOnline: true,
+        email: user.email,
+      };
+    }
+    return {
+      name: 'Guest User',
+      role: 'Visitor',
+      avatar: 'https://i.pravatar.cc/150?img=12',
+      isOnline: false,
+      email: '',
+    };
   });
 
   constructor(
     public router: Router,
     public themeService: ThemeService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -115,6 +130,12 @@ export class App implements OnInit {
       this.currentRoute.set('theme-selector');
     } else if (url.startsWith('/user-management')) {
       this.currentRoute.set('user-management');
+    } else if (url.startsWith('/login')) {
+      this.currentRoute.set('login');
+    } else if (url.startsWith('/register')) {
+      this.currentRoute.set('register');
+    } else if (url.startsWith('/profile')) {
+      this.currentRoute.set('profile');
     }
   }
 
@@ -142,9 +163,12 @@ export class App implements OnInit {
           'theme-selector',
           'playground',
           'user-management',
+          'login',
+          'register',
+          'profile',
         ].includes(itemId)
       ) {
-        this.router.navigate([itemId]);
+        this.router.navigate(['/' + itemId]);
       } else if (
         [
           'personal-info',
@@ -158,8 +182,8 @@ export class App implements OnInit {
           'help-support',
         ].includes(itemId)
       ) {
-        // Handle profile sub-routes (can navigate to user-management or specific sub-pages)
-        this.router.navigate(['user-management'], { queryParams: { tab: itemId } });
+        // Handle profile sub-routes
+        this.router.navigate(['/profile'], { queryParams: { tab: itemId } });
       } else {
         // Component routes allow generic handling -> Docs
         this.router.navigate(['demos', itemId]);
@@ -174,7 +198,7 @@ export class App implements OnInit {
 
   navigateToProfile() {
     this.userMenuOpen.set(false);
-    this.router.navigate(['/user-management']);
+    this.router.navigate(['/profile']);
     console.log('Navigate to profile');
   }
 
@@ -193,7 +217,6 @@ export class App implements OnInit {
   logout() {
     this.userMenuOpen.set(false);
     console.log('Logout clicked');
-    // Add your logout logic here
-    alert('Logout functionality - Implement your authentication logout here');
+    this.authService.logout();
   }
 }

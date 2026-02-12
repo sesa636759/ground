@@ -56,7 +56,7 @@
 
       <div class="control-group">
         <label>Duration (ms)</label>
-        <input
+        <app-input
           type="number"
           [(ngModel)]="pgConfig.animationDuration"
           (input)="updateConfig()"
@@ -66,7 +66,7 @@
 
       <div class="control-group">
         <label>Autoplay Interval (ms)</label>
-        <input
+        <app-input
           type="number"
           [(ngModel)]="pgConfig.autoplayInterval"
           (input)="updateConfig()"

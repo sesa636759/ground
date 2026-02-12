@@ -16,15 +16,15 @@ import { FormsModule } from '@angular/forms';
             <h3>Header</h3>
             <div class="control-group">
               <label>Title</label>
-              <input type="text" [(ngModel)]="pgConfig.panelTitle" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.panelTitle" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Subtitle</label>
-              <input type="text" [(ngModel)]="pgConfig.panelSubtitle" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.panelSubtitle" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

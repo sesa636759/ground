@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Breakpoint</label>
-              <input type="text" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
             </div>
           </div>
 

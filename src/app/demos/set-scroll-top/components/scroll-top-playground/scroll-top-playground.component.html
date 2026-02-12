@@ -60,12 +60,12 @@
 
       <div class="control-group">
         <label>Color</label>
-        <input type="color" [(ngModel)]="pgConfig.color" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.color" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <input type="number" [(ngModel)]="pgConfig.offset" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.offset" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">

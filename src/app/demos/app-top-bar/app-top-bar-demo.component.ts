@@ -26,7 +26,7 @@ export class AppTopBarDemoComponent {
   layoutsCode = `<!-- With Search Bar -->
 <ui-top-bar>
   <div slot="start">Brand</div>
-  <div slot="center"><input type="search" placeholder="Search..." /></div>
+  <div slot="center"><app-input type="search" placeholder="Search..." /></div>
   <div slot="end">Actions</div>
 </ui-top-bar>`;
 

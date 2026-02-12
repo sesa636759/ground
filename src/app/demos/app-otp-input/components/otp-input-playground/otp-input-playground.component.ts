@@ -15,7 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Structure</h3>
             <div class="control-group">
               <label>Length (Digits)</label>
-              <input type="number" [(ngModel)]="pgConfig.length" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.length"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="checkbox-group">
               <app-checkbox

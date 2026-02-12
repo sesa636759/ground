@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
           </div>
           <div class="control-group">
             <label>Max Display</label>
-            <input
+            <app-input
               type="number"
               min="1"
               max="10"

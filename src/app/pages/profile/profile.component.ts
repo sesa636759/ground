@@ -1,7 +1,7 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 
 interface ActivityItem {
@@ -16,9 +16,10 @@ interface ActivityItem {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   user = computed(() => this.authService.currentUser());
@@ -36,7 +37,7 @@ export class ProfileComponent implements OnInit {
   passwordForm = {
     currentPassword: '',
     newPassword: '',
-    confirmPassword: ''
+    confirmPassword: '',
   };
 
   showCurrentPassword = signal(false);
@@ -51,7 +52,7 @@ export class ProfileComponent implements OnInit {
       title: 'Successful Login',
       description: 'Logged in from Chrome on Windows',
       timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
-      type: 'login'
+      type: 'login',
     },
     {
       id: '2',
@@ -59,7 +60,7 @@ export class ProfileComponent implements OnInit {
       title: 'Profile Updated',
       description: 'Updated bio and contact information',
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
-      type: 'update'
+      type: 'update',
     },
     {
       id: '3',
@@ -67,7 +68,7 @@ export class ProfileComponent implements OnInit {
       title: 'Password Changed',
       description: 'Password was successfully updated',
       timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
-      type: 'security'
+      type: 'security',
     },
     {
       id: '4',
@@ -75,13 +76,13 @@ export class ProfileComponent implements OnInit {
       title: 'Successful Login',
       description: 'Logged in from Firefox on MacOS',
       timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-      type: 'login'
-    }
+      type: 'login',
+    },
   ]);
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -105,7 +106,7 @@ export class ProfileComponent implements OnInit {
         phone: currentUser.phone,
         location: currentUser.location,
         website: currentUser.website,
-        department: currentUser.department
+        department: currentUser.department,
       });
       this.editMode.set(true);
     }
@@ -123,7 +124,7 @@ export class ProfileComponent implements OnInit {
 
     try {
       const result = await this.authService.updateProfile(this.editForm());
-      
+
       if (result.success) {
         this.message.set({ type: 'success', text: result.message });
         this.editMode.set(false);
@@ -161,7 +162,7 @@ export class ProfileComponent implements OnInit {
     try {
       const result = await this.authService.changePassword(
         this.passwordForm.currentPassword,
-        this.passwordForm.newPassword
+        this.passwordForm.newPassword,
       );
 
       if (result.success) {
@@ -169,7 +170,7 @@ export class ProfileComponent implements OnInit {
         this.passwordForm = {
           currentPassword: '',
           newPassword: '',
-          confirmPassword: ''
+          confirmPassword: '',
         };
         setTimeout(() => this.message.set(null), 3000);
       } else {

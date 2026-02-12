@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.placeholder" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.placeholder" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Size</label>

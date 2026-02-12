@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Source Header</label>
-              <input type="text" [(ngModel)]="pgConfig.sourceHeader" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.sourceHeader" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Target Header</label>
-              <input type="text" [(ngModel)]="pgConfig.targetHeader" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.targetHeader" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -43,7 +43,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Filter Placeholder</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.filterPlaceholder"
                 (change)="updateConfig()"

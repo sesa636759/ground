@@ -43,7 +43,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Min Height (H) / Width (V)</label>
-              <input type="text" [(ngModel)]="pgConfig.meterHeight" (change)="updateConfig()" />
+                <app-input
+                  type="text"
+                  [(ngModel)]="pgConfig.meterHeight"
+                  (ngModelChange)="updateConfig()"
+                ></app-input>
             </div>
             <div class="checkbox-group">
               <app-checkbox

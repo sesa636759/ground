@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Scroll Offset (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.scrollOffset" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.scrollOffset" (change)="updateConfig()" />
             </div>
           </div>
 

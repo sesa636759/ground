@@ -43,7 +43,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Rows per page</label>
-              <input type="number" [(ngModel)]="pgConfig.rows" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.rows" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

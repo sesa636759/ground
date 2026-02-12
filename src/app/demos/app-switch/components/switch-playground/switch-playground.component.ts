@@ -16,11 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Content</h3>
             <div class="control-group">
               <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon On</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.iconOn"
                 (change)="updateConfig()"
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Icon Off</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.iconOff"
                 (change)="updateConfig()"

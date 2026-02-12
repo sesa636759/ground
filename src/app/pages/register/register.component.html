@@ -26,7 +26,7 @@
         <label for="fullName">Full Name <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">👤</span>
-          <input
+          <app-input
             type="text"
             id="fullName"
             name="fullName"
@@ -43,7 +43,7 @@
         <label for="username">Username <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">@</span>
-          <input
+          <app-input
             type="text"
             id="username"
             name="username"
@@ -60,7 +60,7 @@
         <label for="email">Email Address <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">📧</span>
-          <input
+          <app-input
             type="email"
             id="email"
             name="email"
@@ -77,7 +77,7 @@
         <label for="password">Password <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
-          <input
+          <app-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -118,7 +118,7 @@
         <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
-          <input
+          <app-input
             [type]="showConfirmPassword() ? 'text' : 'password'"
             id="confirmPassword"
             name="confirmPassword"
@@ -149,7 +149,7 @@
       <!-- Terms and Conditions -->
       <div class="form-group">
         <label class="checkbox-label">
-          <input
+          <app-input
             type="checkbox"
             name="acceptTerms"
             [(ngModel)]="formData.acceptTerms"

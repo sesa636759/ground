@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Gutter Size (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.gutterSize" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.gutterSize" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Min Size (%)</label>
-              <input type="number" [(ngModel)]="pgConfig.minSize" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.minSize" (change)="updateConfig()" />
             </div>
           </div>
         </div>

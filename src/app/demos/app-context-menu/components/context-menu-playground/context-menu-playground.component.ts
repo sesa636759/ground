@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Breakpoint</label>
-              <input type="number" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Base Z-Index</label>
-              <input type="number" [(ngModel)]="pgConfig.baseZIndex" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.baseZIndex" (change)="updateConfig()" />
             </div>
           </div>
         </div>

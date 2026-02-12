@@ -15,19 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Value Control</h3>
             <div class="control-group">
               <label>Current Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Min</label>
-              <input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Step</label>
-              <input type="number" [(ngModel)]="pgConfig.step" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.step" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -35,15 +35,15 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Size</label>
-              <input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Stroke Width</label>
-              <input type="number" [(ngModel)]="pgConfig.strokeWidth" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Color</label>
-              <input type="color" [(ngModel)]="pgConfig.valueColor" (change)="updateConfig()" />
+              <app-input type="color" [(ngModel)]="pgConfig.valueColor" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

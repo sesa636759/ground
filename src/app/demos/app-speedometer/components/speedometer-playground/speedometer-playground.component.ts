@@ -15,19 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Metric</h3>
             <div class="control-group">
               <label>Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Min</label>
-              <input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -35,11 +35,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Size</label>
-              <input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Arc Width</label>
-              <input type="number" [(ngModel)]="pgConfig.arcWidth" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.arcWidth" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Color Mode</label>

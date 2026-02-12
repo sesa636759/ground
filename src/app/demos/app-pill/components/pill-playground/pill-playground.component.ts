@@ -15,7 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.label"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Variant</label>
@@ -71,7 +75,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Counter</label>
-              <input type="number" [(ngModel)]="pgConfig.counter" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.counter"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
         </div>

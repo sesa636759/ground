@@ -15,15 +15,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Value Control</h3>
             <div class="control-group">
               <label>Min</label>
-              <input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.min"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Max</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Step</label>
-              <input type="number" [(ngModel)]="pgConfig.step" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.step"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
 

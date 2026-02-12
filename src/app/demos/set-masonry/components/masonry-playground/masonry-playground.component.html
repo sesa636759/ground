@@ -16,7 +16,7 @@
 
       <div class="control-group">
         <label>Columns</label>
-        <input
+        <app-input
           type="number"
           min="1"
           max="6"
@@ -27,7 +27,7 @@
 
       <div class="control-group">
         <label>Gap (px)</label>
-        <input type="number" min="0" max="50" [(ngModel)]="pgConfig.gap" (input)="updateConfig()" />
+        <app-input type="number" min="0" max="50" [(ngModel)]="pgConfig.gap" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -73,17 +73,17 @@
 
       <div class="control-group">
         <label>Breakpoints (JSON)</label>
-        <input type="text" [value]="getBreakpointsJson()" (input)="updateBreakpoints($event)" />
+        <app-input type="text" [value]="getBreakpointsJson()" (input)="updateBreakpoints($event)" />
       </div>
 
       <div class="control-group">
         <label>Min Width</label>
-        <input type="number" [(ngModel)]="pgConfig.itemMinWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.itemMinWidth" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Max Width</label>
-        <input type="number" [(ngModel)]="pgConfig.itemMaxWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.itemMaxWidth" (input)="updateConfig()" />
       </div>
     </div>
 

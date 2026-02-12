@@ -24,11 +24,11 @@ export const topNavItems: NavItem[] = [
     label: 'Documentation',
     icon: '📖',
   },
-  {
-    id: 'profile',
-    label: 'Profile',
-    icon: '👤',
-  },
+  // {
+  //   id: 'profile',
+  //   label: 'Profile',
+  //   icon: '👤',
+  // },
   {
     id: 'login',
     label: 'Login',

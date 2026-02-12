@@ -55,12 +55,12 @@
 
       <div class="control-group">
         <label>Indent (px)</label>
-        <input type="number" [(ngModel)]="pgConfig.indent" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.indent" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Connector Width</label>
-        <input type="number" [(ngModel)]="pgConfig.connectorWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.connectorWidth" (input)="updateConfig()" />
       </div>
     </div>
 

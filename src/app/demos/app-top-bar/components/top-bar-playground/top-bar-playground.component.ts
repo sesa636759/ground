@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Structure</h3>
             <div class="control-group">
               <label>Logo Text</label>
-              <input type="text" [(ngModel)]="pgConfig.logoText" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.logoText" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Height (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.height" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.height" (change)="updateConfig()" />
             </div>
           </div>
         </div>

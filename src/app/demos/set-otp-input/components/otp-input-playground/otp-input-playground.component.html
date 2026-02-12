@@ -3,17 +3,17 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
-        <input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Helper Text</label>
-        <input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Length</label>
-        <input
+        <app-input
           type="number"
           [(ngModel)]="pgConfig.length"
           (input)="updateConfig()"
@@ -67,7 +67,7 @@
 
       <div class="control-group">
         <label>Group Size</label>
-        <input
+        <app-input
           type="number"
           [(ngModel)]="pgConfig.groupSize"
           (input)="updateConfig()"
@@ -78,7 +78,7 @@
 
       <div class="control-group" *ngIf="pgConfig.invalid">
         <label>Error Text</label>
-        <input type="text" [(ngModel)]="pgConfig.errorText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.errorText" (input)="updateConfig()" />
       </div>
     </div>
 

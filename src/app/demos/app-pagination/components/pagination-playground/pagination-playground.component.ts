@@ -15,15 +15,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Paging</h3>
             <div class="control-group">
               <label>Total Items</label>
-              <input type="number" [(ngModel)]="pgConfig.total" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.total"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Items Per Page</label>
-              <input type="number" [(ngModel)]="pgConfig.rows" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.rows"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Current Page</label>
-              <input type="number" [(ngModel)]="pgConfig.first" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.first"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
 

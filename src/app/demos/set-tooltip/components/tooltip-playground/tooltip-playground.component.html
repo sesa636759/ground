@@ -3,7 +3,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Content</label>
-        <input type="text" [(ngModel)]="pgConfig.content" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.content" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -87,7 +87,7 @@
 
       <div class="control-group">
         <label>Max Width (px)</label>
-        <input type="number" [(ngModel)]="pgConfig.maxWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.maxWidth" (input)="updateConfig()" />
       </div>
     </div>
 

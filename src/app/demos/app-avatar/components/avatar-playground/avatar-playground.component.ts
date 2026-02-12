@@ -16,11 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Identity</h3>
             <div class="control-group">
               <label>Name (Initials)</label>
-              <input type="text" [(ngModel)]="pgConfig.name" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.name" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Image Source</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.src"
                 (change)="updateConfig()"
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.icon"
                 (change)="updateConfig()"
@@ -51,7 +51,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Size (e.g. 64px)</label>
-              <input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Status</label>
@@ -68,7 +68,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Decorations</h3>
             <div class="control-group">
               <label>Badge</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.badge"
                 (change)="updateConfig()"
@@ -77,7 +77,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Badge Color</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.badgeColor"
                 (change)="updateConfig()"

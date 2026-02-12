@@ -3,12 +3,12 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Title</label>
-        <input type="text" [(ngModel)]="pgConfig.title" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.title" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Extra (Header)</label>
-        <input type="text" [(ngModel)]="pgConfig.extra" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.extra" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -65,7 +65,7 @@
 
       <div class="control-group">
         <label>Ribbon Text</label>
-        <input type="text" [(ngModel)]="pgConfig.ribbon" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.ribbon" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">

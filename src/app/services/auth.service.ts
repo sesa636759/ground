@@ -32,7 +32,7 @@ export interface RegisterData {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private currentUserSignal = signal<User | null>(null);
@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   private loadUserFromStorage(): void {
-    const storedUser = localStorage.getItem('currentUser');
+    const storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
     if (storedUser) {
       try {
         const user = JSON.parse(storedUser);
@@ -55,6 +55,7 @@ export class AuthService {
       } catch (error) {
         console.error('Failed to parse stored user:', error);
         localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('currentUser');
       }
     }
   }
@@ -78,7 +79,7 @@ export class AuthService {
         location: 'San Francisco, CA',
         website: 'https://example.com',
         createdAt: new Date('2024-01-01'),
-        lastLogin: new Date()
+        lastLogin: new Date(),
       };
 
       this.currentUserSignal.set(user);
@@ -117,7 +118,7 @@ export class AuthService {
       avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${data.username}`,
       role: 'user',
       createdAt: new Date(),
-      lastLogin: new Date()
+      lastLogin: new Date(),
     };
 
     this.currentUserSignal.set(user);
@@ -153,7 +154,10 @@ export class AuthService {
     });
   }
 
-  async changePassword(currentPassword: string, newPassword: string): Promise<{ success: boolean; message: string }> {
+  async changePassword(
+    currentPassword: string,
+    newPassword: string,
+  ): Promise<{ success: boolean; message: string }> {
     await this.delay(1000);
 
     // Demo validation
@@ -165,6 +169,6 @@ export class AuthService {
   }
 
   private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

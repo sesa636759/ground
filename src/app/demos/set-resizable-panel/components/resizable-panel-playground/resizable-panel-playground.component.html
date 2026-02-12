@@ -27,12 +27,12 @@
 
       <div class="control-group">
         <label>Handle Size (px)</label>
-        <input type="number" [(ngModel)]="pgConfig.handleSize" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.handleSize" (input)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Snap Threshold (px)</label>
-        <input type="number" [(ngModel)]="pgConfig.snapThreshold" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.snapThreshold" (input)="updateConfig()" />
       </div>
     </div>
 

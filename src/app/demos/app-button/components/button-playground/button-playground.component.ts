@@ -16,11 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Content</h3>
             <div class="control-group">
               <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.icon"
                 (change)="updateConfig()"
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
             </div>
           </div>
 
@@ -54,7 +54,7 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Elevation (0-5)</label>
-              <input
+              <app-input
                 type="number"
                 min="0"
                 max="5"

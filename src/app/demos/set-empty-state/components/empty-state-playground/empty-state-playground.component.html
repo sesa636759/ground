@@ -62,7 +62,7 @@
 
       <div class="control-group full-width">
         <label>Heading</label>
-        <input
+        <app-input
           type="text"
           [(ngModel)]="pgConfig.heading"
           (input)="updateConfig()"
@@ -82,12 +82,12 @@
 
       <div class="control-group full-width">
         <label>Primary Action</label>
-        <input type="text" [(ngModel)]="pgConfig.primaryAction" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.primaryAction" (input)="updateConfig()" />
       </div>
 
       <div class="control-group full-width">
         <label>Secondary Action</label>
-        <input type="text" [(ngModel)]="pgConfig.secondaryAction" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.secondaryAction" (input)="updateConfig()" />
       </div>
     </div>
 
