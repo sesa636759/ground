@@ -7,15 +7,13 @@
 
   <!-- Navigation -->
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
-    >
-      <span class="variant-icon">{{ variant.icon }}</span>
-      <span class="variant-label">{{ variant.name }}</span>
-    </button>
+      variant="primary"
+      [icon]="variant.icon"
+      [label]="variant.name"
+    ></ui-button>
   </div>
 
   <!-- Interactive Playground -->
@@ -248,11 +246,14 @@
     <div class="demo-card">
       <div class="preview-box">
         <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem">
-          <button (click)="setControlledExpanded(['c1'])">Open 1</button>
-          <button (click)="setControlledExpanded(['c2'])">Open 2</button>
-          <button (click)="setControlledExpanded(['c3'])">Open 3</button>
-          <button (click)="setControlledExpanded(['c1', 'c2', 'c3'])">Open All</button>
-          <button (click)="setControlledExpanded([])">Close All</button>
+          <ui-button (click)="setControlledExpanded(['c1'])" label="Open 1"></ui-button>
+          <ui-button (click)="setControlledExpanded(['c2'])" label="Open 2"></ui-button>
+          <ui-button (click)="setControlledExpanded(['c3'])" label="Open 3"></ui-button>
+          <ui-button
+            (click)="setControlledExpanded(['c1', 'c2', 'c3'])"
+            label="Open All"
+          ></ui-button>
+          <ui-button (click)="setControlledExpanded([])" label="Close All"></ui-button>
         </div>
         <ui-accordion
           [items]="controlledItems"

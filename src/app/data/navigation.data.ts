@@ -169,6 +169,61 @@ export const categoryNavItems: NavItem[] = [
   },
 ];
 
+export const userProfileNavItems: NavItem[] = [
+  {
+    id: 'personal-info',
+    label: 'Personal Information',
+    icon: '👤',
+    status: 'online',
+  },
+  {
+    id: 'security',
+    label: 'Security & Password',
+    icon: '🔒',
+  },
+  {
+    id: 'notifications',
+    label: 'Notifications',
+    icon: '🔔',
+    badge: '3',
+  },
+  {
+    id: 'billing',
+    label: 'Billing & Subscriptions',
+    icon: '💳',
+  },
+  {
+    id: 'connected-accounts',
+    label: 'Connected Accounts',
+    icon: '🔗',
+  },
+  {
+    id: 'privacy',
+    label: 'Privacy Settings',
+    icon: '🛡️',
+  },
+  {
+    id: 'activity-log',
+    label: 'Activity Log',
+    icon: '🕒',
+  },
+  {
+    id: 'preferences',
+    label: 'System Preferences',
+    icon: '⚙️',
+  },
+  {
+    id: 'help-support',
+    label: 'Help & Support',
+    icon: '❓',
+  },
+  {
+    id: 'logout',
+    label: 'Sign Out',
+    icon: '🚪',
+  },
+];
+
 export const bottomNavItems: NavItem[] = [
   {
     id: 'user-management',
@@ -256,6 +311,7 @@ export function getAllNavItems(): NavItem[] {
   addItems(topNavItems);
   addItems(categoryNavItems);
   addItems(bottomNavItems);
+  addItems(userProfileNavItems);
   addItems(bottomSecondaryItems);
 
   return allItems;

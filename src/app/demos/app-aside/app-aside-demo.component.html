@@ -7,15 +7,13 @@
 
   <!-- Navigation -->
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
-    >
-      <span class="variant-icon">{{ variant.icon }}</span>
-      <span class="variant-label">{{ variant.name }}</span>
-    </button>
+      variant="primary"
+      [icon]="variant.icon"
+      [label]="variant.name"
+    ></ui-button>
   </div>
 
   <!-- Interactive Playground -->
@@ -40,9 +38,24 @@
     </div>
     <div class="demo-card">
       <div class="preview-box">
-        <button class="btn-secondary" (click)="sidebars.left = true">Left Panel</button>
-        <button class="btn-secondary" (click)="sidebars.top = true">Top Panel</button>
-        <button class="btn-secondary" (click)="sidebars.bottom = true">Bottom Panel</button>
+        <ui-button
+          class="btn-secondary"
+          variant="secondary"
+          (click)="sidebars.left = true"
+          label="Left Panel"
+        ></ui-button>
+        <ui-button
+          class="btn-secondary"
+          variant="secondary"
+          (click)="sidebars.top = true"
+          label="Top Panel"
+        ></ui-button>
+        <ui-button
+          class="btn-secondary"
+          variant="secondary"
+          (click)="sidebars.bottom = true"
+          label="Bottom Panel"
+        ></ui-button>
       </div>
     </div>
 
@@ -97,7 +110,12 @@
     </div>
     <div class="demo-card">
       <div class="preview-box">
-        <button class="btn-primary" (click)="sidebars.glass = true">Launch Glass Panel</button>
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          (click)="sidebars.glass = true"
+          label="Launch Glass Panel"
+        ></ui-button>
       </div>
     </div>
 
@@ -137,9 +155,12 @@
     </div>
     <div class="demo-card">
       <div class="preview-box">
-        <button class="btn-secondary" (click)="sidebars.resizable = true">
-          Open Resizable Panel
-        </button>
+        <ui-button
+          class="btn-secondary"
+          variant="secondary"
+          (click)="sidebars.resizable = true"
+          label="Open Resizable Panel"
+        ></ui-button>
       </div>
     </div>
 

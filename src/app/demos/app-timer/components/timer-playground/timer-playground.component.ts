@@ -53,8 +53,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -68,9 +68,9 @@ import { FormsModule } from '@angular/forms';
         ></ui-timer>
 
         <div style="display: flex; gap: 12px; margin-top: 24px;">
-          <button class="variant-btn" (click)="timer.start()">Start</button>
-          <button class="variant-btn btn-secondary" (click)="timer.pause()">Pause</button>
-          <button class="variant-btn btn-secondary" (click)="timer.reset()">Reset</button>
+          <ui-button class="variant-btn" (click)="timer.start()" label="Start"></ui-button>
+          <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="timer.pause()" label="Pause"></ui-button>
+          <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="timer.reset()" label="Reset"></ui-button>
         </div>
       </div>
     </div>

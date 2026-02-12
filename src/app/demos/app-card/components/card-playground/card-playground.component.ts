@@ -78,8 +78,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -105,8 +105,8 @@ import { FormsModule } from '@angular/forms';
             </p>
           </div>
           <div slot="footer" style="display: flex; gap: 8px;">
-            <button class="btn-primary" style="flex: 1;">Book Now</button>
-            <button class="btn-secondary">Details</button>
+            <ui-button class="btn-primary" variant="primary" style="flex: 1;" label="Book Now"></ui-button>
+            <ui-button class="btn-secondary" variant="secondary" label="Details"></ui-button>
           </div>
           <div slot="back-content" style="padding: 20px;">
             <h3>Quick Stats</h3>
@@ -160,7 +160,7 @@ export class CardPlaygroundComponent {
     code += '  <img slot="cover" src="..." />\n';
     code += '  <div slot="header"><h3>Card Title</h3></div>\n';
     code += '  <div slot="content">Card body here...</div>\n';
-    code += '  <div slot="footer"><button>Action</button></div>\n';
+    code += '  <div slot="footer"><ui-button label="Action"></ui-button></div>\n';
     code += '</ui-card>';
 
     this.generatedCode.set(code);

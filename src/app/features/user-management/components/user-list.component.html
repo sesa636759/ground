@@ -7,11 +7,24 @@
     </div>
 
     <div class="header-actions">
-      <button class="btn btn-primary" (click)="openCreateDialog()"><span>➕</span> Add User</button>
-      <button class="btn btn-secondary" (click)="showImportDialog = true">
-        <span>📥</span> Import
-      </button>
-      <button class="btn btn-secondary" (click)="exportUsers('csv')"><span>📤</span> Export</button>
+      <ui-button
+        variant="primary"
+        icon="➕"
+        label="Add User"
+        (click)="openCreateDialog()"
+      ></ui-button>
+      <ui-button
+        variant="secondary"
+        icon="📥"
+        label="Import"
+        (click)="showImportDialog = true"
+      ></ui-button>
+      <ui-button
+        variant="secondary"
+        icon="📤"
+        label="Export"
+        (click)="exportUsers('csv')"
+      ></ui-button>
     </div>
   </div>
 
@@ -60,7 +73,7 @@
         placeholder="Search users by name, email, username..."
         class="search-input"
       />
-      <button class="btn-search" (click)="onSearch()">🔍</button>
+      <ui-button icon="🔍" icon-only variant="ghost" (click)="onSearch()"></ui-button>
     </div>
 
     <div class="filter-controls">
@@ -79,40 +92,37 @@
         <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
       </select>
 
-      <button
-        class="btn btn-clear"
+      <ui-button
+        variant="ghost"
+        label="Clear Filters"
         (click)="clearFilters()"
         *ngIf="searchTerm || selectedRole || selectedStatus || selectedDepartment"
       >
-        Clear Filters
-      </button>
+      </ui-button>
     </div>
 
     <div class="view-controls">
-      <button
-        class="view-btn"
-        [class.active]="viewMode === 'table'"
+      <ui-button
+        [variant]="viewMode === 'table' ? 'primary' : 'ghost'"
+        icon="📊"
+        icon-only
         (click)="setViewMode('table')"
         title="Table View"
-      >
-        📊
-      </button>
-      <button
-        class="view-btn"
-        [class.active]="viewMode === 'grid'"
+       label=""></ui-button>
+      <ui-button
+        [variant]="viewMode === 'grid' ? 'primary' : 'ghost'"
+        icon="⊞"
+        icon-only
         (click)="setViewMode('grid')"
         title="Grid View"
-      >
-        ⊞
-      </button>
-      <button
-        class="view-btn"
-        [class.active]="viewMode === 'list'"
+       label=""></ui-button>
+      <ui-button
+        [variant]="viewMode === 'list' ? 'primary' : 'ghost'"
+        icon="☰"
+        icon-only
         (click)="setViewMode('list')"
         title="List View"
-      >
-        ☰
-      </button>
+       label=""></ui-button>
     </div>
   </div>
 
@@ -120,16 +130,34 @@
   <div class="bulk-actions-bar" *ngIf="selectedUsers.size > 0">
     <div class="selected-count">{{ selectedUsers.size }} user(s) selected</div>
     <div class="bulk-buttons">
-      <button class="btn btn-sm" (click)="bulkOperation = 'activate'; executeBulkOperation()">
-        ✅ Activate
-      </button>
-      <button class="btn btn-sm" (click)="bulkOperation = 'deactivate'; executeBulkOperation()">
-        ⏸️ Deactivate
-      </button>
-      <button class="btn btn-sm" (click)="bulkOperation = 'lock'; executeBulkOperation()">
-        🔒 Lock
-      </button>
-      <button class="btn btn-sm btn-danger" (click)="openBulkDialog()">🗑️ Delete</button>
+      <ui-button
+        size="sm"
+        icon="✅"
+        label="Activate"
+        (click)="bulkOperation = 'activate'; executeBulkOperation()"
+      >
+      </ui-button>
+      <ui-button
+        size="sm"
+        icon="⏸️"
+        label="Deactivate"
+        (click)="bulkOperation = 'deactivate'; executeBulkOperation()"
+      >
+      </ui-button>
+      <ui-button
+        size="sm"
+        icon="🔒"
+        label="Lock"
+        (click)="bulkOperation = 'lock'; executeBulkOperation()"
+      >
+      </ui-button>
+      <ui-button
+        size="sm"
+        variant="danger"
+        icon="🗑️"
+        label="Delete"
+        (click)="openBulkDialog()"
+      ></ui-button>
     </div>
   </div>
 
@@ -203,24 +231,43 @@
           <td>{{ user.createdAt | date: 'short' }}</td>
           <td>
             <div class="action-buttons">
-              <button class="btn-icon" (click)="openEditDialog(user)" title="Edit">✏️</button>
-              <button class="btn-icon" (click)="resetPassword(user)" title="Reset Password">
-                🔑
-              </button>
-              <button class="btn-icon" *ngIf="!user.isLocked" (click)="lockUser(user)" title="Lock">
-                🔒
-              </button>
-              <button
-                class="btn-icon"
+              <ui-button
+                icon="✏️"
+                icon-only
+                variant="ghost"
+                (click)="openEditDialog(user)"
+                title="Edit"
+              ></ui-button>
+              <ui-button
+                icon="🔑"
+                icon-only
+                variant="ghost"
+                (click)="resetPassword(user)"
+                title="Reset Password"
+               label=""></ui-button>
+              <ui-button
+                icon="🔒"
+                icon-only
+                variant="ghost"
+                *ngIf="!user.isLocked"
+                (click)="lockUser(user)"
+                title="Lock"
+               label=""></ui-button>
+              <ui-button
+                icon="🔓"
+                icon-only
+                variant="ghost"
                 *ngIf="user.isLocked"
                 (click)="unlockUser(user)"
                 title="Unlock"
-              >
-                🔓
-              </button>
-              <button class="btn-icon btn-danger" (click)="openDeleteDialog(user)" title="Delete">
-                🗑️
-              </button>
+               label=""></ui-button>
+              <ui-button
+                icon="🗑️"
+                icon-only
+                variant="danger"
+                (click)="openDeleteDialog(user)"
+                title="Delete"
+               label=""></ui-button>
             </div>
           </td>
         </tr>
@@ -263,8 +310,13 @@
       </div>
 
       <div class="card-actions">
-        <button class="btn btn-sm" (click)="openEditDialog(user)">Edit</button>
-        <button class="btn btn-sm btn-danger" (click)="openDeleteDialog(user)">Delete</button>
+        <ui-button size="sm" label="Edit" (click)="openEditDialog(user)"></ui-button>
+        <ui-button
+          size="sm"
+          variant="danger"
+          label="Delete"
+          (click)="openDeleteDialog(user)"
+        ></ui-button>
       </div>
     </div>
   </div>
@@ -277,26 +329,26 @@
     </div>
 
     <div class="pagination-controls">
-      <button class="btn-page" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
-        Previous
-      </button>
-
-      <button
-        *ngFor="let page of getPageNumbers()"
-        class="btn-page"
-        [class.active]="page === currentPage"
-        (click)="goToPage(page)"
+      <ui-button
+        label="Previous"
+        [disabled]="currentPage === 1"
+        (click)="goToPage(currentPage - 1)"
       >
-        {{ page }}
-      </button>
+      </ui-button>
 
-      <button
-        class="btn-page"
+      <ui-button
+        *ngFor="let page of getPageNumbers()"
+        [label]="page"
+        [variant]="page === currentPage ? 'primary' : 'ghost'"
+        (click)="goToPage(page)"
+       label=""></ui-button>
+
+      <ui-button
+        label="Next"
         [disabled]="currentPage === totalPages"
         (click)="goToPage(currentPage + 1)"
       >
-        Next
-      </button>
+      </ui-button>
     </div>
 
     <div class="page-size-selector">

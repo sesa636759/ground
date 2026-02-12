@@ -154,8 +154,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -186,8 +186,8 @@ import { FormsModule } from '@angular/forms';
             and resizing from the controls on the left.
           </div>
           <div slot="footer" class="panel-footer-demo">
-            <button class="btn-secondary">Cancel</button>
-            <button class="btn-primary">Save Changes</button>
+            <ui-button class="btn-secondary" variant="secondary" label="Cancel"></ui-button>
+            <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
           </div>
         </ui-panel>
       </div>

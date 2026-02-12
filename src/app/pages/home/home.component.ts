@@ -50,66 +50,44 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
           <app-animate-on-scroll animation="slide-up" [delay]="200">
             <p class="hero-description">
               A comprehensive library of 53+ production-ready components designed for modern
-              enterprise applications. Built with accessibility, performance, and developer experience
-              in mind.
+              enterprise applications. Built with accessibility, performance, and developer
+              experience in mind.
             </p>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="hero-actions">
-            <button class="btn-primary" (click)="navigateTo('overview')">
-              <span>Explore Components</span>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M7.5 15L12.5 10L7.5 5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-            <button class="btn-secondary" (click)="navigateTo('documentation')">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M10 6V10L13 13"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <span>View Documentation</span>
-            </button>
+              <ui-button variant="primary" class="btn-primary" (click)="navigateTo('overview')" label="Explore Components"></ui-button>
+              <ui-button
+                variant="secondary"
+                class="btn-secondary"
+                (click)="navigateTo('documentation')"
+               label="View Documentation"></ui-button>
             </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="400">
             <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-value">53+</div>
-              <div class="stat-label">Components</div>
+              <div class="stat-item">
+                <div class="stat-value">53+</div>
+                <div class="stat-label">Components</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Accessible</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Categories</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-value">TypeScript</div>
+                <div class="stat-label">First-Class Support</div>
+              </div>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Accessible</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-value">5</div>
-              <div class="stat-label">Categories</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-value">TypeScript</div>
-              <div class="stat-label">First-Class Support</div>
-            </div>
-          </div>
           </app-animate-on-scroll>
         </div>
       </section>
@@ -126,129 +104,144 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         <div class="features-grid">
           <app-animate-on-scroll animation="slide-up" [delay]="0">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2L2 7L12 12L22 7L12 2Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2 17L12 22L22 17"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M2 12L12 17L22 12"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <h3>Modular Architecture</h3>
-            <p>
-              Tree-shakeable components that keep your bundle size minimal. Import only what you
-              need.
-            </p>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2L2 7L12 12L22 7L12 2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M2 17L12 22L22 17"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M2 12L12 17L22 12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Modular Architecture</h3>
+              <p>
+                Tree-shakeable components that keep your bundle size minimal. Import only what you
+                need.
+              </p>
             </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="100">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
-                <path
-                  d="M12 6V12L16 14"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                  <path
+                    d="M12 6V12L16 14"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Performance First</h3>
+              <p>
+                Optimized for speed with lazy loading, virtual scrolling, and efficient rendering.
+              </p>
             </div>
-            <h3>Performance First</h3>
-            <p>
-              Optimized for speed with lazy loading, virtual scrolling, and efficient rendering.
-            </p>
-          </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="200">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M20 21V5C20 3.89543 19.1046 3 18 3H6C4.89543 3 4 3.89543 4 5V21"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <path d="M9 7H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <path d="M9 11H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </div>
-            <h3>Comprehensive Docs</h3>
-            <p>Detailed documentation with live examples, API references, and best practices.</p>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M20 21V5C20 3.89543 19.1046 3 18 3H6C4.89543 3 4 3.89543 4 5V21"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M4 21H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path d="M9 7H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path
+                    d="M9 11H15"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <h3>Comprehensive Docs</h3>
+              <p>Detailed documentation with live examples, API references, and best practices.</p>
             </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                <circle cx="12" cy="8" r="1" fill="currentColor" />
-              </svg>
-            </div>
-            <h3>Accessibility Built-in</h3>
-            <p>WCAG 2.1 AA compliant with full keyboard navigation and screen reader support.</p>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M12 16V12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <circle cx="12" cy="8" r="1" fill="currentColor" />
+                </svg>
+              </div>
+              <h3>Accessibility Built-in</h3>
+              <p>WCAG 2.1 AA compliant with full keyboard navigation and screen reader support.</p>
             </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="400">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="2"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
-                <path d="M9 21V9" stroke="currentColor" stroke-width="2" />
-              </svg>
-            </div>
-            <h3>Responsive Design</h3>
-            <p>Mobile-first components that adapt seamlessly to any screen size or device.</p>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                  <path d="M9 21V9" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <h3>Responsive Design</h3>
+              <p>Mobile-first components that adapt seamlessly to any screen size or device.</p>
             </div>
           </app-animate-on-scroll>
 
           <app-animate-on-scroll animation="slide-up" [delay]="500">
             <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <h3>Customizable Themes</h3>
-            <p>Light, dark, and custom themes with CSS variables for complete design control.</p>
+              <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h3>Customizable Themes</h3>
+              <p>Light, dark, and custom themes with CSS variables for complete design control.</p>
             </div>
           </app-animate-on-scroll>
         </div>
@@ -265,38 +258,38 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
         <app-animate-on-scroll animation="zoom-in" [delay]="100">
           <div class="icons-grid">
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faCode" size="2x"></fa-icon>
-            <span>faCode</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faLayerGroup" size="2x"></fa-icon>
-            <span>faLayerGroup</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faGaugeHigh" size="2x"></fa-icon>
-            <span>faGaugeHigh</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faBookOpen" size="2x"></fa-icon>
-            <span>faBookOpen</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faMobileScreenButton" size="2x"></fa-icon>
-            <span>faMobileScreenButton</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faCheckDouble" size="2x"></fa-icon>
-            <span>faCheckDouble</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faRocket" size="2x"></fa-icon>
-            <span>faRocket</span>
-          </div>
-          <div class="icon-demo-card">
-            <fa-icon [icon]="faTerminal" size="2x"></fa-icon>
-            <span>faTerminal</span>
-          </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faCode" size="2x"></fa-icon>
+              <span>faCode</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faLayerGroup" size="2x"></fa-icon>
+              <span>faLayerGroup</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faGaugeHigh" size="2x"></fa-icon>
+              <span>faGaugeHigh</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faBookOpen" size="2x"></fa-icon>
+              <span>faBookOpen</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faMobileScreenButton" size="2x"></fa-icon>
+              <span>faMobileScreenButton</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faCheckDouble" size="2x"></fa-icon>
+              <span>faCheckDouble</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faRocket" size="2x"></fa-icon>
+              <span>faRocket</span>
+            </div>
+            <div class="icon-demo-card">
+              <fa-icon [icon]="faTerminal" size="2x"></fa-icon>
+              <span>faTerminal</span>
+            </div>
           </div>
         </app-animate-on-scroll>
       </section>
@@ -313,10 +306,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         <div class="categories-grid">
           @for (category of categories; track category.id; let i = $index) {
             <app-animate-on-scroll animation="slide-up" [delay]="i * 100">
-              <div
-                class="category-card"
-                (click)="navigateTo('playground')"
-              >
+              <div class="category-card" (click)="navigateTo('playground')">
                 <div class="category-header">
                   <div class="category-icon" [innerHTML]="category.icon"></div>
                   <span class="component-count">{{ category.children?.length || 0 }}</span>
@@ -337,7 +327,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         <div class="cta-content" appAnimateOnScroll animation="zoom-in">
           <h2>Ready to Build Something Amazing?</h2>
           <p>Start exploring our component library and accelerate your development workflow</p>
-          <button class="btn-cta" (click)="navigateTo('overview')">
+          <ui-button variant="primary" class="btn-cta" (click)="navigateTo('overview')">
             Get Started Now
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
@@ -348,7 +338,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
                 stroke-linejoin="round"
               />
             </svg>
-          </button>
+          </ui-button>
         </div>
       </section>
     </div>
@@ -431,7 +421,9 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         position: absolute;
         border-radius: 50%;
         filter: blur(100px);
-        animation: float 25s infinite ease-in-out, pulse 8s infinite ease-in-out;
+        animation:
+          float 25s infinite ease-in-out,
+          pulse 8s infinite ease-in-out;
         opacity: 0.6;
       }
 
@@ -516,7 +508,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         border: 1px solid rgba(99, 102, 241, 0.3);
         border-radius: 100px;
         margin-bottom: 32px;
-        box-shadow: 0 0 20px rgba(99, 102, 241, 0.2),
+        box-shadow:
+          0 0 20px rgba(99, 102, 241, 0.2),
           inset 0 0 20px rgba(99, 102, 241, 0.05);
         position: relative;
         overflow: hidden;
@@ -529,12 +522,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
         animation: shimmer 3s infinite;
       }
 
@@ -656,15 +644,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       }
 
       .btn-primary {
-        background: linear-gradient(
-          135deg,
-          #6366f1 0%,
-          #8b5cf6 50%,
-          #ec4899 100%
-        );
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
         background-size: 200% 200%;
         color: white;
-        box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.6),
+        box-shadow:
+          0 10px 40px -10px rgba(99, 102, 241, 0.6),
           0 0 0 1px rgba(255, 255, 255, 0.1) inset;
         position: relative;
         overflow: hidden;
@@ -681,7 +665,9 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.3);
         transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
+        transition:
+          width 0.6s,
+          height 0.6s;
       }
 
       .btn-primary:hover::before {
@@ -691,7 +677,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       .btn-primary:hover {
         transform: translateY(-6px) scale(1.02);
-        box-shadow: 0 20px 60px -10px rgba(99, 102, 241, 0.8),
+        box-shadow:
+          0 20px 60px -10px rgba(99, 102, 241, 0.8),
           0 0 0 1px rgba(255, 255, 255, 0.2) inset,
           0 0 40px rgba(99, 102, 241, 0.4);
       }
@@ -738,7 +725,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 28px;
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15),
+        box-shadow:
+          0 8px 32px 0 rgba(31, 38, 135, 0.15),
           0 0 0 1px rgba(255, 255, 255, 0.05) inset;
         animation: floatStats 6s ease-in-out infinite;
       }
@@ -760,12 +748,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .stat-value {
         font-size: 2rem;
         font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          #6366f1 0%,
-          #8b5cf6 50%,
-          #ec4899 100%
-        );
+        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
         background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -862,7 +845,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       .feature-card:hover {
         transform: translateY(-12px) rotateX(2deg) scale(1.02);
-        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3),
+        box-shadow:
+          0 20px 60px rgba(99, 102, 241, 0.3),
           0 0 0 1px rgba(99, 102, 241, 0.2),
           0 0 40px rgba(99, 102, 241, 0.1);
         border-color: rgba(99, 102, 241, 0.5);
@@ -897,13 +881,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(139, 92, 246, 0.3) 0%,
-          transparent 70%
-        );
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
         transform: translate(-50%, -50%);
-        transition: width 0.5s, height 0.5s;
+        transition:
+          width 0.5s,
+          height 0.5s;
       }
 
       .feature-card:hover .feature-icon {
@@ -977,13 +959,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         right: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 70%
-        );
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
         opacity: 0;
-        transition: opacity 0.5s, transform 0.5s;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
         transform: scale(0);
       }
 
@@ -999,7 +979,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .category-card:hover {
         transform: translateY(-12px) scale(1.02);
         border-color: rgba(99, 102, 241, 0.5);
-        box-shadow: 0 24px 60px rgba(99, 102, 241, 0.25),
+        box-shadow:
+          0 24px 60px rgba(99, 102, 241, 0.25),
           0 0 0 1px rgba(99, 102, 241, 0.2) inset,
           0 0 60px rgba(99, 102, 241, 0.15);
       }
@@ -1233,5 +1214,3 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
-
-

@@ -264,7 +264,7 @@
           [skeleton]="skeletonState"
           full-width
         ></app-input>
-        <button class="btn-toggle" (click)="toggleSkeleton()">Toggle Loading</button>
+        <ui-button class="btn-toggle" (click)="toggleSkeleton()" label="Toggle Loading"></ui-button>
       </div>
     </div>
     <app-code-block
@@ -288,7 +288,7 @@
       <div class="demo-card">
         <h3>Search Bar</h3>
         <app-input placeholder="Search..." full-width>
-          <button slot="addon-after" class="btn-addon">Search</button>
+          <ui-button slot="addon-after" class="btn-addon" label="Search"></ui-button>
         </app-input>
       </div>
     </div>

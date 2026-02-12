@@ -21,15 +21,15 @@ export class AppPopoverDemoComponent {
   ];
 
   playgroundCode = `<ui-popover heading="Help" content="Click for more info">
-  <button>Need Help?</button>
+  <ui-button label="Need Help?"></ui-button>
 </ui-popover>`;
 
   triggersCode = `<ui-popover trigger="click" heading="Click Trigger" content="Visible until clicked outside">
-  <button>Click Me</button>
+  <ui-button label="Click Me"></ui-button>
 </ui-popover>
 
 <ui-popover trigger="hover" heading="Hover Trigger" content="Visible on mouse enter">
-  <button>Hover Me</button>
+  <ui-button label="Hover Me"></ui-button>
 </ui-popover>
 
 <ui-popover trigger="focus" heading="Focus Trigger" content="Visible on focus">

@@ -1,17 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-code-viewer',
   standalone: true,
   imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="code-viewer">
       <div class="code-header">
         <h4>{{ title }}</h4>
-        <button class="copy-btn" (click)="copyCode()" [class.copied]="copied">
-          {{ copied ? '✓ Copied!' : '📋 Copy' }}
-        </button>
+        <ui-button
+          class="copy-btn"
+          (click)="copyCode()"
+          [variant]="copied ? 'success' : 'secondary'"
+          [label]="copied ? '✓ Copied!' : '📋 Copy'"
+         label=""></ui-button>
       </div>
       <pre><code [innerHTML]="highlightedCode"></code></pre>
     </div>

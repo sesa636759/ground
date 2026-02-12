@@ -221,9 +221,9 @@ export class SetAccordianDemoComponent {
   ]);
   controlledExpanded: string[] = [];
   controlledCode = `<div class="buttons">
-  <button (click)="expand('c1')">Open 1</button>
-  <button (click)="expand('c2')">Open 2</button>
-  <button (click)="collapseAll()">Close All</button>
+  <ui-button (click)="expand('c1')" label="Open 1"></ui-button>
+  <ui-button (click)="expand('c2')" label="Open 2"></ui-button>
+  <ui-button (click)="collapseAll()" label="Close All"></ui-button>
 </div>
 <ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
 

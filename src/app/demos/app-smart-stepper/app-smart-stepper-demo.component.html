@@ -6,15 +6,14 @@
   </p>
 
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
+      variant="primary"
     >
       <span>{{ variant.icon }}</span>
       <span>{{ variant.name }}</span>
-    </button>
+    </ui-button>
   </div>
 
   <section class="demo-section" id="playground">

@@ -6,15 +6,14 @@
   </p>
 
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
+      variant="primary"
     >
       <span>{{ variant.icon }}</span>
       <span>{{ variant.name }}</span>
-    </button>
+    </ui-button>
   </div>
 
   <section class="demo-section" id="playground">
@@ -32,10 +31,17 @@
       <p>Decide whether the background should be interactive while the dialog is open.</p>
     </div>
     <div class="demo-card">
-      <button class="variant-btn" (click)="toggle('standard')">Non-Modal Dialog</button>
-      <button class="variant-btn" style="background: #3b82f6" (click)="toggle('modal')">
-        Modal Dialog
-      </button>
+      <ui-button
+        variant="primary"
+        (click)="toggle('standard')"
+        label="Non-Modal Dialog"
+      ></ui-button>
+      <ui-button
+        variant="primary"
+        style="background: #3b82f6"
+        (click)="toggle('modal')"
+        label="Modal Dialog"
+      ></ui-button>
 
       <ui-dialog-box
         header="Standard Overlay"
@@ -66,9 +72,12 @@
       <p>Enable users to reposition or scale the dialog for better productivity.</p>
     </div>
     <div class="demo-card">
-      <button class="variant-btn" style="background: #10b981" (click)="toggle('draggable')">
-        Open Draggable Dialog
-      </button>
+      <ui-button
+        variant="primary"
+        style="background: #10b981"
+        (click)="toggle('draggable')"
+        label="Open Draggable Dialog"
+      ></ui-button>
 
       <ui-dialog-box
         header="Move & Resize Me"

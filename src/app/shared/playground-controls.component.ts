@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -23,6 +23,7 @@ export interface PlaygroundConfig {
   selector: 'app-playground-controls',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-controls">
       <div class="controls-header">
@@ -104,7 +105,12 @@ export interface PlaygroundConfig {
       </div>
 
       <div class="controls-footer">
-        <button class="reset-btn" (click)="resetValues()">Reset to Defaults</button>
+        <ui-button
+          class="reset-btn"
+          variant="secondary"
+          (click)="resetValues()"
+          label="Reset to Defaults"
+        ></ui-button>
       </div>
     </div>
   `,

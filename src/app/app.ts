@@ -1,7 +1,12 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
-import { topNavItems, categoryNavItems, bottomNavItems } from './data/navigation.data';
+import {
+  topNavItems,
+  categoryNavItems,
+  bottomNavItems,
+  userProfileNavItems,
+} from './data/navigation.data';
 import { ThemeService } from './services/theme.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -51,6 +56,7 @@ export class App implements OnInit {
   topItems = topNavItems;
   categoryItems = categoryNavItems;
   bottomItems = bottomNavItems;
+  userProfileItems = userProfileNavItems;
 
   // User Profile
   userMenuOpen = signal(false);
@@ -120,6 +126,13 @@ export class App implements OnInit {
     console.log('Navigation clicked:', event.detail);
     const itemId = event.detail?.id;
     if (itemId) {
+      this.userMenuOpen.set(false);
+
+      if (itemId === 'logout') {
+        this.logout();
+        return;
+      }
+
       // Top-level routes
       if (
         [
@@ -132,6 +145,21 @@ export class App implements OnInit {
         ].includes(itemId)
       ) {
         this.router.navigate([itemId]);
+      } else if (
+        [
+          'personal-info',
+          'security',
+          'notifications',
+          'billing',
+          'connected-accounts',
+          'privacy',
+          'activity-log',
+          'preferences',
+          'help-support',
+        ].includes(itemId)
+      ) {
+        // Handle profile sub-routes (can navigate to user-management or specific sub-pages)
+        this.router.navigate(['user-management'], { queryParams: { tab: itemId } });
       } else {
         // Component routes allow generic handling -> Docs
         this.router.navigate(['demos', itemId]);

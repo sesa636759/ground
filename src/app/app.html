@@ -13,7 +13,12 @@
     (navItemClick)="onNavItemClick($event)"
   >
     <!-- User Profile in Footer Slot -->
-    <div slot="footer" class="sidebar-user-profile">
+    <div
+      slot="footer"
+      class="sidebar-user-profile"
+      (mouseenter)="userMenuOpen.set(true)"
+      (mouseleave)="userMenuOpen.set(false)"
+    >
       <div class="user-profile-container" (click)="toggleUserMenu()">
         <div class="user-avatar">
           <img [src]="currentUser().avatar" [alt]="currentUser().name" />
@@ -23,30 +28,31 @@
           <div class="user-name">{{ currentUser().name }}</div>
           <div class="user-role">{{ currentUser().role }}</div>
         </div>
-        <button class="user-menu-toggle" *ngIf="!sidebarCollapsed()">
-          <fa-icon [icon]="userMenuOpen() ? faChevronUp : faChevronDown"></fa-icon>
-        </button>
+        <ui-button
+          class="user-menu-toggle"
+          *ngIf="!sidebarCollapsed()"
+          variant="ghost"
+          icon-only
+          [icon]="userMenuOpen() ? '▲' : '▼'"
+          label="Toggle Menu"
+          (click)="toggleUserMenu()"
+        >
+        </ui-button>
       </div>
 
       <!-- User Dropdown Menu -->
-      <div class="user-menu" *ngIf="userMenuOpen() && !sidebarCollapsed()">
-        <button class="menu-item" (click)="navigateToProfile()">
-          <fa-icon [icon]="faUser" class="menu-icon"></fa-icon>
-          <span>My Profile</span>
-        </button>
-        <button class="menu-item" (click)="navigateToSettings()">
-          <fa-icon [icon]="faCog" class="menu-icon"></fa-icon>
-          <span>Settings</span>
-        </button>
-        <button class="menu-item" (click)="navigateToUserManagement()">
-          <fa-icon [icon]="faUsers" class="menu-icon"></fa-icon>
-          <span>User Management</span>
-        </button>
-        <div class="menu-divider"></div>
-        <button class="menu-item logout" (click)="logout()">
-          <fa-icon [icon]="faSignOutAlt" class="menu-icon"></fa-icon>
-          <span>Logout</span>
-        </button>
+      <div class="user-menu" *ngIf="userMenuOpen()">
+        <ui-button
+          *ngFor="let item of userProfileItems"
+          class="menu-item"
+          [class.logout]="item.id === 'logout'"
+          variant="ghost"
+          full-width
+          (click)="onNavItemClick({ detail: item })"
+          [icon]="item.icon"
+          [label]="item.label"
+          [badge]="item.badge"
+        ></ui-button>
       </div>
     </div>
   </ui-navigation>

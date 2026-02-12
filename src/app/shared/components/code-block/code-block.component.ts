@@ -1,4 +1,4 @@
-import { Component, Input, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Input, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,23 +11,25 @@ import { CommonModule } from '@angular/common';
       <div class="code-block-header">
         <span class="code-block-title">{{ title }}</span>
         <div class="code-block-actions">
-          <button
-            class="action-btn"
+          <ui-button
             (click)="toggleCode()"
-            [attr.aria-label]="showCode() ? 'Hide code' : 'Show code'"
+            [attr.aria-label]="toggleButtonAriaLabel()"
+            [variant]="toggleButtonVariant()"
+            size="sm"
+            [label]="toggleButtonLabel()"
           >
-            <i [class]="showCode() ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
-            {{ showCode() ? 'Hide Code' : 'Show Code' }}
-          </button>
-          <button
-            class="action-btn copy-btn"
+            <i [class]="toggleButtonIcon()"></i>
+          </ui-button>
+          <ui-button
+            variant="secondary"
+            size="sm"
             (click)="copyCode()"
             [class.copied]="copied()"
             aria-label="Copy code"
+            [label]="copyButtonLabel()"
           >
-            <i [class]="copied() ? 'fas fa-check' : 'fas fa-copy'"></i>
-            {{ copied() ? 'Copied!' : 'Copy Code' }}
-          </button>
+            <i [class]="copyButtonIcon()"></i>
+          </ui-button>
         </div>
       </div>
 
@@ -198,6 +200,15 @@ export class CodeBlockComponent {
   copied = signal(false);
 
   highlightedCode = signal('');
+
+  // Computed signals for template readability
+  toggleButtonLabel = computed(() => (this.showCode() ? 'Hide Code' : 'Show Code'));
+  toggleButtonAriaLabel = computed(() => (this.showCode() ? 'Hide code' : 'Show code'));
+  toggleButtonVariant = computed(() => (this.showCode() ? 'secondary' : 'primary'));
+  toggleButtonIcon = computed(() => (this.showCode() ? 'fas fa-eye-slash' : 'fas fa-eye'));
+
+  copyButtonLabel = computed(() => (this.copied() ? 'Copied!' : 'Copy Code'));
+  copyButtonIcon = computed(() => (this.copied() ? 'fas fa-check' : 'fas fa-copy'));
 
   ngOnInit() {
     this.highlightedCode.set(this.escapeHtml(this.code));

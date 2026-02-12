@@ -50,8 +50,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()">Copy Code</ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()">Reset</ui-button>
         </div>
       </div>
 

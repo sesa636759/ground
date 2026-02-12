@@ -57,8 +57,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -75,24 +75,22 @@ import { FormsModule } from '@angular/forms';
               <div style="padding: 24px;">
                 <h4>Profile Setup</h4>
                 <p>Enter your basic account information.</p>
-                <button class="variant-btn" (click)="currentStep = '2'">Next Step</button>
+                <ui-button class="variant-btn" (click)="currentStep = '2'" label="Next Step"></ui-button>
               </div>
             </ui-smart-step>
             <ui-smart-step label="Verify" icon="🛡️" value="2">
               <div style="padding: 24px;">
                 <h4>Identity Verification</h4>
                 <p>Protect your account with multi-factor authentication.</p>
-                <button class="variant-btn btn-secondary" (click)="currentStep = '1'">Back</button>
-                <button class="variant-btn" style="margin-left: 12px;" (click)="currentStep = '3'">
-                  Next Step
-                </button>
+                <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="currentStep = '1'" label="Back"></ui-button>
+                <ui-button class="variant-btn" style="margin-left: 12px;" (click)="currentStep = '3'" label="Next Step"></ui-button>
               </div>
             </ui-smart-step>
             <ui-smart-step label="Finish" icon="✅" value="3">
               <div style="padding: 24px;">
                 <h4>All Done!</h4>
                 <p>Your account is ready to use.</p>
-                <button class="variant-btn btn-secondary" (click)="currentStep = '2'">Back</button>
+                <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="currentStep = '2'" label="Back"></ui-button>
               </div>
             </ui-smart-step>
           </ui-smart-stepper>

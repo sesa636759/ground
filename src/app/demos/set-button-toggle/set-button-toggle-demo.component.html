@@ -552,7 +552,7 @@
             <div class="form-field">
               <label><input type="checkbox" [(ngModel)]="filterFlagged" /> Show flagged only</label>
             </div>
-            <button class="btn-apply" (click)="applyFilters(filterGrp)">Apply</button>
+            <ui-button class="btn-apply" (click)="applyFilters(filterGrp)" label="Apply"></ui-button>
           </div>
         </app-button-toggle-group>
         <p class="status-msg">{{ customFilterLog() }}</p>
@@ -569,7 +569,7 @@
         >
           <div slot="dropdown-content" class="custom-slot-colors">
             <div class="color-grid">
-              <button
+              <ui-button
                 *ngFor="
                   let col of [
                     '#ef4444',
@@ -587,7 +587,7 @@
                 class="color-dot"
                 [style.background]="col"
                 (click)="pickColor(col)"
-              ></button>
+              ></ui-button>
             </div>
             <input type="text" [(ngModel)]="customColorHex" placeholder="#000000" />
           </div>
@@ -653,7 +653,7 @@
                 <input type="checkbox" /> Case sensitive
               </label>
             </div>
-            <button class="btn-apply" (click)="onSearchAction()">Search</button>
+            <ui-button class="btn-apply" (click)="onSearchAction()" label="Search"></ui-button>
           </div>
         </app-button-toggle-group>
         <p class="status-msg">{{ customSearchLog() }}</p>
@@ -677,9 +677,7 @@
           loading
           [attr.options]="jsonOptions(basicOptions)"
         ></app-button-toggle-group>
-        <button class="btn-toggle" (click)="loadSeg.loading = !loadSeg.loading">
-          Toggle Loading
-        </button>
+        <ui-button class="btn-toggle" (click)="loadSeg.loading = !loadSeg.loading" label="Toggle Loading"></ui-button>
       </div>
       <div class="demo-card">
         <h3>Dropdown Loading</h3>
@@ -692,9 +690,7 @@
           loading
           [attr.options]="jsonOptions(saveOptions)"
         ></app-button-toggle-group>
-        <button class="btn-toggle" (click)="loadDrop.loading = !loadDrop.loading">
-          Toggle Loading
-        </button>
+        <ui-button class="btn-toggle" (click)="loadDrop.loading = !loadDrop.loading" label="Toggle Loading"></ui-button>
       </div>
       <div class="demo-card">
         <h3>Simulate Save Action</h3>

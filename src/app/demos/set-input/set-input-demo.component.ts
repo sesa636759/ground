@@ -113,7 +113,7 @@ export class SetInputDemoComponent implements OnInit {
 </app-input>
 
 <app-input placeholder="Search..." full-width>
-  <button slot="addon-after" class="btn-addon">Search</button>
+  <ui-button slot="addon-after" class="btn-addon" label="Search"></ui-button>
 </app-input>`;
 
   ngOnInit() {}

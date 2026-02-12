@@ -32,7 +32,7 @@
       </div>
       <div class="demo-card">
         <h3>Action Button (Click)</h3>
-        <button #basicClickTrigger class="btn-trigger">More Actions</button>
+        <ui-button #basicClickTrigger class="btn-trigger" label="More Actions"></ui-button>
         <app-context-menu
           trigger="click"
           [triggerElement]="basicClickTrigger"
@@ -80,7 +80,7 @@
     <div class="demo-grid">
       <div class="demo-card">
         <h3>Command Palette</h3>
-        <button #paletteTrigger class="btn-trigger">Launcher (Ctrl+K)</button>
+        <ui-button #paletteTrigger class="btn-trigger" label="Launcher (Ctrl+K)"></ui-button>
         <app-context-menu
           trigger="click"
           [triggerElement]="paletteTrigger"
@@ -93,7 +93,7 @@
       <div class="demo-card">
         <h3>Glassmorphism</h3>
         <div class="glass-context-bg">
-          <button #glassTrigger class="btn-trigger glass-btn">Glass Menu</button>
+          <ui-button #glassTrigger class="btn-trigger glass-btn" label="Glass Menu"></ui-button>
         </div>
         <app-context-menu
           trigger="click"
@@ -105,7 +105,7 @@
       </div>
       <div class="demo-card">
         <h3>Staggered Entry</h3>
-        <button #staggerTrigger class="btn-trigger">Smooth Entry</button>
+        <ui-button #staggerTrigger class="btn-trigger" label="Smooth Entry"></ui-button>
         <app-context-menu
           trigger="click"
           [triggerElement]="staggerTrigger"

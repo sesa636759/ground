@@ -23,6 +23,14 @@ export const routes: Routes = [
   },
 
   {
+    path: 'component-documentation',
+    loadComponent: () =>
+      import('./pages/component-documentation/component-documentation.component').then(
+        (m) => m.ComponentDocumentationComponent,
+      ),
+  },
+
+  {
     path: 'theme-selector',
     loadComponent: () =>
       import('./pages/settings/settings.component').then((m) => m.ThemeSettingsComponent),

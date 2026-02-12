@@ -31,21 +31,13 @@ h1 {
   padding: 8px 4px 24px 4px;
   margin-bottom: 40px;
 
-  .variant-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s;
+  ui-button {
+    --ui-button-radius: 9999px; /* Rounded pill shape */
     
-    &:hover {
-      transform: translateY(-2px);
+    &::part(button) {
+      border-radius: 9999px; /* Ensure internal button gets radius */
+      font-weight: 600;
+      color: white; /* Ensure text matches background */
     }
   }
 }

@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ComponentDocsService } from '../../services/component-docs.service';
 
 @Component({
   selector: 'app-documentation',
@@ -32,16 +34,16 @@ import { CommonModule } from '@angular/common';
               <li [class.active]="currentDoc() === 'usage'" (click)="selectDoc('usage')">Usage</li>
             </ul>
 
-            <h3>Components</h3>
+            <h3>Component Docs</h3>
             <ul>
-              <li [class.active]="currentDoc() === 'button'" (click)="selectDoc('button')">
-                Button
+              <li
+                *ngFor="let comp of componentsList()"
+                [class.active]="currentDoc() === comp.id"
+                (click)="viewComponentDoc(comp.id)"
+              >
+                {{ comp.name }}
+                <span class="doc-badge">📖</span>
               </li>
-              <li [class.active]="currentDoc() === 'card'" (click)="selectDoc('card')">Card</li>
-              <li [class.active]="currentDoc() === 'dialog'" (click)="selectDoc('dialog')">
-                Dialog
-              </li>
-              <li [class.active]="currentDoc() === 'table'" (click)="selectDoc('table')">Table</li>
             </ul>
           </nav>
         </aside>
@@ -59,10 +61,17 @@ import { CommonModule } from '@angular/common';
               <h3>Features</h3>
               <ul>
                 <li>Modern, accessible components</li>
-                <li>Fully customizable</li>
+                <li>Fully customizable with themes</li>
                 <li>TypeScript support</li>
                 <li>Responsive design</li>
+                <li>Detailed API documentation</li>
               </ul>
+
+              <h3>Getting Help</h3>
+              <p>
+                Each component has detailed documentation including properties, events, usage examples,
+                and known limitations. Click on any component in the sidebar to view its full documentation.
+              </p>
             </div>
 
             <div *ngIf="currentDoc() === 'installation'">
@@ -71,38 +80,22 @@ import { CommonModule } from '@angular/common';
 
               <h3>Setup</h3>
               <p>Import the components you need in your application:</p>
-              <pre><code>import {{ '{' }} Button {{ '}' }} from '@your-org/component-library';</code></pre>
+              <pre><code>import {{ '{' }} Button, Card {{ '}' }} from '@your-org/component-library';</code></pre>
+
+              <h3>Import in Module</h3>
+              <pre><code>import {{ '{' }} ComponentLibraryModule {{ '}' }} from '@your-org/component-library';</code></pre>
             </div>
 
             <div *ngIf="currentDoc() === 'usage'">
               <p>Learn how to use components in your application.</p>
 
               <h3>Basic Example</h3>
-              <pre><code>&lt;ui-button variant="primary"&gt;Click Me&lt;/ui-button&gt;</code></pre>
-            </div>
+              <pre><code>&lt;ui-button variant="primary" (click)="handleClick()"&gt;Click Me&lt;/ui-button&gt;</code></pre>
 
-            <div *ngIf="currentDoc() === 'button'">
-              <p>The Button component provides various styles and states for user interactions.</p>
-
-              <h3>Props</h3>
-              <ul>
-                <li><strong>variant</strong>: primary | secondary | outline</li>
-                <li><strong>size</strong>: small | medium | large</li>
-                <li><strong>disabled</strong>: boolean</li>
-              </ul>
-            </div>
-
-            <div *ngIf="currentDoc() === 'card'">
-              <p>The Card component is a container for content with optional header and footer.</p>
-            </div>
-
-            <div *ngIf="currentDoc() === 'dialog'">
-              <p>The Dialog component displays modal content over the main application.</p>
-            </div>
-
-            <div *ngIf="currentDoc() === 'table'">
+              <h3>Component Documentation</h3>
               <p>
-                The Table component displays data in a structured format with sorting and filtering.
+                For detailed information about each component including properties, events, and limitations,
+                select a component from the sidebar.
               </p>
             </div>
           </article>
@@ -219,6 +212,17 @@ import { CommonModule } from '@angular/common';
                 font-weight: 800;
               }
             }
+
+            .doc-badge {
+              font-size: 1rem;
+              margin-left: 8px;
+              opacity: 0.6;
+              transition: opacity var(--transition-fast);
+            }
+
+            &:hover .doc-badge {
+              opacity: 1;
+            }
           }
         }
       }
@@ -293,13 +297,28 @@ import { CommonModule } from '@angular/common';
 })
 export class DocumentationComponent {
   currentDoc = signal('introduction');
+  componentsList = signal<Array<{ id: string; name: string }>>([]);
+
+  constructor(
+    private router: Router,
+    private componentDocsService: ComponentDocsService,
+  ) {
+    this.componentsList.set(this.componentDocsService.getComponentList());
+  }
 
   selectDoc(docId: string) {
     this.currentDoc.set(docId);
   }
 
+  viewComponentDoc(componentId: string) {
+    this.currentDoc.set(componentId);
+    this.router.navigate(['/component-documentation'], {
+      queryParams: { component: componentId },
+    });
+  }
+
   getDocTitle() {
     const doc = this.currentDoc();
-    return doc.charAt(0).toUpperCase() + doc.slice(1);
+    return doc.charAt(0).toUpperCase() + doc.slice(1).replace(/-/g, ' ');
   }
 }

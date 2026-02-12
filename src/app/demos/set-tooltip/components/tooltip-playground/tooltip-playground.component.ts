@@ -66,9 +66,9 @@ export class TooltipPlaygroundComponent implements OnInit {
       code += `  [transitionDuration]="${this.pgConfig.transitionDuration}"\n`;
 
     code += `>\n`;
-    code += `  <button slot="target" class="btn-target">\n`;
+    code += `  <ui-button slot="target" class="btn-target">\n`;
     code += `    <i class="${this.pgConfig.targetIcon}"></i> ${this.pgConfig.targetText}\n`;
-    code += `  </button>\n`;
+    code += `  </ui-button>\n`;
     code += `</app-tooltip>`;
 
     this.generatedCode.set(code);

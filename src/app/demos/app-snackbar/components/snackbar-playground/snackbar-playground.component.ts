@@ -92,8 +92,8 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -107,8 +107,8 @@ import { FormsModule } from '@angular/forms';
           [attr.card-stack]="pgConfig.cardStack ? '' : null"
         ></ui-snackbar>
 
-        <button class="btn-primary" (click)="showSnackbar()">Show Snackbar</button>
-        <button class="btn-secondary" (click)="clearAll()">Clear All</button>
+        <ui-button class="btn-primary" variant="primary" (click)="showSnackbar()" label="Show Snackbar"></ui-button>
+        <ui-button class="btn-secondary" variant="secondary" (click)="clearAll()" label="Clear All"></ui-button>
       </div>
     </div>
   `,

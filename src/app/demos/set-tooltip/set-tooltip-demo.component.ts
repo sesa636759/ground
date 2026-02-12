@@ -17,7 +17,7 @@ export class SetTooltipDemoComponent implements OnInit {
   content="Tooltip text"
   position="top"
 >
-  <button>Hover me</button>
+  <ui-button label="Hover me"></ui-button>
 </app-tooltip>`;
 
   ngOnInit() {}

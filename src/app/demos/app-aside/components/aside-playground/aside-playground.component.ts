@@ -92,15 +92,15 @@ import { FormsModule } from '@angular/forms';
         </div>
 
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
       <div class="playground-preview">
         <div class="preview-content">
           <p>Click the button below to trigger the Aside Panel.</p>
-          <button class="btn-primary" (click)="pgConfig.open = true">Open Panel</button>
+          <ui-button class="btn-primary" variant="primary" (click)="pgConfig.open = true" label="Open Panel"></ui-button>
         </div>
 
         <aside-panel
@@ -144,8 +144,8 @@ import { FormsModule } from '@angular/forms';
             </div>
           </div>
           <div slot="footer" class="aside-footer-demo">
-            <button class="btn-secondary" (click)="pgConfig.open = false">Cancel</button>
-            <button class="btn-primary" (click)="pgConfig.open = false">Save Changes</button>
+            <ui-button class="btn-secondary" variant="secondary" (click)="pgConfig.open = false" label="Cancel"></ui-button>
+            <ui-button class="btn-primary" variant="primary" (click)="pgConfig.open = false" label="Save Changes"></ui-button>
           </div>
         </aside-panel>
       </div>

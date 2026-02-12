@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { categoryNavItems } from '../../data/navigation.data';
   selector: 'app-overview',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="overview-container">
       <!-- Hero Header -->
@@ -44,10 +45,11 @@ import { categoryNavItems } from '../../data/navigation.data';
               />
             </div>
             <div class="view-toggle">
-              <button
-                [class.active]="viewMode() === 'grid'"
-                (click)="viewMode.set('grid')"
+              <ui-button
+                [variant]="viewMode() === 'grid' ? 'primary' : 'ghost'"
+                icon-only
                 title="Grid view"
+                (click)="viewMode.set('grid')"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" />
@@ -55,11 +57,12 @@ import { categoryNavItems } from '../../data/navigation.data';
                   <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" />
                   <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" />
                 </svg>
-              </button>
-              <button
-                [class.active]="viewMode() === 'list'"
-                (click)="viewMode.set('list')"
+              </ui-button>
+              <ui-button
+                [variant]="viewMode() === 'list' ? 'primary' : 'ghost'"
+                icon-only
                 title="List view"
+                (click)="viewMode.set('list')"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <line
@@ -117,7 +120,7 @@ import { categoryNavItems } from '../../data/navigation.data';
                     stroke-linecap="round"
                   />
                 </svg>
-              </button>
+              </ui-button>
             </div>
           </div>
         </div>

@@ -7,15 +7,13 @@
 
   <!-- Navigation -->
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
-    >
-      <span class="variant-icon">{{ variant.icon }}</span>
-      <span class="variant-label">{{ variant.name }}</span>
-    </button>
+      variant="primary"
+      [icon]="variant.icon"
+      [label]="variant.name"
+    ></ui-button>
   </div>
 
   <!-- Interactive Playground -->
@@ -41,14 +39,14 @@
           heading="Click Interaction"
           content="This popover stays open until you click outside or use the close button."
         >
-          <button class="btn-demo">Click Trigger</button>
+          <ui-button class="btn-demo" label="Click Trigger"></ui-button>
         </ui-popover>
         <ui-popover
           trigger="hover"
           heading="Hover Preview"
           content="Quick information shown when the user points to an element."
         >
-          <button class="btn-demo">Hover Trigger</button>
+          <ui-button class="btn-demo" label="Hover Trigger"></ui-button>
         </ui-popover>
         <ui-popover
           trigger="focus"
@@ -75,16 +73,16 @@
     <div class="demo-card">
       <div class="preview-box">
         <ui-popover placement="top" content="Floating above the target">
-          <button class="btn-demo">Top</button>
+          <ui-button class="btn-demo" label="Top"></ui-button>
         </ui-popover>
         <ui-popover placement="bottom" content="Floating below the target">
-          <button class="btn-demo">Bottom</button>
+          <ui-button class="btn-demo" label="Bottom"></ui-button>
         </ui-popover>
         <ui-popover placement="left" content="Floating to the left">
-          <button class="btn-demo">Left</button>
+          <ui-button class="btn-demo" label="Left"></ui-button>
         </ui-popover>
         <ui-popover placement="right" content="Floating to the right">
-          <button class="btn-demo">Right</button>
+          <ui-button class="btn-demo" label="Right"></ui-button>
         </ui-popover>
       </div>
     </div>
@@ -104,14 +102,18 @@
     <div class="demo-card">
       <div class="preview-box">
         <ui-popover variant="light" heading="Light Theme" content="The default clean aesthetic.">
-          <button class="btn-demo">Light Variant</button>
+          <ui-button class="btn-demo" label="Light Variant"></ui-button>
         </ui-popover>
         <ui-popover
           variant="dark"
           heading="Dark Theme"
           content="High contrast theme for specific UIs."
         >
-          <button class="btn-demo" style="background: #334155; color: white">Dark Variant</button>
+          <ui-button
+            class="btn-demo"
+            style="background: #334155; color: white"
+            label="Dark Variant"
+          ></ui-button>
         </ui-popover>
         <ui-divider vertical></ui-divider>
         <ui-popover
@@ -119,14 +121,14 @@
           heading="Modal Popover"
           content="Dim backgrounds to focus user attention."
         >
-          <button class="btn-demo">With Backdrop</button>
+          <ui-button class="btn-demo" label="With Backdrop"></ui-button>
         </ui-popover>
         <ui-popover
           show-close-button
           heading="Sticky Overlay"
           content="Requires explicit user action to dismiss."
         >
-          <button class="btn-demo">Close Button</button>
+          <ui-button class="btn-demo" label="Close Button"></ui-button>
         </ui-popover>
       </div>
     </div>

@@ -7,15 +7,14 @@
 
   <!-- Navigation -->
   <div class="variants-nav">
-    <button
+    <ui-button
       *ngFor="let variant of variants"
       (click)="scrollToSection(variant.id)"
-      class="variant-btn"
-      [style.background-color]="variant.color"
-    >
-      <span class="variant-icon">{{ variant.icon }}</span>
-      <span class="variant-label">{{ variant.name }}</span>
-    </button>
+      variant="primary"
+      variant="ghost"
+      [icon]="variant.icon"
+      [label]="variant.name"
+    ></ui-button>
   </div>
 
   <!-- Interactive Playground -->
