@@ -1,14 +1,30 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🪜"
-    title="Stepper Component"
-    description="A versatile stepper component for multi-step workflows with horizontal and vertical orientations, customizable connectors, and rich theming options."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🪜</span> Stepper Component</h1>
+<p class="intro-text">Guide users through a sequence of steps or a workflow process using various stepper styles.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-stepper-playground></app-stepper-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the stepper layout, theme, and features</p>
+    </div>
+    <app-stepper-playground></app-stepper-playground>
+    <app-code-block [code]="playgroundCode" title="Stepper Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Styles & Variants</h2>
+      <p>Choose from different visual styles for your workflow</p>
     </div>
 
     <!-- Examples Slot -->
@@ -383,19 +399,59 @@
       </div>
     </div>
 
-    <!-- Docs Slot -->
-        <div slot="docs">
-      <app-component-documentation componentId="stepper"></app-component-documentation>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📦 Content & Navigation</h2>
+      <p>Built-in content switching and navigation controls</p>
     </div>
+    <div class="demo-card">
+      <app-stepper-container
+        mode="horizontal"
+        show-content-area="true"
+        show-navigation="true"
+        active-step="0"
+        variant="outlined"
+        steps='[
+                {"label": "Profile", "description": "Enter details"},
+                {"label": "Settings", "description": "Configure"},
+                {"label": "Confirm", "description": "Review & Submit"}
+            ]'
+      >
+        <div slot="step-0" class="step-slot">
+          <h3>Profile Information</h3>
+          <p>Please enter your personal details below.</p>
+          <div class="dummy-input"></div>
+          <div class="dummy-input"></div>
+        </div>
+        <div slot="step-1" class="step-slot">
+          <h3>System Settings</h3>
+          <p>Configure your preferences.</p>
+          <div class="dummy-toggle"></div>
+          <div class="dummy-toggle"></div>
+        </div>
+        <div slot="step-2" class="step-slot">
+          <h3>Confirmation</h3>
+          <p>Ready to submit your data?</p>
+          <div class="dummy-message success">All validations passed!</div>
+        </div>
+      </app-stepper-container>
+    </div>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
-
-<style>
-  .step-content-box {
-    padding: 1.5rem;
-    background: var(--surface-variant);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-  }
-</style>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

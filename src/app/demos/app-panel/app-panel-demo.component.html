@@ -1,42 +1,113 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🪟"
-    title="Panel"
-    description="A versatile content container with multiple visual styles, color themes, and interactive features like toggle, minimize, maximize, drag, and resize."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔳</span> Panel Component</h1>
+<p class="intro-text">A versatile container component with headers, footers, and advanced window-like capabilities
+    including dragging, resizing, and state persistence.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-panel-playground></app-panel-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Master all panel features from a single interface</p>
     </div>
+    <app-panel-playground></app-panel-playground>
+    <app-code-block [code]="playgroundCode" title="Panel Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="visual-styles">
+    <div class="section-header">
+      <h2>🎨 Visual Styles</h2>
+      <p>Choose the right depth and presence for your UI</p>
+    </div>
+    <div class="grid-3">
+      <div class="demo-card">
+        <div class="preview-box">
+          <ui-panel variant="elevated" panel-title="Elevated" width="100%">
+            <div slot="content" class="panel-demo-content">Standard shadowed depth.</div>
+          </ui-panel>
         </div>
       </aside>
 
-      <div class="examples-content">
-        <!-- Visual Styles -->
-        <app-example-section
-          id="visual-styles"
-          title="Visual Styles"
-          description="Elevated, outlined, filled, and flat variants"
-          [code]="stylesCode"
+<section class="demo-section" id="themes">
+    <div class="section-header">
+      <h2>🌈 Semantic Themes</h2>
+      <p>Use colors to convey meaning and state</p>
+    </div>
+    <div class="grid-3">
+      <ui-panel theme="primary" panel-title="Primary Panel" width="100%">
+        <div slot="content" class="panel-demo-content">Main brand theme.</div>
+      </ui-panel>
+      <ui-panel theme="success" panel-title="Success Panel" width="100%">
+        <div slot="content" class="panel-demo-content">Confirmation and positive state.</div>
+      </ui-panel>
+      <ui-panel theme="danger" panel-title="Danger Panel" width="100%">
+        <div slot="content" class="panel-demo-content">Critical warnings and errors.</div>
+      </ui-panel>
+    </div>
+    <app-code-block [code]="themesCode" title="Themes Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="interactivity">
+    <div class="section-header">
+      <h2>🕹️ Window Capabilities</h2>
+      <p>Collapse, minimize, maximize, and resize just like a real window</p>
+    </div>
+    <div class="demo-card">
+      <div
+        class="preview-box"
+        style="height: 400px; position: relative; overflow: hidden; background: #e5e7eb"
+      >
+        <ui-panel
+          panel-title="Window Emulator"
+          panel-subtitle="Drag and resize me within this box"
+          toggleable
+          minimizable
+          maximizable
+          resizable
+          is-draggable
+          width="320px"
+          height="200px"
         >
-          <div class="demo-grid col-2">
-            @for (v of ['elevated', 'outlined', 'filled', 'flat']; track v) {
-              <ui-panel [attr.variant]="v" [attr.panel-title]="v | titlecase">
-                <div slot="content" style="padding: 16px">{{ v | titlecase }} panel style.</div>
-              </ui-panel>
-            }
+          <div slot="content" class="panel-demo-content">I am a full-featured window panel!</div>
+        </ui-panel>
+        <div style="position: absolute; bottom: 8px; right: 8px; font-size: 10px; color: #6b7280">
+          Container Area
+        </div>
+      </div>
+    </div>
+    <app-code-block
+      [code]="interactiveCode"
+      title="Interactive Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="glassmorphism">
+    <div class="section-header">
+      <h2>🔮 Glassmorphism</h2>
+      <p>Premium frosted glass effect for modern interfaces</p>
+    </div>
+    <div class="demo-card">
+      <div
+        class="preview-box"
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      >
+        <ui-panel glass panel-title="Frosted Panel" width="400px">
+          <div
+            slot="content"
+            class="panel-demo-content"
+            style="color: white; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)"
+          >
+            This panel uses blurred background transparency to create a premium glass look that
+            blends with its surroundings.
           </div>
         </app-example-section>
 
@@ -101,9 +172,27 @@
         </app-example-section>
       </div>
     </div>
+    <app-code-block
+      [code]="glassCode"
+      title="Glassmorphism Example"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="panel"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

@@ -1,32 +1,43 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📚"
-    title="Tab Stack Component"
-    description="Flexible tab system with support for horizontal/vertical orientations, closable tabs, drag-and-drop reordering, and various visual styles."
-  >
-  </app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">📚</span> Tab Stack Component</h1>
+<p class="intro-text">Advanced tab stacking component with drag-and-drop, grouping, and multi-level tab support for
+    complex interfaces.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all tab stack properties</p>
+    </div>
+    <app-tab-stack-playground></app-tab-stack-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Tab Stack Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Orientations -->
-        <section class="demo-section" id="orientations" style="margin-top: 0">
-          <div class="section-header">
-            <h2>📐 Orientation Options</h2>
-            <p>Horizontal and vertical tab stacks</p>
-          </div>
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Horizontal</h3>
-              <div class="preview-box tab-demo">
-                <app-tab-stack orientation="horizontal" [tabs]="tabs"></app-tab-stack>
-              </div>
-            </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Orientation Options</h2>
+      <p>Horizontal and vertical tab stacks</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Horizontal</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack orientation="horizontal" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
 
             <div class="demo-card">
               <h3>Vertical</h3>
@@ -158,9 +169,10 @@
       </div>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-tab-stack-playground></app-tab-stack-playground>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Visual Variants</h2>
+      <p>Different styles for tab stacks</p>
     </div>
 
     <!-- Documentation Slot -->
@@ -168,5 +180,103 @@
       <app-component-documentation componentId="tabs"></app-component-documentation>
     </div>
 
-  </demo-tabs>
-</div>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>⚙️ Advanced Features</h2>
+      <p>Closable, draggable, and scrollable tabs</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Closable Tabs</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack closable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Draggable</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack draggable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Scrollable</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack scrollable="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Size Variants</h2>
+      <p>Different sizes for tab stacks</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Small</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="small" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Medium</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="medium" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Large</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack size="large" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Features</h2>
+      <p>Grouped tabs and custom styling</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Grouped Tabs</h3>
+        <div class="preview-box tab-demo">
+          <app-tab-stack grouped="true" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+
+      <div class="demo-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+        <h3 style="color: white">Glass Variant</h3>
+        <div
+          class="preview-box tab-demo"
+          style="background: rgba(255, 255, 255, 0.1); border: none"
+        >
+          <app-tab-stack variant="glass" [tabs]="tabs"></app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

@@ -1,76 +1,43 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="👥"
-    title="Avatar Group Component"
-    description="Display multiple avatars in a group with customizable layouts, sizes, shapes, and interactive features."
-  ></app-demo-header>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">👥</span> Avatar Group Component</h1>
+<p class="intro-text">Group component for displaying multiple avatars with overflow handling, tooltips, and
+    customizable layouts.</p>
+</div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Group -->
-        <app-example-section
-          id="basic"
-          title="Basic Group"
-          description="Simple avatar group with multiple users"
-          [code]="basicCode"
-          style="margin-top: 0"
-        >
-          <div class="preview-box">
-            <app-avatar-group>
-              <app-avatar
-                *ngFor="let user of users.slice(0, 3)"
-                [attr.name]="user.name"
-                [attr.image]="user.image"
-              ></app-avatar>
-            </app-avatar-group>
-          </div>
-        </app-example-section>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test all avatar group properties</p>
+    </div>
+    <app-avatar-group-playground></app-avatar-group-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Avatar Group Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-        <!-- Sizes -->
-        <app-example-section
-          id="sizes"
-          title="Sizes"
-          description="Available in small, medium, and large."
-          [code]="sizeMediumCode"
-        >
-          <div class="demo-grid col-1">
-            <div class="demo-card">
-              <h3>Small</h3>
-              <app-avatar-group size="small" [max]="3">
-                <app-avatar
-                  *ngFor="let user of users.slice(0, 4)"
-                  [attr.name]="user.name"
-                  [attr.image]="user.image"
-                ></app-avatar>
-              </app-avatar-group>
-            </div>
-            <div class="demo-card">
-              <h3>Medium</h3>
-              <app-avatar-group size="medium" [max]="3">
-                <app-avatar
-                  *ngFor="let user of users.slice(0, 4)"
-                  [attr.name]="user.name"
-                  [attr.image]="user.image"
-                ></app-avatar>
-              </app-avatar-group>
-            </div>
-            <div class="demo-card">
-              <h3>Large</h3>
-              <app-avatar-group size="large" [max]="3">
-                <app-avatar
-                  *ngFor="let user of users.slice(0, 4)"
-                  [attr.name]="user.name"
-                  [attr.image]="user.image"
-                ></app-avatar>
-              </app-avatar-group>
-            </div>
-          </div>
-        </app-example-section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Size Variants</h2>
+      <p>Different sizes for avatar groups</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Small</h3>
+        <div class="preview-box">
+          <app-avatar-group size="small" [users]="users"></app-avatar-group>
+        </div>
+      </div>
 
         <!-- Max Display -->
         <app-example-section
@@ -214,14 +181,109 @@
       </div>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-set-avatar-group-playground></app-set-avatar-group-playground>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🔢 Max Display Count</h2>
+      <p>Control how many avatars to show</p>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
       <app-component-documentation componentId="avatar-group"></app-component-documentation>
     </div>
-  </demo-tabs>
-</div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Layout Options</h2>
+      <p>Different stacking and spacing options</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Stacked</h3>
+        <div class="preview-box">
+          <app-avatar-group layout="stacked" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Spaced</h3>
+        <div class="preview-box">
+          <app-avatar-group layout="spaced" spacing="8" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Visual Variants</h2>
+      <p>Different styles and borders</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Default</h3>
+        <div class="preview-box">
+          <app-avatar-group variant="default" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Bordered</h3>
+        <div class="preview-box">
+          <app-avatar-group
+            variant="bordered"
+            border-color="primary"
+            [users]="users"
+          ></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Rounded</h3>
+        <div class="preview-box">
+          <app-avatar-group shape="rounded" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Features</h2>
+      <p>Advanced features and interactions</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>With Tooltips</h3>
+        <div class="preview-box">
+          <app-avatar-group show-tooltips="true" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Clickable</h3>
+        <div class="preview-box">
+          <app-avatar-group clickable="true" [users]="users"></app-avatar-group>
+        </div>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

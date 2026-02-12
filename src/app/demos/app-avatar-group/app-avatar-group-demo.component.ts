@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,15 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-app-avatar-group-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AvatarGroupPlaygroundComponent,
-    DemoTabsComponent,
-    DemoSidebarComponent,
-    ComponentDocumentationComponent,
-    DemoHeaderComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, AvatarGroupPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-group-demo.component.html',
   styleUrl: './app-avatar-group-demo.component.scss',

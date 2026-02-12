@@ -1,50 +1,58 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📊"
-    title="Advanced Data Table"
-    description="A high-performance grid component designed for rendering large datasets. It includes out-of-the-box support for pagination, sorting, global/individual column filtering, cell selection, and custom row templates."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">📊</span> Advanced Data Table</h1>
+<p class="intro-text">A high-performance grid component designed for rendering large datasets. It includes
+    out-of-the-box support for pagination, sorting, global/individual column filtering, cell
+    selection, and custom row templates.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-advanced-data-table-playground></app-advanced-data-table-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Toggle grid features and adjust display settings.</p>
     </div>
+    <app-advanced-data-table-playground></app-advanced-data-table-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Key Features -->
-          <section class="demo-section" id="features" style="margin-top: 0">
-            <div class="section-header">
-              <h2>💎 Key Features</h2>
-              <p>Data Table provides rich API for managing complex data interactions.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [value]="sampleData"
-                [columns]="sampleCols"
-                [paginator]="false"
-              >
-              </ui-advanced-data-table>
-            </div>
-            <ui-code-preview
-              [htmlCode]="featuresCode"
-              [label]="'Configuration Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
-      </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="features">
+    <div class="section-header">
+      <h2>💎 Key Features</h2>
+      <p>Data Table provides rich API for managing complex data interactions.</p>
     </div>
 
         <div slot="docs">
       <app-component-documentation componentId="advanced-data-table"></app-component-documentation>
     </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Configuration Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

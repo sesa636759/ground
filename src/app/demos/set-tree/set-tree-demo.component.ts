@@ -1,4 +1,7 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -11,15 +14,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-set-tree-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    TreePlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    DemoHeaderComponent,
-    DemoSidebarComponent,
-  ],
+  imports: [CommonModule, FormsModule, TreePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',

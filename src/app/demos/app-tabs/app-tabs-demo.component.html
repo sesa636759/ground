@@ -1,131 +1,100 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📑"
-    title="Tabs"
-    description="Organize content into multiple panels, where only one panel is visible at a time. Supports multiple visual variants, orientations, and responsive scrollable headers."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">📑</span> Tabs</h1>
+<p class="intro-text">Organize content into multiple panels, where only one panel is visible at a time. Supports
+    multiple visual variants, orientations, and responsive scrollable headers.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-tabs-playground></app-tabs-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Switch between variants, alignments, and orientations.</p>
     </div>
+    <app-tabs-playground></app-tabs-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Visual Variants -->
-          <section class="demo-section" id="styles" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Visual Variants</h2>
-              <p>Choose the presentation style that matches your application's design system.</p>
-            </div>
-            <div class="demo-card">
-              <div class="tab-preview-box">
-                <span>Pills Variant:</span>
-                <ui-tabs variant="pills">
-                  <ui-tab label="Analytics" icon="📈"></ui-tab>
-                  <ui-tab label="Reports" icon="📑"></ui-tab>
-                  <ui-tab label="Logs" icon="📜"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Underline Variant:</span>
-                <ui-tabs variant="underline">
-                  <ui-tab label="Overview"></ui-tab>
-                  <ui-tab label="Advanced"></ui-tab>
-                  <ui-tab label="Dev Tools"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Enclosed Variant:</span>
-                <ui-tabs variant="enclosed">
-                  <ui-tab label="Code"></ui-tab>
-                  <ui-tab label="Preview"></ui-tab>
-                </ui-tabs>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="stylesCode"
-              [label]="'Design Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Orientations & Layouts -->
-          <section class="demo-section" id="layouts">
-            <div class="section-header">
-              <h2>📐 Orientations & Layouts</h2>
-              <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
-            </div>
-            <div class="demo-card">
-              <div class="tab-preview-box" style="display: flex; flex-direction: column; gap: 20px">
-                <span>Vertical Orientation:</span>
-                <ui-tabs orientation="vertical">
-                  <ui-tab label="Inbox" icon="📥"></ui-tab>
-                  <ui-tab label="Sent" icon="📤"></ui-tab>
-                  <ui-tab label="Spam" icon="🚫"></ui-tab>
-                </ui-tabs>
-              </div>
-              <div class="tab-preview-box">
-                <span>Center Alignment:</span>
-                <ui-tabs align="center">
-                  <ui-tab label="Feed"></ui-tab>
-                  <ui-tab label="Groups"></ui-tab>
-                  <ui-tab label="Events"></ui-tab>
-                </ui-tabs>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Tab Stack -->
-          <section class="demo-section" id="tab-stack">
-            <div class="section-header">
-              <h2>📚 Advanced Tab Stack</h2>
-              <p>
-                Enhanced tabs with closable, draggable, and dynamic features for advanced use cases.
-              </p>
-            </div>
-            <div class="demo-card">
-              <div class="tab-preview-box">
-                <span>Tab Stack with Multiple Features:</span>
-                <app-tab-stack active-tab="t1" variant="pills">
-                  <app-tab label="Dashboard" value="t1" icon="fas fa-home">
-                    <div style="padding: 20px">Dashboard content</div>
-                  </app-tab>
-                  <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
-                    <div style="padding: 20px">Analytics content</div>
-                  </app-tab>
-                  <app-tab label="Settings" value="t3" icon="fas fa-cog">
-                    <div style="padding: 20px">Settings content</div>
-                  </app-tab>
-                </app-tab-stack>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="tabStackCode"
-              [label]="'Tab Stack Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Variants</h2>
+      <p>Choose the presentation style that matches your application's design system.</p>
+    </div>
+    <div class="demo-card">
+      <div class="tab-preview-box">
+        <span>Pills Variant:</span>
+        <ui-tabs variant="pills">
+          <ui-tab label="Analytics" icon="📈"></ui-tab>
+          <ui-tab label="Reports" icon="📑"></ui-tab>
+          <ui-tab label="Logs" icon="📜"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Underline Variant:</span>
+        <ui-tabs variant="underline">
+          <ui-tab label="Overview"></ui-tab>
+          <ui-tab label="Advanced"></ui-tab>
+          <ui-tab label="Dev Tools"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Enclosed Variant:</span>
+        <ui-tabs variant="enclosed">
+          <ui-tab label="Code"></ui-tab>
+          <ui-tab label="Preview"></ui-tab>
+        </ui-tabs>
       </div>
     </div>
+    <app-code-block [code]="stylesCode" title="Design Examples" language="html"></app-code-block>
+  </section>
 
-        <div slot="docs">
-      <app-component-documentation componentId="tabs"></app-component-documentation>
+<section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Orientations & Layouts</h2>
+      <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
     </div>
+    <div class="demo-card">
+      <div class="tab-preview-box" style="display: flex; flex-direction: column; gap: 20px">
+        <span>Vertical Orientation:</span>
+        <ui-tabs orientation="vertical">
+          <ui-tab label="Inbox" icon="📥"></ui-tab>
+          <ui-tab label="Sent" icon="📤"></ui-tab>
+          <ui-tab label="Spam" icon="🚫"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Center Alignment:</span>
+        <ui-tabs align="center">
+          <ui-tab label="Feed"></ui-tab>
+          <ui-tab label="Groups"></ui-tab>
+          <ui-tab label="Events"></ui-tab>
+        </ui-tabs>
+      </div>
+    </div>
+    <app-code-block [code]="layoutsCode" title="Layout Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

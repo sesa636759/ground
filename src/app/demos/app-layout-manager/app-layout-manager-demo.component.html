@@ -1,51 +1,54 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🗂️"
-    title="Layout Manager"
-    description="A powerful layout management system for creating complex, resizable panel layouts. Supports docking, grid, and flex modes with drag-and-drop panel rearrangement, resizing, and state persistence."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🗂</span> ️ Layout Manager</h1>
+<p class="intro-text">A powerful layout management system for creating complex, resizable panel layouts. Supports
+    docking, grid, and flex modes with drag-and-drop panel rearrangement, resizing, and state
+    persistence.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-layout-manager-playground></app-layout-manager-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test different layout modes and panel configurations.</p>
     </div>
+    <app-layout-manager-playground></app-layout-manager-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Modes -->
-          <section class="demo-section" id="modes" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🗂️ Layout Modes</h2>
-              <p>
-                Choose from docking, grid, or flex layout modes based on your application needs.
-              </p>
-            </div>
-            <div class="demo-card">
-              <p>
-                The layout manager provides flexible panel management for complex application
-                interfaces. Panels can be resized, closed, and rearranged based on the selected
-                mode.
-              </p>
-            </div>
-            <ui-code-preview
-              [htmlCode]="modesCode"
-              [label]="'Mode Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
-      </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="modes">
+    <div class="section-header">
+      <h2>🗂️ Layout Modes</h2>
+      <p>Choose from docking, grid, or flex layout modes based on your application needs.</p>
     </div>
 
         <div slot="docs">
       <app-component-documentation componentId="layout-manager"></app-component-documentation>
     </div>
+    <app-code-block [code]="modesCode" title="Mode Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

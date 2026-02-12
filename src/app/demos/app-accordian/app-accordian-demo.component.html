@@ -1,24 +1,216 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🎯"
-    title="Accordion Component"
-    description="Collapsible content panels for organizing and presenting information in a compact, scannable format."
-  >
-  </app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🎯</span> Accordion Component</h1>
+<p class="intro-text">Collapsible content panels for organizing and presenting information in a compact, scannable
+    format.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure and test accordion properties</p>
+    </div>
+    <app-accordion-playground></app-accordion-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Accordion Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic -->
-        <app-example-section
-          id="basic"
-          title="Basic"
-          description="Simple expandable content panels"
-          [code]="basicAccordionCode"
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="basic">
+    <div class="section-header">
+      <h2>📁 Basic</h2>
+      <p>Simple expandable content panels</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="basicAccordionItems"></ui-accordion>
+      </div>
+    </div>
+    <app-code-block
+      [code]="basicAccordionCode"
+      title="Basic Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="subtitles">
+    <div class="section-header">
+      <h2>📝 Subtitles</h2>
+      <p>Items with additional descriptive text</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="subtitlesItems"></ui-accordion>
+      </div>
+    </div>
+    <app-code-block
+      [code]="subtitlesCode"
+      title="Subtitles Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="search">
+    <div class="section-header">
+      <h2>🔍 Search</h2>
+      <p>Filter items with built-in search functionality</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion
+          [items]="searchItems"
+          enable-search
+          search-placeholder="Search frameworks..."
+        ></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="searchCode" title="Search Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="actions">
+    <div class="section-header">
+      <h2>⚡ Actions</h2>
+      <p>Action buttons within the accordion header</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion
+          [items]="actionsItems"
+          (accordionAction)="handleAction($event)"
+        ></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="actionsCode" title="Actions Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="nested">
+    <div class="section-header">
+      <h2>🌳 Nested</h2>
+      <p>Recursive accordion structure for hierarchical data</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="nestedItems" enable-nested></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="nestedCode" title="Nested Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="drag-drop">
+    <div class="section-header">
+      <h2>✋ Drag & Drop</h2>
+      <p>Reorder items using drag and drop</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion
+          [items]="dragDropItems"
+          enable-drag-drop
+          (accordionReorder)="handleReorder($event)"
+        ></ui-accordion>
+      </div>
+    </div>
+    <app-code-block
+      [code]="dragDropCode"
+      title="Drag & Drop Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="persistence">
+    <div class="section-header">
+      <h2>💾 Persistence</h2>
+      <p>State is preserved in localStorage (refresh page to test)</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion
+          [items]="persistenceItems"
+          enable-persistence
+          persistence-key="demo-persist-v1"
+        ></ui-accordion>
+      </div>
+    </div>
+    <app-code-block
+      [code]="persistenceCode"
+      title="Persistence Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="loading">
+    <div class="section-header">
+      <h2>⏳ Loading</h2>
+      <p>Skeleton loading state</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion loading></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="loadingCode" title="Loading Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="rtl">
+    <div class="section-header">
+      <h2>🌍 RTL</h2>
+      <p>Right-to-Left layout support</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="rtlItems" rtl></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="rtlCode" title="RTL Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="dense">
+    <div class="section-header">
+      <h2>📦 Dense</h2>
+      <p>Compact layout for high-density information</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="denseItems" dense></ui-accordion>
+      </div>
+    </div>
+    <app-code-block [code]="denseCode" title="Dense Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="events">
+    <div class="section-header">
+      <h2>📣 Events</h2>
+      <p>Lifecycle events and interaction logging</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion
+          [items]="eventsItems"
+          (beforeOpen)="logEvent('Before Open', $event)"
+          (afterOpen)="logEvent('After Open', $event)"
+          (beforeClose)="logEvent('Before Close', $event)"
+          (afterClose)="logEvent('After Close', $event)"
+        ></ui-accordion>
+        <div
+          class="event-log"
+          style="
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f5f5f5;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+          "
         >
           <ui-accordion [items]="basicAccordionItems"></ui-accordion>
         </app-example-section>
@@ -188,15 +380,28 @@
           ></ui-accordion>
         </app-example-section>
 
-        <!-- Async & Lazy -->
-        <app-example-section
-          id="async-lazy"
-          title="Async & Lazy"
-          description="Lazy loading content (content is not in DOM until opened)"
-          [code]="asyncLazyCode"
-        >
-          <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
-        </app-example-section>
+<section class="demo-section" id="controlled">
+    <div class="section-header">
+      <h2>🎮 Controlled</h2>
+      <p>Control expansion state programmatically</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem">
+          <ui-button (click)="setControlledExpanded(['c1'])" label="Open 1"></ui-button>
+          <ui-button (click)="setControlledExpanded(['c2'])" label="Open 2"></ui-button>
+          <ui-button (click)="setControlledExpanded(['c3'])" label="Open 3"></ui-button>
+          <ui-button
+            (click)="setControlledExpanded(['c1', 'c2', 'c3'])"
+            label="Open All"
+          ></ui-button>
+          <ui-button (click)="setControlledExpanded([])" label="Close All"></ui-button>
+        </div>
+        <ui-accordion
+          [items]="controlledItems"
+          [expandedItems]="controlledExpanded"
+          multiple
+        ></ui-accordion>
       </div>
       <!-- /examples-content -->
     </div>
@@ -205,8 +410,37 @@
       <app-accordion-playground></app-accordion-playground>
     </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="accordion"></app-component-documentation>
+<section class="demo-section" id="async-lazy">
+    <div class="section-header">
+      <h2>⚡ Async & Lazy</h2>
+      <p>Lazy loading content (content is not in DOM until opened)</p>
     </div>
-  </demo-tabs>
-</div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
+      </div>
+    </div>
+    <app-code-block
+      [code]="asyncLazyCode"
+      title="Async & Lazy Example"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

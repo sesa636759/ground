@@ -1,54 +1,42 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="⚓"
-    title="Anchor Navigation"
-    description="A streamlined navigation component that tracks the current scroll position within a container or the entire page. Perfect for long-form content, documentation, or landing pages."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⚓</span> Anchor Navigation</h1>
+<p class="intro-text">A streamlined navigation component that tracks the current scroll position within a container or
+    the entire page. Perfect for long-form content, documentation, or landing pages.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-anchor-playground></app-anchor-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure the scrolling behavior and visual styles</p>
     </div>
+    <app-anchor-playground></app-anchor-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Basic Anchor Setup"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Marker Styles -->
-        <app-example-section
-          id="types"
-          title="Marker Styles"
-          description="Choose between traditional text links or minimalistic dots"
-          [code]="typesCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-card">
-            <div class="preview-box">
-              <div class="content-body" id="types-scroll">
-                <div class="section-block" id="line-sec">
-                  <h3>Line Marker</h3>
-                  <p>Traditional sidebar navigation style.</p>
-                </div>
-                <div class="section-block" id="dot-sec">
-                  <h3>Dot Marker</h3>
-                  <p>Minimalistic representation often used for scroll progress.</p>
-                </div>
-              </div>
-              <div class="anchor-sidebar">
-                <ui-anchor
-                  type="dot"
-                  links='[
-                    { "id": "l1", "label": "Line", "target": "line-sec" },
-                    { "id": "l2", "label": "Dot", "target": "dot-sec" }
-                  ]'
-                  scroll-container="#types-scroll"
-                ></ui-anchor>
-              </div>
-            </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>📝 Marker Styles</h2>
+      <p>Choose between traditional text links or minimalistic dots</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div class="content-body" id="types-scroll">
+          <div class="section-block" id="line-sec">
+            <h3>Line Marker</h3>
+            <p>Traditional sidebar navigation style.</p>
           </div>
         </app-example-section>
 
@@ -136,5 +124,81 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
-</div>
+    <app-code-block [code]="typesCode" title="Marker Variants" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="orientation">
+    <div class="section-header">
+      <h2>↔️ Orientation</h2>
+      <p>Deploy anchor navigation horizontally for header-based sub-menus</p>
+    </div>
+    <div class="demo-card">
+      <div style="padding: 16px; border-bottom: 1px solid #eee; background: #fcfcfc">
+        <ui-anchor
+          orientation="horizontal"
+          [links]="[
+            { id: 'h1', label: 'Features', target: 'playground' },
+            { id: 'h2', label: 'Theming', target: 'types' },
+            { id: 'h3', label: 'API', target: 'orientation' },
+          ]"
+        ></ui-anchor>
+      </div>
+      <div class="preview-box" style="justify-content: center; padding: 40px; color: #64748b">
+        Horizontal anchor is perfect for top navigation bars or sub-task headers.
+      </div>
+    </div>
+    <app-code-block
+      [code]="orientationCode"
+      title="Horizontal vs Vertical"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="auto-gen">
+    <div class="section-header">
+      <h2>⚙️ Headings Auto-Detection</h2>
+      <p>Simplify your workflow by letting the component scan a container for headers</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div class="content-body" id="auto-gen-box">
+          <h2 id="auto1">Introduction</h2>
+          <div style="height: 100px; background: #f8fafc; margin: 10px 0"></div>
+          <h2 id="auto2">Installation</h2>
+          <div style="height: 100px; background: #f8fafc; margin: 10px 0"></div>
+          <h3 id="auto3">Configuration</h3>
+          <div style="height: 100px; background: #f8fafc; margin: 10px 0"></div>
+        </div>
+        <div class="anchor-sidebar">
+          <ui-anchor
+            auto-gen-container="#auto-gen-box"
+            scroll-container="#auto-gen-box"
+            show-progress
+          ></ui-anchor>
+        </div>
+      </div>
+    </div>
+    <app-code-block
+      [code]="autoGenCode"
+      title="Auto-generation Setup"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

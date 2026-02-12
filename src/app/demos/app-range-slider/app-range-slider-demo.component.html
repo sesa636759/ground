@@ -1,90 +1,81 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="↔️"
-    title="Range Slider"
-    description="An interactive control for selecting a single value or a range between two bounds. Supports custom steps, tooltips, and vertical orientation."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">↔</span> ️ Range Slider</h1>
+<p class="intro-text">An interactive control for selecting a single value or a range between two bounds. Supports
+    custom steps, tooltips, and vertical orientation.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-range-slider-playground></app-range-slider-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test various constraints, steps, and range toggles.</p>
     </div>
+    <app-range-slider-playground></app-range-slider-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="modes">
+    <div class="section-header">
+      <h2>↔️ Slider Modes</h2>
+      <p>Switch between single point selection and range selection.</p>
+    </div>
+    <div class="demo-card">
+      <div class="slider-preview">
+        <span>Single Selection:</span>
+        <ui-range-slider [value]="45" [min]="0" [max]="100" show-value></ui-range-slider>
+      </div>
+      <div class="slider-preview">
+        <span>Range Selection:</span>
+        <ui-range-slider
+          range
+          [value]="[25, 75]"
+          [min]="0"
+          [max]="100"
+          show-value
+        ></ui-range-slider>
+      </div>
+    </div>
+    <app-code-block [code]="modesCode" title="Mode Examples" language="html"></app-code-block>
+  </section>
 
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Slider Modes -->
-          <section class="demo-section" id="modes" style="margin-top: 0">
-            <div class="section-header">
-              <h2>↔️ Slider Modes</h2>
-              <p>Switch between single point selection and range selection.</p>
-            </div>
-            <div class="demo-card">
-              <div class="slider-preview">
-                <span>Single Selection:</span>
-                <ui-range-slider [value]="45" [min]="0" [max]="100" show-value></ui-range-slider>
-              </div>
-              <div class="slider-preview">
-                <span>Range Selection:</span>
-                <ui-range-slider
-                  range
-                  [value]="[25, 75]"
-                  [min]="0"
-                  [max]="100"
-                  show-value
-                ></ui-range-slider>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="modesCode"
-              [label]="'Mode Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Layouts & Constraints -->
-          <section class="demo-section" id="layouts">
-            <div class="section-header">
-              <h2>📐 Layouts & Constraints</h2>
-              <p>Adjust orientation and stepping behavior.</p>
-            </div>
-            <div class="demo-card" style="flex-direction: row; justify-content: space-around">
-              <div style="display: flex; flex-direction: column; align-items: center; gap: 20px">
-                <span>Vertical:</span>
-                <div style="height: 200px">
-                  <ui-range-slider orientation="vertical" [value]="60" show-value></ui-range-slider>
-                </div>
-              </div>
-              <div class="slider-preview" style="justify-content: center">
-                <span>Discrete Steps (10 units):</span>
-                <ui-range-slider
-                  [step]="10"
-                  [min]="0"
-                  [max]="100"
-                  [value]="30"
-                  show-value
-                ></ui-range-slider>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+<section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Layouts & Constraints</h2>
+      <p>Adjust orientation and stepping behavior.</p>
+    </div>
+    <div class="demo-card" style="flex-direction: row; justify-content: space-around">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px">
+        <span>Vertical:</span>
+        <div style="height: 200px">
+          <ui-range-slider orientation="vertical" [value]="60" show-value></ui-range-slider>
         </div>
       </div>
     </div>
+    <app-code-block [code]="layoutsCode" title="Layout Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="range-slider"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

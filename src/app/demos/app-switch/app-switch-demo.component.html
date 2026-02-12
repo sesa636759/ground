@@ -1,135 +1,100 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🔀"
-    title="Switch Component"
-    description="A binary control that allows users to toggle between two states, such as &quot;on&quot; and &quot;off&quot;. It&apos;s a modern alternative to the checkbox for immediate actions."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔀</span> Switch Component</h1>
+<p class="intro-text">A binary control that allows users to toggle between two states, such as "on" and "off". It's a
+    modern alternative to the checkbox for immediate actions.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-switch-playground></app-switch-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test various combinations of states and visual properties</p>
     </div>
+    <app-switch-playground></app-switch-playground>
+    <app-code-block [code]="playgroundCode" title="Switch Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Visual Colors -->
-          <section class="demo-section" id="colors" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🌈 Visual Colors</h2>
-              <p>Standardize visual feedback using solid, gradient, or segmented arcs.</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <ui-switch label="Primary" variant="primary" checked></ui-switch>
-                <ui-switch label="Success" variant="success" checked></ui-switch>
-                <ui-switch label="Warning" variant="warning" checked></ui-switch>
-                <ui-switch label="Danger" variant="danger" checked></ui-switch>
-                <ui-switch label="Info" variant="info" checked></ui-switch>
-                <ui-switch label="Secondary" variant="secondary" checked></ui-switch>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="colorsCode"
-              [label]="'Colors Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Sizes -->
-          <section class="demo-section" id="sizes">
-            <div class="section-header">
-              <h2>📏 Sizes</h2>
-              <p>From micro-interfaces to large-touch targets</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <ui-switch label="Extra Small" size="xs"></ui-switch>
-                <ui-switch label="Small" size="sm"></ui-switch>
-                <ui-switch label="Medium" size="md"></ui-switch>
-                <ui-switch label="Large" size="lg"></ui-switch>
-                <ui-switch label="Extra Large" size="xl"></ui-switch>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="sizesCode"
-              [label]="'Sizes Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Icon Support -->
-          <section class="demo-section" id="icons">
-            <div class="section-header">
-              <h2>🎨 Icon Support</h2>
-              <p>Embed custom or default icons within the switch thumb</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <ui-switch label="Dark Mode" icon-on="🌙" icon-off="☀️" checked></ui-switch>
-                <ui-switch
-                  label="Sound"
-                  icon-on="🔊"
-                  icon-off="🔇"
-                  checked
-                  variant="info"
-                ></ui-switch>
-                <ui-switch
-                  label="Default Icons"
-                  show-default-icons
-                  checked
-                  variant="success"
-                ></ui-switch>
-                <ui-switch label="Privacy" icon-on="🔒" icon-off="🔓" variant="danger"></ui-switch>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="iconsCode"
-              [label]="'Icons Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Labeling & States -->
-          <section class="demo-section" id="labels">
-            <div class="section-header">
-              <h2>📝 Labeling & States</h2>
-              <p>Positioning, required indicators, and functional states</p>
-            </div>
-            <div class="demo-card">
-              <div
-                class="preview-box"
-                style="flex-direction: column; align-items: flex-start; gap: 24px"
-              >
-                <ui-switch label="Label Position Right (Default)"></ui-switch>
-                <ui-switch label="Label Position Left" label-position="left"></ui-switch>
-                <ui-switch label="Required Field" required checked></ui-switch>
-                <ui-switch label="Loading (Saving...)" loading checked></ui-switch>
-                <ui-switch label="Disabled Input" disabled></ui-switch>
-                <ui-switch label="Pill Shape" shape="pill" checked variant="warning"></ui-switch>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="labelsCode"
-              [label]="'Labels Example'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="colors">
+    <div class="section-header">
+      <h2>🌈 Visual Colors</h2>
+      <p>Standard semantic color schemes</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-switch label="Primary" variant="primary" checked></ui-switch>
+        <ui-switch label="Success" variant="success" checked></ui-switch>
+        <ui-switch label="Warning" variant="warning" checked></ui-switch>
+        <ui-switch label="Danger" variant="danger" checked></ui-switch>
+        <ui-switch label="Info" variant="info" checked></ui-switch>
+        <ui-switch label="Secondary" variant="secondary" checked></ui-switch>
       </div>
     </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="switch"></app-component-documentation>
+<section class="demo-section" id="sizes">
+    <div class="section-header">
+      <h2>📏 Sizes</h2>
+      <p>From micro-interfaces to large-touch targets</p>
     </div>
 
-  </demo-tabs>
-</div>
+<section class="demo-section" id="icons">
+    <div class="section-header">
+      <h2>🎨 Icon Support</h2>
+      <p>Embed custom or default icons within the switch thumb</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-switch label="Dark Mode" icon-on="🌙" icon-off="☀️" checked></ui-switch>
+        <ui-switch label="Sound" icon-on="🔊" icon-off="🔇" checked variant="info"></ui-switch>
+        <ui-switch label="Default Icons" show-default-icons checked variant="success"></ui-switch>
+        <ui-switch label="Privacy" icon-on="🔒" icon-off="🔓" variant="danger"></ui-switch>
+      </div>
+    </div>
+    <app-code-block [code]="iconsCode" title="Icons Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="labels">
+    <div class="section-header">
+      <h2>📝 Labeling & States</h2>
+      <p>Positioning, required indicators, and functional states</p>
+    </div>
+    <div class="demo-card">
+      <div
+        class="preview-box"
+        style="flex-direction: column; align-items: flex-start; gap: 24px; padding-left: 100px"
+      >
+        <ui-switch label="Label Position Right (Default)"></ui-switch>
+        <ui-switch label="Label Position Left" label-position="left"></ui-switch>
+        <ui-switch label="Required Field" required checked></ui-switch>
+        <ui-switch label="Loading (Saving...)" loading checked></ui-switch>
+        <ui-switch label="Disabled Input" disabled></ui-switch>
+        <ui-switch label="Pill Shape" shape="pill" checked variant="warning"></ui-switch>
+      </div>
+    </div>
+    <app-code-block [code]="labelsCode" title="Labels Example" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

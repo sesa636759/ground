@@ -1,41 +1,35 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🔢"
-    title="OTP Input Component"
-    description="Flexible one-time password input component with support for various lengths, styles, validation, masking, and advanced features like grouping and auto-submission."
-  >
-  </app-demo-header>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔢</span> OTP Input Component</h1>
+<p class="intro-text">A dedicated input for one-time passwords, verification codes, and PINs.</p>
+</div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Default OTP -->
-        <app-example-section
-          id="default"
-          title="Default OTP - 6 Digits"
-          description="Basic 6-digit OTP input with autofocus"
-          [code]="defaultCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" [autofocus]="true"></app-otp-input>
-          </div>
-        </app-example-section>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure input length, style, and validation</p>
+    </div>
+    <app-otp-input-playground></app-otp-input-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="OTP Input Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-        <!-- 4-Digit PIN -->
-        <app-example-section
-          id="four-digit"
-          title="4-Digit PIN Code"
-          description="PIN input with numeric type"
-          [code]="fourDigitCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="4" type="numeric" label="Enter PIN"></app-otp-input>
-          </div>
-        </app-example-section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>✨ Style Variants</h2>
+      <p>Different visual styles for various contexts</p>
+    </div>
 
         <!-- 6-Digit Verification -->
         <app-example-section
@@ -349,9 +343,10 @@
       </div>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground" class="pane-playground">
-      <app-otp-input-playground></app-otp-input-playground>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Grouping & Colors</h2>
+      <p>Organize long codes and apply status colors</p>
     </div>
 
     <!-- Documentation Slot -->
@@ -359,5 +354,43 @@
       <app-component-documentation componentId="otp-input"></app-component-documentation>
     </div>
 
-  </demo-tabs>
-</div>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Sizes</h2>
+      <p>Available in different sizes</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card centered">
+        <h3>Small</h3>
+        <app-otp-input size="small" length="4"></app-otp-input>
+      </div>
+
+      <div class="demo-card centered">
+        <h3>Medium</h3>
+        <app-otp-input size="medium" length="4"></app-otp-input>
+      </div>
+
+      <div class="demo-card centered">
+        <h3>Large</h3>
+        <app-otp-input size="large" length="4"></app-otp-input>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

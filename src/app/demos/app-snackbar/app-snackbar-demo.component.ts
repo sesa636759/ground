@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,15 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 @Component({
   selector: 'app-app-snackbar-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    SnackbarPlaygroundComponent,
-    DemoTabsComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    ComponentDocumentationComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SnackbarPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-snackbar-demo.component.html',
   styleUrl: './app-snackbar-demo.component.scss',

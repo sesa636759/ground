@@ -1,31 +1,37 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="⚓"
-    title="Anchor Navigation"
-    description="Smooth scrolling navigation with automatic section detection, scroll spy, sticky positioning, and advanced features like keyboard navigation and hash synchronization."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⚓</span> Anchor Navigation</h1>
+<p class="intro-text">A smart navigation component that provides smooth scrolling and automatic active state detection
+    based on scroll position. Perfect for documentation and long-form content.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-anchor-playground></app-anchor-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure orientation, styles, and behaviors</p>
     </div>
+    <app-anchor-playground></app-anchor-playground>
+    <app-code-block [code]="playgroundCode" title="Anchor Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Vertical Left -->
-        <app-example-section
-          id="vertical-left"
-          title="Vertical Navigation (Left)"
-          description="Perfect for documentation sites and long articles"
-          [code]="verticalLeftCode()"
-          style="margin-top: 0"
-        >
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>🧭 Orientation & Layout</h2>
+      <p>Supports both vertical and horizontal layouts with flexible positioning</p>
+    </div>
+    <div class="demo-grid">
+      <!-- Vertical -->
+      <div class="demo-card">
+        <h3>Vertical Mode</h3>
+        <div class="preview-box">
           <div class="layout-wrapper vertical">
             <ui-anchor
               mode="vertical"
@@ -59,13 +65,41 @@
           </div>
         </app-example-section>
 
-        <!-- Vertical Right -->
-        <app-example-section
-          id="vertical-right"
-          title="Vertical Navigation (Right)"
-          description="Alternative placement for right-to-left layouts"
-          [code]="verticalRightCode()"
-        >
+      <!-- Horizontal -->
+      <div class="demo-card">
+        <h3>Horizontal Mode</h3>
+        <div class="preview-box">
+          <div class="layout-wrapper horizontal">
+            <app-anchor
+              mode="horizontal"
+              [items]="[
+                { id: 'h-start', label: 'Start' },
+                { id: 'h-mid', label: 'Middle' },
+                { id: 'h-end', label: 'End' },
+              ]"
+              scroll-container="#horizontal-scroll"
+            ></app-anchor>
+            <div id="horizontal-scroll" class="scroll-area">
+              <div id="h-start" class="content-block">Start Section</div>
+              <div id="h-mid" class="content-block">Middle Section</div>
+              <div id="h-end" class="content-block">End Section</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Styles & Features</h2>
+      <p>Numbering styles and visual themes</p>
+    </div>
+    <div class="demo-grid">
+      <!-- Numbered -->
+      <div class="demo-card">
+        <h3>Numbered Items</h3>
+        <div class="preview-box">
           <div class="layout-wrapper vertical">
             <ui-anchor
               mode="vertical"
@@ -846,5 +880,22 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
-</div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

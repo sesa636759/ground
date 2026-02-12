@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,16 +12,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 @Component({
   selector: 'app-app-dialog-box-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    DialogBoxPlaygroundComponent,
-    DemoTabsComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    DemoSidebarComponent,
-    ComponentDocumentationComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DialogBoxPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dialog-box-demo.component.html',
   styleUrl: './app-dialog-box-demo.component.scss',

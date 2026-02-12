@@ -1,46 +1,58 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🌳"
-    title="Tree List"
-    description="A hierarchical tree view component for displaying nested data structures. Perfect for file systems, organizational charts, category navigation, and any hierarchical data representation."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🌳</span> Tree List</h1>
+<p class="intro-text">A hierarchical tree view component for displaying nested data structures. Perfect for file
+    systems, organizational charts, category navigation, and any hierarchical data representation.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-tree-list-playground></app-tree-list-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure selection behavior and explore tree interactions.</p>
     </div>
+    <app-tree-list-playground></app-tree-list-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Examples -->
-          <section class="demo-section" id="examples" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📂 Examples</h2>
-              <p>Common use cases for hierarchical data display.</p>
-            </div>
-            <div class="demo-card">
-              <div style="max-width: 500px">
-                <ui-tree-list [model]="treeData" selectable></ui-tree-list>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="examplesCode"
-              label="File System Example"
-              activeLang="ts"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="examples">
+    <div class="section-header">
+      <h2>📂 Examples</h2>
+      <p>Common use cases for hierarchical data display.</p>
+    </div>
+    <div class="demo-card">
+      <div style="max-width: 500px">
+        <ui-tree-list [model]="treeData" selectable></ui-tree-list>
       </div>
     </div>
+    <app-code-block
+      [code]="examplesCode"
+      title="File System Example"
+      language="typescript"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="tree-list"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

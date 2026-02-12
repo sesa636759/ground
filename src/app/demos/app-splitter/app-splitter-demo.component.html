@@ -1,0 +1,84 @@
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">▤</span> Splitter</h1>
+<p class="intro-text">The Splitter component is used to separate and resize adjacent content panels. It supports
+    horizontal and vertical orientations and can be nested to create complex dashboards.</p>
+</div>
+
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Switch between layouts and customize gutter sizes.</p>
+    </div>
+    <app-splitter-playground></app-splitter-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Orientations</h2>
+      <p>Organize content side-by-side or stacked vertically.</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-splitter">
+        <ui-splitter layout="vertical" style="height: 100%">
+          <ui-panel [size]="40"><div class="panel-info">Top Section (40%)</div></ui-panel>
+          <ui-panel [size]="60"><div class="panel-info">Bottom Section (60%)</div></ui-panel>
+        </ui-splitter>
+      </div>
+    </div>
+    <app-code-block [code]="layoutsCode" title="Vertical Example" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="nested">
+    <div class="section-header">
+      <h2>📦 Nested Panels</h2>
+      <p>Combine splitters to create multi-dimensional layouts for advanced interfaces.</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-splitter" style="height: 350px">
+        <ui-splitter layout="horizontal" style="height: 100%">
+          <ui-panel [size]="30" [min-size]="10">
+            <div class="panel-info" style="background: #f8fafc">Sidebar</div>
+          </ui-panel>
+          <ui-panel [size]="70">
+            <ui-splitter layout="vertical" style="height: 100%">
+              <ui-panel [size]="50"><div class="panel-info">Main View</div></ui-panel>
+              <ui-panel [size]="50"><div class="panel-info">Console / Logs</div></ui-panel>
+            </ui-splitter>
+          </ui-panel>
+        </ui-splitter>
+      </div>
+    </div>
+    <app-code-block
+      [code]="nestedCode"
+      title="Nested Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

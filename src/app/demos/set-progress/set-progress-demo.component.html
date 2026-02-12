@@ -1,28 +1,36 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📊"
-    title="Progress Component"
-    description="Versatile progress indicators for tracking task completion with support for various shapes, statuses, steps, and premium effects."
-  >
-  </app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🚀</span> Progress Component</h1>
+<p class="intro-text">Display the current progress of an operation flow with line, circle, and dashboard styles.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the progress bar settings and see changes in real-time</p>
+    </div>
+    <app-progress-playground></app-progress-playground>
+    <app-code-block [code]="playgroundCode" title="Progress Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Line Progress -->
-        <app-example-section
-          id="line"
-          title="Line Progress"
-          description="Standard horizontal progress bars with various completion levels"
-          [code]="lineCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-grid col-1">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>Line Progress</h2>
+      <p>Standard progress bar with different statuses</p>
+    </div>
+    <div class="demo-grid col-2">
+      <div class="demo-card">
+        <h3>Standard</h3>
+        <div class="preview-box">
+          <div style="width: 100%; display: flex; flex-direction: column; gap: 20px">
             <app-progress percent="30"></app-progress>
             <app-progress percent="50"></app-progress>
             <app-progress percent="70"></app-progress>
@@ -89,17 +97,32 @@
           </div>
         </app-example-section>
 
-        <!-- Custom Colors -->
-        <app-example-section
-          id="colors"
-          title="Custom Colors"
-          description="Personalize progress bars with custom HEX color values"
-          [code]="colorsCode"
-        >
-          <div class="demo-grid col-1">
-            <app-progress percent="60" stroke-color="#9b59b6"></app-progress>
-            <app-progress percent="75" stroke-color="#ff9800"></app-progress>
-            <app-progress percent="85" stroke-color="#e91e63"></app-progress>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>Circular & Dashboard</h2>
+      <p>Circular progress indicators for compact displays</p>
+    </div>
+    <div class="demo-grid col-3">
+      <div class="demo-card">
+        <h3>Circle</h3>
+        <div class="preview-box center-content">
+          <app-progress type="circle" percent="75"></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Dashboard</h3>
+        <div class="preview-box center-content">
+          <app-progress type="dashboard" percent="75"></app-progress>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3>Small Size</h3>
+        <div class="preview-box center-content">
+          <div style="display: flex; gap: 20px">
+            <app-progress type="circle" percent="30" width="80"></app-progress>
+            <app-progress type="dashboard" percent="70" width="80" status="success"></app-progress>
           </div>
         </app-example-section>
 
@@ -196,15 +219,32 @@
       </div>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-progress-playground />
+<section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Effects</h2>
+      <p>Advanced visual effects for modern interfaces</p>
     </div>
 
     <!-- Documentation Slot -->
         <div slot="docs">
       <app-component-documentation componentId="progress"></app-component-documentation>
     </div>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

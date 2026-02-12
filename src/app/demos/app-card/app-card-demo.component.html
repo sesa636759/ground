@@ -1,25 +1,118 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🃏"
-    title="Card Component"
-    description="Cards contain content and actions about a single subject. They are versatile containers that can handle images, headers, content, and footers."
-  >
-  </app-demo-header>
-
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <app-card-examples></app-card-examples>
-    </div>
-
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-card-playground></app-card-playground>
-    </div>
-
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation></app-component-documentation>
-    </div>
-  </demo-tabs>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🗂</span> ️ Card Component</h1>
+<p class="intro-text">A versatile container for presenting content and actions on a single topic. Supports images,
+    headers, menus, flipping animations, and skeleton states.</p>
 </div>
+
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Fine-tune the card's composition and behavior</p>
+    </div>
+    <app-card-playground></app-card-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Basic Card Structure"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="visual-styles">
+    <div class="section-header">
+      <h2>🎨 Visual Styles</h2>
+      <p>Choose the elevation and border style that fits your layout</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card variant="default">
+        <div slot="header"><b>Default</b></div>
+        <div slot="content">Simple card with standard border and no shadow.</div>
+      </ui-card>
+      <ui-card variant="elevated">
+        <div slot="header"><b>Elevated</b></div>
+        <div slot="content">Soft shadow to provide depth and focus.</div>
+      </ui-card>
+      <ui-card variant="outlined">
+        <div slot="header"><b>Outlined</b></div>
+        <div slot="content">Strong border with no shadow, perfect for flat designs.</div>
+      </ui-card>
+      <ui-card variant="filled" border="none">
+        <div slot="header"><b>Filled</b></div>
+        <div slot="content">Subtle background color with no border.</div>
+      </ui-card>
+    </div>
+    <app-code-block [code]="stylesCode" title="Variant Options" language="html"></app-code-block>
+  </section>
+
+<section class="demo-section" id="flippable">
+    <div class="section-header">
+      <h2>✨ Interaction Models</h2>
+      <p>Enhance user engagement with flippable surfaces and selection states</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card flippable width="100%">
+        <div slot="header"><b>Flippable Card</b></div>
+        <div slot="content" style="text-align: center; padding: 20px">
+          <p>Click me to see the back!</p>
+          <ui-icon name="refresh" style="font-size: 2rem"></ui-icon>
+        </div>
+        <div slot="back-content">
+          <h3>The Secret Sauce</h3>
+          <p>Flippable cards are great for flashcards, product details, or hidden settings!</p>
+        </div>
+      </ui-card>
+
+      <ui-card selectable selected width="100%">
+        <div slot="header"><b>Selectable State</b></div>
+        <div slot="content">This card is currently selected. Perfect for choice-based layouts.</div>
+      </ui-card>
+    </div>
+    <app-code-block
+      [code]="interactionCode"
+      title="Dynamic Interaction"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="loading">
+    <div class="section-header">
+      <h2>⚙️ Operational States</h2>
+      <p>Handle data loading and navigation elegantly</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card loading width="100%"></ui-card>
+
+      <ui-card clickable width="100%" hoverable variant="outlined">
+        <div slot="header"><b>Clickable Card</b></div>
+        <div slot="content">Entire card acts as a button or link with enhanced hover feedback.</div>
+        <div slot="footer"><i>Click to explore →</i></div>
+      </ui-card>
+    </div>
+    <app-code-block [code]="statesCode" title="State Handling" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

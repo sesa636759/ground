@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,14 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 @Component({
   selector: 'app-set-timeline-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    TimelinePlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    DemoSidebarComponent,
-  ],
+  imports: [CommonModule, FormsModule, TimelinePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',

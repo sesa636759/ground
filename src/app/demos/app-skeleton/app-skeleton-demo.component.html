@@ -1,152 +1,83 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="💀"
-    title="Skeleton Loader"
-    description="Animated placeholder loaders that mimic content layout while data is being fetched — reducing perceived load time."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">💀</span> Skeleton Loader</h1>
+<p class="intro-text">Improve perceived performance by showing a placeholder preview of your content during loading
+    states. Supports multiple shapes, animations, and dark mode.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-skeleton-playground></app-skeleton-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure shapes, sizes, and animation styles.</p>
     </div>
+    <app-skeleton-playground></app-skeleton-playground>
+    <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="shapes">
+    <div class="section-header">
+      <h2>🌀 Shapes & Animations</h2>
+      <p>Standard placeholder types for common UI elements.</p>
+    </div>
+    <div class="demo-card">
+      <div style="display: flex; gap: 20px; align-items: center">
+        <ui-skeleton shape="circle" width="60px" height="60px"></ui-skeleton>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
+          <ui-skeleton shape="text" width="40%"></ui-skeleton>
+          <ui-skeleton shape="text" width="90%"></ui-skeleton>
         </div>
       </aside>
 
-      <div class="examples-content">
-        <!-- Shapes & Animations -->
-        <app-example-section
-          id="shapes"
-          title="Shapes & Animations"
-          description="All shape variants — circle, text, rectangle, avatar, card, list-item, button, image — with pulse and wave animations"
-          [code]="shapesCode"
-        >
-          <div style="display: flex; flex-direction: column; gap: 20px; width: 100%">
-            <!-- Avatar + text row -->
-            <div style="display: flex; align-items: center; gap: 12px">
-              <skeleton-loader shape="avatar" size="lg"></skeleton-loader>
-              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
-                <skeleton-loader shape="text" width="60%" animation-type="pulse"></skeleton-loader>
-                <skeleton-loader shape="text" width="40%" animation-type="pulse"></skeleton-loader>
-              </div>
-            </div>
-            <!-- Rectangle wave -->
-            <skeleton-loader
-              shape="rectangle"
-              width="100%"
-              height="120px"
-              animation-type="wave"
-            ></skeleton-loader>
-            <!-- Button, circle, square row -->
-            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
-              <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>
-              <skeleton-loader shape="square" width="48px" height="48px"></skeleton-loader>
-              <skeleton-loader shape="button" width="100px" size="md"></skeleton-loader>
-              <skeleton-loader shape="rounded" width="120px" height="20px"></skeleton-loader>
-            </div>
-            <!-- Card shape -->
-            <skeleton-loader shape="card" width="100%"></skeleton-loader>
-            <!-- List-item shape x3 -->
-            @for (i of [1, 2, 3]; track i) {
-              <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
-            }
-          </div>
-        </app-example-section>
-
-        <!-- Card Layout -->
-        <app-example-section
-          id="card-layout"
-          title="Card Layout"
-          description="Skeleton placeholder composing a media card with thumbnail and text lines"
-          [code]="cardLayoutCode"
-        >
-          <div
-            style="
-              display: flex;
-              gap: 12px;
-              padding: 16px;
-              border: 1px solid var(--color-border);
-              border-radius: 8px;
-              width: 100%;
-              box-sizing: border-box;
-            "
-          >
-            <skeleton-loader
-              shape="rectangle"
-              width="80px"
-              height="80px"
-              style="flex-shrink: 0"
-            ></skeleton-loader>
-            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
-              <skeleton-loader shape="text" width="70%" height="18px"></skeleton-loader>
-              <skeleton-loader shape="text" width="40%" height="14px"></skeleton-loader>
-              <skeleton-loader shape="text" width="55%" height="14px"></skeleton-loader>
-            </div>
-          </div>
-        </app-example-section>
-
-        <!-- List Layout -->
-        <app-example-section
-          id="list-layout"
-          title="List Layout"
-          description="Row-by-row skeleton for list or feed views using the built-in list-item shape"
-          [code]="listLayoutCode"
-        >
-          <div style="display: flex; flex-direction: column; gap: 10px; width: 100%">
-            @for (item of [1, 2, 3, 4]; track item) {
-              <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
-            }
-          </div>
-        </app-example-section>
-
-        <!-- Profile Layout -->
-        <app-example-section
-          id="profile-layout"
-          title="Profile Layout"
-          description="Centered skeleton for user profile pages"
-          [code]="profileLayoutCode"
-        >
-          <div style="text-align: center; padding: 24px; width: 100%">
-            <skeleton-loader
-              shape="avatar"
-              size="2xl"
-              style="margin: 0 auto; display: block"
-            ></skeleton-loader>
-            <skeleton-loader
-              shape="text"
-              width="120px"
-              height="20px"
-              style="margin: 12px auto 0; display: block"
-            ></skeleton-loader>
-            <skeleton-loader
-              shape="text"
-              width="80px"
-              height="14px"
-              style="margin: 8px auto 0; display: block"
-            ></skeleton-loader>
-            <skeleton-loader
-              shape="button"
-              width="160px"
-              size="lg"
-              style="margin: 16px auto 0; display: block"
-            ></skeleton-loader>
-          </div>
-        </app-example-section>
+<section class="demo-section" id="combinations">
+    <div class="section-header">
+      <h2>🧩 Complex Layouts</h2>
+      <p>Combine multiple skeletons to mirror real UI components.</p>
+    </div>
+    <div class="demo-card">
+      <div class="card-preview">
+        <ui-skeleton
+          shape="rectangle"
+          width="120px"
+          height="120px"
+          border-radius="12px"
+        ></ui-skeleton>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 12px">
+          <ui-skeleton shape="text" width="60%" height="24px"></ui-skeleton>
+          <ui-skeleton shape="text" width="100%"></ui-skeleton>
+          <ui-skeleton shape="text" width="90%"></ui-skeleton>
+          <ui-skeleton shape="text" width="40%"></ui-skeleton>
+        </div>
       </div>
     </div>
+    <app-code-block
+      [code]="combinationsCode"
+      title="Composite Example"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="skeleton"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

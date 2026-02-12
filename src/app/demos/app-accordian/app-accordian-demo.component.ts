@@ -1,5 +1,5 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
@@ -12,16 +12,7 @@ import { PlaygroundEventLogComponent } from '../../shared/components/playground-
 @Component({
   selector: 'app-app-accordian-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AccordianPlaygroundComponent,
-    DemoTabsComponent,
-    ExampleSectionComponent,
-    ComponentDocumentationComponent,
-    DemoSidebarComponent,
-    PlaygroundEventLogComponent,
-  ],
+  imports: [CommonModule, FormsModule, AccordianPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',

@@ -12,10 +12,14 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, rgba(61, 205, 88, 0.04) 0%, rgba(61, 205, 88, 0.12) 100%), var(--bg-primary);
-  background-attachment: fixed;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

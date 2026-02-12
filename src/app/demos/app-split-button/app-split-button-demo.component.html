@@ -1,82 +1,67 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="⏍"
-    title="Split Button"
-    description="Combines a default action button with a dropdown menu for related auxiliary actions. Ideal for &quot;Save&quot; operations or multi-state actions."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⏍</span> Split Button</h1>
+<p class="intro-text">Combines a default action button with a dropdown menu for related auxiliary actions. Ideal for
+    "Save" operations or multi-state actions.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-split-button-playground></app-split-button-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure primary labels, variants, and dropdown behavior.</p>
     </div>
+    <app-split-button-playground></app-split-button-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="colors">
+    <div class="section-header">
+      <h2>🎨 Color Themes</h2>
+      <p>Apply different visual weights using standard color variants.</p>
+    </div>
+    <div class="demo-card">
+      <ui-split-button label="Delete All" variant="danger" [model]="menuItems"></ui-split-button>
+      <ui-split-button label="Publish" variant="success" [model]="menuItems"></ui-split-button>
+      <ui-split-button label="Secondary" variant="secondary" [model]="menuItems"></ui-split-button>
+      <ui-split-button label="Outline Only" variant="outline" [model]="menuItems"></ui-split-button>
+    </div>
+    <app-code-block [code]="colorsCode" title="Theme Examples" language="html"></app-code-block>
+  </section>
 
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Color Themes -->
-          <section class="demo-section" id="colors" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Color Themes</h2>
-              <p>Apply different visual weights using standard color variants.</p>
-            </div>
-            <div class="demo-card">
-              <ui-split-button
-                label="Delete All"
-                variant="danger"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Publish"
-                variant="success"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Secondary"
-                variant="secondary"
-                [model]="menuItems"
-              ></ui-split-button>
-              <ui-split-button
-                label="Outline Only"
-                variant="outline"
-                [model]="menuItems"
-              ></ui-split-button>
-            </div>
-            <ui-code-preview
-              [htmlCode]="colorsCode"
-              [label]="'Theme Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Visual States -->
-          <section class="demo-section" id="states">
-            <div class="section-header">
-              <h2>⚡ Visual States</h2>
-              <p>Communicate ongoing processes or restricted access.</p>
-            </div>
-            <div class="demo-card">
-              <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
-              <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
-            </div>
-            <ui-code-preview
-              [htmlCode]="statesCode"
-              [label]="'State Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
-      </div>
+<section class="demo-section" id="states">
+    <div class="section-header">
+      <h2>⚡ Visual States</h2>
+      <p>Communicate ongoing processes or restricted access.</p>
     </div>
 
         <div slot="docs">
       <app-component-documentation componentId="split-button"></app-component-documentation>
     </div>
+    <app-code-block [code]="statesCode" title="State Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

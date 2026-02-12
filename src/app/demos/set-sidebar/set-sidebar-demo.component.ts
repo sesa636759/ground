@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,13 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 @Component({
   selector: 'app-set-sidebar-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    SidebarPlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-  ],
+  imports: [CommonModule, FormsModule, SidebarPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-sidebar-demo.component.html',
   styleUrl: './set-sidebar-demo.component.scss',

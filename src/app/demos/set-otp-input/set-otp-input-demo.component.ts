@@ -1,5 +1,5 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OtpInputPlaygroundComponent } from './components/otp-input-playground/otp-input-playground.component';
@@ -11,16 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-set-otp-input-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    OtpInputPlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    DemoSidebarComponent,
-  ],
+  imports: [CommonModule, FormsModule, OtpInputPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-otp-input-demo.component.html',
   styleUrl: './set-otp-input-demo.component.scss',

@@ -1,153 +1,58 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📋"
-    title="Smart Menu"
-    description="A context-aware right-click menu with nested sub-menus, icons, dividers, and disabled items. Right-click any trigger area below to open the menu."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🧠</span> Smart Menu</h1>
+<p class="intro-text">An intelligent menu component with support for nested items, icons, and dynamic behavior.
+    Perfect for application menus, context menus, and navigation structures.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-smart-menu-playground></app-smart-menu-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure orientation and test menu interactions.</p>
     </div>
+    <app-smart-menu-playground></app-smart-menu-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
-
-      <div class="examples-content">
-        <!-- Nested Menus -->
-        <app-example-section
-          id="nested"
-          title="Nested Menus"
-          description="Multi-level context menus — right-click the area below to open. Hover over items with arrows to reveal sub-menus."
-          [code]="nestedCode"
-          language="html"
-        >
-          <div
-            id="nested-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the nested File / Edit / View menu
-          </div>
-          <ui-smart-context-menu
-            target="#nested-target"
-            icon-library="lucide"
-            [items]="nestedItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- With Icons -->
-        <app-example-section
-          id="icons"
-          title="With Icons"
-          description="Lucide icons next to each menu item for quick visual scanning"
-          [code]="iconsCode"
-          language="html"
-        >
-          <div
-            id="icons-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the icon menu
-          </div>
-          <ui-smart-context-menu
-            target="#icons-target"
-            icon-library="lucide"
-            [items]="iconItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- Separators -->
-        <app-example-section
-          id="separators"
-          title="Separators"
-          description="Use divider items to group related actions into visual sections"
-          [code]="separatorsCode"
-          language="html"
-        >
-          <div
-            id="sep-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the Cut / Copy / Paste menu with dividers
-          </div>
-          <ui-smart-context-menu
-            target="#sep-target"
-            icon-library="lucide"
-            [items]="separatorItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- Disabled Items -->
-        <app-example-section
-          id="disabled"
-          title="Disabled Items"
-          description="Mark specific items as non-interactive — they appear faded and cannot be clicked"
-          [code]="disabledCode"
-          language="html"
-        >
-          <div
-            id="disabled-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> — one action is disabled
-          </div>
-          <ui-smart-context-menu
-            target="#disabled-target"
-            icon-library="lucide"
-            [items]="disabledItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="nested">
+    <div class="section-header">
+      <h2>🗂️ Nested Menus</h2>
+      <p>Create hierarchical menu structures with unlimited nesting levels.</p>
+    </div>
+    <div class="demo-card">
+      <div style="display: flex; justify-content: center">
+        <ui-smart-menu [model]="menuItems"></ui-smart-menu>
       </div>
     </div>
+    <app-code-block
+      [code]="nestedCode"
+      title="Nested Menu Model"
+      language="typescript"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="smart-menu"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

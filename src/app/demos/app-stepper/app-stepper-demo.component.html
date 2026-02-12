@@ -1,121 +1,99 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🚶"
-    title="Stepper Workflow"
-    description="Guide users through multi-step processes with clarity. Supports linear and non-linear flows, orientation switching, validation states, and custom status indicators."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🚶</span> Stepper Workflow</h1>
+<p class="intro-text">Guide users through multi-step processes with clarity. Supports linear and non-linear flows,
+    orientation switching, validation states, and custom status indicators.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-stepper-playground></app-stepper-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Master the workflow layout and step states</p>
     </div>
+    <app-stepper-playground></app-stepper-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Basic Stepper Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Orientation -->
-          <section class="demo-section" id="orientation" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📐 Layout Orientation</h2>
-              <p>Switch between horizontal progress and vertical checklists</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <div style="width: 100%">
-                  <span>Horizontal:</span>
-                  <ui-stepper orientation="horizontal" [steps]="steps" active-step="1"></ui-stepper>
-                </div>
-                <div style="width: 100%; min-height: 250px">
-                  <span>Vertical:</span>
-                  <ui-stepper
-                    orientation="vertical"
-                    [steps]="steps"
-                    active-step="1"
-                    show-descriptions
-                  ></ui-stepper>
-                </div>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="orientationCode"
-              [label]="'Orientation Toggle'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Visual Types -->
-          <section class="demo-section" id="visuals">
-            <div class="section-header">
-              <h2>🎨 Visual Indicator Types</h2>
-              <p>Choose between explicit numbering or minimal progress dots</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <div style="width: 100%">
-                  <span>Classic Numbers:</span>
-                  <ui-stepper [steps]="steps" active-step="1"></ui-stepper>
-                </div>
-                <div style="width: 100%">
-                  <span>Progress Dots:</span>
-                  <ui-stepper
-                    progress-dot
-                    [steps]="steps"
-                    active-step="1"
-                    show-descriptions
-                  ></ui-stepper>
-                </div>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="visualsCode"
-              [label]="'Progress Markers'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Flow Logic -->
-          <section class="demo-section" id="validation">
-            <div class="section-header">
-              <h2>⚡ Workflow Logic</h2>
-              <p>Control how users navigate through the sequence</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-box">
-                <div style="width: 100%">
-                  <span>Non-linear (Free Jump):</span>
-                  <ui-stepper flow="non-linear" [steps]="steps" active-step="2"></ui-stepper>
-                </div>
-                <div style="width: 100%">
-                  <span>Validation Warning State:</span>
-                  <ui-stepper
-                    [steps]="steps"
-                    active-step="1"
-                    show-controls
-                    label-fail="Simulate Error"
-                  ></ui-stepper>
-                </div>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="flowCode"
-              [label]="'Flow Control'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="orientation">
+    <div class="section-header">
+      <h2>📐 Layout Orientation</h2>
+      <p>Switch between horizontal progress and vertical checklists</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="width: 100%">
+          <span>Horizontal:</span>
+          <ui-stepper orientation="horizontal" [steps]="steps" active-step="1"></ui-stepper>
+        </div>
+        <div style="width: 100%; min-height: 250px">
+          <span>Vertical:</span>
+          <ui-stepper
+            orientation="vertical"
+            [steps]="steps"
+            active-step="1"
+            show-descriptions
+          ></ui-stepper>
         </div>
       </div>
     </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="stepper"></app-component-documentation>
+<section class="demo-section" id="visuals">
+    <div class="section-header">
+      <h2>🎨 Visual Indicator Types</h2>
+      <p>Choose between explicit numbering or minimal progress dots</p>
     </div>
 
-  </demo-tabs>
-</div>
+<section class="demo-section" id="validation">
+    <div class="section-header">
+      <h2>⚡ Workflow Logic</h2>
+      <p>Control how users navigate through the sequence</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="width: 100%">
+          <span>Non-linear (Free Jump):</span>
+          <ui-stepper flow="non-linear" [steps]="steps" active-step="2"></ui-stepper>
+        </div>
+        <div style="width: 100%">
+          <span>Validation Warning State:</span>
+          <ui-stepper
+            [steps]="steps"
+            active-step="1"
+            show-controls
+            label-fail="Simulate Error"
+          ></ui-stepper>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="flowCode" title="Flow Control" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

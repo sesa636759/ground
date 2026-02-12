@@ -1,145 +1,135 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🔔"
-    title="Snackbar"
-    description="Lightweight toast notifications that slide in from any corner of the screen with built-in types, stacking, and auto-dismiss."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔔</span> Snackbar Component</h1>
+<p class="intro-text">A global notification system that provides brief messages about app processes. Highly
+    configurable with stacking logic, auto-dismiss, and interactive actions.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-snackbar-playground></app-snackbar-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Master the stacking and positioning logic</p>
     </div>
+    <app-snackbar-playground></app-snackbar-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Snackbar Container Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
-
-      <div class="examples-content">
-        <!-- Types -->
-        <app-example-section
-          id="types"
-          title="Types"
-          description="Built-in notification types: success, error, warning, and info"
-          [code]="typesCode"
-          language="javascript"
-        >
-          <div class="demo-flex-wrap">
-            <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
-            <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
-            <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
-            <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
-          </div>
-        </app-example-section>
-
-        <!-- Positions -->
-        <app-example-section
-          id="positions"
-          title="Positions"
-          description="Six positions — top/bottom × left/center/right. Each button fires a notification at its labelled position."
-          [code]="positionsCode"
-        >
-          <div class="demo-grid col-3" style="gap: 12px">
-            <ui-button
-              variant="secondary"
-              label="Top Left"
-              (click)="notifyAt('info', 'top-left')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Top Center"
-              (click)="notifyAt('success', 'top-center')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Top Right"
-              (click)="notifyAt('success', 'top-right')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Left"
-              (click)="notifyAt('warning', 'bottom-left')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Center"
-              (click)="notifyAt('error', 'bottom-center')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Right"
-              (click)="notifyAt('info', 'bottom-right')"
-            ></ui-button>
-          </div>
-        </app-example-section>
-
-        <!-- Card Stack -->
-        <app-example-section
-          id="card-stack"
-          title="Card Stacking"
-          description="Stack multiple notifications visually to reduce screen clutter"
-          [code]="cardStackCode"
-        >
-          <div class="demo-flex-wrap">
-            <ui-button
-              variant="primary"
-              label="Stack Notifications"
-              (click)="notify('success')"
-            ></ui-button>
-            <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
-          </div>
-        </app-example-section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>📊 Semantic Types</h2>
+      <p>Use predefined types to communicate specific states</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          style="background: var(--success); border: none"
+          (click)="notify('success')"
+          label="Show Success"
+        ></ui-button>
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          style="background: var(--danger); border: none"
+          (click)="notify('error')"
+          label="Show Error"
+        ></ui-button>
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          style="background: var(--warning); border: none; color: black"
+          (click)="notify('warning')"
+          label="Show Warning"
+        ></ui-button>
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          style="background: var(--info); border: none"
+          (click)="notify('info')"
+          label="Show Info"
+        ></ui-button>
       </div>
     </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="snackbar"></app-component-documentation>
+<section class="demo-section" id="positions">
+    <div class="section-header">
+      <h2>📍 Flexible Positioning</h2>
+      <p>Anchor notifications to any corner or center edge</p>
     </div>
-  </demo-tabs>
-</div>
+    <div class="demo-card" style="padding: 2rem; background: #f1f5f9; border-style: dashed">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Top Left
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Top Right (Default)
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Bottom Left
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Bottom Right
+        </div>
+      </div>
+    </div>
+    <app-code-block
+      [code]="positionsCode"
+      title="Container Positions"
+      language="html"
+    ></app-code-block>
+  </section>
 
-<!-- Per-position snackbar containers -->
-<ui-snackbar
-  #snackbarGlobal
-  position="top-right"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
-<ui-snackbar
-  #snackbarTopLeft
-  position="top-left"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
-<ui-snackbar
-  #snackbarTopCenter
-  position="top-center"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
-<ui-snackbar
-  #snackbarBottomLeft
-  position="bottom-left"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
-<ui-snackbar
-  #snackbarBottomCenter
-  position="bottom-center"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
-<ui-snackbar
-  #snackbarBottomRight
-  position="bottom-right"
-  max-visible="3"
-  icon-library="lucide"
-></ui-snackbar>
+<section class="demo-section" id="card-stack">
+    <div class="section-header">
+      <h2>📚 Card Stacking</h2>
+      <p>A modern visual style where notifications stack vertically and expand on hover</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-badge value="New" color="info">
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="notify('info')"
+            label="Pulse Multi-Notifications"
+          ></ui-button>
+        </ui-badge>
+      </div>
+    </div>
+    <app-code-block
+      [code]="cardStackCode"
+      title="Card Stacking Example"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

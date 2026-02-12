@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,15 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-app-timeline-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    TimelinePlaygroundComponent,
-    DemoTabsComponent,
-    DemoSidebarComponent,
-    ComponentDocumentationComponent,
-    DemoHeaderComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, TimelinePlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-timeline-demo.component.html',
   styleUrl: './app-timeline-demo.component.scss',

@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,15 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 @Component({
   selector: 'app-app-popover-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    PopoverPlaygroundComponent,
-    DemoTabsComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    ComponentDocumentationComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PopoverPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-popover-demo.component.html',
   styleUrl: './app-popover-demo.component.scss',

@@ -1,80 +1,82 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="⏳"
-    title="Timeline"
-    description="Visualize a series of events chronologically. Highly flexible component supporting vertical/horizontal orientations, alternating alignments, and custom templates for markers and content."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⏳</span> Timeline</h1>
+<p class="intro-text">Visualize a series of events chronologically. Highly flexible component supporting
+    vertical/horizontal orientations, alternating alignments, and custom templates for markers and
+    content.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-timeline-playground></app-timeline-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Switch between alignments and test custom markers.</p>
     </div>
+    <app-timeline-playground></app-timeline-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Alignments -->
-          <section class="demo-section" id="alignments" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📏 Alignments</h2>
-              <p>Position markers and content on different sides of the timeline axis.</p>
-            </div>
-            <div class="demo-card">
-              <div style="width: 100%; max-width: 500px">
-                <span>Alternating:</span>
-                <ui-timeline align="alternate" [value]="events">
-                  <ng-template let-item>
-                    <div style="font-weight: 600">{{ item.status }}</div>
-                    <div slot="opposite" style="font-size: 0.85rem; opacity: 0.7">
-                      {{ item.date }}
-                    </div>
-                  </ng-template>
-                </ui-timeline>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="alignmentsCode"
-              [label]="'Alignment Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Orientations -->
-          <section class="demo-section" id="orientations">
-            <div class="section-header">
-              <h2>📐 Orientations</h2>
-              <p>Use horizontal layout for compact workflows or vertical for detailed histories.</p>
-            </div>
-            <div class="demo-card">
-              <div style="width: 100%">
-                <span>Horizontal:</span>
-                <ui-timeline orientation="horizontal" [value]="events">
-                  <ng-template let-item>
-                    <div style="font-weight: 600">{{ item.status }}</div>
-                    <div style="font-size: 0.8rem">{{ item.date }}</div>
-                  </ng-template>
-                </ui-timeline>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="orientationsCode"
-              [label]="'Orientation Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="alignments">
+    <div class="section-header">
+      <h2>📏 Alignments</h2>
+      <p>Position markers and content on different sides of the timeline axis.</p>
+    </div>
+    <div class="demo-card">
+      <div style="width: 100%; max-width: 500px">
+        <span>Alternating:</span>
+        <ui-timeline align="alternate" [value]="events">
+          <ng-template let-item>
+            <div style="font-weight: 600">{{ item.status }}</div>
+            <div slot="opposite" style="font-size: 0.85rem; opacity: 0.7">{{ item.date }}</div>
+          </ng-template>
+        </ui-timeline>
       </div>
     </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="timeline"></app-component-documentation>
+<section class="demo-section" id="orientations">
+    <div class="section-header">
+      <h2>📐 Orientations</h2>
+      <p>Use horizontal layout for compact workflows or vertical for detailed histories.</p>
     </div>
+    <div class="demo-card">
+      <div style="width: 100%">
+        <span>Horizontal:</span>
+        <ui-timeline orientation="horizontal" [value]="events">
+          <ng-template let-item>
+            <div style="font-weight: 600">{{ item.status }}</div>
+            <div style="font-size: 0.8rem">{{ item.date }}</div>
+          </ng-template>
+        </ui-timeline>
+      </div>
+    </div>
+    <app-code-block
+      [code]="orientationsCode"
+      title="Orientation Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

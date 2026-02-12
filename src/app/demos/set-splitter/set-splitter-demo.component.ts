@@ -1,5 +1,5 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SplitterPlaygroundComponent } from './components/splitter-playground/splitter-playground.component';
@@ -11,16 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-set-splitter-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    SplitterPlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    DemoSidebarComponent
-  ],
+  imports: [CommonModule, FormsModule, SplitterPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-splitter-demo.component.html',
   styleUrl: './set-splitter-demo.component.scss',

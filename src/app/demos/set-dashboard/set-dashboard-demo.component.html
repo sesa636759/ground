@@ -1,52 +1,77 @@
-<div class="demo-container">
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
   <h1>Dashboard Component</h1>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Features List -->
-      <section class="demo-section" id="features">
+<p class="intro-text">A comprehensive grid-based dashboard with draggable and resizable widgets.</p>
+</div>
+
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure grid, interaction rules, and manage widgets</p>
+    </div>
+    <app-dashboard-playground></app-dashboard-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Dashboard Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>🚀 Key Features</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-arrows-alt"></i></div>
+        <h3>Drag & Drop</h3>
+        <p>Intuitive drag and drop interface with auto-layout and collision handling.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-compress-alt"></i></div>
+        <h3>Resizable</h3>
+        <p>Resize widgets from any corner with min/max constraints.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Responsive</h3>
+        <p>Define custom breakpoints for different screen sizes (mobile, tablet, desktop).</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-save"></i></div>
+        <h3>State Management</h3>
+        <p>Built-in save, load, undo, redo, and export capabilities.</p>
+      </div>
+    </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Key Features Overview"
+      language="html"
+    ></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
         <div class="section-header">
-          <h2>🚀 Key Features</h2>
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
         </div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="icon"><i class="fas fa-arrows-alt"></i></div>
-            <h3>Drag & Drop</h3>
-            <p>Intuitive drag and drop interface with auto-layout and collision handling.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon"><i class="fas fa-compress-alt"></i></div>
-            <h3>Resizable</h3>
-            <p>Resize widgets from any corner with min/max constraints.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-            <h3>Responsive</h3>
-            <p>Define custom breakpoints for different screen sizes (mobile, tablet, desktop).</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon"><i class="fas fa-save"></i></div>
-            <h3>State Management</h3>
-            <p>Built-in save, load, undo, redo, and export capabilities.</p>
-          </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
         </div>
-        <ui-code-preview
-          [htmlCode]="featuresCode"
-          [label]="'Key Features Overview'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
       </section>
     </div>
-
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-dashboard-playground></app-dashboard-playground>
-    </div>
-
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="dashboard"></app-component-documentation>
-    </div>
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

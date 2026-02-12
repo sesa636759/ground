@@ -1,19 +1,41 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🪜"
-    title="Smart Stepper"
-    description="A guided workflow component that breaks down complex processes into manageable steps. Supports custom icons, themes, and dynamic content injection per step."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🪜</span> Smart Stepper</h1>
+<p class="intro-text">A guided workflow component that breaks down complex processes into manageable steps. Supports
+    custom icons, themes, and dynamic content injection per step.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-smart-stepper-playground></app-smart-stepper-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure orientations and themes to match your workflow requirements.</p>
     </div>
+    <app-smart-stepper-playground></app-smart-stepper-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="themes">
+    <div class="section-header">
+      <h2>🎨 Themes & Orientations</h2>
+      <p>Choose between standard and compact themes or change the layout flow.</p>
+    </div>
+    <div class="demo-card">
+      <div style="width: 100%">
+        <span>Compact Theme:</span>
+        <ui-smart-stepper theme="compact" value="1">
+          <ui-smart-step label="Billing" value="1"></ui-smart-step>
+          <ui-smart-step label="Shipping" value="2"></ui-smart-step>
+          <ui-smart-step label="Confirm" value="3"></ui-smart-step>
+        </ui-smart-stepper>
+      </div>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -54,10 +76,23 @@
         </div>
       </div>
     </div>
+    <app-code-block [code]="themesCode" title="Design Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="smart-stepper"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

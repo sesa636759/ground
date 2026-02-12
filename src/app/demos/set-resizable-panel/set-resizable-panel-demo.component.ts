@@ -1,4 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ResizablePanelPlaygroundComponent } from './components/resizable-panel-playground/resizable-panel-playground.component';
@@ -11,15 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 @Component({
   selector: 'app-set-resizable-panel-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ResizablePanelPlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-  ],
+  imports: [CommonModule, FormsModule, ResizablePanelPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-resizable-panel-demo.component.html',
   styleUrl: './set-resizable-panel-demo.component.scss',

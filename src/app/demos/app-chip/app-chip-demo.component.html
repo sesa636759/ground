@@ -1,46 +1,57 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🍿"
-    title="Chip Component"
-    description="Compact elements that represent an input, attribute, or action. Perfect for tags, filters, or entity representation."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🏷</span> ️ Chip Component</h1>
+<p class="intro-text">Compact elements that represent an input, attribute, or action. They allow users to enter
+    information, select a choice, filter content, or trigger an action.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-chip-playground></app-chip-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Fine-tune chip appearance and behavior</p>
     </div>
+    <app-chip-playground></app-chip-playground>
+    <app-code-block [code]="playgroundCode" title="Chip Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="variants">
+    <div class="section-header">
+      <h2>🎨 Style Variants</h2>
+      <p>Multiple themes for different visual hierarchy needs</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-chip label="Filled (Default)" variant="filled" color="primary"></ui-chip>
+        <ui-chip label="Outlined" variant="outlined" color="secondary"></ui-chip>
+        <ui-chip label="Soft" variant="soft" color="success"></ui-chip>
+        <ui-chip label="Gradient" variant="gradient" color="info"></ui-chip>
+        <ui-chip label="Text Only" variant="text" color="danger"></ui-chip>
+      </div>
+    </div>
+    <app-code-block [code]="variantsCode" title="Variants Example" language="html"></app-code-block>
+  </section>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Variants -->
-        <app-example-section
-          id="variants"
-          title="Variants"
-          description="Different visual styles for various contexts."
-          [code]="variantsCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Filled & Outlined</h3>
-              <div class="demo-flex">
-                <ui-chip label="Filled" variant="filled"></ui-chip>
-                <ui-chip label="Outlined" variant="outlined"></ui-chip>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Soft & Gradient</h3>
-              <div class="demo-flex">
-                <ui-chip label="Soft" variant="soft" color="success"></ui-chip>
-                <ui-chip label="Gradient" variant="gradient" color="primary"></ui-chip>
-              </div>
-            </div>
+<section class="demo-section" id="shapes-sizes">
+    <div class="section-header">
+      <h2>📏 Shapes & Sizes</h2>
+      <p>Flexible geometry and scaling options</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="display: flex; flex-direction: column; gap: 16px; align-items: center">
+          <div style="display: flex; gap: 12px">
+            <ui-chip label="Pill-shaped" shape="pill"></ui-chip>
+            <ui-chip label="Rounded" shape="rounded"></ui-chip>
+            <ui-chip label="Square" shape="square"></ui-chip>
+            <ui-chip icon="🚀" shape="circle"></ui-chip>
           </div>
         </app-example-section>
 
@@ -71,63 +82,63 @@
           </div>
         </app-example-section>
 
-        <!-- Avatars & Icons -->
-        <app-example-section
-          id="avatars-icons"
-          title="Avatars & Icons"
-          description="Enhance chips with media and interactive elements."
-          [code]="avatarsIconsCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Icons & Avatars</h3>
-              <div class="demo-flex">
-                <ui-chip label="Search" icon="🔍"></ui-chip>
-                <ui-chip label="John Doe" user-avatar="https://i.pravatar.cc/150?u=john"></ui-chip>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Badges & Counters</h3>
-              <div class="demo-flex">
-                <ui-chip label="Updates" badge="99" color="danger"></ui-chip>
-                <ui-chip label="Tasks" counter="5" color="warning"></ui-chip>
-              </div>
-            </div>
-          </div>
-        </app-example-section>
-
-        <!-- Actions -->
-        <app-example-section
-          id="actions"
-          title="Actions"
-          description="Interactive behaviors for chips."
-          [code]="actionsCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Clickable & Removable</h3>
-              <div class="demo-flex">
-                <ui-chip label="Click me" clickable color="info"></ui-chip>
-                <ui-chip label="Remove me" removable variant="soft" color="danger"></ui-chip>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>States</h3>
-              <div class="demo-flex">
-                <ui-chip label="Selected" selected color="primary"></ui-chip>
-                <ui-chip label="Loading" loading></ui-chip>
-                <ui-chip label="Disabled" disabled></ui-chip>
-              </div>
-            </div>
-          </div>
-        </app-example-section>
+<section class="demo-section" id="avatars-icons">
+    <div class="section-header">
+      <h2>👤 Avatars & Icons</h2>
+      <p>Enrich chips with visual identifiers and meta-data</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-chip label="JavaScript" icon="js" color="warning"></ui-chip>
+        <ui-chip label="Vue.js" icon="🟢" color="success"></ui-chip>
+        <ui-chip label="Alex Smith" user-avatar="https://i.pravatar.cc/150?u=alex"></ui-chip>
+        <ui-chip
+          label="Sarah Connor"
+          user-avatar="https://i.pravatar.cc/150?u=sarah"
+          color="secondary"
+        ></ui-chip>
+        <ui-chip label="Notifications" badge="5" color="danger"></ui-chip>
+        <ui-chip label="Active Tasks" counter="12" variant="soft" color="primary"></ui-chip>
       </div>
     </div>
+    <app-code-block
+      [code]="avatarsIconsCode"
+      title="Avatars & Icons Example"
+      language="html"
+    ></app-code-block>
+  </section>
 
-    <!-- Docs Slot -->
-        <div slot="docs">
-      <app-component-documentation componentId="chip"></app-component-documentation>
+<section class="demo-section" id="actions">
+    <div class="section-header">
+      <h2>⚡ Interactive Actions</h2>
+      <p>Functional chips for selection, removal, and loading states</p>
     </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-chip label="Click Me" clickable variant="outlined" color="info"></ui-chip>
+        <ui-chip label="Removable" removable variant="soft" color="danger"></ui-chip>
+        <ui-chip label="Filter Selected" selected color="primary"></ui-chip>
+        <ui-chip label="Processing..." loading color="secondary"></ui-chip>
+        <ui-chip label="Locked" disabled icon="🔒"></ui-chip>
+      </div>
+    </div>
+    <app-code-block [code]="actionsCode" title="Actions Example" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

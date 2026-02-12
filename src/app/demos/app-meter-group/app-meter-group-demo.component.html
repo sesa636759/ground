@@ -1,80 +1,75 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="📊"
-    title="Meter Group"
-    description="Display a group of values as parts of a single whole. Ideal for storage usage breakdown, budget allocation, and resource monitoring."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">📊</span> Meter Group</h1>
+<p class="intro-text">Display a group of values as parts of a single whole. Ideal for storage usage breakdown, budget
+    allocation, and resource monitoring.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-meter-group-playground></app-meter-group-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize segments, labels, and marker visibility.</p>
     </div>
+    <app-meter-group-playground></app-meter-group-playground>
+    <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Display Styles -->
-          <section class="demo-section" id="displays" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📊 Display Styles</h2>
-              <p>Configure how individual segments and markers are presented.</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-item">
-                <span>Standard with Labels:</span>
-                <ui-meter-group [values]="storageValues" show-labels></ui-meter-group>
-              </div>
-              <div class="preview-item">
-                <span>Thick Meter with Markers:</span>
-                <ui-meter-group
-                  [values]="storageValues"
-                  meter-height="24px"
-                  show-markers
-                ></ui-meter-group>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="displaysCode"
-              [label]="'Visual Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Advanced Layouts -->
-          <section class="demo-section" id="layouts">
-            <div class="section-header">
-              <h2>📐 Advanced Layouts</h2>
-              <p>Switch orientations and label positioning for different UI contexts.</p>
-            </div>
-            <div class="demo-card">
-              <div class="preview-item">
-                <span>Legend at Start:</span>
-                <ui-meter-group [values]="storageValues" label-position="start"></ui-meter-group>
-              </div>
-              <div class="preview-item" style="height: 300px">
-                <span>Vertical Orientation:</span>
-                <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="displays">
+    <div class="section-header">
+      <h2>📊 Display Styles</h2>
+      <p>Configure how individual segments and markers are presented.</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-item">
+        <span>Standard with Labels:</span>
+        <ui-meter-group [values]="storageValues" show-labels></ui-meter-group>
+      </div>
+      <div class="preview-item">
+        <span>Thick Meter with Markers:</span>
+        <ui-meter-group [values]="storageValues" meter-height="24px" show-markers></ui-meter-group>
       </div>
     </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="meter-group"></app-component-documentation>
+<section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Advanced Layouts</h2>
+      <p>Switch orientations and label positioning for different UI contexts.</p>
     </div>
+    <div class="demo-card">
+      <div class="preview-item">
+        <span>Legend at Start:</span>
+        <ui-meter-group [values]="storageValues" label-position="start"></ui-meter-group>
+      </div>
+      <div class="preview-item" style="height: 300px">
+        <span>Vertical Orientation:</span>
+        <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
+      </div>
+    </div>
+    <app-code-block [code]="layoutsCode" title="Layout Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

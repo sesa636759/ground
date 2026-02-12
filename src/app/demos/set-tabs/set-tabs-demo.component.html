@@ -1,23 +1,99 @@
-<div class="demo-container">
-  <h1>Tab Stack Component</h1>
-  <p class="intro-text">
-    A flexible tabbed navigation component supporting multiple orientations, variants, and
-    interactive features.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🗂</span> ️ Tab Stack Component Demo</h1>
+</div>
 
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test all tab variants, orientations, and behaviors in real-time</p>
+    </div>
+    <app-tabs-playground></app-tabs-playground>
+    <app-code-block [code]="playgroundCode" title="Tabs Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content">
-        <app-example-section
-          id="orientation"
-          title="Orientation"
-          description="Horizontal and vertical orientations."
-          [code]="horizontalBasicCode"
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Visual Variants</h2>
+      <p>Different styles to match your application's design language</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Underline (Default)</h3>
+        <app-tab-stack variant="underline" active-tab="t1">
+          <app-tab label="Overview" value="t1">Overview Content</app-tab>
+          <app-tab label="Documents" value="t2">Documents Content</app-tab>
+          <app-tab label="Team" value="t3">Team Content</app-tab>
+        </app-tab-stack>
+      </div>
+      <div class="demo-card">
+        <h3>Pills</h3>
+        <app-tab-stack variant="pills" active-tab="t1" color="success">
+          <app-tab label="Active" value="t1">Active Content</app-tab>
+          <app-tab label="Completed" value="t2">Completed Content</app-tab>
+          <app-tab label="Archived" value="t3">Archived Content</app-tab>
+        </app-tab-stack>
+      </div>
+      <div class="demo-card">
+        <h3>Enclosed</h3>
+        <app-tab-stack variant="enclosed" active-tab="t1">
+          <app-tab label="Tab 1" value="t1">Tab 1 Content</app-tab>
+          <app-tab label="Tab 2" value="t2">Tab 2 Content</app-tab>
+        </app-tab-stack>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🥈 Advanced Layouts</h2>
+      <p>Vertical orientations and complex interactions</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card full-width">
+        <h3>Vertical Tabs</h3>
+        <div style="height: 300px; display: flex">
+          <app-tab-stack orientation="vertical" active-tab="config" style="width: 100%">
+            <app-tab label="Configuration" value="config" icon="fas fa-cog">
+              <h3>System Configuration</h3>
+              <p>Adjust core system parameters here.</p>
+            </app-tab>
+            <app-tab label="Security" value="security" icon="fas fa-lock" badge="High">
+              <h3>Security Settings</h3>
+              <p>Manage encryption and access controls.</p>
+            </app-tab>
+            <app-tab label="Notifications" value="notif" icon="fas fa-bell" badge="3">
+              <h3>Notification Center</h3>
+              <p>Choose how you want to be alerted.</p>
+            </app-tab>
+          </app-tab-stack>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🚀 Interactive Features</h2>
+      <p>Closable tabs, drag-and-drop, and editable labels</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Closable & Dynamic</h3>
+        <app-tab-stack
+          closable
+          show-add-button
+          active-tab="f1"
+          color="warning"
+          show-close-all-button
         >
           <div class="demo-grid col-1">
             <div class="demo-card">
@@ -155,16 +231,22 @@
         </app-example-section>
       </div>
     </div>
+  </section>
+      </div>
+  </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-tabs-playground></app-tabs-playground>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-
-    <!-- Docs Slot -->
-        <div slot="docs">
-      <app-component-documentation componentId="tabs"></app-component-documentation>
-    </div>
-
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

@@ -263,8 +263,8 @@ body {
 
 /* Enterprise Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -272,15 +272,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: var(--radius-full);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  transition: background-color var(--transition-fast);
-
+  background: var(--border-color);
+  border-radius: 99px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  
   &:hover {
-    background: var(--text-tertiary);
-    background-clip: padding-box;
+    background: var(--border-strong);
+    background-clip: content-box;
   }
 }
 

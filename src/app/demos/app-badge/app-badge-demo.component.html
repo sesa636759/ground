@@ -1,127 +1,108 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🏅"
-    title="Badge Component"
-    description="A small visual indicator for status, counts, or categories."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🏷</span> ️ Badge Component</h1>
+<p class="intro-text">A small status indicator often used for numerical values, status updates, or to draw attention
+    to specific UI elements.</p>
+</div>
 
-  <demo-tabs>
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-badge-playground></app-badge-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize badge behavior and appearance</p>
     </div>
+    <app-badge-playground></app-badge-playground>
+    <app-code-block [code]="playgroundCode" title="Badge Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Colors -->
-        <app-example-section
-          id="colors"
-          title="Colors"
-          description="Semantic colors for different states."
-          [code]="colorsCode"
-          style="margin-top: 0"
-        >
-          <div class="demo-grid col-3">
-            <ui-badge value="1" color="primary">Primary</ui-badge>
-            <ui-badge value="2" color="success">Success</ui-badge>
-            <ui-badge value="3" color="warning">Warning</ui-badge>
-            <ui-badge value="4" color="danger">Danger</ui-badge>
-            <ui-badge value="5" color="info">Info</ui-badge>
-          </div>
-        </app-example-section>
-
-        <!-- Styles -->
-        <app-example-section
-          id="styles"
-          title="Styles"
-          description="Standard, soft, and outlined variants."
-          [code]="stylesCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Standard (Filled)</h3>
-              <ui-badge value="New" variant="standard"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Soft variant</h3>
-              <ui-badge value="Hot" variant="soft" color="warning"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Outlined variant</h3>
-              <ui-badge value="99" variant="outlined" color="primary"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Dot Style</h3>
-              <ui-badge dot color="success">Online</ui-badge>
-            </div>
-          </div>
-        </app-example-section>
-
-        <!-- Positions -->
-        <app-example-section
-          id="positions"
-          title="Positions"
-          description="Place badges in any corner of a target element."
-          [code]="positionsCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <ui-badge value="5" position="top-right">
-                <div class="demo-target">Top Right</div>
-              </ui-badge>
-            </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="top-left">
-                <div class="demo-target">Top Left</div>
-              </ui-badge>
-            </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="bottom-right">
-                <div class="demo-target">Bottom Right</div>
-              </ui-badge>
-            </div>
-            <div class="demo-card">
-              <ui-badge value="5" position="bottom-left">
-                <div class="demo-target">Bottom Left</div>
-              </ui-badge>
-            </div>
-          </div>
-        </app-example-section>
-
-        <!-- Special Features -->
-        <app-example-section
-          id="special"
-          title="Special Features"
-          description="Advanced features like max values, animations, and icons."
-          [code]="specialCode"
-        >
-          <div class="demo-grid col-2">
-            <div class="demo-card">
-              <h3>Max Value (100 -> 99+)</h3>
-              <ui-badge value="100" max="99" color="danger"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Glow & Pulse</h3>
-              <ui-badge glow animation="pulse" value="!" color="success"></ui-badge>
-            </div>
-            <div class="demo-card">
-              <h3>Icon Support</h3>
-              <ui-badge icon="⭐" value="PRO" color="warning"></ui-badge>
-            </div>
-          </div>
-        </app-example-section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="colors">
+    <div class="section-header">
+      <h2>🌈 Semantic Colors</h2>
+      <p>Use colors to imply state or importance</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-badge value="1" color="primary"><div class="icon-box">👤</div></ui-badge>
+        <ui-badge value="5" color="success"><div class="icon-box">🛒</div></ui-badge>
+        <ui-badge value="!" color="warning"><div class="icon-box">⚠️</div></ui-badge>
+        <ui-badge value="99" color="danger"><div class="icon-box">✉️</div></ui-badge>
+        <ui-badge value="i" color="info"><div class="icon-box">ℹ️</div></ui-badge>
       </div>
     </div>
 
-    <!-- Docs Slot -->
-        <div slot="docs">
-      <app-component-documentation componentId="badge"></app-component-documentation>
+<section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Styles</h2>
+      <p>Standard, soft, outlined, and dot variations</p>
     </div>
 
-  </demo-tabs>
-</div>
+<section class="demo-section" id="positions">
+    <div class="section-header">
+      <h2>📍 Positioning</h2>
+      <p>Attach badges to any corner of a component</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-badge value="TR" position="top-right"><div class="icon-box">⬜</div></ui-badge>
+        <ui-badge value="TL" position="top-left"><div class="icon-box">⬜</div></ui-badge>
+        <ui-badge value="BR" position="bottom-right"><div class="icon-box">⬜</div></ui-badge>
+        <ui-badge value="BL" position="bottom-left"><div class="icon-box">⬜</div></ui-badge>
+      </div>
+    </div>
+    <app-code-block
+      [code]="positionsCode"
+      title="Positions Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+<section class="demo-section" id="special">
+    <div class="section-header">
+      <h2>✨ Special Features</h2>
+      <p>Animations, caps, and icon support</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+          <ui-badge value="999" [max]="99" color="danger"><div class="icon-box">📧</div></ui-badge>
+          <span>Max Value (99+)</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+          <ui-badge value="!" animation="pulse" glow color="warning"
+            ><div class="icon-box">🔥</div></ui-badge
+          >
+          <span>Pulsing Glow</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+          <ui-badge icon="⭐" value="PRO" color="primary"><div class="icon-box">👤</div></ui-badge>
+          <span>Icon Support</span>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="specialCode" title="Special Example" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

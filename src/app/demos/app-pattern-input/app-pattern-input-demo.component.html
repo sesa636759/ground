@@ -1,70 +1,71 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🎭"
-    title="Pattern Input"
-    description="An input field with built-in masking capabilities for structured data entry. Automatically formats user input according to predefined patterns like phone numbers, dates, credit cards, and more."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🎭</span> Pattern Input</h1>
+<p class="intro-text">An input field with built-in masking capabilities for structured data entry. Automatically
+    formats user input according to predefined patterns like phone numbers, dates, credit cards, and
+    more.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-pattern-input-playground></app-pattern-input-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test different mask patterns and see real-time formatting.</p>
     </div>
+    <app-pattern-input-playground></app-pattern-input-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Common Patterns -->
-          <section class="demo-section" id="patterns" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎭 Common Patterns</h2>
-              <p>Pre-configured masks for typical use cases.</p>
-            </div>
-            <div class="demo-card">
-              <div style="display: flex; flex-direction: column; gap: 24px">
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Phone Number</label
-                  >
-                  <ui-pattern-input
-                    mask="(999) 999-9999"
-                    placeholder="(555) 123-4567"
-                  ></ui-pattern-input>
-                </div>
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Credit Card</label
-                  >
-                  <ui-pattern-input
-                    mask="9999-9999-9999-9999"
-                    placeholder="1234-5678-9012-3456"
-                  ></ui-pattern-input>
-                </div>
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Date (MM/DD/YYYY)</label
-                  >
-                  <ui-pattern-input mask="99/99/9999" placeholder="12/31/2024"></ui-pattern-input>
-                </div>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="patternsCode"
-              [label]="'Pattern Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="patterns">
+    <div class="section-header">
+      <h2>🎭 Common Patterns</h2>
+      <p>Pre-configured masks for typical use cases.</p>
+    </div>
+    <div class="demo-card">
+      <div style="display: flex; flex-direction: column; gap: 24px">
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600">Phone Number</label>
+          <ui-pattern-input mask="(999) 999-9999" placeholder="(555) 123-4567"></ui-pattern-input>
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600">Credit Card</label>
+          <ui-pattern-input
+            mask="9999-9999-9999-9999"
+            placeholder="1234-5678-9012-3456"
+          ></ui-pattern-input>
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 8px; font-weight: 600"
+            >Date (MM/DD/YYYY)</label
+          >
+          <ui-pattern-input mask="99/99/9999" placeholder="12/31/2024"></ui-pattern-input>
         </div>
       </div>
     </div>
+    <app-code-block [code]="patternsCode" title="Pattern Examples" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="pattern-input"></app-component-documentation>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
     </div>
-
-  </demo-tabs>
-</div>
+  </div>
+</demo-tabs>

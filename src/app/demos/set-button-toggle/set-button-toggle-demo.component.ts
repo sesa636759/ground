@@ -1,5 +1,5 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
@@ -12,16 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-set-button-toggle-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ButtonTogglePlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
-    DemoSidebarComponent
-  ],
+  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',

@@ -1,24 +1,496 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🔘"
-    title="Button Toggle Group"
-    description="Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support."
-  >
-  </app-demo-header>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🎯</span> Button Toggle Group Demo</h1>
+</div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Segmented Controls -->
-        <app-example-section
-          id="segmented"
-          title="Segmented Controls"
-          description="Multiple buttons with single selection and gliding animation"
-          [code]="segmentedCode"
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>
+        Test all button toggle group properties - segmented mode (multiple buttons) or dropdown mode
+        (single button with dropdown)
+      </p>
+    </div>
+
+    <app-button-toggle-playground></app-button-toggle-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Button Toggle Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>👤 Avatar Support & Status</h2>
+      <p>Toggle buttons with user profiles and online status indicators</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Team Presence</h3>
+        <app-button-toggle-group
+          value="user1"
+          color="primary"
+          [attr.options]="jsonOptions(avatarOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Profile Selection (Gliding)</h3>
+        <app-button-toggle-group
+          value="user2"
+          color="success"
+          variant="soft"
+          [attr.options]="jsonOptions(avatarOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🏄 Gliding Pill Indicator</h2>
+      <p>Premium gliding animation for segmented controls (Horizontal & Vertical)</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Horizontal Glide</h3>
+        <app-button-toggle-group
+          value="day"
+          color="info"
+          variant="soft"
+          [attr.options]="jsonOptions(timeOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Vertical Glide</h3>
+        <app-button-toggle-group
+          value="high"
+          color="danger"
+          orientation="vertical"
+          [attr.options]="jsonOptions(priorityOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Color Variants</h2>
+      <p>Different color themes supported out of the box</p>
+    </div>
+    <div class="demo-wrap">
+      <div
+        class="color-item"
+        *ngFor="let c of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']"
+      >
+        <h3>{{ c | titlecase }}</h3>
+        <app-button-toggle-group
+          value="option2"
+          [attr.color]="c"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Style Variants</h2>
+      <p>7 different button style variants for every design need</p>
+    </div>
+    <div class="demo-wrap">
+      <div
+        class="variant-item"
+        *ngFor="let v of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']"
+      >
+        <h3>{{ v | titlecase }}</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="primary"
+          [attr.variant]="v"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+
+    <!-- NEW: Variant Showcase Block -->
+    <div class="section-header" style="margin-top: 40px">
+      <p><strong>Variant Showcase: All Colors with Different Variants</strong></p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Success Soft</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="success"
+          variant="soft"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Danger Classic</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="danger"
+          variant="classic"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Warning Solid</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="warning"
+          variant="solid"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Info Surface</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="info"
+          variant="surface"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Secondary Outlined</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="secondary"
+          variant="outlined"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Primary Text</h3>
+        <app-button-toggle-group
+          value="option2"
+          color="primary"
+          variant="text"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📏 Sizes</h2>
+      <p>Different button sizes for various UI densities</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card" *ngFor="let s of ['small', 'medium', 'large']">
+        <h3>{{ s | titlecase }}</h3>
+        <app-button-toggle-group
+          value="option2"
+          [attr.size]="s"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎯 With Icons</h2>
+      <p>Button groups optimized for icon usage and positioning</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>View Modes</h3>
+        <app-button-toggle-group
+          label="View Mode"
+          value="grid"
+          color="primary"
+          [attr.options]="jsonOptions(viewOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <!-- MISSING TYPE: Text Alignment -->
+      <div class="demo-card">
+        <h3>Text Alignment</h3>
+        <app-button-toggle-group
+          label="Alignment"
+          value="center"
+          color="secondary"
+          [attr.options]="jsonOptions(alignOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Icons on Top</h3>
+        <app-button-toggle-group
+          label="Editor Tools"
+          value="brush"
+          color="info"
+          icon-position="top"
+          [attr.options]="jsonOptions(toolOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📋 Dropdown Mode Variations</h2>
+      <p>Single button with dropdown selection - performs action on button click</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Basic Dropdown (Changes Label)</h3>
+        <app-button-toggle-group
+          label="Export Options"
+          value="pdf"
+          mode="dropdown"
+          button-action-label="Export"
+          [attr.options]="jsonOptions(exportOptions)"
+          (buttonToggleGroupAction)="
+            onDropdownAction($event.detail.value, dropdownBasicLog, 'Export')
+          "
+          (buttonToggleGroupChange)="onDropdownChange($event.detail.value, dropdownBasicLog)"
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ dropdownBasicLog() }}</p>
+      </div>
+      <!-- NEW: Fixed Label Dropdown -->
+      <div class="demo-card">
+        <h3>Fixed Label Dropdown</h3>
+        <app-button-toggle-group
+          label="Actions Menu"
+          value="new"
+          color="secondary"
+          mode="dropdown"
+          button-action-label="Actions"
+          keep-button-label
+          [attr.options]="jsonOptions(actionsMenuOptions)"
+          (buttonToggleGroupAction)="onDropdownFixedAction($event)"
+          (buttonToggleGroupChange)="onDropdownFixedChange($event)"
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ dropdownFixedLog() }}</p>
+      </div>
+      <!-- NEW: With Icons -->
+      <div class="demo-card">
+        <h3>With Icons</h3>
+        <app-button-toggle-group
+          label="Save Options"
+          value="cloud"
+          color="success"
+          mode="dropdown"
+          button-action-label="Save"
+          [attr.options]="jsonOptions(saveOptions)"
+          (buttonToggleGroupAction)="onDropdownIconsAction($event)"
+          (buttonToggleGroupChange)="onDropdownIconsChange($event)"
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ dropdownIconsLog() }}</p>
+      </div>
+      <div class="demo-card">
+        <h3>Small Dropdown</h3>
+        <app-button-toggle-group
+          label="Quick Actions"
+          value="edit"
+          size="small"
+          mode="dropdown"
+          button-action-label="Quick Action"
+          [attr.options]="jsonOptions(quickActions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Large Dropdown</h3>
+        <app-button-toggle-group
+          label="Share content"
+          value="email"
+          size="large"
+          mode="dropdown"
+          button-action-label="Share"
+          [attr.options]="jsonOptions(shareOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🔀 Split Button Variations</h2>
+      <p>Button with dropdown menu - label stays fixed</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>File Menu</h3>
+        <app-button-toggle-group
+          label="File Operations"
+          value="new"
+          mode="dropdown"
+          button-action-label="File"
+          keep-button-label
+          [attr.options]="jsonOptions(fileMenuOptions)"
+          (buttonToggleGroupAction)="
+            onDropdownAction($event.detail.value, splitFileLog, 'File Action')
+          "
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ splitFileLog() }}</p>
+      </div>
+      <div class="demo-card">
+        <h3>Edit Menu</h3>
+        <app-button-toggle-group
+          label="Edit Operations"
+          value="cut"
+          color="secondary"
+          mode="dropdown"
+          button-action-label="Edit"
+          keep-button-label
+          [attr.options]="jsonOptions(editMenuOptions)"
+          (buttonToggleGroupAction)="
+            onDropdownAction($event.detail.value, splitEditLog, 'Edit Action')
+          "
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ splitEditLog() }}</p>
+      </div>
+      <div class="demo-card">
+        <h3>More Actions</h3>
+        <app-button-toggle-group
+          label="Additional Options"
+          value="refresh"
+          color="info"
+          mode="dropdown"
+          button-action-label="More"
+          keep-button-label
+          [attr.options]="jsonOptions(moreOptions)"
+          (buttonToggleGroupAction)="
+            onDropdownAction($event.detail.value, splitMoreLog, 'More Action')
+          "
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ splitMoreLog() }}</p>
+      </div>
+      <!-- MISSING TYPE: Danger Actions -->
+      <div class="demo-card">
+        <h3>Danger Actions</h3>
+        <app-button-toggle-group
+          label="Destructive Actions"
+          value="clear"
+          color="danger"
+          mode="dropdown"
+          button-action-label="Delete"
+          keep-button-label
+          [attr.options]="jsonOptions(dangerOptions)"
+          (buttonToggleGroupAction)="
+            onDropdownAction($event.detail.value, splitDangerLog, 'Danger Action')
+          "
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ splitDangerLog() }}</p>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎭 Display Modes</h2>
+      <p>Icon only, label only, icon + label, and both sides</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Label Only</h3>
+        <app-button-toggle-group
+          label="Select Size"
+          value="medium"
+          color="primary"
+          display-mode="label-only"
+          [attr.options]="jsonOptions(labelOnlyOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Icon Only</h3>
+        <app-button-toggle-group
+          label="View Mode"
+          value="grid"
+          color="secondary"
+          display-mode="icon-only"
+          [attr.options]="jsonOptions(iconOnlyOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <!-- MISSING TYPE: Icon + Label -->
+      <div class="demo-card">
+        <h3>Icon + Label (default)</h3>
+        <app-button-toggle-group
+          label="Navigation"
+          value="home"
+          color="success"
+          [attr.options]="jsonOptions(iconLabelOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Both Sides (icons left & right)</h3>
+        <app-button-toggle-group
+          label="Select Action"
+          value="save"
+          color="info"
+          display-mode="both-sides"
+          [attr.options]="jsonOptions(bothSidesOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Orientations & Layout</h2>
+      <p>Horizontal and vertical layouts for various containers</p>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo-card">
+        <h3>Horizontal (Default)</h3>
+        <app-button-toggle-group
+          label="Choose Option"
+          value="option2"
+          orientation="horizontal"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Vertical</h3>
+        <app-button-toggle-group
+          label="Choose Option"
+          value="option2"
+          orientation="vertical"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card" style="flex: 1 1 100%">
+        <h3>Full Width Horizontal</h3>
+        <app-button-toggle-group
+          label="Subscription Plan"
+          value="pro"
+          full-width
+          [attr.options]="jsonOptions(planOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🎨 Custom Content (Slots)</h2>
+      <p>
+        Custom content in dropdown instead of option list - perfect for filters, forms, color
+        pickers, etc.
+      </p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Filter Form</h3>
+        <app-button-toggle-group
+          #filterGrp
+          label="Advanced Filters"
+          color="primary"
+          mode="dropdown"
+          button-action-label="Apply Filters"
+          custom-content
         >
           <app-button-toggle-group
             mode="segmented"
@@ -208,116 +680,158 @@
           </div>
         </app-example-section>
 
-        <!-- Display Modes -->
-        <app-example-section
-          id="display-modes"
-          title="Display Modes"
-          description="Choose between Label Only, Icon Only, or both"
-          [code]="displayCode"
-        >
-          <div class="demo-grid col-2">
-            <app-button-toggle-group
-              label="Label Only"
-              value="medium"
-              display-mode="label-only"
-              [options]="labelOnlyOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
-              label="Icon Only"
-              value="grid"
-              display-mode="icon-only"
-              [options]="iconOnlyOptions"
-            ></app-button-toggle-group>
-          </div>
-        </app-example-section>
-
-        <!-- Orientations -->
-        <app-example-section
-          id="orientations"
-          title="Orientations"
-          description="Horizontal and vertical layout support"
-          [code]="orientationCode"
-        >
-          <div class="demo-grid col-2">
-            <app-button-toggle-group
-              orientation="horizontal"
-              value="option2"
-              [options]="basicOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
-              orientation="vertical"
-              value="option2"
-              [options]="basicOptions"
-            ></app-button-toggle-group>
-          </div>
-        </app-example-section>
-
-        <!-- Custom Content Slots -->
-        <app-example-section
-          id="custom-slots"
-          title="Custom Content Slots"
-          description="Render any custom HTML content inside the dropdown"
-          [code]="customSlotCode"
-        >
-          <app-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
-            <div slot="dropdown-content">
-              <div style="padding: 16px; min-width: 220px">
-                <h4 style="margin-top: 0">Filter Content</h4>
-                <p>Custom HTML or components can be projected here.</p>
-                <button style="width: 100%; padding: 8px">Apply Changes</button>
-              </div>
-            </div>
-          </app-button-toggle-group>
-        </app-example-section>
-
-        <!-- Loading States -->
-        <app-example-section
-          id="loading"
-          title="Loading States"
-          description="Built-in loading indicator for asynchronous actions"
-          [code]="loadingCode"
-        >
-          <app-button-toggle-group
-            mode="dropdown"
-            label="Save Document"
-            value="cloud"
-            [attr.loading]="true"
-            [options]="saveOptions"
-          ></app-button-toggle-group>
-        </app-example-section>
-
-        <!-- States -->
-        <app-example-section
-          id="states"
-          title="States"
-          description="Default and disabled interaction states"
-          [code]="stateCode"
-        >
-          <div class="demo-grid col-2">
-            <app-button-toggle-group
-              label="Default"
-              value="option2"
-              [options]="basicOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
-              label="Disabled"
-              value="option2"
-              [attr.disabled]="true"
-              [options]="basicOptions"
-            ></app-button-toggle-group>
-          </div>
-        </app-example-section>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>⏳ Loading States</h2>
+      <p>Show loading spinner during async operations</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Segmented Loading</h3>
+        <app-button-toggle-group
+          #loadSeg
+          label="Processing..."
+          value="option2"
+          loading
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+        <ui-button
+          class="btn-toggle"
+          (click)="loadSeg.loading = !loadSeg.loading"
+          label="Toggle Loading"
+        ></ui-button>
+      </div>
+      <div class="demo-card">
+        <h3>Dropdown Loading</h3>
+        <app-button-toggle-group
+          #loadDrop
+          label="Save Document"
+          value="cloud"
+          mode="dropdown"
+          button-action-label="Save"
+          loading
+          [attr.options]="jsonOptions(saveOptions)"
+        ></app-button-toggle-group>
+        <ui-button
+          class="btn-toggle"
+          (click)="loadDrop.loading = !loadDrop.loading"
+          label="Toggle Loading"
+        ></ui-button>
+      </div>
+      <div class="demo-card">
+        <h3>Simulate Save Action</h3>
+        <app-button-toggle-group
+          #loadSim
+          label="Export Format"
+          value="pdf"
+          mode="dropdown"
+          button-action-label="Export"
+          color="success"
+          [attr.options]="jsonOptions(exportOptions)"
+          (buttonToggleGroupAction)="onSimulateAction($event, loadSim)"
+        ></app-button-toggle-group>
+        <p class="status-msg">{{ simulateLog() }}</p>
       </div>
     </div>
+  </section>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-button-toggle-playground />
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🔄 States</h2>
+      <p>Different interaction states and validations</p>
     </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Default State</h3>
+        <app-button-toggle-group
+          label="Choose Option"
+          value="option2"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Disabled State</h3>
+        <app-button-toggle-group
+          label="Choose Option"
+          value="option2"
+          disabled
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Readonly State</h3>
+        <app-button-toggle-group
+          label="Choose Option"
+          value="option2"
+          readonly
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Error State</h3>
+        <app-button-toggle-group
+          label="Required Selection"
+          required
+          invalid
+          error-message="Please select an option"
+          [attr.options]="jsonOptions(basicOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
 
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="button-toggle"></app-component-documentation>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📋 Real-World Examples</h2>
+      <p>Practical use cases for application interfaces</p>
     </div>
-  </demo-tabs>
-</div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Filter Options</h3>
+        <app-button-toggle-group
+          label="Show Items"
+          value="all"
+          color="primary"
+          [attr.options]="jsonOptions(filterOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card">
+        <h3>Date Range</h3>
+        <app-button-toggle-group
+          label="Time Period"
+          value="week"
+          color="success"
+          [attr.options]="jsonOptions(dateOptions)"
+        ></app-button-toggle-group>
+      </div>
+      <div class="demo-card" style="flex: 1 1 100%">
+        <h3>Payment Frequency</h3>
+        <app-button-toggle-group
+          label="Billing Cycle"
+          helper-text="Choose how often you want to be billed"
+          value="monthly"
+          full-width
+          color="info"
+          [attr.options]="jsonOptions(paymentOptions)"
+        ></app-button-toggle-group>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

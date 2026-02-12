@@ -1,271 +1,121 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🌲"
-    title="Tree Component"
-    description="Hierarchical tree structure with expandable nodes, icons, selection, and more."
-  >
-  </app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🌲</span> Tree Component Demo</h1>
+</div>
 
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure layouts, variants, and selection modes in real-time</p>
+    </div>
+    <app-tree-playground></app-tree-playground>
+    <app-code-block [code]="playgroundCode" title="Tree Usage" language="html"></app-code-block>
+    <app-code-block [code]="basicTreeCode" title="Basic Tree Data" language="html"></app-code-block>
+    <app-code-block
+      [code]="orgChartCode"
+      title="Org Chart Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+    </div>
+  </div>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Tree -->
-        <section class="demo-section" id="basic-tree" style="margin-top: 0">
-          <div class="section-header">
-            <h2>🌲 Basic Tree</h2>
-            <p>Simple tree structure with expandable nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>File System Tree</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="simpleTreeData" show-lines></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Icons and Colors -->
-        <section class="demo-section" id="icons-colors">
-          <div class="section-header">
-            <h2>🎨 Icons and Colors</h2>
-            <p>Custom icons and color variants for nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Project Structure</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines show-icons></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Badges and Counters -->
-        <section class="demo-section" id="badges-counters">
-          <div class="section-header">
-            <h2>🔢 Badges and Counters</h2>
-            <p>Display badges and counters on tree nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Task Management</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="taskTreeData" show-lines show-icons></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Selectable Tree -->
-        <section class="demo-section" id="selectable">
-          <div class="section-header">
-            <h2>✅ Selectable Tree</h2>
-            <p>Single and multi-select capabilities</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Single Select</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines selectable></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Multi Select</h3>
-              <div class="tree-container">
-                <app-tree
-                  [attr.nodes]="simpleTreeData"
-                  show-lines
-                  selectable
-                  multi-select
-                ></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- With Checkboxes -->
-        <section class="demo-section" id="checkboxes">
-          <div class="section-header">
-            <h2>☑️ With Checkboxes</h2>
-            <p>Tree with checkbox selection</p>
-          </div>
-          <div class="demo-card">
-            <h3>Checkbox Tree</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines checkboxes></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Searchable Tree -->
-        <section class="demo-section" id="searchable">
-          <div class="section-header">
-            <h2>🔍 Searchable Tree</h2>
-            <p>Search and filter tree nodes</p>
-          </div>
-          <div class="demo-card">
-            <h3>Search Enabled</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines searchable></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sizes -->
-        <section class="demo-section" id="sizes">
-          <div class="section-header">
-            <h2>📏 Sizes</h2>
-            <p>Small, medium, and large tree sizes</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Small</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="small"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Medium (Default)</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="medium"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Large</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="large"></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Variants -->
-        <section class="demo-section" id="variants">
-          <div class="section-header">
-            <h2>🎭 Variants</h2>
-            <p>Different visual styles</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>Default</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="default"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Bordered</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="bordered"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Rounded</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="rounded"></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Minimal</h3>
-              <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" variant="minimal"></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Org Chart Layout -->
-        <section class="demo-section" id="org-chart">
-          <div class="section-header">
-            <h2>📊 Org Chart Layout</h2>
-            <p>Horizontal organization chart style</p>
-          </div>
-          <div class="demo-card full-width">
-            <h3>Company Organization</h3>
-            <div class="tree-container chart-view">
-              <app-tree
-                layout="org-chart"
-                [attr.nodes]="orgChartData"
-                variant="rounded"
-                show-lines
-              ></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Premium Aesthetics -->
-        <section class="demo-section" id="premium">
-          <div class="section-header">
-            <h2>💎 Premium Aesthetics</h2>
-            <p>Modern glassmorphism, depth elevations, and glowing effects</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card glass-wrapper">
-              <h3>Glassmorphism</h3>
-              <div class="glass-bg">
-                <app-tree
-                  [attr.nodes]="projectTreeData"
-                  variant="glass"
-                  theme="dark"
-                  show-lines
-                ></app-tree>
-              </div>
-            </div>
-            <div class="demo-card">
-              <h3>Glow Effect</h3>
-              <div class="tree-container">
-                <app-tree
-                  [attr.nodes]="projectTreeData"
-                  variant="bordered"
-                  show-lines
-                  show-glow
-                ></app-tree>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Drag and Drop -->
-        <section class="demo-section" id="drag-drop">
-          <div class="section-header">
-            <h2>🔄 Drag and Drop</h2>
-            <p>Reorder nodes using native drag and drop (Simulation)</p>
-          </div>
-          <div class="demo-card">
-            <h3>Move Items</h3>
-            <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines enable-drag></app-tree>
-            </div>
-          </div>
-        </section>
-
-        <!-- Dark Theme -->
-        <section class="demo-section" id="dark-theme">
-          <div class="section-header">
-            <h2>🌙 Dark Theme</h2>
-            <p>Tree component in dark mode</p>
-          </div>
-          <div class="demo-card">
-            <h3>Dark Mode</h3>
-            <div
-              class="tree-container"
-              style="background: #0f172a; padding: 2rem; border-radius: 8px"
-            >
-              <app-tree [attr.nodes]="projectTreeData" show-lines theme="dark"></app-tree>
-            </div>
-          </div>
-        </section>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>📋 Common Variations</h2>
+      <p>Standard data visualizations for different contexts</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>Standard File Tree</h3>
+        <div class="tree-container">
+          <app-tree [data]="basicTreeData" show-lines="true"></app-tree>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>With Checkboxes</h3>
+        <div class="tree-container">
+          <app-tree [data]="basicTreeData" checkboxes="true" selectable="true"></app-tree>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Minimal Variant</h3>
+        <div class="tree-container">
+          <app-tree [data]="basicTreeData" variant="minimal" [showLines]="false"></app-tree>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <app-tree-playground></app-tree-playground>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🥈 Advanced Layouts</h2>
+      <p>Specialized visualizations like Organization Charts</p>
     </div>
-
-    <!-- Documentation Slot -->
-        <div slot="docs">
-      <app-component-documentation componentId="tree"></app-component-documentation>
+    <div class="demo-card full-width">
+      <h3>Organization Chart</h3>
+      <div class="tree-container chart-view">
+        <app-tree
+          layout="org-chart"
+          [data]="orgChartData"
+          variant="rounded"
+          [showLines]="true"
+        ></app-tree>
+      </div>
     </div>
+  </section>
 
-  </demo-tabs>
-</div>
+<section class="demo-section">
+    <div class="section-header">
+      <h2>💎 Premium Aesthetics</h2>
+      <p>Elite visual effects for modern interfaces</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card glass-wrapper">
+        <h3>Glassmorphism</h3>
+        <div class="glass-bg">
+          <app-tree
+            [data]="basicTreeData"
+            variant="glass"
+            theme="dark"
+            [showGlow]="true"
+          ></app-tree>
+        </div>
+      </div>
+      <div class="demo-card">
+        <h3>Curved Connectors</h3>
+        <div class="tree-container">
+          <app-tree
+            [data]="basicTreeData"
+            variant="bordered"
+            [connectorWidth]="2"
+            connectorColor="var(--primary)"
+          ></app-tree>
+        </div>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

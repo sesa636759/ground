@@ -50,6 +50,9 @@
 
 .app-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: var(--bg-primary);
@@ -58,36 +61,42 @@
   contain: layout style;
   isolation: isolate;
 
-  // Sidebar Layout
-  &.layout-sidebar {
-    flex-direction: row;
-    flex-wrap: nowrap;
+  // Expanded Sidebar
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 280px;
+    height: 100vh;
+    background: var(--surface-1);
+    border-right: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+    transition: all var(--transition-base);
+  }
 
-    .main-nav {
-      display: block;
-      flex: 0 0 280px;
-      height: 100%;
-      background: var(--surface-elevated);
-      border-right: 1px solid var(--border-color);
-      box-shadow: var(--shadow-lg);
-      z-index: 100;
-      transition: all var(--transition-smooth);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow: visible !important;
-      position: relative;
-      contain: layout style;
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--bg-primary);
 
-      &::part(footer) {
-        overflow: visible !important;
-        z-index: 50;
-        position: relative;
-        contain: none;
-      }
-
-      &::part(bottom-items) {
-        overflow: visible !important;
-        position: relative;
+    .content-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0;
+      scroll-behavior: smooth;
+      min-height: 0; // Crucial for flex shrinking
+      
+      > * {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 0; // Force demo components to respect parent height
       }
     }
   }

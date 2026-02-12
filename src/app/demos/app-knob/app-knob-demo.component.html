@@ -1,88 +1,72 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🎛️"
-    title="Knob / Rotary Selector"
-    description="An intuitive circular input for selecting values within a range. Perfect for audio controls, temperature settings, and dashboard metrics."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🎛</span> ️ Knob / Rotary Selector</h1>
+<p class="intro-text">An intuitive circular input for selecting values within a range. Perfect for audio controls,
+    temperature settings, and dashboard metrics.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-knob-playground></app-knob-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Adjust sizing, colors, and range constraints.</p>
     </div>
+    <app-knob-playground></app-knob-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Visual Styles -->
-          <section class="demo-section" id="styles" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Visual Styles</h2>
-              <p>Customize the look and feel of the rotary control.</p>
-            </div>
-            <div class="demo-card">
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="30"
-                  value-color="#10b981"
-                  [size]="120"
-                  [stroke-width]="15"
-                ></ui-knob>
-                <p>Eco Green</p>
-              </div>
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="85"
-                  value-color="#ef4444"
-                  [size]="120"
-                  [stroke-width]="25"
-                ></ui-knob>
-                <p>High Performance</p>
-              </div>
-              <div style="text-align: center">
-                <ui-knob
-                  [value]="45"
-                  value-color="#f59e0b"
-                  [size]="80"
-                  [show-value]="false"
-                ></ui-knob>
-                <p>Compact</p>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="stylesCode"
-              [label]="'Design Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- States -->
-          <section class="demo-section" id="readonly">
-            <div class="section-header">
-              <h2>🔒 States</h2>
-              <p>Use readonly mode to display metrics without allowing user interaction.</p>
-            </div>
-            <div class="demo-card">
-              <ui-knob [value]="75" readonly [size]="150" value-color="#8b5cf6"></ui-knob>
-            </div>
-            <ui-code-preview
-              [htmlCode]="readonlyCode"
-              [label]="'Readonly Usage'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Styles</h2>
+      <p>Customize the look and feel of the rotary control.</p>
+    </div>
+    <div class="demo-card">
+      <div style="text-align: center">
+        <ui-knob [value]="30" value-color="#10b981" [size]="120" [stroke-width]="15"></ui-knob>
+        <p>Eco Green</p>
+      </div>
+      <div style="text-align: center">
+        <ui-knob [value]="85" value-color="#ef4444" [size]="120" [stroke-width]="25"></ui-knob>
+        <p>High Performance</p>
+      </div>
+      <div style="text-align: center">
+        <ui-knob [value]="45" value-color="#f59e0b" [size]="80" [show-value]="false"></ui-knob>
+        <p>Compact</p>
       </div>
     </div>
 
-        <div slot="docs">
-      <app-component-documentation componentId="knob"></app-component-documentation>
+<section class="demo-section" id="readonly">
+    <div class="section-header">
+      <h2>🔒 States</h2>
+      <p>Use readonly mode to display metrics without allowing user interaction.</p>
     </div>
+    <div class="demo-card">
+      <ui-knob [value]="75" readonly [size]="150" value-color="#8b5cf6"></ui-knob>
+    </div>
+    <app-code-block [code]="readonlyCode" title="Readonly Usage" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

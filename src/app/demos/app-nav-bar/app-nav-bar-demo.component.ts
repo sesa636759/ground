@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,14 +10,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 @Component({
   selector: 'app-app-nav-bar-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    NavBarPlaygroundComponent,
-    DemoTabsComponent,
-    DemoSidebarComponent,
-    DemoHeaderComponent,
-  ],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, NavBarPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-nav-bar-demo.component.html',
   styleUrl: './app-nav-bar-demo.component.scss',

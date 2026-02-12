@@ -1,85 +1,85 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🚀"
-    title="Speed Dial"
-    description="A floating action button that expands into multiple primary actions. Optimizes screen real estate while keeping common tasks accessible."
-  ></app-demo-header>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🚀</span> Speed Dial</h1>
+<p class="intro-text">A floating action button that expands into multiple primary actions. Optimizes screen real
+    estate while keeping common tasks accessible.</p>
+</div>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-speed-dial-playground></app-speed-dial-playground>
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure animation types, radii, and triggers.</p>
     </div>
+    <app-speed-dial-playground></app-speed-dial-playground>
+    <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
+  </section>
+    </div>
+  </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Opening Directions -->
-          <section class="demo-section" id="directions" style="margin-top: 0">
-            <div class="section-header">
-              <h2>↔️ Opening Directions</h2>
-              <p>Control where the actions appear relative to the button.</p>
-            </div>
-            <div class="demo-card" style="justify-content: space-around; min-height: 300px">
-              <div class="speed-dial-anchor">
-                <span>Upward:</span>
-                <ui-speed-dial direction="up" [model]="items"></ui-speed-dial>
-              </div>
-              <div class="speed-dial-anchor">
-                <span>Downward:</span>
-                <ui-speed-dial direction="down" [model]="items"></ui-speed-dial>
-              </div>
-              <div class="speed-dial-anchor">
-                <span>Right:</span>
-                <ui-speed-dial direction="right" [model]="items"></ui-speed-dial>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="directionsCode"
-              [label]="'Directional Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Motion Patterns -->
-          <section class="demo-section" id="types">
-            <div class="section-header">
-              <h2>🌀 Motion Patterns</h2>
-              <p>Switch between linear, radial, and circular expansions.</p>
-            </div>
-            <div class="demo-card" style="min-height: 450px">
-              <div class="speed-dial-anchor" style="top: 150px">
-                <span>Full Circle:</span>
-                <ui-speed-dial
-                  type="circle"
-                  [radius]="100"
-                  [model]="items"
-                  direction="up"
-                ></ui-speed-dial>
-              </div>
-              <div class="speed-dial-anchor" style="top: 150px; left: 100px">
-                <span>Half Circle:</span>
-                <ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="typesCode"
-              [label]="'Animation Styles'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="directions">
+    <div class="section-header">
+      <h2>↔️ Opening Directions</h2>
+      <p>Control where the actions appear relative to the button.</p>
+    </div>
+    <div class="demo-card" style="justify-content: space-around; min-height: 300px">
+      <div class="speed-dial-anchor">
+        <span>Upward:</span>
+        <ui-speed-dial direction="up" [model]="items"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor">
+        <span>Downward:</span>
+        <ui-speed-dial direction="down" [model]="items"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor">
+        <span>Right:</span>
+        <ui-speed-dial direction="right" [model]="items"></ui-speed-dial>
       </div>
     </div>
+    <app-code-block
+      [code]="directionsCode"
+      title="Directional Examples"
+      language="html"
+    ></app-code-block>
+  </section>
 
-        <div slot="docs">
-      <app-component-documentation componentId="speed-dial"></app-component-documentation>
+<section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>🌀 Motion Patterns</h2>
+      <p>Switch between linear, radial, and circular expansions.</p>
     </div>
+    <div class="demo-card" style="min-height: 450px">
+      <div class="speed-dial-anchor" style="top: 150px">
+        <span>Full Circle:</span>
+        <ui-speed-dial type="circle" [radius]="100" [model]="items" direction="up"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor" style="top: 150px; left: 100px">
+        <span>Half Circle:</span>
+        <ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>
+      </div>
+    </div>
+    <app-code-block [code]="typesCode" title="Animation Styles" language="html"></app-code-block>
+  </section>
+      </div>
+  </div>
 
-  </demo-tabs>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

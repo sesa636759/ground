@@ -1,174 +1,15 @@
-<div class="demo-container">
-  <app-demo-header
-    icon="🏗️"
-    title="Layout Manager"
-    description="A powerful panel docking and layout management system with resizable regions, drag-and-drop panels, state persistence, and pop-out windows."
-  ></app-demo-header>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
-      <div class="examples-content">
-        <!-- Basic Three-Column Layout -->
-        <app-example-section
-          id="basic"
-          title="Basic Three-Column Layout"
-          description="Classic sidebar-content-sidebar pattern"
-        >
-          <div class="demo-card full-width">
-            <app-layout-manager
-              #basicLayout
-              [regions]="basicRegions"
-              direction="horizontal"
-              save-state
-              state-key="basic-layout"
-              (layoutChange)="handleLayoutChange($event)"
-              style="height: 400px; display: block"
-            ></app-layout-manager>
-          </div>
-        </app-example-section>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🏗</span> ️ Layout Manager Demo</h1>
+</div>
 
-        <!-- IDE-Style Layout -->
-        <app-example-section
-          id="ide"
-          title="IDE-Style Layout"
-          description="Code editor with explorer and terminal panels"
-        >
-          <div class="demo-card full-width">
-            <app-layout-manager
-              #ideLayout
-              [regions]="ideRegions"
-              direction="horizontal"
-              save-state
-              state-key="ide-layout"
-              (layoutChange)="handleLayoutChange($event)"
-              style="height: 500px; display: block"
-            ></app-layout-manager>
-          </div>
-        </app-example-section>
-
-        <!-- Dashboard Layout -->
-        <app-example-section
-          id="dashboard"
-          title="Dashboard Layout"
-          description="Navigation, main content, and widgets"
-        >
-          <div class="demo-card full-width">
-            <app-layout-manager
-              #dashboardLayout
-              [regions]="dashboardRegions"
-              direction="horizontal"
-              save-state
-              state-key="dashboard-layout"
-              (layoutChange)="handleLayoutChange($event)"
-              style="height: 450px; display: block"
-            ></app-layout-manager>
-          </div>
-        </app-example-section>
-
-        <!-- Features Overview -->
-        <section class="demo-section" id="features">
-          <div class="section-header">
-            <h2>✨ Key Features</h2>
-            <p>Powerful capabilities of the Layout Manager</p>
-          </div>
-          <div class="demo-grid">
-            <div class="demo-card">
-              <h3>🔄 Resizable Regions</h3>
-              <p>Drag dividers to resize regions dynamically</p>
-            </div>
-            <div class="demo-card">
-              <h3>📌 Collapsible Panels</h3>
-              <p>Minimize regions to maximize workspace</p>
-            </div>
-            <div class="demo-card">
-              <h3>🎯 Drag & Drop</h3>
-              <p>Move panels between regions with drag and drop</p>
-            </div>
-            <div class="demo-card">
-              <h3>💾 State Persistence</h3>
-              <p>Layout automatically saved to localStorage</p>
-            </div>
-            <div class="demo-card">
-              <h3>🪟 Pop-out Windows</h3>
-              <p>Detach panels into floating windows</p>
-            </div>
-            <div class="demo-card">
-              <h3>⚡ Split Regions</h3>
-              <p>Split any region horizontally or vertically</p>
-            </div>
-            <div class="demo-card">
-              <h3>📱 Responsive</h3>
-              <p>Adapts to different screen sizes</p>
-            </div>
-            <div class="demo-card">
-              <h3>🎨 Customizable</h3>
-              <p>Full control over regions and panels</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- API Methods -->
-        <section class="demo-section" id="api">
-          <div class="section-header">
-            <h2>🔧 API Methods</h2>
-            <p>Programmatic control over layouts</p>
-          </div>
-          <div class="api-grid">
-            <div class="api-card">
-              <h4>addPanel()</h4>
-              <p>Add a new panel to a region</p>
-              <code>await layout.addPanel({{ '{' }} regionId, title, html {{ '}' }})</code>
-            </div>
-            <div class="api-card">
-              <h4>removePanel()</h4>
-              <p>Remove a panel by ID</p>
-              <code>await layout.removePanel(panelId)</code>
-            </div>
-            <div class="api-card">
-              <h4>movePanel()</h4>
-              <p>Move panel to another region</p>
-              <code>await layout.movePanel(panelId, targetRegionId)</code>
-            </div>
-            <div class="api-card">
-              <h4>splitRegion()</h4>
-              <p>Split a region into two</p>
-              <code>await layout.splitRegion(regionId, 'horizontal')</code>
-            </div>
-            <div class="api-card">
-              <h4>popoutPanel()</h4>
-              <p>Detach panel to floating window</p>
-              <code>await layout.popoutPanel(panelId)</code>
-            </div>
-            <div class="api-card">
-              <h4>maximizePanel()</h4>
-              <p>Maximize panel to full layout</p>
-              <code>await layout.maximizePanel(panelId)</code>
-            </div>
-            <div class="api-card">
-              <h4>addRegion()</h4>
-              <p>Add a new region to layout</p>
-              <code>await layout.addRegion({{ '{' }} id, title, size {{ '}' }})</code>
-            </div>
-            <div class="api-card">
-              <h4>getLayoutState()</h4>
-              <p>Get current layout configuration</p>
-              <code>const state = await layout.getLayoutState()</code>
-            </div>
-          </div>
-        </section>
-      </div>
-      <!-- /examples-content -->
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Build custom layouts with resizable, collapsible regions</p>
     </div>
     <!-- /examples-split-layout -->
 
@@ -186,10 +27,171 @@
         style="height: 500px; display: block"
       ></app-layout-manager>
     </div>
-
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="layout-manager"></app-component-documentation>
+  </section>
     </div>
-  </demo-tabs>
-</div>
+  </div>
+
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
+    <div class="section-header">
+      <h2>📐 Basic Three-Column Layout</h2>
+      <p>Classic sidebar-content-sidebar pattern</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #basicLayout
+        [regions]="basicRegions"
+        direction="horizontal"
+        save-state
+        state-key="basic-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 400px; display: block"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>💻 IDE-Style Layout</h2>
+      <p>Code editor with explorer and terminal panels</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #ideLayout
+        [regions]="ideRegions"
+        direction="horizontal"
+        save-state
+        state-key="ide-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 500px; display: block"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>📊 Dashboard Layout</h2>
+      <p>Navigation, main content, and widgets</p>
+    </div>
+    <div class="demo-card full-width">
+      <app-layout-manager
+        #dashboardLayout
+        [regions]="dashboardRegions"
+        direction="horizontal"
+        save-state
+        state-key="dashboard-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        style="height: 450px; display: block"
+      ></app-layout-manager>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>✨ Key Features</h2>
+      <p>Powerful capabilities of the Layout Manager</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3>🔄 Resizable Regions</h3>
+        <p>Drag dividers to resize regions dynamically</p>
+      </div>
+      <div class="demo-card">
+        <h3>📌 Collapsible Panels</h3>
+        <p>Minimize regions to maximize workspace</p>
+      </div>
+      <div class="demo-card">
+        <h3>🎯 Drag & Drop</h3>
+        <p>Move panels between regions with drag and drop</p>
+      </div>
+      <div class="demo-card">
+        <h3>💾 State Persistence</h3>
+        <p>Layout automatically saved to localStorage</p>
+      </div>
+      <div class="demo-card">
+        <h3>🪟 Pop-out Windows</h3>
+        <p>Detach panels into floating windows</p>
+      </div>
+      <div class="demo-card">
+        <h3>⚡ Split Regions</h3>
+        <p>Split any region horizontally or vertically</p>
+      </div>
+      <div class="demo-card">
+        <h3>📱 Responsive</h3>
+        <p>Adapts to different screen sizes</p>
+      </div>
+      <div class="demo-card">
+        <h3>🎨 Customizable</h3>
+        <p>Full control over regions and panels</p>
+      </div>
+    </div>
+  </section>
+
+<section class="demo-section">
+    <div class="section-header">
+      <h2>🔧 API Methods</h2>
+      <p>Programmatic control over layouts</p>
+    </div>
+    <div class="api-grid">
+      <div class="api-card">
+        <h4>addPanel()</h4>
+        <p>Add a new panel to a region</p>
+        <code>await layout.addPanel({{ '{' }} regionId, title, html {{ '}' }})</code>
+      </div>
+      <div class="api-card">
+        <h4>removePanel()</h4>
+        <p>Remove a panel by ID</p>
+        <code>await layout.removePanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>movePanel()</h4>
+        <p>Move panel to another region</p>
+        <code>await layout.movePanel(panelId, targetRegionId)</code>
+      </div>
+      <div class="api-card">
+        <h4>splitRegion()</h4>
+        <p>Split a region into two</p>
+        <code>await layout.splitRegion(regionId, 'horizontal')</code>
+      </div>
+      <div class="api-card">
+        <h4>popoutPanel()</h4>
+        <p>Detach panel to floating window</p>
+        <code>await layout.popoutPanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>maximizePanel()</h4>
+        <p>Maximize panel to full layout</p>
+        <code>await layout.maximizePanel(panelId)</code>
+      </div>
+      <div class="api-card">
+        <h4>addRegion()</h4>
+        <p>Add a new region to layout</p>
+        <code>await layout.addRegion({{ '{' }} id, title, size {{ '}' }})</code>
+      </div>
+      <div class="api-card">
+        <h4>getLayoutState()</h4>
+        <p>Get current layout configuration</p>
+        <code>const state = await layout.getLayoutState()</code>
+      </div>
+    </div>
+  </section>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>
