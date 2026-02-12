@@ -43,6 +43,9 @@ Some components have additional custom styles beyond the base:
 - **app-nav-bar-demo.component.scss**
   - Custom `.horizontal-preview` for navigation display
 
+- **app-avatar-demo.component.scss**
+  - Custom `.preview-box` and `.demo-card` hover effects
+
 ## Benefits
 
 ### 1. **Reduced Code Duplication**
