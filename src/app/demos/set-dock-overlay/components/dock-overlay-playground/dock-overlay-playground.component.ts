@@ -13,40 +13,52 @@ import { FormsModule } from '@angular/forms';
         <div class="control-grid">
           <div class="control-group">
             <label>Position</label>
-            <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-              <option value="top">Top</option>
-              <option value="bottom">Bottom</option>
-              <option value="left">Left</option>
-              <option value="right">Right</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.position"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Top', value: 'top' },
+                { label: 'Bottom', value: 'bottom' },
+                { label: 'Left', value: 'left' },
+                { label: 'Right', value: 'right' },
+              ]"
+            ></ui-dropdown>
           </div>
           <div class="control-group">
             <label>Mode</label>
-            <select [(ngModel)]="pgConfig.mode" (change)="updateConfig()">
-              <option value="docked">Docked</option>
-              <option value="floating">Floating</option>
-              <option value="modal">Modal</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.mode"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Docked', value: 'docked' },
+                { label: 'Floating', value: 'floating' },
+                { label: 'Modal', value: 'modal' },
+              ]"
+            ></ui-dropdown>
           </div>
           <div class="control-group">
             <label>Variant</label>
-            <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-              <option value="default">Default</option>
-              <option value="glass">Glass</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.variant"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Default', value: 'default' },
+                { label: 'Glass', value: 'glass' },
+              ]"
+            ></ui-dropdown>
           </div>
         </div>
         <div class="checkbox-grid">
           <label class="checkbox-item">
-            <input type="checkbox" [(ngModel)]="pgConfig.resizable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.resizable" (change)="updateConfig()" />
             Resizable
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
             Draggable
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
             Collapsible
           </label>
         </div>
@@ -74,7 +86,13 @@ import { FormsModule } from '@angular/forms';
         <div class="code-block">
           <div class="code-header">
             <span>Generated Code</span>
-            <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+            <ui-button
+              class="copy-btn"
+              variant="secondary"
+              size="sm"
+              (click)="copyCode()"
+              label="Copy"
+            ></ui-button>
           </div>
           <pre><code>{{ generatedCode() }}</code></pre>
         </div>

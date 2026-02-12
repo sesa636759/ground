@@ -16,37 +16,36 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Direction</label>
-              <select [(ngModel)]="pgConfig.direction" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.direction"
+                (change)="updateConfig()"
+                [options]="directionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Spacing</label>
-              <input
+              <app-input
                 type="text"
                 [(ngModel)]="pgConfig.spacing"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="e.g. 16px, -10px"
-              />
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Align</label>
-              <select [(ngModel)]="pgConfig.align" (change)="updateConfig()">
-                <option value="start">Start</option>
-                <option value="center">Center</option>
-                <option value="end">End</option>
-                <option value="stretch">Stretch</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.align"
+                (change)="updateConfig()"
+                [options]="alignOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Justify</label>
-              <select [(ngModel)]="pgConfig.justify" (change)="updateConfig()">
-                <option value="start">Start</option>
-                <option value="center">Center</option>
-                <option value="end">End</option>
-                <option value="space-between">Space Between</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.justify"
+                (change)="updateConfig()"
+                [options]="justifyOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -55,25 +54,23 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Max Items (0 = all)</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <app-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></app-input>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="overlap"
                 [(ngModel)]="pgConfig.overlap"
                 (change)="updateConfig()"
-              />
-              <label for="overlap">Overlap</label>
+                label="Overlap"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showDividers"
                 [(ngModel)]="pgConfig.showDividers"
                 (change)="updateConfig()"
-              />
-              <label for="showDividers">Show Dividers</label>
+                label="Show Dividers"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -81,7 +78,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Content</h3>
             <div class="control-group">
               <label>Num Boxes</label>
-              <input type="number" min="1" max="10" [(ngModel)]="numBoxes" />
+              <app-input type="number" [min]="1" [max]="10" [(ngModel)]="numBoxes"></app-input>
             </div>
           </div>
         </div>
@@ -92,7 +89,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -129,6 +131,25 @@ export class StackPlaygroundComponent {
     overlap: false,
     showDividers: false,
   };
+
+  directionOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  alignOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'Center', value: 'center' },
+    { label: 'End', value: 'end' },
+    { label: 'Stretch', value: 'stretch' },
+  ];
+
+  justifyOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'Center', value: 'center' },
+    { label: 'End', value: 'end' },
+    { label: 'Space Between', value: 'space-between' },
+  ];
 
   generatedCode = signal('');
 

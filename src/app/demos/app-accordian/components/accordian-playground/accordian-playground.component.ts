@@ -16,93 +16,86 @@ import { FormsModule } from '@angular/forms';
             <h3>Visual</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="outlined">Outlined</option>
-                <option value="filled">Filled</option>
-                <option value="bordered">Bordered</option>
-                <option value="splitted">Splitted</option>
-                <option value="light">Light</option>
-                <option value="shadow">Shadow</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
 
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
 
             <div class="control-group">
               <label>Icon Position</label>
-              <select [(ngModel)]="pgConfig.iconPosition" (change)="updateConfig()">
-                <option value="start">Start</option>
-                <option value="end">End</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.iconPosition"
+                (change)="updateConfig()"
+                [options]="iconPositionOptions"
+              ></ui-dropdown>
             </div>
 
             <div class="control-group">
               <label>Selected Header Color</label>
-              <input
+              <app-input
                 type="color"
                 [(ngModel)]="pgConfig.selectedHeaderColor"
-                (change)="updateConfig()"
-              />
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
 
             <div class="control-group">
               <label>Header Level (1-6)</label>
-              <input
+              <app-input
                 type="number"
-                min="1"
-                max="6"
+                [min]="1"
+                [max]="6"
                 [(ngModel)]="pgConfig.headerLevel"
-                (change)="updateConfig()"
-              />
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
 
             <div class="checkbox-row">
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="hideArrow"
                   [(ngModel)]="pgConfig.hideArrow"
                   (change)="updateConfig()"
-                />
-                <label for="hideArrow">Hide Arrow</label>
+                  label="Hide Arrow"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="showNumbers"
                   [(ngModel)]="pgConfig.showNumbers"
                   (change)="updateConfig()"
-                />
-                <label for="showNumbers">Show Numbers</label>
+                  label="Show Numbers"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="rtl"
                   [(ngModel)]="pgConfig.rtl"
                   (change)="updateConfig()"
-                />
-                <label for="rtl">RTL</label>
+                  label="RTL"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="dense"
                   [(ngModel)]="pgConfig.dense"
                   (change)="updateConfig()"
-                />
-                <label for="dense">Dense</label>
+                  label="Dense"
+                ></app-checkbox>
               </div>
             </div>
           </div>
@@ -112,70 +105,65 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Expansion Mode</label>
-              <select [(ngModel)]="pgConfig.multiple" (change)="updateConfig()">
-                <option [value]="false">Single</option>
-                <option [value]="true">Multiple</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.multiple"
+                (change)="updateConfig()"
+                [options]="expansionModeOptions"
+              ></ui-dropdown>
             </div>
 
             <div class="checkbox-row">
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="disabled"
                   [(ngModel)]="pgConfig.disabled"
                   (change)="updateConfig()"
-                />
-                <label for="disabled">Disabled</label>
+                  label="Disabled"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="enableSearch"
                   [(ngModel)]="pgConfig.enableSearch"
                   (change)="updateConfig()"
-                />
-                <label for="enableSearch">Enable Search</label>
+                  label="Enable Search"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="enableExpandCollapseAll"
                   [(ngModel)]="pgConfig.enableExpandCollapseAll"
                   (change)="updateConfig()"
-                />
-                <label for="enableExpandCollapseAll">Show Expand/Collapse All</label>
+                  label="Show Expand/Collapse All"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="enableDragDrop"
                   [(ngModel)]="pgConfig.enableDragDrop"
                   (change)="updateConfig()"
-                />
-                <label for="enableDragDrop">Enable Drag & Drop</label>
+                  label="Enable Drag & Drop"
+                ></app-checkbox>
               </div>
 
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="enableNested"
                   [(ngModel)]="pgConfig.enableNested"
                   (change)="updateConfig()"
-                />
-                <label for="enableNested">Enable Nested</label>
+                  label="Enable Nested"
+                ></app-checkbox>
               </div>
               <div class="checkbox-group">
-                <input
-                  type="checkbox"
+                <app-checkbox
                   id="loading"
                   [(ngModel)]="pgConfig.loading"
                   (change)="updateConfig()"
-                />
-                <label for="loading">Loading State</label>
+                  label="Loading State"
+                ></app-checkbox>
               </div>
             </div>
           </div>
@@ -185,30 +173,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Animation</h3>
             <div class="control-group">
               <label>Duration (ms)</label>
-              <input
+              <app-input
                 type="number"
                 [(ngModel)]="pgConfig.animationDuration"
-                (change)="updateConfig()"
-              />
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Timing Function</label>
-              <select [(ngModel)]="pgConfig.animationTiming" (change)="updateConfig()">
-                <option value="ease">Ease</option>
-                <option value="linear">Linear</option>
-                <option value="ease-in">Ease In</option>
-                <option value="ease-out">Ease Out</option>
-                <option value="ease-in-out">Ease In Out</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.animationTiming"
+                (change)="updateConfig()"
+                [options]="timingOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="lazy"
                 [(ngModel)]="pgConfig.lazy"
                 (change)="updateConfig()"
-              />
-              <label for="lazy">Lazy Load Content</label>
+                label="Lazy Load Content"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -219,7 +204,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -308,6 +298,40 @@ export class AccordianPlaygroundComponent {
     lazy: false,
     headerLevel: 3,
   };
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Filled', value: 'filled' },
+    { label: 'Bordered', value: 'bordered' },
+    { label: 'Splitted', value: 'splitted' },
+    { label: 'Light', value: 'light' },
+    { label: 'Shadow', value: 'shadow' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  iconPositionOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'End', value: 'end' },
+  ];
+
+  expansionModeOptions = [
+    { label: 'Single', value: false },
+    { label: 'Multiple', value: true },
+  ];
+
+  timingOptions = [
+    { label: 'Ease', value: 'ease' },
+    { label: 'Linear', value: 'linear' },
+    { label: 'Ease In', value: 'ease-in' },
+    { label: 'Ease Out', value: 'ease-out' },
+    { label: 'Ease In Out', value: 'ease-in-out' },
+  ];
 
   playgroundItems = JSON.stringify([
     {

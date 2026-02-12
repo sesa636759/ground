@@ -38,31 +38,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Color</label>
-              <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-                <option value="primary">Primary</option>
-                <option value="secondary">Secondary</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-                <option value="warning">Warning</option>
-                <option value="info">Info</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.color"
+                (change)="updateConfig()"
+                [options]="colorOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="standard">Standard</option>
-                <option value="outlined">Outlined</option>
-                <option value="bordered">Bordered</option>
-                <option value="soft">Soft</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -71,39 +67,35 @@ import { FormsModule } from '@angular/forms';
             <h3>Position & Style</h3>
             <div class="control-group">
               <label>Position</label>
-              <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-                <option value="top-right">Top Right</option>
-                <option value="top-left">Top Left</option>
-                <option value="bottom-right">Bottom Right</option>
-                <option value="bottom-left">Bottom Left</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.position"
+                (change)="updateConfig()"
+                [options]="positionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Animation</label>
-              <select [(ngModel)]="pgConfig.animation" (change)="updateConfig()">
-                <option value="none">None</option>
-                <option value="pulse">Pulse</option>
-                <option value="bounce">Bounce</option>
-                <option value="shake">Shake</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.animation"
+                (change)="updateConfig()"
+                [options]="animationOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="dot"
                 [(ngModel)]="pgConfig.dot"
                 (change)="updateConfig()"
-              />
-              <label for="dot">Dot Mode</label>
+                label="Dot Mode"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="glow"
                 [(ngModel)]="pgConfig.glow"
                 (change)="updateConfig()"
-              />
-              <label for="glow">Glow Effect</label>
+                label="Glow Effect"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -114,7 +106,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -154,6 +151,42 @@ export class BadgePlaygroundComponent {
     glow: false,
     icon: '',
   };
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  variantOptions = [
+    { label: 'Standard', value: 'standard' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Bordered', value: 'bordered' },
+    { label: 'Soft', value: 'soft' },
+  ];
+
+  positionOptions = [
+    { label: 'Top Right', value: 'top-right' },
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Bottom Right', value: 'bottom-right' },
+    { label: 'Bottom Left', value: 'bottom-left' },
+  ];
+
+  animationOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Pulse', value: 'pulse' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'Shake', value: 'shake' },
+  ];
 
   generatedCode = signal('');
 

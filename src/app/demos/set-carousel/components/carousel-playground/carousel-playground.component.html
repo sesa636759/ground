@@ -3,39 +3,55 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Slides To Show</label>
-        <select [(ngModel)]="pgConfig.slidesToShow" (change)="updateConfig()">
-          <option [ngValue]="1">1</option>
-          <option [ngValue]="2">2</option>
-          <option [ngValue]="3">3</option>
-          <option [ngValue]="4">4</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.slidesToShow"
+          (change)="updateConfig()"
+          [options]="[
+            { label: '1', value: 1 },
+            { label: '2', value: 2 },
+            { label: '3', value: 3 },
+            { label: '4', value: 4 },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Slides To Scroll</label>
-        <select [(ngModel)]="pgConfig.slidesToScroll" (change)="updateConfig()">
-          <option [ngValue]="1">1</option>
-          <option [ngValue]="2">2</option>
-          <option [ngValue]="3">3</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.slidesToScroll"
+          (change)="updateConfig()"
+          [options]="[
+            { label: '1', value: 1 },
+            { label: '2', value: 2 },
+            { label: '3', value: 3 },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Orientation</label>
-        <select [(ngModel)]="pgConfig.vertical" (change)="updateConfig()">
-          <option [ngValue]="false">Horizontal</option>
-          <option [ngValue]="true">Vertical</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.vertical"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: false },
+            { label: 'Vertical', value: true },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Effect</label>
-        <select [(ngModel)]="pgConfig.effect" (change)="updateConfig()">
-          <option value="slide">Slide</option>
-          <option value="fade">Fade</option>
-          <option value="cube">Cube</option>
-          <option value="flip">Flip</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.effect"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Slide', value: 'slide' },
+            { label: 'Fade', value: 'fade' },
+            { label: 'Cube', value: 'cube' },
+            { label: 'Flip', value: 'flip' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -61,38 +77,37 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.autoplay" (change)="updateConfig()" /> Autoplay
+        <app-checkbox [(ngModel)]="pgConfig.autoplay" (change)="updateConfig()" /> Autoplay
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.arrows" (change)="updateConfig()" /> Arrows
+        <app-checkbox [(ngModel)]="pgConfig.arrows" (change)="updateConfig()" /> Arrows
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.indicators" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.indicators" (change)="updateConfig()" />
         Indicators
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.infinite" (change)="updateConfig()" /> Infinite
+        <app-checkbox [(ngModel)]="pgConfig.infinite" (change)="updateConfig()" /> Infinite
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.swipe" (change)="updateConfig()" /> Swipe
+        <app-checkbox [(ngModel)]="pgConfig.swipe" (change)="updateConfig()" /> Swipe
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.keyboard" (change)="updateConfig()" /> Keyboard
+        <app-checkbox [(ngModel)]="pgConfig.keyboard" (change)="updateConfig()" /> Keyboard
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.pauseOnHover" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.pauseOnHover" (change)="updateConfig()" />
         Pause On Hover
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.centerMode" (change)="updateConfig()" /> Center
-        Mode
+        <app-checkbox [(ngModel)]="pgConfig.centerMode" (change)="updateConfig()" /> Center Mode
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
         Progress Bar
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
         Draggable
       </label>
     </div>
@@ -134,7 +149,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

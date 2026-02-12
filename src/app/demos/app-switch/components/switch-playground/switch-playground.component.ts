@@ -43,119 +43,115 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="primary">Primary</option>
-                <option value="secondary">Secondary</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-                <option value="warning">Warning</option>
-                <option value="info">Info</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="xs">Extra Small</option>
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-                <option value="xl">Extra Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="rounded">Rounded</option>
-                <option value="pill">Pill</option>
-                <option value="square">Square</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
+            </div>
+
+            <!-- Configuration -->
+            <div class="control-section">
+              <h3>Configuration</h3>
+              <div class="control-group">
+                <label>Label Position</label>
+                <ui-dropdown
+                  [(ngModel)]="pgConfig.labelPosition"
+                  (change)="updateConfig()"
+                  [options]="labelPositionOptions"
+                ></ui-dropdown>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="checked"
+                  [(ngModel)]="pgConfig.checked"
+                  (change)="updateConfig()"
+                  label="Checked"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="disabled"
+                  [(ngModel)]="pgConfig.disabled"
+                  (change)="updateConfig()"
+                  label="Disabled"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="loading"
+                  [(ngModel)]="pgConfig.loading"
+                  (change)="updateConfig()"
+                  label="Loading"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="showIcons"
+                  [(ngModel)]="pgConfig.showDefaultIcons"
+                  (change)="updateConfig()"
+                  label="Show Default Icons"
+                ></app-checkbox>
+              </div>
             </div>
           </div>
 
-          <!-- Configuration -->
-          <div class="control-section">
-            <h3>Configuration</h3>
-            <div class="control-group">
-              <label>Label Position</label>
-              <select [(ngModel)]="pgConfig.labelPosition" (change)="updateConfig()">
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-              </select>
-            </div>
-            <div class="checkbox-group">
-              <input
-                type="checkbox"
-                id="checked"
-                [(ngModel)]="pgConfig.checked"
-                (change)="updateConfig()"
-              />
-              <label for="checked">Checked</label>
-            </div>
-            <div class="checkbox-group">
-              <input
-                type="checkbox"
-                id="disabled"
-                [(ngModel)]="pgConfig.disabled"
-                (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
-            </div>
-            <div class="checkbox-group">
-              <input
-                type="checkbox"
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (change)="updateConfig()"
-              />
-              <label for="loading">Loading</label>
-            </div>
-            <div class="checkbox-group">
-              <input
-                type="checkbox"
-                id="showIcons"
-                [(ngModel)]="pgConfig.showDefaultIcons"
-                (change)="updateConfig()"
-              />
-              <label for="showIcons">Show Default Icons</label>
-            </div>
+          <div class="code-output">
+            <pre>{{ generatedCode() }}</pre>
+          </div>
+
+          <div class="action-buttons">
+            <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+            <ui-button
+              class="btn-secondary"
+              variant="secondary"
+              (click)="resetConfig()"
+              label="Reset"
+            ></ui-button>
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
+        <div class="playground-preview">
+          <ui-switch
+            [attr.label]="pgConfig.label"
+            [attr.checked]="pgConfig.checked ? '' : null"
+            [attr.disabled]="pgConfig.disabled ? '' : null"
+            [attr.loading]="pgConfig.loading ? '' : null"
+            [attr.size]="pgConfig.size"
+            [attr.variant]="pgConfig.variant"
+            [attr.shape]="pgConfig.shape"
+            [attr.label-position]="pgConfig.labelPosition"
+            [attr.icon-on]="pgConfig.iconOn"
+            [attr.icon-off]="pgConfig.iconOff"
+            [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
+            (switchChange)="onSwitchChange($event)"
+          ></ui-switch>
         </div>
 
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-      </div>
-
-      <div class="playground-preview">
-        <ui-switch
-          [attr.label]="pgConfig.label"
-          [attr.checked]="pgConfig.checked ? '' : null"
-          [attr.disabled]="pgConfig.disabled ? '' : null"
-          [attr.loading]="pgConfig.loading ? '' : null"
-          [attr.size]="pgConfig.size"
-          [attr.variant]="pgConfig.variant"
-          [attr.shape]="pgConfig.shape"
-          [attr.label-position]="pgConfig.labelPosition"
-          [attr.icon-on]="pgConfig.iconOn"
-          [attr.icon-off]="pgConfig.iconOff"
-          [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
-          (switchChange)="onSwitchChange($event)"
-        ></ui-switch>
-      </div>
-
-      <div class="event-log">
-        <div *ngFor="let log of eventLog" class="log-entry">
-          <span class="timestamp">[{{ log.time }}]</span>
-          <span class="message">{{ log.msg }}</span>
-        </div>
-        <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-          Toggle switch to see events...
+        <div class="event-log">
+          <div *ngFor="let log of eventLog" class="log-entry">
+            <span class="timestamp">[{{ log.time }}]</span>
+            <span class="message">{{ log.msg }}</span>
+          </div>
+          <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
+            Toggle switch to see events...
+          </div>
         </div>
       </div>
     </div>
@@ -176,6 +172,35 @@ export class SwitchPlaygroundComponent {
     iconOff: '🔕',
     showDefaultIcons: false,
   };
+
+  variantOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  sizeOptions = [
+    { label: 'Extra Small', value: 'xs' },
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+    { label: 'Extra Large', value: 'xl' },
+  ];
+
+  shapeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Pill', value: 'pill' },
+    { label: 'Square', value: 'square' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
 
   generatedCode = signal('');
   eventLog: { time: string; msg: string }[] = [];

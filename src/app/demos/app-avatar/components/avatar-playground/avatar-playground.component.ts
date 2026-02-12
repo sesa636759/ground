@@ -43,12 +43,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="circle">Circle</option>
-                <option value="square">Square</option>
-                <option value="hexagon">Hexagon</option>
-                <option value="squircle">Squircle</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size (e.g. 64px)</label>
@@ -56,13 +55,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Status</label>
-              <select [(ngModel)]="pgConfig.status" (change)="updateConfig()">
-                <option [value]="null">None</option>
-                <option value="online">Online</option>
-                <option value="away">Away</option>
-                <option value="busy">Busy</option>
-                <option value="offline">Offline</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.status"
+                (change)="updateConfig()"
+                [options]="statusOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -96,7 +93,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -127,6 +129,21 @@ export class AvatarPlaygroundComponent {
     badge: '',
     badgeColor: '',
   };
+
+  shapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+    { label: 'Hexagon', value: 'hexagon' },
+    { label: 'Squircle', value: 'squircle' },
+  ];
+
+  statusOptions = [
+    { label: 'None', value: null },
+    { label: 'Online', value: 'online' },
+    { label: 'Away', value: 'away' },
+    { label: 'Busy', value: 'busy' },
+    { label: 'Offline', value: 'offline' },
+  ];
 
   generatedCode = signal('');
 

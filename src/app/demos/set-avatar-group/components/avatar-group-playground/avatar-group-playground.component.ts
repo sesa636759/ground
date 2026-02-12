@@ -13,11 +13,15 @@ import { FormsModule } from '@angular/forms';
         <div class="control-grid">
           <div class="control-group">
             <label>Size</label>
-            <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.size"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Small', value: 'small' },
+                { label: 'Medium', value: 'medium' },
+                { label: 'Large', value: 'large' },
+              ]"
+            ></ui-dropdown>
           </div>
           <div class="control-group">
             <label>Max Display</label>
@@ -31,27 +35,35 @@ import { FormsModule } from '@angular/forms';
           </div>
           <div class="control-group">
             <label>Layout</label>
-            <select [(ngModel)]="pgConfig.layout" (change)="updateConfig()">
-              <option value="stacked">Stacked</option>
-              <option value="spaced">Spaced</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.layout"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Stacked', value: 'stacked' },
+                { label: 'Spaced', value: 'spaced' },
+              ]"
+            ></ui-dropdown>
           </div>
           <div class="control-group">
             <label>Shape</label>
-            <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-              <option value="circle">Circle</option>
-              <option value="rounded">Rounded</option>
-              <option value="square">Square</option>
-            </select>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.shape"
+              (change)="updateConfig()"
+              [options]="[
+                { label: 'Circle', value: 'circle' },
+                { label: 'Rounded', value: 'rounded' },
+                { label: 'Square', value: 'square' },
+              ]"
+            ></ui-dropdown>
           </div>
         </div>
         <div class="checkbox-grid">
           <label class="checkbox-item">
-            <input type="checkbox" [(ngModel)]="pgConfig.showTooltips" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.showTooltips" (change)="updateConfig()" />
             Show Tooltips
           </label>
           <label class="checkbox-item">
-            <input type="checkbox" [(ngModel)]="pgConfig.clickable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.clickable" (change)="updateConfig()" />
             Clickable
           </label>
         </div>
@@ -77,7 +89,13 @@ import { FormsModule } from '@angular/forms';
         <div class="code-block">
           <div class="code-header">
             <span>Generated Code</span>
-            <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+            <ui-button
+              class="copy-btn"
+              variant="secondary"
+              size="sm"
+              (click)="copyCode()"
+              label="Copy"
+            ></ui-button>
           </div>
           <pre><code>{{ generatedCode() }}</code></pre>
         </div>

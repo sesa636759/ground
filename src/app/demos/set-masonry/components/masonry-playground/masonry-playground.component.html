@@ -3,11 +3,15 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Layout Type</label>
-        <select [(ngModel)]="pgConfig.layoutType" (change)="updateConfig()">
-          <option value="masonry">Masonry</option>
-          <option value="grid">Grid</option>
-          <option value="columns">Columns</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.layoutType"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Masonry', value: 'masonry' },
+            { label: 'Grid', value: 'grid' },
+            { label: 'Columns', value: 'columns' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -28,31 +32,43 @@
 
       <div class="control-group">
         <label>Sort By</label>
-        <select [(ngModel)]="pgConfig.sortBy" (change)="updateConfig()">
-          <option value="">None</option>
-          <option value="title">Title</option>
-          <option value="height">Height</option>
-          <option value="category">Category</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.sortBy"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'None', value: '' },
+            { label: 'Title', value: 'title' },
+            { label: 'Height', value: 'height' },
+            { label: 'Category', value: 'category' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Sort Order</label>
-        <select [(ngModel)]="pgConfig.sortOrder" (change)="updateConfig()">
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.sortOrder"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Ascending', value: 'asc' },
+            { label: 'Descending', value: 'desc' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Filter Category</label>
-        <select [(ngModel)]="filterCategory" (change)="updateConfig()">
-          <option value="">All</option>
-          <option value="nature">Nature</option>
-          <option value="architecture">Architecture</option>
-          <option value="food">Food</option>
-          <option value="technology">Technology</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="filterCategory"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'All', value: '' },
+            { label: 'Nature', value: 'nature' },
+            { label: 'Architecture', value: 'architecture' },
+            { label: 'Food', value: 'food' },
+            { label: 'Technology', value: 'technology' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -73,38 +89,36 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
         Animation
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showFilters" (change)="updateConfig()" /> Show
-        Filters
+        <app-checkbox [(ngModel)]="pgConfig.showFilters" (change)="updateConfig()" /> Show Filters
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
         Selectable
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showBatchActions" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showBatchActions" (change)="updateConfig()" />
         Batch Actions
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.lazyLoad" (change)="updateConfig()" /> Lazy
-        Load
+        <app-checkbox [(ngModel)]="pgConfig.lazyLoad" (change)="updateConfig()" /> Lazy Load
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.infiniteScroll" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.infiniteScroll" (change)="updateConfig()" />
         Infinite Scroll
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.lightbox" (change)="updateConfig()" /> Lightbox
+        <app-checkbox [(ngModel)]="pgConfig.lightbox" (change)="updateConfig()" /> Lightbox
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.loadingState" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.loadingState" (change)="updateConfig()" />
         Loading State
       </label>
     </div>
@@ -148,7 +162,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

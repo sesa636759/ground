@@ -14,35 +14,32 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="selectable"
                 [(ngModel)]="pgConfig.selectable"
                 (change)="updateConfig()"
-              />
-              <label for="selectable">Selectable</label>
+                label="Selectable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
                 (change)="updateConfig()"
-              />
-              <label for="showIcons">Show Icons</label>
+                label="Show Icons"
+              ></app-checkbox>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Behavior</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="expandAll"
                 [(ngModel)]="pgConfig.expandAll"
                 (change)="updateConfig()"
-              />
-              <label for="expandAll">Expand All</label>
+                label="Expand All"
+              ></app-checkbox>
             </div>
           </div>
         </div>

@@ -46,22 +46,20 @@ import { FormsModule } from '@angular/forms';
               <input type="color" [(ngModel)]="pgConfig.valueColor" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="readonly"
                 [(ngModel)]="pgConfig.readonly"
                 (change)="updateConfig()"
-              />
-              <label for="readonly">Readonly</label>
+                label="Readonly"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showValue"
                 [(ngModel)]="pgConfig.showValue"
                 (change)="updateConfig()"
-              />
-              <label for="showValue">Show Value</label>
+                label="Show Value"
+              ></app-checkbox>
             </div>
           </div>
         </div>

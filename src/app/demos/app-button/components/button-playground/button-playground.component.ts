@@ -38,26 +38,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="primary">Primary</option>
-                <option value="secondary">Secondary</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-                <option value="warning">Warning</option>
-                <option value="info">Info</option>
-                <option value="outline">Outline</option>
-                <option value="ghost">Ghost</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="xs">Extra Small</option>
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-                <option value="xl">Extra Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Elevation (0-5)</label>
@@ -75,49 +68,44 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Behavior</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="iconOnly"
                 [(ngModel)]="pgConfig.iconOnly"
                 (change)="updateConfig()"
-              />
-              <label for="iconOnly">Icon Only</label>
+                label="Icon Only"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading</label>
+                label="Loading"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
+                label="Disabled"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="pill"
                 [(ngModel)]="pgConfig.pill"
                 (change)="updateConfig()"
-              />
-              <label for="pill">Pill</label>
+                label="Pill"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="fullWidth"
                 [(ngModel)]="pgConfig.fullWidth"
                 (change)="updateConfig()"
-              />
-              <label for="fullWidth">Full Width</label>
+                label="Full Width"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -128,7 +116,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -176,6 +169,25 @@ export class ButtonPlaygroundComponent {
     pill: false,
     fullWidth: false,
   };
+
+  variantOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+    { label: 'Outline', value: 'outline' },
+    { label: 'Ghost', value: 'ghost' },
+  ];
+
+  sizeOptions = [
+    { label: 'Extra Small', value: 'xs' },
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+    { label: 'Extra Large', value: 'xl' },
+  ];
 
   generatedCode = signal('');
   eventLog: { time: string; msg: string }[] = [];

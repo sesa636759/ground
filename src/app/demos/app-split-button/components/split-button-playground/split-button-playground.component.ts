@@ -15,22 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Basic Config</h3>
             <div class="control-group">
               <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></app-input>
             </div>
             <div class="control-group">
               <label>Icon (Home/Save/etc)</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (change)="updateConfig()" />
+              <app-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></app-input>
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="primary">Primary</option>
-                <option value="secondary">Secondary</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-                <option value="outline">Outline</option>
-                <option value="ghost">Ghost</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -38,29 +35,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
+                label="Disabled"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading</label>
+                label="Loading"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -71,7 +66,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -107,6 +107,21 @@ export class SplitButtonPlaygroundComponent {
     disabled: false,
     loading: false,
   };
+
+  variantOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Outline', value: 'outline' },
+    { label: 'Ghost', value: 'ghost' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
 
   model = [
     { label: 'Save and Exit', icon: '🚪', command: () => this.logAction('Save and Exit') },

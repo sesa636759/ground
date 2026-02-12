@@ -18,13 +18,12 @@ import { FormsModule } from '@angular/forms';
               <input type="number" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="autoZIndex"
                 [(ngModel)]="pgConfig.autoZIndex"
                 (change)="updateConfig()"
-              />
-              <label for="autoZIndex">Auto Z-Index</label>
+                label="Auto Z-Index"
+              ></app-checkbox>
             </div>
           </div>
 

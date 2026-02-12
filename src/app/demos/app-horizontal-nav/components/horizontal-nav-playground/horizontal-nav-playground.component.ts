@@ -15,32 +15,31 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Theme</label>
-              <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="sticky"
                 [(ngModel)]="pgConfig.sticky"
                 (change)="updateConfig()"
-              />
-              <label for="sticky">Sticky Position</label>
+                label="Sticky Position"
+              ></app-checkbox>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Layout</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
                 (change)="updateConfig()"
-              />
-              <label for="showIcons">Show Icons</label>
+                label="Show Icons"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -51,7 +50,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -79,6 +83,11 @@ export class HorizontalNavPlaygroundComponent {
     sticky: true,
     showIcons: true,
   };
+
+  themeOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
 
   model = [
     { label: 'Home', icon: '🏠', command: () => {} },

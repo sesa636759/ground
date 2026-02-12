@@ -31,10 +31,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="circle">Circle</option>
-                <option value="square">Square</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -45,7 +46,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -74,6 +80,11 @@ export class ScrollTopPlaygroundComponent {
     shape: 'circle',
     speed: 400,
   };
+
+  shapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
 
   generatedCode = signal('');
 

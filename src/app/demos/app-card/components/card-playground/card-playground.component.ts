@@ -15,12 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="elevated">Elevated</option>
-                <option value="outlined">Outlined</option>
-                <option value="filled">Filled</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Border Radius</label>
@@ -35,40 +34,36 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="hoverable"
                 [(ngModel)]="pgConfig.hoverable"
                 (change)="updateConfig()"
-              />
-              <label for="hoverable">Hoverable</label>
+                label="Hoverable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="flippable"
                 [(ngModel)]="pgConfig.flippable"
                 (change)="updateConfig()"
-              />
-              <label for="flippable">Flippable</label>
+                label="Flippable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Skeleton Loading</label>
+                label="Skeleton Loading"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showMenu"
                 [(ngModel)]="pgConfig.showMenu"
                 (change)="updateConfig()"
-              />
-              <label for="showMenu">Show Context Menu</label>
+                label="Show Context Menu"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -79,7 +74,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -105,7 +105,12 @@ import { FormsModule } from '@angular/forms';
             </p>
           </div>
           <div slot="footer" style="display: flex; gap: 8px;">
-            <ui-button class="btn-primary" variant="primary" style="flex: 1;" label="Book Now"></ui-button>
+            <ui-button
+              class="btn-primary"
+              variant="primary"
+              style="flex: 1;"
+              label="Book Now"
+            ></ui-button>
             <ui-button class="btn-secondary" variant="secondary" label="Details"></ui-button>
           </div>
           <div slot="back-content" style="padding: 20px;">
@@ -132,6 +137,13 @@ export class CardPlaygroundComponent {
     borderRadius: '16px',
     width: '340px',
   };
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Elevated', value: 'elevated' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Filled', value: 'filled' },
+  ];
 
   menuItems = [
     { id: 'save', label: 'Save trip', icon: '🔖' },

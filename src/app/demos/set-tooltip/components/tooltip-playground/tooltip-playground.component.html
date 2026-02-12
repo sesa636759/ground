@@ -8,61 +8,81 @@
 
       <div class="control-group">
         <label>Position</label>
-        <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-          <option value="top">Top</option>
-          <option value="top-left">Top Left</option>
-          <option value="top-right">Top Right</option>
-          <option value="bottom">Bottom</option>
-          <option value="bottom-left">Bottom Left</option>
-          <option value="bottom-right">Bottom Right</option>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-          <option value="auto">Auto</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.position"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Top', value: 'top' },
+            { label: 'Top Left', value: 'top-left' },
+            { label: 'Top Right', value: 'top-right' },
+            { label: 'Bottom', value: 'bottom' },
+            { label: 'Bottom Left', value: 'bottom-left' },
+            { label: 'Bottom Right', value: 'bottom-right' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+            { label: 'Auto', value: 'auto' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Trigger</label>
-        <select [(ngModel)]="pgConfig.trigger" (change)="updateConfig()">
-          <option value="hover">Hover</option>
-          <option value="click">Click</option>
-          <option value="focus">Focus</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.trigger"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Hover', value: 'hover' },
+            { label: 'Click', value: 'click' },
+            { label: 'Focus', value: 'focus' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-          <option value="primary">Primary</option>
-          <option value="info">Info</option>
-          <option value="success">Success</option>
-          <option value="warning">Warning</option>
-          <option value="error">Error</option>
-          <option value="glass">Glass</option>
-          <option value="custom">Custom</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Dark', value: 'dark' },
+            { label: 'Light', value: 'light' },
+            { label: 'Primary', value: 'primary' },
+            { label: 'Info', value: 'info' },
+            { label: 'Success', value: 'success' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Error', value: 'error' },
+            { label: 'Glass', value: 'glass' },
+            { label: 'Custom', value: 'custom' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Shape</label>
-        <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-          <option value="rounded">Rounded</option>
-          <option value="square">Square</option>
-          <option value="pill">Pill</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.shape"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Rounded', value: 'rounded' },
+            { label: 'Square', value: 'square' },
+            { label: 'Pill', value: 'pill' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Animation</label>
-        <select [(ngModel)]="pgConfig.animation" (change)="updateConfig()">
-          <option value="fade">Fade</option>
-          <option value="slide">Slide</option>
-          <option value="scale">Scale</option>
-          <option value="bounce">Bounce</option>
-          <option value="none">None</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.animation"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Fade', value: 'fade' },
+            { label: 'Slide', value: 'slide' },
+            { label: 'Scale', value: 'scale' },
+            { label: 'Bounce', value: 'bounce' },
+            { label: 'None', value: 'none' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -73,22 +93,21 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.arrow" (change)="updateConfig()" /> Show Arrow
+        <app-checkbox [(ngModel)]="pgConfig.arrow" (change)="updateConfig()" /> Show Arrow
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.interactive" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.interactive" (change)="updateConfig()" />
         Interactive
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.followCursor" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.followCursor" (change)="updateConfig()" />
         Follow Cursor
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.html" (change)="updateConfig()" /> HTML Content
+        <app-checkbox [(ngModel)]="pgConfig.html" (change)="updateConfig()" /> HTML Content
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow
-        Effect
+        <app-checkbox [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow Effect
       </label>
     </div>
   </div>
@@ -125,7 +144,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

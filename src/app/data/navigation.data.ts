@@ -24,6 +24,16 @@ export const topNavItems: NavItem[] = [
     label: 'Documentation',
     icon: '📖',
   },
+  {
+    id: 'profile',
+    label: 'Profile',
+    icon: '👤',
+  },
+  {
+    id: 'login',
+    label: 'Login',
+    icon: '🔑',
+  },
 ];
 
 export const categoryNavItems: NavItem[] = [
@@ -259,39 +269,6 @@ export const bottomSecondaryItems: NavItem[] = [
     id: 'about',
     label: 'About',
     icon: 'ℹ️',
-  },
-  {
-    id: 'user-profile',
-    label: 'John Doe',
-    status: 'away',
-    icon: '👤',
-    children: [
-      {
-        id: 'my-profile',
-        label: 'My Profile',
-        icon: '👤',
-      },
-      {
-        id: 'account-settings',
-        label: 'Account Settings',
-        icon: '⚙️',
-      },
-      {
-        id: 'privacy',
-        label: 'Privacy & Security',
-        icon: '🔒',
-      },
-      {
-        id: 'notifications',
-        label: 'Notifications',
-        icon: '🔔',
-      },
-      {
-        id: 'logout',
-        label: 'Logout',
-        icon: '🚪',
-      },
-    ],
   },
 ];
 

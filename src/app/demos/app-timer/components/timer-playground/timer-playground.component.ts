@@ -15,14 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Initial Duration (s)</label>
-              <input type="number" [(ngModel)]="pgConfig.duration" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.duration"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Mode</label>
-              <select [(ngModel)]="pgConfig.mode" (change)="updateConfig()">
-                <option value="countdown">Countdown</option>
-                <option value="stopwatch">Stopwatch</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.mode"
+                (change)="updateConfig()"
+                [options]="modeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -30,20 +35,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Format</label>
-              <select [(ngModel)]="pgConfig.format" (change)="updateConfig()">
-                <option value="HH:mm:ss">HH:mm:ss</option>
-                <option value="mm:ss">mm:ss</option>
-                <option value="ss">ss</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.format"
+                (change)="updateConfig()"
+                [options]="formatOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="autoStart"
                 [(ngModel)]="pgConfig.autoStart"
                 (change)="updateConfig()"
-              />
-              <label for="autoStart">Auto Start</label>
+                label="Auto Start"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -54,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -69,8 +78,18 @@ import { FormsModule } from '@angular/forms';
 
         <div style="display: flex; gap: 12px; margin-top: 24px;">
           <ui-button class="variant-btn" (click)="timer.start()" label="Start"></ui-button>
-          <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="timer.pause()" label="Pause"></ui-button>
-          <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="timer.reset()" label="Reset"></ui-button>
+          <ui-button
+            class="variant-btn btn-secondary"
+            variant="secondary"
+            (click)="timer.pause()"
+            label="Pause"
+          ></ui-button>
+          <ui-button
+            class="variant-btn btn-secondary"
+            variant="secondary"
+            (click)="timer.reset()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
     </div>
@@ -84,6 +103,17 @@ export class TimerPlaygroundComponent {
     format: 'mm:ss',
     autoStart: false,
   };
+
+  modeOptions = [
+    { label: 'Countdown', value: 'countdown' },
+    { label: 'Stopwatch', value: 'stopwatch' },
+  ];
+
+  formatOptions = [
+    { label: 'HH:mm:ss', value: 'HH:mm:ss' },
+    { label: 'mm:ss', value: 'mm:ss' },
+    { label: 'ss', value: 'ss' },
+  ];
 
   generatedCode = signal('');
 

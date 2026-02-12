@@ -15,66 +15,65 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="modern">Modern</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Options</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showNumbers"
                 [(ngModel)]="pgConfig.showNumbers"
                 (change)="updateConfig()"
-              />
-              <label for="showNumbers">Show Numbers</label>
+                label="Show Numbers"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showDesc"
                 [(ngModel)]="pgConfig.showDescriptions"
                 (change)="updateConfig()"
-              />
-              <label for="showDesc">Show Descriptions</label>
+                label="Show Descriptions"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="dot"
                 [(ngModel)]="pgConfig.progressDot"
                 (change)="updateConfig()"
-              />
-              <label for="dot">Progress Dot</label>
+                label="Progress Dot"
+              ></app-checkbox>
             </div>
             <div class="control-group">
               <label>Active Step</label>
-              <input
+              <app-input
                 type="number"
                 [(ngModel)]="pgConfig.activeStep"
-                min="0"
-                max="3"
-                (change)="updateConfig()"
-              />
+                [min]="0"
+                [max]="3"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
         </div>
@@ -85,7 +84,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -121,6 +125,22 @@ export class StepperPlaygroundComponent {
     showDescriptions: true,
     progressDot: false,
   };
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Modern', value: 'modern' },
+  ];
 
   steps = [
     { id: '1', label: 'Identity', description: 'Verify your personal details' },

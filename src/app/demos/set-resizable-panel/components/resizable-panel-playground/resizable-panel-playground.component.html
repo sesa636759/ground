@@ -3,18 +3,26 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Direction</label>
-        <select [(ngModel)]="pgConfig.direction" (change)="updateConfig()">
-          <option value="horizontal">Horizontal</option>
-          <option value="vertical">Vertical</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.direction"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -30,22 +38,21 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showHandleIcon" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showHandleIcon" (change)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.snapToEdge" (change)="updateConfig()" /> Snap
-        to Edge
+        <app-checkbox [(ngModel)]="pgConfig.snapToEdge" (change)="updateConfig()" /> Snap to Edge
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.collapsible1" (change)="updateConfig()" /> P1
+        <app-checkbox [(ngModel)]="pgConfig.collapsible1" (change)="updateConfig()" /> P1
         Collapsible
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.collapsible3" (change)="updateConfig()" /> P3
+        <app-checkbox [(ngModel)]="pgConfig.collapsible3" (change)="updateConfig()" /> P3
         Collapsible
       </label>
     </div>
@@ -91,7 +98,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

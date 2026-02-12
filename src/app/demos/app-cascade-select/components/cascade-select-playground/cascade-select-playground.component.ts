@@ -19,44 +19,43 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Expand Trigger</label>
-              <select [(ngModel)]="pgConfig.expandTrigger" (change)="updateConfig()">
-                <option value="hover">Hover</option>
-                <option value="click">Click</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.expandTrigger"
+                (change)="updateConfig()"
+                [options]="triggerOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Path Settings</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="fullpath"
                 [(ngModel)]="pgConfig.showFullPath"
                 (change)="updateConfig()"
-              />
-              <label for="fullpath">Show Full Path</label>
+                label="Show Full Path"
+              ></app-checkbox>
             </div>
             <div class="control-group">
               <label>Separator</label>
               <input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="changeonselect"
                 [(ngModel)]="pgConfig.changeOnSelect"
                 (change)="updateConfig()"
-              />
-              <label for="changeonselect">Change On Select (Any Level)</label>
+                label="Change On Select (Any Level)"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -67,7 +66,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -103,6 +107,17 @@ export class CascadeSelectPlaygroundComponent {
     separator: ' > ',
     changeOnSelect: false,
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  triggerOptions = [
+    { label: 'Hover', value: 'hover' },
+    { label: 'Click', value: 'click' },
+  ];
 
   options = [
     {

@@ -17,10 +17,7 @@
       <h3>Quick Add Panel</h3>
       <div class="control-group">
         <label>Target Region</label>
-        <select [(ngModel)]="quickAddRegionId">
-          <option value="">Select Region...</option>
-          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }} ({{ r.id }})</option>
-        </select>
+        <ui-dropdown [(ngModel)]="quickAddRegionId" [options]="regionSelectOptions"></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Title</label>
@@ -38,13 +35,16 @@
       </div>
       <div class="control-group">
         <label>Type</label>
-        <select [(ngModel)]="newRegionType">
-          <option value="default">Default</option>
-          <option value="navigation">Navigation</option>
-          <option value="header-only">Header Only</option>
-          <option value="content-only">Content Only</option>
-          <option value="title-only">Title Only</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="newRegionType"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Navigation', value: 'navigation' },
+            { label: 'Header Only', value: 'header-only' },
+            { label: 'Content Only', value: 'content-only' },
+            { label: 'Title Only', value: 'title-only' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="btn-row">
         <ui-button (click)="addRegion('start')" class="btn secondary" label="Add Start"></ui-button>
@@ -52,11 +52,13 @@
       </div>
       <div class="control-group" style="margin-top: 10px">
         <label>Remove Region</label>
-        <select [(ngModel)]="removeRegionId">
-          <option value="">Select Region...</option>
-          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }} ({{ r.id }})</option>
-        </select>
-        <ui-button (click)="removeRegion()" class="btn danger" [disabled]="!removeRegionId" label="Remove"></ui-button>
+        <ui-dropdown [(ngModel)]="removeRegionId" [options]="regionSelectOptions"></ui-dropdown>
+        <ui-button
+          (click)="removeRegion()"
+          class="btn danger"
+          [disabled]="!removeRegionId"
+          label="Remove"
+        ></ui-button>
       </div>
     </div>
 
@@ -79,17 +81,26 @@
       </div>
       <div class="control-group">
         <label>Target Region</label>
-        <select [(ngModel)]="targetMoveRegion">
-          <option *ngFor="let r of regions" [value]="r.id">{{ r.title }}</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="targetMoveRegion"
+          [options]="panelMoveRegionOptions"
+        ></ui-dropdown>
       </div>
       <div class="btn-grid">
         <ui-button (click)="performPanelAction('move')" class="btn" label="Move"></ui-button>
         <ui-button (click)="performPanelAction('dock')" class="btn" label="Dock"></ui-button>
         <ui-button (click)="performPanelAction('popout')" class="btn" label="Popout"></ui-button>
-        <ui-button (click)="performPanelAction('maximize')" class="btn" label="Maximize"></ui-button>
+        <ui-button
+          (click)="performPanelAction('maximize')"
+          class="btn"
+          label="Maximize"
+        ></ui-button>
         <ui-button (click)="performPanelAction('restore')" class="btn" label="Restore"></ui-button>
-        <ui-button (click)="performPanelAction('remove')" class="btn danger" label="Remove"></ui-button>
+        <ui-button
+          (click)="performPanelAction('remove')"
+          class="btn danger"
+          label="Remove"
+        ></ui-button>
       </div>
     </div>
   </div>

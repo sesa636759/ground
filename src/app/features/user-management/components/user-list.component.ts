@@ -50,6 +50,11 @@ export class UserListComponent implements OnInit {
   roles = Object.values(UserRole);
   statuses = Object.values(UserStatus);
   departments = ['IT', 'HR', 'Sales', 'Marketing', 'Finance'];
+
+  // Dropdown options
+  roleOptions = [{ label: 'All Roles', value: '' }, ...Object.values(UserRole).map(r => ({ label: r, value: r }))];
+  statusOptions = [{ label: 'All Statuses', value: '' }, ...Object.values(UserStatus).map(s => ({ label: s, value: s }))];
+  departmentOptions = [{ label: 'All Departments', value: '' }, { label: 'IT', value: 'IT' }, { label: 'HR', value: 'HR' }, { label: 'Sales', value: 'Sales' }, { label: 'Marketing', value: 'Marketing' }, { label: 'Finance', value: 'Finance' }];
   
   // Make Math available to template
   Math = Math;

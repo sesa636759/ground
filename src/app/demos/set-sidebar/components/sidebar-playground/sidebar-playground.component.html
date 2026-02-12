@@ -3,20 +3,28 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Position</label>
-        <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.position"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="default">Default</option>
-          <option value="floating">Floating</option>
-          <option value="minimal">Minimal</option>
-          <option value="glass">Glass</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Floating', value: 'floating' },
+            { label: 'Minimal', value: 'minimal' },
+            { label: 'Glass', value: 'glass' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -27,19 +35,18 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
         Collapsible
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
         Collapsed
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showBackdrop" (change)="updateConfig()" /> Show
-        Backdrop
+        <app-checkbox [(ngModel)]="pgConfig.showBackdrop" (change)="updateConfig()" /> Show Backdrop
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.overlay" (change)="updateConfig()" /> Overlay
+        <app-checkbox [(ngModel)]="pgConfig.overlay" (change)="updateConfig()" /> Overlay
       </label>
     </div>
   </div>
@@ -70,7 +77,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

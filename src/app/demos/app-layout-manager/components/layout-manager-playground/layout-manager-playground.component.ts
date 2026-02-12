@@ -15,33 +15,31 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Mode</label>
-              <select [(ngModel)]="pgConfig.mode" (change)="updateConfig()">
-                <option value="docking">Docking</option>
-                <option value="grid">Grid</option>
-                <option value="flex">Flex</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.mode"
+                (change)="updateConfig()"
+                [options]="modeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
                 (change)="updateConfig()"
-              />
-              <label for="resizable">Resizable Panels</label>
+                label="Resizable Panels"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="closable"
                 [(ngModel)]="pgConfig.closable"
                 (change)="updateConfig()"
-              />
-              <label for="closable">Closable Panels</label>
+                label="Closable Panels"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -52,7 +50,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -88,6 +91,12 @@ export class LayoutManagerPlaygroundComponent {
     resizable: true,
     closable: true,
   };
+
+  modeOptions = [
+    { label: 'Docking', value: 'docking' },
+    { label: 'Grid', value: 'grid' },
+    { label: 'Flex', value: 'flex' },
+  ];
 
   generatedCode = signal('');
 

@@ -23,16 +23,20 @@
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+          ]"
+        ></ui-dropdown>
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
         Collapsed
       </label>
     </div>
@@ -73,7 +77,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

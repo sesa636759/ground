@@ -27,22 +27,20 @@ import { FormsModule } from '@angular/forms';
               <input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showClose"
                 [(ngModel)]="pgConfig.showClose"
                 (change)="updateConfig()"
-              />
-              <label for="showClose">Show Close</label>
+                label="Show Close"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showSettings"
                 [(ngModel)]="pgConfig.showSettings"
                 (change)="updateConfig()"
-              />
-              <label for="showSettings">Show Settings</label>
+                label="Show Settings"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -51,41 +49,35 @@ import { FormsModule } from '@angular/forms';
             <h3>Style</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="elevated">Elevated</option>
-                <option value="outlined">Outlined</option>
-                <option value="filled">Filled</option>
-                <option value="flat">Flat</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Theme</label>
-              <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="primary">Primary</option>
-                <option value="success">Success</option>
-                <option value="warning">Warning</option>
-                <option value="danger">Danger</option>
-                <option value="info">Info</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="glass"
                 [(ngModel)]="pgConfig.glass"
                 (change)="updateConfig()"
-              />
-              <label for="glass">Glassmorphism</label>
+                label="Glassmorphism"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="noPadding"
                 [(ngModel)]="pgConfig.noPadding"
                 (change)="updateConfig()"
-              />
-              <label for="noPadding">No Padding</label>
+                label="No Padding"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -93,58 +85,52 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Interactivity</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="toggleable"
                 [(ngModel)]="pgConfig.toggleable"
                 (change)="updateConfig()"
-              />
-              <label for="toggleable">Toggleable</label>
+                label="Toggleable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="minimizable"
                 [(ngModel)]="pgConfig.minimizable"
                 (change)="updateConfig()"
-              />
-              <label for="minimizable">Minimizable</label>
+                label="Minimizable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="maximizable"
                 [(ngModel)]="pgConfig.maximizable"
                 (change)="updateConfig()"
-              />
-              <label for="maximizable">Maximizable</label>
+                label="Maximizable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="isDraggable"
                 [(ngModel)]="pgConfig.isDraggable"
                 (change)="updateConfig()"
-              />
-              <label for="isDraggable">Draggable</label>
+                label="Draggable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
                 (change)="updateConfig()"
-              />
-              <label for="resizable">Resizable</label>
+                label="Resizable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading State</label>
+                label="Loading State"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -155,7 +141,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -223,6 +214,22 @@ export class PanelPlaygroundComponent {
     noPadding: false,
     glass: false,
   };
+
+  variantOptions = [
+    { label: 'Elevated', value: 'elevated' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Filled', value: 'filled' },
+    { label: 'Flat', value: 'flat' },
+  ];
+
+  themeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Info', value: 'info' },
+  ];
 
   generatedCode = signal('');
   eventLog: { time: string; msg: string }[] = [];

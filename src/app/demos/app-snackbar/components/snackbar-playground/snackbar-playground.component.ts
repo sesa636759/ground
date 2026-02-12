@@ -16,14 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Global Configuration</h3>
             <div class="control-group">
               <label>Position</label>
-              <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-                <option value="top-right">Top Right</option>
-                <option value="top-left">Top Left</option>
-                <option value="top-center">Top Center</option>
-                <option value="bottom-right">Bottom Right</option>
-                <option value="bottom-left">Bottom Left</option>
-                <option value="bottom-center">Bottom Center</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.position"
+                (change)="updateConfig()"
+                [options]="positionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Max Visible</label>
@@ -31,32 +28,27 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Stack Mode</label>
-              <select [(ngModel)]="pgConfig.stackMode" (change)="updateConfig()">
-                <option value="stack">Stack</option>
-                <option value="queue">Queue</option>
-                <option value="lifo">LIFO</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.stackMode"
+                (change)="updateConfig()"
+                [options]="stackModeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Open Mode</label>
-              <select [(ngModel)]="pgConfig.openMode" (change)="updateConfig()">
-                <option value="slide-down">Slide Down</option>
-                <option value="slide-up">Slide Up</option>
-                <option value="slide-left">Slide Left</option>
-                <option value="slide-right">Slide Right</option>
-                <option value="fade">Fade</option>
-                <option value="scale">Scale</option>
-                <option value="bounce">Bounce</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.openMode"
+                (change)="updateConfig()"
+                [options]="openModeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="cardStack"
                 [(ngModel)]="pgConfig.cardStack"
                 (change)="updateConfig()"
-              />
-              <label for="cardStack">Card Stacking</label>
+                label="Card Stacking"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -65,12 +57,7 @@ import { FormsModule } from '@angular/forms';
             <h3>Notification Settings</h3>
             <div class="control-group">
               <label>Type</label>
-              <select [(ngModel)]="notiConfig.type">
-                <option value="success">Success</option>
-                <option value="info">Info</option>
-                <option value="warning">Warning</option>
-                <option value="error">Error</option>
-              </select>
+              <ui-dropdown [(ngModel)]="notiConfig.type" [options]="typeOptions"></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Title</label>
@@ -93,7 +80,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -107,8 +99,18 @@ import { FormsModule } from '@angular/forms';
           [attr.card-stack]="pgConfig.cardStack ? '' : null"
         ></ui-snackbar>
 
-        <ui-button class="btn-primary" variant="primary" (click)="showSnackbar()" label="Show Snackbar"></ui-button>
-        <ui-button class="btn-secondary" variant="secondary" (click)="clearAll()" label="Clear All"></ui-button>
+        <ui-button
+          class="btn-primary"
+          variant="primary"
+          (click)="showSnackbar()"
+          label="Show Snackbar"
+        ></ui-button>
+        <ui-button
+          class="btn-secondary"
+          variant="secondary"
+          (click)="clearAll()"
+          label="Clear All"
+        ></ui-button>
       </div>
     </div>
   `,
@@ -125,6 +127,37 @@ export class SnackbarPlaygroundComponent {
     cardStack: false,
   };
 
+  positionOptions = [
+    { label: 'Top Right', value: 'top-right' },
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Top Center', value: 'top-center' },
+    { label: 'Bottom Right', value: 'bottom-right' },
+    { label: 'Bottom Left', value: 'bottom-left' },
+    { label: 'Bottom Center', value: 'bottom-center' },
+  ];
+
+  stackModeOptions = [
+    { label: 'Stack', value: 'stack' },
+    { label: 'Queue', value: 'queue' },
+    { label: 'LIFO', value: 'lifo' },
+  ];
+
+  openModeOptions = [
+    { label: 'Slide Down', value: 'slide-down' },
+    { label: 'Slide Up', value: 'slide-up' },
+    { label: 'Slide Left', value: 'slide-left' },
+    { label: 'Slide Right', value: 'slide-right' },
+    { label: 'Fade', value: 'fade' },
+    { label: 'Scale', value: 'scale' },
+    { label: 'Bounce', value: 'bounce' },
+  ];
+
+  typeOptions = [
+    { label: 'Success', value: 'success' },
+    { label: 'Info', value: 'info' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Error', value: 'error' },
+  ];
   notiConfig = {
     type: 'success',
     title: 'New Notification',

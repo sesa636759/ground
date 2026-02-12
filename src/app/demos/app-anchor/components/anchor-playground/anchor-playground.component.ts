@@ -15,17 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="vertical">Vertical</option>
-                <option value="horizontal">Horizontal</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Style Type</label>
-              <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-                <option value="line">Line</option>
-                <option value="dot">Dot</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="typeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Scroll Offset (px)</label>
@@ -36,31 +38,28 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Visuals</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="indicator"
                 [(ngModel)]="pgConfig.showIndicator"
                 (change)="updateConfig()"
-              />
-              <label for="indicator">Show Indicator</label>
+                label="Show Indicator"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="progress"
                 [(ngModel)]="pgConfig.showProgress"
                 (change)="updateConfig()"
-              />
-              <label for="progress">Show Progress</label>
+                label="Show Progress"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="affix"
                 [(ngModel)]="pgConfig.affix"
                 (change)="updateConfig()"
-              />
-              <label for="affix">Enable Affix (Sticky)</label>
+                label="Enable Affix (Sticky)"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -71,7 +70,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -131,6 +135,16 @@ export class AnchorPlaygroundComponent {
     showProgress: true,
     affix: false,
   };
+
+  orientationOptions = [
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Horizontal', value: 'horizontal' },
+  ];
+
+  typeOptions = [
+    { label: 'Line', value: 'line' },
+    { label: 'Dot', value: 'dot' },
+  ];
 
   links = [
     { id: 'basics', label: 'Basics', target: 'basics-pg' },

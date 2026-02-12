@@ -23,32 +23,31 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Severity</label>
-              <select [(ngModel)]="pgConfig.severity" (change)="updateConfig()">
-                <option value="info">Info</option>
-                <option value="success">Success</option>
-                <option value="warning">Warning</option>
-                <option value="danger">Danger</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.severity"
+                (change)="updateConfig()"
+                [options]="severityOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Styling</h3>
             <div class="checkpoint-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="rounded"
                 [(ngModel)]="pgConfig.rounded"
                 (change)="updateConfig()"
-              />
-              <label for="rounded">Rounded Corners</label>
+                label="Rounded Corners"
+              ></app-checkbox>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="small">Small</option>
-                <option value="large">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -59,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -84,6 +88,18 @@ export class TagPlaygroundComponent {
     rounded: true,
     size: 'small',
   };
+
+  severityOptions = [
+    { label: 'Info', value: 'info' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Danger', value: 'danger' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'small' },
+    { label: 'Large', value: 'large' },
+  ];
 
   generatedCode = signal('');
 

@@ -15,12 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Pattern</h3>
             <div class="control-group">
               <label>Mask Pattern</label>
-              <select [(ngModel)]="pgConfig.pattern" (change)="updateConfig()">
-                <option value="(999) 999-9999">Phone: (999) 999-9999</option>
-                <option value="99/99/9999">Date: 99/99/9999</option>
-                <option value="****-****-****-****">Card: ****-****-****-****</option>
-                <option value="AAA-999">Custom: AAA-999</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.pattern"
+                (change)="updateConfig()"
+                [options]="patternOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Placeholder</label>
@@ -31,22 +30,20 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>States</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
+                label="Disabled"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="readonly"
                 [(ngModel)]="pgConfig.readonly"
                 (change)="updateConfig()"
-              />
-              <label for="readonly">Readonly</label>
+                label="Readonly"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -57,7 +54,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -80,6 +82,13 @@ export class PatternInputPlaygroundComponent {
     disabled: false,
     readonly: false,
   };
+
+  patternOptions = [
+    { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },
+    { label: 'Date: 99/99/9999', value: '99/99/9999' },
+    { label: 'Card: ****-****-****-****', value: '****-****-****-****' },
+    { label: 'Custom: AAA-999', value: 'AAA-999' },
+  ];
 
   generatedCode = signal('');
 

@@ -35,12 +35,11 @@ export interface PlaygroundConfig {
         <div *ngFor="let control of config.controls" class="control-item">
           <!-- Boolean Control -->
           <label *ngIf="control.type === 'boolean'" class="checkbox-control">
-            <input
-              type="checkbox"
-              [ngModel]="values[control.name]"
+            <app-checkbox
+              [(ngModel)]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            />
-            <span>{{ control.label }}</span>
+              [label]="control.label"
+            ></app-checkbox>
           </label>
 
           <!-- Text Control -->
@@ -69,14 +68,11 @@ export interface PlaygroundConfig {
           <!-- Select Control -->
           <label *ngIf="control.type === 'select'" class="select-control">
             <span class="control-label">{{ control.label }}</span>
-            <select
-              [ngModel]="values[control.name]"
+            <ui-dropdown
+              [(ngModel)]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            >
-              <option *ngFor="let option of control.options" [value]="option.value">
-                {{ option.label }}
-              </option>
-            </select>
+              [options]="control.options"
+            ></ui-dropdown>
           </label>
 
           <!-- Color Control -->

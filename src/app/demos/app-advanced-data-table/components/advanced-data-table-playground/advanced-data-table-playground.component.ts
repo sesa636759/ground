@@ -14,31 +14,28 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="paginator"
                 [(ngModel)]="pgConfig.paginator"
                 (change)="updateConfig()"
-              />
-              <label for="paginator">Enable Paginator</label>
+                label="Enable Paginator"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="sorting"
                 [(ngModel)]="pgConfig.sorting"
                 (change)="updateConfig()"
-              />
-              <label for="sorting">Enable Sorting</label>
+                label="Enable Sorting"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="filtering"
                 [(ngModel)]="pgConfig.filtering"
                 (change)="updateConfig()"
-              />
-              <label for="filtering">Global Filtering</label>
+                label="Global Filtering"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -49,13 +46,12 @@ import { FormsModule } from '@angular/forms';
               <input type="number" [(ngModel)]="pgConfig.rows" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="responsive"
                 [(ngModel)]="pgConfig.responsive"
                 (change)="updateConfig()"
-              />
-              <label for="responsive">Responsive Layout</label>
+                label="Responsive Layout"
+              ></app-checkbox>
             </div>
           </div>
         </div>

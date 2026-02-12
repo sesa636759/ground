@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Max Display</label>
@@ -37,10 +37,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Style</h3>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="circle">Circle</option>
-                <option value="square">Square</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -51,7 +52,9 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()">Copy Code</ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()">Reset</ui-button>
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()"
+            >Reset</ui-button
+          >
         </div>
       </div>
 
@@ -98,6 +101,17 @@ export class AvatarGroupPlaygroundComponent {
     max: 3,
     shape: 'circle',
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' },
+  ];
+
+  shapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
 
   generatedCode = signal('');
 

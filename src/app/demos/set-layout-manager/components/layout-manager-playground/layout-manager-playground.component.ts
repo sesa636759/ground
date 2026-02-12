@@ -40,6 +40,18 @@ export class LayoutManagerPlaygroundComponent implements OnInit, AfterViewInit {
   panelIdInput = '';
   targetMoveRegion = 'center';
 
+  // Computed dropdown options
+  get regionSelectOptions() {
+    return [
+      { label: 'Select Region...', value: '' },
+      ...this.regions.map(r => ({ label: `${r.title} (${r.id})`, value: r.id }))
+    ];
+  }
+
+  get panelMoveRegionOptions() {
+    return this.regions.map(r => ({ label: r.title, value: r.id }));
+  }
+
   toasts = signal<any[]>([]);
 
   ngOnInit() {}

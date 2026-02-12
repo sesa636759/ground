@@ -3,19 +3,27 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Direction</label>
-        <select [(ngModel)]="pgConfig.direction" (change)="updateConfig()">
-          <option value="horizontal">Horizontal</option>
-          <option value="vertical">Vertical</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.direction"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="auto">Auto</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+            { label: 'Auto', value: 'auto' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -43,24 +51,20 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.rounded" (change)="updateConfig()" /> Rounded
+        <app-checkbox [(ngModel)]="pgConfig.rounded" (change)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.elevated" (change)="updateConfig()" /> Elevated
+        <app-checkbox [(ngModel)]="pgConfig.elevated" (change)="updateConfig()" /> Elevated
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showGutterIcon" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (change)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          [(ngModel)]="pgConfig.doubleClickCollapse"
-          (change)="updateConfig()"
-        />
+        <app-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (change)="updateConfig()" />
         DB Click Collapse
       </label>
     </div>
@@ -105,7 +109,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

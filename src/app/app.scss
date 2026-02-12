@@ -1,5 +1,27 @@
 @use '../_theme-tokens.scss';
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .app-container {
   display: flex;
   flex-direction: row; /* Explicitly set row layout */
@@ -59,17 +81,6 @@
         box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
         border-left: 1px solid var(--border-color);
         animation: slideRight 0.2s ease;
-      }
-
-      @keyframes slideRight {
-        from {
-          opacity: 0;
-          transform: translateX(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
     }
   }
@@ -196,17 +207,6 @@
     max-height: 400px;
     overflow-y: auto;
     animation: slideDown 0.2s ease;
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
     .menu-item {
       display: flex;

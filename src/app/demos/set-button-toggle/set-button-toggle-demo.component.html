@@ -533,26 +533,23 @@
           <div slot="dropdown-content" class="custom-slot-form">
             <div class="form-field">
               <label>Date Range</label>
-              <select [(ngModel)]="filterDate">
-                <option>Last 7 days</option>
-                <option>Last 30 days</option>
-                <option>Last 90 days</option>
-                <option>Custom range</option>
-              </select>
+              <ui-dropdown [(ngModel)]="filterDate" [options]="dateRangeOptions"></ui-dropdown>
             </div>
             <div class="form-field">
               <label>Status</label>
-              <select [(ngModel)]="filterStatus">
-                <option>All</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Pending</option>
-              </select>
+              <ui-dropdown [(ngModel)]="filterStatus" [options]="statusOptions"></ui-dropdown>
             </div>
+
             <div class="form-field">
-              <label><input type="checkbox" [(ngModel)]="filterFlagged" /> Show flagged only</label>
+              <label
+                ><app-checkbox [(ngModel)]="filterFlagged" label="Show flagged only"></app-checkbox
+              ></label>
             </div>
-            <ui-button class="btn-apply" (click)="applyFilters(filterGrp)" label="Apply"></ui-button>
+            <ui-button
+              class="btn-apply"
+              (click)="applyFilters(filterGrp)"
+              label="Apply"
+            ></ui-button>
           </div>
         </app-button-toggle-group>
         <p class="status-msg">{{ customFilterLog() }}</p>
@@ -608,21 +605,20 @@
           <div slot="dropdown-content" class="custom-slot-form">
             <div class="form-field">
               <label style="display: flex; justify-content: space-between; align-items: center">
-                Notifications <input type="checkbox" [(ngModel)]="settingsNotif" />
+                <app-checkbox [(ngModel)]="settingsNotif" label="Notifications"></app-checkbox>
               </label>
             </div>
             <div class="form-field">
               <label style="display: flex; justify-content: space-between; align-items: center">
-                Auto-save <input type="checkbox" [(ngModel)]="settingsAutosave" />
+                <app-checkbox [(ngModel)]="settingsAutosave" label="Auto-save"></app-checkbox>
               </label>
             </div>
             <div class="form-field">
               <label>Theme</label>
-              <select [(ngModel)]="settingsTheme">
-                <option>Light</option>
-                <option>Dark</option>
-                <option>Auto</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="settingsTheme"
+                [options]="jsonOptions(themeOptions)"
+              ></ui-dropdown>
             </div>
           </div>
         </app-button-toggle-group>
@@ -645,12 +641,12 @@
             </div>
             <div class="form-field">
               <label style="display: flex; align-items: center; gap: 8px">
-                <input type="checkbox" checked /> Search in Title
+                <app-checkbox checked="true" label="Search in Title"></app-checkbox>
               </label>
             </div>
             <div class="form-field">
               <label style="display: flex; align-items: center; gap: 8px">
-                <input type="checkbox" /> Case sensitive
+                <app-checkbox label="Case sensitive"></app-checkbox>
               </label>
             </div>
             <ui-button class="btn-apply" (click)="onSearchAction()" label="Search"></ui-button>
@@ -677,7 +673,11 @@
           loading
           [attr.options]="jsonOptions(basicOptions)"
         ></app-button-toggle-group>
-        <ui-button class="btn-toggle" (click)="loadSeg.loading = !loadSeg.loading" label="Toggle Loading"></ui-button>
+        <ui-button
+          class="btn-toggle"
+          (click)="loadSeg.loading = !loadSeg.loading"
+          label="Toggle Loading"
+        ></ui-button>
       </div>
       <div class="demo-card">
         <h3>Dropdown Loading</h3>
@@ -690,7 +690,11 @@
           loading
           [attr.options]="jsonOptions(saveOptions)"
         ></app-button-toggle-group>
-        <ui-button class="btn-toggle" (click)="loadDrop.loading = !loadDrop.loading" label="Toggle Loading"></ui-button>
+        <ui-button
+          class="btn-toggle"
+          (click)="loadDrop.loading = !loadDrop.loading"
+          label="Toggle Loading"
+        ></ui-button>
       </div>
       <div class="demo-card">
         <h3>Simulate Save Action</h3>

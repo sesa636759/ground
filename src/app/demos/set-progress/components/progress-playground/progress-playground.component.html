@@ -3,21 +3,29 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Type</label>
-        <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-          <option value="line">Line</option>
-          <option value="circle">Circle</option>
-          <option value="dashboard">Dashboard</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.type"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Line', value: 'line' },
+            { label: 'Circle', value: 'circle' },
+            { label: 'Dashboard', value: 'dashboard' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Status</label>
-        <select [(ngModel)]="pgConfig.status" (change)="updateConfig()">
-          <option value="normal">Normal</option>
-          <option value="active">Active</option>
-          <option value="success">Success</option>
-          <option value="exception">Exception</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.status"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Normal', value: 'normal' },
+            { label: 'Active', value: 'active' },
+            { label: 'Success', value: 'success' },
+            { label: 'Exception', value: 'exception' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -53,10 +61,14 @@
 
       <div class="control-group">
         <label>Linecap</label>
-        <select [(ngModel)]="pgConfig.strokeLinecap" (change)="updateConfig()">
-          <option value="round">Round</option>
-          <option value="square">Square</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.strokeLinecap"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Round', value: 'round' },
+            { label: 'Square', value: 'square' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -73,16 +85,17 @@
 
       <div class="control-group">
         <label>Gap Pos (Dash)</label>
-        <select
+        <ui-dropdown
           [(ngModel)]="pgConfig.gapPosition"
           (change)="updateConfig()"
           [disabled]="pgConfig.type !== 'dashboard'"
-        >
-          <option value="top">Top</option>
-          <option value="bottom">Bottom</option>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
+          [options]="[
+            { label: 'Top', value: 'top' },
+            { label: 'Bottom', value: 'bottom' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -98,21 +111,20 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showInfo" (change)="updateConfig()" /> Show
-        Info
+        <app-checkbox [(ngModel)]="pgConfig.showInfo" (change)="updateConfig()" /> Show Info
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.indeterminate" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.indeterminate" (change)="updateConfig()" />
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.liquid" (change)="updateConfig()" /> Liquid
+        <app-checkbox [(ngModel)]="pgConfig.liquid" (change)="updateConfig()" /> Liquid
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.glass" (change)="updateConfig()" /> Glass
+        <app-checkbox [(ngModel)]="pgConfig.glass" (change)="updateConfig()" /> Glass
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.glow" (change)="updateConfig()" /> Glow
+        <app-checkbox [(ngModel)]="pgConfig.glow" (change)="updateConfig()" /> Glow
       </label>
     </div>
   </div>
@@ -144,7 +156,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

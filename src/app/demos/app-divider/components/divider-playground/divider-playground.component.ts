@@ -38,28 +38,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Line Style</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="solid">Solid</option>
-                <option value="dashed">Dashed</option>
-                <option value="dotted">Dotted</option>
-                <option value="double-solid">Double Solid</option>
-                <option value="gradient">Gradient</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -68,32 +67,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Special</h3>
             <div class="control-group">
               <label>Pattern</label>
-              <select [(ngModel)]="pgConfig.pattern" (change)="updateConfig()">
-                <option value="none">None</option>
-                <option value="dots">Dots</option>
-                <option value="stripes">Stripes</option>
-                <option value="zigzag">Zigzag</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.pattern"
+                (change)="updateConfig()"
+                [options]="patternOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="none">None</option>
-                <option value="curve">Curve</option>
-                <option value="wave">Wave</option>
-                <option value="triangle">Triangle</option>
-                <option value="zigzag">Zigzag</option>
-                <option value="arrow">Arrow</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading</label>
+                label="Loading"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -104,7 +98,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -142,6 +141,41 @@ export class DividerPlaygroundComponent {
     shape: 'none',
     loading: false,
   };
+
+  variantOptions = [
+    { label: 'Solid', value: 'solid' },
+    { label: 'Dashed', value: 'dashed' },
+    { label: 'Dotted', value: 'dotted' },
+    { label: 'Double Solid', value: 'double-solid' },
+    { label: 'Gradient', value: 'gradient' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  patternOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Dots', value: 'dots' },
+    { label: 'Stripes', value: 'stripes' },
+    { label: 'Zigzag', value: 'zigzag' },
+  ];
+
+  shapeOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Curve', value: 'curve' },
+    { label: 'Wave', value: 'wave' },
+    { label: 'Triangle', value: 'triangle' },
+    { label: 'Zigzag', value: 'zigzag' },
+    { label: 'Arrow', value: 'arrow' },
+  ];
 
   generatedCode = signal('');
 

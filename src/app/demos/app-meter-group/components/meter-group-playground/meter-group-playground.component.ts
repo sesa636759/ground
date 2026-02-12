@@ -15,24 +15,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Label Orientation</label>
-              <select [(ngModel)]="pgConfig.labelOrientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.labelOrientation"
+                (change)="updateConfig()"
+                [options]="labelOrientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Label Position</label>
-              <select [(ngModel)]="pgConfig.labelPosition" (change)="updateConfig()">
-                <option value="start">Start</option>
-                <option value="end">End</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.labelPosition"
+                (change)="updateConfig()"
+                [options]="labelPositionOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -43,22 +46,20 @@ import { FormsModule } from '@angular/forms';
               <input type="text" [(ngModel)]="pgConfig.meterHeight" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showLabels"
                 [(ngModel)]="pgConfig.showLabels"
                 (change)="updateConfig()"
-              />
-              <label for="showLabels">Show Labels</label>
+                label="Show Labels"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showMarkers"
                 [(ngModel)]="pgConfig.showMarkers"
                 (change)="updateConfig()"
-              />
-              <label for="showMarkers">Show Markers</label>
+                label="Show Markers"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -69,7 +70,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -102,6 +108,21 @@ export class MeterGroupPlaygroundComponent {
     showLabels: true,
     showMarkers: true,
   };
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  labelOrientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'End', value: 'end' },
+  ];
 
   values = [
     { label: 'Apps', value: 40, color: '#3b82f6', icon: '📱' },

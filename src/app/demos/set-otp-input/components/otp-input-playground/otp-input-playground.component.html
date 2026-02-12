@@ -24,33 +24,45 @@
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="default">Default</option>
-          <option value="underlined">Underlined</option>
-          <option value="flushed">Flushed</option>
-          <option value="separated">Separated</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Underlined', value: 'underlined' },
+            { label: 'Flushed', value: 'flushed' },
+            { label: 'Separated', value: 'separated' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Color</label>
-        <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-          <option value="primary">Primary</option>
-          <option value="secondary">Secondary</option>
-          <option value="success">Success</option>
-          <option value="warning">Warning</option>
-          <option value="danger">Danger</option>
-          <option value="info">Info</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.color"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Primary', value: 'primary' },
+            { label: 'Secondary', value: 'secondary' },
+            { label: 'Success', value: 'success' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Danger', value: 'danger' },
+            { label: 'Info', value: 'info' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -72,15 +84,13 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.secure" (change)="updateConfig()" /> Secure
-        (Password)
+        <app-checkbox [(ngModel)]="pgConfig.secure" (change)="updateConfig()" /> Secure (Password)
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
+        <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
-        State
+        <app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid State
       </label>
     </div>
   </div>
@@ -116,7 +126,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

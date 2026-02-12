@@ -18,22 +18,20 @@ import { FormsModule } from '@angular/forms';
               <input type="number" [(ngModel)]="pgConfig.length" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="mask"
                 [(ngModel)]="pgConfig.mask"
                 (change)="updateConfig()"
-              />
-              <label for="mask">Mask (Password Style)</label>
+                label="Mask (Password Style)"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
+                label="Disabled"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -41,19 +39,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="filled">Filled</option>
-                <option value="outlined">Outlined</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -64,7 +62,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -96,6 +99,18 @@ export class OtpInputPlaygroundComponent {
     size: 'md',
     variant: 'default',
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Filled', value: 'filled' },
+    { label: 'Outlined', value: 'outlined' },
+  ];
 
   currentValue = '';
   generatedCode = signal('');

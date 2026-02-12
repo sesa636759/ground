@@ -3,38 +3,54 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Layout</label>
-        <select [(ngModel)]="pgConfig.layout" (change)="updateConfig()">
-          <option value="tree">Standard Tree</option>
-          <option value="org-chart">Org Chart</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.layout"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Standard Tree', value: 'tree' },
+            { label: 'Org Chart', value: 'org-chart' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="default">Default</option>
-          <option value="bordered">Bordered</option>
-          <option value="rounded">Rounded</option>
-          <option value="minimal">Minimal</option>
-          <option value="glass">Glass</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Bordered', value: 'bordered' },
+            { label: 'Rounded', value: 'rounded' },
+            { label: 'Minimal', value: 'minimal' },
+            { label: 'Glass', value: 'glass' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -50,38 +66,48 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showLines" (change)="updateConfig()" /> Lines
+        <app-checkbox [(ngModel)]="pgConfig.showLines" (change)="updateConfig()" /> Lines
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()" /> Icons
+        <app-checkbox [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()" /> Icons
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.expandable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.expandable" (change)="updateConfig()" />
         Expandable
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
         Selectable
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.checkboxes" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.checkboxes" (change)="updateConfig()" />
         Checkboxes
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.searchable" (change)="updateConfig()" /> Search
+        <app-checkbox [(ngModel)]="pgConfig.searchable" (change)="updateConfig()" /> Search
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow
+        <app-checkbox [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow
       </label>
     </div>
 
     <div class="action-buttons">
-      <ui-button class="btn-action" variant="secondary" (click)="expandAll()" label="Expand All"></ui-button>
-      <ui-button class="btn-action" variant="secondary" (click)="collapseAll()" label="Collapse All"></ui-button>
+      <ui-button
+        class="btn-action"
+        variant="secondary"
+        (click)="expandAll()"
+        label="Expand All"
+      ></ui-button>
+      <ui-button
+        class="btn-action"
+        variant="secondary"
+        (click)="collapseAll()"
+        label="Collapse All"
+      ></ui-button>
     </div>
   </div>
 
@@ -126,7 +152,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

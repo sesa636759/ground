@@ -15,10 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.layout" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.layout"
+                (change)="updateConfig()"
+                [options]="layoutOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Gutter Size (px)</label>
@@ -41,7 +42,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -71,6 +77,11 @@ export class SplitterPlaygroundComponent {
     gutterSize: 4,
     minSize: 10,
   };
+
+  layoutOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
 
   generatedCode = signal('');
 

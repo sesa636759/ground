@@ -11,6 +11,18 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
+    path: 'login',
+    loadComponent: () => import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./pages/register/register.component').then((m) => m.RegisterComponent),
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
+  },
+  {
     path: 'overview',
     loadComponent: () =>
       import('./pages/overview/overview.component').then((m) => m.OverviewComponent),
@@ -667,7 +679,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'dialog-box',
+        path: 'dialog',
         loadComponent: () =>
           import('./demos/app-dialog-box/app-dialog-box-demo.component').then(
             (m) => m.AppDialogBoxDemoComponent,

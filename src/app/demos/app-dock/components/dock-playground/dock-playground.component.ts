@@ -15,12 +15,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Position</label>
-              <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-                <option value="bottom">Bottom</option>
-                <option value="top">Top</option>
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.position"
+                (change)="updateConfig()"
+                [options]="positionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Breakpoint</label>
@@ -31,13 +30,12 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Behavior</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="autoZIndex"
                 [(ngModel)]="pgConfig.autoZIndex"
                 (change)="updateConfig()"
-              />
-              <label for="autoZIndex">Auto Z-Index</label>
+                label="Auto Z-Index"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -48,7 +46,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -77,6 +80,13 @@ export class DockPlaygroundComponent {
     breakpoint: '960px',
     autoZIndex: true,
   };
+
+  positionOptions = [
+    { label: 'Bottom', value: 'bottom' },
+    { label: 'Top', value: 'top' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
 
   model = [
     { label: 'Finder', icon: '🔍', command: () => this.logAction('Finder') },

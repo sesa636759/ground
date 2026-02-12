@@ -15,39 +15,39 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Theme</label>
-              <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="compact">Compact</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Visuals</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
                 (change)="updateConfig()"
-              />
-              <label for="showIcons">Show Icons</label>
+                label="Show Icons"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="allowBranching"
                 [(ngModel)]="pgConfig.allowBranching"
                 (change)="updateConfig()"
-              />
-              <label for="allowBranching">Allow Branching</label>
+                label="Allow Branching"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -58,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -75,22 +80,41 @@ import { FormsModule } from '@angular/forms';
               <div style="padding: 24px;">
                 <h4>Profile Setup</h4>
                 <p>Enter your basic account information.</p>
-                <ui-button class="variant-btn" (click)="currentStep = '2'" label="Next Step"></ui-button>
+                <ui-button
+                  class="variant-btn"
+                  (click)="currentStep = '2'"
+                  label="Next Step"
+                ></ui-button>
               </div>
             </ui-smart-step>
             <ui-smart-step label="Verify" icon="🛡️" value="2">
               <div style="padding: 24px;">
                 <h4>Identity Verification</h4>
                 <p>Protect your account with multi-factor authentication.</p>
-                <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="currentStep = '1'" label="Back"></ui-button>
-                <ui-button class="variant-btn" style="margin-left: 12px;" (click)="currentStep = '3'" label="Next Step"></ui-button>
+                <ui-button
+                  class="variant-btn btn-secondary"
+                  variant="secondary"
+                  (click)="currentStep = '1'"
+                  label="Back"
+                ></ui-button>
+                <ui-button
+                  class="variant-btn"
+                  style="margin-left: 12px;"
+                  (click)="currentStep = '3'"
+                  label="Next Step"
+                ></ui-button>
               </div>
             </ui-smart-step>
             <ui-smart-step label="Finish" icon="✅" value="3">
               <div style="padding: 24px;">
                 <h4>All Done!</h4>
                 <p>Your account is ready to use.</p>
-                <ui-button class="variant-btn btn-secondary" variant="secondary" (click)="currentStep = '2'" label="Back"></ui-button>
+                <ui-button
+                  class="variant-btn btn-secondary"
+                  variant="secondary"
+                  (click)="currentStep = '2'"
+                  label="Back"
+                ></ui-button>
               </div>
             </ui-smart-step>
           </ui-smart-stepper>
@@ -107,6 +131,16 @@ export class SmartStepperPlaygroundComponent {
     showIcons: true,
     allowBranching: false,
   };
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  themeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Compact', value: 'compact' },
+  ];
 
   currentStep = '1';
   generatedCode = signal('');

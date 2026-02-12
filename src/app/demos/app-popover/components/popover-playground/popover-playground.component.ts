@@ -29,24 +29,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Trigger</label>
-              <select [(ngModel)]="pgConfig.trigger" (change)="updateConfig()">
-                <option value="click">Click</option>
-                <option value="hover">Hover</option>
-                <option value="focus">Focus</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.trigger"
+                (change)="updateConfig()"
+                [options]="triggerOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Placement</label>
-              <select [(ngModel)]="pgConfig.placement" (change)="updateConfig()">
-                <option value="top">Top</option>
-                <option value="top-start">Top Start</option>
-                <option value="top-end">Top End</option>
-                <option value="bottom">Bottom</option>
-                <option value="bottom-start">Bottom Start</option>
-                <option value="bottom-end">Bottom End</option>
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.placement"
+                (change)="updateConfig()"
+                [options]="placementOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -55,41 +50,39 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Width</label>
               <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showArrow"
                 [(ngModel)]="pgConfig.showArrow"
                 (change)="updateConfig()"
-              />
-              <label for="showArrow">Show Arrow</label>
+                label="Show Arrow"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="closeButton"
                 [(ngModel)]="pgConfig.showCloseButton"
                 (change)="updateConfig()"
-              />
-              <label for="closeButton">Close Button</label>
+                label="Close Button"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="backdrop"
                 [(ngModel)]="pgConfig.backdrop"
                 (change)="updateConfig()"
-              />
-              <label for="backdrop">Backdrop</label>
+                label="Backdrop"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -135,6 +128,28 @@ export class PopoverPlaygroundComponent {
     showCloseButton: true,
     backdrop: false,
   };
+
+  triggerOptions = [
+    { label: 'Click', value: 'click' },
+    { label: 'Hover', value: 'hover' },
+    { label: 'Focus', value: 'focus' },
+  ];
+
+  placementOptions = [
+    { label: 'Top', value: 'top' },
+    { label: 'Top Start', value: 'top-start' },
+    { label: 'Top End', value: 'top-end' },
+    { label: 'Bottom', value: 'bottom' },
+    { label: 'Bottom Start', value: 'bottom-start' },
+    { label: 'Bottom End', value: 'bottom-end' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  variantOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
 
   generatedCode = signal('');
 

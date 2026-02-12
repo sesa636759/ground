@@ -15,27 +15,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Selection Mode</label>
-              <select [(ngModel)]="pgConfig.selectionMode" (change)="updateConfig()">
-                <option value="none">None</option>
-                <option value="single">Single</option>
-                <option value="multiple">Multiple</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.selectionMode"
+                (change)="updateConfig()"
+                [options]="selectionModeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="attached"
                 [(ngModel)]="pgConfig.attached"
                 (change)="updateConfig()"
-              />
-              <label for="attached">Attached</label>
+                label="Attached"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -46,7 +46,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -79,6 +84,17 @@ export class ButtonGroupPlaygroundComponent {
     selectionMode: 'single',
     attached: true,
   };
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  selectionModeOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Single', value: 'single' },
+    { label: 'Multiple', value: 'multiple' },
+  ];
 
   generatedCode = signal('');
   currentValue: any = null;

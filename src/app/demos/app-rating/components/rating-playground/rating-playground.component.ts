@@ -16,11 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Model</h3>
             <div class="control-group">
               <label>Type</label>
-              <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-                <option value="star">Star</option>
-                <option value="smiley">Smiley</option>
-                <option value="thumb">Thumb</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="typeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Value</label>
@@ -37,39 +37,36 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Color</label>
-              <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-                <option value="primary">Primary</option>
-                <option value="warning">Warning</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.color"
+                (change)="updateConfig()"
+                [options]="colorOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="half"
                 [(ngModel)]="pgConfig.allowHalf"
                 (change)="updateConfig()"
+                label="Allow Half (Star only)"
                 [disabled]="pgConfig.type !== 'star'"
-              />
-              <label for="half">Allow Half (Star only)</label>
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showVal"
                 [(ngModel)]="pgConfig.showValue"
                 (change)="updateConfig()"
-              />
-              <label for="showVal">Show Value Text</label>
+                label="Show Value Text"
+              ></app-checkbox>
             </div>
           </div>
 
@@ -77,22 +74,20 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>State</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="readonly"
                 [(ngModel)]="pgConfig.readonly"
                 (change)="updateConfig()"
-              />
-              <label for="readonly">Read-Only</label>
+                label="Read-Only"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled</label>
+                label="Disabled"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -103,7 +98,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -138,6 +138,25 @@ export class RatingPlaygroundComponent {
     allowHalf: false,
     showValue: true,
   };
+
+  typeOptions = [
+    { label: 'Star', value: 'star' },
+    { label: 'Smiley', value: 'smiley' },
+    { label: 'Thumb', value: 'thumb' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+  ];
 
   generatedCode = signal('');
 

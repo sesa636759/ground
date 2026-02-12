@@ -15,19 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Alignment</label>
-              <select [(ngModel)]="pgConfig.align" (change)="updateConfig()">
-                <option value="start">Start</option>
-                <option value="center">Center</option>
-                <option value="end">End</option>
-                <option value="justify">Justify</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.align"
+                (change)="updateConfig()"
+                [options]="alignOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -35,16 +35,14 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="pills">Pills</option>
-                <option value="underline">Underline</option>
-                <option value="enclosed">Enclosed</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="scrollable"
                 [(ngModel)]="pgConfig.scrollable"
                 (change)="updateConfig()"
@@ -52,8 +50,7 @@ import { FormsModule } from '@angular/forms';
               <label for="scrollable">Scrollable</label>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="closable"
                 [(ngModel)]="pgConfig.closeable"
                 (change)="updateConfig()"
@@ -69,7 +66,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -122,6 +124,25 @@ export class TabsPlaygroundComponent {
     scrollable: false,
     closeable: false,
   };
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  alignOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'Center', value: 'center' },
+    { label: 'End', value: 'end' },
+    { label: 'Justify', value: 'justify' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Pills', value: 'pills' },
+    { label: 'Underline', value: 'underline' },
+    { label: 'Enclosed', value: 'enclosed' },
+  ];
 
   currentTab = 'overview';
   generatedCode = signal('');

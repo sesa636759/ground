@@ -26,22 +26,20 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>States</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (change)="updateConfig()"
-              />
-              <label for="disabled">Disabled State</label>
+                label="Disabled State"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showSearch"
                 [(ngModel)]="pgConfig.showSearch"
                 (change)="updateConfig()"
-              />
-              <label for="showSearch">Show Search Bar</label>
+                label="Show Search Bar"
+              ></app-checkbox>
             </div>
           </div>
         </div>

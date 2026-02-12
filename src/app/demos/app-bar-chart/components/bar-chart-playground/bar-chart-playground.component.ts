@@ -15,40 +15,39 @@ import { FormsModule } from '@angular/forms';
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Orientation</label>
-              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-                <option value="vertical">Vertical</option>
-                <option value="horizontal">Horizontal</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.orientation"
+                (change)="updateConfig()"
+                [options]="orientationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Color Scheme</label>
-              <select [(ngModel)]="pgConfig.colorScheme" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.colorScheme"
+                (change)="updateConfig()"
+                [options]="colorSchemeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showLegend"
                 [(ngModel)]="pgConfig.showLegend"
                 (change)="updateConfig()"
-              />
-              <label for="showLegend">Show Legend</label>
+                label="Show Legend"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="animated"
                 [(ngModel)]="pgConfig.animated"
                 (change)="updateConfig()"
-              />
-              <label for="animated">Animated</label>
+                label="Animated"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -59,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -85,6 +89,17 @@ export class BarChartPlaygroundComponent {
     showLegend: true,
     animated: true,
   };
+
+  orientationOptions = [
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Horizontal', value: 'horizontal' },
+  ];
+
+  colorSchemeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Blue', value: 'blue' },
+    { label: 'Green', value: 'green' },
+  ];
 
   chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],

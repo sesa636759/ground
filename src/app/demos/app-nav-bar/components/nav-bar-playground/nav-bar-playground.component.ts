@@ -15,32 +15,31 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Theme</label>
-              <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="collapsed"
                 [(ngModel)]="pgConfig.collapsed"
                 (change)="updateConfig()"
-              />
-              <label for="collapsed">Collapsed</label>
+                label="Collapsed"
+              ></app-checkbox>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Structure</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showFooter"
                 [(ngModel)]="pgConfig.showFooter"
                 (change)="updateConfig()"
-              />
-              <label for="showFooter">Show Footer</label>
+                label="Show Footer"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -51,7 +50,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -93,6 +97,11 @@ export class NavBarPlaygroundComponent {
     collapsed: false,
     showFooter: true,
   };
+
+  themeOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
 
   model = [
     { label: 'Dashboard', icon: '📊', items: [] },

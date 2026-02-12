@@ -205,6 +205,26 @@ export class SetButtonToggleDemoComponent implements OnInit {
     { value: 'word', label: 'Word Doc', icon: 'fas fa-file-word' },
   ];
 
+  dateRangeOptions = [
+    { label: 'Last 7 days', value: 'Last 7 days' },
+    { label: 'Last 30 days', value: 'Last 30 days' },
+    { label: 'Last 90 days', value: 'Last 90 days' },
+    { label: 'Custom range', value: 'Custom range' },
+  ];
+
+  statusOptions = [
+    { label: 'All', value: 'All' },
+    { label: 'Active', value: 'Active' },
+    { label: 'Inactive', value: 'Inactive' },
+    { label: 'Pending', value: 'Pending' },
+  ];
+
+  themeOptions = [
+    { label: 'Light', value: 'Light' },
+    { label: 'Dark', value: 'Dark' },
+    { label: 'Auto', value: 'Auto' },
+  ];
+
   // Logs for examples
   dropdownBasicLog = signal('Button label changes to selected option');
   dropdownFixedLog = signal('Button label stays "Actions" always');

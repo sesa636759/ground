@@ -3,43 +3,59 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="filled">Filled</option>
-          <option value="outlined">Outlined</option>
-          <option value="minimal">Minimal</option>
-          <option value="circular">Circular</option>
-          <option value="rounded">Rounded</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Filled', value: 'filled' },
+            { label: 'Outlined', value: 'outlined' },
+            { label: 'Minimal', value: 'minimal' },
+            { label: 'Circular', value: 'circular' },
+            { label: 'Rounded', value: 'rounded' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Position</label>
-        <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-          <option value="bottom-right">Bottom Right</option>
-          <option value="bottom-left">Bottom Left</option>
-          <option value="top-right">Top Right</option>
-          <option value="top-left">Top Left</option>
-          <option value="bottom-center">Bottom Center</option>
-          <option value="top-center">Top Center</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.position"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Bottom Right', value: 'bottom-right' },
+            { label: 'Bottom Left', value: 'bottom-left' },
+            { label: 'Top Right', value: 'top-right' },
+            { label: 'Top Left', value: 'top-left' },
+            { label: 'Bottom Center', value: 'bottom-center' },
+            { label: 'Top Center', value: 'top-center' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="auto">Auto</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+            { label: 'Auto', value: 'auto' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -54,42 +70,49 @@
 
       <div class="control-group">
         <label>Tooltip Position</label>
-        <select [(ngModel)]="pgConfig.tooltipPosition" (change)="updateConfig()">
-          <option value="top">Top</option>
-          <option value="bottom">Bottom</option>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.tooltipPosition"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Top', value: 'top' },
+            { label: 'Bottom', value: 'bottom' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Target</label>
-        <select [(ngModel)]="pgConfig.targetType" (change)="updateConfig()">
-          <option value="window">Window (Page)</option>
-          <option value="container">Local Container</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.targetType"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Window (Page)', value: 'window' },
+            { label: 'Local Container', value: 'container' },
+          ]"
+        ></ui-dropdown>
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
         Show Progress
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showText" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showText" (change)="updateConfig()" />
         Show Text
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.pulse" (change)="updateConfig()" /> Pulse
-        Animation
+        <app-checkbox [(ngModel)]="pgConfig.pulse" (change)="updateConfig()" /> Pulse Animation
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.alwaysVisible" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (change)="updateConfig()" />
         Always Visible
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
       </label>
     </div>
   </div>
@@ -129,7 +152,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

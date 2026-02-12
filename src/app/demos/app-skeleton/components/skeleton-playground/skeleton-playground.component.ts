@@ -15,26 +15,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Shape</label>
-              <select [(ngModel)]="pgConfig.shape" (change)="updateConfig()">
-                <option value="text">Text</option>
-                <option value="circle">Circle</option>
-                <option value="rectangle">Rectangle</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Animation</label>
-              <select [(ngModel)]="pgConfig.animation" (change)="updateConfig()">
-                <option value="pulse">Pulse</option>
-                <option value="wave">Wave</option>
-                <option value="none">None</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.animation"
+                (change)="updateConfig()"
+                [options]="animationOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Theme</label>
-              <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -61,7 +62,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -91,6 +97,23 @@ export class SkeletonPlaygroundComponent {
     height: '100px',
     borderRadius: '8px',
   };
+
+  shapeOptions = [
+    { label: 'Text', value: 'text' },
+    { label: 'Circle', value: 'circle' },
+    { label: 'Rectangle', value: 'rectangle' },
+  ];
+
+  animationOptions = [
+    { label: 'Pulse', value: 'pulse' },
+    { label: 'Wave', value: 'wave' },
+    { label: 'None', value: 'none' },
+  ];
+
+  themeOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
 
   generatedCode = signal('');
 

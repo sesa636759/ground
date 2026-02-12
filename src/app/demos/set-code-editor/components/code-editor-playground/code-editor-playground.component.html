@@ -3,30 +3,42 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="vs-dark">Dark (VS Code)</option>
-          <option value="vs-light">Light (VS Code)</option>
-          <option value="hc-black">High Contrast</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Dark (VS Code)', value: 'vs-dark' },
+            { label: 'Light (VS Code)', value: 'vs-light' },
+            { label: 'High Contrast', value: 'hc-black' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Language</label>
-        <select [(ngModel)]="pgConfig.language" (change)="onLanguageChange()">
-          <option value="javascript">JavaScript</option>
-          <option value="html">HTML</option>
-          <option value="css">CSS</option>
-          <option value="json">JSON</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.language"
+          (change)="onLanguageChange()"
+          [options]="[
+            { label: 'JavaScript', value: 'javascript' },
+            { label: 'HTML', value: 'html' },
+            { label: 'CSS', value: 'css' },
+            { label: 'JSON', value: 'json' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Label Display</label>
-        <select [(ngModel)]="pgConfig.labelDisplay" (change)="updateConfig()">
-          <option value="always">Always</option>
-          <option value="hover">Hover</option>
-          <option value="hidden">Hidden</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.labelDisplay"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Always', value: 'always' },
+            { label: 'Hover', value: 'hover' },
+            { label: 'Hidden', value: 'hidden' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -42,16 +54,13 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.toolbar" (change)="updateConfig()" /> Show
-        Toolbar
+        <app-checkbox [(ngModel)]="pgConfig.toolbar" (change)="updateConfig()" /> Show Toolbar
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.lineNumbers" (change)="updateConfig()" /> Line
-        Numbers
+        <app-checkbox [(ngModel)]="pgConfig.lineNumbers" (change)="updateConfig()" /> Line Numbers
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Read
-        Only
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Read Only
       </label>
     </div>
   </div>
@@ -84,7 +93,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

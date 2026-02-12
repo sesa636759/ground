@@ -31,6 +31,42 @@ export class AnchorPlaygroundComponent implements OnInit {
     targetType: 'container', // 'window' or 'container'
   };
 
+  modeOptions = [
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Horizontal', value: 'horizontal' },
+  ];
+
+  positionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+  ];
+
+  alignmentOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Center', value: 'center' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' },
+  ];
+
+  themeOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
+
+  numberStyleOptions = [
+    { label: 'Numeric (1, 2)', value: 'numeric' },
+    { label: 'Decimal (01, 02)', value: 'decimal' },
+    { label: 'Alpha (a, b)', value: 'alpha' },
+    { label: 'Roman (i, ii)', value: 'roman' },
+  ];
+
   anchorItems = [
     { id: 'section-1', label: 'Introduction', icon: 'fas fa-home', tooltip: 'Start here' },
     {
@@ -100,7 +136,4 @@ export class AnchorPlaygroundComponent implements OnInit {
   copyCode() {
     navigator.clipboard.writeText(this.generatedCode());
   }
-
-  // Helper for JSON strings in template if needed
-  jsonOptions = (opts: any) => JSON.stringify(opts);
 }

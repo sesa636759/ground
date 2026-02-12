@@ -23,32 +23,31 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Home & Variant</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showHome"
                 [(ngModel)]="pgConfig.showHome"
                 (change)="updateConfig()"
-              />
-              <label for="showHome">Show Home</label>
+                label="Show Home"
+              ></app-checkbox>
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="pills">Pills</option>
-                <option value="glass">Glass</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -59,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -85,6 +89,18 @@ export class BreadcrumbPlaygroundComponent {
     variant: 'default',
     showHome: true,
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Pills', value: 'pills' },
+    { label: 'Glass', value: 'glass' },
+  ];
 
   items = [
     { label: 'Products', href: '/products' },

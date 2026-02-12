@@ -234,12 +234,17 @@
     background: var(--bg-secondary);
     
     th {
-      padding: 16px;
+      padding: 16px 12px;
       text-align: left;
       font-weight: 600;
       font-size: 0.875rem;
       color: var(--text-secondary);
       border-bottom: 2px solid var(--border-color);
+      
+      &:first-child {
+        width: 50px;
+        text-align: center;
+      }
     }
   }
   
@@ -257,8 +262,13 @@
       }
       
       td {
-        padding: 16px;
+        padding: 12px 12px;
         font-size: 0.9rem;
+        vertical-align: middle;
+        
+        &:first-child {
+          text-align: center;
+        }
       }
     }
   }
@@ -376,8 +386,17 @@
   .card-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 16px;
+  }
+  
+  .card-checkbox {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
   }
   
   .card-avatar {

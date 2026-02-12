@@ -3,46 +3,62 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Type</label>
-        <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-          <option value="text">Text</option>
-          <option value="password">Password</option>
-          <option value="email">Email</option>
-          <option value="number">Number</option>
-          <option value="tel">Tel</option>
-          <option value="url">URL</option>
-          <option value="search">Search</option>
-          <option value="date">Date</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.type"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Text', value: 'text' },
+            { label: 'Password', value: 'password' },
+            { label: 'Email', value: 'email' },
+            { label: 'Number', value: 'number' },
+            { label: 'Tel', value: 'tel' },
+            { label: 'URL', value: 'url' },
+            { label: 'Search', value: 'search' },
+            { label: 'Date', value: 'date' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="outlined">Outlined</option>
-          <option value="filled">Filled</option>
-          <option value="underlined">Underlined</option>
-          <option value="soft">Soft</option>
-          <option value="ghost">Ghost</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Outlined', value: 'outlined' },
+            { label: 'Filled', value: 'filled' },
+            { label: 'Underlined', value: 'underlined' },
+            { label: 'Soft', value: 'soft' },
+            { label: 'Ghost', value: 'ghost' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Validation State</label>
-        <select [(ngModel)]="pgConfig.validationState" (change)="updateConfig()">
-          <option value="none">None</option>
-          <option value="success">Success</option>
-          <option value="warning">Warning</option>
-          <option value="error">Error</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.validationState"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'None', value: 'none' },
+            { label: 'Success', value: 'success' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Error', value: 'error' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -68,44 +84,38 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.fullWidth" (change)="updateConfig()" /> Full
-        Width
+        <app-checkbox [(ngModel)]="pgConfig.fullWidth" (change)="updateConfig()" /> Full Width
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
+        <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showClear" (change)="updateConfig()" /> Clear
-        Btn
+        <app-checkbox [(ngModel)]="pgConfig.showClear" (change)="updateConfig()" /> Clear Btn
       </label>
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          [(ngModel)]="pgConfig.showPasswordToggle"
-          (change)="updateConfig()"
-        />
+        <app-checkbox [(ngModel)]="pgConfig.showPasswordToggle" (change)="updateConfig()" />
         Pwd Toggle
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showSteppers" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showSteppers" (change)="updateConfig()" />
         Steppers
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.multiline" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.multiline" (change)="updateConfig()" />
         Multiline
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.autoResize" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.autoResize" (change)="updateConfig()" />
         Auto-Resize
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
+        <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
       </label>
     </div>
   </div>
@@ -150,7 +160,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

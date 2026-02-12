@@ -19,63 +19,55 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="filled">Filled</option>
-                <option value="outlined">Outlined</option>
-                <option value="soft">Soft</option>
-                <option value="bordered">Bordered</option>
-                <option value="gradient">Gradient</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Color</label>
-              <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="primary">Primary</option>
-                <option value="secondary">Secondary</option>
-                <option value="success">Success</option>
-                <option value="danger">Danger</option>
-                <option value="warning">Warning</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.color"
+                (change)="updateConfig()"
+                [options]="colorOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="removable"
                 [(ngModel)]="pgConfig.removable"
                 (change)="updateConfig()"
-              />
-              <label for="removable">Removable</label>
+                label="Removable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="clickable"
                 [(ngModel)]="pgConfig.clickable"
                 (change)="updateConfig()"
-              />
-              <label for="clickable">Clickable</label>
+                label="Clickable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading</label>
+                label="Loading"
+              ></app-checkbox>
             </div>
             <div class="control-group">
               <label>Counter</label>
@@ -90,7 +82,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -122,6 +119,29 @@ export class PillPlaygroundComponent {
     loading: false,
     counter: null,
   };
+
+  variantOptions = [
+    { label: 'Filled', value: 'filled' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Soft', value: 'soft' },
+    { label: 'Bordered', value: 'bordered' },
+    { label: 'Gradient', value: 'gradient' },
+  ];
+
+  colorOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
 
   generatedCode = signal('');
 

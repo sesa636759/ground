@@ -3,46 +3,47 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
-        <select [(ngModel)]="pgConfig.mode" (change)="updateConfig()">
-          <option value="vertical">Vertical</option>
-          <option value="horizontal">Horizontal</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.mode"
+          (change)="updateConfig()"
+          [options]="modeOptions"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Position</label>
-        <select [(ngModel)]="pgConfig.position" (change)="updateConfig()">
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-          <option value="top">Top</option>
-          <option value="bottom">Bottom</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.position"
+          (change)="updateConfig()"
+          [options]="positionOptions"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Alignment</label>
-        <select [(ngModel)]="pgConfig.alignment" (change)="updateConfig()">
-          <option value="left">Left</option>
-          <option value="center">Center</option>
-          <option value="right">Right</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.alignment"
+          (change)="updateConfig()"
+          [options]="alignmentOptions"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="sizeOptions"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Theme</label>
-        <select [(ngModel)]="pgConfig.theme" (change)="updateConfig()">
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="themeOptions"
+        ></ui-dropdown>
       </div>
     </div>
 
@@ -54,45 +55,64 @@
 
       <div class="control-group">
         <label>Number Style</label>
-        <select
+        <ui-dropdown
           [(ngModel)]="pgConfig.numberStyle"
           (change)="updateConfig()"
           [disabled]="!pgConfig.showNumbers"
-        >
-          <option value="numeric">Numeric (1, 2)</option>
-          <option value="decimal">Decimal (01, 02)</option>
-          <option value="alpha">Alpha (a, b)</option>
-          <option value="roman">Roman (i, ii)</option>
-        </select>
+          [options]="numberStyleOptions"
+        ></ui-dropdown>
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showTooltip" (change)="updateConfig()" /> Show
-        Tooltip
+        <app-checkbox
+          [(ngModel)]="pgConfig.showTooltip"
+          (change)="updateConfig()"
+          label="Show Tooltip"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showIndicator" (change)="updateConfig()" />
-        Show Indicator
+        <app-checkbox
+          [(ngModel)]="pgConfig.showIndicator"
+          (change)="updateConfig()"
+          label="Show Indicator"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" /> Show
-        Progress
+        <app-checkbox
+          [(ngModel)]="pgConfig.showProgress"
+          (change)="updateConfig()"
+          label="Show Progress"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.showNumbers" (change)="updateConfig()" /> Show
-        Numbers
+        <app-checkbox
+          [(ngModel)]="pgConfig.showNumbers"
+          (change)="updateConfig()"
+          label="Show Numbers"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.sticky" (change)="updateConfig()" /> Sticky
+        <app-checkbox
+          [(ngModel)]="pgConfig.sticky"
+          (change)="updateConfig()"
+          label="Sticky"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.smoothScroll" (change)="updateConfig()" />
-        Smooth Scroll
+        <app-checkbox
+          [(ngModel)]="pgConfig.smoothScroll"
+          (change)="updateConfig()"
+          label="Smooth Scroll"
+        ></app-checkbox>
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.affix" (change)="updateConfig()" /> Affix
+        <app-checkbox
+          [(ngModel)]="pgConfig.affix"
+          (change)="updateConfig()"
+          label="Affix"
+        ></app-checkbox>
       </label>
     </div>
   </div>
@@ -188,7 +208,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

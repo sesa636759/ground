@@ -19,58 +19,55 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Size</label>
-              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-                <option value="sm">Small</option>
-                <option value="md">Medium</option>
-                <option value="lg">Large</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Appearance</label>
-              <select [(ngModel)]="pgConfig.appearance" (change)="updateConfig()">
-                <option value="dropdown">Dropdown</option>
-                <option value="button">Button-like</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.appearance"
+                (change)="updateConfig()"
+                [options]="appearanceOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="multi"
                 [(ngModel)]="pgConfig.multiSelect"
                 (change)="updateConfig()"
-              />
-              <label for="multi">Multi-Select</label>
+                label="Multi-Select"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="search"
                 [(ngModel)]="pgConfig.searchable"
                 (change)="updateConfig()"
-              />
-              <label for="search">Searchable</label>
+                label="Searchable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="clear"
                 [(ngModel)]="pgConfig.clearable"
                 (change)="updateConfig()"
-              />
-              <label for="clear">Clearable</label>
+                label="Clearable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="cascade"
                 [(ngModel)]="pgConfig.cascading"
                 (change)="updateConfig()"
-              />
-              <label for="cascade">Cascading (Hierarchical)</label>
+                label="Cascading (Hierarchical)"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -81,7 +78,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -122,6 +124,17 @@ export class DropdownPlaygroundComponent {
     clearable: true,
     cascading: false,
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
+  appearanceOptions = [
+    { label: 'Dropdown', value: 'dropdown' },
+    { label: 'Button-like', value: 'button' },
+  ];
 
   options = [
     { label: 'Angular', value: 'ng', icon: '🅰️' },

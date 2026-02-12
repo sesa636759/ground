@@ -22,44 +22,40 @@ import { FormsModule } from '@angular/forms';
               <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="modal"
                 [(ngModel)]="pgConfig.modal"
                 (change)="updateConfig()"
-              />
-              <label for="modal">Modal (Backdrop)</label>
+                label="Modal (Backdrop)"
+              ></app-checkbox>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Behavior</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="closable"
                 [(ngModel)]="pgConfig.closable"
                 (change)="updateConfig()"
-              />
-              <label for="closable">Show Close Icon</label>
+                label="Show Close Icon"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="draggable"
                 [(ngModel)]="pgConfig.draggable"
                 (change)="updateConfig()"
-              />
-              <label for="draggable">Draggable</label>
+                label="Draggable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
                 (change)="updateConfig()"
-              />
-              <label for="resizable">Resizable</label>
+                label="Resizable"
+              ></app-checkbox>
             </div>
           </div>
         </div>

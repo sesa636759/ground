@@ -18,13 +18,12 @@ import { FormsModule } from '@angular/forms';
               <input type="text" [(ngModel)]="pgConfig.logoText" (change)="updateConfig()" />
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="sticky"
                 [(ngModel)]="pgConfig.sticky"
                 (change)="updateConfig()"
-              />
-              <label for="sticky">Sticky Position</label>
+                label="Sticky Position"
+              ></app-checkbox>
             </div>
           </div>
 

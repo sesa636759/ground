@@ -15,21 +15,19 @@ import { FormsModule } from '@angular/forms';
             <h3>Layout</h3>
             <div class="control-group">
               <label>Direction</label>
-              <select [(ngModel)]="pgConfig.direction" (change)="updateConfig()">
-                <option value="up">Up</option>
-                <option value="down">Down</option>
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.direction"
+                (change)="updateConfig()"
+                [options]="directionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Type</label>
-              <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-                <option value="linear">Linear</option>
-                <option value="quarter-circle">Quarter Circle</option>
-                <option value="half-circle">Half Circle</option>
-                <option value="circle">Circle</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="typeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
@@ -37,25 +35,27 @@ import { FormsModule } from '@angular/forms';
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Radius (for circles)</label>
-              <input type="number" [(ngModel)]="pgConfig.radius" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.radius"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="ripple"
                 [(ngModel)]="pgConfig.ripple"
                 (change)="updateConfig()"
-              />
-              <label for="ripple">Ripple Effect</label>
+                label="Ripple Effect"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="mask"
                 [(ngModel)]="pgConfig.mask"
                 (change)="updateConfig()"
-              />
-              <label for="mask">Display Mask</label>
+                label="Display Mask"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -66,7 +66,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -97,6 +102,20 @@ export class SpeedDialPlaygroundComponent {
     ripple: true,
     mask: false,
   };
+
+  directionOptions = [
+    { label: 'Up', value: 'up' },
+    { label: 'Down', value: 'down' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  typeOptions = [
+    { label: 'Linear', value: 'linear' },
+    { label: 'Quarter Circle', value: 'quarter-circle' },
+    { label: 'Half Circle', value: 'half-circle' },
+    { label: 'Circle', value: 'circle' },
+  ];
 
   model = [
     { label: 'Add', icon: '➕' },

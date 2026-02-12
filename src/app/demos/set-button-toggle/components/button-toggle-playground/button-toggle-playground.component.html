@@ -3,65 +3,93 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
-        <select [(ngModel)]="pgConfig.mode" (change)="updateConfig()">
-          <option value="segmented">Segmented</option>
-          <option value="dropdown">Dropdown</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.mode"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Segmented', value: 'segmented' },
+            { label: 'Dropdown', value: 'dropdown' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Orientation</label>
-        <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
-          <option value="horizontal">Horizontal</option>
-          <option value="vertical">Vertical</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.orientation"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Color</label>
-        <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-          <option value="primary">Primary</option>
-          <option value="secondary">Secondary</option>
-          <option value="success">Success</option>
-          <option value="danger">Danger</option>
-          <option value="warning">Warning</option>
-          <option value="info">Info</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.color"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Primary', value: 'primary' },
+            { label: 'Secondary', value: 'secondary' },
+            { label: 'Success', value: 'success' },
+            { label: 'Danger', value: 'danger' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Info', value: 'info' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="filled">Filled</option>
-          <option value="outlined">Outlined</option>
-          <option value="text">Text</option>
-          <option value="soft">Soft</option>
-          <option value="classic">Classic</option>
-          <option value="solid">Solid</option>
-          <option value="surface">Surface</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Filled', value: 'filled' },
+            { label: 'Outlined', value: 'outlined' },
+            { label: 'Text', value: 'text' },
+            { label: 'Soft', value: 'soft' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Solid', value: 'solid' },
+            { label: 'Surface', value: 'surface' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Icon Position</label>
-        <select [(ngModel)]="pgConfig.iconPosition" (change)="updateConfig()">
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-          <option value="top">Top</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.iconPosition"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+            { label: 'Top', value: 'top' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Display Mode</label>
-        <select [(ngModel)]="pgConfig.displayMode" (change)="updateConfig()">
-          <option value="icon-label">Icon + Label</option>
-          <option value="label-only">Label Only</option>
-          <option value="icon-only">Icon Only</option>
-          <option value="both-sides">Both Sides</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.displayMode"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Icon + Label', value: 'icon-label' },
+            { label: 'Label Only', value: 'label-only' },
+            { label: 'Icon Only', value: 'icon-only' },
+            { label: 'Both Sides', value: 'both-sides' },
+          ]"
+        ></ui-dropdown>
       </div>
       <div class="control-group">
         <label>Group Label</label>
@@ -75,36 +103,31 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.fullWidth" (change)="updateConfig()" /> Full
+        ><app-checkbox [(ngModel)]="pgConfig.fullWidth" (change)="updateConfig()" /> Full
         Width</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.keepButtonLabel" (change)="updateConfig()" />
-        Keep Label</label
+        ><app-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (change)="updateConfig()" /> Keep
+        Label</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.customContent" (change)="updateConfig()" />
-        Custom Content</label
+        ><app-checkbox [(ngModel)]="pgConfig.customContent" (change)="updateConfig()" /> Custom
+        Content</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" />
-        Disabled</label
+        ><app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" />
-        Readonly</label
+        ><app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.loading" (change)="updateConfig()" />
-        Loading</label
+        ><app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.required" (change)="updateConfig()" />
-        Required</label
+        ><app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required</label
       >
       <label class="checkbox-item"
-        ><input type="checkbox" [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" />
-        Invalid</label
+        ><app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid</label
       >
     </div>
   </div>
@@ -152,7 +175,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

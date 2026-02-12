@@ -3,11 +3,15 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Layout</label>
-        <select [(ngModel)]="pgConfig.layout" (change)="updateConfig()">
-          <option value="vertical">Vertical</option>
-          <option value="horizontal">Horizontal</option>
-          <option value="grid">Grid</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.layout"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Vertical', value: 'vertical' },
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Grid', value: 'grid' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
@@ -23,41 +27,57 @@
 
       <div class="control-group">
         <label>Size</label>
-        <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Color</label>
-        <select [(ngModel)]="pgConfig.color" (change)="updateConfig()">
-          <option value="primary">Primary</option>
-          <option value="secondary">Secondary</option>
-          <option value="success">Success</option>
-          <option value="danger">Danger</option>
-          <option value="warning">Warning</option>
-          <option value="info">Info</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.color"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Primary', value: 'primary' },
+            { label: 'Secondary', value: 'secondary' },
+            { label: 'Success', value: 'success' },
+            { label: 'Danger', value: 'danger' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Info', value: 'info' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Variant</label>
-        <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-          <option value="default">Default</option>
-          <option value="bordered">Bordered</option>
-          <option value="underlined">Underlined</option>
-          <option value="card">Card</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Bordered', value: 'bordered' },
+            { label: 'Underlined', value: 'underlined' },
+            { label: 'Card', value: 'card' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Label Position</label>
-        <select [(ngModel)]="pgConfig.labelPosition" (change)="updateConfig()">
-          <option value="left">Left</option>
-          <option value="right">Right</option>
-        </select>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.labelPosition"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ]"
+        ></ui-dropdown>
       </div>
 
       <div class="control-group">
@@ -73,35 +93,34 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
+        <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
+        <app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
         Animation
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.rippleEffect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.rippleEffect" (change)="updateConfig()" />
         Ripple
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.buttonGroup" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.buttonGroup" (change)="updateConfig()" />
         Button Grp
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
+        <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
       </label>
       <label class="checkbox-item">
-        <input type="checkbox" [(ngModel)]="pgConfig.allowEmpty" (change)="updateConfig()" /> Allow
-        Empty
+        <app-checkbox [(ngModel)]="pgConfig.allowEmpty" (change)="updateConfig()" /> Allow Empty
       </label>
     </div>
   </div>
@@ -139,7 +158,13 @@
     <div class="code-block">
       <div class="code-header">
         <span>Generated Code</span>
-        <ui-button class="copy-btn" variant="secondary" size="sm" (click)="copyCode()" label="Copy"></ui-button>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
       </div>
       <pre><code>{{ generatedCode() }}</code></pre>
     </div>

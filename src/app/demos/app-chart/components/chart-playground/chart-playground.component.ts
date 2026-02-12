@@ -15,34 +15,31 @@ import { FormsModule } from '@angular/forms';
             <h3>Chart Type</h3>
             <div class="control-group">
               <label>Type</label>
-              <select [(ngModel)]="pgConfig.type" (change)="updateConfig()">
-                <option value="line">Line</option>
-                <option value="bar">Bar</option>
-                <option value="pie">Pie</option>
-                <option value="doughnut">Doughnut</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="typeOptions"
+              ></ui-dropdown>
             </div>
           </div>
 
           <div class="control-section">
             <h3>Features</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="showLegend"
                 [(ngModel)]="pgConfig.showLegend"
                 (change)="updateConfig()"
-              />
-              <label for="showLegend">Show Legend</label>
+                label="Show Legend"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="responsive"
                 [(ngModel)]="pgConfig.responsive"
                 (change)="updateConfig()"
-              />
-              <label for="responsive">Responsive</label>
+                label="Responsive"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -53,7 +50,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -77,6 +79,13 @@ export class ChartPlaygroundComponent {
     showLegend: true,
     responsive: true,
   };
+
+  typeOptions = [
+    { label: 'Line', value: 'line' },
+    { label: 'Bar', value: 'bar' },
+    { label: 'Pie', value: 'pie' },
+    { label: 'Doughnut', value: 'doughnut' },
+  ];
 
   chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],

@@ -22,6 +22,34 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     once: true,
   };
 
+  animationOptions = [
+    { label: 'Fade In', value: 'fade-in' },
+    { label: 'Fade Out', value: 'fade-out' },
+    { label: 'Slide Up', value: 'slide-up' },
+    { label: 'Slide Down', value: 'slide-down' },
+    { label: 'Slide Left', value: 'slide-left' },
+    { label: 'Slide Right', value: 'slide-right' },
+    { label: 'Zoom In', value: 'zoom-in' },
+    { label: 'Zoom Out', value: 'zoom-out' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'Flip', value: 'flip' },
+  ];
+
+  directionOptions = [
+    { label: 'Up', value: 'up' },
+    { label: 'Down', value: 'down' },
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
+  easingOptions = [
+    { label: 'Ease', value: 'ease' },
+    { label: 'Ease In', value: 'ease-in' },
+    { label: 'Ease Out', value: 'ease-out' },
+    { label: 'Ease In Out', value: 'ease-in-out' },
+    { label: 'Linear', value: 'linear' },
+  ];
+
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
 

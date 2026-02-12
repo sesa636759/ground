@@ -43,11 +43,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Color Mode</label>
-              <select [(ngModel)]="pgConfig.colorMode" (change)="updateConfig()">
-                <option value="solid">Solid</option>
-                <option value="gradient">Gradient</option>
-                <option value="segments">Segments</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.colorMode"
+                (change)="updateConfig()"
+                [options]="colorModeOptions"
+              ></ui-dropdown>
             </div>
           </div>
         </div>
@@ -58,7 +58,12 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
@@ -87,6 +92,12 @@ export class SpeedometerPlaygroundComponent {
     arcWidth: 20,
     colorMode: 'gradient',
   };
+
+  colorModeOptions = [
+    { label: 'Solid', value: 'solid' },
+    { label: 'Gradient', value: 'gradient' },
+    { label: 'Segments', value: 'segments' },
+  ];
 
   generatedCode = signal('');
 

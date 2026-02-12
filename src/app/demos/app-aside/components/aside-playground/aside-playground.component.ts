@@ -16,12 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Direction</label>
-              <select [(ngModel)]="pgConfig.direction" (change)="updateConfig()">
-                <option value="right">Right</option>
-                <option value="left">Left</option>
-                <option value="top">Top</option>
-                <option value="bottom">Bottom</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.direction"
+                (change)="updateConfig()"
+                [options]="directionOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Size (px/%/rem)</label>
@@ -29,10 +28,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Variant</label>
-              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
-                <option value="default">Default</option>
-                <option value="glass">Glass</option>
-              </select>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.variant"
+                (change)="updateConfig()"
+                [options]="variantOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Backdrop Blur</label>
@@ -49,40 +49,36 @@ import { FormsModule } from '@angular/forms';
           <div class="control-section">
             <h3>Behavior</h3>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="closeable"
                 [(ngModel)]="pgConfig.closeable"
                 (change)="updateConfig()"
-              />
-              <label for="closeable">Closeable</label>
+                label="Closeable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="overlayClick"
                 [(ngModel)]="pgConfig.closeOnOverlayClick"
                 (change)="updateConfig()"
-              />
-              <label for="overlayClick">Close on Overlay Click</label>
+                label="Close on Overlay Click"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
                 (change)="updateConfig()"
-              />
-              <label for="resizable">Resizable</label>
+                label="Resizable"
+              ></app-checkbox>
             </div>
             <div class="checkbox-group">
-              <input
-                type="checkbox"
+              <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
                 (change)="updateConfig()"
-              />
-              <label for="loading">Loading State</label>
+                label="Loading State"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -93,14 +89,24 @@ import { FormsModule } from '@angular/forms';
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 
       <div class="playground-preview">
         <div class="preview-content">
           <p>Click the button below to trigger the Aside Panel.</p>
-          <ui-button class="btn-primary" variant="primary" (click)="pgConfig.open = true" label="Open Panel"></ui-button>
+          <ui-button
+            class="btn-primary"
+            variant="primary"
+            (click)="pgConfig.open = true"
+            label="Open Panel"
+          ></ui-button>
         </div>
 
         <aside-panel
@@ -144,8 +150,18 @@ import { FormsModule } from '@angular/forms';
             </div>
           </div>
           <div slot="footer" class="aside-footer-demo">
-            <ui-button class="btn-secondary" variant="secondary" (click)="pgConfig.open = false" label="Cancel"></ui-button>
-            <ui-button class="btn-primary" variant="primary" (click)="pgConfig.open = false" label="Save Changes"></ui-button>
+            <ui-button
+              class="btn-secondary"
+              variant="secondary"
+              (click)="pgConfig.open = false"
+              label="Cancel"
+            ></ui-button>
+            <ui-button
+              class="btn-primary"
+              variant="primary"
+              (click)="pgConfig.open = false"
+              label="Save Changes"
+            ></ui-button>
           </div>
         </aside-panel>
       </div>
@@ -165,6 +181,18 @@ export class AsidePlaygroundComponent {
     backdropBlur: '0',
     loading: false,
   };
+
+  directionOptions = [
+    { label: 'Right', value: 'right' },
+    { label: 'Left', value: 'left' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Glass', value: 'glass' },
+  ];
 
   generatedCode = signal('');
 
