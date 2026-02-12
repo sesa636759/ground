@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-avatar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AvatarPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    AvatarPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-demo.component.html',
   styleUrl: './app-avatar-demo.component.scss',

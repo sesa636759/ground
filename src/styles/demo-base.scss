@@ -2,9 +2,14 @@
 // Import this in all demo component SCSS files
 
 .demo-container {
+  height: 100%; /* Fit within parent container instead of viewport height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
   max-width: 90%;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 24px; /* Reduced vertical padding since it's fixed height */
 }
 
 h1 {
@@ -26,18 +31,38 @@ h1 {
 
 .variants-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 12px;
-  padding: 8px 4px 24px 4px;
-  margin-bottom: 40px;
+  padding: 8px 4px 16px 4px; /* Reduced bottom padding */
+  margin-bottom: 24px; /* Reduced margin */
+  
+  /* Scrollbar styles matching demo-tabs */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+  }
 
   ui-button {
+    flex-shrink: 0; /* Prevent buttons from shrinking */
     --ui-button-radius: 9999px; /* Rounded pill shape */
     
     &::part(button) {
       border-radius: 9999px; /* Ensure internal button gets radius */
       font-weight: 600;
       color: white; /* Ensure text matches background */
+      white-space: nowrap; /* Prevent text wrapping */
     }
   }
 }

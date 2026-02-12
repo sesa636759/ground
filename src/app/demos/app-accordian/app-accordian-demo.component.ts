@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AccordianPlaygroundComponent, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AccordianPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',
@@ -29,6 +36,10 @@ export class SetAccordianDemoComponent {
     { id: 'controlled', name: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', name: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);
