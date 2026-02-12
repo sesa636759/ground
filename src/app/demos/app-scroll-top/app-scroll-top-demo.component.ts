@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { ScrollTopPlaygroundComponent } from './components/scroll-top-playground
 @Component({
   selector: 'app-app-scroll-top-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ScrollTopPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, ScrollTopPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-scroll-top-demo.component.html',
   styleUrl: './app-scroll-top-demo.component.scss',

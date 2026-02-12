@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { PicklistPlaygroundComponent } from './components/picklist-playground/pi
 @Component({
   selector: 'app-app-picklist-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PicklistPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PicklistPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-picklist-demo.component.html',
   styleUrl: './app-picklist-demo.component.scss',

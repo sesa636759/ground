@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { ChipPlaygroundComponent } from './components/chip-playground/chip-playg
 @Component({
   selector: 'app-app-chip-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ChipPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, ChipPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-chip-demo.component.html',
   styleUrl: './app-chip-demo.component.scss',

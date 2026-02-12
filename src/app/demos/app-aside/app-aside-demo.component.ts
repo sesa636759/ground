@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { AsidePlaygroundComponent } from './components/aside-playground/aside-pl
 @Component({
   selector: 'app-app-aside-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AsidePlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, AsidePlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-aside-demo.component.html',
   styleUrl: './app-aside-demo.component.scss',

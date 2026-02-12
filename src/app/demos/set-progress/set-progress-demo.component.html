@@ -1,11 +1,13 @@
-<div class="demo-container">
-  <h1>🚀 Progress Component</h1>
-  <p class="intro-text">
-    Display the current progress of an operation flow with line, circle, and dashboard styles.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🚀</span> Progress Component</h1>
+<p class="intro-text">Display the current progress of an operation flow with line, circle, and dashboard styles.</p>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Customize the progress bar settings and see changes in real-time</p>
@@ -13,9 +15,13 @@
     <app-progress-playground></app-progress-playground>
     <app-code-block [code]="playgroundCode" title="Progress Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Line Progress -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>Line Progress</h2>
       <p>Standard progress bar with different statuses</p>
@@ -48,8 +54,7 @@
     </div>
   </section>
 
-  <!-- Circular & Dashboard -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>Circular & Dashboard</h2>
       <p>Circular progress indicators for compact displays</p>
@@ -81,8 +86,7 @@
     </div>
   </section>
 
-  <!-- Premium Features -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>💎 Premium Effects</h2>
       <p>Advanced visual effects for modern interfaces</p>
@@ -115,4 +119,21 @@
       </div>
     </div>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

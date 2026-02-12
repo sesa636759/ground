@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { AdvancedDataTablePlaygroundComponent } from './components/advanced-data
 @Component({
   selector: 'app-app-advanced-data-table-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AdvancedDataTablePlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, AdvancedDataTablePlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-advanced-data-table-demo.component.html',
   styleUrl: './app-advanced-data-table-demo.component.scss',

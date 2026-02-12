@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SwitchPlaygroundComponent } from './components/switch-playground/switch
 @Component({
   selector: 'app-app-switch-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SwitchPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SwitchPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-switch-demo.component.html',
   styleUrl: './app-switch-demo.component.scss',

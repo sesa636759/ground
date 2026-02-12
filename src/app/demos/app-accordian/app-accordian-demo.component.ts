@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-app-accordian-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AccordianPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, AccordianPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',

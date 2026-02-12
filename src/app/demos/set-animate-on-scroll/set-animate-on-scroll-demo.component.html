@@ -1,12 +1,14 @@
-<div class="demo-container">
-  <h1>✨ Animate On Scroll Component</h1>
-  <p class="intro-text">
-    Animation utility component for triggering smooth animations based on scroll position with
-    customizable effects and timing.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">✨</span> Animate On Scroll Component</h1>
+<p class="intro-text">Animation utility component for triggering smooth animations based on scroll position with
+    customizable effects and timing.</p>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure and test all animation properties</p>
@@ -18,9 +20,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Animation Types -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>🎭 Animation Types</h2>
       <p>Different animation effects on scroll</p>
@@ -55,8 +61,7 @@
     </div>
   </section>
 
-  <!-- Directions -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📐 Animation Directions</h2>
       <p>Animations from different directions</p>
@@ -82,8 +87,7 @@
     </div>
   </section>
 
-  <!-- Timing -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>⏱️ Timing Options</h2>
       <p>Different durations and delays</p>
@@ -118,8 +122,7 @@
     </div>
   </section>
 
-  <!-- Advanced -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>💎 Advanced Features</h2>
       <p>Repeat, offset, and easing options</p>
@@ -144,4 +147,21 @@
       </div>
     </div>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { ChartPlaygroundComponent } from './components/chart-playground/chart-pl
 @Component({
   selector: 'app-app-chart-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ChartPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, ChartPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-chart-demo.component.html',
   styleUrl: './app-chart-demo.component.scss',

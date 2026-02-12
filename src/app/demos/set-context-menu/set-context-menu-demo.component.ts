@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-set-context-menu-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ContextMenuPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, ContextMenuPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-context-menu-demo.component.html',
   styleUrl: './set-context-menu-demo.component.scss',

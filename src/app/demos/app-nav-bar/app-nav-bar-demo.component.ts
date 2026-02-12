@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { NavBarPlaygroundComponent } from './components/nav-bar-playground/nav-b
 @Component({
   selector: 'app-app-nav-bar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, NavBarPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, NavBarPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-nav-bar-demo.component.html',
   styleUrl: './app-nav-bar-demo.component.scss',

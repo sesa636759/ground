@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor
 @Component({
   selector: 'app-app-anchor-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AnchorPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, AnchorPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-anchor-demo.component.html',
   styleUrl: './app-anchor-demo.component.scss',

@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SpeedDialPlaygroundComponent } from './components/speed-dial-playground
 @Component({
   selector: 'app-app-speed-dial-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SpeedDialPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SpeedDialPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-speed-dial-demo.component.html',
   styleUrl: './app-speed-dial-demo.component.scss',

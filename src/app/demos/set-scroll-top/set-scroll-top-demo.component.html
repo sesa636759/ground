@@ -1,8 +1,12 @@
-<div class="demo-container">
-  <h1>⬆️ Scroll Top Component Demo</h1>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⬆</span> ️ Scroll Top Component Demo</h1>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure variants, positions, and scroll behaviors</p>
@@ -14,9 +18,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Style Variants -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>🎭 Style Variants</h2>
       <p>Different visual styles and shapes for the scroll button</p>
@@ -69,8 +77,7 @@
     </div>
   </section>
 
-  <!-- Special Features -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>💎 Premium Features</h2>
       <p>Progress rings, pulse animations, and text labels</p>
@@ -127,21 +134,21 @@
       </div>
     </div>
   </section>
-
-  <!-- Long content to test actual window scrolling -->
-  <div class="scroll-test-area">
-    <p>This is a testing area for page scrolling...</p>
-    <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]">
-      Scroll down to see the main page button appear!
-    </p>
+      </div>
   </div>
 
-  <!-- Global page button for this demo -->
-  <app-scroll-top
-    variant="circular"
-    [showProgress]="true"
-    [pulse]="true"
-    color="#3DCD58"
-    tooltip="Back to Top"
-  ></app-scroll-top>
-</div>
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

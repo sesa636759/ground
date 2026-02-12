@@ -1,8 +1,12 @@
-<div class="demo-container">
-  <h1>↔️ Resizable Panel Component Demo</h1>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">↔</span> ️ Resizable Panel Component Demo</h1>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure multiple panels, directions, and snap behaviors</p>
@@ -14,9 +18,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Basic Orientations -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>📋 Basic Orientations</h2>
       <p>Horizontal and vertical split configurations</p>
@@ -43,8 +51,7 @@
     </div>
   </section>
 
-  <!-- Complex Layouts -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🥈 Complex Layouts</h2>
       <p>Nested panels for IDE-like or dashboard interfaces</p>
@@ -65,8 +72,7 @@
     </div>
   </section>
 
-  <!-- Special Features -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>💎 Premium Features</h2>
       <p>Snap-to-edge and dark theme capabilities</p>
@@ -92,4 +98,21 @@
       </div>
     </div>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

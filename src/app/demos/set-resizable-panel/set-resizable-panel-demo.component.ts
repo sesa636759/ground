@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-set-resizable-panel-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ResizablePanelPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, ResizablePanelPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-resizable-panel-demo.component.html',
   styleUrl: './set-resizable-panel-demo.component.scss',

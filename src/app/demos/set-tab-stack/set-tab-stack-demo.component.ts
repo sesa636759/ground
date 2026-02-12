@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-set-tab-stack-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TabStackPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, TabStackPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tab-stack-demo.component.html',
   styleUrl: './set-tab-stack-demo.component.scss',

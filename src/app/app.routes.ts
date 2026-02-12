@@ -16,11 +16,13 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-    loadComponent: () => import('./pages/register/register.component').then((m) => m.RegisterComponent),
+    loadComponent: () =>
+      import('./pages/register/register.component').then((m) => m.RegisterComponent),
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
+    loadComponent: () =>
+      import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
   },
   {
     path: 'overview',
@@ -58,74 +60,74 @@ export const routes: Routes = [
     path: 'demos',
     children: [
       {
-        path: 'set-button-toggle',
+        path: 'button-toggle-set',
         loadComponent: () =>
           import('./demos/set-button-toggle/set-button-toggle-demo.component').then(
             (m) => m.SetButtonToggleDemoComponent,
           ),
       },
       {
-        path: 'set-checkbox',
+        path: 'checkbox-set',
         loadComponent: () =>
           import('./demos/set-checkbox/set-checkbox-demo.component').then(
             (m) => m.SetCheckboxDemoComponent,
           ),
       },
       {
-        path: 'set-input',
+        path: 'input-set',
         loadComponent: () =>
           import('./demos/set-input/set-input-demo.component').then((m) => m.SetInputDemoComponent),
       },
       {
-        path: 'set-radio',
+        path: 'radio-set',
         loadComponent: () =>
           import('./demos/set-radio/set-radio-demo.component').then((m) => m.SetRadioDemoComponent),
       },
       {
-        path: 'set-card',
+        path: 'card-set',
         loadComponent: () =>
           import('./demos/set-card/set-card-demo.component').then((m) => m.SetCardDemoComponent),
       },
       {
-        path: 'set-context-menu',
+        path: 'context-menu-set',
         loadComponent: () =>
           import('./demos/set-context-menu/set-context-menu-demo.component').then(
             (m) => m.SetContextMenuDemoComponent,
           ),
       },
       {
-        path: 'set-tree',
+        path: 'tree-set',
         loadComponent: () =>
           import('./demos/set-tree/set-tree-demo.component').then((m) => m.SetTreeDemoComponent),
       },
       {
-        path: 'set-tabs',
+        path: 'tabs-set',
         loadComponent: () =>
           import('./demos/set-tabs/set-tabs-demo.component').then((m) => m.SetTabsDemoComponent),
       },
       {
-        path: 'set-resizable-panel',
+        path: 'resizable-panel-set',
         loadComponent: () =>
           import('./demos/set-resizable-panel/set-resizable-panel-demo.component').then(
             (m) => m.SetResizablePanelDemoComponent,
           ),
       },
       {
-        path: 'set-splitter',
+        path: 'splitter-set',
         loadComponent: () =>
           import('./demos/set-splitter/set-splitter-demo.component').then(
             (m) => m.SetSplitterDemoComponent,
           ),
       },
       {
-        path: 'set-scroll-top',
+        path: 'scroll-top-set',
         loadComponent: () =>
           import('./demos/set-scroll-top/set-scroll-top-demo.component').then(
             (m) => m.SetScrollTopDemoComponent,
           ),
       },
       {
-        path: 'set-modern-sidebar',
+        path: 'modern-sidebar-set',
         loadComponent: () =>
           import('./demos/set-modern-sidebar/set-modern-sidebar-demo.component').then(
             (m) => m.SetModernSidebarDemoComponent,
@@ -139,40 +141,40 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'set-anchor',
+        path: 'anchor-set',
         loadComponent: () =>
           import('./demos/set-anchor/set-anchor-demo.component').then(
             (m) => m.SetAnchorDemoComponent,
           ),
       },
       {
-        path: 'set-tooltip',
+        path: 'tooltip-set',
         loadComponent: () =>
           import('./demos/set-tooltip/set-tooltip-demo.component').then(
             (m) => m.SetTooltipDemoComponent,
           ),
       },
       {
-        path: 'set-tree',
+        path: 'tree-set',
         loadComponent: () =>
           import('./demos/set-tree/set-tree-demo.component').then((m) => m.SetTreeDemoComponent),
       },
       {
-        path: 'set-timeline',
+        path: 'timeline-set',
         loadComponent: () =>
           import('./demos/set-timeline/set-timeline-demo.component').then(
             (m) => m.SetTimelineDemoComponent,
           ),
       },
       {
-        path: 'set-progress',
+        path: 'progress-set',
         loadComponent: () =>
           import('./demos/set-progress/set-progress-demo.component').then(
             (m) => m.SetProgressDemoComponent,
           ),
       },
       {
-        path: 'set-toggle',
+        path: 'toggle-set',
         loadComponent: () =>
           import('./demos/set-toggle/set-toggle-demo.component').then(
             (m) => m.SetToggleDemoComponent,
@@ -180,117 +182,117 @@ export const routes: Routes = [
       },
 
       {
-        path: 'set-list',
+        path: 'list-set',
         loadComponent: () =>
           import('./demos/set-list/set-list-demo.component').then((m) => m.SetListDemoComponent),
       },
       {
-        path: 'set-masonry',
+        path: 'masonry-set',
         loadComponent: () =>
           import('./demos/set-masonry/set-masonry-demo.component').then(
             (m) => m.SetMasonryDemoComponent,
           ),
       },
       {
-        path: 'set-empty-state',
+        path: 'empty-state-set',
         loadComponent: () =>
           import('./demos/set-empty-state/set-empty-state-demo.component').then(
             (m) => m.SetEmptyStateDemoComponent,
           ),
       },
       {
-        path: 'set-avatar',
+        path: 'avatar-set',
         loadComponent: () =>
           import('./demos/set-avatar/set-avatar-demo.component').then(
             (m) => m.SetAvatarDemoComponent,
           ),
       },
       {
-        path: 'set-carousel',
+        path: 'carousel-set',
         loadComponent: () =>
           import('./demos/set-carousel/set-carousel-demo.component').then(
             (m) => m.SetCarouselDemoComponent,
           ),
       },
       {
-        path: 'set-stepper',
+        path: 'stepper-set',
         loadComponent: () =>
           import('./demos/set-stepper/set-stepper-demo.component').then(
             (m) => m.SetStepperDemoComponent,
           ),
       },
       {
-        path: 'set-otp-input',
+        path: 'otp-input-set',
         loadComponent: () =>
           import('./demos/set-otp-input/set-otp-input-demo.component').then(
             (m) => m.SetOtpInputDemoComponent,
           ),
       },
       {
-        path: 'set-code-editor',
+        path: 'code-editor-set',
         loadComponent: () =>
           import('./demos/set-code-editor/set-code-editor-demo.component').then(
             (m) => m.SetCodeEditorDemoComponent,
           ),
       },
       {
-        path: 'set-dashboard',
+        path: 'dashboard-set',
         loadComponent: () =>
           import('./demos/set-dashboard/set-dashboard-demo.component').then(
             (m) => m.SetDashboardDemoComponent,
           ),
       },
       {
-        path: 'set-tags-input',
+        path: 'tags-input-set',
         loadComponent: () =>
           import('./demos/set-tags-input/set-tags-input-demo.component').then(
             (m) => m.SetTagsInputDemoComponent,
           ),
       },
       {
-        path: 'set-theme-switcher',
+        path: 'theme-switcher-set',
         loadComponent: () =>
           import('./demos/set-theme-switcher/set-theme-switcher-demo.component').then(
             (m) => m.SetThemeSwitcherDemoComponent,
           ),
       },
       {
-        path: 'set-sidebar',
+        path: 'sidebar-set',
         loadComponent: () =>
           import('./demos/set-sidebar/set-sidebar-demo.component').then(
             (m) => m.SetSidebarDemoComponent,
           ),
       },
       {
-        path: 'set-animate-on-scroll',
+        path: 'animate-on-scroll-set',
         loadComponent: () =>
           import('./demos/set-animate-on-scroll/set-animate-on-scroll-demo.component').then(
             (m) => m.SetAnimateOnScrollDemoComponent,
           ),
       },
       {
-        path: 'set-dock-overlay',
+        path: 'dock-overlay-set',
         loadComponent: () =>
           import('./demos/set-dock-overlay/set-dock-overlay-demo.component').then(
             (m) => m.SetDockOverlayDemoComponent,
           ),
       },
       {
-        path: 'set-avatar-group',
+        path: 'avatar-group-set',
         loadComponent: () =>
           import('./demos/set-avatar-group/set-avatar-group-demo.component').then(
             (m) => m.SetAvatarGroupDemoComponent,
           ),
       },
       {
-        path: 'set-tab-stack',
+        path: 'tab-stack-set',
         loadComponent: () =>
           import('./demos/set-tab-stack/set-tab-stack-demo.component').then(
             (m) => m.SetTabStackDemoComponent,
           ),
       },
       {
-        path: 'set-layout-manager',
+        path: 'layout-manager-set',
         loadComponent: () =>
           import('./demos/set-layout-manager/set-layout-manager-demo.component').then(
             (m) => m.SetLayoutManagerDemoComponent,
@@ -298,21 +300,21 @@ export const routes: Routes = [
       },
 
       {
-        path: 'set-button-toggle',
+        path: 'button-toggle-set',
         loadComponent: () =>
           import('./demos/set-button-toggle/set-button-toggle-demo.component').then(
             (m) => m.SetButtonToggleDemoComponent,
           ),
       },
       {
-        path: 'set-checkbox',
+        path: 'checkbox-set',
         loadComponent: () =>
           import('./demos/set-checkbox/set-checkbox-demo.component').then(
             (m) => m.SetCheckboxDemoComponent,
           ),
       },
       {
-        path: 'set-input',
+        path: 'input-set',
         loadComponent: () =>
           import('./demos/set-input/set-input-demo.component').then((m) => m.SetInputDemoComponent),
       },
@@ -322,85 +324,85 @@ export const routes: Routes = [
           import('./demos/set-radio/set-radio-demo.component').then((m) => m.SetRadioDemoComponent),
       },
       {
-        path: 'set-card',
+        path: 'card-set',
         loadComponent: () =>
           import('./demos/set-card/set-card-demo.component').then((m) => m.SetCardDemoComponent),
       },
       {
-        path: 'set-context-menu',
+        path: 'context-menu-set',
         loadComponent: () =>
           import('./demos/set-context-menu/set-context-menu-demo.component').then(
             (m) => m.SetContextMenuDemoComponent,
           ),
       },
       {
-        path: 'set-tree',
+        path: 'tree-set',
         loadComponent: () =>
           import('./demos/set-tree/set-tree-demo.component').then((m) => m.SetTreeDemoComponent),
       },
       {
-        path: 'set-tabs',
+        path: 'tabs-set',
         loadComponent: () =>
           import('./demos/set-tabs/set-tabs-demo.component').then((m) => m.SetTabsDemoComponent),
       },
       {
-        path: 'set-resizable-panel',
+        path: 'resizable-panel-set',
         loadComponent: () =>
           import('./demos/set-resizable-panel/set-resizable-panel-demo.component').then(
             (m) => m.SetResizablePanelDemoComponent,
           ),
       },
       {
-        path: 'set-splitter',
+        path: 'splitter-set',
         loadComponent: () =>
           import('./demos/set-splitter/set-splitter-demo.component').then(
             (m) => m.SetSplitterDemoComponent,
           ),
       },
       {
-        path: 'set-scroll-top',
+        path: 'scroll-top-set',
         loadComponent: () =>
           import('./demos/set-scroll-top/set-scroll-top-demo.component').then(
             (m) => m.SetScrollTopDemoComponent,
           ),
       },
       {
-        path: 'set-modern-sidebar',
+        path: 'modern-sidebar-set',
         loadComponent: () =>
           import('./demos/set-modern-sidebar/set-modern-sidebar-demo.component').then(
             (m) => m.SetModernSidebarDemoComponent,
           ),
       },
       {
-        path: 'set-anchor',
+        path: 'anchor-set',
         loadComponent: () =>
           import('./demos/set-anchor/set-anchor-demo.component').then(
             (m) => m.SetAnchorDemoComponent,
           ),
       },
       {
-        path: 'set-tooltip',
+        path: 'tooltip-set',
         loadComponent: () =>
           import('./demos/set-tooltip/set-tooltip-demo.component').then(
             (m) => m.SetTooltipDemoComponent,
           ),
       },
       {
-        path: 'set-timeline',
+        path: 'timeline-set',
         loadComponent: () =>
           import('./demos/set-timeline/set-timeline-demo.component').then(
             (m) => m.SetTimelineDemoComponent,
           ),
       },
       {
-        path: 'set-progress',
+        path: 'progress-set',
         loadComponent: () =>
           import('./demos/set-progress/set-progress-demo.component').then(
             (m) => m.SetProgressDemoComponent,
           ),
       },
       {
-        path: 'set-toggle',
+        path: 'toggle-set',
         loadComponent: () =>
           import('./demos/set-toggle/set-toggle-demo.component').then(
             (m) => m.SetToggleDemoComponent,
@@ -408,40 +410,40 @@ export const routes: Routes = [
       },
 
       {
-        path: 'set-list',
+        path: 'list-set',
         loadComponent: () =>
           import('./demos/set-list/set-list-demo.component').then((m) => m.SetListDemoComponent),
       },
       {
-        path: 'set-empty-state',
+        path: 'empty-state-set',
         loadComponent: () =>
           import('./demos/set-empty-state/set-empty-state-demo.component').then(
             (m) => m.SetEmptyStateDemoComponent,
           ),
       },
       {
-        path: 'set-avatar',
+        path: 'avatar-set',
         loadComponent: () =>
           import('./demos/set-avatar/set-avatar-demo.component').then(
             (m) => m.SetAvatarDemoComponent,
           ),
       },
       {
-        path: 'set-carousel',
+        path: 'carousel-set',
         loadComponent: () =>
           import('./demos/set-carousel/set-carousel-demo.component').then(
             (m) => m.SetCarouselDemoComponent,
           ),
       },
       {
-        path: 'set-stepper',
+        path: 'stepper-set',
         loadComponent: () =>
           import('./demos/set-stepper/set-stepper-demo.component').then(
             (m) => m.SetStepperDemoComponent,
           ),
       },
       {
-        path: 'set-otp-input',
+        path: 'otp-input-set',
         loadComponent: () =>
           import('./demos/set-otp-input/set-otp-input-demo.component').then(
             (m) => m.SetOtpInputDemoComponent,
@@ -449,7 +451,7 @@ export const routes: Routes = [
       },
 
       {
-        path: 'set-dashboard',
+        path: 'dashboard-set',
         loadComponent: () =>
           import('./demos/set-dashboard/set-dashboard-demo.component').then(
             (m) => m.SetDashboardDemoComponent,

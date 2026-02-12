@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -12,7 +13,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-set-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',

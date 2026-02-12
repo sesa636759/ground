@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SmartMenuPlaygroundComponent } from './components/smart-menu-playground
 @Component({
   selector: 'app-app-smart-menu-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SmartMenuPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SmartMenuPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-smart-menu-demo.component.html',
   styleUrl: './app-smart-menu-demo.component.scss',

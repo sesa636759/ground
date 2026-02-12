@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { PillPlaygroundComponent } from './components/pill-playground/pill-playg
 @Component({
   selector: 'app-app-pill-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PillPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PillPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pill-demo.component.html',
   styleUrl: './app-pill-demo.component.scss',

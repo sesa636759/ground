@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { TopBarPlaygroundComponent } from './components/top-bar-playground/top-b
 @Component({
   selector: 'app-app-top-bar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TopBarPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, TopBarPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-top-bar-demo.component.html',
   styleUrl: './app-top-bar-demo.component.scss',

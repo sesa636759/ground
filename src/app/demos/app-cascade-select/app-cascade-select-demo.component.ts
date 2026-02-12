@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CascadeSelectPlaygroundComponent } from './components/cascade-select-pl
 @Component({
   selector: 'app-app-cascade-select-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, CascadeSelectPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, CascadeSelectPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-cascade-select-demo.component.html',
   styleUrl: './app-cascade-select-demo.component.scss',

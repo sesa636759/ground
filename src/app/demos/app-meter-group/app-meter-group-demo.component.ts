@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { MeterGroupPlaygroundComponent } from './components/meter-group-playgrou
 @Component({
   selector: 'app-app-meter-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, MeterGroupPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, MeterGroupPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-meter-group-demo.component.html',
   styleUrl: './app-meter-group-demo.component.scss',

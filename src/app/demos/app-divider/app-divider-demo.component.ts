@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { DividerPlaygroundComponent } from './components/divider-playground/divi
 @Component({
   selector: 'app-app-divider-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DividerPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DividerPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-divider-demo.component.html',
   styleUrl: './app-divider-demo.component.scss',

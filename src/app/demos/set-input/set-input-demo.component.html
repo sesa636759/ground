@@ -1,8 +1,12 @@
-<div class="demo-container">
-  <h1>🔤 Input Component Demo</h1>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔤</span> Input Component Demo</h1>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Test all input properties in real-time</p>
@@ -10,9 +14,13 @@
     <app-input-playground></app-input-playground>
     <app-code-block [code]="playgroundCode" title="Input Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Basic Input Types -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>📋 Basic Input Types</h2>
       <p>Different input types with various configurations</p>
@@ -74,8 +82,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Variants -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎭 Input Variants</h2>
       <p>Different visual styles for inputs</p>
@@ -92,8 +99,7 @@
     <app-code-block [code]="variantsCode" title="Input Variants" language="html"></app-code-block>
   </section>
 
-  <!-- Sizes -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📏 Input Sizes</h2>
       <p>Small, medium, and large size options</p>
@@ -107,8 +113,7 @@
     <app-code-block [code]="sizesCode" title="Input Sizes" language="html"></app-code-block>
   </section>
 
-  <!-- Validation States -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>✅ Validation States</h2>
       <p>Error, success, and warning states with messages</p>
@@ -162,8 +167,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Prefix/Suffix -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎯 Prefix & Suffix</h2>
       <p>Text before or after the input</p>
@@ -216,8 +220,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Advanced Features -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🚀 Advanced Features</h2>
       <p>Number Steppers, Formatting, and Addons</p>
@@ -294,4 +297,21 @@
     </div>
     <app-code-block [code]="addonsCode" title="Addons (Slots)" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

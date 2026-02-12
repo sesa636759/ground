@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SkeletonPlaygroundComponent } from './components/skeleton-playground/sk
 @Component({
   selector: 'app-app-skeleton-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SkeletonPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SkeletonPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-skeleton-demo.component.html',
   styleUrl: './app-skeleton-demo.component.scss',

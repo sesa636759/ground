@@ -1,22 +1,14 @@
-<div class="demo-container">
-  <h1>🔳 Dialog Box</h1>
-  <p class="intro-text">
-    A flexible overlay component that centers itself on screen. Supports modal behavior, dragging,
-    resizing, and custom headers/footers.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔳</span> Dialog Box</h1>
+<p class="intro-text">A flexible overlay component that centers itself on screen. Supports modal behavior, dragging,
+    resizing, and custom headers/footers.</p>
+</div>
 
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-    >
-      <span>{{ variant.icon }}</span>
-      <span>{{ variant.name }}</span>
-    </ui-button>
-  </div>
-
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure visibility, dimensions, and interaction rules.</p>
@@ -24,8 +16,13 @@
     <app-dialog-box-playground></app-dialog-box-playground>
     <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <section class="demo-section" id="types">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="types">
     <div class="section-header">
       <h2>🔳 Modal Modes</h2>
       <p>Decide whether the background should be interactive while the dialog is open.</p>
@@ -66,7 +63,7 @@
     <app-code-block [code]="typesCode" title="Modality Examples" language="html"></app-code-block>
   </section>
 
-  <section class="demo-section" id="interactions">
+<section class="demo-section" id="interactions">
     <div class="section-header">
       <h2>🖱️ Interactions</h2>
       <p>Enable users to reposition or scale the dialog for better productivity.</p>
@@ -96,4 +93,21 @@
       language="html"
     ></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

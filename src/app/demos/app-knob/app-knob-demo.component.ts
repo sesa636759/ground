@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { KnobPlaygroundComponent } from './components/knob-playground/knob-playg
 @Component({
   selector: 'app-app-knob-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, KnobPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, KnobPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-knob-demo.component.html',
   styleUrl: './app-knob-demo.component.scss',

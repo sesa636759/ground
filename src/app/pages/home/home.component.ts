@@ -13,12 +13,11 @@ import {
   faRocket,
   faTerminal,
 } from '@fortawesome/free-solid-svg-icons';
-import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent],
+  imports: [CommonModule, FontAwesomeModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   template: `
@@ -57,12 +56,18 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
           <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="hero-actions">
-              <ui-button variant="primary" class="btn-primary" (click)="navigateTo('overview')" label="Explore Components"></ui-button>
+              <ui-button
+                variant="primary"
+                class="btn-primary"
+                (click)="navigateTo('overview')"
+                label="Explore Components"
+              ></ui-button>
               <ui-button
                 variant="secondary"
                 class="btn-secondary"
                 (click)="navigateTo('documentation')"
-               label="View Documentation"></ui-button>
+                label="View Documentation"
+              ></ui-button>
             </div>
           </app-animate-on-scroll>
 

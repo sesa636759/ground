@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { PaginationPlaygroundComponent } from './components/pagination-playgroun
 @Component({
   selector: 'app-app-pagination-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PaginationPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PaginationPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pagination-demo.component.html',
   styleUrl: './app-pagination-demo.component.scss',

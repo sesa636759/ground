@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { DockPlaygroundComponent } from './components/dock-playground/dock-playg
 @Component({
   selector: 'app-app-dock-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DockPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DockPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dock-demo.component.html',
   styleUrl: './app-dock-demo.component.scss',

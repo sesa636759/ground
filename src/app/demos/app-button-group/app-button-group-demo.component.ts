@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { ButtonGroupPlaygroundComponent } from './components/button-group-playgr
 @Component({
   selector: 'app-app-button-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ButtonGroupPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, ButtonGroupPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-group-demo.component.html',
   styleUrl: './app-button-group-demo.component.scss',

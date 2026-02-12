@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { RatingPlaygroundComponent } from './components/rating-playground/rating
 @Component({
   selector: 'app-app-rating-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, RatingPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, RatingPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-rating-demo.component.html',
   styleUrl: './app-rating-demo.component.scss',

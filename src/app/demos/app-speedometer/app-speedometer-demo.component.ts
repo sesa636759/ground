@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SpeedometerPlaygroundComponent } from './components/speedometer-playgro
 @Component({
   selector: 'app-app-speedometer-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SpeedometerPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SpeedometerPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-speedometer-demo.component.html',
   styleUrl: './app-speedometer-demo.component.scss',

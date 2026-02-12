@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { PopoverPlaygroundComponent } from './components/popover-playground/popo
 @Component({
   selector: 'app-app-popover-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PopoverPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PopoverPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-popover-demo.component.html',
   styleUrl: './app-popover-demo.component.scss',

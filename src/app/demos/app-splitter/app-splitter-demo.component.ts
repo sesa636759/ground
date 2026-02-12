@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SplitterPlaygroundComponent } from './components/splitter-playground/sp
 @Component({
   selector: 'app-app-splitter-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SplitterPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SplitterPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-splitter-demo.component.html',
   styleUrl: './app-splitter-demo.component.scss',

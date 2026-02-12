@@ -1,22 +1,14 @@
-<div class="demo-container">
-  <h1>⏍ Split Button</h1>
-  <p class="intro-text">
-    Combines a default action button with a dropdown menu for related auxiliary actions. Ideal for
-    "Save" operations or multi-state actions.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⏍</span> Split Button</h1>
+<p class="intro-text">Combines a default action button with a dropdown menu for related auxiliary actions. Ideal for
+    "Save" operations or multi-state actions.</p>
+</div>
 
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-    >
-      <span>{{ variant.icon }}</span>
-      <span>{{ variant.name }}</span>
-    </ui-button>
-  </div>
-
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure primary labels, variants, and dropdown behavior.</p>
@@ -24,8 +16,13 @@
     <app-split-button-playground></app-split-button-playground>
     <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <section class="demo-section" id="colors">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="colors">
     <div class="section-header">
       <h2>🎨 Color Themes</h2>
       <p>Apply different visual weights using standard color variants.</p>
@@ -39,7 +36,7 @@
     <app-code-block [code]="colorsCode" title="Theme Examples" language="html"></app-code-block>
   </section>
 
-  <section class="demo-section" id="states">
+<section class="demo-section" id="states">
     <div class="section-header">
       <h2>⚡ Visual States</h2>
       <p>Communicate ongoing processes or restricted access.</p>
@@ -50,4 +47,21 @@
     </div>
     <app-code-block [code]="statesCode" title="State Examples" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

@@ -41,152 +41,139 @@ import { CommonModule } from '@angular/common';
   styles: [
     `
       .code-block-wrapper {
-        margin: 1rem 0;
-        border: 1px solid var(--border-color, #e2e8f0);
-        border-radius: 8px;
+        margin: 2rem 0;
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
         overflow: hidden;
-        background: var(--card-bg, #ffffff);
+        background: var(--surface-1);
+        box-shadow: var(--shadow-md);
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: var(--shadow-lg);
+        }
       }
 
       .code-block-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.75rem 1rem;
-        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-        border-bottom: 1px solid var(--border-color, #e2e8f0);
+        padding: 12px 20px;
+        background: var(--surface-2);
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
       }
 
       .code-block-title {
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--text-primary, #1a202c);
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+          content: '';
+          width: 8px;
+          height: 8px;
+          background: var(--primary);
+          border-radius: 2px;
+        }
       }
 
       .code-block-actions {
         display: flex;
-        gap: 0.5rem;
-      }
+        gap: 8px;
 
-      .action-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-        font-weight: 500;
-        border: 1px solid var(--border-color, #e2e8f0);
-        border-radius: 6px;
-        background: var(--bg-primary, #ffffff);
-        color: var(--text-primary, #1a202c);
-        cursor: pointer;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background: var(--bg-hover, #f7fafc);
-          border-color: #667eea;
-          color: #667eea;
-        }
-
-        &:active {
-          transform: scale(0.95);
-        }
-
-        i {
-          font-size: 0.85rem;
-        }
-      }
-
-      .copy-btn.copied {
-        background: #48bb78;
-        color: white;
-        border-color: #48bb78;
-
-        &:hover {
-          background: #38a169;
-          border-color: #38a169;
+        ui-button {
+          --ui-button-radius: 8px;
+          &::part(button) {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+          }
         }
       }
 
       .code-block-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        background: #0f172a; // Deep slate for code
 
         &.show {
-          max-height: 600px;
-          overflow-y: auto;
+          max-height: 800px;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
       }
 
       pre {
         margin: 0;
-        padding: 1rem;
-        background: #1e1e1e;
+        padding: 24px;
         overflow-x: auto;
+        font-family: var(--font-mono);
+
+        &::-webkit-scrollbar {
+          height: 8px;
+        }
+        &::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.2);
+        }
+        &::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
       }
 
       code {
-        font-family: 'Courier New', 'Consolas', monospace;
-        font-size: 0.875rem;
-        line-height: 1.6;
-        color: #d4d4d4;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #e2e8f0;
+        background: transparent;
+        padding: 0;
       }
 
-      /* Syntax highlighting */
+      /* Syntax highlighting - Modern Palette */
       :global {
         .hljs-keyword {
-          color: #569cd6;
+          color: #818cf8;
+          font-weight: 600;
         }
         .hljs-string {
-          color: #ce9178;
+          color: #34d399;
         }
         .hljs-number {
-          color: #b5cea8;
+          color: #fbbf24;
         }
         .hljs-comment {
-          color: #6a9955;
+          color: #64748b;
           font-style: italic;
         }
         .hljs-function {
-          color: #dcdcaa;
+          color: #60a5fa;
         }
         .hljs-class {
           color: #4ec9b0;
         }
         .hljs-attr {
-          color: #9cdcfe;
+          color: #94a3b8;
         }
         .hljs-tag {
-          color: #569cd6;
+          color: #818cf8;
+        }
+        .hljs-name {
+          color: #60a5fa;
         }
       }
 
-      /* Dark mode */
-      @media (prefers-color-scheme: dark) {
-        .code-block-wrapper {
-          background: var(--card-bg-dark, #2d3748);
-          border-color: var(--border-color-dark, #4a5568);
-        }
-
-        .code-block-header {
-          background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
-          border-bottom-color: var(--border-color-dark, #4a5568);
-        }
-
-        .code-block-title {
-          color: var(--text-primary-dark, #f7fafc);
-        }
-
-        .action-btn {
-          background: var(--bg-primary-dark, #1a202c);
-          color: var(--text-primary-dark, #f7fafc);
-          border-color: var(--border-color-dark, #4a5568);
-
-          &:hover {
-            background: var(--bg-hover-dark, #2d3748);
-          }
-        }
+      .dark .code-block-wrapper {
+        background: var(--surface-2);
+        border-color: rgba(255, 255, 255, 0.1);
       }
     `,
   ],

@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { PatternInputPlaygroundComponent } from './components/pattern-input-play
 @Component({
   selector: 'app-app-pattern-input-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PatternInputPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, PatternInputPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pattern-input-demo.component.html',
   styleUrl: './app-pattern-input-demo.component.scss',

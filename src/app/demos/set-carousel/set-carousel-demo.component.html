@@ -1,12 +1,14 @@
-<div class="demo-container">
-  <h1>🖼️ Carousel Component</h1>
-  <p class="intro-text">
-    An interactive slideshow component for cycling through elements like images or text or card
-    content.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🖼</span> ️ Carousel Component</h1>
+<p class="intro-text">An interactive slideshow component for cycling through elements like images or text or card
+    content.</p>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure carousel animations, layout, and behaviors</p>
@@ -14,9 +16,13 @@
     <app-carousel-playground></app-carousel-playground>
     <app-code-block [code]="playgroundCode" title="Carousel Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Fade Effect -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>✨ Fade Transition</h2>
       <p>Smooth cross-fade effect for elegant presentations</p>
@@ -47,8 +53,7 @@
     </div>
   </section>
 
-  <!-- Center Mode -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎯 Center Mode</h2>
       <p>Highlight the active slide with partial visibility of previous and next slides</p>
@@ -66,8 +71,7 @@
     </div>
   </section>
 
-  <!-- Multiple Slides -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🔢 Multiple Slides</h2>
       <p>Display multiple items at once in a responsive grid-like view</p>
@@ -91,4 +95,21 @@
       </div>
     </div>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

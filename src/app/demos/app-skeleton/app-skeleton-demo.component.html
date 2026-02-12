@@ -1,22 +1,14 @@
-<div class="demo-container">
-  <h1>💀 Skeleton Loader</h1>
-  <p class="intro-text">
-    Improve perceived performance by showing a placeholder preview of your content during loading
-    states. Supports multiple shapes, animations, and dark mode.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">💀</span> Skeleton Loader</h1>
+<p class="intro-text">Improve perceived performance by showing a placeholder preview of your content during loading
+    states. Supports multiple shapes, animations, and dark mode.</p>
+</div>
 
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-    >
-      <span>{{ variant.icon }}</span>
-      <span>{{ variant.name }}</span>
-    </ui-button>
-  </div>
-
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure shapes, sizes, and animation styles.</p>
@@ -24,8 +16,13 @@
     <app-skeleton-playground></app-skeleton-playground>
     <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <section class="demo-section" id="shapes">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="shapes">
     <div class="section-header">
       <h2>🌀 Shapes & Animations</h2>
       <p>Standard placeholder types for common UI elements.</p>
@@ -50,7 +47,7 @@
     <app-code-block [code]="shapesCode" title="Shape Examples" language="html"></app-code-block>
   </section>
 
-  <section class="demo-section" id="combinations">
+<section class="demo-section" id="combinations">
     <div class="section-header">
       <h2>🧩 Complex Layouts</h2>
       <p>Combine multiple skeletons to mirror real UI components.</p>
@@ -77,4 +74,21 @@
       language="html"
     ></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

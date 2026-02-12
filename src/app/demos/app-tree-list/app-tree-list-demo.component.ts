@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { TreeListPlaygroundComponent } from './components/tree-list-playground/t
 @Component({
   selector: 'app-app-tree-list-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TreeListPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, TreeListPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-tree-list-demo.component.html',
   styleUrl: './app-tree-list-demo.component.scss',

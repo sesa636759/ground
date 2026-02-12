@@ -1,23 +1,14 @@
-<div class="demo-container">
-  <h1>🔀 Switch Component</h1>
-  <p class="intro-text">
-    A binary control that allows users to toggle between two states, such as "on" and "off". It's a
-    modern alternative to the checkbox for immediate actions.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔀</span> Switch Component</h1>
+<p class="intro-text">A binary control that allows users to toggle between two states, such as "on" and "off". It's a
+    modern alternative to the checkbox for immediate actions.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Test various combinations of states and visual properties</p>
@@ -25,9 +16,13 @@
     <app-switch-playground></app-switch-playground>
     <app-code-block [code]="playgroundCode" title="Switch Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Visual Colors -->
-  <section class="demo-section" id="colors">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="colors">
     <div class="section-header">
       <h2>🌈 Visual Colors</h2>
       <p>Standard semantic color schemes</p>
@@ -45,8 +40,7 @@
     <app-code-block [code]="colorsCode" title="Colors Example" language="html"></app-code-block>
   </section>
 
-  <!-- Sizes -->
-  <section class="demo-section" id="sizes">
+<section class="demo-section" id="sizes">
     <div class="section-header">
       <h2>📏 Sizes</h2>
       <p>From micro-interfaces to large-touch targets</p>
@@ -63,8 +57,7 @@
     <app-code-block [code]="sizesCode" title="Sizes Example" language="html"></app-code-block>
   </section>
 
-  <!-- Icon Support -->
-  <section class="demo-section" id="icons">
+<section class="demo-section" id="icons">
     <div class="section-header">
       <h2>🎨 Icon Support</h2>
       <p>Embed custom or default icons within the switch thumb</p>
@@ -80,8 +73,7 @@
     <app-code-block [code]="iconsCode" title="Icons Example" language="html"></app-code-block>
   </section>
 
-  <!-- Labeling & States -->
-  <section class="demo-section" id="labels">
+<section class="demo-section" id="labels">
     <div class="section-header">
       <h2>📝 Labeling & States</h2>
       <p>Positioning, required indicators, and functional states</p>
@@ -101,4 +93,21 @@
     </div>
     <app-code-block [code]="labelsCode" title="Labels Example" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

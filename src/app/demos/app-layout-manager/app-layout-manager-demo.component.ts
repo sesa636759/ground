@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { LayoutManagerPlaygroundComponent } from './components/layout-manager-pl
 @Component({
   selector: 'app-app-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, LayoutManagerPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, LayoutManagerPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-layout-manager-demo.component.html',
   styleUrl: './app-layout-manager-demo.component.scss',

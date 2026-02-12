@@ -1,11 +1,13 @@
-<div class="demo-container">
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
   <h1>Dashboard Component</h1>
-  <p class="intro-text">
-    A comprehensive grid-based dashboard with draggable and resizable widgets.
-  </p>
+<p class="intro-text">A comprehensive grid-based dashboard with draggable and resizable widgets.</p>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure grid, interaction rules, and manage widgets</p>
@@ -17,9 +19,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Features List -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>🚀 Key Features</h2>
     </div>
@@ -51,4 +57,21 @@
       language="html"
     ></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

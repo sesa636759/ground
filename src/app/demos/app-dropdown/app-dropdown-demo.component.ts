@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { DropdownPlaygroundComponent } from './components/dropdown-playground/dr
 @Component({
   selector: 'app-app-dropdown-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DropdownPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DropdownPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dropdown-demo.component.html',
   styleUrl: './app-dropdown-demo.component.scss',

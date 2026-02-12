@@ -1,23 +1,14 @@
-<div class="demo-container">
-  <h1>💧 Dropdown Selector</h1>
-  <p class="intro-text">
-    A robust and interactive selection component. Supports single/multi-selection, search filtering,
-    hierarchical cascading data, and screen-reader optimizations.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">💧</span> Dropdown Selector</h1>
+<p class="intro-text">A robust and interactive selection component. Supports single/multi-selection, search filtering,
+    hierarchical cascading data, and screen-reader optimizations.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure the dropdown behavior and advanced features like multi-select and search</p>
@@ -29,9 +20,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Multi Selection -->
-  <section class="demo-section" id="multi-select">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="multi-select">
     <div class="section-header">
       <h2>📝 Multi-Select Mode</h2>
       <p>Allow users to select multiple options with an intuitive checkbox interface</p>
@@ -52,8 +47,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Cascading -->
-  <section class="demo-section" id="cascading">
+<section class="demo-section" id="cascading">
     <div class="section-header">
       <h2>🌳 Hierarchical / Cascading</h2>
       <p>Organize complex data structures into expandable parent-child groups</p>
@@ -74,8 +68,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Sizes -->
-  <section class="demo-section" id="sizes">
+<section class="demo-section" id="sizes">
     <div class="section-header">
       <h2>📏 Size Scaling</h2>
       <p>Adapt the dropdown footprint to your UI density requirements</p>
@@ -89,4 +82,21 @@
     </div>
     <app-code-block [code]="sizesCode" title="Size Variations" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

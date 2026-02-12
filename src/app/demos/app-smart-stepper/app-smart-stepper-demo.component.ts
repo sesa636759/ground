@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { SmartStepperPlaygroundComponent } from './components/smart-stepper-play
 @Component({
   selector: 'app-app-smart-stepper-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SmartStepperPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, SmartStepperPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-smart-stepper-demo.component.html',
   styleUrl: './app-smart-stepper-demo.component.scss',

@@ -1,23 +1,14 @@
-<div class="demo-container">
-  <h1>⚓ Anchor Navigation</h1>
-  <p class="intro-text">
-    A streamlined navigation component that tracks the current scroll position within a container or
-    the entire page. Perfect for long-form content, documentation, or landing pages.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">⚓</span> Anchor Navigation</h1>
+<p class="intro-text">A streamlined navigation component that tracks the current scroll position within a container or
+    the entire page. Perfect for long-form content, documentation, or landing pages.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure the scrolling behavior and visual styles</p>
@@ -29,9 +20,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Style Types -->
-  <section class="demo-section" id="types">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="types">
     <div class="section-header">
       <h2>📝 Marker Styles</h2>
       <p>Choose between traditional text links or minimalistic dots</p>
@@ -63,8 +58,7 @@
     <app-code-block [code]="typesCode" title="Marker Variants" language="html"></app-code-block>
   </section>
 
-  <!-- Orientation -->
-  <section class="demo-section" id="orientation">
+<section class="demo-section" id="orientation">
     <div class="section-header">
       <h2>↔️ Orientation</h2>
       <p>Deploy anchor navigation horizontally for header-based sub-menus</p>
@@ -91,8 +85,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Auto Generation -->
-  <section class="demo-section" id="auto-gen">
+<section class="demo-section" id="auto-gen">
     <div class="section-header">
       <h2>⚙️ Headings Auto-Detection</h2>
       <p>Simplify your workflow by letting the component scan a container for headers</p>
@@ -122,4 +115,21 @@
       language="html"
     ></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

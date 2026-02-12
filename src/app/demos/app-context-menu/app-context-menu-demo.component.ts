@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { ContextMenuPlaygroundComponent } from './components/context-menu-playgr
 @Component({
   selector: 'app-app-context-menu-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ContextMenuPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, ContextMenuPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-context-menu-demo.component.html',
   styleUrl: './app-context-menu-demo.component.scss',

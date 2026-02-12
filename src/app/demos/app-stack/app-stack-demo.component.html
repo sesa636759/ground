@@ -1,23 +1,14 @@
-<div class="demo-container">
-  <h1>📚 Stack Component</h1>
-  <p class="intro-text">
-    A layout utility for lining up elements horizontally or vertically with consistent spacing,
-    alignment, and optional overlapping behavior.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">📚</span> Stack Component</h1>
+<p class="intro-text">A layout utility for lining up elements horizontally or vertically with consistent spacing,
+    alignment, and optional overlapping behavior.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Experiment with different stack layouts</p>
@@ -25,9 +16,13 @@
     <app-stack-playground></app-stack-playground>
     <app-code-block [code]="playgroundCode" title="Stack Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Direction -->
-  <section class="demo-section" id="direction">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="direction">
     <div class="section-header">
       <h2>↔️ Direction</h2>
       <p>Switch between row and column layouts</p>
@@ -53,8 +48,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Spacing -->
-  <section class="demo-section" id="spacing">
+<section class="demo-section" id="spacing">
     <div class="section-header">
       <h2>📏 Spacing</h2>
       <p>Control the gap between stack items</p>
@@ -71,8 +65,7 @@
     <app-code-block [code]="spacingCode" title="Spacing Example" language="html"></app-code-block>
   </section>
 
-  <!-- Overlap -->
-  <section class="demo-section" id="overlap">
+<section class="demo-section" id="overlap">
     <div class="section-header">
       <h2>叠 Overlap & Avatar Stacks</h2>
       <p>Create overlapping groups like user lists or card piles</p>
@@ -90,8 +83,7 @@
     <app-code-block [code]="overlapCode" title="Overlap Example" language="html"></app-code-block>
   </section>
 
-  <!-- Dividers -->
-  <section class="demo-section" id="dividers">
+<section class="demo-section" id="dividers">
     <div class="section-header">
       <h2>➖ Dividers</h2>
       <p>Automatically insert dividers between items</p>
@@ -114,4 +106,21 @@
     </div>
     <app-code-block [code]="dividersCode" title="Dividers Example" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

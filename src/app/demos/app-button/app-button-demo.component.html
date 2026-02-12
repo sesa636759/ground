@@ -1,24 +1,14 @@
-<div class="demo-container">
-  <h1>🔘 Button Component</h1>
-  <p class="intro-text">
-    An interactive component used to trigger actions or navigate through the application, featuring
-    multiple styles, sizes, and states.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔘</span> Button Component</h1>
+<p class="intro-text">An interactive component used to trigger actions or navigate through the application, featuring
+    multiple styles, sizes, and states.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      variant="ghost"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Test and configure all button properties in real-time</p>
@@ -26,9 +16,13 @@
     <app-button-playground></app-button-playground>
     <app-code-block [code]="playgroundCode" title="Button Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Visual Variants -->
-  <section class="demo-section" id="visual-variants">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="visual-variants">
     <div class="section-header">
       <h2>🎨 Visual Variants</h2>
       <p>Different styles for different visual hierarchies</p>
@@ -48,8 +42,7 @@
     <app-code-block [code]="variantsCode" title="Variants Example" language="html"></app-code-block>
   </section>
 
-  <!-- Sizes -->
-  <section class="demo-section" id="sizes">
+<section class="demo-section" id="sizes">
     <div class="section-header">
       <h2>📏 Sizes</h2>
       <p>Scalable sizes from extra small to extra large</p>
@@ -66,8 +59,7 @@
     <app-code-block [code]="sizesCode" title="Sizes Example" language="html"></app-code-block>
   </section>
 
-  <!-- Icons & Badges -->
-  <section class="demo-section" id="icons-badges">
+<section class="demo-section" id="icons-badges">
     <div class="section-header">
       <h2>🏷️ Icons & Badges</h2>
       <p>Enhance buttons with visual cues and status indicators</p>
@@ -89,8 +81,7 @@
     ></app-code-block>
   </section>
 
-  <!-- States -->
-  <section class="demo-section" id="states">
+<section class="demo-section" id="states">
     <div class="section-header">
       <h2>⚙️ Functional States</h2>
       <p>Communicate interaction availability and background processes</p>
@@ -110,4 +101,21 @@
     </div>
     <app-code-block [code]="statesCode" title="States Example" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

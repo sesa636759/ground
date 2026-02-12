@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 @Component({
   selector: 'app-set-button-toggle-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',

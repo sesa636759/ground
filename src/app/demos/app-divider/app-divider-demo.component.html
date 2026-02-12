@@ -1,23 +1,14 @@
-<div class="demo-container">
-  <h1>➖ Divider Component</h1>
-  <p class="intro-text">
-    A visual separator between content sections with support for text, icons, vertical orientation,
-    and decorative shapes.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">➖</span> Divider Component</h1>
+<p class="intro-text">A visual separator between content sections with support for text, icons, vertical orientation,
+    and decorative shapes.</p>
+</div>
 
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Fine-tune every aspect of the divider</p>
@@ -25,9 +16,13 @@
     <app-divider-playground></app-divider-playground>
     <app-code-block [code]="playgroundCode" title="Divider Usage" language="html"></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Variants -->
-  <section class="demo-section" id="variants">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="variants">
     <div class="section-header">
       <h2>🎨 Line Variants</h2>
       <p>Visual styles for various levels of separation</p>
@@ -58,8 +53,7 @@
     <app-code-block [code]="variantsCode" title="Variants Example" language="html"></app-code-block>
   </section>
 
-  <!-- Text & Content -->
-  <section class="demo-section" id="text-content">
+<section class="demo-section" id="text-content">
     <div class="section-header">
       <h2>📝 Text & Content</h2>
       <p>Add labels, icons, or badges to your separators</p>
@@ -79,8 +73,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Vertical -->
-  <section class="demo-section" id="vertical">
+<section class="demo-section" id="vertical">
     <div class="section-header">
       <h2>↕️ Vertical Orientation</h2>
       <p>Separate content horizontally</p>
@@ -100,8 +93,7 @@
     <app-code-block [code]="verticalCode" title="Vertical Example" language="html"></app-code-block>
   </section>
 
-  <!-- Shapes -->
-  <section class="demo-section" id="shapes">
+<section class="demo-section" id="shapes">
     <div class="section-header">
       <h2>📐 Decorative Shapes</h2>
       <p>Use SVG shapes for unique section transitions</p>
@@ -120,4 +112,21 @@
     </div>
     <app-code-block [code]="shapesCode" title="Shapes Example" language="html"></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

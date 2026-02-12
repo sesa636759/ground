@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { TransferListPlaygroundComponent } from './components/transfer-list-play
 @Component({
   selector: 'app-app-transfer-list-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TransferListPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, TransferListPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-transfer-list-demo.component.html',
   styleUrl: './app-transfer-list-demo.component.scss',

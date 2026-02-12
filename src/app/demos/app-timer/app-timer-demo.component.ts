@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { TimerPlaygroundComponent } from './components/timer-playground/timer-pl
 @Component({
   selector: 'app-app-timer-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TimerPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, TimerPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-timer-demo.component.html',
   styleUrl: './app-timer-demo.component.scss',

@@ -1,8 +1,12 @@
-<div class="demo-container">
-  <h1>🎯 Button Toggle Group Demo</h1>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🎯</span> Button Toggle Group Demo</h1>
+</div>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>
@@ -18,9 +22,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Avatar & Status -->
-  <section class="demo-section">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section">
     <div class="section-header">
       <h2>👤 Avatar Support & Status</h2>
       <p>Toggle buttons with user profiles and online status indicators</p>
@@ -46,8 +54,7 @@
     </div>
   </section>
 
-  <!-- Gliding Indicator -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🏄 Gliding Pill Indicator</h2>
       <p>Premium gliding animation for segmented controls (Horizontal & Vertical)</p>
@@ -74,8 +81,7 @@
     </div>
   </section>
 
-  <!-- Color Variants -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎨 Color Variants</h2>
       <p>Different color themes supported out of the box</p>
@@ -95,8 +101,7 @@
     </div>
   </section>
 
-  <!-- Style Variants -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎭 Style Variants</h2>
       <p>7 different button style variants for every design need</p>
@@ -178,8 +183,7 @@
     </div>
   </section>
 
-  <!-- Sizes -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📏 Sizes</h2>
       <p>Different button sizes for various UI densities</p>
@@ -196,8 +200,7 @@
     </div>
   </section>
 
-  <!-- With Icons -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎯 With Icons</h2>
       <p>Button groups optimized for icon usage and positioning</p>
@@ -235,8 +238,7 @@
     </div>
   </section>
 
-  <!-- Dropdown Mode -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📋 Dropdown Mode Variations</h2>
       <p>Single button with dropdown selection - performs action on button click</p>
@@ -313,8 +315,7 @@
     </div>
   </section>
 
-  <!-- Split Button Menu -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🔀 Split Button Variations</h2>
       <p>Button with dropdown menu - label stays fixed</p>
@@ -387,44 +388,7 @@
     </div>
   </section>
 
-  <!-- Dark Theme Verification -->
-  <section class="demo-section dark-verification-bg">
-    <div class="section-header">
-      <h2 style="color: white">🌙 Dark Theme Visual Check</h2>
-      <p style="color: rgba(255, 255, 255, 0.7)">
-        High-contrast mode to verify zero aliasing artifacts/wedges on dark backgrounds
-      </p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card dark-card">
-        <h3 style="color: white">Horizontal Group</h3>
-        <app-button-toggle-group
-          color="primary"
-          [attr.options]="jsonOptions(darkOptions)"
-        ></app-button-toggle-group>
-      </div>
-      <div class="demo-card dark-card">
-        <h3 style="color: white">Vertical Group</h3>
-        <app-button-toggle-group
-          color="success"
-          orientation="vertical"
-          [attr.options]="jsonOptions(darkOptions)"
-        ></app-button-toggle-group>
-      </div>
-      <div class="demo-card dark-card">
-        <h3 style="color: white">Dropdown Mode</h3>
-        <app-button-toggle-group
-          color="info"
-          mode="dropdown"
-          button-action-label="Export"
-          [attr.options]="jsonOptions(darkDropdownOptions)"
-        ></app-button-toggle-group>
-      </div>
-    </div>
-  </section>
-
-  <!-- Display Modes -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎭 Display Modes</h2>
       <p>Icon only, label only, icon + label, and both sides</p>
@@ -473,8 +437,7 @@
     </div>
   </section>
 
-  <!-- Orientations -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📐 Orientations & Layout</h2>
       <p>Horizontal and vertical layouts for various containers</p>
@@ -510,8 +473,7 @@
     </div>
   </section>
 
-  <!-- Custom Content (Slots) -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🎨 Custom Content (Slots)</h2>
       <p>
@@ -657,8 +619,7 @@
     </div>
   </section>
 
-  <!-- Loading States -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>⏳ Loading States</h2>
       <p>Show loading spinner during async operations</p>
@@ -713,8 +674,7 @@
     </div>
   </section>
 
-  <!-- States -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>🔄 States</h2>
       <p>Different interaction states and validations</p>
@@ -759,8 +719,7 @@
     </div>
   </section>
 
-  <!-- Real World Examples -->
-  <section class="demo-section">
+<section class="demo-section">
     <div class="section-header">
       <h2>📋 Real-World Examples</h2>
       <p>Practical use cases for application interfaces</p>
@@ -797,4 +756,21 @@
       </div>
     </div>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>

@@ -1,3 +1,4 @@
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { DialogBoxPlaygroundComponent } from './components/dialog-box-playground
 @Component({
   selector: 'app-app-dialog-box-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DialogBoxPlaygroundComponent],
+  imports: [CommonModule, FormsModule, CodeBlockComponent, DialogBoxPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dialog-box-demo.component.html',
   styleUrl: './app-dialog-box-demo.component.scss',

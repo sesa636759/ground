@@ -1,26 +1,14 @@
-<div class="demo-container">
-  <h1>🔔 Snackbar Component</h1>
-  <p class="intro-text">
-    A global notification system that provides brief messages about app processes. Highly
-    configurable with stacking logic, auto-dismiss, and interactive actions.
-  </p>
+<!-- Auto-wrapped by scripts/wrap-demos.js -->
+<div class="demo-container header-only">
+  <h1><span class="header-icon">🔔</span> Snackbar Component</h1>
+<p class="intro-text">A global notification system that provides brief messages about app processes. Highly
+    configurable with stacking logic, auto-dismiss, and interactive actions.</p>
+</div>
 
-  <!-- Global Snackbar for Examples -->
-  <ui-snackbar #snackbarGlobal position="bottom-right" card-stack></ui-snackbar>
-
-  <!-- Navigation -->
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-      [icon]="variant.icon"
-      [label]="variant.name"
-    ></ui-button>
-  </div>
-
-  <!-- Interactive Playground -->
-  <section class="demo-section" id="playground">
+<demo-tabs>
+  <div slot="playground">
+    <div class="demo-container">
+      <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Master the stacking and positioning logic</p>
@@ -32,9 +20,13 @@
       language="html"
     ></app-code-block>
   </section>
+    </div>
+  </div>
 
-  <!-- Semantic Types -->
-  <section class="demo-section" id="types">
+  <div slot="examples">
+    
+      <div class="demo-container">
+        <section class="demo-section" id="types">
     <div class="section-header">
       <h2>📊 Semantic Types</h2>
       <p>Use predefined types to communicate specific states</p>
@@ -78,8 +70,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Positioning -->
-  <section class="demo-section" id="positions">
+<section class="demo-section" id="positions">
     <div class="section-header">
       <h2>📍 Flexible Positioning</h2>
       <p>Anchor notifications to any corner or center edge</p>
@@ -107,8 +98,7 @@
     ></app-code-block>
   </section>
 
-  <!-- Card Stacking -->
-  <section class="demo-section" id="card-stack">
+<section class="demo-section" id="card-stack">
     <div class="section-header">
       <h2>📚 Card Stacking</h2>
       <p>A modern visual style where notifications stack vertically and expand on hover</p>
@@ -131,4 +121,21 @@
       language="html"
     ></app-code-block>
   </section>
-</div>
+      </div>
+  </div>
+
+  <div slot="docs">
+    <div class="demo-container">
+      <section class="demo-section">
+        <div class="section-header">
+          <h2>📖 Documentation</h2>
+          <p>Links, API references, and detailed usage notes</p>
+        </div>
+        <div class="demo-card" style="padding: 24px;">
+          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
+          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</demo-tabs>
