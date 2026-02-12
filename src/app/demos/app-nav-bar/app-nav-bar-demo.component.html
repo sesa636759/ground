@@ -1,0 +1,49 @@
+<div class="demo-container">
+  <h1>🛤️ Side Navigation Bar</h1>
+  <p class="intro-text">
+    A robust vertical navigation component designed for main application switching. Supports
+    hierarchical menus, collapsible states, and theme customization.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test collapsing behavior and theme switching.</p>
+    </div>
+    <app-nav-bar-playground></app-nav-bar-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="themes">
+    <div class="section-header">
+      <h2>🌗 Themes</h2>
+      <p>Seamlessly switch between light and dark modes to match your context.</p>
+    </div>
+    <div class="demo-card">
+      <div class="horizontal-preview">
+        <div style="width: 250px; border-right: 1px solid var(--border-color)">
+          <ui-nav-bar theme="dark" [model]="navItems">
+            <div slot="header" style="padding: 20px; color: white">DARK SKIN</div>
+          </ui-nav-bar>
+        </div>
+        <div style="flex: 1; padding: 40px; background: #1e293b; color: white">
+          <h3>Subtle Dark Layout</h3>
+          <p>Consistent branding across themes.</p>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="themesCode" title="Theme Examples" language="html"></app-code-block>
+  </section>
+</div>

@@ -1,0 +1,131 @@
+<div class="demo-container">
+  <h1>🔔 Snackbar Component</h1>
+  <p class="intro-text">
+    A global notification system that provides brief messages about app processes. Highly
+    configurable with stacking logic, auto-dismiss, and interactive actions.
+  </p>
+
+  <!-- Global Snackbar for Examples -->
+  <ui-snackbar #snackbarGlobal position="bottom-right" card-stack></ui-snackbar>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Master the stacking and positioning logic</p>
+    </div>
+    <app-snackbar-playground></app-snackbar-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Snackbar Container Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Semantic Types -->
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>📊 Semantic Types</h2>
+      <p>Use predefined types to communicate specific states</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <button
+          class="btn-primary"
+          style="background: var(--success); border: none"
+          (click)="notify('success')"
+        >
+          Show Success
+        </button>
+        <button
+          class="btn-primary"
+          style="background: var(--danger); border: none"
+          (click)="notify('error')"
+        >
+          Show Error
+        </button>
+        <button
+          class="btn-primary"
+          style="background: var(--warning); border: none; color: black"
+          (click)="notify('warning')"
+        >
+          Show Warning
+        </button>
+        <button
+          class="btn-primary"
+          style="background: var(--info); border: none"
+          (click)="notify('info')"
+        >
+          Show Info
+        </button>
+      </div>
+    </div>
+    <app-code-block
+      [code]="typesCode"
+      title="Triggering Notifications"
+      language="javascript"
+    ></app-code-block>
+  </section>
+
+  <!-- Positioning -->
+  <section class="demo-section" id="positions">
+    <div class="section-header">
+      <h2>📍 Flexible Positioning</h2>
+      <p>Anchor notifications to any corner or center edge</p>
+    </div>
+    <div class="demo-card" style="padding: 2rem; background: #f1f5f9; border-style: dashed">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Top Left
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Top Right (Default)
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Bottom Left
+        </div>
+        <div style="padding: 16px; background: white; border-radius: 8px; text-align: center">
+          Bottom Right
+        </div>
+      </div>
+    </div>
+    <app-code-block
+      [code]="positionsCode"
+      title="Container Positions"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Card Stacking -->
+  <section class="demo-section" id="card-stack">
+    <div class="section-header">
+      <h2>📚 Card Stacking</h2>
+      <p>A modern visual style where notifications stack vertically and expand on hover</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-badge value="New" color="info">
+          <button class="btn-secondary" (click)="notify('info')">Pulse Multi-Notifications</button>
+        </ui-badge>
+      </div>
+    </div>
+    <app-code-block
+      [code]="cardStackCode"
+      title="Card Stacking Example"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

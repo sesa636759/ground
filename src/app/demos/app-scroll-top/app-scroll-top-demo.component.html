@@ -1,0 +1,62 @@
+<div class="demo-container">
+  <h1>🚀 Scroll Top</h1>
+  <p class="intro-text">
+    A helpful utility component that allows users to quickly return to the top of a page or a
+    scrollable container. It appears automatically after a specified scroll threshold.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test the threshold and visuals with a local scroll container.</p>
+    </div>
+    <app-scroll-top-playground></app-scroll-top-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="shapes">
+    <div class="section-header">
+      <h2>💎 Shapes & Icons</h2>
+      <p>Choose between circular and square designs to match your UI style.</p>
+    </div>
+    <div class="demo-card" style="display: flex; flex-direction: row; gap: 40px">
+      <div class="scroll-preview-box" #box1>
+        <div class="long-content">
+          <p>Scroll me (Square + Text)</p>
+          <ui-scroll-top
+            [target]="box1"
+            threshold="100"
+            shape="square"
+            icon="TOP"
+            speed="100"
+          ></ui-scroll-top>
+        </div>
+      </div>
+      <div class="scroll-preview-box" #box2>
+        <div class="long-content">
+          <p>Scroll me (Circle + Icon)</p>
+          <ui-scroll-top
+            [target]="box2"
+            threshold="100"
+            shape="circle"
+            icon="🚀"
+            speed="100"
+          ></ui-scroll-top>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="shapesCode" title="Styling Examples" language="html"></app-code-block>
+  </section>
+</div>

@@ -1,0 +1,42 @@
+<div class="demo-container">
+  <h1>📈 Chart</h1>
+  <p class="intro-text">
+    A flexible, multi-purpose chart component supporting various visualization types including line,
+    bar, pie, and doughnut charts. Built for responsive layouts with customizable legends and
+    styling.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Switch between chart types and configure display options.</p>
+    </div>
+    <app-chart-playground></app-chart-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>📈 Chart Types</h2>
+      <p>Choose from multiple visualization types to best represent your data.</p>
+    </div>
+    <div class="demo-card">
+      <div style="height: 300px">
+        <ui-chart type="line" [data]="chartData" show-legend responsive></ui-chart>
+      </div>
+    </div>
+    <app-code-block [code]="typesCode" title="Type Examples" language="html"></app-code-block>
+  </section>
+</div>

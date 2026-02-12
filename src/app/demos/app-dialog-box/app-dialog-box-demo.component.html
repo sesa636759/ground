@@ -1,0 +1,90 @@
+<div class="demo-container">
+  <h1>🔳 Dialog Box</h1>
+  <p class="intro-text">
+    A flexible overlay component that centers itself on screen. Supports modal behavior, dragging,
+    resizing, and custom headers/footers.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure visibility, dimensions, and interaction rules.</p>
+    </div>
+    <app-dialog-box-playground></app-dialog-box-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>🔳 Modal Modes</h2>
+      <p>Decide whether the background should be interactive while the dialog is open.</p>
+    </div>
+    <div class="demo-card">
+      <button class="variant-btn" (click)="toggle('standard')">Non-Modal Dialog</button>
+      <button class="variant-btn" style="background: #3b82f6" (click)="toggle('modal')">
+        Modal Dialog
+      </button>
+
+      <ui-dialog-box
+        header="Standard Overlay"
+        [modal]="false"
+        [visible]="dialogVisible.standard"
+        (uiHide)="dialogVisible.standard = false"
+        width="350px"
+      >
+        <p>I don't block the background!</p>
+      </ui-dialog-box>
+
+      <ui-dialog-box
+        header="Modal Alert"
+        modal
+        [visible]="dialogVisible.modal"
+        (uiHide)="dialogVisible.modal = false"
+        width="350px"
+      >
+        <p>I have a backdrop and block interactions.</p>
+      </ui-dialog-box>
+    </div>
+    <app-code-block [code]="typesCode" title="Modality Examples" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="interactions">
+    <div class="section-header">
+      <h2>🖱️ Interactions</h2>
+      <p>Enable users to reposition or scale the dialog for better productivity.</p>
+    </div>
+    <div class="demo-card">
+      <button class="variant-btn" style="background: #10b981" (click)="toggle('draggable')">
+        Open Draggable Dialog
+      </button>
+
+      <ui-dialog-box
+        header="Move & Resize Me"
+        draggable
+        resizable
+        [visible]="dialogVisible.draggable"
+        (uiHide)="dialogVisible.draggable = false"
+        width="400px"
+      >
+        <p>Grab the header to drag, or the edges to resize.</p>
+      </ui-dialog-box>
+    </div>
+    <app-code-block
+      [code]="interactionsCode"
+      title="Interaction Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

@@ -1,0 +1,185 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-card-playground',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Appearance</h3>
+            <div class="control-group">
+              <label>Variant</label>
+              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
+                <option value="default">Default</option>
+                <option value="elevated">Elevated</option>
+                <option value="outlined">Outlined</option>
+                <option value="filled">Filled</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Border Radius</label>
+              <input type="text" [(ngModel)]="pgConfig.borderRadius" (change)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Width</label>
+              <input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Features</h3>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="hoverable"
+                [(ngModel)]="pgConfig.hoverable"
+                (change)="updateConfig()"
+              />
+              <label for="hoverable">Hoverable</label>
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="flippable"
+                [(ngModel)]="pgConfig.flippable"
+                (change)="updateConfig()"
+              />
+              <label for="flippable">Flippable</label>
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="loading"
+                [(ngModel)]="pgConfig.loading"
+                (change)="updateConfig()"
+              />
+              <label for="loading">Skeleton Loading</label>
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="showMenu"
+                [(ngModel)]="pgConfig.showMenu"
+                (change)="updateConfig()"
+              />
+              <label for="showMenu">Show Context Menu</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <pre>{{ generatedCode() }}</pre>
+        </div>
+
+        <div class="action-buttons">
+          <button (click)="copyCode()">Copy Code</button>
+          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+        </div>
+      </div>
+
+      <div class="playground-preview">
+        <ui-card
+          [attr.variant]="pgConfig.variant"
+          [attr.hoverable]="pgConfig.hoverable ? '' : null"
+          [attr.flippable]="pgConfig.flippable ? '' : null"
+          [attr.loading]="pgConfig.loading ? '' : null"
+          [attr.show-menu]="pgConfig.showMenu ? '' : null"
+          [attr.border-radius]="pgConfig.borderRadius"
+          [attr.width]="pgConfig.width"
+          [menuItems]="menuJson"
+        >
+          <div slot="cover" class="demo-cover-image">🌄</div>
+          <div slot="header">
+            <h3 style="margin: 0;">Exploring the Alps</h3>
+          </div>
+          <div slot="content" class="demo-card-content">
+            <p>
+              Experience the breathtaking views and serene landscapes of the highest mountain range
+              in Europe. Perfect for adventure seekers!
+            </p>
+          </div>
+          <div slot="footer" style="display: flex; gap: 8px;">
+            <button class="btn-primary" style="flex: 1;">Book Now</button>
+            <button class="btn-secondary">Details</button>
+          </div>
+          <div slot="back-content" style="padding: 20px;">
+            <h3>Quick Stats</h3>
+            <ul style="padding-left: 20px; color: var(--text-secondary);">
+              <li>Elevation: 4,808m</li>
+              <li>Length: 1,200km</li>
+              <li>Area: 200,000 km²</li>
+            </ul>
+          </div>
+        </ui-card>
+      </div>
+    </div>
+  `,
+  styleUrl: './card-playground.component.scss',
+})
+export class CardPlaygroundComponent {
+  pgConfig = {
+    variant: 'elevated',
+    hoverable: true,
+    flippable: false,
+    loading: false,
+    showMenu: true,
+    borderRadius: '16px',
+    width: '340px',
+  };
+
+  menuItems = [
+    { id: 'save', label: 'Save trip', icon: '🔖' },
+    { id: 'share', label: 'Share', icon: '📤' },
+    { separator: true },
+    { id: 'report', label: 'Report', icon: '🚩', disabled: true },
+  ];
+
+  menuJson = JSON.stringify(this.menuItems);
+  generatedCode = signal('');
+
+  constructor() {
+    this.updateConfig();
+  }
+
+  updateConfig() {
+    let code = '<ui-card\n';
+    code += `  variant="${this.pgConfig.variant}"\n`;
+    if (this.pgConfig.hoverable) code += `  hoverable\n`;
+    if (this.pgConfig.flippable) code += `  flippable\n`;
+    if (this.pgConfig.loading) code += `  loading\n`;
+    if (this.pgConfig.showMenu) code += `  show-menu [menuItems]="menu"\n`;
+    code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
+    code += `  width="${this.pgConfig.width}"\n`;
+    code += '>\n';
+    code += '  <img slot="cover" src="..." />\n';
+    code += '  <div slot="header"><h3>Card Title</h3></div>\n';
+    code += '  <div slot="content">Card body here...</div>\n';
+    code += '  <div slot="footer"><button>Action</button></div>\n';
+    code += '</ui-card>';
+
+    this.generatedCode.set(code);
+  }
+
+  copyCode() {
+    navigator.clipboard.writeText(this.generatedCode());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      variant: 'elevated',
+      hoverable: true,
+      flippable: false,
+      loading: false,
+      showMenu: true,
+      borderRadius: '16px',
+      width: '340px',
+    };
+    this.updateConfig();
+  }
+}

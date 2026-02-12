@@ -1,0 +1,110 @@
+<div class="demo-container">
+  <h1>🗂️ Card Component</h1>
+  <p class="intro-text">
+    A versatile container for presenting content and actions on a single topic. Supports images,
+    headers, menus, flipping animations, and skeleton states.
+  </p>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Fine-tune the card's composition and behavior</p>
+    </div>
+    <app-card-playground></app-card-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Basic Card Structure"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Visual Styles -->
+  <section class="demo-section" id="visual-styles">
+    <div class="section-header">
+      <h2>🎨 Visual Styles</h2>
+      <p>Choose the elevation and border style that fits your layout</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card variant="default">
+        <div slot="header"><b>Default</b></div>
+        <div slot="content">Simple card with standard border and no shadow.</div>
+      </ui-card>
+      <ui-card variant="elevated">
+        <div slot="header"><b>Elevated</b></div>
+        <div slot="content">Soft shadow to provide depth and focus.</div>
+      </ui-card>
+      <ui-card variant="outlined">
+        <div slot="header"><b>Outlined</b></div>
+        <div slot="content">Strong border with no shadow, perfect for flat designs.</div>
+      </ui-card>
+      <ui-card variant="filled" border="none">
+        <div slot="header"><b>Filled</b></div>
+        <div slot="content">Subtle background color with no border.</div>
+      </ui-card>
+    </div>
+    <app-code-block [code]="stylesCode" title="Variant Options" language="html"></app-code-block>
+  </section>
+
+  <!-- Interaction -->
+  <section class="demo-section" id="flippable">
+    <div class="section-header">
+      <h2>✨ Interaction Models</h2>
+      <p>Enhance user engagement with flippable surfaces and selection states</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card flippable width="100%">
+        <div slot="header"><b>Flippable Card</b></div>
+        <div slot="content" style="text-align: center; padding: 20px">
+          <p>Click me to see the back!</p>
+          <ui-icon name="refresh" style="font-size: 2rem"></ui-icon>
+        </div>
+        <div slot="back-content">
+          <h3>The Secret Sauce</h3>
+          <p>Flippable cards are great for flashcards, product details, or hidden settings!</p>
+        </div>
+      </ui-card>
+
+      <ui-card selectable selected width="100%">
+        <div slot="header"><b>Selectable State</b></div>
+        <div slot="content">This card is currently selected. Perfect for choice-based layouts.</div>
+      </ui-card>
+    </div>
+    <app-code-block
+      [code]="interactionCode"
+      title="Dynamic Interaction"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- States -->
+  <section class="demo-section" id="loading">
+    <div class="section-header">
+      <h2>⚙️ Operational States</h2>
+      <p>Handle data loading and navigation elegantly</p>
+    </div>
+    <div class="demo-card-grid">
+      <ui-card loading width="100%"></ui-card>
+
+      <ui-card clickable width="100%" hoverable variant="outlined">
+        <div slot="header"><b>Clickable Card</b></div>
+        <div slot="content">Entire card acts as a button or link with enhanced hover feedback.</div>
+        <div slot="footer"><i>Click to explore →</i></div>
+      </ui-card>
+    </div>
+    <app-code-block [code]="statesCode" title="State Handling" language="html"></app-code-block>
+  </section>
+</div>

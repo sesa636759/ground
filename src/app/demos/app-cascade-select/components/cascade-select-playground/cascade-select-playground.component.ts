@@ -1,0 +1,174 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-cascade-select-playground',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Basic Config</h3>
+            <div class="control-group">
+              <label>Placeholder</label>
+              <input type="text" [(ngModel)]="pgConfig.placeholder" (change)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Size</label>
+              <select [(ngModel)]="pgConfig.size" (change)="updateConfig()">
+                <option value="sm">Small</option>
+                <option value="md">Medium</option>
+                <option value="lg">Large</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Expand Trigger</label>
+              <select [(ngModel)]="pgConfig.expandTrigger" (change)="updateConfig()">
+                <option value="hover">Hover</option>
+                <option value="click">Click</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Path Settings</h3>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="fullpath"
+                [(ngModel)]="pgConfig.showFullPath"
+                (change)="updateConfig()"
+              />
+              <label for="fullpath">Show Full Path</label>
+            </div>
+            <div class="control-group">
+              <label>Separator</label>
+              <input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="changeonselect"
+                [(ngModel)]="pgConfig.changeOnSelect"
+                (change)="updateConfig()"
+              />
+              <label for="changeonselect">Change On Select (Any Level)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <pre>{{ generatedCode() }}</pre>
+        </div>
+
+        <div class="action-buttons">
+          <button (click)="copyCode()">Copy Code</button>
+          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+        </div>
+      </div>
+
+      <div class="playground-preview">
+        <ui-cascade-select
+          [attr.placeholder]="pgConfig.placeholder"
+          [attr.size]="pgConfig.size"
+          [attr.expand-trigger]="pgConfig.expandTrigger"
+          [attr.show-full-path]="pgConfig.showFullPath ? '' : null"
+          [attr.separator]="pgConfig.separator"
+          [attr.change-on-select]="pgConfig.changeOnSelect ? '' : null"
+          [options]="optionsJson"
+          (cascadeChange)="onValueChange($event)"
+        ></ui-cascade-select>
+
+        <div
+          *ngIf="currentValue"
+          style="margin-top: 40px; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; font-family: monospace; font-size: 0.8rem;"
+        >
+          Selection Value: {{ currentValue | json }}
+        </div>
+      </div>
+    </div>
+  `,
+  styleUrl: './cascade-select-playground.component.scss',
+})
+export class CascadeSelectPlaygroundComponent {
+  pgConfig = {
+    placeholder: 'Select Location...',
+    size: 'md',
+    expandTrigger: 'hover',
+    showFullPath: true,
+    separator: ' > ',
+    changeOnSelect: false,
+  };
+
+  options = [
+    {
+      label: 'USA',
+      value: 'us',
+      children: [
+        {
+          label: 'California',
+          value: 'ca',
+          children: [
+            { label: 'Los Angeles', value: 'la' },
+            { label: 'San Francisco', value: 'sf' },
+          ],
+        },
+        { label: 'New York', value: 'ny' },
+      ],
+    },
+    {
+      label: 'Europe',
+      value: 'eu',
+      children: [
+        { label: 'France', value: 'fr' },
+        { label: 'Germany', value: 'de' },
+      ],
+    },
+  ];
+
+  optionsJson = JSON.stringify(this.options);
+  generatedCode = signal('');
+  currentValue: any = null;
+
+  constructor() {
+    this.updateConfig();
+  }
+
+  updateConfig() {
+    let code = '<ui-cascade-select\n';
+    code += `  placeholder="${this.pgConfig.placeholder}"\n`;
+    code += `  size="${this.pgConfig.size}"\n`;
+    code += `  expand-trigger="${this.pgConfig.expandTrigger}"\n`;
+    if (!this.pgConfig.showFullPath) code += `  [show-full-path]="false"\n`;
+    code += `  separator="${this.pgConfig.separator}"\n`;
+    if (this.pgConfig.changeOnSelect) code += `  change-on-select\n`;
+    code += `  [options]="locations"\n`;
+    code += '></ui-cascade-select>';
+
+    this.generatedCode.set(code);
+  }
+
+  onValueChange(event: any) {
+    this.currentValue = event.detail;
+  }
+
+  copyCode() {
+    navigator.clipboard.writeText(this.generatedCode());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      placeholder: 'Select Location...',
+      size: 'md',
+      expandTrigger: 'hover',
+      showFullPath: true,
+      separator: ' > ',
+      changeOnSelect: false,
+    };
+    this.updateConfig();
+  }
+}

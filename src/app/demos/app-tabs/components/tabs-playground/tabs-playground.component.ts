@@ -1,0 +1,164 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-tabs-playground',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Layout</h3>
+            <div class="control-group">
+              <label>Orientation</label>
+              <select [(ngModel)]="pgConfig.orientation" (change)="updateConfig()">
+                <option value="horizontal">Horizontal</option>
+                <option value="vertical">Vertical</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Alignment</label>
+              <select [(ngModel)]="pgConfig.align" (change)="updateConfig()">
+                <option value="start">Start</option>
+                <option value="center">Center</option>
+                <option value="end">End</option>
+                <option value="justify">Justify</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Visuals</h3>
+            <div class="control-group">
+              <label>Variant</label>
+              <select [(ngModel)]="pgConfig.variant" (change)="updateConfig()">
+                <option value="default">Default</option>
+                <option value="pills">Pills</option>
+                <option value="underline">Underline</option>
+                <option value="enclosed">Enclosed</option>
+              </select>
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="scrollable"
+                [(ngModel)]="pgConfig.scrollable"
+                (change)="updateConfig()"
+              />
+              <label for="scrollable">Scrollable</label>
+            </div>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="closable"
+                [(ngModel)]="pgConfig.closeable"
+                (change)="updateConfig()"
+              />
+              <label for="closable">Closeable Tabs</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <pre>{{ generatedCode() }}</pre>
+        </div>
+
+        <div class="action-buttons">
+          <button (click)="copyCode()">Copy Code</button>
+          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+        </div>
+      </div>
+
+      <div class="playground-preview">
+        <div class="tabs-container">
+          <ui-tabs
+            [attr.orientation]="pgConfig.orientation"
+            [attr.align]="pgConfig.align"
+            [attr.variant]="pgConfig.variant"
+            [attr.scrollable]="pgConfig.scrollable ? '' : null"
+            [attr.closeable]="pgConfig.closeable ? '' : null"
+            [value]="currentTab"
+            (valueChange)="onTabChange($event)"
+          >
+            <ui-tab label="Overview" icon="🏠" value="overview">
+              <div style="padding: 24px;">
+                <h4>Overview Content</h4>
+                <p>
+                  Welcome to the dashboard overview. Here you can see your recent activity and
+                  system status.
+                </p>
+              </div>
+            </ui-tab>
+            <ui-tab label="Settings" icon="⚙️" value="settings">
+              <div style="padding: 24px;">
+                <h4>Settings Content</h4>
+                <p>
+                  Manage your account preferences, security settings, and notification frequency.
+                </p>
+              </div>
+            </ui-tab>
+            <ui-tab label="Profile" icon="👤" value="profile">
+              <div style="padding: 24px;">
+                <h4>Profile Content</h4>
+                <p>Update your personal information, bio, and social media links.</p>
+              </div>
+            </ui-tab>
+          </ui-tabs>
+        </div>
+      </div>
+    </div>
+  `,
+  styleUrl: './tabs-playground.component.scss',
+})
+export class TabsPlaygroundComponent {
+  pgConfig = {
+    orientation: 'horizontal',
+    align: 'start',
+    variant: 'default',
+    scrollable: false,
+    closeable: false,
+  };
+
+  currentTab = 'overview';
+  generatedCode = signal('');
+
+  constructor() {
+    this.updateConfig();
+  }
+
+  updateConfig() {
+    let code = '<ui-tabs\n';
+    code += `  orientation="${this.pgConfig.orientation}"\n`;
+    code += `  variant="${this.pgConfig.variant}"\n`;
+    if (this.pgConfig.scrollable) code += `  scrollable\n`;
+    code += '>\n';
+    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui-tab>\n';
+    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
+    code += '</ui-tabs>';
+
+    this.generatedCode.set(code);
+  }
+
+  onTabChange(event: any) {
+    this.currentTab = event.detail.value;
+  }
+
+  copyCode() {
+    navigator.clipboard.writeText(this.generatedCode());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      orientation: 'horizontal',
+      align: 'start',
+      variant: 'default',
+      scrollable: false,
+      closeable: false,
+    };
+    this.updateConfig();
+  }
+}

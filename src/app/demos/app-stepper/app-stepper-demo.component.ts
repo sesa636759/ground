@@ -1,0 +1,60 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { StepperPlaygroundComponent } from './components/stepper-playground/stepper-playground.component';
+
+@Component({
+  selector: 'app-app-stepper-demo',
+  standalone: true,
+  imports: [CommonModule, FormsModule, CodeBlockComponent, StepperPlaygroundComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './app-stepper-demo.component.html',
+  styleUrl: './app-stepper-demo.component.scss',
+})
+export class AppStepperDemoComponent {
+  variants = [
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'orientation', name: 'Orientation', icon: '📐', color: '#3b82f6' },
+    { id: 'visuals', name: 'Visual Types', icon: '🎨', color: '#10b981' },
+    { id: 'validation', name: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
+  ];
+
+  steps = JSON.stringify([
+    { id: '1', label: 'Start', status: 'completed' },
+    { id: '2', label: 'Processing', status: 'active' },
+    { id: '3', label: 'Verification' },
+    { id: '4', label: 'Done' },
+  ]);
+
+  playgroundCode = `<ui-stepper 
+  [steps]="steps" 
+  orientation="horizontal" 
+  active-step="1"
+></ui-stepper>`;
+
+  orientationCode = `<!-- Horizontal Stepper -->
+<ui-stepper orientation="horizontal"></ui-stepper>
+
+<!-- Vertical Stepper -->
+<ui-stepper orientation="vertical"></ui-stepper>`;
+
+  visualsCode = `<!-- Minimal Dot Style -->
+<ui-stepper progress-dot></ui-stepper>
+
+<!-- Modern Variant -->
+<ui-stepper variant="modern"></ui-stepper>`;
+
+  flowCode = `<!-- Non-linear: users can jump to any step -->
+<ui-stepper flow="non-linear"></ui-stepper>
+
+<!-- Linear: strict sequential completion -->
+<ui-stepper flow="linear"></ui-stepper>`;
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}

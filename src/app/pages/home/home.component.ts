@@ -13,11 +13,12 @@ import {
   faRocket,
   faTerminal,
 } from '@fortawesome/free-solid-svg-icons';
+import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   template: `

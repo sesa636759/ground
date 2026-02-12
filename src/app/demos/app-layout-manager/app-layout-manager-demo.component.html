@@ -1,0 +1,43 @@
+<div class="demo-container">
+  <h1>🗂️ Layout Manager</h1>
+  <p class="intro-text">
+    A powerful layout management system for creating complex, resizable panel layouts. Supports
+    docking, grid, and flex modes with drag-and-drop panel rearrangement, resizing, and state
+    persistence.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Test different layout modes and panel configurations.</p>
+    </div>
+    <app-layout-manager-playground></app-layout-manager-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="modes">
+    <div class="section-header">
+      <h2>🗂️ Layout Modes</h2>
+      <p>Choose from docking, grid, or flex layout modes based on your application needs.</p>
+    </div>
+    <div class="demo-card">
+      <p>
+        The layout manager provides flexible panel management for complex application interfaces.
+        Panels can be resized, closed, and rearranged based on the selected mode.
+      </p>
+    </div>
+    <app-code-block [code]="modesCode" title="Mode Examples" language="html"></app-code-block>
+  </section>
+</div>

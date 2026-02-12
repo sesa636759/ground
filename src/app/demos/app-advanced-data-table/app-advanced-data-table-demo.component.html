@@ -1,0 +1,45 @@
+<div class="demo-container">
+  <h1>📊 Advanced Data Table</h1>
+  <p class="intro-text">
+    A high-performance grid component designed for rendering large datasets. It includes
+    out-of-the-box support for pagination, sorting, global/individual column filtering, cell
+    selection, and custom row templates.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Toggle grid features and adjust display settings.</p>
+    </div>
+    <app-advanced-data-table-playground></app-advanced-data-table-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="features">
+    <div class="section-header">
+      <h2>💎 Key Features</h2>
+      <p>Data Table provides rich API for managing complex data interactions.</p>
+    </div>
+    <div class="demo-card">
+      <ui-advanced-data-table [value]="sampleData" [columns]="sampleCols" [paginator]="false">
+      </ui-advanced-data-table>
+    </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Configuration Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

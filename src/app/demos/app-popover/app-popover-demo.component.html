@@ -1,0 +1,135 @@
+<div class="demo-container">
+  <h1>💬 Popover Component</h1>
+  <p class="intro-text">
+    A flexible overlay component that displays rich content or interactive elements triggered by a
+    specific target. Unlike tooltips, popovers are designed for more complex content.
+  </p>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure overlay behavior and visual style</p>
+    </div>
+    <app-popover-playground></app-popover-playground>
+    <app-code-block [code]="playgroundCode" title="Popover Usage" language="html"></app-code-block>
+  </section>
+
+  <!-- Triggers -->
+  <section class="demo-section" id="triggers">
+    <div class="section-header">
+      <h2>⚡ Universal Triggers</h2>
+      <p>Supports click, hover, and focus interaction models</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-popover
+          trigger="click"
+          heading="Click Interaction"
+          content="This popover stays open until you click outside or use the close button."
+        >
+          <button class="btn-demo">Click Trigger</button>
+        </ui-popover>
+        <ui-popover
+          trigger="hover"
+          heading="Hover Preview"
+          content="Quick information shown when the user points to an element."
+        >
+          <button class="btn-demo">Hover Trigger</button>
+        </ui-popover>
+        <ui-popover
+          trigger="focus"
+          heading="Focus Assistant"
+          content="Helpful context provided when an input field is active."
+        >
+          <input
+            type="text"
+            placeholder="Focus for info..."
+            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc"
+          />
+        </ui-popover>
+      </div>
+    </div>
+    <app-code-block [code]="triggersCode" title="Triggers Example" language="html"></app-code-block>
+  </section>
+
+  <!-- Placements -->
+  <section class="demo-section" id="placements">
+    <div class="section-header">
+      <h2>📍 Dynamic Positioning</h2>
+      <p>Smart placement with automatic collision detection and flipping</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-popover placement="top" content="Floating above the target">
+          <button class="btn-demo">Top</button>
+        </ui-popover>
+        <ui-popover placement="bottom" content="Floating below the target">
+          <button class="btn-demo">Bottom</button>
+        </ui-popover>
+        <ui-popover placement="left" content="Floating to the left">
+          <button class="btn-demo">Left</button>
+        </ui-popover>
+        <ui-popover placement="right" content="Floating to the right">
+          <button class="btn-demo">Right</button>
+        </ui-popover>
+      </div>
+    </div>
+    <app-code-block
+      [code]="placementsCode"
+      title="Placements Example"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Visual Styles -->
+  <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Variations</h2>
+      <p>Themes and functional modifiers for different use cases</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-popover variant="light" heading="Light Theme" content="The default clean aesthetic.">
+          <button class="btn-demo">Light Variant</button>
+        </ui-popover>
+        <ui-popover
+          variant="dark"
+          heading="Dark Theme"
+          content="High contrast theme for specific UIs."
+        >
+          <button class="btn-demo" style="background: #334155; color: white">Dark Variant</button>
+        </ui-popover>
+        <ui-divider vertical></ui-divider>
+        <ui-popover
+          backdrop
+          heading="Modal Popover"
+          content="Dim backgrounds to focus user attention."
+        >
+          <button class="btn-demo">With Backdrop</button>
+        </ui-popover>
+        <ui-popover
+          show-close-button
+          heading="Sticky Overlay"
+          content="Requires explicit user action to dismiss."
+        >
+          <button class="btn-demo">Close Button</button>
+        </ui-popover>
+      </div>
+    </div>
+    <app-code-block [code]="stylesCode" title="Styles Example" language="html"></app-code-block>
+  </section>
+</div>

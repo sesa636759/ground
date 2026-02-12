@@ -1,7 +1,7 @@
 @use '../../../styles/playground-base.scss';
 
 .demo-container {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 40px 24px;
 }
@@ -26,16 +26,10 @@ h1 {
 /* Navigation Styles */
 .variants-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-  overflow-x: auto;
-  padding: 8px 4px 24px 4px; /* Bottom padding for scrollbar space if needed, or visual separation */
+  padding: 8px 4px 24px 4px;
   margin-bottom: 40px;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-
-  &::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-  }
 
   .variant-btn {
     display: flex;

@@ -1,0 +1,57 @@
+<div class="demo-container">
+  <h1>🪜 Smart Stepper</h1>
+  <p class="intro-text">
+    A guided workflow component that breaks down complex processes into manageable steps. Supports
+    custom icons, themes, and dynamic content injection per step.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure orientations and themes to match your workflow requirements.</p>
+    </div>
+    <app-smart-stepper-playground></app-smart-stepper-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="themes">
+    <div class="section-header">
+      <h2>🎨 Themes & Orientations</h2>
+      <p>Choose between standard and compact themes or change the layout flow.</p>
+    </div>
+    <div class="demo-card">
+      <div style="width: 100%">
+        <span>Compact Theme:</span>
+        <ui-smart-stepper theme="compact" value="1">
+          <ui-smart-step label="Billing" value="1"></ui-smart-step>
+          <ui-smart-step label="Shipping" value="2"></ui-smart-step>
+          <ui-smart-step label="Confirm" value="3"></ui-smart-step>
+        </ui-smart-stepper>
+      </div>
+
+      <div style="width: 100%; display: flex; flex-direction: column; gap: 12px">
+        <span>Vertical Orientation:</span>
+        <ui-smart-stepper orientation="vertical" value="2" style="height: 300px">
+          <ui-smart-step label="Account" value="1"></ui-smart-step>
+          <ui-smart-step label="Preferences" value="2">
+            <div style="padding: 12px">Customize your notifications here.</div>
+          </ui-smart-step>
+          <ui-smart-step label="Finalize" value="3"></ui-smart-step>
+        </ui-smart-stepper>
+      </div>
+    </div>
+    <app-code-block [code]="themesCode" title="Design Examples" language="html"></app-code-block>
+  </section>
+</div>

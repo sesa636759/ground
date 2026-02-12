@@ -1,0 +1,69 @@
+<div class="demo-container">
+  <h1>🏎️ Speedometer / Gauge</h1>
+  <p class="intro-text">
+    A visually rich gauge component for representing numerical data on an arc. Highly effective for
+    KPIs, speed indicators, and capacity monitoring.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Fine-tune thresholds, arc thickness, and labels.</p>
+    </div>
+    <app-speedometer-playground></app-speedometer-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="modes">
+    <div class="section-header">
+      <h2>🌈 Color Modes</h2>
+      <p>Standardize visual feedback using solid, gradient, or segmented arcs.</p>
+    </div>
+    <div class="demo-card">
+      <div style="text-align: center">
+        <ui-speedometer [value]="30" color-mode="solid" [size]="180" label="Solid"></ui-speedometer>
+      </div>
+      <div style="text-align: center">
+        <ui-speedometer
+          [value]="60"
+          color-mode="gradient"
+          [size]="180"
+          label="Gradient"
+        ></ui-speedometer>
+      </div>
+      <div style="text-align: center">
+        <ui-speedometer
+          [value]="90"
+          color-mode="segments"
+          [size]="180"
+          label="Segments"
+        ></ui-speedometer>
+      </div>
+    </div>
+    <app-code-block [code]="modesCode" title="Color Configuration" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="sizes">
+    <div class="section-header">
+      <h2>📐 Scaling</h2>
+      <p>Adapt the gauge size to different container widths while maintaining proportions.</p>
+    </div>
+    <div class="demo-card">
+      <ui-speedometer [size]="120" [arc-width]="8" [value]="50" label="Tiny"></ui-speedometer>
+      <ui-speedometer [size]="300" [arc-width]="30" [value]="75" label="Hero"></ui-speedometer>
+    </div>
+    <app-code-block [code]="sizesCode" title="Sizing Examples" language="html"></app-code-block>
+  </section>
+</div>

@@ -1,0 +1,56 @@
+<div class="demo-container">
+  <h1>🔝 Top Bar</h1>
+  <p class="intro-text">
+    A horizontal navigation bar typically placed at the top of the application. It provides quick
+    access to branding, global search, and user actions. Supports sticky positioning for persistent
+    visibility.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the top bar layout and test sticky behavior.</p>
+    </div>
+    <app-top-bar-playground></app-top-bar-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Layouts</h2>
+      <p>Organize content across start, center, and end slots.</p>
+    </div>
+    <div class="demo-card">
+      <div style="border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden">
+        <ui-top-bar>
+          <div slot="start" style="padding: 0 20px; font-weight: 700">BRAND</div>
+          <div slot="center" style="flex: 1; max-width: 400px">
+            <input
+              type="search"
+              placeholder="Search across platform..."
+              style="width: 100%; padding: 8px 16px; border: 1px solid #ddd; border-radius: 8px"
+            />
+          </div>
+          <div slot="end" style="padding: 0 20px; display: flex; gap: 16px">
+            <span>🔔</span>
+            <span>⚙️</span>
+            <span>👤</span>
+          </div>
+        </ui-top-bar>
+      </div>
+    </div>
+    <app-code-block [code]="layoutsCode" title="Layout Examples" language="html"></app-code-block>
+  </section>
+</div>

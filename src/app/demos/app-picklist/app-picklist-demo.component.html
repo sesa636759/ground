@@ -1,0 +1,52 @@
+<div class="demo-container">
+  <h1>📋 Picklist</h1>
+  <p class="intro-text">
+    Move items between two lists with ease. Features multi-selection, drag-and-drop support,
+    reordering within lists, and dedicated filtering for both source and target.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize list headers, control visibility, and test selection.</p>
+    </div>
+    <app-picklist-playground></app-picklist-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="features">
+    <div class="section-header">
+      <h2>⚙️ UI Controls</h2>
+      <p>Configure visibility of reordering buttons and filtering capabilities.</p>
+    </div>
+    <div class="demo-card">
+      <ui-picklist
+        [source]="sourceItems"
+        [target]="targetItems"
+        [show-source-controls]="false"
+        [show-target-controls]="false"
+        source-header="Minimal Source"
+        target-header="Minimal Target"
+      >
+        <ng-template let-item>{{ item.name }}</ng-template>
+      </ui-picklist>
+    </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Configuration Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

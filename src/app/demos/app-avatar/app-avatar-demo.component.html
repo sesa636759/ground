@@ -1,0 +1,106 @@
+<div class="demo-container">
+  <h1>👤 Avatar Component</h1>
+  <p class="intro-text">
+    A versatile component for presenting user profiles, entities, or icons in various shapes and
+    sizes, complete with status and notification indicators.
+  </p>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Fine-tune every aspect of the avatar component</p>
+    </div>
+    <app-avatar-playground></app-avatar-playground>
+    <app-code-block [code]="playgroundCode" title="Avatar Usage" language="html"></app-code-block>
+  </section>
+
+  <!-- Shapes -->
+  <section class="demo-section" id="shapes">
+    <div class="section-header">
+      <h2>📐 Geometric Shapes</h2>
+      <p>From classic circles to modern hexagons</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-avatar name="Circle" shape="circle" size="64px"></ui-avatar>
+        <ui-avatar name="Square" shape="square" size="64px"></ui-avatar>
+        <ui-avatar name="Hexagon" shape="hexagon" size="64px"></ui-avatar>
+        <ui-avatar name="Squircle" shape="squircle" size="64px"></ui-avatar>
+      </div>
+    </div>
+    <app-code-block [code]="shapesCode" title="Shapes Example" language="html"></app-code-block>
+  </section>
+
+  <!-- Content Types -->
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>👤 Content Types</h2>
+      <p>Support for images, initials, custom text, and icons</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-avatar src="https://i.pravatar.cc/150?u=type1" name="Photo" size="64px"></ui-avatar>
+        <ui-avatar name="John Doe" size="64px"></ui-avatar>
+        <ui-avatar content="JD" size="64px"></ui-avatar>
+        <ui-avatar icon="👤" size="64px"></ui-avatar>
+        <ui-avatar icon="⭐" size="64px"></ui-avatar>
+      </div>
+    </div>
+    <app-code-block [code]="typesCode" title="Types Example" language="html"></app-code-block>
+  </section>
+
+  <!-- Status & Badges -->
+  <section class="demo-section" id="status">
+    <div class="section-header">
+      <h2>📍 Status & Badges</h2>
+      <p>Real-time availability and notification counts</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-avatar name="Available" status="online" size="64px"></ui-avatar>
+        <ui-avatar name="Away" status="away" size="64px"></ui-avatar>
+        <ui-avatar name="Busy" status="busy" size="64px"></ui-avatar>
+        <ui-avatar name="Invisible" status="offline" size="64px"></ui-avatar>
+        <ui-divider vertical></ui-divider>
+        <ui-avatar name="Unread" badge="5" size="64px" badge-color="#ef4444"></ui-avatar>
+        <ui-avatar name="Verified" badge="dot" size="64px" badge-color="#3b82f6"></ui-avatar>
+      </div>
+    </div>
+    <app-code-block [code]="statusCode" title="Status Example" language="html"></app-code-block>
+  </section>
+
+  <!-- Avatar Groups -->
+  <section class="demo-section" id="avatar-group">
+    <div class="section-header">
+      <h2>👥 Avatar Groups</h2>
+      <p>Effortlessly display multiple entities with overlap and overflow management</p>
+    </div>
+    <div class="demo-card" style="padding: 2rem">
+      <div class="preview-box">
+        <ui-avatar-group max="4">
+          <ui-avatar src="https://i.pravatar.cc/150?u=user1" name="User 1"></ui-avatar>
+          <ui-avatar src="https://i.pravatar.cc/150?u=user2" name="User 2"></ui-avatar>
+          <ui-avatar src="https://i.pravatar.cc/150?u=user3" name="User 3"></ui-avatar>
+          <ui-avatar src="https://i.pravatar.cc/150?u=user4" name="User 4"></ui-avatar>
+          <ui-avatar src="https://i.pravatar.cc/150?u=user5" name="User 5"></ui-avatar>
+          <ui-avatar src="https://i.pravatar.cc/150?u=user6" name="User 6"></ui-avatar>
+        </ui-avatar-group>
+      </div>
+    </div>
+    <app-code-block [code]="groupCode" title="Group Example" language="html"></app-code-block>
+  </section>
+</div>

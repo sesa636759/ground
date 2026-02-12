@@ -1,0 +1,45 @@
+<div class="demo-container">
+  <h1>🌳 Tree List</h1>
+  <p class="intro-text">
+    A hierarchical tree view component for displaying nested data structures. Perfect for file
+    systems, organizational charts, category navigation, and any hierarchical data representation.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure selection behavior and explore tree interactions.</p>
+    </div>
+    <app-tree-list-playground></app-tree-list-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="examples">
+    <div class="section-header">
+      <h2>📂 Examples</h2>
+      <p>Common use cases for hierarchical data display.</p>
+    </div>
+    <div class="demo-card">
+      <div style="max-width: 500px">
+        <ui-tree-list [model]="treeData" selectable></ui-tree-list>
+      </div>
+    </div>
+    <app-code-block
+      [code]="examplesCode"
+      title="File System Example"
+      language="typescript"
+    ></app-code-block>
+  </section>
+</div>

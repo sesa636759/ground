@@ -1,0 +1,77 @@
+<div class="demo-container">
+  <h1>📄 Pagination</h1>
+  <p class="intro-text">
+    Navigate through large data sets by breaking them into manageable pages. Provides flexible
+    controls for page switching, jumping to ends, and rows-per-page selection.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize paging logic and metadata reporting.</p>
+    </div>
+    <app-pagination-playground></app-pagination-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Variants</h2>
+      <p>Choose the presentation style that fits your application theme.</p>
+    </div>
+    <div class="demo-card">
+      <div style="width: 100%">
+        <span>Modern Style:</span>
+        <ui-pagination
+          variant="modern"
+          [total-records]="50"
+          [rows]="10"
+          show-report
+        ></ui-pagination>
+      </div>
+      <div style="width: 100%">
+        <span>Compact Style:</span>
+        <ui-pagination variant="compact" [total-records]="50" [rows]="10"></ui-pagination>
+      </div>
+    </div>
+    <app-code-block [code]="stylesCode" title="Design Examples" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="features">
+    <div class="section-header">
+      <h2>⚙️ UI Controls</h2>
+      <p>Enable or disable specific navigation features.</p>
+    </div>
+    <div class="demo-card">
+      <div style="width: 100%">
+        <span>Simplified (No Jump Icons):</span>
+        <ui-pagination
+          [show-jump-controls]="false"
+          [total-records]="100"
+          [rows]="10"
+        ></ui-pagination>
+      </div>
+      <div style="width: 100%">
+        <span>No Summary Report:</span>
+        <ui-pagination [show-report]="false" [total-records]="100" [rows]="10"></ui-pagination>
+      </div>
+    </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Functionality Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

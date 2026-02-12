@@ -1,0 +1,95 @@
+<div class="demo-container">
+  <h1>⭐ Rating Component</h1>
+  <p class="intro-text">
+    An intuitive component for collecting user feedback or displaying evaluations. Supports multiple
+    visual metaphors from classic stars to sentiment-based smileys.
+  </p>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the feedback experience</p>
+    </div>
+    <app-rating-playground></app-rating-playground>
+    <app-code-block [code]="playgroundCode" title="Rating Usage" language="html"></app-code-block>
+  </section>
+
+  <!-- Rating Types -->
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>✨ Rating Models</h2>
+      <p>Choose the visual style that best fits your context</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div class="demo-row">
+          <span>Star:</span>
+          <ui-rating type="star" [value]="4"></ui-rating>
+        </div>
+        <div class="demo-row">
+          <span>Smiley:</span>
+          <ui-rating type="smiley" [value]="4"></ui-rating>
+        </div>
+        <div class="demo-row">
+          <span>Thumb:</span>
+          <ui-rating type="thumb" [value]="1"></ui-rating>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="typesCode" title="Types Example" language="html"></app-code-block>
+  </section>
+
+  <!-- Colors & Sizes -->
+  <section class="demo-section" id="colors">
+    <div class="section-header">
+      <h2>🌈 Colors & Sizes</h2>
+      <p>Visual scales to match your design system</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-rating size="sm" color="success" [value]="4"></ui-rating>
+        <ui-rating size="md" color="warning" [value]="4"></ui-rating>
+        <ui-rating size="lg" color="danger" [value]="4"></ui-rating>
+      </div>
+    </div>
+    <app-code-block
+      [code]="colorsSizesCode"
+      title="Colors and Sizes"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Custom Labels -->
+  <section class="demo-section" id="custom">
+    <div class="section-header">
+      <h2>📝 Descriptive Labels</h2>
+      <p>Add semantic meaning to numeric values with custom tooltip-like labels</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-rating
+          type="smiley"
+          [value]="3"
+          labels='["Slightly Happy", "Happy", "Very Happy", "Ecstatic", "Over Joyed"]'
+          show-value
+          size="lg"
+        ></ui-rating>
+      </div>
+    </div>
+    <app-code-block [code]="customCode" title="Custom Labels" language="html"></app-code-block>
+  </section>
+</div>

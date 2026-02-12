@@ -1,0 +1,68 @@
+<div class="demo-container">
+  <h1>🔢 OTP / SMS Input</h1>
+  <p class="intro-text">
+    A specialized input field for multi-digit verification codes. Handles auto-focus, character
+    separation, and input masking for security.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure digit count, masking, and visual density.</p>
+    </div>
+    <app-otp-input-playground></app-otp-input-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="lengths">
+    <div class="section-header">
+      <h2>🔢 Field Configurations</h2>
+      <p>Adjust the number of digits and input sizing.</p>
+    </div>
+    <div class="demo-card">
+      <div>
+        <span>4-Digit Pin:</span>
+        <ui-otp-input [length]="4" size="lg"></ui-otp-input>
+      </div>
+      <div>
+        <span>8-Digit Code:</span>
+        <ui-otp-input [length]="8" size="sm"></ui-otp-input>
+      </div>
+    </div>
+    <app-code-block
+      [code]="lengthsCode"
+      title="Configuration Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <section class="demo-section" id="states">
+    <div class="section-header">
+      <h2>🔒 Modes & States</h2>
+      <p>Secure masking and interactive states.</p>
+    </div>
+    <div class="demo-card">
+      <div>
+        <span>Masked Input:</span>
+        <ui-otp-input mask [length]="6"></ui-otp-input>
+      </div>
+      <div>
+        <span>Disabled View:</span>
+        <ui-otp-input disabled [length]="6"></ui-otp-input>
+      </div>
+    </div>
+    <app-code-block [code]="statesCode" title="State Examples" language="html"></app-code-block>
+  </section>
+</div>

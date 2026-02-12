@@ -1,0 +1,44 @@
+<div class="demo-container">
+  <h1>↔️ Transfer List</h1>
+  <p class="intro-text">
+    A double-column list component used for moving items from one list to another. It's often used
+    for assignment tasks like user roles, permissions, or feature selection.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure search options, headers, and disabled states.</p>
+    </div>
+    <app-transfer-list-playground></app-transfer-list-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="features">
+    <div class="section-header">
+      <h2>⚙️ UI Controls</h2>
+      <p>Configure search visibility and interaction availability.</p>
+    </div>
+    <div class="demo-card">
+      <ui-transfer-list [source]="sourceItems" [target]="targetItems" [show-search]="false">
+      </ui-transfer-list>
+    </div>
+    <app-code-block
+      [code]="featuresCode"
+      title="Configuration Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

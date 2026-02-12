@@ -1,0 +1,68 @@
+<div class="demo-container">
+  <h1>⏲️ Timer / Stopwatch</h1>
+  <p class="intro-text">
+    A versatile time-tracking component for countdowns, stopwatches, and duration displays. Supports
+    various time formats and offers programmatic control for starting, pausing, and resetting.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize time formats, initial durations, and test controls.</p>
+    </div>
+    <app-timer-playground></app-timer-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="modes">
+    <div class="section-header">
+      <h2>⏲️ Timer Modes</h2>
+      <p>Choose between decreasing time (countdown) or increasing time (stopwatch).</p>
+    </div>
+    <div class="demo-card">
+      <div class="timer-box">
+        <span>Countdown (1 min):</span>
+        <ui-timer mode="countdown" [duration]="60" auto-start></ui-timer>
+      </div>
+      <div class="timer-box">
+        <span>Stopwatch:</span>
+        <ui-timer mode="stopwatch" auto-start></ui-timer>
+      </div>
+    </div>
+    <app-code-block [code]="modesCode" title="Mode Examples" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="formats">
+    <div class="section-header">
+      <h2>🕰️ Display Formats</h2>
+      <p>Adapt the display level of detail based on your application's needs.</p>
+    </div>
+    <div class="demo-card">
+      <div class="timer-box">
+        <span>Compact (ss):</span>
+        <ui-timer format="ss" [duration]="45" auto-start></ui-timer>
+      </div>
+      <div class="timer-box">
+        <span>Standard (mm:ss):</span>
+        <ui-timer format="mm:ss" [duration]="125" auto-start></ui-timer>
+      </div>
+      <div class="timer-box">
+        <span>Detailed (HH:mm:ss):</span>
+        <ui-timer format="HH:mm:ss" [duration]="3665" auto-start></ui-timer>
+      </div>
+    </div>
+    <app-code-block [code]="formatsCode" title="Format Examples" language="html"></app-code-block>
+  </section>
+</div>

@@ -1,0 +1,72 @@
+<div class="demo-container">
+  <h1>🚀 Speed Dial</h1>
+  <p class="intro-text">
+    A floating action button that expands into multiple primary actions. Optimizes screen real
+    estate while keeping common tasks accessible.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure animation types, radii, and triggers.</p>
+    </div>
+    <app-speed-dial-playground></app-speed-dial-playground>
+    <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="directions">
+    <div class="section-header">
+      <h2>↔️ Opening Directions</h2>
+      <p>Control where the actions appear relative to the button.</p>
+    </div>
+    <div class="demo-card" style="justify-content: space-around; min-height: 300px">
+      <div class="speed-dial-anchor">
+        <span>Upward:</span>
+        <ui-speed-dial direction="up" [model]="items"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor">
+        <span>Downward:</span>
+        <ui-speed-dial direction="down" [model]="items"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor">
+        <span>Right:</span>
+        <ui-speed-dial direction="right" [model]="items"></ui-speed-dial>
+      </div>
+    </div>
+    <app-code-block
+      [code]="directionsCode"
+      title="Directional Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <section class="demo-section" id="types">
+    <div class="section-header">
+      <h2>🌀 Motion Patterns</h2>
+      <p>Switch between linear, radial, and circular expansions.</p>
+    </div>
+    <div class="demo-card" style="min-height: 450px">
+      <div class="speed-dial-anchor" style="top: 150px">
+        <span>Full Circle:</span>
+        <ui-speed-dial type="circle" [radius]="100" [model]="items" direction="up"></ui-speed-dial>
+      </div>
+      <div class="speed-dial-anchor" style="top: 150px; left: 100px">
+        <span>Half Circle:</span>
+        <ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>
+      </div>
+    </div>
+    <app-code-block [code]="typesCode" title="Animation Styles" language="html"></app-code-block>
+  </section>
+</div>

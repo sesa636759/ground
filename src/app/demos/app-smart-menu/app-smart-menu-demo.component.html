@@ -1,0 +1,45 @@
+<div class="demo-container">
+  <h1>🧠 Smart Menu</h1>
+  <p class="intro-text">
+    An intelligent menu component with support for nested items, icons, and dynamic behavior.
+    Perfect for application menus, context menus, and navigation structures.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure orientation and test menu interactions.</p>
+    </div>
+    <app-smart-menu-playground></app-smart-menu-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="nested">
+    <div class="section-header">
+      <h2>🗂️ Nested Menus</h2>
+      <p>Create hierarchical menu structures with unlimited nesting levels.</p>
+    </div>
+    <div class="demo-card">
+      <div style="display: flex; justify-content: center">
+        <ui-smart-menu [model]="menuItems"></ui-smart-menu>
+      </div>
+    </div>
+    <app-code-block
+      [code]="nestedCode"
+      title="Nested Menu Model"
+      language="typescript"
+    ></app-code-block>
+  </section>
+</div>

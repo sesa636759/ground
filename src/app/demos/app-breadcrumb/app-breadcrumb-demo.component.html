@@ -1,0 +1,103 @@
+<div class="demo-container">
+  <h1>🍞 Breadcrumb Component</h1>
+  <p class="intro-text">
+    An essential navigation aid that helps users keep track of their location within a hierarchical
+    application structure. Supports automatic collapsing for deep paths.
+  </p>
+
+  <!-- Navigation -->
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span class="variant-icon">{{ variant.icon }}</span>
+      <span class="variant-label">{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <!-- Interactive Playground -->
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure the navigation hierarchy and path display settings</p>
+    </div>
+    <app-breadcrumb-playground></app-breadcrumb-playground>
+    <app-code-block
+      [code]="playgroundCode"
+      title="Breadcrumb Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Separators -->
+  <section class="demo-section" id="separators">
+    <div class="section-header">
+      <h2>➖ Custom Separators</h2>
+      <p>Use characters or icons to strictly define the path flow</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-breadcrumb [items]="items" separator=">>"></ui-breadcrumb>
+        <ui-breadcrumb [items]="items" separator-icon="→"></ui-breadcrumb>
+        <ui-breadcrumb [items]="items" separator="~"></ui-breadcrumb>
+      </div>
+    </div>
+    <app-code-block
+      [code]="separatorsCode"
+      title="Separator Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Collapsing -->
+  <section class="demo-section" id="collapsing">
+    <div class="section-header">
+      <h2>📉 Smart Collapsing</h2>
+      <p>Manage deep hierarchies gracefully with built-in ellipsis dropdowns</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <ui-breadcrumb [items]="collapsibleItems" [max-items]="4"></ui-breadcrumb>
+        <p style="font-size: 0.9rem; color: var(--text-secondary)">
+          (Click the ellipsis to see hidden items)
+        </p>
+      </div>
+    </div>
+    <app-code-block
+      [code]="collapsingCode"
+      title="Max Items Usage"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <!-- Visual Variants -->
+  <section class="demo-section" id="visuals">
+    <div class="section-header">
+      <h2>🎨 Visual Variants</h2>
+      <p>Style paths to match the surrounding application layout</p>
+    </div>
+    <div class="demo-card">
+      <div class="preview-box">
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 20px">
+          <span>Pills Variant:</span>
+          <ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
+
+          <span>Glass Variant:</span>
+          <div
+            style="
+              background: linear-gradient(135deg, #6366f1, #a855f7);
+              padding: 20px;
+              border-radius: 12px;
+            "
+          >
+            <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="visualsCode" title="Variant Options" language="html"></app-code-block>
+  </section>
+</div>

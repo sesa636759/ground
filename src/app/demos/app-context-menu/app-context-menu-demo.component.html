@@ -1,0 +1,53 @@
+<div class="demo-container">
+  <h1>🖱️ Context Menu</h1>
+  <p class="intro-text">
+    A context-sensitive menu that appears upon right-click. Can be attached to specific elements or
+    defined as a global menu for the entire page.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Attach the menu to a specific target and customize its behavior.</p>
+    </div>
+    <app-context-menu-playground></app-context-menu-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="targets">
+    <div class="section-header">
+      <h2>🎯 Multiple Targets</h2>
+      <p>Menus can be bound to different elements like images, cards, or lists.</p>
+    </div>
+    <div class="demo-card">
+      <div class="image-target" #imgTarget>Image Target</div>
+      <ui-context-menu [model]="fileItems" [target]="imgTarget"></ui-context-menu>
+
+      <div
+        class="image-target"
+        #cardTarget
+        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      >
+        Card Target
+      </div>
+      <ui-context-menu [model]="fileItems" [target]="cardTarget"></ui-context-menu>
+    </div>
+    <app-code-block
+      [code]="targetsCode"
+      title="Target Configuration"
+      language="html"
+    ></app-code-block>
+  </section>
+</div>

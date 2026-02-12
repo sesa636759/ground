@@ -1,0 +1,87 @@
+<div class="demo-container">
+  <h1>📑 Tabs</h1>
+  <p class="intro-text">
+    Organize content into multiple panels, where only one panel is visible at a time. Supports
+    multiple visual variants, orientations, and responsive scrollable headers.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Switch between variants, alignments, and orientations.</p>
+    </div>
+    <app-tabs-playground></app-tabs-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Visual Variants</h2>
+      <p>Choose the presentation style that matches your application's design system.</p>
+    </div>
+    <div class="demo-card">
+      <div class="tab-preview-box">
+        <span>Pills Variant:</span>
+        <ui-tabs variant="pills">
+          <ui-tab label="Analytics" icon="📈"></ui-tab>
+          <ui-tab label="Reports" icon="📑"></ui-tab>
+          <ui-tab label="Logs" icon="📜"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Underline Variant:</span>
+        <ui-tabs variant="underline">
+          <ui-tab label="Overview"></ui-tab>
+          <ui-tab label="Advanced"></ui-tab>
+          <ui-tab label="Dev Tools"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Enclosed Variant:</span>
+        <ui-tabs variant="enclosed">
+          <ui-tab label="Code"></ui-tab>
+          <ui-tab label="Preview"></ui-tab>
+        </ui-tabs>
+      </div>
+    </div>
+    <app-code-block [code]="stylesCode" title="Design Examples" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="layouts">
+    <div class="section-header">
+      <h2>📐 Orientations & Layouts</h2>
+      <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
+    </div>
+    <div class="demo-card">
+      <div class="tab-preview-box" style="display: flex; flex-direction: column; gap: 20px">
+        <span>Vertical Orientation:</span>
+        <ui-tabs orientation="vertical">
+          <ui-tab label="Inbox" icon="📥"></ui-tab>
+          <ui-tab label="Sent" icon="📤"></ui-tab>
+          <ui-tab label="Spam" icon="🚫"></ui-tab>
+        </ui-tabs>
+      </div>
+      <div class="tab-preview-box">
+        <span>Center Alignment:</span>
+        <ui-tabs align="center">
+          <ui-tab label="Feed"></ui-tab>
+          <ui-tab label="Groups"></ui-tab>
+          <ui-tab label="Events"></ui-tab>
+        </ui-tabs>
+      </div>
+    </div>
+    <app-code-block [code]="layoutsCode" title="Layout Examples" language="html"></app-code-block>
+  </section>
+</div>

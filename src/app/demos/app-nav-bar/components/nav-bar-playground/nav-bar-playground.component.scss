@@ -1,0 +1,25 @@
+@use '../../../../../styles/playground-base.scss';
+
+.playground-preview {
+  min-height: 400px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.nav-container {
+    width: 280px;
+    height: 100%;
+    border-right: 1px solid var(--border-color);
+}
+
+.content-area {
+    flex: 1;
+    padding: 40px;
+    background: #f8fafc;
+}

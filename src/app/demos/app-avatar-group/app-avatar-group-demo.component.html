@@ -1,0 +1,64 @@
+<div class="demo-container">
+  <h1>👥 Avatar Group</h1>
+  <p class="intro-text">
+    Display multiple avatars in a compact, overlapping layout. Perfect for showing team members,
+    collaborators, or participants with automatic overflow handling.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Configure max display count and avatar sizes.</p>
+    </div>
+    <app-avatar-group-playground></app-avatar-group-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="sizes">
+    <div class="section-header">
+      <h2>📏 Sizes</h2>
+      <p>Choose from small, medium, or large avatar groups.</p>
+    </div>
+    <div class="demo-card">
+      <div style="display: flex; flex-direction: column; gap: 32px">
+        <div>
+          <span style="display: block; margin-bottom: 12px; font-weight: 600">Small</span>
+          <ui-avatar-group size="small">
+            <ui-avatar label="JD" size="small"></ui-avatar>
+            <ui-avatar label="AB" size="small"></ui-avatar>
+            <ui-avatar label="CD" size="small"></ui-avatar>
+          </ui-avatar-group>
+        </div>
+        <div>
+          <span style="display: block; margin-bottom: 12px; font-weight: 600">Medium</span>
+          <ui-avatar-group size="medium">
+            <ui-avatar label="JD" size="medium"></ui-avatar>
+            <ui-avatar label="AB" size="medium"></ui-avatar>
+            <ui-avatar label="CD" size="medium"></ui-avatar>
+          </ui-avatar-group>
+        </div>
+        <div>
+          <span style="display: block; margin-bottom: 12px; font-weight: 600">Large</span>
+          <ui-avatar-group size="large">
+            <ui-avatar label="JD" size="large"></ui-avatar>
+            <ui-avatar label="AB" size="large"></ui-avatar>
+            <ui-avatar label="CD" size="large"></ui-avatar>
+          </ui-avatar-group>
+        </div>
+      </div>
+    </div>
+    <app-code-block [code]="sizesCode" title="Size Examples" language="html"></app-code-block>
+  </section>
+</div>

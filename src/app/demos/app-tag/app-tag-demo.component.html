@@ -1,0 +1,60 @@
+<div class="demo-container">
+  <h1>🏷️ Tag</h1>
+  <p class="intro-text">
+    The Tag component is a small, versatile visual indicator used to label, categorize, or highlight
+    specific information within an application.
+  </p>
+
+  <div class="variants-nav">
+    <button
+      *ngFor="let variant of variants"
+      (click)="scrollToSection(variant.id)"
+      class="variant-btn"
+      [style.background-color]="variant.color"
+    >
+      <span>{{ variant.icon }}</span>
+      <span>{{ variant.name }}</span>
+    </button>
+  </div>
+
+  <section class="demo-section" id="playground">
+    <div class="section-header">
+      <h2>🎮 Interactive Playground</h2>
+      <p>Customize the tag appearance, severity, and icons in real-time.</p>
+    </div>
+    <app-tag-playground></app-tag-playground>
+    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+  </section>
+
+  <section class="demo-section" id="severities">
+    <div class="section-header">
+      <h2>🚨 Severities</h2>
+      <p>Use predefined severity levels to communicate status or importance.</p>
+    </div>
+    <div class="demo-card">
+      <ui-tag severity="info" value="Information"></ui-tag>
+      <ui-tag severity="success" value="Success"></ui-tag>
+      <ui-tag severity="warning" value="Warning"></ui-tag>
+      <ui-tag severity="danger" value="Danger"></ui-tag>
+    </div>
+    <app-code-block
+      [code]="severitiesCode"
+      title="Severity Examples"
+      language="html"
+    ></app-code-block>
+  </section>
+
+  <section class="demo-section" id="styles">
+    <div class="section-header">
+      <h2>🎨 Styles & Sizes</h2>
+      <p>Adjust visual shapes and sizing to fit your layout requirements.</p>
+    </div>
+    <div class="demo-card">
+      <ui-tag value="Standard Square"></ui-tag>
+      <ui-tag value="Rounded Tag" rounded></ui-tag>
+      <ui-tag value="With Icon" icon="★"></ui-tag>
+      <ui-tag value="Large Size" size="large"></ui-tag>
+    </div>
+    <app-code-block [code]="stylesCode" title="Styling Examples" language="html"></app-code-block>
+  </section>
+</div>
