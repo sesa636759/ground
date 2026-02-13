@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
@@ -14,6 +14,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     AppCheckboxValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './stepper-playground.component.html',
   styleUrl: './stepper-playground.component.scss',
 })

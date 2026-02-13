@@ -1,23 +1,17 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-list-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './list-playground.component.html',
   styleUrl: './list-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ListPlaygroundComponent implements OnInit {
+export class ListPlaygroundComponent {
   // Playground State
   pgConfig = {
     variant: 'filled',
@@ -45,7 +39,7 @@ export class ListPlaygroundComponent implements OnInit {
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
 
-  ngOnInit() {
+  constructor() {
     this.updateConfig();
   }
 

@@ -1,93 +1,208 @@
 <div class="demo-container">
-  <h1>🔀 Splitter Component Demo</h1>
+  <h1>🔀 Splitter Component</h1>
+  <p class="intro-text">
+    Resizable split panels with support for horizontal/vertical layouts, nested splitters, collapsible panels, and state persistence.
+  </p>
 
   <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
-      <!-- Basic Orientations -->
-      <section class="demo-section" id="orientations">
+      <!-- Basic Layouts -->
+      <section class="demo-section" id="basic">
         <div class="section-header">
-          <h2>📋 Basic Orientations</h2>
+          <h2>📐 Basic Layouts</h2>
           <p>Horizontal and vertical split configurations</p>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Horizontal Split</h3>
-            <div class="panel-box">
-              <app-splitter direction="horizontal" [panels]="basicPanels">
-                <div slot="panel-0" class="p-content">Sidebar</div>
-                <div slot="panel-1" class="p-content">Main View</div>
-              </app-splitter>
-            </div>
+
+        <!-- Horizontal Split -->
+        <div class="demo-card full-width">
+          <h3>Horizontal Split</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="basicPanels">
+              <div slot="panel-0" class="p-content"><strong>Left Panel</strong><p>Drag the gutter to resize. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Right Panel</strong><p>It adjusts automatically. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+            </app-splitter>
           </div>
-          <div class="demo-card">
-            <h3>Vertical Split</h3>
-            <div class="panel-box">
-              <app-splitter direction="vertical" [panels]="basicPanels">
-                <div slot="panel-0" class="p-content">Top Panel</div>
-                <div slot="panel-1" class="p-content">Bottom Panel</div>
-              </app-splitter>
-            </div>
+          <app-code-block [code]="horizontalCode()" language="html" title="Horizontal Split Code"></app-code-block>
+        </div>
+
+        <!-- Vertical Split -->
+        <div class="demo-card full-width">
+          <h3>Vertical Split</h3>
+          <div class="preview-box">
+            <app-splitter direction="vertical" [panels]="basicPanels">
+              <div slot="panel-0" class="p-content"><strong>Top Panel</strong><p>Drag the gutter to resize vertically.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Bottom Panel</strong><p>The bottom panel adjusts to remaining space.</p></div>
+            </app-splitter>
           </div>
+          <app-code-block [code]="verticalCode()" language="html" title="Vertical Split Code"></app-code-block>
+        </div>
+
+        <!-- Three Panels -->
+        <div class="demo-card full-width">
+          <h3>Three Panels Layout</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="threePanels">
+              <div slot="panel-0" class="p-content"><strong>Panel 1</strong><p>First panel content</p></div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong><p>Middle panel content</p></div>
+              <div slot="panel-2" class="p-content"><strong>Panel 3</strong><p>Last panel content</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="threePanelCode()" language="html" title="Three Panels Code"></app-code-block>
+        </div>
+
+        <!-- Custom Sizes -->
+        <div class="demo-card full-width">
+          <h3>Custom Initial Sizes</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="customSizePanels">
+              <div slot="panel-0" class="p-content"><strong>30% Panel</strong><p>This panel starts at 30% width.</p></div>
+              <div slot="panel-1" class="p-content"><strong>70% Panel</strong><p>This panel starts at 70% width.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="customSizeCode()" language="html" title="Custom Sizes Code"></app-code-block>
         </div>
       </section>
 
-      <!-- Complex Layouts -->
-      <section class="demo-section" id="complex">
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
         <div class="section-header">
-          <h2>🥈 Complex Layouts</h2>
-          <p>Nested splitters and multi-panel configurations</p>
+          <h2>💎 Premium Features</h2>
+          <p>Advanced capabilities including collapsible panels, constraints, and state persistence</p>
         </div>
+
+        <!-- Collapsible Panels -->
         <div class="demo-card full-width">
-          <h3>IDE Layout (Nested)</h3>
-          <div class="panel-box large-box">
+          <h3>Collapsible Panels</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
+              <div slot="panel-0" class="p-content"><strong>Sidebar</strong><p>Click the collapse button or double-click the gutter to collapse this panel.</p><p>• Dashboard<br>• Projects<br>• Settings</p></div>
+              <div slot="panel-1" class="p-content"><strong>Main Content</strong><p>This is the main content area that expands when the sidebar collapses.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="collapsibleCode()" language="html" title="Collapsible Code"></app-code-block>
+        </div>
+
+        <!-- Min/Max Constraints -->
+        <div class="demo-card full-width">
+          <h3>Min/Max Constraints</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="constraintsPanels">
+              <div slot="panel-0" class="p-content"><strong>Min: 20%, Max: 40%</strong><p>This panel cannot be resized below 20% or above 40%.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Flexible Panel</strong><p>This panel adjusts to fill the remaining space.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="constraintsCode()" language="html" title="Constraints Code"></app-code-block>
+        </div>
+
+        <!-- Snap to Threshold -->
+        <div class="demo-card full-width">
+          <h3>Snap to Threshold</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
+              <div slot="panel-0" class="p-content"><strong>Snap Enabled</strong><p>When resizing near min/max values, the panel will snap to those values automatically.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Content Panel</strong><p>Try resizing to see the snap effect!</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="snapCode()" language="html" title="Snap Code"></app-code-block>
+        </div>
+
+        <!-- State Persistence -->
+        <div class="demo-card full-width">
+          <h3>State Persistence</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
+              <div slot="panel-0" class="p-content"><strong>Persistent Layout</strong><p>Resize this splitter and refresh the page - your layout will be restored!</p><p>State is saved to localStorage.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Content Area</strong><p>The panel sizes are automatically saved and restored.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="persistenceCode()" language="html" title="Persistence Code"></app-code-block>
+        </div>
+      </section>
+
+      <!-- Nested Layouts -->
+      <section class="demo-section" id="nested">
+        <div class="section-header">
+          <h2>🎯 Nested Layouts</h2>
+          <p>Complex layouts with nested horizontal and vertical splitters</p>
+        </div>
+
+        <!-- IDE-Style Layout -->
+        <div class="demo-card full-width">
+          <h3>IDE-Style Layout</h3>
+          <div class="preview-box ide-preview">
             <app-splitter direction="horizontal">
-              <div slot="panel-0">
+              <div slot="panel-0" style="height: 100%">
                 <app-splitter direction="vertical" style="height: 100%">
-                  <div slot="panel-0" class="p-content dark-p">File Explorer</div>
-                  <div slot="panel-1" class="p-content dark-p">Outline</div>
+                  <div slot="panel-0" class="p-content dark-p"><strong>📁 File Explorer</strong><p>src/<br>📄 index.ts<br>📄 app.ts</p></div>
+                  <div slot="panel-1" class="p-content dark-p"><strong>Outline</strong><p>Functions, Classes, Variables...</p></div>
                 </app-splitter>
               </div>
-              <div slot="panel-1">
+              <div slot="panel-1" style="height: 100%">
                 <app-splitter direction="vertical" style="height: 100%">
-                  <div slot="panel-0" class="p-content">Main Editor</div>
-                  <div slot="panel-1" class="p-content dark-p">Terminal</div>
+                  <div slot="panel-0" class="p-content"><strong>Editor</strong><div class="code-example">function hello() {{ '{' }}<br>  console.log("Hello World");<br>{{ '}' }}</div></div>
+                  <div slot="panel-1" class="p-content dark-p"><strong>Terminal</strong><p>$ npm run dev</p></div>
                 </app-splitter>
               </div>
             </app-splitter>
           </div>
+          <app-code-block [code]="nestedCode()" language="html" title="Nested Layout Code"></app-code-block>
         </div>
       </section>
 
-      <!-- Special Features -->
-      <section class="demo-section" id="features">
+      <!-- Styling Options -->
+      <section class="demo-section" id="styling">
         <div class="section-header">
-          <h2>💎 Premium Features</h2>
-          <p>Collapsible panels, constraints, and visual styling</p>
+          <h2>🎨 Styling Options</h2>
+          <p>Themes, rounded corners, and visual customization</p>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card h-gradient">
-            <h3>Collapsible Panel</h3>
-            <div class="panel-box">
-              <app-splitter
-                direction="horizontal"
-                [panels]="collapsiblePanels"
-                double-click-collapse
-              >
-                <div slot="panel-0" class="p-content">Collapsible Sidebar</div>
-                <div slot="panel-1" class="p-content">Main View</div>
-              </app-splitter>
-            </div>
+
+        <!-- Dark Theme -->
+        <div class="demo-card full-width">
+          <h3>Dark Theme</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" theme="dark">
+              <div slot="panel-0" class="p-content dark-p"><strong>Dark Panel 1</strong><p>Dark theme with custom styling.</p></div>
+              <div slot="panel-1" class="p-content dark-p"><strong>Dark Panel 2</strong><p>Automatically styled for dark mode.</p></div>
+            </app-splitter>
           </div>
-          <div class="demo-card">
-            <h3>Styled & Elevated</h3>
-            <div class="panel-box">
-              <app-splitter direction="horizontal" rounded elevated [panels]="basicPanels">
-                <div slot="panel-0" class="p-content">Elevated Panel 1</div>
-                <div slot="panel-1" class="p-content">Elevated Panel 2</div>
-              </app-splitter>
-            </div>
+          <app-code-block [code]="darkThemeCode()" language="html" title="Dark Theme Code"></app-code-block>
+        </div>
+
+        <!-- Rounded & Elevated -->
+        <div class="demo-card full-width">
+          <h3>Rounded & Elevated</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" rounded elevated>
+              <div slot="panel-0" class="p-content"><strong>Styled Panel</strong><p>With rounded corners and elevation.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Beautiful Design</strong><p>Premium visual appearance.</p></div>
+            </app-splitter>
           </div>
+          <app-code-block [code]="roundedCode()" language="html" title="Rounded & Elevated Code"></app-code-block>
+        </div>
+
+        <!-- Custom Gutter -->
+        <div class="demo-card full-width">
+          <h3>Custom Gutter</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
+              <div slot="panel-0" class="p-content"><strong>Custom Gutter</strong><p>12px green gutter with custom hover color.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong><p>Hover over the gutter to see the effect.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="customGutterCode()" language="html" title="Custom Gutter Code"></app-code-block>
+        </div>
+
+        <!-- No Gutter Icon -->
+        <div class="demo-card full-width">
+          <h3>Clean Look (No Icon)</h3>
+          <div class="preview-box">
+            <app-splitter direction="horizontal" show-gutter-icon="false">
+              <div slot="panel-0" class="p-content"><strong>Clean Look</strong><p>Gutter without icon for minimal design.</p></div>
+              <div slot="panel-1" class="p-content"><strong>Minimalist</strong><p>Simple and clean interface.</p></div>
+            </app-splitter>
+          </div>
+          <app-code-block [code]="noIconCode()" language="html" title="No Icon Code"></app-code-block>
         </div>
       </section>
     </div>
@@ -100,11 +215,7 @@
           <p>Configure directions, themes, and interactive behaviors</p>
         </div>
         <app-splitter-playground></app-splitter-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Splitter Usage"
-          language="html"
-        ></app-code-block>
+        <app-code-block [code]="playgroundCode()" language="html" title="Splitter Usage"></app-code-block>
       </section>
     </div>
 

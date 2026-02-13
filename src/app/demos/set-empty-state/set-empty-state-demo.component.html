@@ -7,142 +7,219 @@
   <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
-      <!-- Standard Types -->
-      <section class="demo-section" id="standard-types">
-        <div class="section-header">
-          <h2>📋 Standard Types</h2>
-          <p>Pre-configured states for common scenarios</p>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+       
+
+        <div class="examples-content">
+          <section class="demo-section" id="types">
+            <div class="section-header">
+              <h2>📋 Standard Types</h2>
+              <p>Pre-configured empty states for common scenarios</p>
+            </div>
+            <div class="demo-grid col-3">
+              <div class="demo-card">
+                <h4>No Data</h4>
+                <app-empty-state type="no-data" title="No Data Available" message="There is no data to display." primary-action="Add Data" primary-action-icon="fas fa-plus"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>No Results</h4>
+                <app-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters" primary-action-icon="fas fa-times"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Error</h4>
+                <app-empty-state type="error" title="Something Went Wrong" message="An error occurred while loading the data." primary-action="Try Again" primary-action-icon="fas fa-redo"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>404 Page Not Found</h4>
+                <app-empty-state type="404" title="Page Not Found" message="The page you are looking for doesn't exist." primary-action="Go Home" primary-action-icon="fas fa-home"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Coming Soon</h4>
+                <app-empty-state type="coming-soon" title="Coming Soon" message="This feature is under development." secondary-action="Notify Me" secondary-action-icon="fas fa-bell"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Empty List</h4>
+                <app-empty-state type="empty" title="Nothing Here Yet" message="Get started by adding your first item." primary-action="Create" primary-action-icon="fas fa-star"></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="typesCode()" language="html" title="Standard Types Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="variants">
+            <div class="section-header">
+              <h2>🎨 Visual Variants</h2>
+              <p>Different styling options for empty states</p>
+            </div>
+            <div class="demo-grid col-4">
+              <div class="demo-card">
+                <h4>Default</h4>
+                <app-empty-state variant="default" title="No Data Available" message="There is no data to display." primary-action="Add Data"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Outlined</h4>
+                <app-empty-state variant="outlined" title="No Data Available" message="There is no data to display." primary-action="Add Data"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Filled</h4>
+                <app-empty-state variant="filled" title="No Data Available" message="There is no data to display." primary-action="Add Data"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Minimal</h4>
+                <app-empty-state variant="minimal" title="No Data Available" message="There is no data to display." primary-action="Add Data"></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="variantsCode()" language="html" title="Visual Variants Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="sizes">
+            <div class="section-header">
+              <h2>📏 Size Options</h2>
+              <p>Small, medium, and large empty state sizes</p>
+            </div>
+            <div class="demo-grid col-3">
+              <div class="demo-card">
+                <h4>Small Size</h4>
+                <app-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item." primary-action="Create"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Medium Size</h4>
+                <app-empty-state size="medium" title="Nothing Here Yet" message="Get started by adding your first item." primary-action="Create"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Large Size</h4>
+                <app-empty-state size="large" title="Nothing Here Yet" message="Get started by adding your first item." primary-action="Create"></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="sizesCode()" language="html" title="Size Options Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="alignment">
+            <div class="section-header">
+              <h2>↔️ Alignment Options</h2>
+              <p>Left, center, and right text alignment</p>
+            </div>
+            <div class="demo-grid col-3">
+              <div class="demo-card">
+                <h4>Left Aligned</h4>
+                <app-empty-state align="left" title="No Data Available" message="There is no data to display." primary-action="Get Started"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Center Aligned</h4>
+                <app-empty-state align="center" title="No Data Available" message="There is no data to display." primary-action="Get Started"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Right Aligned</h4>
+                <app-empty-state align="right" title="No Data Available" message="There is no data to display." primary-action="Get Started"></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="alignmentCode()" language="html" title="Alignment Options Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="images">
+            <div class="section-header">
+              <h2>🖼️ With Custom Images</h2>
+              <p>Using custom images instead of default illustrations</p>
+            </div>
+            <div class="demo-grid col-2">
+              <div class="demo-card">
+                <h4>Coming Soon with Image</h4>
+                <app-empty-state title="Under Construction" message="We're working hard to bring you this feature." image-src="https://via.placeholder.com/300x200" primary-action="Subscribe"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Data Syncing with Image</h4>
+                <app-empty-state title="Data Syncing" message="Please wait while we sync your assets." image-src="https://via.placeholder.com/300x200" animated></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="imagesCode()" language="html" title="Custom Images Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="suggestions">
+            <div class="section-header">
+              <h2>📝 With Suggestion Items</h2>
+              <p>Empty state with actionable suggestion items</p>
+            </div>
+            <div class="demo-card">
+              <h4>Search Results with Suggestions</h4>
+              <app-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters"></app-empty-state>
+            </div>
+            <app-code-block [code]="suggestionsCode()" language="html" title="Suggestions Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="actions">
+            <div class="section-header">
+              <h2>🎯 Multiple Actions</h2>
+              <p>Empty state with primary and secondary action buttons</p>
+            </div>
+            <div class="demo-card">
+              <h4>No Projects Found</h4>
+              <app-empty-state title="No Projects Found" message="You don't have any projects yet." primary-action="Create New Project" primary-action-icon="fas fa-plus" secondary-action="Import Project" secondary-action-icon="fas fa-file-import"></app-empty-state>
+            </div>
+            <app-code-block [code]="actionsCode()" language="html" title="Multiple Actions Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="features">
+            <div class="section-header">
+              <h2>✨ Special Features</h2>
+              <p>Rounded corners, elevated shadows, and back button</p>
+            </div>
+            <div class="demo-grid col-2">
+              <div class="demo-card">
+                <h4>Rounded + Elevated</h4>
+                <app-empty-state type="404" title="Page Not Found" message="The page doesn't exist." primary-action="Go Home" primary-action-icon="fas fa-home" rounded elevated show-back-button></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Animated State</h4>
+                <app-empty-state title="No Activity" message="New activities will appear here." primary-action="Refresh" primary-action-icon="fas fa-sync" animated></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Compact Mode</h4>
+                <app-empty-state title="Empty Sidebar" message="No items selected." compact primary-action="Browse"></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Custom Slot Content</h4>
+                <app-empty-state title="Custom Empty State" custom-content></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="featuresCode()" language="html" title="Special Features Code"></app-code-block>
+          </section>
+
+          <section class="demo-section" id="premium">
+            <div class="section-header">
+              <h2>💎 Premium Features</h2>
+              <p>Advanced effects like glassmorphism and celebration states</p>
+            </div>
+            <div class="demo-grid col-2">
+              <div class="demo-card">
+                <h4>Glassmorphism Effect</h4>
+                <app-empty-state title="Beta Access" message="Join the waitlist for exclusive features." primary-action="Join Waitlist" primary-action-icon="fas fa-star" glass-morphism animated></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Loading State</h4>
+                <app-empty-state title="Loading Data" message="Please wait while we fetch your data..." loading animated></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Success State</h4>
+                <app-empty-state title="Success!" message="Your action was completed successfully." primary-action="Continue" primary-action-icon="fas fa-check" animated></app-empty-state>
+              </div>
+              <div class="demo-card">
+                <h4>Info State</h4>
+                <app-empty-state title="Feature Coming Soon" message="This feature will be available in the next update." secondary-action="Learn More" secondary-action-icon="fas fa-book" animated></app-empty-state>
+              </div>
+            </div>
+            <app-code-block [code]="premiumCode()" language="html" title="Premium Features Code"></app-code-block>
+          </section>
         </div>
-        <div class="demo-grid col-3">
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="no-data"
-                variant="outlined"
-                primary-action="Add Data"
-                primary-action-icon="fas fa-plus"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="no-results"
-                variant="outlined"
-                primary-action="Clear Filters"
-                primary-action-icon="fas fa-times"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="error"
-                variant="outlined"
-                primary-action="Try Again"
-                primary-action-icon="fas fa-redo"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="404"
-                variant="outlined"
-                primary-action="Go Home"
-                show-back-button
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="coming-soon"
-                variant="outlined"
-                secondary-action="Notify Me"
-                secondary-action-icon="fas fa-bell"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <div class="preview-box">
-              <app-empty-state
-                type="maintenance"
-                variant="outlined"
-                message="We are upgrading our servers."
-              ></app-empty-state>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Advanced Usage -->
-      <section class="demo-section" id="advanced-usage">
-        <div class="section-header">
-          <h2>🚀 Advanced Usage</h2>
-          <p>Custom illustrations, suggestions, and multiple actions</p>
-        </div>
-        <div class="demo-grid col-2">
-          <div class="demo-card">
-            <h3>With Suggestions List</h3>
-            <div class="preview-box">
-              <app-empty-state
-                type="no-results"
-                variant="filled"
-                items-title="Try these:"
-                [attr.items]="suggestions"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <h3>Multiple Actions</h3>
-            <div class="preview-box">
-              <app-empty-state
-                heading="No Projects"
-                message="Get started by creating a new project."
-                icon="fas fa-folder-open"
-                variant="outlined"
-                rounded
-                [attr.actions]="multiActions"
-              ></app-empty-state>
-            </div>
-          </div>
-
-          <div class="demo-card full-width">
-            <h3>Premium Glass Variant</h3>
-            <div class="preview-box glass-bg">
-              <app-empty-state
-                variant="glass"
-                heading="Premium Experience"
-                message="Frosted glass effect for modern UIs."
-                primary-action="Explore"
-                secondary-action="Dismiss"
-              ></app-empty-state>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
+      <section class="demo-section">
         <div class="section-header">
           <h2>🎮 Interactive Playground</h2>
           <p>Configure type, variant, and content</p>
         </div>
         <app-empty-state-playground></app-empty-state-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Empty State Usage"
-          language="html"
-        ></app-code-block>
       </section>
     </div>
 

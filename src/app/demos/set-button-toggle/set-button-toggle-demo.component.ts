@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
@@ -21,28 +21,183 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',
 })
-export class SetButtonToggleDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'avatar-status', title: 'Avatar Support & Status', icon: '👤' },
-    { id: 'gliding-indicator', title: 'Gliding Pill Indicator', icon: '🏄' },
-    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
-    { id: 'style-variants', title: 'Style Variants', icon: '🎭' },
+export class SetButtonToggleDemoComponent {
+  variants = [
+    { id: 'segmented', title: 'Segmented Controls', icon: '🔑' },
+    { id: 'gliding', title: 'Gliding Pill Animation', icon: '🎴' },
+    { id: 'colors', title: 'Color Variants', icon: '🎨' },
+    { id: 'styles', title: 'Style Variants', icon: '🎭' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'with-icons', title: 'With Icons', icon: '🎯' },
-    { id: 'dropdown-mode', title: 'Dropdown Mode Variations', icon: '📋' },
-    { id: 'split-button', title: 'Split Button Variations', icon: '🔀' },
+    { id: 'icons', title: 'With Icons', icon: '🎯' },
+    { id: 'dropdown', title: 'Dropdown Mode', icon: '📊' },
+    { id: 'split-button', title: 'Split Button', icon: '🕀' },
     { id: 'display-modes', title: 'Display Modes', icon: '🎭' },
-    { id: 'orientations-layout', title: 'Orientations & Layout', icon: '📐' },
-    { id: 'custom-content', title: 'Custom Content (Slots)', icon: '🎨' },
-    { id: 'loading-states', title: 'Loading States', icon: '⏳' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'real-world-examples', title: 'Real-World Examples', icon: '📋' },
+    { id: 'orientations', title: 'Orientations', icon: '📐' },
+    { id: 'custom-slots', title: 'Custom Content Slots', icon: '🎨' },
+    { id: 'loading', title: 'Loading States', icon: '⌛' },
+    { id: 'states', title: 'States (Disabled/Readonly)', icon: '🔄' },
+    { id: 'real-world', title: 'Real-World Examples', icon: '📊' },
   ];
 
-  playgroundCode = `<app-button-toggle
-  [options]="options"
-  [(ngModel)]="selected"
-></app-button-toggle>`;
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  segmentedCode = `<app-button-toggle-group
+  mode="segmented"
+  label="Select View Mode"
+  value="list"
+  color="primary"
+  [options]='[
+    { value: "list", label: "List", icon: "fas fa-list" },
+    { value: "grid", label: "Grid", icon: "fas fa-th" },
+    { value: "table", label: "Table", icon: "fas fa-table" }
+  ]'
+></app-button-toggle-group>`;
+
+  glidingCode = `<app-button-toggle-group
+  mode="segmented"
+  value="day"
+  color="info"
+  variant="soft"
+  [options]='[
+    { value: "day", label: "Day", icon: "fas fa-sun" },
+    { value: "week", label: "Week", icon: "fas fa-calendar-week" },
+    { value: "month", label: "Month", icon: "fas fa-calendar" }
+  ]'
+></app-button-toggle-group>`;
+
+  colorCode = `<app-button-toggle-group
+  value="option2"
+  [options]='[
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]'
+  color="success"
+></app-button-toggle-group>`;
+
+  styleCode = `<app-button-toggle-group
+  value="option2"
+  color="primary"
+  variant="outlined"
+  [options]='[
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]'
+></app-button-toggle-group>`;
+
+  sizeCode = `<app-button-toggle-group
+  size="large"
+  value="option2"
+  [options]='[
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]'
+></app-button-toggle-group>`;
+
+  iconCode = `<app-button-toggle-group
+  label="View Mode"
+  value="grid"
+  color="primary"
+  [options]='[
+    { value: "list", label: "List", icon: "fas fa-list" },
+    { value: "grid", label: "Grid", icon: "fas fa-th" },
+    { value: "table", label: "Table", icon: "fas fa-table" }
+  ]'
+></app-button-toggle-group>`;
+
+  dropdownCode = `<app-button-toggle-group
+  mode="dropdown"
+  label="Export Options"
+  value="pdf"
+  helper-text="Choose export format"
+  [options]='[
+    { value: "pdf", label: "Export as PDF" },
+    { value: "excel", label: "Export as Excel" },
+    { value: "csv", label: "Export as CSV" }
+  ]'
+></app-button-toggle-group>`;
+
+  splitButtonCode = `<app-button-toggle-group
+  mode="dropdown"
+  keep-button-label="true"
+  label="File Operations"
+  value="file"
+  [options]='[
+    { value: "new", label: "New File" },
+    { value: "open", label: "Open File" },
+    { value: "save", label: "Save" }
+  ]'
+></app-button-toggle-group>`;
+
+  displayCode = `<app-button-toggle-group
+  display-mode="label-only"
+  value="medium"
+  [options]='[
+    { value: "small", label: "Small" },
+    { value: "medium", label: "Medium" },
+    { value: "large", label: "Large" }
+  ]'
+></app-button-toggle-group>`;
+
+  orientationCode = `<app-button-toggle-group
+  orientation="vertical"
+  value="high"
+  color="danger"
+  [options]='[
+    { value: "low", label: "Low" },
+    { value: "medium", label: "Medium" },
+    { value: "high", label: "High" }
+  ]'
+></app-button-toggle-group>`;
+
+  customSlotCode = `<app-button-toggle-group
+  mode="dropdown"
+  label="Advanced Filters"
+  value="filters"
+>
+  <div slot="dropdown-content">
+    <div class="filter-panel">
+      <h3>Filter Options</h3>
+      <label><input type="checkbox"> Active</label>
+      <label><input type="checkbox"> Archived</label>
+      <button>Apply Filters</button>
+    </div>
+  </div>
+</app-button-toggle-group>`;
+
+  loadingCode = `<app-button-toggle-group
+  mode="dropdown"
+  label="Save Document"
+  value="cloud"
+  [loading]="isLoading"
+  [options]='[
+    { value: "cloud", label: "Save to Cloud" },
+    { value: "local", label: "Save Local" }
+  ]'
+></app-button-toggle-group>`;
+
+  stateCode = `<app-button-toggle-group
+  value="option2"
+  disabled="true"
+  [options]='[
+    { value: "option1", label: "Option 1" },
+    { value: "option2", label: "Option 2" },
+    { value: "option3", label: "Option 3" }
+  ]'
+></app-button-toggle-group>`;
+
+
 
   // Options Data (Core sets)
   basicOptions = [
@@ -340,10 +495,5 @@ export class SetButtonToggleDemoComponent implements OnInit {
     );
   }
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+ 
 }

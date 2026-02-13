@@ -1,84 +1,80 @@
 <div class="demo-container">
-  <h1>🖼️ Carousel Component</h1>
+  <h1>🎠 Carousel Component</h1>
   <p class="intro-text">
-    An interactive slideshow component for cycling through elements like images or text or card
-    content.
+    Flexible and responsive carousel/slideshow component with multiple transition effects, autoplay, responsive layouts, and extensive customization options.
   </p>
 
   <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
-      <!-- Fade Effect -->
-      <section class="demo-section" id="fade-transition">
+      <!-- Basic Layouts -->
+      <section class="demo-section" id="basic">
         <div class="section-header">
-          <h2>✨ Fade Transition</h2>
-          <p>Smooth cross-fade effect for elegant presentations</p>
+          <h2>📐 Basic Layouts</h2>
+          <p>Standard carousel configurations with different view modes</p>
         </div>
+
+        <!-- Fade Transition -->
         <div class="demo-card full-width">
-          <div class="carousel-wrapper">
-            <app-carousel
-              effect="fade"
-              autoplay="true"
-              show-progress="true"
-              autoplay-interval="4000"
-            >
+          <h3>Fade Transition Effect</h3>
+          <div class="preview-box">
+            <app-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
               <div class="slide" style="background: #1e293b">
-                <div class="content">
-                  <h3>First Slide</h3>
-                  <p>With fade transition</p>
-                </div>
+                <div class="content"><h3>Nature</h3><p>Breathtaking landscapes</p></div>
               </div>
               <div class="slide" style="background: #0f172a">
-                <div class="content">
-                  <h3>Second Slide</h3>
-                  <p>Smoothly blending</p>
-                </div>
+                <div class="content"><h3>Forest</h3><p>Into the wild</p></div>
               </div>
               <div class="slide" style="background: #334155">
-                <div class="content">
-                  <h3>Third Slide</h3>
-                  <p>Into the next</p>
-                </div>
+                <div class="content"><h3>Mountains</h3><p>Peak experience</p></div>
               </div>
             </app-carousel>
           </div>
+          <app-code-block [code]="fadeTransitionCode()" language="html" title="Fade Transition Code"></app-code-block>
         </div>
-      </section>
 
-      <!-- Center Mode -->
-      <section class="demo-section" id="center-mode">
-        <div class="section-header">
-          <h2>🎯 Center Mode</h2>
-          <p>Highlight the active slide with partial visibility of previous and next slides</p>
-        </div>
+        <!-- Slide Transition -->
         <div class="demo-card full-width">
-          <div class="carousel-wrapper">
-            <app-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
-              <div class="slide card-slide" style="background: #e11d48">1</div>
-              <div class="slide card-slide" style="background: #db2777">2</div>
-              <div class="slide card-slide" style="background: #c026d3">3</div>
-              <div class="slide card-slide" style="background: #9333ea">4</div>
-              <div class="slide card-slide" style="background: #7c3aed">5</div>
+          <h3>Slide Transition Effect</h3>
+          <div class="preview-box">
+            <app-carousel effect="slide" autoplay="true" autoplay-interval="3000" arrows="true" indicators="true">
+              <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <div class="content"><h3>Slide 1</h3><p>Smooth sliding transition</p></div>
+              </div>
+              <div class="slide" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                <div class="content"><h3>Slide 2</h3><p>Beautiful gradients</p></div>
+              </div>
+              <div class="slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                <div class="content"><h3>Slide 3</h3><p>Responsive design</p></div>
+              </div>
+              <div class="slide" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                <div class="content"><h3>Slide 4</h3><p>Easy customization</p></div>
+              </div>
             </app-carousel>
           </div>
+          <app-code-block [code]="slideTransitionCode()" language="html" title="Slide Transition Code"></app-code-block>
         </div>
-      </section>
 
-      <!-- Multiple Slides -->
-      <section class="demo-section" id="multiple-slides">
-        <div class="section-header">
-          <h2>🔢 Multiple Slides</h2>
-          <p>Display multiple items at once in a responsive grid-like view</p>
-        </div>
+        <!-- Center Mode -->
         <div class="demo-card full-width">
-          <div class="carousel-wrapper">
-            <app-carousel
-              slides-to-show="3"
-              slides-to-scroll="1"
-              infinite="true"
-              arrows="true"
-              indicators="true"
-            >
+          <h3>Center Mode - Highlight Active Slide</h3>
+          <div class="preview-box">
+            <app-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+              <div class="slide card-slide" style="background: #e11d48">Item 1</div>
+              <div class="slide card-slide" style="background: #db2777">Item 2</div>
+              <div class="slide card-slide" style="background: #c026d3">Item 3</div>
+              <div class="slide card-slide" style="background: #9333ea">Item 4</div>
+              <div class="slide card-slide" style="background: #7c3aed">Item 5</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="centerModeCode()" language="html" title="Center Mode Code"></app-code-block>
+        </div>
+
+        <!-- Multiple Slides View -->
+        <div class="demo-card full-width">
+          <h3>Multiple Slides Display</h3>
+          <div class="preview-box">
+            <app-carousel slides-to-show="3" slides-to-scroll="1" infinite="true" arrows="true" indicators="true">
               <div class="slide item-slide">Item 1</div>
               <div class="slide item-slide">Item 2</div>
               <div class="slide item-slide">Item 3</div>
@@ -87,6 +83,271 @@
               <div class="slide item-slide">Item 6</div>
             </app-carousel>
           </div>
+          <app-code-block [code]="multipleItemsCode()" language="html" title="Multiple Slides Code"></app-code-block>
+        </div>
+
+        <!-- Vertical Carousel -->
+        <div class="demo-card full-width">
+          <h3>Vertical Carousel</h3>
+          <div class="preview-box vertical-preview">
+            <app-carousel direction="vertical" slides-to-show="1" autoplay="true" autoplay-interval="3000">
+              <div class="slide vertical-slide">Vertical Slide 1</div>
+              <div class="slide vertical-slide">Vertical Slide 2</div>
+              <div class="slide vertical-slide">Vertical Slide 3</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="verticalCode()" language="html" title="Vertical Carousel Code"></app-code-block>
+        </div>
+
+        <!-- Infinite Loop -->
+        <div class="demo-card full-width">
+          <h3>Infinite Loop</h3>
+          <div class="preview-box">
+            <app-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
+              <div class="slide" style="background: #ff6b6b"><div class="content">Item 1</div></div>
+              <div class="slide" style="background: #ffd93d"><div class="content">Item 2</div></div>
+              <div class="slide" style="background: #6bcf7f"><div class="content">Item 3</div></div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="infiniteLoopCode()" language="html" title="Infinite Loop Code"></app-code-block>
+        </div>
+      </section>
+
+      <!-- Transitions & Effects -->
+      <section class="demo-section" id="transitions">
+        <div class="section-header">
+          <h2>✨ Transitions & Effects</h2>
+          <p>Different animation effects and interaction modes</p>
+        </div>
+
+        <!-- Swipe & Drag -->
+        <div class="demo-card full-width">
+          <h3>Touch Swipe & Mouse Drag</h3>
+          <div class="preview-box">
+            <app-carousel swipe="true" drag="true" mouse-drag="true" autoplay="true" touch-threshold="5">
+              <div class="slide" style="background: linear-gradient(to right, #ff9a56, #ff6a88)">Swipe/Drag 1</div>
+              <div class="slide" style="background: linear-gradient(to right, #667eea, #764ba2)">Swipe/Drag 2</div>
+              <div class="slide" style="background: linear-gradient(to right, #f093fb, #f5576c)">Swipe/Drag 3</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="swipeGestureCode()" language="html" title="Swipe/Drag Code"></app-code-block>
+        </div>
+
+        <!-- Autoplay Control -->
+        <div class="demo-card full-width">
+          <h3>Autoplay with Pause Control</h3>
+          <div class="preview-box">
+            <app-carousel autoplay="true" autoplay-interval="3000" pause-on-hover="true" pause-on-focus="true">
+              <div class="slide" style="background: #3b82f6"><div class="content">Hover to pause</div></div>
+              <div class="slide" style="background: #8b5cf6"><div class="content">Focus to pause</div></div>
+              <div class="slide" style="background: #ec4899"><div class="content">Auto resume</div></div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="scrollAutoplayCode()" language="html" title="Autoplay Control Code"></app-code-block>
+        </div>
+
+        <!-- Drag Threshold -->
+        <div class="demo-card full-width">
+          <h3>Customizable Drag Threshold</h3>
+          <div class="preview-box">
+            <app-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
+              <div class="slide" style="background: #10b981">Threshold 1</div>
+              <div class="slide" style="background: #06b6d4">Threshold 2</div>
+              <div class="slide" style="background: #f59e0b">Threshold 3</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="thresholdCode()" language="html" title="Threshold Code"></app-code-block>
+        </div>
+
+        <!-- Animation Easing -->
+        <div class="demo-card full-width">
+          <h3>Animation Easing Effects</h3>
+          <div class="preview-box">
+            <app-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
+              <div class="slide" style="background: #a78bfa">EaseInOut 1</div>
+              <div class="slide" style="background: #c084fc">EaseInOut 2</div>
+              <div class="slide" style="background: #e879f9">EaseInOut 3</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="easingCode()" language="html" title="Easing Code"></app-code-block>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>⚙️ Features</h2>
+          <p>Navigation controls, indicators, and visual options</p>
+        </div>
+
+        <!-- Indicator Types -->
+        <div class="demo-grid">
+          <!-- Dots Indicators -->
+          <div class="demo-card">
+            <h3>Dots Indicators</h3>
+            <div class="preview-box">
+              <app-carousel indicators="true" indicator-type="dots" indicator-position="bottom" show-arrows="true">
+                <div class="slide" style="background: #ec4899">Slide 1</div>
+                <div class="slide" style="background: #f43f5e">Slide 2</div>
+                <div class="slide" style="background: #f97316">Slide 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="dotsIndicatorsCode()" language="html" title="Dots Code"></app-code-block>
+          </div>
+
+          <!-- Number Indicators -->
+          <div class="demo-card">
+            <h3>Number Indicators</h3>
+            <div class="preview-box">
+              <app-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
+                <div class="slide" style="background: #06b6d4">Slide 1</div>
+                <div class="slide" style="background: #0ea5e9">Slide 2</div>
+                <div class="slide" style="background: #3b82f6">Slide 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="numberIndicatorsCode()" language="html" title="Numbers Code"></app-code-block>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="demo-card">
+            <h3>Progress Bar</h3>
+            <div class="preview-box">
+              <app-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
+                <div class="slide" style="background: #10b981">Progress 1</div>
+                <div class="slide" style="background: #059669">Progress 2</div>
+                <div class="slide" style="background: #047857">Progress 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="progressBarCode()" language="html" title="Progress Code"></app-code-block>
+          </div>
+        </div>
+
+        <!-- Size Variants -->
+        <div class="demo-grid">
+          <!-- Small -->
+          <div class="demo-card">
+            <h3>Small Height</h3>
+            <div class="preview-box small-carousel">
+              <app-carousel height="200px" slides-to-show="1">
+                <div class="slide">Small 1</div>
+                <div class="slide">Small 2</div>
+                <div class="slide">Small 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="sizeSmallCode()" language="html" title="Small Code"></app-code-block>
+          </div>
+
+          <!-- Medium -->
+          <div class="demo-card">
+            <h3>Medium Height</h3>
+            <div class="preview-box medium-carousel">
+              <app-carousel height="400px" slides-to-show="2">
+                <div class="slide">Medium 1</div>
+                <div class="slide">Medium 2</div>
+                <div class="slide">Medium 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="sizeMediumCode()" language="html" title="Medium Code"></app-code-block>
+          </div>
+
+          <!-- Large -->
+          <div class="demo-card">
+            <h3>Large Height</h3>
+            <div class="preview-box large-carousel">
+              <app-carousel height="600px" slides-to-show="3">
+                <div class="slide">Large 1</div>
+                <div class="slide">Large 2</div>
+                <div class="slide">Large 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="sizeLargeCode()" language="html" title="Large Code"></app-code-block>
+          </div>
+        </div>
+
+        <!-- Speed Variants -->
+        <div class="demo-grid">
+          <!-- Fast -->
+          <div class="demo-card">
+            <h3>Fast Speed</h3>
+            <div class="preview-box">
+              <app-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
+                <div class="slide" style="background: #ff6b6b">Fast 1</div>
+                <div class="slide" style="background: #feca57">Fast 2</div>
+                <div class="slide" style="background: #48dbfb">Fast 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="speedFastCode()" language="html" title="Fast Code"></app-code-block>
+          </div>
+
+          <!-- Normal -->
+          <div class="demo-card">
+            <h3>Normal Speed</h3>
+            <div class="preview-box">
+              <app-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
+                <div class="slide" style="background: #5c7caf">Normal 1</div>
+                <div class="slide" style="background: #45b7d1">Normal 2</div>
+                <div class="slide" style="background: #96ceb4">Normal 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="speedNormalCode()" language="html" title="Normal Code"></app-code-block>
+          </div>
+
+          <!-- Slow -->
+          <div class="demo-card">
+            <h3>Slow Speed</h3>
+            <div class="preview-box">
+              <app-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
+                <div class="slide" style="background: #667eea">Slow 1</div>
+                <div class="slide" style="background: #764ba2">Slow 2</div>
+                <div class="slide" style="background: #f093fb">Slow 3</div>
+              </app-carousel>
+            </div>
+            <app-code-block [code]="speedSlowCode()" language="html" title="Slow Code"></app-code-block>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced -->
+      <section class="demo-section" id="advanced">
+        <div class="section-header">
+          <h2>🚀 Advanced</h2>
+          <p>Responsive layouts and custom configurations</p>
+        </div>
+
+        <!-- Responsive Design -->
+        <div class="demo-card full-width">
+          <h3>Responsive Breakpoints</h3>
+          <p class="card-description">Carousel adapts to different screen sizes with custom breakpoint configurations</p>
+          <div class="preview-box">
+            <app-carousel slides-to-show="3" responsive="[{breakpoint: 1024, settings: {slidesToShow: 2}}, {breakpoint: 640, settings: {slidesToShow: 1}}]">
+              <div class="slide">Responsive 1</div>
+              <div class="slide">Responsive 2</div>
+              <div class="slide">Responsive 3</div>
+              <div class="slide">Responsive 4</div>
+              <div class="slide">Responsive 5</div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="responsiveCode()" language="html" title="Responsive Code"></app-code-block>
+        </div>
+
+        <!-- Full Control -->
+        <div class="demo-card full-width">
+          <h3>Full Control Carousel</h3>
+          <p class="card-description">All controls enabled: arrows, indicators, progress, and autoplay with pause</p>
+          <div class="preview-box">
+            <app-carousel arrows="true" indicators="true" show-progress="true" autoplay="true" pause-on-hover="true">
+              <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <div class="content"><h3>Slide 1</h3><p>With all controls</p></div>
+              </div>
+              <div class="slide" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                <div class="content"><h3>Slide 2</h3><p>Full customization</p></div>
+              </div>
+              <div class="slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                <div class="content"><h3>Slide 3</h3><p>Maximum features</p></div>
+              </div>
+            </app-carousel>
+          </div>
+          <app-code-block [code]="customControlsCode()" language="html" title="Custom Controls Code"></app-code-block>
         </div>
       </section>
     </div>
@@ -96,14 +357,10 @@
       <section class="demo-section" id="playground">
         <div class="section-header">
           <h2>🎮 Interactive Playground</h2>
-          <p>Configure carousel animations, layout, and behaviors</p>
+          <p>Configure carousel layout, animations, and behaviors in real-time</p>
         </div>
         <app-carousel-playground></app-carousel-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Carousel Usage"
-          language="html"
-        ></app-code-block>
+        <app-code-block [code]="playgroundCode()" language="html" title="Carousel Usage"></app-code-block>
       </section>
     </div>
 

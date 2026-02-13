@@ -1,8 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { MasonryPlaygroundComponent } from './components/masonry-playground/masonry-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -23,80 +21,115 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
 })
-export class SetMasonryDemoComponent implements OnInit {
+export class SetMasonryDemoComponent {
   exampleVariants = [
-    { id: 'gallery', title: 'Premium Gallery', icon: '📸' },
-    { id: 'layouts', title: 'Layout Variants', icon: '📐' },
-    { id: 'loading', title: 'Skeleton Loading', icon: '💀' },
+    { id: 'masonry', title: 'Masonry Layout', icon: '🧱' },
+    { id: 'grid', title: 'Grid Layout', icon: '📦' },
+    { id: 'columns', title: 'Columns Layout', icon: '📰' },
+    { id: 'responsive', title: 'Responsive Design', icon: '📱' },
+    { id: 'filtering', title: 'Filtering & Sorting', icon: '🔍' },
+    { id: 'selection', title: 'Multi-Select', icon: '✅' },
+    { id: 'lightbox', title: 'Lightbox Gallery', icon: '📸' },
+    { id: 'skeleton', title: 'Skeleton Loading', icon: '💀' },
   ];
 
-  // Static items for demos
-  galleryItems = JSON.stringify(this.generateItems(12, 'gallery'));
-  newsItems = JSON.stringify(this.generateItems(8, 'news'));
-  productItems = JSON.stringify(this.generateItems(8, 'product'));
+  // Sample items for different layouts
+  sampleItems = Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    image: `https://picsum.photos/400/${200 + ((i % 5) * 50)}?random=${i}`,
+    title: `Item ${i + 1}`,
+    description: 'Sample description for gallery item',
+    category: ['nature', 'tech', 'design', 'food', 'architecture'][i % 5],
+    tags: [`tag${(i % 3) + 1}`],
+  }));
 
   // Code examples
-  basicMasonryCode = `<app-masonry
-  columns="3"
+  masonryCode = signal(`<app-masonry
+  layout-type="masonry"
+  columns="4"
   gap="16"
->
-  <div class="masonry-item" *ngFor="let item of galleryItems">
-    <img [src]="item.image" [alt]="item.title">
-    <h3>{{ item.title }}</h3>
-    <p>{{ item.description }}</p>
-  </div>
-</app-masonry>`;
+  [items]="items"
+></app-masonry>`);
 
-  playgroundCode = `<app-masonry
+  gridCode = signal(`<app-masonry
+  layout-type="grid"
+  columns="4"
+  gap="16"
+  [items]="productItems"
+></app-masonry>`);
+
+  columnsCode = signal(`<app-masonry
+  layout-type="columns"
+  columns="3"
+  gap="20"
+  [items]="newsItems"
+></app-masonry>`);
+
+  responsiveCode = signal(`<app-masonry
   layout-type="masonry"
   columns="3"
   gap="16"
+  responsive="true"
+  [breakpoints]="{{ '{' }} 640: 2, 768: 3, 1024: 4, 1280: 5 {{ '}' }}"
   [items]="items"
->
-  <!-- Content -->
-</app-masonry>`;
+></app-masonry>`);
 
-  responsiveMasonryCode = `<app-masonry
-  [columns]="{ xs: 1, sm: 2, md: 3, lg: 4 }"
-  gap="20"
-  responsive
->
-  <div class="masonry-item" *ngFor="let item of newsItems">
-    <div class="item-content">
-      <img [src]="item.image" [alt]="item.title">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </div>
-  </div>
-</app-masonry>`;
+  filteringCode = signal(`<app-masonry
+  layout-type="masonry"
+  columns="3"
+  gap="16"
+  show-filters="true"
+  [filterOptions]="filterOptions"
+  [items]="items"
+  (filterChange)="onFilterChange($event)"
+></app-masonry>`);
 
-  customGapCode = `<app-masonry
+  selectionCode = signal(`<app-masonry
+  layout-type="masonry"
+  columns="3"
+  gap="16"
+  selectable="true"
+  multi-select="true"
+  show-batch-actions="true"
+  [items]="items"
+  (selectionChange)="onSelectionChange($event)"
+></app-masonry>`);
+
+  lightboxCode = signal(`<app-masonry
+  layout-type="masonry"
   columns="4"
-  gap="24"
-  column-gap="32"
-  row-gap="16"
->
-  <!-- Your items -->
-</app-masonry>`;
+  gap="12"
+  lightbox="true"
+  lightbox-animation="zoom"
+  [items]="galleryItems"
+  (itemClick)="onItemClick($event)"
+></app-masonry>`);
 
-  ngOnInit() {}
+  skeletonCode = signal(`<app-masonry
+  layout-type="masonry"
+  columns="3"
+  gap="16"
+  [loading]="isLoading"
+  [skeletonCount]="12"
+></app-masonry>`);
+
+  playgroundCode = signal(`<app-masonry
+  layout-type="masonry"
+  [columns]="columns"
+  [gap]="gap"
+  responsive="true"
+  selectable="true"
+  show-filters="true"
+  lazy-load="true"
+  [items]="items"
+  [breakpoints]="breakpoints"
+  (itemClick)="onItemClick($event)"
+></app-masonry>`);
 
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }
-
-  generateItems(count: number, type: string) {
-    const heights = [200, 250, 300, 350, 400];
-    return Array.from({ length: count }, (_, i) => ({
-      id: `${type}-${i + 1}`,
-      image: `https://picsum.photos/400/${heights[i % heights.length]}?random=${i}`,
-      title: `${type === 'gallery' ? 'Photo' : type === 'news' ? 'Article' : 'Product'} ${i + 1}`,
-      description: `Sample description for ${type} item ${i + 1}.`,
-      height: heights[i % heights.length],
-      category: ['nature', 'tech', 'design'][i % 3],
-    }));
   }
 }

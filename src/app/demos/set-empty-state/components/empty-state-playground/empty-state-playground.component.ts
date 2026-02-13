@@ -1,8 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-empty-state-playground',
@@ -11,20 +9,24 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './empty-state-playground.component.html',
   styleUrl: './empty-state-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class EmptyStatePlaygroundComponent implements OnInit {
+export class EmptyStatePlaygroundComponent {
+  constructor() {
+    this.updateConfig();
+  }
   pgConfig = {
     type: 'no-data',
     variant: 'default',
     size: 'medium',
     align: 'center',
-    heading: '',
-    message: '',
+    heading: 'No Data Available',
+    message: 'There is no data to display at the moment.',
     illustration: '',
     rounded: false,
     elevated: false,
     compact: false,
-    animated: true,
+    animated: false,
     showBackButton: false,
     primaryAction: 'Get Started',
     primaryActionIcon: 'fas fa-plus',
@@ -36,10 +38,6 @@ export class EmptyStatePlaygroundComponent implements OnInit {
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
 
-  ngOnInit() {
-    this.updateConfig();
-  }
-
   updateConfig() {
     let code = `<app-empty-state\n`;
     if (this.pgConfig.type !== 'no-data') code += `  type="${this.pgConfig.type}"\n`;
@@ -47,9 +45,9 @@ export class EmptyStatePlaygroundComponent implements OnInit {
     if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
     if (this.pgConfig.align !== 'center') code += `  align="${this.pgConfig.align}"\n`;
 
-    if (this.pgConfig.heading) code += `  heading="${this.pgConfig.heading}"\n`;
+    if (this.pgConfig.heading) code += `  title="${this.pgConfig.heading}"\n`;
     if (this.pgConfig.message) code += `  message="${this.pgConfig.message}"\n`;
-    if (this.pgConfig.illustration) code += `  illustration="${this.pgConfig.illustration}"\n`;
+    if (this.pgConfig.illustration) code += `  image-src="${this.pgConfig.illustration}"\n`;
 
     if (this.pgConfig.rounded) code += `  rounded\n`;
     if (this.pgConfig.elevated) code += `  elevated\n`;
@@ -69,7 +67,7 @@ export class EmptyStatePlaygroundComponent implements OnInit {
         code += `  secondary-action-icon="${this.pgConfig.secondaryActionIcon}"\n`;
     }
 
-    if (this.pgConfig.loadingAction) code += `  loading-action="primary"\n`;
+    if (this.pgConfig.loadingAction) code += `  loading\n`;
 
     code += `></app-empty-state>`;
 

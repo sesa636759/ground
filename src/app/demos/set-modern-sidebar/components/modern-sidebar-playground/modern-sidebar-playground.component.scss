@@ -1,9 +1,24 @@
+@use '../../../../../styles/playground-base.scss';
+
 .playground-layout {
   display: flex;
   gap: 40px;
 
   @media (max-width: 1200px) {
     flex-direction: column;
+  }
+}
+
+.section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-color);
+
+  &:not(:first-child) {
+    margin-top: 24px;
   }
 }
 
@@ -19,6 +34,10 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
   }
 
   .control-group {
