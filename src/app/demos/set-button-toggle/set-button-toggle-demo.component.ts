@@ -3,16 +3,41 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-button-toggle-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonTogglePlaygroundComponent, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ButtonTogglePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',
 })
 export class SetButtonToggleDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'avatar-status', title: 'Avatar Support & Status', icon: '👤' },
+    { id: 'gliding-indicator', title: 'Gliding Pill Indicator', icon: '🏄' },
+    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
+    { id: 'style-variants', title: 'Style Variants', icon: '🎭' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'with-icons', title: 'With Icons', icon: '🎯' },
+    { id: 'dropdown-mode', title: 'Dropdown Mode Variations', icon: '📋' },
+    { id: 'split-button', title: 'Split Button Variations', icon: '🔀' },
+    { id: 'display-modes', title: 'Display Modes', icon: '🎭' },
+    { id: 'orientations-layout', title: 'Orientations & Layout', icon: '📐' },
+    { id: 'custom-content', title: 'Custom Content (Slots)', icon: '🎨' },
+    { id: 'loading-states', title: 'Loading States', icon: '⏳' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'real-world-examples', title: 'Real-World Examples', icon: '📋' },
+  ];
+
   playgroundCode = `<app-button-toggle
   [options]="options"
   [(ngModel)]="selected"
@@ -312,5 +337,12 @@ export class SetButtonToggleDemoComponent implements OnInit {
     this.customSearchLog.set(
       this.searchQuery ? `Searching for: "${this.searchQuery}"` : 'Enter a search term',
     );
+  }
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

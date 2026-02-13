@@ -5,76 +5,124 @@
     states. Supports multiple shapes, animations, and dark mode.
   </p>
 
-  <div class="variants-nav">
-    <ui-button
-      *ngFor="let variant of variants"
-      (click)="scrollToSection(variant.id)"
-      variant="primary"
-    >
-      <span>{{ variant.icon }}</span>
-      <span>{{ variant.name }}</span>
-    </ui-button>
-  </div>
-
-  <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure shapes, sizes, and animation styles.</p>
+  <demo-tabs>
+    <div slot="playground">
+      <div class="demo-container">
+        <!-- Interactive Playground -->
+        <section class="demo-section" id="playground">
+          <div class="section-header">
+            <h2>🎮 Interactive Playground</h2>
+            <p>Configure shapes, sizes, and animation styles.</p>
+          </div>
+          <app-skeleton-playground></app-skeleton-playground>
+          <app-code-block
+            [code]="playgroundCode"
+            title="Basic Usage"
+            language="html"
+          ></app-code-block>
+        </section>
+      </div>
     </div>
-    <app-skeleton-playground></app-skeleton-playground>
-    <app-code-block [code]="playgroundCode" title="Basic Usage" language="html"></app-code-block>
-  </section>
 
-  <section class="demo-section" id="shapes">
-    <div class="section-header">
-      <h2>🌀 Shapes & Animations</h2>
-      <p>Standard placeholder types for common UI elements.</p>
-    </div>
-    <div class="demo-card">
-      <div style="display: flex; gap: 20px; align-items: center">
-        <ui-skeleton shape="circle" width="60px" height="60px"></ui-skeleton>
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
-          <ui-skeleton shape="text" width="40%"></ui-skeleton>
-          <ui-skeleton shape="text" width="90%"></ui-skeleton>
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Shapes & Animations -->
+          <section class="demo-section" id="shapes" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🌀 Shapes & Animations</h2>
+              <p>Standard placeholder types for common UI elements.</p>
+            </div>
+            <div class="demo-card">
+              <div style="display: flex; gap: 20px; align-items: center">
+                <ui-skeleton shape="circle" width="60px" height="60px"></ui-skeleton>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
+                  <ui-skeleton shape="text" width="40%"></ui-skeleton>
+                  <ui-skeleton shape="text" width="90%"></ui-skeleton>
+                </div>
+              </div>
+              <div>
+                <span>Wave Animation:</span>
+                <ui-skeleton shape="rectangle" height="80px" animation="wave"></ui-skeleton>
+              </div>
+              <div>
+                <span>Pulse Animation:</span>
+                <ui-skeleton shape="rectangle" height="80px" animation="pulse"></ui-skeleton>
+              </div>
+            </div>
+            <app-code-block
+              [code]="shapesCode"
+              title="Shape Examples"
+              language="html"
+            ></app-code-block>
+          </section>
+
+          <!-- Complex Layouts -->
+          <section class="demo-section" id="combinations">
+            <div class="section-header">
+              <h2>🧩 Complex Layouts</h2>
+              <p>Combine multiple skeletons to mirror real UI components.</p>
+            </div>
+            <div class="demo-card">
+              <div class="card-preview">
+                <ui-skeleton
+                  shape="rectangle"
+                  width="120px"
+                  height="120px"
+                  border-radius="12px"
+                ></ui-skeleton>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 12px">
+                  <ui-skeleton shape="text" width="60%" height="24px"></ui-skeleton>
+                  <ui-skeleton shape="text" width="100%"></ui-skeleton>
+                  <ui-skeleton shape="text" width="90%"></ui-skeleton>
+                  <ui-skeleton shape="text" width="40%"></ui-skeleton>
+                </div>
+              </div>
+            </div>
+            <app-code-block
+              [code]="combinationsCode"
+              title="Composite Example"
+              language="html"
+            ></app-code-block>
+          </section>
         </div>
       </div>
-      <div>
-        <span>Wave Animation:</span>
-        <ui-skeleton shape="rectangle" height="80px" animation="wave"></ui-skeleton>
-      </div>
-      <div>
-        <span>Pulse Animation:</span>
-        <ui-skeleton shape="rectangle" height="80px" animation="pulse"></ui-skeleton>
-      </div>
     </div>
-    <app-code-block [code]="shapesCode" title="Shape Examples" language="html"></app-code-block>
-  </section>
 
-  <section class="demo-section" id="combinations">
-    <div class="section-header">
-      <h2>🧩 Complex Layouts</h2>
-      <p>Combine multiple skeletons to mirror real UI components.</p>
-    </div>
-    <div class="demo-card">
-      <div class="card-preview">
-        <ui-skeleton
-          shape="rectangle"
-          width="120px"
-          height="120px"
-          border-radius="12px"
-        ></ui-skeleton>
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 12px">
-          <ui-skeleton shape="text" width="60%" height="24px"></ui-skeleton>
-          <ui-skeleton shape="text" width="100%"></ui-skeleton>
-          <ui-skeleton shape="text" width="90%"></ui-skeleton>
-          <ui-skeleton shape="text" width="40%"></ui-skeleton>
-        </div>
+    <div slot="docs">
+      <div class="demo-container">
+        <section class="demo-section">
+          <div class="section-header">
+            <h2>📖 Documentation</h2>
+            <p>Links, API references, and detailed usage notes</p>
+          </div>
+          <div class="demo-card" style="padding: 24px">
+            <p>
+              The documentation for this component is currently being compiled. Our technical
+              writers are working to provide comprehensive API references, accessibility guidelines,
+              and best practices.
+            </p>
+            <p>
+              In the meantime, please explore the <strong>Playground</strong> for interactive
+              testing and the <strong>Examples</strong> tab for common implementation patterns.
+            </p>
+          </div>
+        </section>
       </div>
     </div>
-    <app-code-block
-      [code]="combinationsCode"
-      title="Composite Example"
-      language="html"
-    ></app-code-block>
-  </section>
+  </demo-tabs>
 </div>

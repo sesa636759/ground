@@ -1,10 +1,11 @@
 <div class="demo-container">
   <h1>📋 Context Menu Demo</h1>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
+  <app-demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
       <p>Test all context menu properties and nesting in real-time</p>
     </div>
     <app-context-menu-playground></app-context-menu-playground>
@@ -13,12 +14,12 @@
       title="Context Menu Usage"
       language="html"
     ></app-code-block>
-  </section>
+    </section>
 
-  <!-- Basic Use Cases -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📋 Basic Use Cases</h2>
+    <!-- Basic Use Cases -->
+    <section class="demo-section" id="basic-use-cases">
+      <div class="section-header">
+        <h2>📋 Basic Use Cases</h2>
       <p>Standard right-click and click triggers</p>
     </div>
     <div class="demo-grid">
@@ -49,12 +50,12 @@
         ></app-context-menu>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Advanced Nesting -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🌳 Advanced Nesting</h2>
+    <!-- Advanced Nesting -->
+    <section class="demo-section" id="advanced-nesting">
+      <div class="section-header">
+        <h2>🌳 Advanced Nesting</h2>
       <p>Multi-level submenus with edge detection</p>
     </div>
     <div class="demo-grid">
@@ -69,12 +70,12 @@
         ></app-context-menu>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Premium Features -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
+    <!-- Premium Features -->
+    <section class="demo-section" id="premium-features">
+      <div class="section-header">
+        <h2>💎 Premium Features</h2>
       <p>Elite interaction patterns and visual effects</p>
     </div>
     <div class="demo-grid">
@@ -115,5 +116,6 @@
         ></app-context-menu>
       </div>
     </div>
-  </section>
+    </section>
+  </app-demo-tabs>
 </div>

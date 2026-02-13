@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { PopoverPlaygroundComponent } from './components/popover-playground/popover-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-popover-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PopoverPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    PopoverPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-popover-demo.component.html',
   styleUrl: './app-popover-demo.component.scss',
@@ -19,6 +28,10 @@ export class AppPopoverDemoComponent {
     { id: 'placements', name: 'Placements', icon: '📍', color: '#10b981' },
     { id: 'styles', name: 'Styles', icon: '🎨', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-popover heading="Help" content="Click for more info">
   <ui-button label="Need Help?"></ui-button>

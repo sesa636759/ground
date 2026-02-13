@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-chip-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ChipPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    ChipPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-chip-demo.component.html',
   styleUrl: './app-chip-demo.component.scss',
@@ -20,6 +29,10 @@ export class AppChipDemoComponent {
     { id: 'avatars-icons', name: 'Avatars & Icons', icon: '👤', color: '#f59e0b' },
     { id: 'actions', name: 'Actions', icon: '⚡', color: '#ec4899' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-chip label="Web Development" color="primary" removable></ui-chip>`;
 

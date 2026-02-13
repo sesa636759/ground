@@ -1,18 +1,28 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-timeline-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TimelinePlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, TimelinePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',
 })
 export class SetTimelineDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'layouts', title: 'Versatile Layouts', icon: '📐' },
+    { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
+    { id: 'variants', title: 'Style Variants', icon: '🎨' },
+  ];
+
   // Static Data Examples
   roadmapItems = [
     {
@@ -66,4 +76,11 @@ export class SetTimelineDemoComponent implements OnInit {
 ></app-timeline>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

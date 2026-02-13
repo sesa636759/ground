@@ -1,18 +1,27 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { StepperPlaygroundComponent } from './components/stepper-playground/stepper-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-stepper-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, StepperPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, StepperPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-stepper-demo.component.html',
   styleUrl: './set-stepper-demo.component.scss',
 })
 export class SetStepperDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'styles-variants', title: 'Styles & Variants', icon: '🎨' },
+    { id: 'content-navigation', title: 'Content & Navigation', icon: '📦' },
+  ];
+
   horizontalSteps = `[
     {"label": "Account", "description": "Create account", "status": "success"},
     {"label": "Profile", "description": "Personal info", "status": "success"},
@@ -39,4 +48,11 @@ export class SetStepperDemoComponent implements OnInit {
 ></app-stepper>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

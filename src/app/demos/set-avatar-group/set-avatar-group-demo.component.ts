@@ -1,18 +1,30 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-avatar-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AvatarGroupPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, AvatarGroupPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-group-demo.component.html',
   styleUrl: './set-avatar-group-demo.component.scss',
 })
 export class SetAvatarGroupDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'sizes', title: 'Size Variants', icon: '📏' },
+    { id: 'layouts', title: 'Layouts', icon: '📋' },
+    { id: 'max-display', title: 'Max Display', icon: '🔢' },
+    { id: 'styling', title: 'Styling', icon: '🎨' },
+    { id: 'premium', title: 'Premium Features', icon: '💎' },
+  ];
+
   users = [
     { name: 'John Doe', image: 'https://i.pravatar.cc/150?img=1' },
     { name: 'Jane Smith', image: 'https://i.pravatar.cc/150?img=2' },
@@ -27,4 +39,11 @@ export class SetAvatarGroupDemoComponent implements OnInit {
 ></app-avatar-group>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

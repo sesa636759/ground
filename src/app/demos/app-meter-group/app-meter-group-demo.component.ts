@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { MeterGroupPlaygroundComponent } from './components/meter-group-playground/meter-group-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-meter-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, MeterGroupPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    MeterGroupPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-meter-group-demo.component.html',
   styleUrl: './app-meter-group-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppMeterGroupDemoComponent {
     { id: 'displays', name: 'Display Types', icon: '📊', color: '#3b82f6' },
     { id: 'layouts', name: 'Advanced Layouts', icon: '📐', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   storageValues = JSON.stringify([
     { label: 'Apps', value: 35, color: '#3b82f6' },

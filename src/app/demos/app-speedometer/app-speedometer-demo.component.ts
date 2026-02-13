@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SpeedometerPlaygroundComponent } from './components/speedometer-playground/speedometer-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-speedometer-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SpeedometerPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    SpeedometerPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-speedometer-demo.component.html',
   styleUrl: './app-speedometer-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppSpeedometerDemoComponent {
     { id: 'modes', name: 'Color Modes', icon: '🌈', color: '#3b82f6' },
     { id: 'sizes', name: 'Scaling', icon: '📐', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-speedometer [value]="65" label="MPH" color-mode="gradient"></ui-speedometer>`;
 

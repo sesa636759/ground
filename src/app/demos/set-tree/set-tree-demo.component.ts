@@ -1,8 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-tree-demo',
@@ -13,6 +15,13 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
   styleUrl: './set-tree-demo.component.scss',
 })
 export class SetTreeDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'common-variations', title: 'Common Variations', icon: '📋' },
+    { id: 'advanced-layouts', title: 'Advanced Layouts', icon: '🥈' },
+    { id: 'visual-effects', title: 'Premium Aesthetics', icon: '💎' },
+  ];
+
   basicTreeData = [
     {
       id: 'root',
@@ -83,4 +92,11 @@ export class SetTreeDemoComponent implements OnInit {
 ></app-tree>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

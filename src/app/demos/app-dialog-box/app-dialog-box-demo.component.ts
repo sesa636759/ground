@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DialogBoxPlaygroundComponent } from './components/dialog-box-playground/dialog-box-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-dialog-box-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DialogBoxPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    DialogBoxPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dialog-box-demo.component.html',
   styleUrl: './app-dialog-box-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppDialogBoxDemoComponent {
     { id: 'types', name: 'Modal Modes', icon: '🔳', color: '#3b82f6' },
     { id: 'interactions', name: 'Interactions', icon: '🖱️', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   dialogVisible = {
     standard: false,

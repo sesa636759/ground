@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { StepperPlaygroundComponent } from './components/stepper-playground/stepper-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-stepper-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, StepperPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    StepperPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-stepper-demo.component.html',
   styleUrl: './app-stepper-demo.component.scss',
@@ -19,6 +28,10 @@ export class AppStepperDemoComponent {
     { id: 'visuals', name: 'Visual Types', icon: '🎨', color: '#10b981' },
     { id: 'validation', name: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   steps = JSON.stringify([
     { id: '1', label: 'Start', status: 'completed' },

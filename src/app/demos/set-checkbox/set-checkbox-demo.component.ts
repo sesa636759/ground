@@ -1,18 +1,36 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { CheckboxPlaygroundComponent } from './components/checkbox-playground/checkbox-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-checkbox-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CheckboxPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, CheckboxPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-checkbox-demo.component.html',
   styleUrl: './set-checkbox-demo.component.scss',
 })
 export class SetCheckboxDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'color-variants', name: 'Color Variants', icon: '🎨' },
+    { id: 'premium-variants', name: 'Premium Variants', icon: '✨' },
+    { id: 'skeleton', name: 'Skeleton State', icon: '⏳' },
+    { id: 'sizes-variants', name: 'Sizes & Variants', icon: '📏' },
+    { id: 'states', name: 'States', icon: '🔄' },
+    { id: 'form', name: 'Form Example', icon: '📋' },
+  ];
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   // Form State
   formTerms = false;
   formPrivacy = false;

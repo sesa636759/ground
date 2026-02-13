@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-splitter-playground',
@@ -23,7 +25,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Gutter Size (px)</label>
-              <app-input type="number" [(ngModel)]="pgConfig.gutterSize" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.gutterSize"
+                (change)="updateConfig()"
+              />
             </div>
           </div>
 

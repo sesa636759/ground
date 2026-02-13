@@ -1,10 +1,11 @@
 <div class="demo-container">
   <h1>🎯 Button Toggle Group Demo</h1>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
+  <app-demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
       <p>
         Test all button toggle group properties - segmented mode (multiple buttons) or dropdown mode
         (single button with dropdown)
@@ -17,12 +18,12 @@
       title="Button Toggle Usage"
       language="html"
     ></app-code-block>
-  </section>
+    </section>
 
-  <!-- Avatar & Status -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>👤 Avatar Support & Status</h2>
+    <!-- Avatar & Status -->
+    <section class="demo-section" id="avatar-status">
+      <div class="section-header">
+        <h2>👤 Avatar Support & Status</h2>
       <p>Toggle buttons with user profiles and online status indicators</p>
     </div>
     <div class="demo-grid">
@@ -44,12 +45,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Gliding Indicator -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🏄 Gliding Pill Indicator</h2>
+    <!-- Gliding Indicator -->
+    <section class="demo-section" id="gliding-indicator">
+      <div class="section-header">
+        <h2>🏄 Gliding Pill Indicator</h2>
       <p>Premium gliding animation for segmented controls (Horizontal & Vertical)</p>
     </div>
     <div class="demo-grid">
@@ -72,12 +73,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Color Variants -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎨 Color Variants</h2>
+    <!-- Color Variants -->
+    <section class="demo-section" id="color-variants">
+      <div class="section-header">
+        <h2>🎨 Color Variants</h2>
       <p>Different color themes supported out of the box</p>
     </div>
     <div class="demo-wrap">
@@ -93,12 +94,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Style Variants -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎭 Style Variants</h2>
+    <!-- Style Variants -->
+    <section class="demo-section" id="style-variants">
+      <div class="section-header">
+        <h2>🎭 Style Variants</h2>
       <p>7 different button style variants for every design need</p>
     </div>
     <div class="demo-wrap">
@@ -176,12 +177,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Sizes -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📏 Sizes</h2>
+    <!-- Sizes -->
+    <section class="demo-section" id="sizes">
+      <div class="section-header">
+        <h2>📏 Sizes</h2>
       <p>Different button sizes for various UI densities</p>
     </div>
     <div class="demo-grid">
@@ -194,12 +195,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- With Icons -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎯 With Icons</h2>
+    <!-- With Icons -->
+    <section class="demo-section" id="with-icons">
+      <div class="section-header">
+        <h2>🎯 With Icons</h2>
       <p>Button groups optimized for icon usage and positioning</p>
     </div>
     <div class="demo-grid">
@@ -233,12 +234,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Dropdown Mode -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📋 Dropdown Mode Variations</h2>
+    <!-- Dropdown Mode -->
+    <section class="demo-section" id="dropdown-mode">
+      <div class="section-header">
+        <h2>📋 Dropdown Mode Variations</h2>
       <p>Single button with dropdown selection - performs action on button click</p>
     </div>
     <div class="demo-grid">
@@ -311,12 +312,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Split Button Menu -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🔀 Split Button Variations</h2>
+    <!-- Split Button Variations -->
+    <section class="demo-section" id="split-button">
+      <div class="section-header">
+        <h2>🔀 Split Button Variations</h2>
       <p>Button with dropdown menu - label stays fixed</p>
     </div>
     <div class="demo-grid">
@@ -421,12 +422,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Display Modes -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎭 Display Modes</h2>
+    <!-- Display Modes -->
+    <section class="demo-section" id="display-modes">
+      <div class="section-header">
+        <h2>🎭 Display Modes</h2>
       <p>Icon only, label only, icon + label, and both sides</p>
     </div>
     <div class="demo-grid">
@@ -471,12 +472,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Orientations -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📐 Orientations & Layout</h2>
+    <!-- Orientations & Layout -->
+    <section class="demo-section" id="orientations-layout">
+      <div class="section-header">
+        <h2>📐 Orientations & Layout</h2>
       <p>Horizontal and vertical layouts for various containers</p>
     </div>
     <div class="demo-wrap">
@@ -508,12 +509,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Custom Content (Slots) -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎨 Custom Content (Slots)</h2>
+    <!-- Custom Content (Slots) -->
+    <section class="demo-section" id="custom-content">
+      <div class="section-header">
+        <h2>🎨 Custom Content (Slots)</h2>
       <p>
         Custom content in dropdown instead of option list - perfect for filters, forms, color
         pickers, etc.
@@ -655,12 +656,12 @@
         <p class="status-msg">{{ customSearchLog() }}</p>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Loading States -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>⏳ Loading States</h2>
+    <!-- Loading States -->
+    <section class="demo-section" id="loading-states">
+      <div class="section-header">
+        <h2>⏳ Loading States</h2>
       <p>Show loading spinner during async operations</p>
     </div>
     <div class="demo-grid">
@@ -711,12 +712,12 @@
         <p class="status-msg">{{ simulateLog() }}</p>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- States -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🔄 States</h2>
+    <!-- States -->
+    <section class="demo-section" id="states">
+      <div class="section-header">
+        <h2>🔄 States</h2>
       <p>Different interaction states and validations</p>
     </div>
     <div class="demo-grid">
@@ -757,12 +758,12 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Real World Examples -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📋 Real-World Examples</h2>
+    <!-- Real-World Examples -->
+    <section class="demo-section" id="real-world-examples">
+      <div class="section-header">
+        <h2>📋 Real-World Examples</h2>
       <p>Practical use cases for application interfaces</p>
     </div>
     <div class="demo-grid">
@@ -796,5 +797,6 @@
         ></app-button-toggle-group>
       </div>
     </div>
-  </section>
+    </section>
+  </app-demo-tabs>
 </div>

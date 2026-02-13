@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ButtonGroupPlaygroundComponent } from './components/button-group-playground/button-group-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-button-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ButtonGroupPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    ButtonGroupPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-group-demo.component.html',
   styleUrl: './app-button-group-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppButtonGroupDemoComponent {
     { id: 'selection', name: 'Selection Modes', icon: '☑️', color: '#3b82f6' },
     { id: 'layout', name: 'Layout Options', icon: '📐', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-button-group selection-mode="single">
   <ui-button label="Option 1" variant="outline"></ui-button>

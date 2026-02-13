@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { StackPlaygroundComponent } from './components/stack-playground/stack-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-stack-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, StackPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    StackPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-stack-demo.component.html',
   styleUrl: './app-stack-demo.component.scss',
@@ -20,6 +29,10 @@ export class AppStackDemoComponent {
     { id: 'overlap', name: 'Overlap', icon: '叠', color: '#f59e0b' },
     { id: 'dividers', name: 'Dividers', icon: '➖', color: '#ef4444' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-stack direction="horizontal" spacing="12px" align="center">
   <div class="box">1</div>

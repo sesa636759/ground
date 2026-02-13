@@ -5,22 +5,23 @@
     content.
   </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure carousel animations, layout, and behaviors</p>
-    </div>
+  <app-demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
+        <p>Configure carousel animations, layout, and behaviors</p>
+      </div>
     <app-carousel-playground></app-carousel-playground>
     <app-code-block [code]="playgroundCode" title="Carousel Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Fade Effect -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>✨ Fade Transition</h2>
-      <p>Smooth cross-fade effect for elegant presentations</p>
-    </div>
+    <!-- Fade Effect -->
+    <section class="demo-section" id="fade-transition">
+      <div class="section-header">
+        <h2>✨ Fade Transition</h2>
+        <p>Smooth cross-fade effect for elegant presentations</p>
+      </div>
     <div class="demo-card full-width">
       <div class="carousel-wrapper">
         <app-carousel effect="fade" autoplay="true" show-progress="true" autoplay-interval="4000">
@@ -45,14 +46,14 @@
         </app-carousel>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Center Mode -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎯 Center Mode</h2>
-      <p>Highlight the active slide with partial visibility of previous and next slides</p>
-    </div>
+    <!-- Center Mode -->
+    <section class="demo-section" id="center-mode">
+      <div class="section-header">
+        <h2>🎯 Center Mode</h2>
+        <p>Highlight the active slide with partial visibility of previous and next slides</p>
+      </div>
     <div class="demo-card full-width">
       <div class="carousel-wrapper">
         <app-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
@@ -64,14 +65,14 @@
         </app-carousel>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Multiple Slides -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🔢 Multiple Slides</h2>
-      <p>Display multiple items at once in a responsive grid-like view</p>
-    </div>
+    <!-- Multiple Slides -->
+    <section class="demo-section" id="multiple-slides">
+      <div class="section-header">
+        <h2>🔢 Multiple Slides</h2>
+        <p>Display multiple items at once in a responsive grid-like view</p>
+      </div>
     <div class="demo-card full-width">
       <div class="carousel-wrapper">
         <app-carousel
@@ -90,5 +91,6 @@
         </app-carousel>
       </div>
     </div>
-  </section>
+    </section>
+  </app-demo-tabs>
 </div>

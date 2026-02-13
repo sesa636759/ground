@@ -1,21 +1,19 @@
 <div class="demo-container">
   <h1>🚀 Progress Component</h1>
-  <p class="intro-text">
-    Display the current progress of an operation flow with line, circle, and dashboard styles.
-  </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Customize the progress bar settings and see changes in real-time</p>
     </div>
     <app-progress-playground></app-progress-playground>
     <app-code-block [code]="playgroundCode" title="Progress Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Line Progress -->
-  <section class="demo-section">
+    <!-- Line Progress -->
+    <section class="demo-section" id="line">
     <div class="section-header">
       <h2>Line Progress</h2>
       <p>Standard progress bar with different statuses</p>
@@ -46,10 +44,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Circular & Dashboard -->
-  <section class="demo-section">
+    <!-- Circular & Dashboard -->
+    <section class="demo-section" id="circular">
     <div class="section-header">
       <h2>Circular & Dashboard</h2>
       <p>Circular progress indicators for compact displays</p>
@@ -79,10 +77,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Premium Features -->
-  <section class="demo-section">
+    <!-- Premium Features -->
+    <section class="demo-section" id="premium">
     <div class="section-header">
       <h2>💎 Premium Effects</h2>
       <p>Advanced visual effects for modern interfaces</p>
@@ -114,5 +112,6 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

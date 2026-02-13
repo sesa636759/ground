@@ -1,22 +1,19 @@
 <div class="demo-container">
   <h1>🧱 Masonry Component</h1>
-  <p class="intro-text">
-    A classic masonry layout component with support for grid mode, column mode, sorting, filtering,
-    and advanced features like lazy loading and lightbox.
-  </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure and test all masonry layout properties</p>
     </div>
     <app-masonry-playground></app-masonry-playground>
     <app-code-block [code]="playgroundCode" title="Masonry Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Gallery Demo -->
-  <section class="demo-section">
+    <!-- Gallery Demo -->
+    <section class="demo-section" id="gallery">
     <div class="section-header">
       <h2>📸 Premium Gallery</h2>
       <p>Immersive Lightbox view with hover actions</p>
@@ -39,10 +36,10 @@
         language="html"
       ></app-code-block>
     </div>
-  </section>
+    </section>
 
-  <!-- Layout Variants -->
-  <section class="demo-section">
+    <!-- Layout Variants -->
+    <section class="demo-section" id="layouts">
     <div class="section-header">
       <h2>📐 Layout Variants</h2>
       <p>Different ways to organize content</p>
@@ -84,10 +81,10 @@
         ></app-code-block>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Loading State -->
-  <section class="demo-section">
+    <!-- Loading State -->
+    <section class="demo-section" id="loading">
     <div class="section-header">
       <h2>💀 Skeleton Loading</h2>
       <p>Built-in loading placeholder animation</p>
@@ -97,5 +94,6 @@
         <app-masonry layout-type="masonry" columns="3" gap="16" loading-state="true"></app-masonry>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

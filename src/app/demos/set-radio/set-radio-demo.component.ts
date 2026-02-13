@@ -1,18 +1,41 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-radio-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, RadioPlaygroundComponent, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+    RadioPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-radio-demo.component.html',
   styleUrl: './set-radio-demo.component.scss',
 })
 export class SetRadioDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
+    { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
+    { id: 'layouts', title: 'Layouts', icon: '📐' },
+    { id: 'slotted-radios', title: 'Slotted Radios', icon: '🧩' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'form-example', title: 'Form Example', icon: '📋' },
+  ];
+
   basicOptions = [
     { value: 'option1', label: 'Option 1' },
     { value: 'option2', label: 'Option 2' },
@@ -150,6 +173,13 @@ export class SetRadioDemoComponent implements OnInit {
 ></app-radio-group>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {

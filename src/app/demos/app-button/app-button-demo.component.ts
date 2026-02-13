@@ -3,22 +3,31 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ButtonPlaygroundComponent } from './components/button-playground/button-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-button-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, ButtonPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    ButtonPlaygroundComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-demo.component.html',
   styleUrl: './app-button-demo.component.scss',
 })
 export class AppButtonDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'visual-variants', name: 'Variants', icon: '🎨', color: '#3b82f6' },
-    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#10b981' },
-    { id: 'icons-badges', name: 'Icons & Badges', icon: '🏷️', color: '#f59e0b' },
-    { id: 'states', name: 'States', icon: '⚙️', color: '#ec4899' },
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
+    { id: 'states', title: 'States', icon: '⚙️' },
   ];
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;

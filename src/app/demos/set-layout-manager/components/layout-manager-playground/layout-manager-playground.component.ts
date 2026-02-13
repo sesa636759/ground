@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-layout-manager-playground',
@@ -44,12 +46,12 @@ export class LayoutManagerPlaygroundComponent implements OnInit, AfterViewInit {
   get regionSelectOptions() {
     return [
       { label: 'Select Region...', value: '' },
-      ...this.regions.map(r => ({ label: `${r.title} (${r.id})`, value: r.id }))
+      ...this.regions.map((r) => ({ label: `${r.title} (${r.id})`, value: r.id })),
     ];
   }
 
   get panelMoveRegionOptions() {
-    return this.regions.map(r => ({ label: r.title, value: r.id }));
+    return this.regions.map((r) => ({ label: r.title, value: r.id }));
   }
 
   toasts = signal<any[]>([]);

@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AsidePlaygroundComponent } from './components/aside-playground/aside-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-aside-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AsidePlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    AsidePlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-aside-demo.component.html',
   styleUrl: './app-aside-demo.component.scss',
@@ -19,6 +28,10 @@ export class AppAsideDemoComponent {
     { id: 'variants', name: 'Visual Styles', icon: '🎨', color: '#10b981' },
     { id: 'resizable', name: 'Resizability', icon: '↔️', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   sidebars = {
     left: false,

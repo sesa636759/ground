@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { BreadcrumbPlaygroundComponent } from './components/breadcrumb-playground/breadcrumb-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-breadcrumb-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, BreadcrumbPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    BreadcrumbPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-breadcrumb-demo.component.html',
   styleUrl: './app-breadcrumb-demo.component.scss',
@@ -19,6 +28,10 @@ export class AppBreadcrumbDemoComponent {
     { id: 'collapsing', name: 'Collapsing', icon: '📉', color: '#10b981' },
     { id: 'visuals', name: 'Visual Variants', icon: '🎨', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   items = JSON.stringify([
     { label: 'Home', icon: '🏠', href: '/' },

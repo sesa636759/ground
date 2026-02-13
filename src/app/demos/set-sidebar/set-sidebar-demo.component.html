@@ -1,22 +1,19 @@
 <div class="demo-container">
   <h1>📋 Sidebar Component</h1>
-  <p class="intro-text">
-    A flexible sidebar component for navigation with collapsible sections, icons, and custom styling
-    options.
-  </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure and test all sidebar properties</p>
     </div>
     <app-sidebar-playground></app-sidebar-playground>
     <app-code-block [code]="playgroundCode" title="Sidebar Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Positions -->
-  <section class="demo-section">
+    <!-- Positions -->
+    <section class="demo-section" id="positions">
     <div class="section-header">
       <h2>📍 Position Variants</h2>
       <p>Different sidebar positions</p>
@@ -38,10 +35,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Variants -->
-  <section class="demo-section">
+    <!-- Variants -->
+    <section class="demo-section" id="variants">
     <div class="section-header">
       <h2>🎭 Visual Variants</h2>
       <p>Different styles for sidebars</p>
@@ -68,10 +65,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Collapsible -->
-  <section class="demo-section">
+    <!-- Collapsible -->
+    <section class="demo-section" id="collapsible">
     <div class="section-header">
       <h2>🔄 Collapsible States</h2>
       <p>Expandable and collapsible sidebars</p>
@@ -91,10 +88,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Premium Features -->
-  <section class="demo-section">
+    <!-- Premium Features -->
+    <section class="demo-section" id="premium">
     <div class="section-header">
       <h2>💎 Premium Features</h2>
       <p>Advanced styling and functionality</p>
@@ -117,5 +114,6 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

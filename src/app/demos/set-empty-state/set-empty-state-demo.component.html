@@ -4,10 +4,11 @@
     Communicate empty states, errors, and feedback with illustration and action support.
   </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
+  <app-demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
       <p>Configure type, variant, and content</p>
     </div>
     <app-empty-state-playground></app-empty-state-playground>
@@ -16,12 +17,12 @@
       title="Empty State Usage"
       language="html"
     ></app-code-block>
-  </section>
+    </section>
 
-  <!-- Standard Types -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📋 Standard Types</h2>
+    <!-- Standard Types -->
+    <section class="demo-section" id="standard-types">
+      <div class="section-header">
+        <h2>📋 Standard Types</h2>
       <p>Pre-configured states for common scenarios</p>
     </div>
     <div class="demo-grid col-3">
@@ -90,12 +91,12 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Advanced Usage -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🚀 Advanced Usage</h2>
+    <!-- Advanced Usage -->
+    <section class="demo-section" id="advanced-usage">
+      <div class="section-header">
+        <h2>🚀 Advanced Usage</h2>
       <p>Custom illustrations, suggestions, and multiple actions</p>
     </div>
     <div class="demo-grid col-2">
@@ -138,5 +139,6 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </app-demo-tabs>
 </div>

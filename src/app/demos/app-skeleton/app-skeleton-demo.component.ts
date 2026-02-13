@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SkeletonPlaygroundComponent } from './components/skeleton-playground/skeleton-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-skeleton-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SkeletonPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    SkeletonPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-skeleton-demo.component.html',
   styleUrl: './app-skeleton-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppSkeletonDemoComponent {
     { id: 'shapes', name: 'Shapes & Animations', icon: '🌀', color: '#3b82f6' },
     { id: 'combinations', name: 'Complex Layouts', icon: '🧩', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-skeleton shape="rectangle" width="100%" height="150px" animation="wave"></ui-skeleton>`;
 

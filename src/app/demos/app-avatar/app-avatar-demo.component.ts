@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -27,6 +29,10 @@ export class AppAvatarDemoComponent {
     { id: 'status', name: 'Status & Badges', icon: '📍', color: '#f59e0b' },
     { id: 'avatar-group', name: 'Groups', icon: '👥', color: '#ec4899' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-avatar name="John Doe" status="online" size="64px"></ui-avatar>`;
 

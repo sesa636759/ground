@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-card-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, CardPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    CardPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-card-demo.component.html',
   styleUrl: './app-card-demo.component.scss',
@@ -19,6 +28,10 @@ export class AppCardDemoComponent {
     { id: 'flippable', name: 'Interaction', icon: '✨', color: '#10b981' },
     { id: 'loading', name: 'States', icon: '⚙️', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-card variant="elevated" hoverable width="340px">
   <div slot="cover">...</div>

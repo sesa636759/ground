@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-stack-playground',
@@ -54,7 +56,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Max Items (0 = all)</label>
-              <app-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></app-input>
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="checkbox-group">
               <app-checkbox

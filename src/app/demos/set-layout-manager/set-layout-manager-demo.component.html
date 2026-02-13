@@ -1,8 +1,9 @@
 <div class="demo-container">
   <h1>🏗️ Layout Manager Demo</h1>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Build custom layouts with resizable, collapsible regions</p>
@@ -25,10 +26,10 @@
         language="html"
       ></app-code-block>
     </div>
-  </section>
+    </section>
 
-  <!-- Basic Three-Column Layout -->
-  <section class="demo-section">
+    <!-- Basic Three-Column Layout -->
+    <section class="demo-section" id="basic">
     <div class="section-header">
       <h2>📐 Basic Three-Column Layout</h2>
       <p>Classic sidebar-content-sidebar pattern</p>
@@ -44,10 +45,10 @@
         style="height: 400px; display: block"
       ></app-layout-manager>
     </div>
-  </section>
+    </section>
 
-  <!-- IDE-Style Layout -->
-  <section class="demo-section">
+    <!-- IDE-Style Layout -->
+    <section class="demo-section" id="ide">
     <div class="section-header">
       <h2>💻 IDE-Style Layout</h2>
       <p>Code editor with explorer and terminal panels</p>
@@ -63,10 +64,10 @@
         style="height: 500px; display: block"
       ></app-layout-manager>
     </div>
-  </section>
+    </section>
 
-  <!-- Dashboard Layout -->
-  <section class="demo-section">
+    <!-- Dashboard Layout -->
+    <section class="demo-section" id="dashboard">
     <div class="section-header">
       <h2>📊 Dashboard Layout</h2>
       <p>Navigation, main content, and widgets</p>
@@ -82,10 +83,10 @@
         style="height: 450px; display: block"
       ></app-layout-manager>
     </div>
-  </section>
+    </section>
 
-  <!-- Features Overview -->
-  <section class="demo-section">
+    <!-- Features Overview -->
+    <section class="demo-section" id="features">
     <div class="section-header">
       <h2>✨ Key Features</h2>
       <p>Powerful capabilities of the Layout Manager</p>
@@ -124,10 +125,10 @@
         <p>Full control over regions and panels</p>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- API Methods -->
-  <section class="demo-section">
+    <!-- API Methods -->
+    <section class="demo-section" id="api">
     <div class="section-header">
       <h2>🔧 API Methods</h2>
       <p>Programmatic control over layouts</p>
@@ -174,5 +175,6 @@
         <code>const state = await layout.getLayoutState()</code>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

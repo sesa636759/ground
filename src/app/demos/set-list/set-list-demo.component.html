@@ -1,21 +1,19 @@
 <div class="demo-container">
   <h1>📋 List Component</h1>
-  <p class="intro-text">
-    A versatile list component with support for icons, avatars, badges, actions, and nested items.
-  </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure list appearance and item properties</p>
     </div>
     <app-list-playground></app-list-playground>
     <app-code-block [code]="playgroundCode" title="List Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Variants -->
-  <section class="demo-section">
+    <!-- Variants -->
+    <section class="demo-section" id="variants">
     <div class="section-header">
       <h2>🎭 Variants</h2>
       <p>Different visual styles for lists</p>
@@ -48,10 +46,10 @@
         </app-list>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Nested Lists -->
-  <section class="demo-section">
+    <!-- Nested Lists -->
+    <section class="demo-section" id="nested">
     <div class="section-header">
       <h2>🌳 Nested Lists</h2>
       <p>Expandable tree-like structures</p>
@@ -76,10 +74,10 @@
         <app-list-item label="System" icon="fas fa-cog"></app-list-item>
       </app-list>
     </div>
-  </section>
+    </section>
 
-  <!-- Premium Features -->
-  <section class="demo-section">
+    <!-- Premium Features -->
+    <section class="demo-section" id="premium">
     <div class="section-header">
       <h2>💎 Premium Features</h2>
       <p>Auto-grouped lists, Skeleton loading, and Horizontal layout</p>
@@ -104,5 +102,6 @@
         </app-list-group>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SnackbarPlaygroundComponent } from './components/snackbar-playground/snackbar-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-snackbar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SnackbarPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    SnackbarPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-snackbar-demo.component.html',
   styleUrl: './app-snackbar-demo.component.scss',
@@ -21,6 +30,10 @@ export class AppSnackbarDemoComponent {
     { id: 'positions', name: 'Positions', icon: '📍', color: '#10b981' },
     { id: 'card-stack', name: 'Card Stacking', icon: '📚', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-snackbar position="top-right" max-visible="5"></ui-snackbar>`;
 

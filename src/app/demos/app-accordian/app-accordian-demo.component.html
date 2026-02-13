@@ -31,16 +31,14 @@
         <!-- Sidebar Navigation -->
         <div class="examples-sidebar">
           <div class="sidebar-title">Examples List</div>
-          <div class="variants-nav">
-            <ui-button
-              *ngFor="let variant of exampleVariants"
-              (click)="scrollToSection(variant.id)"
-              variant="ghost"
-              full-width
-              [icon]="variant.icon"
-              [label]="variant.name"
-            ></ui-button>
-          </div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.name }}
+              </a>
+            </li>
+          </ul>
         </div>
 
         <!-- Main Content Area -->

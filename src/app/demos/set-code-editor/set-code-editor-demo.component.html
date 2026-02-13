@@ -4,26 +4,27 @@
     A powered code editor with syntax highlighting, multiple language support, and rich features.
   </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Customize the editor theme, language, and behavior</p>
-    </div>
+  <app-demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
+        <p>Customize the editor theme, language, and behavior</p>
+      </div>
     <app-code-editor-playground></app-code-editor-playground>
     <app-code-block
       [code]="playgroundCode"
       title="Code Editor Usage"
       language="html"
     ></app-code-block>
-  </section>
+    </section>
 
-  <!-- Editor Examples -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>✨ Language Support</h2>
-      <p>Supports various languages with syntax highlighting</p>
-    </div>
+    <!-- Editor Examples -->
+    <section class="demo-section" id="language-support">
+      <div class="section-header">
+        <h2>✨ Language Support</h2>
+        <p>Supports various languages with syntax highlighting</p>
+      </div>
 
     <div class="demo-grid col-2">
       <div class="demo-card">
@@ -78,14 +79,14 @@
         ></app-code-editor>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Features -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🛠 Features</h2>
-      <p>Advanced features like read-only mode and toolbar controls</p>
-    </div>
+    <!-- Features -->
+    <section class="demo-section" id="features">
+      <div class="section-header">
+        <h2>🛠 Features</h2>
+        <p>Advanced features like read-only mode and toolbar controls</p>
+      </div>
 
     <div class="demo-grid col-2">
       <div class="demo-card">
@@ -112,5 +113,6 @@
         ></app-code-editor>
       </div>
     </div>
-  </section>
+    </section>
+  </app-demo-tabs>
 </div>

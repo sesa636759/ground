@@ -4,22 +4,41 @@
     A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling.
   </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Test various configurations and behaviors</p>
+  <demo-tabs>
+    <div slot="playground">
+      <div class="demo-container">
+        <section class="demo-section" id="playground">
+          <div class="section-header">
+            <h2>🎮 Interactive Playground</h2>
+            <p>Test various configurations and behaviors</p>
+          </div>
+          <app-tooltip-playground></app-tooltip-playground>
+          <app-code-block [code]="playgroundCode" title="Tooltip Usage" language="html"></app-code-block>
+        </section>
+      </div>
     </div>
-    <app-tooltip-playground></app-tooltip-playground>
-    <app-code-block [code]="playgroundCode" title="Tooltip Usage" language="html"></app-code-block>
-  </section>
 
-  <!-- Positions -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📍 Positioning</h2>
-      <p>Tooltips can be positioned in 8 different directions</p>
-    </div>
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="examples-content">
+          <!-- Positions -->
+          <section class="demo-section" id="positioning" style="margin-top: 0">
+            <div class="section-header">
+              <h2>📍 Positioning</h2>
+              <p>Tooltips can be positioned in 8 different directions</p>
+            </div>
     <div class="position-grid">
       <div class="pos-cell top-left">
         <app-tooltip content="Top Left" position="top-left">
@@ -71,12 +90,12 @@
     </div>
   </section>
 
-  <!-- Variants -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎨 Variants & Themes</h2>
-      <p>Built-in color schemes for different contexts</p>
-    </div>
+          <!-- Variants -->
+          <section class="demo-section" id="variants">
+            <div class="section-header">
+              <h2>🎨 Variants & Themes</h2>
+              <p>Built-in color schemes for different contexts</p>
+            </div>
     <div class="demo-grid">
       <div class="demo-card">
         <h3>Dark (Default)</h3>
@@ -129,37 +148,50 @@
     </div>
   </section>
 
-  <!-- Shapes & Animation -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>✨ Shapes & Animations</h2>
-      <p>Custom shapes and entry/exit transitions</p>
+          <!-- Shapes & Animation -->
+          <section class="demo-section" id="shapes-animations">
+            <div class="section-header">
+              <h2>✨ Shapes & Animations</h2>
+              <p>Custom shapes and entry/exit transitions</p>
+            </div>
+            <div class="demo-grid">
+              <div class="demo-card">
+                <h3>Pill Shape</h3>
+                <div class="preview-box">
+                  <app-tooltip content="Pill Shape" shape="pill" position="top">
+                    <ui-button slot="target" class="demo-btn" style="border-radius: 99px" label="Pill Button"></ui-button>
+                  </app-tooltip>
+                </div>
+              </div>
+              <div class="demo-card">
+                <h3>Bounce Animation</h3>
+                <div class="preview-box">
+                  <app-tooltip content="Boing!" animation="bounce" position="top">
+                    <ui-button slot="target" class="demo-btn" label="Bounce"></ui-button>
+                  </app-tooltip>
+                </div>
+              </div>
+              <div class="demo-card">
+                <h3>Scale Animation</h3>
+                <div class="preview-box">
+                  <app-tooltip content="Scale Up" animation="scale" position="top">
+                    <ui-button slot="target" class="demo-btn" label="Scale"></ui-button>
+                  </app-tooltip>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Pill Shape</h3>
-        <div class="preview-box">
-          <app-tooltip content="Pill Shape" shape="pill" position="top">
-            <ui-button slot="target" class="demo-btn" style="border-radius: 99px" label="Pill Button"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Bounce Animation</h3>
-        <div class="preview-box">
-          <app-tooltip content="Boing!" animation="bounce" position="top">
-            <ui-button slot="target" class="demo-btn" label="Bounce"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Scale Animation</h3>
-        <div class="preview-box">
-          <app-tooltip content="Scale Up" animation="scale" position="top">
-            <ui-button slot="target" class="demo-btn" label="Scale"></ui-button>
-          </app-tooltip>
-        </div>
+
+    <div slot="docs">
+      <div class="demo-container">
+        <section class="demo-section">
+          <h2>📚 Documentation</h2>
+          <p>Coming soon...</p>
+        </section>
       </div>
     </div>
-  </section>
+  </demo-tabs>
 </div>

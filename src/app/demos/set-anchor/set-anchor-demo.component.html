@@ -1,22 +1,19 @@
 <div class="demo-container">
   <h1>⚓ Anchor Navigation</h1>
-  <p class="intro-text">
-    A smart navigation component that provides smooth scrolling and automatic active state detection
-    based on scroll position. Perfect for documentation and long-form content.
-  </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
     <div class="section-header">
       <h2>🎮 Interactive Playground</h2>
       <p>Configure orientation, styles, and behaviors</p>
     </div>
     <app-anchor-playground></app-anchor-playground>
     <app-code-block [code]="playgroundCode" title="Anchor Usage" language="html"></app-code-block>
-  </section>
+    </section>
 
-  <!-- Orientation Examples -->
-  <section class="demo-section">
+    <!-- Orientation Examples -->
+    <section class="demo-section" id="orientation">
     <div class="section-header">
       <h2>🧭 Orientation & Layout</h2>
       <p>Supports both vertical and horizontal layouts with flexible positioning</p>
@@ -68,10 +65,10 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Styles -->
-  <section class="demo-section">
+    <!-- Styles -->
+    <section class="demo-section" id="styles">
     <div class="section-header">
       <h2>🎨 Styles & Features</h2>
       <p>Numbering styles and visual themes</p>
@@ -126,5 +123,6 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </demo-tabs>
 </div>

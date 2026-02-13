@@ -4,108 +4,114 @@
     Guide users through a sequence of steps or a workflow process using various stepper styles.
   </p>
 
-  <!-- Interactive Playground -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Customize the stepper layout, theme, and features</p>
-    </div>
-    <app-stepper-playground></app-stepper-playground>
-    <app-code-block [code]="playgroundCode" title="Stepper Usage" language="html"></app-code-block>
-  </section>
+  <demo-tabs>
+    <!-- Interactive Playground -->
+    <section class="demo-section" id="playground">
+      <div class="section-header">
+        <h2>🎮 Interactive Playground</h2>
+        <p>Customize the stepper layout, theme, and features</p>
+      </div>
+      <app-stepper-playground></app-stepper-playground>
+      <app-code-block
+        [code]="playgroundCode"
+        title="Stepper Usage"
+        language="html"
+      ></app-code-block>
+    </section>
 
-  <!-- Stepper Variants -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎨 Styles & Variants</h2>
-      <p>Choose from different visual styles for your workflow</p>
-    </div>
-
-    <div class="demo-grid col-1">
-      <div class="demo-card">
-        <h3>Default (Horizontal)</h3>
-        <div class="stepper-wrapper">
-          <app-stepper-container
-            mode="horizontal"
-            show-content-area="true"
-            active-step="1"
-            [attr.steps]="horizontalSteps"
-          >
-            <div slot="step-0"><div class="dummy-content">Step 1 Content</div></div>
-            <div slot="step-1"><div class="dummy-content">Step 2 Content</div></div>
-            <div slot="step-2"><div class="dummy-content">Step 3 Content</div></div>
-            <div slot="step-3"><div class="dummy-content">Step 4 Content</div></div>
-          </app-stepper-container>
-        </div>
+    <!-- Stepper Variants -->
+    <section class="demo-section" id="styles-variants">
+      <div class="section-header">
+        <h2>🎨 Styles & Variants</h2>
+        <p>Choose from different visual styles for your workflow</p>
       </div>
 
-      <div class="demo-card">
-        <h3>Vertical (Alternating Labels)</h3>
-        <div class="stepper-wrapper vertical">
-          <app-stepper-container
-            mode="vertical"
-            description-position="alternate"
-            active-step="2"
-            [attr.steps]="verticalSteps"
-          >
-          </app-stepper-container>
+      <div class="demo-grid col-1">
+        <div class="demo-card">
+          <h3>Default (Horizontal)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              show-content-area="true"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            >
+              <div slot="step-0"><div class="dummy-content">Step 1 Content</div></div>
+              <div slot="step-1"><div class="dummy-content">Step 2 Content</div></div>
+              <div slot="step-2"><div class="dummy-content">Step 3 Content</div></div>
+              <div slot="step-3"><div class="dummy-content">Step 4 Content</div></div>
+            </app-stepper-container>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Vertical (Alternating Labels)</h3>
+          <div class="stepper-wrapper vertical">
+            <app-stepper-container
+              mode="vertical"
+              description-position="alternate"
+              active-step="2"
+              [attr.steps]="verticalSteps"
+            >
+            </app-stepper-container>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Snack Variant (Compact)</h3>
+          <p class="desc">Ideal for workflows with many steps</p>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              variant="snack"
+              show-progress="true"
+              clickable="true"
+              active-step="4"
+              [attr.steps]="snackSteps"
+            >
+            </app-stepper-container>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="demo-card">
-        <h3>Snack Variant (Compact)</h3>
-        <p class="desc">Ideal for workflows with many steps</p>
-        <div class="stepper-wrapper">
-          <app-stepper-container
-            variant="snack"
-            show-progress="true"
-            clickable="true"
-            active-step="4"
-            [attr.steps]="snackSteps"
-          >
-          </app-stepper-container>
-        </div>
+    <!-- Content & Navigation -->
+    <section class="demo-section" id="content-navigation">
+      <div class="section-header">
+        <h2>📦 Content & Navigation</h2>
+        <p>Built-in content switching and navigation controls</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Content & Navigation -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>📦 Content & Navigation</h2>
-      <p>Built-in content switching and navigation controls</p>
-    </div>
-    <div class="demo-card">
-      <app-stepper-container
-        mode="horizontal"
-        show-content-area="true"
-        show-navigation="true"
-        active-step="0"
-        variant="outlined"
-        steps='[
+      <div class="demo-card">
+        <app-stepper-container
+          mode="horizontal"
+          show-content-area="true"
+          show-navigation="true"
+          active-step="0"
+          variant="outlined"
+          steps='[
                 {"label": "Profile", "description": "Enter details"},
                 {"label": "Settings", "description": "Configure"},
                 {"label": "Confirm", "description": "Review & Submit"}
             ]'
-      >
-        <div slot="step-0" class="step-slot">
-          <h3>Profile Information</h3>
-          <p>Please enter your personal details below.</p>
-          <div class="dummy-input"></div>
-          <div class="dummy-input"></div>
-        </div>
-        <div slot="step-1" class="step-slot">
-          <h3>System Settings</h3>
-          <p>Configure your preferences.</p>
-          <div class="dummy-toggle"></div>
-          <div class="dummy-toggle"></div>
-        </div>
-        <div slot="step-2" class="step-slot">
-          <h3>Confirmation</h3>
-          <p>Ready to submit your data?</p>
-          <div class="dummy-message success">All validations passed!</div>
-        </div>
-      </app-stepper-container>
-    </div>
-  </section>
+        >
+          <div slot="step-0" class="step-slot">
+            <h3>Profile Information</h3>
+            <p>Please enter your personal details below.</p>
+            <div class="dummy-input"></div>
+            <div class="dummy-input"></div>
+          </div>
+          <div slot="step-1" class="step-slot">
+            <h3>System Settings</h3>
+            <p>Configure your preferences.</p>
+            <div class="dummy-toggle"></div>
+            <div class="dummy-toggle"></div>
+          </div>
+          <div slot="step-2" class="step-slot">
+            <h3>Confirmation</h3>
+            <p>Ready to submit your data?</p>
+            <div class="dummy-message success">All validations passed!</div>
+          </div>
+        </app-stepper-container>
+      </div>
+    </section>
+  </demo-tabs>
 </div>

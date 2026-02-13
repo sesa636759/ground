@@ -1,13 +1,22 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { CascadeSelectPlaygroundComponent } from './components/cascade-select-playground/cascade-select-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-cascade-select-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, CascadeSelectPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    CascadeSelectPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-cascade-select-demo.component.html',
   styleUrl: './app-cascade-select-demo.component.scss',
@@ -18,6 +27,10 @@ export class AppCascadeSelectDemoComponent {
     { id: 'triggers', name: 'Triggers & Display', icon: '⚡', color: '#3b82f6' },
     { id: 'selection', name: 'Selection Logic', icon: '🎯', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   fileSystemOptions = JSON.stringify([
     {
