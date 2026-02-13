@@ -1,7 +1,7 @@
 <div class="demo-container">
   <h1>👤 Avatar Component Demo</h1>
 
-  <demo-tabs [variants]="variants">
+  <demo-tabs >
     <!-- Playground Slot -->
     <div slot="playground">
       <div class="demo-container">
@@ -21,25 +21,26 @@
     </div>
 
     <!-- Examples Slot -->
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <aside class="examples-sidebar">
-          <nav class="nav-list">
-            <a
-              *ngFor="let variant of exampleVariants"
-              [href]="'#' + variant.id"
-              class="nav-item"
-              (click)="scrollToSection(variant.id)"
-            >
-              <span class="nav-icon">{{ variant.icon }}</span>
-              <span class="nav-title">{{ variant.title }}</span>
-            </a>
-          </nav>
-        </aside>
+   
 
-        <!-- Scrollable Content -->
-        <div class="examples-content">
+
+
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+   
         <!-- Scrollable Content -->
         <div class="examples-content">
       <!-- Basic Shapes & Sizes -->
@@ -688,10 +689,10 @@
         </div>
         <app-code-block [code]="animatedGroupsCode" title="Animated Groups" language="html"></app-code-block>
       </section>
-    </div>
+   
   </div>
     </div>
-
+</div>  
     <!-- Documentation Slot -->
     <div slot="docs">
       <app-component-documentation componentId="avatar"></app-component-documentation>
