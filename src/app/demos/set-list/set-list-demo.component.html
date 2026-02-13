@@ -1,27 +1,26 @@
 <div class="demo-container">
   <h1>📋 List Component</h1>
-  <p class="demo-description">
+  <p class="intro-text">
     Versatile list component with support for variants, colors, sizes, nesting, grouping, selection, context menus, badges, and more.
   </p>
 
-  <div class="examples-split-layout">
-    <aside class="examples-sidebar">
-      <h3>Examples</h3>
-      <nav class="examples-nav">
-        @for (variant of variants; track variant.id) {
-          <a
-            [href]="'#' + variant.id"
-            class="nav-item"
-            (click)="scrollToSection(variant.id); $event.preventDefault()"
-          >
-            <span class="nav-icon">{{ variant.icon }}</span>
-            <span class="nav-title">{{ variant.title }}</span>
-          </a>
-        }
-      </nav>
-    </aside>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
 
-    <div class="examples-content">
+        <div class="examples-content">
       <!-- Playground -->
       <section class="demo-section" id="playground">
         <div class="section-header">
@@ -680,5 +679,10 @@
         <app-list-playground></app-list-playground>
       </section>
     </div>
-  </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="list"></app-component-documentation>
+    </div>
+  </demo-tabs>
 </div>

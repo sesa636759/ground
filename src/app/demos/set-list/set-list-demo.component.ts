@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ListPlaygroundComponent } from './components/list-playground/list-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-list-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ListPlaygroundComponent, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, ListPlaygroundComponent, CodeBlockComponent, DemoTabsComponent, ComponentDocumentationComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-list-demo.component.html',
   styleUrl: './set-list-demo.component.scss',
 })
 export class SetListDemoComponent {
   variants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Lists', icon: '📝' },
     { id: 'colors', title: 'Color Variants', icon: '🎨' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
@@ -28,6 +29,17 @@ export class SetListDemoComponent {
     { id: 'tags', title: 'Tags & Pills', icon: '🏷️' },
     { id: 'config', title: 'Configuration Demo', icon: '⚙️' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   // Code examples for each section
   basicCode = signal(`<app-list>
@@ -194,11 +206,4 @@ export class SetListDemoComponent {
   multiline
   value="item-1"
 ></app-list-item>`);
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

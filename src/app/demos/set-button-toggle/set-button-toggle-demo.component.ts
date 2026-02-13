@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-button-toggle-demo',
@@ -12,6 +14,8 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
     FormsModule,
     ButtonTogglePlaygroundComponent,
     CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
@@ -19,7 +23,6 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 })
 export class SetButtonToggleDemoComponent {
   variants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'segmented', title: 'Segmented Controls', icon: '🔑' },
     { id: 'gliding', title: 'Gliding Pill Animation', icon: '🎴' },
     { id: 'colors', title: 'Color Variants', icon: '🎨' },
@@ -35,6 +38,17 @@ export class SetButtonToggleDemoComponent {
     { id: 'states', title: 'States (Disabled/Readonly)', icon: '🔄' },
     { id: 'real-world', title: 'Real-World Examples', icon: '📊' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   segmentedCode = `<app-button-toggle-group
   mode="segmented"
@@ -183,34 +197,7 @@ export class SetButtonToggleDemoComponent {
   ]'
 ></app-button-toggle-group>`;
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
-  exampleVariants = [
-    { id: 'avatar-status', title: 'Avatar Support & Status', icon: '👤' },
-    { id: 'gliding-indicator', title: 'Gliding Pill Indicator', icon: '🏄' },
-    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
-    { id: 'style-variants', title: 'Style Variants', icon: '🎭' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'with-icons', title: 'With Icons', icon: '🎯' },
-    { id: 'dropdown-mode', title: 'Dropdown Mode Variations', icon: '📋' },
-    { id: 'split-button', title: 'Split Button Variations', icon: '🔀' },
-    { id: 'display-modes', title: 'Display Modes', icon: '🎭' },
-    { id: 'orientations-layout', title: 'Orientations & Layout', icon: '📐' },
-    { id: 'custom-content', title: 'Custom Content (Slots)', icon: '🎨' },
-    { id: 'loading-states', title: 'Loading States', icon: '⏳' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'real-world-examples', title: 'Real-World Examples', icon: '📋' },
-  ];
-
-  playgroundCode = `<app-button-toggle
-  [options]="options"
-  [(ngModel)]="selected"
-></app-button-toggle>`;
 
   // Options Data (Core sets)
   basicOptions = [

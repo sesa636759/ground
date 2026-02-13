@@ -3,18 +3,26 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-empty-state-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, EmptyStatePlaygroundComponent, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    EmptyStatePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-empty-state-demo.component.html',
   styleUrl: './set-empty-state-demo.component.scss',
 })
 export class SetEmptyStateDemoComponent {
   variants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'types', title: 'Standard Types', icon: '📋' },
     { id: 'variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Size Options', icon: '📏' },
@@ -26,7 +34,10 @@ export class SetEmptyStateDemoComponent {
     { id: 'premium', title: 'Premium Features', icon: '💎' },
   ];
 
-  // Code examples for each section
+  get exampleVariants() {
+    return this.variants;
+  }
+
   typesCode = signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>
 
 <app-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters"></app-empty-state>
@@ -83,11 +94,6 @@ export class SetEmptyStateDemoComponent {
   type="no-results" 
   title="No Results Found" 
   message="We couldn't find any results matching your search."
-  [suggestions]="[
-    { label: 'Check your spelling', icon: 'fas fa-check' },
-    { label: 'Try different filters', icon: 'fas fa-filter' },
-    { label: 'Refresh the page', icon: 'fas fa-sync' }
-  ]"
 ></app-empty-state>`);
 
   actionsCode = signal(`<app-empty-state 
@@ -139,8 +145,8 @@ export class SetEmptyStateDemoComponent {
   primary-action="Continue"
 ></app-empty-state>`);
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

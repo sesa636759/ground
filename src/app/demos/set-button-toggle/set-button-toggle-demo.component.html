@@ -4,534 +4,546 @@
     Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support.
   </p>
 
-  <div class="examples-split-layout">
-    <aside class="examples-sidebar">
-      <h3>Examples</h3>
-      <nav class="examples-nav">
-        @for (variant of variants; track variant.id) {
-          <a
-            [href]="'#' + variant.id"
-            class="nav-item"
-            (click)="scrollToSection(variant.id); $event.preventDefault()"
-          >
-            <span class="nav-icon">{{ variant.icon }}</span>
-            <span class="nav-title">{{ variant.title }}</span>
-          </a>
-        }
-      </nav>
-    </aside>
-
-    <div class="examples-content">
-      <!-- Playground -->
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Test all button toggle group properties and configurations</p>
-        </div>
-        <app-button-toggle-playground></app-button-toggle-playground>
-      </section>
-
-      <!-- Segmented Controls -->
-      <section class="demo-section" id="segmented">
-        <div class="section-header">
-          <h2>🔘 Segmented Controls</h2>
-          <p>Multiple buttons with single or multi-selection</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="segmented"
-              label="Select View Mode"
-              value="list"
-              color="primary"
-            ></app-button-toggle-group>
-          </div>
-          <app-code-block [code]="segmentedCode" language="html"></app-code-block>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.title }}
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <script>
-          const segmented = document.querySelector('#segmented app-button-toggle-group');
-          if (segmented) {
-            segmented.options = [
-              { value: 'list', label: 'List', icon: 'fas fa-list' },
-              { value: 'grid', label: 'Grid', icon: 'fas fa-th' },
-              { value: 'table', label: 'Table', icon: 'fas fa-table' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Gliding Animation -->
-      <section class="demo-section" id="gliding">
-        <div class="section-header">
-          <h2>🏄 Gliding Pill Animation</h2>
-          <p>Premium smooth animation for pill-style toggles</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="segmented"
-              value="day"
-              color="info"
-              variant="soft"
-            ></app-button-toggle-group>
-          </div>
-          <app-code-block [code]="glidingCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const gliding = document.querySelector('#gliding app-button-toggle-group');
-          if (gliding) {
-            gliding.options = [
-              { value: 'day', label: 'Day', icon: 'fas fa-sun' },
-              { value: 'week', label: 'Week', icon: 'fas fa-calendar-week' },
-              { value: 'month', label: 'Month', icon: 'fas fa-calendar' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Color Variants -->
-      <section class="demo-section" id="colors">
-        <div class="section-header">
-          <h2>🎨 Color Variants</h2>
-          <p>Six built-in color themes: Primary, Secondary, Success, Danger, Warning, Info</p>
-        </div>
-        <div class="demo-grid-2">
-          @for (color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']; track color) {
-            <div class="demo-card">
-              <h4>{{ color | titlecase }}</h4>
-              <app-button-toggle-group
-                value="option2"
-                [attr.color]="color"
-              ></app-button-toggle-group>
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Segmented Controls -->
+          <section class="demo-section" id="segmented" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🔘 Segmented Controls</h2>
+              <p>Multiple buttons with single or multi-selection</p>
             </div>
-          }
-        </div>
-
-        <script>
-          setTimeout(() => {
-            const colorButtons = document.querySelectorAll('#colors app-button-toggle-group');
-            colorButtons.forEach(btn => {
-              btn.options = [
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ];
-            });
-          }, 100);
-        </script>
-
-        <app-code-block [code]="colorCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Style Variants -->
-      <section class="demo-section" id="styles">
-        <div class="section-header">
-          <h2>🎭 Style Variants</h2>
-          <p>Seven button styles: Filled, Outlined, Text, Soft, Classic, Solid, Surface</p>
-        </div>
-        <div class="demo-grid-2">
-          @for (style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']; track style) {
             <div class="demo-card">
-              <h4>{{ style | titlecase }}</h4>
-              <app-button-toggle-group
-                value="option2"
-                color="primary"
-                [attr.variant]="style"
-              ></app-button-toggle-group>
-            </div>
-          }
-        </div>
-
-        <script>
-          setTimeout(() => {
-            const styleButtons = document.querySelectorAll('#styles app-button-toggle-group');
-            styleButtons.forEach(btn => {
-              btn.options = [
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ];
-            });
-          }, 100);
-        </script>
-
-        <app-code-block [code]="styleCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Sizes -->
-      <section class="demo-section" id="sizes">
-        <div class="section-header">
-          <h2>📏 Sizes</h2>
-          <p>Three size options: Small, Medium, Large</p>
-        </div>
-        <div class="demo-grid-3">
-          @for (size of ['small', 'medium', 'large']; track size) {
-            <div class="demo-card">
-              <h4>{{ size | titlecase }}</h4>
-              <app-button-toggle-group
-                value="option2"
-                [attr.size]="size"
-              ></app-button-toggle-group>
-            </div>
-          }
-        </div>
-
-        <script>
-          setTimeout(() => {
-            const sizeButtons = document.querySelectorAll('#sizes app-button-toggle-group');
-            sizeButtons.forEach(btn => {
-              btn.options = [
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ];
-            });
-          }, 100);
-        </script>
-
-        <app-code-block [code]="sizeCode" language="html"></app-code-block>
-      </section>
-
-      <!-- With Icons -->
-      <section class="demo-section" id="icons">
-        <div class="section-header">
-          <h2>🎯 With Icons</h2>
-          <p>Icon support with label, icon-only, and custom positioning</p>
-        </div>
-        <div class="demo-grid-2">
-          <div class="demo-card">
-            <h4>View Modes</h4>
-            <app-button-toggle-group
-              label="View Mode"
-              value="grid"
-              color="primary"
-            ></app-button-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h4>Text Alignment</h4>
-            <app-button-toggle-group
-              label="Alignment"
-              value="center"
-              color="secondary"
-            ></app-button-toggle-group>
-          </div>
-        </div>
-
-        <script>
-          const viewModeBtn = document.querySelector('#icons app-button-toggle-group');
-          if (viewModeBtn) {
-            viewModeBtn.options = [
-              { value: 'list', label: 'List', icon: 'fas fa-list' },
-              { value: 'grid', label: 'Grid', icon: 'fas fa-th' },
-              { value: 'table', label: 'Table', icon: 'fas fa-table' }
-            ];
-          }
-          const alignmentBtn = document.querySelectorAll('#icons app-button-toggle-group')[1];
-          if (alignmentBtn) {
-            alignmentBtn.options = [
-              { value: 'left', label: 'Left', icon: 'fas fa-align-left' },
-              { value: 'center', label: 'Center', icon: 'fas fa-align-center' },
-              { value: 'right', label: 'Right', icon: 'fas fa-align-right' }
-            ];
-          }
-        </script>
-
-        <app-code-block [code]="iconCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Dropdown Mode -->
-      <section class="demo-section" id="dropdown">
-        <div class="section-header">
-          <h2>📋 Dropdown Mode</h2>
-          <p>Single button with dropdown menu for selecting actions or options</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="dropdown"
-              label="Export Options"
-              value="pdf"
-              helper-text="Choose export format"
-            ></app-button-toggle-group>
-          </div>
-          <app-code-block [code]="dropdownCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const dropdown = document.querySelector('#dropdown app-button-toggle-group');
-          if (dropdown) {
-            dropdown.options = [
-              { value: 'pdf', label: 'Export as PDF' },
-              { value: 'excel', label: 'Export as Excel' },
-              { value: 'csv', label: 'Export as CSV' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Split Button -->
-      <section class="demo-section" id="split-button">
-        <div class="section-header">
-          <h2>🔀 Split Button (Fixed Label)</h2>
-          <p>Button with dropdown menu where label stays fixed</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="dropdown"
-              label="File Operations"
-              value="file"
-              keep-button-label="true"
-            ></app-button-toggle-group>
-          </div>
-          <app-code-block [code]="splitButtonCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const splitButton = document.querySelector('#split-button app-button-toggle-group');
-          if (splitButton) {
-            splitButton.options = [
-              { value: 'new', label: 'New File' },
-              { value: 'open', label: 'Open File' },
-              { value: 'save', label: 'Save' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Display Modes -->
-      <section class="demo-section" id="display-modes">
-        <div class="section-header">
-          <h2>🎭 Display Modes</h2>
-          <p>Label only, Icon only, Icon + Label, or Both sides</p>
-        </div>
-        <div class="demo-grid-2">
-          <div class="demo-card">
-            <h4>Label Only</h4>
-            <app-button-toggle-group
-              label="Select Size"
-              value="medium"
-              display-mode="label-only"
-            ></app-button-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h4>Icon Only</h4>
-            <app-button-toggle-group
-              label="View Mode"
-              value="grid"
-              display-mode="icon-only"
-            ></app-button-toggle-group>
-          </div>
-        </div>
-
-        <script>
-          const labelOnlyBtn = document.querySelector('#display-modes app-button-toggle-group');
-          if (labelOnlyBtn) {
-            labelOnlyBtn.options = [
-              { value: 'small', label: 'Small' },
-              { value: 'medium', label: 'Medium' },
-              { value: 'large', label: 'Large' }
-            ];
-          }
-          const iconOnlyBtn = document.querySelectorAll('#display-modes app-button-toggle-group')[1];
-          if (iconOnlyBtn) {
-            iconOnlyBtn.options = [
-              { value: 'list', icon: 'fas fa-list' },
-              { value: 'grid', icon: 'fas fa-th' },
-              { value: 'table', icon: 'fas fa-table' }
-            ];
-          }
-        </script>
-
-        <app-code-block [code]="displayCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Orientations -->
-      <section class="demo-section" id="orientations">
-        <div class="section-header">
-          <h2>📐 Orientations</h2>
-          <p>Horizontal and vertical layout options</p>
-        </div>
-        <div class="demo-grid-2">
-          <div class="demo-card">
-            <h4>Horizontal</h4>
-            <app-button-toggle-group
-              orientation="horizontal"
-              value="option2"
-            ></app-button-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h4>Vertical</h4>
-            <app-button-toggle-group
-              orientation="vertical"
-              value="option2"
-            ></app-button-toggle-group>
-          </div>
-        </div>
-
-        <script>
-          setTimeout(() => {
-            const orientationButtons = document.querySelectorAll('#orientations app-button-toggle-group');
-            orientationButtons.forEach(btn => {
-              btn.options = [
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ];
-            });
-          }, 100);
-        </script>
-
-        <app-code-block [code]="orientationCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Custom Content Slots -->
-      <section class="demo-section" id="custom-slots">
-        <div class="section-header">
-          <h2>🎨 Custom Content Slots</h2>
-          <p>Use custom content in dropdown for filters, forms, color pickers, etc.</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="dropdown"
-              label="Advanced Filters"
-              value="filters"
-              custom-content="true"
-            >
-              <div slot="dropdown-content">
-                <div style="padding: 16px; min-width: 200px;">
-                  <p style="margin: 0 0 12px 0; font-weight: 600;">Filter Options</p>
-                  <label style="display: block; margin-bottom: 8px;">
-                    <input type="checkbox" /> Active Items
-                  </label>
-                  <label style="display: block; margin-bottom: 8px;">
-                    <input type="checkbox" /> Archived
-                  </label>
-                  <button style="width: 100%; padding: 8px; margin-top: 8px;">Apply Filters</button>
-                </div>
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="segmented"
+                  label="Select View Mode"
+                  value="list"
+                  color="primary"
+                ></app-button-toggle-group>
               </div>
-            </app-button-toggle-group>
-          </div>
-          <app-code-block [code]="customSlotCode" language="html"></app-code-block>
-        </div>
-      </section>
+              <app-code-block [code]="segmentedCode" language="html"></app-code-block>
+            </div>
 
-      <!-- Loading States -->
-      <section class="demo-section" id="loading">
-        <div class="section-header">
-          <h2>⏳ Loading States</h2>
-          <p>Show loading spinner during async operations</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <app-button-toggle-group
-              mode="dropdown"
-              label="Save Document"
-              value="cloud"
-              loading="true"
-            ></app-button-toggle-group>
-          </div>
-          <app-code-block [code]="loadingCode" language="html"></app-code-block>
-        </div>
+            <script>
+              const segmented = document.querySelector('#segmented app-button-toggle-group');
+              if (segmented) {
+                segmented.options = [
+                  { value: 'list', label: 'List', icon: 'fas fa-list' },
+                  { value: 'grid', label: 'Grid', icon: 'fas fa-th' },
+                  { value: 'table', label: 'Table', icon: 'fas fa-table' }
+                ];
+              }
+            </script>
+          </section>
 
-        <script>
-          const loadingBtn = document.querySelector('#loading app-button-toggle-group');
-          if (loadingBtn) {
-            loadingBtn.options = [
-              { value: 'cloud', label: 'Save to Cloud' },
-              { value: 'local', label: 'Save Local' }
-            ];
-          }
-        </script>
-      </section>
+          <!-- Gliding Animation -->
+          <section class="demo-section" id="gliding">
+            <div class="section-header">
+              <h2>🏄 Gliding Pill Animation</h2>
+              <p>Premium smooth animation for pill-style toggles</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="segmented"
+                  value="day"
+                  color="info"
+                  variant="soft"
+                ></app-button-toggle-group>
+              </div>
+              <app-code-block [code]="glidingCode" language="html"></app-code-block>
+            </div>
 
-      <!-- States -->
-      <section class="demo-section" id="states">
-        <div class="section-header">
-          <h2>🔄 States</h2>
-          <p>Default, Disabled, Readonly, and Error states</p>
+            <script>
+              const gliding = document.querySelector('#gliding app-button-toggle-group');
+              if (gliding) {
+                gliding.options = [
+                  { value: 'day', label: 'Day', icon: 'fas fa-sun' },
+                  { value: 'week', label: 'Week', icon: 'fas fa-calendar-week' },
+                  { value: 'month', label: 'Month', icon: 'fas fa-calendar' }
+                ];
+              }
+            </script>
+          </section>
+
+          <!-- Color Variants -->
+          <section class="demo-section" id="colors">
+            <div class="section-header">
+              <h2>🎨 Color Variants</h2>
+              <p>Six built-in color themes: Primary, Secondary, Success, Danger, Warning, Info</p>
+            </div>
+            <div class="demo-grid-2">
+              @for (color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']; track color) {
+                <div class="demo-card">
+                  <h4>{{ color | titlecase }}</h4>
+                  <app-button-toggle-group
+                    value="option2"
+                    [attr.color]="color"
+                  ></app-button-toggle-group>
+                </div>
+              }
+            </div>
+
+            <script>
+              setTimeout(() => {
+                const colorButtons = document.querySelectorAll('#colors app-button-toggle-group');
+                colorButtons.forEach(btn => {
+                  btn.options = [
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' }
+                  ];
+                });
+              }, 100);
+            </script>
+
+            <app-code-block [code]="colorCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Style Variants -->
+          <section class="demo-section" id="styles">
+            <div class="section-header">
+              <h2>🎭 Style Variants</h2>
+              <p>Seven button styles: Filled, Outlined, Text, Soft, Classic, Solid, Surface</p>
+            </div>
+            <div class="demo-grid-2">
+              @for (style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']; track style) {
+                <div class="demo-card">
+                  <h4>{{ style | titlecase }}</h4>
+                  <app-button-toggle-group
+                    value="option2"
+                    color="primary"
+                    [attr.variant]="style"
+                  ></app-button-toggle-group>
+                </div>
+              }
+            </div>
+
+            <script>
+              setTimeout(() => {
+                const styleButtons = document.querySelectorAll('#styles app-button-toggle-group');
+                styleButtons.forEach(btn => {
+                  btn.options = [
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' }
+                  ];
+                });
+              }, 100);
+            </script>
+
+            <app-code-block [code]="styleCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Sizes -->
+          <section class="demo-section" id="sizes">
+            <div class="section-header">
+              <h2>📏 Sizes</h2>
+              <p>Three size options: Small, Medium, Large</p>
+            </div>
+            <div class="demo-grid-3">
+              @for (size of ['small', 'medium', 'large']; track size) {
+                <div class="demo-card">
+                  <h4>{{ size | titlecase }}</h4>
+                  <app-button-toggle-group
+                    value="option2"
+                    [attr.size]="size"
+                  ></app-button-toggle-group>
+                </div>
+              }
+            </div>
+
+            <script>
+              setTimeout(() => {
+                const sizeButtons = document.querySelectorAll('#sizes app-button-toggle-group');
+                sizeButtons.forEach(btn => {
+                  btn.options = [
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' }
+                  ];
+                });
+              }, 100);
+            </script>
+
+            <app-code-block [code]="sizeCode" language="html"></app-code-block>
+          </section>
+
+          <!-- With Icons -->
+          <section class="demo-section" id="icons">
+            <div class="section-header">
+              <h2>🎯 With Icons</h2>
+              <p>Icon support with label, icon-only, and custom positioning</p>
+            </div>
+            <div class="demo-grid-2">
+              <div class="demo-card">
+                <h4>View Modes</h4>
+                <app-button-toggle-group
+                  label="View Mode"
+                  value="grid"
+                  color="primary"
+                ></app-button-toggle-group>
+              </div>
+              <div class="demo-card">
+                <h4>Text Alignment</h4>
+                <app-button-toggle-group
+                  label="Alignment"
+                  value="center"
+                  color="secondary"
+                ></app-button-toggle-group>
+              </div>
+            </div>
+
+            <script>
+              const viewModeBtn = document.querySelector('#icons app-button-toggle-group');
+              if (viewModeBtn) {
+                viewModeBtn.options = [
+                  { value: 'list', label: 'List', icon: 'fas fa-list' },
+                  { value: 'grid', label: 'Grid', icon: 'fas fa-th' },
+                  { value: 'table', label: 'Table', icon: 'fas fa-table' }
+                ];
+              }
+              const alignmentBtn = document.querySelectorAll('#icons app-button-toggle-group')[1];
+              if (alignmentBtn) {
+                alignmentBtn.options = [
+                  { value: 'left', label: 'Left', icon: 'fas fa-align-left' },
+                  { value: 'center', label: 'Center', icon: 'fas fa-align-center' },
+                  { value: 'right', label: 'Right', icon: 'fas fa-align-right' }
+                ];
+              }
+            </script>
+
+            <app-code-block [code]="iconCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Dropdown Mode -->
+          <section class="demo-section" id="dropdown">
+            <div class="section-header">
+              <h2>📋 Dropdown Mode</h2>
+              <p>Single button with dropdown menu for selecting actions or options</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="dropdown"
+                  label="Export Options"
+                  value="pdf"
+                  helper-text="Choose export format"
+                ></app-button-toggle-group>
+              </div>
+              <app-code-block [code]="dropdownCode" language="html"></app-code-block>
+            </div>
+
+            <script>
+              const dropdown = document.querySelector('#dropdown app-button-toggle-group');
+              if (dropdown) {
+                dropdown.options = [
+                  { value: 'pdf', label: 'Export as PDF' },
+                  { value: 'excel', label: 'Export as Excel' },
+                  { value: 'csv', label: 'Export as CSV' }
+                ];
+              }
+            </script>
+          </section>
+
+          <!-- Split Button -->
+          <section class="demo-section" id="split-button">
+            <div class="section-header">
+              <h2>🔀 Split Button (Fixed Label)</h2>
+              <p>Button with dropdown menu where label stays fixed</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="dropdown"
+                  label="File Operations"
+                  value="file"
+                  keep-button-label="true"
+                ></app-button-toggle-group>
+              </div>
+              <app-code-block [code]="splitButtonCode" language="html"></app-code-block>
+            </div>
+
+            <script>
+              const splitButton = document.querySelector('#split-button app-button-toggle-group');
+              if (splitButton) {
+                splitButton.options = [
+                  { value: 'new', label: 'New File' },
+                  { value: 'open', label: 'Open File' },
+                  { value: 'save', label: 'Save' }
+                ];
+              }
+            </script>
+          </section>
+
+          <!-- Display Modes -->
+          <section class="demo-section" id="display-modes">
+            <div class="section-header">
+              <h2>🎭 Display Modes</h2>
+              <p>Label only, Icon only, Icon + Label, or Both sides</p>
+            </div>
+            <div class="demo-grid-2">
+              <div class="demo-card">
+                <h4>Label Only</h4>
+                <app-button-toggle-group
+                  label="Select Size"
+                  value="medium"
+                  display-mode="label-only"
+                ></app-button-toggle-group>
+              </div>
+              <div class="demo-card">
+                <h4>Icon Only</h4>
+                <app-button-toggle-group
+                  label="View Mode"
+                  value="grid"
+                  display-mode="icon-only"
+                ></app-button-toggle-group>
+              </div>
+            </div>
+
+            <script>
+              const labelOnlyBtn = document.querySelector('#display-modes app-button-toggle-group');
+              if (labelOnlyBtn) {
+                labelOnlyBtn.options = [
+                  { value: 'small', label: 'Small' },
+                  { value: 'medium', label: 'Medium' },
+                  { value: 'large', label: 'Large' }
+                ];
+              }
+              const iconOnlyBtn = document.querySelectorAll('#display-modes app-button-toggle-group')[1];
+              if (iconOnlyBtn) {
+                iconOnlyBtn.options = [
+                  { value: 'list', icon: 'fas fa-list' },
+                  { value: 'grid', icon: 'fas fa-th' },
+                  { value: 'table', icon: 'fas fa-table' }
+                ];
+              }
+            </script>
+
+            <app-code-block [code]="displayCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Orientations -->
+          <section class="demo-section" id="orientations">
+            <div class="section-header">
+              <h2>📐 Orientations</h2>
+              <p>Horizontal and vertical layout options</p>
+            </div>
+            <div class="demo-grid-2">
+              <div class="demo-card">
+                <h4>Horizontal</h4>
+                <app-button-toggle-group
+                  orientation="horizontal"
+                  value="option2"
+                ></app-button-toggle-group>
+              </div>
+              <div class="demo-card">
+                <h4>Vertical</h4>
+                <app-button-toggle-group
+                  orientation="vertical"
+                  value="option2"
+                ></app-button-toggle-group>
+              </div>
+            </div>
+
+            <script>
+              setTimeout(() => {
+                const orientationButtons = document.querySelectorAll('#orientations app-button-toggle-group');
+                orientationButtons.forEach(btn => {
+                  btn.options = [
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' }
+                  ];
+                });
+              }, 100);
+            </script>
+
+            <app-code-block [code]="orientationCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Custom Content Slots -->
+          <section class="demo-section" id="custom-slots">
+            <div class="section-header">
+              <h2>🎨 Custom Content Slots</h2>
+              <p>Use custom content in dropdown for filters, forms, color pickers, etc.</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="dropdown"
+                  label="Advanced Filters"
+                  value="filters"
+                  custom-content="true"
+                >
+                  <div slot="dropdown-content">
+                    <div style="padding: 16px; min-width: 200px;">
+                      <p style="margin: 0 0 12px 0; font-weight: 600;">Filter Options</p>
+                      <label style="display: block; margin-bottom: 8px;">
+                        <input type="checkbox" /> Active Items
+                      </label>
+                      <label style="display: block; margin-bottom: 8px;">
+                        <input type="checkbox" /> Archived
+                      </label>
+                      <button style="width: 100%; padding: 8px; margin-top: 8px;">Apply Filters</button>
+                    </div>
+                  </div>
+                </app-button-toggle-group>
+              </div>
+              <app-code-block [code]="customSlotCode" language="html"></app-code-block>
+            </div>
+          </section>
+
+          <!-- Loading States -->
+          <section class="demo-section" id="loading">
+            <div class="section-header">
+              <h2>⏳ Loading States</h2>
+              <p>Show loading spinner during async operations</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <app-button-toggle-group
+                  mode="dropdown"
+                  label="Save Document"
+                  value="cloud"
+                  loading="true"
+                ></app-button-toggle-group>
+              </div>
+              <app-code-block [code]="loadingCode" language="html"></app-code-block>
+            </div>
+
+            <script>
+              const loadingBtn = document.querySelector('#loading app-button-toggle-group');
+              if (loadingBtn) {
+                loadingBtn.options = [
+                  { value: 'cloud', label: 'Save to Cloud' },
+                  { value: 'local', label: 'Save Local' }
+                ];
+              }
+            </script>
+          </section>
+
+          <!-- States -->
+          <section class="demo-section" id="states">
+            <div class="section-header">
+              <h2>🔄 States</h2>
+              <p>Default, Disabled, Readonly, and Error states</p>
+            </div>
+            <div class="demo-grid-2">
+              <div class="demo-card">
+                <h4>Default</h4>
+                <app-button-toggle-group
+                  label="Choose Option"
+                  value="option2"
+                ></app-button-toggle-group>
+              </div>
+              <div class="demo-card">
+                <h4>Disabled</h4>
+                <app-button-toggle-group
+                  label="Choose Option"
+                  value="option2"
+                  disabled="true"
+                ></app-button-toggle-group>
+              </div>
+            </div>
+
+            <script>
+              setTimeout(() => {
+                const stateButtons = document.querySelectorAll('#states app-button-toggle-group');
+                stateButtons.forEach(btn => {
+                  btn.options = [
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' }
+                  ];
+                });
+              }, 100);
+            </script>
+
+            <app-code-block [code]="stateCode" language="html"></app-code-block>
+          </section>
+
+          <!-- Real-World Examples -->
+          <section class="demo-section" id="real-world">
+            <div class="section-header">
+              <h2>📋 Real-World Examples</h2>
+              <p>Practical use cases for common application patterns</p>
+            </div>
+            <div class="demo-grid-2">
+              <div class="demo-card">
+                <h4>Filter Options</h4>
+                <app-button-toggle-group
+                  label="Show Items"
+                  value="all"
+                  color="primary"
+                ></app-button-toggle-group>
+              </div>
+              <div class="demo-card">
+                <h4>Date Range</h4>
+                <app-button-toggle-group
+                  label="Time Period"
+                  value="week"
+                  color="success"
+                ></app-button-toggle-group>
+              </div>
+            </div>
+
+            <script>
+              const filterBtn = document.querySelector('#real-world app-button-toggle-group');
+              if (filterBtn) {
+                filterBtn.options = [
+                  { value: 'all', label: 'All' },
+                  { value: 'active', label: 'Active' },
+                  { value: 'completed', label: 'Completed' }
+                ];
+              }
+              const dateBtn = document.querySelectorAll('#real-world app-button-toggle-group')[1];
+              if (dateBtn) {
+                dateBtn.options = [
+                  { value: 'today', label: 'Today' },
+                  { value: 'week', label: 'This Week' },
+                  { value: 'month', label: 'This Month' }
+                ];
+              }
+            </script>
+          </section>
         </div>
-        <div class="demo-grid-2">
-          <div class="demo-card">
-            <h4>Default</h4>
-            <app-button-toggle-group
-              label="Choose Option"
-              value="option2"
-            ></app-button-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h4>Disabled</h4>
-            <app-button-toggle-group
-              label="Choose Option"
-              value="option2"
-              disabled="true"
-            ></app-button-toggle-group>
-          </div>
-        </div>
-
-        <script>
-          setTimeout(() => {
-            const stateButtons = document.querySelectorAll('#states app-button-toggle-group');
-            stateButtons.forEach(btn => {
-              btn.options = [
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ];
-            });
-          }, 100);
-        </script>
-
-        <app-code-block [code]="stateCode" language="html"></app-code-block>
-      </section>
-
-      <!-- Real-World Examples -->
-      <section class="demo-section" id="real-world">
-        <div class="section-header">
-          <h2>📋 Real-World Examples</h2>
-          <p>Practical use cases for common application patterns</p>
-        </div>
-        <div class="demo-grid-2">
-          <div class="demo-card">
-            <h4>Filter Options</h4>
-            <app-button-toggle-group
-              label="Show Items"
-              value="all"
-              color="primary"
-            ></app-button-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h4>Date Range</h4>
-            <app-button-toggle-group
-              label="Time Period"
-              value="week"
-              color="success"
-            ></app-button-toggle-group>
-          </div>
-        </div>
-
-        <script>
-          const filterBtn = document.querySelector('#real-world app-button-toggle-group');
-          if (filterBtn) {
-            filterBtn.options = [
-              { value: 'all', label: 'All' },
-              { value: 'active', label: 'Active' },
-              { value: 'completed', label: 'Completed' }
-            ];
-          }
-          const dateBtn = document.querySelectorAll('#real-world app-button-toggle-group')[1];
-          if (dateBtn) {
-            dateBtn.options = [
-              { value: 'today', label: 'Today' },
-              { value: 'week', label: 'This Week' },
-              { value: 'month', label: 'This Month' }
-            ];
-          }
-        </script>
-      </section>
+      </div>
     </div>
-  </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <div class="demo-container">
+        <section class="demo-section" id="playground">
+          <div class="section-header">
+            <h2>🎮 Interactive Playground</h2>
+            <p>Test all button toggle group properties and configurations</p>
+          </div>
+          <app-button-toggle-playground></app-button-toggle-playground>
+        </section>
+      </div>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="button-toggle"></app-component-documentation>
+    </div>
+  </demo-tabs>
 </div>
