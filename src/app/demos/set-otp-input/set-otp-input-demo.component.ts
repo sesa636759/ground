@@ -23,10 +23,41 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetOtpInputDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Layouts', icon: '📐' },
-    { id: 'variants', title: 'Variants & Styles', icon: '✨' },
-    { id: 'features', title: 'Features', icon: '⚙️' },
-    { id: 'advanced', title: 'Advanced', icon: '🚀' },
+    // Basic Layouts (4)
+    { id: 'default', title: 'Default OTP', icon: '📐', category: 'Basic Layouts', tab: 'basic' },
+    { id: 'four-digit', title: '4-Digit PIN', icon: '📐', category: 'Basic Layouts', tab: 'basic' },
+    { id: 'six-digit', title: '6-Digit Code', icon: '📐', category: 'Basic Layouts', tab: 'basic' },
+    { id: 'custom-length', title: '8-Digit Code', icon: '📐', category: 'Basic Layouts', tab: 'basic' },
+
+    // Variants & Styles (4)
+    { id: 'default-variant', title: 'Default Style', icon: '✨', category: 'Variants & Styles', tab: 'variants' },
+    { id: 'underlined', title: 'Underlined', icon: '✨', category: 'Variants & Styles', tab: 'variants' },
+    { id: 'flushed', title: 'Flushed', icon: '✨', category: 'Variants & Styles', tab: 'variants' },
+    { id: 'separated', title: 'Separated', icon: '✨', category: 'Variants & Styles', tab: 'variants' },
+
+    // Features (8)
+    { id: 'success-color', title: 'Success State', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'error-color', title: 'Error State', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'warning-color', title: 'Warning State', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'info-color', title: 'Info State', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'grouping-3', title: 'Grouped 3-3', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'grouping-222', title: 'Grouped 2-2-2', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'grouping-44', title: 'Grouped 4-4', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'masking', title: 'Masked Input', icon: '⚙️', category: 'Features', tab: 'features' },
+
+    // Advanced (12)
+    { id: 'small-size', title: 'Small Size', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'medium-size', title: 'Medium Size', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'large-size', title: 'Large Size', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'secure-pin', title: 'Secure PIN', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'readonly', title: 'Read-only State', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'disabled', title: 'Disabled State', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'validation', title: 'With Validation', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'autofocus', title: 'Auto Focus', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'pasteable', title: 'Paste Support', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'numeric-only', title: 'Numeric Only', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'alphanumeric', title: 'Alphanumeric', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'playground', title: 'Playground', icon: '🚀', category: 'Advanced', tab: 'advanced' },
   ];
 
   // Signal-based code examples

@@ -8,17 +8,7 @@
     <!-- Examples Slot -->
     <div slot="examples">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.title }}
-              </a>
-            </li>
-          </ul>
-        </div>
+      
 
         <div class="examples-content">
       <!-- Playground -->

@@ -23,10 +23,37 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetAnchorDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Layouts', icon: '📐' },
-    { id: 'positioning', title: 'Positioning', icon: '📍' },
-    { id: 'features', title: 'Features', icon: '✨' },
-    { id: 'advanced', title: 'Advanced', icon: '🚀' },
+    // Basic Layouts
+    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '◀️' },
+    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: '▶️' },
+    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: '🔼' },
+    { id: 'horizontal-bottom', title: 'Horizontal Navigation (Bottom)', icon: '🔽' },
+    // Features
+    { id: 'with-badges', title: 'Anchor with Badges', icon: '🔔' },
+    { id: 'with-events', title: 'Horizontal with Events', icon: '⚡' },
+    // Sizes
+    { id: 'size-small', title: 'Small Size', icon: '🔸' },
+    { id: 'size-medium', title: 'Medium Size (Default)', icon: '🔶' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠' },
+    // Themes
+    { id: 'theme-light', title: 'Light Theme', icon: '☀️' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙' },
+    { id: 'theme-custom', title: 'Custom Theme', icon: '🎨' },
+    // Number Styles
+    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: '1️⃣' },
+    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: '🔢' },
+    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: '🔤' },
+    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: 'ⅰ' },
+    // Alignment
+    { id: 'align-left', title: 'Horizontal Left Aligned', icon: '⬅️' },
+    { id: 'align-center', title: 'Horizontal Center Aligned', icon: '↔️' },
+    { id: 'align-right', title: 'Horizontal Right Aligned', icon: '➡️' },
+    // Advanced
+    { id: 'affix-behavior', title: 'Affix Behavior', icon: '📌' },
+    { id: 'progress-indicator', title: 'Progress Indicator', icon: '📊' },
+    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: '🔗' },
+    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: '⌨️' },
+    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '🌲' },
   ];
 
   // Sample data for anchor items
@@ -259,6 +286,52 @@ export class SetAnchorDemoComponent {
   nestedCode = signal(`<app-anchor
   mode="vertical"
   collapsible="true"
+  [items]="items"
+></app-anchor>`);
+
+  // Theme variants
+  lightThemeCode = signal(`<app-anchor
+  mode="vertical"
+  theme="light"
+  [items]="items"
+></app-anchor>`);
+
+  darkThemeCode = signal(`<app-anchor
+  mode="vertical"
+  theme="dark"
+  [items]="items"
+></app-anchor>`);
+
+  customThemeCode = signal(`<app-anchor
+  mode="vertical"
+  theme="custom"
+  [items]="items"
+></app-anchor>`);
+
+  // Event handling
+  eventsCode = signal(`<app-anchor
+  mode="horizontal"
+  position="top"
+  (change)="onActiveChange($event)"
+  [items]="items"
+></app-anchor>`);
+
+  // Alignment options
+  alignLeftCode = signal(`<app-anchor
+  mode="horizontal"
+  align="left"
+  [items]="items"
+></app-anchor>`);
+
+  alignCenterCode = signal(`<app-anchor
+  mode="horizontal"
+  align="center"
+  [items]="items"
+></app-anchor>`);
+
+  alignRightCode = signal(`<app-anchor
+  mode="horizontal"
+  align="right"
   [items]="items"
 ></app-anchor>`);
 

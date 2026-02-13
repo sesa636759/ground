@@ -7,6 +7,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { TogglePlaygroundComponent } from './components/toggle-playground/toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-toggle-demo',
@@ -17,6 +18,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     TogglePlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-toggle-demo.component.html',
@@ -24,9 +26,42 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetToggleDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Layouts', icon: '📐' },
-    { id: 'variants', title: 'Variants & Styles', icon: '✨' },
-    { id: 'advanced', title: 'Features & Advanced', icon: '🚀' },
+    // Basic Layouts (5)
+    { id: 'default-toggle', title: 'Default Single Toggle', icon: '�' },
+    { id: 'horizontal-layout', title: 'Horizontal Layout', icon: '↔️' },
+    { id: 'vertical-layout', title: 'Vertical Layout', icon: '↕️' },
+    { id: 'grid-layout', title: 'Grid Layout', icon: '⊞' },
+    { id: 'unchecked-checked', title: 'Default States', icon: '⚫' },
+
+    // Variants & Styles (12)
+    { id: 'default-variant', title: 'Default Style', icon: '⚪' },
+    { id: 'rounded-variant', title: 'Rounded Style', icon: '◯' },
+    { id: 'outlined-variant', title: 'Outlined Style', icon: '⭕' },
+    { id: 'glass-variant', title: 'Glassmorphism', icon: '💎' },
+    { id: 'small-size', title: 'Small Size', icon: '🔸' },
+    { id: 'medium-size', title: 'Medium Size', icon: '🔶' },
+    { id: 'large-size', title: 'Large Size', icon: '🟠' },
+    { id: 'primary-color', title: 'Primary Color', icon: '🔵' },
+    { id: 'success-color', title: 'Success Color', icon: '🟢' },
+    { id: 'warning-color', title: 'Warning Color', icon: '🟡' },
+    { id: 'danger-color', title: 'Danger Color', icon: '🔴' },
+    { id: 'info-color', title: 'Info Color', icon: '🔷' },
+
+    // Features & Advanced (14)
+    { id: 'icon-toggle', title: 'With Check Icon', icon: '✅' },
+    { id: 'sun-moon-icon', title: 'Sun/Moon Icons', icon: '🌙' },
+    { id: 'volume-icon', title: 'Volume Icons', icon: '🔊' },
+    { id: 'icon-group-multiple', title: 'Icon Group (Multiple)', icon: '⭐' },
+    { id: 'icon-group-single', title: 'Icon Group (Single)', icon: '❤️' },
+    { id: 'icon-only-small', title: 'Icons Only Small', icon: '🔖' },
+    { id: 'text-formatting', title: 'Text Formatting', icon: '📝' },
+    { id: 'disabled-state', title: 'Disabled State', icon: '🚫' },
+    { id: 'readonly-state', title: 'Readonly State', icon: '🔒' },
+    { id: 'elevation', title: 'Elevation Levels', icon: '📦' },
+    { id: 'thumb-shape', title: 'Thumb Shapes', icon: '⬜' },
+    { id: 'label-position', title: 'Label Position', icon: '🏷️' },
+    { id: 'form-example', title: 'Form Example', icon: '📋' },
+    { id: 'skeleton', title: 'Skeleton States', icon: '💀' },
   ];
 
   notificationOptions = [
@@ -138,6 +173,76 @@ export class SetToggleDemoComponent {
   label="Warning Color"
   checked>
 </app-toggle>`);
+
+  dangerColorCode = signal(`<app-toggle
+  color="danger"
+  label="Danger Color"
+  checked>
+</app-toggle>`);
+
+  infoColorCode = signal(`<app-toggle
+  color="info"
+  label="Info Color"
+  checked>
+</app-toggle>`);
+
+  uncheckedCheckedCode = signal(`<app-toggle
+  label="Unchecked">
+</app-toggle>
+<app-toggle
+  label="Checked"
+  checked>
+</app-toggle>`);
+
+  volumeIconCode = signal(`<app-toggle
+  icon="volume"
+  label="Sound"
+  checked>
+</app-toggle>`);
+
+  iconGroupMultipleCode = signal(`<app-toggle-group
+  layout="horizontal"
+  selection-mode="multiple"
+  label="Select multiple items"
+  [options]="[
+    { value: 'star', label: 'Star', icon: 'star' },
+    { value: 'heart', label: 'Heart', icon: 'heart' },
+    { value: 'bookmark', label: 'Bookmark', icon: 'bookmark' }
+  ]">
+</app-toggle-group>`);
+
+  iconGroupSingleCode = signal(`<app-toggle-group
+  layout="horizontal"
+  selection-mode="single"
+  label="Choose only one option"
+  [options]="[
+    { value: 'star', label: 'Star', icon: 'star' },
+    { value: 'heart', label: 'Heart', icon: 'heart' },
+    { value: 'bookmark', label: 'Bookmark', icon: 'bookmark' }
+  ]">
+</app-toggle-group>`);
+
+  iconOnlySmallCode = signal(`<app-toggle-group
+  layout="horizontal"
+  icon-only
+  size="small"
+  [options]="[
+    { value: 'star', icon: 'star' },
+    { value: 'heart', icon: 'heart' },
+    { value: 'bookmark', icon: 'bookmark' }
+  ]">
+</app-toggle-group>`);
+
+  textFormattingCode = signal(`<app-toggle-group
+  layout="horizontal"
+  icon-only
+  label="Text Formatting"
+  [options]="[
+    { value: 'bold', icon: 'bold' },
+    { value: 'italic', icon: 'italic' },
+    { value: 'underline', icon: 'underline' }
+  ]">
+</app-toggle-group>`);
 
   // Features & Advanced Signals
   iconToggleCode = signal(`<app-toggle
@@ -251,4 +356,11 @@ export class SetToggleDemoComponent {
     <div class="skeleton-toggle"></div>
   </div>
 </div>`);
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
