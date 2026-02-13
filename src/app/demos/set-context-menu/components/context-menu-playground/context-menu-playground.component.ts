@@ -34,7 +34,7 @@ export class ContextMenuPlaygroundComponent implements OnInit {
     highlightSearch: true,
   };
 
-  demoItems = [
+  demoItems = JSON.stringify([
     {
       id: 'file',
       label: 'File Operations',
@@ -83,7 +83,7 @@ export class ContextMenuPlaygroundComponent implements OnInit {
     { divider: true },
     { id: 'delete', label: 'Delete Item', icon: 'fas fa-trash', color: 'danger', group: 'Danger' },
     { id: 'archive', label: 'Archive', icon: 'fas fa-archive', color: 'warning', group: 'Danger' },
-  ];
+  ]);
 
   eventMessage = signal('Click the trigger to see the menu...');
   generatedCode = signal('');

@@ -50,7 +50,7 @@ export class TreePlaygroundComponent implements OnInit {
     enableDrag: false,
   };
 
-  demoData = [
+  demoData = JSON.stringify([
     {
       id: 'root',
       label: 'Ground Project',
@@ -87,7 +87,7 @@ export class TreePlaygroundComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

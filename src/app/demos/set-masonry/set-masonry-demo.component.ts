@@ -31,9 +31,9 @@ export class SetMasonryDemoComponent implements OnInit {
   ];
 
   // Static items for demos
-  galleryItems = this.generateItems(12, 'gallery');
-  newsItems = this.generateItems(8, 'news');
-  productItems = this.generateItems(8, 'product');
+  galleryItems = JSON.stringify(this.generateItems(12, 'gallery'));
+  newsItems = JSON.stringify(this.generateItems(8, 'news'));
+  productItems = JSON.stringify(this.generateItems(8, 'product'));
 
   // Code examples
   basicMasonryCode = `<app-masonry

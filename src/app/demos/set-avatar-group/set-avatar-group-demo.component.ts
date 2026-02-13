@@ -1,8 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
+
 import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -17,7 +16,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     AvatarGroupPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-group-demo.component.html',

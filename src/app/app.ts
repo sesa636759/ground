@@ -31,7 +31,7 @@ import {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FontAwesomeModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective],
+  imports: [CommonModule, RouterOutlet, FontAwesomeModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss',

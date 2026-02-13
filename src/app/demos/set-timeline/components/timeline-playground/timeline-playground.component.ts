@@ -33,7 +33,7 @@ export class TimelinePlaygroundComponent implements OnInit {
     theme: 'light',
   };
 
-  timelineItems = [
+  timelineItems = JSON.stringify([
     {
       id: '1',
       title: 'Project Started',
@@ -75,7 +75,7 @@ export class TimelinePlaygroundComponent implements OnInit {
       iconBackground: '#ef4444',
       dotColor: '#ef4444',
     },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

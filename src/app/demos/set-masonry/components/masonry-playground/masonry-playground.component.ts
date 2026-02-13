@@ -40,7 +40,7 @@ export class MasonryPlaygroundComponent implements OnInit {
     breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
   };
 
-  playgroundItems: any[] = [];
+  playgroundItems = '';
   filterCategory = '';
 
   filterOptions = [
@@ -54,7 +54,7 @@ export class MasonryPlaygroundComponent implements OnInit {
   generatedCode = signal('');
 
   ngOnInit() {
-    this.playgroundItems = this.generateItems(24);
+    this.playgroundItems = JSON.stringify(this.generateItems(24));
     this.updateConfig();
   }
 

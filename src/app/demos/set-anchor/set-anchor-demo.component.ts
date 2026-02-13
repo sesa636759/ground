@@ -30,17 +30,42 @@ export class SetAnchorDemoComponent implements OnInit {
   ];
 
   // Data for static examples
-  basicItems = [
-    { id: 'start', label: 'Start' },
-    { id: 'middle', label: 'Middle' },
-    { id: 'end', label: 'End' },
-  ];
+  verticalItems = JSON.stringify([
+    { id: 'v-start', label: 'Start' },
+    { id: 'v-mid', label: 'Middle' },
+    { id: 'v-end', label: 'End' },
+  ]);
 
-  numberedItems = [
-    { id: 'num-1', label: 'First' },
-    { id: 'num-2', label: 'Second' },
-    { id: 'num-3', label: 'Third' },
-  ];
+  horizontalItems = JSON.stringify([
+    { id: 'h-left', label: 'Left' },
+    { id: 'h-center', label: 'Center' },
+    { id: 'h-right', label: 'Right' },
+  ]);
+
+  iconItems = JSON.stringify([
+    { id: 'icon-1', label: 'Home', icon: 'fas fa-home' },
+    { id: 'icon-2', label: 'Settings', icon: 'fas fa-cog' },
+    { id: 'icon-3', label: 'Profile', icon: 'fas fa-user' },
+  ]);
+
+  numberedItems = JSON.stringify([
+    { id: 'num-1', label: 'Introduction' },
+    { id: 'num-2', label: 'Setup Guide' },
+    { id: 'num-3', label: 'Advanced Usage' },
+  ]);
+
+  // Additional items for inline examples (to replace inline arrays in HTML)
+  numberedItemsShort = JSON.stringify([
+    { id: 'n-1', label: 'First' },
+    { id: 'n-2', label: 'Second' },
+    { id: 'n-3', label: 'Third' },
+  ]);
+
+  darkThemeItems = JSON.stringify([
+    { id: 'd-start', label: 'Start' },
+    { id: 'd-mid', label: 'Middle' },
+    { id: 'd-end', label: 'End' },
+  ]);
 
   playgroundCode = `<app-anchor
   href="#section"

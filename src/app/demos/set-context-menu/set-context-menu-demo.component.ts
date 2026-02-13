@@ -28,14 +28,14 @@ export class SetContextMenuDemoComponent implements OnInit {
     { id: 'premium-features', title: 'Premium Features', icon: '💎' },
   ];
 
-  basicItems = [
+  basicItems = JSON.stringify([
     { id: 'view', label: 'View Details', icon: 'fas fa-eye' },
     { id: 'edit', label: 'Quick Edit', icon: 'fas fa-pen' },
     { divider: true },
     { id: 'delete', label: 'Remove Item', icon: 'fas fa-trash', color: 'danger' },
-  ];
+  ]);
 
-  multilevelItems = [
+  multilevelItems = JSON.stringify([
     {
       id: 'sort',
       label: 'Sort By',
@@ -64,7 +64,7 @@ export class SetContextMenuDemoComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
   playgroundCode = `<app-context-menu
   [items]="menuItems"

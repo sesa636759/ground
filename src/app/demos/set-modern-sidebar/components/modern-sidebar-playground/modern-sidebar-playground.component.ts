@@ -30,7 +30,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     theme: 'light',
   };
 
-  sidebarItems = [
+  sidebarItems = JSON.stringify([
     { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'projects', label: 'Projects', icon: 'fas fa-folder', badge: 5 },
     {
@@ -44,7 +44,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     },
     { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 'New' },
     { id: 'help', label: 'Help', icon: 'fas fa-question-circle' },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

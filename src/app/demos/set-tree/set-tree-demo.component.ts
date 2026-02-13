@@ -28,7 +28,7 @@ export class SetTreeDemoComponent implements OnInit {
     { id: 'visual-effects', title: 'Premium Aesthetics', icon: '💎' },
   ];
 
-  basicTreeData = [
+  basicTreeData = JSON.stringify([
     {
       id: 'root',
       label: 'Documentation',
@@ -47,9 +47,9 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
-  orgChartData = [
+  orgChartData = JSON.stringify([
     {
       id: 'ceo',
       label: 'Sarah Wilson',
@@ -76,7 +76,7 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
   playgroundCode = `<app-tree
   [data]="treeData"

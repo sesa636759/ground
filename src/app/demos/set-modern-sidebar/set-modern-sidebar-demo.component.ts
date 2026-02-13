@@ -30,11 +30,11 @@ export class SetModernSidebarDemoComponent implements OnInit {
   ];
 
   // Demo Data for static examples
-  demoItems = [
+  demoItems = JSON.stringify([
     { id: 'home', label: 'Home', icon: 'fas fa-home' },
     { id: 'profile', label: 'Profile', icon: 'fas fa-user' },
     { id: 'settings', label: 'Settings', icon: 'fas fa-cog' },
-  ];
+  ]);
 
   playgroundCode = `<app-modern-sidebar
   [items]="menuItems"
