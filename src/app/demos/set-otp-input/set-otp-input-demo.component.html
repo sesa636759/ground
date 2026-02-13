@@ -1,94 +1,340 @@
 <div class="demo-container">
   <h1>🔢 OTP Input Component</h1>
+  <p class="intro-text">
+    Flexible one-time password input component with support for various lengths, styles, validation, masking, and advanced features like grouping and auto-submission.
+  </p>
 
   <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
-      <!-- Variants -->
+      <!-- Basic Layouts -->
+      <section class="demo-section" id="basic">
+        <div class="section-header">
+          <h2>📐 Basic Layouts</h2>
+          <p>Different input lengths and input types</p>
+        </div>
+
+        <!-- Default 6-Digit -->
+        <div class="demo-card full-width">
+          <h3>Default OTP - 6 Digits</h3>
+          <div class="preview-box centered">
+            <div class="otp-wrapper">
+              <app-otp-input length="6" [autofocus]="true"></app-otp-input>
+            </div>
+          </div>
+          <app-code-block [code]="defaultCode()" language="html" title="Default Code"></app-code-block>
+        </div>
+
+        <!-- 4-Digit PIN -->
+        <div class="demo-card full-width">
+          <h3>4-Digit PIN Code</h3>
+          <div class="preview-box centered">
+            <div class="otp-wrapper">
+              <app-otp-input length="4" type="numeric" label="Enter PIN"></app-otp-input>
+            </div>
+          </div>
+          <app-code-block [code]="fourDigitCode()" language="html" title="4-Digit Code"></app-code-block>
+        </div>
+
+        <!-- 6-Digit Verification -->
+        <div class="demo-card full-width">
+          <h3>6-Digit Verification Code</h3>
+          <div class="preview-box centered">
+            <div class="otp-wrapper">
+              <app-otp-input length="6" type="numeric" label="Verification Code"></app-otp-input>
+            </div>
+          </div>
+          <app-code-block [code]="sixDigitCode()" language="html" title="6-Digit Code"></app-code-block>
+        </div>
+
+        <!-- Custom Length -->
+        <div class="demo-card full-width">
+          <h3>Custom Length - 8 Characters</h3>
+          <div class="preview-box centered">
+            <div class="otp-wrapper">
+              <app-otp-input length="8" type="alphanumeric" label="Long Code"></app-otp-input>
+            </div>
+          </div>
+          <app-code-block [code]="customLengthCode()" language="html" title="Custom Length Code"></app-code-block>
+        </div>
+      </section>
+
+      <!-- Variants & Styles -->
       <section class="demo-section" id="variants">
         <div class="section-header">
-          <h2>✨ Style Variants</h2>
-          <p>Different visual styles for various contexts</p>
+          <h2>✨ Variants & Styles</h2>
+          <p>Different visual styles and variants</p>
         </div>
 
-        <div class="demo-grid col-2">
-          <div class="demo-card centered">
-            <h3>Default</h3>
-            <app-otp-input length="4" label="Enter PIN"></app-otp-input>
+        <!-- Style Variants Grid -->
+        <div class="demo-grid">
+          <!-- Default -->
+          <div class="demo-card">
+            <h3>Default Variant</h3>
+            <div class="preview-box centered">
+              <app-otp-input variant="default" length="6" label="Default"></app-otp-input>
+            </div>
+            <app-code-block [code]="defaultVariantCode()" language="html" title="Default"></app-code-block>
           </div>
 
-          <div class="demo-card centered">
-            <h3>Underlined</h3>
-            <app-otp-input variant="underlined" length="4" label="Underlined Style"></app-otp-input>
+          <!-- Underlined -->
+          <div class="demo-card">
+            <h3>Underlined Variant</h3>
+            <div class="preview-box centered">
+              <app-otp-input variant="underlined" length="6" label="Underlined"></app-otp-input>
+            </div>
+            <app-code-block [code]="underlinedCode()" language="html" title="Underlined"></app-code-block>
           </div>
 
-          <div class="demo-card centered">
-            <h3>Flushed</h3>
-            <app-otp-input variant="flushed" length="6" label="Flushed Style"></app-otp-input>
+          <!-- Flushed -->
+          <div class="demo-card">
+            <h3>Flushed Variant</h3>
+            <div class="preview-box centered">
+              <app-otp-input variant="flushed" length="6" label="Flushed"></app-otp-input>
+            </div>
+            <app-code-block [code]="flushedCode()" language="html" title="Flushed"></app-code-block>
           </div>
 
-          <div class="demo-card centered">
-            <h3>Separated</h3>
-            <app-otp-input
-              variant="separated"
-              length="4"
-              label="Separated Style"
-              color="success"
-            ></app-otp-input>
+          <!-- Separated -->
+          <div class="demo-card">
+            <h3>Separated Variant</h3>
+            <div class="preview-box centered">
+              <app-otp-input variant="separated" length="6" label="Separated" [spacing]="8"></app-otp-input>
+            </div>
+            <app-code-block [code]="separatedCode()" language="html" title="Separated"></app-code-block>
+          </div>
+        </div>
+
+        <!-- Color States Grid -->
+        <div class="demo-grid">
+          <!-- Success -->
+          <div class="demo-card">
+            <h3>Success State</h3>
+            <div class="preview-box centered">
+              <app-otp-input length="6" color="success" helper-text="Code accepted"></app-otp-input>
+            </div>
+            <app-code-block [code]="successColorCode()" language="html" title="Success"></app-code-block>
+          </div>
+
+          <!-- Error -->
+          <div class="demo-card">
+            <h3>Error State</h3>
+            <div class="preview-box centered">
+              <app-otp-input length="6" color="error" invalid="true" error-text="Invalid code"></app-otp-input>
+            </div>
+            <app-code-block [code]="errorColorCode()" language="html" title="Error"></app-code-block>
+          </div>
+
+          <!-- Warning -->
+          <div class="demo-card">
+            <h3>Warning State</h3>
+            <div class="preview-box centered">
+              <app-otp-input length="6" color="warning" label="Warning"></app-otp-input>
+            </div>
+            <app-code-block [code]="warningColorCode()" language="html" title="Warning"></app-code-block>
+          </div>
+
+          <!-- Info -->
+          <div class="demo-card">
+            <h3>Info State</h3>
+            <div class="preview-box centered">
+              <app-otp-input length="6" color="info" helper-text="Check email"></app-otp-input>
+            </div>
+            <app-code-block [code]="infoColorCode()" language="html" title="Info"></app-code-block>
           </div>
         </div>
       </section>
 
-      <!-- Grouping & Colors -->
-      <section class="demo-section" id="grouping">
+      <!-- Features -->
+      <section class="demo-section" id="features">
         <div class="section-header">
-          <h2>🎨 Grouping & Colors</h2>
-          <p>Organize long codes and apply status colors</p>
+          <h2>⚙️ Features</h2>
+          <p>Grouping, sizes, and input types</p>
         </div>
-        <div class="demo-grid col-2">
-          <div class="demo-card centered">
-            <h3>Grouped (3-3)</h3>
-            <app-otp-input
-              length="6"
-              group-size="3"
-              label="Verification Code"
-              color="info"
-            ></app-otp-input>
-          </div>
 
-          <div class="demo-card centered">
-            <h3>Secure & Error</h3>
-            <app-otp-input
-              length="4"
-              secure="true"
-              invalid="true"
-              error-text="Invalid PIN"
-              label="Secure Input"
-            ></app-otp-input>
+        <!-- Grouping -->
+        <div class="feature-group">
+          <h4 class="feature-title">📦 Grouping Options</h4>
+          <div class="demo-grid">
+            <!-- 3-3 Grouping -->
+            <div class="demo-card">
+              <h3>Grouped 3-3</h3>
+              <div class="preview-box centered">
+                <app-otp-input length="6" group-size="3" [show-group-divider]="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="grouping3Code()" language="html" title="3-3 Grouping"></app-code-block>
+            </div>
+
+            <!-- 2-2-2 Grouping -->
+            <div class="demo-card">
+              <h3>Grouped 2-2-2</h3>
+              <div class="preview-box centered">
+                <app-otp-input length="6" group-divider="-"></app-otp-input>
+              </div>
+              <app-code-block [code]="grouping222Code()" language="html" title="2-2-2 Grouping"></app-code-block>
+            </div>
+
+            <!-- 4-4 Grouping -->
+            <div class="demo-card">
+              <h3>Grouped 4-4</h3>
+              <div class="preview-box centered">
+                <app-otp-input length="8" group-size="4" [show-group-divider]="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="grouping44Code()" language="html" title="4-4 Grouping"></app-code-block>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sizes -->
+        <div class="feature-group">
+          <h4 class="feature-title">📏 Size Variants</h4>
+          <div class="demo-grid">
+            <!-- Small -->
+            <div class="demo-card">
+              <h3>Small Size</h3>
+              <div class="preview-box centered">
+                <app-otp-input size="small" length="4"></app-otp-input>
+              </div>
+              <app-code-block [code]="smallCode()" language="html" title="Small"></app-code-block>
+            </div>
+
+            <!-- Medium -->
+            <div class="demo-card">
+              <h3>Medium Size</h3>
+              <div class="preview-box centered">
+                <app-otp-input size="medium" length="4"></app-otp-input>
+              </div>
+              <app-code-block [code]="mediumCode()" language="html" title="Medium"></app-code-block>
+            </div>
+
+            <!-- Large -->
+            <div class="demo-card">
+              <h3>Large Size</h3>
+              <div class="preview-box centered">
+                <app-otp-input size="large" length="4"></app-otp-input>
+              </div>
+              <app-code-block [code]="largeCode()" language="html" title="Large"></app-code-block>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Types -->
+        <div class="feature-group">
+          <h4 class="feature-title">📝 Input Types</h4>
+          <div class="demo-grid">
+            <!-- Numeric Only -->
+            <div class="demo-card">
+              <h3>Numeric Only</h3>
+              <div class="preview-box centered">
+                <app-otp-input length="6" type="numeric" placeholder="0"></app-otp-input>
+              </div>
+              <app-code-block [code]="numericOnlyCode()" language="html" title="Numeric"></app-code-block>
+            </div>
+
+            <!-- Alphanumeric -->
+            <div class="demo-card">
+              <h3>Alphanumeric</h3>
+              <div class="preview-box centered">
+                <app-otp-input length="8" type="alphanumeric" placeholder="A"></app-otp-input>
+              </div>
+              <app-code-block [code]="alphanumericCode()" language="html" title="Alphanumeric"></app-code-block>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Sizing -->
-      <section class="demo-section" id="sizes">
+      <!-- Advanced -->
+      <section class="demo-section" id="advanced">
         <div class="section-header">
-          <h2>📏 Sizes</h2>
-          <p>Available in different sizes</p>
+          <h2>🚀 Advanced</h2>
+          <p>Security, validation, and interaction features</p>
         </div>
-        <div class="demo-grid col-3">
-          <div class="demo-card centered">
-            <h3>Small</h3>
-            <app-otp-input size="small" length="4"></app-otp-input>
-          </div>
 
-          <div class="demo-card centered">
-            <h3>Medium</h3>
-            <app-otp-input size="medium" length="4"></app-otp-input>
-          </div>
+        <!-- Security Features -->
+        <div class="feature-group">
+          <h4 class="feature-title">🔒 Security & Masking</h4>
+          <div class="demo-grid">
+            <!-- Secure -->
+            <div class="demo-card full-width">
+              <h3>Secure PIN (Masked Input)</h3>
+              <p class="card-description">Input characters are hidden for security</p>
+              <div class="preview-box centered">
+                <app-otp-input length="4" [secure]="true" label="Secure PIN"></app-otp-input>
+              </div>
+              <app-code-block [code]="secureCode()" language="html" title="Secure Code"></app-code-block>
+            </div>
 
-          <div class="demo-card centered">
-            <h3>Large</h3>
-            <app-otp-input size="large" length="4"></app-otp-input>
+            <!-- Masked -->
+            <div class="demo-card full-width">
+              <h3>Custom Mask Character</h3>
+              <p class="card-description">Display masked characters with custom symbol</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [mask]="true" mask-char="*"></app-otp-input>
+              </div>
+              <app-code-block [code]="maskedCode()" language="html" title="Masked Code"></app-code-block>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input States -->
+        <div class="feature-group">
+          <h4 class="feature-title">🔗 Input States</h4>
+          <div class="demo-grid">
+            <!-- Readonly -->
+            <div class="demo-card">
+              <h3>Readonly State</h3>
+              <p class="card-description">Input cannot be modified</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [readonly]="true" value="123456"></app-otp-input>
+              </div>
+              <app-code-block [code]="readonlyCode()" language="html" title="Readonly"></app-code-block>
+            </div>
+
+            <!-- Disabled -->
+            <div class="demo-card">
+              <h3>Disabled State</h3>
+              <p class="card-description">Input is disabled and not interactive</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [disabled]="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="disabledCode()" language="html" title="Disabled"></app-code-block>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interaction Features -->
+        <div class="feature-group">
+          <h4 class="feature-title">⚡ Interaction Features</h4>
+          <div class="demo-grid">
+            <!-- Autofocus -->
+            <div class="demo-card full-width">
+              <h3>Autofocus & Auto-Submit</h3>
+              <p class="card-description">Automatically focus and submit when complete</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [autofocus]="true" auto-submit="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="autoFocusCode()" language="html" title="Autofocus Code"></app-code-block>
+            </div>
+
+            <!-- Paste Support -->
+            <div class="demo-card full-width">
+              <h3>Paste Support</h3>
+              <p class="card-description">Allow pasting codes with automatic parsing</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [allow-paste]="true" [paste-separator]="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="pasteableCode()" language="html" title="Paste Support Code"></app-code-block>
+            </div>
+
+            <!-- Validation -->
+            <div class="demo-card full-width">
+              <h3>Custom Validation</h3>
+              <p class="card-description">Validate input with custom logic</p>
+              <div class="preview-box centered">
+                <app-otp-input length="6" [required]="true"></app-otp-input>
+              </div>
+              <app-code-block [code]="validationCode()" language="html" title="Validation Code"></app-code-block>
+            </div>
           </div>
         </div>
       </section>
@@ -99,14 +345,10 @@
       <section class="demo-section" id="playground">
         <div class="section-header">
           <h2>🎮 Interactive Playground</h2>
-          <p>Configure input length, style, and validation</p>
+          <p>Configure OTP input properties and see changes in real-time</p>
         </div>
         <app-otp-input-playground></app-otp-input-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="OTP Input Usage"
-          language="html"
-        ></app-code-block>
+        <app-code-block [code]="playgroundCode()" language="html" title="OTP Input Usage"></app-code-block>
       </section>
     </div>
 

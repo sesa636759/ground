@@ -1,10 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { signal } from '@angular/core';
 import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TogglePlaygroundComponent } from './components/toggle-playground/toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-toggle-demo',
@@ -18,24 +20,20 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-toggle-demo.component.html',
   styleUrl: './set-toggle-demo.component.scss',
+  imports: [
+    CommonModule,
+    FormsModule,
+    TogglePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+  ],
 })
 export class SetToggleDemoComponent {
-  variants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'layouts', title: 'Toggle Group Layouts', icon: '📐' },
-    { id: 'variants', title: 'Variants', icon: '🎭' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'icons', title: 'With Icons', icon: '🎯' },
-    { id: 'icon-group', title: 'Icon Toggle Group', icon: '⭐' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'premium-features', title: 'Premium Features', icon: '💎' },
-    { id: 'skeleton', title: 'Skeleton States', icon: '🦴' },
-    { id: 'form-example', title: 'Form Example', icon: '📋' },
+  exampleVariants = [
+    { id: 'basic', title: 'Basic Layouts', icon: '📐' },
+    { id: 'variants', title: 'Variants & Styles', icon: '✨' },
+    { id: 'advanced', title: 'Features & Advanced', icon: '🚀' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter(v => v.id !== 'playground');
-  }
 
   notificationOptions = [
     { value: 'email', label: 'Email' },
@@ -58,70 +56,205 @@ export class SetToggleDemoComponent {
     { value: 'data-sharing', label: 'Data Sharing' },
   ];
 
-  playgroundCode = `<app-toggle-group
+  // Basic Layouts Signals
+  defaultToggleCode = signal(`<app-toggle-group
   label="Feature Settings"
   helper-text="Select your preferences"
   layout="horizontal"
-  selection-mode="multiple"
-  [options]="options"
-></app-toggle-group>`;
+  selection-mode="single"
+  [options]="notificationOptions">
+</app-toggle-group>`);
 
-  layoutsCode = `<app-toggle-group
+  horizontalLayoutCode = signal(`<app-toggle-group
   layout="horizontal"
   selection-mode="single"
-  [options]="options"
-></app-toggle-group>`;
+  label="Notification Type"
+  [options]="notificationOptions">
+</app-toggle-group>`);
 
-  variantsCode = `<app-toggle variant="default" checked></app-toggle>
-<app-toggle variant="rounded" checked></app-toggle>
-<app-toggle variant="outlined" checked></app-toggle>`;
+  verticalLayoutCode = signal(`<app-toggle-group
+  layout="vertical"
+  selection-mode="multiple"
+  label="Enable Features"
+  [options]="featureOptions">
+</app-toggle-group>`);
 
-  sizesCode = `<app-toggle size="small"></app-toggle>
-<app-toggle size="medium"></app-toggle>
-<app-toggle size="large"></app-toggle>`;
+  gridLayoutCode = signal(`<app-toggle-group
+  layout="grid"
+  [grid-columns]="3"
+  selection-mode="multiple"
+  label="Privacy Settings"
+  [options]="privacyOptions">
+</app-toggle-group>`);
 
-  iconsCode = `<app-toggle icon="check" label="Enable Feature"></app-toggle>
-<app-toggle icon="moon" label="Dark Mode"></app-toggle>`;
+  // Variants & Styles Signals
+  defaultVariantCode = signal(`<app-toggle
+  variant="default"
+  label="Default Style"
+  checked>
+</app-toggle>`);
 
-  iconGroupCode = `<app-toggle-group
+  roundedVariantCode = signal(`<app-toggle
+  variant="rounded"
+  label="Rounded Style"
+  checked>
+</app-toggle>`);
+
+  outlinedVariantCode = signal(`<app-toggle
+  variant="outlined"
+  label="Outlined Style"
+  checked>
+</app-toggle>`);
+
+  glassVariantCode = signal(`<app-toggle
+  variant="glass"
+  label="Glassmorphism"
+  checked>
+</app-toggle>`);
+
+  smallSizeCode = signal(`<app-toggle
+  size="small"
+  label="Small Size">
+</app-toggle>`);
+
+  mediumSizeCode = signal(`<app-toggle
+  size="medium"
+  label="Medium Size">
+</app-toggle>`);
+
+  largeSizeCode = signal(`<app-toggle
+  size="large"
+  label="Large Size">
+</app-toggle>`);
+
+  primaryColorCode = signal(`<app-toggle
+  color="primary"
+  label="Primary Color"
+  checked>
+</app-toggle>`);
+
+  successColorCode = signal(`<app-toggle
+  color="success"
+  label="Success Color"
+  checked>
+</app-toggle>`);
+
+  warningColorCode = signal(`<app-toggle
+  color="warning"
+  label="Warning Color"
+  checked>
+</app-toggle>`);
+
+  // Features & Advanced Signals
+  iconToggleCode = signal(`<app-toggle
+  icon="check"
+  label="Enable Feature">
+</app-toggle>`);
+
+  sunMoonIconCode = signal(`<app-toggle
+  icon="moon"
+  label="Dark Mode">
+</app-toggle>`);
+
+  iconGroupCode = signal(`<app-toggle-group
   layout="horizontal"
   icon-only
-  [options]="iconOptions"
-></app-toggle-group>`;
+  [options]="[
+    { value: 'star', label: 'Star', icon: 'star' },
+    { value: 'heart', label: 'Heart', icon: 'heart' },
+    { value: 'bookmark', label: 'Bookmark', icon: 'bookmark' }
+  ]">
+</app-toggle-group>`);
 
-  statesCode = `<app-toggle checked></app-toggle>
-<app-toggle disabled></app-toggle>
-<app-toggle readonly></app-toggle>`;
+  disabledStateCode = signal(`<app-toggle
+  label="Disabled Off"
+  disabled>
+</app-toggle>
+<app-toggle
+  label="Disabled On"
+  disabled
+  checked>
+</app-toggle>`);
 
-  premiumFeaturesCode = `<app-toggle variant="glass" checked></app-toggle>
-<app-toggle elevation="3" checked></app-toggle>
-<app-toggle thumb-shape="square" checked></app-toggle>`;
+  readonlyStateCode = signal(`<app-toggle
+  label="Readonly Off"
+  readonly>
+</app-toggle>
+<app-toggle
+  label="Readonly On"
+  readonly
+  checked>
+</app-toggle>`);
 
-  skeletonCode = `<div class="skeleton-toggle"></div>
+  elevationCode = signal(`<app-toggle
+  elevation="1"
+  label="Elevation 1"
+  checked>
+</app-toggle>
+<app-toggle
+  elevation="3"
+  label="Elevation 3"
+  checked>
+</app-toggle>
+<app-toggle
+  elevation="5"
+  label="Elevation 5"
+  checked>
+</app-toggle>`);
+
+  thumbShapeCode = signal(`<app-toggle
+  thumb-shape="circle"
+  label="Circle Thumb"
+  checked>
+</app-toggle>
+<app-toggle
+  thumb-shape="square"
+  label="Square Thumb"
+  checked>
+</app-toggle>`);
+
+  labelPositionCode = signal(`<app-toggle
+  label-position="right"
+  label="Label Right"
+  checked>
+</app-toggle>
+<app-toggle
+  label-position="left"
+  label="Label Left"
+  checked>
+</app-toggle>`);
+
+  formExampleCode = signal(`<form>
+  <div class="form-group">
+    <h4>Notification Preferences</h4>
+    <app-toggle-group
+      label="Email Notifications"
+      selection-mode="single"
+      [options]="notificationOptions">
+    </app-toggle-group>
+  </div>
+  
+  <div class="form-group">
+    <h4>Privacy Settings</h4>
+    <app-toggle-group
+      layout="vertical"
+      selection-mode="multiple"
+      label="Select your preferences"
+      [options]="privacyOptions">
+    </app-toggle-group>
+  </div>
+</form>`);
+
+  skeletonCode = signal(`<div class="skeleton-wrapper">
+  <div class="skeleton-toggle"></div>
+  <div class="skeleton-toggle"></div>
+</div>
 <div class="skeleton-toggle-group">
   <div class="skeleton-label"></div>
   <div class="skeleton-toggles">
     <div class="skeleton-toggle"></div>
     <div class="skeleton-toggle"></div>
+    <div class="skeleton-toggle"></div>
   </div>
-</div>`;
-
-  formExampleCode = `<form>
-  <h4>Notification Settings</h4>
-  <app-toggle label="Email Notifications" checked></app-toggle>
-  <app-toggle label="Push Notifications" checked></app-toggle>
-  <app-toggle label="SMS Notifications"></app-toggle>
-  
-  <h4>Privacy Options</h4>
-  <app-toggle label="Make Profile Public"></app-toggle>
-  <app-toggle label="Show Activity Status" checked></app-toggle>
-  <app-toggle label="Allow Friend Requests" checked></app-toggle>
-</form>`;
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+</div>`);
 }
