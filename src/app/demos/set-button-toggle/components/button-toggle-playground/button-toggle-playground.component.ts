@@ -1,8 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-button-toggle-playground',
@@ -11,8 +9,9 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-toggle-playground.component.html',
   styleUrl: './button-toggle-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ButtonTogglePlaygroundComponent implements OnInit {
+export class ButtonTogglePlaygroundComponent {
   // Playground State
   pgConfig = {
     mode: 'segmented',
@@ -52,7 +51,7 @@ export class ButtonTogglePlaygroundComponent implements OnInit {
     { value: 'cards', label: 'Cards', icon: 'fas fa-id-card' },
   ];
 
-  ngOnInit() {
+  constructor() {
     this.updateConfig();
   }
 
