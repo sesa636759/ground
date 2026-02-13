@@ -1,159 +1,419 @@
-<div class="demo-container">
-  <h1>👥 Avatar Group Component</h1>
+<div class="examples-split-layout">
+  <aside class="examples-sidebar">
+    <h3>Avatar Group Examples</h3>
+    <nav>
+      <a
+        *ngFor="let variant of variants"
+        [href]="'#' + variant.id"
+        (click)="scrollToSection(variant.id)"
+        class="nav-link"
+      >
+        <span class="nav-icon">{{ variant.icon }}</span>
+        <span class="nav-text">{{ variant.title }}</span>
+      </a>
+    </nav>
+  </aside>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure and test all avatar group properties</p>
-    </div>
-    <app-avatar-group-playground></app-avatar-group-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Avatar Group Usage"
-      language="html"
-    ></app-code-block>
+  <div class="examples-content">
+    <!-- Playground Section -->
+    <section id="playground" class="example-section">
+      <h2><span class="section-icon">🎮</span> Playground</h2>
+      <p>Experiment with avatar group properties in real-time.</p>
+      <app-avatar-group-playground></app-avatar-group-playground>
+      <app-code-block [code]="playgroundCode" language="html" />
     </section>
 
-    <!-- Sizes -->
-    <section class="demo-section" id="sizes">
-    <div class="section-header">
-      <h2>📏 Size Variants</h2>
-      <p>Different sizes for avatar groups</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Small</h3>
-        <div class="preview-box">
-          <app-avatar-group size="small" [users]="users"></app-avatar-group>
+    <!-- Basic Usage Section -->
+    <section id="basic" class="example-section">
+      <h2><span class="section-icon">📐</span> Basic Usage</h2>
+      <p>Simple avatar group with multiple avatars.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Basic Group</h3>
+          <div class="preview-box">
+            <app-avatar-group>
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
         </div>
       </div>
-
-      <div class="demo-card">
-        <h3>Medium</h3>
-        <div class="preview-box">
-          <app-avatar-group size="medium" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Large</h3>
-        <div class="preview-box">
-          <app-avatar-group size="large" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-    </div>
+      <app-code-block [code]="basicCode" language="html" />
     </section>
 
-    <!-- Max Display -->
-    <section class="demo-section" id="max-display">
-    <div class="section-header">
-      <h2>🔢 Max Display Count</h2>
-      <p>Control how many avatars to show</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Max 3</h3>
-        <div class="preview-box">
-          <app-avatar-group max="3" [users]="users"></app-avatar-group>
+    <!-- Sizes Section -->
+    <section id="sizes" class="example-section">
+      <h2><span class="section-icon">📏</span> Size Variants</h2>
+      <p>Avatar groups in different sizes.</p>
+      <div class="demo-grid col-3">
+        <div class="demo-card">
+          <h3>Small</h3>
+          <div class="preview-box">
+            <app-avatar-group size="small" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Medium</h3>
+          <div class="preview-box">
+            <app-avatar-group size="medium" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Large</h3>
+          <div class="preview-box">
+            <app-avatar-group size="large" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
         </div>
       </div>
-
-      <div class="demo-card">
-        <h3>Max 4</h3>
-        <div class="preview-box">
-          <app-avatar-group max="4" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Show All</h3>
-        <div class="preview-box">
-          <app-avatar-group [users]="users"></app-avatar-group>
-        </div>
-      </div>
-    </div>
+      <app-code-block [code]="sizesCode" language="html" />
     </section>
 
-    <!-- Layouts -->
-    <section class="demo-section" id="layouts">
-    <div class="section-header">
-      <h2>📐 Layout Options</h2>
-      <p>Different stacking and spacing options</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Stacked</h3>
-        <div class="preview-box">
-          <app-avatar-group layout="stacked" [users]="users"></app-avatar-group>
+    <!-- Max Display Section -->
+    <section id="max-display" class="example-section">
+      <h2><span class="section-icon">🔢</span> Max Display</h2>
+      <p>Control how many avatars to show before showing a counter.</p>
+      <div class="demo-grid col-3">
+        <div class="demo-card">
+          <h3>Max 2</h3>
+          <div class="preview-box">
+            <app-avatar-group [max]="2">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 6)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Max 3</h3>
+          <div class="preview-box">
+            <app-avatar-group [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 6)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Max 4</h3>
+          <div class="preview-box">
+            <app-avatar-group [max]="4">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 6)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
         </div>
       </div>
-
-      <div class="demo-card">
-        <h3>Spaced</h3>
-        <div class="preview-box">
-          <app-avatar-group layout="spaced" spacing="8" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Variants -->
-  <section class="demo-section">
-    <div class="section-header">
-      <h2>🎭 Visual Variants</h2>
-      <p>Different styles and borders</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Default</h3>
-        <div class="preview-box">
-          <app-avatar-group variant="default" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Bordered</h3>
-        <div class="preview-box">
-          <app-avatar-group
-            variant="bordered"
-            border-color="primary"
-            [users]="users"
-          ></app-avatar-group>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Rounded</h3>
-        <div class="preview-box">
-          <app-avatar-group shape="rounded" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-    </div>
+      <app-code-block [code]="maxDisplayCode" language="html" />
     </section>
 
-    <!-- Premium Features -->
-    <section class="demo-section" id="premium">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Advanced features and interactions</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>With Tooltips</h3>
-        <div class="preview-box">
-          <app-avatar-group show-tooltips="true" [users]="users"></app-avatar-group>
+    <!-- Layouts Section -->
+    <section id="layouts" class="example-section">
+      <h2><span class="section-icon">📋</span> Layout Options</h2>
+      <p>Different ways to arrange avatars in a group.</p>
+      <div class="demo-grid col-2">
+        <div class="demo-card">
+          <h3>Stacked</h3>
+          <div class="preview-box">
+            <app-avatar-group layout="stacked" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Spaced</h3>
+          <div class="preview-box">
+            <app-avatar-group layout="spaced" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
         </div>
       </div>
-
-      <div class="demo-card">
-        <h3>Clickable</h3>
-        <div class="preview-box">
-          <app-avatar-group clickable="true" [users]="users"></app-avatar-group>
-        </div>
-      </div>
-    </div>
+      <app-code-block [code]="layoutsCode" language="html" />
     </section>
-  </demo-tabs>
+
+    <!-- Shapes Section -->
+    <section id="shapes" class="example-section">
+      <h2><span class="section-icon">⭡</span> Shape Variants</h2>
+      <p>Different shapes for avatar groups.</p>
+      <div class="demo-grid col-2">
+        <div class="demo-card">
+          <h3>Circle</h3>
+          <div class="preview-box">
+            <app-avatar-group shape="circle" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Square</h3>
+          <div class="preview-box">
+            <app-avatar-group shape="square" [max]="3">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="shapesCode" language="html" />
+    </section>
+
+    <!-- Spacing Section -->
+    <section id="spacing" class="example-section">
+      <h2><span class="section-icon">↔️</span> Spacing Control</h2>
+      <p>Control spacing between avatars.</p>
+      <div class="demo-grid col-2">
+        <div class="demo-card">
+          <h3>Tight</h3>
+          <div class="preview-box">
+            <app-avatar-group [attr.spacing]="'4'">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Wide</h3>
+          <div class="preview-box">
+            <app-avatar-group [attr.spacing]="'12'">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 4)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="spacingCode" language="html" />
+    </section>
+
+    <!-- Borders Section -->
+    <section id="borders" class="example-section">
+      <h2><span class="section-icon">⭕</span> Border Styles</h2>
+      <p>Custom borders for avatar groups.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Bordered</h3>
+          <div class="preview-box">
+            <app-avatar-group [attr.border]="'2px solid #3b82f6'">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="bordersCode" language="html" />
+    </section>
+
+    <!-- Tooltips Section -->
+    <section id="tooltips" class="example-section">
+      <h2><span class="section-icon">💬</span> Tooltips & Popovers</h2>
+      <p>Show additional information on hover.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>With Tooltips</h3>
+          <div class="preview-box">
+            <app-avatar-group [showTooltips]="true">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="tooltipsCode" language="html" />
+    </section>
+
+    <!-- Status Section -->
+    <section id="status" class="example-section">
+      <h2><span class="section-icon">🟢</span> Status Indicators</h2>
+      <p>Show online status for users.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>With Status</h3>
+          <div class="preview-box">
+            <app-avatar-group>
+              <app-avatar
+                [attr.name]="users[0].name"
+                [attr.image]="users[0].image"
+                [attr.status]="'online'"
+              ></app-avatar>
+              <app-avatar
+                [attr.name]="users[1].name"
+                [attr.image]="users[1].image"
+                [attr.status]="'away'"
+              ></app-avatar>
+              <app-avatar
+                [attr.name]="users[2].name"
+                [attr.image]="users[2].image"
+                [attr.status]="'busy'"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="statusCode" language="html" />
+    </section>
+
+    <!-- Clickable Section -->
+    <section id="clickable" class="example-section">
+      <h2><span class="section-icon">🖱️</span> Clickable Groups</h2>
+      <p>Interactive avatar groups.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Clickable</h3>
+          <div class="preview-box">
+            <app-avatar-group [clickable]="true">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="clickableCode" language="html" />
+    </section>
+
+    <!-- Animated Section -->
+    <section id="animated" class="example-section">
+      <h2><span class="section-icon">✨</span> Animated Groups</h2>
+      <p>Avatar groups with animations.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Animated</h3>
+          <div class="preview-box">
+            <app-avatar-group [attr.animated]="true">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="animatedCode" language="html" />
+    </section>
+
+    <!-- Vertical Section -->
+    <section id="vertical" class="example-section">
+      <h2><span class="section-icon">↕️</span> Vertical Layout</h2>
+      <p>Stack avatars vertically.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Vertical</h3>
+          <div class="preview-box">
+            <app-avatar-group [attr.direction]="'vertical'">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="verticalCode" language="html" />
+    </section>
+
+    <!-- Grid Section -->
+    <section id="grid" class="example-section">
+      <h2><span class="section-icon">▦</span> Grid Layout</h2>
+      <p>Display avatars in a grid pattern.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Grid</h3>
+          <div class="preview-box">
+            <app-avatar-group layout="grid" [attr.columns]="'3'">
+              <app-avatar
+                *ngFor="let user of users.slice(0, 6)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="gridCode" language="html" />
+    </section>
+
+    <!-- Premium Section -->
+    <section id="premium" class="example-section">
+      <h2><span class="section-icon">💎</span> Premium Features</h2>
+      <p>Advanced avatar group features.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Interactive</h3>
+          <div class="preview-box">
+            <app-avatar-group
+              [clickable]="true"
+              [showTooltips]="true"
+              [attr.show-popover]="true"
+              [attr.hover-effect]="'zoom'"
+            >
+              <app-avatar
+                *ngFor="let user of users.slice(0, 3)"
+                [attr.name]="user.name"
+                [attr.image]="user.image"
+              ></app-avatar>
+            </app-avatar-group>
+          </div>
+        </div>
+      </div>
+      <app-code-block [code]="premiumCode" language="html" />
+    </section>
+  </div>
 </div>
