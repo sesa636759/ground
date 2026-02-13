@@ -1,8 +1,7 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -13,7 +12,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     TreePlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],
@@ -21,58 +19,142 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
-export class SetTreeDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'common-variations', title: 'Common Variations', icon: '📋' },
-    { id: 'advanced-layouts', title: 'Advanced Layouts', icon: '🥈' },
-    { id: 'visual-effects', title: 'Premium Aesthetics', icon: '💎' },
+export class SetTreeDemoComponent {
+  variants = [
+    { id: 'playground', name: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic-tree', name: 'Basic Tree', icon: '🌲', color: '#3b82f6' },
+    { id: 'icons-colors', name: 'Icons & Colors', icon: '🎨', color: '#10b981' },
+    { id: 'badges-counters', name: 'Badges & Counters', icon: '🔢', color: '#f59e0b' },
+    { id: 'selectable', name: 'Selectable Tree', icon: '✅', color: '#ef4444' },
+    { id: 'checkboxes', name: 'With Checkboxes', icon: '☑️', color: '#6366f1' },
+    { id: 'searchable', name: 'Searchable Tree', icon: '🔍', color: '#ec4899' },
+    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#14b8a6' },
+    { id: 'variants', name: 'Variants', icon: '🎭', color: '#a855f7' },
+    { id: 'org-chart', name: 'Org Chart', icon: '📊', color: '#06b6d4' },
+    { id: 'premium', name: 'Premium Aesthetics', icon: '💎', color: '#84cc16' },
+    { id: 'drag-drop', name: 'Drag & Drop', icon: '🔄', color: '#f97316' },
+    { id: 'dark-theme', name: 'Dark Theme', icon: '🌙', color: '#2563eb' },
   ];
 
-  basicTreeData = JSON.stringify([
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Basic simple tree
+  simpleTreeData = JSON.stringify([
     {
-      id: 'root',
-      label: 'Documentation',
-      icon: 'fas fa-book',
+      id: '1',
+      label: 'Root Folder',
+      icon: 'fas fa-folder',
       expanded: true,
       children: [
-        { id: 'intro', label: 'Introduction', icon: 'fas fa-info-circle' },
+        { id: '2', label: 'Documents', icon: 'fas fa-folder' },
+        { id: '3', label: 'Pictures', icon: 'fas fa-folder' },
+        { id: '4', label: 'Music', icon: 'fas fa-folder' },
+      ],
+    },
+  ]);
+
+  // Project structure with colors
+  projectTreeData = JSON.stringify([
+    {
+      id: 'proj',
+      label: 'My Project',
+      icon: 'fas fa-folder-open',
+      color: '#3b82f6',
+      expanded: true,
+      children: [
         {
-          id: 'guide',
-          label: 'User Guide',
-          icon: 'fas fa-map',
+          id: 'src',
+          label: 'src',
+          icon: 'fas fa-folder',
+          color: '#8b5cf6',
           children: [
-            { id: 'install', label: 'Installation', icon: 'fas fa-download' },
-            { id: 'setup', label: 'Setup', icon: 'fas fa-wrench' },
+            { id: 'index', label: 'index.ts', icon: 'fab fa-js', color: '#f59e0b' },
+            { id: 'styles', label: 'styles.css', icon: 'fab fa-css3', color: '#06b6d4' },
+            { id: 'app', label: 'App.tsx', icon: 'fab fa-react', color: '#61dafb' },
           ],
+        },
+        { id: 'public', label: 'public', icon: 'fas fa-folder', color: '#10b981' },
+        { id: 'package', label: 'package.json', icon: 'fas fa-file-code', color: '#ef4444' },
+        { id: 'readme', label: 'README.md', icon: 'fas fa-file-alt', color: '#6b7280' },
+      ],
+    },
+  ]);
+
+  // Tree with badges and counters
+  taskTreeData = JSON.stringify([
+    {
+      id: 'projects',
+      label: 'Projects',
+      icon: 'fas fa-briefcase',
+      badge: 'Active',
+      badgeColor: 'success',
+      counter: 3,
+      expanded: true,
+      children: [
+        {
+          id: 'web',
+          label: 'Website Redesign',
+          icon: 'fas fa-globe',
+          badge: 'High',
+          badgeColor: 'danger',
+          counter: 5,
+        },
+        {
+          id: 'mobile',
+          label: 'Mobile App',
+          icon: 'fas fa-mobile',
+          badge: 'Medium',
+          badgeColor: 'warning',
+          counter: 8,
         },
       ],
     },
   ]);
 
+  // Org chart data
   orgChartData = JSON.stringify([
     {
-      id: 'ceo',
-      label: 'Sarah Wilson',
-      icon: 'fas fa-user-tie',
-      extra: 'CEO & Founder',
+      id: 'board',
+      label: 'Board of Directors',
+      icon: 'fas fa-users',
+      extra: 'Top Level',
       expanded: true,
       children: [
         {
-          id: 'cto',
-          label: 'James Chen',
-          icon: 'fas fa-user-cog',
-          extra: 'CTO',
+          id: 'ceo',
+          label: 'Chief Executive Officer',
+          icon: 'fas fa-user-tie',
+          extra: 'CEO',
+          expanded: true,
           children: [
-            { id: 'dev1', label: 'Tech Lead', icon: 'fas fa-user' },
-            { id: 'dev2', label: 'Senior Dev', icon: 'fas fa-user' },
+            {
+              id: 'cto',
+              label: 'Chief Technology Officer',
+              icon: 'fas fa-laptop-code',
+              extra: 'Tech',
+              children: [
+                { id: 'vp-eng', label: 'VP of Engineering', icon: 'fas fa-code', extra: 'Management' },
+                { id: 'eng-mgr', label: 'Engineering Manager', icon: 'fas fa-users-cog' },
+                { id: 'platform', label: 'Platform Architect', icon: 'fas fa-server' },
+                { id: 'data', label: 'Head of Data Science', icon: 'fas fa-chart-line', extra: 'AI/ML' },
+              ],
+            },
+            {
+              id: 'cpo',
+              label: 'Chief Product Officer',
+              icon: 'fas fa-lightbulb',
+              extra: 'Product',
+            },
           ],
-        },
-        {
-          id: 'cmo',
-          label: 'Emma Davis',
-          icon: 'fas fa-user-tag',
-          extra: 'CMO',
-          children: [{ id: 'mkt1', label: 'Marketing Spc.', icon: 'fas fa-user' }],
         },
       ],
     },
@@ -96,13 +178,4 @@ export class SetTreeDemoComponent implements OnInit {
   [icons]="true"
   layout="horizontal"
 ></app-tree>`;
-
-  ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

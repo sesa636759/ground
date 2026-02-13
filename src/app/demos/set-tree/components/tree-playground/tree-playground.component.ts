@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-playground.component.html',
   styleUrl: './tree-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class TreePlaygroundComponent implements OnInit {
   @ViewChild('treeElement') treeElement!: ElementRef;

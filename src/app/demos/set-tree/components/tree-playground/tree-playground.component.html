@@ -54,6 +54,18 @@
       </div>
 
       <div class="control-group">
+        <label>Orientation</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.orientation"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Vertical', value: 'vertical' },
+            { label: 'Horizontal', value: 'horizontal' },
+          ]"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
         <label>Indent (px)</label>
         <app-input type="number" [(ngModel)]="pgConfig.indent" (input)="updateConfig()" />
       </div>
@@ -61,6 +73,16 @@
       <div class="control-group">
         <label>Connector Width</label>
         <app-input type="number" [(ngModel)]="pgConfig.connectorWidth" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Connector Color</label>
+        <app-input type="color" [(ngModel)]="pgConfig.connectorColor" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Connector Opacity</label>
+        <app-input type="number" step="0.1" min="0" max="1" [(ngModel)]="pgConfig.connectorOpacity" (input)="updateConfig()" />
       </div>
     </div>
 
@@ -91,7 +113,13 @@
         <app-checkbox [(ngModel)]="pgConfig.searchable" (change)="updateConfig()" /> Search
       </label>
       <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+      </label>
+      <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.enableDrag" (change)="updateConfig()" /> Drag & Drop
       </label>
     </div>
 
@@ -122,26 +150,26 @@
     <div class="preview-stage">
       <app-tree
         #treeElement
+        [attr.nodes]="demoData"
         [attr.layout]="pgConfig.layout"
         [attr.variant]="pgConfig.variant"
         [attr.size]="pgConfig.size"
         [attr.theme]="pgConfig.theme"
         [attr.orientation]="pgConfig.orientation"
-        [indent]="pgConfig.indent"
+        [attr.indent]="pgConfig.indent"
         [attr.connector-width]="pgConfig.connectorWidth"
         [attr.connector-color]="pgConfig.connectorColor"
         [attr.connector-opacity]="pgConfig.connectorOpacity"
-        [showLines]="pgConfig.showLines"
-        [showIcons]="pgConfig.showIcons"
-        [expandable]="pgConfig.expandable"
-        [selectable]="pgConfig.selectable"
-        [multiSelect]="pgConfig.multiSelect"
-        [checkboxes]="pgConfig.checkboxes"
-        [searchable]="pgConfig.searchable"
-        [animated]="pgConfig.animated"
-        [showGlow]="pgConfig.showGlow"
-        [enableDrag]="pgConfig.enableDrag"
-        [data]="demoData"
+        [attr.show-lines]="pgConfig.showLines"
+        [attr.show-icons]="pgConfig.showIcons"
+        [attr.expandable]="pgConfig.expandable"
+        [attr.selectable]="pgConfig.selectable"
+        [attr.multi-select]="pgConfig.multiSelect"
+        [attr.checkboxes]="pgConfig.checkboxes"
+        [attr.searchable]="pgConfig.searchable"
+        [attr.animated]="pgConfig.animated"
+        [attr.show-glow]="pgConfig.showGlow"
+        [attr.enable-drag]="pgConfig.enableDrag"
         (nodeToggle)="onNodeToggle($event)"
         (nodeSelect)="onNodeSelect($event)"
         (checkChange)="onCheckChange($event)"
