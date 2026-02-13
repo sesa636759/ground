@@ -28,6 +28,7 @@ export class SetCheckboxDemoComponent implements OnInit {
     { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
     { id: 'sizes-variants', title: 'Sizes & Variants', icon: '📏' },
     { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
     { id: 'form', title: 'Form Example', icon: '📋' },
   ];
 
@@ -36,6 +37,32 @@ export class SetCheckboxDemoComponent implements OnInit {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  // Select All Group State
+  masterChecked = false;
+  masterIndeterminate = false;
+  groupItems = [
+    { label: 'Frontend', checked: false },
+    { label: 'Backend', checked: true },
+    { label: 'Design', checked: false },
+    { label: 'Marketing', checked: false },
+  ];
+
+  updateMasterState() {
+    const checkedCount = this.groupItems.filter((i) => i.checked).length;
+    this.masterChecked = checkedCount === this.groupItems.length;
+    this.masterIndeterminate = checkedCount > 0 && checkedCount < this.groupItems.length;
+  }
+
+  onMasterChange(event: any) {
+    const checked = event.detail.checked;
+    this.groupItems.forEach((i) => (i.checked = checked));
+    this.masterIndeterminate = false;
+  }
+
+  onItemChange() {
+    this.updateMasterState();
   }
 
   // Form State
@@ -47,7 +74,7 @@ export class SetCheckboxDemoComponent implements OnInit {
   formMessage = signal('');
   formMessageColor = signal('inherit');
 
-  // Interactive Refs (for setting properties manually if needed)
+  // Interactive Refs
   termsInvalid = false;
   privacyInvalid = false;
 
@@ -56,14 +83,15 @@ export class SetCheckboxDemoComponent implements OnInit {
   label="Accept terms"
 ></app-checkbox>`;
 
-  colorVariantsCode = `<!-- Available colors: primary, secondary, success, danger, warning, info -->
+  colorVariantsCode = `<!-- Available colors: primary, secondary, success, danger, warning, info, indigo, purple, pink, etc. -->
 <app-checkbox label="Primary" color="primary" checked></app-checkbox>
 <app-checkbox label="Success" color="success" checked></app-checkbox>
-<app-checkbox label="Danger" color="danger" checked></app-checkbox>`;
+<app-checkbox label="Danger" color="danger" checked></app-checkbox>
+<app-checkbox label="Indigo" color="indigo" checked></app-checkbox>`;
 
   premiumVariantsCode = `<app-checkbox label="Button Variant" variant="button" color="primary" checked></app-checkbox>
-
-<app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>`;
+<app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
+<app-checkbox label="Soft Variant" variant="soft" color="success" checked></app-checkbox>`;
 
   skeletonCode = `<app-checkbox skeleton size="small"></app-checkbox>
 <app-checkbox skeleton size="medium"></app-checkbox>
@@ -74,7 +102,8 @@ export class SetCheckboxDemoComponent implements OnInit {
 <app-checkbox label="Large" size="large"></app-checkbox>
 
 <app-checkbox label="Rounded" variant="rounded"></app-checkbox>
-<app-checkbox label="Square" variant="square"></app-checkbox>`;
+<app-checkbox label="Square" variant="square"></app-checkbox>
+<app-checkbox label="Pill" variant="pill"></app-checkbox>`;
 
   statesCode = `<app-checkbox label="Checked" checked></app-checkbox>
 <app-checkbox label="Indeterminate" indeterminate></app-checkbox>
@@ -93,6 +122,23 @@ export class SetCheckboxDemoComponent implements OnInit {
 
 <app-checkbox label="Readonly" readonly checked></app-checkbox>`;
 
+  groupExampleCode = `<!-- Select All Indeterminate Example -->
+<app-checkbox 
+  label="Select All" 
+  [checked]="masterChecked" 
+  [indeterminate]="masterIndeterminate"
+  (checkboxChange)="onMasterChange($event)">
+</app-checkbox>
+
+<div class="group-items">
+  <app-checkbox 
+    *ngFor="let item of items" 
+    [label]="item.label" 
+    [(ngModel)]="item.checked"
+    (change)="onItemChange()">
+  </app-checkbox>
+</div>`;
+
   formExampleCode = `<app-checkbox
   [(ngModel)]="termsAccepted"
   label="I accept the terms"
@@ -108,7 +154,9 @@ export class SetCheckboxDemoComponent implements OnInit {
   color="success"
 ></app-checkbox>`;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateMasterState();
+  }
 
   onSubmit() {
     if (!this.formTerms || !this.formPrivacy) {

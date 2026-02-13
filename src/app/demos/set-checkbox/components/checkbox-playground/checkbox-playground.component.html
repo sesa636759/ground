@@ -26,6 +26,12 @@
             { label: 'Danger', value: 'danger' },
             { label: 'Warning', value: 'warning' },
             { label: 'Info', value: 'info' },
+            { label: 'Indigo', value: 'indigo' },
+            { label: 'Purple', value: 'purple' },
+            { label: 'Pink', value: 'pink' },
+            { label: 'Slate', value: 'slate' },
+            { label: 'Dark', value: 'dark' },
+            { label: 'Light', value: 'light' },
           ]"
         ></ui-dropdown>
       </div>
@@ -39,8 +45,12 @@
             { label: 'Default', value: 'default' },
             { label: 'Rounded', value: 'rounded' },
             { label: 'Square', value: 'square' },
+            { label: 'Pill', value: 'pill' },
             { label: 'Button', value: 'button' },
             { label: 'Chip', value: 'chip' },
+            { label: 'Soft', value: 'soft' },
+            { label: 'Surface', value: 'surface' },
+            { label: 'Classic', value: 'classic' },
           ]"
         ></ui-dropdown>
       </div>
@@ -65,6 +75,10 @@
       <div class="control-group">
         <label>Helper Text</label>
         <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+      </div>
+      <div class="control-group" *ngIf="pgConfig.invalid">
+        <label>Error Message</label>
+        <app-input type="text" [(ngModel)]="pgConfig.errorMessage" (input)="updateConfig()" />
       </div>
     </div>
 
@@ -124,7 +138,7 @@
         [skeleton]="pgConfig.skeleton"
         [attr.enable-animation]="pgConfig.enableAnimation.toString()"
         [attr.ripple-effect]="pgConfig.rippleEffect.toString()"
-        [attr.error-message]="pgConfig.invalid ? 'This field has an error' : null"
+        [attr.error-message]="pgConfig.invalid ? pgConfig.errorMessage : null"
         (checkboxChange)="onCheckboxChange($event)"
         (checkboxFocus)="onCheckboxFocus()"
         (checkboxBlur)="onCheckboxBlur()"

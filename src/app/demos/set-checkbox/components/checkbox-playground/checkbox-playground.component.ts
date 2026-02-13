@@ -27,6 +27,7 @@ export class CheckboxPlaygroundComponent implements OnInit {
     readonly: false,
     required: true,
     invalid: false,
+    errorMessage: 'This field has an error',
     enableAnimation: true,
     rippleEffect: true,
     skeleton: false,
@@ -55,7 +56,7 @@ export class CheckboxPlaygroundComponent implements OnInit {
     if (this.pgConfig.required) code += `  required\n`;
     if (this.pgConfig.invalid) {
       code += `  invalid\n`;
-      code += `  error-message="This field has an error"\n`;
+      if (this.pgConfig.errorMessage) code += `  error-message="${this.pgConfig.errorMessage}"\n`;
     }
     if (!this.pgConfig.enableAnimation) code += `  enable-animation="false"\n`;
     if (!this.pgConfig.rippleEffect) code += `  ripple-effect="false"\n`;

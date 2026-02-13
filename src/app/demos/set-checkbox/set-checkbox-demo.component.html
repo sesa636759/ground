@@ -16,7 +16,18 @@
         <div class="demo-grid">
           <div
             class="demo-card"
-            *ngFor="let c of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']"
+            *ngFor="
+              let c of [
+                'primary',
+                'secondary',
+                'success',
+                'danger',
+                'warning',
+                'info',
+                'indigo',
+                'dark',
+              ]
+            "
           >
             <h3>{{ c | titlecase }}</h3>
             <app-checkbox [attr.label]="c | titlecase" [attr.color]="c" checked></app-checkbox>
@@ -55,6 +66,14 @@
               <app-checkbox label="React" variant="chip" color="info" checked></app-checkbox>
               <app-checkbox label="Vue" variant="chip" color="success"></app-checkbox>
               <app-checkbox label="Angular" variant="chip" color="danger"></app-checkbox>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Soft Variant</h3>
+            <div class="checkbox-group row">
+              <app-checkbox label="Python" variant="soft" color="indigo" checked></app-checkbox>
+              <app-checkbox label="Ruby" variant="soft" color="purple"></app-checkbox>
+              <app-checkbox label="Go" variant="soft" color="info"></app-checkbox>
             </div>
           </div>
         </div>
@@ -110,6 +129,7 @@
                 checked
               ></app-checkbox>
               <app-checkbox label="Square" [attr.size]="s" variant="square" checked></app-checkbox>
+              <app-checkbox label="Pill" [attr.size]="s" variant="pill" checked></app-checkbox>
             </div>
           </div>
         </div>
@@ -190,6 +210,44 @@
         <app-code-block
           [code]="statesCode"
           title="State Configuration Examples"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- Checkbox Groups Section -->
+      <section class="demo-section" id="groups">
+        <div class="section-header">
+          <h2>📁 Checkbox Groups</h2>
+          <p>Advanced interactions like Select All and indeterminate states</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card full-width">
+            <h3>Select All Pattern</h3>
+            <div class="selection-pattern-card">
+              <div class="master-checkbox">
+                <app-checkbox
+                  label="Select All Skills"
+                  [checked]="masterChecked"
+                  [indeterminate]="masterIndeterminate"
+                  (checkboxChange)="onMasterChange($event)"
+                >
+                </app-checkbox>
+              </div>
+              <div class="group-items-list">
+                <div class="sub-item" *ngFor="let item of groupItems">
+                  <app-checkbox
+                    [label]="item.label"
+                    [(ngModel)]="item.checked"
+                    (change)="onItemChange()"
+                  ></app-checkbox>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-code-block
+          [code]="groupExampleCode"
+          title="Select All Implementation"
           language="html"
         ></app-code-block>
       </section>

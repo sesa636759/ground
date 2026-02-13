@@ -68,3 +68,31 @@
     }
   }
 }
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.selection-pattern-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+
+  .master-checkbox {
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .group-items-list {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .sub-item {
+      padding-left: 24px;
+    }
+  }
+}
