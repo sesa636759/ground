@@ -263,7 +263,7 @@ export class SetAccordianDemoComponent {
     this.controlledExpanded = [...ids];
   }
 
-  itemStructureCode = \`interface AccordionItem {
+  itemStructureCode = `interface AccordionItem {
   id: string;              // Unique identifier (required)
   title: string;           // Item header text (required)
   content: string;         // HTML content for the panel (required)
@@ -277,9 +277,9 @@ interface Action {
   id: string;              // Unique action identifier
   label: string;           // Button label/icon
   ariaLabel: string;       // Accessibility label
-}\`;
+}`;
 
-  usageBasicCode = \`<ui-accordion [items]="items"></ui-accordion>
+  usageBasicCode = `<ui-accordion [items]="items"></ui-accordion>
 
 // Component
 items = [
@@ -293,15 +293,15 @@ items = [
     title: 'Second Item',
     content: '<p>Content for second item</p>'
   }
-];\`;
+];`;
 
-  usageSearchCode = \`<ui-accordion 
+  usageSearchCode = `<ui-accordion 
   [items]="items" 
   enable-search 
   search-placeholder="Search items...">
-</ui-accordion>\`;
+</ui-accordion>`;
 
-  usageActionsCode = \`<ui-accordion 
+  usageActionsCode = `<ui-accordion 
   [items]="items" 
   (accordionAction)="handleAction($event)"
   (afterOpen)="onItemOpen($event)">
@@ -324,9 +324,9 @@ items = [
 handleAction(event: CustomEvent) {
   const { itemId, actionId } = event.detail;
   console.log(\`Action \${actionId} on item \${itemId}\`);
-}\`;
+}`;
 
-  usageDragDropCode = \`<ui-accordion 
+  usageDragDropCode = `<ui-accordion 
   [items]="items" 
   enable-drag-drop 
   enable-persistence 
@@ -338,5 +338,5 @@ handleAction(event: CustomEvent) {
 handleReorder(event: CustomEvent) {
   const { oldIndex, newIndex } = event.detail;
   // Update your data model
-}\`;
+}`;
 }
