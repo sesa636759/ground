@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
@@ -16,6 +16,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './input-playground.component.html',
   styleUrl: './input-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class InputPlaygroundComponent implements OnInit {
   // Playground State
@@ -39,6 +40,7 @@ export class InputPlaygroundComponent implements OnInit {
     multiline: false,
     autoResize: false,
     maxRows: 3,
+    rows: 3,
     skeleton: false,
     prefixText: '',
     suffixText: '',
@@ -46,6 +48,11 @@ export class InputPlaygroundComponent implements OnInit {
     errorText: 'This field is required',
     successText: 'Looking good!',
     warningText: 'Strong passwords are better',
+    maxLength: 0,
+    showCharCount: false,
+    floatingLabel: false,
+    loading: false,
+    debounce: 0,
   };
 
   eventMessage = signal('Interact with the input...');
@@ -77,10 +84,17 @@ export class InputPlaygroundComponent implements OnInit {
     if (this.pgConfig.autoResize) code += `  auto-resize\n`;
     if (this.pgConfig.maxRows !== 3 && this.pgConfig.multiline)
       code += `  max-rows="${this.pgConfig.maxRows}"\n`;
+    if (this.pgConfig.rows !== 3 && this.pgConfig.multiline)
+      code += `  rows="${this.pgConfig.rows}"\n`;
     if (this.pgConfig.skeleton) code += `  skeleton\n`;
     if (this.pgConfig.prefixText) code += `  prefix-text="${this.pgConfig.prefixText}"\n`;
     if (this.pgConfig.suffixText) code += `  suffix-text="${this.pgConfig.suffixText}"\n`;
     if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
+    if (this.pgConfig.maxLength > 0) code += `  max-length="${this.pgConfig.maxLength}"\n`;
+    if (this.pgConfig.showCharCount) code += `  show-char-count\n`;
+    if (this.pgConfig.floatingLabel) code += `  floating-label\n`;
+    if (this.pgConfig.loading) code += `  loading\n`;
+    if (this.pgConfig.debounce > 0) code += `  debounce="${this.pgConfig.debounce}"\n`;
 
     if (this.pgConfig.validationState === 'error')
       code += `  error-text="${this.pgConfig.errorText}"\n`;

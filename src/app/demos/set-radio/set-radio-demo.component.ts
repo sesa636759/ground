@@ -24,14 +24,24 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   styleUrl: './set-radio-demo.component.scss',
 })
 export class SetRadioDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
-    { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
-    { id: 'layouts', title: 'Layouts', icon: '📐' },
-    { id: 'slotted-radios', title: 'Slotted Radios', icon: '🧩' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'form-example', title: 'Form Example', icon: '📋' },
+  variants = [
+    { id: 'playground', name: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'premium-variants', name: 'Premium Variants', icon: '✨', color: '#3b82f6' },
+    { id: 'button-groups', name: 'Button Groups', icon: '🔲', color: '#10b981' },
+    { id: 'loading-skeleton', name: 'Loading Skeleton', icon: '⏳', color: '#f59e0b' },
+    { id: 'slotted-clearable', name: 'Slotted & Clearable', icon: '🧩', color: '#ef4444' },
+    { id: 'color-variants', name: 'Color Variants', icon: '🎨', color: '#6366f1' },
+    { id: 'layouts', name: 'Layouts', icon: '📐', color: '#ec4899' },
+    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#14b8a6' },
+    { id: 'states', name: 'States', icon: '🔄', color: '#a855f7' },
+    { id: 'form-example', name: 'Form Example', icon: '📋', color: '#06b6d4' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+ 
 
   basicOptions = [
     { value: 'option1', label: 'Option 1' },
@@ -177,6 +187,7 @@ export class SetRadioDemoComponent implements OnInit {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {

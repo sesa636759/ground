@@ -80,6 +80,26 @@
         <label>Suffix Text</label>
         <app-input type="text" [(ngModel)]="pgConfig.suffixText" (input)="updateConfig()" />
       </div>
+
+      <div class="control-group">
+        <label>Helper Text</label>
+        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Max Length</label>
+        <app-input type="number" [(ngModel)]="pgConfig.maxLength" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Rows (Multiline)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.rows" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Max Rows</label>
+        <app-input type="number" [(ngModel)]="pgConfig.maxRows" (input)="updateConfig()" />
+      </div>
     </div>
 
     <div class="checkbox-grid">
@@ -117,6 +137,15 @@
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
       </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.showCharCount" (change)="updateConfig()" /> Char Count
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.floatingLabel" (change)="updateConfig()" /> Floating Label
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading
+      </label>
     </div>
   </div>
 
@@ -149,6 +178,12 @@
         [attr.error-text]="pgConfig.validationState === 'error' ? pgConfig.errorText : null"
         [attr.success-text]="pgConfig.validationState === 'success' ? pgConfig.successText : null"
         [attr.warning-text]="pgConfig.validationState === 'warning' ? pgConfig.warningText : null"
+        [attr.max-length]="pgConfig.maxLength > 0 ? pgConfig.maxLength : null"
+        [attr.show-char-count]="pgConfig.showCharCount ? '' : null"
+        [attr.rows]="pgConfig.rows"
+        [attr.floating-label]="pgConfig.floatingLabel ? '' : null"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.debounce]="pgConfig.debounce > 0 ? pgConfig.debounce : null"
         (input)="onInputChange($event)"
         (focus)="onInputFocus()"
         (blur)="onInputBlur()"

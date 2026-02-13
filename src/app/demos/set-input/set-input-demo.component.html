@@ -1,9 +1,27 @@
 <div class="demo-container">
   <h1>🔤 Input Component Demo</h1>
 
-  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+  <demo-tabs [variants]="variants">
     <!-- Examples Slot -->
     <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="examples-sidebar">
+          <nav class="nav-list">
+            <a
+              *ngFor="let variant of exampleVariants"
+              [href]="'#' + variant.id"
+              class="nav-item"
+              (click)="scrollToSection(variant.id)"
+            >
+              <span class="nav-icon">{{ variant.icon }}</span>
+              <span class="nav-title">{{ variant.title }}</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Scrollable Content -->
+        <div class="examples-content">
       <!-- Basic Input Types -->
       <section class="demo-section" id="basic-types">
         <div class="section-header">
@@ -295,10 +313,281 @@
         </div>
         <app-code-block [code]="addonsCode" title="Addons (Slots)" language="html"></app-code-block>
       </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Ghost variant and skeleton loading</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Ghost Variant</h3>
+            <p class="helper-text">Hover to see input bounds</p>
+            <app-input
+              variant="ghost"
+              placeholder="Subtle input style"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Skeleton Loading</h3>
+            <app-input
+              label="Loading State"
+              placeholder="Content..."
+              [skeleton]="skeletonState"
+              full-width
+            ></app-input>
+            <ui-button
+              class="btn-toggle"
+              (click)="toggleSkeleton()"
+              label="Toggle Loading"
+            ></ui-button>
+          </div>
+        </div>
+        <app-code-block [code]="premiumCode" title="Premium Features" language="html"></app-code-block>
+      </section>
+
+      <!-- Floating Labels -->
+      <section class="demo-section" id="floating-labels">
+        <div class="section-header">
+          <h2>🏷️ Floating Labels</h2>
+          <p>Animated labels that float on focus</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Outlined + Floating</h3>
+            <app-input
+              variant="outlined"
+              label="Full Name"
+              floating-label
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Filled + Floating</h3>
+            <app-input
+              variant="filled"
+              label="Email Address"
+              floating-label
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Underlined + Floating</h3>
+            <app-input
+              variant="underlined"
+              label="Phone Number"
+              floating-label
+              full-width
+            ></app-input>
+          </div>
+        </div>
+        <app-code-block [code]="floatingLabelsCode" title="Floating Labels" language="html"></app-code-block>
+      </section>
+
+      <!-- Multiline Input -->
+      <section class="demo-section" id="multiline">
+        <div class="section-header">
+          <h2>📝 Multiline Input (Textarea)</h2>
+          <p>Text areas with various features</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Basic Textarea</h3>
+            <app-input
+              multiline
+              label="Description"
+              placeholder="Enter description..."
+              rows="3"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Auto-Resize Textarea</h3>
+            <app-input
+              multiline
+              auto-resize
+              label="Comments"
+              placeholder="Type to expand..."
+              max-rows="5"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>With Character Counter</h3>
+            <app-input
+              multiline
+              label="Bio"
+              placeholder="Tell us about yourself..."
+              max-length="200"
+              show-char-count
+              rows="3"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Filled Textarea</h3>
+            <app-input
+              multiline
+              variant="filled"
+              label="Message"
+              placeholder="Your message..."
+              rows="4"
+              full-width
+            ></app-input>
+          </div>
+        </div>
+        <app-code-block [code]="multilineCode" title="Multiline Input" language="html"></app-code-block>
+      </section>
+
+      <!-- Input States -->
+      <section class="demo-section" id="input-states">
+        <div class="section-header">
+          <h2>🔄 Input States</h2>
+          <p>Disabled, readonly, required, and loading states</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Disabled</h3>
+            <app-input
+              label="Disabled Input"
+              value="Cannot edit this"
+              disabled
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Readonly</h3>
+            <app-input
+              label="Read-only Input"
+              value="View only, no edit"
+              readonly
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Required</h3>
+            <app-input
+              label="Required Field*"
+              placeholder="This field is required"
+              required
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Loading State</h3>
+            <app-input
+              label="Processing"
+              value="Validating..."
+              loading
+              full-width
+            ></app-input>
+          </div>
+        </div>
+        <app-code-block [code]="inputStatesCode" title="Input States" language="html"></app-code-block>
+      </section>
+
+      <!-- More Advanced Features -->
+      <section class="demo-section" id="advanced-more">
+        <div class="section-header">
+          <h2>⚡ More Features</h2>
+          <p>Character counters, debouncing, and pattern validation</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Character Counter</h3>
+            <app-input
+              label="Tweet"
+              placeholder="What's happening?"
+              max-length="280"
+              show-char-count
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Debounced Input</h3>
+            <app-input
+              label="Search (500ms debounce)"
+              placeholder="Type to search..."
+              debounce="500"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Pattern Validation</h3>
+            <app-input
+              label="Hex Color"
+              placeholder="#000000"
+              pattern="^#[0-9A-Fa-f]{6}$"
+              helper-text="Enter a valid hex color (e.g., #FF5733)"
+              full-width
+            ></app-input>
+          </div>
+          <div class="demo-card">
+            <h3>Number with Step</h3>
+            <app-input
+              type="number"
+              label="Quantity"
+              value="10"
+              step="5"
+              show-steppers
+              full-width
+            ></app-input>
+          </div>
+        </div>
+        <app-code-block [code]="advancedMoreCode" title="More Advanced Features" language="html"></app-code-block>
+      </section>
+
+      <!-- Premium UX -->
+      <section class="demo-section" id="premium-more">
+        <div class="section-header">
+          <h2>✨ Premium UX</h2>
+          <p>High-end user experience features</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Shake on Error</h3>
+            <app-input
+              label="Login"
+              placeholder="Username"
+              shake-on-error
+              full-width
+            ></app-input>
+            <ui-button class="btn-trigger" label="Trigger Error"></ui-button>
+          </div>
+          <div class="demo-card">
+            <h3>Adaptive Credit Card</h3>
+            <app-input
+              label="Card Number"
+              placeholder="0000 0000 0000 0000"
+              adaptive-type="credit-card"
+              full-width
+            ></app-input>
+            <p class="helper-text">Try: 4 (Visa), 51 (Mastercard), 34 (Amex)</p>
+          </div>
+          <div class="demo-card">
+            <h3>Smart Password</h3>
+            <app-input
+              type="password"
+              label="New Password"
+              placeholder="Enter password"
+              show-strength-meter
+              show-caps-warning
+              show-password-toggle
+              full-width
+            ></app-input>
+          </div>
+        </div>
+        <app-code-block [code]="premiumMoreCode" title="Premium UX Features" language="html"></app-code-block>
+      </section>
+        </div>
+      </div>
     </div>
 
     <!-- Playground Slot -->
     <div slot="playground">
+      <div class="demo-container">
       <section class="demo-section" id="playground">
         <div class="section-header">
           <h2>🎮 Interactive Playground</h2>
@@ -311,6 +600,7 @@
           language="html"
         ></app-code-block>
       </section>
+      </div>
     </div>
 
     <!-- Documentation Slot -->
