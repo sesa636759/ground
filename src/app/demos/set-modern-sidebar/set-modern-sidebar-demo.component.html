@@ -1,406 +1,389 @@
 <div class="demo-container">
-  <h1>📱 Modern Sidebar</h1>
-  <p class="demo-description">
-    A sleek, professional sidebar component with nested navigation, badges, user profiles, and smooth animations.
-  </p>
+  <h1>📱 Modern Sidebar Demo</h1>
 
-  <div class="examples-split-layout">
-    <aside class="examples-sidebar">
-      <h3>Examples</h3>
-      <nav class="examples-nav">
-        @for (variant of variants; track variant.id) {
-          <a
-            [href]="'#' + variant.id"
-            class="nav-item"
-            (click)="scrollToSection(variant.id); $event.preventDefault()"
-          >
-            <span class="nav-icon">{{ variant.icon }}</span>
-            <span class="nav-title">{{ variant.title }}</span>
-          </a>
-        }
-      </nav>
-    </aside>
+  <demo-tabs [variants]="exampleVariants">
+    <!-- Basic Layouts Tab -->
+    <div slot="basic">
+      <div class="demo-container">
+        <section class="demo-section">
+          <div class="section-header">
+            <h2>📋 Basic Layouts</h2>
+            <p>Different sidebar layouts and structures</p>
+          </div>
 
-    <div class="examples-content">
-      <!-- Playground -->
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Explore all sidebar features with real-time customization</p>
-        </div>
-        <app-modern-sidebar-playground></app-modern-sidebar-playground>
-      </section>
-
-      <!-- Basic Sidebar -->
-      <section class="demo-section" id="basic">
-        <div class="section-header">
-          <h2>📋 Basic Sidebar</h2>
-          <p>Simple sidebar with essential navigation items</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="My App"
-                selected-id="dashboard"
-                accent-color="#6366f1"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
+          <div class="demo-grid">
+            <!-- Basic Sidebar -->
+            <div class="demo-card">
+              <h3>Default Sidebar</h3>
+              <p class="card-description">Standard sidebar with brand and navigation</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="My App"
+                    selected-id="dashboard"
+                    accent-color="#6366f1"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "analytics", label: "Analytics", icon: "fas fa-chart-bar" },
+                      { id: "settings", label: "Settings", icon: "fas fa-cog" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
               </div>
+              <app-code-block [code]="basicSidebarCode()" language="html" title="Basic Sidebar"></app-code-block>
+            </div>
+
+            <!-- Minimal Sidebar -->
+            <div class="demo-card">
+              <h3>Minimal Sidebar</h3>
+              <p class="card-description">Clean, minimal navigation items</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Simple App"
+                    selected-id="home"
+                    [items]='[
+                      { id: "home", label: "Home", icon: "fas fa-home" },
+                      { id: "about", label: "About", icon: "fas fa-info-circle" },
+                      { id: "contact", label: "Contact", icon: "fas fa-envelope" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="minimalCode()" language="html" title="Minimal Sidebar"></app-code-block>
+            </div>
+
+            <!-- Compact/Collapsed Sidebar -->
+            <div class="demo-card">
+              <h3>Compact (Collapsed)</h3>
+              <p class="card-description">Icon-only compact sidebar</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Compact"
+                    selected-id="dashboard"
+                    collapsed="true"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "projects", label: "Projects", icon: "fas fa-folder" },
+                      { id: "settings", label: "Settings", icon: "fas fa-cog" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="compactCode()" language="html" title="Compact Sidebar"></app-code-block>
             </div>
           </div>
-          <app-code-block [code]="basicCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const basicSidebar = document.querySelector('#basic app-modern-sidebar');
-          if (basicSidebar) {
-            basicSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-bar' },
-              { id: 'settings', label: 'Settings', icon: 'fas fa-cog' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Nested Navigation -->
-      <section class="demo-section" id="nested">
-        <div class="section-header">
-          <h2>🗂️ Nested Navigation</h2>
-          <p>Multi-level menus with expandable children</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Project Hub"
-                selected-id="active"
-                accent-color="#10b981"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="nestedCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const nestedSidebar = document.querySelector('#nested app-modern-sidebar');
-          if (nestedSidebar) {
-            nestedSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              {
-                id: 'projects',
-                label: 'Projects',
-                icon: 'fas fa-folder',
-                children: [
-                  { id: 'active', label: 'Active Projects', icon: 'fas fa-circle' },
-                  { id: 'archived', label: 'Archived', icon: 'fas fa-archive' },
-                  { id: 'templates', label: 'Templates', icon: 'fas fa-file' }
-                ]
-              },
-              {
-                id: 'team',
-                label: 'Team',
-                icon: 'fas fa-users',
-                children: [
-                  { id: 'members', label: 'Members', icon: 'fas fa-user' },
-                  { id: 'roles', label: 'Roles', icon: 'fas fa-shield-alt' }
-                ]
-              }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- With Badges -->
-      <section class="demo-section" id="badges">
-        <div class="section-header">
-          <h2>🔔 With Badges</h2>
-          <p>Display notification counts and status indicators</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Notification App"
-                selected-id="messages"
-                accent-color="#f59e0b"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="badgesCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const badgesSidebar = document.querySelector('#badges app-modern-sidebar');
-          if (badgesSidebar) {
-            badgesSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 12 },
-              { id: 'notifications', label: 'Notifications', icon: 'fas fa-bell', badge: 'New' },
-              { id: 'tasks', label: 'Tasks', icon: 'fas fa-tasks', badge: 5 },
-              { id: 'calendar', label: 'Calendar', icon: 'fas fa-calendar' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- User Profile -->
-      <section class="demo-section" id="user-profile">
-        <div class="section-header">
-          <h2>👤 User Profile</h2>
-          <p>Integrated user section with avatar and role display</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Enterprise App"
-                selected-id="dashboard"
-                accent-color="#8b5cf6"
-                user-name="Sarah Johnson"
-                user-role="Product Manager"
-                user-avatar="https://i.pravatar.cc/100?img=44"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="userProfileCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const userProfileSidebar = document.querySelector('#user-profile app-modern-sidebar');
-          if (userProfileSidebar) {
-            userProfileSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'projects', label: 'Projects', icon: 'fas fa-folder' },
-              { id: 'team', label: 'Team', icon: 'fas fa-users' },
-              { id: 'reports', label: 'Reports', icon: 'fas fa-chart-line' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Collapsed State -->
-      <section class="demo-section" id="collapsed">
-        <div class="section-header">
-          <h2>↔️ Collapsed State</h2>
-          <p>Compact icon-only view with tooltips</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container collapsed">
-              <app-modern-sidebar
-                brand-name="Compact UI"
-                selected-id="dashboard"
-                accent-color="#ec4899"
-                collapsed="true"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area expanded">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="collapsedCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const collapsedSidebar = document.querySelector('#collapsed app-modern-sidebar');
-          if (collapsedSidebar) {
-            collapsedSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-bar' },
-              { id: 'projects', label: 'Projects', icon: 'fas fa-folder' },
-              { id: 'settings', label: 'Settings', icon: 'fas fa-cog' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Dark Theme -->
-      <section class="demo-section" id="dark-theme">
-        <div class="section-header">
-          <h2>🌙 Dark Theme</h2>
-          <p>Built-in dark mode support</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview dark">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Dark Mode App"
-                selected-id="dashboard"
-                accent-color="#3b82f6"
-                theme="dark"
-                user-name="Alex Smith"
-                user-role="Developer"
-                user-avatar="https://i.pravatar.cc/100?img=33"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="darkThemeCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const darkThemeSidebar = document.querySelector('#dark-theme app-modern-sidebar');
-          if (darkThemeSidebar) {
-            darkThemeSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'projects', label: 'Projects', icon: 'fas fa-folder', badge: 8 },
-              { id: 'code', label: 'Code', icon: 'fas fa-code' },
-              { id: 'terminal', label: 'Terminal', icon: 'fas fa-terminal' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Custom Colors -->
-      <section class="demo-section" id="custom-colors">
-        <div class="section-header">
-          <h2>🎨 Custom Colors</h2>
-          <p>Customizable accent colors for branding</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Colorful App"
-                selected-id="dashboard"
-                accent-color="#14b8a6"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="customColorsCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const customColorsSidebar = document.querySelector('#custom-colors app-modern-sidebar');
-          if (customColorsSidebar) {
-            customColorsSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'design', label: 'Design', icon: 'fas fa-palette' },
-              { id: 'media', label: 'Media', icon: 'fas fa-image' },
-              { id: 'settings', label: 'Settings', icon: 'fas fa-cog' }
-            ];
-          }
-        </script>
-      </section>
-
-      <!-- Advanced Layout -->
-      <section class="demo-section" id="advanced">
-        <div class="section-header">
-          <h2>⚡ Advanced Layout</h2>
-          <p>Complex navigation with nested items, badges, and user profile</p>
-        </div>
-        <div class="demo-card">
-          <div class="preview-box sidebar-preview">
-            <div class="sidebar-container">
-              <app-modern-sidebar
-                brand-name="Advanced Dashboard"
-                selected-id="active-tasks"
-                accent-color="#6366f1"
-                user-name="Emily Davis"
-                user-role="Team Lead"
-                user-avatar="https://i.pravatar.cc/100?img=25"
-              ></app-modern-sidebar>
-            </div>
-            <div class="content-area">
-              <div class="content-header"></div>
-              <div class="content-body">
-                <div class="content-line w-75"></div>
-                <div class="content-line w-50"></div>
-                <div class="content-line w-100"></div>
-              </div>
-            </div>
-          </div>
-          <app-code-block [code]="advancedCode" language="html"></app-code-block>
-        </div>
-
-        <script>
-          const advancedSidebar = document.querySelector('#advanced app-modern-sidebar');
-          if (advancedSidebar) {
-            advancedSidebar.items = [
-              { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-              { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-line', badge: 3 },
-              {
-                id: 'projects',
-                label: 'Projects',
-                icon: 'fas fa-folder',
-                badge: 12,
-                children: [
-                  { id: 'active-projects', label: 'Active', icon: 'fas fa-circle', badge: 8 },
-                  { id: 'paused', label: 'Paused', icon: 'fas fa-pause-circle', badge: 2 },
-                  { id: 'completed', label: 'Completed', icon: 'fas fa-check-circle', badge: 2 }
-                ]
-              },
-              {
-                id: 'tasks',
-                label: 'Tasks',
-                icon: 'fas fa-tasks',
-                badge: 15,
-                children: [
-                  { id: 'active-tasks', label: 'Active', icon: 'fas fa-play', badge: 10 },
-                  { id: 'pending', label: 'Pending', icon: 'fas fa-clock', badge: 5 }
-                ]
-              },
-              { id: 'calendar', label: 'Calendar', icon: 'fas fa-calendar' },
-              { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 'New' },
-              { id: 'team', label: 'Team', icon: 'fas fa-users' },
-              { id: 'reports', label: 'Reports', icon: 'fas fa-file-alt' },
-              { id: 'settings', label: 'Settings', icon: 'fas fa-cog' }
-            ];
-          }
-        </script>
-      </section>
+        </section>
+      </div>
     </div>
-  </div>
+
+    <!-- Features & Variants Tab -->
+    <div slot="features">
+      <div class="demo-container">
+        <section class="demo-section">
+          <div class="section-header">
+            <h2>✨ Features & Variants</h2>
+            <p>Advanced features like nested navigation, badges, themes, and user profiles</p>
+          </div>
+
+          <div class="demo-grid">
+            <!-- Nested Navigation -->
+            <div class="demo-card">
+              <h3>Nested Navigation</h3>
+              <p class="card-description">Multi-level menu items with children</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Project Hub"
+                    selected-id="active"
+                    accent-color="#10b981"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      {
+                        id: "projects",
+                        label: "Projects",
+                        icon: "fas fa-folder",
+                        children: [
+                          { id: "active", label: "Active Projects", icon: "fas fa-circle" },
+                          { id: "archived", label: "Archived", icon: "fas fa-archive" }
+                        ]
+                      }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="nestedNavCode()" language="html" title="Nested Navigation"></app-code-block>
+            </div>
+
+            <!-- With Badges -->
+            <div class="demo-card">
+              <h3>With Badges</h3>
+              <p class="card-description">Items with notification badges</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Notification Hub"
+                    selected-id="messages"
+                    accent-color="#f59e0b"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "messages", label: "Messages", icon: "fas fa-envelope", badge: 12 },
+                      { id: "notifications", label: "Notifications", icon: "fas fa-bell", badge: "New" },
+                      { id: "tasks", label: "Tasks", icon: "fas fa-tasks", badge: 5 }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="badgesCode()" language="html" title="With Badges"></app-code-block>
+            </div>
+
+            <!-- User Profile -->
+            <div class="demo-card">
+              <h3>User Profile Section</h3>
+              <p class="card-description">Sidebar with user avatar and info</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Enterprise App"
+                    selected-id="dashboard"
+                    accent-color="#8b5cf6"
+                    user-name="Sarah Johnson"
+                    user-role="Product Manager"
+                    user-avatar="https://i.pravatar.cc/100?img=44"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "projects", label: "Projects", icon: "fas fa-folder" },
+                      { id: "team", label: "Team", icon: "fas fa-users" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="userProfileCode()" language="html" title="User Profile"></app-code-block>
+            </div>
+
+            <!-- Light Theme -->
+            <div class="demo-card">
+              <h3>Light Theme</h3>
+              <p class="card-description">Bright, minimal light theme</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Light Theme App"
+                    selected-id="dashboard"
+                    accent-color="#06b6d4"
+                    theme="light"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "analytics", label: "Analytics", icon: "fas fa-chart-line" },
+                      { id: "settings", label: "Settings", icon: "fas fa-cog" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="lightThemeCode()" language="html" title="Light Theme"></app-code-block>
+            </div>
+
+            <!-- Dark Theme -->
+            <div class="demo-card">
+              <h3>Dark Theme</h3>
+              <p class="card-description">Dark mode with user profile</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Dark Mode App"
+                    selected-id="dashboard"
+                    accent-color="#3b82f6"
+                    theme="dark"
+                    user-name="Alex Smith"
+                    user-role="Developer"
+                    user-avatar="https://i.pravatar.cc/100?img=33"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "projects", label: "Projects", icon: "fas fa-folder", badge: 8 },
+                      { id: "terminal", label: "Terminal", icon: "fas fa-terminal" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="darkThemeCode()" language="html" title="Dark Theme"></app-code-block>
+            </div>
+
+            <!-- Custom Colors -->
+            <div class="demo-card">
+              <h3>Custom Accent Colors</h3>
+              <p class="card-description">Different color schemes</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Colorful App"
+                    selected-id="dashboard"
+                    accent-color="#14b8a6"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "design", label: "Design", icon: "fas fa-palette" },
+                      { id: "media", label: "Media", icon: "fas fa-image" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="customColorsCode()" language="html" title="Custom Colors"></app-code-block>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Advanced Examples Tab -->
+    <div slot="advanced">
+      <div class="demo-container">
+        <section class="demo-section">
+          <div class="section-header">
+            <h2>🚀 Advanced Examples</h2>
+            <p>Complex layouts with multiple features combined</p>
+          </div>
+
+          <div class="demo-grid">
+            <!-- Full Featured -->
+            <div class="demo-card full-width">
+              <h3>Full Featured Dashboard</h3>
+              <p class="card-description">Complete admin dashboard with nested menus, badges, and user profile</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Advanced Dashboard"
+                    selected-id="active-tasks"
+                    accent-color="#6366f1"
+                    user-name="Emily Davis"
+                    user-role="Team Lead"
+                    user-avatar="https://i.pravatar.cc/100?img=25"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home" },
+                      { id: "analytics", label: "Analytics", icon: "fas fa-chart-line", badge: 3 },
+                      {
+                        id: "projects",
+                        label: "Projects",
+                        icon: "fas fa-folder",
+                        badge: 12,
+                        children: [
+                          { id: "active-projects", label: "Active", icon: "fas fa-circle", badge: 8 },
+                          { id: "completed", label: "Completed", icon: "fas fa-check-circle", badge: 2 }
+                        ]
+                      },
+                      {
+                        id: "tasks",
+                        label: "Tasks",
+                        icon: "fas fa-tasks",
+                        badge: 15,
+                        children: [
+                          { id: "active-tasks", label: "Active", icon: "fas fa-play", badge: 10 },
+                          { id: "pending", label: "Pending", icon: "fas fa-clock", badge: 5 }
+                        ]
+                      },
+                      { id: "messages", label: "Messages", icon: "fas fa-envelope", badge: "New" },
+                      { id: "reports", label: "Reports", icon: "fas fa-file-alt" },
+                      { id: "settings", label: "Settings", icon: "fas fa-cog" }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="fullFeaturedCode()" language="html" title="Full Featured Dashboard"></app-code-block>
+            </div>
+
+            <!-- Multi-Level Navigation -->
+            <div class="demo-card full-width">
+              <h3>Multi-Level Navigation</h3>
+              <p class="card-description">Three-level deep nested menus</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Multi-Level Navigation"
+                    selected-id="user-settings"
+                    accent-color="#ec4899"
+                    [items]='[
+                      { id: "overview", label: "Overview", icon: "fas fa-chart-pie" },
+                      {
+                        id: "workspace",
+                        label: "Workspace",
+                        icon: "fas fa-briefcase",
+                        children: [
+                          { id: "teams", label: "Teams", icon: "fas fa-users" },
+                          { id: "projects", label: "Projects", icon: "fas fa-folder" }
+                        ]
+                      },
+                      {
+                        id: "management",
+                        label: "Management",
+                        icon: "fas fa-sliders-h",
+                        children: [
+                          { id: "users", label: "Users", icon: "fas fa-user-tie" },
+                          { id: "roles", label: "Roles", icon: "fas fa-shield-alt" },
+                          { id: "permissions", label: "Permissions", icon: "fas fa-lock" }
+                        ]
+                      },
+                      {
+                        id: "preferences",
+                        label: "Preferences",
+                        icon: "fas fa-cog",
+                        children: [
+                          { id: "account-settings", label: "Account", icon: "fas fa-user" },
+                          { id: "user-settings", label: "User Preferences", icon: "fas fa-sliders-h" },
+                          { id: "notifications", label: "Notifications", icon: "fas fa-bell" }
+                        ]
+                      }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="multiLevelCode()" language="html" title="Multi-Level Navigation"></app-code-block>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="demo-card full-width">
+              <h3>Admin Control Panel</h3>
+              <p class="card-description">Administrator interface with management sections</p>
+              <div class="preview-box sidebar-preview">
+                <div class="sidebar-container">
+                  <app-modern-sidebar
+                    brand-name="Admin Panel"
+                    selected-id="dashboard"
+                    accent-color="#10b981"
+                    user-name="Admin User"
+                    user-role="Administrator"
+                    user-avatar="https://i.pravatar.cc/100?img=1"
+                    [items]='[
+                      { id: "dashboard", label: "Dashboard", icon: "fas fa-home", badge: 0 },
+                      {
+                        id: "management",
+                        label: "User Management",
+                        icon: "fas fa-users",
+                        children: [
+                          { id: "all-users", label: "All Users", icon: "fas fa-list" },
+                          { id: "roles-perms", label: "Roles & Permissions", icon: "fas fa-key" }
+                        ]
+                      },
+                      {
+                        id: "content",
+                        label: "Content Management",
+                        icon: "fas fa-file-alt",
+                        children: [
+                          { id: "pages", label: "Pages", icon: "fas fa-file" },
+                          { id: "posts", label: "Posts", icon: "fas fa-newspaper" }
+                        ]
+                      },
+                      { id: "analytics", label: "Analytics", icon: "fas fa-chart-bar", badge: 5 }
+                    ]'>
+                  </app-modern-sidebar>
+                </div>
+              </div>
+              <app-code-block [code]="formCode()" language="html" title="Admin Panel"></app-code-block>
+            </div>
+          </div>
+        </section>
+
+        <!-- Playground & Docs -->
+        <app-modern-sidebar-playground></app-modern-sidebar-playground>
+      </div>
+    </div>
+  </demo-tabs>
 </div>
