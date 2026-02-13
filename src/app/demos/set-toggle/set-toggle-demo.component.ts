@@ -16,17 +16,11 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     TogglePlaygroundComponent,
     CodeBlockComponent,
+    DemoTabsComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-toggle-demo.component.html',
   styleUrl: './set-toggle-demo.component.scss',
-  imports: [
-    CommonModule,
-    FormsModule,
-    TogglePlaygroundComponent,
-    CodeBlockComponent,
-    DemoTabsComponent,
-  ],
 })
 export class SetToggleDemoComponent {
   exampleVariants = [
