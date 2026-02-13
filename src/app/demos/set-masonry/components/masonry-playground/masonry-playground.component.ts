@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
@@ -14,6 +14,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     AppCheckboxValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './masonry-playground.component.html',
   styleUrl: './masonry-playground.component.scss',
 })
@@ -39,6 +40,24 @@ export class MasonryPlaygroundComponent implements OnInit {
     itemMaxWidth: 400,
     breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
   };
+
+  layoutTypeOptions = [
+    { label: 'Masonry', value: 'masonry' },
+    { label: 'Grid', value: 'grid' },
+    { label: 'Columns', value: 'columns' },
+  ];
+
+  sortByOptions = [
+    { label: 'None', value: '' },
+    { label: 'Title', value: 'title' },
+    { label: 'Date', value: 'date' },
+    { label: 'Category', value: 'category' },
+  ];
+
+  sortOrderOptions = [
+    { label: 'Ascending', value: 'asc' },
+    { label: 'Descending', value: 'desc' },
+  ];
 
   playgroundItems = '';
   filterCategory = '';
