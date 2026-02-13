@@ -103,7 +103,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   `,
   styles: [
     `
-      @use '../../../../styles/playground-base.scss';
+      @use '../../../../../styles/playground-base.scss';
     `,
   ],
 })
