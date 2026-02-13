@@ -57,7 +57,7 @@ export class SetAvatarDemoComponent {
     return this.variants.filter(v => v.id !== 'playground');
   }
 
-  playgroundCode = `<app-avatar name="John Doe" status="online" size="64px"></app-avatar>`;
+
 
   basicCode = `<!-- Sizes and Shapes -->
 <app-avatar name="LC" size="large" shape="circle"></app-avatar>

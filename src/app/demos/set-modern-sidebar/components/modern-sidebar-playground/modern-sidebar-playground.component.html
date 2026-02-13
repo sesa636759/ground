@@ -1,5 +1,6 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <h4 class="section-title">Branding</h4>
     <div class="control-grid">
       <div class="control-group">
         <label>Brand Name</label>
@@ -8,9 +9,30 @@
 
       <div class="control-group">
         <label>Accent Color</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.accentColor"
+          (change)="updateConfig()"
+          [options]="accentColorOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Custom Accent</label>
         <app-input type="color" [(ngModel)]="pgConfig.accentColor" (input)="updateConfig()" />
       </div>
 
+      <div class="control-group">
+        <label>Theme</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (change)="updateConfig()"
+          [options]="themeOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <h4 class="section-title">User Profile</h4>
+    <div class="control-grid">
       <div class="control-group">
         <label>User Name</label>
         <app-input type="text" [(ngModel)]="pgConfig.userName" (input)="updateConfig()" />
@@ -21,23 +43,16 @@
         <app-input type="text" [(ngModel)]="pgConfig.userRole" (input)="updateConfig()" />
       </div>
 
-      <div class="control-group">
-        <label>Theme</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Light', value: 'light' },
-            { label: 'Dark', value: 'dark' },
-          ]"
-        ></ui-dropdown>
+      <div class="control-group full-width">
+        <label>Avatar URL</label>
+        <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (input)="updateConfig()" />
       </div>
     </div>
 
+    <h4 class="section-title">Options</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
-        Collapsed
+        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" label="Collapsed" />
       </label>
     </div>
   </div>
@@ -50,27 +65,32 @@
       </div>
     </div>
 
-    <div class="preview-stage">
-      <div class="sidebar-container" [style.width]="pgConfig.collapsed ? '80px' : '280px'">
+    <div class="preview-stage sidebar-stage" [class.dark-theme]="pgConfig.theme === 'dark'">
+      <div class="sidebar-wrapper">
         <app-modern-sidebar
-          [brandName]="pgConfig.brandName"
-          [selectedId]="pgConfig.selectedId"
-          [accentColor]="pgConfig.accentColor"
-          [userName]="pgConfig.userName"
-          [userRole]="pgConfig.userRole"
-          [userAvatar]="pgConfig.userAvatar"
-          [collapsed]="pgConfig.collapsed"
-          [items]="sidebarItems"
-          (itemSelected)="onItemSelected($event)"
-          (sidebarToggled)="onSidebarToggled($event.detail)"
-          (profileClicked)="onProfileClick()"
+          [attr.brand-name]="pgConfig.brandName"
+          [attr.selected-id]="pgConfig.selectedId"
+          [attr.accent-color]="pgConfig.accentColor"
+          [attr.user-name]="pgConfig.userName"
+          [attr.user-role]="pgConfig.userRole"
+          [attr.user-avatar]="pgConfig.userAvatar"
+          [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
+          [attr.theme]="pgConfig.theme"
+          (item-selected)="onItemSelected($event)"
+          (sidebar-toggled)="onSidebarToggled($event)"
+          (profile-clicked)="onProfileClick()"
         ></app-modern-sidebar>
       </div>
 
-      <div class="content-placeholder">
-        <h3>Main Content Area</h3>
-        <p>This is where your app content goes.</p>
-        <div class="dummy-card" *ngFor="let i of [1, 2]"></div>
+      <div class="content-area-preview">
+        <div class="content-header-sim">
+          <h3>Main Content Area</h3>
+          <p>Interact with the sidebar to see events logged</p>
+        </div>
+        <div class="content-cards">
+          <div class="sim-card"></div>
+          <div class="sim-card"></div>
+        </div>
       </div>
     </div>
 
@@ -89,3 +109,51 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Set initial items for playground sidebar
+  setTimeout(() => {
+    const playgroundSidebar = document.querySelector('app-modern-sidebar-playground app-modern-sidebar');
+    if (playgroundSidebar) {
+      playgroundSidebar.items = [
+        { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
+        { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-line', badge: 3 },
+        {
+          id: 'projects',
+          label: 'Projects',
+          icon: 'fas fa-folder',
+          badge: 12,
+          children: [
+            { id: 'active', label: 'Active Projects', icon: 'fas fa-circle', badge: 8 },
+            { id: 'paused', label: 'Paused', icon: 'fas fa-pause-circle', badge: 2 },
+            { id: 'completed', label: 'Completed', icon: 'fas fa-check-circle', badge: 2 }
+          ]
+        },
+        {
+          id: 'tasks',
+          label: 'Tasks',
+          icon: 'fas fa-tasks',
+          badge: 15,
+          children: [
+            { id: 'active-tasks', label: 'Active', icon: 'fas fa-play', badge: 10 },
+            { id: 'pending', label: 'Pending', icon: 'fas fa-clock', badge: 5 }
+          ]
+        },
+        { id: 'calendar', label: 'Calendar', icon: 'fas fa-calendar' },
+        { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 'New' },
+        { id: 'team', label: 'Team', icon: 'fas fa-users' },
+        {
+          id: 'settings',
+          label: 'Settings',
+          icon: 'fas fa-cog',
+          children: [
+            { id: 'profile', label: 'Profile', icon: 'fas fa-user' },
+            { id: 'security', label: 'Security', icon: 'fas fa-lock' },
+            { id: 'notifications', label: 'Notifications', icon: 'fas fa-bell' }
+          ]
+        },
+        { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' }
+      ];
+    }
+  }, 100);
+</script>
