@@ -9,12 +9,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ModernSidebarPlaygroundComponent,
-    CodeBlockComponent,
-  ],
+ 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-modern-sidebar-demo.component.html',
   styleUrl: './set-modern-sidebar-demo.component.scss',
@@ -27,11 +22,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   ],
 })
 export class SetModernSidebarDemoComponent {
-  exampleVariants = [
-    { id: 'basic', title: 'Basic Layouts', icon: '📋' },
-    { id: 'features', title: 'Features & Variants', icon: '✨' },
-    { id: 'advanced', title: 'Advanced Examples', icon: '🚀' },
-  ];
+ 
 
   exampleVariants = [
     { id: 'basic', title: 'Basic Layouts', icon: '📋' },
