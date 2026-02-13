@@ -4,224 +4,621 @@
     Resizable split panels with support for horizontal/vertical layouts, nested splitters, collapsible panels, and state persistence.
   </p>
 
-  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+  <demo-tabs
+    [variants]="exampleVariants"
+    (variantChange)="scrollToSection($event)"
+  >
     <!-- Examples Slot -->
     <div slot="examples">
-      <!-- Basic Layouts -->
-      <section class="demo-section" id="basic">
+      <!-- Horizontal Basic -->
+      <demo-section id="horizontal-basic">
         <div class="section-header">
-          <h2>📐 Basic Layouts</h2>
-          <p>Horizontal and vertical split configurations</p>
+          <h2>↔️ Horizontal Basic</h2>
+          <p>Default horizontal split with resizable panels.</p>
         </div>
-
-        <!-- Horizontal Split -->
-        <div class="demo-card full-width">
-          <h3>Horizontal Split</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="basicPanels">
-              <div slot="panel-0" class="p-content"><strong>Left Panel</strong><p>Drag the gutter to resize. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Right Panel</strong><p>It adjusts automatically. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="horizontalCode()" language="html" title="Horizontal Split Code"></app-code-block>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal">
+                <div slot="panel-0" class="p-content"><strong>Left Panel</strong><p>Drag the gutter to resize.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Right Panel</strong><p>Adjusts automatically.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="horizontalBasicCode()" />
+          </demo-card>
         </div>
+      </demo-section>
 
-        <!-- Vertical Split -->
-        <div class="demo-card full-width">
-          <h3>Vertical Split</h3>
-          <div class="preview-box">
-            <app-splitter direction="vertical" [panels]="basicPanels">
-              <div slot="panel-0" class="p-content"><strong>Top Panel</strong><p>Drag the gutter to resize vertically.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Bottom Panel</strong><p>The bottom panel adjusts to remaining space.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="verticalCode()" language="html" title="Vertical Split Code"></app-code-block>
-        </div>
-
-        <!-- Three Panels -->
-        <div class="demo-card full-width">
-          <h3>Three Panels Layout</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="threePanels">
-              <div slot="panel-0" class="p-content"><strong>Panel 1</strong><p>First panel content</p></div>
-              <div slot="panel-1" class="p-content"><strong>Panel 2</strong><p>Middle panel content</p></div>
-              <div slot="panel-2" class="p-content"><strong>Panel 3</strong><p>Last panel content</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="threePanelCode()" language="html" title="Three Panels Code"></app-code-block>
-        </div>
-
-        <!-- Custom Sizes -->
-        <div class="demo-card full-width">
-          <h3>Custom Initial Sizes</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="customSizePanels">
-              <div slot="panel-0" class="p-content"><strong>30% Panel</strong><p>This panel starts at 30% width.</p></div>
-              <div slot="panel-1" class="p-content"><strong>70% Panel</strong><p>This panel starts at 70% width.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="customSizeCode()" language="html" title="Custom Sizes Code"></app-code-block>
-        </div>
-      </section>
-
-      <!-- Premium Features -->
-      <section class="demo-section" id="premium">
+      <!-- Vertical Basic -->
+      <demo-section id="vertical-basic">
         <div class="section-header">
-          <h2>💎 Premium Features</h2>
-          <p>Advanced capabilities including collapsible panels, constraints, and state persistence</p>
+          <h2>↕️ Vertical Basic</h2>
+          <p>Vertical split layout for stacking content.</p>
         </div>
-
-        <!-- Collapsible Panels -->
-        <div class="demo-card full-width">
-          <h3>Collapsible Panels</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
-              <div slot="panel-0" class="p-content"><strong>Sidebar</strong><p>Click the collapse button or double-click the gutter to collapse this panel.</p><p>• Dashboard<br>• Projects<br>• Settings</p></div>
-              <div slot="panel-1" class="p-content"><strong>Main Content</strong><p>This is the main content area that expands when the sidebar collapses.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="collapsibleCode()" language="html" title="Collapsible Code"></app-code-block>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="vertical">
+                <div slot="panel-0" class="p-content"><strong>Top Panel</strong><p>Drag vertically to resize.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Bottom Panel</strong><p>Bottom content area.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="verticalBasicCode()" />
+          </demo-card>
         </div>
+      </demo-section>
 
-        <!-- Min/Max Constraints -->
-        <div class="demo-card full-width">
-          <h3>Min/Max Constraints</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="constraintsPanels">
-              <div slot="panel-0" class="p-content"><strong>Min: 20%, Max: 40%</strong><p>This panel cannot be resized below 20% or above 40%.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Flexible Panel</strong><p>This panel adjusts to fill the remaining space.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="constraintsCode()" language="html" title="Constraints Code"></app-code-block>
-        </div>
-
-        <!-- Snap to Threshold -->
-        <div class="demo-card full-width">
-          <h3>Snap to Threshold</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
-              <div slot="panel-0" class="p-content"><strong>Snap Enabled</strong><p>When resizing near min/max values, the panel will snap to those values automatically.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Content Panel</strong><p>Try resizing to see the snap effect!</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="snapCode()" language="html" title="Snap Code"></app-code-block>
-        </div>
-
-        <!-- State Persistence -->
-        <div class="demo-card full-width">
-          <h3>State Persistence</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
-              <div slot="panel-0" class="p-content"><strong>Persistent Layout</strong><p>Resize this splitter and refresh the page - your layout will be restored!</p><p>State is saved to localStorage.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Content Area</strong><p>The panel sizes are automatically saved and restored.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="persistenceCode()" language="html" title="Persistence Code"></app-code-block>
-        </div>
-      </section>
-
-      <!-- Nested Layouts -->
-      <section class="demo-section" id="nested">
+      <!-- Two Panels -->
+      <demo-section id="two-panels">
         <div class="section-header">
-          <h2>🎯 Nested Layouts</h2>
-          <p>Complex layouts with nested horizontal and vertical splitters</p>
+          <h2>▯ Two Panels</h2>
+          <p>Standard two-panel layout with constraints.</p>
         </div>
-
-        <!-- IDE-Style Layout -->
-        <div class="demo-card full-width">
-          <h3>IDE-Style Layout</h3>
-          <div class="preview-box ide-preview">
-            <app-splitter direction="horizontal">
-              <div slot="panel-0" style="height: 100%">
-                <app-splitter direction="vertical" style="height: 100%">
-                  <div slot="panel-0" class="p-content dark-p"><strong>📁 File Explorer</strong><p>src/<br>📄 index.ts<br>📄 app.ts</p></div>
-                  <div slot="panel-1" class="p-content dark-p"><strong>Outline</strong><p>Functions, Classes, Variables...</p></div>
-                </app-splitter>
-              </div>
-              <div slot="panel-1" style="height: 100%">
-                <app-splitter direction="vertical" style="height: 100%">
-                  <div slot="panel-0" class="p-content"><strong>Editor</strong><div class="code-example">function hello() {{ '{' }}<br>  console.log("Hello World");<br>{{ '}' }}</div></div>
-                  <div slot="panel-1" class="p-content dark-p"><strong>Terminal</strong><p>$ npm run dev</p></div>
-                </app-splitter>
-              </div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="nestedCode()" language="html" title="Nested Layout Code"></app-code-block>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="basicPanels">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong><p>Min: 20%, Max: 80%</p></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong><p>Min: 20%, Max: 80%</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="twoPanelsCode()" />
+          </demo-card>
         </div>
-      </section>
+      </demo-section>
 
-      <!-- Styling Options -->
-      <section class="demo-section" id="styling">
+      <!-- Three Panels -->
+      <demo-section id="three-panels">
         <div class="section-header">
-          <h2>🎨 Styling Options</h2>
-          <p>Themes, rounded corners, and visual customization</p>
+          <h2>▮ Three Panels</h2>
+          <p>Three-column layout with multiple gutters.</p>
         </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="threePanels">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+                <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="threePanelsCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
 
-        <!-- Dark Theme -->
-        <div class="demo-card full-width">
-          <h3>Dark Theme</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" theme="dark">
-              <div slot="panel-0" class="p-content dark-p"><strong>Dark Panel 1</strong><p>Dark theme with custom styling.</p></div>
-              <div slot="panel-1" class="p-content dark-p"><strong>Dark Panel 2</strong><p>Automatically styled for dark mode.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="darkThemeCode()" language="html" title="Dark Theme Code"></app-code-block>
+      <!-- Four Panels -->
+      <demo-section id="four-panels">
+        <div class="section-header">
+          <h2>▭ Four Panels</h2>
+          <p>Four-column layout for complex interfaces.</p>
         </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="fourPanels">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+                <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
+                <div slot="panel-3" class="p-content"><strong>Panel 4</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="fourPanelsCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
 
-        <!-- Rounded & Elevated -->
-        <div class="demo-card full-width">
-          <h3>Rounded & Elevated</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" rounded elevated>
-              <div slot="panel-0" class="p-content"><strong>Styled Panel</strong><p>With rounded corners and elevation.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Beautiful Design</strong><p>Premium visual appearance.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="roundedCode()" language="html" title="Rounded & Elevated Code"></app-code-block>
+      <!-- Custom Sizes -->
+      <demo-section id="custom-sizes">
+        <div class="section-header">
+          <h2>📏 Custom Panel Sizes</h2>
+          <p>Panels with predefined initial sizes (30% / 70%).</p>
         </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="customSizePanels">
+                <div slot="panel-0" class="p-content"><strong>30% Panel</strong><p>Starts at 30% width.</p></div>
+                <div slot="panel-1" class="p-content"><strong>70% Panel</strong><p>Starts at 70% width.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="customSizesCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
 
-        <!-- Custom Gutter -->
-        <div class="demo-card full-width">
-          <h3>Custom Gutter</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
-              <div slot="panel-0" class="p-content"><strong>Custom Gutter</strong><p>12px green gutter with custom hover color.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Panel 2</strong><p>Hover over the gutter to see the effect.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="customGutterCode()" language="html" title="Custom Gutter Code"></app-code-block>
+      <!-- Equal Sizes -->
+      <demo-section id="equal-sizes">
+        <div class="section-header">
+          <h2>⚖️ Equal Panel Sizes</h2>
+          <p>Three panels with equal distribution (33.33% each).</p>
         </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="equalSizePanels">
+                <div slot="panel-0" class="p-content"><strong>33.33%</strong></div>
+                <div slot="panel-1" class="p-content"><strong>33.33%</strong></div>
+                <div slot="panel-2" class="p-content"><strong>33.34%</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="equalSizesCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
 
-        <!-- No Gutter Icon -->
-        <div class="demo-card full-width">
-          <h3>Clean Look (No Icon)</h3>
-          <div class="preview-box">
-            <app-splitter direction="horizontal" show-gutter-icon="false">
-              <div slot="panel-0" class="p-content"><strong>Clean Look</strong><p>Gutter without icon for minimal design.</p></div>
-              <div slot="panel-1" class="p-content"><strong>Minimalist</strong><p>Simple and clean interface.</p></div>
-            </app-splitter>
-          </div>
-          <app-code-block [code]="noIconCode()" language="html" title="No Icon Code"></app-code-block>
+      <!-- Min/Max Constraints -->
+      <demo-section id="min-max-constraints">
+        <div class="section-header">
+          <h2>📐 Min/Max Constraints</h2>
+          <p>Panel constrained between 20% and 40% width.</p>
         </div>
-      </section>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="constraintsPanels">
+                <div slot="panel-0" class="p-content"><strong>Min: 20%, Max: 40%</strong><p>Cannot resize beyond these limits.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Flexible Panel</strong><p>Fills remaining space.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="minMaxConstraintsCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Collapsible Panels -->
+      <demo-section id="collapsible-panels">
+        <div class="section-header">
+          <h2>🔄 Collapsible Panels</h2>
+          <p>Panel that can collapse to minimum size.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="collapsiblePanels">
+                <div slot="panel-0" class="p-content"><strong>Collapsible Sidebar</strong><p>Click collapse button to hide.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Main Content</strong><p>Expands when sidebar collapses.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="collapsiblePanelsCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Double-Click Collapse -->
+      <demo-section id="double-click-collapse">
+        <div class="section-header">
+          <h2>👆 Double-Click Collapse</h2>
+          <p>Double-click the gutter to collapse/expand.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
+                <div slot="panel-0" class="p-content"><strong>Double-click gutter</strong><p>Quick collapse/expand.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Main Content</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="doubleClickCollapseCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Snap Threshold -->
+      <demo-section id="snap-threshold">
+        <div class="section-header">
+          <h2>🧲 Snap to Threshold</h2>
+          <p>Panels snap to min/max values when close (20px threshold).</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
+                <div slot="panel-0" class="p-content"><strong>Snap Enabled</strong><p>Try resizing near boundaries.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Content Panel</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="snapThresholdCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Persistent State -->
+      <demo-section id="persist-state">
+        <div class="section-header">
+          <h2>💾 Persistent State</h2>
+          <p>Panel sizes saved to localStorage and restored on refresh.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
+                <div slot="panel-0" class="p-content"><strong>Persistent Layout</strong><p>Resize and refresh the page!</p></div>
+                <div slot="panel-1" class="p-content"><strong>Content Area</strong><p>Your layout is saved automatically.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="persistStateCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Gutter Small -->
+      <demo-section id="gutter-small">
+        <div class="section-header">
+          <h2>🔸 Small Gutter (4px)</h2>
+          <p>Minimal gutter size for compact layouts.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" gutter-size="4">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="gutterSmallCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Gutter Medium -->
+      <demo-section id="gutter-medium">
+        <div class="section-header">
+          <h2>🔹 Medium Gutter (8px)</h2>
+          <p>Default gutter size for most layouts.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" gutter-size="8">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="gutterMediumCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Gutter Large -->
+      <demo-section id="gutter-large">
+        <div class="section-header">
+          <h2>🔶 Large Gutter (12px)</h2>
+          <p>Prominent gutter for easier dragging.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" gutter-size="12">
+                <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="gutterLargeCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Custom Gutter Color -->
+      <demo-section id="custom-gutter-color">
+        <div class="section-header">
+          <h2>🎨 Custom Gutter Color</h2>
+          <p>Customize gutter appearance with custom color.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
+                <div slot="panel-0" class="p-content"><strong>Custom Green Gutter</strong><p>Hover to see the effect.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="customGutterColorCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- No Gutter Icon -->
+      <demo-section id="no-gutter-icon">
+        <div class="section-header">
+          <h2>⚪ No Gutter Icon</h2>
+          <p>Clean look without drag handle icon.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" show-gutter-icon="false">
+                <div slot="panel-0" class="p-content"><strong>Clean Look</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Minimalist Panel</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="noGutterIconCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Animated -->
+      <demo-section id="animated">
+        <div class="section-header">
+          <h2>✨ Animated Transitions</h2>
+          <p>Smooth animations during resize and collapse.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" animated>
+                <div slot="panel-0" class="p-content"><strong>Smooth transitions</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Animated resize</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="animatedCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Not Animated -->
+      <demo-section id="not-animated">
+        <div class="section-header">
+          <h2>⏸️ No Animation</h2>
+          <p>Instant resize without transitions.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [animated]="false">
+                <div slot="panel-0" class="p-content"><strong>Instant resize</strong></div>
+                <div slot="panel-1" class="p-content"><strong>No animation</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="notAnimatedCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Rounded -->
+      <demo-section id="rounded">
+        <div class="section-header">
+          <h2>🔘 Rounded Corners</h2>
+          <p>Modern rounded corner styling.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" rounded>
+                <div slot="panel-0" class="p-content"><strong>Rounded corners</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Modern style</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="roundedCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Elevated -->
+      <demo-section id="elevated">
+        <div class="section-header">
+          <h2>⬆️ Elevated Style</h2>
+          <p>Material design elevation with shadow.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" elevated>
+                <div slot="panel-0" class="p-content"><strong>Elevated shadow</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Material design</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="elevatedCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Rounded & Elevated -->
+      <demo-section id="rounded-elevated">
+        <div class="section-header">
+          <h2>💎 Rounded & Elevated</h2>
+          <p>Combined rounded corners and elevation for premium look.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" rounded elevated>
+                <div slot="panel-0" class="p-content"><strong>Premium look</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Beautiful design</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="roundedElevatedCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Theme Light -->
+      <demo-section id="theme-light">
+        <div class="section-header">
+          <h2>☀️ Light Theme</h2>
+          <p>Default light theme styling.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" theme="light">
+                <div slot="panel-0" class="p-content"><strong>Light theme</strong></div>
+                <div slot="panel-1" class="p-content"><strong>Default styling</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="themeLightCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Theme Dark -->
+      <demo-section id="theme-dark">
+        <div class="section-header">
+          <h2>🌙 Dark Theme</h2>
+          <p>Dark theme with inverted colors.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" theme="dark">
+                <div slot="panel-0" class="p-content dark-p"><strong>Dark panel 1</strong></div>
+                <div slot="panel-1" class="p-content dark-p"><strong>Dark panel 2</strong></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="themeDarkCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Nested Horizontal + Vertical -->
+      <demo-section id="nested-horizontal-vertical">
+        <div class="section-header">
+          <h2>🎯 Nested H+V</h2>
+          <p>Horizontal splitter containing vertical splitter.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 400px">
+              <app-splitter direction="horizontal">
+                <div slot="panel-0" class="p-content"><strong>Left Sidebar</strong></div>
+                <div slot="panel-1" style="height: 100%">
+                  <app-splitter direction="vertical" style="height: 100%">
+                    <div slot="panel-0" class="p-content"><strong>Top Content</strong></div>
+                    <div slot="panel-1" class="p-content"><strong>Bottom Content</strong></div>
+                  </app-splitter>
+                </div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="nestedHorizontalVerticalCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Nested IDE Layout -->
+      <demo-section id="nested-ide-layout">
+        <div class="section-header">
+          <h2>💻 IDE-Style Layout</h2>
+          <p>Complex IDE-style layout with four quadrants.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 500px">
+              <app-splitter direction="horizontal">
+                <div slot="panel-0" style="height: 100%">
+                  <app-splitter direction="vertical" style="height: 100%">
+                    <div slot="panel-0" class="p-content"><strong>📁 File Explorer</strong><p>src/<br>📄 index.ts<br>📄 app.ts</p></div>
+                    <div slot="panel-1" class="p-content"><strong>Outline</strong><p>Functions, Classes...</p></div>
+                  </app-splitter>
+                </div>
+                <div slot="panel-1" style="height: 100%">
+                  <app-splitter direction="vertical" style="height: 100%">
+                    <div slot="panel-0" class="p-content"><strong>Editor</strong><div class="code-example">function hello() {{ '{' }}<br>&nbsp;&nbsp;console.log("Hello");<br>{{ '}' }}</div></div>
+                    <div slot="panel-1" class="p-content dark-p"><strong>Terminal</strong><p>$ npm run dev</p></div>
+                  </app-splitter>
+                </div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="nestedIdeLayoutCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Nested Triple -->
+      <demo-section id="nested-triple">
+        <div class="section-header">
+          <h2>🏗️ Triple Nested</h2>
+          <p>Three levels of nested splitters for complex layouts.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 500px">
+              <app-splitter direction="horizontal">
+                <div slot="panel-0" class="p-content"><strong>Sidebar</strong></div>
+                <div slot="panel-1" style="height: 100%">
+                  <app-splitter direction="vertical" style="height: 100%">
+                    <div slot="panel-0" class="p-content"><strong>Header</strong></div>
+                    <div slot="panel-1" style="height: 100%">
+                      <app-splitter direction="horizontal" style="height: 100%">
+                        <div slot="panel-0" class="p-content"><strong>Content</strong></div>
+                        <div slot="panel-1" class="p-content"><strong>Inspector</strong></div>
+                      </app-splitter>
+                    </div>
+                  </app-splitter>
+                </div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="nestedTripleCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Responsive Vertical -->
+      <demo-section id="responsive-vertical">
+        <div class="section-header">
+          <h2>📱 Responsive Vertical</h2>
+          <p>Vertical layout optimized for mobile/responsive design.</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 400px">
+              <app-splitter direction="vertical">
+                <div slot="panel-0" class="p-content"><strong>Mobile-friendly vertical</strong><p>Stacks well on small screens.</p></div>
+                <div slot="panel-1" class="p-content"><strong>Bottom section</strong><p>Easy to resize on touch devices.</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="responsiveVerticalCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Sidebar + Content -->
+      <demo-section id="sidebar-content">
+        <div class="section-header">
+          <h2>📂 Sidebar + Content</h2>
+          <p>Classic sidebar layout (25% / 75%).</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 300px">
+              <app-splitter direction="horizontal" [panels]="[{ size: 25 }, { size: 75 }]">
+                <div slot="panel-0" class="p-content"><strong>Navigation Sidebar</strong><p>25% width</p></div>
+                <div slot="panel-1" class="p-content"><strong>Main Content Area</strong><p>75% width</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="sidebarContentCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
+
+      <!-- Header-Body-Footer -->
+      <demo-section id="header-body-footer">
+        <div class="section-header">
+          <h2>📄 Header-Body-Footer</h2>
+          <p>Classic three-tier vertical layout (10% / 80% / 10%).</p>
+        </div>
+        <div class="demo-grid">
+          <demo-card>
+            <div class="preview-box" style="height: 400px">
+              <app-splitter direction="vertical" [panels]="[{ size: 10 }, { size: 80 }, { size: 10 }]">
+                <div slot="panel-0" class="p-content"><strong>Header</strong><p>10% height</p></div>
+                <div slot="panel-1" class="p-content"><strong>Body Content</strong><p>80% height</p></div>
+                <div slot="panel-2" class="p-content"><strong>Footer</strong><p>10% height</p></div>
+              </app-splitter>
+            </div>
+            <app-code-block [code]="headerBodyFooterCode()" />
+          </demo-card>
+        </div>
+      </demo-section>
     </div>
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure directions, themes, and interactive behaviors</p>
-        </div>
-        <app-splitter-playground></app-splitter-playground>
-        <app-code-block [code]="playgroundCode()" language="html" title="Splitter Usage"></app-code-block>
-      </section>
+      <app-splitter-playground />
     </div>
 
-    <!-- Documentation Slot -->
+    <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="splitter"></app-component-documentation>
+      <app-component-documentation componentName="splitter" />
     </div>
   </demo-tabs>
 </div>
