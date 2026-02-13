@@ -1,5 +1,6 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <h4 class="section-title">Basic Animation</h4>
     <div class="control-grid">
       <div class="control-group">
         <label>Animation</label>
@@ -63,8 +64,117 @@
           [options]="easingOptions"
         ></ui-dropdown>
       </div>
+
+      <div class="control-group">
+        <label>Threshold</label>
+        <app-input
+          type="number"
+          min="0"
+          max="1"
+          step="0.1"
+          [(ngModel)]="pgConfig.threshold"
+          (input)="updateConfig()"
+        />
+      </div>
     </div>
 
+    <h4 class="section-title">3D & Effects</h4>
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Blur Amount</label>
+        <app-input
+          type="number"
+          min="0"
+          max="50"
+          step="1"
+          [(ngModel)]="pgConfig.blurAmount"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Perspective</label>
+        <app-input
+          type="number"
+          min="500"
+          max="2000"
+          step="100"
+          [(ngModel)]="pgConfig.perspective"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Rotate X (deg)</label>
+        <app-input
+          type="number"
+          min="-180"
+          max="180"
+          step="15"
+          [(ngModel)]="pgConfig.rotateX"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Rotate Y (deg)</label>
+        <app-input
+          type="number"
+          min="-180"
+          max="180"
+          step="15"
+          [(ngModel)]="pgConfig.rotateY"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Rotate Z (deg)</label>
+        <app-input
+          type="number"
+          min="-360"
+          max="360"
+          step="15"
+          [(ngModel)]="pgConfig.rotateZ"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Scale</label>
+        <app-input
+          type="number"
+          min="0.1"
+          max="3"
+          step="0.1"
+          [(ngModel)]="pgConfig.scale"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Stagger (ms)</label>
+        <app-input
+          type="number"
+          min="0"
+          max="500"
+          step="50"
+          [(ngModel)]="pgConfig.stagger"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Text Mode</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.textMode"
+          (change)="updateConfig()"
+          [options]="textModeOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <h4 class="section-title">Options</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <app-checkbox
@@ -78,6 +188,20 @@
           [(ngModel)]="pgConfig.once"
           (change)="updateConfig()"
           label="Once"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.mirror"
+          (change)="updateConfig()"
+          label="Mirror"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.scrub"
+          (change)="updateConfig()"
+          label="Scrub"
         ></app-checkbox>
       </label>
     </div>
@@ -100,8 +224,19 @@
         [attr.delay]="pgConfig.delay"
         [attr.offset]="pgConfig.offset"
         [attr.easing]="pgConfig.easing"
+        [attr.threshold]="pgConfig.threshold"
+        [attr.blur-amount]="pgConfig.blurAmount > 0 ? pgConfig.blurAmount : null"
+        [attr.perspective]="pgConfig.perspective !== 1000 ? pgConfig.perspective : null"
+        [attr.rotate-x]="pgConfig.rotateX !== 0 ? pgConfig.rotateX : null"
+        [attr.rotate-y]="pgConfig.rotateY !== 0 ? pgConfig.rotateY : null"
+        [attr.rotate-z]="pgConfig.rotateZ !== 0 ? pgConfig.rotateZ : null"
+        [attr.scale]="pgConfig.scale !== 1 ? pgConfig.scale : null"
+        [attr.stagger]="pgConfig.stagger > 0 ? pgConfig.stagger : null"
+        [attr.text-mode]="pgConfig.textMode !== 'none' ? pgConfig.textMode : null"
         [attr.repeat]="pgConfig.repeat"
         [attr.once]="pgConfig.once"
+        [attr.mirror]="pgConfig.mirror"
+        [attr.scrub]="pgConfig.scrub"
         (animate)="onAnimate($event)"
       >
         <div class="animated-content">
