@@ -34,11 +34,20 @@ export class TooltipPlaygroundComponent implements OnInit {
     followCursor: false,
     html: false,
     showGlow: false,
-    customColor: '',
-    textColor: '',
+    customColor: '#3DCD58',
+    textColor: '#ffffff',
     transitionDuration: 200,
     targetText: 'Hover Me',
     targetIcon: 'fas fa-info-circle',
+    elevation: 0,
+    offset: 8,
+    transitionTiming: 'ease',
+    arrowSize: 8,
+    trackMouse: false,
+    openAtMousePosition: false,
+    autoShift: true,
+    portal: true,
+    useCustomColor: false,
   };
 
   eventLog = signal<string[]>([]);
@@ -56,21 +65,33 @@ export class TooltipPlaygroundComponent implements OnInit {
     if (this.pgConfig.variant !== 'dark') code += `  variant="${this.pgConfig.variant}"\n`;
     if (this.pgConfig.shape !== 'rounded') code += `  shape="${this.pgConfig.shape}"\n`;
     if (this.pgConfig.animation !== 'fade') code += `  animation="${this.pgConfig.animation}"\n`;
+    if (this.pgConfig.elevation > 0) code += `  elevation="${this.pgConfig.elevation}"\n`;
 
     if (!this.pgConfig.arrow) code += `  [arrow]="false"\n`;
     if (this.pgConfig.showDelay > 0) code += `  [showDelay]="${this.pgConfig.showDelay}"\n`;
     if (this.pgConfig.hideDelay > 0) code += `  [hideDelay]="${this.pgConfig.hideDelay}"\n`;
     if (this.pgConfig.maxWidth !== 250) code += `  [maxWidth]="${this.pgConfig.maxWidth}"\n`;
+    if (this.pgConfig.offset !== 8) code += `  [offset]="${this.pgConfig.offset}"\n`;
 
     if (this.pgConfig.interactive) code += `  [interactive]="true"\n`;
     if (this.pgConfig.followCursor) code += `  [followCursor]="true"\n`;
     if (this.pgConfig.html) code += `  [html]="true"\n`;
     if (this.pgConfig.showGlow) code += `  [showGlow]="true"\n`;
+    if (this.pgConfig.trackMouse) code += `  [trackMouse]="true"\n`;
+    if (this.pgConfig.openAtMousePosition) code += `  [openAtMousePosition]="true"\n`;
+    if (!this.pgConfig.autoShift) code += `  [autoShift]="false"\n`;
+    if (!this.pgConfig.portal) code += `  [portal]="false"\n`;
 
-    if (this.pgConfig.customColor) code += `  custom-color="${this.pgConfig.customColor}"\n`;
-    if (this.pgConfig.textColor) code += `  text-color="${this.pgConfig.textColor}"\n`;
+    if (this.pgConfig.useCustomColor) {
+      if (this.pgConfig.customColor) code += `  custom-color="${this.pgConfig.customColor}"\n`;
+      if (this.pgConfig.textColor) code += `  text-color="${this.pgConfig.textColor}"\n`;
+    }
+
     if (this.pgConfig.transitionDuration !== 200)
       code += `  [transitionDuration]="${this.pgConfig.transitionDuration}"\n`;
+    if (this.pgConfig.transitionTiming !== 'ease')
+      code += `  transition-timing="${this.pgConfig.transitionTiming}"\n`;
+    if (this.pgConfig.arrowSize !== 8) code += `  [arrowSize]="${this.pgConfig.arrowSize}"\n`;
 
     code += `>\n`;
     code += `  <ui-button slot="target" class="btn-target">\n`;

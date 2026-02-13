@@ -1,57 +1,13 @@
-.demo-container {
-  padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  .intro-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-}
-
-.demo-section {
-  margin-bottom: 60px;
-
-  .section-header {
-    margin-bottom: 32px;
-    text-align: center;
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    p {
-      color: var(--text-tertiary);
-      font-size: 1.1rem;
-    }
-  }
-}
-
 .position-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 120px);
-  gap: 24px;
+  gap: var(--space-xl);
   max-width: 800px;
   margin: 0 auto;
   background: var(--surface-1);
-  padding: 40px;
-  border-radius: 20px;
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
   border: 1px dashed var(--border-color);
 
   .pos-cell {
@@ -73,69 +29,21 @@
   }
 }
 
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.demo-card {
-  background: var(--surface-1);
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow: hidden;
-
-  h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-  }
-}
-
-.preview-box {
-  height: 150px;
-  background: rgba(var(--bg-secondary-rgb), 0.3);
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &.glass-bg {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-}
-
-.demo-btn{
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  background: var(--primary);
-  color: white;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-2px);
+// Fix for tooltip clipping issues
+// Tooltips need to overflow their containers
+:host ::ng-deep {
+  .demo-container, 
+  .demo-card, 
+  .preview-box {
+    overflow: visible !important;
   }
 
-  &.accent { background: var(--secondary); }
-  
-  &.dark { background: #1e293b; }
-  &.light { background: #f8fafc; color: #1e293b; border: 1px solid #e2e8f0; }
-  &.glass { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.4); }
-  &.success { background: #10b981; }
-  &.warning { background: #f59e0b; }
-  &.error { background: #ef4444; }
+  .demo-card {
+    // Prevent creating a new stacking context which traps fixed/absolute elements
+    transform: none !important; 
+    
+    &:hover {
+      transform: none !important;
+    }
+  }
 }

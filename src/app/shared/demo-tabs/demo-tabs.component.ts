@@ -1,4 +1,13 @@
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  signal,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface DemoVariant {
@@ -59,7 +68,12 @@ export interface DemoVariant {
             <aside class="examples-sidebar" *ngIf="variants && variants.length > 0">
               <div class="sidebar-header">Variations</div>
               <nav>
-                <a *ngFor="let v of variants" (click)="onVariantClick(v.id)" class="sidebar-item">
+                <a
+                  *ngFor="let v of variants"
+                  (click)="onVariantClick(v.id)"
+                  class="sidebar-item"
+                  [class.active]="selectedVariantId() === v.id"
+                >
                   <span class="v-icon" *ngIf="v.icon">{{ v.icon }}</span>
                   <div class="v-text">
                     <div class="v-title">{{ v.title }}</div>
@@ -205,10 +219,10 @@ export interface DemoVariant {
       }
 
       .examples-sidebar {
-        width: 280px;
+        width: 240px;
         border-right: 1px solid var(--border-color);
         background: #fcfdfe;
-        padding: var(--space-lg);
+        padding: var(--space-md);
         overflow-y: auto;
         flex-shrink: 0;
 
@@ -222,19 +236,19 @@ export interface DemoVariant {
           text-transform: uppercase;
           letter-spacing: 0.1em;
           color: var(--text-tertiary);
-          margin-bottom: var(--space-lg);
+          margin-bottom: var(--space-md);
           padding-left: 0.5rem;
         }
 
         .sidebar-item {
           display: flex;
-          gap: 1rem;
-          padding: 0.85rem 1rem;
+          gap: 0.75rem;
+          padding: 0.6rem 0.75rem;
           border-radius: var(--radius-xl);
           color: var(--text-secondary);
           cursor: pointer;
           transition: all var(--transition-fast);
-          margin-bottom: 4px;
+          margin-bottom: 2px;
           border: 1px solid transparent;
 
           &:hover {
@@ -243,6 +257,22 @@ export interface DemoVariant {
             border-color: #f1f5f9;
             color: var(--primary);
             transform: translateX(4px);
+          }
+
+          &.active {
+            background: rgba(61, 205, 88, 0.08);
+            border-color: #3dcd58;
+            color: #059669;
+            box-shadow: 0 4px 12px rgba(61, 205, 88, 0.1);
+
+            .v-title {
+              color: #059669;
+            }
+
+            .v-icon {
+              transform: scale(1.1);
+              color: #3dcd58;
+            }
           }
 
           .v-icon {
@@ -263,7 +293,7 @@ export interface DemoVariant {
       .examples-content {
         flex: 1;
         overflow-y: auto;
-        padding: var(--space-2xl);
+        padding: var(--space-xl);
         background: #ffffff;
         scroll-behavior: smooth;
       }
@@ -271,19 +301,37 @@ export interface DemoVariant {
       .pane-playground,
       .pane-docs {
         overflow-y: auto;
-        padding: var(--space-2xl);
+        padding: var(--space-xl);
         background: #ffffff;
       }
     `,
   ],
 })
-export class DemoTabsComponent {
+export class DemoTabsComponent implements OnInit, OnChanges {
   @Input() variants: DemoVariant[] = [];
   @Output() variantChange = new EventEmitter<string>();
 
   active: 'playground' | 'examples' | 'docs' = 'examples';
+  selectedVariantId = signal<string>('');
+
+  ngOnInit() {
+    this.setDefaultSelection();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['variants']) {
+      this.setDefaultSelection();
+    }
+  }
+
+  private setDefaultSelection() {
+    if (this.variants && this.variants.length > 0 && !this.selectedVariantId()) {
+      this.selectedVariantId.set(this.variants[0].id);
+    }
+  }
 
   onVariantClick(id: string) {
+    this.selectedVariantId.set(id);
     this.variantChange.emit(id);
   }
 }

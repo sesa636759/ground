@@ -1,36 +1,4 @@
-.demo-container {
-  padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 40px;
-    text-align: center;
-  }
-}
-
 .demo-section {
-  margin-bottom: 60px;
-
-  .section-header {
-    margin-bottom: 24px;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    p {
-      color: var(--text-tertiary);
-      font-size: 1rem;
-    }
-  }
-
   h3 {
     margin-bottom: 16px;
     font-size: 1.1rem;
@@ -40,15 +8,7 @@
   }
 }
 
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-}
-
 .demo-card {
-  display: flex;
-  flex-direction: column;
   gap: 12px;
 
   .btn-toggle {
@@ -68,6 +28,7 @@
     }
   }
 }
+
 
 .glass-showcase {
   padding: 60px;

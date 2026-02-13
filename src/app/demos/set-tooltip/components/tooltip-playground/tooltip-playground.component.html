@@ -52,7 +52,6 @@
             { label: 'Warning', value: 'warning' },
             { label: 'Error', value: 'error' },
             { label: 'Glass', value: 'glass' },
-            { label: 'Custom', value: 'custom' },
           ]"
         ></ui-dropdown>
       </div>
@@ -89,6 +88,85 @@
         <label>Max Width (px)</label>
         <app-input type="number" [(ngModel)]="pgConfig.maxWidth" (input)="updateConfig()" />
       </div>
+
+      <div class="control-group">
+        <label>Offset (px)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.offset" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Elevation (0-5)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.elevation" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Arrow Size (px)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.arrowSize" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Show Delay (ms)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.showDelay" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Hide Delay (ms)</label>
+        <app-input type="number" [(ngModel)]="pgConfig.hideDelay" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Transition Duration (ms)</label>
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.transitionDuration"
+          (input)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Transition Timing</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.transitionTiming"
+          (change)="updateConfig()"
+          [options]="[
+            { label: 'Ease', value: 'ease' },
+            { label: 'Linear', value: 'linear' },
+            { label: 'Ease In', value: 'ease-in' },
+            { label: 'Ease Out', value: 'ease-out' },
+            { label: 'Ease In Out', value: 'ease-in-out' },
+          ]"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Target Text</label>
+        <app-input type="text" [(ngModel)]="pgConfig.targetText" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Target Icon Class</label>
+        <app-input type="text" [(ngModel)]="pgConfig.targetIcon" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group" *ngIf="pgConfig.useCustomColor">
+        <label>Custom BG Color</label>
+        <input
+          type="color"
+          [(ngModel)]="pgConfig.customColor"
+          (input)="updateConfig()"
+          style="height: 40px; width: 100%; cursor: pointer"
+        />
+      </div>
+
+      <div class="control-group" *ngIf="pgConfig.useCustomColor">
+        <label>Custom Text Color</label>
+        <input
+          type="color"
+          [(ngModel)]="pgConfig.textColor"
+          (input)="updateConfig()"
+          style="height: 40px; width: 100%; cursor: pointer"
+        />
+      </div>
     </div>
 
     <div class="checkbox-grid">
@@ -108,6 +186,23 @@
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow Effect
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.trackMouse" (change)="updateConfig()" /> Track Mouse
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (change)="updateConfig()" /> Open
+        at Mouse
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.autoShift" (change)="updateConfig()" /> Auto Shift
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.portal" (change)="updateConfig()" /> Portal
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.useCustomColor" (change)="updateConfig()" /> Use Custom
+        Colors
       </label>
     </div>
   </div>
@@ -130,12 +225,21 @@
           [followCursor]="pgConfig.followCursor"
           [html]="pgConfig.html"
           [showGlow]="pgConfig.showGlow"
-          [customColor]="pgConfig.customColor"
-          [textColor]="pgConfig.textColor"
+          [customColor]="pgConfig.useCustomColor ? pgConfig.customColor : ''"
+          [textColor]="pgConfig.useCustomColor ? pgConfig.textColor : ''"
+          [elevation]="pgConfig.elevation"
+          [offset]="pgConfig.offset"
+          [transitionDuration]="pgConfig.transitionDuration"
+          [transitionTiming]="pgConfig.transitionTiming"
+          [arrowSize]="pgConfig.arrowSize"
+          [trackMouse]="pgConfig.trackMouse"
+          [openAtMousePosition]="pgConfig.openAtMousePosition"
+          [autoShift]="pgConfig.autoShift"
+          [portal]="pgConfig.portal"
         >
           <ui-button slot="target" class="playground-target-btn">
-            <i class="fas fa-info-circle"></i>
-            Hover Me
+            <i [class]="pgConfig.targetIcon"></i>
+            {{ pgConfig.targetText }}
           </ui-button>
         </app-tooltip>
       </div>
