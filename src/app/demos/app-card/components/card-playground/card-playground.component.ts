@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
@@ -9,6 +9,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   standalone: true,
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
@@ -30,6 +31,45 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <div class="control-group">
               <label>Width</label>
               <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Layout</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.layout"
+                (change)="updateConfig()"
+                [options]="[
+                  { label: 'Vertical', value: 'vertical' },
+                  { label: 'Horizontal', value: 'horizontal' }
+                ]"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Size</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (change)="updateConfig()"
+                [options]="[
+                  { label: 'Small', value: 'small' },
+                  { label: 'Medium', value: 'medium' },
+                  { label: 'Large', value: 'large' }
+                ]"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Type</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="[
+                  { label: 'Default', value: 'default' },
+                  { label: 'Borderless', value: 'borderless' },
+                  { label: 'Inner', value: 'inner' }
+                ]"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Ribbon Text</label>
+              <app-input type="text" [(ngModel)]="pgConfig.ribbon" (change)="updateConfig()" placeholder="e.g., NEW" />
             </div>
           </div>
 
@@ -67,6 +107,38 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 label="Show Context Menu"
               ></app-checkbox>
             </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="closable"
+                [(ngModel)]="pgConfig.closable"
+                (change)="updateConfig()"
+                label="Closable"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="selectable"
+                [(ngModel)]="pgConfig.selectable"
+                (change)="updateConfig()"
+                label="Selectable"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="collapsible"
+                [(ngModel)]="pgConfig.collapsible"
+                (change)="updateConfig()"
+                label="Collapsible"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="glass"
+                [(ngModel)]="pgConfig.glass"
+                (change)="updateConfig()"
+                label="Glass Effect"
+              ></app-checkbox>
+            </div>
           </div>
         </div>
 
@@ -92,6 +164,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.flippable]="pgConfig.flippable ? '' : null"
           [attr.loading]="pgConfig.loading ? '' : null"
           [attr.show-menu]="pgConfig.showMenu ? '' : null"
+          [attr.closable]="pgConfig.closable ? '' : null"
+          [attr.selectable]="pgConfig.selectable ? '' : null"
+          [attr.collapsible]="pgConfig.collapsible ? '' : null"
+          [attr.glass]="pgConfig.glass ? '' : null"
+          [attr.layout]="pgConfig.layout"
+          [attr.size]="pgConfig.size"
+          [attr.type]="pgConfig.type"
+          [attr.ribbon]="pgConfig.ribbon || null"
+          [attr.ribbon-color]="pgConfig.ribbon ? pgConfig.ribbonColor : null"
           [attr.border-radius]="pgConfig.borderRadius"
           [attr.width]="pgConfig.width"
           [menuItems]="menuJson"
@@ -128,6 +209,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     </div>
   `,
   styleUrl: './card-playground.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CardPlaygroundComponent {
   pgConfig = {
@@ -138,6 +221,15 @@ export class CardPlaygroundComponent {
     showMenu: true,
     borderRadius: '16px',
     width: '340px',
+    closable: false,
+    selectable: false,
+    collapsible: false,
+    glass: false,
+    layout: 'vertical',
+    size: 'medium',
+    type: 'default',
+    ribbon: '',
+    ribbonColor: 'blue',
   };
 
   variantOptions = [
@@ -168,6 +260,14 @@ export class CardPlaygroundComponent {
     if (this.pgConfig.flippable) code += `  flippable\n`;
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.showMenu) code += `  show-menu [menuItems]="menu"\n`;
+    if (this.pgConfig.closable) code += `  closable\n`;
+    if (this.pgConfig.selectable) code += `  selectable\n`;
+    if (this.pgConfig.collapsible) code += `  collapsible\n`;
+    if (this.pgConfig.glass) code += `  glass="true"\n`;
+    if (this.pgConfig.layout !== 'vertical') code += `  layout="${this.pgConfig.layout}"\n`;
+    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
+    if (this.pgConfig.type !== 'default') code += `  type="${this.pgConfig.type}"\n`;
+    if (this.pgConfig.ribbon) code += `  ribbon="${this.pgConfig.ribbon}" ribbon-color="${this.pgConfig.ribbonColor}"\n`;
     code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
     code += `  width="${this.pgConfig.width}"\n`;
     code += '>\n';
@@ -175,6 +275,9 @@ export class CardPlaygroundComponent {
     code += '  <div slot="header"><h3>Card Title</h3></div>\n';
     code += '  <div slot="content">Card body here...</div>\n';
     code += '  <div slot="footer"><ui-button label="Action"></ui-button></div>\n';
+    if (this.pgConfig.flippable) {
+      code += '  <div slot="back-content">Back side content...</div>\n';
+    }
     code += '</ui-card>';
 
     this.generatedCode.set(code);
@@ -193,6 +296,15 @@ export class CardPlaygroundComponent {
       showMenu: true,
       borderRadius: '16px',
       width: '340px',
+      closable: false,
+      selectable: false,
+      collapsible: false,
+      glass: false,
+      layout: 'vertical',
+      size: 'medium',
+      type: 'default',
+      ribbon: '',
+      ribbonColor: 'blue',
     };
     this.updateConfig();
   }
