@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, ModernSidebarPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ModernSidebarPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-modern-sidebar-demo.component.html',
   styleUrl: './set-modern-sidebar-demo.component.scss',
 })
 export class SetModernSidebarDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'features', title: 'Key Features', icon: '✨' },
     { id: 'basic', title: 'Basic Usage', icon: '📋' },
   ];

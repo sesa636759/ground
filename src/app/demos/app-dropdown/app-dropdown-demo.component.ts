@@ -1,11 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DropdownPlaygroundComponent } from './components/dropdown-playground/dropdown-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-dropdown-demo',
@@ -16,22 +15,19 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CodeBlockComponent,
     DropdownPlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dropdown-demo.component.html',
   styleUrl: './app-dropdown-demo.component.scss',
 })
 export class AppDropdownDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'multi-select', name: 'Multi Selection', icon: '📝', color: '#3b82f6' },
-    { id: 'cascading', name: 'Hierarchical', icon: '🌳', color: '#10b981' },
-    { id: 'sizes', name: 'Size Scaling', icon: '📏', color: '#f59e0b' },
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'multi-select', title: 'Multi Selection', icon: '📝', color: '#3b82f6' },
+    { id: 'cascading', title: 'Hierarchical', icon: '🌳', color: '#10b981' },
+    { id: 'sizes', title: 'Size Scaling', icon: '📏', color: '#f59e0b' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   basicOptions = JSON.stringify([
     { label: 'Option 1', value: '1' },

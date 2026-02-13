@@ -14,8 +14,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
     RadioPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
@@ -27,7 +25,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetRadioDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
     { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
     { id: 'layouts', title: 'Layouts', icon: '📐' },

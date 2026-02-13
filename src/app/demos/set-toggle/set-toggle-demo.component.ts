@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { TogglePlaygroundComponent } from './components/toggle-playground/toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-toggle-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, TogglePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TogglePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-toggle-demo.component.html',
   styleUrl: './set-toggle-demo.component.scss',
 })
 export class SetToggleDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'layouts', title: 'Layout Options', icon: '📐' },
     { id: 'variants', title: 'Visual Variants', icon: '🎭' },
     { id: 'premium-features', title: 'Premium Features', icon: '💎' },

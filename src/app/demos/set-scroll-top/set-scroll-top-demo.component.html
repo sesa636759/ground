@@ -1,133 +1,143 @@
 <div class="demo-container">
   <h1>⬆️ Scroll Top Component Demo</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure variants, positions, and scroll behaviors</p>
-    </div>
-    <app-scroll-top-playground></app-scroll-top-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Scroll Top Usage"
-      language="html"
-    ></app-code-block>
-    </section>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Style Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>🎭 Style Variants</h2>
+          <p>Different visual styles and shapes for the scroll button</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Filled (Default)</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="filled"
+                [alwaysVisible]="true"
+                position="bottom-right"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Outlined</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="outlined"
+                [alwaysVisible]="true"
+                position="bottom-right"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Circular</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="circular"
+                [alwaysVisible]="true"
+                position="bottom-right"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Rounded</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="rounded"
+                [alwaysVisible]="true"
+                position="bottom-right"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <!-- Style Variants -->
-    <section class="demo-section" id="variants">
-    <div class="section-header">
-      <h2>🎭 Style Variants</h2>
-      <p>Different visual styles and shapes for the scroll button</p>
+      <!-- Special Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Progress rings, pulse animations, and text labels</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card h-gradient">
+            <h3>Scroll Progress Ring</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                [showProgress]="true"
+                [alwaysVisible]="true"
+                color="#3DCD58"
+                position="bottom-center"
+                [offset]="0"
+              ></app-scroll-top>
+              <p class="box-note">Progress ring fills as you scroll</p>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Pulse Attention</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                [pulse]="true"
+                [alwaysVisible]="true"
+                color="#ef4444"
+                position="bottom-center"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Text Label</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                [showText]="true"
+                text="TOP"
+                [alwaysVisible]="true"
+                position="bottom-center"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Custom Icon</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                icon="fa-solid fa-chevron-up"
+                [alwaysVisible]="true"
+                variant="minimal"
+                position="bottom-center"
+                [offset]="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Filled (Default)</h3>
-        <div class="preview-box corner-preview">
-          <app-scroll-top
-            variant="filled"
-            [alwaysVisible]="true"
-            position="bottom-right"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Outlined</h3>
-        <div class="preview-box corner-preview">
-          <app-scroll-top
-            variant="outlined"
-            [alwaysVisible]="true"
-            position="bottom-right"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Circular</h3>
-        <div class="preview-box corner-preview">
-          <app-scroll-top
-            variant="circular"
-            [alwaysVisible]="true"
-            position="bottom-right"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Rounded</h3>
-        <div class="preview-box corner-preview">
-          <app-scroll-top
-            variant="rounded"
-            [alwaysVisible]="true"
-            position="bottom-right"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-    </div>
-    </section>
 
-    <!-- Special Features -->
-    <section class="demo-section" id="features">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Progress rings, pulse animations, and text labels</p>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure variants, positions, and scroll behaviors</p>
+        </div>
+        <app-scroll-top-playground></app-scroll-top-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Scroll Top Usage"
+          language="html"
+        ></app-code-block>
+      </section>
     </div>
-    <div class="demo-grid">
-      <div class="demo-card h-gradient">
-        <h3>Scroll Progress Ring</h3>
-        <div class="preview-box">
-          <app-scroll-top
-            [showProgress]="true"
-            [alwaysVisible]="true"
-            color="#3DCD58"
-            position="bottom-center"
-            [offset]="0"
-          ></app-scroll-top>
-          <p class="box-note">Progress ring fills as you scroll</p>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Pulse Attention</h3>
-        <div class="preview-box">
-          <app-scroll-top
-            [pulse]="true"
-            [alwaysVisible]="true"
-            color="#ef4444"
-            position="bottom-center"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Text Label</h3>
-        <div class="preview-box">
-          <app-scroll-top
-            [showText]="true"
-            text="TOP"
-            [alwaysVisible]="true"
-            position="bottom-center"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Custom Icon</h3>
-        <div class="preview-box">
-          <app-scroll-top
-            icon="fa-solid fa-chevron-up"
-            [alwaysVisible]="true"
-            variant="minimal"
-            position="bottom-center"
-            [offset]="0"
-          ></app-scroll-top>
-        </div>
-      </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="scroll-top"></app-component-documentation>
     </div>
-    </section>
   </demo-tabs>
 
   <!-- Long content to test actual window scrolling -->

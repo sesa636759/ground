@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-timeline-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, TimelinePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TimelinePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',
 })
 export class SetTimelineDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'layouts', title: 'Versatile Layouts', icon: '📐' },
     { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
     { id: 'variants', title: 'Style Variants', icon: '🎨' },

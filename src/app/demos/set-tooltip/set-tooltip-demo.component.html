@@ -4,194 +4,218 @@
     A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling.
   </p>
 
-  <demo-tabs>
-    <div slot="playground">
-      <div class="demo-container">
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test various configurations and behaviors</p>
-          </div>
-          <app-tooltip-playground></app-tooltip-playground>
-          <app-code-block [code]="playgroundCode" title="Tooltip Usage" language="html"></app-code-block>
-        </section>
-      </div>
-    </div>
-
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
     <div slot="examples">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
+      <!-- Positions -->
+      <section class="demo-section" id="positioning">
+        <div class="section-header">
+          <h2>📍 Positioning</h2>
+          <p>Tooltips can be positioned in 8 different directions</p>
         </div>
+        <div class="position-grid">
+          <div class="pos-cell top-left">
+            <app-tooltip content="Top Left" position="top-left">
+              <ui-button slot="target" class="demo-btn" label="Top Left"></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell top">
+            <app-tooltip content="Top Center" position="top">
+              <ui-button slot="target" class="demo-btn" label="Top"></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell top-right">
+            <app-tooltip content="Top Right" position="top-right">
+              <ui-button slot="target" class="demo-btn" label="Top Right"></ui-button>
+            </app-tooltip>
+          </div>
 
-        <div class="examples-content">
-          <!-- Positions -->
-          <section class="demo-section" id="positioning" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📍 Positioning</h2>
-              <p>Tooltips can be positioned in 8 different directions</p>
+          <div class="pos-cell left">
+            <app-tooltip content="Left" position="left">
+              <ui-button slot="target" class="demo-btn" label="Left"></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell center">
+            <app-tooltip content="Auto Position" position="auto">
+              <ui-button
+                slot="target"
+                class="demo-btn accent"
+                variant="primary"
+                label="Auto"
+              ></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell right">
+            <app-tooltip content="Right" position="right">
+              <ui-button slot="target" class="demo-btn" label="Right"></ui-button>
+            </app-tooltip>
+          </div>
+
+          <div class="pos-cell bottom-left">
+            <app-tooltip content="Bottom Left" position="bottom-left">
+              <ui-button slot="target" class="demo-btn" label="Bottom Left"></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell bottom">
+            <app-tooltip content="Bottom Center" position="bottom">
+              <ui-button slot="target" class="demo-btn" label="Bottom"></ui-button>
+            </app-tooltip>
+          </div>
+          <div class="pos-cell bottom-right">
+            <app-tooltip content="Bottom Right" position="bottom-right">
+              <ui-button slot="target" class="demo-btn" label="Bottom Right"></ui-button>
+            </app-tooltip>
+          </div>
+        </div>
+      </section>
+
+      <!-- Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>🎨 Variants & Themes</h2>
+          <p>Built-in color schemes for different contexts</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Dark (Default)</h3>
+            <div class="preview-box">
+              <app-tooltip content="Dark Theme" variant="dark">
+                <ui-button
+                  slot="target"
+                  class="demo-btn dark"
+                  variant="dark"
+                  label="Dark"
+                ></ui-button>
+              </app-tooltip>
             </div>
-    <div class="position-grid">
-      <div class="pos-cell top-left">
-        <app-tooltip content="Top Left" position="top-left">
-          <ui-button slot="target" class="demo-btn" label="Top Left"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell top">
-        <app-tooltip content="Top Center" position="top">
-          <ui-button slot="target" class="demo-btn" label="Top"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell top-right">
-        <app-tooltip content="Top Right" position="top-right">
-          <ui-button slot="target" class="demo-btn" label="Top Right"></ui-button>
-        </app-tooltip>
-      </div>
+          </div>
+          <div class="demo-card">
+            <h3>Light</h3>
+            <div class="preview-box">
+              <app-tooltip content="Light Theme" variant="light">
+                <ui-button
+                  slot="target"
+                  class="demo-btn light"
+                  variant="light"
+                  label="Light"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card" style="background: linear-gradient(135deg, #667eea, #764ba2)">
+            <h3>Glassmorphism</h3>
+            <div class="preview-box glass-bg">
+              <app-tooltip content="Glass Effect" variant="glass">
+                <ui-button
+                  slot="target"
+                  class="demo-btn glass"
+                  variant="ghost"
+                  label="Glass"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Success</h3>
+            <div class="preview-box">
+              <app-tooltip content="Operation Successful" variant="success">
+                <ui-button
+                  slot="target"
+                  class="demo-btn success"
+                  variant="success"
+                  label="Success"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Warning</h3>
+            <div class="preview-box">
+              <app-tooltip content="Warning Message" variant="warning">
+                <ui-button
+                  slot="target"
+                  class="demo-btn warning"
+                  variant="warning"
+                  label="Warning"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Error</h3>
+            <div class="preview-box">
+              <app-tooltip content="Error Occurred" variant="error">
+                <ui-button
+                  slot="target"
+                  class="demo-btn error"
+                  variant="danger"
+                  label="Error"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="pos-cell left">
-        <app-tooltip content="Left" position="left">
-          <ui-button slot="target" class="demo-btn" label="Left"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell center">
-        <app-tooltip content="Auto Position" position="auto">
-          <ui-button slot="target" class="demo-btn accent" variant="primary" label="Auto"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell right">
-        <app-tooltip content="Right" position="right">
-          <ui-button slot="target" class="demo-btn" label="Right"></ui-button>
-        </app-tooltip>
-      </div>
-
-      <div class="pos-cell bottom-left">
-        <app-tooltip content="Bottom Left" position="bottom-left">
-          <ui-button slot="target" class="demo-btn" label="Bottom Left"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell bottom">
-        <app-tooltip content="Bottom Center" position="bottom">
-          <ui-button slot="target" class="demo-btn" label="Bottom"></ui-button>
-        </app-tooltip>
-      </div>
-      <div class="pos-cell bottom-right">
-        <app-tooltip content="Bottom Right" position="bottom-right">
-          <ui-button slot="target" class="demo-btn" label="Bottom Right"></ui-button>
-        </app-tooltip>
-      </div>
+      <!-- Shapes & Animation -->
+      <section class="demo-section" id="shapes-animations">
+        <div class="section-header">
+          <h2>✨ Shapes & Animations</h2>
+          <p>Custom shapes and entry/exit transitions</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Pill Shape</h3>
+            <div class="preview-box">
+              <app-tooltip content="Pill Shape" shape="pill" position="top">
+                <ui-button
+                  slot="target"
+                  class="demo-btn"
+                  style="border-radius: 99px"
+                  label="Pill Button"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Bounce Animation</h3>
+            <div class="preview-box">
+              <app-tooltip content="Boing!" animation="bounce" position="top">
+                <ui-button slot="target" class="demo-btn" label="Bounce"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Scale Animation</h3>
+            <div class="preview-box">
+              <app-tooltip content="Scale Up" animation="scale" position="top">
+                <ui-button slot="target" class="demo-btn" label="Scale"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-          <!-- Variants -->
-          <section class="demo-section" id="variants">
-            <div class="section-header">
-              <h2>🎨 Variants & Themes</h2>
-              <p>Built-in color schemes for different contexts</p>
-            </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Dark (Default)</h3>
-        <div class="preview-box">
-          <app-tooltip content="Dark Theme" variant="dark">
-            <ui-button slot="target" class="demo-btn dark" variant="dark" label="Dark"></ui-button>
-          </app-tooltip>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Test various configurations and behaviors</p>
         </div>
-      </div>
-      <div class="demo-card">
-        <h3>Light</h3>
-        <div class="preview-box">
-          <app-tooltip content="Light Theme" variant="light">
-            <ui-button slot="target" class="demo-btn light" variant="light" label="Light"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card" style="background: linear-gradient(135deg, #667eea, #764ba2)">
-        <h3>Glassmorphism</h3>
-        <div class="preview-box glass-bg">
-          <app-tooltip content="Glass Effect" variant="glass">
-            <ui-button slot="target" class="demo-btn glass" variant="ghost" label="Glass"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Success</h3>
-        <div class="preview-box">
-          <app-tooltip content="Operation Successful" variant="success">
-            <ui-button slot="target" class="demo-btn success" variant="success" label="Success"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Warning</h3>
-        <div class="preview-box">
-          <app-tooltip content="Warning Message" variant="warning">
-            <ui-button slot="target" class="demo-btn warning" variant="warning" label="Warning"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-      <div class="demo-card">
-        <h3>Error</h3>
-        <div class="preview-box">
-          <app-tooltip content="Error Occurred" variant="error">
-            <ui-button slot="target" class="demo-btn error" variant="danger" label="Error"></ui-button>
-          </app-tooltip>
-        </div>
-      </div>
-    </div>
-  </section>
-
-          <!-- Shapes & Animation -->
-          <section class="demo-section" id="shapes-animations">
-            <div class="section-header">
-              <h2>✨ Shapes & Animations</h2>
-              <p>Custom shapes and entry/exit transitions</p>
-            </div>
-            <div class="demo-grid">
-              <div class="demo-card">
-                <h3>Pill Shape</h3>
-                <div class="preview-box">
-                  <app-tooltip content="Pill Shape" shape="pill" position="top">
-                    <ui-button slot="target" class="demo-btn" style="border-radius: 99px" label="Pill Button"></ui-button>
-                  </app-tooltip>
-                </div>
-              </div>
-              <div class="demo-card">
-                <h3>Bounce Animation</h3>
-                <div class="preview-box">
-                  <app-tooltip content="Boing!" animation="bounce" position="top">
-                    <ui-button slot="target" class="demo-btn" label="Bounce"></ui-button>
-                  </app-tooltip>
-                </div>
-              </div>
-              <div class="demo-card">
-                <h3>Scale Animation</h3>
-                <div class="preview-box">
-                  <app-tooltip content="Scale Up" animation="scale" position="top">
-                    <ui-button slot="target" class="demo-btn" label="Scale"></ui-button>
-                  </app-tooltip>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
+        <app-tooltip-playground></app-tooltip-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Tooltip Usage"
+          language="html"
+        ></app-code-block>
+      </section>
     </div>
 
+    <!-- Documentation Slot -->
     <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <h2>📚 Documentation</h2>
-          <p>Coming soon...</p>
-        </section>
-      </div>
+      <app-component-documentation componentId="tooltip"></app-component-documentation>
     </div>
   </demo-tabs>
 </div>

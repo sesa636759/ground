@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-button-toggle-demo',
@@ -14,6 +15,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     ButtonTogglePlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
@@ -21,7 +23,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetButtonToggleDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'avatar-status', title: 'Avatar Support & Status', icon: '👤' },
     { id: 'gliding-indicator', title: 'Gliding Pill Indicator', icon: '🏄' },
     { id: 'color-variants', title: 'Color Variants', icon: '🎨' },

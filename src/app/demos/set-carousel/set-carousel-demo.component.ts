@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CarouselPlaygroundComponent } from './components/carousel-playground/carousel-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-carousel-demo',
@@ -14,6 +15,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CarouselPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-carousel-demo.component.html',
@@ -21,7 +23,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetCarouselDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'fade-transition', title: 'Fade Transition', icon: '✨' },
     { id: 'center-mode', title: 'Center Mode', icon: '🎯' },
     { id: 'multiple-slides', title: 'Multiple Slides', icon: '🔢' },

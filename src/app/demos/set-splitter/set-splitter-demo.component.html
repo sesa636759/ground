@@ -1,98 +1,116 @@
 <div class="demo-container">
   <h1>🔀 Splitter Component Demo</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure directions, themes, and interactive behaviors</p>
-    </div>
-    <app-splitter-playground></app-splitter-playground>
-    <app-code-block [code]="playgroundCode" title="Splitter Usage" language="html"></app-code-block>
-    </section>
-
-    <!-- Basic Orientations -->
-    <section class="demo-section" id="orientations">
-    <div class="section-header">
-      <h2>📋 Basic Orientations</h2>
-      <p>Horizontal and vertical split configurations</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Horizontal Split</h3>
-        <div class="panel-box">
-          <app-splitter direction="horizontal" [panels]="basicPanels">
-            <div slot="panel-0" class="p-content">Sidebar</div>
-            <div slot="panel-1" class="p-content">Main View</div>
-          </app-splitter>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Basic Orientations -->
+      <section class="demo-section" id="orientations">
+        <div class="section-header">
+          <h2>📋 Basic Orientations</h2>
+          <p>Horizontal and vertical split configurations</p>
         </div>
-      </div>
-      <div class="demo-card">
-        <h3>Vertical Split</h3>
-        <div class="panel-box">
-          <app-splitter direction="vertical" [panels]="basicPanels">
-            <div slot="panel-0" class="p-content">Top Panel</div>
-            <div slot="panel-1" class="p-content">Bottom Panel</div>
-          </app-splitter>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Horizontal Split</h3>
+            <div class="panel-box">
+              <app-splitter direction="horizontal" [panels]="basicPanels">
+                <div slot="panel-0" class="p-content">Sidebar</div>
+                <div slot="panel-1" class="p-content">Main View</div>
+              </app-splitter>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Vertical Split</h3>
+            <div class="panel-box">
+              <app-splitter direction="vertical" [panels]="basicPanels">
+                <div slot="panel-0" class="p-content">Top Panel</div>
+                <div slot="panel-1" class="p-content">Bottom Panel</div>
+              </app-splitter>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    </section>
+      </section>
 
-    <!-- Complex Layouts -->
-    <section class="demo-section" id="complex">
-    <div class="section-header">
-      <h2>🥈 Complex Layouts</h2>
-      <p>Nested splitters and multi-panel configurations</p>
-    </div>
-    <div class="demo-card full-width">
-      <h3>IDE Layout (Nested)</h3>
-      <div class="panel-box large-box">
-        <app-splitter direction="horizontal">
-          <div slot="panel-0">
-            <app-splitter direction="vertical" style="height: 100%">
-              <div slot="panel-0" class="p-content dark-p">File Explorer</div>
-              <div slot="panel-1" class="p-content dark-p">Outline</div>
+      <!-- Complex Layouts -->
+      <section class="demo-section" id="complex">
+        <div class="section-header">
+          <h2>🥈 Complex Layouts</h2>
+          <p>Nested splitters and multi-panel configurations</p>
+        </div>
+        <div class="demo-card full-width">
+          <h3>IDE Layout (Nested)</h3>
+          <div class="panel-box large-box">
+            <app-splitter direction="horizontal">
+              <div slot="panel-0">
+                <app-splitter direction="vertical" style="height: 100%">
+                  <div slot="panel-0" class="p-content dark-p">File Explorer</div>
+                  <div slot="panel-1" class="p-content dark-p">Outline</div>
+                </app-splitter>
+              </div>
+              <div slot="panel-1">
+                <app-splitter direction="vertical" style="height: 100%">
+                  <div slot="panel-0" class="p-content">Main Editor</div>
+                  <div slot="panel-1" class="p-content dark-p">Terminal</div>
+                </app-splitter>
+              </div>
             </app-splitter>
           </div>
-          <div slot="panel-1">
-            <app-splitter direction="vertical" style="height: 100%">
-              <div slot="panel-0" class="p-content">Main Editor</div>
-              <div slot="panel-1" class="p-content dark-p">Terminal</div>
-            </app-splitter>
-          </div>
-        </app-splitter>
-      </div>
-    </div>
-    </section>
+        </div>
+      </section>
 
-    <!-- Special Features -->
-    <section class="demo-section" id="features">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Collapsible panels, constraints, and visual styling</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card h-gradient">
-        <h3>Collapsible Panel</h3>
-        <div class="panel-box">
-          <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
-            <div slot="panel-0" class="p-content">Collapsible Sidebar</div>
-            <div slot="panel-1" class="p-content">Main View</div>
-          </app-splitter>
+      <!-- Special Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Collapsible panels, constraints, and visual styling</p>
         </div>
-      </div>
-      <div class="demo-card">
-        <h3>Styled & Elevated</h3>
-        <div class="panel-box">
-          <app-splitter direction="horizontal" rounded elevated [panels]="basicPanels">
-            <div slot="panel-0" class="p-content">Elevated Panel 1</div>
-            <div slot="panel-1" class="p-content">Elevated Panel 2</div>
-          </app-splitter>
+        <div class="demo-grid">
+          <div class="demo-card h-gradient">
+            <h3>Collapsible Panel</h3>
+            <div class="panel-box">
+              <app-splitter
+                direction="horizontal"
+                [panels]="collapsiblePanels"
+                double-click-collapse
+              >
+                <div slot="panel-0" class="p-content">Collapsible Sidebar</div>
+                <div slot="panel-1" class="p-content">Main View</div>
+              </app-splitter>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Styled & Elevated</h3>
+            <div class="panel-box">
+              <app-splitter direction="horizontal" rounded elevated [panels]="basicPanels">
+                <div slot="panel-0" class="p-content">Elevated Panel 1</div>
+                <div slot="panel-1" class="p-content">Elevated Panel 2</div>
+              </app-splitter>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-    </section>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure directions, themes, and interactive behaviors</p>
+        </div>
+        <app-splitter-playground></app-splitter-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Splitter Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="splitter"></app-component-documentation>
+    </div>
   </demo-tabs>
 </div>

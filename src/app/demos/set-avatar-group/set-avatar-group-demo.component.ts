@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-avatar-group-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AvatarGroupPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AvatarGroupPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-group-demo.component.html',
   styleUrl: './set-avatar-group-demo.component.scss',
 })
 export class SetAvatarGroupDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
     { id: 'layouts', title: 'Layouts', icon: '📋' },
     { id: 'max-display', title: 'Max Display', icon: '🔢' },

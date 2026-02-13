@@ -1,7 +1,7 @@
 <div class="demo-container">
   <h1>🔤 Input Component Demo</h1>
 
-  <app-demo-tabs [variants]="exampleVariants">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
       <!-- Basic Input Types -->
@@ -317,5 +317,5 @@
     <div slot="docs">
       <app-component-documentation componentId="input"></app-component-documentation>
     </div>
-  </app-demo-tabs>
+  </demo-tabs>
 </div>

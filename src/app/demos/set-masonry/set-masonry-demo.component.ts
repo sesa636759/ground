@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { MasonryPlaygroundComponent } from './components/masonry-playground/masonry-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-masonry-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective, MasonryPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MasonryPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
 })
 export class SetMasonryDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'gallery', title: 'Premium Gallery', icon: '📸' },
     { id: 'layouts', title: 'Layout Variants', icon: '📐' },
     { id: 'loading', title: 'Skeleton Loading', icon: '💀' },

@@ -1,11 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-avatar-demo',
@@ -16,23 +15,20 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CodeBlockComponent,
     AvatarPlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-demo.component.html',
   styleUrl: './app-avatar-demo.component.scss',
 })
 export class AppAvatarDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'shapes', name: 'Shapes', icon: '📐', color: '#3b82f6' },
-    { id: 'types', name: 'Types', icon: '👤', color: '#10b981' },
-    { id: 'status', name: 'Status & Badges', icon: '📍', color: '#f59e0b' },
-    { id: 'avatar-group', name: 'Groups', icon: '👥', color: '#ec4899' },
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'shapes', title: 'Shapes', icon: '📐', color: '#3b82f6' },
+    { id: 'types', title: 'Types', icon: '👤', color: '#10b981' },
+    { id: 'status', title: 'Status & Badges', icon: '📍', color: '#f59e0b' },
+    { id: 'avatar-group', title: 'Groups', icon: '👥', color: '#ec4899' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-avatar name="John Doe" status="online" size="64px"></ui-avatar>`;
 

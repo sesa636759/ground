@@ -1,128 +1,142 @@
 <div class="demo-container">
   <h1>⚓ Anchor Navigation</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure orientation, styles, and behaviors</p>
-    </div>
-    <app-anchor-playground></app-anchor-playground>
-    <app-code-block [code]="playgroundCode" title="Anchor Usage" language="html"></app-code-block>
-    </section>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Orientation Examples -->
+      <section class="demo-section" id="orientation">
+        <div class="section-header">
+          <h2>🧭 Orientation & Layout</h2>
+          <p>Supports both vertical and horizontal layouts with flexible positioning</p>
+        </div>
+        <div class="demo-grid">
+          <!-- Vertical -->
+          <div class="demo-card">
+            <h3>Vertical Mode</h3>
+            <div class="preview-box">
+              <div class="layout-wrapper vertical">
+                <app-anchor
+                  mode="vertical"
+                  [items]="[
+                    { id: 'v-start', label: 'Start' },
+                    { id: 'v-mid', label: 'Middle' },
+                    { id: 'v-end', label: 'End' },
+                  ]"
+                  scroll-container="#vertical-scroll"
+                ></app-anchor>
+                <div id="vertical-scroll" class="scroll-area">
+                  <div id="v-start" class="content-block">Start Section</div>
+                  <div id="v-mid" class="content-block">Middle Section</div>
+                  <div id="v-end" class="content-block">End Section</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- Orientation Examples -->
-    <section class="demo-section" id="orientation">
-    <div class="section-header">
-      <h2>🧭 Orientation & Layout</h2>
-      <p>Supports both vertical and horizontal layouts with flexible positioning</p>
-    </div>
-    <div class="demo-grid">
-      <!-- Vertical -->
-      <div class="demo-card">
-        <h3>Vertical Mode</h3>
-        <div class="preview-box">
-          <div class="layout-wrapper vertical">
-            <app-anchor
-              mode="vertical"
-              [items]="[
-                { id: 'v-start', label: 'Start' },
-                { id: 'v-mid', label: 'Middle' },
-                { id: 'v-end', label: 'End' },
-              ]"
-              scroll-container="#vertical-scroll"
-            ></app-anchor>
-            <div id="vertical-scroll" class="scroll-area">
-              <div id="v-start" class="content-block">Start Section</div>
-              <div id="v-mid" class="content-block">Middle Section</div>
-              <div id="v-end" class="content-block">End Section</div>
+          <!-- Horizontal -->
+          <div class="demo-card">
+            <h3>Horizontal Mode</h3>
+            <div class="preview-box">
+              <div class="layout-wrapper horizontal">
+                <app-anchor
+                  mode="horizontal"
+                  [items]="[
+                    { id: 'h-start', label: 'Start' },
+                    { id: 'h-mid', label: 'Middle' },
+                    { id: 'h-end', label: 'End' },
+                  ]"
+                  scroll-container="#horizontal-scroll"
+                ></app-anchor>
+                <div id="horizontal-scroll" class="scroll-area">
+                  <div id="h-start" class="content-block">Start Section</div>
+                  <div id="h-mid" class="content-block">Middle Section</div>
+                  <div id="h-end" class="content-block">End Section</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Horizontal -->
-      <div class="demo-card">
-        <h3>Horizontal Mode</h3>
-        <div class="preview-box">
-          <div class="layout-wrapper horizontal">
-            <app-anchor
-              mode="horizontal"
-              [items]="[
-                { id: 'h-start', label: 'Start' },
-                { id: 'h-mid', label: 'Middle' },
-                { id: 'h-end', label: 'End' },
-              ]"
-              scroll-container="#horizontal-scroll"
-            ></app-anchor>
-            <div id="horizontal-scroll" class="scroll-area">
-              <div id="h-start" class="content-block">Start Section</div>
-              <div id="h-mid" class="content-block">Middle Section</div>
-              <div id="h-end" class="content-block">End Section</div>
+      <!-- Styles -->
+      <section class="demo-section" id="styles">
+        <div class="section-header">
+          <h2>🎨 Styles & Features</h2>
+          <p>Numbering styles and visual themes</p>
+        </div>
+        <div class="demo-grid">
+          <!-- Numbered -->
+          <div class="demo-card">
+            <h3>Numbered Items</h3>
+            <div class="preview-box">
+              <div class="layout-wrapper vertical">
+                <app-anchor
+                  mode="vertical"
+                  show-numbers="true"
+                  number-style="decimal"
+                  [items]="[
+                    { id: 'n-1', label: 'First' },
+                    { id: 'n-2', label: 'Second' },
+                    { id: 'n-3', label: 'Third' },
+                  ]"
+                  scroll-container="#num-scroll"
+                ></app-anchor>
+                <div id="num-scroll" class="scroll-area">
+                  <div id="n-1" class="content-block">First</div>
+                  <div id="n-2" class="content-block">Second</div>
+                  <div id="n-3" class="content-block">Third</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark Theme -->
+          <div class="demo-card dark-card">
+            <h3>Dark Theme</h3>
+            <div class="preview-box dark-mode">
+              <div class="layout-wrapper vertical">
+                <app-anchor
+                  mode="vertical"
+                  theme="dark"
+                  [items]="[
+                    { id: 'd-start', label: 'Start' },
+                    { id: 'd-mid', label: 'Middle' },
+                    { id: 'd-end', label: 'End' },
+                  ]"
+                  scroll-container="#dark-scroll"
+                ></app-anchor>
+                <div id="dark-scroll" class="scroll-area">
+                  <div id="d-start" class="content-block dark-block">Dark Start</div>
+                  <div id="d-mid" class="content-block dark-block">Dark Middle</div>
+                  <div id="d-end" class="content-block dark-block">Dark End</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-    </section>
 
-    <!-- Styles -->
-    <section class="demo-section" id="styles">
-    <div class="section-header">
-      <h2>🎨 Styles & Features</h2>
-      <p>Numbering styles and visual themes</p>
-    </div>
-    <div class="demo-grid">
-      <!-- Numbered -->
-      <div class="demo-card">
-        <h3>Numbered Items</h3>
-        <div class="preview-box">
-          <div class="layout-wrapper vertical">
-            <app-anchor
-              mode="vertical"
-              show-numbers="true"
-              number-style="decimal"
-              [items]="[
-                { id: 'n-1', label: 'First' },
-                { id: 'n-2', label: 'Second' },
-                { id: 'n-3', label: 'Third' },
-              ]"
-              scroll-container="#num-scroll"
-            ></app-anchor>
-            <div id="num-scroll" class="scroll-area">
-              <div id="n-1" class="content-block">First</div>
-              <div id="n-2" class="content-block">Second</div>
-              <div id="n-3" class="content-block">Third</div>
-            </div>
-          </div>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure orientation, styles, and behaviors</p>
         </div>
-      </div>
+        <app-anchor-playground></app-anchor-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Anchor Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
 
-      <!-- Dark Theme -->
-      <div class="demo-card dark-card">
-        <h3>Dark Theme</h3>
-        <div class="preview-box dark-mode">
-          <div class="layout-wrapper vertical">
-            <app-anchor
-              mode="vertical"
-              theme="dark"
-              [items]="[
-                { id: 'd-start', label: 'Start' },
-                { id: 'd-mid', label: 'Middle' },
-                { id: 'd-end', label: 'End' },
-              ]"
-              scroll-container="#dark-scroll"
-            ></app-anchor>
-            <div id="dark-scroll" class="scroll-area">
-              <div id="d-start" class="content-block dark-block">Dark Start</div>
-              <div id="d-mid" class="content-block dark-block">Dark Middle</div>
-              <div id="d-end" class="content-block dark-block">Dark End</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="anchor"></app-component-documentation>
     </div>
-    </section>
   </demo-tabs>
 </div>

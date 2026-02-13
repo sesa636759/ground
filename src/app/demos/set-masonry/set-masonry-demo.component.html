@@ -1,99 +1,118 @@
 <div class="demo-container">
   <h1>🧱 Masonry Component</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure and test all masonry layout properties</p>
-    </div>
-    <app-masonry-playground></app-masonry-playground>
-    <app-code-block [code]="playgroundCode" title="Masonry Usage" language="html"></app-code-block>
-    </section>
-
-    <!-- Gallery Demo -->
-    <section class="demo-section" id="gallery">
-    <div class="section-header">
-      <h2>📸 Premium Gallery</h2>
-      <p>Immersive Lightbox view with hover actions</p>
-    </div>
-    <div class="demo-card full-width">
-      <div class="preview-box h-auto">
-        <app-masonry
-          layout-type="masonry"
-          columns="4"
-          gap="12"
-          selectable="true"
-          loading-state="false"
-          lightbox="true"
-          [items]="galleryItems"
-        ></app-masonry>
-      </div>
-      <app-code-block
-        [code]="basicMasonryCode"
-        title="Premium Gallery with Lightbox"
-        language="html"
-      ></app-code-block>
-    </div>
-    </section>
-
-    <!-- Layout Variants -->
-    <section class="demo-section" id="layouts">
-    <div class="section-header">
-      <h2>📐 Layout Variants</h2>
-      <p>Different ways to organize content</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Product Grid (Equal Height)</h3>
-        <div class="preview-box h-auto">
-          <app-masonry
-            layout-type="grid"
-            columns="3"
-            gap="16"
-            selectable="true"
-            [items]="productItems"
-          ></app-masonry>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Gallery Demo -->
+      <section class="demo-section" id="gallery">
+        <div class="section-header">
+          <h2>📸 Premium Gallery</h2>
+          <p>Immersive Lightbox view with hover actions</p>
         </div>
+        <div class="demo-card full-width">
+          <div class="preview-box h-auto">
+            <app-masonry
+              layout-type="masonry"
+              columns="4"
+              gap="12"
+              selectable="true"
+              loading-state="false"
+              lightbox="true"
+              [items]="galleryItems"
+            ></app-masonry>
+          </div>
+          <app-code-block
+            [code]="basicMasonryCode"
+            title="Premium Gallery with Lightbox"
+            language="html"
+          ></app-code-block>
+        </div>
+      </section>
+
+      <!-- Layout Variants -->
+      <section class="demo-section" id="layouts">
+        <div class="section-header">
+          <h2>📐 Layout Variants</h2>
+          <p>Different ways to organize content</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Product Grid (Equal Height)</h3>
+            <div class="preview-box h-auto">
+              <app-masonry
+                layout-type="grid"
+                columns="3"
+                gap="16"
+                selectable="true"
+                [items]="productItems"
+              ></app-masonry>
+            </div>
+            <app-code-block
+              [code]="responsiveMasonryCode"
+              title="Responsive Grid Layout"
+              language="html"
+            ></app-code-block>
+          </div>
+
+          <div class="demo-card">
+            <h3>News Columns (Newspaper Style)</h3>
+            <div class="preview-box h-auto">
+              <app-masonry
+                layout-type="columns"
+                columns="2"
+                gap="20"
+                selectable="false"
+                [items]="newsItems"
+              ></app-masonry>
+            </div>
+            <app-code-block
+              [code]="customGapCode"
+              title="Custom Gap Configuration"
+              language="html"
+            ></app-code-block>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <section class="demo-section" id="loading">
+        <div class="section-header">
+          <h2>💀 Skeleton Loading</h2>
+          <p>Built-in loading placeholder animation</p>
+        </div>
+        <div class="demo-card">
+          <div class="preview-box h-auto">
+            <app-masonry
+              layout-type="masonry"
+              columns="3"
+              gap="16"
+              loading-state="true"
+            ></app-masonry>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure and test all masonry layout properties</p>
+        </div>
+        <app-masonry-playground></app-masonry-playground>
         <app-code-block
-          [code]="responsiveMasonryCode"
-          title="Responsive Grid Layout"
+          [code]="playgroundCode"
+          title="Masonry Usage"
           language="html"
         ></app-code-block>
-      </div>
+      </section>
+    </div>
 
-      <div class="demo-card">
-        <h3>News Columns (Newspaper Style)</h3>
-        <div class="preview-box h-auto">
-          <app-masonry
-            layout-type="columns"
-            columns="2"
-            gap="20"
-            selectable="false"
-            [items]="newsItems"
-          ></app-masonry>
-        </div>
-        <app-code-block
-          [code]="customGapCode"
-          title="Custom Gap Configuration"
-          language="html"
-        ></app-code-block>
-      </div>
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="masonry"></app-component-documentation>
     </div>
-    </section>
-
-    <!-- Loading State -->
-    <section class="demo-section" id="loading">
-    <div class="section-header">
-      <h2>💀 Skeleton Loading</h2>
-      <p>Built-in loading placeholder animation</p>
-    </div>
-    <div class="demo-card">
-      <div class="preview-box h-auto">
-        <app-masonry layout-type="masonry" columns="3" gap="16" loading-state="true"></app-masonry>
-      </div>
-    </div>
-    </section>
   </demo-tabs>
 </div>

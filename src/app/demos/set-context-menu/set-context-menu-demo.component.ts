@@ -1,11 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-context-menu-demo',
@@ -16,6 +15,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     ContextMenuPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-context-menu-demo.component.html',
@@ -23,7 +23,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetContextMenuDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic-use-cases', title: 'Basic Use Cases', icon: '📋' },
     { id: 'advanced-nesting', title: 'Advanced Nesting', icon: '🌳' },
     { id: 'premium-features', title: 'Premium Features', icon: '💎' },

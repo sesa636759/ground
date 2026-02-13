@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CodeEditorPlaygroundComponent } from './components/code-editor-playground/code-editor-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-code-editor-demo',
@@ -14,6 +15,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CodeEditorPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-code-editor-demo.component.html',
@@ -21,7 +23,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetCodeEditorDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'language-support', title: 'Language Support', icon: '✨' },
     { id: 'features', title: 'Features', icon: '🛠' },
   ];

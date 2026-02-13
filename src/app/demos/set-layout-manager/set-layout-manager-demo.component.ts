@@ -9,18 +9,24 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',
 })
 export class SetLayoutManagerDemoComponent implements AfterViewInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Three-Column Layout', icon: '📏' },
     { id: 'ide', title: 'IDE-Style Layout', icon: '💻' },
     { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },

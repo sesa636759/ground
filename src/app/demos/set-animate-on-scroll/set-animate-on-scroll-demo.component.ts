@@ -6,18 +6,25 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-animate-on-scroll-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AnimateOnScrollPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AnimateOnScrollPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-animate-on-scroll-demo.component.html',
   styleUrl: './set-animate-on-scroll-demo.component.scss',
 })
 export class SetAnimateOnScrollDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'types', title: 'Animation Types', icon: '🎭' },
     { id: 'directions', title: 'Directions', icon: '↔️' },
     { id: 'timing', title: 'Timing & Easing', icon: '⏱️' },

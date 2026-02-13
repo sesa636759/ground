@@ -1,22 +1,28 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-tree-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TreePlaygroundComponent, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TreePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
 export class SetTreeDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'common-variations', title: 'Common Variations', icon: '📋' },
     { id: 'advanced-layouts', title: 'Advanced Layouts', icon: '🥈' },
     { id: 'visual-effects', title: 'Premium Aesthetics', icon: '💎' },

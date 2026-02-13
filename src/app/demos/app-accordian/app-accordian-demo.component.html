@@ -331,19 +331,505 @@
       <div class="demo-container">
         <section class="demo-section">
           <div class="section-header">
-            <h2>📖 Documentation</h2>
-            <p>Links, API references, and detailed usage notes</p>
+            <h2>📖 Accordion Documentation</h2>
+            <p>Complete API reference for properties, events, and usage guidelines</p>
           </div>
+
+          <!-- Overview -->
+          <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem">Overview</h3>
+            <p style="color: #475569; line-height: 1.6">
+              The
+              <code
+                style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #dc2626"
+                >&lt;ui-accordion&gt;</code
+              >
+              component provides a vertically stacked list of collapsible panels for organizing
+              content. It supports advanced features like search, drag-and-drop, nested structures,
+              and persistence.
+            </p>
+          </div>
+
+          <!-- Properties Table -->
+          <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              📋 Properties
+            </h3>
+
+            <div style="overflow-x: auto">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem">
+                <thead>
+                  <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0">
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Property
+                    </th>
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Type
+                    </th>
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Default
+                    </th>
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">items</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >string | AccordionItem[]</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">[]</td>
+                    <td style="padding: 12px; color: #475569">
+                      Array of accordion items (can be JSON string or array)
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      enable-search
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Enable built-in search functionality
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      search-placeholder
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >string</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">"Search..."</td>
+                    <td style="padding: 12px; color: #475569">Placeholder text for search input</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      enable-nested
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Enable nested accordion structures
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      enable-drag-drop
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Enable drag-and-drop reordering of items
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      enable-persistence
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Save expansion state to localStorage
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      persistence-key
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >string</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">"accordion-state"</td>
+                    <td style="padding: 12px; color: #475569">
+                      Unique key for localStorage persistence
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">loading</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">Show skeleton loading state</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">rtl</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Enable right-to-left layout support
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">dense</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Compact layout with reduced padding
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">lazy</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >boolean</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">false</td>
+                    <td style="padding: 12px; color: #475569">
+                      Lazy render content only when expanded
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #dc2626">
+                      expandedItems
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >string[]</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #64748b">[]</td>
+                    <td style="padding: 12px; color: #475569">
+                      Array of item IDs that should be expanded (for controlled mode)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Events Table -->
+          <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              ⚡ Events
+            </h3>
+
+            <div style="overflow-x: auto">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem">
+                <thead>
+                  <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0">
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Event
+                    </th>
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Payload
+                    </th>
+                    <th style="padding: 12px; text-align: left; font-weight: 600; color: #334155">
+                      Description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">
+                      beforeOpen
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; itemId: string &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">Fired before an item is expanded</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">afterOpen</td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; itemId: string &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">Fired after an item is expanded</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">
+                      beforeClose
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; itemId: string &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">Fired before an item is collapsed</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">
+                      afterClose
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; itemId: string &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">Fired after an item is collapsed</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">
+                      accordionAction
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; itemId: string, actionId: string &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">
+                      Fired when an action button is clicked
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <td style="padding: 12px; font-family: monospace; color: #7c3aed">
+                      accordionReorder
+                    </td>
+                    <td style="padding: 12px">
+                      <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px"
+                        >&#123; oldIndex: number, newIndex: number &#125;</code
+                      >
+                    </td>
+                    <td style="padding: 12px; color: #475569">
+                      Fired when items are reordered via drag-and-drop
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Item Structure -->
+          <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              🏗️ Item Structure
+            </h3>
+
+            <p style="color: #475569; line-height: 1.6; margin-bottom: 12px">
+              Each accordion item should have the following structure:
+            </p>
+
+            <pre
+              style="
+                background: #1e293b;
+                color: #e2e8f0;
+                padding: 16px;
+                border-radius: 8px;
+                overflow-x: auto;
+                font-size: 0.875rem;
+              "
+            ><code>interface AccordionItem &#123;
+  id: string;              // Unique identifier (required)
+  title: string;           // Item header text (required)
+  content: string;         // HTML content for the panel (required)
+  subtitle?: string;       // Optional subtitle below title
+  icon?: string;           // Optional icon (emoji or icon class)
+  actions?: Action[];      // Optional action buttons
+  children?: AccordionItem[]; // Optional nested items
+&#125;
+
+interface Action &#123;
+  id: string;              // Unique action identifier
+  label: string;           // Button label/icon
+  ariaLabel: string;       // Accessibility label
+&#125;</code></pre>
+          </div>
+
+          <!-- Usage Examples -->
+          <!-- <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              💡 Usage Examples
+            </h3>
+            
+            <h4 style="color: #334155; font-size: 1rem; margin-bottom: 8px">Basic Usage</h4>
+            <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; 
+            font-size: 0.875rem; margin-bottom: 24px">
+            <code>&lt;ui-accordion [items]="items"&gt;&lt;/ui-accordion&gt;
+
+// Component
+items = [
+  &#123;
+    id: 'item1',
+    title: 'First Item',
+    content: '&lt;p&gt;Content for first item&lt;/p&gt;'
+  &#125;,
+  &#123;
+    id: 'item2',
+    title: 'Second Item',
+    content: '&lt;p&gt;Content for second item&lt;/p&gt;'
+  &#125;
+];</code></pre>
+
+            <h4 style="color: #334155; font-size: 1rem; margin-bottom: 8px">With Search</h4>
+            <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem;
+       margin-bottom: 24px"><code>&lt;ui-accordion 
+  [items]="items" 
+  enable-search 
+  search-placeholder="Search items..."&gt;
+&lt;/ui-accordion&gt;</code></pre>
+
+            <h4 style="color: #334155; font-size: 1rem; margin-bottom: 8px">With Actions and Events</h4>
+            <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem;
+             margin-bottom: 24px"><code>&lt;ui-accordion 
+  [items]="items" 
+  (accordionAction)="handleAction($event)"
+  (afterOpen)="onItemOpen($event)"&gt;
+&lt;/ui-accordion&gt;
+
+// Component
+items = [
+  &#123;
+    id: 'file1',
+    title: 'Document.pdf',
+    subtitle: '2.4 MB',
+    content: '&lt;p&gt;Preview...&lt;/p&gt;',
+    actions: [
+      &#123; id: 'download', label: '⬇️', ariaLabel: 'Download' &#125;,
+      &#123; id: 'delete', label: '🗑️', ariaLabel: 'Delete' &#125;
+    ]
+  &#125;
+];
+
+handleAction(event: CustomEvent) &#123;
+  const &#123; itemId, actionId &#125; = event.detail;
+  console.log(\`Action \${actionId} on item \${itemId}\`);
+&#125;</code></pre>
+
+            <h4 style="color: #334155; font-size: 1rem; margin-bottom: 8px">Drag & Drop with Persistence</h4>
+            <pre 
+            style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.875rem"
+            ><code>&lt;ui-accordion 
+  [items]="items" 
+  enable-drag-drop 
+  enable-persistence 
+  persistence-key="my-accordion-v1"
+  (accordionReorder)="handleReorder($event)"&gt;
+&lt;/ui-accordion&gt;
+
+// Component
+handleReorder(event: CustomEvent) &#123;
+  const &#123; oldIndex, newIndex &#125; = event.detail;
+  // Update your data model
+&#125;</code></pre>
+          </div> -->
+
+          <!-- Accessibility -->
+          <div class="demo-card" style="padding: 24px; margin-bottom: 24px">
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              ♿ Accessibility
+            </h3>
+
+            <ul style="color: #475569; line-height: 1.8">
+              <li>
+                <strong>Keyboard Navigation:</strong> Use
+                <kbd
+                  style="
+                    background: #f1f5f9;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    border: 1px solid #cbd5e1;
+                  "
+                  >Tab</kbd
+                >
+                to navigate between items,
+                <kbd
+                  style="
+                    background: #f1f5f9;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    border: 1px solid #cbd5e1;
+                  "
+                  >Enter</kbd
+                >
+                or
+                <kbd
+                  style="
+                    background: #f1f5f9;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    border: 1px solid #cbd5e1;
+                  "
+                  >Space</kbd
+                >
+                to expand/collapse
+              </li>
+              <li>
+                <strong>ARIA Labels:</strong> Proper roles and aria-expanded attributes are
+                automatically applied
+              </li>
+              <li>
+                <strong>Screen Readers:</strong> All actions include aria-label for screen reader
+                support
+              </li>
+              <li>
+                <strong>Focus Management:</strong> Visual focus indicators help keyboard users
+              </li>
+            </ul>
+          </div>
+
+          <!-- Best Practices -->
           <div class="demo-card" style="padding: 24px">
-            <p>
-              The documentation for this component is currently being compiled. Our technical
-              writers are working to provide comprehensive API references, accessibility guidelines,
-              and best practices.
-            </p>
-            <p>
-              In the meantime, please explore the <strong>Playground</strong> for interactive
-              testing and the <strong>Examples</strong> tab for common implementation patterns.
-            </p>
+            <h3 style="margin-top: 0; color: #1e293b; font-size: 1.25rem; margin-bottom: 16px">
+              ✅ Best Practices
+            </h3>
+
+            <ul style="color: #475569; line-height: 1.8">
+              <li>
+                <strong>Unique IDs:</strong> Always provide unique
+                <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px">id</code>
+                values for each item
+              </li>
+              <li>
+                <strong>Concise Titles:</strong> Keep titles short and descriptive (2-5 words
+                recommended)
+              </li>
+              <li>
+                <strong>HTML Content:</strong> The content property accepts HTML, but sanitize user
+                input
+              </li>
+              <li>
+                <strong>Persistence Keys:</strong> Version your persistence keys (e.g.,
+                "accordion-v2") when changing item structure
+              </li>
+              <li>
+                <strong>Performance:</strong> Use
+                <code style="background: #f1f5f9; padding: 2px 6px; border-radius: 4px">lazy</code>
+                mode for large content or heavy DOM structures
+              </li>
+              <li>
+                <strong>Loading State:</strong> Show the loading skeleton while fetching async data
+              </li>
+            </ul>
           </div>
         </section>
       </div>

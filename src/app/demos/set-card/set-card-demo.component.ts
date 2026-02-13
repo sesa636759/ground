@@ -23,7 +23,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetCardDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic-cards', title: 'Basic Cards', icon: '📋' },
     { id: 'media-covers', title: 'Media & Covers', icon: '🖼️' },
     { id: 'flippable-cards', title: 'Flippable Cards', icon: '🔄' },

@@ -1,97 +1,107 @@
 <div class="demo-container">
   <h1>↔️ Resizable Panel Component Demo</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure multiple panels, directions, and snap behaviors</p>
-    </div>
-    <app-resizable-panel-playground></app-resizable-panel-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Resizable Panel Usage"
-      language="html"
-    ></app-code-block>
-    </section>
-
-    <!-- Basic Orientations -->
-    <section class="demo-section" id="orientations">
-    <div class="section-header">
-      <h2>📋 Basic Orientations</h2>
-      <p>Horizontal and vertical split configurations</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Horizontal Split</h3>
-        <div class="panel-box">
-          <app-resizable-panel [panels]="basicHPanels">
-            <div slot="p1" class="p-content">Sidebar</div>
-            <div slot="p2" class="p-content">Main View</div>
-          </app-resizable-panel>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Basic Orientations -->
+      <section class="demo-section" id="orientations">
+        <div class="section-header">
+          <h2>📋 Basic Orientations</h2>
+          <p>Horizontal and vertical split configurations</p>
         </div>
-      </div>
-      <div class="demo-card">
-        <h3>Vertical Split</h3>
-        <div class="panel-box">
-          <app-resizable-panel [panels]="basicVPanels" direction="vertical">
-            <div slot="t1" class="p-content">Top Panel</div>
-            <div slot="t2" class="p-content">Bottom Panel</div>
-          </app-resizable-panel>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Horizontal Split</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicHPanels">
+                <div slot="p1" class="p-content">Sidebar</div>
+                <div slot="p2" class="p-content">Main View</div>
+              </app-resizable-panel>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Vertical Split</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicVPanels" direction="vertical">
+                <div slot="t1" class="p-content">Top Panel</div>
+                <div slot="t2" class="p-content">Bottom Panel</div>
+              </app-resizable-panel>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    </section>
+      </section>
 
-    <!-- Complex Layouts -->
-    <section class="demo-section" id="complex">
-    <div class="section-header">
-      <h2>🥈 Complex Layouts</h2>
-      <p>Nested panels for IDE-like or dashboard interfaces</p>
-    </div>
-    <div class="demo-card full-width">
-      <h3>IDE Layout (Nested)</h3>
-      <div class="panel-box large-box">
-        <app-resizable-panel [panels]="nestedOuter">
-          <div slot="sidebar" class="p-content dark-p">Sidebar / Explorer</div>
-          <div slot="main" style="height: 100%">
-            <app-resizable-panel [panels]="nestedInner" direction="vertical">
-              <div slot="editor" class="p-content">Main Code Editor</div>
-              <div slot="terminal" class="p-content dark-p">Build Output / Terminal</div>
+      <!-- Complex Layouts -->
+      <section class="demo-section" id="complex">
+        <div class="section-header">
+          <h2>🥈 Complex Layouts</h2>
+          <p>Nested panels for IDE-like or dashboard interfaces</p>
+        </div>
+        <div class="demo-card full-width">
+          <h3>IDE Layout (Nested)</h3>
+          <div class="panel-box large-box">
+            <app-resizable-panel [panels]="nestedOuter">
+              <div slot="sidebar" class="p-content dark-p">Sidebar / Explorer</div>
+              <div slot="main" style="height: 100%">
+                <app-resizable-panel [panels]="nestedInner" direction="vertical">
+                  <div slot="editor" class="p-content">Main Code Editor</div>
+                  <div slot="terminal" class="p-content dark-p">Build Output / Terminal</div>
+                </app-resizable-panel>
+              </div>
             </app-resizable-panel>
           </div>
-        </app-resizable-panel>
-      </div>
-    </div>
-    </section>
+        </div>
+      </section>
 
-    <!-- Special Features -->
-    <section class="demo-section" id="features">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Snap-to-edge and dark theme capabilities</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card h-gradient">
-        <h3>Snap to Edge</h3>
-        <div class="panel-box">
-          <app-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
-            <div slot="p1" class="p-content">Snap Left</div>
-            <div slot="p2" class="p-content">Main Area</div>
-          </app-resizable-panel>
+      <!-- Special Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Snap-to-edge and dark theme capabilities</p>
         </div>
-      </div>
-      <div class="demo-card">
-        <h3>Dark Theme</h3>
-        <div class="panel-box">
-          <app-resizable-panel [panels]="basicHPanels" theme="dark">
-            <div slot="p1" class="p-content dark-p">Dark Sidebar</div>
-            <div slot="p2" class="p-content dark-p">Dark Main</div>
-          </app-resizable-panel>
+        <div class="demo-grid">
+          <div class="demo-card h-gradient">
+            <h3>Snap to Edge</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
+                <div slot="p1" class="p-content">Snap Left</div>
+                <div slot="p2" class="p-content">Main Area</div>
+              </app-resizable-panel>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Dark Theme</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicHPanels" theme="dark">
+                <div slot="p1" class="p-content dark-p">Dark Sidebar</div>
+                <div slot="p2" class="p-content dark-p">Dark Main</div>
+              </app-resizable-panel>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
-    </section>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure multiple panels, directions, and snap behaviors</p>
+        </div>
+        <app-resizable-panel-playground></app-resizable-panel-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Resizable Panel Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="resizable-panel"></app-component-documentation>
+    </div>
   </demo-tabs>
 </div>

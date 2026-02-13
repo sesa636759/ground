@@ -14,8 +14,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
     InputPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
@@ -27,7 +25,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetInputDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic-types', title: 'Basic Input Types', icon: '📋' },
     { id: 'variants', title: 'Input Variants', icon: '🎭' },
     { id: 'sizes', title: 'Input Sizes', icon: '📏' },

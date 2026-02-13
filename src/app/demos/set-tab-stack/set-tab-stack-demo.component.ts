@@ -6,6 +6,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { TabStackPlaygroundComponent } from './components/tab-stack-playground/tab-stack-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-tab-stack-demo',
@@ -13,11 +14,10 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
     TabStackPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tab-stack-demo.component.html',
@@ -25,7 +25,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 })
 export class SetTabStackDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'orientations', title: 'Orientation Options', icon: '📏' },
     { id: 'variants', title: 'Visual Variants', icon: '🎭' },
     { id: 'features', title: 'Advanced Features', icon: '⚙️' },

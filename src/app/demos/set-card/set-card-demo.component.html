@@ -1,7 +1,7 @@
 <div class="demo-container">
   <h1>🃏 Card Component Demo</h1>
 
-  <app-demo-tabs [variants]="exampleVariants">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
       <!-- Basic Cards -->
@@ -238,5 +238,5 @@
     <div slot="docs">
       <app-component-documentation componentId="card"></app-component-documentation>
     </div>
-  </app-demo-tabs>
+  </demo-tabs>
 </div>

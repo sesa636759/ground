@@ -1,8 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-accordion-playground',
@@ -242,41 +240,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       </div>
     </div>
   `,
-  styles: [
-    `
-      @use '../../../../../styles/playground-base.scss';
-
-      .control-section {
-        margin-bottom: 24px;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 16px;
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        h3 {
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          color: var(--text-secondary);
-          margin-bottom: 16px;
-        }
-      }
-
-      .checkbox-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-top: 8px;
-
-        .checkbox-group {
-          margin-bottom: 0;
-          min-width: 140px;
-        }
-      }
-    `,
-  ],
+  styleUrl: './accordian-playground.component.scss',
 })
 export class AccordianPlaygroundComponent {
   pgConfig = {

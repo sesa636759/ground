@@ -1,7 +1,7 @@
 <div class="demo-container">
   <h1>🔘 Radio Group Demo</h1>
 
-  <app-demo-tabs [variants]="exampleVariants">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <!-- Examples Slot -->
     <div slot="examples">
       <!-- Premium Variants -->
@@ -261,8 +261,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <!-- Radio component documentation should be added to service if not present -->
       <app-component-documentation componentId="radio"></app-component-documentation>
     </div>
-  </app-demo-tabs>
+  </demo-tabs>
 </div>

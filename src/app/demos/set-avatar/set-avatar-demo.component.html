@@ -4,213 +4,199 @@
     Display user profiles with support for images, icons, initials, status indicators, and groups.
   </p>
 
-  <demo-tabs>
-    <div slot="playground">
-      <div class="demo-container">
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Customize avatar appearance and behavior</p>
-          </div>
-          <app-avatar-playground></app-avatar-playground>
-          <app-code-block [code]="playgroundCode" title="Avatar Usage" language="html"></app-code-block>
-        </section>
-      </div>
-    </div>
-
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <div slot="examples">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
+      <!-- Basic Types -->
+      <section class="demo-section" id="basic-types">
+        <div class="section-header">
+          <h2>📋 Basic Types</h2>
+          <p>Image, Icon, and Text representations</p>
         </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card centered">
+            <h3>Image</h3>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=1"
+              size="large"
+            ></app-avatar>
+          </div>
 
-        <div class="examples-content">
-          <!-- Basic Types -->
-          <section class="demo-section" id="basic-types" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📋 Basic Types</h2>
-              <p>Image, Icon, and Text representations</p>
-            </div>
-            <div class="demo-grid col-3">
-              <div class="demo-card centered">
-                <h3>Image</h3>
-                <app-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" size="large"></app-avatar>
-              </div>
+          <div class="demo-card centered">
+            <h3>Icon</h3>
+            <app-avatar icon="fas fa-user" size="large" bg-color="#1890ff"></app-avatar>
+          </div>
 
-              <div class="demo-card centered">
-                <h3>Icon</h3>
-                <app-avatar icon="fas fa-user" size="large" bg-color="#1890ff"></app-avatar>
-              </div>
-
-              <div class="demo-card centered">
-                <h3>Initials</h3>
-                <app-avatar size="large" bg-color="#722ed1">JD</app-avatar>
-              </div>
-            </div>
-          </section>
-
-          <!-- Sizes & Shapes -->
-          <section class="demo-section" id="sizes-shapes">
-            <div class="section-header">
-              <h2>📏 Sizes & Shapes</h2>
-              <p>Various sizes and shape options</p>
-            </div>
-            <div class="demo-grid col-2">
-              <div class="demo-card">
-                <h3>Circle (Default)</h3>
-                <div class="avatar-row">
-                  <app-avatar size="small" icon="fas fa-user"></app-avatar>
-                  <app-avatar size="medium" icon="fas fa-user"></app-avatar>
-                  <app-avatar size="large" icon="fas fa-user"></app-avatar>
-                  <app-avatar size="xl" icon="fas fa-user"></app-avatar>
-                </div>
-              </div>
-
-              <div class="demo-card">
-                <h3>Square</h3>
-                <div class="avatar-row">
-                  <app-avatar shape="square" size="small" icon="fas fa-user"></app-avatar>
-                  <app-avatar shape="square" size="medium" icon="fas fa-user"></app-avatar>
-                  <app-avatar shape="square" size="large" icon="fas fa-user"></app-avatar>
-                  <app-avatar shape="square" size="xl" icon="fas fa-user"></app-avatar>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Status Indicators -->
-          <section class="demo-section" id="status">
-            <div class="section-header">
-              <h2>🟢 Status Indicators</h2>
-              <p>Communicate user availability</p>
-            </div>
-            <div class="demo-grid col-4">
-              <div class="demo-card centered">
-                <app-avatar
-                  size="large"
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=2"
-                  show-status
-                  status="online"
-                ></app-avatar>
-                <span class="label">Online</span>
-              </div>
-              <div class="demo-card centered">
-                <app-avatar
-                  size="large"
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=3"
-                  show-status
-                  status="away"
-                ></app-avatar>
-                <span class="label">Away</span>
-              </div>
-              <div class="demo-card centered">
-                <app-avatar
-                  size="large"
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=4"
-                  show-status
-                  status="busy"
-                ></app-avatar>
-                <span class="label">Busy</span>
-              </div>
-              <div class="demo-card centered">
-                <app-avatar
-                  size="large"
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=5"
-                  show-status
-                  status="offline"
-                ></app-avatar>
-                <span class="label">Offline</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- Avatar Groups -->
-          <section class="demo-section" id="groups">
-            <div class="section-header">
-              <h2>👥 Avatar Groups</h2>
-              <p>Display multiple users together</p>
-            </div>
-            <div class="demo-card centered">
-              <app-avatar-group max="4" border-color="#1e1e1e">
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=10"
-                  tooltip-text="Alice"
-                ></app-avatar>
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=11"
-                  tooltip-text="Bob"
-                ></app-avatar>
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=12"
-                  tooltip-text="Charlie"
-                ></app-avatar>
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=13"
-                  tooltip-text="David"
-                ></app-avatar>
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=14"
-                  tooltip-text="Eve"
-                ></app-avatar>
-                <app-avatar
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=15"
-                  tooltip-text="Frank"
-                ></app-avatar>
-              </app-avatar-group>
-            </div>
-          </section>
-
-          <!-- Premium Features -->
-          <section class="demo-section" id="premium">
-            <div class="section-header">
-              <h2>✨ Premium Features</h2>
-              <p>Gradients, animations, and badges</p>
-            </div>
-            <div class="demo-grid col-3">
-              <div class="demo-card centered">
-                <h3>Gradient</h3>
-                <app-avatar gradient size="large" name="Alex"></app-avatar>
-              </div>
-
-              <div class="demo-card centered">
-                <h3>Animation (Pulse)</h3>
-                <app-avatar
-                  animation="pulse"
-                  size="large"
-                  icon="fas fa-bell"
-                  bg-color="#ff4d4f"
-                ></app-avatar>
-              </div>
-
-              <div class="demo-card centered">
-                <h3>Verified</h3>
-                <app-avatar
-                  verified
-                  size="large"
-                  src="https://api.dicebear.com/7.x/miniavs/svg?seed=20"
-                ></app-avatar>
-              </div>
-            </div>
-          </section>
+          <div class="demo-card centered">
+            <h3>Initials</h3>
+            <app-avatar size="large" bg-color="#722ed1">JD</app-avatar>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Sizes & Shapes -->
+      <section class="demo-section" id="sizes-shapes">
+        <div class="section-header">
+          <h2>📏 Sizes & Shapes</h2>
+          <p>Various sizes and shape options</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Circle (Default)</h3>
+            <div class="avatar-row">
+              <app-avatar size="small" icon="fas fa-user"></app-avatar>
+              <app-avatar size="medium" icon="fas fa-user"></app-avatar>
+              <app-avatar size="large" icon="fas fa-user"></app-avatar>
+              <app-avatar size="xl" icon="fas fa-user"></app-avatar>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Square</h3>
+            <div class="avatar-row">
+              <app-avatar shape="square" size="small" icon="fas fa-user"></app-avatar>
+              <app-avatar shape="square" size="medium" icon="fas fa-user"></app-avatar>
+              <app-avatar shape="square" size="large" icon="fas fa-user"></app-avatar>
+              <app-avatar shape="square" size="xl" icon="fas fa-user"></app-avatar>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status Indicators -->
+      <section class="demo-section" id="status">
+        <div class="section-header">
+          <h2>🟢 Status Indicators</h2>
+          <p>Communicate user availability</p>
+        </div>
+        <div class="demo-grid col-4">
+          <div class="demo-card centered">
+            <app-avatar
+              size="large"
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=2"
+              show-status
+              status="online"
+            ></app-avatar>
+            <span class="label">Online</span>
+          </div>
+          <div class="demo-card centered">
+            <app-avatar
+              size="large"
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=3"
+              show-status
+              status="away"
+            ></app-avatar>
+            <span class="label">Away</span>
+          </div>
+          <div class="demo-card centered">
+            <app-avatar
+              size="large"
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=4"
+              show-status
+              status="busy"
+            ></app-avatar>
+            <span class="label">Busy</span>
+          </div>
+          <div class="demo-card centered">
+            <app-avatar
+              size="large"
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=5"
+              show-status
+              status="offline"
+            ></app-avatar>
+            <span class="label">Offline</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Avatar Groups -->
+      <section class="demo-section" id="groups">
+        <div class="section-header">
+          <h2>👥 Avatar Groups</h2>
+          <p>Display multiple users together</p>
+        </div>
+        <div class="demo-card centered">
+          <app-avatar-group max="4" border-color="#1e1e1e">
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=10"
+              tooltip-text="Alice"
+            ></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=11"
+              tooltip-text="Bob"
+            ></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=12"
+              tooltip-text="Charlie"
+            ></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=13"
+              tooltip-text="David"
+            ></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=14"
+              tooltip-text="Eve"
+            ></app-avatar>
+            <app-avatar
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=15"
+              tooltip-text="Frank"
+            ></app-avatar>
+          </app-avatar-group>
+        </div>
+      </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
+        <div class="section-header">
+          <h2>✨ Premium Features</h2>
+          <p>Gradients, animations, and badges</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card centered">
+            <h3>Gradient</h3>
+            <app-avatar gradient size="large" name="Alex"></app-avatar>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Animation (Pulse)</h3>
+            <app-avatar
+              animation="pulse"
+              size="large"
+              icon="fas fa-bell"
+              bg-color="#ff4d4f"
+            ></app-avatar>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Verified</h3>
+            <app-avatar
+              verified
+              size="large"
+              src="https://api.dicebear.com/7.x/miniavs/svg?seed=20"
+            ></app-avatar>
+          </div>
+        </div>
+      </section>
     </div>
 
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Customize avatar appearance and behavior</p>
+        </div>
+        <app-avatar-playground></app-avatar-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Avatar Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
     <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <h2>📚 Documentation</h2>
-          <p>Coming soon...</p>
-        </section>
-      </div>
+      <app-component-documentation componentId="avatar"></app-component-documentation>
     </div>
   </demo-tabs>
 </div>

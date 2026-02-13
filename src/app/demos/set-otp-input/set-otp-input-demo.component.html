@@ -1,108 +1,118 @@
 <div class="demo-container">
   <h1>🔢 OTP Input Component</h1>
 
-  <demo-tabs>
-    <!-- Interactive Playground -->
-    <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure input length, style, and validation</p>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>✨ Style Variants</h2>
+          <p>Different visual styles for various contexts</p>
+        </div>
+
+        <div class="demo-grid col-2">
+          <div class="demo-card centered">
+            <h3>Default</h3>
+            <app-otp-input length="4" label="Enter PIN"></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Underlined</h3>
+            <app-otp-input variant="underlined" length="4" label="Underlined Style"></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Flushed</h3>
+            <app-otp-input variant="flushed" length="6" label="Flushed Style"></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Separated</h3>
+            <app-otp-input
+              variant="separated"
+              length="4"
+              label="Separated Style"
+              color="success"
+            ></app-otp-input>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grouping & Colors -->
+      <section class="demo-section" id="grouping">
+        <div class="section-header">
+          <h2>🎨 Grouping & Colors</h2>
+          <p>Organize long codes and apply status colors</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card centered">
+            <h3>Grouped (3-3)</h3>
+            <app-otp-input
+              length="6"
+              group-size="3"
+              label="Verification Code"
+              color="info"
+            ></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Secure & Error</h3>
+            <app-otp-input
+              length="4"
+              secure="true"
+              invalid="true"
+              error-text="Invalid PIN"
+              label="Secure Input"
+            ></app-otp-input>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sizing -->
+      <section class="demo-section" id="sizes">
+        <div class="section-header">
+          <h2>📏 Sizes</h2>
+          <p>Available in different sizes</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card centered">
+            <h3>Small</h3>
+            <app-otp-input size="small" length="4"></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Medium</h3>
+            <app-otp-input size="medium" length="4"></app-otp-input>
+          </div>
+
+          <div class="demo-card centered">
+            <h3>Large</h3>
+            <app-otp-input size="large" length="4"></app-otp-input>
+          </div>
+        </div>
+      </section>
     </div>
-    <app-otp-input-playground></app-otp-input-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="OTP Input Usage"
-      language="html"
-    ></app-code-block>
-    </section>
 
-    <!-- Variants -->
-    <section class="demo-section" id="variants">
-    <div class="section-header">
-      <h2>✨ Style Variants</h2>
-      <p>Different visual styles for various contexts</p>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure input length, style, and validation</p>
+        </div>
+        <app-otp-input-playground></app-otp-input-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="OTP Input Usage"
+          language="html"
+        ></app-code-block>
+      </section>
     </div>
 
-    <div class="demo-grid col-2">
-      <div class="demo-card centered">
-        <h3>Default</h3>
-        <app-otp-input length="4" label="Enter PIN"></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Underlined</h3>
-        <app-otp-input variant="underlined" length="4" label="Underlined Style"></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Flushed</h3>
-        <app-otp-input variant="flushed" length="6" label="Flushed Style"></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Separated</h3>
-        <app-otp-input
-          variant="separated"
-          length="4"
-          label="Separated Style"
-          color="success"
-        ></app-otp-input>
-      </div>
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="otp-input"></app-component-documentation>
     </div>
-    </section>
-
-    <!-- Grouping & Colors -->
-    <section class="demo-section" id="grouping">
-    <div class="section-header">
-      <h2>🎨 Grouping & Colors</h2>
-      <p>Organize long codes and apply status colors</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card centered">
-        <h3>Grouped (3-3)</h3>
-        <app-otp-input
-          length="6"
-          group-size="3"
-          label="Verification Code"
-          color="info"
-        ></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Secure & Error</h3>
-        <app-otp-input
-          length="4"
-          secure="true"
-          invalid="true"
-          error-text="Invalid PIN"
-          label="Secure Input"
-        ></app-otp-input>
-      </div>
-    </div>
-    </section>
-
-    <!-- Sizing -->
-    <section class="demo-section" id="sizes">
-    <div class="section-header">
-      <h2>📏 Sizes</h2>
-      <p>Available in different sizes</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card centered">
-        <h3>Small</h3>
-        <app-otp-input size="small" length="4"></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Medium</h3>
-        <app-otp-input size="medium" length="4"></app-otp-input>
-      </div>
-
-      <div class="demo-card centered">
-        <h3>Large</h3>
-        <app-otp-input size="large" length="4"></app-otp-input>
-      </div>
-    </div>
-    </section>
   </demo-tabs>
 </div>
