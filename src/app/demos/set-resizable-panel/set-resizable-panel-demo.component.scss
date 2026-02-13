@@ -1,33 +1,77 @@
+.demo-container {
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .intro-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+}
+
+.demo-section {
+  margin-bottom: 48px;
+
+  .section-header {
+    margin-bottom: 24px;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+  }
+}
+
 .demo-grid {
-  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .demo-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+
   &.full-width {
     grid-column: 1 / -1;
   }
 
   &.h-gradient {
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), transparent);
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.02));
   }
 
   h3 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-transform: capitalize;
   }
 }
-
 
 .panel-box {
   height: 250px;
   background: rgba(var(--bg-secondary-rgb), 0.3);
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
   overflow: hidden;
+  margin-bottom: 16px;
 
   &.large-box {
     height: 500px;
@@ -36,15 +80,47 @@
 
 .p-content {
   height: 100%;
-  padding: 20px;
+  padding: 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   font-weight: 500;
   color: var(--text-secondary);
+  overflow-y: auto;
+
+  strong {
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: block;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  em {
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
 
   &.dark-p {
     background: #1e293b;
     color: #94a3b8;
+
+    strong {
+      color: #e2e8f0;
+    }
   }
+}
+
+// Code block spacing
+app-code-block {
+  margin-top: 16px;
 }
