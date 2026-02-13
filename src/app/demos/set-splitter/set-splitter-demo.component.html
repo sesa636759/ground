@@ -140,7 +140,7 @@
               </div>
               <div slot="panel-1" style="height: 100%">
                 <app-splitter direction="vertical" style="height: 100%">
-                  <div slot="panel-0" class="p-content"><strong>Editor</strong><div class="code-example">function hello() {<br>  console.log("Hello World");<br>}</div></div>
+                  <div slot="panel-0" class="p-content"><strong>Editor</strong><div class="code-example">function hello() {{ '{' }}<br>  console.log("Hello World");<br>{{ '}' }}</div></div>
                   <div slot="panel-1" class="p-content dark-p"><strong>Terminal</strong><p>$ npm run dev</p></div>
                 </app-splitter>
               </div>
