@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SplitButtonPlaygroundComponent } from './components/split-button-playground/split-button-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-split-button-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SplitButtonPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    SplitButtonPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-split-button-demo.component.html',
   styleUrl: './app-split-button-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppSplitButtonDemoComponent {
     { id: 'colors', name: 'Color Themes', icon: '🎨', color: '#3b82f6' },
     { id: 'states', name: 'Visual States', icon: '⚡', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   menuItems = JSON.stringify([
     { label: 'Update', icon: '🔄' },

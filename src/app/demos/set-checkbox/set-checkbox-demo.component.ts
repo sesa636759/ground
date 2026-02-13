@@ -1,19 +1,43 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckboxPlaygroundComponent } from './components/checkbox-playground/checkbox-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-checkbox-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CheckboxPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CheckboxPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-checkbox-demo.component.html',
   styleUrl: './set-checkbox-demo.component.scss',
 })
 export class SetCheckboxDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
+    { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
+    { id: 'sizes-variants', title: 'Sizes & Variants', icon: '📏' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'form', title: 'Form Example', icon: '📋' },
+  ];
+
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   // Form State
   formTerms = false;
   formPrivacy = false;

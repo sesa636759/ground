@@ -1,11 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './modern-sidebar-playground.component.html',
   styleUrl: './modern-sidebar-playground.component.scss',
@@ -23,7 +30,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     theme: 'light',
   };
 
-  sidebarItems = [
+  sidebarItems = JSON.stringify([
     { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'projects', label: 'Projects', icon: 'fas fa-folder', badge: 5 },
     {
@@ -37,7 +44,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     },
     { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 'New' },
     { id: 'help', label: 'Help', icon: 'fas fa-question-circle' },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

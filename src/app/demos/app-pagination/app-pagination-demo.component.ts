@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { PaginationPlaygroundComponent } from './components/pagination-playground/pagination-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-pagination-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PaginationPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    PaginationPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pagination-demo.component.html',
   styleUrl: './app-pagination-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppPaginationDemoComponent {
     { id: 'styles', name: 'Visual Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'features', name: 'UI Controls', icon: '⚙️', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-pagination [total-records]="100" [rows]="10" show-report></ui-pagination>`;
 

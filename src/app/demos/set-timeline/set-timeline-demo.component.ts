@@ -1,21 +1,37 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-timeline-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TimelinePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TimelinePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',
 })
 export class SetTimelineDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'layouts', title: 'Versatile Layouts', icon: '📐' },
+    { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
+    { id: 'variants', title: 'Style Variants', icon: '🎨' },
+  ];
+
   // Static Data Examples
-  roadmapItems = [
+  roadmapItems = JSON.stringify([
     {
       title: 'Q1 2024',
       description: 'Research & Planning',
@@ -44,22 +60,26 @@ export class SetTimelineDemoComponent implements OnInit {
       icon: 'fas fa-rocket',
       dotColor: '#ef4444',
     },
-  ];
+  ]);
 
-  historyItems = [
+  historyItems = JSON.stringify([
     { title: 'Founded', description: 'Company established', date: '2010', icon: 'fas fa-building' },
     { title: 'Expansion', description: 'Opened new offices', date: '2015', icon: 'fas fa-globe' },
     { title: 'IPO', description: 'Went public', date: '2020', icon: 'fas fa-chart-line' },
     { title: 'Global', description: 'Worldwide presence', date: '2024', icon: 'fas fa-users' },
-  ];
+  ]);
 
-  snakeItems = Array.from({ length: 12 }, (_, i) => ({
+  snakeItems = JSON.stringify(Array.from({ length: 12 }, (_, i) => ({
     id: `s${i}`,
     title: `Step ${i + 1}`,
     date: `Day ${i + 1}`,
     icon: 'fas fa-circle-small',
     dotColor: i % 2 === 0 ? '#10b981' : '#3b82f6',
-  }));
+  })));
+
+  // Parsed data for use in TypeScript (for slicing, etc.)
+  private roadmapItemsArray = JSON.parse(this.roadmapItems);
+  roadmapItemsSliced = JSON.stringify(this.roadmapItemsArray.slice(0, 2));
 
   playgroundCode = `<app-timeline
   [items]="timelineItems"
@@ -67,4 +87,11 @@ export class SetTimelineDemoComponent implements OnInit {
 ></app-timeline>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

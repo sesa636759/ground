@@ -1,20 +1,34 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-tree-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TreePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TreePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
 export class SetTreeDemoComponent implements OnInit {
-  basicTreeData = [
+  exampleVariants = [
+    { id: 'common-variations', title: 'Common Variations', icon: '📋' },
+    { id: 'advanced-layouts', title: 'Advanced Layouts', icon: '🥈' },
+    { id: 'visual-effects', title: 'Premium Aesthetics', icon: '💎' },
+  ];
+
+  basicTreeData = JSON.stringify([
     {
       id: 'root',
       label: 'Documentation',
@@ -33,9 +47,9 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
-  orgChartData = [
+  orgChartData = JSON.stringify([
     {
       id: 'ceo',
       label: 'Sarah Wilson',
@@ -62,7 +76,7 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ];
+  ]);
 
   playgroundCode = `<app-tree
   [data]="treeData"
@@ -84,4 +98,11 @@ export class SetTreeDemoComponent implements OnInit {
 ></app-tree>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

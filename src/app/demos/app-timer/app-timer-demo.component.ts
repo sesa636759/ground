@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { TimerPlaygroundComponent } from './components/timer-playground/timer-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-timer-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TimerPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    TimerPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-timer-demo.component.html',
   styleUrl: './app-timer-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppTimerDemoComponent {
     { id: 'modes', name: 'Timer Modes', icon: '⏲️', color: '#3b82f6' },
     { id: 'formats', name: 'Display Formats', icon: '🕰️', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-timer [duration]="60" mode="countdown" format="mm:ss"></ui-timer>`;
 

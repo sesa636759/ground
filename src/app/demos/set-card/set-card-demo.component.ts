@@ -1,19 +1,35 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-card-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CardPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CardPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-card-demo.component.html',
   styleUrl: './set-card-demo.component.scss',
 })
 export class SetCardDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'basic-cards', title: 'Basic Cards', icon: '📋' },
+    { id: 'media-covers', title: 'Media & Covers', icon: '🖼️' },
+    { id: 'flippable-cards', title: 'Flippable Cards', icon: '🔄' },
+    { id: 'premium-features', title: 'Premium Layouts', icon: '🏆' },
+    { id: 'states-interaction', title: 'States & Interaction', icon: '🔄' },
+  ];
+
   isLoading = false;
 
   playgroundCode = `<app-card
@@ -124,6 +140,13 @@ export class SetCardDemoComponent implements OnInit {
 </app-card>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   toggleLoading() {
     this.isLoading = !this.isLoading;

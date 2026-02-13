@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { OtpInputPlaygroundComponent } from './components/otp-input-playground/otp-input-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-otp-input-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, OtpInputPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    OtpInputPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-otp-input-demo.component.html',
   styleUrl: './app-otp-input-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppOtpInputDemoComponent {
     { id: 'lengths', name: 'Field Configurations', icon: '🔢', color: '#3b82f6' },
     { id: 'states', name: 'Modes & States', icon: '🔒', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-otp-input [length]="6" (otpChange)="handleOtp($event)"></ui-otp-input>`;
 

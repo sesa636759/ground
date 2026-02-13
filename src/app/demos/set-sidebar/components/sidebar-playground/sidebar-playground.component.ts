@@ -1,11 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-sidebar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './sidebar-playground.component.html',
   styleUrl: './sidebar-playground.component.scss',
@@ -21,12 +28,12 @@ export class SidebarPlaygroundComponent implements OnInit {
     overlay: false,
   };
 
-  menuItems = [
+  menuItems = JSON.stringify([
     { id: '1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: '2', label: 'Analytics', icon: 'fas fa-chart-line' },
     { id: '3', label: 'Settings', icon: 'fas fa-cog' },
     { id: '4', label: 'Profile', icon: 'fas fa-user' },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

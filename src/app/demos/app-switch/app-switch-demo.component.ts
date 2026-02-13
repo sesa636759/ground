@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SwitchPlaygroundComponent } from './components/switch-playground/switch-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-switch-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, SwitchPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    SwitchPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-switch-demo.component.html',
   styleUrl: './app-switch-demo.component.scss',
@@ -21,6 +29,10 @@ export class AppSwitchDemoComponent {
     { id: 'icons', name: 'Icons', icon: '🎨', color: '#f59e0b' },
     { id: 'labels', name: 'Labels', icon: '📝', color: '#ec4899' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-switch label="Enable Feature" checked variant="primary"></ui-switch>`;
 

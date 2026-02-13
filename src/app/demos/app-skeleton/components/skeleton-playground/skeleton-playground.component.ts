@@ -51,7 +51,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Border Radius</label>
-              <app-input type="text" [(ngModel)]="pgConfig.borderRadius" (change)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.borderRadius"
+                (change)="updateConfig()"
+              />
             </div>
           </div>
         </div>

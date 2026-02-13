@@ -1,23 +1,39 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { MasonryPlaygroundComponent } from './components/masonry-playground/masonry-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-masonry-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, MasonryPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MasonryPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
 })
 export class SetMasonryDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'gallery', title: 'Premium Gallery', icon: '📸' },
+    { id: 'layouts', title: 'Layout Variants', icon: '📐' },
+    { id: 'loading', title: 'Skeleton Loading', icon: '💀' },
+  ];
+
   // Static items for demos
-  galleryItems = this.generateItems(12, 'gallery');
-  newsItems = this.generateItems(8, 'news');
-  productItems = this.generateItems(8, 'product');
+  galleryItems = JSON.stringify(this.generateItems(12, 'gallery'));
+  newsItems = JSON.stringify(this.generateItems(8, 'news'));
+  productItems = JSON.stringify(this.generateItems(8, 'product'));
 
   // Code examples
   basicMasonryCode = `<app-masonry
@@ -64,6 +80,13 @@ export class SetMasonryDemoComponent implements OnInit {
 </app-masonry>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   generateItems(count: number, type: string) {
     const heights = [200, 250, 300, 350, 400];

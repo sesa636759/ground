@@ -1,14 +1,20 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, AccordianPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AccordianPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',
@@ -30,6 +36,10 @@ export class SetAccordianDemoComponent {
     { id: 'controlled', name: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', name: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);
@@ -252,4 +262,81 @@ export class SetAccordianDemoComponent {
   setControlledExpanded(ids: string[]) {
     this.controlledExpanded = [...ids];
   }
+
+  itemStructureCode = `interface AccordionItem {
+  id: string;              // Unique identifier (required)
+  title: string;           // Item header text (required)
+  content: string;         // HTML content for the panel (required)
+  subtitle?: string;       // Optional subtitle below title
+  icon?: string;           // Optional icon (emoji or icon class)
+  actions?: Action[];      // Optional action buttons
+  children?: AccordionItem[]; // Optional nested items
+}
+
+interface Action {
+  id: string;              // Unique action identifier
+  label: string;           // Button label/icon
+  ariaLabel: string;       // Accessibility label
+}`;
+
+  usageBasicCode = `<ui-accordion [items]="items"></ui-accordion>
+
+// Component
+items = [
+  {
+    id: 'item1',
+    title: 'First Item',
+    content: '<p>Content for first item</p>'
+  },
+  {
+    id: 'item2',
+    title: 'Second Item',
+    content: '<p>Content for second item</p>'
+  }
+];`;
+
+  usageSearchCode = `<ui-accordion 
+  [items]="items" 
+  enable-search 
+  search-placeholder="Search items...">
+</ui-accordion>`;
+
+  usageActionsCode = `<ui-accordion 
+  [items]="items" 
+  (accordionAction)="handleAction($event)"
+  (afterOpen)="onItemOpen($event)">
+</ui-accordion>
+
+// Component
+items = [
+  {
+    id: 'file1',
+    title: 'Document.pdf',
+    subtitle: '2.4 MB',
+    content: '<p>Preview...</p>',
+    actions: [
+      { id: 'download', label: '⬇️', ariaLabel: 'Download' },
+      { id: 'delete', label: '🗑️', ariaLabel: 'Delete' }
+    ]
+  }
+];
+
+handleAction(event: CustomEvent) {
+  const { itemId, actionId } = event.detail;
+  console.log(\`Action \${actionId} on item \${itemId}\`);
+}`;
+
+  usageDragDropCode = `<ui-accordion 
+  [items]="items" 
+  enable-drag-drop 
+  enable-persistence 
+  persistence-key="my-accordion-v1"
+  (accordionReorder)="handleReorder($event)">
+</ui-accordion>
+
+// Component
+handleReorder(event: CustomEvent) {
+  const { oldIndex, newIndex } = event.detail;
+  // Update your data model
+}`;
 }

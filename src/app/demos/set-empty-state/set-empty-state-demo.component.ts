@@ -1,20 +1,40 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-empty-state-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, EmptyStatePlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    EmptyStatePlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-empty-state-demo.component.html',
   styleUrl: './set-empty-state-demo.component.scss',
 })
 export class SetEmptyStateDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'standard-types', title: 'Standard Types', icon: '📋' },
+    { id: 'advanced-usage', title: 'Advanced Usage', icon: '🚀' },
+  ];
+
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   suggestions = JSON.stringify([
     { icon: 'fas fa-search', label: 'Check your spelling', value: 'spelling' },

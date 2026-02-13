@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { NavBarPlaygroundComponent } from './components/nav-bar-playground/nav-bar-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-nav-bar-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, NavBarPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    NavBarPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-nav-bar-demo.component.html',
   styleUrl: './app-nav-bar-demo.component.scss',
@@ -18,6 +26,10 @@ export class AppNavBarDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'themes', name: 'Themes', icon: '🌗', color: '#3b82f6' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   navItems = JSON.stringify([
     { label: 'Overview', icon: '🏠' },

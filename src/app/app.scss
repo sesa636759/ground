@@ -3,7 +3,7 @@
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
   to {
     opacity: 1;
@@ -14,7 +14,7 @@
 @keyframes slideRight {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-12px);
   }
   to {
     opacity: 1;
@@ -22,26 +22,39 @@
   }
 }
 
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .app-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: var(--bg-primary);
+  background-image: var(--gradient-mesh);
+  position: relative;
 
-  // Expanded Sidebar
+  // Premium Sidebar
   .sidebar-nav {
-    display: flex;
-    flex-direction: column;
+    display: block;
     flex: 0 0 280px;
-    height: 100vh;
-    background: var(--surface-1);
+    height: 100%;
+    background: var(--surface-elevated);
     border-right: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
-    z-index: 10;
-    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    transition: all var(--transition-smooth);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .main-content {
@@ -50,7 +63,8 @@
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-    background: var(--bg-primary);
+    background: transparent;
+    position: relative;
 
     .content-body {
       flex: 1;
@@ -59,19 +73,16 @@
       overflow: hidden;
       padding: 0;
       scroll-behavior: smooth;
-      min-height: 0; // Crucial for flex shrinking
-      
+      position: relative;
+
       > * {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        min-height: 0; // Force demo components to respect parent height
+        display: block;
+        animation: fadeInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
     }
   }
 
-  // Collapsed Sidebar Logic
+  // Collapsed Sidebar
   &.sidebar-collapsed {
     .sidebar-nav {
       flex: 0 0 80px;
@@ -87,53 +98,91 @@
         width: 240px;
         z-index: 1000;
         margin-top: 0;
-        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--shadow-xl);
         border-left: 1px solid var(--border-color);
-        animation: slideRight 0.2s ease;
+        animation: slideRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
     }
   }
 }
 
-// Global Reusable Classes for Demos
+// Enterprise-Level Reusable Components
 .card-premium {
-  background: var(--surface-1);
+  background: var(--surface-elevated);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
   box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+  }
 
   &:hover {
-    box-shadow: var(--shadow-premium);
+    box-shadow: var(--shadow-xl);
     transform: translateY(-4px);
+    border-color: var(--border-strong);
+    
+    &::before {
+      opacity: 1;
+    }
   }
 }
 
 .text-gradient {
-  background: var(--gradient-premium);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 700;
 }
 
-// Sidebar User Profile Styles
+// Premium Sidebar User Profile
 .sidebar-user-profile {
-  padding: 16px;
+  padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
   background: var(--surface-1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   .user-profile-container {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 12px;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
     cursor: pointer;
     transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
 
     &:hover {
-      background: var(--bg-secondary);
+      background: var(--bg-accent);
+      transform: translateX(2px);
+      
+      &::before {
+        opacity: 0.05;
+      }
     }
 
     .user-avatar {
@@ -141,11 +190,18 @@
       flex-shrink: 0;
 
       img {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid var(--primary);
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-fast);
+      }
+      
+      &:hover img {
+        transform: scale(1.05);
+        box-shadow: var(--shadow-md);
       }
 
       .user-status {
@@ -155,12 +211,14 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: #6b7280;
+        background: var(--text-tertiary);
         border: 2px solid var(--surface-1);
         transition: all var(--transition-fast);
+        box-shadow: var(--shadow-sm);
 
         &.online {
-          background: #10b981;
+          background: var(--success);
+          box-shadow: 0 0 8px var(--success);
         }
       }
     }
@@ -168,14 +226,17 @@
     .user-info {
       flex: 1;
       min-width: 0;
+      position: relative;
+      z-index: 1;
 
       .user-name {
-        font-size: 0.875rem;
+        font-size: 0.9rem;
         font-weight: 600;
         color: var(--text-primary);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        margin-bottom: 2px;
       }
 
       .user-role {
@@ -189,8 +250,8 @@
 
     .user-menu-toggle {
       flex-shrink: 0;
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border: none;
       background: transparent;
       color: var(--text-secondary);
@@ -199,9 +260,14 @@
       align-items: center;
       justify-content: center;
       transition: all var(--transition-fast);
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 1;
 
       &:hover {
         color: var(--text-primary);
+        background: var(--bg-secondary);
+        transform: rotate(90deg);
       }
     }
   }

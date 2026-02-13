@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AdvancedDataTablePlaygroundComponent } from './components/advanced-data-table-playground/advanced-data-table-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-advanced-data-table-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, AdvancedDataTablePlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    AdvancedDataTablePlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-advanced-data-table-demo.component.html',
   styleUrl: './app-advanced-data-table-demo.component.scss',
@@ -18,6 +26,10 @@ export class AppAdvancedDataTableDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'features', name: 'Key Features', icon: '💎', color: '#3b82f6' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   sampleData = JSON.stringify([
     { id: 1, name: 'Service A', load: '45%', uptime: '99.9%' },

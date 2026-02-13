@@ -1,129 +1,117 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">📋</span> List Component</h1>
-<p class="intro-text">A versatile list component with support for icons, avatars, badges, actions, and nested items.</p>
-</div>
+<div class="demo-container">
+  <h1>📋 List Component</h1>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure list appearance and item properties</p>
-    </div>
-    <app-list-playground></app-list-playground>
-    <app-code-block [code]="playgroundCode" title="List Usage" language="html"></app-code-block>
-  </section>
-    </div>
-  </div>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>🎭 Variants</h2>
+          <p>Different visual styles for lists</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Filled</h3>
+            <app-list variant="filled" color="primary">
+              <app-list-item
+                label="Inbox"
+                icon="fas fa-inbox"
+                badge="3"
+                badge-color="danger"
+              ></app-list-item>
+              <app-list-item label="Sent" icon="fas fa-paper-plane"></app-list-item>
+              <app-list-item label="Drafts" icon="fas fa-pencil-alt"></app-list-item>
+            </app-list>
+          </div>
 
-  <div slot="examples">
-    
-      <div class="demo-container">
-        <section class="demo-section">
-    <div class="section-header">
-      <h2>🎭 Variants</h2>
-      <p>Different visual styles for lists</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Filled</h3>
-        <app-list variant="filled" color="primary">
-          <app-list-item
-            label="Inbox"
-            icon="fas fa-inbox"
-            badge="3"
-            badge-color="danger"
-          ></app-list-item>
-          <app-list-item label="Sent" icon="fas fa-paper-plane"></app-list-item>
-          <app-list-item label="Drafts" icon="fas fa-pencil-alt"></app-list-item>
-        </app-list>
-      </div>
+          <div class="demo-card">
+            <h3>Outlined</h3>
+            <app-list variant="outlined" color="success">
+              <app-list-item label="Active" icon="fas fa-check-circle"></app-list-item>
+              <app-list-item
+                label="Pending"
+                icon="fas fa-clock"
+                sublabel="Waiting for approval"
+              ></app-list-item>
+              <app-list-item label="Completed" icon="fas fa-check-double"></app-list-item>
+            </app-list>
+          </div>
+        </div>
+      </section>
 
-      <div class="demo-card">
-        <h3>Outlined</h3>
-        <app-list variant="outlined" color="success">
-          <app-list-item label="Active" icon="fas fa-check-circle"></app-list-item>
-          <app-list-item
-            label="Pending"
-            icon="fas fa-clock"
-            sublabel="Waiting for approval"
-          ></app-list-item>
-          <app-list-item label="Completed" icon="fas fa-check-double"></app-list-item>
-        </app-list>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🌳 Nested Lists</h2>
-      <p>Expandable tree-like structures</p>
-    </div>
-    <div class="demo-card">
-      <app-list variant="soft">
-        <app-list-item label="Documents" icon="fas fa-folder" collapsible expanded>
-          <div slot="children">
-            <app-list-item label="Work" icon="fas fa-briefcase" level="1"></app-list-item>
-            <app-list-item label="Personal" icon="fas fa-user" level="1" collapsible>
+      <!-- Nested Lists -->
+      <section class="demo-section" id="nested">
+        <div class="section-header">
+          <h2>🌳 Nested Lists</h2>
+          <p>Expandable tree-like structures</p>
+        </div>
+        <div class="demo-card">
+          <app-list variant="soft">
+            <app-list-item label="Documents" icon="fas fa-folder" collapsible expanded>
               <div slot="children">
-                <app-list-item label="Photos" icon="fas fa-images" level="2"></app-list-item>
-                <app-list-item
-                  label="Receipts"
-                  icon="fas fa-file-invoice"
-                  level="2"
-                ></app-list-item>
+                <app-list-item label="Work" icon="fas fa-briefcase" level="1"></app-list-item>
+                <app-list-item label="Personal" icon="fas fa-user" level="1" collapsible>
+                  <div slot="children">
+                    <app-list-item label="Photos" icon="fas fa-images" level="2"></app-list-item>
+                    <app-list-item
+                      label="Receipts"
+                      icon="fas fa-file-invoice"
+                      level="2"
+                    ></app-list-item>
+                  </div>
+                </app-list-item>
               </div>
             </app-list-item>
-          </div>
-        </app-list-item>
-        <app-list-item label="System" icon="fas fa-cog"></app-list-item>
-      </app-list>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Auto-grouped lists, Skeleton loading, and Horizontal layout</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Grouped List</h3>
-        <app-list grouped variant="filled" color="info">
-          <app-list-item label="Apple" icon="fas fa-apple-alt" group="Fruits"></app-list-item>
-          <app-list-item label="Banana" icon="fas fa-carrot" group="Fruits"></app-list-item>
-          <app-list-item label="Carrot" icon="fas fa-carrot" group="Vegetables"></app-list-item>
-          <app-list-item label="Broccoli" icon="fas fa-tree" group="Vegetables"></app-list-item>
-        </app-list>
-      </div>
-
-      <div class="demo-card">
-        <h3>Skeleton Loading</h3>
-        <app-list-group label="Loading Data" expanded skeleton>
-          <app-list-item label="Hidden 1"></app-list-item>
-          <app-list-item label="Hidden 2"></app-list-item>
-          <app-list-item label="Hidden 3"></app-list-item>
-        </app-list-group>
-      </div>
-    </div>
-  </section>
-      </div>
-  </div>
-
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
-        <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+            <app-list-item label="System" icon="fas fa-cog"></app-list-item>
+          </app-list>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+      </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Auto-grouped lists, Skeleton loading, and Horizontal layout</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Grouped List</h3>
+            <app-list grouped variant="filled" color="info">
+              <app-list-item label="Apple" icon="fas fa-apple-alt" group="Fruits"></app-list-item>
+              <app-list-item label="Banana" icon="fas fa-carrot" group="Fruits"></app-list-item>
+              <app-list-item label="Carrot" icon="fas fa-carrot" group="Vegetables"></app-list-item>
+              <app-list-item label="Broccoli" icon="fas fa-tree" group="Vegetables"></app-list-item>
+            </app-list>
+          </div>
+
+          <div class="demo-card">
+            <h3>Skeleton Loading</h3>
+            <app-list-group label="Loading Data" expanded skeleton>
+              <app-list-item label="Hidden 1"></app-list-item>
+              <app-list-item label="Hidden 2"></app-list-item>
+              <app-list-item label="Hidden 3"></app-list-item>
+            </app-list-group>
+          </div>
         </div>
       </section>
     </div>
-  </div>
-</demo-tabs>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure list appearance and item properties</p>
+        </div>
+        <app-list-playground></app-list-playground>
+        <app-code-block [code]="playgroundCode" title="List Usage" language="html"></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="list"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

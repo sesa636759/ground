@@ -1,102 +1,93 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">💧</span> Dropdown Selector</h1>
-<p class="intro-text">A robust and interactive selection component. Supports single/multi-selection, search filtering,
-    hierarchical cascading data, and screen-reader optimizations.</p>
-</div>
+<div class="demo-container">
+  <h1>💧 Dropdown Selector</h1>
+  <p class="intro-text">
+    A robust and interactive selection component. Supports single/multi-selection, search filtering,
+    hierarchical cascading data, and screen-reader optimizations.
+  </p>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure the dropdown behavior and advanced features like multi-select and search</p>
-    </div>
-    <app-dropdown-playground></app-dropdown-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Basic Dropdown Setup"
-      language="html"
-    ></app-code-block>
-  </section>
-    </div>
-  </div>
-
-  <div slot="examples">
-    
-      <div class="demo-container">
-        <section class="demo-section" id="multi-select">
-    <div class="section-header">
-      <h2>📝 Multi-Select Mode</h2>
-      <p>Allow users to select multiple options with an intuitive checkbox interface</p>
-    </div>
-    <div class="demo-card">
-      <div class="preview-box">
-        <ui-dropdown
-          multi-select
-          [options]="basicOptions"
-          placeholder="Select multiple items"
-        ></ui-dropdown>
-      </div>
-    </div>
-    <app-code-block
-      [code]="multiSelectCode"
-      title="Multiple Selection"
-      language="html"
-    ></app-code-block>
-  </section>
-
-<section class="demo-section" id="cascading">
-    <div class="section-header">
-      <h2>🌳 Hierarchical / Cascading</h2>
-      <p>Organize complex data structures into expandable parent-child groups</p>
-    </div>
-    <div class="demo-card">
-      <div class="preview-box">
-        <ui-dropdown
-          cascading
-          [options]="cascadingOptions"
-          placeholder="Explore categories"
-        ></ui-dropdown>
-      </div>
-    </div>
-    <app-code-block
-      [code]="cascadingCode"
-      title="Cascading Options"
-      language="html"
-    ></app-code-block>
-  </section>
-
-<section class="demo-section" id="sizes">
-    <div class="section-header">
-      <h2>📏 Size Scaling</h2>
-      <p>Adapt the dropdown footprint to your UI density requirements</p>
-    </div>
-    <div class="demo-card">
-      <div class="preview-box">
-        <ui-dropdown size="sm" [options]="basicOptions" placeholder="Small"></ui-dropdown>
-        <ui-dropdown size="md" [options]="basicOptions" placeholder="Medium"></ui-dropdown>
-        <ui-dropdown size="lg" [options]="basicOptions" placeholder="Large"></ui-dropdown>
-      </div>
-    </div>
-    <app-code-block [code]="sizesCode" title="Size Variations" language="html"></app-code-block>
-  </section>
-      </div>
-  </div>
-
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Multi Selection -->
+      <section class="demo-section" id="multi-select">
         <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+          <h2>📝 Multi-Select Mode</h2>
+          <p>Allow users to select multiple options with an intuitive checkbox interface</p>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        <div class="demo-card">
+          <div class="preview-box">
+            <ui-dropdown
+              multi-select
+              [options]="basicOptions"
+              placeholder="Select multiple items"
+            ></ui-dropdown>
+          </div>
         </div>
+        <app-code-block
+          [code]="multiSelectCode"
+          title="Multiple Selection"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- Cascading -->
+      <section class="demo-section" id="cascading">
+        <div class="section-header">
+          <h2>🌳 Hierarchical / Cascading</h2>
+          <p>Organize complex data structures into expandable parent-child groups</p>
+        </div>
+        <div class="demo-card">
+          <div class="preview-box">
+            <ui-dropdown
+              cascading
+              [options]="cascadingOptions"
+              placeholder="Explore categories"
+            ></ui-dropdown>
+          </div>
+        </div>
+        <app-code-block
+          [code]="cascadingCode"
+          title="Cascading Options"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- Sizes -->
+      <section class="demo-section" id="sizes">
+        <div class="section-header">
+          <h2>📏 Size Scaling</h2>
+          <p>Adapt the dropdown footprint to your UI density requirements</p>
+        </div>
+        <div class="demo-card">
+          <div class="preview-box">
+            <ui-dropdown size="sm" [options]="basicOptions" placeholder="Small"></ui-dropdown>
+            <ui-dropdown size="md" [options]="basicOptions" placeholder="Medium"></ui-dropdown>
+            <ui-dropdown size="lg" [options]="basicOptions" placeholder="Large"></ui-dropdown>
+          </div>
+        </div>
+        <app-code-block [code]="sizesCode" title="Size Variations" language="html"></app-code-block>
       </section>
     </div>
-  </div>
-</demo-tabs>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure the dropdown behavior and advanced features like multi-select and search</p>
+        </div>
+        <app-dropdown-playground></app-dropdown-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Basic Dropdown Setup"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="dropdown"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

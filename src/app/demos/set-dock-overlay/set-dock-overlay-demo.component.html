@@ -1,188 +1,179 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">🪟</span> Dock Overlay Component</h1>
-<p class="intro-text">Overlay component for docking panels and windows with drag, resize, and multi-panel support for
-    advanced layouts.</p>
-</div>
+<div class="demo-container">
+  <h1>🪟 Dock Overlay Component</h1>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure and test all dock overlay properties</p>
-    </div>
-    <app-dock-overlay-playground></app-dock-overlay-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Dock Overlay Usage"
-      language="html"
-    ></app-code-block>
-  </section>
-    </div>
-  </div>
-
-  <div slot="examples">
-    
-      <div class="demo-container">
-        <section class="demo-section">
-    <div class="section-header">
-      <h2>📍 Dock Positions</h2>
-      <p>Different docking positions</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Top Dock</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay position="top" title="Top Panel">
-            <div class="panel-content">Top docked panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Bottom Dock</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay position="bottom" title="Bottom Panel">
-            <div class="panel-content">Bottom docked panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Left Dock</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay position="left" title="Left Panel">
-            <div class="panel-content">Left docked panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Right Dock</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay position="right" title="Right Panel">
-            <div class="panel-content">Right docked panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🎭 Display Modes</h2>
-      <p>Different overlay modes</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Docked</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay mode="docked" position="left" title="Docked Panel">
-            <div class="panel-content">Always visible</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Floating</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay mode="floating" title="Floating Panel">
-            <div class="panel-content">Floating panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Modal</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay mode="modal" title="Modal Panel">
-            <div class="panel-content">Modal overlay</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>⚙️ Features</h2>
-      <p>Resizable, draggable, and collapsible panels</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Resizable</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay resizable="true" title="Resizable Panel">
-            <div class="panel-content">Drag edges to resize</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Draggable</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay draggable="true" mode="floating" title="Draggable Panel">
-            <div class="panel-content">Drag to move</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Collapsible</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay collapsible="true" title="Collapsible Panel">
-            <div class="panel-content">Click to collapse</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Advanced styling and multi-panel layouts</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
-        <h3 style="color: white">Glassmorphism</h3>
-        <div
-          class="preview-box dock-demo"
-          style="background: rgba(255, 255, 255, 0.1); border: none"
-        >
-          <app-dock-overlay variant="glass" title="Glass Panel">
-            <div class="panel-content" style="color: white">Glass effect panel</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Multi-Panel</h3>
-        <div class="preview-box dock-demo">
-          <app-dock-overlay multi-panel="true" title="Multi Panel">
-            <div class="panel-content">Supports multiple panels</div>
-          </app-dock-overlay>
-        </div>
-      </div>
-    </div>
-  </section>
-      </div>
-  </div>
-
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Positions -->
+      <section class="demo-section" id="positions">
         <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+          <h2>📍 Dock Positions</h2>
+          <p>Different docking positions</p>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Top Dock</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay position="top" title="Top Panel">
+                <div class="panel-content">Top docked panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Bottom Dock</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay position="bottom" title="Bottom Panel">
+                <div class="panel-content">Bottom docked panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Left Dock</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay position="left" title="Left Panel">
+                <div class="panel-content">Left docked panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Right Dock</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay position="right" title="Right Panel">
+                <div class="panel-content">Right docked panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sizes -->
+      <section class="demo-section" id="sizes">
+        <div class="section-header">
+          <h2>🎭 Display Modes</h2>
+          <p>Different overlay modes</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card">
+            <h3>Docked</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay mode="docked" position="left" title="Docked Panel">
+                <div class="panel-content">Always visible</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Floating</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay mode="floating" title="Floating Panel">
+                <div class="panel-content">Floating panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Modal</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay mode="modal" title="Modal Panel">
+                <div class="panel-content">Modal overlay</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>⚙️ Features</h2>
+          <p>Resizable, draggable, and collapsible panels</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card">
+            <h3>Resizable</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay resizable="true" title="Resizable Panel">
+                <div class="panel-content">Drag edges to resize</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Draggable</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay draggable="true" mode="floating" title="Draggable Panel">
+                <div class="panel-content">Drag to move</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Collapsible</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay collapsible="true" title="Collapsible Panel">
+                <div class="panel-content">Click to collapse</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Advanced styling and multi-panel layouts</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div
+            class="demo-card"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          >
+            <h3 style="color: white">Glassmorphism</h3>
+            <div
+              class="preview-box dock-demo"
+              style="background: rgba(255, 255, 255, 0.1); border: none"
+            >
+              <app-dock-overlay variant="glass" title="Glass Panel">
+                <div class="panel-content" style="color: white">Glass effect panel</div>
+              </app-dock-overlay>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Multi-Panel</h3>
+            <div class="preview-box dock-demo">
+              <app-dock-overlay multi-panel="true" title="Multi Panel">
+                <div class="panel-content">Supports multiple panels</div>
+              </app-dock-overlay>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-  </div>
-</demo-tabs>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure and test all dock overlay properties</p>
+        </div>
+        <app-dock-overlay-playground></app-dock-overlay-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Dock Overlay Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="dock-overlay"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { PatternInputPlaygroundComponent } from './components/pattern-input-playground/pattern-input-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-pattern-input-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PatternInputPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    PatternInputPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pattern-input-demo.component.html',
   styleUrl: './app-pattern-input-demo.component.scss',
@@ -18,6 +26,10 @@ export class AppPatternInputDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'patterns', name: 'Common Patterns', icon: '🎭', color: '#3b82f6' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-pattern-input mask="(999) 999-9999" placeholder="Phone"></ui-pattern-input>`;
 

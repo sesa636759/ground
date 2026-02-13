@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { PanelPlaygroundComponent } from './components/panel-playground/panel-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-panel-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, PanelPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    PanelPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-panel-demo.component.html',
   styleUrl: './app-panel-demo.component.scss',
@@ -21,6 +29,10 @@ export class AppPanelDemoComponent {
     { id: 'interactivity', name: 'Interactive', icon: '🕹️', color: '#f59e0b' },
     { id: 'glassmorphism', name: 'Glass', icon: '🔮', color: '#ec4899' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-panel panel-title="Analysis Feed" panel-subtitle="Real-time data stream" badge="Live">
   <div slot="content">Your content here...</div>

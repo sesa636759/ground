@@ -1,253 +1,267 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">🔘</span> Radio Group Demo</h1>
-</div>
+<div class="demo-container">
+  <h1>🔘 Radio Group Demo</h1>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Test all radio group properties in real-time</p>
-    </div>
-    <app-radio-playground></app-radio-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Radio Group Usage"
-      language="html"
-    ></app-code-block>
-  </section>
-    </div>
-  </div>
-
-  <div slot="examples">
-    
-      <div class="demo-container">
-        <section class="demo-section">
-    <div class="section-header">
-      <h2>✨ Premium Variants</h2>
-      <p>Modern radio styles for advanced UI needs</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card full-width">
-        <h3>Card Variant (Selectable Plans)</h3>
-        <app-radio-group
-          name="premium-cards"
-          variant="card"
-          layout="grid"
-          columns="2"
-          [options]="planOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Bordered Variant</h3>
-        <app-radio-group
-          name="prem-bord"
-          variant="bordered"
-          [options]="basicOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Underlined Variant</h3>
-        <app-radio-group
-          name="prem-und"
-          variant="underlined"
-          [options]="basicOptions"
-          color="success"
-        ></app-radio-group>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🔲 Button Groups</h2>
-      <p>Transform radios into segmented controllers</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Horizontal Toggle</h3>
-        <app-radio-group
-          name="btn-grp-h"
-          button-group="true"
-          layout="horizontal"
-          value="monthly"
-          [options]="subscriptionOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Vertical Toggle (Colors)</h3>
-        <app-radio-group
-          name="btn-grp-v"
-          button-group="true"
-          layout="vertical"
-          color="danger"
-          value="medium"
-          [options]="[
-            { value: 'low', label: 'Low Priority' },
-            { value: 'medium', label: 'Medium Priority' },
-            { value: 'high', label: 'High Priority' },
-          ]"
-        ></app-radio-group>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>📐 Layouts</h2>
-      <p>Different layout options for radio groups</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Vertical Layout</h3>
-        <app-radio-group
-          label="Choose delivery"
-          name="delivery-v"
-          value="standard"
-          layout="vertical"
-          [options]="deliveryOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Horizontal Layout</h3>
-        <app-radio-group
-          label="Choose size"
-          name="size-h"
-          value="medium"
-          layout="horizontal"
-          [options]="sizeOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card full-width">
-        <h3>Grid Layout (2 columns)</h3>
-        <app-radio-group
-          label="Choose plan"
-          name="plan-g"
-          value="pro"
-          layout="grid"
-          columns="2"
-          [options]="planOptions"
-        ></app-radio-group>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🧩 Slotted Radios</h2>
-      <p>Manual composition using app-radio elements</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Declarative Children</h3>
-        <app-radio-group name="slots-demo" label="Custom Group">
-          <app-radio value="1" label="Custom Option 1"></app-radio>
-          <app-radio value="2" label="Custom Option 2"></app-radio>
-          <app-radio value="3" label="Custom Option 3"></app-radio>
-        </app-radio-group>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🔄 States</h2>
-      <p>Different states and configurations</p>
-    </div>
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3>Disabled State</h3>
-        <app-radio-group
-          label="Disabled options"
-          name="disabled-demo"
-          disabled
-          [options]="basicOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Readonly State</h3>
-        <app-radio-group
-          label="Readonly options"
-          name="readonly-demo"
-          readonly
-          value="option2"
-          [options]="basicOptions"
-        ></app-radio-group>
-      </div>
-      <div class="demo-card">
-        <h3>Error State</h3>
-        <app-radio-group
-          label="Validation required"
-          name="error-demo"
-          required
-          invalid
-          error-message="Please make a selection"
-          [options]="basicOptions"
-        ></app-radio-group>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>📋 Form Example</h2>
-      <p>Radio groups in a form context</p>
-    </div>
-    <div class="form-container">
-      <div class="form-card">
-        <h3>Order Configuration</h3>
-        <div class="form-fields">
-          <app-radio-group
-            [(ngModel)]="formShipping"
-            label="Shipping Method"
-            name="shipping"
-            required
-            helper-text="Select your preferred delivery speed"
-            [options]="deliveryOptions"
-            [invalid]="shippingInvalid"
-            [attr.error-message]="shippingInvalid ? 'Required' : null"
-          >
-          </app-radio-group>
-
-          <app-radio-group
-            [(ngModel)]="formPayment"
-            label="Payment Method"
-            name="payment"
-            required
-            layout="grid"
-            columns="2"
-            color="success"
-            [options]="paymentOptions"
-            [invalid]="paymentInvalid"
-            [attr.error-message]="paymentInvalid ? 'Required' : null"
-          >
-          </app-radio-group>
-        </div>
-
-        <div class="form-footer">
-          <ui-button class="btn-submit" (click)="onSubmit()" label="Place Order"></ui-button>
-          <p class="form-message" [style.color]="formMessageColor()">{{ formMessage() }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-      </div>
-  </div>
-
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Premium Variants -->
+      <section class="demo-section" id="premium-variants">
         <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+          <h2>✨ Premium Variants</h2>
+          <p>Modern radio styles for advanced UI needs</p>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        <div class="demo-grid">
+          <div class="demo-card full-width">
+            <h3>Card Variant (Selectable Plans)</h3>
+            <app-radio-group
+              name="premium-cards"
+              variant="card"
+              layout="grid"
+              columns="2"
+              [options]="planOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Bordered Variant</h3>
+            <app-radio-group
+              name="prem-bord"
+              variant="bordered"
+              [options]="basicOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Underlined Variant</h3>
+            <app-radio-group
+              name="prem-und"
+              variant="underlined"
+              [options]="basicOptions"
+              color="success"
+            ></app-radio-group>
+          </div>
         </div>
+        <app-code-block
+          [code]="premiumVariantsCode"
+          title="Premium Variants"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- Button Groups -->
+      <section class="demo-section" id="button-groups">
+        <div class="section-header">
+          <h2>🔲 Button Groups</h2>
+          <p>Transform radios into segmented controllers</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Horizontal Toggle</h3>
+            <app-radio-group
+              name="btn-grp-h"
+              button-group="true"
+              layout="horizontal"
+              value="monthly"
+              [options]="subscriptionOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Vertical Toggle (Colors)</h3>
+            <app-radio-group
+              name="btn-grp-v"
+              button-group="true"
+              layout="vertical"
+              color="danger"
+              value="medium"
+              [options]="[
+                { value: 'low', label: 'Low Priority' },
+                { value: 'medium', label: 'Medium Priority' },
+                { value: 'high', label: 'High Priority' },
+              ]"
+            ></app-radio-group>
+          </div>
+        </div>
+        <app-code-block
+          [code]="buttonGroupsCode"
+          title="Button Groups"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- Layouts -->
+      <section class="demo-section" id="layouts">
+        <div class="section-header">
+          <h2>📐 Layouts</h2>
+          <p>Different layout options for radio groups</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Vertical Layout</h3>
+            <app-radio-group
+              label="Choose delivery"
+              name="delivery-v"
+              value="standard"
+              layout="vertical"
+              [options]="deliveryOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Horizontal Layout</h3>
+            <app-radio-group
+              label="Choose size"
+              name="size-h"
+              value="medium"
+              layout="horizontal"
+              [options]="sizeOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card full-width">
+            <h3>Grid Layout (2 columns)</h3>
+            <app-radio-group
+              label="Choose plan"
+              name="plan-g"
+              value="pro"
+              layout="grid"
+              columns="2"
+              [options]="planOptions"
+            ></app-radio-group>
+          </div>
+        </div>
+        <app-code-block [code]="layoutsCode" title="Layouts" language="html"></app-code-block>
+      </section>
+
+      <!-- Slotted Radios -->
+      <section class="demo-section" id="slotted-radios">
+        <div class="section-header">
+          <h2>🧩 Slotted Radios</h2>
+          <p>Manual composition using app-radio elements</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Declarative Children</h3>
+            <app-radio-group name="slots-demo" label="Custom Group">
+              <app-radio value="1" label="Custom Option 1"></app-radio>
+              <app-radio value="2" label="Custom Option 2"></app-radio>
+              <app-radio value="3" label="Custom Option 3"></app-radio>
+            </app-radio-group>
+          </div>
+        </div>
+        <app-code-block
+          [code]="slottedRadioCode"
+          title="Slotted Radios"
+          language="html"
+        ></app-code-block>
+      </section>
+
+      <!-- States -->
+      <section class="demo-section" id="states">
+        <div class="section-header">
+          <h2>🔄 States</h2>
+          <p>Different states and configurations</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Disabled State</h3>
+            <app-radio-group
+              label="Disabled options"
+              name="disabled-demo"
+              disabled
+              [options]="basicOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Readonly State</h3>
+            <app-radio-group
+              label="Readonly options"
+              name="readonly-demo"
+              readonly
+              value="option2"
+              [options]="basicOptions"
+            ></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h3>Error State</h3>
+            <app-radio-group
+              label="Validation required"
+              name="error-demo"
+              required
+              invalid
+              error-message="Please make a selection"
+              [options]="basicOptions"
+            ></app-radio-group>
+          </div>
+        </div>
+        <app-code-block [code]="statesCode" title="States" language="html"></app-code-block>
+      </section>
+
+      <!-- Form Example -->
+      <section class="demo-section" id="form-example">
+        <div class="section-header">
+          <h2>📋 Form Example</h2>
+          <p>Radio groups in a form context</p>
+        </div>
+        <div class="form-container">
+          <div class="form-card">
+            <h3>Order Configuration</h3>
+            <div class="form-fields">
+              <app-radio-group
+                [(ngModel)]="formShipping"
+                label="Shipping Method"
+                name="shipping"
+                required
+                helper-text="Select your preferred delivery speed"
+                [options]="deliveryOptions"
+                [invalid]="shippingInvalid"
+                [attr.error-message]="shippingInvalid ? 'Required' : null"
+              >
+              </app-radio-group>
+
+              <app-radio-group
+                [(ngModel)]="formPayment"
+                label="Payment Method"
+                name="payment"
+                required
+                layout="grid"
+                columns="2"
+                color="success"
+                [options]="paymentOptions"
+                [invalid]="paymentInvalid"
+                [attr.error-message]="paymentInvalid ? 'Required' : null"
+              >
+              </app-radio-group>
+            </div>
+
+            <div class="form-footer">
+              <ui-button class="btn-submit" (click)="onSubmit()" label="Place Order"></ui-button>
+              <p class="form-message" [style.color]="formMessageColor()">{{ formMessage() }}</p>
+            </div>
+          </div>
+        </div>
+        <app-code-block
+          [code]="formExampleCode"
+          title="Form Usage"
+          language="html"
+        ></app-code-block>
       </section>
     </div>
-  </div>
-</demo-tabs>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Test all radio group properties in real-time</p>
+        </div>
+        <app-radio-playground></app-radio-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Radio Group Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="radio"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

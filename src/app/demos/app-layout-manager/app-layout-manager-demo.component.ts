@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { LayoutManagerPlaygroundComponent } from './components/layout-manager-playground/layout-manager-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, LayoutManagerPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    LayoutManagerPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-layout-manager-demo.component.html',
   styleUrl: './app-layout-manager-demo.component.scss',
@@ -18,6 +26,10 @@ export class AppLayoutManagerDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'modes', name: 'Layout Modes', icon: '🗂️', color: '#3b82f6' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-layout-manager mode="docking" resizable closable>
   <div slot="panel-1">Main Content</div>

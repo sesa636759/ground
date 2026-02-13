@@ -1,220 +1,209 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">🏷</span> ️ Tags Input Component</h1>
-<p class="intro-text">A flexible tags input component for managing multiple values with autocomplete, validation, and
-    custom styling options.</p>
-</div>
+<div class="demo-container">
+  <h1>🏷️ Tags Input Component</h1>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Configure and test all tags input properties</p>
-    </div>
-    <app-tags-input-playground></app-tags-input-playground>
-    <app-code-block
-      [code]="playgroundCode"
-      title="Tags Input Usage"
-      language="html"
-    ></app-code-block>
-  </section>
-    </div>
-  </div>
-
-  <div slot="examples">
-    
-      <div class="demo-container">
-        <section class="demo-section">
-    <div class="section-header">
-      <h2>📝 Basic Usage</h2>
-      <p>Simple tag input examples</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Default Tags</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Technologies"
-            placeholder="Add a tag..."
-            [value]="defaultTags"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>With Max Tags</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Skills (Max 5)"
-            placeholder="Add skill..."
-            max-tags="5"
-            [value]="skillTags"
-          ></app-tags-input>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🎨 Color Variants</h2>
-      <p>Different color schemes for tags</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Primary</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Primary Tags"
-            color="primary"
-            [value]="['Design', 'UI/UX']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Success</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Success Tags"
-            color="success"
-            [value]="['Completed', 'Verified']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Warning</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Warning Tags"
-            color="warning"
-            [value]="['Pending', 'Review']"
-          ></app-tags-input>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>📏 Size Variants</h2>
-      <p>Different sizes for various use cases</p>
-    </div>
-    <div class="demo-grid col-3">
-      <div class="demo-card">
-        <h3>Small</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Small Tags"
-            size="small"
-            [value]="['Tag1', 'Tag2']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Medium</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Medium Tags"
-            size="medium"
-            [value]="['Tag1', 'Tag2']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Large</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Large Tags"
-            size="large"
-            [value]="['Tag1', 'Tag2']"
-          ></app-tags-input>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>💎 Premium Features</h2>
-      <p>Advanced styling and functionality</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>With Autocomplete</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Autocomplete Tags"
-            placeholder="Type to search..."
-            enable-autocomplete="true"
-            [suggestions]="['JavaScript', 'TypeScript', 'Python', 'Java', 'C++']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Readonly Mode</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Readonly Tags"
-            readonly="true"
-            [value]="categoryTags"
-          ></app-tags-input>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section class="demo-section">
-    <div class="section-header">
-      <h2>🔄 Component States</h2>
-      <p>Different states and validations</p>
-    </div>
-    <div class="demo-grid col-2">
-      <div class="demo-card">
-        <h3>Disabled</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Disabled Tags"
-            disabled="true"
-            [value]="['Disabled', 'Tags']"
-          ></app-tags-input>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3>Invalid State</h3>
-        <div class="preview-box">
-          <app-tags-input
-            label="Invalid Tags"
-            invalid="true"
-            error-message="Please add at least 3 tags"
-            [value]="['Only', 'Two']"
-          ></app-tags-input>
-        </div>
-      </div>
-    </div>
-  </section>
-      </div>
-  </div>
-
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Basic Usage -->
+      <section class="demo-section" id="basic">
         <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+          <h2>📝 Basic Usage</h2>
+          <p>Simple tag input examples</p>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Default Tags</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Technologies"
+                placeholder="Add a tag..."
+                [value]="defaultTags"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>With Max Tags</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Skills (Max 5)"
+                placeholder="Add skill..."
+                max-tags="5"
+                [value]="skillTags"
+              ></app-tags-input>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Colors -->
+      <section class="demo-section" id="colors">
+        <div class="section-header">
+          <h2>🎨 Color Variants</h2>
+          <p>Different color schemes for tags</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card">
+            <h3>Primary</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Primary Tags"
+                color="primary"
+                [value]="['Design', 'UI/UX']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Success</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Success Tags"
+                color="success"
+                [value]="['Completed', 'Verified']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Warning</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Warning Tags"
+                color="warning"
+                [value]="['Pending', 'Review']"
+              ></app-tags-input>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sizes -->
+      <section class="demo-section" id="sizes">
+        <div class="section-header">
+          <h2>📏 Size Variants</h2>
+          <p>Different sizes for various use cases</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card">
+            <h3>Small</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Small Tags"
+                size="small"
+                [value]="['Tag1', 'Tag2']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Medium</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Medium Tags"
+                size="medium"
+                [value]="['Tag1', 'Tag2']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Large</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Large Tags"
+                size="large"
+                [value]="['Tag1', 'Tag2']"
+              ></app-tags-input>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Advanced styling and functionality</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>With Autocomplete</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Autocomplete Tags"
+                placeholder="Type to search..."
+                enable-autocomplete="true"
+                [suggestions]="['JavaScript', 'TypeScript', 'Python', 'Java', 'C++']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Readonly Mode</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Readonly Tags"
+                readonly="true"
+                [value]="categoryTags"
+              ></app-tags-input>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- States -->
+      <section class="demo-section" id="states">
+        <div class="section-header">
+          <h2>🔄 Component States</h2>
+          <p>Different states and validations</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Disabled</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Disabled Tags"
+                disabled="true"
+                [value]="['Disabled', 'Tags']"
+              ></app-tags-input>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Invalid State</h3>
+            <div class="preview-box">
+              <app-tags-input
+                label="Invalid Tags"
+                invalid="true"
+                error-message="Please add at least 3 tags"
+                [value]="['Only', 'Two']"
+              ></app-tags-input>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-  </div>
-</demo-tabs>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure and test all tags input properties</p>
+        </div>
+        <app-tags-input-playground></app-tags-input-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Tags Input Usage"
+          language="html"
+        ></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="tags-input"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

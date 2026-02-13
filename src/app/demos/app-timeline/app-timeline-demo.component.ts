@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-timeline-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TimelinePlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    TimelinePlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-timeline-demo.component.html',
   styleUrl: './app-timeline-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppTimelineDemoComponent {
     { id: 'alignments', name: 'Alignments', icon: '📏', color: '#3b82f6' },
     { id: 'orientations', name: 'Orientations', icon: '📐', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   events = JSON.stringify([
     { status: 'Draft', date: 'Oct 1st', color: '#94a3b8' },

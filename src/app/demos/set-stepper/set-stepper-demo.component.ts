@@ -1,19 +1,32 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StepperPlaygroundComponent } from './components/stepper-playground/stepper-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-stepper-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, StepperPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    StepperPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-stepper-demo.component.html',
   styleUrl: './set-stepper-demo.component.scss',
 })
 export class SetStepperDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'styles-variants', title: 'Styles & Variants', icon: '🎨' },
+    { id: 'content-navigation', title: 'Content & Navigation', icon: '📦' },
+  ];
+
   horizontalSteps = `[
     {"label": "Account", "description": "Create account", "status": "success"},
     {"label": "Profile", "description": "Personal info", "status": "success"},
@@ -40,4 +53,11 @@ export class SetStepperDemoComponent implements OnInit {
 ></app-stepper>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

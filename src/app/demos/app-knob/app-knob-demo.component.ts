@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { KnobPlaygroundComponent } from './components/knob-playground/knob-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-knob-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, KnobPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    KnobPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-knob-demo.component.html',
   styleUrl: './app-knob-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppKnobDemoComponent {
     { id: 'styles', name: 'Visual Styles', icon: '🎨', color: '#3b82f6' },
     { id: 'readonly', name: 'States', icon: '🔒', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-knob [value]="50" [size]="150" value-color="#3b82f6"></ui-knob>`;
 

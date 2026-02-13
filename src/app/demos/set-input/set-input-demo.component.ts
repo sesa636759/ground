@@ -1,19 +1,38 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { InputPlaygroundComponent } from './components/input-playground/input-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-input-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, InputPlaygroundComponent, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    InputPlaygroundComponent,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-input-demo.component.html',
   styleUrl: './set-input-demo.component.scss',
 })
 export class SetInputDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'basic-types', title: 'Basic Input Types', icon: '📋' },
+    { id: 'variants', title: 'Input Variants', icon: '🎭' },
+    { id: 'sizes', title: 'Input Sizes', icon: '📏' },
+    { id: 'validation', title: 'Validation States', icon: '✅' },
+    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: '🎯' },
+    { id: 'advanced', title: 'Advanced Features', icon: '🚀' },
+  ];
+
   skeletonState = false;
 
   currencyFormatter = (val: string) => {
@@ -118,6 +137,13 @@ export class SetInputDemoComponent implements OnInit {
 </app-input>`;
 
   ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
   toggleSkeleton() {
     this.skeletonState = !this.skeletonState;

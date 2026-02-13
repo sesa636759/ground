@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { BadgePlaygroundComponent } from './components/badge-playground/badge-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-badge-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, BadgePlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    BadgePlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-badge-demo.component.html',
   styleUrl: './app-badge-demo.component.scss',
@@ -21,6 +29,10 @@ export class AppBadgeDemoComponent {
     { id: 'positions', name: 'Positions', icon: '📍', color: '#f59e0b' },
     { id: 'special', name: 'Special', icon: '✨', color: '#ec4899' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-badge value="5" color="danger">
   <div class="target">Icon</div>

@@ -11,6 +11,8 @@ import { ThemeService } from './services/theme.service';
 import { AuthService } from './services/auth.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppInputValueAccessorDirective } from './directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from './directives/app-checkbox-value-accessor.directive';
 import {
   faCoffee,
   faMoon,
@@ -29,7 +31,7 @@ import {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet, FontAwesomeModule, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss',

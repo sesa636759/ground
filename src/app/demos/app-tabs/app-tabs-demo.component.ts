@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { TabsPlaygroundComponent } from './components/tabs-playground/tabs-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-tabs-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TabsPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    TabsPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-tabs-demo.component.html',
   styleUrl: './app-tabs-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppTabsDemoComponent {
     { id: 'styles', name: 'Visual Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'layouts', name: 'Orientations', icon: '📐', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-tabs variant="default">
   <ui-tab label="Home" value="h"> Content </ui-tab>

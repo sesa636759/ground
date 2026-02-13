@@ -1,11 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-list-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './list-playground.component.html',
   styleUrl: './list-playground.component.scss',

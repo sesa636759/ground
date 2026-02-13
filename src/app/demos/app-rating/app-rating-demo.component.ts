@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { RatingPlaygroundComponent } from './components/rating-playground/rating-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-rating-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, RatingPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    RatingPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-rating-demo.component.html',
   styleUrl: './app-rating-demo.component.scss',
@@ -20,6 +28,10 @@ export class AppRatingDemoComponent {
     { id: 'colors', name: 'Colors & sizes', icon: '🌈', color: '#10b981' },
     { id: 'custom', name: 'Custom Labels', icon: '📝', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-rating type="star" [value]="3" max="5"></ui-rating>`;
 

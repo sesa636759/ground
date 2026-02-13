@@ -1,4 +1,3 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -9,16 +8,32 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-layout-manager-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',
 })
 export class SetLayoutManagerDemoComponent implements AfterViewInit {
+  exampleVariants = [
+    { id: 'basic', title: 'Basic Three-Column Layout', icon: '📏' },
+    { id: 'ide', title: 'IDE-Style Layout', icon: '💻' },
+    { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
+    { id: 'features', title: 'Key Features', icon: '✨' },
+    { id: 'api', title: 'API Methods', icon: '🔧' },
+  ];
+
   playgroundCode = `<app-layout-manager
   [regions]="regions"
   (layoutChange)="onLayoutChange($event)"
@@ -150,5 +165,12 @@ export class SetLayoutManagerDemoComponent implements AfterViewInit {
 
   handlePanelRemoved(event: CustomEvent) {
     console.log('Panel removed:', event.detail);
+  }
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

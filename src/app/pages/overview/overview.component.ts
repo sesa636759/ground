@@ -39,9 +39,10 @@ import { categoryNavItems } from '../../data/navigation.data';
               </svg>
               <app-input
                 type="text"
+                name="searchQuery"
                 placeholder="Search components..."
-                [(ngModel)]="searchQuery"
-                (input)="onSearch()"
+                [value]="searchQuery"
+                (input)="onSearchInput($event)"
               />
             </div>
             <div class="view-toggle">
@@ -185,16 +186,31 @@ import { categoryNavItems } from '../../data/navigation.data';
 
       /* Header */
       .overview-header {
-        background: var(--gradient-premium);
-        border-bottom: 1px solid var(--border-color);
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         padding: 64px 60px 100px;
         position: relative;
         overflow: hidden;
       }
 
+      .overview-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
       .header-content {
         max-width: 1400px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
 
       .header-badge {
@@ -202,10 +218,10 @@ import { categoryNavItems } from '../../data/navigation.data';
         align-items: center;
         gap: 8px;
         padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(129, 140, 248, 0.3);
         border-radius: 100px;
-        color: white;
+        color: #a5b4fc;
         font-size: 0.85rem;
         font-weight: 700;
         margin-bottom: 24px;
@@ -215,16 +231,20 @@ import { categoryNavItems } from '../../data/navigation.data';
       .overview-header h1 {
         font-size: 3.5rem;
         font-weight: 900;
-        color: white;
+        color: #f8fafc;
         margin-bottom: 12px;
         letter-spacing: -0.02em;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
       }
 
       .overview-header > p {
         font-size: 1.25rem;
-        color: rgba(255, 255, 255, 0.9);
+        color: #cbd5e1;
         margin-bottom: 32px;
+        position: relative;
+        z-index: 1;
       }
 
       .header-actions {
@@ -276,7 +296,8 @@ import { categoryNavItems } from '../../data/navigation.data';
         display: flex;
         gap: 4px;
         padding: 6px;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 14px;
         backdrop-filter: blur(10px);
       }
@@ -302,10 +323,10 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .view-toggle button.active {
-        background: white;
-        color: var(--primary);
+        background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+        color: white;
         opacity: 1;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
       }
 
       /* Content */
@@ -533,6 +554,11 @@ export class OverviewComponent {
 
   navigateToComponent(componentId: string) {
     this.router.navigate(['playground', componentId]);
+  }
+
+  onSearchInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.searchQuery = input.value;
   }
 
   onSearch() {

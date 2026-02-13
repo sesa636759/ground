@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-anchor-playground',
@@ -67,7 +69,7 @@ export class AnchorPlaygroundComponent implements OnInit {
     { label: 'Roman (i, ii)', value: 'roman' },
   ];
 
-  anchorItems = [
+  anchorItems = JSON.stringify([
     { id: 'section-1', label: 'Introduction', icon: 'fas fa-home', tooltip: 'Start here' },
     {
       id: 'section-2',
@@ -79,7 +81,7 @@ export class AnchorPlaygroundComponent implements OnInit {
     { id: 'section-3', label: 'Configuration', icon: 'fas fa-cog', tooltip: 'Setup guide' },
     { id: 'section-4', label: 'API', icon: 'fas fa-code', tooltip: 'Reference' },
     { id: 'section-5', label: 'Examples', icon: 'fas fa-book', tooltip: 'See more' },
-  ];
+  ]);
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

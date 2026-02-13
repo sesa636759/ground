@@ -1,98 +1,128 @@
-<!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">🔘</span> Button Group</h1>
-<p class="intro-text">Group multiple buttons together for consistent layout and selection behavior. Ideal for
-    toolbars, toggle sets, and segmented controls.</p>
-</div>
+<div class="demo-container">
+  <h1>🔘 Button Group</h1>
+  <p class="intro-text">
+    Group multiple buttons together for consistent layout and selection behavior. Ideal for
+    toolbars, toggle sets, and segmented controls.
+  </p>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section" id="playground">
-    <div class="section-header">
-      <h2>🎮 Interactive Playground</h2>
-      <p>Test various combinations of orientation, selection modes, and styling.</p>
-    </div>
-    <app-button-group-playground></app-button-group-playground>
-    <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
-  </section>
-    </div>
-  </div>
-
-  <div slot="examples">
-    
+  <demo-tabs>
+    <div slot="playground">
       <div class="demo-container">
-        <section class="demo-section" id="selection">
-    <div class="section-header">
-      <h2>☑️ Selection Modes</h2>
-      <p>Configure single or multiple selection feedback.</p>
-    </div>
-    <div class="demo-card">
-      <div>
-        <span>Single Select (Radio-like):</span>
-        <ui-button-group selection-mode="single">
-          <ui-button label="Day" variant="outline"></ui-button>
-          <ui-button label="Night" variant="outline"></ui-button>
-        </ui-button-group>
-      </div>
-      <div>
-        <span>Multiple Select (Checkbox-like):</span>
-        <ui-button-group selection-mode="multiple">
-          <ui-button label="Bold" variant="outline" icon="<b>B</b>"></ui-button>
-          <ui-button label="Italic" variant="outline" icon="<i>I</i>"></ui-button>
-          <ui-button label="Underline" variant="outline" icon="<u>U</u>"></ui-button>
-        </ui-button-group>
+        <!-- Interactive Playground -->
+        <section class="demo-section" id="playground">
+          <div class="section-header">
+            <h2>🎮 Interactive Playground</h2>
+            <p>Test various combinations of orientation, selection modes, and styling.</p>
+          </div>
+          <app-button-group-playground></app-button-group-playground>
+          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+        </section>
       </div>
     </div>
-    <app-code-block
-      [code]="selectionCode"
-      title="Selection Examples"
-      language="html"
-    ></app-code-block>
-  </section>
 
-<section class="demo-section" id="layout">
-    <div class="section-header">
-      <h2>📐 Layout Options</h2>
-      <p>Manage orientation and button spacing.</p>
-    </div>
-    <div
-      class="demo-card"
-      style="flex-direction: row; flex-wrap: wrap; justify-content: space-around"
-    >
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-        <span>Vertical:</span>
-        <ui-button-group orientation="vertical">
-          <ui-button label="Home" variant="outline"></ui-button>
-          <ui-button label="Profile" variant="outline"></ui-button>
-          <ui-button label="Settings" variant="outline"></ui-button>
-        </ui-button-group>
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
-        <span>Spaced (Not Attached):</span>
-        <ui-button-group [attached]="false">
-          <ui-button label="Cancel" variant="outline"></ui-button>
-          <ui-button label="Save Changes" variant="primary"></ui-button>
-        </ui-button-group>
-      </div>
-    </div>
-    <app-code-block [code]="layoutCode" title="Layout Examples" language="html"></app-code-block>
-  </section>
-      </div>
-  </div>
+    <div slot="examples">
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <div class="examples-sidebar">
+          <div class="sidebar-title">Examples List</div>
+          <ul class="nav-list">
+            <li *ngFor="let variant of exampleVariants">
+              <a (click)="scrollToSection(variant.id)">
+                <span class="nav-icon">{{ variant.icon }}</span>
+                {{ variant.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
 
-  <div slot="docs">
-    <div class="demo-container">
-      <section class="demo-section">
-        <div class="section-header">
-          <h2>📖 Documentation</h2>
-          <p>Links, API references, and detailed usage notes</p>
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Selection Modes -->
+          <section class="demo-section" id="selection" style="margin-top: 0">
+            <div class="section-header">
+              <h2>☑️ Selection Modes</h2>
+              <p>Configure single or multiple selection feedback.</p>
+            </div>
+            <div class="demo-card">
+              <div>
+                <span>Single Select (Radio-like):</span>
+                <ui-button-group selection-mode="single">
+                  <ui-button label="Day" variant="outline"></ui-button>
+                  <ui-button label="Night" variant="outline"></ui-button>
+                </ui-button-group>
+              </div>
+              <div>
+                <span>Multiple Select (Checkbox-like):</span>
+                <ui-button-group selection-mode="multiple">
+                  <ui-button label="Bold" variant="outline" icon="<b>B</b>"></ui-button>
+                  <ui-button label="Italic" variant="outline" icon="<i>I</i>"></ui-button>
+                  <ui-button label="Underline" variant="outline" icon="<u>U</u>"></ui-button>
+                </ui-button-group>
+              </div>
+            </div>
+            <app-code-block
+              [code]="selectionCode"
+              title="Selection Examples"
+              language="html"
+            ></app-code-block>
+          </section>
+
+          <!-- Layout Options -->
+          <section class="demo-section" id="layout">
+            <div class="section-header">
+              <h2>📐 Layout Options</h2>
+              <p>Manage orientation and button spacing.</p>
+            </div>
+            <div
+              class="demo-card"
+              style="flex-direction: row; flex-wrap: wrap; justify-content: space-around"
+            >
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+                <span>Vertical:</span>
+                <ui-button-group orientation="vertical">
+                  <ui-button label="Home" variant="outline"></ui-button>
+                  <ui-button label="Profile" variant="outline"></ui-button>
+                  <ui-button label="Settings" variant="outline"></ui-button>
+                </ui-button-group>
+              </div>
+              <div style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+                <span>Spaced (Not Attached):</span>
+                <ui-button-group [attached]="false">
+                  <ui-button label="Cancel" variant="outline"></ui-button>
+                  <ui-button label="Save Changes" variant="primary"></ui-button>
+                </ui-button-group>
+              </div>
+            </div>
+            <app-code-block
+              [code]="layoutCode"
+              title="Layout Examples"
+              language="html"
+            ></app-code-block>
+          </section>
         </div>
-        <div class="demo-card" style="padding: 24px;">
-          <p>The documentation for this component is currently being compiled. Our technical writers are working to provide comprehensive API references, accessibility guidelines, and best practices.</p>
-          <p>In the meantime, please explore the <strong>Playground</strong> for interactive testing and the <strong>Examples</strong> tab for common implementation patterns.</p>
-        </div>
-      </section>
+      </div>
     </div>
-  </div>
-</demo-tabs>
+
+    <div slot="docs">
+      <div class="demo-container">
+        <section class="demo-section">
+          <div class="section-header">
+            <h2>📖 Documentation</h2>
+            <p>Links, API references, and detailed usage notes</p>
+          </div>
+          <div class="demo-card" style="padding: 24px">
+            <p>
+              The documentation for this component is currently being compiled. Our technical
+              writers are working to provide comprehensive API references, accessibility guidelines,
+              and best practices.
+            </p>
+            <p>
+              In the meantime, please explore the <strong>Playground</strong> for interactive
+              testing and the <strong>Examples</strong> tab for common implementation patterns.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </demo-tabs>
+</div>

@@ -1,14 +1,22 @@
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { TagPlaygroundComponent } from './components/tag-playground/tag-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-app-tag-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent, TagPlaygroundComponent, DemoTabsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CodeBlockComponent,
+    TagPlaygroundComponent,
+    DemoTabsComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-tag-demo.component.html',
   styleUrl: './app-tag-demo.component.scss',
@@ -19,6 +27,10 @@ export class AppTagDemoComponent {
     { id: 'severities', name: 'Severities', icon: '🚨', color: '#3b82f6' },
     { id: 'styles', name: 'Styles & Sizes', icon: '🎨', color: '#10b981' },
   ];
+
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
 
   playgroundCode = `<ui-tag value="New" severity="info" rounded></ui-tag>`;
 

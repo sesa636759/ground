@@ -1,11 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-masonry-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './masonry-playground.component.html',
   styleUrl: './masonry-playground.component.scss',
@@ -33,7 +40,7 @@ export class MasonryPlaygroundComponent implements OnInit {
     breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
   };
 
-  playgroundItems: any[] = [];
+  playgroundItems = '';
   filterCategory = '';
 
   filterOptions = [
@@ -47,7 +54,7 @@ export class MasonryPlaygroundComponent implements OnInit {
   generatedCode = signal('');
 
   ngOnInit() {
-    this.playgroundItems = this.generateItems(24);
+    this.playgroundItems = JSON.stringify(this.generateItems(24));
     this.updateConfig();
   }
 

@@ -1,6 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-snackbar-playground',
@@ -24,7 +26,11 @@ import { FormsModule } from '@angular/forms';
             </div>
             <div class="control-group">
               <label>Max Visible</label>
-              <app-input type="number" [(ngModel)]="pgConfig.maxVisible" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.maxVisible"
+                (change)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Stack Mode</label>
