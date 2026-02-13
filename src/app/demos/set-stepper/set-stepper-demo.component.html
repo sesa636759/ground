@@ -1,127 +1,400 @@
-<div class="demo-container">
-  <h1>🪜 Stepper Component</h1>
-  <p class="intro-text">
-    Guide users through a sequence of steps or a workflow process using various stepper styles.
-  </p>
+<div class="examples-split-layout">
+  <aside class="examples-sidebar">
+    <h3>Stepper Examples</h3>
+    <nav>
+      <a
+        *ngFor="let variant of variants"
+        [href]="'#' + variant.id"
+        (click)="scrollToSection(variant.id)"
+        class="nav-link"
+      >
+        <span class="nav-icon">{{ variant.icon }}</span>
+        <span class="nav-text">{{ variant.title }}</span>
+      </a>
+    </nav>
+  </aside>
 
-  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Stepper Variants -->
-      <section class="demo-section" id="styles-variants">
-        <div class="section-header">
-          <h2>🎨 Styles & Variants</h2>
-          <p>Choose from different visual styles for your workflow</p>
-        </div>
+  <div class="examples-content">
+    <!-- Playground Section -->
+    <section id="playground" class="example-section">
+      <h2><span class="section-icon">🎮</span> Playground</h2>
+      <p>Test all stepper properties in real-time.</p>
+      <app-stepper-playground></app-stepper-playground>
+      <app-code-block [code]="playgroundCode" language="html" />
+    </section>
 
-        <div class="demo-grid col-1">
-          <div class="demo-card">
-            <h3>Default (Horizontal)</h3>
-            <div class="stepper-wrapper">
-              <app-stepper-container
-                mode="horizontal"
-                show-content-area="true"
-                active-step="1"
-                [attr.steps]="horizontalSteps"
-              >
-                <div slot="step-0"><div class="dummy-content">Step 1 Content</div></div>
-                <div slot="step-1"><div class="dummy-content">Step 2 Content</div></div>
-                <div slot="step-2"><div class="dummy-content">Step 3 Content</div></div>
-                <div slot="step-3"><div class="dummy-content">Step 4 Content</div></div>
-              </app-stepper-container>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <h3>Vertical (Alternating Labels)</h3>
-            <div class="stepper-wrapper vertical">
-              <app-stepper-container
-                mode="vertical"
-                description-position="alternate"
-                active-step="2"
-                [attr.steps]="verticalSteps"
-              >
-              </app-stepper-container>
-            </div>
-          </div>
-
-          <div class="demo-card">
-            <h3>Snack Variant (Compact)</h3>
-            <p class="desc">Ideal for workflows with many steps</p>
-            <div class="stepper-wrapper">
-              <app-stepper-container
-                variant="snack"
-                show-progress="true"
-                clickable="true"
-                active-step="4"
-                [attr.steps]="snackSteps"
-              >
-              </app-stepper-container>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Content & Navigation -->
-      <section class="demo-section" id="content-navigation">
-        <div class="section-header">
-          <h2>📦 Content & Navigation</h2>
-          <p>Built-in content switching and navigation controls</p>
-        </div>
-        <div class="demo-card">
+    <!-- Horizontal Stepper Section -->
+    <section id="horizontal" class="example-section">
+      <h2><span class="section-icon">➡️</span> Horizontal Stepper</h2>
+      <p>Demonstration of the app-stepper-container component in horizontal mode.</p>
+      <div class="demo-card">
+        <div class="stepper-wrapper">
           <app-stepper-container
             mode="horizontal"
-            show-content-area="true"
-            show-navigation="true"
-            active-step="0"
-            variant="outlined"
-            steps='[
-                  {"label": "Profile", "description": "Enter details"},
-                  {"label": "Settings", "description": "Configure"},
-                  {"label": "Confirm", "description": "Review & Submit"}
-              ]'
-          >
-            <div slot="step-0" class="step-slot">
-              <h3>Profile Information</h3>
-              <p>Please enter your personal details below.</p>
-              <div class="dummy-input"></div>
-              <div class="dummy-input"></div>
-            </div>
-            <div slot="step-1" class="step-slot">
-              <h3>System Settings</h3>
-              <p>Configure your preferences.</p>
-              <div class="dummy-toggle"></div>
-              <div class="dummy-toggle"></div>
-            </div>
-            <div slot="step-2" class="step-slot">
-              <h3>Confirmation</h3>
-              <p>Ready to submit your data?</p>
-              <div class="dummy-message success">All validations passed!</div>
-            </div>
-          </app-stepper-container>
+            active-step="1"
+            [attr.steps]="horizontalSteps"
+          ></app-stepper-container>
         </div>
-      </section>
-    </div>
+      </div>
+      <app-code-block [code]="horizontalCode" language="html" />
+    </section>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Customize the stepper layout, theme, and features</p>
+    <!-- Vertical Stepper Section -->
+    <section id="vertical" class="example-section">
+      <h2><span class="section-icon">⬇️</span> Vertical Stepper</h2>
+      <p>Demonstration of the app-stepper-container component in vertical mode.</p>
+      <div class="demo-card">
+        <div class="stepper-wrapper vertical">
+          <app-stepper-container
+            mode="vertical"
+            description-position="alternate"
+            active-step="2"
+            [attr.steps]="verticalSteps"
+          ></app-stepper-container>
         </div>
-        <app-stepper-playground></app-stepper-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Stepper Usage"
-          language="html"
-        ></app-code-block>
-      </section>
-    </div>
+      </div>
+      <app-code-block [code]="verticalCode" language="html" />
+    </section>
 
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="stepper"></app-component-documentation>
-    </div>
-  </demo-tabs>
+    <!-- Label Position Section -->
+    <section id="label-position" class="example-section">
+      <h2><span class="section-icon">🏷️</span> Label Position Examples</h2>
+      <p>Horizontal stepper with different label positions.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Labels at Bottom (Default)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              label-position="bottom"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Labels at Top</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              label-position="top"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Labels Alternating (Icons Aligned)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              label-position="alternate"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+          <p class="desc">Notice how icons and connectors remain perfectly aligned while only labels alternate position</p>
+        </div>
+      </div>
+      <app-code-block [code]="labelPositionCode" language="html" />
+    </section>
+
+    <!-- Content & Navigation Section -->
+    <section id="content-navigation" class="example-section">
+      <h2><span class="section-icon">📦</span> Content Area & Navigation</h2>
+      <p>Stepper with content area and navigation buttons.</p>
+      <div class="demo-card">
+        <app-stepper-container
+          mode="horizontal"
+          show-content-area="true"
+          show-navigation="true"
+          active-step="0"
+          variant="outlined"
+          steps='[
+            {"label": "Profile", "description": "Enter details"},
+            {"label": "Settings", "description": "Configure"},
+            {"label": "Confirm", "description": "Review & Submit"}
+          ]'
+        >
+          <div slot="step-0" class="step-slot">
+            <h3>Profile Information</h3>
+            <p>Please enter your personal details below.</p>
+            <div class="dummy-input"></div>
+            <div class="dummy-input"></div>
+          </div>
+          <div slot="step-1" class="step-slot">
+            <h3>System Settings</h3>
+            <p>Configure your preferences.</p>
+            <div class="dummy-toggle"></div>
+            <div class="dummy-toggle"></div>
+          </div>
+          <div slot="step-2" class="step-slot">
+            <h3>Confirmation</h3>
+            <p>Ready to submit your data?</p>
+            <div class="dummy-message success">All validations passed!</div>
+          </div>
+        </app-stepper-container>
+      </div>
+      <div class="info-box">
+        <h4>Features:</h4>
+        <ul>
+          <li><strong>Content Slots:</strong> Each step has custom content via <code>slot="step-0"</code>, <code>slot="step-1"</code>, etc.</li>
+          <li><strong>Navigation Buttons:</strong> Previous, Next, Back to Start, and Complete</li>
+          <li><strong>Auto-disable:</strong> Buttons disable based on current step position</li>
+          <li><strong>Events:</strong> Emits stepChange, stepComplete, and stepError events</li>
+        </ul>
+      </div>
+      <app-code-block [code]="contentNavigationCode" language="html" />
+    </section>
+
+    <!-- 5-Step Horizontal Section -->
+    <section id="5-step-horizontal" class="example-section">
+      <h2><span class="section-icon">🔢</span> 5-Step Process (Horizontal)</h2>
+      <p>Example of a complete workflow with 5 steps showing different statuses.</p>
+      <div class="demo-card">
+        <h3>Active Step: 3 of 5</h3>
+        <p class="desc">Shows completed, current, and pending steps in a multi-step workflow</p>
+        <div class="stepper-wrapper">
+          <app-stepper-container
+            mode="horizontal"
+            active-step="2"
+            [attr.steps]="fiveStepSteps"
+          ></app-stepper-container>
+        </div>
+      </div>
+      <app-code-block [code]="horizontalCode" language="html" />
+    </section>
+
+    <!-- 5-Step Vertical Section -->
+    <section id="5-step-vertical" class="example-section">
+      <h2><span class="section-icon">📝</span> 5-Step Process (Vertical)</h2>
+      <p>Same workflow in vertical layout with detailed descriptions.</p>
+      <div class="demo-card">
+        <h3>Order Tracking Example</h3>
+        <p class="desc">Vertical stepper with alternating description positions for better readability</p>
+        <div class="stepper-wrapper vertical">
+          <app-stepper-container
+            mode="vertical"
+            description-position="alternate"
+            active-step="2"
+            [attr.steps]="fiveStepSteps"
+          ></app-stepper-container>
+        </div>
+      </div>
+      <app-code-block [code]="verticalCode" language="html" />
+    </section>
+
+    <!-- Connector Sizing Section -->
+    <section id="connector-sizing" class="example-section">
+      <h2><span class="section-icon">🔗</span> Custom Connector Sizing</h2>
+      <p>Using CSS variables to control connector dimensions dynamically.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Wide Connectors (flex: 2)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              active-step="1"
+              connector-flex="2"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+          <p class="desc">Double the width of standard connectors</p>
+        </div>
+        <div class="demo-card">
+          <h3>Fixed Width Connector (width: 150px)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              active-step="1"
+              connector-width="150px"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+          <p class="desc">Fixed width regardless of available space</p>
+        </div>
+        <div class="demo-card">
+          <h3>Thick Connector (height: 6px)</h3>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              mode="horizontal"
+              active-step="1"
+              connector-height="6px"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+          <p class="desc">Thicker line for emphasis</p>
+        </div>
+      </div>
+      <app-code-block [code]="connectorSizingCode" language="html" />
+    </section>
+
+    <!-- Snack Variant Section -->
+    <section id="snack-variant" class="example-section">
+      <h2><span class="section-icon">🍿</span> Snack Variant (Perfect for 20+ Steps)</h2>
+      <p>Ultra-compact design with dots/numbers only - ideal for showing many steps in minimal space.</p>
+      <div class="demo-card">
+        <div class="stepper-wrapper">
+          <app-stepper-container
+            variant="snack"
+            show-progress="true"
+            clickable="true"
+            active-step="8"
+            [attr.steps]="twentySteps"
+          ></app-stepper-container>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>Features:</h4>
+        <ul>
+          <li>24px dots (vs 40px default)</li>
+          <li>No labels for maximum space efficiency</li>
+          <li>Active step scales to 28px</li>
+          <li>Perfect for 20-50 steps</li>
+          <li>Clickable navigation</li>
+        </ul>
+      </div>
+      <app-code-block [code]="snackVariantCode" language="html" />
+    </section>
+
+    <!-- Compact + Scrollable Section -->
+    <section id="compact-scrollable" class="example-section">
+      <h2><span class="section-icon">📜</span> Compact + Scrollable (20 Steps)</h2>
+      <p>Compact mode with horizontal scrolling - shows labels with descriptions.</p>
+      <div class="demo-card">
+        <div class="stepper-wrapper">
+          <app-stepper-container
+            variant="compact"
+            scrollable="true"
+            active-step="8"
+            [attr.steps]="twentySteps"
+          ></app-stepper-container>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>Features:</h4>
+        <ul>
+          <li>Smaller UI (32px icons)</li>
+          <li>Horizontal scrolling enabled</li>
+          <li>Labels and descriptions visible</li>
+          <li>Fade indicators on edges</li>
+        </ul>
+      </div>
+      <app-code-block [code]="compactScrollableCode" language="html" />
+    </section>
+
+    <!-- Premium Themes Section -->
+    <section id="premium-themes" class="example-section">
+      <h2><span class="section-icon">🎨</span> Premium Themes & Variants</h2>
+      <p>Explore different visual styles, themes, and color schemes.</p>
+      
+      <h3>Visual Variants</h3>
+      <div class="demo-grid col-3">
+        <div class="demo-card">
+          <h4>Outlined</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              variant="outlined"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h4>Filled</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              variant="filled"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h4>Minimal</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              variant="minimal"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+      </div>
+
+      <h3>Color Schemes</h3>
+      <div class="demo-grid col-3">
+        <div class="demo-card">
+          <h4>Success Scheme</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              color-scheme="success"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h4>Warning Scheme</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              color-scheme="warning"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h4>Danger Scheme</h4>
+          <div class="stepper-wrapper">
+            <app-stepper-container
+              color-scheme="danger"
+              active-step="1"
+              [attr.steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </div>
+      </div>
+
+      <h3>Dark Theme</h3>
+      <div class="demo-card" style="background: #1a1a2e; padding: 20px;">
+        <p class="desc" style="color: #fff;">Forced dark mode example (independent of global theme)</p>
+        <div class="stepper-wrapper">
+          <app-stepper-container
+            theme="dark"
+            active-step="1"
+            [attr.steps]="horizontalSteps"
+          ></app-stepper-container>
+        </div>
+      </div>
+      
+      <app-code-block [code]="premiumThemesCode" language="html" />
+    </section>
+
+    <!-- Interactive 25-Step Section -->
+    <section id="interactive-25" class="example-section">
+      <h2><span class="section-icon">🎯</span> Interactive 25-Step Demo</h2>
+      <p>Click dots to navigate, use keyboard arrows, or use buttons below.</p>
+      <div class="demo-card">
+        <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px; justify-content: center;">
+          <button (click)="previousStep25()" [disabled]="currentStep25 === 0" style="padding: 8px 16px">Previous</button>
+          <button (click)="nextStep25()" [disabled]="currentStep25 === 24" style="padding: 8px 16px">Next</button>
+          <button (click)="jumpToEnd25()" style="padding: 8px 16px">Jump to End</button>
+        </div>
+        <div class="stepper-wrapper">
+          <app-stepper-container
+            variant="snack"
+            clickable="true"
+            show-progress="true"
+            [attr.active-step]="currentStep25"
+            steps='[{"label":"1"},{"label":"2"},{"label":"3"},{"label":"4"},{"label":"5"},{"label":"6"},{"label":"7"},{"label":"8"},{"label":"9"},{"label":"10"},{"label":"11"},{"label":"12"},{"label":"13"},{"label":"14"},{"label":"15"},{"label":"16"},{"label":"17"},{"label":"18"},{"label":"19"},{"label":"20"},{"label":"21"},{"label":"22"},{"label":"23"},{"label":"24"},{"label":"25"}]'
+          ></app-stepper-container>
+        </div>
+        <p class="desc" style="text-align: center; margin-top: 15px;">
+          <strong>Try it:</strong> Click any dot, use arrow keys (← →), or use the buttons above!
+        </p>
+      </div>
+      <app-code-block [code]="interactive25Code" language="html" />
+    </section>
+  </div>
 </div>
