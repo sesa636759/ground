@@ -209,8 +209,6 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     </div>
   `,
   styleUrl: './card-playground.component.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  encapsulation: ViewEncapsulation.None,
 })
 export class CardPlaygroundComponent {
   pgConfig = {

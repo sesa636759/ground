@@ -1,105 +1,221 @@
 <div class="demo-container">
-  <h1>🔄 Toggle Component</h1>
-  <p class="intro-text">
-    A versatile toggle component for switching between states or selecting options, with support for
-    grouping, icons, and various styles.
-  </p>
+  <h1>🔄 Toggle Component Demo</h1>
 
-  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+  <demo-tabs [variants]="variants">
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <div class="demo-container">
+        <section class="demo-section" id="playground">
+          <div class="section-header">
+            <h2>🎮 Interactive Playground</h2>
+            <p>Test all toggle group properties in real-time</p>
+          </div>
+          <app-toggle-playground></app-toggle-playground>
+          <app-code-block
+            [code]="playgroundCode"
+            title="Toggle Usage"
+            language="html"
+          ></app-code-block>
+        </section>
+      </div>
+    </div>
+
     <!-- Examples Slot -->
     <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="examples-sidebar">
+          <nav class="nav-list">
+            <a
+              *ngFor="let variant of exampleVariants"
+              [href]="'#' + variant.id"
+              class="nav-item"
+              (click)="scrollToSection(variant.id)"
+            >
+              <span class="nav-icon">{{ variant.icon }}</span>
+              <span class="nav-title">{{ variant.title }}</span>
+            </a>
+          </nav>
+        </aside>
+
+        <!-- Scrollable Content -->
+        <div class="examples-content">
       <!-- Layouts -->
       <section class="demo-section" id="layouts">
         <div class="section-header">
-          <h2>📐 Layout Options</h2>
-          <p>Different layout configurations for toggle groups</p>
+          <h2>📐 Toggle Group Layouts</h2>
+          <p>Different layout options for toggle groups</p>
         </div>
-        <div class="demo-grid col-2">
+        <div class="demo-grid">
           <div class="demo-card">
-            <h3>Horizontal (Single Selection)</h3>
-            <div class="preview-box">
-              <app-toggle-group
-                label="Notification Type"
-                selection-mode="single"
-                layout="horizontal"
-                color="primary"
-                [options]="notificationOptions"
-              ></app-toggle-group>
-            </div>
+            <h3>Horizontal Layout (Single)</h3>
+            <app-toggle-group
+              label="Notification Type"
+              selection-mode="single"
+              layout="horizontal"
+              [options]="notificationOptions"
+            ></app-toggle-group>
           </div>
-
           <div class="demo-card">
-            <h3>Vertical (Multiple Selection)</h3>
-            <div class="preview-box h-auto">
-              <app-toggle-group
-                label="Enable Features"
-                selection-mode="multiple"
-                layout="vertical"
-                color="success"
-                [options]="featureOptions"
-              ></app-toggle-group>
-            </div>
+            <h3>Vertical Layout (Multiple)</h3>
+            <app-toggle-group
+              label="Enable Features"
+              selection-mode="multiple"
+              layout="vertical"
+              [options]="featureOptions"
+            ></app-toggle-group>
           </div>
-        </div>
-
-        <div class="demo-card mt-4">
-          <h3>Grid Layout (3 Columns)</h3>
-          <div class="preview-box h-auto">
+          <div class="demo-card">
+            <h3>Grid Layout (3 columns)</h3>
             <app-toggle-group
               label="Privacy Settings"
               selection-mode="multiple"
               layout="grid"
               columns="3"
-              color="info"
               [options]="privacyOptions"
             ></app-toggle-group>
           </div>
         </div>
+        <app-code-block [code]="layoutsCode" title="Layouts" language="html"></app-code-block>
       </section>
 
       <!-- Variants -->
       <section class="demo-section" id="variants">
         <div class="section-header">
-          <h2>🎭 Visual Variants</h2>
-          <p>Different styles for diverse UI needs</p>
+          <h2>🎭 Variants</h2>
+          <p>Different visual styles</p>
         </div>
-        <div class="demo-grid col-3">
+        <div class="demo-grid">
           <div class="demo-card">
             <h3>Default</h3>
-            <div class="preview-box center-content">
-              <app-toggle
-                label="Default Style"
-                variant="default"
-                checked
-                color="primary"
-              ></app-toggle>
-            </div>
+            <app-toggle label="Default Style" variant="default" checked></app-toggle>
           </div>
-
           <div class="demo-card">
             <h3>Rounded</h3>
-            <div class="preview-box center-content">
-              <app-toggle
-                label="Rounded Style"
-                variant="rounded"
-                checked
-                color="success"
-              ></app-toggle>
-            </div>
+            <app-toggle label="Rounded Style" variant="rounded" checked></app-toggle>
           </div>
-
           <div class="demo-card">
             <h3>Outlined</h3>
-            <div class="preview-box center-content">
-              <app-toggle
-                label="Outlined Style"
-                variant="outlined"
-                checked
-                color="info"
-              ></app-toggle>
-            </div>
+            <app-toggle label="Outlined Style" variant="outlined" checked></app-toggle>
           </div>
         </div>
+        <app-code-block [code]="variantsCode" title="Variants" language="html"></app-code-block>
+      </section>
+
+      <!-- Sizes -->
+      <section class="demo-section" id="sizes">
+        <div class="section-header">
+          <h2>📏 Sizes</h2>
+          <p>Different sizes for various use cases</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Small</h3>
+            <app-toggle label="Small Size" size="small" checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Medium</h3>
+            <app-toggle label="Medium Size" size="medium" checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Large</h3>
+            <app-toggle label="Large Size" size="large" checked></app-toggle>
+          </div>
+        </div>
+        <app-code-block [code]="sizesCode" title="Sizes" language="html"></app-code-block>
+      </section>
+
+      <!-- With Icons -->
+      <section class="demo-section" id="icons">
+        <div class="section-header">
+          <h2>🎯 With Icons</h2>
+          <p>Toggles with custom icons</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Check/Times Icons</h3>
+            <app-toggle label="Enable Feature" checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Sun/Moon Icons</h3>
+            <app-toggle label="Dark Mode" checked color="warning"></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Volume Icons</h3>
+            <app-toggle label="Sound" checked color="info"></app-toggle>
+          </div>
+        </div>
+        <app-code-block [code]="iconsCode" title="With Icons" language="html"></app-code-block>
+      </section>
+
+      <!-- Icon Toggle Group -->
+      <section class="demo-section" id="icon-group">
+        <div class="section-header">
+          <h2>⭐ Icon Toggle Group (Like Shadcn)</h2>
+          <p>Star, Heart, and Bookmark toggles with icon fill effects</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Multiple Selection (Outline)</h3>
+            <p>Select multiple items - star, heart, and bookmark</p>
+            <app-toggle-group
+              layout="horizontal"
+              selection-mode="multiple"
+              variant="outlined"
+              icon-only="true"
+            ></app-toggle-group>
+          </div>
+          <div class="demo-card">
+            <h3>Single Selection</h3>
+            <p>Choose only one option at a time</p>
+            <app-toggle-group
+              layout="horizontal"
+              selection-mode="single"
+              icon-only="true"
+            ></app-toggle-group>
+          </div>
+          <div class="demo-card">
+            <h3>Text Formatting</h3>
+            <p>Bold, Italic, Underline toggles</p>
+            <app-toggle-group
+              layout="horizontal"
+              selection-mode="multiple"
+              size="small"
+            ></app-toggle-group>
+          </div>
+        </div>
+        <app-code-block [code]="iconGroupCode" title="Icon Toggle Group" language="html"></app-code-block>
+      </section>
+
+      <!-- States -->
+      <section class="demo-section" id="states">
+        <div class="section-header">
+          <h2>🔄 States</h2>
+          <p>Different states and configurations</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Default States</h3>
+            <app-toggle label="Unchecked"></app-toggle>
+            <app-toggle label="Checked" checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Disabled State</h3>
+            <app-toggle label="Disabled Off" disabled></app-toggle>
+            <app-toggle label="Disabled On" disabled checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Readonly State</h3>
+            <app-toggle label="Readonly Off" readonly></app-toggle>
+            <app-toggle label="Readonly On" readonly checked></app-toggle>
+          </div>
+          <div class="demo-card">
+            <h3>Label Position</h3>
+            <app-toggle label="Label Right" checked></app-toggle>
+            <app-toggle label="Label Left" label-position="left" checked></app-toggle>
+          </div>
+        </div>
+        <app-code-block [code]="statesCode" title="States" language="html"></app-code-block>
       </section>
 
       <!-- Premium Features -->
@@ -154,54 +270,85 @@
       <!-- Skeleton -->
       <section class="demo-section" id="skeleton">
         <div class="section-header">
-          <h2>🦴 Skeleton States</h2>
-          <p>Loading placeholders for async data</p>
+          <h2>💀 Skeleton States</h2>
+          <p>Loading states for toggles</p>
         </div>
         <div class="demo-grid col-2">
           <div class="demo-card">
-            <h3>List Skeletons</h3>
-            <div class="preview-box h-auto">
-              <app-toggle-group
-                show-skeleton="true"
-                skeleton-count="4"
-                layout="vertical"
-              ></app-toggle-group>
+            <h3>Single Toggle Skeleton</h3>
+            <div class="preview-box center-content">
+              <div class="skeleton-toggle"></div>
             </div>
           </div>
+
           <div class="demo-card">
-            <h3>Grid Skeletons</h3>
+            <h3>Toggle Group Skeleton</h3>
             <div class="preview-box h-auto">
-              <app-toggle-group
-                show-skeleton="true"
-                skeleton-count="6"
-                layout="grid"
-                columns="2"
-              ></app-toggle-group>
+              <div class="skeleton-toggle-group">
+                <div class="skeleton-label"></div>
+                <div class="skeleton-toggles">
+                  <div class="skeleton-toggle"></div>
+                  <div class="skeleton-toggle"></div>
+                  <div class="skeleton-toggle"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
+        <app-code-block [code]="skeletonCode" title="Skeleton States" language="html"></app-code-block>
+      </section>
+
+      <!-- Form Example -->
+      <section class="demo-section" id="form-example">
         <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure and test all toggle group properties</p>
+          <h2>📝 Form Integration</h2>
+          <p>Real-world form example with toggles</p>
         </div>
-        <app-toggle-playground></app-toggle-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Toggle Usage"
-          language="html"
-        ></app-code-block>
+
+        <div class="demo-card">
+          <h3>User Preferences Form</h3>
+          <div class="preview-box h-auto">
+            <div class="form-example">
+              <h4>Notification Settings</h4>
+              <app-toggle
+                label="Email Notifications"
+                checked
+                color="primary"
+              ></app-toggle>
+              <app-toggle
+                label="Push Notifications"
+                checked
+                color="primary"
+              ></app-toggle>
+              <app-toggle
+                label="SMS Notifications"
+                color="primary"
+              ></app-toggle>
+
+              <h4 style="margin-top: 1.5rem;">Privacy Options</h4>
+              <app-toggle
+                label="Make Profile Public"
+                color="info"
+              ></app-toggle>
+              <app-toggle
+                label="Show Activity Status"
+                checked
+                color="info"
+              ></app-toggle>
+              <app-toggle
+                label="Allow Friend Requests"
+                checked
+                color="info"
+              ></app-toggle>
+            </div>
+          </div>
+        </div>
+
+        <app-code-block [code]="formExampleCode" title="Form Example" language="html"></app-code-block>
       </section>
     </div>
-
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="toggle"></app-component-documentation>
+  </div>
     </div>
   </demo-tabs>
 </div>
