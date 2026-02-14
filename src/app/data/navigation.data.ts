@@ -4,6 +4,7 @@ export interface NavItem {
   icon?: string;
   badge?: string;
   status?: string;
+  iconLibrary?: string;
   children?: NavItem[];
 }
 
@@ -164,61 +165,83 @@ export const categoryNavItems: NavItem[] = [
   },
 ];
 
+// e= [
+//   {
+//     id: 'personal-info',
+//     label: 'Personal Information',
+//     icon: '👤',
+//     status: 'online',
+//   },
+//   {
+//     id: 'security',
+//     label: 'Security & Password',
+//     icon: '🔒',
+//   },
+//   {
+//     id: 'notifications',
+//     label: 'Notifications',
+//     icon: '🔔',
+//     badge: '3',
+//   },
+//   {
+//     id: 'billing',
+//     label: 'Billing & Subscriptions',
+//     icon: '💳',
+//   },
+//   {
+//     id: 'connected-accounts',
+//     label: 'Connected Accounts',
+//     icon: '🔗',
+//   },
+//   {
+//     id: 'privacy',
+//     label: 'Privacy Settings',
+//     icon: '🛡️',
+//   },
+//   {
+//     id: 'activity-log',
+//     label: 'Activity Log',
+//     icon: '🕒',
+//   },
+//   {
+//     id: 'preferences',
+//     label: 'System Preferences',
+//     icon: '⚙️',
+//   },
+//   {
+//     id: 'help-support',
+//     label: 'Help & Support',
+//     icon: '❓',
+//   },
+//   {
+//     id: 'logout',
+//     label: 'Sign Out',
+//     icon: '🚪',
+//   },
+// ];
+
 export const userProfileNavItems: NavItem[] = [
+  { id: 'about', label: 'About', icon: 'info' },
   {
-    id: 'personal-info',
-    label: 'Personal Information',
-    icon: '👤',
-    status: 'online',
-  },
-  {
-    id: 'security',
-    label: 'Security & Password',
-    icon: '🔒',
-  },
-  {
-    id: 'notifications',
-    label: 'Notifications',
-    icon: '🔔',
-    badge: '3',
-  },
-  {
-    id: 'billing',
-    label: 'Billing & Subscriptions',
-    icon: '💳',
-  },
-  {
-    id: 'connected-accounts',
-    label: 'Connected Accounts',
-    icon: '🔗',
-  },
-  {
-    id: 'privacy',
-    label: 'Privacy Settings',
-    icon: '🛡️',
-  },
-  {
-    id: 'activity-log',
-    label: 'Activity Log',
-    icon: '🕒',
-  },
-  {
-    id: 'preferences',
-    label: 'System Preferences',
-    icon: '⚙️',
-  },
-  {
-    id: 'help-support',
-    label: 'Help & Support',
-    icon: '❓',
-  },
-  {
-    id: 'logout',
-    label: 'Sign Out',
-    icon: '🚪',
+    id: 'user-profile',
+    label: 'John Doe',
+    status: 'away',
+    icon: 'user',
+    iconLibrary: 'lucide',
+    children: [
+      { id: 'my-profile', label: 'My Profile', icon: 'user', iconLibrary: 'lucide' },
+      {
+        id: 'account-settings',
+        label: 'Account Settings',
+        icon: 'settings',
+        iconLibrary: 'lucide',
+      },
+      { id: 'privacy', label: 'Privacy & Security', icon: 'shield', iconLibrary: 'lucide' },
+      { id: 'notifications', label: 'Notifications', icon: 'bell', iconLibrary: 'lucide' },
+      { id: 'logout', label: 'Logout', icon: 'log-out', iconLibrary: 'lucide' },
+    ],
   },
 ];
-
 export const bottomNavItems: NavItem[] = [
   {
     id: 'user-management',

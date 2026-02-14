@@ -16,12 +16,14 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     FormsModule,
     ProgressPlaygroundComponent,
     DemoTabsComponent,
-    ExampleSectionComponent,
+    CodeBlockComponent,
+    ComponentDocumentationComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-progress-demo.component.html',
   styleUrls: ['./set-progress-demo.component.scss'],
 })
-export class SetProgressDemoComponent extends BaseDemoComponent implements OnInit {
+export class SetProgressDemoComponent extends BaseDemoComponent {
   variants = [
     { id: 'line', title: 'Line Progress', icon: '📏' },
     { id: 'circle', title: 'Circle Progress', icon: '⚪' },
