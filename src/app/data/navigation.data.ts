@@ -260,21 +260,40 @@ export const bottomSecondaryItems: NavItem[] = [
 
 export const categoryNavItems: NavItem[] = [
   {
+    id: 'Working',
+    label: 'Foundation & Layout',
+    icon: '🏗️',
+    children: [
+      { id: 'tree-set', label: 'Tree Set', icon: '🌳' },
+      { id: 'avatar-set', label: 'Avatar Set', icon: '👤' },
+      { id: 'empty-state-set', label: 'Empty State Set', icon: '📭' },
+      { id: 'checkbox-set', label: 'Checkbox Set', icon: '☑️' },
+      { id: 'input-set', label: 'Input Set', icon: '⌨️' },
+      { id: 'radio-set', label: 'Radio Set', icon: '🔘' },
+      { id: 'button-toggle-set', label: 'Button Toggle Set', icon: '🔲' },
+      { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
+      { id: 'list-set', label: 'List Set', icon: '📝' },
+      { id: 'timeline-set', label: 'Timeline Set', icon: '📅' },
+      { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
+       { id: 'carousel-set', label: 'Carousel Set', icon: '🎠' },
+       { id: 'tags-input-set', label: 'Tags Input Set', icon: '🏷️' },
+          { id: 'avatar-group-set', label: 'Avatar Group Set', icon: '👥' },
+    ],
+  },
+
+  {
     id: 'layout',
     label: 'Foundation & Layout',
     icon: '🏗️',
     children: [
-      { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
       { id: 'card-set', label: 'Card Set', icon: '🃏' },
-      
       { id: 'layout-manager-set', label: 'Layout Manager Set', icon: '📐' },
       { id: 'masonry-set', label: 'Masonry Set', icon: '🧱' },
- 
       { id: 'splitter-set', label: 'Splitter Set', icon: '✂️' },
-{ id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: '📱' },
-    { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
-      { id: 'sidebar-set', label: 'Sidebar Set', icon: '📑' },
-           { id: 'tabs-set', label: 'Tabs Set', icon: '📑' },
+      { id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: '📱' },
+      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+     
+    
     ],
   },
 
@@ -283,63 +302,40 @@ export const categoryNavItems: NavItem[] = [
     label: 'Inputs & Forms',
     icon: '⌨️',
     children: [
-   
-      { id: 'button-toggle-set', label: 'Button Toggle Set', icon: '🔲' },
-   
-      { id: 'checkbox-set', label: 'Checkbox Set', icon: '☑️' },
-    
-      { id: 'input-set', label: 'Input Set', icon: '⌨️' },
       { id: 'otp-input-set', label: 'OTP Input Set', icon: '🔢' },
-     
-     
-      { id: 'radio-set', label: 'Radio Set', icon: '🔘' },
-  
-      { id: 'toggle-set', label: 'Toggle Set', icon: '🔘' },
+         { id: 'toggle-set', label: 'Toggle Set', icon: '🔘' },
     ],
   },
   {
     id: 'data',
-    label: 'data visualization',
+    label: 'Data Visualization',
     icon: '📊',
-    children: [
-   
-      { id: 'list-set', label: 'List Set', icon: '📝' },
-
-      { id: 'progress-set', label: 'Progress Set', icon: '⏳' },
-  
-      { id: 'timeline-set', label: 'Timeline Set', icon: '📅' },
-
-      { id: 'tree-set', label: 'Tree Set', icon: '🌳' },
-
-    ],
+    children: [{ id: 'progress-set', label: 'Progress Set', icon: '⏳' }],
   },
   {
     id: 'display',
-    label: ' Display',
-    icon: '📊',
+    label: 'Display & Presentation',
+    icon: '🎨',
     children: [
       { id: 'animate-on-scroll-set', label: 'Animate on Scroll Set', icon: '📜' },
-   
-      { id: 'avatar-set', label: 'Avatar Set', icon: '👤' },
-     
-      { id: 'avatar-group-set', label: 'Avatar Group Set', icon: '👥' },
-     
-      { id: 'carousel-set', label: 'Carousel Set', icon: '🎠' },
-      { id: 'chip', label: 'Chip', icon: '🏷️' },
       { id: 'code-editor-set', label: 'Code Editor Set', icon: '💻' },
       { id: 'dashboard-set', label: 'Dashboard Set', icon: '📊' },
-      { id: 'empty-state-set', label: 'Empty State Set', icon: '📭' },
-       { id: 'stepper-set', label: 'Stepper Set', icon: '🪜' },
-      { id: 'tags-input-set', label: 'Tags Input Set', icon: '🏷️' },
-      { id: 'theme-switcher-set', label: 'Theme Switcher Set', icon: '🌓' },
-      { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
-           { id: 'resizable-panel-set', label: 'Resizable Panel Set', icon: '📐' },
-                 { id: 'context-menu-set', label: 'Context Menu Set', icon: '📋' },
-    
-      { id: 'layout-manager-set', label: 'Layout Manager Set', icon: '📐' },
+          { id: 'theme-switcher-set', label: 'Theme Switcher Set', icon: '🌓' },
     ],
   },
-  
+  {
+    id: 'overlays',
+    label: 'Feedback & Overlays',
+    icon: '💬',
+    children: [
+      
+       { id: 'stepper-set', label: 'Stepper Set', icon: '🪜' },
+      { id: 'context-menu-set', label: 'Context Menu Set', icon: '📋' },
+      { id: 'resizable-panel-set', label: 'Resizable Panel Set', icon: '📐' },
+      { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
+        { id: 'tabs-set', label: 'Tabs Set', icon: '📑' },
+    ],
+  },
 ];
 
 // Flatten all navigation items for routing
