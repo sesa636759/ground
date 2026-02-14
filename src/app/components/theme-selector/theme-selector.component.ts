@@ -116,6 +116,57 @@ import { ThemeService } from '../../services/theme.service';
         </p>
         <p class="hint">Auto mode follows your system preferences</p>
       </div>
+
+      <!-- Navigation Layout Settings -->
+      <div class="navigation-layout-section">
+        <h3>Navigation Layout</h3>
+        <p class="subtitle">Choose navigation position</p>
+
+        <div class="layout-options">
+          <div
+            class="layout-option"
+            [class.active]="themeService.navigationLayout() === 'sidebar'"
+            (click)="themeService.setNavigationLayout('sidebar')"
+          >
+            <div class="layout-preview sidebar-layout">
+              <div class="preview-nav-side"></div>
+              <div class="preview-content-area">
+                <div class="preview-header-bar"></div>
+                <div class="preview-main"></div>
+              </div>
+            </div>
+            <div class="layout-info">
+              <span class="layout-icon">📱</span>
+              <span class="layout-name">Sidebar</span>
+              <span class="layout-desc">Classic sidebar navigation</span>
+            </div>
+          </div>
+
+          <div
+            class="layout-option"
+            [class.active]="themeService.navigationLayout() === 'topbar'"
+            (click)="themeService.setNavigationLayout('topbar')"
+          >
+            <div class="layout-preview topbar-layout">
+              <div class="preview-nav-top"></div>
+              <div class="preview-content-full">
+                <div class="preview-main"></div>
+              </div>
+            </div>
+            <div class="layout-info">
+              <span class="layout-icon">🔝</span>
+              <span class="layout-name">Top Bar</span>
+              <span class="layout-desc">Horizontal top navigation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="current-layout">
+          <p>
+            Current Layout: <strong>{{ themeService.navigationLayout() === 'sidebar' ? 'Sidebar Navigation' : 'Top Bar Navigation' }}</strong>
+          </p>
+        </div>
+      </div>
     </div>
   `,
   styles: [
@@ -327,6 +378,163 @@ import { ThemeService } from '../../services/theme.service';
             font-size: 0.9rem;
             color: var(--text-tertiary);
             margin: 0;
+          }
+        }
+
+        .navigation-layout-section {
+          margin-top: 48px;
+          padding-top: 48px;
+          border-top: 2px solid var(--border-color);
+
+          h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+          }
+
+          .subtitle {
+            margin-bottom: 32px;
+          }
+
+          .layout-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+
+            .layout-option {
+              background: var(--surface-2);
+              border: 2px solid var(--border-color);
+              border-radius: 16px;
+              padding: 24px;
+              cursor: pointer;
+              transition: all 0.3s;
+
+              &:hover {
+                border-color: var(--primary-color);
+                transform: translateY(-4px);
+                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+              }
+
+              &.active {
+                border-color: var(--primary-color);
+                background: var(--primary-bg);
+                box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+              }
+
+              .layout-preview {
+                width: 100%;
+                height: 140px;
+                border-radius: 12px;
+                margin-bottom: 16px;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid var(--border-color);
+                background: var(--bg-primary);
+
+                &.sidebar-layout {
+                  .preview-nav-side {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 50px;
+                    bottom: 0;
+                    background: var(--primary-color);
+                    opacity: 0.8;
+                  }
+
+                  .preview-content-area {
+                    position: absolute;
+                    top: 0;
+                    left: 50px;
+                    right: 0;
+                    bottom: 0;
+
+                    .preview-header-bar {
+                      height: 30px;
+                      background: var(--surface-2);
+                      border-bottom: 1px solid var(--border-color);
+                    }
+
+                    .preview-main {
+                      position: absolute;
+                      top: 30px;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background: var(--bg-secondary);
+                    }
+                  }
+                }
+
+                &.topbar-layout {
+                  .preview-nav-top {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 40px;
+                    background: var(--primary-color);
+                    opacity: 0.8;
+                    border-bottom: 2px solid var(--primary-color);
+                  }
+
+                  .preview-content-full {
+                    position: absolute;
+                    top: 40px;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+
+                    .preview-main {
+                      width: 100%;
+                      height: 100%;
+                      background: var(--bg-secondary);
+                    }
+                  }
+                }
+              }
+
+              .layout-info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .layout-icon {
+                  font-size: 1.8rem;
+                }
+
+                .layout-name {
+                  font-size: 1.1rem;
+                  font-weight: 600;
+                  color: var(--text-primary);
+                }
+
+                .layout-desc {
+                  font-size: 0.85rem;
+                  color: var(--text-secondary);
+                }
+              }
+            }
+          }
+
+          .current-layout {
+            background: var(--surface-2);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+
+            p {
+              color: var(--text-secondary);
+              margin: 0;
+
+              strong {
+                color: var(--primary-color);
+                font-weight: 700;
+              }
+            }
           }
         }
       }
