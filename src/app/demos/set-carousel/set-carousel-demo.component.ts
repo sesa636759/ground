@@ -23,10 +23,34 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class SetCarouselDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Layouts', icon: '📐' },
-    { id: 'transitions', title: 'Transitions', icon: '✨' },
-    { id: 'features', title: 'Features', icon: '⚙️' },
-    { id: 'advanced', title: 'Advanced', icon: '🚀' },
+    // Transition Effects
+    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀' },
+    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️' },
+    // Layout Modes
+    { id: 'center-mode', title: 'Center Mode', icon: '🎯' },
+    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋' },
+    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️' },
+    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️' },
+    // Interaction & Controls
+    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆' },
+    { id: 'autoplay-control', title: 'Autoplay with Pause Control', icon: '⏯️' },
+    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯' },
+    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨' },
+    // Indicators & Navigation
+    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•' },
+    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢' },
+    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊' },
+    // Size Variants
+    { id: 'size-small', title: 'Small Size', icon: '🔸' },
+    { id: 'size-medium', title: 'Medium Size', icon: '🔶' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠' },
+    // Speed Variants
+    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡' },
+    { id: 'speed-normal', title: 'Normal Speed', icon: '👌' },
+    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢' },
+    // Advanced Features
+    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱' },
+    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮' },
   ];
 
   // Basic Layout Examples
