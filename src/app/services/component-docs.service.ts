@@ -4174,6 +4174,1087 @@ export class ComponentDocsService {
         ],
       },
     ],
+    [
+      'scroll-top',
+      {
+        id: 'scroll-top',
+        name: 'Scroll Top',
+        shortDescription: 'Interactive button to quickly scroll back to the top of the page',
+        detailedDescription:
+          'Sticky button that appears after scrolling a certain distance. Features progress indicators, auto-hide, multiple positions, and smooth scroll behaviors.',
+        usage: `<ui-scroll-top threshold="400" behavior="smooth" position="bottom-right"></ui-scroll-top>`,
+        props: [
+          {
+            name: 'threshold',
+            type: 'number',
+            description: 'Scroll distance in px before showing button',
+            defaultValue: '300',
+          },
+          {
+            name: 'behavior',
+            type: "'auto' | 'smooth'",
+            description: 'Scroll animation behavior',
+            defaultValue: "'smooth'",
+          },
+          {
+            name: 'position',
+            type: 'string',
+            description: 'Screen corner anchor',
+            defaultValue: "'bottom-right'",
+          },
+          {
+            name: 'icon',
+            type: 'string',
+            description: 'Icon content (Emoji or HTML)',
+            defaultValue: "'↑'",
+          },
+          {
+            name: 'showProgress',
+            type: 'boolean',
+            description: 'Render SVG circular progress ring',
+            defaultValue: 'false',
+          },
+          {
+            name: 'autoHide',
+            type: 'boolean',
+            description: 'Hide button after period of inactivity',
+            defaultValue: 'false',
+          },
+        ],
+        events: [],
+        limitations: ['Requires the parent container or window to have scrollable content'],
+        examples: [
+          '<ui-scroll-top showProgress="true" color="primary"></ui-scroll-top>',
+          '<ui-scroll-top position="bottom-center" label="Back to Top"></ui-scroll-top>',
+        ],
+      },
+    ],
+    [
+      'avatar-group',
+      {
+        id: 'avatar-group',
+        name: 'Avatar Group',
+        shortDescription: 'Sequential list of user avatars with overlap or grid layouts',
+        detailedDescription:
+          'Container for managing multiple user avatars. Features automatic grouping for overflow (+N), hover tooltips, and integrated roster lists for hidden members.',
+        usage: `<ui-avatar-group [avatars]="users" [maxVisible]="5"></ui-avatar-group>`,
+        props: [
+          {
+            name: 'avatars',
+            type: 'AvatarProps[]',
+            description: 'Array of user data {src, content, label}',
+            defaultValue: '[]',
+            required: true,
+          },
+          {
+            name: 'maxVisible',
+            type: 'number',
+            description: 'Limit displayed avatars before grouping',
+            defaultValue: '3',
+          },
+          {
+            name: 'layout',
+            type: "'stack' | 'grid'",
+            description: 'Visual arrangement of group members',
+            defaultValue: "'stack'",
+          },
+          {
+            name: 'size',
+            type: 'string',
+            description: 'Base size for calculation overlapping',
+            defaultValue: "'md'",
+          },
+          {
+            name: 'shape',
+            type: 'string',
+            description: 'Shape variant for all avatars (circle, square, squircle)',
+            defaultValue: "'circle'",
+          },
+        ],
+        events: [],
+        limitations: ['Custom size values might require manual adjustment for stack overlapping'],
+        examples: [
+          '<ui-avatar-group [avatars]="team" maxVisible="3" layout="stack"></ui-avatar-group>',
+          '<ui-avatar-group [avatars]="list" shape="hexagon" size="lg"></ui-avatar-group>',
+        ],
+      },
+    ],
+    [
+      'tag-group',
+      {
+        id: 'tag-group',
+        name: 'Tag Group / Chips Group',
+        shortDescription: 'Management container for related tags or filter chips',
+        detailedDescription:
+          'Layout component for grouping tags. Supports selection modes (single/multiple), bulk styling, collapsible overflow, and integrated search filtering.',
+        usage: `<ui-tag-group [max]="10" selectionMode="multiple"></ui-tag-group>`,
+        props: [
+          {
+            name: 'max',
+            type: 'number',
+            description: 'Limit tags shown before ellipsis',
+            defaultValue: '10',
+          },
+          {
+            name: 'selectionMode',
+            type: "'none' | 'single' | 'multiple'",
+            description: 'Manage tag selection state',
+            defaultValue: "'none'",
+          },
+          {
+            name: 'overlap',
+            type: 'boolean',
+            description: 'Enable slight overlapping (Avatar style)',
+            defaultValue: 'false',
+          },
+          {
+            name: 'creatable',
+            type: 'boolean',
+            description: 'Allow users to type and add new tags',
+            defaultValue: 'false',
+          },
+          {
+            name: 'searchable',
+            type: 'boolean',
+            description: 'Integrated filter bar for existing tags',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'tagGroupChange',
+            description: 'Fired when selection changes',
+            payloadType: 'string | string[]',
+          },
+        ],
+        limitations: ['Creatable mode requires handling persistency in the parent app'],
+        examples: [
+          '<ui-tag-group color="info" [max]="5" collapsible="true"></ui-tag-group>',
+          '<ui-tag-group creatable="true" selectionMode="multiple"></ui-tag-group>',
+        ],
+      },
+    ],
+    [
+      'rating',
+      {
+        id: 'rating',
+        name: 'Rating / Review Indicator',
+        shortDescription: 'Interactive stars, smileys, or thumbs for user feedback',
+        detailedDescription:
+          'Input component for collecting numeric reviews. Supports star icons, sentiment-based smileys, or binary thumbs. Includes half-rating support and read-only modes.',
+        usage: `<ui-rating type="star" [value]="3.5" allowHalf></ui-rating>`,
+        props: [
+          {
+            name: 'type',
+            type: "'star' | 'smiley' | 'thumb'",
+            description: 'Icon set to use',
+            defaultValue: "'star'",
+          },
+          { name: 'max', type: 'number', description: 'Maximum score to allow', defaultValue: '5' },
+          {
+            name: 'allowHalf',
+            type: 'boolean',
+            description: 'Enable 0.5 step ratings (star only)',
+            defaultValue: 'false',
+          },
+          {
+            name: 'showValue',
+            type: 'boolean',
+            description: 'Display current score as text',
+            defaultValue: 'false',
+          },
+          {
+            name: 'readonly',
+            type: 'boolean',
+            description: 'Disable user interaction',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'ratingChange',
+            description: 'Fired when new rating is selected',
+            payloadType: 'number',
+          },
+        ],
+        limitations: ['Half-ratings are strictly visual for smileys and thumbs'],
+        examples: [
+          '<ui-rating type="smiley" color="success" size="lg"></ui-rating>',
+          '<ui-rating type="thumb" [value]="1" color="primary"></ui-rating>',
+        ],
+      },
+    ],
+    [
+      'skeleton',
+      {
+        id: 'skeleton',
+        name: 'Skeleton Loader',
+        shortDescription: 'Empty state placeholder for async data loading',
+        detailedDescription:
+          'Visual placeholder mimicking the structure of UI components. Supports multiple shapes (circle, rect), animation types (pulse, wave), and semantic presets (avatar, post, list).',
+        usage: `<ui-skeleton shape="card" animated></ui-skeleton>`,
+        props: [
+          {
+            name: 'shape',
+            type: 'SkeletonShape',
+            description: 'Container structure',
+            defaultValue: "'rectangle'",
+          },
+          {
+            name: 'animationType',
+            type: "'pulse' | 'wave'",
+            description: 'Visual loading effect',
+            defaultValue: "'pulse'",
+          },
+          {
+            name: 'width',
+            type: 'string',
+            description: 'Custom CSS width',
+            defaultValue: "'100%'",
+          },
+          {
+            name: 'height',
+            type: 'string',
+            description: 'Custom CSS height',
+            defaultValue: "'20px'",
+          },
+          {
+            name: 'animated',
+            type: 'boolean',
+            description: 'Enable motion effects',
+            defaultValue: 'true',
+          },
+        ],
+        events: [],
+        limitations: [
+          'Static sizes from semantic shapes (avatar, button) override width/height props',
+        ],
+        examples: [
+          '<ui-skeleton shape="circle" size="xl"></ui-skeleton>',
+          '<ui-skeleton shape="text" [width]="\'60%\'"></ui-skeleton>',
+        ],
+      },
+    ],
+    [
+      'pagination',
+      {
+        id: 'pagination',
+        name: 'Pagination Control',
+        shortDescription: 'Advanced page navigation with multiple modes and URL syncing',
+        detailedDescription:
+          'Universal pagination system. Supports basic buttons, compact dropdowns, input-based jumping, infinite scroll triggers, and automatic URL parameter synchronization.',
+        usage: `<ui-pagination [totalItems]="200" [itemsPerPage]="10"></ui-pagination>`,
+        props: [
+          {
+            name: 'type',
+            type: 'PaginationType',
+            description: 'Layout mode (basic, detailed, input, dropdown)',
+            defaultValue: "'basic'",
+          },
+          {
+            name: 'totalItems',
+            type: 'number',
+            description: 'Total records to paginate',
+            required: true,
+          },
+          {
+            name: 'itemsPerPage',
+            type: 'number',
+            description: 'Rows per page',
+            defaultValue: '10',
+          },
+          {
+            name: 'showJumpTo',
+            type: 'boolean',
+            description: 'Show text input for page switching',
+            defaultValue: 'false',
+          },
+          {
+            name: 'urlSync',
+            type: 'boolean',
+            description: 'Automatically update browser URL',
+            defaultValue: 'false',
+          },
+          {
+            name: 'responsiveMode',
+            type: 'boolean',
+            description: 'Switch to compact on mobile screens',
+            defaultValue: 'true',
+          },
+        ],
+        events: [
+          {
+            name: 'pageChange',
+            description: 'Fired when page or size is modified',
+            payloadType: '{page, size}',
+          },
+        ],
+        limitations: ['URL Sync requires a routing-enabled application'],
+        examples: [
+          '<ui-pagination type="detailed" [totalItems]="500" [pageSizes]="[10, 50, 100]"></ui-pagination>',
+          '<ui-pagination type="input" [totalItems]="1000" theme="primary"></ui-pagination>',
+        ],
+      },
+    ],
+    [
+      'popover',
+      {
+        id: 'popover',
+        name: 'Popover Bubble',
+        shortDescription: 'Floating container for interactive content or rich tooltips',
+        detailedDescription:
+          'Interactive overlay that anchors to elements. More robust than tooltips, supporting HTML content, headings, close buttons, and multiple trigger modes.',
+        usage: `<ui-popover heading="Details" content="<b>Bold</b> content here"></ui-popover>`,
+        props: [
+          {
+            name: 'heading',
+            type: 'string',
+            description: 'Optional header text',
+            defaultValue: "''",
+          },
+          {
+            name: 'content',
+            type: 'string',
+            description: 'Main body (HTML supported)',
+            defaultValue: "''",
+          },
+          {
+            name: 'trigger',
+            type: "'click' | 'hover' | 'focus'",
+            description: 'Activation interaction',
+            defaultValue: "'click'",
+          },
+          {
+            name: 'placement',
+            type: 'string',
+            description: 'Position relative to anchor',
+            defaultValue: "'bottom'",
+          },
+          {
+            name: 'showCloseButton',
+            type: 'boolean',
+            description: 'Render integrated X button',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'popoverShow',
+            description: 'Fired when overlay becomes visible',
+            payloadType: 'void',
+          },
+        ],
+        limitations: ['Slotted content not supported; use rich HTML in content prop'],
+        examples: ['<ui-popover heading="Help" trigger="hover" placement="right">...</ui-popover>'],
+      },
+    ],
+    [
+      'otp-input',
+      {
+        id: 'otp-input',
+        name: 'One-Time Password Input',
+        shortDescription: 'Segmented text fields for secure code verification',
+        detailedDescription:
+          'Specialized input for 2FA or PIN entry. Features auto-focus management, numeric-only validation, masking for password codes, and completion callbacks.',
+        usage: `<ui-otp-input [length]="6" (otpComplete)="onVerify($event)"></ui-otp-input>`,
+        props: [
+          {
+            name: 'length',
+            type: 'number',
+            description: 'Total number of digits/fields',
+            defaultValue: '4',
+          },
+          {
+            name: 'masked',
+            type: 'boolean',
+            description: 'Hide input values (security)',
+            defaultValue: 'false',
+          },
+          {
+            name: 'numericOnly',
+            type: 'boolean',
+            description: 'Block alpha characters',
+            defaultValue: 'true',
+          },
+          {
+            name: 'separator',
+            type: 'string',
+            description: 'CSV of indices to show gap (e.g. "3")',
+            defaultValue: "''",
+          },
+          {
+            name: 'autoFocus',
+            type: 'boolean',
+            description: 'Focus first field on mount',
+            defaultValue: 'true',
+          },
+        ],
+        events: [
+          {
+            name: 'otpChange',
+            description: 'Fired on every keystroke',
+            payloadType: '{value, isComplete}',
+          },
+          {
+            name: 'otpComplete',
+            description: 'Fired when all fields are filled',
+            payloadType: '{value}',
+          },
+        ],
+        limitations: ['Pasting is limited to digits if numericOnly is enabled'],
+        examples: [
+          '<ui-otp-input [length]="4" size="lg" (otpComplete)="checkPin($event)"></ui-otp-input>',
+          '<ui-otp-input [length]="6" separator="3" masked="true"></ui-otp-input>',
+        ],
+      },
+    ],
+    [
+      'timeline',
+      {
+        id: 'timeline',
+        name: 'Chronological Timeline',
+        shortDescription: 'Vertical or horizontal sequence of historical events',
+        detailedDescription:
+          'Visual record container with support for icons, panels, alternate alignments, and pending states. Features premium search filtering and interactive item clicks.',
+        usage: `<ui-timeline [events]="myHistory" mode="vertical" align="alternate"></ui-timeline>`,
+        props: [
+          {
+            name: 'events',
+            type: 'TimelineEvent[]',
+            description: 'History data {title, description, date, icon}',
+            defaultValue: '[]',
+            required: true,
+          },
+          {
+            name: 'mode',
+            type: "'vertical' | 'horizontal'",
+            description: 'Flow direction',
+            defaultValue: "'vertical'",
+          },
+          {
+            name: 'align',
+            type: 'string',
+            description: 'Item side alignment (left, right, alternate)',
+            defaultValue: "'left'",
+          },
+          {
+            name: 'marker',
+            type: "'dot' | 'number' | 'icon'",
+            description: 'Indicator decoration style',
+            defaultValue: "'dot'",
+          },
+          {
+            name: 'pending',
+            type: 'boolean',
+            description: 'Show dashed line at the end',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'itemClick',
+            description: 'Fired when an event block is clicked',
+            payloadType: 'TimelineEvent',
+          },
+        ],
+        limitations: ['Horizontal mode requires wrapping container width management'],
+        examples: [
+          '<ui-timeline [events]="logs" marker="icon" pending="true"></ui-timeline>',
+          '<ui-timeline [events]="roadmap" mode="horizontal" variant="panel"></ui-timeline>',
+        ],
+      },
+    ],
+    [
+      'tree-list',
+      {
+        id: 'tree-list',
+        name: 'Recursive Tree List',
+        shortDescription: 'Hierarchical data viewer with checkboxes and drag-drop reordering',
+        detailedDescription:
+          'Advanced tree component supporting lazy loading, checkbox cascading, search filtering, and drag-and-drop hierarchy management. Ideal for file explorers or org charts.',
+        usage: `<ui-tree-list [data]="orgData" showCheckbox cascade></ui-tree-list>`,
+        props: [
+          {
+            name: 'data',
+            type: 'TreeNode[]',
+            description: 'Nested structure {key, label, children?}',
+            defaultValue: '[]',
+            required: true,
+          },
+          {
+            name: 'multiSelect',
+            type: 'boolean',
+            description: 'Enable multiple leaf selection',
+            defaultValue: 'false',
+          },
+          {
+            name: 'showCheckbox',
+            type: 'boolean',
+            description: 'Enable bulk selection via boxes',
+            defaultValue: 'false',
+          },
+          {
+            name: 'cascade',
+            type: 'boolean',
+            description: 'Toggle parent state based on children',
+            defaultValue: 'true',
+          },
+          {
+            name: 'enableDragDrop',
+            type: 'boolean',
+            description: 'Allow manual rearrangement',
+            defaultValue: 'false',
+          },
+          {
+            name: 'lazy',
+            type: 'boolean',
+            description: 'Trigger event for missing children nodes',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'treeSelect',
+            description: 'Fired when a node is highlighted',
+            payloadType: '{node, selected}',
+          },
+          {
+            name: 'treeCheck',
+            description: 'Fired when checkbox state changes',
+            payloadType: '{node, checked}',
+          },
+          {
+            name: 'treeDrop',
+            description: 'Fired on drag completion',
+            payloadType: '{dragged, target, pos}',
+          },
+        ],
+        limitations: [
+          'Lazy loading requires explicitly calling finishLoading() after data arrives',
+        ],
+        examples: [
+          '<ui-tree-list [data]="files" showLines="true" enableDragDrop="true"></ui-tree-list>',
+          '<ui-tree-list [data]="config" showCheckbox="true" [cascade]="false"></ui-tree-list>',
+        ],
+      },
+    ],
+    [
+      'badge',
+      {
+        id: 'badge',
+        name: 'Badge / Notification Indicator',
+        shortDescription: 'Small numeric or status indicator for icons and buttons',
+        detailedDescription:
+          'Versatile overlay component for displaying counts, status dots, or micro-icons. Features multiple positions, animation styles (bounce, pulse), glow effects, and gradient support.',
+        usage: `<ui-button icon="notifications"><ui-badge value="5" color="danger"></ui-badge></ui-button>`,
+        props: [
+          {
+            name: 'value',
+            type: 'string | number',
+            description: 'Content to display inside the badge',
+          },
+          {
+            name: 'max',
+            type: 'number',
+            description: 'Maximum numeric value before showing "+"',
+            defaultValue: '99',
+          },
+          {
+            name: 'dot',
+            type: 'boolean',
+            description: 'Render as a simple status dot without text',
+            defaultValue: 'false',
+          },
+          {
+            name: 'position',
+            type: 'string',
+            description: 'Corner anchor (top-right, top-left, bottom-right, bottom-left)',
+            defaultValue: "'top-right'",
+          },
+          {
+            name: 'glow',
+            type: 'boolean',
+            description: 'Enable neon shadow effect',
+            defaultValue: 'false',
+          },
+          {
+            name: 'animation',
+            type: 'string',
+            description: 'Entrance/state motion (pulse, bounce, shake)',
+            defaultValue: "'none'",
+          },
+        ],
+        events: [
+          {
+            name: 'badgeClick',
+            description: 'Fired when badge is clicked (interactive mode)',
+            payloadType: 'void',
+          },
+        ],
+        limitations: ['Requires relative positioning on the parent element for accurate anchoring'],
+        examples: [
+          '<ui-badge dot color="success" glow="true"></ui-badge>',
+          '<ui-badge value="New" variant="soft" animation="pulse"></ui-badge>',
+        ],
+      },
+    ],
+    [
+      'breadcrumb',
+      {
+        id: 'breadcrumb',
+        name: 'Breadcrumb Navigation',
+        shortDescription: 'Hierarchical path indicators for site navigation',
+        detailedDescription:
+          "Navigational aid that shows the user's current location. Supports custom separators, home icons, collapsible overflow for long paths, and interactive items with badges.",
+        usage: `<ui-breadcrumb [items]="navPath" separator=">"></ui-breadcrumb>`,
+        props: [
+          {
+            name: 'items',
+            type: 'BreadcrumbItem[]',
+            description: 'Hierarchy data {label, href, icon, active}',
+            defaultValue: '[]',
+            required: true,
+          },
+          {
+            name: 'separator',
+            type: 'string',
+            description: 'Text character between items',
+            defaultValue: "'/'",
+          },
+          {
+            name: 'maxItems',
+            type: 'number',
+            description: 'Items to show before collapsing into "..." dropdown',
+            defaultValue: '4',
+          },
+          {
+            name: 'showHome',
+            type: 'boolean',
+            description: 'Automatically prepend home icon',
+            defaultValue: 'false',
+          },
+          {
+            name: 'variant',
+            type: 'string',
+            description: 'Visual style (default, pills, glass)',
+            defaultValue: "'default'",
+          },
+        ],
+        events: [
+          {
+            name: 'breadcrumbClick',
+            description: 'Fired when a path segment is selected',
+            payloadType: 'BreadcrumbItem',
+          },
+        ],
+        limitations: ['Automatic collapsing calculates based on item count, not pixel width'],
+        examples: [
+          '<ui-breadcrumb [items]="myPath" variant="pills" showHome="true"></ui-breadcrumb>',
+        ],
+      },
+    ],
+    [
+      'chip',
+      {
+        id: 'chip',
+        name: 'Smart Chip / Choice',
+        shortDescription: 'Interactive tag-like component with avatars and selection states',
+        detailedDescription:
+          'Premium label component that can act as a selection filter, action trigger, or data entity. Features vertical text support, integrated counters, selection indicators, and advanced entry/exit animations.',
+        usage: `<ui-chip label="Electronics" variant="soft" clickable></ui-chip>`,
+        props: [
+          { name: 'label', type: 'string', description: 'Main text content', required: true },
+          {
+            name: 'variant',
+            type: 'string',
+            description: 'Visual style (filled, outlined, soft, gradient)',
+            defaultValue: "'filled'",
+          },
+          {
+            name: 'orientation',
+            type: 'string',
+            description: 'Text layout (horizontal, vertical-text, rotated)',
+            defaultValue: "'horizontal'",
+          },
+          {
+            name: 'removable',
+            type: 'boolean',
+            description: 'Show close icon and enable tag removal',
+            defaultValue: 'false',
+          },
+          {
+            name: 'selected',
+            type: 'boolean',
+            description: 'Visual state for choice/filter modes',
+            defaultValue: 'false',
+          },
+          {
+            name: 'counter',
+            type: 'string | number',
+            description: 'Circular numeric count at the end',
+            defaultValue: "''",
+          },
+        ],
+        events: [
+          { name: 'chipClick', description: 'Fired on interaction', payloadType: 'void' },
+          {
+            name: 'chipSelect',
+            description: 'Fired when selection changes',
+            payloadType: 'boolean',
+          },
+        ],
+        limitations: [
+          'Vertical-rotated chips may require custom container padding for the text angle',
+        ],
+        examples: [
+          '<ui-chip label="User" [userAvatar]="imgUrl" color="primary"></ui-chip>',
+          '<ui-chip label="Count" [counter]="42" variant="outlined"></ui-chip>',
+        ],
+      },
+    ],
+    [
+      'divider',
+      {
+        id: 'divider',
+        name: 'Advanced Divider',
+        shortDescription: 'Layout separator with support for labels, icons, and shapes',
+        detailedDescription:
+          'Multi-functional separator for visual grouping. Supports text/icon centers, vertical orientation, gradient lines, animated entrances, and unique shape bridges (wave, zigzag, curve).',
+        usage: `<ui-divider text="OR" textAlign="center" variant="dashed"></ui-divider>`,
+        props: [
+          { name: 'text', type: 'string', description: 'Segment label text', defaultValue: "''" },
+          {
+            name: 'orientation',
+            type: "'horizontal' | 'vertical'",
+            description: 'Separation plane',
+            defaultValue: "'horizontal'",
+          },
+          {
+            name: 'variant',
+            type: 'string',
+            description: 'Line style (solid, dashed, dotted, gradient)',
+            defaultValue: "'solid'",
+          },
+          {
+            name: 'shape',
+            type: 'string',
+            description: 'Decorative divider bridge (wave, curve, arrow)',
+            defaultValue: "'none'",
+          },
+          {
+            name: 'loading',
+            type: 'boolean',
+            description: 'Enable shimmering effect for placeholders',
+            defaultValue: 'false',
+          },
+        ],
+        events: [],
+        limitations: ['Vertical dividers require the parent layout to use Flexbox or Grid'],
+        examples: [
+          '<ui-divider icon="⭐" textAlign="left" color="info"></ui-divider>',
+          '<ui-divider shape="wave" variant="gradient"></ui-divider>',
+        ],
+      },
+    ],
+    [
+      'panel',
+      {
+        id: 'panel',
+        name: 'Container Panel',
+        shortDescription: 'Flexible content block with headers, footers, and window controls',
+        detailedDescription:
+          'Industrial-strength container component. Features window management (minimize, maximize, close), persistence, resizable edges, draggable headers, glassmorphism, and modal overlays.',
+        usage: `<ui-panel panelTitle="Settings" toggleable maximizable></ui-panel>`,
+        props: [
+          {
+            name: 'panelTitle',
+            type: 'string',
+            description: 'Heading text for the panel',
+            defaultValue: "''",
+          },
+          {
+            name: 'toggleable',
+            type: 'boolean',
+            description: 'Enable collapse/expand via header click',
+            defaultValue: 'false',
+          },
+          {
+            name: 'maximizable',
+            type: 'boolean',
+            description: 'Show fullscreen toggle button',
+            defaultValue: 'false',
+          },
+          {
+            name: 'isDraggable',
+            type: 'boolean',
+            description: 'Allow moving panel via header',
+            defaultValue: 'false',
+          },
+          {
+            name: 'glass',
+            type: 'boolean',
+            description: 'Apply frosted glass styling',
+            defaultValue: 'false',
+          },
+          {
+            name: 'persistKey',
+            type: 'string',
+            description: 'Key for saving size/state in localStorage',
+            defaultValue: "''",
+          },
+        ],
+        events: [
+          { name: 'toggle', description: 'Fired on collapse/expand', payloadType: '{collapsed}' },
+          {
+            name: 'panelMaximize',
+            description: 'Fired when entering fullscreen',
+            payloadType: '{panelId}',
+          },
+        ],
+        limitations: ['Draggable mode requires absolute positioning if used outside normal flow'],
+        examples: [
+          '<ui-panel panelTitle="Logs" variant="elevated" toggleable="true"></ui-panel>',
+          '<ui-panel panelTitle="Workspace" [resizable]="true" glass="true"></ui-panel>',
+        ],
+      },
+    ],
+    [
+      'switch',
+      {
+        id: 'switch',
+        name: 'Premium Switch / Toggle',
+        shortDescription: 'Modern binary selection control with integrated icons and states',
+        detailedDescription:
+          'Versatile boolean toggle. Supports five size variants, multiple shapes (pill, square), integrated icons for ON/OFF states, loading spinners, and validation markers.',
+        usage: `<ui-switch label="Enable Notifications" [checked]="true"></ui-switch>`,
+        props: [
+          {
+            name: 'checked',
+            type: 'boolean',
+            description: 'Current toggle state',
+            defaultValue: 'false',
+          },
+          {
+            name: 'size',
+            type: 'string',
+            description: 'Switch scale (xs, sm, md, lg, xl)',
+            defaultValue: "'md'",
+          },
+          {
+            name: 'iconOn',
+            type: 'string',
+            description: 'Indicator icon for checked state',
+            defaultValue: "''",
+          },
+          {
+            name: 'iconOff',
+            type: 'string',
+            description: 'Indicator icon for unchecked state',
+            defaultValue: "''",
+          },
+          {
+            name: 'loading',
+            type: 'boolean',
+            description: 'Render micro-spinner inside the toggle',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'switchChange',
+            description: 'Fired when toggle state changes',
+            payloadType: '{checked, value}',
+          },
+        ],
+        limitations: ['Requires specific label placement padding in absolute-labeled layouts'],
+        examples: [
+          '<ui-switch [checked]="true" color="success" iconOn="✔"></ui-switch>',
+          '<ui-switch loading variant="info" size="xl"></ui-switch>',
+        ],
+      },
+    ],
+    [
+      'tag',
+      {
+        id: 'tag',
+        name: 'Advanced Tag',
+        shortDescription: 'Indicator label with images, icons, and automated coloring',
+        detailedDescription:
+          'Visual label for categorization. Supports semantic variants, image/avatar prefixing, checkable states, elevation shadows, pulse animations for attention, and automated color generation via label hashes.',
+        usage: `<ui-tag label="Bug" color="danger" [rounded]="true"></ui-tag>`,
+        props: [
+          { name: 'label', type: 'string', description: 'Tag text content', required: true },
+          {
+            name: 'variant',
+            type: 'string',
+            description: 'Style preset (filled, light, dot, outlined)',
+            defaultValue: "'filled'",
+          },
+          {
+            name: 'removable',
+            type: 'boolean',
+            description: 'Show integrated delete button',
+            defaultValue: 'false',
+          },
+          {
+            name: 'autoColor',
+            type: 'boolean',
+            description: 'Generate unique color based on label text',
+            defaultValue: 'false',
+          },
+          {
+            name: 'pulse',
+            type: 'boolean',
+            description: 'Enable attention-grabbing animation',
+            defaultValue: 'false',
+          },
+          {
+            name: 'checkable',
+            type: 'boolean',
+            description: 'Allow selection behavior',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          { name: 'tagRemove', description: 'Fired when X icon is clicked', payloadType: 'void' },
+          {
+            name: 'tagCheck',
+            description: 'Fired when selection state changes',
+            payloadType: 'boolean',
+          },
+        ],
+        limitations: [
+          'Dot variant is designed for status indicators and minimizes label visibility',
+        ],
+        examples: [
+          '<ui-tag label="Verified" [userAvatar]="userImg" color="success"></ui-tag>',
+          '<ui-tag label="Hot" pulse="true" variant="dot" color="danger"></ui-tag>',
+        ],
+      },
+    ],
+    [
+      'knob',
+      {
+        id: 'knob',
+        name: 'Control Knob',
+        shortDescription: 'Circular input for numeric values and hardware-like control',
+        detailedDescription:
+          'Precision numeric input mimicking hardware knobs. Supports mouse dragging, wheel rotation, numeric labels, tick marks, status arcs, and manual value override via double-click input.',
+        usage: `<ui-knob [value]="50" [min]="0" [max]="100" color="primary"></ui-knob>`,
+        props: [
+          {
+            name: 'value',
+            type: 'number',
+            description: 'Current numeric setting',
+            defaultValue: '0',
+          },
+          {
+            name: 'strokeWidth',
+            type: 'number',
+            description: 'Thickness of the circular track',
+            defaultValue: '10',
+          },
+          {
+            name: 'showTicks',
+            type: 'boolean',
+            description: 'Render measurement lines along the arc',
+            defaultValue: 'false',
+          },
+          {
+            name: 'readonly',
+            type: 'boolean',
+            description: 'Display value without interaction',
+            defaultValue: 'false',
+          },
+          {
+            name: 'enableWheel',
+            type: 'boolean',
+            description: 'Manage value via scroll wheel',
+            defaultValue: 'false',
+          },
+          {
+            name: 'allowInput',
+            type: 'boolean',
+            description: 'Enable double-click to type exact value',
+            defaultValue: 'true',
+          },
+        ],
+        events: [
+          {
+            name: 'knobChange',
+            description: 'Fired on final value after interaction',
+            payloadType: 'number',
+          },
+          {
+            name: 'knobInput',
+            description: 'Fired in real-time while dragging',
+            payloadType: 'number',
+          },
+        ],
+        limitations: ['Best for high-precision inputs like audio volume or brightness settings'],
+        examples: [
+          '<ui-knob [value]="75" showTicks="true" color="#f00"></ui-knob>',
+          '<ui-knob [value]="10" size="200" [showLabels]="true" [step]="5"></ui-knob>',
+        ],
+      },
+    ],
+    [
+      'speedometer',
+      {
+        id: 'speedometer',
+        name: 'High-Performance Gauge',
+        shortDescription: 'Industrial-grade speedometer for real-time telemetry display',
+        detailedDescription:
+          'Advanced data visualization gauge. Features dual-needle поддержкой (comparison), customizable color zones, interactive needle dragging, image exporting (PNG/SVG), and animated value transitions.',
+        usage: `<ui-speedometer [value]="80" [minValue]="0" [maxValue]="240" unit="km/h"></ui-speedometer>`,
+        props: [
+          {
+            name: 'value',
+            type: 'number',
+            description: 'Main numeric measurement',
+            required: true,
+          },
+          {
+            name: 'secondaryValue',
+            type: 'number',
+            description: 'Ghost needle for comparison/history',
+            defaultValue: 'undefined',
+          },
+          {
+            name: 'ranges',
+            type: 'string',
+            description: 'Color zones (JSON): [{min, max, color}]',
+            defaultValue: "''",
+          },
+          {
+            name: 'needleShape',
+            type: 'string',
+            description: 'Aesthetic style (triangle, arrow, line)',
+            defaultValue: "'triangle'",
+          },
+          {
+            name: 'interactive',
+            type: 'boolean',
+            description: 'Allow setting value via needle dragging',
+            defaultValue: 'false',
+          },
+          {
+            name: 'showPercentage',
+            type: 'boolean',
+            description: 'Render value relative to total scale %',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          { name: 'valueChange', description: 'Fired in interactive mode', payloadType: 'number' },
+        ],
+        limitations: ['Rich custom ranges must be passed as double-quoted JSON strings'],
+        examples: [
+          '<ui-speedometer [value]="160" [maxValue]="300" unit="km/h" color="warning"></ui-speedometer>',
+          '<ui-speedometer [value]="45" label="Load" showPercentage="true" ranges=\'[{"min":0, "max":40, "color": "green"}]\'></ui-speedometer>',
+        ],
+      },
+    ],
   ]);
 
   getComponentDocs(componentId: string): ComponentDocumentation | undefined {

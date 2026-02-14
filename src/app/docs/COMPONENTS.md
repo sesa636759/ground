@@ -1239,3 +1239,400 @@ Universal popup menu for right-click or specific trigger interactions.
 ```html
 <ui-context-menu [items]="fileActions" target=".file-item"></ui-context-menu>
 ```
+
+---
+
+## 🔝 Scroll Top `ui-scroll-top`
+
+Interactive button to quickly scroll back to the top of the page.
+
+### Properties
+
+| Property       | Type               | Default          | Description                                      |
+| :------------- | :----------------- | :--------------- | :----------------------------------------------- |
+| `threshold`    | `number`           | `300`            | Scroll distance in px before button appears.     |
+| `behavior`     | `'auto'\|'smooth'` | `'smooth'`       | Scroll animation style.                          |
+| `position`     | `string`           | `"bottom-right"` | Screen corner anchor point.                      |
+| `showProgress` | `boolean`          | `false`          | Show circular progress ring of scroll % content. |
+
+### Usage
+
+```html
+<ui-scroll-top threshold="400" showProgress></ui-scroll-top>
+```
+
+---
+
+## 👥 Avatar Group `ui-avatar-group`
+
+Sequential list of user avatars with overlap or grid layouts.
+
+### Properties
+
+| Property     | Type              | Default   | Description                             |
+| :----------- | :---------------- | :-------- | :-------------------------------------- |
+| `avatars`    | `AvatarProps[]`   | `[]`      | List of items {src, content, label}.    |
+| `maxVisible` | `number`          | `3`       | Max avatars to show before +N grouping. |
+| `layout`     | `'stack'\|'grid'` | `'stack'` | Visual arrangement of members.          |
+
+### Usage
+
+```html
+<ui-avatar-group [avatars]="teamMembers" maxVisible="5" layout="stack"></ui-avatar-group>
+```
+
+---
+
+## 🏷️ Tag Group `ui-tag-group`
+
+Management container for related tags or filter chips.
+
+### Properties
+
+| Property        | Type      | Default  | Description                                  |
+| :-------------- | :-------- | :------- | :------------------------------------------- |
+| `max`           | `number`  | `10`     | Tags shown before grouping into overflow.    |
+| `selectionMode` | `string`  | `"none"` | 'single' or 'multiple' selection management. |
+| `creatable`     | `boolean` | `false`  | Allow user to add custom tags via input.     |
+| `searchable`    | `boolean` | `false`  | Filter existing tags via integrated bar.     |
+
+### Usage
+
+```html
+<ui-tag-group [max]="5" selectionMode="multiple" searchable></ui-tag-group>
+```
+
+---
+
+## ⭐ Rating `ui-rating`
+
+Interactive stars or smileys for collecting user reviews.
+
+### Properties
+
+| Property    | Type                        | Default  | Description                           |
+| :---------- | :-------------------------- | :------- | :------------------------------------ |
+| `type`      | `'star'\|'smiley'\|'thumb'` | `'star'` | Icon set for the rating component.    |
+| `value`     | `number`                    | `0`      | Current rating value.                 |
+| `allowHalf` | `boolean`                   | `false`  | Support 0.5 step ratings (star only). |
+| `readonly`  | `boolean`                   | `false`  | Disable all user interactions.        |
+
+### Usage
+
+```html
+<ui-rating type="star" [value]="4.5" allowHalf color="warning"></ui-rating>
+```
+
+---
+
+## 🦴 Skeleton Loader `ui-skeleton`
+
+Placeholder components for content that is still loading asynchronously.
+
+### Properties
+
+| Property           | Type              | Default       | Description                                 |
+| :----------------- | :---------------- | :------------ | :------------------------------------------ |
+| `shape`            | `string`          | `"rectangle"` | Predefined shape (circle, card, list-item). |
+| `animationType`    | `'pulse'\|'wave'` | `'pulse'`     | Type of motion effect.                      |
+| `width` / `height` | `string`          | `-`           | Custom CSS dimensions.                      |
+
+### Usage
+
+```html
+<ui-skeleton shape="avatar" animated></ui-skeleton>
+<ui-skeleton shape="text" width="80%"></ui-skeleton>
+```
+
+---
+
+## 🔢 Pagination `ui-pagination`
+
+Advanced page navigation with URL sync and multiple layout modes.
+
+### Properties
+
+| Property       | Type      | Default   | Description                                   |
+| :------------- | :-------- | :-------- | :-------------------------------------------- |
+| `totalItems`   | `number`  | `0`       | Total records in the dataset.                 |
+| `itemsPerPage` | `number`  | `10`      | Items to display per view.                    |
+| `type`         | `string`  | `"basic"` | Layout (detailed, input, dropdown, infinite). |
+| `urlSync`      | `boolean` | `false`   | Synchronize page state with URL params.       |
+
+### Usage
+
+```html
+<ui-pagination [totalItems]="250" type="detailed" [showJumpTo]="true"></ui-pagination>
+```
+
+---
+
+## 💭 Popover `ui-popover`
+
+Floating bubble for complex interactive content beyond tooltips.
+
+### Properties
+
+| Property    | Type     | Default    | Description                             |
+| :---------- | :------- | :--------- | :-------------------------------------- |
+| `heading`   | `string` | `""`       | Optional header title.                  |
+| `content`   | `string` | `""`       | HTML body content for the bubble.       |
+| `trigger`   | `string` | `"click"`  | Activation event (click, hover, focus). |
+| `placement` | `string` | `"bottom"` | Orientation relative to anchor.         |
+
+### Usage
+
+```html
+<ui-popover heading="Help" trigger="hover" content="<b>Instructions</b>..."></ui-popover>
+```
+
+---
+
+## 🔐 OTP Input `ui-otp-input`
+
+Segmented fields for entering security codes and PINs.
+
+### Properties
+
+| Property      | Type      | Default | Description                         |
+| :------------ | :-------- | :------ | :---------------------------------- |
+| `length`      | `number`  | `4`     | Total number of digits/fields.      |
+| `masked`      | `boolean` | `false` | Mask values as bullets for privacy. |
+| `numericOnly` | `boolean` | `true`  | Restrict input to digits only.      |
+
+### Usage
+
+```html
+<ui-otp-input [length]="6" (otpComplete)="validate($event)"></ui-otp-input>
+```
+
+---
+
+## 📅 Timeline `ui-timeline`
+
+Chronological display of events with various alignment modes.
+
+### Properties
+
+| Property | Type              | Default  | Description                              |
+| :------- | :---------------- | :------- | :--------------------------------------- |
+| `events` | `TimelineEvent[]` | `[]`     | List of items {title, desc, date, icon}. |
+| `align`  | `string`          | `"left"` | Alignment (left, right, alternate).      |
+| `marker` | `string`          | `"dot"`  | Decoration style (dot, icon, number).    |
+
+### Usage
+
+```html
+<ui-timeline [events]="logData" mode="vertical" align="alternate"></ui-timeline>
+```
+
+---
+
+## 🌲 Tree List `ui-tree-list`
+
+Hierarchical data viewer with checkboxes and drag-reordering.
+
+### Properties
+
+| Property         | Type         | Default | Description                              |
+| :--------------- | :----------- | :------ | :--------------------------------------- |
+| `data`           | `TreeNode[]` | `[]`    | Nested structure {key, label, children}. |
+| `showCheckbox`   | `boolean`    | `false` | Enable multi-selection via boxes.        |
+| `cascade`        | `boolean`    | `true`  | Propagate selection state up/down.       |
+| `enableDragDrop` | `boolean`    | `false` | Allow manual reordering of tree nodes.   |
+
+### Usage
+
+```html
+<ui-tree-list [data]="fileTree" showCheckbox cascade></ui-tree-list>
+```
+
+---
+
+## 🎖️ Badge `ui-badge`
+
+Small numeric or status indicators for icons, buttons, and avatars.
+
+### Properties
+
+| Property    | Type               | Default  | Description                    |
+| :---------- | :----------------- | :------- | :----------------------------- |
+| `value`     | `string \| number` | `-`      | Indicator content.             |
+| `max`       | `number`           | `99`     | Limit before showing "+".      |
+| `glow`      | `boolean`          | `false`  | Enable neon shadow effect.     |
+| `animation` | `string`           | `"none"` | Motion (pulse, bounce, shake). |
+
+### Usage
+
+```html
+<ui-button icon="notifications">
+  <ui-badge value="5" color="danger" glow></ui-badge>
+</ui-button>
+```
+
+---
+
+## 🍞 Breadcrumb `ui-breadcrumb`
+
+Hierarchical path indicators for site navigation navigation.
+
+### Properties
+
+| Property    | Type     | Default | Description                  |
+| :---------- | :------- | :------ | :--------------------------- |
+| `items`     | `Item[]` | `[]`    | List of {label, href, icon}. |
+| `separator` | `string` | `"/"`   | Delimiter between items.     |
+| `maxItems`  | `number` | `4`     | Max items before collapsing. |
+
+### Usage
+
+```html
+<ui-breadcrumb [items]="navItems" showHome variant="pills"></ui-breadcrumb>
+```
+
+---
+
+## 🥔 Smart Chip `ui-chip`
+
+Interactive tag components with avatars and counters.
+
+### Properties
+
+| Property      | Type      | Default        | Description                         |
+| :------------ | :-------- | :------------- | :---------------------------------- |
+| `label`       | `string`  | `""`           | Primary text content.               |
+| `orientation` | `string`  | `"horizontal"` | horizontal, vertical-text, rotated. |
+| `removable`   | `boolean` | `false`        | Enable close/delete button.         |
+| `counter`     | `number`  | `-`            | Numeric count badge at end.         |
+
+### Usage
+
+```html
+<ui-chip label="Electronics" variant="soft" [counter]="12" clickable></ui-chip>
+```
+
+---
+
+## 📏 Advanced Divider `ui-divider`
+
+Layout separators with support for labels, icons, and bridges.
+
+### Properties
+
+| Property    | Type     | Default    | Description                 |
+| :---------- | :------- | :--------- | :-------------------------- |
+| `text`      | `string` | `""`       | Label text on the line.     |
+| `textAlign` | `string` | `"center"` | left, center, right.        |
+| `variant`   | `string` | `"solid"`  | solid, dashed, gradient.    |
+| `shape`     | `string` | `"none"`   | wave, curve, zigzag bridge. |
+
+### Usage
+
+```html
+<ui-divider text="OR" textAlign="center" variant="gradient"></ui-divider>
+```
+
+---
+
+## 📑 Container Panel `ui-panel`
+
+Flexible content blocks with window management and persistence.
+
+### Properties
+
+| Property      | Type      | Default | Description                 |
+| :------------ | :-------- | :------ | :-------------------------- |
+| `panelTitle`  | `string`  | `""`    | Heading text.               |
+| `toggleable`  | `boolean` | `false` | Enable title bar collapse.  |
+| `maximizable` | `boolean` | `false` | Fullscreen toggle button.   |
+| `glass`       | `boolean` | `false` | Apply frosted glass effect. |
+
+### Usage
+
+```html
+<ui-panel panelTitle="Settings" variant="elevated" toggleable maximizable glass></ui-panel>
+```
+
+---
+
+## 🔘 Switch `ui-switch`
+
+Modern binary selection controls with integrated micro-icons.
+
+### Properties
+
+| Property  | Type      | Default | Description                 |
+| :-------- | :-------- | :------ | :-------------------------- |
+| `checked` | `boolean` | `false` | Toggle state.               |
+| `size`    | `string`  | `"md"`  | Scale (xs, sm, md, lg, xl). |
+| `iconOn`  | `string`  | `""`    | Icon when checked.          |
+| `loading` | `boolean` | `false` | Spinner indicator.          |
+
+### Usage
+
+```html
+<ui-switch label="Dark Mode" [checked]="isDark" iconOn="🌙" iconOff="☀️"></ui-switch>
+```
+
+---
+
+## 🏷️ Advanced Tag `ui-tag`
+
+Visual labels with automated coloring and attention animations.
+
+### Properties
+
+| Property    | Type      | Default | Description                   |
+| :---------- | :-------- | :------ | :---------------------------- |
+| `label`     | `string`  | `""`    | Content text.                 |
+| `autoColor` | `boolean` | `false` | Hash-based color generation.  |
+| `pulse`     | `boolean` | `false` | Attention-grabbing animation. |
+| `elevation` | `number`  | `0`     | Shadow level (0-3).           |
+
+### Usage
+
+```html
+<ui-tag label="Hot" color="danger" pulse rounded></ui-tag>
+```
+
+---
+
+## 🎚️ Control Knob `ui-knob`
+
+Precision circular inputs for hardware-like hardware interaction.
+
+### Properties
+
+| Property      | Type      | Default | Description               |
+| :------------ | :-------- | :------ | :------------------------ |
+| `value`       | `number`  | `0`     | Current setting.          |
+| `strokeWidth` | `number`  | `10`    | Track thickness.          |
+| `showTicks`   | `boolean` | `false` | Render measurement marks. |
+| `readonly`    | `boolean` | `false` | Disable interaction.      |
+
+### Usage
+
+```html
+<ui-knob [value]="currentVolume" [min]="0" [max]="100" showTicks color="info"></ui-knob>
+```
+
+---
+
+## 🏎️ Speedometer `ui-speedometer`
+
+High-performance gauges for real-time telemetry display.
+
+### Properties
+
+| Property   | Type     | Default | Description               |
+| :--------- | :------- | :------ | :------------------------ |
+| `value`    | `number` | `-`     | Primary measurement.      |
+| `maxValue` | `number` | `100`   | Scale boundary.           |
+| `unit`     | `string` | `""`    | Legend suffix.            |
+| `ranges`   | `string` | `""`    | JSON zone coloring array. |
+
+### Usage
+
+```html
+<ui-speedometer [value]="85" unit="MPH" [maxValue]="240" color="primary"></ui-speedometer>
+```
