@@ -79,17 +79,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         ></ui-timer>
 
         <div style="display: flex; gap: 12px; margin-top: 24px;">
-          <ui-button class="variant-btn" (click)="timer.start()" label="Start"></ui-button>
+          <ui-button class="variant-btn" (click)="timer['start']()" label="Start"></ui-button>
           <ui-button
             class="variant-btn btn-secondary"
             variant="secondary"
-            (click)="timer.pause()"
+            (click)="timer['pause']()"
             label="Pause"
           ></ui-button>
           <ui-button
             class="variant-btn btn-secondary"
             variant="secondary"
-            (click)="timer.reset()"
+            (click)="timer['reset']()"
             label="Reset"
           ></ui-button>
         </div>

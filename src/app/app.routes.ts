@@ -16,11 +16,13 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-    loadComponent: () => import('./pages/register/register.component').then((m) => m.RegisterComponent),
+    loadComponent: () =>
+      import('./pages/register/register.component').then((m) => m.RegisterComponent),
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
+    loadComponent: () =>
+      import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
   },
   {
     path: 'overview',
@@ -455,13 +457,7 @@ export const routes: Routes = [
             (m) => m.SetDashboardDemoComponent,
           ),
       },
-      {
-        path: 'splitter',
-        loadComponent: () =>
-          import('./demos/app-splitter/app-splitter-demo.component').then(
-            (m) => m.AppSplitterDemoComponent,
-          ),
-      },
+
       {
         path: 'tabs',
         loadComponent: () =>
@@ -574,13 +570,7 @@ export const routes: Routes = [
             (m) => m.AppStepperDemoComponent,
           ),
       },
-      {
-        path: 'button-group',
-        loadComponent: () =>
-          import('./demos/app-button-group/app-button-group-demo.component').then(
-            (m) => m.AppButtonGroupDemoComponent,
-          ),
-      },
+
       {
         path: 'pill',
         loadComponent: () =>
@@ -709,13 +699,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demos/app-timer/app-timer-demo.component').then((m) => m.AppTimerDemoComponent),
       },
-      {
-        path: 'splitter',
-        loadComponent: () =>
-          import('./demos/app-splitter/app-splitter-demo.component').then(
-            (m) => m.AppSplitterDemoComponent,
-          ),
-      },
+
       {
         path: 'smart-stepper',
         loadComponent: () =>

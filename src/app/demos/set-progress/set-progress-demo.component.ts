@@ -15,7 +15,6 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     CommonModule,
     FormsModule,
     ProgressPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,

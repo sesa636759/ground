@@ -15,7 +15,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     CommonModule,
     FormsModule,
     TogglePlaygroundComponent,
-    CodeBlockComponent,
+
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

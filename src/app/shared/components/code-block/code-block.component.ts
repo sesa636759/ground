@@ -1,4 +1,12 @@
-import { Component, Input, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  Component,
+  Input,
+  signal,
+  computed,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  OnChanges,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,143 +15,201 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <div class="code-block-wrapper">
+    <div class="code-block-wrapper" [class.expanded]="showCode()">
       <div class="code-block-header">
-        <span class="code-block-title">{{ title }}</span>
+        <div class="header-main">
+          <ui-icon icon="code" library="fontawesome" class="header-icon"></ui-icon>
+          <span class="code-block-title">{{ title }}</span>
+          <span class="language-badge">{{ language }}</span>
+        </div>
         <div class="code-block-actions">
-          <app-tooltip [content]="toggleButtonLabel()" position="top">
+          <app-tooltip [content]="showCode() ? 'Hide Code' : 'Show Code'" position="top">
             <ui-button
               slot="target"
               (click)="toggleCode()"
               icon-only
-              [attr.aria-label]="toggleButtonAriaLabel()"
-              [variant]="toggleButtonVariant()"
+              [variant]="showCode() ? 'secondary' : 'ghost'"
               size="sm"
+              class="action-btn"
             >
-              <i [class]="toggleButtonIcon()"></i>
+              <ui-icon [icon]="showCode() ? 'eye-slash' : 'eye'" library="fontawesome"></ui-icon>
             </ui-button>
           </app-tooltip>
 
-          <app-tooltip [content]="copyButtonLabel()" position="top">
+          <app-tooltip [content]="copied() ? 'Copied!' : 'Copy Code'" position="top">
             <ui-button
               slot="target"
-              variant="secondary"
+              [variant]="copied() ? 'success' : 'ghost'"
               size="sm"
               icon-only
               (click)="copyCode()"
+              class="action-btn copy-btn"
               [class.copied]="copied()"
-              aria-label="Copy code"
             >
-              <i [class]="copyButtonIcon()"></i>
+              <ui-icon [icon]="copied() ? 'check' : 'copy'" library="fontawesome"></ui-icon>
             </ui-button>
           </app-tooltip>
         </div>
       </div>
 
       <div class="code-block-content" [class.show]="showCode()">
-        <pre><code [innerHTML]="highlightedCode()"></code></pre>
+        <div class="scroll-container">
+          <pre><code [innerHTML]="highlightedCode()"></code></pre>
+        </div>
       </div>
     </div>
   `,
   styles: [
     `
+      :host {
+        display: block;
+        margin: 1.5rem 0;
+      }
+
       .code-block-wrapper {
-        margin: 1rem 0;
         border: 1px solid var(--border-color, #e2e8f0);
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
         background: var(--card-bg, #ffffff);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.05),
+          0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+        &:hover {
+          box-shadow:
+            0 10px 15px -3px rgba(0, 0, 0, 0.08),
+            0 4px 6px -2px rgba(0, 0, 0, 0.04);
+          border-color: #667eea40;
+        }
+
+        &.expanded {
+          box-shadow:
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
       }
 
       .code-block-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.75rem 1rem;
-        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        padding: 0.75rem 1.25rem;
+        background: linear-gradient(to right, #f8fafc, #ffffff);
         border-bottom: 1px solid var(--border-color, #e2e8f0);
+      }
+
+      .header-main {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .header-icon {
+        color: #667eea;
+        font-size: 1rem;
       }
 
       .code-block-title {
         font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--text-primary, #1a202c);
+        font-size: 0.95rem;
+        color: var(--text-primary, #1e293b);
+        letter-spacing: -0.01em;
+      }
+
+      .language-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0.2rem 0.5rem;
+        background: #f1f5f9;
+        color: #64748b;
+        border-radius: 4px;
+        letter-spacing: 0.05em;
       }
 
       .code-block-actions {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.4rem;
       }
 
       .action-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-        font-weight: 500;
-        border: 1px solid var(--border-color, #e2e8f0);
-        border-radius: 6px;
-        background: var(--bg-primary, #ffffff);
-        color: var(--text-primary, #1a202c);
-        cursor: pointer;
-        transition: all 0.2s ease;
+        --ui-button-radius: 8px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-          background: var(--bg-hover, #f7fafc);
-          border-color: #667eea;
-          color: #667eea;
+          transform: translateY(-1px);
         }
 
         &:active {
-          transform: scale(0.95);
-        }
-
-        i {
-          font-size: 0.85rem;
+          transform: translateY(0);
         }
       }
 
       .copy-btn.copied {
-        background: #48bb78;
-        color: white;
-        border-color: #48bb78;
+        animation: pulse-success 0.5s ease;
+      }
 
-        &:hover {
-          background: #38a169;
-          border-color: #38a169;
+      @keyframes pulse-success {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
         }
       }
 
       .code-block-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #1e1e1e;
 
         &.show {
-          max-height: 600px;
-          overflow-y: auto;
+          max-height: 800px;
+        }
+      }
+
+      .scroll-container {
+        overflow-x: auto;
+        padding: 1.25rem;
+
+        &::-webkit-scrollbar {
+          height: 8px;
+        }
+        &::-webkit-scrollbar-track {
+          background: #2d2d2d;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #4a4a4a;
+          border-radius: 4px;
+          &:hover {
+            background: #5a5a5a;
+          }
         }
       }
 
       pre {
         margin: 0;
-        padding: 1rem;
-        background: #1e1e1e;
-        overflow-x: auto;
+        background: transparent;
       }
 
       code {
-        font-family: 'Courier New', 'Consolas', monospace;
-        font-size: 0.875rem;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+        font-size: 0.85rem;
         line-height: 1.6;
         color: #d4d4d4;
+        white-space: pre-wrap;
       }
 
       /* Syntax highlighting */
       :global {
         .hljs-keyword {
           color: #569cd6;
+          font-weight: 500;
         }
         .hljs-string {
           color: #ce9178;
@@ -167,38 +233,36 @@ import { CommonModule } from '@angular/common';
         .hljs-tag {
           color: #569cd6;
         }
+        .hljs-name {
+          color: #569cd6;
+        }
+        .hljs-punctuation {
+          color: #808080;
+        }
       }
 
-      /* Dark mode */
-      @media (prefers-color-scheme: dark) {
+      /* Dark mode support */
+      :host-context(.dark-theme) {
         .code-block-wrapper {
-          background: var(--card-bg-dark, #2d3748);
-          border-color: var(--border-color-dark, #4a5568);
+          background: #1e293b;
+          border-color: #334155;
         }
-
         .code-block-header {
-          background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
-          border-bottom-color: var(--border-color-dark, #4a5568);
+          background: linear-gradient(to right, #1e293b, #0f172a);
+          border-bottom-color: #334155;
         }
-
         .code-block-title {
-          color: var(--text-primary-dark, #f7fafc);
+          color: #f1f5f9;
         }
-
-        .action-btn {
-          background: var(--bg-primary-dark, #1a202c);
-          color: var(--text-primary-dark, #f7fafc);
-          border-color: var(--border-color-dark, #4a5568);
-
-          &:hover {
-            background: var(--bg-hover-dark, #2d3748);
-          }
+        .language-badge {
+          background: #334155;
+          color: #94a3b8;
         }
       }
     `,
   ],
 })
-export class CodeBlockComponent {
+export class CodeBlockComponent implements OnInit, OnChanges {
   @Input() code: string = '';
   @Input() title: string = 'Code Example';
   @Input() language: string = 'typescript';
@@ -208,21 +272,20 @@ export class CodeBlockComponent {
 
   highlightedCode = signal('');
 
-  // Computed signals for template readability
-  toggleButtonLabel = computed(() => (this.showCode() ? 'Hide Code' : 'Show Code'));
-  toggleButtonAriaLabel = computed(() => (this.showCode() ? 'Hide code' : 'Show code'));
-  toggleButtonVariant = computed(() => (this.showCode() ? 'secondary' : 'primary'));
-  toggleButtonIcon = computed(() => (this.showCode() ? 'fas fa-eye-slash' : 'fas fa-eye'));
-
-  copyButtonLabel = computed(() => (this.copied() ? 'Copied!' : 'Copy Code'));
-  copyButtonIcon = computed(() => (this.copied() ? 'fas fa-check' : 'fas fa-copy'));
-
   ngOnInit() {
-    this.highlightedCode.set(this.escapeHtml(this.code));
+    this.updateHighlightedCode();
   }
 
   ngOnChanges() {
-    this.highlightedCode.set(this.escapeHtml(this.code));
+    this.updateHighlightedCode();
+  }
+
+  private updateHighlightedCode() {
+    if (!this.code) {
+      this.highlightedCode.set('');
+      return;
+    }
+    this.highlightedCode.set(this.escapeHtml(this.code.trim()));
   }
 
   toggleCode() {

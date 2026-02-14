@@ -1,7 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -14,7 +13,6 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     ChipPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

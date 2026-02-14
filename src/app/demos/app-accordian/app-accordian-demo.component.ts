@@ -2,7 +2,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -15,7 +14,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     AccordianPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,

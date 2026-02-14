@@ -14,7 +14,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
+
     BreadcrumbPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
