@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,6 +6,8 @@ import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-avatar-demo',
@@ -17,14 +19,14 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',
   styleUrl: './set-avatar-demo.component.scss',
 })
-export class SetAvatarDemoComponent {
+export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Shapes & Sizes', icon: '📐' },
     { id: 'types', title: 'Avatar Types', icon: '🎭' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
@@ -54,10 +56,8 @@ export class SetAvatarDemoComponent {
   ];
 
   get exampleVariants() {
-    return this.variants.filter(v => v.id !== 'playground');
+    return this.variants;
   }
-
-
 
   basicCode = `<!-- Sizes and Shapes -->
 <app-avatar name="LC" size="large" shape="circle"></app-avatar>
@@ -205,11 +205,12 @@ export class SetAvatarDemoComponent {
   <app-avatar name="User 4"></app-avatar>
 </app-avatar-group>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  handleUpload(event: any) {
+    console.log('Upload event:', event);
+  }
+
+  handleClick() {
+    console.log('Avatar clicked');
   }
 
   playgroundCode = `<app-avatar name="John Doe" status="online" size="64px"></app-avatar>`;

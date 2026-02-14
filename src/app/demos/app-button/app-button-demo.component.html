@@ -6,114 +6,80 @@
   </p>
 
   <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
-    <!-- Examples Slot -->
+    <div slot="playground">
+      <app-button-playground></app-button-playground>
+    </div>
+
     <div slot="examples">
       <!-- Visual Variants -->
-      <section class="demo-section" id="visual-variants">
-        <div class="section-header">
-          <h2>🎨 Visual Variants</h2>
-          <p>Different styles for different visual hierarchies</p>
+      <app-example-section
+        id="visual-variants"
+        title="Visual Variants"
+        description="Different styles for different visual hierarchies"
+        [code]="variantsCode"
+      >
+        <div class="demo-flex-wrap">
+          <ui-button label="Primary" variant="primary"></ui-button>
+          <ui-button label="Secondary" variant="secondary"></ui-button>
+          <ui-button label="Outline" variant="outline"></ui-button>
+          <ui-button label="Ghost" variant="ghost"></ui-button>
+          <ui-button label="Success" variant="success"></ui-button>
+          <ui-button label="Danger" variant="danger"></ui-button>
+          <ui-button label="Warning" variant="warning"></ui-button>
+          <ui-button label="Info" variant="info"></ui-button>
         </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <ui-button label="Primary" variant="primary"></ui-button>
-            <ui-button label="Secondary" variant="secondary"></ui-button>
-            <ui-button label="Outline" variant="outline"></ui-button>
-            <ui-button label="Ghost" variant="ghost"></ui-button>
-            <ui-button label="Success" variant="success"></ui-button>
-            <ui-button label="Danger" variant="danger"></ui-button>
-            <ui-button label="Warning" variant="warning"></ui-button>
-            <ui-button label="Info" variant="info"></ui-button>
-          </div>
-        </div>
-        <app-code-block
-          [code]="variantsCode"
-          title="Variants Example"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Sizes -->
-      <section class="demo-section" id="sizes">
-        <div class="section-header">
-          <h2>📏 Sizes</h2>
-          <p>Scalable sizes from extra small to extra large</p>
+      <app-example-section
+        id="sizes"
+        title="Sizes"
+        description="Scalable sizes from extra small to extra large"
+        [code]="sizesCode"
+      >
+        <div class="demo-flex-wrap items-center">
+          <ui-button label="Extra Small" size="xs"></ui-button>
+          <ui-button label="Small" size="sm"></ui-button>
+          <ui-button label="Medium" size="md"></ui-button>
+          <ui-button label="Large" size="lg"></ui-button>
+          <ui-button label="Extra Large" size="xl"></ui-button>
         </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <ui-button label="Extra Small" size="xs"></ui-button>
-            <ui-button label="Small" size="sm"></ui-button>
-            <ui-button label="Medium" size="md"></ui-button>
-            <ui-button label="Large" size="lg"></ui-button>
-            <ui-button label="Extra Large" size="xl"></ui-button>
-          </div>
-        </div>
-        <app-code-block [code]="sizesCode" title="Sizes Example" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Icons & Badges -->
-      <section class="demo-section" id="icons-badges">
-        <div class="section-header">
-          <h2>🏷️ Icons & Badges</h2>
-          <p>Enhance buttons with visual cues and status indicators</p>
+      <app-example-section
+        id="icons-badges"
+        title="Icons & Badges"
+        description="Enhance buttons with visual cues and status indicators"
+        [code]="iconsBadgesCode"
+      >
+        <div class="demo-flex-wrap">
+          <ui-button label="Settings" icon="⚙️"></ui-button>
+          <ui-button label="Checkout" icon="🛒" variant="success"></ui-button>
+          <ui-button label="Trash" icon="🗑️" variant="danger" icon-position="right"></ui-button>
+          <ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>
+          <ui-button icon="🔍" icon-only pill variant="primary"></ui-button>
+          <ui-button icon="➕" icon-only rounded variant="outline"></ui-button>
         </div>
-        <div class="demo-card">
-          <div class="preview-box">
-            <ui-button label="Settings" icon="⚙️"></ui-button>
-            <ui-button label="Checkout" icon="🛒" variant="success"></ui-button>
-            <ui-button label="Trash" icon="🗑️" variant="danger" icon-position="right"></ui-button>
-            <ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>
-            <ui-button icon="🔍" icon-only pill variant="primary"></ui-button>
-            <ui-button icon="➕" icon-only rounded variant="outline"></ui-button>
-          </div>
-        </div>
-        <app-code-block
-          [code]="iconsBadgesCode"
-          title="Icons & Badges Example"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- States -->
-      <section class="demo-section" id="states">
-        <div class="section-header">
-          <h2>⚙️ Functional States</h2>
-          <p>Communicate interaction availability and background processes</p>
+      <app-example-section
+        id="states"
+        title="Functional States"
+        description="Communicate interaction availability and background processes"
+        [code]="statesCode"
+      >
+        <div class="demo-flex-wrap">
+          <ui-button label="Normal" variant="primary"></ui-button>
+          <ui-button label="Disabled" disabled variant="primary"></ui-button>
+          <ui-button label="Loading" loading variant="primary"></ui-button>
+          <ui-button label="Pill Style" pill variant="outline"></ui-button>
+          <ui-button label="Full Width Action" full-width variant="secondary"></ui-button>
         </div>
-        <div class="demo-card">
-          <div class="preview-box" style="flex-direction: column; width: 100%">
-            <div style="display: flex; gap: 16px">
-              <ui-button label="Normal" variant="primary"></ui-button>
-              <ui-button label="Disabled" disabled variant="primary"></ui-button>
-              <ui-button label="Loading" loading variant="primary"></ui-button>
-              <ui-button label="Pill Style" pill variant="outline"></ui-button>
-            </div>
-            <div style="width: 100%; max-width: 600px; margin-top: 1rem">
-              <ui-button label="Full Width Action" full-width variant="secondary"></ui-button>
-            </div>
-          </div>
-        </div>
-        <app-code-block [code]="statesCode" title="States Example" language="html"></app-code-block>
-      </section>
+      </app-example-section>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Test and configure all button properties in real-time</p>
-        </div>
-        <app-button-playground></app-button-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Button Usage"
-          language="html"
-        ></app-code-block>
-      </section>
-    </div>
-
-    <!-- Documentation Slot -->
     <div slot="docs">
       <app-component-documentation componentId="button"></app-component-documentation>
     </div>

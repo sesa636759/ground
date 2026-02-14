@@ -11,25 +11,32 @@ import { CommonModule } from '@angular/common';
       <div class="code-block-header">
         <span class="code-block-title">{{ title }}</span>
         <div class="code-block-actions">
-          <ui-button
-            (click)="toggleCode()"
-            [attr.aria-label]="toggleButtonAriaLabel()"
-            [variant]="toggleButtonVariant()"
-            size="sm"
-            [label]="toggleButtonLabel()"
-          >
-            <i [class]="toggleButtonIcon()"></i>
-          </ui-button>
-          <ui-button
-            variant="secondary"
-            size="sm"
-            (click)="copyCode()"
-            [class.copied]="copied()"
-            aria-label="Copy code"
-            [label]="copyButtonLabel()"
-          >
-            <i [class]="copyButtonIcon()"></i>
-          </ui-button>
+          <app-tooltip [content]="toggleButtonLabel()" position="top">
+            <ui-button
+              slot="target"
+              (click)="toggleCode()"
+              icon-only
+              [attr.aria-label]="toggleButtonAriaLabel()"
+              [variant]="toggleButtonVariant()"
+              size="sm"
+            >
+              <i [class]="toggleButtonIcon()"></i>
+            </ui-button>
+          </app-tooltip>
+
+          <app-tooltip [content]="copyButtonLabel()" position="top">
+            <ui-button
+              slot="target"
+              variant="secondary"
+              size="sm"
+              icon-only
+              (click)="copyCode()"
+              [class.copied]="copied()"
+              aria-label="Copy code"
+            >
+              <i [class]="copyButtonIcon()"></i>
+            </ui-button>
+          </app-tooltip>
         </div>
       </div>
 

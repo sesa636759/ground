@@ -82,7 +82,14 @@
 
       <div class="control-group">
         <label>Connector Opacity</label>
-        <app-input type="number" step="0.1" min="0" max="1" [(ngModel)]="pgConfig.connectorOpacity" (input)="updateConfig()" />
+        <app-input
+          type="number"
+          step="0.1"
+          min="0"
+          max="1"
+          [(ngModel)]="pgConfig.connectorOpacity"
+          (input)="updateConfig()"
+        />
       </div>
     </div>
 
@@ -177,18 +184,10 @@
       </app-tree>
     </div>
 
-    <div class="code-block">
-      <div class="code-header">
-        <span>Generated Code</span>
-        <ui-button
-          class="copy-btn"
-          variant="secondary"
-          size="sm"
-          (click)="copyCode()"
-          label="Copy"
-        ></ui-button>
-      </div>
-      <pre><code>{{ generatedCode() }}</code></pre>
-    </div>
+    <app-code-block
+      [code]="generatedCode()"
+      title="Generated Code"
+      language="html"
+    ></app-code-block>
   </div>
 </div>

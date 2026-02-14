@@ -1,9 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
@@ -14,42 +17,36 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     AccordianPlaygroundComponent,
     CodeBlockComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',
 })
-export class SetAccordianDemoComponent {
+export class SetAccordianDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', name: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic', name: 'Basic', icon: '📁', color: '#3b82f6' },
-    { id: 'subtitles', name: 'Subtitles', icon: '📝', color: '#10b981' },
-    { id: 'search', name: 'Search', icon: '🔍', color: '#f59e0b' },
-    { id: 'actions', name: 'Actions', icon: '⚡', color: '#ef4444' },
-    { id: 'nested', name: 'Nested', icon: '🌳', color: '#6366f1' },
-    { id: 'drag-drop', name: 'Drag & Drop', icon: '✋', color: '#ec4899' },
-    { id: 'persistence', name: 'Persistence', icon: '💾', color: '#14b8a6' },
-    { id: 'loading', name: 'Loading', icon: '⏳', color: '#a855f7' },
-    { id: 'rtl', name: 'RTL', icon: '🌍', color: '#06b6d4' },
-    { id: 'dense', name: 'Dense', icon: '📦', color: '#84cc16' },
-    { id: 'events', name: 'Events', icon: '📣', color: '#f97316' },
-    { id: 'controlled', name: 'Controlled', icon: '🎮', color: '#2563eb' },
-    { id: 'async-lazy', name: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
+    { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
+    { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
+    { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
+    { id: 'actions', title: 'Actions', icon: '⚡', color: '#ef4444' },
+    { id: 'nested', title: 'Nested', icon: '🌳', color: '#6366f1' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: '✋', color: '#ec4899' },
+    { id: 'persistence', title: 'Persistence', icon: '💾', color: '#14b8a6' },
+    { id: 'loading', title: 'Loading', icon: '⏳', color: '#a855f7' },
+    { id: 'rtl', title: 'RTL', icon: '🌍', color: '#06b6d4' },
+    { id: 'dense', title: 'Dense', icon: '📦', color: '#84cc16' },
+    { id: 'events', title: 'Events', icon: '📣', color: '#f97316' },
+    { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
+    { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
+    return this.variants;
   }
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
   playgroundCode = `<ui-accordion [items]="accordionItems"></ui-accordion>`;
 
-  // ... existing items ...
   basicAccordionItems = JSON.stringify([
     {
       id: 'what-is',
@@ -72,7 +69,6 @@ export class SetAccordianDemoComponent {
   ]);
   basicAccordionCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
-  // Subtitles
   subtitlesItems = JSON.stringify([
     {
       id: '1',
@@ -93,17 +89,8 @@ export class SetAccordianDemoComponent {
       content: '<p>View and manage your billing information.</p>',
     },
   ]);
-  subtitlesCode = `<ui-accordion [items]="items"></ui-accordion>
+  subtitlesCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
-// Items with subtitle property
-{
-  id: '1',
-  title: 'Personal Information',
-  subtitle: 'Name, Email, Phone',
-  content: '...'
-}`;
-
-  // Search
   searchItems = JSON.stringify([
     { id: 'react', title: 'React', content: 'A JavaScript library for building user interfaces' },
     {
@@ -117,7 +104,6 @@ export class SetAccordianDemoComponent {
   ]);
   searchCode = `<ui-accordion [items]="items" enable-search search-placeholder="Search frameworks..."></ui-accordion>`;
 
-  // Actions
   actionsItems = JSON.stringify([
     {
       id: 'file1',
@@ -140,12 +126,8 @@ export class SetAccordianDemoComponent {
       ],
     },
   ]);
-  actionsCode = `<ui-accordion 
-  [items]="items" 
-  (accordionAction)="handleAction($event)">
-</ui-accordion>`;
+  actionsCode = `<ui-accordion [items]="items" (accordionAction)="handleAction($event)"></ui-accordion>`;
 
-  // Nested - utilizing existing nestedItems but renaming for clarity if needed, or keeping nestedItems
   nestedItems = JSON.stringify([
     {
       id: 'frontend',
@@ -173,7 +155,6 @@ export class SetAccordianDemoComponent {
   ]);
   nestedCode = `<ui-accordion [items]="items" enable-nested></ui-accordion>`;
 
-  // Drag & Drop
   dragDropItems = JSON.stringify([
     { id: 'todo', title: 'To Do', content: 'Tasks to be done' },
     { id: 'progres', title: 'In Progress', content: 'Tasks currently being worked on' },
@@ -182,7 +163,6 @@ export class SetAccordianDemoComponent {
   ]);
   dragDropCode = `<ui-accordion [items]="items" enable-drag-drop (accordionReorder)="handleReorder($event)"></ui-accordion>`;
 
-  // Persistence
   persistenceItems = JSON.stringify([
     { id: 'pref1', title: 'Preference 1', content: 'Setting 1' },
     { id: 'pref2', title: 'Preference 2', content: 'Setting 2' },
@@ -190,17 +170,14 @@ export class SetAccordianDemoComponent {
   ]);
   persistenceCode = `<ui-accordion [items]="items" enable-persistence persistence-key="custom-key-v1"></ui-accordion>`;
 
-  // Loading
   loadingCode = `<ui-accordion [items]="[]" loading></ui-accordion>`;
 
-  // RTL
   rtlItems = JSON.stringify([
     { id: '1', title: 'القسم الأول', content: 'محتوى القسم الأول' },
     { id: '2', title: 'القسم الثاني', content: 'محتوى القسم الثاني' },
   ]);
   rtlCode = `<ui-accordion [items]="items" rtl></ui-accordion>`;
 
-  // Dense
   denseItems = JSON.stringify(
     Array.from({ length: 5 }, (_, i) => ({
       id: `item-${i}`,
@@ -210,50 +187,36 @@ export class SetAccordianDemoComponent {
   );
   denseCode = `<ui-accordion [items]="items" dense></ui-accordion>`;
 
-  // Events
   eventsItems = JSON.stringify([
     { id: 'e1', title: 'Event Source 1', content: 'Interact with me' },
     { id: 'e2', title: 'Event Source 2', content: 'Interact with me too' },
   ]);
   eventsLog: string[] = [];
-  eventsCode = `<ui-accordion 
-  [items]="items" 
-  (beforeOpen)="log('Before Open', $event)"
-  (afterOpen)="log('After Open', $event)"
-  (beforeClose)="log('Before Close', $event)"
-  (afterClose)="log('After Close', $event)">
-</ui-accordion>`;
+  eventsCode = `<ui-accordion [items]="items" (afterOpen)="log('After Open', $event)"></ui-accordion>`;
 
-  // Controlled
   controlledItems = JSON.stringify([
     { id: 'c1', title: 'Panel 1', content: 'Controlled Panel 1' },
     { id: 'c2', title: 'Panel 2', content: 'Controlled Panel 2' },
     { id: 'c3', title: 'Panel 3', content: 'Controlled Panel 3' },
   ]);
   controlledExpanded: string[] = [];
-  controlledCode = `<div class="buttons">
-  <ui-button (click)="expand('c1')" label="Open 1"></ui-button>
-  <ui-button (click)="expand('c2')" label="Open 2"></ui-button>
-  <ui-button (click)="collapseAll()" label="Close All"></ui-button>
-</div>
-<ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
+  controlledCode = `<ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
 
-  // Async & Lazy
   asyncLazyItems = JSON.stringify([
     { id: 'l1', title: 'Lazy Content 1', content: 'This content was rendered only when opened.' },
     { id: 'l2', title: 'Lazy Content 2', content: 'Check the DOM, I was not there when closed.' },
   ]);
   asyncLazyCode = `<ui-accordion [items]="items" lazy></ui-accordion>`;
 
-  handleAction(event: CustomEvent) {
+  handleAction(event: any) {
     alert(`Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`);
   }
 
-  handleReorder(event: CustomEvent) {
+  handleReorder(event: any) {
     console.log('Reordered:', event.detail);
   }
 
-  logEvent(name: string, event: CustomEvent) {
+  logEvent(name: string, event: any) {
     const timestamp = new Date().toLocaleTimeString();
     this.eventsLog.unshift(`${timestamp}: ${name} - ${event.detail.itemId}`);
     if (this.eventsLog.length > 5) this.eventsLog.pop();
@@ -263,80 +226,5 @@ export class SetAccordianDemoComponent {
     this.controlledExpanded = [...ids];
   }
 
-  itemStructureCode = `interface AccordionItem {
-  id: string;              // Unique identifier (required)
-  title: string;           // Item header text (required)
-  content: string;         // HTML content for the panel (required)
-  subtitle?: string;       // Optional subtitle below title
-  icon?: string;           // Optional icon (emoji or icon class)
-  actions?: Action[];      // Optional action buttons
-  children?: AccordionItem[]; // Optional nested items
-}
-
-interface Action {
-  id: string;              // Unique action identifier
-  label: string;           // Button label/icon
-  ariaLabel: string;       // Accessibility label
-}`;
-
-  usageBasicCode = `<ui-accordion [items]="items"></ui-accordion>
-
-// Component
-items = [
-  {
-    id: 'item1',
-    title: 'First Item',
-    content: '<p>Content for first item</p>'
-  },
-  {
-    id: 'item2',
-    title: 'Second Item',
-    content: '<p>Content for second item</p>'
-  }
-];`;
-
-  usageSearchCode = `<ui-accordion 
-  [items]="items" 
-  enable-search 
-  search-placeholder="Search items...">
-</ui-accordion>`;
-
-  usageActionsCode = `<ui-accordion 
-  [items]="items" 
-  (accordionAction)="handleAction($event)"
-  (afterOpen)="onItemOpen($event)">
-</ui-accordion>
-
-// Component
-items = [
-  {
-    id: 'file1',
-    title: 'Document.pdf',
-    subtitle: '2.4 MB',
-    content: '<p>Preview...</p>',
-    actions: [
-      { id: 'download', label: '⬇️', ariaLabel: 'Download' },
-      { id: 'delete', label: '🗑️', ariaLabel: 'Delete' }
-    ]
-  }
-];
-
-handleAction(event: CustomEvent) {
-  const { itemId, actionId } = event.detail;
-  console.log(\`Action \${actionId} on item \${itemId}\`);
-}`;
-
-  usageDragDropCode = `<ui-accordion 
-  [items]="items" 
-  enable-drag-drop 
-  enable-persistence 
-  persistence-key="my-accordion-v1"
-  (accordionReorder)="handleReorder($event)">
-</ui-accordion>
-
-// Component
-handleReorder(event: CustomEvent) {
-  const { oldIndex, newIndex } = event.detail;
-  // Update your data model
-}`;
+  ngOnInit() {}
 }

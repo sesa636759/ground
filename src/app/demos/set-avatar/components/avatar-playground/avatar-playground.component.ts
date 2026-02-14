@@ -1,13 +1,20 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-playground.component.html',
   styleUrl: './avatar-playground.component.scss',
@@ -83,32 +90,34 @@ export class AvatarPlaygroundComponent implements OnInit {
     if (this.pgConfig.badge) {
       code += `  badge="${this.pgConfig.badge}"\n`;
       if (this.pgConfig.badgeColor) code += `  badge-color="${this.pgConfig.badgeColor}"\n`;
-      if (this.pgConfig.badgePosition !== 'top-right') code += `  badge-position="${this.pgConfig.badgePosition}"\n`;
+      if (this.pgConfig.badgePosition !== 'top-right')
+        code += `  badge-position="${this.pgConfig.badgePosition}"\n`;
     }
 
     if (this.pgConfig.verified) code += `  verified\n`;
     if (this.pgConfig.loading) code += `  loading\n`;
     if (this.pgConfig.editable) code += `  editable\n`;
     if (this.pgConfig.autoColor) code += `  auto-color\n`;
-    
+
     if (this.pgConfig.gradient) {
       code += `  gradient="${this.pgConfig.gradient}"\n`;
-      if (this.pgConfig.gradientColors) code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
+      if (this.pgConfig.gradientColors)
+        code += `  gradient-colors="${this.pgConfig.gradientColors}"\n`;
     }
-    
+
     if (this.pgConfig.animation !== 'none') code += `  animation="${this.pgConfig.animation}"\n`;
     if (this.pgConfig.border) code += `  border="${this.pgConfig.border}"\n`;
     if (this.pgConfig.ringColor) code += `  ring-color="${this.pgConfig.ringColor}"\n`;
     if (this.pgConfig.fit !== 'cover') code += `  fit="${this.pgConfig.fit}"\n`;
     if (this.pgConfig.clickable) code += `  clickable\n`;
     if (this.pgConfig.lazyLoad) code += `  lazy-load\n`;
-    
+
     if (this.pgConfig.storyRing) code += `  story-ring\n`;
     if (this.pgConfig.storySeen) code += `  story-seen\n`;
     if (this.pgConfig.activeSpeaker) code += `  active-speaker\n`;
     if (this.pgConfig.statusPulse) code += `  status-pulse\n`;
     if (this.pgConfig.smartInitials) code += `  smart-initials\n`;
-    
+
     if (this.pgConfig.skeleton) code += `  skeleton\n`;
     if (this.pgConfig.shimmer) code += `  shimmer\n`;
     if (this.pgConfig.glassmorphism) code += `  glassmorphism\n`;

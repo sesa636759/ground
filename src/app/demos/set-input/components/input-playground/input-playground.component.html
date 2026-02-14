@@ -141,7 +141,8 @@
         <app-checkbox [(ngModel)]="pgConfig.showCharCount" (change)="updateConfig()" /> Char Count
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.floatingLabel" (change)="updateConfig()" /> Floating Label
+        <app-checkbox [(ngModel)]="pgConfig.floatingLabel" (change)="updateConfig()" /> Floating
+        Label
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading
@@ -192,18 +193,10 @@
       </app-input>
     </div>
 
-    <div class="code-block">
-      <div class="code-header">
-        <span>Generated Code</span>
-        <ui-button
-          class="copy-btn"
-          variant="secondary"
-          size="sm"
-          (click)="copyCode()"
-          label="Copy"
-        ></ui-button>
-      </div>
-      <pre><code>{{ generatedCode() }}</code></pre>
-    </div>
+    <app-code-block
+      [code]="generatedCode()"
+      title="Generated Code"
+      language="html"
+    ></app-code-block>
   </div>
 </div>

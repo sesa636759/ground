@@ -1,700 +1,160 @@
 <div class="demo-container">
   <h1>Tab Stack Component</h1>
   <p class="intro-text">
-    A flexible tabbed navigation component supporting multiple orientations, variants, and interactive features.
+    A flexible tabbed navigation component supporting multiple orientations, variants, and
+    interactive features.
   </p>
 
-  <demo-tabs
-    [variants]="exampleVariants"
-    (variantChange)="scrollToSection($event)"
-  >
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Horizontal Basic -->
-      <demo-section id="horizontal-basic">
-        <div class="section-header">
-          <h2>↔️ Horizontal Basic</h2>
-          <p>Default horizontal tab layout for standard navigation.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack orientation="horizontal" active-tab="t1">
-                <app-tab label="Overview" value="t1">Overview Content</app-tab>
-                <app-tab label="Documents" value="t2">Documents Content</app-tab>
-                <app-tab label="Team" value="t3">Team Content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="horizontalBasicCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Vertical Basic -->
-      <demo-section id="vertical-basic">
-        <div class="section-header">
-          <h2>↕️ Vertical Basic</h2>
-          <p>Vertical tab layout ideal for side navigation.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack orientation="vertical" active-tab="t1">
-                <app-tab label="Configuration" value="t1">Config Content</app-tab>
-                <app-tab label="Security" value="t2">Security Content</app-tab>
-                <app-tab label="Notifications" value="t3">Notification Content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="verticalBasicCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Variant Default -->
-      <demo-section id="variant-default">
-        <div class="section-header">
-          <h2>📋 Default Variant</h2>
-          <p>Default tab variant with minimal styling.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack variant="default" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="variantDefaultCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Variant Underline -->
-      <demo-section id="variant-underline">
-        <div class="section-header">
-          <h2>▁ Underline Variant</h2>
-          <p>Clean underline indicator for active tab.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack variant="underline" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="variantUnderlineCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Variant Pills -->
-      <demo-section id="variant-pills">
-        <div class="section-header">
-          <h2>💊 Pills Variant</h2>
-          <p>Rounded pill-style tabs for modern interfaces.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack variant="pills" active-tab="t1" color="success">
-                <app-tab label="Active" value="t1">Active Content</app-tab>
-                <app-tab label="Completed" value="t2">Completed Content</app-tab>
-                <app-tab label="Archived" value="t3">Archived Content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="variantPillsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Variant Enclosed -->
-      <demo-section id="variant-enclosed">
-        <div class="section-header">
-          <h2>▢ Enclosed Variant</h2>
-          <p>Tabs with bordered containers.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack variant="enclosed" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="variantEnclosedCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Variant Buttons -->
-      <demo-section id="variant-buttons">
-        <div class="section-header">
-          <h2>🔘 Buttons Variant</h2>
-          <p>Button-style tabs for clear action-oriented navigation.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack variant="buttons" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="variantButtonsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Size Small -->
-      <demo-section id="size-small">
-        <div class="section-header">
-          <h2>🔹 Small Size</h2>
-          <p>Compact tabs for dense interfaces.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack size="small" active-tab="t1">
-                <app-tab label="Small 1" value="t1">Content 1</app-tab>
-                <app-tab label="Small 2" value="t2">Content 2</app-tab>
-                <app-tab label="Small 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="sizeSmallCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Size Medium -->
-      <demo-section id="size-medium">
-        <div class="section-header">
-          <h2>🔸 Medium Size</h2>
-          <p>Default tab size for most use cases.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack size="medium" active-tab="t1">
-                <app-tab label="Medium 1" value="t1">Content 1</app-tab>
-                <app-tab label="Medium 2" value="t2">Content 2</app-tab>
-                <app-tab label="Medium 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="sizeMediumCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Size Large -->
-      <demo-section id="size-large">
-        <div class="section-header">
-          <h2>🔶 Large Size</h2>
-          <p>Prominent tabs for emphasis and accessibility.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack size="large" active-tab="t1">
-                <app-tab label="Large 1" value="t1">Content 1</app-tab>
-                <app-tab label="Large 2" value="t2">Content 2</app-tab>
-                <app-tab label="Large 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="sizeLargeCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Color Primary -->
-      <demo-section id="color-primary">
-        <div class="section-header">
-          <h2>🔵 Primary Color</h2>
-          <p>Primary color scheme for standard navigation.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack color="primary" active-tab="t1">
-                <app-tab label="Primary 1" value="t1">Content 1</app-tab>
-                <app-tab label="Primary 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="colorPrimaryCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Color Success -->
-      <demo-section id="color-success">
-        <div class="section-header">
-          <h2>🟢 Success Color</h2>
-          <p>Green color scheme for positive states.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack color="success" active-tab="t1">
-                <app-tab label="Success 1" value="t1">Content 1</app-tab>
-                <app-tab label="Success 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="colorSuccessCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Color Warning -->
-      <demo-section id="color-warning">
-        <div class="section-header">
-          <h2>🟡 Warning Color</h2>
-          <p>Yellow color scheme for caution states.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack color="warning" active-tab="t1">
-                <app-tab label="Warning 1" value="t1">Content 1</app-tab>
-                <app-tab label="Warning 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="colorWarningCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Color Danger -->
-      <demo-section id="color-danger">
-        <div class="section-header">
-          <h2>🔴 Danger Color</h2>
-          <p>Red color scheme for critical states.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack color="danger" active-tab="t1">
-                <app-tab label="Danger 1" value="t1">Content 1</app-tab>
-                <app-tab label="Danger 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="colorDangerCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Align Start -->
-      <demo-section id="align-start">
-        <div class="section-header">
-          <h2>◀️ Align Start</h2>
-          <p>Tabs aligned to the start (left for LTR).</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack align="start" active-tab="t1">
-                <app-tab label="Start 1" value="t1">Content 1</app-tab>
-                <app-tab label="Start 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="alignStartCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Align Center -->
-      <demo-section id="align-center">
-        <div class="section-header">
-          <h2>⬛ Align Center</h2>
-          <p>Tabs centered horizontally.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack align="center" active-tab="t1">
-                <app-tab label="Center 1" value="t1">Content 1</app-tab>
-                <app-tab label="Center 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="alignCenterCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Align End -->
-      <demo-section id="align-end">
-        <div class="section-header">
-          <h2>▶️ Align End</h2>
-          <p>Tabs aligned to the end (right for LTR).</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack align="end" active-tab="t1">
-                <app-tab label="End 1" value="t1">Content 1</app-tab>
-                <app-tab label="End 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="alignEndCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Indicator Bottom -->
-      <demo-section id="indicator-bottom">
-        <div class="section-header">
-          <h2>🔽 Indicator Bottom</h2>
-          <p>Active indicator positioned at the bottom.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack indicator-position="bottom" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="indicatorBottomCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Indicator Top -->
-      <demo-section id="indicator-top">
-        <div class="section-header">
-          <h2>🔼 Indicator Top</h2>
-          <p>Active indicator positioned at the top.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack indicator-position="top" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="indicatorTopCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Indicator Left -->
-      <demo-section id="indicator-left">
-        <div class="section-header">
-          <h2>◀️ Indicator Left</h2>
-          <p>Active indicator on the left for vertical tabs.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack orientation="vertical" indicator-position="left" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="indicatorLeftCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Indicator Right -->
-      <demo-section id="indicator-right">
-        <div class="section-header">
-          <h2>▶️ Indicator Right</h2>
-          <p>Active indicator on the right for vertical tabs.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack orientation="vertical" indicator-position="right" active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="indicatorRightCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Full Width -->
-      <demo-section id="full-width">
-        <div class="section-header">
-          <h2>↔️ Full Width</h2>
-          <p>Tabs stretched to fill available width equally.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack full-width active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="fullWidthCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Scrollable -->
-      <demo-section id="scrollable">
-        <div class="section-header">
-          <h2>📜 Scrollable Tabs</h2>
-          <p>Horizontal scrolling for many tabs.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack scrollable active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-                <app-tab label="Tab 4" value="t4">Content 4</app-tab>
-                <app-tab label="Tab 5" value="t5">Content 5</app-tab>
-                <app-tab label="Tab 6" value="t6">Content 6</app-tab>
-                <app-tab label="Tab 7" value="t7">Content 7</app-tab>
-                <app-tab label="Tab 8" value="t8">Content 8</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="scrollableCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- With Icons -->
-      <demo-section id="with-icons">
-        <div class="section-header">
-          <h2>🎨 With Icons</h2>
-          <p>Tabs with icon support for visual clarity.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack active-tab="t1">
-                <app-tab label="Home" value="t1" icon="fas fa-home">Home Content</app-tab>
-                <app-tab label="Settings" value="t2" icon="fas fa-cog">Settings Content</app-tab>
-                <app-tab label="Profile" value="t3" icon="fas fa-user">Profile Content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="withIconsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- With Badges -->
-      <demo-section id="with-badges">
-        <div class="section-header">
-          <h2>🔢 With Badges</h2>
-          <p>Tabs with notification badges for counts or status.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack active-tab="t1">
-                <app-tab label="Messages" value="t1" badge="5" badge-color="danger">Messages</app-tab>
-                <app-tab label="Tasks" value="t2" badge="New" badge-color="success">Tasks</app-tab>
-                <app-tab label="Alerts" value="t3" badge="!" badge-color="warning">Alerts</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="withBadgesCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Closable -->
-      <demo-section id="closable">
-        <div class="section-header">
-          <h2>❌ Closable Tabs</h2>
-          <p>Tabs that can be closed by the user.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack closable active-tab="t1">
-                <app-tab label="README.md" value="t1">Markdown content</app-tab>
-                <app-tab label="index.ts" value="t2">TypeScript content</app-tab>
-                <app-tab label="styles.css" value="t3">CSS content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="closableCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- With Add Button -->
-      <demo-section id="with-add-button">
-        <div class="section-header">
-          <h2>➕ With Add Button</h2>
-          <p>Add button to create new tabs dynamically.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack show-add-button active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="withAddButtonCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Animated -->
-      <demo-section id="animated">
-        <div class="section-header">
-          <h2>✨ Animated Tabs</h2>
-          <p>Smooth animations for tab transitions.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack animated active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="animatedCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Drag Enabled -->
-      <demo-section id="drag-enabled">
-        <div class="section-header">
-          <h2>🔄 Drag to Reorder</h2>
-          <p>Drag and drop to reorder tabs.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack drag-enabled active-tab="t1">
-                <app-tab label="Drag Me 1" value="t1">Content 1</app-tab>
-                <app-tab label="Drag Me 2" value="t2">Content 2</app-tab>
-                <app-tab label="Drag Me 3" value="t3">Content 3</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="dragEnabledCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Editable Labels -->
-      <demo-section id="editable-labels">
-        <div class="section-header">
-          <h2>✏️ Editable Labels</h2>
-          <p>Tab labels can be edited inline.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack editable-labels active-tab="t1">
-                <app-tab label="Edit Me 1" value="t1">Content 1</app-tab>
-                <app-tab label="Edit Me 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="editableLabelsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Overflow Menu -->
-      <demo-section id="overflow-menu">
-        <div class="section-header">
-          <h2>⋯ Overflow Menu</h2>
-          <p>Overflow button shows hidden tabs in a dropdown.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack show-overflow-button scrollable active-tab="t1">
-                <app-tab label="Tab 1" value="t1">Content 1</app-tab>
-                <app-tab label="Tab 2" value="t2">Content 2</app-tab>
-                <app-tab label="Tab 3" value="t3">Content 3</app-tab>
-                <app-tab label="Tab 4" value="t4">Content 4</app-tab>
-                <app-tab label="Tab 5" value="t5">Content 5</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="overflowMenuCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Lazy Loading -->
-      <demo-section id="lazy-loading">
-        <div class="section-header">
-          <h2>⏱️ Lazy Loading</h2>
-          <p>Tab content loaded only when activated.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack lazy-loading active-tab="t1">
-                <app-tab label="Lazy Tab 1" value="t1">Content loads on demand</app-tab>
-                <app-tab label="Lazy Tab 2" value="t2">Content loads on demand</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="lazyLoadingCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Disabled Tabs -->
-      <demo-section id="disabled-tabs">
-        <div class="section-header">
-          <h2>🚫 Disabled Tabs</h2>
-          <p>Individual tabs can be disabled.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack active-tab="t1">
-                <app-tab label="Active" value="t1">Active Content</app-tab>
-                <app-tab label="Disabled" value="t2" disabled>Disabled Content</app-tab>
-                <app-tab label="Also Active" value="t3">Also Active Content</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="disabledTabsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-
-      <!-- Dynamic Tabs -->
-      <demo-section id="dynamic-tabs">
-        <div class="section-header">
-          <h2>⚡ Dynamic Tabs</h2>
-          <p>Comprehensive dynamic tab management with add, close, and close-all features.</p>
-        </div>
-        <div class="demo-grid">
-          <demo-card>
-            <div class="preview-box">
-              <app-tab-stack
-                closable
-                show-add-button
-                show-close-all-button
-                active-tab="t1">
-                <app-tab label="Dynamic 1" value="t1">Content 1</app-tab>
-                <app-tab label="Dynamic 2" value="t2">Content 2</app-tab>
-              </app-tab-stack>
-            </div>
-            <app-code-block [code]="dynamicTabsCode()" />
-          </demo-card>
-        </div>
-      </demo-section>
-    </div>
-
-    <!-- Playground Slot -->
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
     <div slot="playground">
-      <app-tabs-playground />
+      <app-tabs-playground></app-tabs-playground>
     </div>
 
-    <!-- Docs Slot -->
+    <div slot="examples">
+      <app-example-section
+        id="orientation"
+        title="Orientation"
+        description="Horizontal and vertical orientations."
+        [code]="horizontalBasicCode"
+      >
+        <div class="demo-grid col-1">
+          <div class="demo-card">
+            <h3>Horizontal</h3>
+            <app-tab-stack orientation="horizontal" active-tab="t1">
+              <app-tab label="Overview" value="t1">Overview Content</app-tab>
+              <app-tab label="Documents" value="t2">Documents Content</app-tab>
+            </app-tab-stack>
+          </div>
+          <div class="demo-card">
+            <h3>Vertical</h3>
+            <app-tab-stack orientation="vertical" active-tab="t1">
+              <app-tab label="Configuration" value="t1">Config Content</app-tab>
+              <app-tab label="Security" value="t2">Security Content</app-tab>
+            </app-tab-stack>
+          </div>
+        </div>
+      </app-example-section>
+
+      <app-example-section
+        id="variants"
+        title="Visual Variants"
+        description="Different styling options."
+        [code]="variantCode"
+      >
+        <div class="demo-grid col-1">
+          <div class="demo-card">
+            <h3>Default</h3>
+            <app-tab-stack variant="default" active-tab="t1">
+              <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+              <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+            </app-tab-stack>
+          </div>
+          <div class="demo-card">
+            <h3>Underline</h3>
+            <app-tab-stack variant="underline" active-tab="t1">
+              <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+              <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+            </app-tab-stack>
+          </div>
+          <div class="demo-card">
+            <h3>Pills</h3>
+            <app-tab-stack variant="pills" active-tab="t1" color="success">
+              <app-tab label="Active" value="t1">Active Content</app-tab>
+              <app-tab label="Completed" value="t2">Completed Content</app-tab>
+            </app-tab-stack>
+          </div>
+        </div>
+      </app-example-section>
+
+      <app-example-section
+        id="sizes"
+        title="Sizes"
+        description="Small, medium, and large."
+        [code]="sizeCode"
+      >
+        <app-tab-stack size="small" active-tab="t1">
+          <app-tab label="Small 1" value="t1">Content 1</app-tab>
+          <app-tab label="Small 2" value="t2">Content 2</app-tab>
+        </app-tab-stack>
+      </app-example-section>
+
+      <app-example-section
+        id="colors"
+        title="Colors"
+        description="Semantic color schemes."
+        [code]="colorCode"
+      >
+        <app-tab-stack color="danger" active-tab="t1">
+          <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+          <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+        </app-tab-stack>
+      </app-example-section>
+
+      <app-example-section
+        id="alignment"
+        title="Alignment"
+        description="Start, center, and end alignment."
+        [code]="alignCode"
+      >
+        <app-tab-stack align="center" active-tab="t1">
+          <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+          <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+        </app-tab-stack>
+      </app-example-section>
+
+      <app-example-section
+        id="indicator"
+        title="Indicator Position"
+        description="Placement of the active indicator."
+        [code]="indicatorCode"
+      >
+        <app-tab-stack indicator-position="top" active-tab="t1">
+          <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+          <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+        </app-tab-stack>
+      </app-example-section>
+
+      <app-example-section
+        id="layout-features"
+        title="Layout & Features"
+        description="Icons, badges, and full-width."
+        [code]="layoutCode"
+      >
+        <div class="demo-grid col-1">
+          <div class="demo-card">
+            <h3>Icons & Badges</h3>
+            <app-tab-stack active-tab="t1">
+              <app-tab label="Home" value="t1" icon="fas fa-home">Home</app-tab>
+              <app-tab label="Messages" value="t3" badge="5" badge-color="danger">Msgs</app-tab>
+            </app-tab-stack>
+          </div>
+          <div class="demo-card">
+            <h3>Full Width Scrollable</h3>
+            <app-tab-stack full-width scrollable active-tab="t1">
+              <app-tab label="Tab 1" value="t1">C1</app-tab>
+              <app-tab label="Tab 2" value="t2">C2</app-tab>
+              <app-tab label="Tab 3" value="t3">C3</app-tab>
+              <app-tab label="Tab 4" value="t4">C4</app-tab>
+            </app-tab-stack>
+          </div>
+        </div>
+      </app-example-section>
+
+      <app-example-section
+        id="advanced-features"
+        title="Advanced UX"
+        description="Closable, animated, and lazy loading."
+        [code]="advancedCode"
+      >
+        <app-tab-stack closable animated show-add-button active-tab="t1">
+          <app-tab label="Tab 1" value="t1">C1</app-tab>
+          <app-tab label="Tab 2" value="t2">C2</app-tab>
+        </app-tab-stack>
+      </app-example-section>
+    </div>
+
     <div slot="docs">
-      <app-component-documentation componentName="tab-stack" />
+      <app-component-documentation componentId="tab-stack"></app-component-documentation>
     </div>
   </demo-tabs>
 </div>

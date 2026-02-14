@@ -1,348 +1,193 @@
-<div class="examples-split-layout">
-  <aside class="examples-sidebar">
-    <h3>Progress Examples</h3>
-    <nav>
-      <a
-        *ngFor="let variant of variants"
-        [href]="'#' + variant.id"
-        (click)="scrollToSection(variant.id)"
-        class="nav-link"
-      >
-        <span class="nav-icon">{{ variant.icon }}</span>
-        <span class="nav-text">{{ variant.title }}</span>
-      </a>
-    </nav>
-  </aside>
+<div class="demo-container">
+  <h1>Progress Component</h1>
 
-  <div class="examples-content">
-    <!-- Playground Section -->
-    <section id="playground" class="example-section">
-      <h2><span class="section-icon">🎮</span> Playground</h2>
-      <p>Experiment with progress properties in real-time.</p>
+  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
+    <!-- Playground Slot -->
+    <div slot="playground">
       <app-progress-playground></app-progress-playground>
-      <app-code-block [code]="playgroundCode" language="html" />
-    </section>
+    </div>
 
-    <!-- Line Progress Section -->
-    <section id="line" class="example-section">
-      <h2><span class="section-icon">📏</span> Line Progress</h2>
-      <p>Standard progress bar with different percentages.</p>
-      <div class="demo-grid col-2">
-        <div class="demo-card">
-          <h3>30% Progress</h3>
-          <div class="preview-box">
-            <app-progress percent="30"></app-progress>
-          </div>
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Line Progress -->
+      <app-example-section
+        id="line"
+        title="Line Progress"
+        description="Standard progress bar with different percentages."
+        [code]="lineCode"
+      >
+        <div class="demo-grid col-2">
+          <app-progress percent="30"></app-progress>
+          <app-progress percent="50"></app-progress>
+          <app-progress percent="70"></app-progress>
+          <app-progress percent="100"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>50% Progress</h3>
-          <div class="preview-box">
-            <app-progress percent="50"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>70% Progress</h3>
-          <div class="preview-box">
-            <app-progress percent="70"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>100% Success</h3>
-          <div class="preview-box">
-            <app-progress percent="100"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="lineCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Circle Progress Section -->
-    <section id="circle" class="example-section">
-      <h2><span class="section-icon">⚪</span> Circle Progress</h2>
-      <p>Circular progress indicators in different sizes.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Default Size - 75%</h3>
-          <div class="preview-box center-content">
-            <app-progress type="circle" percent="75"></app-progress>
-          </div>
+      <!-- Circle Progress -->
+      <app-example-section
+        id="circle"
+        title="Circle Progress"
+        description="Circular progress indicators in different sizes."
+        [code]="circleCode"
+      >
+        <div class="demo-grid col-3 center-content">
+          <app-progress type="circle" percent="75"></app-progress>
+          <app-progress type="circle" percent="100" status="success"></app-progress>
+          <app-progress type="circle" percent="50" width="80"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Default Size - 100%</h3>
-          <div class="preview-box center-content">
-            <app-progress type="circle" percent="100" status="success"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Small Size - 50%</h3>
-          <div class="preview-box center-content">
-            <app-progress type="circle" percent="50" width="80"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="circleCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Dashboard Progress Section -->
-    <section id="dashboard" class="example-section">
-      <h2><span class="section-icon">📊</span> Dashboard Progress</h2>
-      <p>Configure gap size and position for dashboard types.</p>
-      <div class="demo-grid col-4">
-        <div class="demo-card">
-          <h3>Gap Position: Top</h3>
-          <div class="preview-box center-content">
-            <app-progress type="dashboard" percent="75" gap-position="top"></app-progress>
-          </div>
+      <!-- Dashboard Progress -->
+      <app-example-section
+        id="dashboard"
+        title="Dashboard Progress"
+        description="Configure gap size and position for dashboard types."
+        [code]="dashboardCode"
+      >
+        <div class="demo-grid col-4 center-content">
+          <app-progress type="dashboard" percent="75" gap-position="top"></app-progress>
+          <app-progress type="dashboard" percent="75" gap-position="bottom"></app-progress>
+          <app-progress type="dashboard" percent="75" gap-position="left"></app-progress>
+          <app-progress type="dashboard" percent="50" gap-degree="120"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Gap Position: Bottom</h3>
-          <div class="preview-box center-content">
-            <app-progress type="dashboard" percent="75" gap-position="bottom"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Gap Position: Left</h3>
-          <div class="preview-box center-content">
-            <app-progress type="dashboard" percent="75" gap-position="left"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Custom Gap (120°)</h3>
-          <div class="preview-box center-content">
-            <app-progress type="dashboard" percent="50" gap-degree="120"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="dashboardCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Progress Status Section -->
-    <section id="status" class="example-section">
-      <h2><span class="section-icon">✅</span> Progress Status</h2>
-      <p>Different status types: normal, active, success, exception.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Active Status (Animated)</h3>
-          <div class="preview-box">
-            <app-progress percent="60" status="active"></app-progress>
-          </div>
+      <!-- Progress Status -->
+      <app-example-section
+        id="status"
+        title="Progress Status"
+        description="Different status types: normal, active, success, exception."
+        [code]="statusCode"
+      >
+        <div class="demo-grid col-3">
+          <app-progress percent="60" status="active"></app-progress>
+          <app-progress percent="100" status="success"></app-progress>
+          <app-progress percent="50" status="exception"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Success Status</h3>
-          <div class="preview-box">
-            <app-progress percent="100" status="success"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Exception Status</h3>
-          <div class="preview-box">
-            <app-progress percent="50" status="exception"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="statusCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Indeterminate Section -->
-    <section id="indeterminate" class="example-section">
-      <h2><span class="section-icon">♾️</span> Indeterminate State</h2>
-      <p>Used when the exact progress is unknown.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Line Indeterminate</h3>
-          <div class="preview-box">
-            <app-progress indeterminate="true"></app-progress>
-          </div>
+      <!-- Indeterminate State -->
+      <app-example-section
+        id="indeterminate"
+        title="Indeterminate State"
+        description="Used when the exact progress is unknown."
+        [code]="indeterminateCode"
+      >
+        <div class="demo-grid col-3 center-content">
+          <app-progress indeterminate="true"></app-progress>
+          <app-progress type="circle" indeterminate="true"></app-progress>
+          <app-progress type="dashboard" indeterminate="true"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Circle Indeterminate</h3>
-          <div class="preview-box center-content">
-            <app-progress type="circle" indeterminate="true"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Dashboard Indeterminate</h3>
-          <div class="preview-box center-content">
-            <app-progress type="dashboard" indeterminate="true"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="indeterminateCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Custom Colors Section -->
-    <section id="colors" class="example-section">
-      <h2><span class="section-icon">🎨</span> Custom Colors</h2>
-      <p>Customize progress bar colors.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Custom Purple</h3>
-          <div class="preview-box">
-            <app-progress percent="60" stroke-color="#9b59b6"></app-progress>
-          </div>
+      <!-- Custom Colors -->
+      <app-example-section
+        id="colors"
+        title="Custom Colors"
+        description="Customize progress bar colors."
+        [code]="colorsCode"
+      >
+        <div class="demo-grid col-3">
+          <app-progress percent="60" stroke-color="#9b59b6"></app-progress>
+          <app-progress percent="75" stroke-color="#ff9800"></app-progress>
+          <app-progress percent="85" stroke-color="#e91e63"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Custom Orange</h3>
-          <div class="preview-box">
-            <app-progress percent="75" stroke-color="#ff9800"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Custom Pink</h3>
-          <div class="preview-box">
-            <app-progress percent="85" stroke-color="#e91e63"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="colorsCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Gradient Progress Section -->
-    <section id="gradient" class="example-section">
-      <h2><span class="section-icon">🌈</span> Gradient Progress</h2>
-      <p>Progress bars with gradient colors.</p>
-      <div class="demo-grid">
-        <div class="demo-card">
-          <h3>Blue to Cyan Gradient</h3>
-          <div class="preview-box">
-            <app-progress 
-              percent="80" 
-              stroke-color="linear-gradient(to right, #667eea, #06b6d4)">
-            </app-progress>
-          </div>
+      <!-- Gradient Progress -->
+      <app-example-section
+        id="gradient"
+        title="Gradient Progress"
+        description="Progress bars with gradient colors."
+        [code]="gradientCode"
+      >
+        <div class="demo-grid col-3">
+          <app-progress
+            percent="80"
+            stroke-color="linear-gradient(to right, #667eea, #06b6d4)"
+          ></app-progress>
+          <app-progress
+            percent="90"
+            stroke-color="linear-gradient(to right, #a855f7, #ec4899)"
+          ></app-progress>
+          <app-progress
+            percent="70"
+            stroke-color="linear-gradient(to right, #f97316, #ef4444)"
+          ></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Purple to Pink Gradient</h3>
-          <div class="preview-box">
-            <app-progress 
-              percent="90" 
-              stroke-color="linear-gradient(to right, #a855f7, #ec4899)">
-            </app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Orange to Red Gradient</h3>
-          <div class="preview-box">
-            <app-progress 
-              percent="70" 
-              stroke-color="linear-gradient(to right, #f97316, #ef4444)">
-            </app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="gradientCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Steps Progress Section -->
-    <section id="steps" class="example-section">
-      <h2><span class="section-icon">👣</span> Steps Progress</h2>
-      <p>Progress displayed as discrete steps.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>5 Steps - 60%</h3>
-          <div class="preview-box">
-            <app-progress percent="60" steps="5"></app-progress>
-          </div>
+      <!-- Steps Progress -->
+      <app-example-section
+        id="steps"
+        title="Steps Progress"
+        description="Progress displayed as discrete steps."
+        [code]="stepsCode"
+      >
+        <div class="demo-grid col-3">
+          <app-progress percent="60" steps="5"></app-progress>
+          <app-progress percent="80" steps="10"></app-progress>
+          <app-progress percent="100" steps="8" status="success"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>10 Steps - 80%</h3>
-          <div class="preview-box">
-            <app-progress percent="80" steps="10"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>8 Steps - Success</h3>
-          <div class="preview-box">
-            <app-progress percent="100" steps="8" status="success"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="stepsCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Custom Stroke Width Section -->
-    <section id="stroke" class="example-section">
-      <h2><span class="section-icon">📐</span> Custom Stroke Width</h2>
-      <p>Adjust the thickness of progress bars.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Thin (4px)</h3>
-          <div class="preview-box">
-            <app-progress percent="60" stroke-width="4"></app-progress>
-          </div>
+      <!-- Stroke Width -->
+      <app-example-section
+        id="stroke"
+        title="Custom Stroke Width"
+        description="Adjust the thickness of progress bars."
+        [code]="strokeCode"
+      >
+        <div class="demo-grid col-3">
+          <app-progress percent="60" stroke-width="4"></app-progress>
+          <app-progress percent="60" stroke-width="10"></app-progress>
+          <app-progress percent="60" stroke-width="20"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Normal (10px)</h3>
-          <div class="preview-box">
-            <app-progress percent="60" stroke-width="10"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card">
-          <h3>Thick (20px)</h3>
-          <div class="preview-box">
-            <app-progress percent="60" stroke-width="20"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="strokeCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Stroke Linecap Section -->
-    <section id="linecap" class="example-section">
-      <h2><span class="section-icon">🔘</span> Stroke Linecap</h2>
-      <p>Round or square edges.</p>
-      <div class="demo-grid col-2">
-        <div class="demo-card">
-          <h3>Round Linecap</h3>
-          <div class="preview-box">
-            <app-progress percent="75" stroke-linecap="round"></app-progress>
-          </div>
+      <!-- Stroke Linecap -->
+      <app-example-section
+        id="linecap"
+        title="Stroke Linecap"
+        description="Round or square edges."
+        [code]="linecapCode"
+      >
+        <div class="demo-grid col-2">
+          <app-progress percent="75" stroke-linecap="round"></app-progress>
+          <app-progress percent="75" stroke-linecap="square"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Square Linecap</h3>
-          <div class="preview-box">
-            <app-progress percent="75" stroke-linecap="square"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="linecapCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Hide Info Text Section -->
-    <section id="hide-info" class="example-section">
-      <h2><span class="section-icon">🙈</span> Hide Info Text</h2>
-      <p>Progress without percentage display.</p>
-      <div class="demo-grid col-2">
-        <div class="demo-card">
-          <h3>Line Progress without Info</h3>
-          <div class="preview-box">
-            <app-progress percent="60" show-info="false"></app-progress>
-          </div>
+      <!-- Hide Info -->
+      <app-example-section
+        id="hide-info"
+        title="Hide Info Text"
+        description="Progress without percentage display."
+        [code]="hideInfoCode"
+      >
+        <div class="demo-grid col-2 center-content">
+          <app-progress percent="60" show-info="false"></app-progress>
+          <app-progress type="circle" percent="75" show-info="false"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Circle Progress without Info</h3>
-          <div class="preview-box center-content">
-            <app-progress type="circle" percent="75" show-info="false"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="hideInfoCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Premium Styles Section -->
-    <section id="premium" class="example-section">
-      <h2><span class="section-icon">💎</span> Premium Styles</h2>
-      <p>Advanced visual effects including Liquid waves, Glassmorphism, and Glow.</p>
-      <div class="demo-grid col-3">
-        <div class="demo-card">
-          <h3>Liquid Wave Animation</h3>
-          <div class="preview-box">
-            <app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
-          </div>
-        </div>
-        <div class="demo-card" style="background: linear-gradient(135deg, #1e293b, #334155)">
-          <h3>Glassmorphism Effect</h3>
-          <div class="preview-box" style="background: rgba(255, 255, 255, 0.05)">
+      <!-- Premium Styles -->
+      <app-example-section
+        id="premium"
+        title="Premium Styles"
+        description="Advanced visual effects including Liquid waves, Glassmorphism, and Glow."
+        [code]="premiumCode"
+      >
+        <div class="demo-grid col-3 center-content">
+          <app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
+          <div
+            style="
+              background: linear-gradient(135deg, #1e293b, #334155);
+              padding: 20px;
+              border-radius: 12px;
+            "
+          >
             <app-progress
               percent="50"
               glass="true"
@@ -350,47 +195,43 @@
               trail-color="rgba(255,255,255,0.2)"
             ></app-progress>
           </div>
+          <app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>
         </div>
-        <div class="demo-card">
-          <h3>Dynamic Glow Effect</h3>
-          <div class="preview-box">
-            <app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>
-          </div>
-        </div>
-      </div>
-      <app-code-block [code]="premiumCode" language="html" />
-    </section>
+      </app-example-section>
 
-    <!-- Interactive Demo Section -->
-    <section id="interactive" class="example-section">
-      <h2><span class="section-icon">🎯</span> Interactive Demo</h2>
-      <p>Control progress dynamically.</p>
-      <div class="demo-card">
-        <div class="preview-box">
-          <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px">
-            <label>Progress: {{ progressValue }}%</label>
-            <button (click)="decreaseProgress()" style="padding: 8px 16px">- Decrease</button>
-            <button (click)="increaseProgress()" style="padding: 8px 16px">+ Increase</button>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 24px">
-            <div>
-              <h4>Line Progress</h4>
-              <app-progress [attr.percent]="progressValue"></app-progress>
-            </div>
-            <div style="display: flex; gap: 40px; justify-content: center">
-              <div>
-                <h4>Circle Progress</h4>
-                <app-progress type="circle" [attr.percent]="progressValue"></app-progress>
-              </div>
-              <div>
-                <h4>Dashboard Progress</h4>
-                <app-progress type="dashboard" [attr.percent]="progressValue"></app-progress>
-              </div>
-            </div>
-          </div>
+      <!-- Interactive -->
+      <app-example-section
+        id="interactive"
+        title="Interactive Demo"
+        description="Control progress dynamically."
+        [code]="interactiveCode"
+      >
+        <div class="interactive-controls">
+          <label>Progress: {{ progressValue }}%</label>
+          <ui-button
+            (click)="decreaseProgress()"
+            label="- Decrease"
+            color="secondary"
+            size="small"
+          ></ui-button>
+          <ui-button
+            (click)="increaseProgress()"
+            label="+ Increase"
+            color="secondary"
+            size="small"
+          ></ui-button>
         </div>
-      </div>
-      <app-code-block [code]="interactiveCode" language="html" />
-    </section>
-  </div>
+        <div class="demo-grid col-3 center-content" style="margin-top: 24px">
+          <app-progress [attr.percent]="progressValue"></app-progress>
+          <app-progress type="circle" [attr.percent]="progressValue"></app-progress>
+          <app-progress type="dashboard" [attr.percent]="progressValue"></app-progress>
+        </div>
+      </app-example-section>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <app-component-documentation componentId="progress"></app-component-documentation>
+    </div>
+  </demo-tabs>
 </div>

@@ -1,8 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProgressPlaygroundComponent } from './components/progress-playground/progress-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-progress-demo',
@@ -12,14 +16,16 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
     FormsModule,
     ProgressPlaygroundComponent,
     CodeBlockComponent,
+    DemoTabsComponent,
+    ExampleSectionComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-progress-demo.component.html',
   styleUrl: './set-progress-demo.component.scss',
 })
-export class SetProgressDemoComponent {
+export class SetProgressDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'line', title: 'Line Progress', icon: '📏' },
     { id: 'circle', title: 'Circle Progress', icon: '⚪' },
     { id: 'dashboard', title: 'Dashboard Progress', icon: '📊' },
@@ -36,7 +42,7 @@ export class SetProgressDemoComponent {
   ];
 
   get exampleVariants() {
-    return this.variants.filter(v => v.id !== 'playground');
+    return this.variants;
   }
 
   progressValue = 50;
@@ -110,12 +116,7 @@ export class SetProgressDemoComponent {
 <app-progress type="circle" [percent]="progressValue"></app-progress>
 <app-progress type="dashboard" [percent]="progressValue"></app-progress>`;
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 
   decreaseProgress() {
     this.progressValue = Math.max(0, this.progressValue - 10);

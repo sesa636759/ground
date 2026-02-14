@@ -1,12 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-radio-demo',
@@ -18,30 +18,24 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-radio-demo.component.html',
   styleUrl: './set-radio-demo.component.scss',
 })
-export class SetRadioDemoComponent implements OnInit {
-  variants = [
-    { id: 'playground', name: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'premium-variants', name: 'Premium Variants', icon: '✨', color: '#3b82f6' },
-    { id: 'button-groups', name: 'Button Groups', icon: '🔲', color: '#10b981' },
-    { id: 'loading-skeleton', name: 'Loading Skeleton', icon: '⏳', color: '#f59e0b' },
-    { id: 'slotted-clearable', name: 'Slotted & Clearable', icon: '🧩', color: '#ef4444' },
-    { id: 'color-variants', name: 'Color Variants', icon: '🎨', color: '#6366f1' },
-    { id: 'layouts', name: 'Layouts', icon: '📐', color: '#ec4899' },
-    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#14b8a6' },
-    { id: 'states', name: 'States', icon: '🔄', color: '#a855f7' },
-    { id: 'form-example', name: 'Form Example', icon: '📋', color: '#06b6d4' },
+export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
+    { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
+    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: '⏳' },
+    { id: 'slotted-clearable', title: 'Slotted & Clearable', icon: '🧩' },
+    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
+    { id: 'layouts', title: 'Layouts', icon: '📐' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
- 
 
   basicOptions = [
     { value: 'option1', label: 'Option 1' },
@@ -87,12 +81,6 @@ export class SetRadioDemoComponent implements OnInit {
   formMessageColor = signal('inherit');
   shippingInvalid = false;
   paymentInvalid = false;
-
-  playgroundCode = `<app-radio
-  name="options"
-  [(ngModel)]="selected"
-  [options]="options"
-></app-radio>`;
 
   premiumVariantsCode = `<app-radio-group
   name="premium-cards"
@@ -179,15 +167,21 @@ export class SetRadioDemoComponent implements OnInit {
   [options]="paymentOptions"
 ></app-radio-group>`;
 
+  loadingSkeletonCode = `<app-radio-group
+  name="loading-demo"
+  skeleton
+  [options]="options"
+></app-radio-group>`;
+
+  colorVariantsCode = `<app-radio-group name="prim" color="primary" ...></app-radio-group>
+<app-radio-group name="sec" color="secondary" ...></app-radio-group>
+<app-radio-group name="succ" color="success" ...></app-radio-group>`;
+
+  sizesCode = `<app-radio-group size="small" ...></app-radio-group>
+<app-radio-group size="medium" ...></app-radio-group>
+<app-radio-group size="large" ...></app-radio-group>`;
+
   ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {

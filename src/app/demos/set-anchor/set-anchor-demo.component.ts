@@ -5,6 +5,8 @@ import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-anchor-demo',
@@ -16,12 +18,13 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-anchor-demo.component.html',
   styleUrl: './set-anchor-demo.component.scss',
 })
-export class SetAnchorDemoComponent {
+export class SetAnchorDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     // Basic Layouts
     { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '◀️' },
@@ -157,17 +160,29 @@ export class SetAnchorDemoComponent {
   ]);
 
   nestedItems = JSON.stringify([
-    { id: 'n-1', label: '1. Getting Started', children: [
-      { id: 'n-1-1', label: '1.1 Installation' },
-      { id: 'n-1-2', label: '1.2 Setup' },
-    ]},
-    { id: 'n-2', label: '2. Components', children: [
-      { id: 'n-2-1', label: '2.1 Basics', children: [
-        { id: 'n-2-1-1', label: '2.1.1 Button' },
-        { id: 'n-2-1-2', label: '2.1.2 Input' },
-      ]},
-      { id: 'n-2-2', label: '2.2 Advanced' },
-    ]},
+    {
+      id: 'n-1',
+      label: '1. Getting Started',
+      children: [
+        { id: 'n-1-1', label: '1.1 Installation' },
+        { id: 'n-1-2', label: '1.2 Setup' },
+      ],
+    },
+    {
+      id: 'n-2',
+      label: '2. Components',
+      children: [
+        {
+          id: 'n-2-1',
+          label: '2.1 Basics',
+          children: [
+            { id: 'n-2-1-1', label: '2.1.1 Button' },
+            { id: 'n-2-1-2', label: '2.1.2 Input' },
+          ],
+        },
+        { id: 'n-2-2', label: '2.2 Advanced' },
+      ],
+    },
     { id: 'n-3', label: '3. Conclusion' },
   ]);
 
@@ -344,12 +359,4 @@ export class SetAnchorDemoComponent {
   [show-numbers]="showNumbers"
   [items]="items"
 ></app-anchor>`);
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }
-

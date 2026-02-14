@@ -1,12 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { InputPlaygroundComponent } from './components/input-playground/input-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-input-demo',
@@ -18,14 +18,14 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-input-demo.component.html',
   styleUrl: './set-input-demo.component.scss',
 })
-export class SetInputDemoComponent {
+export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic-types', title: 'Basic Input Types', icon: '📋' },
     { id: 'variants', title: 'Input Variants', icon: '🎭' },
     { id: 'sizes', title: 'Input Sizes', icon: '📏' },
@@ -41,7 +41,7 @@ export class SetInputDemoComponent {
   ];
 
   get exampleVariants() {
-    return this.variants.filter(v => v.id !== 'playground');
+    return this.variants;
   }
 
   skeletonState = false;
@@ -268,12 +268,7 @@ export class SetInputDemoComponent {
   full-width
 ></app-input>`;
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 
   toggleSkeleton() {
     this.skeletonState = !this.skeletonState;

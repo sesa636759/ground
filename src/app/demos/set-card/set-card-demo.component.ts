@@ -5,6 +5,8 @@ import { CardPlaygroundComponent } from './components/card-playground/card-playg
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-card-demo',
@@ -16,12 +18,13 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-card-demo.component.html',
   styleUrl: './set-card-demo.component.scss',
 })
-export class SetCardDemoComponent implements OnInit {
+export class SetCardDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     { id: 'basic-cards', title: 'Basic Cards', icon: '📋' },
     { id: 'media-covers', title: 'Media & Covers', icon: '🖼️' },
@@ -140,13 +143,6 @@ export class SetCardDemoComponent implements OnInit {
 </app-card>`;
 
   ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
   toggleLoading() {
     this.isLoading = !this.isLoading;

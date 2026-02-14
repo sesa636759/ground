@@ -52,7 +52,11 @@
     <h4 class="section-title">Options</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" label="Collapsed" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.collapsed"
+          (change)="updateConfig()"
+          label="Collapsed"
+        />
       </label>
     </div>
   </div>
@@ -76,6 +80,7 @@
           [attr.user-avatar]="pgConfig.userAvatar"
           [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
           [attr.theme]="pgConfig.theme"
+          [items]="sidebarItems"
           (item-selected)="onItemSelected($event)"
           (sidebar-toggled)="onSidebarToggled($event)"
           (profile-clicked)="onProfileClick()"
@@ -94,66 +99,10 @@
       </div>
     </div>
 
-    <div class="code-block">
-      <div class="code-header">
-        <span>Generated Code</span>
-        <ui-button
-          class="copy-btn"
-          variant="secondary"
-          size="sm"
-          (click)="copyCode()"
-          label="Copy"
-        ></ui-button>
-      </div>
-      <pre><code>{{ generatedCode() }}</code></pre>
-    </div>
+    <app-code-block
+      [code]="generatedCode()"
+      title="Generated Code"
+      language="html"
+    ></app-code-block>
   </div>
 </div>
-
-<script>
-  // Set initial items for playground sidebar
-  setTimeout(() => {
-    const playgroundSidebar = document.querySelector('app-modern-sidebar-playground app-modern-sidebar');
-    if (playgroundSidebar) {
-      playgroundSidebar.items = [
-        { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
-        { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-line', badge: 3 },
-        {
-          id: 'projects',
-          label: 'Projects',
-          icon: 'fas fa-folder',
-          badge: 12,
-          children: [
-            { id: 'active', label: 'Active Projects', icon: 'fas fa-circle', badge: 8 },
-            { id: 'paused', label: 'Paused', icon: 'fas fa-pause-circle', badge: 2 },
-            { id: 'completed', label: 'Completed', icon: 'fas fa-check-circle', badge: 2 }
-          ]
-        },
-        {
-          id: 'tasks',
-          label: 'Tasks',
-          icon: 'fas fa-tasks',
-          badge: 15,
-          children: [
-            { id: 'active-tasks', label: 'Active', icon: 'fas fa-play', badge: 10 },
-            { id: 'pending', label: 'Pending', icon: 'fas fa-clock', badge: 5 }
-          ]
-        },
-        { id: 'calendar', label: 'Calendar', icon: 'fas fa-calendar' },
-        { id: 'messages', label: 'Messages', icon: 'fas fa-envelope', badge: 'New' },
-        { id: 'team', label: 'Team', icon: 'fas fa-users' },
-        {
-          id: 'settings',
-          label: 'Settings',
-          icon: 'fas fa-cog',
-          children: [
-            { id: 'profile', label: 'Profile', icon: 'fas fa-user' },
-            { id: 'security', label: 'Security', icon: 'fas fa-lock' },
-            { id: 'notifications', label: 'Notifications', icon: 'fas fa-bell' }
-          ]
-        },
-        { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' }
-      ];
-    }
-  }, 100);
-</script>
