@@ -14,7 +14,10 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       <div class="playground-controls">
         <div class="control-grid">
           <div class="control-section">
-            <h3>Configuration</h3>
+            <h3 class="section-title">
+              <ui-icon icon="cog" library="fontawesome"></ui-icon>
+              Configuration
+            </h3>
             <div class="control-group">
               <label>Initial Duration (s)</label>
               <app-input
@@ -34,7 +37,10 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
 
           <div class="control-section">
-            <h3>Visuals</h3>
+            <h3 class="section-title">
+              <ui-icon icon="palette" library="fontawesome"></ui-icon>
+              Visuals
+            </h3>
             <div class="control-group">
               <label>Format</label>
               <ui-dropdown
@@ -55,43 +61,53 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
+          <app-code-block
+            [code]="generatedCode()"
+            language="html"
+            title="Generated Code"
+          ></app-code-block>
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button (click)="copyCode()" variant="primary" label="Copy Implementation"></ui-button>
           <ui-button
-            class="btn-secondary"
-            variant="secondary"
+            variant="ghost"
             (click)="resetConfig()"
-            label="Reset"
+            label="Reset Configuration"
           ></ui-button>
         </div>
       </div>
 
       <div class="playground-preview">
-        <ui-timer
-          #timer
-          [attr.duration]="pgConfig.duration"
-          [attr.mode]="pgConfig.mode"
-          [attr.format]="pgConfig.format"
-          [attr.auto-start]="pgConfig.autoStart ? '' : null"
-        ></ui-timer>
+        <div class="timer-preview-card">
+          <ui-timer
+            #timer
+            [duration]="pgConfig.duration"
+            [mode]="pgConfig.mode"
+            [format]="pgConfig.format"
+            [autoStart]="pgConfig.autoStart"
+          ></ui-timer>
 
-        <div style="display: flex; gap: 12px; margin-top: 24px;">
-          <ui-button class="variant-btn" (click)="timer.start()" label="Start"></ui-button>
-          <ui-button
-            class="variant-btn btn-secondary"
-            variant="secondary"
-            (click)="timer.pause()"
-            label="Pause"
-          ></ui-button>
-          <ui-button
-            class="variant-btn btn-secondary"
-            variant="secondary"
-            (click)="timer.reset()"
-            label="Reset"
-          ></ui-button>
+          <div class="timer-actions">
+            <ui-button
+              class="action-btn"
+              variant="primary"
+              (click)="timer.start()"
+              label="Start"
+            ></ui-button>
+            <ui-button
+              class="action-btn"
+              variant="secondary"
+              (click)="timer.pause()"
+              label="Pause"
+            ></ui-button>
+            <ui-button
+              class="action-btn"
+              variant="ghost"
+              (click)="timer.reset()"
+              label="Reset Timer"
+            ></ui-button>
+          </div>
         </div>
       </div>
     </div>
@@ -128,6 +144,9 @@ export class TimerPlaygroundComponent {
     code += `  [duration]="${this.pgConfig.duration}"\n`;
     code += `  mode="${this.pgConfig.mode}"\n`;
     code += `  format="${this.pgConfig.format}"\n`;
+    if (this.pgConfig.autoStart) {
+      code += '  [autoStart]="true"\n';
+    }
     code += '></ui-timer>';
 
     this.generatedCode.set(code);
