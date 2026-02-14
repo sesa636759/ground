@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProgressPlaygroundComponent } from './components/progress-playground/progress-playground.component';
@@ -17,11 +17,9 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ProgressPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
-    ComponentDocumentationComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-progress-demo.component.html',
-  styleUrl: './set-progress-demo.component.scss',
+  styleUrls: ['./set-progress-demo.component.scss'],
 })
 export class SetProgressDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
@@ -124,4 +122,232 @@ export class SetProgressDemoComponent extends BaseDemoComponent implements OnIni
   increaseProgress() {
     this.progressValue = Math.min(100, this.progressValue + 10);
   }
+
+  // Line Progress
+  lineBasicCode = signal(`<app-progress
+  percent="45"
+></app-progress>`);
+
+  line30Code = signal(`<app-progress
+  percent="30"
+></app-progress>`);
+
+  line50Code = signal(`<app-progress
+  percent="50"
+></app-progress>`);
+
+  line70Code = signal(`<app-progress
+  percent="70"
+></app-progress>`);
+
+  line100Code = signal(`<app-progress
+  percent="100"
+  status="success"
+></app-progress>`);
+
+  // Circle Progress
+  circleBasicCode = signal(`<app-progress
+  type="circle"
+  percent="60"
+></app-progress>`);
+
+  circle75Code = signal(`<app-progress
+  type="circle"
+  percent="75"
+></app-progress>`);
+
+  circle100Code = signal(`<app-progress
+  type="circle"
+  percent="100"
+  status="success"
+></app-progress>`);
+
+  circleSmallCode = signal(`<app-progress
+  type="circle"
+  percent="50"
+  width="80"
+></app-progress>`);
+
+  circleLargeCode = signal(`<app-progress
+  type="circle"
+  percent="85"
+  width="150"
+></app-progress>`);
+
+  // Dashboard Progress
+  dashboardBasicCode = signal(`<app-progress
+  type="dashboard"
+  percent="75"
+></app-progress>`);
+
+  dashboardTopCode = signal(`<app-progress
+  type="dashboard"
+  percent="75"
+  gap-position="top"
+></app-progress>`);
+
+  dashboardBottomCode = signal(`<app-progress
+  type="dashboard"
+  percent="75"
+  gap-position="bottom"
+></app-progress>`);
+
+  dashboardLeftCode = signal(`<app-progress
+  type="dashboard"
+  percent="75"
+  gap-position="left"
+></app-progress>`);
+
+  dashboardRightCode = signal(`<app-progress
+  type="dashboard"
+  percent="75"
+  gap-position="right"
+></app-progress>`);
+
+  dashboardCustomGapCode = signal(`<app-progress
+  type="dashboard"
+  percent="50"
+  gap-degree="120"
+></app-progress>`);
+
+  // Status Types
+  statusActiveCode = signal(`<app-progress
+  percent="60"
+  status="active"
+></app-progress>`);
+
+  statusSuccessCode = signal(`<app-progress
+  percent="100"
+  status="success"
+></app-progress>`);
+
+  statusExceptionCode = signal(`<app-progress
+  percent="50"
+  status="exception"
+></app-progress>`);
+
+  // Indeterminate
+  indeterminateLineCode = signal(`<app-progress
+  indeterminate="true"
+></app-progress>`);
+
+  indeterminateCircleCode = signal(`<app-progress
+  type="circle"
+  indeterminate="true"
+></app-progress>`);
+
+  indeterminateDashboardCode = signal(`<app-progress
+  type="dashboard"
+  indeterminate="true"
+></app-progress>`);
+
+  // Colors & Gradients
+  colorPurpleCode = signal(`<app-progress
+  percent="60"
+  stroke-color="#9b59b6"
+></app-progress>`);
+
+  colorOrangeCode = signal(`<app-progress
+  percent="75"
+  stroke-color="#ff9800"
+></app-progress>`);
+
+  colorPinkCode = signal(`<app-progress
+  percent="85"
+  stroke-color="#e91e63"
+></app-progress>`);
+
+  gradientBlueCode = signal(`<app-progress
+  percent="80"
+  stroke-color="linear-gradient(to right, #667eea, #06b6d4)"
+></app-progress>`);
+
+  gradientPurpleCode = signal(`<app-progress
+  percent="90"
+  stroke-color="linear-gradient(to right, #a855f7, #ec4899)"
+></app-progress>`);
+
+  gradientOrangeCode = signal(`<app-progress
+  percent="70"
+  stroke-color="linear-gradient(to right, #f97316, #ef4444)"
+></app-progress>`);
+
+  // Steps Progress
+  steps5Code = signal(`<app-progress
+  percent="60"
+  steps="5"
+></app-progress>`);
+
+  steps10Code = signal(`<app-progress
+  percent="80"
+  steps="10"
+></app-progress>`);
+
+  stepsSuccessCode = signal(`<app-progress
+  percent="100"
+  steps="8"
+  status="success"
+></app-progress>`);
+
+  // Stroke Width
+  strokeThinCode = signal(`<app-progress
+  percent="60"
+  stroke-width="4"
+></app-progress>`);
+
+  strokeNormalCode = signal(`<app-progress
+  percent="60"
+  stroke-width="10"
+></app-progress>`);
+
+  strokeThickCode = signal(`<app-progress
+  percent="60"
+  stroke-width="20"
+></app-progress>`);
+
+  // Stroke Linecap
+  linecapRoundCode = signal(`<app-progress
+  percent="75"
+  stroke-linecap="round"
+></app-progress>`);
+
+  linecapSquareCode = signal(`<app-progress
+  percent="75"
+  stroke-linecap="square"
+></app-progress>`);
+
+  // Hide Info
+  hideInfoLineCode = signal(`<app-progress
+  percent="60"
+  show-info="false"
+></app-progress>`);
+
+  hideInfoCircleCode = signal(`<app-progress
+  type="circle"
+  percent="75"
+  show-info="false"
+></app-progress>`);
+
+  // Premium Styles
+  liquidWaveCode = signal(`<app-progress
+  percent="65"
+  liquid="true"
+  stroke-color="#3DCD58"
+></app-progress>`);
+
+  glassmorphismCode = signal(`<app-progress
+  percent="50"
+  glass="true"
+  stroke-color="#fff"
+></app-progress>`);
+
+  dynamicGlowCode = signal(`<app-progress
+  percent="80"
+  glow="true"
+  stroke-color="#ff4d4f"
+></app-progress>`);
+
+  decimalPrecisionCode = signal(`<app-progress
+  percent="2.55"
+></app-progress>`);
 }
