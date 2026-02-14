@@ -35,7 +35,7 @@
     "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.0.5.tgz",
     "rxjs": "~7.8.0",
     "set-ui-lib": "file:../../stencil/set-ui-lib/set-ui-lib-0.0.2.tgz",
-    "tslib": "^2.3.0",
+    "tslib": "^2.8.1",
     "zone.js": "~0.16.0"
   },
   "devDependencies": {

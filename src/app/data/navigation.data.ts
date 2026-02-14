@@ -4,7 +4,7 @@ export interface NavItem {
   icon?: string;
   badge?: string;
   status?: string;
-  iconLibrary?: string;
+  iconLibrary?: string; // e.g., 'lucide', 'font-awesome', etc.
   children?: NavItem[];
 }
 
@@ -221,7 +221,15 @@ export const categoryNavItems: NavItem[] = [
 // ];
 
 export const userProfileNavItems: NavItem[] = [
-  { id: 'about', label: 'About', icon: 'info' },
+
+   { id: 'about', label: 'About', icon: 'info' ,iconLibrary: 'se'},
+      {
+        id: 'user-profile',
+        label: 'John Doe',
+        status: 'away',
+        icon: 'user',
+        iconLibrary: 'lucide',
+        children: [
   {
     id: 'user-profile',
     label: 'John Doe',
@@ -241,7 +249,10 @@ export const userProfileNavItems: NavItem[] = [
       { id: 'logout', label: 'Logout', icon: 'log-out', iconLibrary: 'lucide' },
     ],
   },
-];
+      ]
+    
+    }];
+
 export const bottomNavItems: NavItem[] = [
   {
     id: 'user-management',
@@ -249,16 +260,7 @@ export const bottomNavItems: NavItem[] = [
     icon: '👥',
     badge: 'New',
   },
-  {
-    id: 'analytics',
-    label: 'Analytics',
-    icon: '📊',
-  },
-  {
-    id: 'reports',
-    label: 'Reports',
-    icon: '📄',
-  },
+  
   {
     id: 'theme-selector',
     label: 'Settings',
@@ -270,15 +272,16 @@ export const bottomNavItems: NavItem[] = [
     label: 'Support',
     icon: '❓',
   },
+
 ];
 
-export const bottomSecondaryItems: NavItem[] = [
-  {
-    id: 'about',
-    label: 'About',
-    icon: 'ℹ️',
-  },
-];
+// export const bottomSecondaryItems: NavItem[] = [
+//   {
+//     id: 'about',
+//     label: 'About',
+//     icon: 'ℹ️',
+//   },
+// ];
 
 // export const categoryNavItems: NavItem[] = [
 //   {
@@ -376,7 +379,7 @@ export function getAllNavItems(): NavItem[] {
   addItems(categoryNavItems);
   addItems(bottomNavItems);
   addItems(userProfileNavItems);
-  addItems(bottomSecondaryItems);
+ // addItems(bottomSecondaryItems);
 
   return allItems;
 }
