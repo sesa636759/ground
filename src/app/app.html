@@ -6,55 +6,15 @@
     [categories]="topItems"
     [items]="categoryItems"
     [bottomItems]="bottomItems"
+    [bottomItemsSecondary]="userProfileItems"
     [theme]="themeService.resolvedTheme()"
     [selected-item]="currentRoute()"
     [show-search]="true"
     max-items="10"
     (navItemClick)="onNavItemClick($event)"
   >
-    <!-- User Profile in Footer Slot -->
-    <div
-      slot="footer"
-      class="sidebar-user-profile"
-      (mouseenter)="userMenuOpen.set(true)"
-      (mouseleave)="userMenuOpen.set(false)"
-    >
-      <div class="user-profile-container" (click)="toggleUserMenu()">
-        <div class="user-avatar">
-          <img [src]="currentUser().avatar" [alt]="currentUser().name" />
-          <span class="user-status" [class.online]="currentUser().isOnline"></span>
-        </div>
-        <div class="user-info" *ngIf="!sidebarCollapsed()">
-          <div class="user-name">{{ currentUser().name }}</div>
-          <div class="user-role">{{ currentUser().role }}</div>
-        </div>
-        <ui-button
-          class="user-menu-toggle"
-          *ngIf="!sidebarCollapsed()"
-          variant="ghost"
-          icon-only
-          [icon]="userMenuOpen() ? '▲' : '▼'"
-          label="Toggle Menu"
-          (click)="toggleUserMenu()"
-        >
-        </ui-button>
-      </div>
-
-      <!-- User Dropdown Menu -->
-      <div class="user-menu" *ngIf="userMenuOpen()">
-        <ui-button
-          *ngFor="let item of userProfileItems"
-          class="menu-item"
-          [class.logout]="item.id === 'logout'"
-          variant="ghost"
-          full-width
-          (click)="onNavItemClick({ detail: item })"
-          [icon]="item.icon"
-          [label]="item.label"
-          [badge]="item.badge"
-        ></ui-button>
-      </div>
-    </div>
+    <!-- User Profile rendered as bottom item (consistent with other categories) -->
+  
   </ui-navigation>
 
   <!-- Top Bar Navigation - Only show when layout is topbar -->
@@ -80,22 +40,22 @@
 
       <div class="topbar-actions">
         <div
-          class="topbar-user"
-          (mouseenter)="userMenuOpen.set(true)"
-          (mouseleave)="userMenuOpen.set(false)"
+          class="nav-item-with-popover user-profile-item"
+          (mouseenter)="openPopover('user-profile')"
+          (mouseleave)="closePopover('user-profile')"
         >
-          <div class="user-avatar-small">
+          <div class="user-avatar-small" (click)="toggleUserMenu('user-profile')">
             <img [src]="currentUser().avatar" [alt]="currentUser().name" />
           </div>
           <span class="user-name-small">{{ currentUser().name }}</span>
           
-          <!-- User Dropdown Menu for Topbar -->
-          <div class="topbar-user-menu" *ngIf="userMenuOpen()">
-            <div class="user-menu-header">
+          <!-- User Popover Menu (consistent structure with other categories) -->
+          <div class="nav-item-popover user-menu" *ngIf="popoverOpen['user-profile']">
+            <div class="menu-header">
               <img [src]="currentUser().avatar" [alt]="currentUser().name" />
-              <div class="user-details">
-                <div class="user-name">{{ currentUser().name }}</div>
-                <div class="user-role">{{ currentUser().role }}</div>
+              <div class="menu-details">
+                <div class="menu-name">{{ currentUser().name }}</div>
+                <div class="menu-role">{{ currentUser().role }}</div>
               </div>
             </div>
             <div class="menu-divider"></div>

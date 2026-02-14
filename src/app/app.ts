@@ -61,8 +61,9 @@ export class App implements OnInit {
   bottomItems = bottomNavItems;
   userProfileItems = userProfileNavItems;
 
-  // User Profile
+  // User Profile & Popover State
   userMenuOpen = signal(false);
+  popoverOpen: { [key: string]: boolean } = {};
 
   currentUser = computed(() => {
     const user = this.authService.currentUser();
@@ -96,6 +97,7 @@ export class App implements OnInit {
       topItems: this.topItems,
       categoryItems: this.categoryItems,
       bottomItems: this.bottomItems,
+      bottomItemsSecondary: this.userProfileItems,
     });
 
     // Track route changes to update selected item
