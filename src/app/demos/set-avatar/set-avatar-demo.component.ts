@@ -205,16 +205,16 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
   <app-avatar name="User 4"></app-avatar>
 </app-avatar-group>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    const container = document.querySelector('.pane-examples');
-    if (element && container) {
-      container.scrollTo({
-        top: (element as HTMLElement).offsetTop - 20,
-        behavior: 'smooth',
-      });
-    }
-  }
+  // scrollToSection(id: string) {
+  //   const element = document.getElementById(id);
+  //   const container = document.querySelector('.pane-examples');
+  //   if (element && container) {
+  //     container.scrollTo({
+  //       top: (element as HTMLElement).offsetTop - 20,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // }
 
   playgroundCode = `<app-avatar name="John Doe" status="online" size="64px"></app-avatar>`;
 
