@@ -5,6 +5,7 @@ import { AppInputValueAccessorDirective } from '../../directives/app-input-value
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
@@ -16,6 +17,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CodeBlockComponent,
     AnchorPlaygroundComponent,
     DemoTabsComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-anchor-demo.component.html',
@@ -63,8 +65,12 @@ export class AppAnchorDemoComponent {
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const container = document.querySelector('.pane-examples');
+    if (element && container) {
+      container.scrollTo({
+        top: (element as HTMLElement).offsetTop - 20,
+        behavior: 'smooth',
+      });
     }
   }
 }

@@ -155,17 +155,11 @@ export class SetLayoutManagerDemoComponent implements AfterViewInit {
     });
   }
 
-  handleLayoutChange(event: CustomEvent) {
-    console.log('Layout changed:', event.detail);
-  }
+  handleLayoutChange(event: CustomEvent) {}
 
-  handlePanelAdded(event: CustomEvent) {
-    console.log('Panel added:', event.detail);
-  }
+  handlePanelAdded(event: CustomEvent) {}
 
-  handlePanelRemoved(event: CustomEvent) {
-    console.log('Panel removed:', event.detail);
-  }
+  handlePanelRemoved(event: CustomEvent) {}
 
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);

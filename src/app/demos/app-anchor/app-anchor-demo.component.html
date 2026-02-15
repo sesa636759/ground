@@ -1,34 +1,33 @@
 <div class="demo-container">
-  <h1>⚓ Anchor Navigation</h1>
-  <p class="intro-text">
-    A streamlined navigation component that tracks the current scroll position within a container or
-    the entire page. Perfect for long-form content, documentation, or landing pages.
-  </p>
+  <app-demo-header
+    icon="⚓"
+    title="Anchor Navigation"
+    description="A streamlined navigation component that tracks the current scroll position within a container or the entire page. Perfect for long-form content, documentation, or landing pages."
+  >
+  </app-demo-header>
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Configure the scrolling behavior and visual styles</p>
-          </div>
-          <app-anchor-playground></app-anchor-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Anchor Setup"
-            language="html"
-          ></app-code-block>
-        </section>
-      </div>
+      <!-- Interactive Playground -->
+      <section class="demo-section" id="playground">
+        <div class="section-header">
+          <h2>🎮 Interactive Playground</h2>
+          <p>Configure the scrolling behavior and visual styles</p>
+        </div>
+        <app-anchor-playground></app-anchor-playground>
+        <app-code-block
+          [code]="playgroundCode"
+          title="Basic Anchor Setup"
+          language="html"
+        ></app-code-block>
+      </section>
     </div>
 
     <div slot="examples">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
+      <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
         <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
+          <div class="sidebar-title">Sections</div>
           <ul class="nav-list">
             <li *ngFor="let variant of exampleVariants">
               <a (click)="scrollToSection(variant.id)">

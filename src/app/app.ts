@@ -92,26 +92,17 @@ export class App implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('🚀 App initialized');
-    console.log('📊 Navigation data:', {
-      topItems: this.topItems,
-      categoryItems: this.categoryItems,
-      bottomItems: this.bottomItems,
-      bottomItemsSecondary: this.userProfileItems,
-    });
-
     // Track route changes to update selected item
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
-        console.log('🔄 Route changed to:', url);
+
         this.updateCurrentRoute(url);
       });
 
     // Set initial route
     this.updateCurrentRoute(this.router.url);
-    console.log('📍 Initial route:', this.router.url);
   }
 
   updateCurrentRoute(url: string) {
@@ -130,8 +121,8 @@ export class App implements OnInit {
       this.currentRoute.set(componentId);
     } else if (url.startsWith('/playground')) {
       this.currentRoute.set('playground');
-    } else if (url.startsWith('/theme-selector')) {
-      this.currentRoute.set('theme-selector');
+    } else if (url.startsWith('/settings')) {
+      this.currentRoute.set('settings');
     } else if (url.startsWith('/user-management')) {
       this.currentRoute.set('user-management');
     } else if (url.startsWith('/login')) {
@@ -148,7 +139,6 @@ export class App implements OnInit {
   }
 
   onNavItemClick(event: any) {
-    console.log('Navigation clicked:', event.detail);
     const itemId = event.detail?.id;
     if (itemId) {
       this.userMenuOpen.set(false);
@@ -164,7 +154,7 @@ export class App implements OnInit {
           'home',
           'overview',
           'documentation',
-          'theme-selector',
+          'settings',
           'playground',
           'user-management',
           'login',
@@ -203,24 +193,21 @@ export class App implements OnInit {
   navigateToProfile() {
     this.userMenuOpen.set(false);
     this.router.navigate(['/profile']);
-    console.log('Navigate to profile');
   }
 
   navigateToSettings() {
     this.userMenuOpen.set(false);
-    this.router.navigate(['/theme-selector']);
-    console.log('Navigate to settings');
+    this.router.navigate(['/settings']);
   }
 
   navigateToUserManagement() {
     this.userMenuOpen.set(false);
     this.router.navigate(['/user-management']);
-    console.log('Navigate to user management');
   }
 
   logout() {
     this.userMenuOpen.set(false);
-    console.log('Logout clicked');
+
     this.authService.logout();
   }
 }

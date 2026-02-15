@@ -8,6 +8,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+
 @Component({
   selector: 'app-set-avatar-demo',
   standalone: true,
@@ -17,7 +19,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     AvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',
@@ -54,7 +56,7 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
   ];
 
   get exampleVariants() {
-    return this.variants;
+    return this.variants.filter((v) => v.id !== 'playground');
   }
 
   basicCode = `<!-- Sizes and Shapes -->
@@ -203,12 +205,15 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
   <app-avatar name="User 4"></app-avatar>
 </app-avatar-group>`;
 
-  handleUpload(event: any) {
-    console.log('Upload event:', event);
-  }
-
-  handleClick() {
-    console.log('Avatar clicked');
+  scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    const container = document.querySelector('.pane-examples');
+    if (element && container) {
+      container.scrollTo({
+        top: (element as HTMLElement).offsetTop - 20,
+        behavior: 'smooth',
+      });
+    }
   }
 
   playgroundCode = `<app-avatar name="John Doe" status="online" size="64px"></app-avatar>`;

@@ -4,12 +4,8 @@
     An interactive component used to trigger actions or navigate through the application, featuring
     multiple styles, sizes, and states.
   </p>
-
-  <demo-tabs [variants]="exampleVariants" (variantChange)="scrollToSection($event)">
-    <div slot="playground">
-      <app-button-playground></app-button-playground>
-    </div>
-
+  <demo-tabs>
+    <!-- Examples Slot -->
     <div slot="examples">
       <!-- Visual Variants -->
       <app-example-section

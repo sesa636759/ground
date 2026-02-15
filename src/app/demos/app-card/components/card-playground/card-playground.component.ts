@@ -15,129 +15,116 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       <div class="playground-controls">
         <div class="control-grid">
           <div class="control-section">
-            <h3>Appearance</h3>
+            <h3>🎨 Appearance</h3>
             <div class="control-group">
-              <label>Variant</label>
+              <label>Design Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
                 (change)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
-            <div class="control-group">
-              <label>Border Radius</label>
-              <app-input type="text" [(ngModel)]="pgConfig.borderRadius" (change)="updateConfig()" />
+
+            <div
+              class="control-grid"
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0;"
+            >
+              <div class="control-group">
+                <label>Width</label>
+                <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              </div>
+              <div class="control-group">
+                <label>Radius</label>
+                <app-input
+                  type="text"
+                  [(ngModel)]="pgConfig.borderRadius"
+                  (change)="updateConfig()"
+                />
+              </div>
             </div>
+
             <div class="control-group">
-              <label>Width</label>
-              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Layout</label>
+              <label>Content Layout</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.layout"
                 (change)="updateConfig()"
                 [options]="[
-                  { label: 'Vertical', value: 'vertical' },
-                  { label: 'Horizontal', value: 'horizontal' }
+                  { label: 'Vertical stacking', value: 'vertical' },
+                  { label: 'Horizontal flow', value: 'horizontal' },
                 ]"
               ></ui-dropdown>
             </div>
+
             <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
-                [options]="[
-                  { label: 'Small', value: 'small' },
-                  { label: 'Medium', value: 'medium' },
-                  { label: 'Large', value: 'large' }
-                ]"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Type</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.type"
-                (change)="updateConfig()"
-                [options]="[
-                  { label: 'Default', value: 'default' },
-                  { label: 'Borderless', value: 'borderless' },
-                  { label: 'Inner', value: 'inner' }
-                ]"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Ribbon Text</label>
-              <app-input type="text" [(ngModel)]="pgConfig.ribbon" (change)="updateConfig()" placeholder="e.g., NEW" />
+              <label>Special Effects</label>
+              <div class="checkbox-grid">
+                <app-checkbox
+                  id="glass"
+                  [(ngModel)]="pgConfig.glass"
+                  (change)="updateConfig()"
+                  label="Glassmorphism"
+                ></app-checkbox>
+                <app-checkbox
+                  id="hoverable"
+                  [(ngModel)]="pgConfig.hoverable"
+                  (change)="updateConfig()"
+                  label="Raise on hover"
+                ></app-checkbox>
+              </div>
             </div>
           </div>
 
           <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="hoverable"
-                [(ngModel)]="pgConfig.hoverable"
-                (change)="updateConfig()"
-                label="Hoverable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="flippable"
-                [(ngModel)]="pgConfig.flippable"
-                (change)="updateConfig()"
-                label="Flippable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (change)="updateConfig()"
-                label="Skeleton Loading"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showMenu"
-                [(ngModel)]="pgConfig.showMenu"
-                (change)="updateConfig()"
-                label="Show Context Menu"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="closable"
-                [(ngModel)]="pgConfig.closable"
-                (change)="updateConfig()"
-                label="Closable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="selectable"
-                [(ngModel)]="pgConfig.selectable"
-                (change)="updateConfig()"
-                label="Selectable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="collapsible"
-                [(ngModel)]="pgConfig.collapsible"
-                (change)="updateConfig()"
-                label="Collapsible"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="glass"
-                [(ngModel)]="pgConfig.glass"
-                (change)="updateConfig()"
-                label="Glass Effect"
-              ></app-checkbox>
+            <h3>⚡ Functional Features</h3>
+            <div class="checkbox-grid">
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="flippable"
+                  [(ngModel)]="pgConfig.flippable"
+                  (change)="updateConfig()"
+                  label="Flippable"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="loading"
+                  [(ngModel)]="pgConfig.loading"
+                  (change)="updateConfig()"
+                  label="Skeleton"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="showMenu"
+                  [(ngModel)]="pgConfig.showMenu"
+                  (change)="updateConfig()"
+                  label="Menu"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="closable"
+                  [(ngModel)]="pgConfig.closable"
+                  (change)="updateConfig()"
+                  label="Closable"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="selectable"
+                  [(ngModel)]="pgConfig.selectable"
+                  (change)="updateConfig()"
+                  label="Selectable"
+                ></app-checkbox>
+              </div>
+              <div class="checkbox-group">
+                <app-checkbox
+                  id="collapsible"
+                  [(ngModel)]="pgConfig.collapsible"
+                  (change)="updateConfig()"
+                  label="Collapsible"
+                ></app-checkbox>
+              </div>
             </div>
           </div>
         </div>
@@ -147,13 +134,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button (click)="copyCode()" label="Copy Snippet" icon="fas fa-copy"></ui-button>
+          <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -177,9 +159,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.width]="pgConfig.width"
           [menuItems]="menuJson"
         >
-          <div slot="cover" class="demo-cover-image">🌄</div>
+          <div slot="cover" class="demo-cover-image">
+            <i class="fas fa-mountain"></i>
+          </div>
           <div slot="header">
-            <h3 style="margin: 0;">Exploring the Alps</h3>
+            <h3 style="margin: 0; font-weight: 700;">Exploring the Alps</h3>
           </div>
           <div slot="content" class="demo-card-content">
             <p>
@@ -187,21 +171,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               in Europe. Perfect for adventure seekers!
             </p>
           </div>
-          <div slot="footer" style="display: flex; gap: 8px;">
-            <ui-button
-              class="btn-primary"
-              variant="primary"
-              style="flex: 1;"
-              label="Book Now"
-            ></ui-button>
-            <ui-button class="btn-secondary" variant="secondary" label="Details"></ui-button>
+          <div slot="footer" style="display: flex; gap: 12px; width: 100%;">
+            <ui-button variant="primary" style="flex: 1;" label="Book Now"></ui-button>
+            <ui-button variant="ghost" label="Details" icon="fas fa-info-circle"></ui-button>
           </div>
-          <div slot="back-content" style="padding: 20px;">
-            <h3>Quick Stats</h3>
-            <ul style="padding-left: 20px; color: var(--text-secondary);">
+          <div slot="back-content" style="padding: 24px;">
+            <h3 style="color: var(--primary); margin-bottom: 16px;">Tour Statistics</h3>
+            <ul style="padding-left: 20px; color: var(--text-secondary); line-height: 2;">
               <li>Elevation: 4,808m</li>
               <li>Length: 1,200km</li>
               <li>Area: 200,000 km²</li>
+              <li>Duration: 5-7 Days</li>
             </ul>
           </div>
         </ui-card>
@@ -265,7 +245,8 @@ export class CardPlaygroundComponent {
     if (this.pgConfig.layout !== 'vertical') code += `  layout="${this.pgConfig.layout}"\n`;
     if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
     if (this.pgConfig.type !== 'default') code += `  type="${this.pgConfig.type}"\n`;
-    if (this.pgConfig.ribbon) code += `  ribbon="${this.pgConfig.ribbon}" ribbon-color="${this.pgConfig.ribbonColor}"\n`;
+    if (this.pgConfig.ribbon)
+      code += `  ribbon="${this.pgConfig.ribbon}" ribbon-color="${this.pgConfig.ribbonColor}"\n`;
     code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
     code += `  width="${this.pgConfig.width}"\n`;
     code += '>\n';

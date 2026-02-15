@@ -1,339 +1,36 @@
 <div class="demo-container">
-  <h1>🃏 Card Component Demo</h1>
+  <app-demo-header
+    icon="🃏"
+    title="Card Component"
+    description="Cards contain content and actions about a single subject. They are versatile containers that can handle images, headers, content, and footers."
+  >
+  </app-demo-header>
 
-  <demo-tabs [variants]="variants">
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <div class="demo-container">
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test all card properties in real-time</p>
-          </div>
-          <app-card-playground></app-card-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Card Usage"
-            language="html"
-          ></app-code-block>
-        </section>
-      </div>
-    </div>
-
+  <demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <aside class="examples-sidebar">
-          <nav class="nav-list">
-            <a
-              *ngFor="let variant of exampleVariants"
-              [href]="'#' + variant.id"
-              class="nav-item"
-              (click)="scrollToSection(variant.id)"
-            >
-              <span class="nav-icon">{{ variant.icon }}</span>
-              <span class="nav-title">{{ variant.title }}</span>
-            </a>
-          </nav>
-        </aside>
-
-        <!-- Scrollable Content -->
-        <div class="examples-content">
-          <!-- Basic Card -->
-          <section class="demo-section" id="basic">
-            <div class="section-header">
-              <h2>📋 Basic Card</h2>
-              <p>A basic card with title and content</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card>
-                <div slot="header"><h3>Card Title</h3></div>
-                <div slot="content">
-                  <p>Card content goes here. You can add any content inside the card body.</p>
-                  <p>Multiple paragraphs are supported.</p>
-                </div>
-              </ui-card>
-              <ui-card>
-                <div slot="header">
-                  <h3>Default Card</h3>
-                  <a href="#" style="margin-left: auto">More</a>
-                </div>
-                <div slot="content">
-                  This card has an extra link in the header.
-                </div>
-              </ui-card>
-              <ui-card>
-                <div slot="content">
-                  Card without title, only content.
-                </div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="basicCode" title="Basic Card" language="html"></app-code-block>
-          </section>
-
-          <!-- Card with Cover -->
-          <section class="demo-section" id="cover">
-            <div class="section-header">
-              <h2>🖼️ Card with Cover</h2>
-              <p>Card with a cover image</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card>
-                <div slot="cover">
-                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop" alt="Cover" />
-                </div>
-                <div slot="header"><h3>Card Title</h3></div>
-                <div slot="content">
-                  Beautiful landscape cover image with detailed content below.
-                </div>
-              </ui-card>
-              <ui-card>
-                <div slot="cover">
-                  <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=400&h=200&fit=crop" alt="City" />
-                </div>
-                <div slot="header"><h3>City View</h3></div>
-                <div slot="content">
-                  Urban cityscape at night with stunning lights and architecture.
-                </div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="coverCode" title="Card with Cover" language="html"></app-code-block>
-          </section>
-
-          <!-- Card with Actions -->
-          <section class="demo-section" id="actions">
-            <div class="section-header">
-              <h2>⚡ Card with Actions</h2>
-              <p>Cards with action buttons at the bottom</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card>
-                <div slot="header"><h3>Card Title</h3></div>
-                <div slot="content">
-                  <p>This card has three action buttons in the footer.</p>
-                  <p>Click on any action to interact.</p>
-                </div>
-                <div slot="footer">
-                  <ui-button label="Settings"></ui-button>
-                  <ui-button label="Edit"></ui-button>
-                  <ui-button label="More"></ui-button>
-                </div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="actionsCode" title="Card with Actions" language="html"></app-code-block>
-          </section>
-
-          <!-- Hoverable Cards -->
-          <section class="demo-section" id="hoverable">
-            <div class="section-header">
-              <h2>✨ Hoverable Cards</h2>
-              <p>Cards with hover effect</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card hoverable>
-                <div slot="header"><h3>Hoverable Card</h3></div>
-                <div slot="content">Hover to see the lift effect.</div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="hoverableCode" title="Hoverable" language="html"></app-code-block>
-          </section>
-
-          <!-- Card Sizes -->
-          <section class="demo-section" id="sizes">
-            <div class="section-header">
-              <h2>📏 Card Sizes</h2>
-              <p>Different size options</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card><div slot="content">Default Size</div></ui-card>
-              <ui-card size="small"><div slot="content">Small Size</div></ui-card>
-            </div>
-            <app-code-block [code]="sizesCode" title="Sizes" language="html"></app-code-block>
-          </section>
-
-          <!-- Card Types -->
-          <section class="demo-section" id="types">
-            <div class="section-header">
-              <h2>🎨 Card Types</h2>
-              <p>Borderless and inner types</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card type="borderless"><div slot="content">Borderless</div></ui-card>
-              <ui-card type="inner"><div slot="content">Inner Card</div></ui-card>
-            </div>
-            <app-code-block [code]="typesCode" title="Types" language="html"></app-code-block>
-          </section>
-
-          <!-- Loading -->
-          <section class="demo-section" id="loading">
-            <div class="section-header">
-              <h2>⏳ Loading State</h2>
-              <p>Skeleton animation</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card loading></ui-card>
-            </div>
-            <app-code-block [code]="statesCode" title="Loading" language="html"></app-code-block>
-          </section>
-
-          <!-- Grid -->
-          <section class="demo-section" id="grid">
-            <div class="section-header">
-              <h2>📊 Grid Cards</h2>
-              <p>Grid layout</p>
-            </div>
-            <div class="demo-grid" style="grid-template-columns: repeat(3, 1fr);">
-              <ui-card><div slot="content">1</div></ui-card>
-              <ui-card><div slot="content">2</div></ui-card>
-              <ui-card><div slot="content">3</div></ui-card>
-            </div>
-            <app-code-block [code]="gridCode" title="Grid" language="html"></app-code-block>
-          </section>
-
-          <!-- Custom -->
-          <section class="demo-section" id="custom">
-            <div class="section-header">
-              <h2>🎭 Custom Styling</h2>
-              <p>Custom styles</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card head-style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                <div slot="header"><h3>Custom</h3></div>
-                <div slot="content">Styled card</div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="customCode" title="Custom" language="html"></app-code-block>
-          </section>
-
-          <!-- Flipping -->
-          <section class="demo-section" id="flipping">
-            <div class="section-header">
-              <h2>🔄 Flipping Cards</h2>
-              <p>3D flip animations</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card flippable>
-                <div slot="content">Front</div>
-                <div slot="back-content">Back</div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="flippingCode" title="Flipping" language="html"></app-code-block>
-          </section>
-
-          <!-- Closable -->
-          <section class="demo-section" id="closable">
-            <div class="section-header">
-              <h2>✖️ Closable & Menu</h2>
-              <p>Close and menu actions</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card closable><div slot="content">Closable</div></ui-card>
-              <ui-card show-menu><div slot="content">With Menu</div></ui-card>
-            </div>
-            <app-code-block [code]="closableCode" title="Closable" language="html"></app-code-block>
-          </section>
-
-          <!-- Premium -->
-          <section class="demo-section" id="premium">
-            <div class="section-header">
-              <h2>💎 Premium Features</h2>
-              <p>Advanced features</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card glass="true"><div slot="content">Glass Effect</div></ui-card>
-            </div>
-            <app-code-block [code]="premiumCode" title="Premium" language="html"></app-code-block>
-          </section>
-
-          <!-- Variants -->
-          <section class="demo-section" id="variants">
-            <div class="section-header">
-              <h2>🌈 Card Variants</h2>
-              <p>Color themes</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card variant="primary"><div slot="content">Primary</div></ui-card>
-              <ui-card variant="success"><div slot="content">Success</div></ui-card>
-              <ui-card variant="warning"><div slot="content">Warning</div></ui-card>
-            </div>
-            <app-code-block [code]="variantsCode" title="Variants" language="html"></app-code-block>
-          </section>
-
-          <!-- Ribbons -->
-          <section class="demo-section" id="ribbons">
-            <div class="section-header">
-              <h2>🎀 Card Ribbons</h2>
-              <p>Status ribbons</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card ribbon="NEW"><div slot="content">New Item</div></ui-card>
-            </div>
-            <app-code-block [code]="ribbonsCode" title="Ribbons" language="html"></app-code-block>
-          </section>
-
-          <!-- Collapsible -->
-          <section class="demo-section" id="collapsible">
-            <div class="section-header">
-              <h2>📦 Collapsible</h2>
-              <p>Expandable cards</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card collapsible><div slot="content">Collapsible</div></ui-card>
-            </div>
-            <app-code-block [code]="collapsibleCode" title="Collapsible" language="html"></app-code-block>
-          </section>
-
-          <!-- Selectable -->
-          <section class="demo-section" id="selectable">
-            <div class="section-header">
-              <h2>✅ Selectable</h2>
-              <p>Selectable cards</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card selectable><div slot="content">Selectable</div></ui-card>
-            </div>
-            <app-code-block [code]="selectableCode" title="Selectable" language="html"></app-code-block>
-          </section>
-
-          <!-- Avatars -->
-          <section class="demo-section" id="avatars">
-            <div class="section-header">
-              <h2>👤 With Avatars</h2>
-              <p>Avatar cards</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card>
-                <div slot="avatar">
-                  <img src="https://i.pravatar.cc/150?img=1" alt="User" style="width: 48px; height: 48px; border-radius: 50%;" />
-                </div>
-                <div slot="content">User Card</div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="avatarsCode" title="Avatars" language="html"></app-code-block>
-          </section>
-
-          <!-- Combined -->
-          <section class="demo-section" id="combined">
-            <div class="section-header">
-              <h2>🚀 Combined Features</h2>
-              <p>Multiple features</p>
-            </div>
-            <div class="demo-grid">
-              <ui-card variant="primary" ribbon="PRO" selectable>
-                <div slot="content">Combined Features</div>
-              </ui-card>
-            </div>
-            <app-code-block [code]="combinedCode" title="Combined" language="html"></app-code-block>
-          </section>
-
-          <!-- Truncated for brevity - add remaining sections here -->
-        </div>
-      </div>
+      <app-card-examples></app-card-examples>
     </div>
 
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <section class="demo-section">
+        <div class="section-header">
+          <app-demo-header
+            icon="🎮"
+            title="Interactive Playground"
+            description="Configure and test card properties in real-time"
+          >
+          </app-demo-header>
+        </div>
+        <app-card-playground></app-card-playground>
+        <app-code-block [code]="playgroundCode" title="Card Usage" language="html"></app-code-block>
+      </section>
+    </div>
+
+    <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="card"></app-component-documentation>
+      <app-component-documentation></app-component-documentation>
     </div>
   </demo-tabs>
 </div>
