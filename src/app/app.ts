@@ -31,7 +31,7 @@ import {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet,  FontAwesomeModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -130,8 +130,8 @@ export class App implements OnInit {
       this.currentRoute.set(componentId);
     } else if (url.startsWith('/playground')) {
       this.currentRoute.set('playground');
-    } else if (url.startsWith('/theme-selector')) {
-      this.currentRoute.set('theme-selector');
+    } else if (url.startsWith('/settings')) {
+      this.currentRoute.set('settings');
     } else if (url.startsWith('/user-management')) {
       this.currentRoute.set('user-management');
     } else if (url.startsWith('/login')) {
@@ -164,7 +164,7 @@ export class App implements OnInit {
           'home',
           'overview',
           'documentation',
-          'theme-selector',
+          'settings',
           'playground',
           'user-management',
           'login',
@@ -208,7 +208,7 @@ export class App implements OnInit {
 
   navigateToSettings() {
     this.userMenuOpen.set(false);
-    this.router.navigate(['/theme-selector']);
+    this.router.navigate(['/settings']);
     console.log('Navigate to settings');
   }
 

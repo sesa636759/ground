@@ -43,7 +43,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'theme-selector',
+    path: 'settings',
     loadComponent: () =>
       import('./pages/settings/settings.component').then((m) => m.ThemeSettingsComponent),
   },
@@ -455,13 +455,7 @@ export const routes: Routes = [
             (m) => m.SetDashboardDemoComponent,
           ),
       },
-      {
-        path: 'splitter',
-        loadComponent: () =>
-          import('./demos/app-splitter/app-splitter-demo.component').then(
-            (m) => m.AppSplitterDemoComponent,
-          ),
-      },
+   
       {
         path: 'tabs',
         loadComponent: () =>
@@ -574,13 +568,7 @@ export const routes: Routes = [
             (m) => m.AppStepperDemoComponent,
           ),
       },
-      {
-        path: 'button-group',
-        loadComponent: () =>
-          import('./demos/app-button-group/app-button-group-demo.component').then(
-            (m) => m.AppButtonGroupDemoComponent,
-          ),
-      },
+    
       {
         path: 'pill',
         loadComponent: () =>
@@ -647,13 +635,7 @@ export const routes: Routes = [
             (m) => m.AppTimelineDemoComponent,
           ),
       },
-      {
-        path: 'otp-input',
-        loadComponent: () =>
-          import('./demos/app-otp-input/app-otp-input-demo.component').then(
-            (m) => m.AppOtpInputDemoComponent,
-          ),
-      },
+  
       {
         path: 'tabs',
         loadComponent: () =>
@@ -709,13 +691,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demos/app-timer/app-timer-demo.component').then((m) => m.AppTimerDemoComponent),
       },
-      {
-        path: 'splitter',
-        loadComponent: () =>
-          import('./demos/app-splitter/app-splitter-demo.component').then(
-            (m) => m.AppSplitterDemoComponent,
-          ),
-      },
+  
       {
         path: 'smart-stepper',
         loadComponent: () =>

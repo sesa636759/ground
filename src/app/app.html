@@ -1,8 +1,13 @@
-<div class="app-container" [class.sidebar-collapsed]="sidebarCollapsed()" [class.layout-topbar]="themeService.navigationLayout() === 'topbar'" [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'">
-  <!-- Sidebar Navigation - Only show when layout is sidebar -->
+<!-- App Container with conditional layout classes -->
+<div class="app-container" 
+     [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
+     [class.layout-topbar]="themeService.navigationLayout() === 'topbar'"
+     [class.sidebar-collapsed]="sidebarCollapsed()">
+  
+  <!-- Navigation -->
   <ui-navigation
-    *ngIf="themeService.navigationLayout() === 'sidebar'"
-    class="sidebar-nav"
+    class="main-nav"
+    [orientation]="themeService.navigationLayout() === 'topbar' ? 'horizontal' : 'vertical'"
     [categories]="topItems"
     [items]="categoryItems"
     [bottomItems]="bottomItems"
@@ -13,72 +18,10 @@
     max-items="10"
     (navItemClick)="onNavItemClick($event)"
   >
-    <!-- User Profile rendered as bottom item (consistent with other categories) -->
-  
   </ui-navigation>
-
-  <!-- Top Bar Navigation - Only show when layout is topbar -->
-  <div *ngIf="themeService.navigationLayout() === 'topbar'" class="topbar-nav">
-    <div class="topbar-content">
-      <div class="topbar-brand">
-        <span class="brand-icon">⚡</span>
-        <span class="brand-text">UI Library</span>
-      </div>
-      
-      <nav class="topbar-menu">
-        <a
-          *ngFor="let item of topItems"
-          [routerLink]="'/' + item.id"
-          routerLinkActive="active"
-          class="topbar-item"
-          (click)="onNavItemClick({ detail: item })"
-        >
-          <span class="item-icon">{{ item.icon }}</span>
-          <span class="item-label">{{ item.label }}</span>
-        </a>
-      </nav>
-
-      <div class="topbar-actions">
-        <div
-          class="nav-item-with-popover user-profile-item"
-          (mouseenter)="openPopover('user-profile')"
-          (mouseleave)="closePopover('user-profile')"
-        >
-          <div class="user-avatar-small" (click)="toggleUserMenu('user-profile')">
-            <img [src]="currentUser().avatar" [alt]="currentUser().name" />
-          </div>
-          <span class="user-name-small">{{ currentUser().name }}</span>
-          
-          <!-- User Popover Menu (consistent structure with other categories) -->
-          <div class="nav-item-popover user-menu" *ngIf="popoverOpen['user-profile']">
-            <div class="menu-header">
-              <img [src]="currentUser().avatar" [alt]="currentUser().name" />
-              <div class="menu-details">
-                <div class="menu-name">{{ currentUser().name }}</div>
-                <div class="menu-role">{{ currentUser().role }}</div>
-              </div>
-            </div>
-            <div class="menu-divider"></div>
-            <ui-button
-              *ngFor="let item of userProfileItems"
-              class="menu-item"
-              [class.logout]="item.id === 'logout'"
-              variant="ghost"
-              full-width
-              (click)="onNavItemClick({ detail: item })"
-              [icon]="item.icon"
-              [label]="item.label"
-              [badge]="item.badge"
-            ></ui-button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Main Content with Router Outlet -->
   <main class="main-content">
-    <!-- Router Outlet for Page Content -->
     <div class="content-body">
       <router-outlet></router-outlet>
     </div>
