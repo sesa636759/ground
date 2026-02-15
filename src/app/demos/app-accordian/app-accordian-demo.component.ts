@@ -249,9 +249,7 @@ export class SetAccordianDemoComponent {
     alert(`Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`);
   }
 
-  handleReorder(event: CustomEvent) {
-    console.log('Reordered:', event.detail);
-  }
+  handleReorder(event: CustomEvent) {}
 
   logEvent(name: string, event: CustomEvent) {
     const timestamp = new Date().toLocaleTimeString();

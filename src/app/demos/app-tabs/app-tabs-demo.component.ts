@@ -26,6 +26,7 @@ export class AppTabsDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'styles', name: 'Visual Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'layouts', name: 'Orientations', icon: '📐', color: '#10b981' },
+    { id: 'tab-stack', name: 'Tab Stack', icon: '📚', color: '#f59e0b' },
   ];
 
   get exampleVariants() {
@@ -54,6 +55,19 @@ export class AppTabsDemoComponent {
 
 <!-- Center Aligned Tabs -->
 <ui-tabs align="center">...</ui-tabs>`;
+
+  tabStackCode = `<!-- Advanced Tab Stack -->
+<app-tab-stack active-tab="t1" variant="pills">
+  <app-tab label="Dashboard" value="t1" icon="fas fa-home">
+    <div>Dashboard content</div>
+  </app-tab>
+  <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
+    <div>Analytics content</div>
+  </app-tab>
+  <app-tab label="Settings" value="t3" icon="fas fa-cog">
+    <div>Settings content</div>
+  </app-tab>
+</app-tab-stack>`;
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);

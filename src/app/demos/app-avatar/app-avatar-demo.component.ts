@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
@@ -16,13 +17,18 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     AvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-demo.component.html',
   styleUrl: './app-avatar-demo.component.scss',
 })
 export class AppAvatarDemoComponent {
-  exampleVariants = [
+  get exampleVariants() {
+    return this.variants.filter((v) => v.id !== 'playground');
+  }
+
+  variants = [
     { id: 'playground', title: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'shapes', title: 'Shapes', icon: '📐', color: '#3b82f6' },
     { id: 'types', title: 'Types', icon: '👤', color: '#10b981' },
@@ -65,8 +71,12 @@ export class AppAvatarDemoComponent {
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const container = document.querySelector('.pane-examples');
+    if (element && container) {
+      container.scrollTo({
+        top: (element as HTMLElement).offsetTop - 20,
+        behavior: 'smooth',
+      });
     }
   }
 }

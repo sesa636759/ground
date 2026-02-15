@@ -31,7 +31,7 @@ import {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,  FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet, FontAwesomeModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -92,26 +92,17 @@ export class App implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('🚀 App initialized');
-    console.log('📊 Navigation data:', {
-      topItems: this.topItems,
-      categoryItems: this.categoryItems,
-      bottomItems: this.bottomItems,
-      bottomItemsSecondary: this.userProfileItems,
-    });
-
     // Track route changes to update selected item
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
-        console.log('🔄 Route changed to:', url);
+
         this.updateCurrentRoute(url);
       });
 
     // Set initial route
     this.updateCurrentRoute(this.router.url);
-    console.log('📍 Initial route:', this.router.url);
   }
 
   updateCurrentRoute(url: string) {
@@ -148,7 +139,6 @@ export class App implements OnInit {
   }
 
   onNavItemClick(event: any) {
-    console.log('Navigation clicked:', event.detail);
     const itemId = event.detail?.id;
     if (itemId) {
       this.userMenuOpen.set(false);
@@ -203,24 +193,21 @@ export class App implements OnInit {
   navigateToProfile() {
     this.userMenuOpen.set(false);
     this.router.navigate(['/profile']);
-    console.log('Navigate to profile');
   }
 
   navigateToSettings() {
     this.userMenuOpen.set(false);
     this.router.navigate(['/settings']);
-    console.log('Navigate to settings');
   }
 
   navigateToUserManagement() {
     this.userMenuOpen.set(false);
     this.router.navigate(['/user-management']);
-    console.log('Navigate to user management');
   }
 
   logout() {
     this.userMenuOpen.set(false);
-    console.log('Logout clicked');
+
     this.authService.logout();
   }
 }

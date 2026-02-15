@@ -7,6 +7,8 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+
 @Component({
   selector: 'app-set-avatar-demo',
   standalone: true,
@@ -17,6 +19,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',
@@ -54,10 +57,8 @@ export class SetAvatarDemoComponent {
   ];
 
   get exampleVariants() {
-    return this.variants.filter(v => v.id !== 'playground');
+    return this.variants.filter((v) => v.id !== 'playground');
   }
-
-
 
   basicCode = `<!-- Sizes and Shapes -->
 <app-avatar name="LC" size="large" shape="circle"></app-avatar>
@@ -207,8 +208,12 @@ export class SetAvatarDemoComponent {
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const container = document.querySelector('.pane-examples');
+    if (element && container) {
+      container.scrollTo({
+        top: (element as HTMLElement).offsetTop - 20,
+        behavior: 'smooth',
+      });
     }
   }
 

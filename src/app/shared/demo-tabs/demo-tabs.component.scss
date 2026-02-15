@@ -1,161 +1,77 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background: var(--bg-primary);
+}
 
-.demo-tabs {
+.demo-page-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 0;
+}
+
+.demo-master-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
-  background: var(--surface-elevated);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+}
 
-  .tab-bar {
-    display: flex;
-    gap: 0.25rem;
-    padding: var(--space-sm);
-    background: var(--surface-1);
-    border-bottom: 1px solid var(--border-light);
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-strong) transparent;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-color) 50%, transparent);
-    }
+app-tab-stack {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  --tab-header-bg: #ffffff;
+  --tab-active-color: var(--primary);
+  --tab-border-color: var(--border-color);
+  --tab-header-padding: 0 4rem;
+}
 
-    &::-webkit-scrollbar {
-      height: 3px;
-    }
+app-tab {
+  height: 100%;
+  display: block;
+}
 
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
+.viewport-pane {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--border-strong);
-      border-radius: var(--radius-full);
-      transition: background-color var(--transition-fast);
-      
-      &:hover {
-        background-color: var(--text-tertiary);
-      }
-    }
+.pane-examples {
+  background: #ffffff;
+  height: 100%;
+  overflow-y: auto;
+}
 
-    button {
-      flex-shrink: 0;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-sm);
-      padding: var(--space-sm) var(--space-lg);
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      border-radius: var(--radius-md);
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 3px;
-        background: var(--gradient-primary);
-        border-radius: var(--radius-full) var(--radius-full) 0 0;
-        transition: width var(--transition-smooth);
-      }
+.pane-playground,
+.pane-docs {
+  overflow-y: auto;
+  padding: 4rem;
+  background: #ffffff;
+  height: 100%;
+}
 
-      &:hover {
-        color: var(--text-primary);
-        background: var(--bg-accent);
-      }
-
-      &.active {
-        color: var(--primary);
-        background: var(--bg-accent);
-        
-        &::before {
-          width: 80%;
-        }
-      }
-
-      .material-icons {
-        font-size: 1.2rem;
-        transition: transform var(--transition-fast);
-      }
-      
-      &:hover .material-icons,
-      &.active .material-icons {
-        transform: scale(1.1);
-      }
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
-  .tab-content {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    padding: var(--space-xl);
-    background: var(--bg-primary);
-    background-image: var(--gradient-mesh);
-    
-    /* Premium scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-strong) transparent;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--border-strong);
-      border-radius: var(--radius-full);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      transition: background-color var(--transition-fast);
-      
-      &:hover {
-        background-color: var(--text-tertiary);
-        background-clip: padding-box;
-      }
-    }
-
-    .tab-pane {
-      min-height: 100%;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Dark theme adjustments */
-[data-theme="dark"] .demo-tabs {
-  background: var(--surface-2);
-  
-  .tab-bar {
-    background: var(--surface-1);
-    border-bottom-color: var(--border-color);
-  }
-  
-  .tab-content {
-    background: var(--bg-secondary);
-  }
+.animate-in {
+  animation: fadeIn 0.4s ease-out;
 }

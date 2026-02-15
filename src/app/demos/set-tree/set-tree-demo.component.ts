@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
@@ -19,33 +19,21 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
-export class SetTreeDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic-tree', name: 'Basic Tree', icon: '🌲', color: '#3b82f6' },
-    { id: 'icons-colors', name: 'Icons & Colors', icon: '🎨', color: '#10b981' },
-    { id: 'badges-counters', name: 'Badges & Counters', icon: '🔢', color: '#f59e0b' },
-    { id: 'selectable', name: 'Selectable Tree', icon: '✅', color: '#ef4444' },
-    { id: 'checkboxes', name: 'With Checkboxes', icon: '☑️', color: '#6366f1' },
-    { id: 'searchable', name: 'Searchable Tree', icon: '🔍', color: '#ec4899' },
-    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#14b8a6' },
-    { id: 'variants', name: 'Variants', icon: '🎭', color: '#a855f7' },
-    { id: 'org-chart', name: 'Org Chart', icon: '📊', color: '#06b6d4' },
-    { id: 'premium', name: 'Premium Aesthetics', icon: '💎', color: '#84cc16' },
-    { id: 'drag-drop', name: 'Drag & Drop', icon: '🔄', color: '#f97316' },
-    { id: 'dark-theme', name: 'Dark Theme', icon: '🌙', color: '#2563eb' },
+export class SetTreeDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'basic-tree', title: 'Basic Tree', icon: '🌲' },
+    { id: 'icons-colors', title: 'Icons & Colors', icon: '🎨' },
+    { id: 'badges-counters', title: 'Badges & Counters', icon: '🔢' },
+    { id: 'selectable', title: 'Selectable Tree', icon: '✅' },
+    { id: 'checkboxes', title: 'With Checkboxes', icon: '☑️' },
+    { id: 'searchable', title: 'Searchable Tree', icon: '🔍' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'variants', title: 'Variants', icon: '🎭' },
+    { id: 'org-chart', title: 'Org Chart', icon: '📊' },
+    { id: 'premium', title: 'Premium Aesthetics', icon: '💎' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: '🔄' },
+    { id: 'dark-theme', title: 'Dark Theme', icon: '🌙' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
   // Basic simple tree
   simpleTreeData = JSON.stringify([
@@ -178,4 +166,13 @@ export class SetTreeDemoComponent {
   [icons]="true"
   layout="horizontal"
 ></app-tree>`;
+
+  ngOnInit() {}
+
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
