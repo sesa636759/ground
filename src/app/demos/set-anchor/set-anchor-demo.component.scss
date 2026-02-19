@@ -125,6 +125,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -203,7 +204,7 @@
 }
 
 // Code block styling integration
-app-code-block {
+ui-code-preview {
   margin-top: 16px;
   display: block;
 }

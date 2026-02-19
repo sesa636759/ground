@@ -244,7 +244,7 @@ app-carousel {
 }
 
 // Code block styling
-app-code-block {
+ui-code-preview {
   margin-top: 16px;
   display: block;
 }
@@ -255,6 +255,7 @@ app-code-block {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

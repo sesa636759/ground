@@ -61,11 +61,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            language="html"
-            title="Generated Code"
-          ></app-code-block>
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">

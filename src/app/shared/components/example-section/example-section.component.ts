@@ -17,26 +17,25 @@ import { CommonModule } from '@angular/common';
         <div class="preview-content">
           <ng-content></ng-content>
         </div>
-      </div>
-
-      <div class="code-wrapper" *ngIf="code">
-        <ui-code-preview
-          [label]="title"
-          [htmlCode]="language === 'html' ? code : ''"
-          [tsCode]="language === 'typescript' || language === 'ts' ? code : ''"
-          [jsCode]="language === 'javascript' || language === 'js' ? code : ''"
-          [cssCode]="language === 'css' ? code : ''"
-          [activeLang]="
-            language === 'typescript' || language === 'ts'
-              ? 'ts'
-              : language === 'javascript' || language === 'js'
-                ? 'js'
-                : language === 'css'
-                  ? 'css'
-                  : 'html'
-          "
-          expanded="true"
-        ></ui-code-preview>
+        <div class="code-content">
+          <ui-code-preview
+            [label]="title"
+            [htmlCode]="language === 'html' ? code : ''"
+            [tsCode]="language === 'typescript' || language === 'ts' ? code : ''"
+            [jsCode]="language === 'javascript' || language === 'js' ? code : ''"
+            [cssCode]="language === 'css' ? code : ''"
+            [activeLang]="
+              language === 'typescript' || language === 'ts'
+                ? 'ts'
+                : language === 'javascript' || language === 'js'
+                  ? 'js'
+                  : language === 'css'
+                    ? 'css'
+                    : 'html'
+            "
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </section>
   `,
@@ -71,6 +70,7 @@ import { CommonModule } from '@angular/common';
         border: 1px solid var(--border-color);
         border-radius: var(--radius-xl);
         padding: 3rem;
+        flex-direction: column;
         margin-bottom: 1.5rem;
         display: flex;
         justify-content: center;
@@ -84,7 +84,7 @@ import { CommonModule } from '@angular/common';
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
         gap: 2rem;
       }
@@ -93,6 +93,10 @@ import { CommonModule } from '@angular/common';
         border-radius: var(--radius-lg);
         overflow: hidden;
         border: 1px solid var(--border-color);
+      }
+
+      .code-content {
+        width: 100%;
       }
 
       @keyframes fadeIn {
