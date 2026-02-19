@@ -957,7 +957,8 @@ export class DocumentationComponent implements OnInit {
 
     return list.filter(
       (c) =>
-        c.name.toLowerCase().includes(search) || c.shortDescription.toLowerCase().includes(search),
+        (c.name && c.name.toLowerCase().includes(search)) ||
+        (c.shortDescription && c.shortDescription.toLowerCase().includes(search)),
     );
   });
 
@@ -965,7 +966,9 @@ export class DocumentationComponent implements OnInit {
     const search = this.searchText().toLowerCase();
     if (!search) return this.guides;
     return this.guides.filter(
-      (g) => g.title.toLowerCase().includes(search) || g.desc.toLowerCase().includes(search),
+      (g) =>
+        (g.title && g.title.toLowerCase().includes(search)) ||
+        (g.desc && g.desc.toLowerCase().includes(search)),
     );
   });
 

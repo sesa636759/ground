@@ -972,9 +972,9 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
 
     return this.componentDoc.props.filter(
       (p) =>
-        p.name.toLowerCase().includes(filter) ||
-        p.description.toLowerCase().includes(filter) ||
-        p.type.toLowerCase().includes(filter),
+        (p.name && p.name.toLowerCase().includes(filter)) ||
+        (p.description && p.description.toLowerCase().includes(filter)) ||
+        (p.type && p.type.toLowerCase().includes(filter)),
     );
   });
 

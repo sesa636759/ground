@@ -18,43 +18,48 @@ import { CommonModule } from '@angular/common';
     <div class="code-block-wrapper" [class.expanded]="showCode()">
       <div class="code-block-header">
         <div class="header-main">
-          <ui-icon icon="code" library="fontawesome" class="header-icon"></ui-icon>
+          <ui-icon name="code" library="lucide" class="header-icon"></ui-icon>
           <span class="code-block-title">{{ title }}</span>
           <span class="language-badge">{{ language }}</span>
         </div>
         <div class="code-block-actions">
-          <app-tooltip [content]="showCode() ? 'Hide Code' : 'Show Code'" position="top">
-            <ui-button
-              slot="target"
-              (click)="toggleCode()"
-              icon-only
-              [variant]="showCode() ? 'secondary' : 'ghost'"
-              size="sm"
-              class="action-btn"
-            >
-              <ui-icon [icon]="showCode() ? 'eye-slash' : 'eye'" library="fontawesome"></ui-icon>
-            </ui-button>
-          </app-tooltip>
+          <ui-button
+            icon="code"
+            icon-library="lucide"
+            (click)="toggleCode()"
+            [variant]="showCode() ? 'secondary' : 'ghost'"
+            size="sm"
+            class="action-btn"
+            [label]="showCode() ? 'Hide' : 'Show'"
+          >
+            <ui-icon
+              [name]="showCode() ? 'eye-slash' : 'eye'"
+              library="fontawesome"
+              slot="icon-start"
+            ></ui-icon>
+          </ui-button>
 
-          <app-tooltip [content]="copied() ? 'Copied!' : 'Copy Code'" position="top">
-            <ui-button
-              slot="target"
-              [variant]="copied() ? 'success' : 'ghost'"
-              size="sm"
-              icon-only
-              (click)="copyCode()"
-              class="action-btn copy-btn"
-              [class.copied]="copied()"
-            >
-              <ui-icon [icon]="copied() ? 'check' : 'copy'" library="fontawesome"></ui-icon>
-            </ui-button>
-          </app-tooltip>
+          <ui-button
+            (click)="copyCode()"
+            [variant]="copied() ? 'success' : 'ghost'"
+            size="sm"
+            class="action-btn copy-btn"
+            [class.copied]="copied()"
+            [label]="copied() ? 'Copied!' : 'Copy'"
+          >
+            <ui-icon
+              [name]="copied() ? 'check' : 'copy'"
+              library="fontawesome"
+              slot="icon-start"
+            ></ui-icon>
+          </ui-button>
         </div>
       </div>
 
       <div class="code-block-content" [class.show]="showCode()">
         <div class="scroll-container">
-          <pre><code [innerHTML]="highlightedCode()"></code></pre>
+          <pre *ngIf="code"><code [innerHTML]="highlightedCode"></code></pre>
+          <div *ngIf="!code" class="empty-state">No code generated yet...</div>
         </div>
       </div>
     </div>
@@ -205,6 +210,13 @@ import { CommonModule } from '@angular/common';
         white-space: pre-wrap;
       }
 
+      .empty-state {
+        color: #64748b;
+        font-style: italic;
+        text-align: center;
+        padding: 1rem;
+      }
+
       /* Syntax highlighting */
       :global {
         .hljs-keyword {
@@ -267,25 +279,29 @@ export class CodeBlockComponent implements OnInit, OnChanges {
   @Input() title: string = 'Code Example';
   @Input() language: string = 'typescript';
 
-  showCode = signal(false);
+  showCode = signal(true);
   copied = signal(false);
 
-  highlightedCode = signal('');
+  // We'll use a getter to ensure the highlighted code is always in sync with the input
+  get highlightedCode(): string {
+    if (!this.code) return '';
+    return this.escapeHtml(this.code.trim());
+  }
 
   ngOnInit() {
-    this.updateHighlightedCode();
-  }
-
-  ngOnChanges() {
-    this.updateHighlightedCode();
-  }
-
-  private updateHighlightedCode() {
+    console.log('CodeBlock ngOnInit - title:', this.title, 'code length:', this.code?.length);
     if (!this.code) {
-      this.highlightedCode.set('');
-      return;
+      console.warn('CodeBlock: code input is empty in ngOnInit');
     }
-    this.highlightedCode.set(this.escapeHtml(this.code.trim()));
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.code) {
+      console.log(
+        'CodeBlock ngOnChanges - code changed, new length:',
+        changes.code.currentValue?.length,
+      );
+    }
   }
 
   toggleCode() {
@@ -303,6 +319,7 @@ export class CodeBlockComponent implements OnInit, OnChanges {
   }
 
   private escapeHtml(text: string): string {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;

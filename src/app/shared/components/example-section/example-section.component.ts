@@ -1,4 +1,4 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CodeBlockComponent } from '../code-block/code-block.component';
 
@@ -93,10 +93,27 @@ import { CodeBlockComponent } from '../code-block/code-block.component';
     `,
   ],
 })
-export class ExampleSectionComponent {
+export class ExampleSectionComponent implements OnInit {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() code: string = '';
   @Input() language: string = 'html';
   @Input() id: string = '';
+
+  ngOnInit(): void {
+    console.log(
+      `ExampleSection [${this.id}] ngOnInit - title: ${this.title}, code length: ${this.code?.length}`,
+    );
+    if (!this.code) {
+      console.warn(`ExampleSection [${this.id}]: code input is empty in ngOnInit`);
+    }
+  }
+
+  ngOnChanges(changes: any): void {
+    if (changes.code) {
+      console.log(
+        `ExampleSection [${this.id}] ngOnChanges - code updated, new length: ${changes.code.currentValue?.length}`,
+      );
+    }
+  }
 }

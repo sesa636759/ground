@@ -7,7 +7,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 @Component({
   selector: 'app-knob-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -41,7 +46,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Stroke Width</label>
-              <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (change)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.strokeWidth"
+                (change)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Color</label>
@@ -72,7 +81,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 

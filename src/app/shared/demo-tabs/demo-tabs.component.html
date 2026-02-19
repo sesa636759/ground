@@ -1,6 +1,6 @@
 <div class="demo-page-container">
   <div class="demo-master-container">
-    <app-tab-stack [active-tab]="active" (tabChange)="onTabChange($event)">
+    <app-tab-stack [activeTab]="active()" (tabChange)="onTabChange($event)">
       <app-tab label="Examples" value="examples">
         <div class="viewport-pane pane-examples animate-in">
           <ng-content select="[slot=examples]"></ng-content>

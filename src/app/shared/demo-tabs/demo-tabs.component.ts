@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,14 +10,23 @@ import { CommonModule } from '@angular/common';
   styleUrl: './demo-tabs.component.scss',
 })
 export class DemoTabsComponent {
-  active: string = 'examples';
+  active = signal('examples');
 
   onTabChange(event: any) {
     // Handle CustomEvent details which might be direct value or object
     const detail = event.detail !== undefined ? event.detail : event;
-    this.active =
-      typeof detail === 'object' && detail !== null
-        ? detail.id || detail.value || detail.tabId || detail
-        : detail;
+
+    let newValue: string;
+    if (typeof detail === 'object' && detail !== null) {
+      // Prioritize activeTab (from ui-tabs) or value (from app-tab-stack)
+      // tabId in ui-tabs represents the previous tab, so we should check for activeTab first
+      newValue = detail.activeTab || detail.value || detail.id || detail.tabId || detail;
+    } else {
+      newValue = detail;
+    }
+
+    if (typeof newValue === 'string' && newValue) {
+      this.active.set(newValue);
+    }
   }
 }

@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
@@ -22,6 +23,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     CodeBlockComponent,
+    UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-playground.component.html',
