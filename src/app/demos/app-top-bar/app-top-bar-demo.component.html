@@ -16,7 +16,7 @@
             <p>Customize the top bar layout and test sticky behavior.</p>
           </div>
           <app-top-bar-playground></app-top-bar-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -70,11 +70,7 @@
                 </ui-top-bar>
               </div>
             </div>
-            <app-code-block
-              [code]="layoutsCode"
-              title="Layout Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

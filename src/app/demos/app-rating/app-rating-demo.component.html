@@ -15,11 +15,7 @@
             <p>Customize the feedback experience</p>
           </div>
           <app-rating-playground></app-rating-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Rating Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Rating Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -63,11 +59,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="typesCode"
-              title="Types Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="typesCode" [label]="'Types Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Colors & Sizes -->
@@ -83,11 +75,7 @@
                 <ui-rating size="lg" color="danger" [value]="4"></ui-rating>
               </div>
             </div>
-            <app-code-block
-              [code]="colorsSizesCode"
-              title="Colors and Sizes"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="colorsSizesCode" [label]="'Colors and Sizes'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Custom Labels -->
@@ -107,11 +95,7 @@
                 ></ui-rating>
               </div>
             </div>
-            <app-code-block
-              [code]="customCode"
-              title="Custom Labels"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="customCode" [label]="'Custom Labels'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

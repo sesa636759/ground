@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -17,7 +16,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],

@@ -15,11 +15,7 @@
             <p>Configure shapes, sizes, and animation styles.</p>
           </div>
           <app-skeleton-playground></app-skeleton-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -64,11 +60,7 @@
                 <ui-skeleton shape="rectangle" height="80px" animation="pulse"></ui-skeleton>
               </div>
             </div>
-            <app-code-block
-              [code]="shapesCode"
-              title="Shape Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="shapesCode" [label]="'Shape Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Complex Layouts -->
@@ -93,11 +85,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="combinationsCode"
-              title="Composite Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="combinationsCode" [label]="'Composite Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

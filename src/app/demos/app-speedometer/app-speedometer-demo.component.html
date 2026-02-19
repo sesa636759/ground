@@ -15,7 +15,7 @@
             <p>Fine-tune thresholds, arc thickness, and labels.</p>
           </div>
           <app-speedometer-playground></app-speedometer-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -69,11 +69,7 @@
                 ></ui-speedometer>
               </div>
             </div>
-            <app-code-block
-              [code]="modesCode"
-              title="Color Configuration"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="modesCode" [label]="'Color Configuration'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Scaling -->
@@ -98,11 +94,7 @@
                 label="Hero"
               ></ui-speedometer>
             </div>
-            <app-code-block
-              [code]="sizesCode"
-              title="Sizing Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="sizesCode" [label]="'Sizing Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

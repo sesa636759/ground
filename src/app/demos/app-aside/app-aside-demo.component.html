@@ -15,11 +15,7 @@
             <p>Fine-tune the behavior and appearance of the slide-out panel</p>
           </div>
           <app-aside-playground></app-aside-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Aside Panel Structure"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Aside Panel Structure'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -106,11 +102,7 @@
               </div>
             </aside-panel>
 
-            <app-code-block
-              [code]="directionsCode"
-              title="Direction Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="directionsCode" [label]="'Direction Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Visual Styles -->
@@ -155,11 +147,7 @@
               </div>
             </aside-panel>
 
-            <app-code-block
-              [code]="glassCode"
-              title="Glass Variant Usage"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="glassCode" [label]="'Glass Variant Usage'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Resizability -->
@@ -199,11 +187,7 @@
               </div>
             </aside-panel>
 
-            <app-code-block
-              [code]="resizableCode"
-              title="Enabling Resizing"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="resizableCode" [label]="'Enabling Resizing'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

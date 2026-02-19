@@ -15,7 +15,7 @@
             <p>Configure orientations and themes to match your workflow requirements.</p>
           </div>
           <app-smart-stepper-playground></app-smart-stepper-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -64,11 +64,7 @@
                 </ui-smart-stepper>
               </div>
             </div>
-            <app-code-block
-              [code]="themesCode"
-              title="Design Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="themesCode" [label]="'Design Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

@@ -1,7 +1,8 @@
 <div class="demo-container">
-  <h1>☑️ Checkbox Demo</h1>
+  <h1>Checkbox Component</h1>
   <p class="intro-text">
-    Versatile checkbox component with multiple variants, states, and form integration.
+    Versatile checkbox component with support for multiple visual variants, states, groups, and
+    seamless form integration.
   </p>
   <demo-tabs>
     <!-- Examples Slot -->
@@ -10,7 +11,7 @@
       <app-example-section
         id="color-variants"
         title="Color Variants"
-        description="A wide range of built-in colors to match your brand"
+        description="A wide range of built-in colors to match your application's brand"
         [code]="colorVariantsCode"
       >
         <div class="demo-flex-wrap">
@@ -30,7 +31,7 @@
       <app-example-section
         id="premium-variants"
         title="Premium Variants"
-        description="Different visual styles including button, chip, and soft variants"
+        description="Visual styles including button, chip, and soft variants"
         [code]="premiumVariantsCode"
       >
         <div class="demo-flex-wrap">
@@ -45,11 +46,11 @@
         </div>
       </app-example-section>
 
-      <!-- Skeleton -->
+      <!-- Skeleton State -->
       <app-example-section
         id="skeleton"
         title="Skeleton State"
-        description="Loading state for better user experience"
+        description="Loading states for better perceived performance"
         [code]="skeletonCode"
       >
         <div class="demo-flex-wrap">
@@ -62,13 +63,13 @@
       <!-- Sizes & Variants -->
       <app-example-section
         id="sizes-variants"
-        title="Sizes & Variants"
-        description="Multiple sizes and shape variations"
+        title="Sizes & Shapes"
+        description="Multiple sizes and shape variations including rounded and pill"
         [code]="sizesVariantsCode"
       >
-        <div class="demo-grid">
+        <div class="demo-grid col-2">
           <div class="demo-card">
-            <h3>Sizes</h3>
+            <h4 class="demo-sub-title">Sizes</h4>
             <div class="demo-flex-wrap">
               <app-checkbox label="Small" size="small" checked></app-checkbox>
               <app-checkbox label="Medium" size="medium" checked></app-checkbox>
@@ -76,7 +77,7 @@
             </div>
           </div>
           <div class="demo-card">
-            <h3>Shapes</h3>
+            <h4 class="demo-sub-title">Shapes</h4>
             <div class="demo-flex-wrap">
               <app-checkbox label="Rounded" variant="rounded" checked></app-checkbox>
               <app-checkbox label="Square" variant="square" checked></app-checkbox>
@@ -89,23 +90,22 @@
       <!-- States -->
       <app-example-section
         id="states"
-        title="States"
-        description="Interactive and informative states"
+        title="Component States"
+        description="Interactive and informative states like indeterminate and readonly"
         [code]="statesCode"
       >
-        <div class="demo-grid">
+        <div class="demo-grid col-2">
           <div class="demo-card">
-            <h3>Basic States</h3>
+            <h4 class="demo-sub-title">Basic States</h4>
             <div class="demo-flex-wrap">
               <app-checkbox label="Checked" checked></app-checkbox>
-              <app-checkbox label="Unchecked"></app-checkbox>
               <app-checkbox label="Indeterminate" indeterminate></app-checkbox>
               <app-checkbox label="Disabled" disabled></app-checkbox>
               <app-checkbox label="Readonly" readonly checked></app-checkbox>
             </div>
           </div>
           <div class="demo-card">
-            <h3>Validation & Help</h3>
+            <h4 class="demo-sub-title">Validation</h4>
             <div class="demo-flex-wrap column">
               <app-checkbox
                 label="With Helper"
@@ -121,14 +121,14 @@
         </div>
       </app-example-section>
 
-      <!-- Groups -->
+      <!-- Checkbox Groups -->
       <app-example-section
         id="groups"
         title="Checkbox Groups"
-        description="Implement complex selection logic with indeterminate master checkbox"
+        description="Selection logic with a master checkbox and indeterminate state"
         [code]="groupExampleCode"
       >
-        <div class="selection-box">
+        <div class="demo-card">
           <app-checkbox
             label="Select All Categories"
             [checked]="masterChecked"
@@ -136,7 +136,15 @@
             (checkboxChange)="onMasterChange($event)"
           >
           </app-checkbox>
-          <div class="nested-items">
+          <div
+            style="
+              margin-left: 24px;
+              margin-top: 12px;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            "
+          >
             <app-checkbox
               *ngFor="let item of groupItems"
               [label]="item.label"
@@ -148,16 +156,15 @@
         </div>
       </app-example-section>
 
-      <!-- Form -->
+      <!-- Form Example -->
       <app-example-section
         id="form"
-        title="Form Example"
-        description="Real-world form integration with validation"
+        title="Form Integration"
+        description="Real-world account creation form with validation logic"
         [code]="formExampleCode"
-        [fullWidth]="true"
       >
-        <div class="premium-form">
-          <div class="form-grid">
+        <div class="demo-card">
+          <div style="display: grid; gap: 16px">
             <app-checkbox
               [(ngModel)]="formTerms"
               label="I accept the Terms and Conditions"
@@ -179,15 +186,12 @@
               label="Subscribe to monthly newsletter"
               color="success"
             ></app-checkbox>
-            <app-checkbox
-              [(ngModel)]="formMarketing"
-              label="Receive promotional offers"
-              color="indigo"
-            ></app-checkbox>
           </div>
-          <div class="form-actions">
+          <div style="margin-top: 24px">
             <ui-button (click)="onSubmit()" color="primary">Create Account</ui-button>
-            <p class="form-status" [style.color]="formMessageColor()">{{ formMessage() }}</p>
+            <p style="margin-top: 12px; font-weight: 600" [style.color]="formMessageColor">
+              {{ formMessage }}
+            </p>
           </div>
         </div>
       </app-example-section>
@@ -195,12 +199,12 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <app-checkbox-playground></app-checkbox-playground>
+      <app-checkbox-playground />
     </div>
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="checkbox"></app-component-documentation>
+      <app-component-documentation componentName="checkbox" />
     </div>
   </demo-tabs>
 </div>

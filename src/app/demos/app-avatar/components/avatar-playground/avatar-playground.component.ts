@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-avatar-playground',
@@ -12,7 +11,6 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
@@ -99,11 +97,12 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
         </div>
 
         <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            title="Generated Code"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">
@@ -152,7 +151,7 @@ export class AvatarPlaygroundComponent {
   ];
 
   statusOptions = [
-    { label: 'None', value: null },
+    { label: 'None', value: '' },
     { label: 'Online', value: 'online' },
     { label: 'Away', value: 'away' },
     { label: 'Busy', value: 'busy' },

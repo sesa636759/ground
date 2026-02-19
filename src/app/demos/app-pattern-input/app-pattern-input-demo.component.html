@@ -16,7 +16,7 @@
             <p>Test different mask patterns and see real-time formatting.</p>
           </div>
           <app-pattern-input-playground></app-pattern-input-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -72,11 +72,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="patternsCode"
-              title="Pattern Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="patternsCode" [label]="'Pattern Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

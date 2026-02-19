@@ -15,11 +15,7 @@
             <p>Test various combinations of states and visual properties</p>
           </div>
           <app-switch-playground></app-switch-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Switch Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Switch Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -57,11 +53,7 @@
                 <ui-switch label="Secondary" variant="secondary" checked></ui-switch>
               </div>
             </div>
-            <app-code-block
-              [code]="colorsCode"
-              title="Colors Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="colorsCode" [label]="'Colors Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Sizes -->
@@ -79,11 +71,7 @@
                 <ui-switch label="Extra Large" size="xl"></ui-switch>
               </div>
             </div>
-            <app-code-block
-              [code]="sizesCode"
-              title="Sizes Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="sizesCode" [label]="'Sizes Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Icon Support -->
@@ -111,11 +99,7 @@
                 <ui-switch label="Privacy" icon-on="🔒" icon-off="🔓" variant="danger"></ui-switch>
               </div>
             </div>
-            <app-code-block
-              [code]="iconsCode"
-              title="Icons Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="iconsCode" [label]="'Icons Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Labeling & States -->
@@ -137,11 +121,7 @@
                 <ui-switch label="Pill Shape" shape="pill" checked variant="warning"></ui-switch>
               </div>
             </div>
-            <app-code-block
-              [code]="labelsCode"
-              title="Labels Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="labelsCode" [label]="'Labels Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

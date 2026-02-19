@@ -15,7 +15,7 @@
             <p>Configure search options, headers, and disabled states.</p>
           </div>
           <app-transfer-list-playground></app-transfer-list-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -47,11 +47,7 @@
               <ui-transfer-list [source]="sourceItems" [target]="targetItems" [show-search]="false">
               </ui-transfer-list>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Configuration Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="featuresCode" [label]="'Configuration Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

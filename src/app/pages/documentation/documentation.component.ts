@@ -1,4 +1,4 @@
-import { Component, signal, computed, OnInit } from '@angular/core';
+import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {
@@ -10,6 +10,7 @@ import {
   selector: 'app-documentation',
   standalone: true,
   imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="docs-hub-wrapper animate-in">
       <!-- 🌟 Premium Search Hero -->
@@ -161,7 +162,12 @@ import {
           <div class="guide-content-viewer animate-slide-up" *ngIf="selectedGuideId()">
             <div class="viewer-header">
               <button class="back-link" (click)="selectedGuideId.set('')">
-                <i class="fas fa-arrow-left"></i> Back to Hub
+                <i
+                  class="fas Generated Code
+
+-left"
+                ></i>
+                Back to Hub
               </button>
               <div class="viewer-meta">Guide / {{ getSelectedGuide()?.title }}</div>
             </div>
@@ -204,15 +210,11 @@ import {
                 <div class="step-num-ring">01</div>
                 <div class="step-detail">
                   <h3>Install Core Package</h3>
-                  <div class="bash-container">
-                    <code>npm install &#64;enterprise/ui-ground</code>
-                    <button
-                      class="copy-hint"
-                      (click)="copyText('npm install @enterprise/ui-ground')"
-                    >
-                      <i class="far fa-copy"></i>
-                    </button>
-                  </div>
+                  <ui-code-preview
+                    active-lang="html"
+                    html-code="npm install @enterprise/ui-ground"
+                    label="Terminal"
+                  ></ui-code-preview>
                 </div>
               </div>
               <div class="step-vessel">
@@ -220,9 +222,11 @@ import {
                 <div class="step-detail">
                   <h3>Setup Styles</h3>
                   <p>Add the following to your global <code>styles.scss</code> file:</p>
-                  <div class="bash-container">
-                    <code>&#64;use "&#64;enterprise/ui-ground/theme";</code>
-                  </div>
+                  <ui-code-preview
+                    active-lang="css"
+                    css-code='@use "@enterprise/ui-ground/theme";'
+                    label="styles.scss"
+                  ></ui-code-preview>
                 </div>
               </div>
             </article>
@@ -237,16 +241,19 @@ import {
                   GROUND components are standalone. Import only what you need to keep your bundles
                   lean.
                 </p>
-                <div class="pattern-code glass-card">
-                  <pre><code>import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
+                <ui-code-preview
+                  active-lang="ts"
+                  ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
 
 &#64;Component({{ '{' }}
   selector: 'app-home',
   standalone: true,
   imports: [UiButton],
-  template: \`&lt;ui-button variant="primary"&gt;Action&lt;/ui-button&gt;\`
-{{ '}' }})</code></pre>
-                </div>
+  template: \`<ui-button variant='primary'>Action</ui-button>\`
+{{ '}' }})"
+                  label="App Component"
+                  expanded="true"
+                ></ui-code-preview>
               </div>
             </article>
           </div>

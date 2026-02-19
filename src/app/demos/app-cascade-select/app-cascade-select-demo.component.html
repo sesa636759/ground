@@ -15,7 +15,7 @@
             <p>Explore expansion modes and path formatting.</p>
           </div>
           <app-cascade-select-playground></app-cascade-select-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -61,11 +61,7 @@
                 ></ui-cascade-select>
               </div>
             </div>
-            <app-code-block
-              [code]="triggersCode"
-              title="Configuration Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="triggersCode" [label]="'Configuration Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Selection Logic -->
@@ -84,11 +80,7 @@
                 ></ui-cascade-select>
               </div>
             </div>
-            <app-code-block
-              [code]="selectionCode"
-              title="Selection Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="selectionCode" [label]="'Selection Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

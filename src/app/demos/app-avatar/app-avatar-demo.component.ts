@@ -1,7 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,7 +12,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     AvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

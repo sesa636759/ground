@@ -15,7 +15,7 @@
             <p>Configure primary labels, variants, and dropdown behavior.</p>
           </div>
           <app-split-button-playground></app-split-button-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -65,11 +65,7 @@
                 [model]="menuItems"
               ></ui-split-button>
             </div>
-            <app-code-block
-              [code]="colorsCode"
-              title="Theme Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="colorsCode" [label]="'Theme Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Visual States -->
@@ -82,11 +78,7 @@
               <ui-split-button loading label="Processing..." [model]="menuItems"></ui-split-button>
               <ui-split-button disabled label="Locked" [model]="menuItems"></ui-split-button>
             </div>
-            <app-code-block
-              [code]="statesCode"
-              title="State Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="statesCode" [label]="'State Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

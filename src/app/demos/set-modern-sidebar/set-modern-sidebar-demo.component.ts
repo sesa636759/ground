@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { signal } from '@angular/core';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
@@ -17,7 +16,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CommonModule,
     FormsModule,
     ModernSidebarPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
   ],
 })

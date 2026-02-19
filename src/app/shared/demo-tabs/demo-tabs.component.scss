@@ -46,12 +46,7 @@ app-tab {
   flex-direction: column;
 }
 
-.pane-examples {
-  background: #ffffff;
-  height: 100%;
-  overflow-y: auto;
-}
-
+.pane-examples,
 .pane-playground,
 .pane-docs {
   overflow-y: auto;

@@ -15,7 +15,7 @@
             <p>Customize the tag appearance, severity, and icons in real-time.</p>
           </div>
           <app-tag-playground></app-tag-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -49,11 +49,7 @@
               <ui-tag severity="warning" value="Warning"></ui-tag>
               <ui-tag severity="danger" value="Danger"></ui-tag>
             </div>
-            <app-code-block
-              [code]="severitiesCode"
-              title="Severity Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="severitiesCode" [label]="'Severity Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Styles & Sizes -->
@@ -68,11 +64,7 @@
               <ui-tag value="With Icon" icon="★"></ui-tag>
               <ui-tag value="Large Size" size="large"></ui-tag>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Styling Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylesCode" [label]="'Styling Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

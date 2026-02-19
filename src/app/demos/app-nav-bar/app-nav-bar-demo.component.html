@@ -15,7 +15,7 @@
             <p>Test collapsing behavior and theme switching.</p>
           </div>
           <app-nav-bar-playground></app-nav-bar-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -56,11 +56,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="themesCode"
-              title="Theme Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="themesCode" [label]="'Theme Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

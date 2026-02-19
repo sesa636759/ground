@@ -15,7 +15,7 @@
             <p>Test the threshold and visuals with a local scroll container.</p>
           </div>
           <app-scroll-top-playground></app-scroll-top-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -69,11 +69,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="shapesCode"
-              title="Styling Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="shapesCode" [label]="'Styling Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

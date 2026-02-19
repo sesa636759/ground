@@ -15,7 +15,7 @@
             <p>Customize chart orientation, colors, and features.</p>
           </div>
           <app-bar-chart-playground></app-bar-chart-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -48,11 +48,7 @@
                 <ui-bar-chart [data]="chartData" show-legend animated></ui-bar-chart>
               </div>
             </div>
-            <app-code-block
-              [code]="orientationsCode"
-              title="Orientation Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="orientationsCode" [label]="'Orientation Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

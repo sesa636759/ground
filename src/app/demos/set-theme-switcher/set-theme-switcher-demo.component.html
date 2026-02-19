@@ -127,11 +127,7 @@
           <p>Configure and test all theme switcher properties</p>
         </div>
         <app-theme-switcher-playground></app-theme-switcher-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Theme Switcher Usage"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Theme Switcher Usage'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

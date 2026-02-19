@@ -15,7 +15,12 @@
             <p>Configure orientation and test menu interactions.</p>
           </div>
           <app-smart-menu-playground></app-smart-menu-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview
+            [htmlCode]="playgroundCode"
+            label="'Usage'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </section>
       </div>
     </div>
@@ -48,11 +53,11 @@
                 <ui-smart-menu [model]="menuItems"></ui-smart-menu>
               </div>
             </div>
-            <app-code-block
-              [code]="nestedCode"
-              title="Nested Menu Model"
-              language="typescript"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="nestedCode"
+              label="Nested Menu Model"
+              activeLang="ts"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

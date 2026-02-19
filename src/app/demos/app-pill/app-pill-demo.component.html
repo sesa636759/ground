@@ -15,11 +15,7 @@
             <p>Fine-tune colors, variants, and interactive flags.</p>
           </div>
           <app-pill-playground></app-pill-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -55,11 +51,7 @@
               <ui-pill label="Warning" color="warning" variant="bordered"></ui-pill>
               <ui-pill label="Gradient" variant="gradient" gradient="purple-blue"></ui-pill>
             </div>
-            <app-code-block
-              [code]="stylingCode"
-              title="Style Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylingCode" [label]="'Style Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Special Features -->
@@ -80,11 +72,7 @@
               <ui-pill label="Horizontal" orientation="horizontal" icon="⭐"></ui-pill>
               <ui-pill label="Vertical" orientation="vertical" icon="⚓"></ui-pill>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Feature Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="featuresCode" [label]="'Feature Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

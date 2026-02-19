@@ -27,7 +27,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="horizontalCode()" language="html" title="Horizontal Split Code"></app-code-block>
+          <ui-code-preview [htmlCode]="horizontalCode()" [label]="'Horizontal Split Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -51,7 +51,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="verticalCode()" language="html" title="Vertical Split Code"></app-code-block>
+          <ui-code-preview [htmlCode]="verticalCode()" [label]="'Vertical Split Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -79,7 +79,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="tripleCode()" language="html" title="Triple Split Code"></app-code-block>
+          <ui-code-preview [htmlCode]="tripleCode()" [label]="'Triple Split Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -111,7 +111,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="nestedCode()" language="html" title="Nested Panels Code"></app-code-block>
+          <ui-code-preview [htmlCode]="nestedCode()" [label]="'Nested Panels Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -136,7 +136,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="collapsibleCode()" language="html" title="Collapsible Panels Code"></app-code-block>
+          <ui-code-preview [htmlCode]="collapsibleCode()" [label]="'Collapsible Panels Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -178,7 +178,7 @@
             </div>
           </div>
         </div>
-        <app-code-block [code]="darkThemeCode()" language="html" title="Dark Theme Code"></app-code-block>
+        <ui-code-preview [htmlCode]="darkThemeCode()" [label]="'Dark Theme Code'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
 
       <!-- Snap to Edge -->
@@ -202,7 +202,7 @@
               </div>
             </app-resizable-panel>
           </div>
-          <app-code-block [code]="snapToEdgeCode()" language="html" title="Snap to Edge Code"></app-code-block>
+          <ui-code-preview [htmlCode]="snapToEdgeCode()" [label]="'Snap to Edge Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
     </div>
@@ -215,7 +215,7 @@
           <p>Configure directions, themes, snap behaviors, and more</p>
         </div>
         <app-resizable-panel-playground></app-resizable-panel-playground>
-        <app-code-block [code]="playgroundCode()" language="html" title="Resizable Panel Usage"></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode()" [label]="'Resizable Panel Usage'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

@@ -15,7 +15,7 @@
             <p>Configure visibility, dimensions, and interaction rules.</p>
           </div>
           <app-dialog-box-playground></app-dialog-box-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -76,11 +76,7 @@
                 <p>I have a backdrop and block interactions.</p>
               </ui-dialog-box>
             </div>
-            <app-code-block
-              [code]="typesCode"
-              title="Modality Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="typesCode" [label]="'Modality Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Interactions -->
@@ -108,11 +104,7 @@
                 <p>Grab the header to drag, or the edges to resize.</p>
               </ui-dialog-box>
             </div>
-            <app-code-block
-              [code]="interactionsCode"
-              title="Interaction Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="interactionsCode" [label]="'Interaction Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <div class="demo-container">
   <app-demo-header
     icon="🃏"
-    title="Card Component"
+    label="Card Component"
     description="Cards contain content and actions about a single subject. They are versatile containers that can handle images, headers, content, and footers."
   >
   </app-demo-header>
@@ -18,13 +18,18 @@
         <div class="section-header">
           <app-demo-header
             icon="🎮"
-            title="Interactive Playground"
+            label="Interactive Playground"
             description="Configure and test card properties in real-time"
           >
           </app-demo-header>
         </div>
         <app-card-playground></app-card-playground>
-        <app-code-block [code]="playgroundCode" title="Card Usage" language="html"></app-code-block>
+        <ui-code-preview
+          [htmlCode]="playgroundCode"
+          label="'Card Usage'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </section>
     </div>
 

@@ -1,49 +1,48 @@
 <div class="demo-container">
-  <h1>🔘 Radio Component</h1>
+  <h1>Radio Group Component</h1>
   <p class="intro-text">
-    Modern radio button groups with multiple variants, layouts, and advanced features.
+    Flexible radio group component supporting multiple visual styles, layouts, card variants, and
+    button group modes.
   </p>
-
   <demo-tabs>
-    <div slot="playground">
-      <app-radio-playground></app-radio-playground>
-    </div>
-
+    <!-- Examples Slot -->
     <div slot="examples">
       <!-- Premium Variants -->
       <app-example-section
         id="premium-variants"
         title="Premium Variants"
-        description="Modern radio styles for advanced UI needs"
+        description="Advanced visual styles including cards and underlined variants"
         [code]="premiumVariantsCode"
       >
-        <div class="demo-grid col-2">
-          <div class="demo-card full-width">
-            <h3>Card Variant (Selectable Plans)</h3>
+        <div class="demo-grid col-1">
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Card Variant (Grid Layout)</h4>
             <app-radio-group
-              name="premium-cards"
+              name="plans"
               variant="card"
               layout="grid"
               columns="2"
               [options]="planOptions"
             ></app-radio-group>
           </div>
-          <div class="demo-card">
-            <h3>Bordered Variant</h3>
-            <app-radio-group
-              name="prem-bord"
-              variant="bordered"
-              [options]="basicOptions"
-            ></app-radio-group>
-          </div>
-          <div class="demo-card">
-            <h3>Underlined Variant</h3>
-            <app-radio-group
-              name="prem-und"
-              variant="underlined"
-              [options]="basicOptions"
-              color="success"
-            ></app-radio-group>
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Bordered Variant</h4>
+              <app-radio-group
+                name="bord"
+                variant="bordered"
+                [options]="basicOptions"
+              ></app-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Underlined Variant</h4>
+              <app-radio-group
+                name="und"
+                variant="underlined"
+                color="success"
+                [options]="basicOptions"
+              ></app-radio-group>
+            </div>
           </div>
         </div>
       </app-example-section>
@@ -52,33 +51,27 @@
       <app-example-section
         id="button-groups"
         title="Button Groups"
-        description="Transform radios into segmented controllers"
+        description="Radio options styled as a unified button group"
         [code]="buttonGroupsCode"
       >
-        <div class="demo-grid col-2">
+        <div class="demo-grid col-1">
           <div class="demo-card">
-            <h3>Horizontal Toggle</h3>
+            <h4 class="demo-sub-title">Horizontal Button Group</h4>
             <app-radio-group
-              name="btn-grp-h"
+              name="btn-h"
               button-group="true"
               layout="horizontal"
-              value="monthly"
-              [options]="subscriptionOptions"
+              [options]="basicOptions"
             ></app-radio-group>
           </div>
           <div class="demo-card">
-            <h3>Vertical Toggle (Colors)</h3>
+            <h4 class="demo-sub-title">Vertical Button Group</h4>
             <app-radio-group
-              name="btn-grp-v"
+              name="btn-v"
               button-group="true"
               layout="vertical"
               color="danger"
-              value="medium"
-              [options]="[
-                { value: 'low', label: 'Low Priority' },
-                { value: 'medium', label: 'Medium Priority' },
-                { value: 'high', label: 'High Priority' },
-              ]"
+              [options]="basicOptions"
             ></app-radio-group>
           </div>
         </div>
@@ -88,44 +81,11 @@
       <app-example-section
         id="loading-skeleton"
         title="Loading Skeleton"
-        description="Smooth placeholders for loading states"
+        description="Skeleton states for async data loading"
         [code]="loadingSkeletonCode"
       >
         <div class="demo-card">
-          <h3>Loading profile options...</h3>
-          <app-radio-group name="loading-demo" skeleton [options]="basicOptions"></app-radio-group>
-        </div>
-      </app-example-section>
-
-      <!-- Slotted & Clearable -->
-      <app-example-section
-        id="slotted-clearable"
-        title="Slotted & Clearable"
-        description="Use declarative children and allow unselection"
-        [code]="slottedRadioCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="demo-card">
-            <h3>Declarative (Slotted)</h3>
-            <app-radio-group name="slots-demo" label="Manual Composition">
-              <app-radio value="1" label="Option 1"></app-radio>
-              <app-radio value="2" label="Option 2"></app-radio>
-              <app-radio value="3" label="Option 3"></app-radio>
-            </app-radio-group>
-          </div>
-          <div class="demo-card">
-            <h3>Clearable Selection</h3>
-            <app-radio-group
-              label="Filter Status"
-              helper-text="Click selected item to deselect"
-              name="clearable-demo"
-              allow-empty
-              [options]="[
-                { value: 'active', label: 'Active Only' },
-                { value: 'archived', label: 'Archived Only' },
-              ]"
-            ></app-radio-group>
-          </div>
+          <app-radio-group name="load" skeleton [options]="basicOptions"></app-radio-group>
         </div>
       </app-example-section>
 
@@ -133,86 +93,56 @@
       <app-example-section
         id="color-variants"
         title="Color Variants"
-        description="Different color schemes for various contexts"
+        description="Theme-based colors for radio indicators"
         [code]="colorVariantsCode"
       >
-        <div class="demo-grid col-3">
-          <app-radio-group
-            name="color-primary"
-            color="primary"
-            value="primary"
-            [options]="[{ value: 'primary', label: 'Primary Color' }]"
-          ></app-radio-group>
-          <app-radio-group
-            name="color-secondary"
-            color="secondary"
-            value="secondary"
-            [options]="[{ value: 'secondary', label: 'Secondary Color' }]"
-          ></app-radio-group>
-          <app-radio-group
-            name="color-success"
-            color="success"
-            value="success"
-            [options]="[{ value: 'success', label: 'Success Color' }]"
-          ></app-radio-group>
-          <app-radio-group
-            name="color-danger"
-            color="danger"
-            value="danger"
-            [options]="[{ value: 'danger', label: 'Danger Color' }]"
-          ></app-radio-group>
-          <app-radio-group
-            name="color-warning"
-            color="warning"
-            value="warning"
-            [options]="[{ value: 'warning', label: 'Warning Color' }]"
-          ></app-radio-group>
-          <app-radio-group
-            name="color-info"
-            color="info"
-            value="info"
-            [options]="[{ value: 'info', label: 'Info Color' }]"
-          ></app-radio-group>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Primary</h4>
+            <app-radio-group name="c1" color="primary" [options]="basicOptions"></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Success</h4>
+            <app-radio-group name="c2" color="success" [options]="basicOptions"></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Warning</h4>
+            <app-radio-group name="c3" color="warning" [options]="basicOptions"></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Indigo</h4>
+            <app-radio-group name="c4" color="indigo" [options]="basicOptions"></app-radio-group>
+          </div>
         </div>
       </app-example-section>
 
       <!-- Layouts -->
       <app-example-section
         id="layouts"
-        title="Layouts"
-        description="Different layout options for radio groups"
+        title="Layout Options"
+        description="Vertical, horizontal, and grid layout configurations"
         [code]="layoutsCode"
       >
-        <div class="demo-grid col-2">
+        <div class="demo-grid col-1">
           <div class="demo-card">
-            <h3>Vertical Layout</h3>
-            <app-radio-group
-              label="Choose delivery"
-              name="delivery-v"
-              value="standard"
-              layout="vertical"
-              [options]="deliveryOptions"
-            ></app-radio-group>
+            <h4 class="demo-sub-title">Vertical (Default)</h4>
+            <app-radio-group name="l1" layout="vertical" [options]="basicOptions"></app-radio-group>
           </div>
           <div class="demo-card">
-            <h3>Horizontal Layout</h3>
+            <h4 class="demo-sub-title">Horizontal</h4>
             <app-radio-group
-              label="Choose size"
-              name="size-h"
-              value="medium"
+              name="l2"
               layout="horizontal"
-              [options]="sizeOptions"
+              [options]="basicOptions"
             ></app-radio-group>
           </div>
-          <div class="demo-card full-width">
-            <h3>Grid Layout (2 columns)</h3>
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Grid (2 Columns)</h4>
             <app-radio-group
-              label="Choose plan"
-              name="plan-g"
-              value="pro"
+              name="l3"
               layout="grid"
               columns="2"
-              [options]="planOptions"
+              [options]="basicOptions"
             ></app-radio-group>
           </div>
         </div>
@@ -221,34 +151,22 @@
       <!-- Sizes -->
       <app-example-section
         id="sizes"
-        title="Sizes"
-        description="Different sizes for various use cases"
+        title="Component Sizes"
+        description="Adjustable sizes for different UI densities"
         [code]="sizesCode"
       >
         <div class="demo-grid col-3">
           <div class="demo-card">
-            <h3>Small</h3>
-            <app-radio-group
-              name="size-small"
-              size="small"
-              [options]="basicOptions"
-            ></app-radio-group>
+            <h4 class="demo-sub-title">Small</h4>
+            <app-radio-group name="s1" size="small" [options]="basicOptions"></app-radio-group>
           </div>
           <div class="demo-card">
-            <h3>Medium</h3>
-            <app-radio-group
-              name="size-medium"
-              size="medium"
-              [options]="basicOptions"
-            ></app-radio-group>
+            <h4 class="demo-sub-title">Medium</h4>
+            <app-radio-group name="s2" size="medium" [options]="basicOptions"></app-radio-group>
           </div>
           <div class="demo-card">
-            <h3>Large</h3>
-            <app-radio-group
-              name="size-large"
-              size="large"
-              [options]="basicOptions"
-            ></app-radio-group>
+            <h4 class="demo-sub-title">Large</h4>
+            <app-radio-group name="s3" size="large" [options]="basicOptions"></app-radio-group>
           </div>
         </div>
       </app-example-section>
@@ -256,38 +174,30 @@
       <!-- States -->
       <app-example-section
         id="states"
-        title="States"
-        description="Different states and configurations"
+        title="Radio States"
+        description="Interactive states including disabled, readonly, and invalid"
         [code]="statesCode"
       >
-        <div class="demo-grid col-3">
+        <div class="demo-grid col-2">
           <div class="demo-card">
-            <h3>Disabled State</h3>
+            <h4 class="demo-sub-title">Disabled</h4>
+            <app-radio-group name="st1" disabled="true" [options]="basicOptions"></app-radio-group>
+          </div>
+          <div class="demo-card">
+            <h4 class="demo-sub-title">Readonly</h4>
             <app-radio-group
-              label="Disabled options"
-              name="disabled-demo"
-              disabled
+              name="st2"
+              readonly="true"
+              value="option1"
               [options]="basicOptions"
             ></app-radio-group>
           </div>
           <div class="demo-card">
-            <h3>Readonly State</h3>
+            <h4 class="demo-sub-title">Error State</h4>
             <app-radio-group
-              label="Readonly options"
-              name="readonly-demo"
-              readonly
-              value="option2"
-              [options]="basicOptions"
-            ></app-radio-group>
-          </div>
-          <div class="demo-card">
-            <h3>Error State</h3>
-            <app-radio-group
-              label="Validation required"
-              name="error-demo"
-              required
-              invalid
-              error-message="Please make a selection"
+              name="st3"
+              invalid="true"
+              error-message="Selection is required"
               [options]="basicOptions"
             ></app-radio-group>
           </div>
@@ -297,49 +207,53 @@
       <!-- Form Example -->
       <app-example-section
         id="form-example"
-        title="Form Example"
-        description="Radio groups in a form context"
+        title="Form Integration"
+        description="A checkout form example with shipping and payment selection"
         [code]="formExampleCode"
       >
-        <div class="preview-box">
-          <div class="form-fields">
-            <app-radio-group
-              [(ngModel)]="formShipping"
-              label="Shipping Method"
-              name="shipping"
-              required
-              helper-text="Select your preferred delivery speed"
-              [options]="deliveryOptions"
-              [invalid]="shippingInvalid"
-              [attr.error-message]="shippingInvalid ? 'Required' : null"
-            >
-            </app-radio-group>
-
-            <app-radio-group
-              [(ngModel)]="formPayment"
-              label="Payment Method"
-              name="payment"
-              required
-              layout="grid"
-              columns="2"
-              color="success"
-              [options]="paymentOptions"
-              [invalid]="paymentInvalid"
-              [attr.error-message]="paymentInvalid ? 'Required' : null"
-            >
-            </app-radio-group>
+        <div class="demo-card">
+          <div style="display: grid; gap: 24px">
+            <div>
+              <h4 class="demo-sub-title" style="margin-bottom: 12px">Shipping Method</h4>
+              <app-radio-group
+                [(ngModel)]="formShipping"
+                name="ship"
+                required
+                [invalid]="shippingInvalid"
+                [options]="deliveryOptions"
+              ></app-radio-group>
+            </div>
+            <div>
+              <h4 class="demo-sub-title" style="margin-bottom: 12px">Payment Method</h4>
+              <app-radio-group
+                [(ngModel)]="formPayment"
+                name="pay"
+                variant="card"
+                layout="grid"
+                columns="2"
+                [invalid]="paymentInvalid"
+                [options]="paymentOptions"
+              ></app-radio-group>
+            </div>
           </div>
-
-          <div class="form-footer" style="margin-top: 1.5rem">
-            <ui-button (click)="onSubmit()" label="Place Order"></ui-button>
-            <p style="margin-top: 0.5rem" [style.color]="formMessageColor()">{{ formMessage() }}</p>
+          <div style="margin-top: 32px">
+            <ui-button (click)="onSubmit()" color="primary">Complete Purchase</ui-button>
+            <p style="margin-top: 12px; font-weight: 600" [style.color]="formMessageColor">
+              {{ formMessage }}
+            </p>
           </div>
         </div>
       </app-example-section>
     </div>
 
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <app-radio-playground />
+    </div>
+
+    <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="radio"></app-component-documentation>
+      <app-component-documentation componentName="radio-group" />
     </div>
   </demo-tabs>
 </div>

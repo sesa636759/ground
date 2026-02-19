@@ -15,7 +15,7 @@
             <p>Adjust sizing, colors, and range constraints.</p>
           </div>
           <app-knob-playground></app-knob-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -72,11 +72,7 @@
                 <p>Compact</p>
               </div>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Design Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylesCode" [label]="'Design Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- States -->
@@ -88,11 +84,7 @@
             <div class="demo-card">
               <ui-knob [value]="75" readonly [size]="150" value-color="#8b5cf6"></ui-knob>
             </div>
-            <app-code-block
-              [code]="readonlyCode"
-              title="Readonly Usage"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="readonlyCode" [label]="'Readonly Usage'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

@@ -15,11 +15,7 @@
             <p>Customize segments, labels, and marker visibility.</p>
           </div>
           <app-meter-group-playground></app-meter-group-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -61,11 +57,7 @@
                 ></ui-meter-group>
               </div>
             </div>
-            <app-code-block
-              [code]="displaysCode"
-              title="Visual Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="displaysCode" [label]="'Visual Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Advanced Layouts -->
@@ -84,11 +76,7 @@
                 <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
               </div>
             </div>
-            <app-code-block
-              [code]="layoutsCode"
-              title="Layout Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

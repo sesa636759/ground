@@ -15,12 +15,11 @@ import {
   ComponentDocumentation,
   ComponentProp,
 } from '../../services/component-docs.service';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-component-documentation',
   standalone: true,
-  imports: [CommonModule, CodeBlockComponent],
+  imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">

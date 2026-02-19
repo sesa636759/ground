@@ -15,11 +15,7 @@
             <p>Configure overlay behavior and visual style</p>
           </div>
           <app-popover-playground></app-popover-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Popover Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Popover Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -76,11 +72,7 @@
                 </ui-popover>
               </div>
             </div>
-            <app-code-block
-              [code]="triggersCode"
-              title="Triggers Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="triggersCode" [label]="'Triggers Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Placements -->
@@ -105,11 +97,7 @@
                 </ui-popover>
               </div>
             </div>
-            <app-code-block
-              [code]="placementsCode"
-              title="Placements Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="placementsCode" [label]="'Placements Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Visual Styles -->
@@ -155,11 +143,7 @@
                 </ui-popover>
               </div>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Styles Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylesCode" [label]="'Styles Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

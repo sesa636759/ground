@@ -16,7 +16,7 @@
             <p>Test different layout modes and panel configurations.</p>
           </div>
           <app-layout-manager-playground></app-layout-manager-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -53,11 +53,7 @@
                 mode.
               </p>
             </div>
-            <app-code-block
-              [code]="modesCode"
-              title="Mode Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="modesCode" [label]="'Mode Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

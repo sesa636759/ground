@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-animate-on-scroll-playground',
@@ -18,7 +17,6 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,

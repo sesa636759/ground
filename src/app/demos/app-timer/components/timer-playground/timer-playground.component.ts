@@ -15,7 +15,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div class="control-grid">
           <div class="control-section">
             <h3 class="section-title">
-              <ui-icon icon="cog" library="fontawesome"></ui-icon>
+              <ui-icon name="cog" library="fontawesome"></ui-icon>
               Configuration
             </h3>
             <div class="control-group">
@@ -38,7 +38,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
           <div class="control-section">
             <h3 class="section-title">
-              <ui-icon icon="palette" library="fontawesome"></ui-icon>
+              <ui-icon name="palette" library="fontawesome"></ui-icon>
               Visuals
             </h3>
             <div class="control-group">

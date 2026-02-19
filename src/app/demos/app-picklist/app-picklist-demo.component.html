@@ -15,7 +15,7 @@
             <p>Customize list headers, control visibility, and test selection.</p>
           </div>
           <app-picklist-playground></app-picklist-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -55,11 +55,7 @@
                 <ng-template let-item>{{ item.name }}</ng-template>
               </ui-picklist>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Configuration Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="featuresCode" [label]="'Configuration Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

@@ -11,7 +11,6 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppToggleGroupValueAccessorDirective } from '../../../../directives/app-toggle-group-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-toggle-playground',
@@ -23,8 +22,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
     AppCheckboxValueAccessorDirective,
     AppToggleGroupValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    CodeBlockComponent,
-  ],
+    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './toggle-playground.component.html',
   styleUrl: './toggle-playground.component.scss',

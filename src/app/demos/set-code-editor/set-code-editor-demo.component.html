@@ -47,7 +47,7 @@
             </div>
             <app-code-editor
               theme="vs-dark"
-              language="html"
+              activeLang="html"
               height="250px"
               value="<h1>Hello HTML</h1>"
             ></app-code-editor>
@@ -111,11 +111,7 @@
           <p>Customize the editor theme, language, and behavior</p>
         </div>
         <app-code-editor-playground></app-code-editor-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Code Editor Usage"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Code Editor Usage'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

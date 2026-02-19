@@ -15,7 +15,7 @@
             <p>Customize time formats, initial durations, and test controls.</p>
           </div>
           <app-timer-playground></app-timer-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -53,11 +53,7 @@
                 <ui-timer mode="stopwatch" auto-start></ui-timer>
               </div>
             </div>
-            <app-code-block
-              [code]="modesCode"
-              title="Mode Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="modesCode" [label]="'Mode Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Display Formats -->
@@ -80,11 +76,7 @@
                 <ui-timer format="HH:mm:ss" [duration]="3665" auto-start></ui-timer>
               </div>
             </div>
-            <app-code-block
-              [code]="formatsCode"
-              title="Format Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="formatsCode" [label]="'Format Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

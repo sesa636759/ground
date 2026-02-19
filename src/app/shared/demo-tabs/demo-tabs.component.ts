@@ -27,6 +27,8 @@ export class DemoTabsComponent {
 
     if (typeof newValue === 'string' && newValue) {
       this.active.set(newValue);
+    } else {
+      console.warn('Invalid tab value received:', newValue);
     }
   }
 }

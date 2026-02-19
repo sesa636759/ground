@@ -15,7 +15,7 @@
             <p>Attach the menu to a specific target and customize its behavior.</p>
           </div>
           <app-context-menu-playground></app-context-menu-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -56,11 +56,7 @@
               </div>
               <ui-context-menu [model]="fileItems" [target]="cardTarget"></ui-context-menu>
             </div>
-            <app-code-block
-              [code]="targetsCode"
-              title="Target Configuration"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="targetsCode" [label]="'Target Configuration'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

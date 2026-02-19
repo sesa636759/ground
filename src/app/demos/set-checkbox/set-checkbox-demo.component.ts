@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckboxPlaygroundComponent } from './components/checkbox-playground/checkbox-playground.component';
@@ -25,7 +25,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
   styleUrl: './set-checkbox-demo.component.scss',
 })
 export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
-  exampleVariants = [
+  variants = [
     { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
     { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
     { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
@@ -34,6 +34,10 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
     { id: 'form', title: 'Form Example', icon: '📋' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
 
   // Select All Group State
   masterChecked = false;
@@ -44,6 +48,62 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     { label: 'Design', checked: false },
     { label: 'Marketing', checked: false },
   ];
+
+  // Form State
+  formTerms = false;
+  formPrivacy = false;
+  formNewsletter = false;
+  formMarketing = false;
+
+  formMessage = '';
+  formMessageColor = 'inherit';
+
+  // Interactive Refs
+  termsInvalid = false;
+  privacyInvalid = false;
+
+  // Code snippets
+  colorVariantsCode = `<!-- Diverse color palette -->
+<app-checkbox label="Primary" color="primary" checked></app-checkbox>
+<app-checkbox label="Success" color="success" checked></app-checkbox>
+<app-checkbox label="Danger" color="danger" checked></app-checkbox>
+<app-checkbox label="Indigo" color="indigo" checked></app-checkbox>`;
+
+  premiumVariantsCode = `<app-checkbox label="Button Variant" variant="button" color="primary" checked></app-checkbox>
+<app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
+<app-checkbox label="Soft Variant" variant="soft" color="success" checked></app-checkbox>`;
+
+  skeletonCode = `<app-checkbox skeleton size="small"></app-checkbox>
+<app-checkbox skeleton size="medium"></app-checkbox>
+<app-checkbox skeleton size="large"></app-checkbox>`;
+
+  sizesVariantsCode = `<app-checkbox label="Small" size="small"></app-checkbox>
+<app-checkbox label="Medium" size="medium"></app-checkbox>
+<app-checkbox label="Large" size="large"></app-checkbox>`;
+
+  statesCode = `<app-checkbox label="Checked" checked></app-checkbox>
+<app-checkbox label="Indeterminate" indeterminate></app-checkbox>
+<app-checkbox label="Disabled" disabled></app-checkbox>
+<app-checkbox label="Error State" invalid error-message="Required"></app-checkbox>`;
+
+  groupExampleCode = `<!-- Master checkbox logic -->
+<app-checkbox 
+  label="Select All" 
+  [checked]="masterChecked" 
+  [indeterminate]="masterIndeterminate"
+  (checkboxChange)="onMasterChange($event)">
+</app-checkbox>`;
+
+  formExampleCode = `<app-checkbox
+  [(ngModel)]="formTerms"
+  label="Accept Terms"
+  [invalid]="termsInvalid"
+  error-message="Required"
+></app-checkbox>`;
+
+  ngOnInit() {
+    this.updateMasterState();
+  }
 
   updateMasterState() {
     const checkedCount = this.groupItems.filter((i) => i.checked).length;
@@ -61,108 +121,15 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     this.updateMasterState();
   }
 
-  // Form State
-  formTerms = false;
-  formPrivacy = false;
-  formNewsletter = false;
-  formMarketing = false;
-
-  formMessage = signal('');
-  formMessageColor = signal('inherit');
-
-  // Interactive Refs
-  termsInvalid = false;
-  privacyInvalid = false;
-
-  playgroundCode = `<app-checkbox
-  [(ngModel)]="checked"
-  label="Accept terms"
-></app-checkbox>`;
-
-  colorVariantsCode = `<!-- Available colors: primary, secondary, success, danger, warning, info, indigo, purple, pink, etc. -->
-<app-checkbox label="Primary" color="primary" checked></app-checkbox>
-<app-checkbox label="Success" color="success" checked></app-checkbox>
-<app-checkbox label="Danger" color="danger" checked></app-checkbox>
-<app-checkbox label="Indigo" color="indigo" checked></app-checkbox>`;
-
-  premiumVariantsCode = `<app-checkbox label="Button Variant" variant="button" color="primary" checked></app-checkbox>
-<app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
-<app-checkbox label="Soft Variant" variant="soft" color="success" checked></app-checkbox>`;
-
-  skeletonCode = `<app-checkbox skeleton size="small"></app-checkbox>
-<app-checkbox skeleton size="medium"></app-checkbox>
-<app-checkbox skeleton size="large"></app-checkbox>`;
-
-  sizesVariantsCode = `<app-checkbox label="Small" size="small"></app-checkbox>
-<app-checkbox label="Medium" size="medium"></app-checkbox>
-<app-checkbox label="Large" size="large"></app-checkbox>
-
-<app-checkbox label="Rounded" variant="rounded"></app-checkbox>
-<app-checkbox label="Square" variant="square"></app-checkbox>
-<app-checkbox label="Pill" variant="pill"></app-checkbox>`;
-
-  statesCode = `<app-checkbox label="Checked" checked></app-checkbox>
-<app-checkbox label="Indeterminate" indeterminate></app-checkbox>
-<app-checkbox label="Disabled" disabled></app-checkbox>
-
-<app-checkbox
-  label="With Helper"
-  helper-text="Additional information"
-></app-checkbox>
-
-<app-checkbox
-  label="Error State"
-  invalid
-  error-message="This field is required"
-></app-checkbox>
-
-<app-checkbox label="Readonly" readonly checked></app-checkbox>`;
-
-  groupExampleCode = `<!-- Select All Indeterminate Example -->
-<app-checkbox 
-  label="Select All" 
-  [checked]="masterChecked" 
-  [indeterminate]="masterIndeterminate"
-  (checkboxChange)="onMasterChange($event)">
-</app-checkbox>
-
-<div class="group-items">
-  <app-checkbox 
-    *ngFor="let item of items" 
-    [label]="item.label" 
-    [(ngModel)]="item.checked"
-    (change)="onItemChange()">
-  </app-checkbox>
-</div>`;
-
-  formExampleCode = `<app-checkbox
-  [(ngModel)]="termsAccepted"
-  label="I accept the terms"
-  required
-  [invalid]="isInvalid"
-  error-message="You must accept the terms"
-></app-checkbox>
-
-<app-checkbox
-  [(ngModel)]="newsletter"
-  label="Subscribe to newsletter"
-  helper-text="Get updates"
-  color="success"
-></app-checkbox>`;
-
-  ngOnInit() {
-    this.updateMasterState();
-  }
-
   onSubmit() {
     if (!this.formTerms || !this.formPrivacy) {
-      this.formMessage.set('⚠️ Please accept the required terms to continue');
-      this.formMessageColor.set('#dc2626');
+      this.formMessage = '⚠️ Please accept the required terms to continue';
+      this.formMessageColor = '#dc2626';
       this.termsInvalid = !this.formTerms;
       this.privacyInvalid = !this.formPrivacy;
     } else {
-      this.formMessage.set('✅ Account created successfully!');
-      this.formMessageColor.set('#16a34a');
+      this.formMessage = '✅ Account created successfully!';
+      this.formMessageColor = '#16a34a';
       this.termsInvalid = false;
       this.privacyInvalid = false;
     }

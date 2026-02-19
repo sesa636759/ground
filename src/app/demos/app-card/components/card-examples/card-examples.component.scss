@@ -4,46 +4,6 @@
     display: block;
 }
 
-.examples-split-layout {
-    display: flex;
-    gap: 3rem;
-    padding: 3rem 4rem;
-    background: #ffffff;
-}
-
-.examples-sidebar {
-    width: 260px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 2rem;
-    align-self: flex-start;
-    height: fit-content;
-
-    .sidebar-title {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--text-tertiary);
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        padding-left: 0.5rem;
-    }
-
-    .sidebar-nav {
-        ui-anchor {
-            display: block;
-            --anchor-padding: 0.75rem 1rem;
-            --anchor-font-size: 0.875rem;
-            --anchor-active-color: var(--primary);
-        }
-    }
-}
-
-.examples-content {
-    flex: 1;
-    min-width: 0;
-}
-
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

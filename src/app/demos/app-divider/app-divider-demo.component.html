@@ -15,11 +15,7 @@
             <p>Fine-tune every aspect of the divider</p>
           </div>
           <app-divider-playground></app-divider-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Divider Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Divider Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -70,11 +66,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="variantsCode"
-              title="Variants Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="variantsCode" [label]="'Variants Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Text & Content -->
@@ -95,11 +87,7 @@
                 <ui-divider badge="NEW" color="primary"></ui-divider>
               </div>
             </div>
-            <app-code-block
-              [code]="textContentCode"
-              title="Content Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="textContentCode" [label]="'Content Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Vertical -->
@@ -125,11 +113,7 @@
                 <span>Right Panel</span>
               </div>
             </div>
-            <app-code-block
-              [code]="verticalCode"
-              title="Vertical Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="verticalCode" [label]="'Vertical Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Shapes -->
@@ -150,11 +134,7 @@
                 <div style="height: 100px; padding: 20px">Section B</div>
               </div>
             </div>
-            <app-code-block
-              [code]="shapesCode"
-              title="Shapes Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="shapesCode" [label]="'Shapes Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

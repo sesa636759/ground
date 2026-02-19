@@ -15,7 +15,12 @@
             <p>Configure selection behavior and explore tree interactions.</p>
           </div>
           <app-tree-list-playground></app-tree-list-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview
+            [htmlCode]="playgroundCode"
+            label="'Usage'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </section>
       </div>
     </div>
@@ -48,11 +53,11 @@
                 <ui-tree-list [model]="treeData" selectable></ui-tree-list>
               </div>
             </div>
-            <app-code-block
-              [code]="examplesCode"
-              title="File System Example"
-              language="typescript"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="examplesCode"
+              label="File System Example"
+              activeLang="ts"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

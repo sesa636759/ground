@@ -15,7 +15,7 @@
             <p>Customize paging logic and metadata reporting.</p>
           </div>
           <app-pagination-playground></app-pagination-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -58,11 +58,7 @@
                 <ui-pagination variant="compact" [total-records]="50" [rows]="10"></ui-pagination>
               </div>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Design Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylesCode" [label]="'Design Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- UI Controls -->
@@ -89,11 +85,7 @@
                 ></ui-pagination>
               </div>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Functionality Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="featuresCode" [label]="'Functionality Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

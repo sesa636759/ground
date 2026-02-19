@@ -5,7 +5,6 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppTagsInputValueAccessorDirective } from '../../../../directives/app-tags-input-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-tags-input-playground',
@@ -16,7 +15,6 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    CodeBlockComponent,
     AppTagsInputValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -15,7 +15,7 @@
             <p>Test the dock in different screen positions and configurations.</p>
           </div>
           <app-dock-playground></app-dock-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -90,11 +90,7 @@
                 <ui-dock [model]="dockItems" position="left"></ui-dock>
               </div>
             </div>
-            <app-code-block
-              [code]="positionsCode"
-              title="Position Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="positionsCode" [label]="'Position Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

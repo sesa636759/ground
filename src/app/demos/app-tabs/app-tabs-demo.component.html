@@ -15,7 +15,7 @@
             <p>Switch between variants, alignments, and orientations.</p>
           </div>
           <app-tabs-playground></app-tabs-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -68,11 +68,7 @@
                 </ui-tabs>
               </div>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Design Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="stylesCode" [label]="'Design Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Orientations & Layouts -->
@@ -99,11 +95,7 @@
                 </ui-tabs>
               </div>
             </div>
-            <app-code-block
-              [code]="layoutsCode"
-              title="Layout Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Tab Stack -->
@@ -128,11 +120,7 @@
                 </app-tab-stack>
               </div>
             </div>
-            <app-code-block
-              [code]="tabStackCode"
-              title="Tab Stack Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="tabStackCode" [label]="'Tab Stack Example'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

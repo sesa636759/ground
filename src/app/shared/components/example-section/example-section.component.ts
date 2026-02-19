@@ -1,11 +1,10 @@
 import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CodeBlockComponent } from '../code-block/code-block.component';
 
 @Component({
   selector: 'app-example-section',
   standalone: true,
-  imports: [CommonModule, CodeBlockComponent],
+  imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <section class="demo-section" [id]="id">
@@ -21,7 +20,23 @@ import { CodeBlockComponent } from '../code-block/code-block.component';
       </div>
 
       <div class="code-wrapper" *ngIf="code">
-        <app-code-block [code]="code" [language]="language"> </app-code-block>
+        <ui-code-preview
+          [label]="title"
+          [htmlCode]="language === 'html' ? code : ''"
+          [tsCode]="language === 'typescript' || language === 'ts' ? code : ''"
+          [jsCode]="language === 'javascript' || language === 'js' ? code : ''"
+          [cssCode]="language === 'css' ? code : ''"
+          [activeLang]="
+            language === 'typescript' || language === 'ts'
+              ? 'ts'
+              : language === 'javascript' || language === 'js'
+                ? 'js'
+                : language === 'css'
+                  ? 'css'
+                  : 'html'
+          "
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </section>
   `,
@@ -93,27 +108,14 @@ import { CodeBlockComponent } from '../code-block/code-block.component';
     `,
   ],
 })
-export class ExampleSectionComponent implements OnInit {
+export class ExampleSectionComponent implements OnInit, OnChanges {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() code: string = '';
   @Input() language: string = 'html';
   @Input() id: string = '';
 
-  ngOnInit(): void {
-    console.log(
-      `ExampleSection [${this.id}] ngOnInit - title: ${this.title}, code length: ${this.code?.length}`,
-    );
-    if (!this.code) {
-      console.warn(`ExampleSection [${this.id}]: code input is empty in ngOnInit`);
-    }
-  }
+  ngOnInit(): void {}
 
-  ngOnChanges(changes: any): void {
-    if (changes.code) {
-      console.log(
-        `ExampleSection [${this.id}] ngOnChanges - code updated, new length: ${changes.code.currentValue?.length}`,
-      );
-    }
-  }
+  ngOnChanges(changes: any): void {}
 }

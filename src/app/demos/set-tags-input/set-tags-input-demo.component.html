@@ -192,11 +192,7 @@
           <p>Configure and test all tags input properties</p>
         </div>
         <app-tags-input-playground></app-tags-input-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Tags Input Usage"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Tags Input Usage'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

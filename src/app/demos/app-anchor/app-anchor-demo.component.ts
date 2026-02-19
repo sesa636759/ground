@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -14,7 +13,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     AnchorPlaygroundComponent,
     DemoTabsComponent,
     DemoHeaderComponent,

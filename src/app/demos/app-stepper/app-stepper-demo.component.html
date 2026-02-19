@@ -15,11 +15,7 @@
             <p>Master the workflow layout and step states</p>
           </div>
           <app-stepper-playground></app-stepper-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Stepper Configuration"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Stepper Configuration'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -64,11 +60,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="orientationCode"
-              title="Orientation Toggle"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="orientationCode" [label]="'Orientation Toggle'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Visual Types -->
@@ -94,11 +86,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="visualsCode"
-              title="Progress Markers"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="visualsCode" [label]="'Progress Markers'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Flow Logic -->
@@ -124,7 +112,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block [code]="flowCode" title="Flow Control" language="html"></app-code-block>
+            <ui-code-preview [htmlCode]="flowCode" [label]="'Flow Control'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

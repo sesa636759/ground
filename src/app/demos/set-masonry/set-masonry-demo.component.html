@@ -26,7 +26,7 @@
               <div class="masonry-item" style="height: 310px; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
             </div>
           </div>
-          <app-code-block [code]="masonryCode()" language="html" title="Masonry Layout Code"></app-code-block>
+          <ui-code-preview [htmlCode]="masonryCode()" [label]="'Masonry Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -54,7 +54,7 @@
               <div class="grid-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
             </div>
           </div>
-          <app-code-block [code]="gridCode()" language="html" title="Grid Layout Code"></app-code-block>
+          <ui-code-preview [htmlCode]="gridCode()" [label]="'Grid Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -85,7 +85,7 @@
               </div>
             </div>
           </div>
-          <app-code-block [code]="columnsCode()" language="html" title="Columns Layout Code"></app-code-block>
+          <ui-code-preview [htmlCode]="columnsCode()" [label]="'Columns Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -113,7 +113,7 @@
               <div class="masonry-item" style="height: 255px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
             </div>
           </div>
-          <app-code-block [code]="responsiveCode()" language="html" title="Responsive Design Code"></app-code-block>
+          <ui-code-preview [htmlCode]="responsiveCode()" [label]="'Responsive Design Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -152,7 +152,7 @@
               <div class="masonry-item" style="height: 310px; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
             </div>
           </div>
-          <app-code-block [code]="filteringCode()" language="html" title="Filtering Code"></app-code-block>
+          <ui-code-preview [htmlCode]="filteringCode()" [label]="'Filtering Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -188,7 +188,7 @@
               <div class="selection-item"><span class="checkbox">☐</span></div>
             </div>
           </div>
-          <app-code-block [code]="selectionCode()" language="html" title="Multi-Select Code"></app-code-block>
+          <ui-code-preview [htmlCode]="selectionCode()" [label]="'Multi-Select Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -220,7 +220,7 @@
               <div class="gallery-item" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
             </div>
           </div>
-          <app-code-block [code]="lightboxCode()" language="html" title="Lightbox Code"></app-code-block>
+          <ui-code-preview [htmlCode]="lightboxCode()" [label]="'Lightbox Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
 
@@ -248,7 +248,7 @@
               <div class="skeleton-item"></div>
             </div>
           </div>
-          <app-code-block [code]="skeletonCode()" language="html" title="Skeleton Loading Code"></app-code-block>
+          <ui-code-preview [htmlCode]="skeletonCode()" [label]="'Skeleton Loading Code'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
     </div>
@@ -261,7 +261,7 @@
           <p>Configure layout, filtering, sorting, and selection options</p>
         </div>
         <app-masonry-playground></app-masonry-playground>
-        <app-code-block [code]="playgroundCode()" language="html" title="Masonry Usage"></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode()" [label]="'Masonry Usage'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

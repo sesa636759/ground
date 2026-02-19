@@ -172,11 +172,7 @@
             (panelRemoved)="handlePanelRemoved($event)"
             style="height: 500px; display: block"
           ></app-layout-manager>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Layout Manager Usage"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Layout Manager Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </div>
       </section>
     </div>

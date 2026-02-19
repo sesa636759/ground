@@ -15,7 +15,7 @@
             <p>Test various constraints, steps, and range toggles.</p>
           </div>
           <app-range-slider-playground></app-range-slider-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -59,11 +59,7 @@
                 ></ui-range-slider>
               </div>
             </div>
-            <app-code-block
-              [code]="modesCode"
-              title="Mode Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="modesCode" [label]="'Mode Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
 
           <!-- Layouts & Constraints -->
@@ -90,11 +86,7 @@
                 ></ui-range-slider>
               </div>
             </div>
-            <app-code-block
-              [code]="layoutsCode"
-              title="Layout Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

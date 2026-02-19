@@ -30,11 +30,7 @@
             <p>Built-in save, load, undo, redo, and export capabilities.</p>
           </div>
         </div>
-        <app-code-block
-          [code]="featuresCode"
-          title="Key Features Overview"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview [htmlCode]="featuresCode" [label]="'Key Features Overview'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 
@@ -46,11 +42,7 @@
           <p>Configure grid, interaction rules, and manage widgets</p>
         </div>
         <app-dashboard-playground></app-dashboard-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Dashboard Configuration"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Dashboard Configuration'" activeLang="html" expanded="true"></ui-code-preview>
       </section>
     </div>
 

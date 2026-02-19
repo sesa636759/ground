@@ -15,7 +15,7 @@
             <p>Configure max display count and avatar sizes.</p>
           </div>
           <app-avatar-group-playground></app-avatar-group-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -71,11 +71,7 @@
                 </div>
               </div>
             </div>
-            <app-code-block
-              [code]="sizesCode"
-              title="Size Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="sizesCode" [label]="'Size Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>
