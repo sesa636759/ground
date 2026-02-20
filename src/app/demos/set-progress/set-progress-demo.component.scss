@@ -1,24 +1,20 @@
-.demo-grid {
-  &.col-2 {
-      grid-template-columns: repeat(2, 1fr);
-  }
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.interactive-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-bg-tertiary);
+  padding: 12px 20px;
+  border-radius: 8px;
   
-  &.col-3 {
-      grid-template-columns: repeat(3, 1fr);
+  label {
+    font-weight: 600;
+    min-width: 120px;
   }
-}
-
-.preview-box {
-  min-height: 150px;
-
-  &.center-content {
-      align-items: center;
-      justify-content: center;
-  }
-}
-
-
-.gradient-demo {
-    width: 100%;
-    margin: 10px 0;
 }

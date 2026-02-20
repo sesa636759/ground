@@ -24,7 +24,13 @@
 
       <div class="control-group">
         <label>Gap (px)</label>
-        <app-input type="number" min="0" max="50" [(ngModel)]="pgConfig.gap" (input)="updateConfig()" />
+        <app-input
+          type="number"
+          min="0"
+          max="50"
+          [(ngModel)]="pgConfig.gap"
+          (input)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
@@ -80,7 +86,7 @@
             { label: 'Nature', value: 'nature' },
             { label: 'Architecture', value: 'architecture' },
             { label: 'Food', value: 'food' },
-            { label: 'Technology', value: 'technology' }
+            { label: 'Technology', value: 'technology' },
           ]"
         ></ui-dropdown>
       </div>
@@ -89,31 +95,59 @@
     <h4 class="section-title">Features</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" label="Animations" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.enableAnimation"
+          (change)="updateConfig()"
+          label="Animations"
+        />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showFilters" (change)="updateConfig()" label="Show Filters" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.showFilters"
+          (change)="updateConfig()"
+          label="Show Filters"
+        />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" label="Selectable" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.selectable"
+          (change)="updateConfig()"
+          label="Selectable"
+        />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" label="Multi-Select" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.multiSelect"
+          (change)="updateConfig()"
+          label="Multi-Select"
+        />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showBatchActions" (change)="updateConfig()" label="Batch Actions" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.showBatchActions"
+          (change)="updateConfig()"
+          label="Batch Actions"
+        />
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.lazyLoad" (change)="updateConfig()" label="Lazy Load" />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.infiniteScroll" (change)="updateConfig()" label="Infinite Scroll" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.infiniteScroll"
+          (change)="updateConfig()"
+          label="Infinite Scroll"
+        />
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.lightbox" (change)="updateConfig()" label="Lightbox" />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loadingState" (change)="updateConfig()" label="Loading State" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.loadingState"
+          (change)="updateConfig()"
+          label="Loading State"
+        />
       </label>
     </div>
   </div>
@@ -173,7 +207,7 @@
         category: categories[i % categories.length],
         height: heights[i % heights.length],
         tags: [`tag${(i % 3) + 1}`, `${categories[i % categories.length]}`],
-        date: new Date(Date.now() - Math.random() * 10000000000).toISOString()
+        date: new Date(Date.now() - Math.random() * 10000000000).toISOString(),
       }));
     }
   }, 100);

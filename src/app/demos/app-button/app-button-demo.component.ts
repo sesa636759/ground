@@ -1,10 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ButtonPlaygroundComponent } from './components/button-playground/button-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-button-demo',
@@ -12,18 +13,17 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     ButtonPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-demo.component.html',
   styleUrl: './app-button-demo.component.scss',
 })
-export class AppButtonDemoComponent {
+export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
@@ -59,10 +59,5 @@ export class AppButtonDemoComponent {
 <ui-button label="Loading" loading></ui-button>
 <ui-button label="Full Width" full-width></ui-button>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }

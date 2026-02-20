@@ -1481,60 +1481,7 @@ export class ComponentDocsService {
         ],
       },
     ],
-    [
-      'button-group',
-      {
-        id: 'button-group',
-        name: 'Button Group',
-        shortDescription: 'Group multiple buttons with consistent layout and selection behavior',
-        detailedDescription:
-          'Container component for grouping related buttons with support for single/multiple selection modes, horizontal/vertical orientations, attached or spaced layouts, and consistent styling across grouped buttons. Ideal for toolbars, toggle sets, and segmented controls.',
-        usage: `<ui-button-group selection-mode="single">
-  <ui-button label="Option 1" variant="outline"></ui-button>
-  <ui-button label="Option 2" variant="outline"></ui-button>
-</ui-button-group>`,
-        props: [
-          {
-            name: 'selection-mode',
-            type: 'string',
-            description: 'Selection behavior (single, multiple, none)',
-            defaultValue: 'none',
-            required: false,
-          },
-          {
-            name: 'orientation',
-            type: 'string',
-            description: 'Layout direction (horizontal, vertical)',
-            defaultValue: 'horizontal',
-            required: false,
-          },
-          {
-            name: 'attached',
-            type: 'boolean',
-            description: 'Remove gaps between buttons',
-            defaultValue: 'true',
-            required: false,
-          },
-        ],
-        events: [
-          {
-            name: 'selectionChange',
-            description: 'Fired when selection changes',
-            payloadType: 'CustomEvent',
-            payloadDescription: 'Contains selected button indices or values',
-          },
-        ],
-        limitations: [
-          'Selection mode requires buttons to have value attributes',
-          'Attached mode modifies button border radii',
-        ],
-        examples: [
-          '<ui-button-group selection-mode="single"><ui-button label="Day"></ui-button><ui-button label="Night"></ui-button></ui-button-group>',
-          '<ui-button-group selection-mode="multiple"><ui-button label="Bold" icon="B"></ui-button><ui-button label="Italic" icon="I"></ui-button></ui-button-group>',
-          '<ui-button-group orientation="vertical"><ui-button label="Home"></ui-button><ui-button label="Profile"></ui-button></ui-button-group>',
-        ],
-      },
-    ],
+
     [
       'button-toggle',
       {
@@ -2412,13 +2359,7 @@ export class ComponentDocsService {
             defaultValue: '2',
             required: false,
           },
-          {
-            name: 'button-group',
-            type: 'boolean',
-            description: 'Style as button group',
-            defaultValue: 'false',
-            required: false,
-          },
+       
           {
             name: 'color',
             type: 'string',

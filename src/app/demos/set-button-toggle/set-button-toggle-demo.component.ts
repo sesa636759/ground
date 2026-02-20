@@ -1,10 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonTogglePlaygroundComponent } from './components/button-toggle-playground/button-toggle-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-button-toggle-demo',
@@ -13,15 +15,15 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     ButtonTogglePlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
   styleUrl: './set-button-toggle-demo.component.scss',
 })
-export class SetButtonToggleDemoComponent {
+export class SetButtonToggleDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
     { id: 'segmented', title: 'Segmented Controls', icon: '🔑' },
     { id: 'gliding', title: 'Gliding Pill Animation', icon: '🎴' },
@@ -40,14 +42,7 @@ export class SetButtonToggleDemoComponent {
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    return this.variants;
   }
 
   segmentedCode = `<app-button-toggle-group
@@ -196,8 +191,6 @@ export class SetButtonToggleDemoComponent {
     { value: "option3", label: "Option 3" }
   ]'
 ></app-button-toggle-group>`;
-
-
 
   // Options Data (Core sets)
   basicOptions = [
@@ -494,6 +487,4 @@ export class SetButtonToggleDemoComponent {
       this.searchQuery ? `Searching for: "${this.searchQuery}"` : 'Enter a search term',
     );
   }
-
- 
 }

@@ -5,6 +5,8 @@ import { TooltipPlaygroundComponent } from './components/tooltip-playground/tool
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-tooltip-demo',
@@ -13,15 +15,16 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     TooltipPlaygroundComponent,
-    CodeBlockComponent,
+
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tooltip-demo.component.html',
   styleUrl: './set-tooltip-demo.component.scss',
 })
-export class SetTooltipDemoComponent implements OnInit {
+export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     { id: 'triggers', title: 'Triggers', icon: '⚡' },
     { id: 'positioning', title: 'Positioning', icon: '📍' },
@@ -36,13 +39,6 @@ export class SetTooltipDemoComponent implements OnInit {
     { id: 'mouse-tracking', title: 'Mouse Tracking', icon: '🖱️' },
     { id: 'auto-shift', title: 'Auto-Shift', icon: '🔄' },
   ];
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
   hoverCode = `<app-tooltip content="I appear on hover" position="top">
   <ui-button slot="target" label="Hover Me"></ui-button>

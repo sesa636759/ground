@@ -1,10 +1,10 @@
-<!-- App Container with conditional layout classes -->
-<div class="app-container" 
-     [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
-     [class.layout-topbar]="themeService.navigationLayout() === 'topbar'"
-     [class.sidebar-collapsed]="sidebarCollapsed()">
-  
-  <!-- Navigation -->
+<div
+  class="app-container"
+  [class.sidebar-collapsed]="sidebarCollapsed()"
+  [class.layout-topbar]="themeService.navigationLayout() === 'topbar'"
+  [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
+>
+  <!-- Sidebar Navigation - Only show when layout is sidebar -->
   <ui-navigation
     class="main-nav"
     [orientation]="themeService.navigationLayout() === 'topbar' ? 'horizontal' : 'vertical'"

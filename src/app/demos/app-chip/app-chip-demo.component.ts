@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-chip-demo',
@@ -13,48 +13,39 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     ChipPlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-chip-demo.component.html',
   styleUrl: './app-chip-demo.component.scss',
 })
-export class AppChipDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'variants', name: 'Variants', icon: '🎨', color: '#3b82f6' },
-    { id: 'shapes-sizes', name: 'Shapes & Sizes', icon: '📏', color: '#10b981' },
-    { id: 'avatars-icons', name: 'Avatars & Icons', icon: '👤', color: '#f59e0b' },
-    { id: 'actions', name: 'Actions', icon: '⚡', color: '#ec4899' },
+export class AppChipDemoComponent extends BaseDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'variants', title: 'Variants', icon: '🎨' },
+    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏' },
+    { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤' },
+    { id: 'actions', title: 'Actions', icon: '⚡' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
+  ngOnInit() {}
 
   playgroundCode = `<ui-chip label="Web Development" color="primary" removable></ui-chip>`;
 
-  variantsCode = `<!-- Filled (Default) -->
-<ui-chip label="Filled" variant="filled"></ui-chip>
-<!-- Outlined -->
+  variantsCode = `<ui-chip label="Filled" variant="filled"></ui-chip>
 <ui-chip label="Outlined" variant="outlined"></ui-chip>
-<!-- Soft -->
 <ui-chip label="Soft" variant="soft" color="success"></ui-chip>
-<!-- Gradient -->
 <ui-chip label="Gradient" variant="gradient"></ui-chip>
-<!-- Text -->
 <ui-chip label="Text Only" variant="text"></ui-chip>`;
 
-  shapesSizesCode = `<!-- Shapes -->
-<ui-chip label="Pill" shape="pill"></ui-chip>
+  shapesSizesCode = `<ui-chip label="Pill" shape="pill"></ui-chip>
 <ui-chip label="Rounded" shape="rounded"></ui-chip>
 <ui-chip label="Square" shape="square"></ui-chip>
-<ui-chip label="Circle" shape="circle" icon="🚀"></ui-chip>
+<ui-chip label="Circle" shape="circle" icon="🚀"></ui-chip>`;
 
-<!-- Sizes -->
-<ui-chip label="Small" size="sm"></ui-chip>
+  sizeCode = `<ui-chip label="Small" size="sm"></ui-chip>
 <ui-chip label="Medium" size="md"></ui-chip>
 <ui-chip label="Large" size="lg"></ui-chip>`;
 
@@ -68,11 +59,4 @@ export class AppChipDemoComponent {
 <ui-chip label="Selected" selected color="primary"></ui-chip>
 <ui-chip label="Loading" loading></ui-chip>
 <ui-chip label="Disabled" disabled></ui-chip>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

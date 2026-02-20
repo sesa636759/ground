@@ -1,10 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DropdownPlaygroundComponent } from './components/dropdown-playground/dropdown-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-dropdown-demo',
@@ -12,30 +13,30 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     DropdownPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dropdown-demo.component.html',
   styleUrl: './app-dropdown-demo.component.scss',
 })
-export class AppDropdownDemoComponent {
+export class AppDropdownDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'multi-select', title: 'Multi Selection', icon: '📝', color: '#3b82f6' },
-    { id: 'cascading', title: 'Hierarchical', icon: '🌳', color: '#10b981' },
-    { id: 'sizes', title: 'Size Scaling', icon: '📏', color: '#f59e0b' },
+    { id: 'basic', title: 'Basic Dropdown', icon: '📝' },
+    { id: 'multi-select', title: 'Multi Selection', icon: '✅' },
+    { id: 'cascading', title: 'Hierarchical', icon: '🌳' },
+    { id: 'sizes', title: 'Size Scaling', icon: '📏' },
   ];
 
-  basicOptions = JSON.stringify([
+  basicOptions = [
     { label: 'Option 1', value: '1' },
     { label: 'Option 2', value: '2' },
     { label: 'Option 3', value: '3', disabled: true },
-  ]);
+  ];
 
-  cascadingOptions = JSON.stringify([
+  cascadingOptions = [
     {
       label: 'Cars',
       value: 'cars',
@@ -52,9 +53,9 @@ export class AppDropdownDemoComponent {
         { label: 'Honda', value: 'honda' },
       ],
     },
-  ]);
+  ];
 
-  playgroundCode = `<ui-dropdown [options]="options" placeholder="Select..."></ui-dropdown>`;
+  basicCode = `<ui-dropdown [options]="options" placeholder="Select one..."></ui-dropdown>`;
 
   multiSelectCode = `<!-- Enable multiple selection -->
 <ui-dropdown multi-select [options]="options"></ui-dropdown>`;
@@ -66,10 +67,5 @@ export class AppDropdownDemoComponent {
 <ui-dropdown size="md"></ui-dropdown>
 <ui-dropdown size="lg"></ui-dropdown>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }

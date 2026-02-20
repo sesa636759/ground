@@ -2,11 +2,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-tabs-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tabs-playground.component.html',
   styleUrl: './tabs-playground.component.scss',

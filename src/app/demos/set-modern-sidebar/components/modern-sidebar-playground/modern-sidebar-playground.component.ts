@@ -1,8 +1,15 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
@@ -12,6 +19,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     FormsModule,
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
+    CodeBlockComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
@@ -47,7 +55,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     { label: 'Red', value: '#ef4444' },
   ];
 
-  sidebarItems = JSON.stringify([
+  sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'analytics', label: 'Analytics', icon: 'fas fa-chart-line', badge: 3 },
     {
@@ -85,7 +93,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
       ],
     },
     { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' },
-  ]);
+  ];
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

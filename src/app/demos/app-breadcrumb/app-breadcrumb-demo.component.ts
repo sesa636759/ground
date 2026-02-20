@@ -1,11 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { BreadcrumbPlaygroundComponent } from './components/breadcrumb-playground/breadcrumb-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-breadcrumb-demo',
@@ -13,61 +14,46 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
+
     BreadcrumbPlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-breadcrumb-demo.component.html',
   styleUrl: './app-breadcrumb-demo.component.scss',
 })
-export class AppBreadcrumbDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'separators', name: 'Separators', icon: '➖', color: '#3b82f6' },
-    { id: 'collapsing', name: 'Collapsing', icon: '📉', color: '#10b981' },
-    { id: 'visuals', name: 'Visual Variants', icon: '🎨', color: '#f59e0b' },
+export class AppBreadcrumbDemoComponent extends BaseDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'separators', title: 'Separators', icon: '➖' },
+    { id: 'collapsing', title: 'Collapsing', icon: '📉' },
+    { id: 'visuals', title: 'Visual Variants', icon: '🎨' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  items = JSON.stringify([
+  items = [
     { label: 'Home', icon: '🏠', href: '/' },
     { label: 'Settings', href: '/settings' },
     { label: 'Profile', active: true },
-  ]);
+  ];
 
-  collapsibleItems = JSON.stringify([
+  collapsibleItems = [
     { label: 'Cloud Console', href: '#' },
     { label: 'Compute Engine', href: '#' },
     { label: 'Instances', href: '#' },
     { label: 'Production Clusters', href: '#' },
     { label: 'East-Region-Node-01', active: true },
-  ]);
+  ];
+
+  ngOnInit() {}
 
   playgroundCode = `<ui-breadcrumb [items]="breadcrumbItems" show-home></ui-breadcrumb>`;
 
-  separatorsCode = `<!-- Text Separator -->
-<ui-breadcrumb separator=">"></ui-breadcrumb>
-
-<!-- Icon Separator -->
+  separatorsCode = `<ui-breadcrumb separator=">"></ui-breadcrumb>
 <ui-breadcrumb separator-icon="→"></ui-breadcrumb>`;
 
-  collapsingCode = `<!-- Automatically collapse when exceeding 4 items -->
-<ui-breadcrumb [items]="longList" [max-items]="4"></ui-breadcrumb>`;
+  collapsingCode = `<ui-breadcrumb [items]="longList" [max-items]="4"></ui-breadcrumb>`;
 
-  visualsCode = `<!-- Modern Pill Style -->
-<ui-breadcrumb variant="pills"></ui-breadcrumb>
-
-<!-- Glassmorphism -->
+  visualsCode = `<ui-breadcrumb variant="pills"></ui-breadcrumb>
 <ui-breadcrumb variant="glass"></ui-breadcrumb>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

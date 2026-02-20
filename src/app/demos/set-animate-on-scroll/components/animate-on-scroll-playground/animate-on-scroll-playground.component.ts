@@ -1,13 +1,20 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-animate-on-scroll-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './animate-on-scroll-playground.component.html',
@@ -94,7 +101,8 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     if (this.pgConfig.threshold !== 0.1) code += `  threshold="${this.pgConfig.threshold}"\n`;
 
     if (this.pgConfig.blurAmount > 0) code += `  blur-amount="${this.pgConfig.blurAmount}"\n`;
-    if (this.pgConfig.perspective !== 1000) code += `  perspective="${this.pgConfig.perspective}"\n`;
+    if (this.pgConfig.perspective !== 1000)
+      code += `  perspective="${this.pgConfig.perspective}"\n`;
     if (this.pgConfig.rotateX !== 0) code += `  rotate-x="${this.pgConfig.rotateX}"\n`;
     if (this.pgConfig.rotateY !== 0) code += `  rotate-y="${this.pgConfig.rotateY}"\n`;
     if (this.pgConfig.rotateZ !== 0) code += `  rotate-z="${this.pgConfig.rotateZ}"\n`;

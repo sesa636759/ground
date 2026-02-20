@@ -1,134 +1,53 @@
-.demo-section {
-  &.dark-verification-bg {
-    background: #1e293b;
-    border-color: #334155;
-    
-    .section-header h2 { color: white; }
-    .section-header p { color: #94a3b8; }
-  }
+.demo-sub-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: 12px;
 }
 
-.dark-card {
-  background: #0f172a !important;
-  border-color: #334155 !important;
-}
-
-.demo-card {
-  .btn-toggle {
-    margin-top: 16px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: var(--surface-1);
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 0.85rem;
-    
-    &:hover {
-      background: var(--bg-secondary);
-      border-color: var(--primary);
-    }
-  }
-
-  .status-msg {
-    margin-top: 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--primary);
-  }
-}
-
-.demo-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-
-  .color-item, .variant-item {
-    flex: 1 1 250px;
-    padding: 20px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-
-    h3 {
-      font-size: 0.85rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: var(--text-tertiary);
-    }
-  }
-}
-
-/* Slot Content Styles */
-.custom-slot-content {
+.custom-filter-panel {
   padding: 16px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-width: 220px;
 
-  p { margin: 0; font-weight: 700; font-size: 0.95rem; }
-  input { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-1); }
-  
-  .slot-actions {
-    display: flex; gap: 8px;
-    button {
-      flex: 1; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer;
-      &.btn-confirm { background: var(--primary); color: white; border: none; }
-      &.btn-cancel { background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); }
-    }
-  }
-}
-
-.custom-slot-form {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 250px;
-
-  .form-field {
+  .filter-item {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    
-    label { font-size: 0.85rem; font-weight: 600; }
-    select { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-1); }
-  }
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
 
-  .btn-apply {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    label {
+      cursor: pointer;
+    }
   }
 }
 
-.custom-slot-colors {
+.color-demo,
+.style-demo,
+.size-demo,
+.icon-demo,
+.display-demo,
+.orientation-demo,
+.real-world-demo,
+.state-demo {
   padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  
-  .color-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-  }
-  
-  .color-dot {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 0 1px #ddd;
-    cursor: pointer;
-    transition: transform 0.2s;
-    &:hover { transform: scale(1.2); }
-  }
+  border-radius: 12px;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+}
 
-  input { padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); font-family: monospace; font-size: 0.9rem; }
+.helper-text {
+  font-size: 0.85rem;
+  color: var(--color-text-tertiary);
+  margin-top: 8px;
 }

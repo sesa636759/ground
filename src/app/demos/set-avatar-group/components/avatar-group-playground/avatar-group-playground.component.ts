@@ -1,13 +1,20 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -93,11 +100,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
           <div class="control-group">
             <label>Border Color</label>
-            <app-input
-              type="color"
-              [(ngModel)]="pgConfig.borderColor"
-              (input)="updateConfig()"
-            />
+            <app-input type="color" [(ngModel)]="pgConfig.borderColor" (input)="updateConfig()" />
           </div>
           <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
             <label>Grid Columns</label>
@@ -220,12 +223,14 @@ export class AvatarGroupPlaygroundComponent implements OnInit {
     let code = `<app-avatar-group\n  size="${this.pgConfig.size}"\n  max="${this.pgConfig.max}"\n  layout="${this.pgConfig.layout}"\n  shape="${this.pgConfig.shape}"\n  direction="${this.pgConfig.direction}"`;
     if (this.pgConfig.spacing !== 8) code += `\n  spacing="${this.pgConfig.spacing}"`;
     if (this.pgConfig.borderWidth !== 2) code += `\n  border-width="${this.pgConfig.borderWidth}"`;
-    if (this.pgConfig.borderColor !== '#ffffff') code += `\n  border-color="${this.pgConfig.borderColor}"`;
+    if (this.pgConfig.borderColor !== '#ffffff')
+      code += `\n  border-color="${this.pgConfig.borderColor}"`;
     if (this.pgConfig.showTooltips) code += `\n  show-tooltips="true"`;
     if (this.pgConfig.clickable) code += `\n  clickable="true"`;
     if (this.pgConfig.showPopover) code += `\n  show-popover="true"`;
     if (this.pgConfig.animated) code += `\n  animated="true"`;
-    if (this.pgConfig.hoverEffect !== 'none') code += `\n  hover-effect="${this.pgConfig.hoverEffect}"`;
+    if (this.pgConfig.hoverEffect !== 'none')
+      code += `\n  hover-effect="${this.pgConfig.hoverEffect}"`;
     if (this.pgConfig.layout === 'grid') code += `\n  columns="${this.pgConfig.columns}"`;
     code += `\n>\n  <!-- Child avatars -->\n</app-avatar-group>`;
     this.generatedCode.set(code);

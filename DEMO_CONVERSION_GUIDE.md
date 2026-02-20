@@ -22,7 +22,6 @@ This guide will help you convert the remaining 60+ demos from the app-ui-library
 - badge
 - bar-chart
 - breadcrumb
-- button-group
 - cascade-select
 - chip
 - context-menu

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
 
 @Component({
   selector: 'app-button-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CodeBlockComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -113,11 +114,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
+          <app-code-block
+            [code]="generatedCode()"
+            title="Generated Code"
+            language="html"
+          ></app-code-block>
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
             class="btn-secondary"
             variant="secondary"

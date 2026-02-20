@@ -3,262 +3,187 @@
   <demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples">
-      <div class="examples-split-layout">
-    
-
-        <!-- Scrollable Content -->
-        <div class="examples-content">
       <!-- Basic Input Types -->
-      <section class="demo-section" id="basic-types">
-        <div class="section-header">
-          <h2>📋 Basic Input Types</h2>
-          <p>Different input types with various configurations</p>
+      <app-example-section
+        id="basic-types"
+        title="Basic Input Types"
+        description="Different input types with various configurations"
+        [code]="basicInputsCode"
+      >
+        <div class="demo-grid col-3">
+          <app-input label="Username" placeholder="Enter your username" full-width></app-input>
+          <app-input
+            type="email"
+            label="Email Address"
+            placeholder="user@example.com"
+            full-width
+          ></app-input>
+          <app-input
+            type="password"
+            label="Password"
+            placeholder="Enter password"
+            show-password-toggle
+            full-width
+          ></app-input>
+          <app-input
+            type="number"
+            label="Age"
+            placeholder="0"
+            min="0"
+            max="120"
+            full-width
+          ></app-input>
+          <app-input
+            type="search"
+            label="Search"
+            placeholder="Search..."
+            show-clear
+            full-width
+          ></app-input>
+          <app-input type="date" label="Birth Date" full-width></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Text Input</h3>
-            <app-input label="Username" placeholder="Enter your username" full-width></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Email Input</h3>
-            <app-input
-              type="email"
-              label="Email Address"
-              placeholder="user@example.com"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Password Input</h3>
-            <app-input
-              type="password"
-              label="Password"
-              placeholder="Enter password"
-              show-password-toggle
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Number Input</h3>
-            <app-input
-              type="number"
-              label="Age"
-              placeholder="0"
-              min="0"
-              max="120"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Search Input</h3>
-            <app-input
-              type="search"
-              label="Search"
-              placeholder="Search..."
-              show-clear
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Date Input</h3>
-            <app-input type="date" label="Birth Date" full-width></app-input>
-          </div>
-        </div>
-        <app-code-block
-          [code]="basicInputsCode"
-          title="Basic Input Examples"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Variants -->
-      <section class="demo-section" id="variants">
-        <div class="section-header">
-          <h2>🎭 Input Variants</h2>
-          <p>Different visual styles for inputs</p>
+      <app-example-section
+        id="variants"
+        title="Input Variants"
+        description="Different visual styles for inputs"
+        [code]="variantsCode"
+      >
+        <div class="demo-grid col-3">
+          <app-input label="Outlined" variant="outlined" full-width></app-input>
+          <app-input label="Filled" variant="filled" full-width></app-input>
+          <app-input label="Underlined" variant="underlined" full-width></app-input>
+          <app-input label="Soft" variant="soft" full-width></app-input>
+          <app-input label="Ghost" variant="ghost" full-width></app-input>
         </div>
-        <div class="demo-grid">
-          <div
-            class="demo-card"
-            *ngFor="let v of ['outlined', 'filled', 'underlined', 'soft', 'ghost']"
-          >
-            <h3>{{ v | titlecase }}</h3>
-            <app-input [attr.label]="v | titlecase" [attr.variant]="v" full-width></app-input>
-          </div>
-        </div>
-        <app-code-block
-          [code]="variantsCode"
-          title="Input Variants"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Sizes -->
-      <section class="demo-section" id="sizes">
-        <div class="section-header">
-          <h2>📏 Input Sizes</h2>
-          <p>Small, medium, and large size options</p>
+      <app-example-section
+        id="sizes"
+        title="Input Sizes"
+        description="Small, medium, and large size options"
+        [code]="sizesCode"
+      >
+        <div class="demo-grid col-3">
+          <app-input label="Small" size="small" full-width></app-input>
+          <app-input label="Medium" size="medium" full-width></app-input>
+          <app-input label="Large" size="large" full-width></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card" *ngFor="let s of ['small', 'medium', 'large']">
-            <h3>{{ s | titlecase }}</h3>
-            <app-input [attr.label]="s | titlecase" [attr.size]="s" full-width></app-input>
-          </div>
-        </div>
-        <app-code-block [code]="sizesCode" title="Input Sizes" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Validation States -->
-      <section class="demo-section" id="validation">
-        <div class="section-header">
-          <h2>✅ Validation States</h2>
-          <p>Error, success, and warning states with messages</p>
+      <app-example-section
+        id="validation"
+        title="Validation States"
+        description="Error, success, and warning states with messages"
+        [code]="validationCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            label="Email"
+            value="invalid-email"
+            validation-state="error"
+            error-text="Please enter a valid email address"
+            full-width
+          ></app-input>
+          <app-input
+            label="Username"
+            value="john_doe"
+            validation-state="success"
+            success-text="Username is available!"
+            full-width
+          ></app-input>
+          <app-input
+            label="Password"
+            type="password"
+            value="12345"
+            validation-state="warning"
+            warning-text="Password is weak"
+            full-width
+          ></app-input>
+          <app-input
+            label="Username"
+            placeholder="Choose a username"
+            helper-text="Must be 3-20 characters, alphanumeric only"
+            full-width
+          ></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Error State</h3>
-            <app-input
-              label="Email"
-              value="invalid-email"
-              validation-state="error"
-              error-text="Please enter a valid email address"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Success State</h3>
-            <app-input
-              label="Username"
-              value="john_doe"
-              validation-state="success"
-              success-text="Username is available!"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Warning State</h3>
-            <app-input
-              label="Password"
-              type="password"
-              value="12345"
-              validation-state="warning"
-              warning-text="Password is weak"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>With Helper Text</h3>
-            <app-input
-              label="Username"
-              placeholder="Choose a username"
-              helper-text="Must be 3-20 characters, alphanumeric only"
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block
-          [code]="validationCode"
-          title="Validation Examples"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
-      <!-- Prefix/Suffix -->
-      <section class="demo-section" id="prefix-suffix">
-        <div class="section-header">
-          <h2>🎯 Prefix & Suffix</h2>
-          <p>Text before or after the input</p>
+      <!-- Prefix & Suffix -->
+      <app-example-section
+        id="prefix-suffix"
+        title="Prefix & Suffix"
+        description="Text before or after the input"
+        [code]="prefixSuffixCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            label="Website"
+            placeholder="your-site"
+            prefix-text="https://"
+            full-width
+          ></app-input>
+          <app-input
+            label="Email"
+            placeholder="username"
+            suffix-text="@company.com"
+            full-width
+          ></app-input>
+          <app-input
+            label="Price"
+            placeholder="0.00"
+            prefix-text="$"
+            suffix-text="USD"
+            type="number"
+            full-width
+          ></app-input>
+          <app-input
+            label="Search Query"
+            value="sample text"
+            placeholder="Type to search..."
+            show-clear
+            full-width
+          ></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>With Prefix Text</h3>
-            <app-input
-              label="Website"
-              placeholder="your-site"
-              prefix-text="https://"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>With Suffix Text</h3>
-            <app-input
-              label="Email"
-              placeholder="username"
-              suffix-text="@company.com"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>With Both</h3>
-            <app-input
-              label="Price"
-              placeholder="0.00"
-              prefix-text="$"
-              suffix-text="USD"
-              type="number"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>With Clear Button</h3>
-            <app-input
-              label="Search Query"
-              value="sample text"
-              placeholder="Type to search..."
-              show-clear
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block
-          [code]="prefixSuffixCode"
-          title="Prefix & Suffix Examples"
-          language="html"
-        ></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Advanced Features -->
-      <section class="demo-section" id="advanced">
-        <div class="section-header">
-          <h2>🚀 Advanced Features</h2>
-          <p>Number Steppers, Formatting, and Addons</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Number Stepper</h3>
-            <app-input
-              type="number"
-              label="Quantity"
-              value="1"
-              min="0"
-              max="100"
-              show-steppers
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Auto-Trim & Select</h3>
-            <app-input
-              label="Auto Operations"
-              value="  Focus to select all  "
-              auto-select
-              auto-trim
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Smart Textarea</h3>
-            <app-input
-              multiline
-              auto-resize
-              max-rows="4"
-              label="Comments"
-              placeholder="Type multiple lines..."
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Skeleton Loading</h3>
+      <app-example-section
+        id="advanced"
+        title="Advanced Features"
+        description="Number Steppers, Formatting, and Addons"
+        [code]="advancedCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            type="number"
+            label="Quantity"
+            value="1"
+            min="0"
+            max="100"
+            show-steppers
+            full-width
+          ></app-input>
+          <app-input
+            label="Auto Operations"
+            value="  Focus to select all  "
+            auto-select
+            auto-trim
+            full-width
+          ></app-input>
+          <app-input
+            multiline
+            auto-resize
+            max-rows="4"
+            label="Comments"
+            placeholder="Type multiple lines..."
+            full-width
+          ></app-input>
+          <div class="skeleton-toggle-card">
             <app-input
               label="Loading State"
               placeholder="Content..."
@@ -266,58 +191,36 @@
               full-width
             ></app-input>
             <ui-button
-              class="btn-toggle"
               (click)="toggleSkeleton()"
               label="Toggle Loading"
+              style="margin-top: 12px; display: block"
             ></ui-button>
           </div>
         </div>
-        <app-code-block
-          [code]="advancedCode"
-          title="Advanced Features"
-          language="html"
-        ></app-code-block>
-
-        <!-- Addons -->
-        <div class="section-header" style="margin-top: 40px">
+        <div class="section-sub-header">
           <h3>Addons (Slots)</h3>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>URL Builder</h3>
-            <app-input placeholder="example" full-width>
-              <span slot="addon-before" class="addon">https://</span>
-              <span slot="addon-after" class="addon">.com</span>
-            </app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Search Bar</h3>
-            <app-input placeholder="Search..." full-width>
-              <ui-button slot="addon-after" class="btn-addon" label="Search"></ui-button>
-            </app-input>
-          </div>
+        <div class="demo-grid col-2">
+          <app-input placeholder="example" full-width>
+            <span slot="addon-before" class="addon">https://</span>
+            <span slot="addon-after" class="addon">.com</span>
+          </app-input>
+          <app-input placeholder="Search..." full-width>
+            <ui-button slot="addon-after" class="btn-addon" label="Search"></ui-button>
+          </app-input>
         </div>
-        <app-code-block [code]="addonsCode" title="Addons (Slots)" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Premium Features -->
-      <section class="demo-section" id="premium">
-        <div class="section-header">
-          <h2>💎 Premium Features</h2>
-          <p>Ghost variant and skeleton loading</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Ghost Variant</h3>
-            <p class="helper-text">Hover to see input bounds</p>
-            <app-input
-              variant="ghost"
-              placeholder="Subtle input style"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Skeleton Loading</h3>
+      <app-example-section
+        id="premium"
+        title="Premium Features"
+        description="Ghost variant and skeleton loading"
+        [code]="premiumCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input variant="ghost" placeholder="Subtle input style" full-width></app-input>
+          <div class="skeleton-toggle-card">
             <app-input
               label="Loading State"
               placeholder="Content..."
@@ -325,225 +228,158 @@
               full-width
             ></app-input>
             <ui-button
-              class="btn-toggle"
               (click)="toggleSkeleton()"
               label="Toggle Loading"
+              style="margin-top: 12px; display: block"
             ></ui-button>
           </div>
         </div>
-        <app-code-block [code]="premiumCode" title="Premium Features" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Floating Labels -->
-      <section class="demo-section" id="floating-labels">
-        <div class="section-header">
-          <h2>🏷️ Floating Labels</h2>
-          <p>Animated labels that float on focus</p>
+      <app-example-section
+        id="floating-labels"
+        title="Floating Labels"
+        description="Animated labels that float on focus"
+        [code]="floatingLabelsCode"
+      >
+        <div class="demo-grid col-3">
+          <app-input variant="outlined" label="Full Name" floating-label full-width></app-input>
+          <app-input variant="filled" label="Email Address" floating-label full-width></app-input>
+          <app-input
+            variant="underlined"
+            label="Phone Number"
+            floating-label
+            full-width
+          ></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Outlined + Floating</h3>
-            <app-input
-              variant="outlined"
-              label="Full Name"
-              floating-label
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Filled + Floating</h3>
-            <app-input
-              variant="filled"
-              label="Email Address"
-              floating-label
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Underlined + Floating</h3>
-            <app-input
-              variant="underlined"
-              label="Phone Number"
-              floating-label
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block [code]="floatingLabelsCode" title="Floating Labels" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Multiline Input -->
-      <section class="demo-section" id="multiline">
-        <div class="section-header">
-          <h2>📝 Multiline Input (Textarea)</h2>
-          <p>Text areas with various features</p>
+      <app-example-section
+        id="multiline"
+        title="Multiline Input (Textarea)"
+        description="Text areas with various features"
+        [code]="multilineCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            multiline
+            label="Description"
+            placeholder="Enter description..."
+            rows="3"
+            full-width
+          ></app-input>
+          <app-input
+            multiline
+            auto-resize
+            label="Comments"
+            placeholder="Type to expand..."
+            max-rows="5"
+            full-width
+          ></app-input>
+          <app-input
+            multiline
+            label="Bio"
+            placeholder="Tell us about yourself..."
+            max-length="200"
+            show-char-count
+            rows="3"
+            full-width
+          ></app-input>
+          <app-input
+            multiline
+            variant="filled"
+            label="Message"
+            placeholder="Your message..."
+            rows="4"
+            full-width
+          ></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Basic Textarea</h3>
-            <app-input
-              multiline
-              label="Description"
-              placeholder="Enter description..."
-              rows="3"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Auto-Resize Textarea</h3>
-            <app-input
-              multiline
-              auto-resize
-              label="Comments"
-              placeholder="Type to expand..."
-              max-rows="5"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>With Character Counter</h3>
-            <app-input
-              multiline
-              label="Bio"
-              placeholder="Tell us about yourself..."
-              max-length="200"
-              show-char-count
-              rows="3"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Filled Textarea</h3>
-            <app-input
-              multiline
-              variant="filled"
-              label="Message"
-              placeholder="Your message..."
-              rows="4"
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block [code]="multilineCode" title="Multiline Input" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Input States -->
-      <section class="demo-section" id="input-states">
-        <div class="section-header">
-          <h2>🔄 Input States</h2>
-          <p>Disabled, readonly, required, and loading states</p>
+      <app-example-section
+        id="input-states"
+        title="Input States"
+        description="Disabled, readonly, required, and loading states"
+        [code]="inputStatesCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            label="Disabled Input"
+            value="Cannot edit this"
+            disabled
+            full-width
+          ></app-input>
+          <app-input
+            label="Read-only Input"
+            value="View only, no edit"
+            readonly
+            full-width
+          ></app-input>
+          <app-input
+            label="Required Field*"
+            placeholder="This field is required"
+            required
+            full-width
+          ></app-input>
+          <app-input label="Processing" value="Validating..." loading full-width></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Disabled</h3>
-            <app-input
-              label="Disabled Input"
-              value="Cannot edit this"
-              disabled
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Readonly</h3>
-            <app-input
-              label="Read-only Input"
-              value="View only, no edit"
-              readonly
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Required</h3>
-            <app-input
-              label="Required Field*"
-              placeholder="This field is required"
-              required
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Loading State</h3>
-            <app-input
-              label="Processing"
-              value="Validating..."
-              loading
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block [code]="inputStatesCode" title="Input States" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
-      <!-- More Advanced Features -->
-      <section class="demo-section" id="advanced-more">
-        <div class="section-header">
-          <h2>⚡ More Features</h2>
-          <p>Character counters, debouncing, and pattern validation</p>
+      <!-- More Features -->
+      <app-example-section
+        id="advanced-more"
+        title="More Features"
+        description="Character counters, debouncing, and pattern validation"
+        [code]="advancedMoreCode"
+      >
+        <div class="demo-grid col-2">
+          <app-input
+            label="Tweet"
+            placeholder="What's happening?"
+            max-length="280"
+            show-char-count
+            full-width
+          ></app-input>
+          <app-input
+            label="Search (500ms debounce)"
+            placeholder="Type to search..."
+            debounce="500"
+            full-width
+          ></app-input>
+          <app-input
+            label="Hex Color"
+            placeholder="#000000"
+            pattern="^#[0-9A-Fa-f]{6}$"
+            helper-text="Enter a valid hex color (e.g., #FF5733)"
+            full-width
+          ></app-input>
+          <app-input
+            type="number"
+            label="Quantity"
+            value="10"
+            step="5"
+            show-steppers
+            full-width
+          ></app-input>
         </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Character Counter</h3>
-            <app-input
-              label="Tweet"
-              placeholder="What's happening?"
-              max-length="280"
-              show-char-count
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Debounced Input</h3>
-            <app-input
-              label="Search (500ms debounce)"
-              placeholder="Type to search..."
-              debounce="500"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Pattern Validation</h3>
-            <app-input
-              label="Hex Color"
-              placeholder="#000000"
-              pattern="^#[0-9A-Fa-f]{6}$"
-              helper-text="Enter a valid hex color (e.g., #FF5733)"
-              full-width
-            ></app-input>
-          </div>
-          <div class="demo-card">
-            <h3>Number with Step</h3>
-            <app-input
-              type="number"
-              label="Quantity"
-              value="10"
-              step="5"
-              show-steppers
-              full-width
-            ></app-input>
-          </div>
-        </div>
-        <app-code-block [code]="advancedMoreCode" title="More Advanced Features" language="html"></app-code-block>
-      </section>
+      </app-example-section>
 
       <!-- Premium UX -->
-      <section class="demo-section" id="premium-more">
-        <div class="section-header">
-          <h2>✨ Premium UX</h2>
-          <p>High-end user experience features</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Shake on Error</h3>
-            <app-input
-              label="Login"
-              placeholder="Username"
-              shake-on-error
-              full-width
-            ></app-input>
-            <ui-button class="btn-trigger" label="Trigger Error"></ui-button>
+      <app-example-section
+        id="premium-more"
+        title="Premium UX"
+        description="High-end user experience features"
+        [code]="premiumMoreCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="action-demo-card">
+            <app-input label="Login" placeholder="Username" shake-on-error full-width></app-input>
+            <ui-button label="Trigger Error" style="margin-top: 12px; display: block"></ui-button>
           </div>
-          <div class="demo-card">
-            <h3>Adaptive Credit Card</h3>
+          <div class="info-demo-card">
             <app-input
               label="Card Number"
               placeholder="0000 0000 0000 0000"
@@ -552,41 +388,17 @@
             ></app-input>
             <p class="helper-text">Try: 4 (Visa), 51 (Mastercard), 34 (Amex)</p>
           </div>
-          <div class="demo-card">
-            <h3>Smart Password</h3>
-            <app-input
-              type="password"
-              label="New Password"
-              placeholder="Enter password"
-              show-strength-meter
-              show-caps-warning
-              show-password-toggle
-              full-width
-            ></app-input>
-          </div>
+          <app-input
+            type="password"
+            label="New Password"
+            placeholder="Enter password"
+            show-strength-meter
+            show-caps-warning
+            show-password-toggle
+            full-width
+          ></app-input>
         </div>
-        <app-code-block [code]="premiumMoreCode" title="Premium UX Features" language="html"></app-code-block>
-      </section>
-        </div>
-      </div>
-    </div>
-
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <div class="demo-container">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Test all input properties in real-time</p>
-        </div>
-        <app-input-playground></app-input-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Input Usage"
-          language="html"
-        ></app-code-block>
-      </section>
-      </div>
+      </app-example-section>
     </div>
 
     <!-- Documentation Slot -->

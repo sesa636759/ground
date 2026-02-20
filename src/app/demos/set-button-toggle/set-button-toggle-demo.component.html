@@ -1,7 +1,8 @@
 <div class="demo-container">
   <h1>🎯 Button Toggle Group</h1>
   <p class="demo-description">
-    Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support.
+    Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style
+    variants, and full accessibility support.
   </p>
   <demo-tabs>
     <!-- Examples Slot -->
@@ -518,15 +519,335 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <div class="demo-container">
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test all button toggle group properties and configurations</p>
+      <app-button-toggle-playground></app-button-toggle-playground>
+    </div>
+
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Segmented Controls -->
+      <app-example-section
+        id="segmented"
+        title="Segmented Controls"
+        description="Multiple buttons with single or multi-selection"
+        [code]="segmentedCode"
+      >
+        <app-button-toggle-group
+          mode="segmented"
+          label="Select View Mode"
+          value="list"
+          color="primary"
+          [options]="viewOptions"
+        ></app-button-toggle-group>
+      </app-example-section>
+
+      <!-- Gliding Animation -->
+      <app-example-section
+        id="gliding"
+        title="Gliding Pill Animation"
+        description="Premium smooth animation for pill-style toggles"
+        [code]="glidingCode"
+      >
+        <app-button-toggle-group
+          mode="segmented"
+          value="day"
+          color="info"
+          variant="soft"
+          [options]="timeOptions"
+        ></app-button-toggle-group>
+      </app-example-section>
+
+      <!-- Color Variants -->
+      <app-example-section
+        id="colors"
+        title="Color Variants"
+        description="Six built-in color themes"
+        [code]="colorCode"
+      >
+        <div class="demo-grid col-2">
+          <div
+            class="color-demo"
+            *ngFor="let color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']"
+          >
+            <h4 class="demo-sub-title">{{ color | titlecase }}</h4>
+            <app-button-toggle-group
+              value="option2"
+              [attr.color]="color"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
           </div>
-          <app-button-toggle-playground></app-button-toggle-playground>
-        </section>
-      </div>
+        </div>
+      </app-example-section>
+
+      <!-- Style Variants -->
+      <app-example-section
+        id="styles"
+        title="Style Variants"
+        description="Seven button styles for various UI needs"
+        [code]="styleCode"
+      >
+        <div class="demo-grid col-2">
+          <div
+            class="style-demo"
+            *ngFor="
+              let style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']
+            "
+          >
+            <h4 class="demo-sub-title">{{ style | titlecase }}</h4>
+            <app-button-toggle-group
+              value="option2"
+              color="primary"
+              [attr.variant]="style"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Sizes -->
+      <app-example-section
+        id="sizes"
+        title="Sizes"
+        description="Three size options: Small, Medium, Large"
+        [code]="sizeCode"
+      >
+        <div class="demo-flex-wrap column">
+          <div class="size-demo" *ngFor="let size of ['small', 'medium', 'large']">
+            <h4 class="demo-sub-title">{{ size | titlecase }}</h4>
+            <app-button-toggle-group
+              value="option2"
+              [attr.size]="size"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- With Icons -->
+      <app-example-section
+        id="icons"
+        title="With Icons"
+        description="Icon support with various display modes"
+        [code]="iconCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="icon-demo">
+            <h4 class="demo-sub-title">View Modes</h4>
+            <app-button-toggle-group
+              label="View Mode"
+              value="grid"
+              color="primary"
+              [options]="viewOptions"
+            ></app-button-toggle-group>
+          </div>
+          <div class="icon-demo">
+            <h4 class="demo-sub-title">Text Alignment</h4>
+            <app-button-toggle-group
+              label="Alignment"
+              value="center"
+              color="secondary"
+              [options]="alignOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Dropdown Mode -->
+      <app-example-section
+        id="dropdown"
+        title="Dropdown Mode"
+        description="Single button with dropdown menu"
+        [code]="dropdownCode"
+      >
+        <app-button-toggle-group
+          mode="dropdown"
+          label="Export Options"
+          value="pdf"
+          helper-text="Choose export format"
+          [options]="exportOptions"
+        ></app-button-toggle-group>
+      </app-example-section>
+
+      <!-- Split Button -->
+      <app-example-section
+        id="split-button"
+        title="Split Button (Fixed Label)"
+        description="Button with dropdown menu where label stays fixed"
+        [code]="splitButtonCode"
+      >
+        <app-button-toggle-group
+          mode="dropdown"
+          label="File Operations"
+          value="file"
+          keep-button-label="true"
+          [options]="actionsMenuOptions"
+        ></app-button-toggle-group>
+      </app-example-section>
+
+      <!-- Display Modes -->
+      <app-example-section
+        id="display-modes"
+        title="Display Modes"
+        description="Label only, Icon only, or both"
+        [code]="displayCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="display-demo">
+            <h4 class="demo-sub-title">Label Only</h4>
+            <app-button-toggle-group
+              label="Select Size"
+              value="medium"
+              display-mode="label-only"
+              [options]="labelOnlyOptions"
+            ></app-button-toggle-group>
+          </div>
+          <div class="display-demo">
+            <h4 class="demo-sub-title">Icon Only</h4>
+            <app-button-toggle-group
+              label="View Mode"
+              value="grid"
+              display-mode="icon-only"
+              [options]="iconOnlyOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Orientations -->
+      <app-example-section
+        id="orientations"
+        title="Orientations"
+        description="Horizontal and vertical layout options"
+        [code]="orientationCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="orientation-demo">
+            <h4 class="demo-sub-title">Horizontal</h4>
+            <app-button-toggle-group
+              orientation="horizontal"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+          <div class="orientation-demo">
+            <h4 class="demo-sub-title">Vertical</h4>
+            <app-button-toggle-group
+              orientation="vertical"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Custom Content Slots -->
+      <app-example-section
+        id="custom-slots"
+        title="Custom Content Slots"
+        description="Use custom content for advanced use cases"
+        [code]="customSlotCode"
+      >
+        <app-button-toggle-group
+          mode="dropdown"
+          label="Advanced Filters"
+          value="filters"
+          custom-content="true"
+          #filterGroup
+        >
+          <div slot="dropdown-content">
+            <div class="custom-filter-panel">
+              <h4 class="demo-sub-title">Filter Options</h4>
+              <div class="filter-item">
+                <input type="checkbox" id="activeItems" />
+                <label for="activeItems">Active Items</label>
+              </div>
+              <div class="filter-item">
+                <input type="checkbox" id="archivedItems" />
+                <label for="archivedItems">Archived</label>
+              </div>
+              <ui-button
+                (click)="filterGroup.removeAttribute('open')"
+                label="Apply Filters"
+                full-width
+              ></ui-button>
+            </div>
+          </div>
+        </app-button-toggle-group>
+      </app-example-section>
+
+      <!-- Loading States -->
+      <app-example-section
+        id="loading"
+        title="Loading States"
+        description="Show loading spinner during async operations"
+        [code]="loadingCode"
+      >
+        <app-button-toggle-group
+          mode="dropdown"
+          label="Save Document"
+          value="cloud"
+          loading="true"
+          [options]="saveOptions"
+        ></app-button-toggle-group>
+      </app-example-section>
+
+      <!-- States -->
+      <app-example-section
+        id="states"
+        title="States"
+        description="Disabled and interactive states"
+        [code]="stateCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="state-demo">
+            <h4 class="demo-sub-title">Default</h4>
+            <app-button-toggle-group
+              label="Choose Option"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+          <div class="state-demo">
+            <h4 class="demo-sub-title">Disabled</h4>
+            <app-button-toggle-group
+              label="Choose Option"
+              value="option2"
+              disabled="true"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Real-World Examples -->
+      <app-example-section
+        id="real-world"
+        title="Real-World Examples"
+        description="Practical use cases for common application patterns"
+        [code]="segmentedCode"
+      >
+        <div class="demo-grid col-2">
+          <div class="real-world-demo">
+            <h4 class="demo-sub-title">Filter Options</h4>
+            <app-button-toggle-group
+              label="Show Items"
+              value="all"
+              color="primary"
+              variant="soft"
+              [options]="filterOptions"
+            ></app-button-toggle-group>
+          </div>
+          <div class="real-world-demo">
+            <h4 class="demo-sub-title">Time Period</h4>
+            <app-button-toggle-group
+              label="Time Range"
+              value="week"
+              color="success"
+              variant="outlined"
+              [options]="dateOptions"
+            ></app-button-toggle-group>
+          </div>
+        </div>
+      </app-example-section>
     </div>
 
     <!-- Documentation Slot -->

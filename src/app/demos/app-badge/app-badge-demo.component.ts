@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { BadgePlaygroundComponent } from './components/badge-playground/badge-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-badge-demo',
@@ -13,26 +13,24 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     BadgePlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-badge-demo.component.html',
   styleUrl: './app-badge-demo.component.scss',
 })
-export class AppBadgeDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'colors', name: 'Colors', icon: '🌈', color: '#3b82f6' },
-    { id: 'styles', name: 'Styles', icon: '🎨', color: '#10b981' },
-    { id: 'positions', name: 'Positions', icon: '📍', color: '#f59e0b' },
-    { id: 'special', name: 'Special', icon: '✨', color: '#ec4899' },
+export class AppBadgeDemoComponent extends BaseDemoComponent implements OnInit {
+  exampleVariants = [
+    { id: 'colors', title: 'Colors', icon: '🌈' },
+    { id: 'styles', title: 'Styles', icon: '🎨' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'special', title: 'Special Features', icon: '✨' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
+  ngOnInit() {}
 
   playgroundCode = `<ui-badge value="5" color="danger">
   <div class="target">Icon</div>
@@ -57,11 +55,4 @@ export class AppBadgeDemoComponent {
   specialCode = `<ui-badge value="100" max="99"></ui-badge>
 <ui-badge glow animation="pulse" value="!"></ui-badge>
 <ui-badge icon="⭐" value="PRO"></ui-badge>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }
