@@ -134,7 +134,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Snippet" icon="fas fa-copy"></ui-button>
+          <ui-button (click)="copyCode()" label="Copy Snippet" icon="fas fa-copy" icon-library="fontawesome"></ui-button>
           <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
@@ -173,7 +173,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
           <div slot="footer" style="display: flex; gap: 12px; width: 100%;">
             <ui-button variant="primary" style="flex: 1;" label="Book Now"></ui-button>
-            <ui-button variant="ghost" label="Details" icon="fas fa-info-circle"></ui-button>
+            <ui-button variant="ghost" label="Details" icon="fas fa-info-circle" icon-library="fontawesome"></ui-button>
           </div>
           <div slot="back-content" style="padding: 24px;">
             <h3 style="color: var(--primary); margin-bottom: 16px;">Tour Statistics</h3>

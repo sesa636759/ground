@@ -42,7 +42,7 @@ export class CardExamplesComponent {
     <p>A comprehensive guide on transitioning from monolithic styles to a token-based design system.</p>
   </div>
   <div slot="footer">
-    <ui-button variant="ghost" label="Read Article" icon="fas fa-arrow-right"></ui-button>
+    <ui-button variant="ghost" label="Read Article" icon="fas fa-arrow-right" icon-library="fontawesome"></ui-button>
   </div>
 </ui-card>`;
 

@@ -85,19 +85,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <div style="padding: 20px;">Panel Content</div>
           </app-dock-overlay>
         </div>
-        <div class="code-block">
-          <div class="code-header">
-            <span>Generated Code</span>
-            <ui-button
-              class="copy-btn"
-              variant="secondary"
-              size="sm"
-              (click)="copyCode()"
-              label="Copy"
-            ></ui-button>
-          </div>
-          <pre><code>{{ generatedCode() }}</code></pre>
-        </div>
+        <app-code-block
+          [code]="generatedCode()"
+          title="Generated Code"
+          language="html"
+        ></app-code-block>
       </div>
     </div>
   `,

@@ -1,19 +1,19 @@
 <div class="demo-page-container">
   <div class="demo-master-container">
     <app-tab-stack [active-tab]="active" (tabChange)="onTabChange($event)">
-      <app-tab label="Examples" value="examples">
+      <app-tab label="Examples" value="examples" icon="fas fa-cube">
         <div class="viewport-pane pane-examples animate-in">
           <ng-content select="[slot=examples]"></ng-content>
         </div>
       </app-tab>
 
-      <app-tab label="Playground" value="playground">
+      <app-tab label="Playground" value="playground" icon="fas fa-brands fa-codepen">
         <div class="viewport-pane pane-playground animate-in">
           <ng-content select="[slot=playground]"></ng-content>
         </div>
       </app-tab>
 
-      <app-tab label="Documentation" value="docs">
+      <app-tab label="Documentation" value="docs" icon="fa-brands fa-readme">
         <div class="viewport-pane pane-docs animate-in">
           <ng-content select="[slot=docs]"></ng-content>
         </div>
