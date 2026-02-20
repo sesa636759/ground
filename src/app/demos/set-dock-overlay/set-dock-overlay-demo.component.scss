@@ -1,3 +1,5 @@
+@use '../../../styles/demo-base.scss';
+
 .preview-box {
   min-height: 200px;
   position: relative;
@@ -8,7 +10,6 @@
     overflow: hidden;
   }
 }
-
 
 .panel-content {
   padding: 20px;

@@ -129,7 +129,7 @@ export class SetSplitterDemoComponent {
 
 // Component: customSizePanels = [{ size: 30 }, { size: 70 }];`);
 
-  equalSizesCode = signal(`<app-splitter direction="horizontal" [panels]="equalSizePanels">
+  equalSizeCode = signal(`<app-splitter direction="horizontal" [panels]="equalSizePanels">
   <div slot="panel-0">33.33%</div>
   <div slot="panel-1">33.33%</div>
   <div slot="panel-2">33.34%</div>

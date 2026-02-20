@@ -1,67 +1,8 @@
-.demo-container {
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-  }
-
-  .intro-text {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-}
-
-.demo-section {
-  margin-bottom: 48px;
-
-  .section-header {
-    margin-bottom: 24px;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-  }
-}
-
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 24px;
-  margin-bottom: 24px;
-}
+@use '../../../styles/demo-base.scss';
 
 .demo-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  overflow: hidden;
-
-  &.full-width {
-    grid-column: 1 / -1;
-  }
-
   &.h-gradient {
     background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.02));
-  }
-
-  h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    text-transform: capitalize;
   }
 }
 
@@ -118,9 +59,4 @@
       color: #e2e8f0;
     }
   }
-}
-
-// Code block spacing
-ui-code-preview {
-  margin-top: 16px;
 }

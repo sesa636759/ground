@@ -1,81 +1,13 @@
-:host {
-    display: block;
-}
-
-.playground-layout {
-    display: flex;
-    gap: 3rem;
-    margin-top: 1rem;
-
-    @media (max-width: 1200px) {
-        flex-direction: column;
-    }
-}
+@use '../../../../../styles/playground-base.scss';
 
 .playground-controls {
-    flex: 1;
-    background: #f8fafc;
-    padding: 2.5rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--border-color);
     max-width: 450px;
-
-    h3 {
-        font-size: 0.75rem;
-        font-weight: 800;
-        color: var(--text-tertiary);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 2rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .control-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .control-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        label {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-    }
-
-    .checkbox-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border-color);
-    }
 }
 
 .playground-preview {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
     .preview-stage {
         min-height: 500px;
         background: #ffffff;
-        border-radius: var(--radius-2xl);
-        border: 1px solid var(--border-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 3rem;
-        position: relative;
-        box-shadow: var(--shadow-sm);
 
         /* Grid background */
         background-image:

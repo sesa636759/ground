@@ -1,23 +1,25 @@
+@use '../../../styles/demo-base.scss';
+
 .demo-sub-title {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-text-tertiary);
-  margin-bottom: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-sm);
 }
 
 .custom-filter-panel {
-  padding: 16px;
+  padding: var(--space-md);
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-md);
 
   .filter-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-sm);
     font-size: 0.95rem;
 
     input[type="checkbox"] {
@@ -40,14 +42,14 @@
 .orientation-demo,
 .real-world-demo,
 .state-demo {
-  padding: 16px;
-  border-radius: 12px;
-  background: var(--color-surface-alt);
-  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  background: var(--surface-2);
+  border: 1px solid var(--border-color);
 }
 
 .helper-text {
   font-size: 0.85rem;
-  color: var(--color-text-tertiary);
-  margin-top: 8px;
+  color: var(--text-tertiary);
+  margin-top: var(--space-xs);
 }

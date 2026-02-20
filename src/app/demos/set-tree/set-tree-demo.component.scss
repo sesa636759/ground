@@ -1,8 +1,6 @@
-.demo-card {
-  &.full-width {
-    grid-column: 1 / -1;
-  }
+@use '../../../styles/demo-base.scss';
 
+.demo-card {
   &.glass-wrapper {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border: none;
@@ -13,17 +11,7 @@
       opacity: 0.8;
     }
   }
-
-  h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-  }
 }
-
 
 .tree-container {
   min-height: 200px;

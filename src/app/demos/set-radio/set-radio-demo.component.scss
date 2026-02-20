@@ -1,18 +1,15 @@
-.demo-card {
-  &.full-width {
-    grid-column: 1 / -1;
-  }
+@use '../../../styles/demo-base.scss';
 
+.demo-card {
   h3 {
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 20px;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-lg);
   }
 }
-
 
 .form-container {
   max-width: 800px;
@@ -20,9 +17,9 @@
 }
 
 .form-card {
-  background: var(--surface-1);
-  padding: 32px;
-  border-radius: 20px;
+  background: var(--surface-elevated);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-2xl);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-md);
 
@@ -30,30 +27,30 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 24px;
+    margin-bottom: var(--space-xl);
   }
 
   .form-fields {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-xl);
   }
 
   .form-footer {
-    margin-top: 32px;
+    margin-top: var(--space-2xl);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 
     .btn-submit {
-      padding: 12px 24px;
+      padding: var(--space-sm) var(--space-xl);
       background: var(--success);
       color: white;
       border: none;
-      border-radius: 10px;
-      font-weight: 600;
+      border-radius: var(--radius-lg);
+      font-weight: 700;
       cursor: pointer;
-      transition: all var(--transition-base);
+      transition: all var(--transition-smooth);
 
       &:hover {
         transform: translateY(-2px);
@@ -62,8 +59,8 @@
     }
 
     .form-message {
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
   }
 }
