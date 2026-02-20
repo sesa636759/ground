@@ -6,6 +6,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-button-demo',
@@ -17,6 +18,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-demo.component.html',
@@ -29,6 +31,13 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
     { id: 'states', title: 'States', icon: '⚙️' },
   ];
+
+  anchorLinks = JSON.stringify([
+    { id: 'visual-variants', label: 'Visual Variants', target: 'visual-variants', icon: '🎨' },
+    { id: 'sizes', label: 'Sizes', target: 'sizes', icon: '📏' },
+    { id: 'icons-badges', label: 'Icons & Badges', target: 'icons-badges', icon: '🏷️' },
+    { id: 'states', label: 'States', target: 'states', icon: '⚙️' },
+  ]);
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;
 

@@ -180,7 +180,19 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
           <div slot="footer" style="display: flex; gap: 12px; width: 100%;">
             <ui-button variant="primary" style="flex: 1;" label="Book Now"></ui-button>
-            <ui-button variant="ghost" label="Details" icon="fas fa-info-circle"></ui-button>
+            <ui-button
+              variant="primary"
+              label="Details"
+              icon="fa-solid fa-circle-info"
+              iconLibrary="fontawesome"
+            ></ui-button>
+            <ui-button
+              label="With Icon"
+              icon="fa fa-circle-info"
+              iconLibrary="fontawesome"
+              size="xs"
+              variant="primary"
+            ></ui-button>
           </div>
           <div slot="back-content" style="padding: 24px;">
             <h3 style="color: var(--primary); margin-bottom: 16px;">Tour Statistics</h3>

@@ -7,6 +7,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-checkbox-demo',
@@ -19,6 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     AppCheckboxValueAccessorDirective,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-checkbox-demo.component.html',
@@ -34,6 +36,15 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
     { id: 'form', title: 'Form Example', icon: '📋' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   get exampleVariants() {
     return this.variants;

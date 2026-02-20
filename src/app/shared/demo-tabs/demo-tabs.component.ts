@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DemoTabsComponent {
   active = signal('examples');
+  @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   onTabChange(event: any) {
     // Handle CustomEvent details which might be direct value or object

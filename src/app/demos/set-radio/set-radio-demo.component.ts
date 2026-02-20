@@ -7,6 +7,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { AppRadioGroupValueAccessorDirective } from '../../directives/app-radio-group-value-accessor.directive';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-radio-demo',
@@ -19,6 +20,7 @@ import { AppRadioGroupValueAccessorDirective } from '../../directives/app-radio-
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     AppRadioGroupValueAccessorDirective,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-radio-demo.component.html',
@@ -35,6 +37,15 @@ export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'states', title: 'States', icon: '🔄' },
     { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   get exampleVariants() {
     return this.variants;

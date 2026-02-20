@@ -1,408 +1,367 @@
 <div class="demo-container">
-  <h1>🔢 OTP Input Component</h1>
-  <p class="intro-text">
-    Flexible one-time password input component with support for various lengths, styles, validation, masking, and advanced features like grouping and auto-submission.
-  </p>
+  <app-demo-header
+    icon="🔢"
+    title="OTP Input Component"
+    description="Flexible one-time password input component with support for various lengths, styles, validation, masking, and advanced features like grouping and auto-submission."
+  >
+  </app-demo-header>
   <demo-tabs>
     <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Default OTP -->
-      <section class="demo-section" id="default">
-        <div class="section-header">
-          <h2>Default OTP - 6 Digits</h2>
-          <p>Basic 6-digit OTP input with autofocus</p>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="examples-sidebar">
+        <div class="sidebar-title">Sections</div>
+        <div class="sidebar-nav">
+          <ui-anchor
+            [links]="anchorLinks"
+            scroll-container=".pane-examples"
+            type="line"
+            show-progress
+          ></ui-anchor>
         </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <div class="otp-wrapper">
-              <app-otp-input length="6" [autofocus]="true"></app-otp-input>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="defaultCode()" [label]="'Default Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+      </aside>
 
-      <!-- 4-Digit PIN -->
-      <section class="demo-section" id="four-digit">
-        <div class="section-header">
-          <h2>4-Digit PIN Code</h2>
-          <p>PIN input with numeric type</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <div class="otp-wrapper">
-              <app-otp-input length="4" type="numeric" label="Enter PIN"></app-otp-input>
-            </div>
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Default OTP -->
+        <app-example-section
+          id="default"
+          title="Default OTP - 6 Digits"
+          description="Basic 6-digit OTP input with autofocus"
+          [code]="defaultCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input length="6" [autofocus]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="fourDigitCode()" [label]="'4-Digit Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- 6-Digit Verification -->
-      <section class="demo-section" id="six-digit">
-        <div class="section-header">
-          <h2>6-Digit Verification Code</h2>
-          <p>Standard verification code input</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <div class="otp-wrapper">
-              <app-otp-input length="6" type="numeric" label="Verification Code"></app-otp-input>
-            </div>
+        <!-- 4-Digit PIN -->
+        <app-example-section
+          id="four-digit"
+          title="4-Digit PIN Code"
+          description="PIN input with numeric type"
+          [code]="fourDigitCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input length="4" type="numeric" label="Enter PIN"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="sixDigitCode()" [label]="'6-Digit Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Custom Length -->
-      <section class="demo-section" id="custom-length">
-        <div class="section-header">
-          <h2>8-Character Custom Length</h2>
-          <p>Custom length with alphanumeric support</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <div class="otp-wrapper">
-              <app-otp-input length="8" type="alphanumeric" label="Long Code"></app-otp-input>
-            </div>
+        <!-- 6-Digit Verification -->
+        <app-example-section
+          id="six-digit"
+          title="6-Digit Verification Code"
+          description="Standard verification code input"
+          [code]="sixDigitCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input length="6" type="numeric" label="Verification Code"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="customLengthCode()" [label]="'Custom Length Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Default Variant -->
-      <section class="demo-section" id="default-variant">
-        <div class="section-header">
-          <h2>Default Style</h2>
-          <p>Standard appearance variant</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Custom Length -->
+        <app-example-section
+          id="custom-length"
+          title="8-Character Custom Length"
+          description="Custom length with alphanumeric support"
+          [code]="customLengthCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input length="8" type="alphanumeric" label="Long Code"></app-otp-input>
+          </div>
+        </app-example-section>
+
+        <!-- Default Variant -->
+        <app-example-section
+          id="default-variant"
+          title="Default Style"
+          description="Standard appearance variant"
+          [code]="defaultVariantCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input variant="default" length="6" label="Default"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="defaultVariantCode()" [label]="'Default'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Underlined -->
-      <section class="demo-section" id="underlined">
-        <div class="section-header">
-          <h2>Underlined Style</h2>
-          <p>Minimal design with bottom border</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Underlined -->
+        <app-example-section
+          id="underlined"
+          title="Underlined Style"
+          description="Minimal design with bottom border"
+          [code]="underlinedCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input variant="underlined" length="6" label="Underlined"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="underlinedCode()" [label]="'Underlined'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Flushed -->
-      <section class="demo-section" id="flushed">
-        <div class="section-header">
-          <h2>Flushed Style</h2>
-          <p>Clean appearance without background</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Flushed -->
+        <app-example-section
+          id="flushed"
+          title="Flushed Style"
+          description="Clean appearance without background"
+          [code]="flushedCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input variant="flushed" length="6" label="Flushed"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="flushedCode()" [label]="'Flushed'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Separated -->
-      <section class="demo-section" id="separated">
-        <div class="section-header">
-          <h2>Separated Variant</h2>
-          <p>Individual boxes with spacing</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <app-otp-input variant="separated" length="6" label="Separated" [spacing]="8"></app-otp-input>
+        <!-- Separated -->
+        <app-example-section
+          id="separated"
+          title="Separated Variant"
+          description="Individual boxes with spacing"
+          [code]="separatedCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input
+              variant="separated"
+              length="6"
+              label="Separated"
+              [spacing]="8"
+            ></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="separatedCode()" [label]="'Separated'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Success Color -->
-      <section class="demo-section" id="success-color">
-        <div class="section-header">
-          <h2>Success State</h2>
-          <p>Visual feedback for valid input</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Success Color -->
+        <app-example-section
+          id="success-color"
+          title="Success State"
+          description="Visual feedback for valid input"
+          [code]="successColorCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" color="success" helper-text="Code accepted"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="successColorCode()" [label]="'Success'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Error Color -->
-      <section class="demo-section" id="error-color">
-        <div class="section-header">
-          <h2>Error State</h2>
-          <p>Visual feedback for invalid input</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
-            <app-otp-input length="6" color="error" invalid="true" error-text="Invalid code"></app-otp-input>
+        <!-- Error Color -->
+        <app-example-section
+          id="error-color"
+          title="Error State"
+          description="Visual feedback for invalid input"
+          [code]="errorColorCode()"
+        >
+          <div class="otp-wrapper centered">
+            <app-otp-input
+              length="6"
+              color="error"
+              invalid="true"
+              error-text="Invalid code"
+            ></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="errorColorCode()" [label]="'Error'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Warning Color -->
-      <section class="demo-section" id="warning-color">
-        <div class="section-header">
-          <h2>Warning State</h2>
-          <p>Visual feedback for cautionary state</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Warning Color -->
+        <app-example-section
+          id="warning-color"
+          title="Warning State"
+          description="Visual feedback for cautionary state"
+          [code]="warningColorCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" color="warning" label="Warning"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="warningColorCode()" [label]="'Warning'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Info Color -->
-      <section class="demo-section" id="info-color">
-        <div class="section-header">
-          <h2>Info State</h2>
-          <p>Visual feedback for informational state</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Info Color -->
+        <app-example-section
+          id="info-color"
+          title="Info State"
+          description="Visual feedback for informational state"
+          [code]="infoColorCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" color="info" helper-text="Check email"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="infoColorCode()" [label]="'Info'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Grouping 3-3 -->
-      <section class="demo-section" id="grouping-3">
-        <div class="section-header">
-          <h2>Grouped 3-3</h2>
-          <p>Grouping input into 3-3 format with divider</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Grouping 3-3 -->
+        <app-example-section
+          id="grouping-3"
+          title="Grouped 3-3"
+          description="Grouping input into 3-3 format with divider"
+          [code]="grouping3Code()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" group-size="3" [show-group-divider]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="grouping3Code()" [label]="'3-3 Grouping'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Grouping 2-2-2 -->
-      <section class="demo-section" id="grouping-222">
-        <div class="section-header">
-          <h2>Grouped 2-2-2</h2>
-          <p>Grouping input into 2-2-2 format with dash</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Grouping 2-2-2 -->
+        <app-example-section
+          id="grouping-222"
+          title="Grouped 2-2-2"
+          description="Grouping input into 2-2-2 format with dash"
+          [code]="grouping222Code()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" group-divider="-"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="grouping222Code()" [label]="'2-2-2 Grouping'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Grouping 4-4 -->
-      <section class="demo-section" id="grouping-44">
-        <div class="section-header">
-          <h2>Grouped 4-4</h2>
-          <p>Grouping input into 4-4 format with divider</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Grouping 4-4 -->
+        <app-example-section
+          id="grouping-44"
+          title="Grouped 4-4"
+          description="Grouping input into 4-4 format with divider"
+          [code]="grouping44Code()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="8" group-size="4" [show-group-divider]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="grouping44Code()" [label]="'4-4 Grouping'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Masking -->
-      <section class="demo-section" id="masking">
-        <div class="section-header">
-          <h2>Masked Input</h2>
-          <p>Hide characters with custom mask symbol</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Masking -->
+        <app-example-section
+          id="masking"
+          title="Masked Input"
+          description="Hide characters with custom mask symbol"
+          [code]="maskedCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [mask]="true" mask-char="*"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="maskedCode()" [label]="'Masked Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Small Size -->
-      <section class="demo-section" id="small-size">
-        <div class="section-header">
-          <h2>Small Size</h2>
-          <p>Compact input size variant</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Small Size -->
+        <app-example-section
+          id="small-size"
+          title="Small Size"
+          description="Compact input size variant"
+          [code]="smallCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input size="small" length="4"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="smallCode()" [label]="'Small'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Medium Size -->
-      <section class="demo-section" id="medium-size">
-        <div class="section-header">
-          <h2>Medium Size</h2>
-          <p>Standard input size variant</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Medium Size -->
+        <app-example-section
+          id="medium-size"
+          title="Medium Size"
+          description="Standard input size variant"
+          [code]="mediumCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input size="medium" length="4"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="mediumCode()" [label]="'Medium'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Large Size -->
-      <section class="demo-section" id="large-size">
-        <div class="section-header">
-          <h2>Large Size</h2>
-          <p>Expanded input size variant</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Large Size -->
+        <app-example-section
+          id="large-size"
+          title="Large Size"
+          description="Expanded input size variant"
+          [code]="largeCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input size="large" length="4"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="largeCode()" [label]="'Large'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Secure PIN -->
-      <section class="demo-section" id="secure-pin">
-        <div class="section-header">
-          <h2>Secure PIN</h2>
-          <p>Masked input for sensitive data</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Secure PIN -->
+        <app-example-section
+          id="secure-pin"
+          title="Secure PIN"
+          description="Masked input for sensitive data"
+          [code]="secureCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="4" [secure]="true" label="Secure PIN"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="secureCode()" [label]="'Secure Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Readonly -->
-      <section class="demo-section" id="readonly">
-        <div class="section-header">
-          <h2>Read-only State</h2>
-          <p>Input cannot be modified by user</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Readonly -->
+        <app-example-section
+          id="readonly"
+          title="Read-only State"
+          description="Input cannot be modified by user"
+          [code]="readonlyCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [readonly]="true" value="123456"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="readonlyCode()" [label]="'Readonly'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Disabled -->
-      <section class="demo-section" id="disabled">
-        <div class="section-header">
-          <h2>Disabled State</h2>
-          <p>Input is disabled and non-interactive</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Disabled -->
+        <app-example-section
+          id="disabled"
+          title="Disabled State"
+          description="Input is disabled and non-interactive"
+          [code]="disabledCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [disabled]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="disabledCode()" [label]="'Disabled'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Validation -->
-      <section class="demo-section" id="validation">
-        <div class="section-header">
-          <h2>With Validation</h2>
-          <p>Custom validation with required fields</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Validation -->
+        <app-example-section
+          id="validation"
+          title="With Validation"
+          description="Custom validation with required fields"
+          [code]="validationCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [required]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="validationCode()" [label]="'Validation Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Auto Focus -->
-      <section class="demo-section" id="autofocus">
-        <div class="section-header">
-          <h2>Auto Focus</h2>
-          <p>Automatically focus with auto-submit on complete</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Auto Focus -->
+        <app-example-section
+          id="autofocus"
+          title="Auto Focus"
+          description="Automatically focus with auto-submit on complete"
+          [code]="autoFocusCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [autofocus]="true" auto-submit="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="autoFocusCode()" [label]="'Autofocus Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Paste Support -->
-      <section class="demo-section" id="pasteable">
-        <div class="section-header">
-          <h2>Paste Support</h2>
-          <p>Allow pasting codes with automatic parsing</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Paste Support -->
+        <app-example-section
+          id="pasteable"
+          title="Paste Support"
+          description="Allow pasting codes with automatic parsing"
+          [code]="pasteableCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" [allow-paste]="true" [paste-separator]="true"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="pasteableCode()" [label]="'Paste Support Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Numeric Only -->
-      <section class="demo-section" id="numeric-only">
-        <div class="section-header">
-          <h2>Numeric Only</h2>
-          <p>Accept only numeric input</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Numeric Only -->
+        <app-example-section
+          id="numeric-only"
+          title="Numeric Only"
+          description="Accept only numeric input"
+          [code]="numericOnlyCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="6" type="numeric" placeholder="0"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="numericOnlyCode()" [label]="'Numeric'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Alphanumeric -->
-      <section class="demo-section" id="alphanumeric">
-        <div class="section-header">
-          <h2>Alphanumeric</h2>
-          <p>Accept letters and numbers</p>
-        </div>
-        <div class="demo-card full-width">
-          <div class="preview-box centered">
+        <!-- Alphanumeric -->
+        <app-example-section
+          id="alphanumeric"
+          title="Alphanumeric"
+          description="Accept letters and numbers"
+          [code]="alphanumericCode()"
+        >
+          <div class="otp-wrapper centered">
             <app-otp-input length="8" type="alphanumeric" placeholder="A"></app-otp-input>
           </div>
-          <ui-code-preview [htmlCode]="alphanumericCode()" [label]="'Alphanumeric'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
+        </app-example-section>
+      </div>
     </div>
 
     <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure OTP input properties and see changes in real-time</p>
-        </div>
-        <app-otp-input-playground></app-otp-input-playground>
-        <ui-code-preview [htmlCode]="playgroundCode()" [label]="'OTP Input Usage'" activeLang="html" expanded="true"></ui-code-preview>
-      </section>
+    <div slot="playground" class="pane-playground">
+      <app-otp-input-playground></app-otp-input-playground>
     </div>
 
     <!-- Documentation Slot -->

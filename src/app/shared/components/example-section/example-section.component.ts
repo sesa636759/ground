@@ -33,7 +33,7 @@ import { CommonModule } from '@angular/common';
                     ? 'css'
                     : 'html'
             "
-            expanded="true"
+            [expanded]="expanded"
           ></ui-code-preview>
         </div>
       </div>
@@ -118,6 +118,7 @@ export class ExampleSectionComponent implements OnInit, OnChanges {
   @Input() code: string = '';
   @Input() language: string = 'html';
   @Input() id: string = '';
+  @Input() expanded: boolean = true;
 
   ngOnInit(): void {}
 

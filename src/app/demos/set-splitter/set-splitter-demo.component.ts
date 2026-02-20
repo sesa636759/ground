@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { SplitterPlaygroundComponent } from './components/splitter-playground/splitter-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-splitter-demo',
@@ -14,6 +16,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     SplitterPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-splitter-demo.component.html',
@@ -53,6 +57,15 @@ export class SetSplitterDemoComponent {
     { id: 'header-body-footer', title: 'Header-Body-Footer', icon: '📄' },
   ];
 
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
   basicPanels = [
     { minSize: 20, maxSize: 80 },
     { minSize: 20, maxSize: 80 },
@@ -67,8 +80,11 @@ export class SetSplitterDemoComponent {
     { minSize: 20, maxSize: 40 },
     { minSize: 20, maxSize: 80 },
   ];
-  snapPanels = [{ minSize: 20, maxSize: 80 }, { minSize: 20, maxSize: 80 }];
-  
+  snapPanels = [
+    { minSize: 20, maxSize: 80 },
+    { minSize: 20, maxSize: 80 },
+  ];
+
   ngOnInit() {}
 
   scrollToSection(sectionId: string) {
@@ -271,12 +287,14 @@ export class SetSplitterDemoComponent {
   <div slot="panel-1">Stacks well on small screens</div>
 </app-splitter>`);
 
-  sidebarContentCode = signal(`<app-splitter direction="horizontal" [panels]="[{ size: 25 }, { size: 75 }]">
+  sidebarContentCode =
+    signal(`<app-splitter direction="horizontal" [panels]="[{ size: 25 }, { size: 75 }]">
   <div slot="panel-0">Navigation Sidebar (25%)</div>
   <div slot="panel-1">Main Content Area (75%)</div>
 </app-splitter>`);
 
-  headerBodyFooterCode = signal(`<app-splitter direction="vertical" [panels]="[{ size: 10 }, { size: 80 }, { size: 10 }]">
+  headerBodyFooterCode =
+    signal(`<app-splitter direction="vertical" [panels]="[{ size: 10 }, { size: 80 }, { size: 10 }]">
   <div slot="panel-0">Header (10%)</div>
   <div slot="panel-1">Body Content (80%)</div>
   <div slot="panel-2">Footer (10%)</div>

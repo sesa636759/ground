@@ -7,6 +7,7 @@ import {
   computed,
   AfterViewInit,
   OnDestroy,
+  ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -75,7 +76,7 @@ import {
 
           <div class="docs-sections">
             <!-- Overview Section -->
-            <section id="overview" class="doc-section hero-section">
+            <section [id]="getSectionId('overview')" class="doc-section hero-section">
               <div class="section-title">
                 <div class="icon-orb"><i class="fas fa-rocket"></i></div>
                 <div class="title-text">
@@ -89,7 +90,7 @@ import {
             </section>
 
             <!-- Usage Section -->
-            <section id="usage" class="doc-section">
+            <section [id]="getSectionId('usage')" class="doc-section">
               <div class="section-title">
                 <div class="icon-orb secondary"><i class="fas fa-terminal"></i></div>
                 <div class="title-text">
@@ -97,15 +98,20 @@ import {
                   <p>Basic implementation and markup</p>
                 </div>
               </div>
-              <app-code-block
-                [code]="componentDoc.usage"
-                [title]="componentDoc.name + ' Basic Implementation'"
-                language="html"
-              ></app-code-block>
+              <ui-code-preview
+                [htmlCode]="componentDoc.usage"
+                [label]="componentDoc.name + ' Basic Implementation'"
+                activeLang="html"
+                expanded="true"
+              ></ui-code-preview>
             </section>
 
             <!-- Props Section -->
-            <section id="properties" class="doc-section" *ngIf="componentDoc.props.length > 0">
+            <section
+              [id]="getSectionId('properties')"
+              class="doc-section"
+              *ngIf="componentDoc.props.length > 0"
+            >
               <div class="section-title">
                 <div class="icon-orb success"><i class="fas fa-sliders-h"></i></div>
                 <div class="title-text">
@@ -166,7 +172,11 @@ import {
             </section>
 
             <!-- Events Section -->
-            <section id="events" class="doc-section" *ngIf="componentDoc.events.length > 0">
+            <section
+              [id]="getSectionId('events')"
+              class="doc-section"
+              *ngIf="componentDoc.events.length > 0"
+            >
               <div class="section-title">
                 <div class="icon-orb warning"><i class="fas fa-broadcast-tower"></i></div>
                 <div class="title-text">
@@ -197,7 +207,7 @@ import {
 
             <!-- Considerations Section -->
             <section
-              id="limitations"
+              [id]="getSectionId('limitations')"
               class="doc-section"
               *ngIf="componentDoc.limitations.length > 0"
             >
@@ -220,7 +230,7 @@ import {
 
             <!-- Advanced Examples -->
             <section
-              id="examples"
+              [id]="getSectionId('examples')"
               class="doc-section"
               *ngIf="componentDoc.examples && componentDoc.examples.length > 0"
             >
@@ -240,11 +250,12 @@ import {
                     <span class="pattern-number">0{{ i + 1 }}</span>
                     <h3>Pattern Variation</h3>
                   </div>
-                  <app-code-block
-                    [code]="example"
-                    [title]="'Composition Example ' + (i + 1)"
-                    language="html"
-                  ></app-code-block>
+                  <ui-code-preview
+                    [htmlCode]="example"
+                    [label]="'Composition Example ' + (i + 1)"
+                    activeLang="html"
+                    expanded="true"
+                  ></ui-code-preview>
                 </div>
               </div>
             </section>
@@ -371,21 +382,29 @@ import {
       /* Embedded Mini-Nav */
       .embedded-mini-nav {
         position: sticky;
-        top: -24px;
-        z-index: 100;
-        background: rgba(255, 255, 255, 0.9);
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--border-color);
         padding: 0.75rem 1.5rem;
         margin-bottom: 2rem;
-        margin-left: -24px;
-        margin-right: -24px;
+        margin-left: -4rem;
+        margin-right: -4rem;
+        margin-top: -4rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
+        /* Improved pill styling */
         .mini-nav-inner {
           display: flex;
-          gap: 1.5rem;
+          gap: 0.5rem;
           overflow-x: auto;
           scrollbar-width: none;
+          padding: 0.25rem;
+          background: #f1f5f9; /* Light gray background for pill container */
+          border-radius: 12px;
+          border: 1px solid #e2e8f0;
+
           &::-webkit-scrollbar {
             display: none;
           }
@@ -397,12 +416,13 @@ import {
           gap: 0.5rem;
           white-space: nowrap;
           font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--text-secondary);
-          padding: 0.5rem 0.25rem;
+          font-weight: 600;
+          color: #64748b;
+          padding: 0.5rem 1rem;
           cursor: pointer;
-          border-bottom: 2px solid transparent;
-          transition: all 0.2s ease;
+          border-radius: 8px; /* Rounded pill shape */
+          border: 1px solid transparent; /* Prepare for border transition */
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
           i {
             font-size: 0.9rem;
@@ -410,11 +430,21 @@ import {
           }
 
           &:hover {
-            color: var(--p-docs);
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.6);
           }
+
           &.active {
-            color: var(--p-docs);
-            border-bottom-color: var(--p-docs);
+            color: #2563eb; /* Primary blue */
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-color: #e2e8f0;
+            font-weight: 700;
+
+            i {
+              opacity: 1;
+              color: #2563eb;
+            }
           }
         }
       }
@@ -982,6 +1012,7 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   constructor(
     private route: ActivatedRoute,
     private componentDocsService: ComponentDocsService,
+    private elementRef: ElementRef,
   ) {}
 
   ngOnInit(): void {
@@ -999,9 +1030,28 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
     }
 
     const scrollHandler = () => {
-      this.showScrollTop.set(window.scrollY > 400);
+      if (this.isEmbedded) {
+        const scrollContainer = this.getScrollParent(this.elementRef.nativeElement);
+        if (scrollContainer) {
+          this.showScrollTop.set(scrollContainer.scrollTop > 400);
+        }
+      } else {
+        this.showScrollTop.set(window.scrollY > 400);
+      }
     };
-    window.addEventListener('scroll', scrollHandler);
+
+    if (this.isEmbedded) {
+      setTimeout(() => {
+        const scrollContainer = this.getScrollParent(this.elementRef.nativeElement);
+        if (scrollContainer) {
+          scrollContainer.addEventListener('scroll', scrollHandler);
+          (this as any)._scrollContainer = scrollContainer;
+          (this as any)._scrollHandler = scrollHandler;
+        }
+      }, 500);
+    } else {
+      window.addEventListener('scroll', scrollHandler);
+    }
   }
 
   ngAfterViewInit() {
@@ -1011,11 +1061,19 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   ngOnDestroy() {
     if (this.observer) this.observer.disconnect();
     window.removeEventListener('scroll', () => {});
+    if ((this as any)._scrollContainer && (this as any)._scrollHandler) {
+      (this as any)._scrollContainer.removeEventListener('scroll', (this as any)._scrollHandler);
+    }
   }
 
   private initIntersectionObserver() {
+    let root = null;
+    if (this.isEmbedded) {
+      root = this.getScrollParent(this.elementRef.nativeElement);
+    }
+
     const options = {
-      root: null,
+      root: root,
       rootMargin: '-20% 0px -60% 0px',
       threshold: 0,
     };
@@ -1023,32 +1081,95 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          this.activeSection.set(entry.target.id);
+          // Extract the original ID if prefixed
+          const id = entry.target.id;
+          const originalId =
+            this.componentId && id.startsWith(this.componentId + '-')
+              ? id.substring(this.componentId.length + 1)
+              : id;
+          this.activeSection.set(originalId);
         }
       });
     }, options);
 
     this.sections.forEach((section) => {
-      const element = document.getElementById(section.id);
+      const dynamicId = this.getSectionId(section.id);
+      const element = document.getElementById(dynamicId);
       if (element) this.observer?.observe(element);
     });
   }
 
-  scrollTo(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = this.isEmbedded ? 120 : 20;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+  getSectionId(sectionId: string): string {
+    return this.componentId ? `${this.componentId}-${sectionId}` : sectionId;
+  }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+  scrollTo(sectionId: string) {
+    const dynamicId = this.getSectionId(sectionId);
+    const element = document.getElementById(dynamicId);
+
+    if (element) {
+      // Find the scrollable container
+      const scrollContainer = this.getScrollParent(element);
+      const isWindow =
+        !scrollContainer ||
+        scrollContainer === document.documentElement ||
+        scrollContainer === document.body;
+
+      // Calculate offset based on context
+      // For embedded, we have the sticky mini-nav (~60px) + some buffer
+      // For standalone, we have the sticky sidebar, but the window scrolls
+      const offset = this.isEmbedded ? 100 : 80;
+
+      if (isWindow) {
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth',
+        });
+      } else if (scrollContainer) {
+        // Calculate relative position inside the scroll container
+        const elementTop = element.getBoundingClientRect().top;
+        const containerTop = scrollContainer.getBoundingClientRect().top;
+        const relativeTop = elementTop - containerTop + scrollContainer.scrollTop;
+
+        scrollContainer.scrollTo({
+          top: relativeTop - offset,
+          behavior: 'smooth', // 'smooth' might be choppy in some browsers inside nested containers, but let's try
+        });
+      }
     }
   }
 
+  // Helper to find the nearest scrollable parent
+  private getScrollParent(node: HTMLElement | null): HTMLElement | null {
+    if (!node) {
+      return null;
+    }
+
+    if (node.scrollHeight > node.clientHeight) {
+      const style = getComputedStyle(node);
+      const overflowY = style.overflowY;
+      if (overflowY === 'auto' || overflowY === 'scroll') {
+        // Specifically for our demo-tabs case, we might be looking at the .viewport-pane
+        return node;
+      }
+    }
+
+    return this.getScrollParent(node.parentElement);
+  }
+
   scrollToTop() {
+    // If embedded, scroll the container
+    if (this.isEmbedded && this.componentDoc) {
+      // Check componentDoc as a proxy for initialization
+      // Try to find the container relative to a known element, e.g. the first section or the wrapper
+      const wrapper = document.querySelector('.docs-wrapper');
+      const scrollContainer = this.getScrollParent(wrapper as HTMLElement);
+      if (scrollContainer) {
+        scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
