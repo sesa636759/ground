@@ -9,11 +9,19 @@
 }
 
 .docs-wrapper {
-  height: 100%;
-  box-sizing: border-box;
+  flex: 1;
+  min-height: 0; // critical: allows flex child to shrink below content height
+  display: flex;
+  flex-direction: column;
   position: relative;
-}
 
+  // Override demo-base's height:100% — not needed when using flex: 1
+  >.examples-split-layout {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+  }
+}
 
 .sticky-nav {
   position: sticky;

@@ -157,6 +157,21 @@ h1 {
   }
 }
 
+// Ensure slot wrapper div AND any Angular component host between it and
+// .examples-split-layout fill the container height.
+// Pattern 1: pane -> [slot div == .examples-split-layout]       -> > * covers it
+// Pattern 2: pane -> [slot div] -> <app-xyz> host -> split-layout -> > * > * covers host
+.pane-examples,
+.pane-docs {
+
+  >*,
+  >*>* {
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+  }
+}
+
 /* Premium Split Layout for Examples */
 .examples-split-layout {
   display: flex;
@@ -172,6 +187,7 @@ h1 {
     width: 226px;
     flex-shrink: 0;
     height: 100%;
+    min-height: 0; // allows shrinking so overflow-y triggers
     overflow-y: auto;
     overflow-x: hidden;
     background: #ffffff;

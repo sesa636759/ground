@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
       :host {
         display: block;
         height: 100%;
+        min-height: 0;
         flex-shrink: 0;
       }
     `,
