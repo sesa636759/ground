@@ -160,52 +160,97 @@ h1 {
 /* Premium Split Layout for Examples */
 .examples-split-layout {
   display: flex;
-  gap: var(--space-2xl);
+  gap: 1rem;
   position: relative;
-  padding: var(--space-md);
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 1rem;
+  background: #f4faf6; // subtle green-tinted background between the two boxes
 
   .examples-sidebar {
-    width: 240px;
+    width: 226px;
     flex-shrink: 0;
-    position: sticky;
-    top: var(--space-lg);
-    align-self: flex-start;
-    max-height: calc(100vh - var(--space-2xl));
-    background: var(--surface-elevated);
-    border-radius: 20px;
-    padding: var(--space-md);
-    border: 1px solid #d1fae5; // Force green border
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-smooth);
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ffffff;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    border: 1px solid #d1fae5;
+    box-shadow: 0 2px 12px rgba(22, 163, 74, 0.07);
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #16a34a transparent;
 
-    &:hover {
-      box-shadow: var(--shadow-md);
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #16a34a;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #15803d;
     }
 
     .sidebar-title {
       font-size: 0.75rem;
       font-weight: 700;
-      color: #16a34a; // Force green
-      margin-bottom: var(--space-md);
+      color: #16a34a;
+      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      text-align: left;
-      padding-left: var(--space-sm);
+      padding-left: 0.5rem;
     }
 
     /* Force ui-anchor to use green */
     ui-anchor {
-      --primary-color: #16a34a; // Green
-      --text-secondary: #4b5563; // Gray for inactive
-      --hover-bg: #f0fdf4; // Light green hover
-      --active-bg: #e6f8ec; // Slightly darker light green for active highlight
-      --anchor-active-color: #16a34a; // Active text color
+      --primary-color: #16a34a;
+      --text-secondary: #4b5563;
+      --hover-bg: #f0fdf4;
+      --active-bg: #e6f8ec;
+      --anchor-active-color: #16a34a;
     }
   }
 
   .examples-content {
     flex: 1;
     min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #16a34a transparent;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #16a34a;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #15803d;
+    }
   }
 }
 

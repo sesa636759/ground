@@ -6,6 +6,15 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  styles: [
+    `
+      :host {
+        display: block;
+        height: 100%;
+        flex-shrink: 0;
+      }
+    `,
+  ],
   template: `
     <aside class="examples-sidebar">
       <div class="sidebar-title">{{ title }}</div>
@@ -13,7 +22,7 @@ import { CommonModule } from '@angular/common';
       <div *ngIf="useAnchor; else navList" class="sidebar-nav">
         <ui-anchor
           [links]="anchorLinks"
-          scroll-container=".pane-examples"
+          scroll-container=".examples-content"
           type="line"
           show-progress
         ></ui-anchor>
