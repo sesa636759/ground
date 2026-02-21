@@ -6,6 +6,8 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { SidebarPlaygroundComponent } from './components/sidebar-playground/sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-sidebar-demo',
@@ -16,6 +18,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     SidebarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-sidebar-demo.component.html',
@@ -28,6 +32,15 @@ export class SetSidebarDemoComponent implements OnInit {
     { id: 'collapsible', title: 'Collapsible States', icon: '🔄' },
     { id: 'premium', title: 'Premium Features', icon: '💎' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   menuItems = JSON.stringify([
     { id: '1', label: 'Dashboard', icon: 'fas fa-home', href: '#dashboard' },

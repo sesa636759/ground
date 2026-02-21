@@ -1,14 +1,36 @@
-<div class="demo-container">
-  <h1>📋 Sidebar Component</h1>
-  <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples">
+<app-demo-header
+  icon="📋"
+  title="Sidebar Component"
+  description="A versatile navigation sidebar with support for various positions, visual variants, and collapsible states."
+>
+</app-demo-header>
+
+<demo-tabs>
+  <!-- Examples Slot -->
+  <div slot="examples" class="examples-split-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="examples-sidebar">
+      <div class="sidebar-title">Sections</div>
+      <div class="sidebar-nav">
+        <ui-anchor
+          [links]="anchorLinks"
+          scroll-container=".pane-examples"
+          type="line"
+          show-progress
+        ></ui-anchor>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="examples-content pane-examples">
       <!-- Positions -->
-      <section class="demo-section" id="positions">
-        <div class="section-header">
-          <h2>📍 Position Variants</h2>
-          <p>Different sidebar positions</p>
-        </div>
+      <app-example-section
+        id="positions"
+        title="Position Variants"
+        description="Different sidebar positions."
+        [code]="playgroundCode"
+        style="margin-top: 0"
+      >
         <div class="demo-grid col-2">
           <div class="demo-card">
             <h3>Left Sidebar</h3>
@@ -26,14 +48,15 @@
             </div>
           </div>
         </div>
-      </section>
+      </app-example-section>
 
       <!-- Variants -->
-      <section class="demo-section" id="variants">
-        <div class="section-header">
-          <h2>🎭 Visual Variants</h2>
-          <p>Different styles for sidebars</p>
-        </div>
+      <app-example-section
+        id="variants"
+        title="Visual Variants"
+        description="Different styles for sidebars."
+        [code]="playgroundCode"
+      >
         <div class="demo-grid col-3">
           <div class="demo-card">
             <h3>Default</h3>
@@ -56,14 +79,15 @@
             </div>
           </div>
         </div>
-      </section>
+      </app-example-section>
 
       <!-- Collapsible -->
-      <section class="demo-section" id="collapsible">
-        <div class="section-header">
-          <h2>🔄 Collapsible States</h2>
-          <p>Expandable and collapsible sidebars</p>
-        </div>
+      <app-example-section
+        id="collapsible"
+        title="Collapsible States"
+        description="Expandable and collapsible sidebars."
+        [code]="playgroundCode"
+      >
         <div class="demo-grid col-2">
           <div class="demo-card">
             <h3>Expanded</h3>
@@ -79,14 +103,15 @@
             </div>
           </div>
         </div>
-      </section>
+      </app-example-section>
 
       <!-- Premium Features -->
-      <section class="demo-section" id="premium">
-        <div class="section-header">
-          <h2>💎 Premium Features</h2>
-          <p>Advanced styling and functionality</p>
-        </div>
+      <app-example-section
+        id="premium"
+        title="Premium Features"
+        description="Advanced styling and functionality."
+        [code]="playgroundCode"
+      >
         <div class="demo-grid col-2">
           <div
             class="demo-card"
@@ -108,24 +133,17 @@
             </div>
           </div>
         </div>
-      </section>
+      </app-example-section>
     </div>
+  </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure and test all sidebar properties</p>
-        </div>
-        <app-sidebar-playground></app-sidebar-playground>
-        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Sidebar Usage'" activeLang="html" expanded="true"></ui-code-preview>
-      </section>
-    </div>
+  <!-- Playground Slot -->
+  <div slot="playground">
+    <app-sidebar-playground></app-sidebar-playground>
+  </div>
 
-    <!-- Documentation Slot -->
-    <div slot="docs">
-      <app-component-documentation componentId="sidebar"></app-component-documentation>
-    </div>
-  </demo-tabs>
-</div>
+  <!-- Docs Slot -->
+  <div slot="docs">
+    <app-component-documentation componentId="sidebar"></app-component-documentation>
+  </div>
+</demo-tabs>
