@@ -28,59 +28,239 @@
 
       <!-- Main Content Area -->
       <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Basic -->
+        <app-example-section
+          id="basic"
+          title="Basic"
+          description="Bottom Dock (Default). Hover over icons to see magnification effect."
+          [code]="basicCode"
+          style="margin-top: 0"
+        >
+          <div
+            class="demo-card"
+            style="
+              display: flex;
+              justify-content: center;
+              padding: 40px;
+              background-color: var(--bg-tertiary);
+            "
+          >
+            <ui-dock [items]="basicItems" icon-library="lucide"></ui-dock>
+          </div>
+        </app-example-section>
+
         <!-- Positions -->
         <app-example-section
           id="positions"
           title="Positions"
           description="Dock can be placed on any side of its container."
           [code]="positionsCode"
-          style="margin-top: 0"
         >
           <div
             class="demo-card"
             style="
-              min-height: 410px;
               display: flex;
-              flex-direction: row;
-              justify-content: space-around;
-              align-items: center;
+              flex-direction: column;
+              gap: 40px;
+              padding: 40px;
+              background-color: var(--bg-tertiary);
             "
           >
-            <div
-              style="
-                border: 1px solid var(--border-color);
-                padding: 20px;
-                border-radius: 12px;
-                position: relative;
-                width: 300px;
-                height: 300px;
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-              "
-            >
-              <span style="font-size: 0.8rem; color: var(--text-secondary)">Top Positioned</span>
-              <ui-dock [model]="dockItems" position="top"></ui-dock>
+            <div style="text-align: center">
+              <span
+                style="
+                  display: block;
+                  margin-bottom: 20px;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+                >Bottom Position</span
+              >
+              <div style="display: flex; justify-content: center">
+                <ui-dock [items]="positionItems" position="bottom" icon-library="lucide"></ui-dock>
+              </div>
             </div>
 
+            <div style="text-align: center; margin-top: 20px">
+              <span
+                style="
+                  display: block;
+                  margin-bottom: 20px;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+                >Top Position</span
+              >
+              <div style="display: flex; justify-content: center">
+                <ui-dock [items]="positionItems" position="top" icon-library="lucide"></ui-dock>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px">
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Left Position</span
+                >
+                <div
+                  style="display: flex; justify-content: center; height: 300px; position: relative"
+                >
+                  <ui-dock [items]="positionItems" position="left" icon-library="lucide"></ui-dock>
+                </div>
+              </div>
+
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Right Position</span
+                >
+                <div
+                  style="display: flex; justify-content: center; height: 300px; position: relative"
+                >
+                  <ui-dock [items]="positionItems" position="right" icon-library="lucide"></ui-dock>
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Sizes -->
+        <app-example-section
+          id="sizes"
+          title="Sizes"
+          description="Different size options available for the dock."
+          [code]="sizesCode"
+        >
+          <div
+            class="demo-card"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 40px;
+              padding: 40px;
+              background-color: var(--bg-tertiary);
+            "
+          >
+            <div style="text-align: center">
+              <span
+                style="
+                  display: block;
+                  margin-bottom: 20px;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+                >Small Size</span
+              >
+              <div style="display: flex; justify-content: center">
+                <ui-dock [items]="sizeItems" size="sm" icon-library="lucide"></ui-dock>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px">
+              <span
+                style="
+                  display: block;
+                  margin-bottom: 20px;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+                >Medium Size (Default)</span
+              >
+              <div style="display: flex; justify-content: center">
+                <ui-dock [items]="sizeItems" size="md" icon-library="lucide"></ui-dock>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px">
+              <span
+                style="
+                  display: block;
+                  margin-bottom: 20px;
+                  font-size: 0.8rem;
+                  color: var(--text-secondary);
+                "
+                >Large Size</span
+              >
+              <div style="display: flex; justify-content: center">
+                <ui-dock [items]="sizeItems" size="lg" icon-library="lucide"></ui-dock>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- With Badges -->
+        <app-example-section
+          id="badges"
+          title="With Badges"
+          description="Icons can display notification badges."
+          [code]="badgesCode"
+        >
+          <div
+            class="demo-card"
+            style="
+              display: flex;
+              justify-content: center;
+              padding: 40px;
+              background-color: var(--bg-tertiary);
+            "
+          >
+            <ui-dock [items]="badgeItems" icon-library="lucide"></ui-dock>
+          </div>
+        </app-example-section>
+
+        <!-- OS Experience -->
+        <app-example-section
+          id="os"
+          title="OS Experience"
+          description="Demonstrating Active Indicators, Separators, and Bounce Animations."
+          [code]="osCode"
+        >
+          <div class="demo-card" style="padding: 0; overflow: hidden; position: relative">
             <div
               style="
-                border: 1px solid var(--border-color);
-                padding: 20px;
-                border-radius: 12px;
-                position: relative;
-                width: 300px;
-                height: 300px;
                 display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
                 align-items: center;
-                justify-content: flex-start;
+                height: 400px;
+                background: linear-gradient(to bottom, #38bdf8, #0ea5e9);
+                position: relative;
+                padding-bottom: 20px;
               "
             >
-              <span
-                style="font-size: 0.8rem; color: var(--text-secondary); writing-mode: vertical-rl"
-                >Left Positioned</span
+              <!-- Background Wallpaper Effect -->
+              <div
+                style="
+                  position: absolute;
+                  top: 20px;
+                  left: 20px;
+                  color: rgba(255, 255, 255, 0.8);
+                  font-family: monospace;
+                "
               >
-              <ui-dock [model]="dockItems" position="left"></ui-dock>
+                10:42 AM<br />Tuesday 11 Jan
+              </div>
+
+              <!-- The Dock -->
+              <ui-dock
+                [items]="osItems"
+                position="bottom"
+                size="md"
+                magnify="true"
+                blur-effect="true"
+                icon-library="lucide"
+              >
+              </ui-dock>
             </div>
           </div>
         </app-example-section>

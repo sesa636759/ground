@@ -23,7 +23,13 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   styleUrl: './app-dock-demo.component.scss',
 })
 export class AppDockDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [{ id: 'positions', title: 'Positions', icon: '📍', color: '#3b82f6' }];
+  variants = [
+    { id: 'basic', title: 'Basic', icon: '🟦', color: '#3b82f6' },
+    { id: 'positions', title: 'Positions', icon: '📍', color: '#10b981' },
+    { id: 'sizes', title: 'Sizes', icon: '📏', color: '#f59e0b' },
+    { id: 'badges', title: 'With Badges', icon: '🔔', color: '#ef4444' },
+    { id: 'os', title: 'OS Experience', icon: '✨', color: '#ec4899' },
+  ];
 
   get exampleVariants() {
     return this.variants;
@@ -38,17 +44,74 @@ export class AppDockDemoComponent extends BaseDemoComponent implements OnInit {
     })),
   );
 
-  dockItems = JSON.stringify([
-    { label: 'Finder', icon: '🔍' },
-    { label: 'Messages', icon: '💬' },
-    { label: 'Mail', icon: '📧' },
-    { label: 'Terminal', icon: '💻' },
+  basicItems = JSON.stringify([
+    { id: 'finder', label: 'Finder', icon: 'smile' },
+    { id: 'mail', label: 'Mail', icon: 'mail' },
+    { id: 'browser', label: 'Browser', icon: 'globe' },
+    { id: 'music', label: 'Music', icon: 'music' },
+    { id: 'photos', label: 'Photos', icon: 'image' },
+    { id: 'settings', label: 'Settings', icon: 'settings' },
   ]);
 
-  playgroundCode = `<ui-dock [model]="items" position="bottom"></ui-dock>`;
+  positionItems = JSON.stringify([
+    { id: '1', label: 'Home', icon: 'home' },
+    { id: '2', label: 'Search', icon: 'search' },
+    { id: '3', label: 'Heart', icon: 'heart' },
+    { id: '4', label: 'Star', icon: 'star' },
+    { id: '5', label: 'Settings', icon: 'settings' },
+  ]);
 
-  positionsCode = `<ui-dock position="top" [model]="items"></ui-dock>
-<ui-dock position="left" [model]="items"></ui-dock>`;
+  sizeItems = JSON.stringify([
+    { id: '1', label: 'File', icon: 'file-text' },
+    { id: '2', label: 'Folder', icon: 'folder' },
+    { id: '3', label: 'Image', icon: 'image' },
+    { id: '4', label: 'Video', icon: 'clapperboard' },
+  ]);
+
+  badgeItems = JSON.stringify([
+    { id: 'mail', label: 'Mail', icon: 'mail', badge: 12 },
+    { id: 'messages', label: 'Messages', icon: 'message-square', badge: 5 },
+    { id: 'notifications', label: 'Notifications', icon: 'bell', badge: 99 },
+    { id: 'calendar', label: 'Calendar', icon: 'calendar' },
+    { id: 'tasks', label: 'Tasks', icon: 'check-square', badge: 3 },
+  ]);
+
+  osItems = JSON.stringify([
+    { id: 'finder', label: 'Finder', icon: 'smile', active: true },
+    { id: 'launchpad', label: 'Launchpad', icon: 'rocket' },
+    { id: 'browser', label: 'Safari', icon: 'compass', active: true },
+    { id: 'mail', label: 'Mail', icon: 'mail', badge: 3, bounce: true },
+    { id: 'maps', label: 'Maps', icon: 'map' },
+    { id: 'separator1', separator: true },
+    { id: 'music', label: 'Music', icon: 'music', active: true },
+    { id: 'podcasts', label: 'Podcasts', icon: 'mic' },
+    { id: 'tv', label: 'TV', icon: 'tv' },
+    { id: 'separator2', separator: true },
+    { id: 'settings', label: 'System Settings', icon: 'settings' },
+    { id: 'trash', label: 'Trash', icon: 'trash-2' },
+  ]);
+
+  basicCode = `<ui-dock [items]="basicItems" icon-library="lucide"></ui-dock>`;
+
+  positionsCode = `<ui-dock [items]="positionItems" position="bottom" icon-library="lucide"></ui-dock>
+<ui-dock [items]="positionItems" position="top" icon-library="lucide"></ui-dock>
+<ui-dock [items]="positionItems" position="left" icon-library="lucide"></ui-dock>
+<ui-dock [items]="positionItems" position="right" icon-library="lucide"></ui-dock>`;
+
+  sizesCode = `<ui-dock [items]="sizeItems" size="sm" icon-library="lucide"></ui-dock>
+<ui-dock [items]="sizeItems" size="md" icon-library="lucide"></ui-dock>
+<ui-dock [items]="sizeItems" size="lg" icon-library="lucide"></ui-dock>`;
+
+  badgesCode = `<ui-dock [items]="badgeItems" icon-library="lucide"></ui-dock>`;
+
+  osCode = `<ui-dock 
+  [items]="osItems" 
+  position="bottom" 
+  size="md" 
+  magnify="true" 
+  blur-effect="true"
+  icon-library="lucide">
+</ui-dock>`;
 
   ngOnInit() {}
 }
