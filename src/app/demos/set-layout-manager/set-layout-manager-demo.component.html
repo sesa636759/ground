@@ -174,31 +174,17 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Build custom layouts with resizable, collapsible regions</p>
-        </div>
-        <div class="playground-wrapper">
-          <app-layout-manager
-            #customLayout
-            [regions]="basicRegions"
-            direction="horizontal"
-            save-state
-            state-key="custom-layout"
-            (layoutChange)="handleLayoutChange($event)"
-            (panelAdded)="handlePanelAdded($event)"
-            (panelRemoved)="handlePanelRemoved($event)"
-            style="height: 500px; display: block"
-          ></app-layout-manager>
-          <ui-code-preview
-            [htmlCode]="playgroundCode"
-            [label]="'Layout Manager Usage'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </section>
+      <app-layout-manager
+        #customLayout
+        [regions]="basicRegions"
+        direction="horizontal"
+        save-state
+        state-key="custom-layout"
+        (layoutChange)="handleLayoutChange($event)"
+        (panelAdded)="handlePanelAdded($event)"
+        (panelRemoved)="handlePanelRemoved($event)"
+        style="height: 500px; display: block"
+      ></app-layout-manager>
     </div>
 
     <!-- Documentation Slot -->

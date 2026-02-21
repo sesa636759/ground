@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
@@ -15,7 +14,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
-    ExampleSectionComponent,
     ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

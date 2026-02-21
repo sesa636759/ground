@@ -9,19 +9,7 @@
   <demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Test all avatar properties in real-time</p>
-        </div>
-        <app-avatar-playground></app-avatar-playground>
-        <ui-code-preview
-          [htmlCode]="playgroundCode"
-          label="Avatar Usage"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-      </section>
+      <app-avatar-playground></app-avatar-playground>
     </div>
 
     <!-- Examples Slot -->

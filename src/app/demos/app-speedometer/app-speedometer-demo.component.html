@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Fine-tune thresholds, arc thickness, and labels.</p>
-          </div>
-          <app-speedometer-playground></app-speedometer-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-speedometer-playground></app-speedometer-playground>
     </div>
 
     <div slot="examples">
@@ -69,7 +59,12 @@
                 ></ui-speedometer>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="modesCode" [label]="'Color Configuration'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="modesCode"
+              [label]="'Color Configuration'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Scaling -->
@@ -94,7 +89,12 @@
                 label="Hero"
               ></ui-speedometer>
             </div>
-            <ui-code-preview [htmlCode]="sizesCode" [label]="'Sizing Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="sizesCode"
+              [label]="'Sizing Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test various constraints, steps, and range toggles.</p>
-          </div>
-          <app-range-slider-playground></app-range-slider-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-range-slider-playground></app-range-slider-playground>
     </div>
 
     <div slot="examples">
@@ -59,7 +49,12 @@
                 ></ui-range-slider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="modesCode" [label]="'Mode Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="modesCode"
+              [label]="'Mode Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Layouts & Constraints -->
@@ -86,7 +81,12 @@
                 ></ui-range-slider>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="layoutsCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

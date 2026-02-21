@@ -30,20 +30,18 @@
             <p>Built-in save, load, undo, redo, and export capabilities.</p>
           </div>
         </div>
-        <ui-code-preview [htmlCode]="featuresCode" [label]="'Key Features Overview'" activeLang="html" expanded="true"></ui-code-preview>
+        <ui-code-preview
+          [htmlCode]="featuresCode"
+          [label]="'Key Features Overview'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </section>
     </div>
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure grid, interaction rules, and manage widgets</p>
-        </div>
-        <app-dashboard-playground></app-dashboard-playground>
-        <ui-code-preview [htmlCode]="playgroundCode" [label]="'Dashboard Configuration'" activeLang="html" expanded="true"></ui-code-preview>
-      </section>
+      <app-dashboard-playground></app-dashboard-playground>
     </div>
 
     <!-- Documentation Slot -->

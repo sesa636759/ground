@@ -156,19 +156,7 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure and test all dock overlay properties</p>
-        </div>
-        <app-dock-overlay-playground></app-dock-overlay-playground>
-        <ui-code-preview
-          [htmlCode]="playgroundCode"
-          label="'Dock Overlay Usage'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-      </section>
+      <app-dock-overlay-playground></app-dock-overlay-playground>
     </div>
 
     <!-- Documentation Slot -->

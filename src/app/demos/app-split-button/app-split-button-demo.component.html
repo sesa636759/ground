@@ -7,22 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Configure primary labels, variants, and dropdown behavior.</p>
-          </div>
-          <app-split-button-playground></app-split-button-playground>
-          <ui-code-preview
-            [htmlCode]="playgroundCode"
-            [label]="'Usage'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
-      </div>
+      <app-split-button-playground></app-split-button-playground>
     </div>
 
     <div slot="examples">

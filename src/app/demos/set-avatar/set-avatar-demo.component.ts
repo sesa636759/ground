@@ -6,7 +6,6 @@ import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
