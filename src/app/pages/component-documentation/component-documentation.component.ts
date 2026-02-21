@@ -25,8 +25,8 @@ import {
   template: `
     <div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
       <div class="docs-container" *ngIf="componentDoc">
-        <!-- Sticky Navigation (Aside for desktop, mini-nav for embedded/mobile) -->
-        <aside class="docs-nav-aside" *ngIf="!isEmbedded">
+        <!-- Sticky Navigation Sidebar -->
+        <aside class="docs-nav-aside">
           <nav class="sticky-nav">
             <div class="nav-header">Jump to Section</div>
             <ul>
@@ -43,21 +43,6 @@ import {
             </ul>
           </nav>
         </aside>
-
-        <!-- Embedded Mini-Nav (Horizontal) -->
-        <nav class="embedded-mini-nav animate-slide-down" *ngIf="isEmbedded">
-          <div class="mini-nav-inner">
-            <a
-              *ngFor="let section of sections"
-              (click)="scrollTo(section.id)"
-              class="mini-link"
-              [class.active]="activeSection() === section.id"
-            >
-              <i [class]="section.icon"></i>
-              <span>{{ section.label }}</span>
-            </a>
-          </div>
-        </nav>
 
         <!-- Main Content Area -->
         <main class="docs-main-content">
@@ -289,13 +274,13 @@ import {
         display: block;
         min-height: 100vh;
         background: #fdfdfd;
-        --p-docs: #3b82f6;
-        --p-docs-light: #eff6ff;
-        --p-docs-dark: #1e3a8a;
+        --p-docs: #16a34a;
+        --p-docs-light: #f0fdf4;
+        --p-docs-dark: #14532d;
       }
 
       .docs-wrapper {
-        max-width: 1440px;
+        //max-width: 1440px;
         margin: 0 auto;
         position: relative;
         padding-bottom: 100px;
@@ -320,7 +305,7 @@ import {
         top: 2rem;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(12px);
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--p-docs-light);
         border-radius: 1.5rem;
         padding: 1.5rem 1rem;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
@@ -330,7 +315,7 @@ import {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.12em;
-          color: var(--text-tertiary);
+          color: var(--p-docs); // explicitly #16a34a
           margin-bottom: 1.25rem;
           padding-left: 0.75rem;
         }
@@ -339,39 +324,64 @@ import {
           list-style: none;
           padding: 0;
           margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.0625rem;
         }
 
         .nav-link {
           display: flex;
           align-items: center;
           gap: 0.85rem;
-          padding: 0.75rem 1rem;
-          color: var(--text-secondary);
-          font-weight: 600;
-          font-size: 0.9rem;
-          border-radius: 0.75rem;
+          padding: 0.6rem 0.75rem;
+          color: #14532d; // explicitly use dark green instead of blue var
+          font-weight: 500;
+          font-size: 0.875rem;
+          border-radius: var(--radius-md);
           cursor: pointer;
           transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-          margin-bottom: 2px;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 0;
+            background: #16a34a; // Explicit green
+            border-radius: var(--radius-full);
+            transition: height var(--transition-fast);
+          }
 
           i {
-            font-size: 1rem;
+            font-size: 1.1em;
             width: 20px;
-            opacity: 0.6;
+            opacity: 0.8;
+            transition: transform var(--transition-fast);
           }
 
           &:hover {
-            color: var(--p-docs);
-            background: var(--p-docs-light);
+            background-color: var(--p-docs-light); // Light green background
+            color: #166534; // Deep green instead of blue text-primary
+            transform: translateX(4px);
             i {
-              opacity: 1;
+              transform: scale(1.1);
             }
           }
 
           &.active {
-            color: white;
-            background: var(--p-docs);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(90deg, rgba(61, 205, 88, 0.1) 0%, transparent 100%);
+            color: #3dcd58;
+            font-weight: 600;
+            border-left: 3px solid #3dcd58;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+            &::before {
+              display: none;
+            }
+
             i {
               opacity: 1;
             }
@@ -607,7 +617,7 @@ import {
 
             &:focus {
               border-color: var(--p-docs);
-              box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+              box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
             }
           }
         }
@@ -692,13 +702,13 @@ import {
       }
 
       .type-pill {
-        background: #f0f9ff;
-        color: #0369a1;
+        background: #f0fdf4;
+        color: #15803d;
         font-weight: 700;
         font-size: 0.8rem;
         padding: 6px 12px;
         border-radius: 8px;
-        border: 1px solid #e0f2fe;
+        border: 1px solid #dcfce7;
       }
 
       .default-pill {
@@ -783,7 +793,7 @@ import {
             display: block;
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: #0369a1;
+            color: #15803d;
             margin-bottom: 0.5rem;
           }
 
@@ -816,7 +826,7 @@ import {
             line-height: 1.6;
 
             i {
-              color: #38bdf8;
+              color: var(--p-docs);
               font-size: 1.4rem;
               flex-shrink: 0;
             }
@@ -966,7 +976,6 @@ import {
 
       .embedded {
         .docs-container {
-          grid-template-columns: 1fr;
           padding-top: 0;
         }
         .docs-main-content {

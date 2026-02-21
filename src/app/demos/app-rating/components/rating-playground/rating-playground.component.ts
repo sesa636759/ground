@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -26,11 +25,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Value</label>
-              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max (Stars/Smiley)</label>
-              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 

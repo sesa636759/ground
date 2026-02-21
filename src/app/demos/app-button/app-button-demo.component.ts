@@ -29,6 +29,7 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
+    { id: 'icon-libraries', title: 'Icon Libraries', icon: '🎨' },
     { id: 'states', title: 'States', icon: '⚙️' },
   ];
 
@@ -36,6 +37,7 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'visual-variants', label: 'Visual Variants', target: 'visual-variants', icon: '🎨' },
     { id: 'sizes', label: 'Sizes', target: 'sizes', icon: '📏' },
     { id: 'icons-badges', label: 'Icons & Badges', target: 'icons-badges', icon: '🏷️' },
+    { id: 'icon-libraries', label: 'Icon Libraries', target: 'icon-libraries', icon: '🎨' },
     { id: 'states', label: 'States', target: 'states', icon: '⚙️' },
   ]);
 
@@ -62,6 +64,24 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
 <ui-button label="Cart" icon="🛒" badge="5" variant="success"></ui-button>
 <ui-button icon="🔍" icon-only pill></ui-button>
 <ui-button label="Profile" icon="👤" icon-position="right"></ui-button>`;
+
+  iconLibrariesCode = `<!-- SVG Path -->
+<ui-button label="SVG Path" icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" icon-library="default" variant="primary"></ui-button>
+
+<!-- Material Icons -->
+<ui-button label="Material" icon="face" icon-library="default"></ui-button>
+
+<!-- Lucide Icons -->
+<ui-button label="Lucide" icon="search" icon-library="lucide" variant="success"></ui-button>
+
+<!-- Ionicons -->
+<ui-button label="Ionicons" icon="heart" icon-library="ionicons" variant="danger"></ui-button>
+
+<!-- Bootstrap (via SVG Path) -->
+<ui-button label="Bootstrap" icon="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" variant="warning"></ui-button>
+
+<!-- Emoji -->
+<ui-button label="Emoji" icon="🚀" variant="info"></ui-button>`;
 
   statesCode = `<ui-button label="Normal"></ui-button>
 <ui-button label="Disabled" disabled></ui-button>

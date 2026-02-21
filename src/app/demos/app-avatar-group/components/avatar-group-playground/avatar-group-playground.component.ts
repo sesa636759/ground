@@ -1,20 +1,13 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppInputValueAccessorDirective,
-
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -32,12 +25,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Max Display</label>
-              <app-input
+              <input
                 type="number"
-                [(ngModel)]="pgConfig.max"
-                (change)="updateConfig()"
                 min="1"
                 max="10"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
               />
             </div>
           </div>

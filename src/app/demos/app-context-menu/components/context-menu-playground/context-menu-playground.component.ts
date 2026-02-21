@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -10,7 +9,6 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -22,11 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Breakpoint</label>
-              <app-input
-                type="number"
-                [(ngModel)]="pgConfig.breakpoint"
-                (change)="updateConfig()"
-              />
+              <input type="number" [(ngModel)]="pgConfig.breakpoint" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -42,11 +36,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Base Z-Index</label>
-              <app-input
-                type="number"
-                [(ngModel)]="pgConfig.baseZIndex"
-                (change)="updateConfig()"
-              />
+              <input type="number" [(ngModel)]="pgConfig.baseZIndex" (ngModelChange)="updateConfig()" />
             </div>
           </div>
         </div>

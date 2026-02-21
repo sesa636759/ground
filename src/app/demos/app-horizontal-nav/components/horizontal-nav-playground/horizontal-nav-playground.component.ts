@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],

@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -17,11 +16,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Value / Text</label>
-              <app-input type="text" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input type="text" [(ngModel)]="pgConfig.icon" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Severity</label>

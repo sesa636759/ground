@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -25,7 +23,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Content</h3>
             <div class="control-group">
               <label>Heading</label>
-              <app-input type="text" [(ngModel)]="pgConfig.heading" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.heading" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Body Content (HTML)</label>
@@ -67,7 +65,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Width</label>
-              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

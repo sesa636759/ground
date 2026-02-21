@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -52,22 +50,22 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
             <div class="control-group">
               <label>Selected Header Color</label>
-              <app-input
+              <input
                 type="color"
                 [(ngModel)]="pgConfig.selectedHeaderColor"
                 (ngModelChange)="updateConfig()"
-              ></app-input>
+              />
             </div>
 
             <div class="control-group">
               <label>Header Level (1-6)</label>
-              <app-input
+              <input
                 type="number"
-                [min]="1"
-                [max]="6"
+                min="1"
+                max="6"
                 [(ngModel)]="pgConfig.headerLevel"
                 (ngModelChange)="updateConfig()"
-              ></app-input>
+              />
             </div>
 
             <div class="checkbox-row">
@@ -182,11 +180,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Animation</h3>
             <div class="control-group">
               <label>Duration (ms)</label>
-              <app-input
+              <input
                 type="number"
                 [(ngModel)]="pgConfig.animationDuration"
                 (ngModelChange)="updateConfig()"
-              ></app-input>
+              />
             </div>
             <div class="control-group">
               <label>Timing Function</label>

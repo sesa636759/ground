@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -25,25 +23,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Identity</h3>
             <div class="control-group">
               <label>Name (Initials)</label>
-              <app-input type="text" [(ngModel)]="pgConfig.name" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Image Source</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.src"
-                (change)="updateConfig()"
-                placeholder="URL"
-              />
+              <input type="text" [(ngModel)]="pgConfig.src" (ngModelChange)="updateConfig()" placeholder="URL" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (change)="updateConfig()"
-                placeholder="emoji or icon"
-              />
+              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="emoji or icon" />
             </div>
           </div>
 
@@ -60,7 +48,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Size (e.g. 64px)</label>
-              <app-input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Status</label>
@@ -77,21 +65,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Decorations</h3>
             <div class="control-group">
               <label>Badge</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.badge"
-                (change)="updateConfig()"
-                placeholder="'dot' or text"
-              />
+              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" placeholder="'dot' or text" />
             </div>
             <div class="control-group">
               <label>Badge Color</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.badgeColor"
-                (change)="updateConfig()"
-                placeholder="hex or color name"
-              />
+              <input type="text" [(ngModel)]="pgConfig.badgeColor" (ngModelChange)="updateConfig()" placeholder="hex or color name" />
             </div>
           </div>
         </div>

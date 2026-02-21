@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -24,11 +22,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Separator</label>
-              <app-input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max Items (Collapse)</label>
-              <app-input type="number" [(ngModel)]="pgConfig.maxItems" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.maxItems" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Size</label>

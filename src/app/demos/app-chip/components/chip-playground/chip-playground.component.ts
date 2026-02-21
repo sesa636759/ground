@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -25,28 +23,23 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Content</h3>
             <div class="control-group">
               <label>Label</label>
-              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (change)="updateConfig()"
-                placeholder="e.g. ⭐"
-              />
+              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="e.g. ⭐" />
             </div>
             <div class="control-group">
               <label>Avatar URL</label>
-              <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Counter</label>
-              <app-input type="text" [(ngModel)]="pgConfig.counter" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 

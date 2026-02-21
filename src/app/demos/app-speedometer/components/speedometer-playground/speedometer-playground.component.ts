@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -17,19 +16,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Metric</h3>
             <div class="control-group">
               <label>Value</label>
-              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Min</label>
-              <app-input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max</label>
-              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Label</label>
-              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 
@@ -37,11 +36,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Appearance</h3>
             <div class="control-group">
               <label>Size</label>
-              <app-input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Arc Width</label>
-              <app-input type="number" [(ngModel)]="pgConfig.arcWidth" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.arcWidth" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Color Mode</label>

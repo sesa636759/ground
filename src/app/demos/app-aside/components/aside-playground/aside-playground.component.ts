@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -33,7 +31,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Size (px/%/rem)</label>
-              <app-input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Variant</label>
@@ -45,12 +43,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Backdrop Blur</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.backdropBlur"
-                (change)="updateConfig()"
-                placeholder="e.g. 8px"
-              />
+              <input type="text" [(ngModel)]="pgConfig.backdropBlur" (ngModelChange)="updateConfig()" placeholder="e.g. 8px" />
             </div>
           </div>
 

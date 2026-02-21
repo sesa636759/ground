@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
@@ -25,19 +23,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Header</h3>
             <div class="control-group">
               <label>Title</label>
-              <app-input type="text" [(ngModel)]="pgConfig.panelTitle" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Subtitle</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.panelSubtitle"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.panelSubtitle" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox

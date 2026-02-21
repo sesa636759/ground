@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewChild, ElementRef } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -26,11 +25,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Max Visible</label>
-              <app-input
-                type="number"
-                [(ngModel)]="pgConfig.maxVisible"
-                (change)="updateConfig()"
-              />
+              <input type="number" [(ngModel)]="pgConfig.maxVisible" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Stack Mode</label>
@@ -67,15 +62,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Title</label>
-              <app-input type="text" [(ngModel)]="notiConfig.title" />
+              <input type="text" [(ngModel)]="notiConfig.title" />
             </div>
             <div class="control-group">
               <label>Message</label>
-              <app-input type="text" [(ngModel)]="notiConfig.message" />
+              <input type="text" [(ngModel)]="notiConfig.message" />
             </div>
             <div class="control-group">
               <label>Duration (ms)</label>
-              <app-input type="number" [(ngModel)]="notiConfig.duration" />
+              <input type="number" [(ngModel)]="notiConfig.duration" />
             </div>
           </div>
         </div>

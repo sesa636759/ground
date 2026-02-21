@@ -13,9 +13,9 @@
 .playground-controls {
   flex: 1;
   background: var(--surface-elevated);
-  border: 1px solid var(--border-color);
+  //border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
-  padding: var(--space-xl);
+  //padding: var(--space-xl);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-smooth);
 
@@ -49,6 +49,13 @@
     app-input,
     ui-dropdown {
       width: 100%;
+      display: block;
+    }
+
+    // Ensure app-input Stencil element has visible dimensions
+    app-input {
+      min-height: 40px;
+      box-sizing: border-box;
     }
 
     /* Native fallbacks */
@@ -75,9 +82,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--space-md);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--border-color);
-    margin-top: var(--space-xl);
+    // padding-top: var(--space-xl);
+    // border-top: 1px solid var(--border-color);
+    // margin-top: var(--space-xl);
 
     .checkbox-item {
       display: flex;

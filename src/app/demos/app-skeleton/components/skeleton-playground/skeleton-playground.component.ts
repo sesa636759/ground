@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
@@ -10,7 +9,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -50,19 +48,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Sizing</h3>
             <div class="control-group">
               <label>Width</label>
-              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Height</label>
-              <app-input type="text" [(ngModel)]="pgConfig.height" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Border Radius</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.borderRadius"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.borderRadius" (ngModelChange)="updateConfig()" />
             </div>
           </div>
         </div>

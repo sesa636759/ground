@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -10,7 +9,6 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -22,19 +20,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Source Header</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.sourceHeader"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.sourceHeader" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Target Header</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.targetHeader"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.targetHeader" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 
@@ -58,11 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Filter Placeholder</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.filterPlaceholder"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.filterPlaceholder" (ngModelChange)="updateConfig()" />
             </div>
           </div>
         </div>
