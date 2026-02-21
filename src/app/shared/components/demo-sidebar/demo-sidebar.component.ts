@@ -38,10 +38,14 @@ export class DemoSidebarComponent {
   @Input() useAnchor: boolean = false;
 
   get anchorLinks() {
-    return this.variants.map((v) => ({
-      href: '#' + v.id,
-      title: v.title || v.name || v.id,
-    }));
+    return JSON.stringify(
+      this.variants.map((v) => ({
+        id: v.id,
+        target: v.id,
+        label: v.title || v.name || v.id,
+        icon: v.icon,
+      })),
+    );
   }
 
   scrollToSection(id: string) {

@@ -195,10 +195,11 @@ h1 {
 
     /* Force ui-anchor to use green */
     ui-anchor {
-      --primary-color: #16a34a;
-      --text-secondary: #0f3f20; // Deep green
-      --hover-bg: #f0fdf4;
-      --anchor-active-color: #16a34a;
+      --primary-color: #16a34a; // Green
+      --text-secondary: #4b5563; // Gray for inactive
+      --hover-bg: #f0fdf4; // Light green hover
+      --active-bg: #e6f8ec; // Slightly darker light green for active highlight
+      --anchor-active-color: #16a34a; // Active text color
     }
   }
 

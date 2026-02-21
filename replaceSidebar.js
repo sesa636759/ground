@@ -50,7 +50,7 @@ filesTS.forEach((fTS) => {
       const newDocsInner = `<div slot="docs">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+       <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
