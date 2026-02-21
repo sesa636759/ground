@@ -9,12 +9,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 @Component({
   selector: 'app-app-split-button-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    SplitButtonPlaygroundComponent,
-    DemoTabsComponent,
-  ],
+  imports: [CommonModule, FormsModule, SplitButtonPlaygroundComponent, DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-split-button-demo.component.html',
   styleUrl: './app-split-button-demo.component.scss',
