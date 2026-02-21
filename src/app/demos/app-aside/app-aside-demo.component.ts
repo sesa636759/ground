@@ -1,10 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { AsidePlaygroundComponent } from './components/aside-playground/aside-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-app-aside-demo',
@@ -14,22 +16,34 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     AsidePlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-aside-demo.component.html',
   styleUrl: './app-aside-demo.component.scss',
 })
-export class AppAsideDemoComponent {
+export class AppAsideDemoComponent extends BaseDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'directions', name: 'Directions', icon: '🧭', color: '#3b82f6' },
-    { id: 'variants', name: 'Visual Styles', icon: '🎨', color: '#10b981' },
-    { id: 'resizable', name: 'Resizability', icon: '↔️', color: '#f59e0b' },
+    { id: 'directions', title: 'Directions', icon: '🧭' },
+    { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
+    { id: 'resizable', title: 'Resizable', icon: '↔️' },
+    { id: 'close-behavior', title: 'Close Behavior', icon: '🚪' },
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
+    return this.variants;
   }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   sidebars = {
     left: false,
@@ -37,37 +51,71 @@ export class AppAsideDemoComponent {
     top: false,
     bottom: false,
     glass: false,
+    default: false,
     resizable: false,
+    escClose: false,
+    overlayClose: false,
   };
 
-  playgroundCode = `<aside-panel [open]="isOpen" direction="right" size="400px">
-  <div slot="header"><h3>Header</h3></div>
-  <div slot="content">Content</div>
-  <div slot="footer">Footer</div>
+  // Code Snippets
+  directionsCode = `<!-- Left (default) -->
+<aside-panel direction="left" [open]="leftOpen" (asideClosed)="leftOpen = false">
+  <div slot="header"><h3>Left Panel</h3></div>
+  <div slot="content">Navigation links or profile info.</div>
+</aside-panel>
+
+<!-- Right -->
+<aside-panel direction="right" [open]="rightOpen" (asideClosed)="rightOpen = false">
+  <div slot="header"><h3>Right Panel</h3></div>
+  <div slot="content">Details, filters, or settings.</div>
+</aside-panel>
+
+<!-- Top -->
+<aside-panel direction="top" size="200px" [open]="topOpen" (asideClosed)="topOpen = false">
+  <div slot="header"><h3>Announcement</h3></div>
+  <div slot="content">A top bar for notices or notifications.</div>
+</aside-panel>
+
+<!-- Bottom -->
+<aside-panel direction="bottom" size="300px" [open]="bottomOpen" (asideClosed)="bottomOpen = false">
+  <div slot="header"><h3>Media Player</h3></div>
+  <div slot="content">Bottom panels for media controls or mobile menus.</div>
 </aside-panel>`;
 
-  directionsCode = `<!-- Slides in from the left -->
-<aside-panel direction="left" [open]="leftOpen"> ... </aside-panel>
+  visualStylesCode = `<!-- Default solid panel -->
+<aside-panel [open]="defaultOpen" (asideClosed)="defaultOpen = false">
+  <div slot="header"><h3>Default Panel</h3></div>
+  <div slot="content">Clean, solid background with standard styling.</div>
+</aside-panel>
 
-<!-- Slides in from the top -->
-<aside-panel direction="top" [open]="topOpen"> ... </aside-panel>`;
-
-  glassCode = `<!-- Glassmorphism variant with backdrop blur -->
-<aside-panel variant="glass" backdrop-blur="12px" [open]="glassOpen">
-   ...
+<!-- Glassmorphism panel -->
+<aside-panel variant="glass" backdrop-blur="12px" [open]="glassOpen" (asideClosed)="glassOpen = false">
+  <div slot="header"><h3>Glass Panel</h3></div>
+  <div slot="content">Translucent with blur backdrop for a premium feel.</div>
 </aside-panel>`;
 
-  resizableCode = `<!-- Enable dynamic resizing -->
-<aside-panel resizable min-size="200" max-size="600" [open]="resOpen">
-   ...
+  resizableCode = `<!-- Resizable panel with min/max constraints -->
+<aside-panel
+  resizable
+  min-size="200"
+  max-size="700"
+  size="400px"
+  [open]="resizableOpen"
+  (asideClosed)="resizableOpen = false"
+>
+  <div slot="header"><h3>Resizable Panel</h3></div>
+  <div slot="content">Drag the edge to resize between 200px and 700px.</div>
 </aside-panel>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  closeBehaviorCode = `<!-- Close on Escape key -->
+<aside-panel close-on-escape [open]="escOpen" (asideClosed)="escOpen = false">
+  <div slot="content">Press Escape to dismiss.</div>
+</aside-panel>
+
+<!-- Close on overlay click -->
+<aside-panel close-on-overlay-click [open]="overlayOpen" (asideClosed)="overlayOpen = false">
+  <div slot="content">Click outside the panel to close.</div>
+</aside-panel>`;
 
   togglePanel(key: keyof typeof AppAsideDemoComponent.prototype.sidebars) {
     this.sidebars[key] = !this.sidebars[key];

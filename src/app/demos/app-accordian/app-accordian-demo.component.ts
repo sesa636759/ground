@@ -43,7 +43,14 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     return this.variants;
   }
 
-  playgroundCode = `<ui-accordion [items]="accordionItems"></ui-accordion>`;
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   basicAccordionItems = JSON.stringify([
     {

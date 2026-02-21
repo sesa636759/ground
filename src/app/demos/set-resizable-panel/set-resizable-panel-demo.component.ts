@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ResizablePanelPlaygroundComponent } from './components/resizable-panel-playground/resizable-panel-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-resizable-panel-demo',
@@ -14,12 +17,14 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     ResizablePanelPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-resizable-panel-demo.component.html',
   styleUrl: './set-resizable-panel-demo.component.scss',
 })
-export class SetResizablePanelDemoComponent {
+export class SetResizablePanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'horizontal', title: 'Basic Horizontal Split', icon: '📋' },
     { id: 'vertical', title: 'Basic Vertical Split', icon: '↕️' },
@@ -29,6 +34,15 @@ export class SetResizablePanelDemoComponent {
     { id: 'themes', title: 'Dark Theme', icon: '🌙' },
     { id: 'snap', title: 'Snap to Edge', icon: '📌' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   basicHPanels = [
     { id: 'p1', size: 30, minSize: 15 },
@@ -57,7 +71,14 @@ export class SetResizablePanelDemoComponent {
   ];
 
   collapsiblePanels = [
-    { id: 'left', size: 30, minSize: 15, maxSize: 50, collapsible: true, collapseDirection: 'left' },
+    {
+      id: 'left',
+      size: 30,
+      minSize: 15,
+      maxSize: 50,
+      collapsible: true,
+      collapseDirection: 'left',
+    },
     { id: 'main', size: 70 },
   ];
 
@@ -106,7 +127,8 @@ export class SetResizablePanelDemoComponent {
   <div slot="main">Main Content</div>
 </app-resizable-panel>`);
 
-  darkThemeCode = signal(`<app-resizable-panel [panels]="panels" direction="horizontal" theme="dark">
+  darkThemeCode =
+    signal(`<app-resizable-panel [panels]="panels" direction="horizontal" theme="dark">
   <div slot="p1">Dark Sidebar</div>
   <div slot="p2">Dark Main</div>
 </app-resizable-panel>`);
@@ -128,11 +150,4 @@ export class SetResizablePanelDemoComponent {
   [snapToEdge]="snapToEdge"
   [snapThreshold]="snapThreshold"
 ></app-resizable-panel>`);
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

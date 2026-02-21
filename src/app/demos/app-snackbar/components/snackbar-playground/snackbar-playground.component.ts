@@ -25,7 +25,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Max Visible</label>
-              <input type="number" [(ngModel)]="pgConfig.maxVisible" (ngModelChange)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.maxVisible"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Stack Mode</label>
@@ -93,6 +97,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       <div class="playground-preview">
         <ui-snackbar
           #snackbar
+          icon-library="lucide"
           [attr.position]="pgConfig.position"
           [attr.max-visible]="pgConfig.maxVisible"
           [attr.stack-mode]="pgConfig.stackMode"

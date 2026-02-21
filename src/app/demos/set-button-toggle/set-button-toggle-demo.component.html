@@ -148,7 +148,37 @@
           </div>
         </app-example-section>
 
-        <!-- Dropdown Mode -->
+        <!-- Icon Only -->
+        <app-example-section
+          id="icon-only"
+          title="Icon Only"
+          description="Compact toggle buttons with icons and no label text — ideal for toolbars"
+          [code]="iconOnlyCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">View Modes</h4>
+              <app-button-toggle-group
+                label="View"
+                value="grid"
+                color="primary"
+                display-mode="icon-only"
+                [options]="iconOnlyOptions"
+              ></app-button-toggle-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Text Alignment</h4>
+              <app-button-toggle-group
+                label="Align"
+                value="center"
+                color="secondary"
+                display-mode="icon-only"
+                [options]="iconOnlyAlignOptions"
+              ></app-button-toggle-group>
+            </div>
+          </div>
+        </app-example-section>
+
         <app-example-section
           id="dropdown"
           title="Dropdown Mode"

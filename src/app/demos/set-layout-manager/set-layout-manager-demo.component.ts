@@ -9,6 +9,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-layout-manager-demo',
@@ -18,19 +21,28 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     FormsModule,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',
 })
-export class SetLayoutManagerDemoComponent implements AfterViewInit {
+export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements AfterViewInit {
   exampleVariants = [
     { id: 'basic', title: 'Basic Three-Column Layout', icon: '📏' },
     { id: 'ide', title: 'IDE-Style Layout', icon: '💻' },
     { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
-    { id: 'features', title: 'Key Features', icon: '✨' },
-    { id: 'api', title: 'API Methods', icon: '🔧' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   playgroundCode = `<app-layout-manager
   [regions]="regions"
@@ -158,11 +170,4 @@ export class SetLayoutManagerDemoComponent implements AfterViewInit {
   handlePanelAdded(event: CustomEvent) {}
 
   handlePanelRemoved(event: CustomEvent) {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

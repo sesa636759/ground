@@ -32,6 +32,7 @@ export class SetButtonToggleDemoComponent extends BaseDemoComponent {
     { id: 'styles', title: 'Style Variants', icon: '🎭' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'icons', title: 'With Icons', icon: '🎯' },
+    { id: 'icon-only', title: 'Icon Only', icon: '🔲' },
     { id: 'dropdown', title: 'Dropdown Mode', icon: '📋' },
     { id: 'split-button', title: 'Split Button', icon: '🔀' },
     { id: 'display-modes', title: 'Display Modes', icon: '🎭' },
@@ -101,6 +102,14 @@ export class SetButtonToggleDemoComponent extends BaseDemoComponent {
   value="center"
   color="secondary"
   [options]="alignOptions"
+></app-button-toggle-group>`;
+
+  iconOnlyCode = `<app-button-toggle-group
+  label="View"
+  value="grid"
+  color="primary"
+  display-mode="icon-only"
+  [options]="iconOnlyOptions"
 ></app-button-toggle-group>`;
 
   dropdownCode = `<app-button-toggle-group
@@ -197,6 +206,13 @@ export class SetButtonToggleDemoComponent extends BaseDemoComponent {
     { value: 'list', icon: 'fas fa-list' },
     { value: 'grid', icon: 'fas fa-th' },
     { value: 'table', icon: 'fas fa-table' },
+  ];
+
+  iconOnlyAlignOptions = [
+    { value: 'left', icon: 'fas fa-align-left' },
+    { value: 'center', icon: 'fas fa-align-center' },
+    { value: 'right', icon: 'fas fa-align-right' },
+    { value: 'justify', icon: 'fas fa-align-justify' },
   ];
 
   labelOnlyOptions = [
