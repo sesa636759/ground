@@ -10,17 +10,7 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".pane-examples"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content pane-examples" id="examples-scroll-area">
@@ -147,7 +137,33 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="timeline"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

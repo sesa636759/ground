@@ -1,3 +1,4 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +10,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 @Component({
   selector: 'app-app-split-button-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, SplitButtonPlaygroundComponent, DemoTabsComponent],
+  imports: [CommonModule, FormsModule, SplitButtonPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-split-button-demo.component.html',
   styleUrl: './app-split-button-demo.component.scss',
