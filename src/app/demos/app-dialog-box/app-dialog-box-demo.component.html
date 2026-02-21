@@ -3,8 +3,7 @@
     icon="🔳"
     title="Dialog Box"
     description="A flexible overlay component that centers itself on screen. Supports modal behavior, dragging, resizing, and custom headers/footers."
-  >
-  </app-demo-header>
+  ></app-demo-header>
 
   <demo-tabs>
     <div slot="playground">
@@ -17,72 +16,465 @@
 
       <!-- Main Content Area -->
       <div class="examples-content pane-examples">
-        <!-- Modal Modes -->
+        <!-- Basic Dialog -->
         <app-example-section
-          id="types"
-          title="Modal Modes"
-          description="Decide whether the background should be interactive while the dialog is open."
-          [code]="typesCode"
+          id="basic"
+          title="Basic Dialog"
+          description="Standard dialogs with headers, content, and footers."
+          [code]="basicCode"
         >
           <div class="demo-card">
-            <ui-button
-              variant="primary"
-              (click)="toggle('standard')"
-              label="Non-Modal Dialog"
-            ></ui-button>
-            <ui-button
-              variant="primary"
-              style="background: #3b82f6"
-              (click)="toggle('modal')"
-              label="Modal Dialog"
-            ></ui-button>
+            <ui-button variant="primary" (click)="toggle('basic')">Open Basic Dialog</ui-button>
 
             <ui-dialog-box
-              header="Standard Overlay"
-              [modal]="false"
-              [visible]="dialogVisible.standard"
-              (uiHide)="dialogVisible.standard = false"
-              width="350px"
+              [visible]="dialogVisible['basic']"
+              (dialogClosed)="toggle('basic', false)"
+              icon-library="lucide"
             >
-              <p>I don't block the background!</p>
-            </ui-dialog-box>
-
-            <ui-dialog-box
-              header="Modal Alert"
-              modal
-              [visible]="dialogVisible.modal"
-              (uiHide)="dialogVisible.modal = false"
-              width="350px"
-            >
-              <p>I have a backdrop and block interactions.</p>
+              <h3 slot="header">Welcome</h3>
+              <div><p>This is a basic dialog with header, content, and footer sections.</p></div>
+              <div slot="footer">
+                <ui-button variant="secondary" (click)="toggle('basic', false)">Close</ui-button>
+                <ui-button variant="primary" (click)="toggle('basic', false)">Confirm</ui-button>
+              </div>
             </ui-dialog-box>
           </div>
         </app-example-section>
 
-        <!-- Interactions -->
+        <!-- Custom Slots -->
         <app-example-section
-          id="interactions"
-          title="Interactions"
-          description="Enable users to reposition or scale the dialog for better productivity."
-          [code]="interactionsCode"
+          id="slots"
+          title="Custom Slots"
+          description="Fully customizable header, content, and footer slots."
+          [code]="slotsCode"
         >
           <div class="demo-card">
-            <ui-button
-              variant="primary"
-              style="background: #10b981"
-              (click)="toggle('draggable')"
-              label="Open Draggable Dialog"
-            ></ui-button>
+            <ui-button variant="success" (click)="toggle('slots')">Open Custom Slots</ui-button>
+            <ui-dialog-box
+              [visible]="dialogVisible['slots']"
+              (dialogClosed)="toggle('slots', false)"
+              width="500px"
+              icon-library="lucide"
+            >
+              <div slot="header" style="display: flex; align-items: center; gap: 8px">
+                <ui-icon
+                  name="palette"
+                  library="lucide"
+                  size="24px"
+                  style="color: #10b981"
+                ></ui-icon>
+                <div>
+                  <h3 style="margin: 0; color: #10b981; font-size: 18px">Custom Header</h3>
+                  <span style="font-size: 12px; color: #666">With subtitle</span>
+                </div>
+              </div>
+              <button
+                slot="header-actions"
+                title="Star"
+                style="background: transparent; border: none; cursor: pointer"
+              >
+                <ui-icon name="star" library="lucide" size="16px"></ui-icon>
+              </button>
+              <div
+                style="
+                  padding: 16px;
+                  background: #f0fdf4;
+                  border: 1px dashed #10b981;
+                  border-radius: 6px;
+                "
+              >
+                <h4 style="margin-top: 0">Slot Content Area</h4>
+                <p>This content is injected via the default slot. It is fully customizable.</p>
+              </div>
+              <div
+                slot="footer"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                  align-items: center;
+                "
+              >
+                <span style="font-size: 12px; color: #6b7280">Auto-saved: 2m ago</span>
+                <div style="display: flex; gap: 8px">
+                  <ui-button variant="secondary" (click)="toggle('slots', false)">Cancel</ui-button>
+                  <ui-button variant="success" (click)="toggle('slots', false)">Save</ui-button>
+                </div>
+              </div>
+            </ui-dialog-box>
+          </div>
+        </app-example-section>
+
+        <!-- Predefined Sizes -->
+        <app-example-section
+          id="sizes"
+          title="Predefined Sizes"
+          description="Consistent sizing using design tokens: xs, sm, md, lg, xl, fill."
+          [code]="sizesCode"
+        >
+          <div class="demo-card">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+              <ui-button variant="secondary" (click)="toggle('sXS')">XS</ui-button>
+              <ui-button variant="primary" (click)="toggle('sSM')">SM</ui-button>
+              <ui-button variant="success" (click)="toggle('sMD')">MD</ui-button>
+              <ui-button variant="warning" (click)="toggle('sLG')">LG</ui-button>
+              <ui-button variant="danger" (click)="toggle('sXL')">XL</ui-button>
+              <ui-button style="background-color: #8b5cf6" (click)="toggle('sFill')"
+                >Fill (90%)</ui-button
+              >
+            </div>
 
             <ui-dialog-box
-              header="Move & Resize Me"
-              draggable
-              resizable
-              [visible]="dialogVisible.draggable"
-              (uiHide)="dialogVisible.draggable = false"
+              [visible]="dialogVisible['sXS']"
+              (dialogClosed)="toggle('sXS', false)"
+              size="xs"
+              dialog-title="Size XS (320px)"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['sSM']"
+              (dialogClosed)="toggle('sSM', false)"
+              size="sm"
+              dialog-title="Size SM (480px)"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['sMD']"
+              (dialogClosed)="toggle('sMD', false)"
+              size="md"
+              dialog-title="Size MD (768px)"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['sLG']"
+              (dialogClosed)="toggle('sLG', false)"
+              size="lg"
+              dialog-title="Size LG (1024px)"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['sXL']"
+              (dialogClosed)="toggle('sXL', false)"
+              size="xl"
+              dialog-title="Size XL (1280px)"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['sFill']"
+              (dialogClosed)="toggle('sFill', false)"
+              size="fill"
+              dialog-title="Fill (90% viewport)"
+              ><div>Content</div></ui-dialog-box
+            >
+          </div>
+        </app-example-section>
+
+        <!-- Variants & Status -->
+        <app-example-section
+          id="variants"
+          title="Variants & Status"
+          description="Contextual dialog styles based on operation state."
+          [code]="variantsCode"
+        >
+          <div class="demo-card">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+              <ui-button variant="primary" (click)="toggle('vInfo')">Info</ui-button>
+              <ui-button variant="success" (click)="toggle('vSuccess')">Success</ui-button>
+              <ui-button variant="warning" (click)="toggle('vWarning')">Warning</ui-button>
+              <ui-button variant="danger" (click)="toggle('vError')">Error</ui-button>
+            </div>
+            <ui-dialog-box
+              [visible]="dialogVisible['vInfo']"
+              (dialogClosed)="toggle('vInfo', false)"
+              variant="filled"
+              status="info"
+              dialog-title="Info"
+              ><div><p>Info content</p></div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['vSuccess']"
+              (dialogClosed)="toggle('vSuccess', false)"
+              variant="filled"
+              status="success"
+              dialog-title="Success"
+              ><div><p>Success content</p></div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['vWarning']"
+              (dialogClosed)="toggle('vWarning', false)"
+              variant="filled"
+              status="warning"
+              dialog-title="Warning"
+              ><div><p>Warning content</p></div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['vError']"
+              (dialogClosed)="toggle('vError', false)"
+              variant="filled"
+              status="error"
+              dialog-title="Error"
+              ><div><p>Error content</p></div></ui-dialog-box
+            >
+          </div>
+        </app-example-section>
+
+        <!-- Positions -->
+        <app-example-section
+          id="positions"
+          title="Positions"
+          description="Control where the dialog is mounted on the screen."
+          [code]="positionsCode"
+        >
+          <div class="demo-card">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+              <ui-button variant="secondary" (click)="toggle('pCenter')">Center</ui-button>
+              <ui-button variant="secondary" (click)="toggle('pTop')">Top</ui-button>
+              <ui-button variant="secondary" (click)="toggle('pBottom')">Bottom</ui-button>
+              <ui-button variant="secondary" (click)="toggle('pRight')">Right</ui-button>
+              <ui-button variant="secondary" (click)="toggle('pTR')">Top Right</ui-button>
+            </div>
+            <ui-dialog-box
+              [visible]="dialogVisible['pCenter']"
+              (dialogClosed)="toggle('pCenter', false)"
+              position="center"
+              dialog-title="Center"
+              width="400px"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['pTop']"
+              (dialogClosed)="toggle('pTop', false)"
+              position="top"
+              dialog-title="Top"
+              width="400px"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['pBottom']"
+              (dialogClosed)="toggle('pBottom', false)"
+              position="bottom"
+              dialog-title="Bottom"
+              width="400px"
+              ><div>Content</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['pRight']"
+              (dialogClosed)="toggle('pRight', false)"
+              position="right"
+              dialog-title="Right Side"
+              width="400px"
+              height="100vh"
+              ><div>Side Panel Style</div></ui-dialog-box
+            >
+            <ui-dialog-box
+              [visible]="dialogVisible['pTR']"
+              (dialogClosed)="toggle('pTR', false)"
+              position="top-right"
+              dialog-title="Top Right"
+              width="400px"
+              ><div>Content</div></ui-dialog-box
+            >
+          </div>
+        </app-example-section>
+
+        <!-- Scroll Behaviors -->
+        <app-example-section
+          id="scroll"
+          title="Scroll Behaviors"
+          description="Choose whether the dialog body scrolls internally (paper) or the window body scrolls with it."
+          [code]="scrollCode"
+        >
+          <div class="demo-card">
+            <div style="display: flex; gap: 12px">
+              <ui-button variant="primary" (click)="toggle('sPaper')">Scroll Paper</ui-button>
+              <ui-button variant="success" (click)="toggle('sWindow')">Scroll Body</ui-button>
+            </div>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['sPaper']"
+              (dialogClosed)="toggle('sPaper', false)"
+              scroll="paper"
+              dialog-title="Paper Scroll"
+              width="400px"
+              height="300px"
+            >
+              <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                <p>
+                  Lots of content to scroll inside the dialog content box body! Scroll down to see
+                  the footer sticky.
+                </p>
+              </div>
+            </ui-dialog-box>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['sWindow']"
+              (dialogClosed)="toggle('sWindow', false)"
+              scroll="body"
+              dialog-title="Body Scroll"
               width="400px"
             >
-              <p>Grab the header to drag, or the edges to resize.</p>
+              <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                <p>
+                  Scrolls with the document window instead of local scrollbar! Use if content
+                  dictates page flow length.
+                </p>
+              </div>
+            </ui-dialog-box>
+          </div>
+        </app-example-section>
+
+        <!-- Advanced Behaviors -->
+        <app-example-section
+          id="advanced"
+          title="Advanced Behaviors"
+          description="Tweak backdrops, draggability bounds, and resizing constraints."
+          [code]="advancedCode"
+        >
+          <div class="demo-card">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap">
+              <ui-button variant="warning" (click)="toggle('aStatic')">Static Backdrop</ui-button>
+              <ui-button style="background: #8b5cf6" (click)="toggle('aDrag')">Draggable</ui-button>
+              <ui-button style="background: #ec4899" (click)="toggle('aResize')"
+                >Resizable</ui-button
+              >
+              <ui-button variant="primary" (click)="toggle('aCombo')">Drag & Resize</ui-button>
+            </div>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['aStatic']"
+              (dialogClosed)="toggle('aStatic', false)"
+              backdrop="static"
+              dialog-title="Static Backdrop"
+            >
+              <div><p>Try clicking outside the border. I won't close automatically!</p></div>
+              <div slot="footer">
+                <ui-button (click)="toggle('aStatic', false)">Understood</ui-button>
+              </div>
+            </ui-dialog-box>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['aDrag']"
+              (dialogClosed)="toggle('aDrag', false)"
+              draggable
+              dialog-title="Draggable Dialog"
+            >
+              <div><p>Grab my header to drag me inside the viewport bounds!</p></div>
+            </ui-dialog-box>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['aResize']"
+              (dialogClosed)="toggle('aResize', false)"
+              resizable
+              dialog-title="Resizable Dialog"
+            >
+              <div>
+                <p>Use the bottom edge container bracket to resize the width/height manually.</p>
+              </div>
+            </ui-dialog-box>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['aCombo']"
+              (dialogClosed)="toggle('aCombo', false)"
+              draggable
+              resizable
+              dialog-title="Power User Dialog"
+            >
+              <div><p>I can be moved around completely AND resized all you want.</p></div>
+            </ui-dialog-box>
+          </div>
+        </app-example-section>
+
+        <!-- Premium Capabilities -->
+        <app-example-section
+          id="premium"
+          title="Premium Capabilities"
+          description="High-fidelity features including custom CSS animations and persistent state widgets."
+          [code]="premiumCode"
+        >
+          <div class="demo-card">
+            <h4 style="margin-top: 0; color: #86198f">✨ Animation Gallery</h4>
+            <br />
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px">
+              <ui-button
+                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                (click)="toggle('anScale')"
+                >Scale (Default)</ui-button
+              >
+              <ui-button
+                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                (click)="toggle('anFade')"
+                >Fade</ui-button
+              >
+              <ui-button
+                style="background: white; border: 1px solid #e879f9; color: #a21caf"
+                (click)="toggle('anSlideR')"
+                >Slide Right (Drawer)</ui-button
+              >
+            </div>
+
+            <ui-dialog-box
+              [visible]="dialogVisible['anScale']"
+              (dialogClosed)="toggle('anScale', false)"
+              animation="scale"
+              dialog-title="Scale Animation"
+              width="400px"
+            >
+              <div>Standard modern dialog entrance scale spring effect.</div>
+            </ui-dialog-box>
+            <ui-dialog-box
+              [visible]="dialogVisible['anFade']"
+              (dialogClosed)="toggle('anFade', false)"
+              animation="fade"
+              dialog-title="Fade Animation"
+              width="400px"
+            >
+              <div>Linear opacity transition fade-in effect.</div>
+            </ui-dialog-box>
+            <ui-dialog-box
+              [visible]="dialogVisible['anSlideR']"
+              (dialogClosed)="toggle('anSlideR', false)"
+              animation="slide-right"
+              position="right"
+              height="100vh"
+              dialog-title="Side Drawer Menu"
+            >
+              <div>
+                Ideal for dashboard menus and filtering parameters lists! Moves in gracefully.
+              </div>
+            </ui-dialog-box>
+
+            <h4 style="margin-top: 0; color: #15803d">🪟 Persistent Dashboard Widgets</h4>
+            <br />
+            <ui-button variant="success" (click)="toggle('wNote')"
+              >Open Main Sticky Note Widget</ui-button
+            >
+
+            <ui-dialog-box
+              [visible]="dialogVisible['wNote']"
+              (dialogClosed)="toggle('wNote', false)"
+              dialog-title="📝 Sticky Notes Widget"
+              backdrop="none"
+              draggable
+              resizable
+              keep-mounted
+              width="300px"
+              height="300px"
+            >
+              <div style="height: 100%; display: flex; flex-direction: column">
+                <textarea
+                  placeholder="Type your notes here... Even if you close this dialog, thanks to 'keep-mounted' my DOM is preserved! Open it again and your text is still here without a backend save."
+                  style="
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    resize: none;
+                    width: 100%;
+                    height: 100%;
+                    padding: 4px;
+                    font-family: sans-serif;
+                  "
+                ></textarea>
+              </div>
             </ui-dialog-box>
           </div>
         </app-example-section>
@@ -91,10 +483,7 @@
 
     <div slot="docs">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
-        <!-- Sidebar Navigation -->
         <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
         <div class="examples-content">
           <div class="demo-container">
             <section class="demo-section">
@@ -103,15 +492,7 @@
                 <p>Links, API references, and detailed usage notes</p>
               </div>
               <div class="demo-card" style="padding: 24px">
-                <p>
-                  The documentation for this component is currently being compiled. Our technical
-                  writers are working to provide comprehensive API references, accessibility guidelines,
-                  and best practices.
-                </p>
-                <p>
-                  In the meantime, please explore the <strong>Playground</strong> for interactive
-                  testing and the <strong>Examples</strong> tab for common implementation patterns.
-                </p>
+                <p>The documentation for this component is currently being compiled.</p>
               </div>
             </section>
           </div>

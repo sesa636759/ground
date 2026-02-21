@@ -6,7 +6,6 @@ import { DialogBoxPlaygroundComponent } from './components/dialog-box-playground
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
@@ -19,8 +18,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
-    ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dialog-box-demo.component.html',
@@ -28,36 +26,135 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 })
 export class AppDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'types', title: 'Modal Modes', icon: '🔳' },
-    { id: 'interactions', title: 'Interactions', icon: '🖱️' },
+    { id: 'basic', title: 'Basic Dialog', icon: '📝' },
+    { id: 'slots', title: 'Custom Slots', icon: '🧩' },
+    { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
+    { id: 'variants', title: 'Variants & Status', icon: '🎨' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'scroll', title: 'Scroll Behaviors', icon: '📜' },
+    { id: 'advanced', title: 'Advanced Behaviors', icon: '🛠️' },
+    { id: 'premium', title: 'Premium Capabilities', icon: '💎' },
   ];
 
-  anchorLinks = JSON.stringify([
-    { id: 'types', label: 'Modal Modes', target: 'types', icon: '🔳' },
-    { id: 'interactions', label: 'Interactions', target: 'interactions', icon: '🖱️' },
-  ]);
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
-  dialogVisible = {
-    standard: false,
-    modal: false,
-    draggable: false,
-  };
+  dialogVisible: { [key: string]: boolean } = {};
 
-  playgroundCode = `<ui-dialog-box header="Title" [visible]="visible" (uiHide)="visible=false">
-  Content...
+  toggle(id: string, state?: boolean) {
+    if (state !== undefined) {
+      this.dialogVisible[id] = state;
+    } else {
+      this.dialogVisible[id] = !this.dialogVisible[id];
+    }
+  }
+
+  // --- Code Snippets ---
+  basicCode = `<!-- Basic Dialog -->
+<ui-button variant="primary" (click)="toggle('basic')">Open Basic Dialog</ui-button>
+
+<ui-dialog-box 
+  [visible]="dialogVisible['basic']" 
+  (dialogClosed)="toggle('basic', false)"
+  icon-library="lucide">
+  <h3 slot="header">Welcome</h3>
+  <div><p>This is a basic dialog with header, content, and footer sections.</p></div>
+  <div slot="footer">
+    <ui-button variant="secondary" (click)="toggle('basic', false)">Close</ui-button>
+    <ui-button variant="primary" (click)="toggle('basic', false)">Confirm</ui-button>
+  </div>
 </ui-dialog-box>`;
 
-  typesCode = `<!-- Non-Modal (Overlay) -->
-<ui-dialog-box [modal]="false" [visible]="true"></ui-dialog-box>
+  slotsCode = `<!-- Custom Slots Dialog -->
+<ui-dialog-box 
+  [visible]="dialogVisible['slots']" 
+  (dialogClosed)="toggle('slots', false)"
+  width="500px" icon-library="lucide">
+  <div slot="header" style="display:flex; align-items:center; gap:8px;">
+    <ui-icon name="palette" library="lucide" size="24px" style="color: #10b981;"></ui-icon>
+    <div>
+      <h3 style="margin:0; color:#10b981; font-size:18px;">Custom Header</h3>
+      <span style="font-size:12px; color:#666;">With subtitle</span>
+    </div>
+  </div>
+  <button slot="header-actions" title="Star" style="background:transparent; border:none; cursor:pointer;">
+    <ui-icon name="star" library="lucide" size="16px"></ui-icon>
+  </button>
+  <div style="padding:16px; background:#f0fdf4; border:1px dashed #10b981; border-radius:6px;">
+    <h4 style="margin-top:0;'>Slot Content Area</h4>
+    <p>This content is injected via the default slot. It is fully customizable.</p>
+  </div>
+  <div slot="footer" style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+    <span style="font-size:12px; color:#6b7280;">Auto-saved: 2m ago</span>
+    <div style="display:flex; gap:8px;">
+      <ui-button variant="secondary" (click)="toggle('slots', false)">Cancel</ui-button>
+      <ui-button variant="success" (click)="toggle('slots', false)">Save</ui-button>
+    </div>
+  </div>
+</ui-dialog-box>`;
 
-<!-- Full Modal -->
-<ui-dialog-box modal [visible]="true"></ui-dialog-box>`;
+  sizesCode = `<!-- Size Variants -->
+<ui-dialog-box size="xs" dialog-title="Size XS (320px)"><div>Content</div></ui-dialog-box>
+<ui-dialog-box size="sm" dialog-title="Size SM (480px)"><div>Content</div></ui-dialog-box>
+<ui-dialog-box size="md" dialog-title="Size MD (768px)"><div>Content</div></ui-dialog-box>
+<ui-dialog-box size="lg" dialog-title="Size LG (1024px)"><div>Content</div></ui-dialog-box>
+<ui-dialog-box size="xl" dialog-title="Size XL (1280px)"><div>Content</div></ui-dialog-box>
+<ui-dialog-box size="fill" dialog-title="Fill (90% viewport)"><div>Content</div></ui-dialog-box>`;
 
-  interactionsCode = `<!-- Draggable & Resizable -->
-<ui-dialog-box draggable resizable [visible]="true"></ui-dialog-box>`;
+  variantsCode = `<!-- Dialog Variants & Status -->
+<ui-dialog-box variant="filled" status="info" dialog-title="Info"><div><p>Info content</p></div></ui-dialog-box>
+<ui-dialog-box variant="filled" status="success" dialog-title="Success"><div><p>Success content</p></div></ui-dialog-box>
+<ui-dialog-box variant="filled" status="warning" dialog-title="Warning"><div><p>Warning content</p></div></ui-dialog-box>
+<ui-dialog-box variant="filled" status="error" dialog-title="Error"><div><p>Error content</p></div></ui-dialog-box>`;
 
-  toggle(id: string) {
-    this.dialogVisible[id as keyof typeof this.dialogVisible] =
-      !this.dialogVisible[id as keyof typeof this.dialogVisible];
-  }
+  positionsCode = `<!-- Positions -->
+<ui-dialog-box position="center" dialog-title="Center" width="400px"><div>Content</div></ui-dialog-box>
+<ui-dialog-box position="top" dialog-title="Top" width="400px"><div>Content</div></ui-dialog-box>
+<ui-dialog-box position="bottom" dialog-title="Bottom" width="400px"><div>Content</div></ui-dialog-box>
+<ui-dialog-box position="right" dialog-title="Right Side" width="400px" height="100vh"><div>Side Panel Style</div></ui-dialog-box>
+<ui-dialog-box position="top-right" dialog-title="Top Right" width="400px"><div>Content</div></ui-dialog-box>`;
+
+  scrollCode = `<!-- Scroll Behaviors -->
+<ui-dialog-box scroll="paper" dialog-title="Paper Scroll (Inside)" width="400px">
+    <div>... Long Content ...</div>
+</ui-dialog-box>
+
+<ui-dialog-box scroll="body" dialog-title="Body Scroll (Window)" width="400px">
+    <div>... Long Content ...</div>
+</ui-dialog-box>`;
+
+  advancedCode = `<!-- Advanced Behaviors -->
+<ui-dialog-box backdrop="static" dialog-title="Static Backdrop">
+    <div><p>Try clicking outside. I won't close!</p></div>
+</ui-dialog-box>
+
+<ui-dialog-box draggable dialog-title="Draggable Dialog">
+    <div><p>Grab the header to move me around.</p></div>
+</ui-dialog-box>
+
+<ui-dialog-box resizable dialog-title="Resizable Dialog">
+    <div><p>Grab the bottom-right corner to resize me.</p></div>
+</ui-dialog-box>`;
+
+  premiumCode = `<!-- Animation Dialogs -->
+<ui-dialog-box animation="scale" dialog-title="Scale Animation" width="400px">
+   <div>Standard modern dialog entrance.</div>
+</ui-dialog-box>
+
+<ui-dialog-box animation="slide-right" position="right" height="100vh" dialog-title="Side Drawer">
+   <div>Moves in from the side.</div>
+</ui-dialog-box>
+
+<!-- Widget Dialog (Persistent Notepad) -->
+<ui-dialog-box dialog-title="📝 Sticky Notes" backdrop="none" draggable resizable keep-mounted width="300px" height="300px">
+   <div style="height: 100%; display: flex; flex-direction: column;">
+      <textarea placeholder="Type your notes here... I won't lose them if you close me!" style="flex: 1; border: none; outline: none; resize: none; width: 100%; padding: 4px;"></textarea>
+   </div>
+</ui-dialog-box>`;
 }
