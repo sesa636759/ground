@@ -1,233 +1,96 @@
-<div class="demo-container">
-  <h1>🎯 Accordion Component</h1>
-  <p class="intro-text">
-    Collapsible content panels for organizing and presenting information in a compact, scannable
-    format.
-  </p>
+<app-demo-header
+  icon="🎯"
+  title="Accordion Component"
+  description="Collapsible content panels for organizing and presenting information in a compact, scannable format."
+>
+</app-demo-header>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-accordion-playground></app-accordion-playground>
-    </div>
+<demo-tabs>
+  <!-- Playground Slot -->
+  <div slot="playground">
+    <app-accordion-playground></app-accordion-playground>
+  </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".pane-examples"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
-
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic -->
-        <app-example-section
-          id="basic"
-          title="Basic"
-          description="Simple expandable content panels"
-          [code]="basicAccordionCode"
-        >
-          <ui-accordion [items]="basicAccordionItems"></ui-accordion>
-        </app-example-section>
-
-        <!-- Subtitles -->
-        <app-example-section
-          id="subtitles"
-          title="Subtitles"
-          description="Items with additional descriptive text"
-          [code]="subtitlesCode"
-        >
-          <ui-accordion [items]="subtitlesItems"></ui-accordion>
-        </app-example-section>
-
-        <!-- Search -->
-        <app-example-section
-          id="search"
-          title="Search"
-          description="Filter items with built-in search functionality"
-          [code]="searchCode"
-        >
-          <ui-accordion
-            [items]="searchItems"
-            enable-search
-            search-placeholder="Search frameworks..."
-          ></ui-accordion>
-        </app-example-section>
-
-        <!-- Actions -->
-        <app-example-section
-          id="actions"
-          title="Actions"
-          description="Action buttons within the accordion header"
-          [code]="actionsCode"
-        >
-          <ui-accordion
-            [items]="actionsItems"
-            (accordionAction)="handleAction($event)"
-          ></ui-accordion>
-        </app-example-section>
-
-        <!-- Nested -->
-        <app-example-section
-          id="nested"
-          title="Nested"
-          description="Recursive accordion structure for hierarchical data"
-          [code]="nestedCode"
-        >
-          <ui-accordion [items]="nestedItems" enable-nested></ui-accordion>
-        </app-example-section>
-
-        <!-- Drag & Drop -->
-        <app-example-section
-          id="drag-drop"
-          title="Drag & Drop"
-          description="Reorder items using drag and drop"
-          [code]="dragDropCode"
-        >
-          <ui-accordion
-            [items]="dragDropItems"
-            enable-drag-drop
-            (accordionReorder)="handleReorder($event)"
-          ></ui-accordion>
-        </app-example-section>
-
-        <!-- Persistence -->
-        <app-example-section
-          id="persistence"
-          title="Persistence"
-          description="State is preserved in localStorage (refresh page to test)"
-          [code]="persistenceCode"
-        >
-          <ui-accordion
-            [items]="persistenceItems"
-            enable-persistence
-            persistence-key="demo-persist-v1"
-          ></ui-accordion>
-        </app-example-section>
-
-        <!-- Loading -->
-        <app-example-section
-          id="loading"
-          title="Loading"
-          description="Skeleton loading state"
-          [code]="loadingCode"
-        >
-          <ui-accordion loading></ui-accordion>
-        </app-example-section>
-
-        <!-- RTL -->
-        <app-example-section
-          id="rtl"
-          title="RTL"
-          description="Right-to-Left layout support"
-          [code]="rtlCode"
-        >
-          <ui-accordion [items]="rtlItems" rtl></ui-accordion>
-        </app-example-section>
-
-        <!-- Dense -->
-        <app-example-section
-          id="dense"
-          title="Dense"
-          description="Payload is concentrated for high-density information"
-          [code]="denseCode"
-        >
-          <ui-accordion [items]="denseItems" dense></ui-accordion>
-        </app-example-section>
-
-        <!-- Events -->
-        <app-example-section
-          id="events"
-          title="Events"
-          description="Lifecycle events and interaction logging"
-          [code]="eventsCode"
-        >
-          <ui-accordion
-            [items]="eventsItems"
-            (beforeOpen)="logEvent('Before Open', $event)"
-            (afterOpen)="logEvent('After Open', $event)"
-            (beforeClose)="logEvent('Before Close', $event)"
-            (afterClose)="logEvent('After Close', $event)"
-          ></ui-accordion>
-          <div
-            class="event-log"
-            style="
-              margin-top: 1rem;
-              padding: 1rem;
-              background: var(--color-bg-tertiary);
-              border-radius: 4px;
-              font-family: monospace;
-              font-size: 0.85rem;
-              color: var(--color-text-secondary);
-            "
-          >
-            <div *ngFor="let log of eventsLog">{{ log }}</div>
-            <div *ngIf="eventsLog.length === 0">Perform interactions to see events...</div>
-          </div>
-        </app-example-section>
-
-        <!-- Controlled -->
-        <app-example-section
-          id="controlled"
-          title="Controlled"
-          description="Control expansion state programmatically"
-          [code]="controlledCode"
-        >
-          <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem">
-            <ui-button
-              (click)="setControlledExpanded(['c1'])"
-              label="Open 1"
-              variant="secondary"
-              size="small"
-            ></ui-button>
-            <ui-button
-              (click)="setControlledExpanded(['c2'])"
-              label="Open 2"
-              variant="secondary"
-              size="small"
-            ></ui-button>
-            <ui-button
-              (click)="setControlledExpanded(['c1', 'c2', 'c3'])"
-              label="Open All"
-              variant="secondary"
-              size="small"
-            ></ui-button>
-            <ui-button
-              (click)="setControlledExpanded([])"
-              label="Close All"
-              variant="secondary"
-              size="small"
-            ></ui-button>
-          </div>
-          <ui-accordion
-            [items]="controlledItems"
-            [expandedItems]="controlledExpanded"
-            multiple
-          ></ui-accordion>
-        </app-example-section>
-
-        <!-- Async & Lazy -->
-        <app-example-section
-          id="async-lazy"
-          title="Async & Lazy"
-          description="Lazy loading content (content is not in DOM until opened)"
-          [code]="asyncLazyCode"
-        >
-          <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
-        </app-example-section>
+  <!-- Examples Slot -->
+  <div slot="examples" class="examples-split-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="examples-sidebar">
+      <div class="sidebar-title">Sections</div>
+      <div class="sidebar-nav">
+        <ui-anchor
+          [links]="anchorLinks"
+          scroll-container=".pane-examples"
+          type="line"
+          show-progress
+        ></ui-anchor>
       </div>
-      <!-- /examples-content -->
-    </div>
-    <!-- /examples-split-layout -->
+    </aside>
 
-    <div slot="docs">
-      <app-component-documentation componentId="accordion"></app-component-documentation>
+    <!-- Main Content Area -->
+    <div class="examples-content pane-examples">
+      <!-- Visual Variants -->
+      <app-example-section
+        id="variants"
+        title="Visual Variants"
+        description="Different styles like subtle, elevated, and glassmorphism."
+        [code]="variantCode()"
+        style="margin-top: 0"
+      >
+        <div class="demo-grid col-1">
+          <div class="demo-card">
+            <h3>Subtle Variant</h3>
+            <ui-accordion variant="subtle">
+              <ui-accordion-item label="Simple Info" icon="ℹ️"> Content here... </ui-accordion-item>
+            </ui-accordion>
+          </div>
+          <div class="demo-card">
+            <h3>Elevated Variant</h3>
+            <ui-accordion variant="elevated">
+              <ui-accordion-item label="Important Policy" icon="🛡️">
+                Content here...
+              </ui-accordion-item>
+            </ui-accordion>
+          </div>
+        </div>
+      </app-example-section>
+
+      <!-- Color Variations -->
+      <app-example-section
+        id="colors"
+        title="Color Schemes"
+        description="Accent colors for active states and icons."
+        [code]="colorCode()"
+      >
+        <div class="demo-grid col-2">
+          <ui-accordion accent-color="#3b82f6" variant="elevated">
+            <ui-accordion-item label="Blue Theme" icon="🔵"> Content... </ui-accordion-item>
+          </ui-accordion>
+          <ui-accordion accent-color="#10b981" variant="elevated">
+            <ui-accordion-item label="Green Theme" icon="🟢"> Content... </ui-accordion-item>
+          </ui-accordion>
+        </div>
+      </app-example-section>
+
+      <!-- Dynamic Content -->
+      <app-example-section
+        id="dynamic"
+        title="Dynamic & Advanced"
+        description="Animated transitions, custom icons, and badges."
+        [code]="dynamicCode()"
+      >
+        <div class="demo-card">
+          <ui-accordion [animated]="true">
+            <ui-accordion-item label="System Alerts" [badge]="'3'" badge-color="#ef4444">
+              Check these alerts immediately.
+            </ui-accordion-item>
+          </ui-accordion>
+        </div>
+      </app-example-section>
     </div>
-  </demo-tabs>
-</div>
+  </div>
+
+  <!-- Docs Slot -->
+  <div slot="docs">
+    <app-component-documentation componentId="accordion"></app-component-documentation>
+  </div>
+</demo-tabs>

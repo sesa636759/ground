@@ -22,12 +22,12 @@
     </aside>
 
     <!-- Main Content Area -->
-    <div class="examples-content pane-examples">
+    <div class="examples-content pane-examples" id="examples-scroll-area">
       <!-- Vertical Left -->
       <app-example-section
         id="vertical-left"
         title="Vertical Navigation (Left)"
-        description="Anchor links positioned on the left side."
+        description="Perfect for documentation sites and long articles."
         [code]="verticalLeftCode()"
         style="margin-top: 0"
       >
@@ -59,7 +59,7 @@
       <app-example-section
         id="vertical-right"
         title="Vertical Navigation (Right)"
-        description="Anchor links positioned on the right side."
+        description="Alternative placement for right-to-left layouts."
         [code]="verticalRightCode()"
       >
         <div class="demo-grid col-1">
@@ -87,7 +87,7 @@
       <app-example-section
         id="horizontal-top"
         title="Horizontal Navigation (Top)"
-        description="Anchor links displayed horizontally at the top."
+        description="Great for landing pages and marketing sites."
         [code]="horizontalTopCode()"
       >
         <div class="demo-grid col-1">
@@ -111,11 +111,39 @@
         </div>
       </app-example-section>
 
+      <!-- Horizontal Bottom -->
+      <app-example-section
+        id="horizontal-bottom"
+        title="Horizontal Navigation (Bottom)"
+        description="Useful for footer navigation or persistent bottom bars."
+        [code]="horizontalBottomCode()"
+      >
+        <div class="demo-grid col-1">
+          <div
+            class="demo-card"
+            id="h-bottom-scroll"
+            style="height: 300px; overflow-y: auto; position: relative"
+          >
+            <div style="height: 1000px; padding: 20px">
+              <section id="b-home"><h3>Home</h3></section>
+              <section id="b-about" style="margin-top: 400px"><h3>About</h3></section>
+              <section id="b-contact" style="margin-top: 400px"><h3>Contact</h3></section>
+            </div>
+            <app-anchor
+              mode="horizontal"
+              position="bottom"
+              [items]="horizontalBottomItems"
+              scroll-container="#h-bottom-scroll"
+            ></app-anchor>
+          </div>
+        </div>
+      </app-example-section>
+
       <!-- Badges -->
       <app-example-section
         id="with-badges"
         title="Anchor with Badges"
-        description="Display notification counts or status markers."
+        description="Navigation with notification badges."
         [code]="badgeCode()"
       >
         <div class="demo-grid col-1">
@@ -125,7 +153,7 @@
         </div>
       </app-example-section>
 
-      <!-- Advanced UX -->
+      <!-- Nested -->
       <app-example-section
         id="nested-items"
         title="Nested & Collapsible Items"
