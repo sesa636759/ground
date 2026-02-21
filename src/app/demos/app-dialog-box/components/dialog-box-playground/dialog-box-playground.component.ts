@@ -6,11 +6,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 @Component({
   selector: 'app-dialog-box-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -65,20 +61,13 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
       <div class="playground-preview">
-        <button class="variant-btn" style="background: #8b5cf6;" (click)="visible = true">
-          Open Dialog
-        </button>
+        <ui-button (click)="visible = true" label="Open Dialog"></ui-button>
 
         <ui-dialog-box
           [attr.header]="pgConfig.header"
@@ -93,13 +82,20 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           <div style="padding: 20px;">
             <p>This is the content of the dialog. You can put any HTML here.</p>
             <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
-              <button class="variant-btn btn-secondary" (click)="visible = false">Cancel</button>
-              <button class="variant-btn" style="background: #10b981;" (click)="visible = false">
-                Confirm
-              </button>
+              <ui-button variant="secondary" (click)="visible = false" label="Cancel"></ui-button>
+              <ui-button variant="success" (click)="visible = false" label="Confirm"></ui-button>
             </div>
           </div>
         </ui-dialog-box>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

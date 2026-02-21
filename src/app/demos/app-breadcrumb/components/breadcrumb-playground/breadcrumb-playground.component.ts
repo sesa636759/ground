@@ -22,11 +22,19 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Separator</label>
-              <input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.separator"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Max Items (Collapse)</label>
-              <input type="number" [(ngModel)]="pgConfig.maxItems" (ngModelChange)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.maxItems"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Size</label>
@@ -59,18 +67,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -83,6 +81,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [attr.show-home]="pgConfig.showHome ? '' : null"
           [items]="itemsJson"
         ></ui-breadcrumb>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

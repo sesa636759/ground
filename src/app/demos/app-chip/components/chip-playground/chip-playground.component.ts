@@ -27,11 +27,20 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="e.g. ⭐" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.icon"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. ⭐"
+              />
             </div>
             <div class="control-group">
               <label>Avatar URL</label>
-              <input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.userAvatar"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Counter</label>
@@ -118,22 +127,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-
         <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -155,15 +150,24 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           (chipClick)="onEvent('Chip Clicked')"
           (chipRemove)="onEvent('Chip Removed')"
         ></ui-chip>
-      </div>
 
-      <div class="event-log">
-        <div *ngFor="let log of eventLog" class="log-entry">
-          <span class="timestamp">[{{ log.time }}]</span>
-          <span class="message">{{ log.msg }}</span>
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
-        <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-          Interact with the chip to see events...
+
+        <div class="event-log">
+          <div *ngFor="let log of eventLog" class="log-entry">
+            <span class="timestamp">[{{ log.time }}]</span>
+            <span class="message">{{ log.msg }}</span>
+          </div>
+          <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
+            Interact with the chip to see events...
+          </div>
         </div>
       </div>
     </div>

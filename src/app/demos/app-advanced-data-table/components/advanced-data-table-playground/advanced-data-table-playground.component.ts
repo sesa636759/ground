@@ -6,11 +6,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 @Component({
   selector: 'app-advanced-data-table-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -61,21 +57,10 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
-
       <div class="playground-preview">
         <div class="table-container">
           <ui-advanced-data-table
@@ -86,6 +71,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             [columns]="columnsJson"
           >
           </ui-advanced-data-table>
+        </div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
       </div>
     </div>

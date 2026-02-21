@@ -22,7 +22,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Basic Config</h3>
             <div class="control-group">
               <label>Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.placeholder"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Size</label>
@@ -54,7 +58,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Separator</label>
-              <input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.separator"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -67,18 +75,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -99,6 +97,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           style="margin-top: 40px; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; font-family: monospace; font-size: 0.8rem;"
         >
           Selection Value: {{ currentValue | json }}
+        </div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
       </div>
     </div>

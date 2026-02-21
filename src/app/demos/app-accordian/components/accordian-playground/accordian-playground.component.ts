@@ -205,15 +205,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-
         <div class="action-buttons">
           <ui-button
             class="btn-secondary"
@@ -248,6 +239,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [headerLevel]="pgConfig.headerLevel"
         >
         </ui-accordion>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

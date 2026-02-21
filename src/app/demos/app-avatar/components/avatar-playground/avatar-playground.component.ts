@@ -27,11 +27,21 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Image Source</label>
-              <input type="text" [(ngModel)]="pgConfig.src" (ngModelChange)="updateConfig()" placeholder="URL" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.src"
+                (ngModelChange)="updateConfig()"
+                placeholder="URL"
+              />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="emoji or icon" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.icon"
+                (ngModelChange)="updateConfig()"
+                placeholder="emoji or icon"
+              />
             </div>
           </div>
 
@@ -65,22 +75,23 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Decorations</h3>
             <div class="control-group">
               <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" placeholder="'dot' or text" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.badge"
+                (ngModelChange)="updateConfig()"
+                placeholder="'dot' or text"
+              />
             </div>
             <div class="control-group">
               <label>Badge Color</label>
-              <input type="text" [(ngModel)]="pgConfig.badgeColor" (ngModelChange)="updateConfig()" placeholder="hex or color name" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.badgeColor"
+                (ngModelChange)="updateConfig()"
+                placeholder="hex or color name"
+              />
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">
@@ -104,6 +115,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [attr.badge]="pgConfig.badge"
           [attr.badge-color]="pgConfig.badgeColor"
         ></ui-avatar>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

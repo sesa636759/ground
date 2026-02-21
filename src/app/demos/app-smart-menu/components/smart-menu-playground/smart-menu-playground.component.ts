@@ -101,12 +101,7 @@ import { FormsModule } from '@angular/forms';
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
         </div>
       </div>
@@ -159,6 +154,15 @@ import { FormsModule } from '@angular/forms';
           [items]="menuJson"
           (menuItemClick)="onItemClick($event)"
         ></ui-smart-context-menu>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
 
         <!-- Event log -->
         @if (clickLog().length) {

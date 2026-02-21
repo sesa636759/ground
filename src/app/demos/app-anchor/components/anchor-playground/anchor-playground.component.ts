@@ -38,7 +38,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Scroll Offset (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.scrollOffset" (ngModelChange)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.scrollOffset"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
           </div>
 
@@ -76,13 +80,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -127,6 +125,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             scroll-container="#pg-anchor-container"
             [links]="linksJson"
           ></ui-anchor>
+        </div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
       </div>
     </div>

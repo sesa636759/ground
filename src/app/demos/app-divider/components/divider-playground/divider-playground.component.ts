@@ -27,7 +27,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="e.g. ⭐" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.icon"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. ⭐"
+              />
             </div>
             <div class="control-group">
               <label>Badge</label>
@@ -94,18 +99,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -126,6 +121,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [attr.loading]="pgConfig.loading ? '' : null"
         ></ui-divider>
         <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

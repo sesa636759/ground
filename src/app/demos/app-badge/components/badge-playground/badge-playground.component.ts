@@ -31,7 +31,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" placeholder="e.g. ⭐" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.icon"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. ⭐"
+              />
             </div>
           </div>
 
@@ -102,15 +107,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-
         <div class="action-buttons">
           <ui-button
             class="btn-secondary"
@@ -139,6 +135,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <span *ngIf="pgConfig.icon">{{ pgConfig.icon }}</span>
           </div>
         </ui-badge>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

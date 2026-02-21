@@ -95,27 +95,44 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ code() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copy()" label="Copy Code"></ui-button>
           <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
         </div>
       </div>
 
-      <!-- Preview -->
+      <!-- Preview — @if toggle forces element recreation on every prop change  -->
+      <!-- (skeleton-loader has mutable:false props that don't react to attr mutations) -->
       <div class="playground-preview">
-        <skeleton-loader
-          [attr.shape]="cfg.shape"
-          [attr.animation-type]="cfg.animationType"
-          [attr.animated]="cfg.animated === 'true' ? '' : null"
-          [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-          [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-          [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-          [attr.border-radius]="cfg.borderRadius || null"
-        ></skeleton-loader>
+        @if (recreate) {
+          <skeleton-loader
+            [attr.shape]="cfg.shape"
+            [attr.animation-type]="cfg.animationType"
+            [attr.animated]="cfg.animated"
+            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
+            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
+            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
+            [attr.border-radius]="cfg.borderRadius || null"
+          ></skeleton-loader>
+        } @else {
+          <skeleton-loader
+            [attr.shape]="cfg.shape"
+            [attr.animation-type]="cfg.animationType"
+            [attr.animated]="cfg.animated"
+            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
+            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
+            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
+            [attr.border-radius]="cfg.borderRadius || null"
+          ></skeleton-loader>
+        }
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="code()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,
@@ -171,12 +188,14 @@ export class SkeletonPlaygroundComponent {
   ];
 
   code = signal('');
+  recreate = true;
 
   constructor() {
     this.update();
   }
 
   update() {
+    this.recreate = !this.recreate; // force skeleton-loader element recreation
     const lines = ['<skeleton-loader'];
     lines.push(`  shape="${this.cfg.shape}"`);
     lines.push(`  animation-type="${this.cfg.animationType}"`);

@@ -40,7 +40,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               </div>
               <div class="control-group">
                 <label>Radius</label>
-                <input type="text" [(ngModel)]="pgConfig.borderRadius" (ngModelChange)="updateConfig()" />
+                <input
+                  type="text"
+                  [(ngModel)]="pgConfig.borderRadius"
+                  (ngModelChange)="updateConfig()"
+                />
               </div>
             </div>
 
@@ -130,12 +134,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Snippet" icon="fas fa-copy"></ui-button>
           <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
@@ -198,6 +197,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </ul>
           </div>
         </ui-card>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,
