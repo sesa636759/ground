@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Master the workflow layout and step states</p>
-          </div>
-          <app-stepper-playground></app-stepper-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Stepper Configuration'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-stepper-playground></app-stepper-playground>
     </div>
 
     <div slot="examples">
@@ -60,7 +50,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="orientationCode" [label]="'Orientation Toggle'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="orientationCode"
+              [label]="'Orientation Toggle'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Visual Types -->
@@ -86,7 +81,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="visualsCode" [label]="'Progress Markers'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="visualsCode"
+              [label]="'Progress Markers'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Flow Logic -->
@@ -112,7 +112,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="flowCode" [label]="'Flow Control'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="flowCode"
+              [label]="'Flow Control'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

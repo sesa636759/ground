@@ -8,17 +8,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Switch between chart types and configure display options.</p>
-          </div>
-          <app-chart-playground></app-chart-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-chart-playground></app-chart-playground>
     </div>
 
     <div slot="examples">
@@ -49,7 +39,12 @@
                 <ui-chart type="line" [data]="chartData" show-legend responsive></ui-chart>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="typesCode" [label]="'Type Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="typesCode"
+              [label]="'Type Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Switch between variants, alignments, and orientations.</p>
-          </div>
-          <app-tabs-playground></app-tabs-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-tabs-playground></app-tabs-playground>
     </div>
 
     <div slot="examples">
@@ -68,7 +58,12 @@
                 </ui-tabs>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="stylesCode" [label]="'Design Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="stylesCode"
+              [label]="'Design Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Orientations & Layouts -->
@@ -95,32 +90,44 @@
                 </ui-tabs>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="layoutsCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Tab Stack -->
           <section class="demo-section" id="tab-stack">
             <div class="section-header">
               <h2>📚 Advanced Tab Stack</h2>
-              <p>Enhanced tabs with closable, draggable, and dynamic features for advanced use cases.</p>
+              <p>
+                Enhanced tabs with closable, draggable, and dynamic features for advanced use cases.
+              </p>
             </div>
             <div class="demo-card">
               <div class="tab-preview-box">
                 <span>Tab Stack with Multiple Features:</span>
                 <app-tab-stack active-tab="t1" variant="pills">
                   <app-tab label="Dashboard" value="t1" icon="fas fa-home">
-                    <div style="padding: 20px;">Dashboard content</div>
+                    <div style="padding: 20px">Dashboard content</div>
                   </app-tab>
                   <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
-                    <div style="padding: 20px;">Analytics content</div>
+                    <div style="padding: 20px">Analytics content</div>
                   </app-tab>
                   <app-tab label="Settings" value="t3" icon="fas fa-cog">
-                    <div style="padding: 20px;">Settings content</div>
+                    <div style="padding: 20px">Settings content</div>
                   </app-tab>
                 </app-tab-stack>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="tabStackCode" [label]="'Tab Stack Example'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="tabStackCode"
+              [label]="'Tab Stack Example'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Customize the feedback experience</p>
-          </div>
-          <app-rating-playground></app-rating-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Rating Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-rating-playground></app-rating-playground>
     </div>
 
     <div slot="examples">
@@ -59,7 +49,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="typesCode" [label]="'Types Example'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="typesCode"
+              [label]="'Types Example'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Colors & Sizes -->
@@ -75,7 +70,12 @@
                 <ui-rating size="lg" color="danger" [value]="4"></ui-rating>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="colorsSizesCode" [label]="'Colors and Sizes'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="colorsSizesCode"
+              [label]="'Colors and Sizes'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Custom Labels -->
@@ -95,7 +95,12 @@
                 ></ui-rating>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="customCode" [label]="'Custom Labels'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="customCode"
+              [label]="'Custom Labels'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

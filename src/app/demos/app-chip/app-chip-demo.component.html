@@ -1,21 +1,14 @@
 <div class="demo-container">
   <h1>🍿 Chip Component</h1>
   <p class="intro-text">
-    Compact elements that represent an input, attribute, or action. Perfect for tags, filters, or entity representation.
+    Compact elements that represent an input, attribute, or action. Perfect for tags, filters, or
+    entity representation.
   </p>
 
   <demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-chip-playground></app-chip-playground>
-      <section class="demo-section">
-        <ui-code-preview
-          [htmlCode]="playgroundCode"
-          [label]="'Chip Usage'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-      </section>
     </div>
 
     <!-- Examples Slot -->
@@ -106,7 +99,7 @@
             <div class="demo-card">
               <h3>Badges & Counters</h3>
               <div class="demo-flex">
-                <ui-chip label="Updates" badge="99" color="danger"></ui-badge-v2>
+                <ui-chip label="Updates" badge="99" color="danger"></ui-chip>
                 <ui-chip label="Tasks" counter="5" color="warning"></ui-chip>
               </div>
             </div>

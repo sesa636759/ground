@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test the threshold and visuals with a local scroll container.</p>
-          </div>
-          <app-scroll-top-playground></app-scroll-top-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-scroll-top-playground></app-scroll-top-playground>
     </div>
 
     <div slot="examples">
@@ -69,7 +59,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="shapesCode" [label]="'Styling Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="shapesCode"
+              [label]="'Styling Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

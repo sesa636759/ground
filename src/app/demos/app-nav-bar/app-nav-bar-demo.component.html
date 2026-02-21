@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test collapsing behavior and theme switching.</p>
-          </div>
-          <app-nav-bar-playground></app-nav-bar-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-nav-bar-playground></app-nav-bar-playground>
     </div>
 
     <div slot="examples">
@@ -56,7 +46,12 @@
                 </div>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="themesCode" [label]="'Theme Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="themesCode"
+              [label]="'Theme Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

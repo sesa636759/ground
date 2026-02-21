@@ -8,17 +8,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Switch between alignments and test custom markers.</p>
-          </div>
-          <app-timeline-playground></app-timeline-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-timeline-playground></app-timeline-playground>
     </div>
 
     <div slot="examples">
@@ -57,7 +47,12 @@
                 </ui-timeline>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="alignmentsCode" [label]="'Alignment Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="alignmentsCode"
+              [label]="'Alignment Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Orientations -->
@@ -77,7 +72,12 @@
                 </ui-timeline>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="orientationsCode" [label]="'Orientation Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="orientationsCode"
+              [label]="'Orientation Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>

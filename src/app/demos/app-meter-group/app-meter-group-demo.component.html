@@ -7,17 +7,7 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Customize segments, labels, and marker visibility.</p>
-          </div>
-          <app-meter-group-playground></app-meter-group-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Basic Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-meter-group-playground></app-meter-group-playground>
     </div>
 
     <div slot="examples">
@@ -57,7 +47,12 @@
                 ></ui-meter-group>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="displaysCode" [label]="'Visual Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="displaysCode"
+              [label]="'Visual Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Advanced Layouts -->
@@ -76,7 +71,12 @@
                 <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="layoutsCode" [label]="'Layout Examples'" activeLang="html" expanded="true"></ui-code-preview>
+            <ui-code-preview
+              [htmlCode]="layoutsCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>
