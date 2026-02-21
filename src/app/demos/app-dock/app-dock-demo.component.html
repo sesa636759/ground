@@ -1,121 +1,103 @@
 <div class="demo-container">
-  <h1>⚓ Dock</h1>
+  <h1>⚓ Dock Component</h1>
   <p class="intro-text">
     A navigation component that typically sits at the edge of the screen, providing quick access to
     frequently used applications or actions with a magnification effect.
   </p>
 
   <demo-tabs>
+    <!-- Playground Slot -->
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Test the dock in different screen positions and configurations.</p>
-          </div>
-          <app-dock-playground></app-dock-playground>
-          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
-        </section>
-      </div>
+      <app-dock-playground></app-dock-playground>
+      <section class="demo-section">
+        <ui-code-preview
+          [htmlCode]="playgroundCode"
+          [label]="'Dock Usage'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </section>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
-        <!-- Sidebar Navigation -->
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="examples-sidebar">
+        <div class="sidebar-title">Sections</div>
+        <div class="sidebar-nav">
+          <ui-anchor
+            [links]="anchorLinks"
+            scroll-container=".pane-examples"
+            type="line"
+            show-progress
+          ></ui-anchor>
         </div>
+      </aside>
 
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Positions -->
-          <section class="demo-section" id="positions" style="margin-top: 0">
-            <div class="section-header">
-              <h2>📍 Positions</h2>
-              <p>Dock can be placed on any side of its container.</p>
-            </div>
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Positions -->
+        <app-example-section
+          id="positions"
+          title="Positions"
+          description="Dock can be placed on any side of its container."
+          [code]="positionsCode"
+          style="margin-top: 0"
+        >
+          <div
+            class="demo-card"
+            style="
+              min-height: 410px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-around;
+              align-items: center;
+            "
+          >
             <div
-              class="demo-card"
               style="
-                min-height: 400px;
+                border: 1px solid var(--border-color);
+                padding: 20px;
+                border-radius: 12px;
+                position: relative;
+                width: 300px;
+                height: 300px;
                 display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
+                align-items: flex-start;
+                justify-content: center;
               "
             >
-              <div
-                style="
-                  border: 1px solid var(--border-color);
-                  padding: 20px;
-                  border-radius: 12px;
-                  position: relative;
-                  width: 300px;
-                  height: 300px;
-                  display: flex;
-                  align-items: flex-start;
-                  justify-content: center;
-                "
-              >
-                <span style="font-size: 0.8rem; color: var(--text-secondary)">Top Positioned</span>
-                <ui-dock [model]="dockItems" position="top"></ui-dock>
-              </div>
-
-              <div
-                style="
-                  border: 1px solid var(--border-color);
-                  padding: 20px;
-                  border-radius: 12px;
-                  position: relative;
-                  width: 300px;
-                  height: 300px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: flex-start;
-                "
-              >
-                <span
-                  style="font-size: 0.8rem; color: var(--text-secondary); writing-mode: vertical-rl"
-                  >Left Positioned</span
-                >
-                <ui-dock [model]="dockItems" position="left"></ui-dock>
-              </div>
+              <span style="font-size: 0.8rem; color: var(--text-secondary)">Top Positioned</span>
+              <ui-dock [model]="dockItems" position="top"></ui-dock>
             </div>
-            <ui-code-preview [htmlCode]="positionsCode" [label]="'Position Examples'" activeLang="html" expanded="true"></ui-code-preview>
-          </section>
-        </div>
+
+            <div
+              style="
+                border: 1px solid var(--border-color);
+                padding: 20px;
+                border-radius: 12px;
+                position: relative;
+                width: 300px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+              "
+            >
+              <span
+                style="font-size: 0.8rem; color: var(--text-secondary); writing-mode: vertical-rl"
+                >Left Positioned</span
+              >
+              <ui-dock [model]="dockItems" position="left"></ui-dock>
+            </div>
+          </div>
+        </app-example-section>
       </div>
     </div>
 
+    <!-- Docs Slot -->
     <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <div class="section-header">
-            <h2>📖 Documentation</h2>
-            <p>Links, API references, and detailed usage notes</p>
-          </div>
-          <div class="demo-card" style="padding: 24px">
-            <p>
-              The documentation for this component is currently being compiled. Our technical
-              writers are working to provide comprehensive API references, accessibility guidelines,
-              and best practices.
-            </p>
-            <p>
-              In the meantime, please explore the <strong>Playground</strong> for interactive
-              testing and the <strong>Examples</strong> tab for common implementation patterns.
-            </p>
-          </div>
-        </section>
-      </div>
+      <app-component-documentation componentId="dock"></app-component-documentation>
     </div>
   </demo-tabs>
 </div>

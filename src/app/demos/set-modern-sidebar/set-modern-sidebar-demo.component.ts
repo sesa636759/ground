@@ -1,27 +1,29 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { signal } from '@angular/core';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
- 
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './set-modern-sidebar-demo.component.html',
-  styleUrl: './set-modern-sidebar-demo.component.scss',
   imports: [
     CommonModule,
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    ComponentDocumentationComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './set-modern-sidebar-demo.component.html',
+  styleUrl: './set-modern-sidebar-demo.component.scss',
 })
-export class SetModernSidebarDemoComponent {
-  
-  exampleVariants = [
+export class SetModernSidebarDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
     { id: 'basic-default', title: 'Basic Default', icon: '📋' },
     { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
     { id: 'collapsed-compact', title: 'Collapsed/Compact', icon: '◀️' },
@@ -54,14 +56,20 @@ export class SetModernSidebarDemoComponent {
     { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
   ];
 
-  ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  get exampleVariants() {
+    return this.variants;
   }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
+  ngOnInit() {}
 
   basicDefaultCode = signal(`<app-modern-sidebar
   brand-name="My App"
@@ -489,4 +497,3 @@ export class SetModernSidebarDemoComponent {
   ]'>
 </app-modern-sidebar>`);
 }
-
