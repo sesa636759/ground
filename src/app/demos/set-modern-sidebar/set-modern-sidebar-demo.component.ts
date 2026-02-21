@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { signal } from '@angular/core';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
@@ -17,8 +19,10 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     CommonModule,
     FormsModule,
     ModernSidebarPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
 })
 export class SetModernSidebarDemoComponent {
