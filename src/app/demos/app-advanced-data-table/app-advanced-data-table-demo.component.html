@@ -16,7 +16,7 @@
             <p>Toggle grid features and adjust display settings.</p>
           </div>
           <app-advanced-data-table-playground></app-advanced-data-table-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
+          <ui-code-preview [htmlCode]="playgroundCode" [label]="'Usage'" activeLang="html" expanded="true"></ui-code-preview>
         </section>
       </div>
     </div>
@@ -52,11 +52,7 @@
               >
               </ui-advanced-data-table>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Configuration Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview [htmlCode]="featuresCode" [label]="'Configuration Examples'" activeLang="html" expanded="true"></ui-code-preview>
           </section>
         </div>
       </div>

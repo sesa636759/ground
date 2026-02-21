@@ -47,41 +47,65 @@ export class SetTabsDemoComponent extends BaseDemoComponent implements OnInit {
 
   ngOnInit() {}
 
-  horizontalBasicCode = `<app-tab-stack orientation="horizontal" active-tab="t1"> ... </app-tab-stack>`;
-  verticalBasicCode = `<app-tab-stack orientation="vertical" active-tab="t1"> ... </app-tab-stack>`;
+  horizontalBasicCode = `<app-tab-stack orientation="horizontal" active-tab="t1">
+    <app-tab label="Overview" value="t1">Overview Content</app-tab>
+    <app-tab label="Documents" value="t2">Documents Content</app-tab>
+  </app-tab-stack>`;
 
-  variantCode = `<app-tab-stack variant="default" ...></app-tab-stack>
-<app-tab-stack variant="underline" ...></app-tab-stack>
-<app-tab-stack variant="pills" ...></app-tab-stack>
-<app-tab-stack variant="enclosed" ...></app-tab-stack>
-<app-tab-stack variant="buttons" ...></app-tab-stack>`;
+  verticalBasicCode = `<app-tab-stack orientation="vertical" active-tab="t1">
+    <app-tab label="Configuration" value="t1">Config Content</app-tab>
+    <app-tab label="Security" value="t2">Security Content</app-tab>
+  </app-tab-stack>`;
 
-  sizeCode = `<app-tab-stack size="small" ...></app-tab-stack>
-<app-tab-stack size="medium" ...></app-tab-stack>
-<app-tab-stack size="large" ...></app-tab-stack>`;
+  variantCode = `<app-tab-stack variant="default" active-tab="t1">
+    <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+    <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>
 
-  colorCode = `<app-tab-stack color="primary" ...></app-tab-stack>
-<app-tab-stack color="success" ...></app-tab-stack>
-<app-tab-stack color="warning" ...></app-tab-stack>
-<app-tab-stack color="danger" ...></app-tab-stack>`;
+  <app-tab-stack variant="underline" active-tab="t1">
+    <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+    <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>
 
-  alignCode = `<app-tab-stack align="start" ...></app-tab-stack>
-<app-tab-stack align="center" ...></app-tab-stack>
-<app-tab-stack align="end" ...></app-tab-stack>`;
+  <app-tab-stack variant="pills" active-tab="t1" color="success">
+    <app-tab label="Active" value="t1">Active Content</app-tab>
+    <app-tab label="Completed" value="t2">Completed Content</app-tab>
+  </app-tab-stack>`;
 
-  indicatorCode = `<app-tab-stack indicator-position="bottom" ...></app-tab-stack>
-<app-tab-stack indicator-position="top" ...></app-tab-stack>
-<app-tab-stack orientation="vertical" indicator-position="left" ...></app-tab-stack>
-<app-tab-stack orientation="vertical" indicator-position="right" ...></app-tab-stack>`;
+  sizeCode = `<app-tab-stack size="small" active-tab="t1">
+    <app-tab label="Small 1" value="t1">Content 1</app-tab>
+    <app-tab label="Small 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>`;
 
-  layoutCode = `<app-tab-stack full-width ...></app-tab-stack>
-<app-tab-stack scrollable ...></app-tab-stack>
-<app-tab icon="fas fa-home" ...></app-tab>
-<app-tab badge="5" ...></app-tab>
-<app-tab-stack closable ...></app-tab-stack>`;
+  colorCode = `<app-tab-stack color="danger" active-tab="t1">
+    <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+    <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>`;
 
-  advancedCode = `<app-tab-stack show-add-button ...></app-tab-stack>
-<app-tab-stack animated ...></app-tab-stack>
-<app-tab-stack drag-enabled ...></app-tab-stack>
-<app-tab-stack lazy-loading ...></app-tab-stack>`;
+  alignCode = `<app-tab-stack align="center" active-tab="t1">
+    <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+    <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>`;
+
+  indicatorCode = `<app-tab-stack indicator-position="top" active-tab="t1">
+    <app-tab label="Tab 1" value="t1">Content 1</app-tab>
+    <app-tab label="Tab 2" value="t2">Content 2</app-tab>
+  </app-tab-stack>`;
+
+  layoutCode = `<app-tab-stack active-tab="t1">
+    <app-tab label="Home" value="t1" icon="fas fa-home">Home</app-tab>
+    <app-tab label="Messages" value="t3" badge="5" badge-color="danger">Msgs</app-tab>
+  </app-tab-stack>
+
+  <app-tab-stack full-width scrollable active-tab="t1">
+    <app-tab label="Tab 1" value="t1">C1</app-tab>
+    <app-tab label="Tab 2" value="t2">C2</app-tab>
+    <app-tab label="Tab 3" value="t3">C3</app-tab>
+    <app-tab label="Tab 4" value="t4">C4</app-tab>
+  </app-tab-stack>`;
+
+  advancedCode = `<app-tab-stack closable animated show-add-button active-tab="t1">
+    <app-tab label="Tab 1" value="t1">C1</app-tab>
+    <app-tab label="Tab 2" value="t2">C2</app-tab>
+  </app-tab-stack>`;
 }

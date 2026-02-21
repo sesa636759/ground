@@ -1,17 +1,7 @@
 @use '../../../../../styles/playground-base.scss';
 
 .playground-preview {
-  min-height: 500px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-  background: white;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.table-container {
+  .table-container {
     width: 100%;
+  }
 }
