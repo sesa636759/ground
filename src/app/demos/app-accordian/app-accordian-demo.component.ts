@@ -1,4 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
@@ -6,6 +11,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
@@ -17,12 +23,16 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',
 })
-export class SetAccordianDemoComponent extends BaseDemoComponent implements OnInit {
+export class SetAccordianDemoComponent
+  extends BaseDemoComponent
+  implements OnInit
+{
   variants = [
     { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
     { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
@@ -38,6 +48,15 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   get exampleVariants() {
     return this.variants;
@@ -90,15 +109,31 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
   subtitlesCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
   searchItems = JSON.stringify([
-    { id: 'react', title: 'React', content: 'A JavaScript library for building user interfaces' },
+    {
+      id: 'react',
+      title: 'React',
+      content: 'A JavaScript library for building user interfaces',
+    },
     {
       id: 'angular',
       title: 'Angular',
       content: 'A platform for building mobile and desktop web applications',
     },
-    { id: 'vue', title: 'Vue', content: 'The Progressive JavaScript Framework' },
-    { id: 'svelte', title: 'Svelte', content: 'Cybernetically enhanced web apps' },
-    { id: 'ember', title: 'Ember', content: 'A framework for ambitious web developers' },
+    {
+      id: 'vue',
+      title: 'Vue',
+      content: 'The Progressive JavaScript Framework',
+    },
+    {
+      id: 'svelte',
+      title: 'Svelte',
+      content: 'Cybernetically enhanced web apps',
+    },
+    {
+      id: 'ember',
+      title: 'Ember',
+      content: 'A framework for ambitious web developers',
+    },
   ]);
   searchCode = `<ui-accordion [items]="items" enable-search search-placeholder="Search frameworks..."></ui-accordion>`;
 
@@ -155,7 +190,11 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
 
   dragDropItems = JSON.stringify([
     { id: 'todo', title: 'To Do', content: 'Tasks to be done' },
-    { id: 'progres', title: 'In Progress', content: 'Tasks currently being worked on' },
+    {
+      id: 'progres',
+      title: 'In Progress',
+      content: 'Tasks currently being worked on',
+    },
     { id: 'done', title: 'Done', content: 'Completed tasks' },
     { id: 'archived', title: 'Archived', content: 'Old tasks' },
   ]);
@@ -201,13 +240,23 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
   controlledCode = `<ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
 
   asyncLazyItems = JSON.stringify([
-    { id: 'l1', title: 'Lazy Content 1', content: 'This content was rendered only when opened.' },
-    { id: 'l2', title: 'Lazy Content 2', content: 'Check the DOM, I was not there when closed.' },
+    {
+      id: 'l1',
+      title: 'Lazy Content 1',
+      content: 'This content was rendered only when opened.',
+    },
+    {
+      id: 'l2',
+      title: 'Lazy Content 2',
+      content: 'Check the DOM, I was not there when closed.',
+    },
   ]);
   asyncLazyCode = `<ui-accordion [items]="items" lazy></ui-accordion>`;
 
   handleAction(event: any) {
-    alert(`Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`);
+    alert(
+      `Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`,
+    );
   }
 
   handleReorder(event: any) {

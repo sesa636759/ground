@@ -6,6 +6,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-tabs-demo',
@@ -17,6 +18,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tabs-demo.component.html',
@@ -28,11 +30,20 @@ export class SetTabsDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Sizes', icon: '📐' },
     { id: 'colors', title: 'Color Schemes', icon: '🌈' },
-    { id: 'alignment', title: 'Alignment', icon: '⬛' },
+    { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
     { id: 'indicator', title: 'Indicator Position', icon: '📍' },
     { id: 'layout-features', title: 'Layout & Features', icon: '📦' },
-    { id: 'advanced-features', title: 'Advanced UX', icon: '🛡️' },
+    { id: 'advanced-ux', title: 'Advanced UX', icon: '✨' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   ngOnInit() {}
 

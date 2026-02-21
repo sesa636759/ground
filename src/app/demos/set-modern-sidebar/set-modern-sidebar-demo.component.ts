@@ -9,7 +9,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
- 
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-modern-sidebar-demo.component.html',
   styleUrl: './set-modern-sidebar-demo.component.scss',
@@ -22,7 +22,6 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   ],
 })
 export class SetModernSidebarDemoComponent {
-  
   exampleVariants = [
     { id: 'basic-default', title: 'Basic Default', icon: '📋' },
     { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
@@ -55,6 +54,15 @@ export class SetModernSidebarDemoComponent {
     { id: 'analytics-dashboard', title: 'Analytics Dashboard', icon: '📈' },
     { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   ngOnInit() {}
 
@@ -491,4 +499,3 @@ export class SetModernSidebarDemoComponent {
   ]'>
 </app-modern-sidebar>`);
 }
-
