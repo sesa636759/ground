@@ -41,67 +41,78 @@ export class AppSmartMenuDemoComponent extends BaseDemoComponent {
     })),
   );
 
-  nestedCode = `const menuModel = [
-  {
-    label: 'File',
-    items: [
-      { label: 'New', command: () => {} },
-      { label: 'Open', command: () => {} },
-      {
-        label: 'Recent',
-        items: [
-          { label: 'Project 1' },
-          { label: 'Project 2' }
-        ]
-      }
-    ]
-  }
-];
-<ui-smart-menu [model]="menuModel"></ui-smart-menu>`;
+  nestedCode = `<!-- Right-click on the target area to open the menu -->
+<div id="nested-target" style="padding:40px;border:2px dashed #ccc;text-align:center">
+  Right-click here to open the nested menu
+</div>
+<ui-smart-context-menu
+  target="#nested-target"
+  icon-library="lucide"
+  [items]="nestedItems"
+></ui-smart-context-menu>`;
 
-  iconsCode = `const items = [
-  { label: 'Dashboard', icon: 'fas fa-chart-line' },
-  { label: 'Settings',  icon: 'fas fa-cog' },
-  { label: 'Profile',   icon: 'fas fa-user' },
-];`;
+  iconsCode = `<ui-smart-context-menu target="#icons-target" icon-library="lucide" [items]="iconItems"></ui-smart-context-menu>`;
 
-  separatorsCode = `const items = [
-  { label: 'Cut',   icon: 'fas fa-cut' },
-  { label: 'Copy',  icon: 'fas fa-copy' },
-  { separator: true },
-  { label: 'Paste', icon: 'fas fa-paste' },
-];`;
+  separatorsCode = `<ui-smart-context-menu target="#sep-target" icon-library="lucide" [items]="separatorItems"></ui-smart-context-menu>`;
 
-  disabledCode = `const items = [
-  { label: 'Active Item' },
-  { label: 'Disabled Item', disabled: true },
-];`;
+  disabledCode = `<ui-smart-context-menu target="#disabled-target" icon-library="lucide" [items]="disabledItems"></ui-smart-context-menu>`;
 
   nestedItems = JSON.stringify([
-    { label: 'File', items: [{ label: 'New' }, { label: 'Open' }, { label: 'Save' }] },
-    { label: 'Edit', items: [{ label: 'Cut' }, { label: 'Copy' }, { label: 'Paste' }] },
-    { label: 'View', items: [{ label: 'Zoom In' }, { label: 'Zoom Out' }] },
+    {
+      label: 'File',
+      icon: 'folder',
+      submenu: [
+        { label: 'New File', icon: 'file-plus' },
+        { label: 'Open', icon: 'folder-open' },
+        {
+          label: 'Recent',
+          icon: 'clock',
+          submenu: [
+            { label: 'Project Alpha' },
+            { label: 'Project Beta' },
+            { label: 'Dashboard v2' },
+          ],
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      icon: 'edit',
+      submenu: [
+        { label: 'Cut', icon: 'scissors' },
+        { label: 'Copy', icon: 'copy' },
+        { label: 'Paste', icon: 'clipboard' },
+      ],
+    },
+    {
+      label: 'View',
+      icon: 'eye',
+      submenu: [
+        { label: 'Zoom In', icon: 'zoom-in' },
+        { label: 'Zoom Out', icon: 'zoom-out' },
+      ],
+    },
   ]);
 
   iconItems = JSON.stringify([
-    { label: 'Dashboard', icon: 'fas fa-chart-line' },
-    { label: 'Settings', icon: 'fas fa-cog' },
-    { label: 'Profile', icon: 'fas fa-user' },
-    { label: 'Logout', icon: 'fas fa-sign-out-alt' },
+    { label: 'Dashboard', icon: 'layout-dashboard' },
+    { label: 'Settings', icon: 'settings' },
+    { label: 'Profile', icon: 'user' },
+    { label: 'Logout', icon: 'log-out' },
   ]);
 
   separatorItems = JSON.stringify([
-    { label: 'Cut', icon: 'fas fa-cut' },
-    { label: 'Copy', icon: 'fas fa-copy' },
-    { separator: true },
-    { label: 'Paste', icon: 'fas fa-paste' },
-    { separator: true },
-    { label: 'Select All', icon: 'fas fa-object-group' },
+    { label: 'Cut', icon: 'scissors' },
+    { label: 'Copy', icon: 'copy' },
+    { divider: true },
+    { label: 'Paste', icon: 'clipboard' },
+    { divider: true },
+    { label: 'Select All', icon: 'check-square' },
   ]);
 
   disabledItems = JSON.stringify([
-    { label: 'Active Item', icon: 'fas fa-check' },
-    { label: 'Disabled Item', disabled: true, icon: 'fas fa-ban' },
-    { label: 'Another Active', icon: 'fas fa-star' },
+    { label: 'Active Action', icon: 'check' },
+    { label: 'Disabled Action', icon: 'ban', disabled: true },
+    { label: 'Another Active', icon: 'star' },
   ]);
 }

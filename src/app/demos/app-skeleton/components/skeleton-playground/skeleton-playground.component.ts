@@ -6,152 +6,206 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 @Component({
   selector: 'app-skeleton-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
         <div class="control-grid">
+          <!-- Shape & Animation -->
           <div class="control-section">
-            <h3>Visuals</h3>
+            <h3>Appearance</h3>
+
             <div class="control-group">
-              <label>Shape</label>
+              <label>shape</label>
               <ui-dropdown
-                [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
-                [options]="shapeOptions"
+                [(ngModel)]="cfg.shape"
+                (change)="update()"
+                [options]="shapeOpts"
               ></ui-dropdown>
             </div>
+
             <div class="control-group">
-              <label>Animation</label>
+              <label>animation-type</label>
               <ui-dropdown
-                [(ngModel)]="pgConfig.animation"
-                (change)="updateConfig()"
-                [options]="animationOptions"
+                [(ngModel)]="cfg.animationType"
+                (change)="update()"
+                [options]="animTypeOpts"
               ></ui-dropdown>
             </div>
+
             <div class="control-group">
-              <label>Theme</label>
+              <label>animated</label>
               <ui-dropdown
-                [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
-                [options]="themeOptions"
+                [(ngModel)]="cfg.animated"
+                (change)="update()"
+                [options]="boolOpts"
               ></ui-dropdown>
             </div>
           </div>
 
+          <!-- Sizing -->
           <div class="control-section">
             <h3>Sizing</h3>
+
             <div class="control-group">
-              <label>Width</label>
-              <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
+              <label
+                >size <span style="font-weight:400;font-size:0.75rem">(predefined)</span></label
+              >
+              <ui-dropdown
+                [(ngModel)]="cfg.size"
+                (change)="update()"
+                [options]="sizeOpts"
+              ></ui-dropdown>
+              <span class="control-hint">Overrides width/height for most shapes</span>
             </div>
+
             <div class="control-group">
-              <label>Height</label>
-              <input type="text" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" />
+              <label>width</label>
+              <input
+                type="text"
+                [(ngModel)]="cfg.width"
+                (ngModelChange)="update()"
+                placeholder="100%"
+              />
             </div>
+
             <div class="control-group">
-              <label>Border Radius</label>
-              <input type="text" [(ngModel)]="pgConfig.borderRadius" (ngModelChange)="updateConfig()" />
+              <label>height</label>
+              <input
+                type="text"
+                [(ngModel)]="cfg.height"
+                (ngModelChange)="update()"
+                placeholder="20px"
+              />
+            </div>
+
+            <div class="control-group">
+              <label
+                >border-radius
+                <span style="font-weight:400;font-size:0.75rem">(rounded shapes)</span></label
+              >
+              <input
+                type="text"
+                [(ngModel)]="cfg.borderRadius"
+                (ngModelChange)="update()"
+                placeholder="4px"
+              />
             </div>
           </div>
         </div>
 
         <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
+          <pre>{{ code() }}</pre>
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button (click)="copy()" label="Copy Code"></ui-button>
+          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
         </div>
       </div>
 
-      <div
-        class="playground-preview"
-        [style.background]="pgConfig.theme === 'dark' ? '#1e293b' : 'white'"
-      >
-        <ui-skeleton
-          [attr.shape]="pgConfig.shape"
-          [attr.animation]="pgConfig.animation"
-          [attr.theme]="pgConfig.theme"
-          [attr.width]="pgConfig.width"
-          [attr.height]="pgConfig.height"
-          [attr.border-radius]="pgConfig.borderRadius"
-        ></ui-skeleton>
+      <!-- Preview -->
+      <div class="playground-preview">
+        <skeleton-loader
+          [attr.shape]="cfg.shape"
+          [attr.animation-type]="cfg.animationType"
+          [attr.animated]="cfg.animated === 'true' ? '' : null"
+          [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
+          [attr.width]="cfg.size === 'custom' ? cfg.width : null"
+          [attr.height]="cfg.size === 'custom' ? cfg.height : null"
+          [attr.border-radius]="cfg.borderRadius || null"
+        ></skeleton-loader>
       </div>
     </div>
   `,
   styleUrl: './skeleton-playground.component.scss',
 })
 export class SkeletonPlaygroundComponent {
-  pgConfig = {
+  cfg = {
     shape: 'rectangle',
-    animation: 'wave',
-    theme: 'light',
+    animationType: 'pulse',
+    animated: 'true',
+    size: 'custom',
     width: '100%',
-    height: '100px',
-    borderRadius: '8px',
+    height: '80px',
+    borderRadius: '',
   };
 
-  shapeOptions = [
-    { label: 'Text', value: 'text' },
-    { label: 'Circle', value: 'circle' },
-    { label: 'Rectangle', value: 'rectangle' },
+  shapeOpts = [
+    { label: 'rectangle', value: 'rectangle' },
+    { label: 'rounded-rectangle', value: 'rounded-rectangle' },
+    { label: 'rounded', value: 'rounded' },
+    { label: 'square', value: 'square' },
+    { label: 'rounded-square', value: 'rounded-square' },
+    { label: 'circle', value: 'circle' },
+    { label: 'oval', value: 'oval' },
+    { label: 'text', value: 'text' },
+    { label: 'avatar', value: 'avatar' },
+    { label: 'button', value: 'button' },
+    { label: 'card', value: 'card' },
+    { label: 'list-item', value: 'list-item' },
+    { label: 'image', value: 'image' },
   ];
 
-  animationOptions = [
-    { label: 'Pulse', value: 'pulse' },
-    { label: 'Wave', value: 'wave' },
-    { label: 'None', value: 'none' },
+  allShapes = this.shapeOpts;
+
+  animTypeOpts = [
+    { label: 'pulse', value: 'pulse' },
+    { label: 'wave', value: 'wave' },
   ];
 
-  themeOptions = [
-    { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' },
+  boolOpts = [
+    { label: 'true — animated', value: 'true' },
+    { label: 'false — static', value: 'false' },
   ];
 
-  generatedCode = signal('');
+  sizeOpts = [
+    { label: 'custom (use width/height)', value: 'custom' },
+    { label: 'xs — 16px', value: 'xs' },
+    { label: 'sm — 24px', value: 'sm' },
+    { label: 'md — 32px', value: 'md' },
+    { label: 'lg — 48px', value: 'lg' },
+    { label: 'xl — 64px', value: 'xl' },
+    { label: '2xl — 80px', value: '2xl' },
+  ];
+
+  code = signal('');
 
   constructor() {
-    this.updateConfig();
+    this.update();
   }
 
-  updateConfig() {
-    let code = '<ui-skeleton\n';
-    code += `  shape="${this.pgConfig.shape}"\n`;
-    code += `  animation="${this.pgConfig.animation}"\n`;
-    code += `  theme="${this.pgConfig.theme}"\n`;
-    code += `  width="${this.pgConfig.width}"\n`;
-    code += `  height="${this.pgConfig.height}"\n`;
-    if (this.pgConfig.borderRadius) code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
-    code += '></ui-skeleton>';
-
-    this.generatedCode.set(code);
+  update() {
+    const lines = ['<skeleton-loader'];
+    lines.push(`  shape="${this.cfg.shape}"`);
+    lines.push(`  animation-type="${this.cfg.animationType}"`);
+    if (this.cfg.animated === 'false') lines.push(`  animated="false"`);
+    if (this.cfg.size !== 'custom') {
+      lines.push(`  size="${this.cfg.size}"`);
+    } else {
+      if (this.cfg.width) lines.push(`  width="${this.cfg.width}"`);
+      if (this.cfg.height) lines.push(`  height="${this.cfg.height}"`);
+    }
+    if (this.cfg.borderRadius) lines.push(`  border-radius="${this.cfg.borderRadius}"`);
+    lines.push('></skeleton-loader>');
+    this.code.set(lines.join('\n'));
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  copy() {
+    navigator.clipboard.writeText(this.code());
   }
 
-  resetConfig() {
-    this.pgConfig = {
+  reset() {
+    this.cfg = {
       shape: 'rectangle',
-      animation: 'wave',
-      theme: 'light',
+      animationType: 'pulse',
+      animated: 'true',
+      size: 'custom',
       width: '100%',
-      height: '100px',
-      borderRadius: '8px',
+      height: '80px',
+      borderRadius: '',
     };
-    this.updateConfig();
+    this.update();
   }
 }
