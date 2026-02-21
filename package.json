@@ -32,9 +32,9 @@
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
-    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.0.9.tgz",
+    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.0.13.tgz",
     "rxjs": "~7.8.0",
-    "set-ui-lib": "file:../../stencil/set-ui-lib/set-ui-lib-0.0.5.tgz",
+    "set-ui-lib": "file:../../stencil/set-ui-lib/set-ui-lib-0.0.7.tgz",
     "tslib": "^2.8.1",
     "zone.js": "~0.16.0"
   },

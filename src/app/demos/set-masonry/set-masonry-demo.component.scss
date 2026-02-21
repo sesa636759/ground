@@ -1,67 +1,6 @@
-@use '../../../styles/playground-base.scss';
-
-.demo-container {
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-  }
-
-  .intro-text {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-}
-
-.demo-section {
-  margin-bottom: 48px;
-
-  .section-header {
-    margin-bottom: 24px;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-  }
-}
-
-.demo-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  overflow: hidden;
-  margin-bottom: 24px;
-
-  &.full-width {
-    grid-column: 1 / -1;
-  }
-
-  h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-  }
-}
+@use '../../../styles/demo-base.scss';
 
 .preview-box {
-  background: rgba(var(--bg-secondary-rgb), 0.3);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 16px;
   min-height: 400px;
   overflow: auto;
 }
@@ -401,8 +340,8 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
 }
-

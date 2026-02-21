@@ -1,78 +1,8 @@
-@use '../../../styles/playground-base.scss';
-
-.demo-container {
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-  }
-
-  .intro-text {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-}
-
-.demo-section {
-  margin-bottom: 48px;
-
-  .section-header {
-    margin-bottom: 24px;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-  }
-}
-
-.demo-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  overflow: hidden;
-  margin-bottom: 24px;
-
-  &.full-width {
-    grid-column: 1 / -1;
-  }
-
-  h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-  }
-}
-
-.preview-box {
-  background: rgba(var(--bg-secondary-rgb), 0.3);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  min-height: 300px;
-  overflow: auto;
-
-  &.ide-preview {
-    min-height: 400px;
-  }
-}
+@use '../../../styles/demo-base.scss';
 
 .p-content {
   height: 100%;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -84,12 +14,12 @@
     color: var(--text-primary);
     margin-bottom: 12px;
     display: block;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   p {
     margin-bottom: 12px;
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: 400;
   }
 
@@ -104,31 +34,24 @@
 }
 
 .code-example {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  padding: 12px;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: #16a34a;
-  margin-top: 8px;
-  line-height: 1.4;
-}
-
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 24px;
-  margin-bottom: 24px;
+  color: var(--primary);
+  margin-top: var(--space-sm);
+  line-height: 1.5;
 }
 
 .panel-box {
-  height: 250px;
-  background: rgba(var(--bg-secondary-rgb), 0.3);
-  border-radius: 8px;
+  height: 350px;
+  background: var(--surface-2);
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   overflow: hidden;
 
   &.large-box {
-    height: 500px;
+    height: 600px;
   }
 }

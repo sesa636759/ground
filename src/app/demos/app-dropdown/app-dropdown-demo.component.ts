@@ -1,3 +1,4 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,9 +7,10 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-app-dropdown-demo',
+  selector: 'app-dropdown-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -17,6 +19,8 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
+    DemoHeaderComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dropdown-demo.component.html',
@@ -29,6 +33,15 @@ export class AppDropdownDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'cascading', title: 'Hierarchical', icon: '🌳' },
     { id: 'sizes', title: 'Size Scaling', icon: '📏' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   basicOptions = [
     { label: 'Option 1', value: '1' },

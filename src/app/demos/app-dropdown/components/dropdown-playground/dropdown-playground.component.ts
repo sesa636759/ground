@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-dropdown-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -17,7 +22,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Placeholder</label>
-              <app-input type="text" [(ngModel)]="pgConfig.placeholder" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Size</label>

@@ -1,15 +1,11 @@
 @use '../../../../../styles/playground-base.scss';
 
 .playground-preview {
-  min-height: 400px; /* More space for expanding columns */
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: visible; /* High importance for absolute popups */
+  min-height: 400px;
+  /* More space for expanding columns */
+  overflow: visible;
+  /* High importance for absolute popups */
   background: white;
   padding: 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   position: relative;
 }

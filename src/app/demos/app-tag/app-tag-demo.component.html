@@ -1,102 +1,119 @@
 <div class="demo-container">
-  <h1>🏷️ Tag</h1>
+  <h1>🏷️ Tag Component</h1>
   <p class="intro-text">
-    The Tag component is a small, versatile visual indicator used to label, categorize, or highlight
-    specific information within an application.
+    A small component used to categorize or label content, with support for icons, counters, and
+    various severity levels.
   </p>
 
   <demo-tabs>
+    <!-- Playground Slot -->
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Customize the tag appearance, severity, and icons in real-time.</p>
+      <app-tag-playground></app-tag-playground>
+    </div>
+
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Severities -->
+        <app-example-section
+          id="severities"
+          title="Severities"
+          description="Different color schemes based on importance or status."
+          [code]="severitiesCode"
+          style="margin-top: 0"
+        >
+          <div class="demo-flex-wrap">
+            <ui-tag severity="primary" value="Primary"></ui-tag>
+            <ui-tag severity="success" value="Success"></ui-tag>
+            <ui-tag severity="info" value="Info"></ui-tag>
+            <ui-tag severity="warning" value="Warning"></ui-tag>
+            <ui-tag severity="danger" value="Danger"></ui-tag>
           </div>
-          <app-tag-playground></app-tag-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
-        </section>
+        </app-example-section>
+
+        <!-- Styles & Sizes -->
+        <app-example-section
+          id="styles"
+          title="Styles & Sizes"
+          description="Configurations for shape and scale."
+          [code]="stylesCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h3>Shapes</h3>
+              <div class="demo-flex">
+                <ui-tag value="Square" [rounded]="false"></ui-tag>
+                <ui-tag value="Rounded" rounded></ui-tag>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h3>Sizes</h3>
+              <div class="demo-flex">
+                <ui-tag value="Small" size="small" severity="info"></ui-tag>
+                <ui-tag value="Medium" severity="info"></ui-tag>
+                <ui-tag value="Large" size="large" severity="info"></ui-tag>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Visual Enhancements -->
+        <app-example-section
+          id="visuals"
+          title="Visual Enhancements"
+          description="Add context with icons, counters, and interative elements."
+          [code]="visualsCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="demo-card">
+              <h3>Icons</h3>
+              <ui-tag icon="⭐" value="Starred" severity="warning"></ui-tag>
+            </div>
+            <div class="demo-card">
+              <h3>Counters</h3>
+              <ui-tag value="Messages" counter="5" severity="danger"></ui-tag>
+            </div>
+            <div class="demo-card">
+              <h3>Removable</h3>
+              <ui-tag value="Javascript" removable severity="primary"></ui-tag>
+            </div>
+          </div>
+        </app-example-section>
       </div>
     </div>
 
-    <div slot="examples">
+    <!-- Docs Slot -->
+    <div slot="docs">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
         <!-- Sidebar Navigation -->
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
-        </div>
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Severities -->
-          <section class="demo-section" id="severities" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🚨 Severities</h2>
-              <p>Use predefined severity levels to communicate status or importance.</p>
-            </div>
-            <div class="demo-card">
-              <ui-tag severity="info" value="Information"></ui-tag>
-              <ui-tag severity="success" value="Success"></ui-tag>
-              <ui-tag severity="warning" value="Warning"></ui-tag>
-              <ui-tag severity="danger" value="Danger"></ui-tag>
-            </div>
-            <app-code-block
-              [code]="severitiesCode"
-              title="Severity Examples"
-              language="html"
-            ></app-code-block>
-          </section>
-
-          <!-- Styles & Sizes -->
-          <section class="demo-section" id="styles">
-            <div class="section-header">
-              <h2>🎨 Styles & Sizes</h2>
-              <p>Adjust visual shapes and sizing to fit your layout requirements.</p>
-            </div>
-            <div class="demo-card">
-              <ui-tag value="Standard Square"></ui-tag>
-              <ui-tag value="Rounded Tag" rounded></ui-tag>
-              <ui-tag value="With Icon" icon="★"></ui-tag>
-              <ui-tag value="Large Size" size="large"></ui-tag>
-            </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Styling Examples"
-              language="html"
-            ></app-code-block>
-          </section>
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <div class="section-header">
-            <h2>📖 Documentation</h2>
-            <p>Links, API references, and detailed usage notes</p>
-          </div>
-          <div class="demo-card" style="padding: 24px">
-            <p>
-              The documentation for this component is currently being compiled. Our technical
-              writers are working to provide comprehensive API references, accessibility guidelines,
-              and best practices.
-            </p>
-            <p>
-              In the meantime, please explore the <strong>Playground</strong> for interactive
-              testing and the <strong>Examples</strong> tab for common implementation patterns.
-            </p>
-          </div>
-        </section>
       </div>
     </div>
   </demo-tabs>

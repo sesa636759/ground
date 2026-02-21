@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -7,14 +7,18 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -35,7 +39,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           </div>
           <div class="control-group">
             <label>Max Display</label>
-            <app-input
+            <input
               type="number"
               min="1"
               max="10"
@@ -80,7 +84,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           </div>
           <div class="control-group">
             <label>Spacing</label>
-            <app-input
+            <input
               type="number"
               min="0"
               max="20"
@@ -90,7 +94,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           </div>
           <div class="control-group">
             <label>Border Width</label>
-            <app-input
+            <input
               type="number"
               min="0"
               max="10"
@@ -100,11 +104,11 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           </div>
           <div class="control-group">
             <label>Border Color</label>
-            <app-input type="color" [(ngModel)]="pgConfig.borderColor" (input)="updateConfig()" />
+            <input type="color" [(ngModel)]="pgConfig.borderColor" (input)="updateConfig()" />
           </div>
           <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
             <label>Grid Columns</label>
-            <app-input
+            <input
               type="number"
               min="1"
               max="6"
@@ -171,11 +175,12 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             [users]="users"
           ></app-avatar-group>
         </div>
-        <app-code-block
-          [code]="generatedCode()"
-          title="Generated Code"
-          language="html"
-        ></app-code-block>
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,

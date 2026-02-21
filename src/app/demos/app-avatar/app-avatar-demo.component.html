@@ -11,17 +11,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <aside class="examples-sidebar">
-          <div class="sidebar-title">Categories</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.title }}
-              </a>
-            </li>
-          </ul>
-        </aside>
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -39,11 +29,12 @@
                 <ui-avatar name="Squircle" shape="squircle" size="64px"></ui-avatar>
               </div>
             </div>
-            <app-code-block
-              [code]="shapesCode"
-              title="Shapes Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="shapesCode"
+              label="Shapes Example"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Content Types -->
@@ -65,11 +56,12 @@
                 <ui-avatar icon="⭐" size="64px"></ui-avatar>
               </div>
             </div>
-            <app-code-block
-              [code]="typesCode"
-              title="Types Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="typesCode"
+              label="Types Example"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Status & Badges -->
@@ -94,11 +86,12 @@
                 ></ui-avatar>
               </div>
             </div>
-            <app-code-block
-              [code]="statusCode"
-              title="Status Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="statusCode"
+              label="Status Example"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Avatar Groups -->
@@ -119,11 +112,12 @@
                 </ui-avatar-group>
               </div>
             </div>
-            <app-code-block
-              [code]="groupCode"
-              title="Group Example"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="groupCode"
+              label="Group Example"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>
@@ -131,23 +125,38 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground" style="padding: 0">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Fine-tune every aspect of the avatar component</p>
-        </div>
-        <app-avatar-playground></app-avatar-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Avatar Usage"
-          language="html"
-        ></app-code-block>
-      </section>
+      <app-avatar-playground></app-avatar-playground>
     </div>
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="avatar"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

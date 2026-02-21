@@ -1,11 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { SnackbarPlaygroundComponent } from './components/snackbar-playground/snackbar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-app-snackbar-demo',
@@ -13,52 +14,70 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     SnackbarPlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-snackbar-demo.component.html',
   styleUrl: './app-snackbar-demo.component.scss',
 })
-export class AppSnackbarDemoComponent {
+export class AppSnackbarDemoComponent extends BaseDemoComponent {
   @ViewChild('snackbarGlobal') snackbarGlobal!: ElementRef;
+  @ViewChild('snackbarTopLeft') snackbarTopLeft!: ElementRef;
+  @ViewChild('snackbarTopCenter') snackbarTopCenter!: ElementRef;
+  @ViewChild('snackbarBottomLeft') snackbarBottomLeft!: ElementRef;
+  @ViewChild('snackbarBottomCenter') snackbarBottomCenter!: ElementRef;
+  @ViewChild('snackbarBottomRight') snackbarBottomRight!: ElementRef;
 
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', name: 'Types', icon: '📊', color: '#3b82f6' },
-    { id: 'positions', name: 'Positions', icon: '📍', color: '#10b981' },
-    { id: 'card-stack', name: 'Card Stacking', icon: '📚', color: '#f59e0b' },
+  exampleVariants = [
+    { id: 'types', title: 'Types', icon: '📊' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'card-stack', title: 'Card Stacking', icon: '📚' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
-  playgroundCode = `<ui-snackbar position="top-right" max-visible="5"></ui-snackbar>`;
+  typesCode = `// Add different notification types
+snackbar.add({ type: 'success', title: 'Saved!', message: 'Project pushed to main.' });
+snackbar.add({ type: 'error',   title: 'Failed', message: 'Unable to connect.' });
+snackbar.add({ type: 'warning', title: 'Warning', message: 'Memory usage is high.' });
+snackbar.add({ type: 'info',    title: 'Info', message: 'You have a new invite.' });`;
 
-  typesCode = `// Add different types of notifications
-snackbar.add({ type: 'success', title: 'Success', message: 'Operation completed!' });
-snackbar.add({ type: 'error', title: 'Error', message: 'Something went wrong.' });
-snackbar.add({ type: 'warning', title: 'Warning', message: 'Please check your input.' });
-snackbar.add({ type: 'info', title: 'Info', message: 'System update scheduled.' });`;
-
-  positionsCode = `<!-- Define container for specific position -->
-<ui-snackbar position="bottom-left"></ui-snackbar>
-<ui-snackbar position="top-center"></ui-snackbar>`;
+  positionsCode = `<!-- Six position options -->
+<ui-snackbar position="top-right"></ui-snackbar>
+<ui-snackbar position="top-center"></ui-snackbar>
+<ui-snackbar position="top-left"></ui-snackbar>
+<ui-snackbar position="bottom-right"></ui-snackbar>
+<ui-snackbar position="bottom-center"></ui-snackbar>
+<ui-snackbar position="bottom-left"></ui-snackbar>`;
 
   cardStackCode = `<!-- Enable visual stack mode -->
-<ui-snackbar card-stack position="bottom-right"></ui-snackbar>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+<ui-snackbar card-stack position="bottom-right" max-visible="5"></ui-snackbar>`;
 
   async notify(type: string) {
-    const el = this.snackbarGlobal.nativeElement;
+    await this.notifyAt(type, 'top-right');
+  }
+
+  async notifyAt(type: string, position: string) {
+    const refMap: Record<string, ElementRef> = {
+      'top-right': this.snackbarGlobal,
+      'top-left': this.snackbarTopLeft,
+      'top-center': this.snackbarTopCenter,
+      'bottom-left': this.snackbarBottomLeft,
+      'bottom-center': this.snackbarBottomCenter,
+      'bottom-right': this.snackbarBottomRight,
+    };
+    const el = refMap[position]?.nativeElement;
     if (el && typeof el.add === 'function') {
       const titles: any = {
         success: 'Successfully Saved',
@@ -67,18 +86,12 @@ snackbar.add({ type: 'info', title: 'Info', message: 'System update scheduled.' 
         info: 'New Message',
       };
       const messages: any = {
-        success: 'Project changes have been pushed to main.',
-        error: 'Unable to connect to the cloud server.',
-        warning: 'Application memory usage is reaching high levels.',
+        success: 'Project changes pushed to main.',
+        error: 'Unable to connect to cloud.',
+        warning: 'Memory usage is reaching high levels.',
         info: 'You have been invited to a new workspace.',
       };
-
-      await el.add({
-        type,
-        title: titles[type],
-        message: messages[type],
-        duration: 4000,
-      });
+      await el.add({ type, title: titles[type], message: messages[type], duration: 4000 });
     }
   }
 }

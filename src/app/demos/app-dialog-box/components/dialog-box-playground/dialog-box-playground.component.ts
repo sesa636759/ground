@@ -1,11 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-dialog-box-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -15,11 +16,11 @@ import { FormsModule } from '@angular/forms';
             <h3>Structure</h3>
             <div class="control-group">
               <label>Header Text</label>
-              <app-input type="text" [(ngModel)]="pgConfig.header" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.header" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Width</label>
-              <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -60,20 +61,13 @@ import { FormsModule } from '@angular/forms';
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
       <div class="playground-preview">
-        <button class="variant-btn" style="background: #8b5cf6;" (click)="visible = true">
-          Open Dialog
-        </button>
+        <ui-button (click)="visible = true" label="Open Dialog"></ui-button>
 
         <ui-dialog-box
           [attr.header]="pgConfig.header"
@@ -88,13 +82,20 @@ import { FormsModule } from '@angular/forms';
           <div style="padding: 20px;">
             <p>This is the content of the dialog. You can put any HTML here.</p>
             <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
-              <button class="variant-btn btn-secondary" (click)="visible = false">Cancel</button>
-              <button class="variant-btn" style="background: #10b981;" (click)="visible = false">
-                Confirm
-              </button>
+              <ui-button variant="secondary" (click)="visible = false" label="Cancel"></ui-button>
+              <ui-button variant="success" (click)="visible = false" label="Confirm"></ui-button>
             </div>
           </div>
         </ui-dialog-box>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

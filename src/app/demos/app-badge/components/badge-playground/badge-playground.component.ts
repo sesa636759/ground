@@ -1,14 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-badge-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -19,18 +23,18 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             <h3>Content</h3>
             <div class="control-group">
               <label>Value</label>
-              <app-input type="text" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max Value</label>
-              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.icon"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="e.g. ⭐"
               />
             </div>
@@ -103,14 +107,6 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           </div>
         </div>
 
-        <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            title="Generated Code"
-            language="html"
-          ></app-code-block>
-        </div>
-
         <div class="action-buttons">
           <ui-button
             class="btn-secondary"
@@ -139,6 +135,15 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             <span *ngIf="pgConfig.icon">{{ pgConfig.icon }}</span>
           </div>
         </ui-badge>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

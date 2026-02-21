@@ -1,25 +1,33 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 
 @Component({
   selector: 'app-pagination-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
         <div class="control-grid">
+          <!-- Basic Settings -->
           <div class="control-section">
-            <h3>Paging</h3>
+            <h3>Basic Settings</h3>
             <div class="control-group">
               <label>Total Items</label>
               <app-input
                 type="number"
-                [(ngModel)]="pgConfig.total"
+                [(ngModel)]="pgConfig.totalItems"
                 (ngModelChange)="updateConfig()"
               ></app-input>
             </div>
@@ -27,37 +35,38 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Items Per Page</label>
               <app-input
                 type="number"
-                [(ngModel)]="pgConfig.rows"
+                [(ngModel)]="pgConfig.itemsPerPage"
                 (ngModelChange)="updateConfig()"
               ></app-input>
             </div>
             <div class="control-group">
-              <label>Current Page</label>
+              <label>Max Visible Pages</label>
               <app-input
                 type="number"
-                [(ngModel)]="pgConfig.first"
+                [(ngModel)]="pgConfig.maxVisiblePages"
                 (ngModelChange)="updateConfig()"
               ></app-input>
             </div>
           </div>
 
+          <!-- Appearance -->
           <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showSummary"
-                [(ngModel)]="pgConfig.showReport"
+            <h3>Appearance</h3>
+            <div class="control-group">
+              <label>Type</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
                 (change)="updateConfig()"
-                label="Show Report"
-              ></app-checkbox>
+                [options]="typeOptions"
+              ></ui-dropdown>
             </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showJump"
-                [(ngModel)]="pgConfig.showJump"
+            <div class="control-group">
+              <label>Size</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
                 (change)="updateConfig()"
-                label="Show Jump Icons"
-              ></app-checkbox>
+                [options]="sizeOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Variant</label>
@@ -66,6 +75,83 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 (change)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Theme</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.theme"
+                (change)="updateConfig()"
+                [options]="themeOptions"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Shape</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (change)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <div class="control-section">
+            <h3>Features</h3>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.keyboardNav"
+                (change)="updateConfig()"
+                label="Keyboard Nav"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.responsiveMode"
+                (change)="updateConfig()"
+                label="Responsive"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.rtl"
+                (change)="updateConfig()"
+                label="RTL Mode"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.showFirstLast"
+                (change)="updateConfig()"
+                label="Show First/Last"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.showPageSize"
+                (change)="updateConfig()"
+                label="Show Page Size"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.showTotal"
+                (change)="updateConfig()"
+                label="Show Total"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.showJumpTo"
+                (change)="updateConfig()"
+                label="Show Jump To"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                [(ngModel)]="pgConfig.iconOnly"
+                (change)="updateConfig()"
+                label="Icon Only"
+              ></app-checkbox>
             </div>
           </div>
         </div>
@@ -87,61 +173,122 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
       <div class="playground-preview">
         <ui-pagination
-          [attr.total-records]="pgConfig.total"
-          [attr.rows]="pgConfig.rows"
-          [attr.first]="pgConfig.first"
-          [attr.show-report]="pgConfig.showReport ? '' : null"
-          [attr.show-jump-controls]="pgConfig.showJump ? '' : null"
+          [attr.total-items]="pgConfig.totalItems"
+          [attr.items-per-page]="pgConfig.itemsPerPage"
+          [attr.max-visible-pages]="pgConfig.maxVisiblePages"
+          [attr.type]="pgConfig.type"
+          [attr.size]="pgConfig.size"
           [attr.variant]="pgConfig.variant"
-          (pageChange)="onPageChange($event)"
+          [attr.theme]="pgConfig.theme"
+          [attr.shape]="pgConfig.shape"
+          [attr.keyboard-nav]="pgConfig.keyboardNav ? 'true' : 'false'"
+          [attr.responsive-mode]="pgConfig.responsiveMode ? 'true' : 'false'"
+          [attr.rtl]="pgConfig.rtl ? 'true' : null"
+          [attr.show-first-last]="pgConfig.showFirstLast ? 'true' : 'false'"
+          [attr.show-page-size]="pgConfig.showPageSize ? 'true' : null"
+          [attr.show-total]="pgConfig.showTotal ? 'true' : null"
+          [attr.show-jump-to]="pgConfig.showJumpTo ? 'true' : null"
+          [attr.icon-only]="pgConfig.iconOnly ? 'true' : null"
+          current-page="1"
         ></ui-pagination>
-
-        <div style="margin-top: 24px; font-size: 0.85rem; color: var(--text-secondary);">
-          Displaying {{ pgConfig.rows }} items starting from index {{ pgConfig.first }}
-        </div>
       </div>
     </div>
   `,
   styleUrl: './pagination-playground.component.scss',
 })
 export class PaginationPlaygroundComponent {
-  pgConfig = {
-    total: 100,
-    rows: 10,
-    first: 0,
-    showReport: true,
-    showJump: true,
-    variant: 'default',
-  };
+  pgConfig = this.getDefaultConfig();
 
   generatedCode = signal('');
 
+  typeOptions = [
+    { label: 'Basic', value: 'basic' },
+    { label: 'Compact', value: 'compact' },
+    { label: 'Detailed', value: 'detailed' },
+    { label: 'Minimal', value: 'minimal' },
+    { label: 'Dropdown', value: 'dropdown' },
+    { label: 'Input', value: 'input' },
+    { label: 'Indicator', value: 'indicator' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
+
   variantOptions = [
     { label: 'Default', value: 'default' },
-    { label: 'Modern', value: 'modern' },
-    { label: 'Compact', value: 'compact' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Filled', value: 'filled' },
+  ];
+
+  themeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  shapeOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Pill', value: 'pill' },
   ];
 
   constructor() {
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-pagination\n';
-    code += `  [total-records]="${this.pgConfig.total}"\n`;
-    code += `  [rows]="${this.pgConfig.rows}"\n`;
-    code += `  [first]="${this.pgConfig.first}"\n`;
-    if (this.pgConfig.showReport) code += `  show-report\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    code += '></ui-pagination>';
-
-    this.generatedCode.set(code);
+  getDefaultConfig() {
+    return {
+      totalItems: 100,
+      itemsPerPage: 10,
+      maxVisiblePages: 5,
+      type: 'basic',
+      size: 'md',
+      variant: 'default',
+      theme: 'default',
+      shape: 'default',
+      keyboardNav: true,
+      responsiveMode: true,
+      rtl: false,
+      showFirstLast: true,
+      showPageSize: false,
+      showTotal: false,
+      showJumpTo: false,
+      iconOnly: false,
+    };
   }
 
-  onPageChange(event: any) {
-    this.pgConfig.first = event.detail.first;
-    this.pgConfig.rows = event.detail.rows;
-    this.updateConfig();
+  updateConfig() {
+    let code = '<ui-pagination\n';
+
+    if (this.pgConfig.totalItems !== 100) code += `  total-items="${this.pgConfig.totalItems}"\n`;
+    if (this.pgConfig.itemsPerPage !== 10)
+      code += `  items-per-page="${this.pgConfig.itemsPerPage}"\n`;
+    if (this.pgConfig.maxVisiblePages !== 5)
+      code += `  max-visible-pages="${this.pgConfig.maxVisiblePages}"\n`;
+    if (this.pgConfig.type !== 'basic') code += `  type="${this.pgConfig.type}"\n`;
+    if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
+    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
+    if (this.pgConfig.theme !== 'default') code += `  theme="${this.pgConfig.theme}"\n`;
+    if (this.pgConfig.shape !== 'default') code += `  shape="${this.pgConfig.shape}"\n`;
+
+    if (!this.pgConfig.keyboardNav) code += `  keyboard-nav="false"\n`;
+    if (!this.pgConfig.responsiveMode) code += `  responsive-mode="false"\n`;
+    if (this.pgConfig.rtl) code += `  rtl="true"\n`;
+    if (!this.pgConfig.showFirstLast) code += `  show-first-last="false"\n`;
+    if (this.pgConfig.showPageSize) code += `  show-page-size="true"\n`;
+    if (this.pgConfig.showTotal) code += `  show-total="true"\n`;
+    if (this.pgConfig.showJumpTo) code += `  show-jump-to="true"\n`;
+    if (this.pgConfig.iconOnly) code += `  icon-only="true"\n`;
+
+    code += '  current-page="1"\n></ui-pagination>';
+
+    this.generatedCode.set(code);
   }
 
   copyCode() {
@@ -149,14 +296,7 @@ export class PaginationPlaygroundComponent {
   }
 
   resetConfig() {
-    this.pgConfig = {
-      total: 100,
-      rows: 10,
-      first: 0,
-      showReport: true,
-      showJump: true,
-      variant: 'default',
-    };
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
   }
 }

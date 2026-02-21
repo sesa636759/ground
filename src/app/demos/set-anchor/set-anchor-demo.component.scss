@@ -1,8 +1,4 @@
-.demo-container {
-  padding: 24px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
+@use '../../../styles/demo-base.scss';
 
 .layout-wrapper {
   display: flex;
@@ -125,6 +121,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -133,18 +130,6 @@
 
 // Responsive design
 @media (max-width: 768px) {
-  .demo-container {
-    padding: 16px;
-
-    h1 {
-      font-size: 2rem;
-    }
-  }
-
-  .demo-grid {
-    grid-template-columns: 1fr;
-  }
-
   .layout-wrapper {
     flex-direction: column !important;
 
@@ -158,22 +143,6 @@
   .scroll-area,
   .scroll-area-horizontal {
     max-height: 200px;
-  }
-
-  .preview-box {
-    min-height: auto;
-  }
-}
-
-// Dark theme support
-@media (prefers-color-scheme: dark) {
-  .preview-box {
-    background: var(--color-surface-dark);
-  }
-
-  .content-block {
-    background: var(--color-surface-dark);
-    color: var(--color-text-primary);
   }
 }
 
@@ -203,7 +172,7 @@
 }
 
 // Code block styling integration
-app-code-block {
+ui-code-preview {
   margin-top: 16px;
   display: block;
 }

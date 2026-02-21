@@ -39,6 +39,19 @@ export const topNavItems: NavItem[] = [
 
 export const categoryNavItems: NavItem[] = [
   {
+    id: 'future',
+    label: 'need fix',
+    icon: '🏗️',
+    children: [
+      { id: 'dock-host', label: 'Dock Host', icon: '🏠' },
+      { id: 'horizontal-nav', label: 'Horizontal Nav', icon: '↔️' },
+      { id: 'nav-bar', label: 'Nav Bar', icon: '📊' },
+      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+      { id: 'pagination', label: 'Pagination', icon: '📄' },
+    ],
+  },
+
+  {
     id: 'layout',
     label: 'Foundation & Layout',
     icon: '🏗️',
@@ -47,7 +60,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'card-set', label: 'Card Set', icon: '🃏' },
       { id: 'divider', label: 'Divider', icon: '➖' },
       { id: 'dock', label: 'Dock', icon: '⚓' },
-      { id: 'dock-host', label: 'Dock Host', icon: '🏠' },
+      // { id: 'dock-host', label: 'Dock Host', icon: '🏠' },  not working as of now//
       { id: 'layout-manager', label: 'Layout Manager', badge: '✨', icon: '📐' },
       { id: 'layout-manager-set', label: 'Layout Manager Set', icon: '📐' },
       { id: 'masonry-set', label: 'Masonry Set', icon: '🧱' },
@@ -64,12 +77,11 @@ export const categoryNavItems: NavItem[] = [
       { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
       { id: 'breadcrumb', label: 'Breadcrumb', icon: '🍞' },
       { id: 'context-menu', label: 'Context Menu', icon: '📋' },
-      { id: 'horizontal-nav', label: 'Horizontal Nav', icon: '↔️' },
+
       { id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: '📱' },
-      { id: 'nav-bar', label: 'Nav Bar', icon: '📊' },
-      { id: 'pagination', label: 'Pagination', icon: '📄' },
+
       { id: 'scroll-top', label: 'Scroll Top', icon: '⬆️' },
-      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+
       { id: 'sidebar-set', label: 'Sidebar Set', icon: '📑' },
       { id: 'speed-dial', label: 'Speed Dial', icon: '⚡' },
       { id: 'tabs', label: 'Tabs', icon: '📑' },
@@ -83,7 +95,7 @@ export const categoryNavItems: NavItem[] = [
     icon: '⌨️',
     children: [
       { id: 'button', label: 'Button', icon: '🔘' },
-      { id: 'button-group', label: 'Button Group', icon: '🔲' },
+      // { id: 'button-group', label: 'Button Group', icon: '🔲' },
       { id: 'button-toggle-set', label: 'Button Toggle Set', icon: '🔲' },
       { id: 'cascade-select', label: 'Cascade Select', icon: '🎯' },
       { id: 'checkbox-set', label: 'Checkbox Set', icon: '☑️' },
@@ -163,91 +175,57 @@ export const categoryNavItems: NavItem[] = [
       { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
     ],
   },
+  {
+    id: 'navigation1',
+    label: 'Navigation',
+    icon: '📐',
+    children: [
+      { id: 'anchor', label: 'Anchor', icon: 'link', iconLibrary: 'lucide' },
+      { id: 'breadcrumb', label: 'Breadcrumb', icon: 'chevron-right', iconLibrary: 'lucide' },
+      { id: 'context-menu', label: 'Context Menu', icon: 'menu-square', iconLibrary: 'lucide' },
+      {
+        id: 'horizontal-nav',
+        label: 'Horizontal Nav',
+        icon: 'more-horizontal',
+        iconLibrary: 'lucide',
+      },
+      { id: 'nav-bar', label: 'Nav Bar', icon: 'navigation', iconLibrary: 'lucide' },
+      { id: 'pagination', label: 'Pagination', icon: 'pager', iconLibrary: 'lucide' },
+      { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
+      { id: 'smart-menu', label: 'Smart Menu', icon: 'zap', iconLibrary: 'lucide' },
+      { id: 'smart-stepper', label: 'Smart Stepper', icon: 'list-checks', iconLibrary: 'lucide' },
+      { id: 'speed-dial', label: 'Speed Dial', icon: 'plus-circle', iconLibrary: 'lucide' },
+      { id: 'stepper', label: 'Stepper', icon: 'list', iconLibrary: 'lucide' },
+      { id: 'tabs', label: 'Tabs', icon: 'panels-top-left', iconLibrary: 'lucide' },
+      { id: 'top-bar', label: 'Top Bar', icon: 'layout-template', iconLibrary: 'lucide' },
+      { id: 'anchor', label: 'Anchor', icon: 'link', iconLibrary: 'lucide' },
+      { id: 'breadcrumb', label: 'Breadcrumb', icon: 'chevron-right', iconLibrary: 'lucide' },
+      { id: 'context-menu', label: 'Context Menu', icon: 'menu-square', iconLibrary: 'lucide' },
+      {
+        id: 'horizontal-nav',
+        label: 'Horizontal Nav',
+        icon: 'more-horizontal',
+        iconLibrary: 'lucide',
+      },
+      { id: 'nav-bar', label: 'Nav Bar', icon: 'navigation', iconLibrary: 'lucide' },
+      { id: 'pagination', label: 'Pagination', icon: 'pager', iconLibrary: 'lucide' },
+      { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
+      { id: 'smart-menu', label: 'Smart Menu', icon: 'zap', iconLibrary: 'lucide' },
+      { id: 'smart-stepper', label: 'Smart Stepper', icon: 'list-checks', iconLibrary: 'lucide' },
+      { id: 'speed-dial', label: 'Speed Dial', icon: 'plus-circle', iconLibrary: 'lucide' },
+      { id: 'stepper', label: 'Stepper', icon: 'list', iconLibrary: 'lucide' },
+      { id: 'tabs', label: 'Tabs', icon: 'panels-top-left', iconLibrary: 'lucide' },
+      { id: 'top-bar', label: 'Top Bar', icon: 'layout-template', iconLibrary: 'lucide' },
+    ],
+  },
 ];
 
-// e= [
-//   {
-//     id: 'personal-info',
-//     label: 'Personal Information',
-//     icon: '👤',
-//     status: 'online',
-//   },
-//   {
-//     id: 'security',
-//     label: 'Security & Password',
-//     icon: '🔒',
-//   },
-//   {
-//     id: 'notifications',
-//     label: 'Notifications',
-//     icon: '🔔',
-//     badge: '3',
-//   },
-//   {
-//     id: 'billing',
-//     label: 'Billing & Subscriptions',
-//     icon: '💳',
-//   },
-//   {
-//     id: 'connected-accounts',
-//     label: 'Connected Accounts',
-//     icon: '🔗',
-//   },
-//   {
-//     id: 'privacy',
-//     label: 'Privacy Settings',
-//     icon: '🛡️',
-//   },
-//   {
-//     id: 'activity-log',
-//     label: 'Activity Log',
-//     icon: '🕒',
-//   },
-//   {
-//     id: 'preferences',
-//     label: 'System Preferences',
-//     icon: '⚙️',
-//   },
-//   {
-//     id: 'help-support',
-//     label: 'Help & Support',
-//     icon: '❓',
-//   },
-//   {
-//     id: 'logout',
-//     label: 'Sign Out',
-//     icon: '🚪',
-//   },
-// ];
-
 export const userProfileNavItems: NavItem[] = [
-
-   { id: 'about', label: 'About', icon: 'house' ,iconLibrary: 'lucide'},
-   { id: 'about1', label: 'About', icon: 'info',  iconLibrary: 'lucide'},
-      {
-        id: 'user-profile1',
-        label: 'Praveen Doe',
-        status: 'away',
-        icon: 'user',
-        iconLibrary: 'lucide',
-        children: [
-          { id: 'my-profile', label: 'My Profile', icon: 'user', iconLibrary: 'lucide' },
-          { id: 'account-settings', label: 'Account Settings', icon: 'settings', iconLibrary: 'lucide' },
-          { id: 'privacy', label: 'Privacy & Security', icon: 'shield', iconLibrary: 'lucide' },
-          { id: 'notifications', label: 'Notifications', icon: 'bell', iconLibrary: 'lucide' },
-          { id: 'logout', label: 'Logout', icon: 'log-out', iconLibrary: 'lucide' }
-        ]
-      },
-      {
-        id: 'user-profile',
-        label: 'John Doe',
-        status: 'away',
-        icon: 'user',
-        iconLibrary: 'lucide',
-        children: [
+  { id: 'about', label: 'About', icon: 'house', iconLibrary: 'lucide' },
+  { id: 'about1', label: 'About', icon: 'info', iconLibrary: 'lucide' },
   {
-    id: 'user-profile',
-    label: 'John Doe',
+    id: 'user-profile1',
+    label: 'Praveen Doe',
     status: 'away',
     icon: 'user',
     iconLibrary: 'lucide',
@@ -264,9 +242,35 @@ export const userProfileNavItems: NavItem[] = [
       { id: 'logout', label: 'Logout', icon: 'log-out', iconLibrary: 'lucide' },
     ],
   },
-      ]
-    
-    }];
+  {
+    id: 'user-profile',
+    label: 'John Doe',
+    status: 'away',
+    icon: 'user',
+    iconLibrary: 'lucide',
+    children: [
+      {
+        id: 'user-profile',
+        label: 'John Doe',
+        status: 'away',
+        icon: 'user',
+        iconLibrary: 'lucide',
+        children: [
+          { id: 'my-profile', label: 'My Profile', icon: 'user', iconLibrary: 'lucide' },
+          {
+            id: 'account-settings',
+            label: 'Account Settings',
+            icon: 'settings',
+            iconLibrary: 'lucide',
+          },
+          { id: 'privacy', label: 'Privacy & Security', icon: 'shield', iconLibrary: 'lucide' },
+          { id: 'notifications', label: 'Notifications', icon: 'bell', iconLibrary: 'lucide' },
+          { id: 'logout', label: 'Logout', icon: 'log-out', iconLibrary: 'lucide' },
+        ],
+      },
+    ],
+  },
+];
 
 export const bottomNavItems: NavItem[] = [
   {
@@ -275,7 +279,7 @@ export const bottomNavItems: NavItem[] = [
     icon: '👥',
     badge: 'New',
   },
-  
+
   {
     id: 'settings',
     label: 'Settings',
@@ -287,7 +291,6 @@ export const bottomNavItems: NavItem[] = [
     label: 'Support',
     icon: '❓',
   },
-
 ];
 
 // export const bottomSecondaryItems: NavItem[] = [
@@ -367,6 +370,7 @@ export const bottomNavItems: NavItem[] = [
 //     label: 'Feedback & Overlays',
 //     icon: '💬',
 //     children: [
+
 //        { id: 'stepper-set', label: 'Stepper Set', icon: '🪜' },
 //       { id: 'context-menu-set', label: 'Context Menu Set', icon: '📋' },
 //       { id: 'resizable-panel-set', label: 'Resizable Panel Set', icon: '📐' },
@@ -393,7 +397,7 @@ export function getAllNavItems(): NavItem[] {
   addItems(categoryNavItems);
   addItems(bottomNavItems);
   addItems(userProfileNavItems);
- // addItems(bottomSecondaryItems);
+  // addItems(bottomSecondaryItems);
 
   return allItems;
 }

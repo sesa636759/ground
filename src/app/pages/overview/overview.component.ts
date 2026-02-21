@@ -574,7 +574,9 @@ export class OverviewComponent {
     return this.categories
       .map((category) => ({
         ...category,
-        children: category.children?.filter((comp) => comp.label.toLowerCase().includes(query)),
+        children: category.children?.filter(
+          (comp) => comp.label && comp.label.toLowerCase().includes(query),
+        ),
       }))
       .filter((category) => category.children && category.children.length > 0);
   }

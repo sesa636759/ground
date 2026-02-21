@@ -7,37 +7,13 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Fine-tune colors, variants, and interactive flags.</p>
-          </div>
-          <app-pill-playground></app-pill-playground>
-          <app-code-block
-            [code]="playgroundCode"
-            title="Basic Usage"
-            language="html"
-          ></app-code-block>
-        </section>
-      </div>
+      <app-pill-playground></app-pill-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
         <!-- Sidebar Navigation -->
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
-        </div>
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -55,11 +31,12 @@
               <ui-pill label="Warning" color="warning" variant="bordered"></ui-pill>
               <ui-pill label="Gradient" variant="gradient" gradient="purple-blue"></ui-pill>
             </div>
-            <app-code-block
-              [code]="stylingCode"
-              title="Style Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="stylingCode"
+              [label]="'Style Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
 
           <!-- Special Features -->
@@ -80,35 +57,44 @@
               <ui-pill label="Horizontal" orientation="horizontal" icon="⭐"></ui-pill>
               <ui-pill label="Vertical" orientation="vertical" icon="⚓"></ui-pill>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Feature Examples"
-              language="html"
-            ></app-code-block>
+            <ui-code-preview
+              [htmlCode]="featuresCode"
+              [label]="'Feature Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
           </section>
         </div>
       </div>
     </div>
 
     <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <div class="section-header">
-            <h2>📖 Documentation</h2>
-            <p>Links, API references, and detailed usage notes</p>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
           </div>
-          <div class="demo-card" style="padding: 24px">
-            <p>
-              The documentation for this component is currently being compiled. Our technical
-              writers are working to provide comprehensive API references, accessibility guidelines,
-              and best practices.
-            </p>
-            <p>
-              In the meantime, please explore the <strong>Playground</strong> for interactive
-              testing and the <strong>Examples</strong> tab for common implementation patterns.
-            </p>
-          </div>
-        </section>
+        </div>
       </div>
     </div>
   </demo-tabs>

@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -15,7 +14,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div class="control-grid">
           <div class="control-section">
             <h3 class="section-title">
-              <ui-icon icon="cog" library="fontawesome"></ui-icon>
+              <ui-icon name="cog" library="fontawesome"></ui-icon>
               Configuration
             </h3>
             <div class="control-group">
@@ -38,7 +37,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
           <div class="control-section">
             <h3 class="section-title">
-              <ui-icon icon="palette" library="fontawesome"></ui-icon>
+              <ui-icon name="palette" library="fontawesome"></ui-icon>
               Visuals
             </h3>
             <div class="control-group">
@@ -61,11 +60,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         </div>
 
         <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            language="html"
-            title="Generated Code"
-          ></app-code-block>
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">
@@ -81,7 +81,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       <div class="playground-preview">
         <div class="timer-preview-card">
           <ui-timer
-            #timer
+            #timerEl
             [duration]="pgConfig.duration"
             [mode]="pgConfig.mode"
             [format]="pgConfig.format"
@@ -92,19 +92,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <ui-button
               class="action-btn"
               variant="primary"
-              (click)="timer.start()"
+              (click)="timerStart(timerEl)"
               label="Start"
             ></ui-button>
             <ui-button
               class="action-btn"
               variant="secondary"
-              (click)="timer.pause()"
+              (click)="timerPause(timerEl)"
               label="Pause"
             ></ui-button>
             <ui-button
               class="action-btn"
               variant="ghost"
-              (click)="timer.reset()"
+              (click)="timerReset(timerEl)"
               label="Reset Timer"
             ></ui-button>
           </div>
@@ -137,6 +137,18 @@ export class TimerPlaygroundComponent {
 
   constructor() {
     this.updateConfig();
+  }
+
+  timerStart(el: HTMLElement): void {
+    (el as any).start?.();
+  }
+
+  timerPause(el: HTMLElement): void {
+    (el as any).pause?.();
+  }
+
+  timerReset(el: HTMLElement): void {
+    (el as any).reset?.();
   }
 
   updateConfig() {

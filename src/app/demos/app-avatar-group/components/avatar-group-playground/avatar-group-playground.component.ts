@@ -1,14 +1,13 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -26,12 +25,12 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             </div>
             <div class="control-group">
               <label>Max Display</label>
-              <app-input
+              <input
                 type="number"
-                [(ngModel)]="pgConfig.max"
-                (change)="updateConfig()"
                 min="1"
                 max="10"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
               />
             </div>
           </div>
@@ -50,11 +49,12 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
         </div>
 
         <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            title="Generated Code"
-            language="html"
-          ></app-code-block>
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">

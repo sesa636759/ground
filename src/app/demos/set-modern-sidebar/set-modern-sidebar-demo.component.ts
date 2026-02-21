@@ -1,32 +1,29 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { signal } from '@angular/core';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
-
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './set-modern-sidebar-demo.component.html',
-  styleUrl: './set-modern-sidebar-demo.component.scss',
   imports: [
     CommonModule,
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
+    DemoSidebarComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './set-modern-sidebar-demo.component.html',
+  styleUrl: './set-modern-sidebar-demo.component.scss',
 })
-export class SetModernSidebarDemoComponent {
-  exampleVariants = [
+export class SetModernSidebarDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
     { id: 'basic-default', title: 'Basic Default', icon: '📋' },
     { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
     { id: 'collapsed-compact', title: 'Collapsed/Compact', icon: '◀️' },
@@ -59,8 +56,12 @@ export class SetModernSidebarDemoComponent {
     { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
   ];
 
+  get exampleVariants() {
+    return this.variants;
+  }
+
   anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
+    this.variants.map((v) => ({
       id: v.id,
       label: v.title,
       target: v.id,
@@ -69,13 +70,6 @@ export class SetModernSidebarDemoComponent {
   );
 
   ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
   basicDefaultCode = signal(`<app-modern-sidebar
   brand-name="My App"

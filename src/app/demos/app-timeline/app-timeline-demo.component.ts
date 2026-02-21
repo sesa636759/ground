@@ -1,9 +1,9 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
@@ -13,9 +13,9 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     TimelinePlaygroundComponent,
     DemoTabsComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-timeline-demo.component.html',

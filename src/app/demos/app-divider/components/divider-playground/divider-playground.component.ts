@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-divider-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -18,20 +23,20 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Content</h3>
             <div class="control-group">
               <label>Text</label>
-              <app-input type="text" [(ngModel)]="pgConfig.text" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.text" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.icon"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="e.g. ⭐"
               />
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 
@@ -94,18 +99,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -126,6 +121,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.loading]="pgConfig.loading ? '' : null"
         ></ui-divider>
         <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

@@ -7,30 +7,18 @@
   </app-demo-header>
 
   <demo-tabs>
-    <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".pane-examples"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
       <!-- Main Content Area -->
-      <div class="examples-content pane-examples">
+      <div class="examples-content" id="examples-scroll-area">
         <!-- Basic -->
         <app-example-section
           id="basic"
           title="Basic"
           description="Simple expandable content panels"
           [code]="basicAccordionCode"
-          style="margin-top: 0"
         >
           <ui-accordion [items]="basicAccordionItems"></ui-accordion>
         </app-example-section>
@@ -221,16 +209,41 @@
           <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
         </app-example-section>
       </div>
+      <!-- /examples-content -->
     </div>
-
-    <!-- Playground Slot -->
+    <!-- /examples-split-layout -->
     <div slot="playground">
       <app-accordion-playground></app-accordion-playground>
     </div>
 
-    <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="accordion"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

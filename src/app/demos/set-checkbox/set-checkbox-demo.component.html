@@ -1,206 +1,248 @@
 <div class="demo-container">
-  <h1>☑️ Checkbox Demo</h1>
-  <p class="intro-text">
-    Versatile checkbox component with multiple variants, states, and form integration.
-  </p>
+  <app-demo-header
+    icon="✅"
+    title="Checkbox Component"
+    description="Versatile checkbox component with support for multiple visual variants, states, groups, and seamless form integration."
+  >
+  </app-demo-header>
   <demo-tabs>
     <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Color Variants -->
-      <app-example-section
-        id="color-variants"
-        title="Color Variants"
-        description="A wide range of built-in colors to match your brand"
-        [code]="colorVariantsCode"
-      >
-        <div class="demo-flex-wrap">
-          <app-checkbox label="Primary" color="primary" checked></app-checkbox>
-          <app-checkbox label="Secondary" color="secondary" checked></app-checkbox>
-          <app-checkbox label="Success" color="success" checked></app-checkbox>
-          <app-checkbox label="Danger" color="danger" checked></app-checkbox>
-          <app-checkbox label="Warning" color="warning" checked></app-checkbox>
-          <app-checkbox label="Info" color="info" checked></app-checkbox>
-          <app-checkbox label="Indigo" color="indigo" checked></app-checkbox>
-          <app-checkbox label="Purple" color="purple" checked></app-checkbox>
-          <app-checkbox label="Pink" color="pink" checked></app-checkbox>
-        </div>
-      </app-example-section>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
-      <!-- Premium Variants -->
-      <app-example-section
-        id="premium-variants"
-        title="Premium Variants"
-        description="Different visual styles including button, chip, and soft variants"
-        [code]="premiumVariantsCode"
-      >
-        <div class="demo-flex-wrap">
-          <app-checkbox
-            label="Button Variant"
-            variant="button"
-            color="primary"
-            checked
-          ></app-checkbox>
-          <app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
-          <app-checkbox label="Soft Variant" variant="soft" color="success" checked></app-checkbox>
-        </div>
-      </app-example-section>
-
-      <!-- Skeleton -->
-      <app-example-section
-        id="skeleton"
-        title="Skeleton State"
-        description="Loading state for better user experience"
-        [code]="skeletonCode"
-      >
-        <div class="demo-flex-wrap">
-          <app-checkbox skeleton size="small"></app-checkbox>
-          <app-checkbox skeleton size="medium"></app-checkbox>
-          <app-checkbox skeleton size="large"></app-checkbox>
-        </div>
-      </app-example-section>
-
-      <!-- Sizes & Variants -->
-      <app-example-section
-        id="sizes-variants"
-        title="Sizes & Variants"
-        description="Multiple sizes and shape variations"
-        [code]="sizesVariantsCode"
-      >
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Sizes</h3>
-            <div class="demo-flex-wrap">
-              <app-checkbox label="Small" size="small" checked></app-checkbox>
-              <app-checkbox label="Medium" size="medium" checked></app-checkbox>
-              <app-checkbox label="Large" size="large" checked></app-checkbox>
-            </div>
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Color Variants -->
+        <app-example-section
+          id="color-variants"
+          title="Color Variants"
+          description="A wide range of built-in colors to match your application's brand"
+          [code]="colorVariantsCode"
+        >
+          <div class="demo-flex-wrap">
+            <app-checkbox label="Primary" color="primary" checked></app-checkbox>
+            <app-checkbox label="Secondary" color="secondary" checked></app-checkbox>
+            <app-checkbox label="Success" color="success" checked></app-checkbox>
+            <app-checkbox label="Danger" color="danger" checked></app-checkbox>
+            <app-checkbox label="Warning" color="warning" checked></app-checkbox>
+            <app-checkbox label="Info" color="info" checked></app-checkbox>
+            <app-checkbox label="Indigo" color="indigo" checked></app-checkbox>
+            <app-checkbox label="Purple" color="purple" checked></app-checkbox>
+            <app-checkbox label="Pink" color="pink" checked></app-checkbox>
           </div>
-          <div class="demo-card">
-            <h3>Shapes</h3>
-            <div class="demo-flex-wrap">
-              <app-checkbox label="Rounded" variant="rounded" checked></app-checkbox>
-              <app-checkbox label="Square" variant="square" checked></app-checkbox>
-              <app-checkbox label="Pill" variant="pill" checked></app-checkbox>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
+        </app-example-section>
 
-      <!-- States -->
-      <app-example-section
-        id="states"
-        title="States"
-        description="Interactive and informative states"
-        [code]="statesCode"
-      >
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Basic States</h3>
-            <div class="demo-flex-wrap">
-              <app-checkbox label="Checked" checked></app-checkbox>
-              <app-checkbox label="Unchecked"></app-checkbox>
-              <app-checkbox label="Indeterminate" indeterminate></app-checkbox>
-              <app-checkbox label="Disabled" disabled></app-checkbox>
-              <app-checkbox label="Readonly" readonly checked></app-checkbox>
-            </div>
-          </div>
-          <div class="demo-card">
-            <h3>Validation & Help</h3>
-            <div class="demo-flex-wrap column">
-              <app-checkbox
-                label="With Helper"
-                helper-text="This is a helper message"
-              ></app-checkbox>
-              <app-checkbox
-                label="Error State"
-                invalid
-                error-message="Please accept terms"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Groups -->
-      <app-example-section
-        id="groups"
-        title="Checkbox Groups"
-        description="Implement complex selection logic with indeterminate master checkbox"
-        [code]="groupExampleCode"
-      >
-        <div class="selection-box">
-          <app-checkbox
-            label="Select All Categories"
-            [checked]="masterChecked"
-            [indeterminate]="masterIndeterminate"
-            (checkboxChange)="onMasterChange($event)"
-          >
-          </app-checkbox>
-          <div class="nested-items">
+        <!-- Premium Variants -->
+        <app-example-section
+          id="premium-variants"
+          title="Premium Variants"
+          description="Visual styles including button, chip, and soft variants"
+          [code]="premiumVariantsCode"
+        >
+          <div class="demo-flex-wrap">
             <app-checkbox
-              *ngFor="let item of groupItems"
-              [label]="item.label"
-              [(ngModel)]="item.checked"
-              (change)="onItemChange()"
-            >
-            </app-checkbox>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Form -->
-      <app-example-section
-        id="form"
-        title="Form Example"
-        description="Real-world form integration with validation"
-        [code]="formExampleCode"
-        [fullWidth]="true"
-      >
-        <div class="premium-form">
-          <div class="form-grid">
+              label="Button Variant"
+              variant="button"
+              color="primary"
+              checked
+            ></app-checkbox>
+            <app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
             <app-checkbox
-              [(ngModel)]="formTerms"
-              label="I accept the Terms and Conditions"
-              required
-              [invalid]="termsInvalid"
-              error-message="Required field"
-            >
-            </app-checkbox>
-            <app-checkbox
-              [(ngModel)]="formPrivacy"
-              label="I agree to the Privacy Policy"
-              required
-              [invalid]="privacyInvalid"
-              error-message="Required field"
-            >
-            </app-checkbox>
-            <app-checkbox
-              [(ngModel)]="formNewsletter"
-              label="Subscribe to monthly newsletter"
+              label="Soft Variant"
+              variant="soft"
               color="success"
+              checked
             ></app-checkbox>
+          </div>
+        </app-example-section>
+
+        <!-- Skeleton State -->
+        <app-example-section
+          id="skeleton"
+          title="Skeleton State"
+          description="Loading states for better perceived performance"
+          [code]="skeletonCode"
+        >
+          <div class="demo-flex-wrap">
+            <app-checkbox skeleton size="small"></app-checkbox>
+            <app-checkbox skeleton size="medium"></app-checkbox>
+            <app-checkbox skeleton size="large"></app-checkbox>
+          </div>
+        </app-example-section>
+
+        <!-- Sizes & Variants -->
+        <app-example-section
+          id="sizes-variants"
+          title="Sizes & Shapes"
+          description="Multiple sizes and shape variations including rounded and pill"
+          [code]="sizesVariantsCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Sizes</h4>
+              <div class="demo-flex-wrap">
+                <app-checkbox label="Small" size="small" checked></app-checkbox>
+                <app-checkbox label="Medium" size="medium" checked></app-checkbox>
+                <app-checkbox label="Large" size="large" checked></app-checkbox>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Shapes</h4>
+              <div class="demo-flex-wrap">
+                <app-checkbox label="Rounded" variant="rounded" checked></app-checkbox>
+                <app-checkbox label="Square" variant="square" checked></app-checkbox>
+                <app-checkbox label="Pill" variant="pill" checked></app-checkbox>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- States -->
+        <app-example-section
+          id="states"
+          title="Component States"
+          description="Interactive and informative states like indeterminate and readonly"
+          [code]="statesCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Basic States</h4>
+              <div class="demo-flex-wrap">
+                <app-checkbox label="Checked" checked></app-checkbox>
+                <app-checkbox label="Indeterminate" indeterminate></app-checkbox>
+                <app-checkbox label="Disabled" disabled></app-checkbox>
+                <app-checkbox label="Readonly" readonly checked></app-checkbox>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Validation</h4>
+              <div class="demo-flex-wrap column">
+                <app-checkbox
+                  label="With Helper"
+                  helper-text="This is a helper message"
+                ></app-checkbox>
+                <app-checkbox
+                  label="Error State"
+                  invalid
+                  error-message="Please accept terms"
+                ></app-checkbox>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Checkbox Groups -->
+        <app-example-section
+          id="groups"
+          title="Checkbox Groups"
+          description="Selection logic with a master checkbox and indeterminate state"
+          [code]="groupExampleCode"
+        >
+          <div class="demo-card">
             <app-checkbox
-              [(ngModel)]="formMarketing"
-              label="Receive promotional offers"
-              color="indigo"
-            ></app-checkbox>
+              label="Select All Categories"
+              [checked]="masterChecked"
+              [indeterminate]="masterIndeterminate"
+              (checkboxChange)="onMasterChange($event)"
+            >
+            </app-checkbox>
+            <div
+              style="
+                margin-left: 24px;
+                margin-top: 12px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <app-checkbox
+                *ngFor="let item of groupItems"
+                [label]="item.label"
+                [(ngModel)]="item.checked"
+                (change)="onItemChange()"
+              >
+              </app-checkbox>
+            </div>
           </div>
-          <div class="form-actions">
-            <ui-button (click)="onSubmit()" color="primary">Create Account</ui-button>
-            <p class="form-status" [style.color]="formMessageColor()">{{ formMessage() }}</p>
+        </app-example-section>
+
+        <!-- Form Example -->
+        <app-example-section
+          id="form"
+          title="Form Integration"
+          description="Real-world account creation form with validation logic"
+          [code]="formExampleCode"
+        >
+          <div class="demo-card">
+            <div style="display: grid; gap: 16px">
+              <app-checkbox
+                [(ngModel)]="formTerms"
+                label="I accept the Terms and Conditions"
+                required
+                [invalid]="termsInvalid"
+                error-message="Required field"
+              >
+              </app-checkbox>
+              <app-checkbox
+                [(ngModel)]="formPrivacy"
+                label="I agree to the Privacy Policy"
+                required
+                [invalid]="privacyInvalid"
+                error-message="Required field"
+              >
+              </app-checkbox>
+              <app-checkbox
+                [(ngModel)]="formNewsletter"
+                label="Subscribe to monthly newsletter"
+                color="success"
+              ></app-checkbox>
+            </div>
+            <div style="margin-top: 24px">
+              <ui-button (click)="onSubmit()" color="primary">Create Account</ui-button>
+              <p style="margin-top: 12px; font-weight: 600" [style.color]="formMessageColor">
+                {{ formMessage }}
+              </p>
+            </div>
           </div>
-        </div>
-      </app-example-section>
+        </app-example-section>
+      </div>
     </div>
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <app-checkbox-playground></app-checkbox-playground>
+      <app-checkbox-playground />
     </div>
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="checkbox"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

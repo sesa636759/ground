@@ -1,22 +1,15 @@
+@use '../../../styles/demo-base.scss';
+
 .demo-card {
   &.h-gradient {
     background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), transparent);
-  }
-
-  h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
   }
 }
 
 .preview-box {
   height: 120px;
   position: relative;
-  
+
   &.corner-preview {
     justify-content: flex-end;
     align-items: flex-end;
@@ -31,7 +24,6 @@
     color: var(--text-tertiary);
   }
 }
-
 
 .scroll-test-area {
   padding: 60px 0;

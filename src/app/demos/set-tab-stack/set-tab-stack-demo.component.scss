@@ -1,12 +1,4 @@
-.demo-grid {
-  &.col-2 {
-      grid-template-columns: repeat(2, 1fr);
-  }
-  
-  &.col-3 {
-      grid-template-columns: repeat(3, 1fr);
-  }
-}
+@use '../../../styles/demo-base.scss';
 
 .preview-box {
   min-height: 200px;
@@ -18,4 +10,3 @@
     overflow: hidden;
   }
 }
-

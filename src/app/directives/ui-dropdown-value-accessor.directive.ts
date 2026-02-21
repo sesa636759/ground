@@ -21,10 +21,11 @@ export class UiDropdownValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('valueChange', ['$event.detail'])
-  _handleInput(detail: any): void {
+  @HostListener('valueChange', ['$event'])
+  _handleInput(event: Event): void {
     // DropdownChangeEvent usually contains value
-    this.onChange(detail.value);
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.value);
   }
 
   @HostListener('dropdownClose')

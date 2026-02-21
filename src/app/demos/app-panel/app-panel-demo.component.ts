@@ -1,11 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { PanelPlaygroundComponent } from './components/panel-playground/panel-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-app-panel-demo',
@@ -13,65 +14,77 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     PanelPlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-panel-demo.component.html',
   styleUrl: './app-panel-demo.component.scss',
 })
-export class AppPanelDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'visual-styles', name: 'Styles', icon: '🎨', color: '#3b82f6' },
-    { id: 'themes', name: 'Themes', icon: '🌈', color: '#10b981' },
-    { id: 'interactivity', name: 'Interactive', icon: '🕹️', color: '#f59e0b' },
-    { id: 'glassmorphism', name: 'Glass', icon: '🔮', color: '#ec4899' },
+export class AppPanelDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
+    { id: 'themes', title: 'Themes', icon: '🌈' },
+    { id: 'interactivity', title: 'Interactive', icon: '🕹️' },
+    { id: 'glassmorphism', title: 'Glassmorphism', icon: '🔮' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
-  playgroundCode = `<ui-panel panel-title="Analysis Feed" panel-subtitle="Real-time data stream" badge="Live">
-  <div slot="content">Your content here...</div>
+  playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
+  <div slot="content">Default card-like panel with shadow.</div>
 </ui-panel>`;
 
-  stylesCode = `<!-- Elevated (Default) -->
-<ui-panel variant="elevated" panel-title="Elevated Panel"></ui-panel>
+  stylesCode = `<!-- Elevated (default) -->
+<ui-panel variant="elevated" panel-title="Elevated Panel">
+  <div slot="content">Default card-like panel with shadow.</div>
+</ui-panel>
 
 <!-- Outlined -->
-<ui-panel variant="outlined" panel-title="Outlined Panel"></ui-panel>
+<ui-panel variant="outlined" panel-title="Outlined Panel">
+  <div slot="content">Clean border without shadow.</div>
+</ui-panel>
 
 <!-- Filled -->
-<ui-panel variant="filled" panel-title="Filled Panel"></ui-panel>
+<ui-panel variant="filled" panel-title="Filled Panel">
+  <div slot="content">Subtle background fill.</div>
+</ui-panel>
 
 <!-- Flat -->
-<ui-panel variant="flat" panel-title="Flat Panel"></ui-panel>`;
-
-  themesCode = `<ui-panel theme="primary" panel-title="Primary Theme"></ui-panel>
-<ui-panel theme="success" panel-title="Success Theme"></ui-panel>
-<ui-panel theme="danger" panel-title="Danger Theme"></ui-panel>`;
-
-  interactiveCode = `<ui-panel 
-  toggleable 
-  minimizable 
-  maximizable 
-  resizable 
-  is-draggable
-  panel-title="Full Interactive Panel">
+<ui-panel variant="flat" panel-title="Flat Panel">
+  <div slot="content">No border or shadow.</div>
 </ui-panel>`;
 
-  glassCode = `<!-- Transparent container with glassmorphism -->
-<div style="background: url('...')">
-  <ui-panel glass panel-title="Glass Panel"></ui-panel>
-</div>`;
+  themesCode = `<ui-panel theme="primary" panel-title="Primary Theme"><div slot="content">Blue accent.</div></ui-panel>
+<ui-panel theme="success" panel-title="Success Theme"><div slot="content">Green accent.</div></ui-panel>
+<ui-panel theme="warning" panel-title="Warning Theme"><div slot="content">Orange accent.</div></ui-panel>
+<ui-panel theme="danger"  panel-title="Danger Theme"><div slot="content">Red accent.</div></ui-panel>`;
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  interactiveCode = `<ui-panel
+  toggleable
+  minimizable
+  maximizable
+  resizable
+  is-draggable
+  panel-title="Full Interactive Panel"
+>
+  <div slot="content">Drag, resize, minimize, maximize me!</div>
+</ui-panel>`;
+
+  glassCode = `<!-- Wrap in a gradient/image background -->
+<div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 32px; border-radius: 12px">
+  <ui-panel glass panel-title="Glass Panel">
+    <div slot="content">Translucent blur effect.</div>
+  </ui-panel>
+</div>`;
 }

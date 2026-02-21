@@ -19,5 +19,24 @@
         </div>
       </app-tab>
     </app-tab-stack>
+
+    <!-- Tab panels managed by Angular, not by app-tab's slot system -->
+    <!-- <div class="tab-panels-host">
+      <div
+        class="viewport-pane pane-examples animate-in"
+        [class.pane-hidden]="active() !== 'examples'"
+      >
+        <ng-content select="[slot=examples]"></ng-content>
+      </div>
+      <div
+        class="viewport-pane pane-playground animate-in"
+        [class.pane-hidden]="active() !== 'playground'"
+      >
+        <ng-content select="[slot=playground]"></ng-content>
+      </div>
+      <div class="viewport-pane pane-docs animate-in" [class.pane-hidden]="active() !== 'docs'">
+        <ng-content select="[slot=docs]"></ng-content>
+      </div>
+    </div> -->
   </div>
 </div>

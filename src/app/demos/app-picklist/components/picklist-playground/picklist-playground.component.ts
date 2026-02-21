@@ -1,13 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-picklist-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -17,11 +20,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Source Header</label>
-              <app-input type="text" [(ngModel)]="pgConfig.sourceHeader" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.sourceHeader" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Target Header</label>
-              <app-input type="text" [(ngModel)]="pgConfig.targetHeader" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.targetHeader" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 
@@ -45,11 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Filter Placeholder</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.filterPlaceholder"
-                (change)="updateConfig()"
-              />
+              <input type="text" [(ngModel)]="pgConfig.filterPlaceholder" (ngModelChange)="updateConfig()" />
             </div>
           </div>
         </div>
@@ -60,7 +59,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 

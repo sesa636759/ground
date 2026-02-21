@@ -1,222 +1,242 @@
 <div class="demo-container">
-  <h1>↔️ Resizable Panel Component</h1>
-  <p class="intro-text">
-    Flexible layout system with draggable dividers for horizontal and vertical resizing. Perfect for dashboards, IDEs, and complex UIs.
-  </p>
+  <app-demo-header
+    icon="↔️"
+    title="Resizable Panel"
+    description="Flexible layout system with draggable dividers for horizontal and vertical resizing. Perfect for dashboards, IDEs, and complex UIs."
+  ></app-demo-header>
   <demo-tabs>
     <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Basic Horizontal Split -->
-      <section class="demo-section" id="horizontal">
-        <div class="section-header">
-          <h2>📋 Basic Horizontal Split</h2>
-          <p>Two panels with horizontal resizing</p>
+    <div slot="examples" class="examples-split-layout">
+      <aside class="examples-sidebar">
+        <div class="sidebar-title">Sections</div>
+        <div class="sidebar-nav">
+          <ui-anchor
+            [links]="anchorLinks"
+            scroll-container=".pane-examples"
+            type="line"
+            show-progress
+          ></ui-anchor>
         </div>
-        <div class="demo-card">
-          <h3>Left Panel - Right Panel Layout</h3>
-          <div class="panel-box">
-            <app-resizable-panel [panels]="basicHPanels">
-              <div slot="p1" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Left Panel</strong>
-                <p>Drag the handle to resize this panel horizontally.</p>
-                <p>✓ Horizontal resizing<br>✓ Touch support<br>✓ Min/max constraints<br>✓ Smooth transitions</p>
-              </div>
-              <div slot="p2" class="p-content" style="background: var(--bg-tertiary);">
-                <strong>Right Panel</strong>
-                <p>This panel automatically adjusts as you resize the left panel.</p>
-              </div>
-            </app-resizable-panel>
+      </aside>
+      <div class="examples-content pane-examples">
+        <app-example-section
+          id="horizontal"
+          title="Basic Horizontal Split"
+          description="Two panels with horizontal resizing"
+          [code]="horizontalCode()"
+        >
+          <div class="demo-card">
+            <h3>Left Panel - Right Panel Layout</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicHPanels">
+                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Left Panel</strong>
+                  <p>Drag the handle to resize this panel horizontally.</p>
+                  <p>
+                    ✓ Horizontal resizing<br />✓ Touch support<br />✓ Min/max constraints<br />✓
+                    Smooth transitions
+                  </p>
+                </div>
+                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                  <strong>Right Panel</strong>
+                  <p>This panel automatically adjusts as you resize the left panel.</p>
+                </div>
+              </app-resizable-panel>
+            </div>
           </div>
-          <app-code-block [code]="horizontalCode()" language="html" title="Horizontal Split Code"></app-code-block>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Basic Vertical Split -->
-      <section class="demo-section" id="vertical">
-        <div class="section-header">
-          <h2>↕️ Basic Vertical Split</h2>
-          <p>Two panels with vertical resizing</p>
-        </div>
-        <div class="demo-card">
-          <h3>Top Panel - Bottom Panel Layout</h3>
-          <div class="panel-box">
-            <app-resizable-panel [panels]="basicVPanels" direction="vertical">
-              <div slot="t1" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Top Panel</strong>
-                <p>Drag the handle below to resize this panel vertically.</p>
-              </div>
-              <div slot="t2" class="p-content" style="background: var(--bg-tertiary);">
-                <strong>Bottom Panel</strong>
-                <p>Vertical resizing works just like horizontal, but in a different direction.</p>
-              </div>
-            </app-resizable-panel>
+        <app-example-section
+          id="vertical"
+          title="Basic Vertical Split"
+          description="Two panels with vertical resizing"
+          [code]="verticalCode()"
+        >
+          <div class="demo-card">
+            <h3>Top Panel - Bottom Panel Layout</h3>
+            <div class="panel-box">
+              <app-resizable-panel [panels]="basicVPanels" direction="vertical">
+                <div slot="t1" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Top Panel</strong>
+                  <p>Drag the handle below to resize this panel vertically.</p>
+                </div>
+                <div slot="t2" class="p-content" style="background: var(--bg-tertiary)">
+                  <strong>Bottom Panel</strong>
+                  <p>Vertical resizing works just like horizontal, but in a different direction.</p>
+                </div>
+              </app-resizable-panel>
+            </div>
           </div>
-          <app-code-block [code]="verticalCode()" language="html" title="Vertical Split Code"></app-code-block>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Triple Split Panel -->
-      <section class="demo-section" id="triple">
-        <div class="section-header">
-          <h2>🥈 Triple Split Panel</h2>
-          <p>Three panels with independent resizing</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Three Independent Panels</h3>
-          <div class="panel-box large-box">
-            <app-resizable-panel [panels]="triplePanels" direction="horizontal">
-              <div slot="p1" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Panel 1</strong>
-                <p>First panel with 30% initial width</p>
-              </div>
-              <div slot="p2" class="p-content" style="background: var(--bg-tertiary);">
-                <strong>Panel 2</strong>
-                <p>Middle panel with 40% initial width</p>
-              </div>
-              <div slot="p3" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Panel 3</strong>
-                <p>Last panel with 30% initial width</p>
-              </div>
-            </app-resizable-panel>
+        <app-example-section
+          id="triple"
+          title="Triple Split Panel"
+          description="Three panels with independent resizing"
+          [code]="tripleCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Three Independent Panels</h3>
+            <div class="panel-box large-box">
+              <app-resizable-panel [panels]="triplePanels" direction="horizontal">
+                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Panel 1</strong>
+                  <p>First panel with 30% initial width</p>
+                </div>
+                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                  <strong>Panel 2</strong>
+                  <p>Middle panel with 40% initial width</p>
+                </div>
+                <div slot="p3" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Panel 3</strong>
+                  <p>Last panel with 30% initial width</p>
+                </div>
+              </app-resizable-panel>
+            </div>
           </div>
-          <app-code-block [code]="tripleCode()" language="html" title="Triple Split Code"></app-code-block>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Nested Resizable Panels -->
-      <section class="demo-section" id="nested">
-        <div class="section-header">
-          <h2>🔲 Nested Resizable Panels</h2>
-          <p>Combine horizontal and vertical panels for complex IDE-like layouts</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>IDE Layout (Sidebar + Editor + Terminal)</h3>
-          <div class="panel-box large-box">
-            <app-resizable-panel [panels]="nestedOuter" direction="horizontal">
-              <div slot="sidebar" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Sidebar</strong>
-                <p>✓ Navigation<br>✓ Tree View<br>✓ File Explorer<br>✓ Settings</p>
-              </div>
-              <div slot="main" style="height: 100%; overflow: hidden;">
-                <app-resizable-panel [panels]="nestedInner" direction="vertical">
-                  <div slot="editor" class="p-content" style="background: var(--bg-tertiary);">
-                    <strong>Main Code Editor</strong>
-                    <p>function example() <span>{{ '{' }}</span><br>&nbsp;&nbsp;console.log('Hello from editor!');<br><span>{{ '}' }}</span></p>
+        <app-example-section
+          id="nested"
+          title="Nested Resizable Panels"
+          description="Combine horizontal and vertical panels for complex IDE-like layouts"
+          [code]="nestedCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>IDE Layout (Sidebar + Editor + Terminal)</h3>
+            <div class="panel-box large-box">
+              <app-resizable-panel [panels]="nestedOuter" direction="horizontal">
+                <div slot="sidebar" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Sidebar</strong>
+                  <p>✓ Navigation<br />✓ Tree View<br />✓ File Explorer<br />✓ Settings</p>
+                </div>
+                <div slot="main" style="height: 100%; overflow: hidden">
+                  <app-resizable-panel [panels]="nestedInner" direction="vertical">
+                    <div slot="editor" class="p-content" style="background: var(--bg-tertiary)">
+                      <strong>Main Code Editor</strong>
+                      <p>
+                        function example() <span>{{ '{' }}</span
+                        ><br />&nbsp;&nbsp;console.log('Hello from editor!');<br /><span>{{
+                          '}'
+                        }}</span>
+                      </p>
+                    </div>
+                    <div slot="terminal" class="p-content" style="background: #1a1a1a; color: #0f0">
+                      <strong>Build Output / Terminal</strong>
+                      <p>$ npm run build<br />✓ Build complete in 2.3s</p>
+                    </div>
+                  </app-resizable-panel>
+                </div>
+              </app-resizable-panel>
+            </div>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="collapsible"
+          title="Collapsible Panels"
+          description="Panels can be collapsed and expanded for better space management"
+          [code]="collapsibleCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Collapsible Left Panel</h3>
+            <div class="panel-box large-box">
+              <app-resizable-panel [panels]="collapsiblePanels" direction="horizontal">
+                <div slot="left" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Collapsible Left Panel</strong>
+                  <p>Click the collapse button on the resize handle to hide/show this panel.</p>
+                  <p>
+                    <em
+                      >Tip: Collapsible panels are perfect for sidebars and tool panels that users
+                      may want to temporarily hide.</em
+                    >
+                  </p>
+                </div>
+                <div slot="main" class="p-content" style="background: var(--bg-tertiary)">
+                  <strong>Main Content Area</strong>
+                  <p>This area expands when the left panel is collapsed.</p>
+                </div>
+              </app-resizable-panel>
+            </div>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="themes"
+          title="Dark Theme"
+          description="Built-in dark theme support for modern UIs"
+          [code]="darkThemeCode()"
+        >
+          <div class="demo-grid">
+            <div class="demo-card">
+              <h3>Dark Theme</h3>
+              <div class="panel-box">
+                <app-resizable-panel [panels]="basicHPanels" theme="dark">
+                  <div slot="p1" class="p-content" style="background: #2a2a2a; color: #fff">
+                    <strong>Dark Sidebar</strong>
+                    <p>Perfect for applications that support dark mode.</p>
                   </div>
-                  <div slot="terminal" class="p-content" style="background: #1a1a1a; color: #0f0;">
-                    <strong>Build Output / Terminal</strong>
-                    <p>$ npm run build<br>✓ Build complete in 2.3s</p>
+                  <div slot="p2" class="p-content" style="background: #333; color: #fff">
+                    <strong>Dark Main</strong>
+                    <p>Scrollbars, handles, and content automatically adapt to the theme.</p>
                   </div>
                 </app-resizable-panel>
               </div>
-            </app-resizable-panel>
-          </div>
-          <app-code-block [code]="nestedCode()" language="html" title="Nested Panels Code"></app-code-block>
-        </div>
-      </section>
-
-      <!-- Collapsible Panels -->
-      <section class="demo-section" id="collapsible">
-        <div class="section-header">
-          <h2>📂 Collapsible Panels</h2>
-          <p>Panels can be collapsed and expanded for better space management</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Collapsible Left Panel</h3>
-          <div class="panel-box large-box">
-            <app-resizable-panel [panels]="collapsiblePanels" direction="horizontal">
-              <div slot="left" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Collapsible Left Panel</strong>
-                <p>Click the collapse button on the resize handle to hide/show this panel.</p>
-                <p><em>Tip: Collapsible panels are perfect for sidebars and tool panels that users may want to temporarily hide.</em></p>
+            </div>
+            <div class="demo-card">
+              <h3>Light Theme (Default)</h3>
+              <div class="panel-box">
+                <app-resizable-panel [panels]="basicHPanels" theme="light">
+                  <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                    <strong>Light Sidebar</strong>
+                    <p>Clean and minimal design</p>
+                  </div>
+                  <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                    <strong>Light Main</strong>
+                    <p>Works with any color scheme</p>
+                  </div>
+                </app-resizable-panel>
               </div>
-              <div slot="main" class="p-content" style="background: var(--bg-tertiary);">
-                <strong>Main Content Area</strong>
-                <p>This area expands when the left panel is collapsed.</p>
-              </div>
-            </app-resizable-panel>
+            </div>
           </div>
-          <app-code-block [code]="collapsibleCode()" language="html" title="Collapsible Panels Code"></app-code-block>
-        </div>
-      </section>
+        </app-example-section>
 
-      <!-- Dark Theme -->
-      <section class="demo-section" id="themes">
-        <div class="section-header">
-          <h2>🌙 Dark Theme</h2>
-          <p>Built-in dark theme support for modern UIs</p>
-        </div>
-        <div class="demo-grid">
-          <div class="demo-card">
-            <h3>Dark Theme</h3>
-            <div class="panel-box">
-              <app-resizable-panel [panels]="basicHPanels" theme="dark">
-                <div slot="p1" class="p-content" style="background: #2a2a2a; color: #fff;">
-                  <strong>Dark Sidebar</strong>
-                  <p>Perfect for applications that support dark mode.</p>
+        <app-example-section
+          id="snap"
+          title="Snap to Edge"
+          description="Panels snap closed when dragged near the edge"
+          [code]="snapToEdgeCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Snap to Edge Demo</h3>
+            <div class="panel-box large-box">
+              <app-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
+                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                  <strong>Snap Demo</strong>
+                  <p>Drag the handle close to the left edge and it will snap closed.</p>
+                  <p>
+                    <em
+                      >Threshold: Snap occurs within 50 pixels of the edge. When snapped, the handle
+                      stays visible so you can drag to reopen.</em
+                    >
+                  </p>
                 </div>
-                <div slot="p2" class="p-content" style="background: #333; color: #fff;">
-                  <strong>Dark Main</strong>
-                  <p>Scrollbars, handles, and content automatically adapt to the theme.</p>
+                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                  <strong>Main Panel</strong>
+                  <p>Try dragging the handle to the left or right edge to see the snap effect.</p>
                 </div>
               </app-resizable-panel>
             </div>
           </div>
-          <div class="demo-card">
-            <h3>Light Theme (Default)</h3>
-            <div class="panel-box">
-              <app-resizable-panel [panels]="basicHPanels" theme="light">
-                <div slot="p1" class="p-content" style="background: var(--bg-secondary);">
-                  <strong>Light Sidebar</strong>
-                  <p>Clean and minimal design</p>
-                </div>
-                <div slot="p2" class="p-content" style="background: var(--bg-tertiary);">
-                  <strong>Light Main</strong>
-                  <p>Works with any color scheme</p>
-                </div>
-              </app-resizable-panel>
-            </div>
-          </div>
-        </div>
-        <app-code-block [code]="darkThemeCode()" language="html" title="Dark Theme Code"></app-code-block>
-      </section>
-
-      <!-- Snap to Edge -->
-      <section class="demo-section" id="snap">
-        <div class="section-header">
-          <h2>📌 Snap to Edge</h2>
-          <p>Panels snap closed when dragged near the edge</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Snap to Edge Demo</h3>
-          <div class="panel-box large-box">
-            <app-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
-              <div slot="p1" class="p-content" style="background: var(--bg-secondary);">
-                <strong>Snap Demo</strong>
-                <p>Drag the handle close to the left edge and it will snap closed.</p>
-                <p><em>Threshold: Snap occurs within 50 pixels of the edge. When snapped, the handle stays visible so you can drag to reopen.</em></p>
-              </div>
-              <div slot="p2" class="p-content" style="background: var(--bg-tertiary);">
-                <strong>Main Panel</strong>
-                <p>Try dragging the handle to the left or right edge to see the snap effect.</p>
-              </div>
-            </app-resizable-panel>
-          </div>
-          <app-code-block [code]="snapToEdgeCode()" language="html" title="Snap to Edge Code"></app-code-block>
-        </div>
-      </section>
+        </app-example-section>
+      </div>
+      <!-- /examples-content -->
     </div>
+    <!-- /examples-split-layout -->
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure directions, themes, snap behaviors, and more</p>
-        </div>
-        <app-resizable-panel-playground></app-resizable-panel-playground>
-        <app-code-block [code]="playgroundCode()" language="html" title="Resizable Panel Usage"></app-code-block>
-      </section>
+      <app-resizable-panel-playground></app-resizable-panel-playground>
     </div>
 
     <!-- Documentation Slot -->

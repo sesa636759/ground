@@ -8,68 +8,13 @@
   width: 100%;
 }
 
-// Fix dropdown positioning inside tab panels
 :host {
   display: block;
 }
 
-.playground-layout {
-  transform: none;
+// Tree-specific positioning overrides if needed
+.playground-preview {
   position: relative;
-}
-
-.playground-controls {
-  position: relative;
-  z-index: 100;
-}
-
-.control-grid {
-  position: static;
-}
-
-// Additional tree-specific styles  
-.control-group {
-  position: static;
-  
-  label {
-    display: block;
-    margin-bottom: var(--space-xs);
-  }
-  
-  ui-dropdown {
-    display: block;
-    width: 100%;
-  }
-}
-
-.checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--border-color);
-
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    font-size: 0.875rem;
-    cursor: pointer;
-    color: var(--text-primary);
-  }
-}
-
-.action-buttons {
-  margin-top: var(--space-lg);
-  display: flex;
-  gap: var(--space-md);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--border-color);
-
-  .btn-action {
-    flex: 1;
-  }
 }
 
 .event-log-box {
@@ -86,6 +31,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 
   strong {
     font-size: 0.75rem;
@@ -113,15 +59,7 @@
 }
 
 .preview-stage {
-  padding: var(--space-2xl);
   min-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.playground-preview {
-  position: relative;
 }
 
 .tree-container {
@@ -129,42 +67,14 @@
   max-width: 800px;
 }
 
-.code-block {
-  background: var(--surface-1);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+.action-buttons {
   margin-top: var(--space-lg);
+  display: flex;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-color);
 
-  .code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-md) var(--space-lg);
-    background: var(--surface-2);
-    border-bottom: 1px solid var(--border-color);
-
-    span {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-
-    .copy-btn {
-      font-size: 0.75rem;
-    }
-  }
-
-  pre {
-    margin: 0;
-    padding: var(--space-lg);
-    overflow-x: auto;
-
-    code {
-      font-family: 'Fira Code', 'Courier New', monospace;
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: var(--text-primary);
-    }
+  .btn-action {
+    flex: 1;
   }
 }

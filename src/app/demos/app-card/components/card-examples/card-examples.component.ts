@@ -31,6 +31,78 @@ export class CardExamplesComponent {
     })),
   );
 
+  premiumHeroCode = `<div class="card-grid">
+  <!-- Dashboard Card -->
+  <ui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">
+    <div slot="cover" class="premium-cover">
+      <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+        alt="Dashboard"
+      />
+      <div class="cover-overlay">
+        <span class="badge">Live View</span>
+      </div>
+    </div>
+    <div slot="header">
+      <div class="header-with-meta">
+        <span class="meta-tag">Analytics</span>
+        <h3>Performance Overview</h3>
+      </div>
+    </div>
+    <div slot="content">
+      <p class="premium-text">
+        Real-time tracking of your cloud infrastructure performance and resource utilization.
+      </p>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="label">Traffic</span>
+          <span class="value">12.4k</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">Uptime</span>
+          <span class="value">99.9%</span>
+        </div>
+      </div>
+    </div>
+    <div slot="footer" class="footer-actions">
+      <ui-button variant="primary" label="Open Dashboard" size="md"></ui-button>
+      <ui-button
+        size="md"
+        variant="primary"
+        label="Export"
+        icon="download"
+        icon-library="lucide"
+        icon-position="left"
+      ></ui-button>
+    </div>
+  </ui-card>
+
+  <!-- Profile Card -->
+  <ui-card variant="elevated" hoverable width="320px" type="inner">
+    <div slot="header" class="profile-header">
+      <div class="avatar-container">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop"
+          alt="User"
+        />
+        <div class="status-indicator online"></div>
+      </div>
+    </div>
+    <div slot="content" class="text-center">
+      <h3 class="member-name">Marcus Sterling</h3>
+      <p class="member-role">Senior Product Architect</p>
+      <div class="tag-cloud">
+        <span class="mini-tag">Angular</span>
+        <span class="mini-tag">Stencil</span>
+        <span class="mini-tag">UX</span>
+      </div>
+    </div>
+    <div slot="footer">
+      <ui-button label="Connect" width="100%"></ui-button>
+    </div>
+  </ui-card>
+</div>`;
+
   basicCode = `<ui-card variant="elevated">
   <div slot="header">
     <div class="header-content">

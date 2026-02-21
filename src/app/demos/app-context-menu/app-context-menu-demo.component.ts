@@ -1,11 +1,13 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-app-context-menu-demo',
@@ -13,23 +15,23 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     ContextMenuPlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
+    ComponentDocumentationComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-context-menu-demo.component.html',
   styleUrl: './app-context-menu-demo.component.scss',
 })
-export class AppContextMenuDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'targets', name: 'Multiple Targets', icon: '🎯', color: '#3b82f6' },
-  ];
+export class AppContextMenuDemoComponent extends BaseDemoComponent {
+  exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
+  anchorLinks = JSON.stringify([
+    { id: 'targets', label: 'Multiple Targets', target: 'targets', icon: '🎯' },
+  ]);
 
   fileItems = JSON.stringify([
     { label: 'Open', icon: '📂' },
@@ -48,11 +50,4 @@ export class AppContextMenuDemoComponent {
 <!-- Specific Target -->
 <img #img src="..." />
 <ui-context-menu [model]="imgItems" [target]="img"></ui-context-menu>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

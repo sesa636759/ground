@@ -1,13 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-context-menu-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -17,7 +16,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Breakpoint</label>
-              <app-input type="number" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.breakpoint"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -33,18 +36,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Behavior</h3>
             <div class="control-group">
               <label>Base Z-Index</label>
-              <app-input type="number" [(ngModel)]="pgConfig.baseZIndex" (change)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.baseZIndex"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -63,6 +65,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem;"
         >
           Last Action: <strong>{{ lastAction }}</strong>
+        </div>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
       </div>
     </div>

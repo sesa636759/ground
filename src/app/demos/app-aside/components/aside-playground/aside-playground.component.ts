@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-aside-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -26,7 +31,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Size (px/%/rem)</label>
-              <input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Variant</label>
@@ -41,7 +46,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <input
                 type="text"
                 [(ngModel)]="pgConfig.backdropBlur"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="e.g. 8px"
               />
             </div>
@@ -85,18 +90,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -166,6 +161,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             ></ui-button>
           </div>
         </aside-panel>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

@@ -1,4 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
@@ -17,45 +18,64 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-anchor-demo.component.html',
   styleUrl: './set-anchor-demo.component.scss',
 })
-export class SetAnchorDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
+export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
     // Basic Layouts
-    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '◀️' },
-    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: '▶️' },
-    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: '🔼' },
-    { id: 'horizontal-bottom', title: 'Horizontal Navigation (Bottom)', icon: '🔽' },
+    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '◀️', color: '#3b82f6' },
+    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: '▶️', color: '#3b82f6' },
+    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: '🔼', color: '#3b82f6' },
+    {
+      id: 'horizontal-bottom',
+      title: 'Horizontal Navigation (Bottom)',
+      icon: '🔽',
+      color: '#3b82f6',
+    },
     // Features
-    { id: 'with-badges', title: 'Anchor with Badges', icon: '🔔' },
-    { id: 'with-events', title: 'Horizontal with Events', icon: '⚡' },
+    { id: 'with-badges', title: 'Anchor with Badges', icon: '🔔', color: '#f59e0b' },
+    { id: 'with-events', title: 'Horizontal with Events', icon: '⚡', color: '#f59e0b' },
     // Sizes
-    { id: 'size-small', title: 'Small Size', icon: '🔸' },
-    { id: 'size-medium', title: 'Medium Size (Default)', icon: '🔶' },
-    { id: 'size-large', title: 'Large Size', icon: '🟠' },
+    { id: 'size-small', title: 'Small Size', icon: '🔸', color: '#10b981' },
+    { id: 'size-medium', title: 'Medium Size (Default)', icon: '🔶', color: '#10b981' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠', color: '#10b981' },
     // Themes
-    { id: 'theme-light', title: 'Light Theme', icon: '☀️' },
-    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙' },
-    { id: 'theme-custom', title: 'Custom Theme', icon: '🎨' },
+    { id: 'theme-light', title: 'Light Theme', icon: '☀️', color: '#ef4444' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙', color: '#ef4444' },
+    { id: 'theme-custom', title: 'Custom Theme', icon: '🎨', color: '#ef4444' },
     // Number Styles
-    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: '1️⃣' },
-    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: '🔢' },
-    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: '🔤' },
-    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: 'ⅰ' },
+    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: '1️⃣', color: '#8b5cf6' },
+    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: '🔢', color: '#8b5cf6' },
+    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: '🔤', color: '#8b5cf6' },
+    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: 'ⅰ', color: '#8b5cf6' },
     // Alignment
-    { id: 'align-left', title: 'Horizontal Left Aligned', icon: '⬅️' },
-    { id: 'align-center', title: 'Horizontal Center Aligned', icon: '↔️' },
-    { id: 'align-right', title: 'Horizontal Right Aligned', icon: '➡️' },
+    { id: 'align-left', title: 'Horizontal Left Aligned', icon: '⬅️', color: '#ec4899' },
+    { id: 'align-center', title: 'Horizontal Center Aligned', icon: '↔️', color: '#ec4899' },
+    { id: 'align-right', title: 'Horizontal Right Aligned', icon: '➡️', color: '#ec4899' },
     // Advanced
-    { id: 'affix-behavior', title: 'Affix Behavior', icon: '📌' },
-    { id: 'progress-indicator', title: 'Progress Indicator', icon: '📊' },
-    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: '🔗' },
-    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: '⌨️' },
-    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '🌲' },
+    { id: 'affix-behavior', title: 'Affix Behavior', icon: '📌', color: '#06b6d4' },
+    { id: 'progress-indicator', title: 'Progress Indicator', icon: '📊', color: '#06b6d4' },
+    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: '🔗', color: '#06b6d4' },
+    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: '⌨️', color: '#06b6d4' },
+    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '🌲', color: '#06b6d4' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Sample data for anchor items
   verticalLeftItems = JSON.stringify([
@@ -357,4 +377,6 @@ export class SetAnchorDemoComponent extends BaseDemoComponent {
   [show-numbers]="showNumbers"
   [items]="items"
 ></app-anchor>`);
+
+  ngOnInit() {}
 }

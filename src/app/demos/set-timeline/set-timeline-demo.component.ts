@@ -1,10 +1,8 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -15,9 +13,9 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     TimelinePlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',
@@ -29,6 +27,15 @@ export class SetTimelineDemoComponent implements OnInit {
     { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
     { id: 'variants', title: 'Style Variants', icon: '🎨' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Static Data Examples
   roadmapItems = JSON.stringify([
@@ -69,13 +76,15 @@ export class SetTimelineDemoComponent implements OnInit {
     { title: 'Global', description: 'Worldwide presence', date: '2024', icon: 'fas fa-users' },
   ]);
 
-  snakeItems = JSON.stringify(Array.from({ length: 12 }, (_, i) => ({
-    id: `s${i}`,
-    title: `Step ${i + 1}`,
-    date: `Day ${i + 1}`,
-    icon: 'fas fa-circle-small',
-    dotColor: i % 2 === 0 ? '#10b981' : '#3b82f6',
-  })));
+  snakeItems = JSON.stringify(
+    Array.from({ length: 12 }, (_, i) => ({
+      id: `s${i}`,
+      title: `Step ${i + 1}`,
+      date: `Day ${i + 1}`,
+      icon: 'fas fa-circle-small',
+      dotColor: i % 2 === 0 ? '#10b981' : '#3b82f6',
+    })),
+  );
 
   // Parsed data for use in TypeScript (for slicing, etc.)
   private roadmapItemsArray = JSON.parse(this.roadmapItems);

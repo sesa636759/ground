@@ -2,7 +2,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
 
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -16,7 +15,6 @@ import { CardExamplesComponent } from './components/card-examples/card-examples.
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     CardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

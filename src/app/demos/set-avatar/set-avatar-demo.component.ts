@@ -1,3 +1,4 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +7,6 @@ import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
@@ -19,7 +19,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     AvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
+    DemoHeaderComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',
@@ -55,8 +56,17 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'animated-groups', title: 'Animated Groups', icon: '🎬' },
   ];
 
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
   get exampleVariants() {
-    return this.variants;
+    return this.variants.filter((v) => v.id !== 'playground');
   }
 
   basicCode = `<!-- Sizes and Shapes -->
@@ -205,13 +215,7 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
   <app-avatar name="User 4"></app-avatar>
 </app-avatar-group>`;
 
-  handleUpload(event: any) {
-    console.log('Upload event:', event);
-  }
 
-  handleClick() {
-    console.log('Avatar clicked');
-  }
 
   playgroundCode = `<app-avatar name="John Doe" status="online" size="64px"></app-avatar>`;
 

@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-panel-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -18,15 +23,23 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Header</h3>
             <div class="control-group">
               <label>Title</label>
-              <app-input type="text" [(ngModel)]="pgConfig.panelTitle" (change)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.panelTitle"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Subtitle</label>
-              <app-input type="text" [(ngModel)]="pgConfig.panelSubtitle" (change)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.panelSubtitle"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Badge</label>
-              <app-input type="text" [(ngModel)]="pgConfig.badge" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -137,10 +150,6 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
@@ -169,7 +178,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.loading]="pgConfig.loading ? '' : null"
           [attr.no-padding]="pgConfig.noPadding ? '' : null"
           [attr.glass]="pgConfig.glass ? '' : null"
-          width="400px"
+          width="100%"
           (panelClose)="onEvent('Close')"
           (panelSettings)="onEvent('Settings')"
           (toggle)="onEvent('Toggle')"
@@ -183,15 +192,23 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
           </div>
         </ui-panel>
-      </div>
 
-      <div class="event-log">
-        <div *ngFor="let log of eventLog" class="log-entry">
-          <span class="timestamp">[{{ log.time }}]</span>
-          <span class="message">{{ log.msg }}</span>
-        </div>
-        <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-          Panel events will appear here...
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+
+        <div class="event-log">
+          <div class="log-title">Event Tracker</div>
+          <div *ngFor="let log of eventLog" class="log-entry">
+            <span class="timestamp">[{{ log.time }}]</span>
+            <span class="message">{{ log.msg }}</span>
+          </div>
+          <div *ngIf="eventLog.length === 0" class="empty-log">
+            Interact with the panel to see events...
+          </div>
         </div>
       </div>
     </div>

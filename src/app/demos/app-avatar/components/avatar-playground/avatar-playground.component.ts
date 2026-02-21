@@ -1,14 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, CodeBlockComponent],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -19,23 +17,23 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             <h3>Identity</h3>
             <div class="control-group">
               <label>Name (Initials)</label>
-              <app-input type="text" [(ngModel)]="pgConfig.name" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Image Source</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.src"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="URL"
               />
             </div>
             <div class="control-group">
               <label>Icon</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.icon"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="emoji or icon"
               />
             </div>
@@ -54,7 +52,7 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             </div>
             <div class="control-group">
               <label>Size (e.g. 64px)</label>
-              <app-input type="text" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Status</label>
@@ -71,31 +69,23 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
             <h3>Decorations</h3>
             <div class="control-group">
               <label>Badge</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.badge"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="'dot' or text"
               />
             </div>
             <div class="control-group">
               <label>Badge Color</label>
-              <app-input
+              <input
                 type="text"
                 [(ngModel)]="pgConfig.badgeColor"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 placeholder="hex or color name"
               />
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <app-code-block
-            [code]="generatedCode()"
-            title="Generated Code"
-            language="html"
-          ></app-code-block>
         </div>
 
         <div class="action-buttons">
@@ -119,6 +109,15 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
           [attr.badge]="pgConfig.badge"
           [attr.badge-color]="pgConfig.badgeColor"
         ></ui-avatar>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,
@@ -144,7 +143,7 @@ export class AvatarPlaygroundComponent {
   ];
 
   statusOptions = [
-    { label: 'None', value: null },
+    { label: 'None', value: '' },
     { label: 'Online', value: 'online' },
     { label: 'Away', value: 'away' },
     { label: 'Busy', value: 'busy' },

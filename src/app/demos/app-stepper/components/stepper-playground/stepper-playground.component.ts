@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
@@ -69,13 +68,13 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Active Step</label>
-              <app-input
+              <input
                 type="number"
+                min="0"
+                max="3"
                 [(ngModel)]="pgConfig.activeStep"
-                [min]="0"
-                [max]="3"
                 (ngModelChange)="updateConfig()"
-              ></app-input>
+              />
             </div>
           </div>
         </div>

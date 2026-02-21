@@ -1,13 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-knob-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -17,19 +20,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Value Control</h3>
             <div class="control-group">
               <label>Current Value</label>
-              <app-input type="number" [(ngModel)]="pgConfig.value" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Min</label>
-              <app-input type="number" [(ngModel)]="pgConfig.min" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Max</label>
-              <app-input type="number" [(ngModel)]="pgConfig.max" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Step</label>
-              <app-input type="number" [(ngModel)]="pgConfig.step" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.step" (ngModelChange)="updateConfig()" />
             </div>
           </div>
 
@@ -37,15 +40,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Visuals</h3>
             <div class="control-group">
               <label>Size</label>
-              <app-input type="number" [(ngModel)]="pgConfig.size" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Stroke Width</label>
-              <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (change)="updateConfig()" />
+              <input type="number" [(ngModel)]="pgConfig.strokeWidth" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Color</label>
-              <app-input type="color" [(ngModel)]="pgConfig.valueColor" (change)="updateConfig()" />
+              <input type="color" [(ngModel)]="pgConfig.valueColor" (ngModelChange)="updateConfig()" />
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -72,7 +75,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
         </div>
       </div>
 

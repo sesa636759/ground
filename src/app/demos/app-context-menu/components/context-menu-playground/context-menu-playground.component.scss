@@ -2,29 +2,23 @@
 
 .playground-preview {
   min-height: 250px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
   background: white;
   padding: 48px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .context-target {
-    padding: 40px;
-    border: 2px dashed var(--border-color);
-    border-radius: 12px;
-    background: var(--surface-2);
-    color: var(--text-secondary);
-    font-weight: 600;
-    cursor: context-menu;
-    transition: all 0.2s;
-    &:hover {
-        background: var(--surface-3);
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-    }
+  padding: 40px;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: context-menu;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--surface-3);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
 }

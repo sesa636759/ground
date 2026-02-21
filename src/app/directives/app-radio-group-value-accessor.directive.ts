@@ -22,10 +22,11 @@ export class AppRadioGroupValueAccessorDirective implements ControlValueAccessor
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('radioGroupChange', ['$event.detail'])
-  _handleInput(detail: any): void {
+  @HostListener('radioGroupChange', ['$event'])
+  _handleInput(event: Event): void {
     // radioGroupChange emits { value: string }
-    this.onChange(detail.value);
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.value);
   }
 
   @HostListener('blur')

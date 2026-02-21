@@ -1,11 +1,9 @@
-.demo-grid {
-  &.col-2 {
-      grid-template-columns: repeat(2, 1fr);
-  }
-}
+@use '../../../styles/demo-base.scss';
 
 .demo-card {
-  &.mt-4 { margin-top: 24px; }
+  &.mt-4 {
+    margin-top: 24px;
+  }
 }
 
 .preview-box {
@@ -13,8 +11,7 @@
   overflow: auto;
 
   &.h-auto {
-      min-height: auto;
-      max-height: 400px;
+    min-height: auto;
+    max-height: 400px;
   }
 }
-

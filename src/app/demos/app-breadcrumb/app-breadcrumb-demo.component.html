@@ -1,74 +1,113 @@
 <div class="demo-container">
-  <h1>Breadcrumb Component</h1>
+  <h1>🎯 Breadcrumb Component</h1>
   <p class="intro-text">
     A navigation aid that allows users to keep track of their locations within programs, documents,
     or websites.
   </p>
 
-  <demo-tabs >
+  <demo-tabs>
+    <!-- Playground Slot -->
     <div slot="playground">
       <app-breadcrumb-playground></app-breadcrumb-playground>
     </div>
 
-    <div slot="examples">
-      <app-example-section
-        id="separators"
-        title="Separators"
-        description="Custom separators between breadcrumb items."
-        [code]="separatorsCode"
-      >
-        <div class="demo-grid col-1">
-          <div class="demo-card">
-            <h3>Text Separator</h3>
-            <ui-breadcrumb [items]="items" separator=">" show-home></ui-breadcrumb>
-          </div>
-          <div class="demo-card">
-            <h3>Icon Separator</h3>
-            <ui-breadcrumb [items]="items" separator-icon="→" show-home></ui-breadcrumb>
-          </div>
-        </div>
-      </app-example-section>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
-      <app-example-section
-        id="collapsing"
-        title="Collapsing"
-        description="Automatically collapse items when they exceed a certain count."
-        [code]="collapsingCode"
-      >
-        <div class="demo-card">
-          <ui-breadcrumb [items]="collapsibleItems" [max-items]="4" show-home></ui-breadcrumb>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="visuals"
-        title="Visual Variants"
-        description="Different visual styles like Pills and Glassmorphism."
-        [code]="visualsCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="demo-card">
-            <h3>Pill Variant</h3>
-            <ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
-          </div>
-          <div class="demo-card">
-            <h3>Glass Variant</h3>
-            <div
-              style="
-                background: linear-gradient(135deg, #1e293b, #334155);
-                padding: 20px;
-                border-radius: 12px;
-              "
-            >
-              <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Separators -->
+        <app-example-section
+          id="separators"
+          title="Separators"
+          description="Custom separators between breadcrumb items."
+          [code]="separatorsCode"
+          style="margin-top: 0"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Text Separator</h3>
+              <ui-breadcrumb [items]="items" separator=">" show-home></ui-breadcrumb>
+            </div>
+            <div class="demo-card">
+              <h3>Icon Separator</h3>
+              <ui-breadcrumb [items]="items" separator-icon="→" show-home></ui-breadcrumb>
             </div>
           </div>
-        </div>
-      </app-example-section>
+        </app-example-section>
+
+        <!-- Collapsing -->
+        <app-example-section
+          id="collapsing"
+          title="Collapsing"
+          description="Automatically collapse items when they exceed a certain count."
+          [code]="collapsingCode"
+        >
+          <div class="demo-card">
+            <ui-breadcrumb [items]="collapsibleItems" [max-items]="4" show-home></ui-breadcrumb>
+          </div>
+        </app-example-section>
+
+        <!-- Visual Variants -->
+        <app-example-section
+          id="visuals"
+          title="Visual Variants"
+          description="Different visual styles like Pills and Glassmorphism."
+          [code]="visualsCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h3>Pill Variant</h3>
+              <ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
+            </div>
+            <div class="demo-card">
+              <h3>Glass Variant</h3>
+              <div
+                style="
+                  background: linear-gradient(135deg, #1e293b, #334155);
+                  padding: 20px;
+                  border-radius: 12px;
+                "
+              >
+                <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+      </div>
     </div>
 
+    <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="breadcrumb"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

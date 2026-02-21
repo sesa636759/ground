@@ -1,10 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MasonryPlaygroundComponent } from './components/masonry-playground/masonry-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-masonry-demo',
@@ -13,30 +15,44 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     MasonryPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
 })
-export class SetMasonryDemoComponent {
-  exampleVariants = [
-    { id: 'masonry', title: 'Masonry Layout', icon: '🧱' },
-    { id: 'grid', title: 'Grid Layout', icon: '📦' },
-    { id: 'columns', title: 'Columns Layout', icon: '📰' },
-    { id: 'responsive', title: 'Responsive Design', icon: '📱' },
-    { id: 'filtering', title: 'Filtering & Sorting', icon: '🔍' },
-    { id: 'selection', title: 'Multi-Select', icon: '✅' },
-    { id: 'lightbox', title: 'Lightbox Gallery', icon: '📸' },
-    { id: 'skeleton', title: 'Skeleton Loading', icon: '💀' },
+export class SetMasonryDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
+    { id: 'masonry', title: 'Masonry Layout', icon: '🧱', color: '#8b5cf6' },
+    { id: 'grid', title: 'Grid Layout', icon: '📦', color: '#3b82f6' },
+    { id: 'columns', title: 'Columns Layout', icon: '📰', color: '#10b981' },
+    { id: 'responsive', title: 'Responsive Design', icon: '📱', color: '#f59e0b' },
+    { id: 'filtering', title: 'Filtering & Sorting', icon: '🔍', color: '#ef4444' },
+    { id: 'selection', title: 'Multi-Select', icon: '✅', color: '#ec4899' },
+    { id: 'lightbox', title: 'Lightbox Gallery', icon: '📸', color: '#06b6d4' },
+    { id: 'skeleton', title: 'Skeleton Loading', icon: '💀', color: '#64748b' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Sample items for different layouts
   sampleItems = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
-    image: `https://picsum.photos/400/${200 + ((i % 5) * 50)}?random=${i}`,
+    image: `https://picsum.photos/400/${200 + (i % 5) * 50}?random=${i}`,
     title: `Item ${i + 1}`,
     description: 'Sample description for gallery item',
     category: ['nature', 'tech', 'design', 'food', 'architecture'][i % 5],
@@ -70,7 +86,7 @@ export class SetMasonryDemoComponent {
   columns="3"
   gap="16"
   responsive="true"
-  [breakpoints]="{{ '{' }} 640: 2, 768: 3, 1024: 4, 1280: 5 {{ '}' }}"
+  [breakpoints]="{ 640: 2, 768: 3, 1024: 4, 1280: 5 }"
   [items]="items"
 ></app-masonry>`);
 
@@ -126,10 +142,5 @@ export class SetMasonryDemoComponent {
   (itemClick)="onItemClick($event)"
 ></app-masonry>`);
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }

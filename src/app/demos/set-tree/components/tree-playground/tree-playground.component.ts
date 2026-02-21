@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -9,9 +9,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-tree-playground',
@@ -19,9 +18,8 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
-    CodeBlockComponent,
+    UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-playground.component.html',

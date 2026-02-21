@@ -1,3 +1,4 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,18 +18,32 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-badge-demo.component.html',
   styleUrl: './app-badge-demo.component.scss',
 })
 export class AppBadgeDemoComponent extends BaseDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'colors', title: 'Colors', icon: '🌈' },
-    { id: 'styles', title: 'Styles', icon: '🎨' },
-    { id: 'positions', title: 'Positions', icon: '📍' },
-    { id: 'special', title: 'Special Features', icon: '✨' },
+  variants = [
+    { id: 'colors', title: 'Colors', icon: '🌈', color: '#3b82f6' },
+    { id: 'styles', title: 'Styles', icon: '🎨', color: '#10b981' },
+    { id: 'positions', title: 'Positions', icon: '📍', color: '#f59e0b' },
+    { id: 'special', title: 'Special Features', icon: '✨', color: '#ef4444' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   ngOnInit() {}
 

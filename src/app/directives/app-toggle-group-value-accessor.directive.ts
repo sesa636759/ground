@@ -22,10 +22,11 @@ export class AppToggleGroupValueAccessorDirective implements ControlValueAccesso
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('toggleGroupChange', ['$event.detail'])
-  _handleInput(detail: any): void {
+  @HostListener('toggleGroupChange', ['$event'])
+  _handleInput(event: Event): void {
     // toggleGroupChange emits { value: string | string[] }
-    this.onChange(detail.value);
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.value);
   }
 
   @HostListener('blur')

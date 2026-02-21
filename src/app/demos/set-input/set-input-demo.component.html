@@ -1,409 +1,306 @@
 <div class="demo-container">
-  <h1>🔤 Input Component Demo</h1>
+  <app-demo-header
+    icon="📋"
+    title="Input Component"
+    description="Comprehensive input component with support for labels, validation states, prefixes, suffixes, multiline text, and floating animations."
+  >
+  </app-demo-header>
   <demo-tabs>
     <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Basic Input Types -->
-      <app-example-section
-        id="basic-types"
-        title="Basic Input Types"
-        description="Different input types with various configurations"
-        [code]="basicInputsCode"
-      >
-        <div class="demo-grid col-3">
-          <app-input label="Username" placeholder="Enter your username" full-width></app-input>
-          <app-input
-            type="email"
-            label="Email Address"
-            placeholder="user@example.com"
-            full-width
-          ></app-input>
-          <app-input
-            type="password"
-            label="Password"
-            placeholder="Enter password"
-            show-password-toggle
-            full-width
-          ></app-input>
-          <app-input
-            type="number"
-            label="Age"
-            placeholder="0"
-            min="0"
-            max="120"
-            full-width
-          ></app-input>
-          <app-input
-            type="search"
-            label="Search"
-            placeholder="Search..."
-            show-clear
-            full-width
-          ></app-input>
-          <app-input type="date" label="Birth Date" full-width></app-input>
-        </div>
-      </app-example-section>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
-      <!-- Variants -->
-      <app-example-section
-        id="variants"
-        title="Input Variants"
-        description="Different visual styles for inputs"
-        [code]="variantsCode"
-      >
-        <div class="demo-grid col-3">
-          <app-input label="Outlined" variant="outlined" full-width></app-input>
-          <app-input label="Filled" variant="filled" full-width></app-input>
-          <app-input label="Underlined" variant="underlined" full-width></app-input>
-          <app-input label="Soft" variant="soft" full-width></app-input>
-          <app-input label="Ghost" variant="ghost" full-width></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Sizes -->
-      <app-example-section
-        id="sizes"
-        title="Input Sizes"
-        description="Small, medium, and large size options"
-        [code]="sizesCode"
-      >
-        <div class="demo-grid col-3">
-          <app-input label="Small" size="small" full-width></app-input>
-          <app-input label="Medium" size="medium" full-width></app-input>
-          <app-input label="Large" size="large" full-width></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Validation States -->
-      <app-example-section
-        id="validation"
-        title="Validation States"
-        description="Error, success, and warning states with messages"
-        [code]="validationCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            label="Email"
-            value="invalid-email"
-            validation-state="error"
-            error-text="Please enter a valid email address"
-            full-width
-          ></app-input>
-          <app-input
-            label="Username"
-            value="john_doe"
-            validation-state="success"
-            success-text="Username is available!"
-            full-width
-          ></app-input>
-          <app-input
-            label="Password"
-            type="password"
-            value="12345"
-            validation-state="warning"
-            warning-text="Password is weak"
-            full-width
-          ></app-input>
-          <app-input
-            label="Username"
-            placeholder="Choose a username"
-            helper-text="Must be 3-20 characters, alphanumeric only"
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Prefix & Suffix -->
-      <app-example-section
-        id="prefix-suffix"
-        title="Prefix & Suffix"
-        description="Text before or after the input"
-        [code]="prefixSuffixCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            label="Website"
-            placeholder="your-site"
-            prefix-text="https://"
-            full-width
-          ></app-input>
-          <app-input
-            label="Email"
-            placeholder="username"
-            suffix-text="@company.com"
-            full-width
-          ></app-input>
-          <app-input
-            label="Price"
-            placeholder="0.00"
-            prefix-text="$"
-            suffix-text="USD"
-            type="number"
-            full-width
-          ></app-input>
-          <app-input
-            label="Search Query"
-            value="sample text"
-            placeholder="Type to search..."
-            show-clear
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Advanced Features -->
-      <app-example-section
-        id="advanced"
-        title="Advanced Features"
-        description="Number Steppers, Formatting, and Addons"
-        [code]="advancedCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            type="number"
-            label="Quantity"
-            value="1"
-            min="0"
-            max="100"
-            show-steppers
-            full-width
-          ></app-input>
-          <app-input
-            label="Auto Operations"
-            value="  Focus to select all  "
-            auto-select
-            auto-trim
-            full-width
-          ></app-input>
-          <app-input
-            multiline
-            auto-resize
-            max-rows="4"
-            label="Comments"
-            placeholder="Type multiple lines..."
-            full-width
-          ></app-input>
-          <div class="skeleton-toggle-card">
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Basic Input Types -->
+        <app-example-section
+          id="basic-types"
+          title="Basic Input Types"
+          description="Standard input types with various configurations"
+          [code]="basicInputsCode"
+        >
+          <div class="demo-grid col-3">
+            <app-input label="Username" placeholder="Enter your username" full-width></app-input>
             <app-input
-              label="Loading State"
-              placeholder="Content..."
-              [skeleton]="skeletonState"
+              type="email"
+              label="Email Address"
+              placeholder="user@example.com"
               full-width
             ></app-input>
-            <ui-button
-              (click)="toggleSkeleton()"
-              label="Toggle Loading"
-              style="margin-top: 12px; display: block"
-            ></ui-button>
-          </div>
-        </div>
-        <div class="section-sub-header">
-          <h3>Addons (Slots)</h3>
-        </div>
-        <div class="demo-grid col-2">
-          <app-input placeholder="example" full-width>
-            <span slot="addon-before" class="addon">https://</span>
-            <span slot="addon-after" class="addon">.com</span>
-          </app-input>
-          <app-input placeholder="Search..." full-width>
-            <ui-button slot="addon-after" class="btn-addon" label="Search"></ui-button>
-          </app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Premium Features -->
-      <app-example-section
-        id="premium"
-        title="Premium Features"
-        description="Ghost variant and skeleton loading"
-        [code]="premiumCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input variant="ghost" placeholder="Subtle input style" full-width></app-input>
-          <div class="skeleton-toggle-card">
             <app-input
-              label="Loading State"
-              placeholder="Content..."
-              [skeleton]="skeletonState"
+              type="password"
+              label="Password"
+              placeholder="Enter password"
+              show-password-toggle
               full-width
             ></app-input>
-            <ui-button
-              (click)="toggleSkeleton()"
-              label="Toggle Loading"
-              style="margin-top: 12px; display: block"
-            ></ui-button>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Floating Labels -->
-      <app-example-section
-        id="floating-labels"
-        title="Floating Labels"
-        description="Animated labels that float on focus"
-        [code]="floatingLabelsCode"
-      >
-        <div class="demo-grid col-3">
-          <app-input variant="outlined" label="Full Name" floating-label full-width></app-input>
-          <app-input variant="filled" label="Email Address" floating-label full-width></app-input>
-          <app-input
-            variant="underlined"
-            label="Phone Number"
-            floating-label
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Multiline Input -->
-      <app-example-section
-        id="multiline"
-        title="Multiline Input (Textarea)"
-        description="Text areas with various features"
-        [code]="multilineCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            multiline
-            label="Description"
-            placeholder="Enter description..."
-            rows="3"
-            full-width
-          ></app-input>
-          <app-input
-            multiline
-            auto-resize
-            label="Comments"
-            placeholder="Type to expand..."
-            max-rows="5"
-            full-width
-          ></app-input>
-          <app-input
-            multiline
-            label="Bio"
-            placeholder="Tell us about yourself..."
-            max-length="200"
-            show-char-count
-            rows="3"
-            full-width
-          ></app-input>
-          <app-input
-            multiline
-            variant="filled"
-            label="Message"
-            placeholder="Your message..."
-            rows="4"
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Input States -->
-      <app-example-section
-        id="input-states"
-        title="Input States"
-        description="Disabled, readonly, required, and loading states"
-        [code]="inputStatesCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            label="Disabled Input"
-            value="Cannot edit this"
-            disabled
-            full-width
-          ></app-input>
-          <app-input
-            label="Read-only Input"
-            value="View only, no edit"
-            readonly
-            full-width
-          ></app-input>
-          <app-input
-            label="Required Field*"
-            placeholder="This field is required"
-            required
-            full-width
-          ></app-input>
-          <app-input label="Processing" value="Validating..." loading full-width></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- More Features -->
-      <app-example-section
-        id="advanced-more"
-        title="More Features"
-        description="Character counters, debouncing, and pattern validation"
-        [code]="advancedMoreCode"
-      >
-        <div class="demo-grid col-2">
-          <app-input
-            label="Tweet"
-            placeholder="What's happening?"
-            max-length="280"
-            show-char-count
-            full-width
-          ></app-input>
-          <app-input
-            label="Search (500ms debounce)"
-            placeholder="Type to search..."
-            debounce="500"
-            full-width
-          ></app-input>
-          <app-input
-            label="Hex Color"
-            placeholder="#000000"
-            pattern="^#[0-9A-Fa-f]{6}$"
-            helper-text="Enter a valid hex color (e.g., #FF5733)"
-            full-width
-          ></app-input>
-          <app-input
-            type="number"
-            label="Quantity"
-            value="10"
-            step="5"
-            show-steppers
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
-
-      <!-- Premium UX -->
-      <app-example-section
-        id="premium-more"
-        title="Premium UX"
-        description="High-end user experience features"
-        [code]="premiumMoreCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="action-demo-card">
-            <app-input label="Login" placeholder="Username" shake-on-error full-width></app-input>
-            <ui-button label="Trigger Error" style="margin-top: 12px; display: block"></ui-button>
-          </div>
-          <div class="info-demo-card">
             <app-input
-              label="Card Number"
-              placeholder="0000 0000 0000 0000"
-              adaptive-type="credit-card"
+              type="number"
+              label="Age"
+              placeholder="0"
+              min="0"
+              max="120"
               full-width
             ></app-input>
-            <p class="helper-text">Try: 4 (Visa), 51 (Mastercard), 34 (Amex)</p>
+            <app-input
+              type="search"
+              label="Search"
+              placeholder="Search..."
+              show-clear
+              full-width
+            ></app-input>
+            <app-input type="date" label="Birth Date" full-width></app-input>
           </div>
-          <app-input
-            type="password"
-            label="New Password"
-            placeholder="Enter password"
-            show-strength-meter
-            show-caps-warning
-            show-password-toggle
-            full-width
-          ></app-input>
-        </div>
-      </app-example-section>
+        </app-example-section>
+
+        <!-- Variants -->
+        <app-example-section
+          id="variants"
+          title="Input Variants"
+          description="Visual styles: Outlined, Filled, Underlined, Soft, and Ghost"
+          [code]="variantsCode"
+        >
+          <div class="demo-grid col-3">
+            <app-input label="Outlined" variant="outlined" full-width></app-input>
+            <app-input label="Filled" variant="filled" full-width></app-input>
+            <app-input label="Underlined" variant="underlined" full-width></app-input>
+            <app-input label="Soft" variant="soft" full-width></app-input>
+            <app-input label="Ghost" variant="ghost" full-width></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Sizes -->
+        <app-example-section
+          id="sizes"
+          title="Input Sizes"
+          description="Standard small, medium, and large size options"
+          [code]="sizesCode"
+        >
+          <div class="demo-grid col-3">
+            <app-input label="Small" size="small" full-width></app-input>
+            <app-input label="Medium" size="medium" full-width></app-input>
+            <app-input label="Large" size="large" full-width></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Validation States -->
+        <app-example-section
+          id="validation"
+          title="Validation States"
+          description="Visual feedback for error, success, and informative states"
+          [code]="validationCode"
+        >
+          <div class="demo-grid col-2">
+            <app-input
+              label="Email"
+              value="invalid-email"
+              validation-state="error"
+              error-text="Please enter a valid email address"
+              full-width
+            ></app-input>
+            <app-input
+              label="Username"
+              value="john_doe"
+              validation-state="success"
+              success-text="Username is available!"
+              full-width
+            ></app-input>
+            <app-input
+              label="Password"
+              type="password"
+              value="12345"
+              validation-state="warning"
+              warning-text="Password is weak"
+              full-width
+            ></app-input>
+            <app-input
+              label="Username"
+              placeholder="Choose a username"
+              helper-text="Must be 3-20 characters"
+              full-width
+            ></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Prefix & Suffix -->
+        <app-example-section
+          id="prefix-suffix"
+          title="Prefix & Suffix"
+          description="In-line text or icons before and after the input value"
+          [code]="prefixSuffixCode"
+        >
+          <div class="demo-grid col-2">
+            <app-input
+              label="Website"
+              placeholder="your-site"
+              prefix-text="https://"
+              full-width
+            ></app-input>
+            <app-input
+              label="Email"
+              placeholder="username"
+              suffix-text="@company.com"
+              full-width
+            ></app-input>
+            <app-input
+              label="Price"
+              placeholder="0.00"
+              prefix-text="$"
+              suffix-text="USD"
+              type="number"
+              full-width
+            ></app-input>
+            <app-input
+              label="Search"
+              placeholder="Type to search..."
+              show-clear
+              full-width
+            ></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Advanced Features -->
+        <app-example-section
+          id="advanced"
+          title="Advanced Interaction"
+          description="Number steppers, auto-resize textareas, and skeleton states"
+          [code]="advancedCode"
+        >
+          <div class="demo-grid col-2">
+            <app-input
+              type="number"
+              label="Quantity"
+              value="1"
+              min="0"
+              max="100"
+              show-steppers
+              full-width
+            ></app-input>
+            <app-input
+              multiline
+              auto-resize
+              max-rows="4"
+              label="Smart Textarea"
+              placeholder="Type to auto-resize..."
+              full-width
+            ></app-input>
+            <div class="demo-card">
+              <app-input
+                label="Loading State"
+                [attr.skeleton]="skeletonState"
+                placeholder="Content..."
+                full-width
+              ></app-input>
+              <ui-button
+                (click)="toggleSkeleton()"
+                label="Toggle Loading"
+                style="margin-top: 12px; display: block"
+              ></ui-button>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Floating Labels -->
+        <app-example-section
+          id="floating-labels"
+          title="Floating Labels"
+          description="Modern labels that float above the field on interaction"
+          [code]="floatingLabelsCode"
+        >
+          <div class="demo-grid col-3">
+            <app-input variant="outlined" label="Full Name" floating-label full-width></app-input>
+            <app-input variant="filled" label="Email Address" floating-label full-width></app-input>
+            <app-input
+              variant="underlined"
+              label="Phone Number"
+              floating-label
+              full-width
+            ></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Multiline Input -->
+        <app-example-section
+          id="multiline"
+          title="Multiline (Textarea)"
+          description="Dedicated textarea support with character counts and rows"
+          [code]="multilineCode"
+        >
+          <div class="demo-grid col-2">
+            <app-input multiline label="Description" rows="3" full-width></app-input>
+            <app-input
+              multiline
+              label="Bio"
+              max-length="200"
+              show-char-count
+              rows="3"
+              full-width
+            ></app-input>
+          </div>
+        </app-example-section>
+
+        <!-- Input States -->
+        <app-example-section
+          id="input-states"
+          title="Input States"
+          description="Disabled, readonly, and required state variations"
+          [code]="inputStatesCode"
+        >
+          <div class="demo-grid col-2">
+            <app-input
+              label="Disabled"
+              value="Read only and disabled"
+              disabled
+              full-width
+            ></app-input>
+            <app-input label="Read-only" value="Cannot be edited" readonly full-width></app-input>
+            <app-input
+              label="Required"
+              placeholder="Field is required"
+              required
+              full-width
+            ></app-input>
+            <app-input label="Loading" value="Fetching..." loading full-width></app-input>
+          </div>
+        </app-example-section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <app-input-playground />
     </div>
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="input"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

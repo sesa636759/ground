@@ -1,10 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CarouselPlaygroundComponent } from './components/carousel-playground/carousel-playground.component';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-carousel-demo',
@@ -13,45 +15,59 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     CommonModule,
     FormsModule,
     CarouselPlaygroundComponent,
-    CodeBlockComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-carousel-demo.component.html',
   styleUrl: './set-carousel-demo.component.scss',
 })
-export class SetCarouselDemoComponent {
-  exampleVariants = [
+export class SetCarouselDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
     // Transition Effects
-    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀' },
-    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️' },
+    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀', color: '#8b5cf6' },
+    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️', color: '#3b82f6' },
     // Layout Modes
-    { id: 'center-mode', title: 'Center Mode', icon: '🎯' },
-    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋' },
-    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️' },
-    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️' },
+    { id: 'center-mode', title: 'Center Mode', icon: '🎯', color: '#10b981' },
+    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋', color: '#f59e0b' },
+    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️', color: '#ef4444' },
+    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️', color: '#ec4899' },
     // Interaction & Controls
-    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆' },
-    { id: 'autoplay-control', title: 'Autoplay with Pause Control', icon: '⏯️' },
-    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯' },
-    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨' },
+    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆', color: '#06b6d4' },
+    { id: 'autoplay-control', title: 'Autoplay with Pause Control', icon: '⏯️', color: '#64748b' },
+    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯', color: '#8b5cf6' },
+    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨', color: '#3b82f6' },
     // Indicators & Navigation
-    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•' },
-    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢' },
-    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊' },
+    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•', color: '#10b981' },
+    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢', color: '#f59e0b' },
+    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊', color: '#ef4444' },
     // Size Variants
-    { id: 'size-small', title: 'Small Size', icon: '🔸' },
-    { id: 'size-medium', title: 'Medium Size', icon: '🔶' },
-    { id: 'size-large', title: 'Large Size', icon: '🟠' },
+    { id: 'size-small', title: 'Small Size', icon: '🔸', color: '#ec4899' },
+    { id: 'size-medium', title: 'Medium Size', icon: '🔶', color: '#06b6d4' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠', color: '#64748b' },
     // Speed Variants
-    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡' },
-    { id: 'speed-normal', title: 'Normal Speed', icon: '👌' },
-    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢' },
+    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡', color: '#8b5cf6' },
+    { id: 'speed-normal', title: 'Normal Speed', icon: '👌', color: '#3b82f6' },
+    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢', color: '#10b981' },
     // Advanced Features
-    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱' },
-    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮' },
+    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱', color: '#f59e0b' },
+    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮', color: '#ef4444' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Basic Layout Examples
   fadeSlides = JSON.stringify([
@@ -97,32 +113,87 @@ export class SetCarouselDemoComponent {
   ]);
 
   // Size variant data
-  smallSlides = JSON.stringify([{ id: 1, size: 'Small' }, { id: 2, size: 'Compact' }, { id: 3, size: 'Tiny' }]);
-  mediumSlides = JSON.stringify([{ id: 1, size: 'Medium' }, { id: 2, size: 'Standard' }, { id: 3, size: 'Normal' }]);
-  largeSlides = JSON.stringify([{ id: 1, size: 'Large' }, { id: 2, size: 'Big' }, { id: 3, size: 'Extra' }]);
+  smallSlides = JSON.stringify([
+    { id: 1, size: 'Small' },
+    { id: 2, size: 'Compact' },
+    { id: 3, size: 'Tiny' },
+  ]);
+  mediumSlides = JSON.stringify([
+    { id: 1, size: 'Medium' },
+    { id: 2, size: 'Standard' },
+    { id: 3, size: 'Normal' },
+  ]);
+  largeSlides = JSON.stringify([
+    { id: 1, size: 'Large' },
+    { id: 2, size: 'Big' },
+    { id: 3, size: 'Extra' },
+  ]);
 
   // Speed/timing variants
-  fastSlides = JSON.stringify([{ id: 1, text: 'Fast' }, { id: 2, text: 'Quick' }, { id: 3, text: 'Speed' }]);
-  normalSlides = JSON.stringify([{ id: 1, text: 'Normal' }, { id: 2, text: 'Standard' }, { id: 3, text: 'Regular' }]);
-  slowSlides = JSON.stringify([{ id: 1, text: 'Slow' }, { id: 2, text: 'Relaxed' }, { id: 3, text: 'Smooth' }]);
+  fastSlides = JSON.stringify([
+    { id: 1, text: 'Fast' },
+    { id: 2, text: 'Quick' },
+    { id: 3, text: 'Speed' },
+  ]);
+  normalSlides = JSON.stringify([
+    { id: 1, text: 'Normal' },
+    { id: 2, text: 'Standard' },
+    { id: 3, text: 'Regular' },
+  ]);
+  slowSlides = JSON.stringify([
+    { id: 1, text: 'Slow' },
+    { id: 2, text: 'Relaxed' },
+    { id: 3, text: 'Smooth' },
+  ]);
 
   // Pagination variants
-  dotsItems = JSON.stringify([{ id: 1, indicator: 'Dots' }, { id: 2, indicator: 'Visible' }, { id: 3, indicator: 'Bottom' }]);
-  numbersItems = JSON.stringify([{ id: 1, number: '1' }, { id: 2, number: '2' }, { id: 3, number: '3' }]);
-  progressItems = JSON.stringify([{ id: 1, label: 'Progress' }, { id: 2, label: 'Tracking' }, { id: 3, label: 'Complete' }]);
+  dotsItems = JSON.stringify([
+    { id: 1, indicator: 'Dots' },
+    { id: 2, indicator: 'Visible' },
+    { id: 3, indicator: 'Bottom' },
+  ]);
+  numbersItems = JSON.stringify([
+    { id: 1, number: '1' },
+    { id: 2, number: '2' },
+    { id: 3, number: '3' },
+  ]);
+  progressItems = JSON.stringify([
+    { id: 1, label: 'Progress' },
+    { id: 2, label: 'Tracking' },
+    { id: 3, label: 'Complete' },
+  ]);
 
   // Animation easing variations
-  easeLinearSlides = JSON.stringify([{ id: 1, text: 'Linear' }, { id: 2, text: 'Smooth' }, { id: 3, text: 'Even' }]);
-  easeEaseInOutSlides = JSON.stringify([{ id: 1, text: 'EaseInOut' }, { id: 2, text: 'Decelerate' }, { id: 3, text: 'Natural' }]);
+  easeLinearSlides = JSON.stringify([
+    { id: 1, text: 'Linear' },
+    { id: 2, text: 'Smooth' },
+    { id: 3, text: 'Even' },
+  ]);
+  easeEaseInOutSlides = JSON.stringify([
+    { id: 1, text: 'EaseInOut' },
+    { id: 2, text: 'Decelerate' },
+    { id: 3, text: 'Natural' },
+  ]);
 
   // Responsive layout items
-  responsiveSmallSlides = JSON.stringify([{ id: 1, text: 'Mobile' }, { id: 2, text: '1 Slide' }, { id: 3, text: 'Small' }]);
-  responsiveTabletSlides = JSON.stringify([{ id: 1, text: 'Tablet' }, { id: 2, text: '2 Slides' }, { id: 3, text: 'Medium' }]);
-  responsiveDesktopSlides = JSON.stringify([{ id: 1, text: 'Desktop' }, { id: 2, text: '3+ Slides' }, { id: 3, text: 'Large' }]);
+  responsiveSmallSlides = JSON.stringify([
+    { id: 1, text: 'Mobile' },
+    { id: 2, text: '1 Slide' },
+    { id: 3, text: 'Small' },
+  ]);
+  responsiveTabletSlides = JSON.stringify([
+    { id: 1, text: 'Tablet' },
+    { id: 2, text: '2 Slides' },
+    { id: 3, text: 'Medium' },
+  ]);
+  responsiveDesktopSlides = JSON.stringify([
+    { id: 1, text: 'Desktop' },
+    { id: 2, text: '3+ Slides' },
+    { id: 3, text: 'Large' },
+  ]);
 
-  // Signal-based code examples
-  fadeTransitionCode = signal(
-    `<app-carousel
+  // Code examples
+  fadeTransitionCode = `<app-carousel
   effect="fade"
   autoplay="true"
   autoplay-interval="3000"
@@ -140,11 +211,9 @@ export class SetCarouselDemoComponent {
     <h3>Mountains</h3>
     <p>Peak experience</p>
   </div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  slideTransitionCode = signal(
-    `<app-carousel
+  slideTransitionCode = `<app-carousel
   effect="slide"
   autoplay="true"
   autoplay-interval="3000"
@@ -155,11 +224,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
   <div class="slide">Slide 4</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  centerModeCode = signal(
-    `<app-carousel
+  centerModeCode = `<app-carousel
   center-mode="true"
   slides-to-show="1"
   center-padding="20%"
@@ -171,11 +238,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Item 3</div>
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  multipleItemsCode = signal(
-    `<app-carousel
+  multipleItemsCode = `<app-carousel
   slides-to-show="3"
   slides-to-scroll="1"
   infinite="true"
@@ -188,11 +253,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
   <div class="slide">Item 6</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  verticalCode = signal(
-    `<app-carousel
+  verticalCode = `<app-carousel
   direction="vertical"
   slides-to-show="1"
   autoplay="true"
@@ -201,11 +264,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  infiniteLoopCode = signal(
-    `<app-carousel
+  infiniteLoopCode = `<app-carousel
   infinite="true"
   loop="true"
   autoplay="true"
@@ -214,11 +275,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Repeating Item 1</div>
   <div class="slide">Repeating Item 2</div>
   <div class="slide">Repeating Item 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  swipeGestureCode = signal(
-    `<app-carousel
+  swipeGestureCode = `<app-carousel
   swipe="true"
   drag="true"
   mouse-drag="true"
@@ -228,11 +287,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Swipeable 1</div>
   <div class="slide">Swipeable 2</div>
   <div class="slide">Swipeable 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  scrollAutoplayCode = signal(
-    `<app-carousel
+  scrollAutoplayCode = `<app-carousel
   autoplay="true"
   autoplay-interval="3000"
   pause-on-hover="true"
@@ -241,11 +298,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Auto Slide 1</div>
   <div class="slide">Auto Slide 2</div>
   <div class="slide">Auto Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  dotsIndicatorsCode = signal(
-    `<app-carousel
+  dotsIndicatorsCode = `<app-carousel
   indicators="true"
   indicator-type="dots"
   indicator-position="bottom"
@@ -254,11 +309,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  numberIndicatorsCode = signal(
-    `<app-carousel
+  numberIndicatorsCode = `<app-carousel
   indicators="true"
   indicator-type="numbers"
   indicator-position="bottom"
@@ -266,11 +319,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  progressBarCode = signal(
-    `<app-carousel
+  progressBarCode = `<app-carousel
   show-progress="true"
   autoplay="true"
   autoplay-interval="3000"
@@ -278,11 +329,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Progress 1</div>
   <div class="slide">Progress 2</div>
   <div class="slide">Progress 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  thresholdCode = signal(
-    `<app-carousel
+  thresholdCode = `<app-carousel
   drag="true"
   swipe="true"
   drag-threshold="10"
@@ -291,11 +340,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Drag Me 1</div>
   <div class="slide">Drag Me 2</div>
   <div class="slide">Drag Me 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  easingCode = signal(
-    `<app-carousel
+  easingCode = `<app-carousel
   animation-duration="800"
   animation-easing="ease-in-out"
   autoplay="true"
@@ -303,44 +350,36 @@ export class SetCarouselDemoComponent {
   <div class="slide">Eased 1</div>
   <div class="slide">Eased 2</div>
   <div class="slide">Eased 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  sizeSmallCode = signal(
-    `<app-carousel
+  sizeSmallCode = `<app-carousel
   height="200px"
   slides-to-show="1"
 >
   <div class="slide">Small 1</div>
   <div class="slide">Small 2</div>
   <div class="slide">Small 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  sizeMediumCode = signal(
-    `<app-carousel
+  sizeMediumCode = `<app-carousel
   height="400px"
   slides-to-show="2"
 >
   <div class="slide">Medium 1</div>
   <div class="slide">Medium 2</div>
   <div class="slide">Medium 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  sizeLargeCode = signal(
-    `<app-carousel
+  sizeLargeCode = `<app-carousel
   height="600px"
   slides-to-show="3"
 >
   <div class="slide">Large 1</div>
   <div class="slide">Large 2</div>
   <div class="slide">Large 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  speedFastCode = signal(
-    `<app-carousel
+  speedFastCode = `<app-carousel
   animation-duration="300"
   autoplay-interval="2000"
   autoplay="true"
@@ -348,11 +387,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Fast 1</div>
   <div class="slide">Fast 2</div>
   <div class="slide">Fast 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  speedNormalCode = signal(
-    `<app-carousel
+  speedNormalCode = `<app-carousel
   animation-duration="500"
   autoplay-interval="3000"
   autoplay="true"
@@ -360,11 +397,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Normal 1</div>
   <div class="slide">Normal 2</div>
   <div class="slide">Normal 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  speedSlowCode = signal(
-    `<app-carousel
+  speedSlowCode = `<app-carousel
   animation-duration="1000"
   autoplay-interval="5000"
   autoplay="true"
@@ -372,11 +407,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slow 1</div>
   <div class="slide">Slow 2</div>
   <div class="slide">Slow 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  responsiveCode = signal(
-    `<app-carousel
+  responsiveCode = `<app-carousel
   slides-to-show="3"
   responsive=[
     { breakpoint: 1024, settings: { slides-to-show: 2 } },
@@ -386,11 +419,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Responsive 1</div>
   <div class="slide">Responsive 2</div>
   <div class="slide">Responsive 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  customControlsCode = signal(
-    `<app-carousel
+  customControlsCode = `<app-carousel
   arrows="true"
   indicators="true"
   show-progress="true"
@@ -400,11 +431,9 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  playgroundCode = signal(
-    `<app-carousel
+  playgroundCode = `<app-carousel
   autoplay="true"
   autoplay-interval="3000"
   slides-to-show="1"
@@ -414,14 +443,7 @@ export class SetCarouselDemoComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`
-  );
+</app-carousel>`;
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }
-

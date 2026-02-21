@@ -1,148 +1,186 @@
 <div class="demo-container">
-  <h1>Toggle Component</h1>
-  <p class="intro-text">
-    A versatile toggle switch and group component for boolean inputs and selection.
-  </p>
+  <app-demo-header
+    icon="🔘"
+    title="Toggle Component"
+    description="A versatile toggle switch and group component for boolean inputs and selection."
+  >
+  </app-demo-header>
   <demo-tabs>
     <!-- Examples Slot -->
-    <div slot="examples">
-      <app-example-section
-        id="layouts"
-        title="Layouts"
-        description="Horizontal, vertical, and grid layouts for toggle groups."
-        [code]="layoutCode"
-      >
-        <div class="demo-grid col-1">
-          <div class="demo-card">
-            <h3>Horizontal</h3>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <app-example-section
+          id="layouts"
+          title="Layouts"
+          description="Horizontal, vertical, and grid layouts for toggle groups."
+          [code]="layoutCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Horizontal</h3>
+              <app-toggle-group
+                layout="horizontal"
+                [options]="notificationOptions"
+                label="Notifications"
+              ></app-toggle-group>
+            </div>
+            <div class="demo-card">
+              <h3>Vertical</h3>
+              <app-toggle-group
+                layout="vertical"
+                [options]="featureOptions"
+                label="Features"
+              ></app-toggle-group>
+            </div>
+            <div class="demo-card">
+              <h3>Grid (3 columns)</h3>
+              <app-toggle-group
+                layout="grid"
+                [grid-columns]="3"
+                [options]="privacyOptions"
+                label="Privacy"
+              ></app-toggle-group>
+            </div>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="visual-variants"
+          title="Visual Variants"
+          description="Different styling options for the toggle."
+          [code]="variantCode"
+        >
+          <div class="demo-grid col-2">
+            <app-toggle variant="default" label="Default Style" checked></app-toggle>
+            <app-toggle variant="rounded" label="Rounded Style" checked></app-toggle>
+            <app-toggle variant="outlined" label="Outlined Style" checked></app-toggle>
+            <app-toggle variant="glass" label="Glassmorphism" checked></app-toggle>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="sizes"
+          title="Sizes"
+          description="Small, medium, and large sizes."
+          [code]="sizeCode"
+        >
+          <div class="demo-grid col-3">
+            <app-toggle size="small" label="Small"></app-toggle>
+            <app-toggle size="medium" label="Medium"></app-toggle>
+            <app-toggle size="large" label="Large"></app-toggle>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="colors"
+          title="Colors"
+          description="Semantic color status."
+          [code]="colorCode"
+        >
+          <div class="demo-grid col-2">
+            <app-toggle color="primary" label="Primary" checked></app-toggle>
+            <app-toggle color="success" label="Success" checked></app-toggle>
+            <app-toggle color="warning" label="Warning" checked></app-toggle>
+            <app-toggle color="danger" label="Danger" checked></app-toggle>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="icons"
+          title="Icons Support"
+          description="Toggles with icons and icon-only groups."
+          [code]="iconCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <app-toggle icon="check" label="Check Icon" checked></app-toggle>
+              <app-toggle icon="moon" label="Moon Icon"></app-toggle>
+            </div>
+            <div class="demo-card">
+              <h3>Icon Only Group</h3>
+              <app-toggle-group
+                icon-only
+                layout="horizontal"
+                [options]="[
+                  { value: 'bold', icon: 'bold' },
+                  { value: 'italic', icon: 'italic' },
+                  { value: 'underline', icon: 'underline' },
+                ]"
+              ></app-toggle-group>
+            </div>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="states"
+          title="States"
+          description="Disabled, readonly, and checked states."
+          [code]="stateCode"
+        >
+          <div class="demo-grid col-2">
+            <app-toggle label="Disabled Off" disabled></app-toggle>
+            <app-toggle label="Disabled On" disabled checked></app-toggle>
+            <app-toggle label="Readonly Off" readonly></app-toggle>
+            <app-toggle label="Readonly On" readonly checked></app-toggle>
+          </div>
+        </app-example-section>
+
+        <app-example-section
+          id="advanced"
+          title="Advanced UX"
+          description="Elevation, shapes, and label positions."
+          [code]="advancedCode"
+        >
+          <div class="demo-grid col-2">
+            <app-toggle elevation="3" label="Elevation 3" checked></app-toggle>
+            <app-toggle thumb-shape="square" label="Square Thumb" checked></app-toggle>
+            <app-toggle label-position="left" label="Label Left" checked></app-toggle>
             <app-toggle-group
-              layout="horizontal"
+              selection-mode="multiple"
+              label="Multiple Choice"
               [options]="notificationOptions"
-              label="Notifications"
             ></app-toggle-group>
           </div>
-          <div class="demo-card">
-            <h3>Vertical</h3>
-            <app-toggle-group
-              layout="vertical"
-              [options]="featureOptions"
-              label="Features"
-            ></app-toggle-group>
-          </div>
-          <div class="demo-card">
-            <h3>Grid (3 columns)</h3>
-            <app-toggle-group
-              layout="grid"
-              [grid-columns]="3"
-              [options]="privacyOptions"
-              label="Privacy"
-            ></app-toggle-group>
-          </div>
-        </div>
-      </app-example-section>
+        </app-example-section>
+      </div>
+    </div>
 
-      <app-example-section
-        id="visual-variants"
-        title="Visual Variants"
-        description="Different styling options for the toggle."
-        [code]="variantCode"
-      >
-        <div class="demo-grid col-2">
-          <app-toggle variant="default" label="Default Style" checked></app-toggle>
-          <app-toggle variant="rounded" label="Rounded Style" checked></app-toggle>
-          <app-toggle variant="outlined" label="Outlined Style" checked></app-toggle>
-          <app-toggle variant="glass" label="Glassmorphism" checked></app-toggle>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="sizes"
-        title="Sizes"
-        description="Small, medium, and large sizes."
-        [code]="sizeCode"
-      >
-        <div class="demo-grid col-3">
-          <app-toggle size="small" label="Small"></app-toggle>
-          <app-toggle size="medium" label="Medium"></app-toggle>
-          <app-toggle size="large" label="Large"></app-toggle>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="colors"
-        title="Colors"
-        description="Semantic color status."
-        [code]="colorCode"
-      >
-        <div class="demo-grid col-2">
-          <app-toggle color="primary" label="Primary" checked></app-toggle>
-          <app-toggle color="success" label="Success" checked></app-toggle>
-          <app-toggle color="warning" label="Warning" checked></app-toggle>
-          <app-toggle color="danger" label="Danger" checked></app-toggle>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="icons"
-        title="Icons Support"
-        description="Toggles with icons and icon-only groups."
-        [code]="iconCode"
-      >
-        <div class="demo-grid col-1">
-          <div class="demo-card">
-            <app-toggle icon="check" label="Check Icon" checked></app-toggle>
-            <app-toggle icon="moon" label="Moon Icon"></app-toggle>
-          </div>
-          <div class="demo-card">
-            <h3>Icon Only Group</h3>
-            <app-toggle-group
-              icon-only
-              layout="horizontal"
-              [options]="[
-                { value: 'bold', icon: 'bold' },
-                { value: 'italic', icon: 'italic' },
-                { value: 'underline', icon: 'underline' },
-              ]"
-            ></app-toggle-group>
-          </div>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="states"
-        title="States"
-        description="Disabled, readonly, and checked states."
-        [code]="stateCode"
-      >
-        <div class="demo-grid col-2">
-          <app-toggle label="Disabled Off" disabled></app-toggle>
-          <app-toggle label="Disabled On" disabled checked></app-toggle>
-          <app-toggle label="Readonly Off" readonly></app-toggle>
-          <app-toggle label="Readonly On" readonly checked></app-toggle>
-        </div>
-      </app-example-section>
-
-      <app-example-section
-        id="advanced"
-        title="Advanced UX"
-        description="Elevation, shapes, and label positions."
-        [code]="advancedCode"
-      >
-        <div class="demo-grid col-2">
-          <app-toggle elevation="3" label="Elevation 3" checked></app-toggle>
-          <app-toggle thumb-shape="square" label="Square Thumb" checked></app-toggle>
-          <app-toggle label-position="left" label="Label Left" checked></app-toggle>
-          <app-toggle-group
-            selection-mode="multiple"
-            label="Multiple Choice"
-            [options]="notificationOptions"
-          ></app-toggle-group>
-        </div>
-      </app-example-section>
+    <div slot="playground">
+      <app-toggle-playground></app-toggle-playground>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="toggle"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

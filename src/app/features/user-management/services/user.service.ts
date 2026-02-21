@@ -56,10 +56,10 @@ export class UserService {
             const search = filters.search.toLowerCase();
             filtered = filtered.filter(
               (u) =>
-                u.username.toLowerCase().includes(search) ||
-                u.email.toLowerCase().includes(search) ||
-                u.firstName.toLowerCase().includes(search) ||
-                u.lastName.toLowerCase().includes(search),
+                (u.username && u.username.toLowerCase().includes(search)) ||
+                (u.email && u.email.toLowerCase().includes(search)) ||
+                (u.firstName && u.firstName.toLowerCase().includes(search)) ||
+                (u.lastName && u.lastName.toLowerCase().includes(search)),
             );
           }
           if (filters.role) {

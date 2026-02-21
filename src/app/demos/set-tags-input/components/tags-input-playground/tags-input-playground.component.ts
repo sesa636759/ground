@@ -1,9 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../../../shared/components/code-block/code-block.component';
+import { AppTagsInputValueAccessorDirective } from '../../../../directives/app-tags-input-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-tags-input-playground',
@@ -11,9 +11,9 @@ import { CodeBlockComponent } from '../../../../shared/components/code-block/cod
   imports: [
     CommonModule,
     FormsModule,
-    AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,
-    CodeBlockComponent,
+    UiDropdownValueAccessorDirective,
+    AppTagsInputValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tags-input-playground.component.html',

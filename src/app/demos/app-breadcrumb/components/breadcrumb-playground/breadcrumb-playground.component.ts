@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-breadcrumb-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -17,11 +22,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Configuration</h3>
             <div class="control-group">
               <label>Separator</label>
-              <app-input type="text" [(ngModel)]="pgConfig.separator" (change)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.separator"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Max Items (Collapse)</label>
-              <app-input type="number" [(ngModel)]="pgConfig.maxItems" (change)="updateConfig()" />
+              <input
+                type="number"
+                [(ngModel)]="pgConfig.maxItems"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Size</label>
@@ -54,18 +67,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
 
@@ -78,6 +81,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.show-home]="pgConfig.showHome ? '' : null"
           [items]="itemsJson"
         ></ui-breadcrumb>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

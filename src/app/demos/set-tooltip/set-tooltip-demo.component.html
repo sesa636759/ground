@@ -1,453 +1,499 @@
 <div class="demo-container">
-  <h1>💬 Tooltip Component</h1>
-  <p class="intro-text">
-    A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling.
-  </p>
+  <app-demo-header
+    icon="💬"
+    title="Tooltip"
+    description="A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling options."
+  ></app-demo-header>
+
   <demo-tabs>
-    <div slot="examples">
-      <!-- Triggers -->
-      <app-example-section
-        id="triggers"
-        title="Triggers"
-        description="Different ways to trigger the tooltip"
-        [code]="hoverCode"
-      >
-        <div class="demo-grid col-3">
-          <div class="preview-box">
-            <app-tooltip content="I appear on hover" position="top">
-              <ui-button slot="target" label="Hover Me"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="I appear on click" position="top" trigger="click">
-              <ui-button slot="target" label="Click Me"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="I appear on focus" position="top" trigger="focus">
-              <input
-                type="text"
-                placeholder="Focus me"
-                slot="target"
-                style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
-              />
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Positioning -->
-      <app-example-section
-        id="positioning"
-        title="Positioning"
-        description="Tooltips can be positioned in 8 different directions"
-        [code]="positionCode"
-      >
-        <div class="position-grid">
-          <div class="pos-cell top-left">
-            <app-tooltip content="Top Left" position="top-left">
-              <ui-button slot="target" label="Top Left"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell top">
-            <app-tooltip content="Top Center" position="top">
-              <ui-button slot="target" label="Top"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell top-right">
-            <app-tooltip content="Top Right" position="top-right">
-              <ui-button slot="target" label="Top Right"></ui-button>
-            </app-tooltip>
-          </div>
-
-          <div class="pos-cell left">
-            <app-tooltip content="Left" position="left">
-              <ui-button slot="target" label="Left"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell center">
-            <app-tooltip content="Auto Position" position="auto">
-              <ui-button slot="target" class="accent" variant="primary" label="Auto"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell right">
-            <app-tooltip content="Right" position="right">
-              <ui-button slot="target" label="Right"></ui-button>
-            </app-tooltip>
-          </div>
-
-          <div class="pos-cell bottom-left">
-            <app-tooltip content="Bottom Left" position="bottom-left">
-              <ui-button slot="target" label="Bottom Left"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell bottom">
-            <app-tooltip content="Bottom Center" position="bottom">
-              <ui-button slot="target" label="Bottom"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="pos-cell bottom-right">
-            <app-tooltip content="Bottom Right" position="bottom-right">
-              <ui-button slot="target" label="Bottom Right"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Variants & Themes -->
-      <app-example-section
-        id="variants"
-        title="Variants & Themes"
-        description="Built-in color schemes for different contexts"
-        [code]="darkVariantCode"
-      >
-        <div class="demo-grid col-3">
-          <div class="preview-box">
-            <app-tooltip content="Dark Theme" variant="dark">
-              <ui-button slot="target" class="dark" variant="dark" label="Dark"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Light Theme" variant="light">
-              <ui-button slot="target" class="light" variant="light" label="Light"></ui-button>
-            </app-tooltip>
-          </div>
-          <div
-            class="preview-box glass-bg"
-            style="
-              background: linear-gradient(135deg, #667eea, #764ba2);
-              padding: 20px;
-              border-radius: 8px;
-            "
-          >
-            <app-tooltip content="Glass Effect" variant="glass">
-              <ui-button slot="target" class="glass" variant="ghost" label="Glass"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Operation Successful" variant="success">
-              <ui-button slot="target" variant="success" label="Success"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Warning Message" variant="warning">
-              <ui-button slot="target" variant="warning" label="Warning"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Error Occurred" variant="error">
-              <ui-button slot="target" variant="danger" label="Error"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="High Elevation" elevation="5" variant="light" position="top">
-              <ui-button slot="target" label="Elevation 5" variant="secondary"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Premium Glow" show-glow="true" variant="primary" position="top">
-              <ui-button slot="target" label="Starting Glow"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Shapes & Animation -->
-      <app-example-section
-        id="shapes-animations"
-        title="Shapes & Animations"
-        description="Custom shapes and entry/exit transitions"
-        [code]="bounceAnimationCode"
-      >
-        <div class="demo-grid col-3">
-          <div class="preview-box">
-            <app-tooltip content="Pill Shape" shape="pill" position="top">
-              <ui-button slot="target" style="border-radius: 99px" label="Pill Button"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Boing!" animation="bounce" position="top">
-              <ui-button slot="target" label="Bounce"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Scale Up" animation="scale" position="top">
-              <ui-button slot="target" label="Scale"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Advanced Features -->
-      <app-example-section
-        id="advanced-features"
-        title="Advanced Features"
-        description="Interactive, delayed, and custom styled tooltips"
-        [code]="followCursorCode"
-      >
-        <div class="demo-grid col-3">
-          <div class="preview-box">
-            <app-tooltip content="Tooltip without arrow" position="top" arrow="false">
-              <ui-button slot="target" label="No Arrow"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Shows after 500ms" position="top" show-delay="500">
-              <ui-button slot="target" label="Show Delay"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Hides after 1000ms" position="top" hide-delay="1000">
-              <ui-button slot="target" label="Hide Delay"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Follows cursor smoothly" position="top" follow-cursor="true">
-              <ui-button slot="target" label="Follow Cursor"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip position="top" interactive="true" variant="light">
-              <ui-button slot="target" label="Interactive"></ui-button>
-              <div
-                class="interactive-content"
-                style="padding: 10px; background: white; border-radius: 4px; color: #333"
-              >
-                <strong>Interactive Tooltip!</strong><br />
-                You can hover over this.<br />
-                <a href="#" (click)="$event.preventDefault()">Click me</a>
-              </div>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip
-              content="Wide tooltip with custom max-width settings enabled"
-              position="top"
-              max-width="400"
-            >
-              <ui-button slot="target" label="Max Width"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Rich HTML Content -->
-      <app-example-section
-        id="rich-content"
-        title="Rich HTML Content"
-        description="Tooltips can contain formatted HTML content"
-        [code]="htmlContentCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="preview-box">
-            <app-tooltip
-              content="<strong>Bold text</strong><br><em>Italic text</em><br><code>Code snippet</code>"
-              position="top"
-              html="true"
-              variant="light"
-            >
-              <ui-button slot="target" label="Formatted"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip
-              content="<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
-              position="top"
-              html="true"
-              variant="light"
-            >
-              <ui-button slot="target" label="List"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Practical Use Cases -->
-      <app-example-section
-        id="use-cases"
-        title="Practical Use Cases"
-        description="Real-world scenarios"
-        [code]="useCasesCode"
-      >
-        <div style="padding: 30px; background: var(--color-bg-tertiary); border-radius: 8px">
-          <p>
-            Welcome to our platform!
-            <app-tooltip content="Click here to learn more" variant="info" position="top">
-              <span
-                slot="target"
-                style="cursor: help; text-decoration: underline; color: var(--color-primary)"
-                >Details</span
-              >
-            </app-tooltip>
-          </p>
-          <p>
-            Your account status:
-            <app-tooltip content="Premium until Dec 31" variant="success" position="right">
-              <span
-                slot="target"
-                style="
-                  padding: 4px 12px;
-                  background: #3dcd58;
-                  color: white;
-                  border-radius: 12px;
-                  font-size: 12px;
-                  font-weight: 600;
-                "
-                >Premium</span
-              >
-            </app-tooltip>
-          </p>
-        </div>
-      </app-example-section>
-
-      <!-- Custom Content & Slots -->
-      <app-example-section
-        id="custom-content"
-        title="Custom Content & Slots"
-        description="Use default slot for complex layouts"
-        [code]="customSlotCode"
-      >
-        <div class="demo-grid col-1">
-          <div class="preview-box">
-            <app-tooltip position="top" variant="light" interactive="true" max-width="350">
-              <ui-button slot="target" label="User Profile"></ui-button>
-              <div
-                style="
-                  display: flex;
-                  gap: 15px;
-                  padding: 10px;
-                  background: white;
-                  border-radius: 8px;
-                "
-              >
-                <img
-                  src="https://ui-avatars.com/api/?name=Praveen+Kumar&background=6366f1&color=fff"
-                  style="width: 50px; height: 50px; border-radius: 50%"
-                  alt="Avatar"
-                />
-                <div style="text-align: left">
-                  <strong style="display: block; font-size: 14px; margin-bottom: 2px; color: #333"
-                    >Praveen Kumar</strong
-                  >
-                  <span style="display: block; font-size: 12px; color: #6b7280"
-                    >Lead Architect</span
-                  >
-                </div>
-              </div>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Custom Colors -->
-      <app-example-section
-        id="custom-colors"
-        title="Custom Colors"
-        description="Define custom background and text colors"
-        [code]="customPurpleCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="preview-box">
-            <app-tooltip
-              content="Custom purple"
-              position="top"
-              custom-color="#9333ea"
-              text-color="#ffffff"
-            >
-              <ui-button slot="target" label="Purple"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip
-              content="Gradient Background"
-              position="top"
-              custom-color="linear-gradient(45deg, #12c2e9, #c471ed, #f64f59)"
-              text-color="#ffffff"
-            >
-              <ui-button slot="target" label="Gradient"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Arrow Customization -->
-      <app-example-section
-        id="arrow-customization"
-        title="Arrow Customization"
-        description="Control arrow size and visibility"
-        [code]="largeArrowCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="preview-box">
-            <app-tooltip content="Small arrow" position="top" arrow-size="4">
-              <ui-button slot="target" label="Small"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip content="Large arrow" position="top" arrow-size="16">
-              <ui-button slot="target" label="Large"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Mouse Tracking -->
-      <app-example-section
-        id="mouse-tracking"
-        title="Mouse Tracking"
-        description="Advanced mouse tracking and positioning"
-        [code]="trackMouseCode"
-      >
-        <div class="demo-grid col-2">
-          <div class="preview-box">
-            <app-tooltip
-              content="Tracks mouse movement!"
-              position="top"
-              track-mouse="true"
-              variant="primary"
-            >
-              <ui-button slot="target" label="Track Mouse"></ui-button>
-            </app-tooltip>
-          </div>
-          <div class="preview-box">
-            <app-tooltip
-              content="Opens at mouse position"
-              position="top"
-              trigger="click"
-              open-at-mouse-position="true"
-              variant="info"
-            >
-              <ui-button slot="target" label="Click Position"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Auto Shift -->
-      <app-example-section
-        id="auto-shift"
-        title="Auto-Shift"
-        description="Tooltips automatically adjust to stay within viewport"
-        [code]="autoShiftCode"
-      >
-        <div class="demo-grid col-1">
-          <div class="preview-box">
-            <app-tooltip
-              content="Auto-shifts and flips to stay visible"
-              position="top"
-              auto-shift="true"
-              auto-flip="true"
-              variant="primary"
-            >
-              <ui-button slot="target" label="Auto Shift"></ui-button>
-            </app-tooltip>
-          </div>
-        </div>
-      </app-example-section>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <app-tooltip-playground></app-tooltip-playground>
     </div>
 
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples">
+        <!-- Triggers -->
+        <app-example-section
+          id="triggers"
+          title="Triggers"
+          description="Different ways to trigger the tooltip"
+          [code]="hoverCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <app-tooltip content="I appear on hover" position="top">
+                <ui-button slot="target" label="Hover Me"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="I appear on click" position="top" trigger="click">
+                <ui-button slot="target" label="Click Me"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="I appear on focus" position="top" trigger="focus">
+                <input
+                  type="text"
+                  placeholder="Focus me"
+                  slot="target"
+                  style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
+                />
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Positioning -->
+        <app-example-section
+          id="positioning"
+          title="Positioning"
+          description="Tooltips can be positioned in 8 different directions"
+          [code]="positionCode"
+        >
+          <div class="position-grid">
+            <div class="pos-cell top-left">
+              <app-tooltip content="Top Left" position="top-left">
+                <ui-button slot="target" label="Top Left"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell top">
+              <app-tooltip content="Top Center" position="top">
+                <ui-button slot="target" label="Top"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell top-right">
+              <app-tooltip content="Top Right" position="top-right">
+                <ui-button slot="target" label="Top Right"></ui-button>
+              </app-tooltip>
+            </div>
+
+            <div class="pos-cell left">
+              <app-tooltip content="Left" position="left">
+                <ui-button slot="target" label="Left"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell center">
+              <app-tooltip content="Auto Position" position="auto">
+                <ui-button slot="target" class="accent" variant="primary" label="Auto"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell right">
+              <app-tooltip content="Right" position="right">
+                <ui-button slot="target" label="Right"></ui-button>
+              </app-tooltip>
+            </div>
+
+            <div class="pos-cell bottom-left">
+              <app-tooltip content="Bottom Left" position="bottom-left">
+                <ui-button slot="target" label="Bottom Left"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell bottom">
+              <app-tooltip content="Bottom Center" position="bottom">
+                <ui-button slot="target" label="Bottom"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="pos-cell bottom-right">
+              <app-tooltip content="Bottom Right" position="bottom-right">
+                <ui-button slot="target" label="Bottom Right"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Variants & Themes -->
+        <app-example-section
+          id="variants"
+          title="Variants & Themes"
+          description="Built-in color schemes for different contexts"
+          [code]="darkVariantCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <app-tooltip content="Dark Theme" variant="dark">
+                <ui-button slot="target" class="dark" variant="dark" label="Dark"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Light Theme" variant="light">
+                <ui-button slot="target" class="light" variant="light" label="Light"></ui-button>
+              </app-tooltip>
+            </div>
+            <div
+              class="preview-box glass-bg"
+              style="
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                padding: 20px;
+                border-radius: 8px;
+              "
+            >
+              <app-tooltip content="Glass Effect" variant="glass">
+                <ui-button slot="target" class="glass" variant="ghost" label="Glass"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Operation Successful" variant="success">
+                <ui-button slot="target" variant="success" label="Success"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Warning Message" variant="warning">
+                <ui-button slot="target" variant="warning" label="Warning"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Error Occurred" variant="error">
+                <ui-button slot="target" variant="danger" label="Error"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="High Elevation" elevation="5" variant="light" position="top">
+                <ui-button slot="target" label="Elevation 5" variant="secondary"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Premium Glow" show-glow="true" variant="primary" position="top">
+                <ui-button slot="target" label="Starting Glow"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Shapes & Animation -->
+        <app-example-section
+          id="shapes-animations"
+          title="Shapes & Animations"
+          description="Custom shapes and entry/exit transitions"
+          [code]="bounceAnimationCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <app-tooltip content="Pill Shape" shape="pill" position="top">
+                <ui-button
+                  slot="target"
+                  style="border-radius: 99px"
+                  label="Pill Button"
+                ></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Boing!" animation="bounce" position="top">
+                <ui-button slot="target" label="Bounce"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Scale Up" animation="scale" position="top">
+                <ui-button slot="target" label="Scale"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Advanced Features -->
+        <app-example-section
+          id="advanced-features"
+          title="Advanced Features"
+          description="Interactive, delayed, and custom styled tooltips"
+          [code]="followCursorCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <app-tooltip content="Tooltip without arrow" position="top" arrow="false">
+                <ui-button slot="target" label="No Arrow"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Shows after 500ms" position="top" show-delay="500">
+                <ui-button slot="target" label="Show Delay"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Hides after 1000ms" position="top" hide-delay="1000">
+                <ui-button slot="target" label="Hide Delay"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Follows cursor smoothly" position="top" follow-cursor="true">
+                <ui-button slot="target" label="Follow Cursor"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip position="top" interactive="true" variant="light">
+                <ui-button slot="target" label="Interactive"></ui-button>
+                <div
+                  class="interactive-content"
+                  style="padding: 10px; background: white; border-radius: 4px; color: #333"
+                >
+                  <strong>Interactive Tooltip!</strong><br />
+                  You can hover over this.<br />
+                  <a href="#" (click)="$event.preventDefault()">Click me</a>
+                </div>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip
+                content="Wide tooltip with custom max-width settings enabled"
+                position="top"
+                max-width="400"
+              >
+                <ui-button slot="target" label="Max Width"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Rich HTML Content -->
+        <app-example-section
+          id="rich-content"
+          title="Rich HTML Content"
+          description="Tooltips can contain formatted HTML content"
+          [code]="htmlContentCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <app-tooltip
+                content="<strong>Bold text</strong><br><em>Italic text</em><br><code>Code snippet</code>"
+                position="top"
+                html="true"
+                variant="light"
+              >
+                <ui-button slot="target" label="Formatted"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip
+                content="<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
+                position="top"
+                html="true"
+                variant="light"
+              >
+                <ui-button slot="target" label="List"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Practical Use Cases -->
+        <app-example-section
+          id="use-cases"
+          title="Practical Use Cases"
+          description="Real-world scenarios"
+          [code]="useCasesCode"
+        >
+          <div style="padding: 30px; background: var(--color-bg-tertiary); border-radius: 8px">
+            <p>
+              Welcome to our platform!
+              <app-tooltip content="Click here to learn more" variant="info" position="top">
+                <span
+                  slot="target"
+                  style="cursor: help; text-decoration: underline; color: var(--color-primary)"
+                  >Details</span
+                >
+              </app-tooltip>
+            </p>
+            <p>
+              Your account status:
+              <app-tooltip content="Premium until Dec 31" variant="success" position="right">
+                <span
+                  slot="target"
+                  style="
+                    padding: 4px 12px;
+                    background: #3dcd58;
+                    color: white;
+                    border-radius: 12px;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                  >Premium</span
+                >
+              </app-tooltip>
+            </p>
+          </div>
+        </app-example-section>
+
+        <!-- Custom Content & Slots -->
+        <app-example-section
+          id="custom-content"
+          title="Custom Content & Slots"
+          description="Use default slot for complex layouts"
+          [code]="customSlotCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box">
+              <app-tooltip position="top" variant="light" interactive="true" max-width="350">
+                <ui-button slot="target" label="User Profile"></ui-button>
+                <div
+                  style="
+                    display: flex;
+                    gap: 15px;
+                    padding: 10px;
+                    background: white;
+                    border-radius: 8px;
+                  "
+                >
+                  <img
+                    src="https://ui-avatars.com/api/?name=Praveen+Kumar&background=6366f1&color=fff"
+                    style="width: 50px; height: 50px; border-radius: 50%"
+                    alt="Avatar"
+                  />
+                  <div style="text-align: left">
+                    <strong style="display: block; font-size: 14px; margin-bottom: 2px; color: #333"
+                      >Praveen Kumar</strong
+                    >
+                    <span style="display: block; font-size: 12px; color: #6b7280"
+                      >Lead Architect</span
+                    >
+                  </div>
+                </div>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Custom Colors -->
+        <app-example-section
+          id="custom-colors"
+          title="Custom Colors"
+          description="Define custom background and text colors"
+          [code]="customPurpleCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <app-tooltip
+                content="Custom purple"
+                position="top"
+                custom-color="#9333ea"
+                text-color="#ffffff"
+              >
+                <ui-button slot="target" label="Purple"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip
+                content="Gradient Background"
+                position="top"
+                custom-color="linear-gradient(45deg, #12c2e9, #c471ed, #f64f59)"
+                text-color="#ffffff"
+              >
+                <ui-button slot="target" label="Gradient"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Arrow Customization -->
+        <app-example-section
+          id="arrow-customization"
+          title="Arrow Customization"
+          description="Control arrow size and visibility"
+          [code]="largeArrowCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <app-tooltip content="Small arrow" position="top" arrow-size="4">
+                <ui-button slot="target" label="Small"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip content="Large arrow" position="top" arrow-size="16">
+                <ui-button slot="target" label="Large"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Mouse Tracking -->
+        <app-example-section
+          id="mouse-tracking"
+          title="Mouse Tracking"
+          description="Advanced mouse tracking and positioning"
+          [code]="trackMouseCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <app-tooltip
+                content="Tracks mouse movement!"
+                position="top"
+                track-mouse="true"
+                variant="primary"
+              >
+                <ui-button slot="target" label="Track Mouse"></ui-button>
+              </app-tooltip>
+            </div>
+            <div class="preview-box">
+              <app-tooltip
+                content="Opens at mouse position"
+                position="top"
+                trigger="click"
+                open-at-mouse-position="true"
+                variant="info"
+              >
+                <ui-button slot="target" label="Click Position"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Auto Shift -->
+        <app-example-section
+          id="auto-shift"
+          title="Auto-Shift"
+          description="Tooltips automatically adjust to stay within viewport"
+          [code]="autoShiftCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="preview-box">
+              <app-tooltip
+                content="Auto-shifts and flips to stay visible"
+                position="top"
+                auto-shift="true"
+                auto-flip="true"
+                variant="primary"
+              >
+                <ui-button slot="target" label="Auto Shift"></ui-button>
+              </app-tooltip>
+            </div>
+          </div>
+        </app-example-section>
+      </div>
+      <!-- /examples-content -->
+    </div>
+    <!-- /examples-split-layout -->
+
     <div slot="docs">
-      <app-component-documentation componentId="tooltip"></app-component-documentation>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </demo-tabs>
 </div>

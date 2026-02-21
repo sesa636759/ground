@@ -7,117 +7,1019 @@
 
   <demo-tabs>
     <div slot="playground">
-      <div class="demo-container">
-        <!-- Interactive Playground -->
-        <section class="demo-section" id="playground">
-          <div class="section-header">
-            <h2>🎮 Interactive Playground</h2>
-            <p>Customize paging logic and metadata reporting.</p>
-          </div>
-          <app-pagination-playground></app-pagination-playground>
-          <app-code-block [code]="playgroundCode" title="Usage" language="html"></app-code-block>
-        </section>
-      </div>
+      <app-pagination-playground></app-pagination-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout" style="height: auto; overflow: visible">
         <!-- Sidebar Navigation -->
-        <div class="examples-sidebar">
-          <div class="sidebar-title">Examples List</div>
-          <ul class="nav-list">
-            <li *ngFor="let variant of exampleVariants">
-              <a (click)="scrollToSection(variant.id)">
-                <span class="nav-icon">{{ variant.icon }}</span>
-                {{ variant.name }}
-              </a>
-            </li>
-          </ul>
-        </div>
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Visual Variants -->
-          <section class="demo-section" id="styles" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎨 Visual Variants</h2>
-              <p>Choose the presentation style that fits your application theme.</p>
-            </div>
-            <div class="demo-card">
-              <div style="width: 100%">
-                <span>Modern Style:</span>
-                <ui-pagination
-                  variant="modern"
-                  [total-records]="50"
-                  [rows]="10"
-                  show-report
-                ></ui-pagination>
+          <!-- Basic & Compact -->
+          <app-example-section
+            id="basic"
+            title="Basic & Compact Pagination"
+            description="Standard navigation with page numbers and a compact mode for smaller spaces."
+            [code]="basicCode"
+            style="margin-top: 0"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Basic</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="1"
+                  ></ui-pagination>
+                </div>
               </div>
-              <div style="width: 100%">
-                <span>Compact Style:</span>
-                <ui-pagination variant="compact" [total-records]="50" [rows]="10"></ui-pagination>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Compact</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="compact"
+                    total-items="50"
+                    items-per-page="5"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
               </div>
             </div>
-            <app-code-block
-              [code]="stylesCode"
-              title="Design Examples"
-              language="html"
-            ></app-code-block>
-          </section>
+          </app-example-section>
 
-          <!-- UI Controls -->
-          <section class="demo-section" id="features">
-            <div class="section-header">
-              <h2>⚙️ UI Controls</h2>
-              <p>Enable or disable specific navigation features.</p>
+          <!-- Detailed Pagination -->
+          <app-example-section
+            id="detailed"
+            title="Detailed Pagination"
+            description="Full-featured pagination with page size selector, total count, and jump to page."
+            [code]="detailedCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >With Page Size Selector & Total</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="detailed"
+                    total-items="200"
+                    items-per-page="20"
+                    show-page-size="true"
+                    show-total="true"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >With Jump To Page</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="detailed"
+                    total-items="500"
+                    items-per-page="25"
+                    show-jump-to="true"
+                    show-total="true"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >All Features Combined</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="detailed"
+                    total-items="1000"
+                    items-per-page="50"
+                    show-page-size="true"
+                    show-total="true"
+                    show-jump-to="true"
+                    current-page="10"
+                  ></ui-pagination>
+                </div>
+              </div>
             </div>
-            <div class="demo-card">
-              <div style="width: 100%">
-                <span>Simplified (No Jump Icons):</span>
+          </app-example-section>
+
+          <!-- Minimal Pagination -->
+          <app-example-section
+            id="minimal"
+            title="Minimal Pagination"
+            description="Compact input-based navigation with prev/next buttons."
+            [code]="minimalCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Minimal</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="minimal"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Small Minimal</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="minimal"
+                    size="sm"
+                    total-items="80"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Large Minimal</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="minimal"
+                    size="lg"
+                    total-items="80"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
+
+          <!-- Dropdown Pagination -->
+          <app-example-section
+            id="dropdown"
+            title="Dropdown Pagination"
+            description="Select page from dropdown menu with Previous/Next navigation."
+            [code]="dropdownCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Dropdown Pagination</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="dropdown"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Compact Dropdown (Minimal)</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="dropdown"
+                    compact="true"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >With Total Count</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="dropdown"
+                    total-items="250"
+                    items-per-page="25"
+                    show-total="true"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Icon-Only Dropdown</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="dropdown"
+                    icon-only="true"
+                    total-items="150"
+                    items-per-page="15"
+                    current-page="2"
+                  ></ui-pagination>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
+
+          <!-- Input Pagination -->
+          <app-example-section
+            id="input"
+            title="Input Pagination"
+            description="Type page number directly or use navigation buttons."
+            [code]="inputCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Input Pagination</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="input"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Compact Input (Minimal)</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="input"
+                    compact="true"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >With Total Count</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="input"
+                    total-items="500"
+                    items-per-page="20"
+                    show-total="true"
+                    current-page="10"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Icon-Only Input</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="input"
+                    icon-only="true"
+                    total-items="200"
+                    items-per-page="25"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
+
+          <!-- Indicator Pagination -->
+          <app-example-section
+            id="indicator"
+            title="Indicator Pagination"
+            description="Dot-based navigation perfect for carousels and slideshows."
+            [code]="indicatorCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Indicator Pagination</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="indicator"
+                    total-items="50"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Without Navigation Buttons</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    type="indicator"
+                    total-items="50"
+                    items-per-page="10"
+                    show-prev-next="false"
+                    current-page="2"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Themes</span
+                >
+                <div style="display: flex; flex-direction: column; gap: 16px; align-items: center">
+                  <ui-pagination
+                    type="indicator"
+                    theme="primary"
+                    total-items="60"
+                    items-per-page="10"
+                    current-page="2"
+                  ></ui-pagination>
+                  <ui-pagination
+                    type="indicator"
+                    theme="success"
+                    total-items="60"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                  <ui-pagination
+                    type="indicator"
+                    theme="danger"
+                    total-items="60"
+                    items-per-page="10"
+                    current-page="4"
+                  ></ui-pagination>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
+
+          <!-- Themes & Shapes -->
+          <app-example-section
+            id="themes"
+            title="Themes & Shapes"
+            description="Choose from various color themes and button shape styles."
+            [code]="themesCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="display: flex; flex-direction: column; gap: 16px; align-items: center">
                 <ui-pagination
-                  [show-jump-controls]="false"
-                  [total-records]="100"
-                  [rows]="10"
+                  theme="primary"
+                  total-items="100"
+                  items-per-page="10"
+                  current-page="3"
+                ></ui-pagination>
+                <ui-pagination
+                  theme="success"
+                  total-items="100"
+                  items-per-page="10"
+                  current-page="3"
+                ></ui-pagination>
+                <ui-pagination
+                  theme="danger"
+                  total-items="100"
+                  items-per-page="10"
+                  current-page="3"
+                ></ui-pagination>
+                <ui-pagination
+                  theme="warning"
+                  total-items="100"
+                  items-per-page="10"
+                  current-page="3"
+                ></ui-pagination>
+                <ui-pagination
+                  theme="info"
+                  total-items="100"
+                  items-per-page="10"
+                  current-page="3"
                 ></ui-pagination>
               </div>
-              <div style="width: 100%">
-                <span>No Summary Report:</span>
-                <ui-pagination
-                  [show-report]="false"
-                  [total-records]="100"
-                  [rows]="10"
-                ></ui-pagination>
+
+              <div style="margin-top: 30px">
+                <h4 style="text-align: center; margin-bottom: 20px; font-size: 1rem">
+                  Button Shapes
+                </h4>
+                <div style="display: flex; flex-direction: column; gap: 16px; align-items: center">
+                  <div>
+                    <span
+                      style="
+                        display: block;
+                        margin-bottom: 8px;
+                        font-size: 0.8rem;
+                        color: var(--text-secondary);
+                        text-align: center;
+                      "
+                      >Default</span
+                    >
+                    <ui-pagination
+                      shape="default"
+                      theme="primary"
+                      total-items="100"
+                      items-per-page="10"
+                      current-page="3"
+                    ></ui-pagination>
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        display: block;
+                        margin-bottom: 8px;
+                        font-size: 0.8rem;
+                        color: var(--text-secondary);
+                        text-align: center;
+                      "
+                      >Rounded</span
+                    >
+                    <ui-pagination
+                      shape="rounded"
+                      theme="success"
+                      total-items="100"
+                      items-per-page="10"
+                      current-page="3"
+                    ></ui-pagination>
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        display: block;
+                        margin-bottom: 8px;
+                        font-size: 0.8rem;
+                        color: var(--text-secondary);
+                        text-align: center;
+                      "
+                      >Pill</span
+                    >
+                    <ui-pagination
+                      shape="pill"
+                      theme="warning"
+                      total-items="100"
+                      items-per-page="10"
+                      current-page="3"
+                    ></ui-pagination>
+                  </div>
+                </div>
               </div>
             </div>
-            <app-code-block
-              [code]="featuresCode"
-              title="Functionality Examples"
-              language="html"
-            ></app-code-block>
-          </section>
+          </app-example-section>
+
+          <!-- Sizes & Variations -->
+          <app-example-section
+            id="sizes"
+            title="Sizes & Variations"
+            description="Different size options, outlined variants, and icon-only modes."
+            [code]="sizesCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <div style="display: flex; flex-direction: column; gap: 16px; align-items: center">
+                <ui-pagination size="sm" total-items="50" items-per-page="10"></ui-pagination>
+                <ui-pagination size="md" total-items="50" items-per-page="10"></ui-pagination>
+                <ui-pagination size="lg" total-items="50" items-per-page="10"></ui-pagination>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Outlined Variant</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    variant="outlined"
+                    total-items="80"
+                    items-per-page="10"
+                    current-page="2"
+                  ></ui-pagination>
+                </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Icon-Only Pagination</span
+                >
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <ui-pagination
+                    icon-only="true"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                  <ui-pagination
+                    icon-only="true"
+                    total-items="150"
+                    items-per-page="15"
+                    show-page-size="true"
+                    current-page="2"
+                  ></ui-pagination>
+                  <ui-pagination
+                    icon-only="true"
+                    total-items="200"
+                    items-per-page="20"
+                    show-jump-to="true"
+                    show-total="true"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
+
+          <!-- Advanced Layouts & Smart Features -->
+          <app-example-section
+            id="features"
+            title="Advanced & Smart Features"
+            description="Keyboard navigation, Responsive mode, Quick Jump, Progress markers, Sticky positions, and state persistence."
+            [code]="featuresCode"
+          >
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+                background-color: var(--bg-tertiary);
+              "
+            >
+              <!-- Keyboard Nav -->
+              <div style="text-align: center">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Keyboard Navigation (Enabled vs Disabled)</span
+                >
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+                  <ui-pagination
+                    keyboard-nav="true"
+                    theme="primary"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                  <ui-pagination
+                    keyboard-nav="false"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+
+              <!-- Responsive Mode -->
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Responsive Mode</span
+                >
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+                  <ui-pagination
+                    responsive-mode="true"
+                    theme="primary"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                  <div
+                    style="color: #6b7280; font-size: 0.8rem; max-width: 400px; line-height: 1.5"
+                  >
+                    (Auto-adapts layout on narrow screens)
+                  </div>
+                  <ui-pagination
+                    responsive-mode="true"
+                    mobile-breakpoint="1024"
+                    theme="success"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+              </div>
+
+              <!-- Quick Jump -->
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Quick Jump (Steps 5 & 10)</span
+                >
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+                  <ui-pagination
+                    quick-jump="true"
+                    quick-jump-step="5"
+                    total-items="500"
+                    items-per-page="10"
+                    current-page="15"
+                  ></ui-pagination>
+                  <ui-pagination
+                    quick-jump="true"
+                    quick-jump-step="10"
+                    total-items="1000"
+                    items-per-page="10"
+                    current-page="25"
+                  ></ui-pagination>
+                </div>
+              </div>
+
+              <!-- Progress Indicator -->
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >With Progress Bar</span
+                >
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+                  <ui-pagination
+                    show-progress="true"
+                    theme="primary"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                  <ui-pagination
+                    show-progress="true"
+                    theme="success"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="7"
+                  ></ui-pagination>
+                  <ui-pagination
+                    show-progress="true"
+                    theme="danger"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="9"
+                  ></ui-pagination>
+                </div>
+              </div>
+
+              <!-- Sticky Positioning -->
+              <div
+                style="
+                  text-align: center;
+                  margin-top: 20px;
+                  overflow-y: auto;
+                  height: 150px;
+                  background: white;
+                  padding: 20px;
+                  border: 1px solid #dee2e6;
+                "
+              >
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Sticky Demo (Scroll down/up inside this container)</span
+                >
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    sticky="true"
+                    sticky-position="bottom"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="3"
+                  ></ui-pagination>
+                </div>
+                <div style="height: 300px"></div>
+                <div style="display: flex; justify-content: center">
+                  <ui-pagination
+                    sticky="true"
+                    sticky-position="top"
+                    total-items="100"
+                    items-per-page="10"
+                    current-page="5"
+                  ></ui-pagination>
+                </div>
+              </div>
+
+              <!-- Smart Features -->
+              <div style="text-align: center; margin-top: 20px">
+                <span
+                  style="
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: var(--text-secondary);
+                  "
+                  >Smart Features</span
+                >
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+                  <div style="width: 100%">
+                    <span
+                      style="font-size: 0.75rem; color: #6b7280; display: block; margin-bottom: 4px"
+                      >Auto-hide (hides if only 1 page)</span
+                    >
+                    <ui-pagination
+                      auto-hide="true"
+                      total-items="5"
+                      items-per-page="10"
+                      current-page="1"
+                    ></ui-pagination>
+                  </div>
+
+                  <div style="width: 100%; margin-top: 10px">
+                    <span
+                      style="font-size: 0.75rem; color: #6b7280; display: block; margin-bottom: 4px"
+                      >Smart Compact Mode (>20 pages threshold)</span
+                    >
+                    <ui-pagination
+                      smart-compact="true"
+                      smart-compact-threshold="20"
+                      total-items="500"
+                      items-per-page="10"
+                      current-page="15"
+                    ></ui-pagination>
+                  </div>
+
+                  <div style="width: 100%; margin-top: 10px">
+                    <span
+                      style="font-size: 0.75rem; color: #6b7280; display: block; margin-bottom: 4px"
+                      >URL Sync (Observe URL address bar)</span
+                    >
+                    <ui-pagination
+                      url-sync="true"
+                      url-param="page"
+                      total-items="100"
+                      items-per-page="10"
+                      current-page="3"
+                    ></ui-pagination>
+                  </div>
+
+                  <div style="width: 100%; margin-top: 10px">
+                    <span
+                      style="font-size: 0.75rem; color: #6b7280; display: block; margin-bottom: 4px"
+                      >Local Storage Persistence (Persists across reload)</span
+                    >
+                    <ui-pagination
+                      persist-page="true"
+                      storage-key="demo-page"
+                      total-items="100"
+                      items-per-page="10"
+                      current-page="1"
+                    ></ui-pagination>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </app-example-section>
         </div>
       </div>
     </div>
 
     <div slot="docs">
-      <div class="demo-container">
-        <section class="demo-section">
-          <div class="section-header">
-            <h2>📖 Documentation</h2>
-            <p>Links, API references, and detailed usage notes</p>
+      <div class="examples-split-layout" style="height: auto; overflow: visible">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility guidelines,
+                  and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
           </div>
-          <div class="demo-card" style="padding: 24px">
-            <p>
-              The documentation for this component is currently being compiled. Our technical
-              writers are working to provide comprehensive API references, accessibility guidelines,
-              and best practices.
-            </p>
-            <p>
-              In the meantime, please explore the <strong>Playground</strong> for interactive
-              testing and the <strong>Examples</strong> tab for common implementation patterns.
-            </p>
-          </div>
-        </section>
+        </div>
       </div>
     </div>
   </demo-tabs>

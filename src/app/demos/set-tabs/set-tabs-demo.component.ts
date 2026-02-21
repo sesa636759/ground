@@ -1,3 +1,4 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
-    DemoHeaderComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tabs-demo.component.html',

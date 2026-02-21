@@ -1,3 +1,5 @@
+@use '../../../styles/demo-base.scss';
+
 .demo-sub-title {
   font-size: 0.85rem;
   font-weight: 700;
@@ -7,7 +9,8 @@
   margin-bottom: 12px;
 }
 
-.quiz-front, .quiz-back {
+.quiz-front,
+.quiz-back {
   padding: 24px;
   text-align: center;
   display: flex;
@@ -19,11 +22,13 @@
 .monitor-display {
   text-align: center;
   padding: 20px 0;
+
   .value {
     font-size: 2rem;
     font-weight: 700;
     color: white;
   }
+
   .label {
     color: rgba(255, 255, 255, 0.7);
   }

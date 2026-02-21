@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-card-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -31,14 +36,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             >
               <div class="control-group">
                 <label>Width</label>
-                <app-input type="text" [(ngModel)]="pgConfig.width" (change)="updateConfig()" />
+                <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
               </div>
               <div class="control-group">
                 <label>Radius</label>
-                <app-input
+                <input
                   type="text"
                   [(ngModel)]="pgConfig.borderRadius"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                 />
               </div>
             </div>
@@ -129,12 +134,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Snippet" icon="fas fa-copy" icon-library="fontawesome"></ui-button>
           <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
       </div>
@@ -173,7 +173,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
           <div slot="footer" style="display: flex; gap: 12px; width: 100%;">
             <ui-button variant="primary" style="flex: 1;" label="Book Now"></ui-button>
-            <ui-button variant="ghost" label="Details" icon="fas fa-info-circle" icon-library="fontawesome"></ui-button>
+            <ui-button
+              variant="primary"
+              label="Details"
+              icon="fa-solid fa-circle-info"
+              iconLibrary="fontawesome"
+            ></ui-button>
+            <ui-button
+              label="With Icon"
+              icon="fa fa-circle-info"
+              iconLibrary="fontawesome"
+              size="xs"
+              variant="primary"
+            ></ui-button>
           </div>
           <div slot="back-content" style="padding: 24px;">
             <h3 style="color: var(--primary); margin-bottom: 16px;">Tour Statistics</h3>
@@ -185,6 +197,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </ul>
           </div>
         </ui-card>
+
+        <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
       </div>
     </div>
   `,

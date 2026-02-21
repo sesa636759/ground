@@ -13,12 +13,13 @@
   </aside>
 
   <!-- Main Content Area -->
-  <div class="examples-content" id="examples-scroll-area">
+  <div class="examples-content pane-examples" id="examples-scroll-area">
     <!-- Premium Showcase -->
     <app-example-section
       title="✨ Premium Showcase"
       description="Modern cards with high-impact visuals and rich content structures."
       id="playground-hero"
+      [code]="premiumHeroCode"
     >
       <div class="card-grid">
         <!-- Dashboard Card -->
@@ -54,8 +55,15 @@
             </div>
           </div>
           <div slot="footer" class="footer-actions">
-            <ui-button variant="primary" label="Open Dashboard" size="small"></ui-button>
-            <ui-button variant="ghost" label="Export" icon="fa fa-download" icon-library="fontawesome"></ui-button>
+            <ui-button variant="primary" label="Open Dashboard" size="md"></ui-button>
+            <ui-button
+              size="md"
+              variant="primary"
+              label="Export"
+              icon="download"
+              icon-library="lucide"
+              icon-position="left"
+            ></ui-button>
           </div>
         </ui-card>
 
@@ -106,9 +114,7 @@
             and SDKs.
           </p>
         </div>
-        <div slot="footer">
-          <ui-button variant="ghost" label="Explore Docs" icon="arrow-big-right" icon-library="lucide"></ui-button>
-        </div>
+        <div slot="footer"></div>
       </ui-card>
     </app-example-section>
 

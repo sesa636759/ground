@@ -1,13 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-dock-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -25,7 +30,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Breakpoint</label>
-              <app-input type="text" [(ngModel)]="pgConfig.breakpoint" (change)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.breakpoint"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
           </div>
 
@@ -37,6 +46,24 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 [(ngModel)]="pgConfig.autoZIndex"
                 (change)="updateConfig()"
                 label="Auto Z-Index"
+              ></app-checkbox>
+              <app-checkbox
+                id="magnify"
+                [(ngModel)]="pgConfig.magnify"
+                (change)="updateConfig()"
+                label="Magnify"
+              ></app-checkbox>
+              <app-checkbox
+                id="blurEffect"
+                [(ngModel)]="pgConfig.blurEffect"
+                (change)="updateConfig()"
+                label="Blur Effect"
+              ></app-checkbox>
+              <app-checkbox
+                id="showLabels"
+                [(ngModel)]="pgConfig.showLabels"
+                (change)="updateConfig()"
+                label="Show Labels"
               ></app-checkbox>
             </div>
           </div>
@@ -62,6 +89,9 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.position]="pgConfig.position"
           [attr.breakpoint]="pgConfig.breakpoint"
           [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
+          [attr.magnify]="pgConfig.magnify ? true : false"
+          [attr.blur-effect]="pgConfig.blurEffect ? true : false"
+          [attr.show-labels]="pgConfig.showLabels ? true : false"
           [model]="modelJson"
         ></ui-dock>
 
@@ -81,6 +111,9 @@ export class DockPlaygroundComponent {
     position: 'bottom',
     breakpoint: '960px',
     autoZIndex: true,
+    magnify: true,
+    blurEffect: false,
+    showLabels: true,
   };
 
   positionOptions = [
@@ -109,6 +142,21 @@ export class DockPlaygroundComponent {
   updateConfig() {
     let code = '<ui-dock\n';
     code += `  position="${this.pgConfig.position}"\n`;
+    if (this.pgConfig.breakpoint) {
+      code += `  breakpoint="${this.pgConfig.breakpoint}"\n`;
+    }
+    if (!this.pgConfig.autoZIndex) {
+      code += `  auto-z-index="false"\n`;
+    }
+    if (!this.pgConfig.magnify) {
+      code += `  magnify="false"\n`;
+    }
+    if (this.pgConfig.blurEffect) {
+      code += `  blur-effect="true"\n`;
+    }
+    if (!this.pgConfig.showLabels) {
+      code += `  show-labels="false"\n`;
+    }
     code += `  [model]="items"\n`;
     code += '></ui-dock>';
 
@@ -128,6 +176,9 @@ export class DockPlaygroundComponent {
       position: 'bottom',
       breakpoint: '960px',
       autoZIndex: true,
+      magnify: true,
+      blurEffect: false,
+      showLabels: true,
     };
     this.updateConfig();
   }

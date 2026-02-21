@@ -1,13 +1,20 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiSwitchValueAccessorDirective } from '../../../../directives/ui-switch-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-switch-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiSwitchValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -18,25 +25,15 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <h3>Content</h3>
             <div class="control-group">
               <label>Label</label>
-              <app-input type="text" [(ngModel)]="pgConfig.label" (change)="updateConfig()" />
+              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
             </div>
             <div class="control-group">
               <label>Icon On</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.iconOn"
-                (change)="updateConfig()"
-                placeholder="e.g. 🌙"
-              />
+              <input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" placeholder="e.g. 🌙" />
             </div>
             <div class="control-group">
               <label>Icon Off</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.iconOff"
-                (change)="updateConfig()"
-                placeholder="e.g. ☀️"
-              />
+              <input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" placeholder="e.g. ☀️" />
             </div>
           </div>
 

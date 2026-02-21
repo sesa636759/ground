@@ -1,9 +1,12 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-tree-demo',
@@ -14,6 +17,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     TreePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tree-demo.component.html',
@@ -34,6 +39,15 @@ export class SetTreeDemoComponent implements OnInit {
     { id: 'drag-drop', title: 'Drag & Drop', icon: '🔄' },
     { id: 'dark-theme', title: 'Dark Theme', icon: '🌙' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Basic simple tree
   simpleTreeData = JSON.stringify([
@@ -130,10 +144,20 @@ export class SetTreeDemoComponent implements OnInit {
               icon: 'fas fa-laptop-code',
               extra: 'Tech',
               children: [
-                { id: 'vp-eng', label: 'VP of Engineering', icon: 'fas fa-code', extra: 'Management' },
+                {
+                  id: 'vp-eng',
+                  label: 'VP of Engineering',
+                  icon: 'fas fa-code',
+                  extra: 'Management',
+                },
                 { id: 'eng-mgr', label: 'Engineering Manager', icon: 'fas fa-users-cog' },
                 { id: 'platform', label: 'Platform Architect', icon: 'fas fa-server' },
-                { id: 'data', label: 'Head of Data Science', icon: 'fas fa-chart-line', extra: 'AI/ML' },
+                {
+                  id: 'data',
+                  label: 'Head of Data Science',
+                  icon: 'fas fa-chart-line',
+                  extra: 'AI/ML',
+                },
               ],
             },
             {

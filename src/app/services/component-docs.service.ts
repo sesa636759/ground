@@ -2359,7 +2359,7 @@ export class ComponentDocsService {
             defaultValue: '2',
             required: false,
           },
-       
+
           {
             name: 'color',
             type: 'string',
@@ -5193,6 +5193,170 @@ export class ComponentDocsService {
         examples: [
           '<ui-speedometer [value]="160" [maxValue]="300" unit="km/h" color="warning"></ui-speedometer>',
           '<ui-speedometer [value]="45" label="Load" showPercentage="true" ranges=\'[{"min":0, "max":40, "color": "green"}]\'></ui-speedometer>',
+        ],
+      },
+    ],
+    [
+      'resizable-panel',
+      {
+        id: 'resizable-panel',
+        name: 'Resizable Panel',
+        shortDescription:
+          'Flexible layout system with draggable dividers for horizontal and vertical resizing.',
+        detailedDescription:
+          'The Resizable Panel component provides a powerful split-pane layout system with draggable dividers. It supports horizontal and vertical splits, triple or nested panes, collapsible panels, snap-to-edge behaviour, min/max size constraints on each panel, and dark/light themes. Content is projected via named slots matching the panel id defined in the panels array.',
+        usage: `<!-- Horizontal two-panel split -->
+<app-resizable-panel
+  [panels]="[
+    { id: 'p1', size: 30, minSize: 15 },
+    { id: 'p2', size: 70 }
+  ]"
+  direction="horizontal"
+>
+  <div slot="p1">Left Panel</div>
+  <div slot="p2">Right Panel</div>
+</app-resizable-panel>`,
+        props: [
+          {
+            name: 'panels',
+            type: 'PanelConfig[]',
+            description:
+              'Array of panel configuration objects. Each panel must have a unique id and initial size (%). Content is projected via slot="[id]".',
+            required: true,
+          },
+          {
+            name: 'direction',
+            type: "'horizontal' | 'vertical'",
+            description:
+              'Split axis — horizontal places panels side by side; vertical stacks them top to bottom.',
+            defaultValue: "'horizontal'",
+          },
+          {
+            name: 'theme',
+            type: "'light' | 'dark'",
+            description: 'Visual theme for the divider handle and background.',
+            defaultValue: "'light'",
+          },
+          {
+            name: 'animated',
+            type: 'boolean',
+            description: 'Enable CSS transitions when panels are collapsed or snapped.',
+            defaultValue: 'true',
+          },
+          {
+            name: 'snap-to-edge',
+            type: 'boolean',
+            description:
+              'Enable snap-to-edge behaviour. When the user drags a handle within snapThreshold pixels of the container edge, the panel snaps closed.',
+            defaultValue: 'false',
+          },
+          {
+            name: 'snapThreshold',
+            type: 'number',
+            description: 'Distance in pixels from the container edge that triggers snap-to-edge.',
+            defaultValue: '50',
+          },
+          {
+            name: 'PanelConfig.id',
+            type: 'string',
+            description:
+              'Unique identifier for the panel. Must match the slot name used for content projection.',
+            required: true,
+          },
+          {
+            name: 'PanelConfig.size',
+            type: 'number',
+            description: 'Initial panel size as a percentage of the total container.',
+            defaultValue: '50',
+          },
+          {
+            name: 'PanelConfig.minSize',
+            type: 'number',
+            description:
+              'Minimum panel size as a percentage. The handle cannot be dragged past this limit.',
+            defaultValue: '0',
+          },
+          {
+            name: 'PanelConfig.maxSize',
+            type: 'number',
+            description:
+              'Maximum panel size as a percentage. The handle cannot be dragged past this limit.',
+            defaultValue: '100',
+          },
+          {
+            name: 'PanelConfig.collapsible',
+            type: 'boolean',
+            description:
+              'When true, a collapse/expand toggle button is shown on the divider for this panel.',
+            defaultValue: 'false',
+          },
+          {
+            name: 'PanelConfig.collapseDirection',
+            type: "'left' | 'right' | 'top' | 'bottom'",
+            description:
+              'Direction this panel collapses toward when the collapse button is clicked.',
+            defaultValue: "'left'",
+          },
+        ],
+        events: [
+          {
+            name: 'panelResize',
+            description: 'Emitted continuously while a divider is being dragged.',
+            payloadType: '{ panelId: string; size: number }',
+            payloadDescription:
+              'The id of the panel being resized and its new size as a percentage.',
+          },
+          {
+            name: 'panelSnap',
+            description: 'Emitted when a panel snaps to edge or is collapsed/expanded.',
+            payloadType: '{ panelId: string; snapped: boolean }',
+            payloadDescription: 'The id of the panel and whether it is now snapped/collapsed.',
+          },
+        ],
+        limitations: [
+          'Panel sizes must sum to 100% — any remainder is distributed to the last panel automatically.',
+          'Nested panels require the outer slot element to have height:100% so inner panels fill the space.',
+          'snap-to-edge only works reliably when the container has a fixed or known pixel height/width.',
+          'Touch drag is supported but may conflict with native scroll on mobile — use direction="vertical" with caution on touch devices.',
+          'Maximum recommended nesting depth is 2 levels for performance.',
+        ],
+        examples: [
+          `<!-- Vertical split -->
+<app-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
+  <div slot="t1">Top Panel</div>
+  <div slot="t2">Bottom Panel</div>
+</app-resizable-panel>`,
+          `<!-- Triple horizontal split -->
+<app-resizable-panel [panels]="[
+  {id:'p1',size:30,minSize:20},
+  {id:'p2',size:40,minSize:20},
+  {id:'p3',size:30,minSize:20}
+]" direction="horizontal">
+  <div slot="p1">Left</div>
+  <div slot="p2">Centre</div>
+  <div slot="p3">Right</div>
+</app-resizable-panel>`,
+          `<!-- Nested panels (IDE layout) -->
+<app-resizable-panel [panels]="nestedOuter" direction="horizontal">
+  <div slot="sidebar">Sidebar</div>
+  <div slot="main" style="height:100%">
+    <app-resizable-panel [panels]="nestedInner" direction="vertical">
+      <div slot="editor">Editor</div>
+      <div slot="terminal">Terminal</div>
+    </app-resizable-panel>
+  </div>
+</app-resizable-panel>`,
+          `<!-- Collapsible + snap -->
+<app-resizable-panel
+  [panels]="[{id:'left',size:30,collapsible:true,collapseDirection:'left'},{id:'main',size:70}]"
+  direction="horizontal"
+  snap-to-edge="true"
+  [snapThreshold]="50"
+  theme="dark"
+>
+  <div slot="left">Collapsible Sidebar</div>
+  <div slot="main">Main Content</div>
+</app-resizable-panel>`,
         ],
       },
     ],

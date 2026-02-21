@@ -1,12 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
-import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
-import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-anchor-demo',
@@ -14,26 +14,35 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   imports: [
     CommonModule,
     FormsModule,
-    CodeBlockComponent,
     AnchorPlaygroundComponent,
     DemoTabsComponent,
-    DemoHeaderComponent,
+    ExampleSectionComponent,
+    ComponentDocumentationComponent,
+    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-anchor-demo.component.html',
   styleUrl: './app-anchor-demo.component.scss',
 })
-export class AppAnchorDemoComponent {
+export class AppAnchorDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', name: 'Anchor types', icon: '📝', color: '#3b82f6' },
-    { id: 'orientation', name: 'Orientation', icon: '↔️', color: '#10b981' },
-    { id: 'auto-gen', name: 'Auto Generation', icon: '⚙️', color: '#f59e0b' },
+    { id: 'types', title: 'Marker Styles', icon: '📝', color: '#3b82f6' },
+    { id: 'orientation', title: 'Orientation', icon: '↔️', color: '#10b981' },
+    { id: 'auto-gen', title: 'Headings Auto-Detection', icon: '⚙️', color: '#f59e0b' },
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
+    return this.variants;
   }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   links = JSON.stringify([
     { id: 'intro', label: 'Introduction', target: 'intro-section' },
@@ -48,29 +57,13 @@ export class AppAnchorDemoComponent {
   scroll-container="#my-scroll-area"
 ></ui-anchor>`;
 
-  typesCode = `<!-- Line style (Default) -->
-<ui-anchor type="line" ...></ui-anchor>
+  typesCode = `<ui-anchor type="line" [links]="links"></ui-anchor>
+<ui-anchor type="dot" [links]="links"></ui-anchor>`;
 
-<!-- Dot style -->
-<ui-anchor type="dot" ...></ui-anchor>`;
+  orientationCode = `<ui-anchor orientation="horizontal" [links]="links"></ui-anchor>
+<ui-anchor orientation="vertical" [links]="links"></ui-anchor>`;
 
-  orientationCode = `<!-- Horizontal navigation -->
-<ui-anchor orientation="horizontal" ...></ui-anchor>
+  autoGenCode = `<ui-anchor auto-gen-container="#auto-gen-box" show-progress></ui-anchor>`;
 
-<!-- Vertical navigation -->
-<ui-anchor orientation="vertical" ...></ui-anchor>`;
-
-  autoGenCode = `<!-- Automatically generate links from h1-h4 headers -->
-<ui-anchor auto-gen-container="#article-content" ...></ui-anchor>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    const container = document.querySelector('.pane-examples');
-    if (element && container) {
-      container.scrollTo({
-        top: (element as HTMLElement).offsetTop - 20,
-        behavior: 'smooth',
-      });
-    }
-  }
+  ngOnInit() {}
 }

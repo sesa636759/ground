@@ -22,10 +22,11 @@ export class AppTagsInputValueAccessorDirective implements ControlValueAccessor 
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('tagsChange', ['$event.detail'])
-  _handleInput(detail: any): void {
+  @HostListener('tagsChange', ['$event'])
+  _handleInput(event: Event): void {
     // tagsChange emits { tags: string[] }
-    this.onChange(detail.tags);
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.tags);
   }
 
   @HostListener('blur')

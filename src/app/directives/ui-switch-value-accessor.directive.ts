@@ -21,10 +21,11 @@ export class UiSwitchValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('switchChange', ['$event.detail'])
-  _handleInput(detail: any): void {
-    // switchChange emits { checked: boolean }
-    this.onChange(detail.checked);
+  @HostListener('switchChange', ['$event'])
+  _handleInput(event: Event): void {
+    // switchChange emits a CustomEvent with detail: { checked: boolean }
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.checked);
   }
 
   @HostListener('switchBlur')

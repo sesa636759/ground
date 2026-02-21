@@ -14,18 +14,7 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <section class="demo-section">
-        <div class="section-header">
-          <app-demo-header
-            icon="🎮"
-            title="Interactive Playground"
-            description="Configure and test card properties in real-time"
-          >
-          </app-demo-header>
-        </div>
-        <app-card-playground></app-card-playground>
-        <app-code-block [code]="playgroundCode" title="Card Usage" language="html"></app-code-block>
-      </section>
+      <app-card-playground></app-card-playground>
     </div>
 
     <!-- Documentation Slot -->
