@@ -1,21 +1,34 @@
-<div class="demo-container">
-  <h1>Breadcrumb Component</h1>
-  <p class="intro-text">
-    A navigation aid that allows users to keep track of their locations within programs, documents,
-    or websites.
-  </p>
+<app-demo-header
+  icon="🍞"
+  title="Breadcrumb Component"
+  description="A navigation aid that allows users to keep track of their locations within programs, documents, or websites."
+>
+</app-demo-header>
 
-  <demo-tabs>
-    <div slot="playground">
-      <app-breadcrumb-playground></app-breadcrumb-playground>
-    </div>
+<demo-tabs>
+  <!-- Examples Slot -->
+  <div slot="examples" class="examples-split-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="examples-sidebar">
+      <div class="sidebar-title">Sections</div>
+      <div class="sidebar-nav">
+        <ui-anchor
+          [links]="anchorLinks"
+          scroll-container=".pane-examples"
+          type="line"
+          show-progress
+        ></ui-anchor>
+      </div>
+    </aside>
 
-    <div slot="examples">
+    <!-- Main Content Area -->
+    <div class="examples-content pane-examples">
       <app-example-section
         id="separators"
         title="Separators"
         description="Custom separators between breadcrumb items."
         [code]="separatorsCode"
+        style="margin-top: 0"
       >
         <div class="demo-grid col-1">
           <div class="demo-card">
@@ -46,7 +59,7 @@
         description="Different visual styles like Pills and Glassmorphism."
         [code]="visualsCode"
       >
-        <div class="demo-grid col-2">
+        <div class="demo-grid col-1">
           <div class="demo-card">
             <h3>Pill Variant</h3>
             <ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
@@ -66,9 +79,15 @@
         </div>
       </app-example-section>
     </div>
+  </div>
 
-    <div slot="docs">
-      <app-component-documentation componentId="breadcrumb"></app-component-documentation>
-    </div>
-  </demo-tabs>
-</div>
+  <!-- Playground Slot -->
+  <div slot="playground">
+    <app-breadcrumb-playground></app-breadcrumb-playground>
+  </div>
+
+  <!-- Docs Slot -->
+  <div slot="docs">
+    <app-component-documentation componentId="breadcrumb"></app-component-documentation>
+  </div>
+</demo-tabs>

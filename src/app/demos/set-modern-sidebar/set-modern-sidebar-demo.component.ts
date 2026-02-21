@@ -4,11 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { signal } from '@angular/core';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-modern-sidebar-demo',
   standalone: true,
- 
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-modern-sidebar-demo.component.html',
   styleUrl: './set-modern-sidebar-demo.component.scss',
@@ -17,10 +20,12 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
+    DemoHeaderComponent,
   ],
 })
 export class SetModernSidebarDemoComponent {
-  
   exampleVariants = [
     { id: 'basic-default', title: 'Basic Default', icon: '📋' },
     { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
@@ -44,6 +49,7 @@ export class SetModernSidebarDemoComponent {
     { id: 'brand-icon', title: 'Brand with Icon', icon: '🎨' },
     { id: 'icons-fontawesome', title: 'FontAwesome Icons', icon: '🎯' },
     { id: 'icons-custom', title: 'Custom Icons', icon: '✨' },
+    { id: 'layouts', title: 'Layout Options', icon: '📐' },
     { id: 'full-featured', title: 'Full Featured', icon: '💎' },
     { id: 'dashboard-layout', title: 'Dashboard Layout', icon: '📊' },
     { id: 'admin-panel', title: 'Admin Panel', icon: '⚙️' },
@@ -489,4 +495,3 @@ export class SetModernSidebarDemoComponent {
   ]'>
 </app-modern-sidebar>`);
 }
-

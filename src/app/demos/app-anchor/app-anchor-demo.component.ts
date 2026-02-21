@@ -6,6 +6,8 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-app-anchor-demo',
@@ -16,6 +18,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     AnchorPlaygroundComponent,
     DemoTabsComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-anchor-demo.component.html',
@@ -28,6 +32,15 @@ export class AppAnchorDemoComponent {
     { id: 'orientation', name: 'Orientation', icon: '↔️', color: '#10b981' },
     { id: 'auto-gen', name: 'Auto Generation', icon: '⚙️', color: '#f59e0b' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.name,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   get exampleVariants() {
     return this.variants.filter((v) => v.id !== 'playground');
