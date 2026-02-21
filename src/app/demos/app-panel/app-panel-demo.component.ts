@@ -41,6 +41,10 @@ export class AppPanelDemoComponent extends BaseDemoComponent {
     })),
   );
 
+  playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
+  <div slot="content">Default card-like panel with shadow.</div>
+</ui-panel>`;
+
   stylesCode = `<!-- Elevated (default) -->
 <ui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>

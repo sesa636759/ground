@@ -43,6 +43,16 @@
         <label>Min Width</label>
         <app-input type="text" [(ngModel)]="pgConfig.minWidth" (input)="updateConfig()" />
       </div>
+
+      <div class="control-group">
+        <label>Max Height</label>
+        <app-input type="text" [(ngModel)]="pgConfig.maxHeight" (input)="updateConfig()" />
+      </div>
+
+      <div class="control-group">
+        <label>Backdrop Blur</label>
+        <app-input type="text" [(ngModel)]="pgConfig.backdropBlur" (input)="updateConfig()" />
+      </div>
     </div>
 
     <div class="checkbox-grid">
@@ -75,11 +85,22 @@
         <app-checkbox [(ngModel)]="pgConfig.closeOnSelect" (change)="updateConfig()" />
         Close On Select
       </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.reflection" (change)="updateConfig()" />
+        Reflection
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.highlightSearch" (change)="updateConfig()" />
+        Highlight Search
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.keyboardNavigation" (change)="updateConfig()" />
+        Keyboard Navigation
+      </label>
     </div>
   </div>
 
   <div class="playground-preview" [class.glass-bg]="pgConfig.variant === 'glass'">
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
     <div class="preview-stage">
       <div
         class="trigger-area"
@@ -108,6 +129,11 @@
         [closeOnSelect]="pgConfig.closeOnSelect"
         [showGroups]="pgConfig.showGroups"
         [highlightSearch]="pgConfig.highlightSearch"
+        [reflection]="pgConfig.reflection"
+        [keyboardNavigation]="pgConfig.keyboardNavigation"
+        [attr.max-height]="pgConfig.maxHeight"
+        [attr.min-width]="pgConfig.minWidth"
+        [attr.backdrop-blur]="pgConfig.backdropBlur"
         [items]="demoItems"
         (menuSelect)="onMenuSelect($event)"
         (menuOpen)="onMenuOpen()"
@@ -116,6 +142,12 @@
       </app-context-menu>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
   </div>
 </div>

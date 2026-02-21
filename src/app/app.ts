@@ -11,8 +11,7 @@ import { ThemeService } from './services/theme.service';
 import { AuthService } from './services/auth.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AppInputValueAccessorDirective } from './directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from './directives/app-checkbox-value-accessor.directive';
+
 import {
   faCoffee,
   faMoon,

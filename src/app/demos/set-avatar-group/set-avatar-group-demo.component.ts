@@ -22,7 +22,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   styleUrl: './set-avatar-group-demo.component.scss',
 })
 export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements OnInit {
-  exampleVariants = [
+  variants = [
     { id: 'basic', title: 'Basic Group', icon: '👥' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'max-display', title: 'Max Display', icon: '🔢' },
@@ -37,6 +37,19 @@ export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements On
     { id: 'overflow', title: 'Overflow', icon: '🔢' },
     { id: 'combined', title: 'Combined', icon: '💎' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
+  get exampleVariants() {
+    return this.variants;
+  }
 
   users = [
     { name: 'John Doe', image: 'https://i.pravatar.cc/150?img=1' },

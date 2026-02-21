@@ -100,19 +100,32 @@ export class ContextMenuPlaygroundComponent implements OnInit {
   updateConfig() {
     let code = `<app-context-menu\n`;
     code += `  trigger="${this.pgConfig.trigger}"\n`;
-    if (this.pgConfig.searchable) code += `  searchable\n`;
-    if (this.pgConfig.animated) code += `  animated\n`;
+    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
     if (this.pgConfig.animationType !== 'slide')
       code += `  animation-type="${this.pgConfig.animationType}"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
+
+    // Boolean properties
+    if (this.pgConfig.searchable) code += `  searchable\n`;
+    if (this.pgConfig.animated) code += `  animated\n`;
     if (this.pgConfig.staggered) code += `  staggered\n`;
     if (this.pgConfig.backdrop) code += `  backdrop\n`;
     if (this.pgConfig.commandPalette) code += `  command-palette\n`;
     if (this.pgConfig.multiSelect) code += `  multi-select\n`;
-    if (!this.pgConfig.closeOnSelect) code += `  close-on-select="false"\n`;
     if (this.pgConfig.showGroups) code += `  show-groups\n`;
     if (this.pgConfig.highlightSearch) code += `  highlight-search\n`;
+    if (this.pgConfig.reflection) code += `  reflection\n`;
+    if (this.pgConfig.keyboardNavigation) code += `  keyboard-navigation\n`;
+
+    // Numeric/String properties with defaults
+    if (this.pgConfig.maxHeight !== '400px') code += `  max-height="${this.pgConfig.maxHeight}"\n`;
+    if (this.pgConfig.minWidth !== '220px') code += `  min-width="${this.pgConfig.minWidth}"\n`;
+    if (this.pgConfig.backdropBlur !== '8px')
+      code += `  backdrop-blur="${this.pgConfig.backdropBlur}"\n`;
+
+    if (!this.pgConfig.closeOnSelect) code += `  close-on-select="false"\n`;
+
     code += `  [items]="menuItems"\n`;
+    code += `  (menuSelect)="onSelect($event)"\n`;
     code += `>\n`;
     code += `</app-context-menu>`;
     this.generatedCode.set(code);

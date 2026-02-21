@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-app-dropdown-demo',
+  selector: 'app-dropdown-demo',
   standalone: true,
   imports: [
     CommonModule,

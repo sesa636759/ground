@@ -31,6 +31,15 @@ export class SetContextMenuDemoComponent {
     { id: 'advanced', title: 'Advanced Features', icon: '💎' },
   ];
 
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
   // Basic menu items
   basicItems = [
     { id: 'view', label: 'View Details', icon: 'fas fa-eye' },
@@ -103,7 +112,13 @@ export class SetContextMenuDemoComponent {
     { id: 'open', label: 'Open', icon: 'fas fa-folder-open', group: 'Create', shortcut: 'Ctrl+O' },
     { divider: true },
     { id: 'save', label: 'Save', icon: 'fas fa-save', group: 'File', shortcut: 'Ctrl+S' },
-    { id: 'save-as', label: 'Save As...', icon: 'fas fa-save', group: 'File', shortcut: 'Ctrl+Shift+S' },
+    {
+      id: 'save-as',
+      label: 'Save As...',
+      icon: 'fas fa-save',
+      group: 'File',
+      shortcut: 'Ctrl+Shift+S',
+    },
     { divider: true },
     { id: 'close', label: 'Close', icon: 'fas fa-times', group: 'File', shortcut: 'Ctrl+W' },
     { id: 'exit', label: 'Exit', icon: 'fas fa-sign-out-alt', group: 'File', shortcut: 'Ctrl+Q' },

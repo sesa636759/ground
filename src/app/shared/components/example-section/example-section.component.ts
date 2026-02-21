@@ -52,8 +52,9 @@ import { CommonModule } from '@angular/common';
       .preview-content {
         width: 100%;
         display: flex;
+        overflow: visible;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         flex-direction: column;
         gap: 2rem;
       }

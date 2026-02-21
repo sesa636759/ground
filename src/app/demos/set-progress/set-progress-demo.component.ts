@@ -6,6 +6,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-progress-demo',
@@ -17,6 +18,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-progress-demo.component.html',
@@ -37,6 +39,15 @@ export class SetProgressDemoComponent extends BaseDemoComponent {
     { id: 'hide-info', title: 'Hide Info Text', icon: '🙈' },
     { id: 'premium', title: 'Premium Styles', icon: '💎' },
   ];
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   get exampleVariants() {
     return this.variants;

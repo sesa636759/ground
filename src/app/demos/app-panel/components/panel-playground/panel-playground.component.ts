@@ -23,11 +23,19 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <h3>Header</h3>
             <div class="control-group">
               <label>Title</label>
-              <input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.panelTitle"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Subtitle</label>
-              <input type="text" [(ngModel)]="pgConfig.panelSubtitle" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.panelSubtitle"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Badge</label>
@@ -142,10 +150,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
@@ -174,7 +178,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [attr.loading]="pgConfig.loading ? '' : null"
           [attr.no-padding]="pgConfig.noPadding ? '' : null"
           [attr.glass]="pgConfig.glass ? '' : null"
-          width="400px"
+          width="100%"
           (panelClose)="onEvent('Close')"
           (panelSettings)="onEvent('Settings')"
           (toggle)="onEvent('Toggle')"
@@ -188,15 +192,23 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
           </div>
         </ui-panel>
-      </div>
 
-      <div class="event-log">
-        <div *ngFor="let log of eventLog" class="log-entry">
-          <span class="timestamp">[{{ log.time }}]</span>
-          <span class="message">{{ log.msg }}</span>
-        </div>
-        <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-          Panel events will appear here...
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+
+        <div class="event-log">
+          <div class="log-title">Event Tracker</div>
+          <div *ngFor="let log of eventLog" class="log-entry">
+            <span class="timestamp">[{{ log.time }}]</span>
+            <span class="message">{{ log.msg }}</span>
+          </div>
+          <div *ngIf="eventLog.length === 0" class="empty-log">
+            Interact with the panel to see events...
+          </div>
         </div>
       </div>
     </div>

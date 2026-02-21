@@ -18,13 +18,13 @@
           ></ui-anchor>
         </div>
       </aside>
-      <div class="examples-content">
+      <div class="examples-content pane-examples">
         <!-- Basic Three-Column Layout -->
-        <section class="demo-section" id="basic">
-          <div class="section-header">
-            <h2>📐 Basic Three-Column Layout</h2>
-            <p>Classic sidebar-content-sidebar pattern</p>
-          </div>
+        <app-example-section
+          id="basic"
+          title="Basic Three-Column Layout"
+          description="Classic sidebar-content-sidebar pattern"
+        >
           <div class="demo-card full-width">
             <app-layout-manager
               #basicLayout
@@ -36,14 +36,14 @@
               style="height: 400px; display: block"
             ></app-layout-manager>
           </div>
-        </section>
+        </app-example-section>
 
         <!-- IDE-Style Layout -->
-        <section class="demo-section" id="ide">
-          <div class="section-header">
-            <h2>💻 IDE-Style Layout</h2>
-            <p>Code editor with explorer and terminal panels</p>
-          </div>
+        <app-example-section
+          id="ide"
+          title="IDE-Style Layout"
+          description="Code editor with explorer and terminal panels"
+        >
           <div class="demo-card full-width">
             <app-layout-manager
               #ideLayout
@@ -55,14 +55,14 @@
               style="height: 500px; display: block"
             ></app-layout-manager>
           </div>
-        </section>
+        </app-example-section>
 
         <!-- Dashboard Layout -->
-        <section class="demo-section" id="dashboard">
-          <div class="section-header">
-            <h2>📊 Dashboard Layout</h2>
-            <p>Navigation, main content, and widgets</p>
-          </div>
+        <app-example-section
+          id="dashboard"
+          title="Dashboard Layout"
+          description="Navigation, main content, and widgets"
+        >
           <div class="demo-card full-width">
             <app-layout-manager
               #dashboardLayout
@@ -74,7 +74,7 @@
               style="height: 450px; display: block"
             ></app-layout-manager>
           </div>
-        </section>
+        </app-example-section>
 
         <!-- Features Overview -->
         <section class="demo-section" id="features">
