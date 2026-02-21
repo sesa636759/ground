@@ -4,811 +4,834 @@
     Smooth scrolling navigation with automatic section detection, scroll spy, sticky positioning,
     and advanced features like keyboard navigation and hash synchronization.
   </p>
+
   <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Vertical Left -->
-      <app-example-section
-        id="vertical-left"
-        title="Vertical Navigation (Left)"
-        description="Perfect for documentation sites and long articles"
-        [code]="verticalLeftCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            position="left"
-            [items]="verticalLeftItems"
-            scroll-container="#v-left-scroll"
-          ></app-anchor>
-          <div id="v-left-scroll" class="scroll-area">
-            <div id="intro" class="content-block">
-              <strong>Introduction</strong>
-              <p>
-                Perfect for documentation sites and long articles. The navigation stays on the left
-                side and follows you as you scroll.
-              </p>
-            </div>
-            <div id="features" class="content-block">
-              <strong>Features</strong>
-              <p>
-                Automatic Scroll Spy, Smooth Scrolling, Vertical & Horizontal Modes, Customizable
-                Position, Sticky Navigation, Icon Support.
-              </p>
-            </div>
-            <div id="api" class="content-block">
-              <strong>API Reference</strong>
-              <p>
-                Complete reference of all available properties and options for the anchor component.
-              </p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Vertical Right -->
-      <app-example-section
-        id="vertical-right"
-        title="Vertical Navigation (Right)"
-        description="Alternative placement for right-to-left layouts"
-        [code]="verticalRightCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            position="right"
-            [items]="verticalRightItems"
-            scroll-container="#v-right-scroll"
-          ></app-anchor>
-          <div id="v-right-scroll" class="scroll-area">
-            <div id="r-intro" class="content-block">
-              <strong>Introduction</strong>
-              <p>Alternative placement for right-to-left layouts or design preferences.</p>
-            </div>
-            <div id="r-features" class="content-block">
-              <strong>Features</strong>
-              <p>All the same great features as the left variant.</p>
-            </div>
-            <div id="r-api" class="content-block">
-              <strong>API Reference</strong>
-              <p>Same API as the left variant with different positioning.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Horizontal Top -->
-      <app-example-section
-        id="horizontal-top"
-        title="Horizontal Navigation (Top)"
-        description="Great for landing pages and marketing sites"
-        [code]="horizontalTopCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <app-anchor
-            mode="horizontal"
-            position="top"
-            [items]="horizontalTopItems"
-            scroll-container="#h-top-scroll"
-          ></app-anchor>
-          <div id="h-top-scroll" class="scroll-area-horizontal">
-            <div id="t-home" class="content-block">
-              <strong>Home</strong>
-              <p>Great for landing pages and marketing sites with multiple sections.</p>
-            </div>
-            <div id="t-about" class="content-block">
-              <strong>About</strong>
-              <p>Horizontal navigation works beautifully at the top of your page.</p>
-            </div>
-            <div id="t-contact" class="content-block">
-              <strong>Contact</strong>
-              <p>Keep navigation easily accessible at the top.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Horizontal Bottom -->
-      <app-example-section
-        id="horizontal-bottom"
-        title="Horizontal Navigation (Bottom)"
-        description="Useful for footer navigation or persistent bottom bars"
-        [code]="horizontalBottomCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <div id="h-bottom-scroll" class="scroll-area-horizontal">
-            <div id="b-home" class="content-block">
-              <strong>Home</strong>
-              <p>Useful for footer navigation or persistent bottom bars.</p>
-            </div>
-            <div id="b-about" class="content-block">
-              <strong>About</strong>
-              <p>Bottom navigation anchors are perfect for footer sections.</p>
-            </div>
-            <div id="b-contact" class="content-block">
-              <strong>Contact</strong>
-              <p>Keep your footer organized with anchor navigation.</p>
-            </div>
-          </div>
-          <app-anchor
-            mode="horizontal"
-            position="bottom"
-            [items]="horizontalBottomItems"
-            scroll-container="#h-bottom-scroll"
-          ></app-anchor>
-        </div>
-      </app-example-section>
-
-      <!-- Badges -->
-      <app-example-section
-        id="with-badges"
-        title="Anchor with Badges"
-        description="Navigation with notification badges"
-        [code]="badgeCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            position="left"
-            show-badge="true"
-            [items]="badgeItems"
-            scroll-container="#badge-scroll"
-          ></app-anchor>
-          <div id="badge-scroll" class="scroll-area">
-            <div id="intro-badge" class="content-block">
-              <strong>Introduction</strong>
-              <p>This is the introduction section with some sample content.</p>
-            </div>
-            <div id="content-badge" class="content-block">
-              <strong>Main Content</strong>
-              <p>
-                Notice the badge indicator showing "5" on this section's anchor item. Badges can
-                display numbers or text.
-              </p>
-            </div>
-            <div id="conclusion-badge" class="content-block">
-              <strong>Conclusion</strong>
-              <p>This is the conclusion section wrapping up the content.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Events -->
-      <app-example-section
-        id="with-events"
-        title="Horizontal with Events"
-        description="Navigation with event handling and keyboard support"
-        [code]="eventsCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <app-anchor
-            mode="horizontal"
-            position="top"
-            [items]="horizontalTopItems"
-            scroll-container="#event-scroll"
-          ></app-anchor>
-          <div id="event-scroll" class="scroll-area-horizontal">
-            <div id="t-home" class="content-block">
-              <strong>Home</strong>
-              <p>Click different anchor items to see events. Try using keyboard navigation too!</p>
-            </div>
-            <div id="t-about" class="content-block">
-              <strong>About</strong>
-              <p>Event handling improves interactivity and allows for custom behaviors.</p>
-            </div>
-            <div id="t-contact" class="content-block">
-              <strong>Contact</strong>
-              <p>Notice the badge indicator "!" on sections that have attention markers.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Small Size -->
-      <app-example-section
-        id="size-small"
-        title="Small Size"
-        description="Compact size for sidebars and narrow spaces"
-        [code]="sizeSmallCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            size="small"
-            [items]="smallItems"
-            scroll-container="#small-scroll"
-          ></app-anchor>
-          <div id="small-scroll" class="scroll-area">
-            <div id="s-1" class="content-block">
-              <strong>Section 1</strong>
-              <p>Compact size for sidebars</p>
-            </div>
-            <div id="s-2" class="content-block">
-              <strong>Section 2</strong>
-              <p>Perfect for narrow spaces</p>
-            </div>
-            <div id="s-3" class="content-block">
-              <strong>Section 3</strong>
-              <p>Reduced padding and font size</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Medium Size -->
-      <app-example-section
-        id="size-medium"
-        title="Medium Size (Default)"
-        description="Standard size for most uses"
-        [code]="sizeMediumCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            size="medium"
-            [items]="mediumItems"
-            scroll-container="#medium-scroll"
-          ></app-anchor>
-          <div id="medium-scroll" class="scroll-area">
-            <div id="m-1" class="content-block">
-              <strong>Section 1</strong>
-              <p>Standard size for most uses</p>
-            </div>
-            <div id="m-2" class="content-block">
-              <strong>Section 2</strong>
-              <p>Balanced spacing and readability</p>
-            </div>
-            <div id="m-3" class="content-block">
-              <strong>Section 3</strong>
-              <p>Default anchor size</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Large Size -->
-      <app-example-section
-        id="size-large"
-        title="Large Size"
-        description="Larger size for better visibility"
-        [code]="sizeLargeCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            size="large"
-            [items]="largeItems"
-            scroll-container="#large-scroll"
-          ></app-anchor>
-          <div id="large-scroll" class="scroll-area">
-            <div id="l-1" class="content-block">
-              <strong>Section 1</strong>
-              <p>Larger size for better visibility</p>
-            </div>
-            <div id="l-2" class="content-block">
-              <strong>Section 2</strong>
-              <p>Increased padding and font size</p>
-            </div>
-            <div id="l-3" class="content-block">
-              <strong>Section 3</strong>
-              <p>Great for main navigation</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Light Theme -->
-      <app-example-section
-        id="theme-light"
-        title="Light Theme"
-        description="Default light theme appearance"
-        [code]="lightThemeCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            theme="light"
-            [items]="smallItems"
-            scroll-container="#light-scroll"
-          ></app-anchor>
-          <div id="light-scroll" class="scroll-area">
-            <div id="s-1" class="content-block">Light theme with bright colors</div>
-            <div id="s-2" class="content-block">Suitable for most applications</div>
-            <div id="s-3" class="content-block">Clean and professional look</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Dark Theme -->
-      <app-example-section
-        id="theme-dark"
-        title="Dark Theme"
-        description="Dark theme for low-light environments"
-        [code]="darkThemeCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            theme="dark"
-            [items]="mediumItems"
-            scroll-container="#dark-scroll"
-          ></app-anchor>
-          <div id="dark-scroll" class="scroll-area">
-            <div id="m-1" class="content-block">Dark theme with muted colors</div>
-            <div id="m-2" class="content-block">Reduced eye strain</div>
-            <div id="m-3" class="content-block">Modern aesthetic</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Custom Theme -->
-      <app-example-section
-        id="theme-custom"
-        title="Custom Theme"
-        description="Custom themed anchor with brand colors"
-        [code]="customThemeCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            theme="custom"
-            [items]="largeItems"
-            scroll-container="#custom-scroll"
-          ></app-anchor>
-          <div id="custom-scroll" class="scroll-area">
-            <div id="l-1" class="content-block">Fully customizable theme</div>
-            <div id="l-2" class="content-block">Match your brand colors</div>
-            <div id="l-3" class="content-block">Unlimited styling options</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Numeric Style -->
-      <app-example-section
-        id="number-numeric"
-        title="Numeric Style (1, 2, 3)"
-        description="Standard numeric numbering"
-        [code]="numericCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            show-numbers="true"
-            number-style="numeric"
-            [items]="numericItems"
-            scroll-container="#numeric-scroll"
-          ></app-anchor>
-          <div id="numeric-scroll" class="scroll-area">
-            <div id="num-1" class="content-block">
-              <strong>Introduction</strong>
-              <p>Different numbering styles for your table of contents.</p>
-            </div>
-            <div id="num-2" class="content-block">
-              <strong>Features</strong>
-              <p>Supports Numeric (1, 2), Decimal (01, 02), Alpha (a, b), and Roman (i, ii).</p>
-            </div>
-            <div id="num-3" class="content-block">
-              <strong>Installation</strong>
-              <p>Easy to configure via props.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Decimal Style -->
-      <app-example-section
-        id="number-decimal"
-        title="Decimal Style (01, 02, 03)"
-        description="Zero-padded decimal numbering"
-        [code]="decimalCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            show-numbers="true"
-            number-style="decimal"
-            [items]="decimalItems"
-            scroll-container="#decimal-scroll"
-          ></app-anchor>
-          <div id="decimal-scroll" class="scroll-area">
-            <div id="dec-1" class="content-block">
-              <strong>Introduction</strong>
-              <p>Decimal style with leading zeros.</p>
-            </div>
-            <div id="dec-2" class="content-block">
-              <strong>Features</strong>
-              <p>Professional appearance for formal documents.</p>
-            </div>
-            <div id="dec-3" class="content-block">
-              <strong>Installation</strong>
-              <p>Just add `show-numbers` and pick your style!</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Alphabetic Style -->
-      <app-example-section
-        id="number-alpha"
-        title="Alphabetic Style (a, b, c)"
-        description="Lowercase alphabetic numbering"
-        [code]="alphaCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            show-numbers="true"
-            number-style="alpha"
-            [items]="alphaItems"
-            scroll-container="#alpha-scroll"
-          ></app-anchor>
-          <div id="alpha-scroll" class="scroll-area">
-            <div id="alpha-1" class="content-block">
-              <strong>Introduction</strong>
-              <p>Alphabetic numbering for a different look.</p>
-            </div>
-            <div id="alpha-2" class="content-block">
-              <strong>Features</strong>
-              <p>Great for appendices and reference sections.</p>
-            </div>
-            <div id="alpha-3" class="content-block">
-              <strong>Installation</strong>
-              <p>Configure with the `number-style` prop.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Roman Style -->
-      <app-example-section
-        id="number-roman"
-        title="Roman Style (i, ii, iii)"
-        description="Lowercase Roman numeral numbering"
-        [code]="romanCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            show-numbers="true"
-            number-style="roman"
-            [items]="romanItems"
-            scroll-container="#roman-scroll"
-          ></app-anchor>
-          <div id="roman-scroll" class="scroll-area">
-            <div id="roman-1" class="content-block">
-              <strong>Introduction</strong>
-              <p>Classic Roman numeral style.</p>
-            </div>
-            <div id="roman-2" class="content-block">
-              <strong>Features</strong>
-              <p>Perfect for traditional or academic documents.</p>
-            </div>
-            <div id="roman-3" class="content-block">
-              <strong>Installation</strong>
-              <p>Adds an elegant touch to your navigation.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Align Left -->
-      <app-example-section
-        id="align-left"
-        title="Horizontal Left Aligned"
-        description="Left alignment for horizontal anchor"
-        [code]="alignLeftCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <app-anchor
-            mode="horizontal"
-            align="left"
-            [items]="horizontalTopItems"
-            scroll-container="#align-left-scroll"
-          ></app-anchor>
-          <div id="align-left-scroll" class="scroll-area-horizontal">
-            <div id="t-home" class="content-block">Left aligned horizontal navigation</div>
-            <div id="t-about" class="content-block">Items aligned to the left</div>
-            <div id="t-contact" class="content-block">Great for LTR layouts</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Align Center -->
-      <app-example-section
-        id="align-center"
-        title="Horizontal Center Aligned"
-        description="Center alignment for horizontal anchor"
-        [code]="alignCenterCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <app-anchor
-            mode="horizontal"
-            align="center"
-            [items]="horizontalTopItems"
-            scroll-container="#align-center-scroll"
-          ></app-anchor>
-          <div id="align-center-scroll" class="scroll-area-horizontal">
-            <div id="t-home" class="content-block">Center aligned horizontal navigation</div>
-            <div id="t-about" class="content-block">Items centered in the container</div>
-            <div id="t-contact" class="content-block">Balanced appearance</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Align Right -->
-      <app-example-section
-        id="align-right"
-        title="Horizontal Right Aligned"
-        description="Right alignment for horizontal anchor"
-        [code]="alignRightCode()"
-      >
-        <div class="preview-box horizontal-preview">
-          <app-anchor
-            mode="horizontal"
-            align="right"
-            [items]="horizontalTopItems"
-            scroll-container="#align-right-scroll"
-          ></app-anchor>
-          <div id="align-right-scroll" class="scroll-area-horizontal">
-            <div id="t-home" class="content-block">Right aligned horizontal navigation</div>
-            <div id="t-about" class="content-block">Items aligned to the right</div>
-            <div id="t-contact" class="content-block">Great for RTL layouts</div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Affix Behavior -->
-      <app-example-section
-        id="affix-behavior"
-        title="Affix Behavior"
-        description="Anchor becomes fixed when scrolling past offset"
-        [code]="affixCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            affix
-            affix-offset="50"
-            [items]="affixItems"
-            scroll-container="#affix-scroll"
-          ></app-anchor>
-          <div id="affix-scroll" class="scroll-area tall-scroll">
-            <div id="aff-1" class="content-block">
-              <strong>Section 1: Introduction</strong>
-              <p>
-                Scroll down to see the anchor affix to the top at 50px offset. The affix feature is
-                perfect for long documents where you want the navigation to remain visible.
-              </p>
-            </div>
-            <div id="aff-2" class="content-block">
-              <strong>Section 2: Features</strong>
-              <p>
-                The anchor navigation is now affixed to the top of the container. Notice how it
-                stays visible as you scroll through different sections.
-              </p>
-            </div>
-            <div id="aff-3" class="content-block">
-              <strong>Section 3: Usage</strong>
-              <p>
-                Continue scrolling to see all sections with the affixed navigation. The smooth
-                animation on affix enhances user experience.
-              </p>
-            </div>
-            <div id="aff-4" class="content-block">
-              <strong>Section 4: Summary</strong>
-              <p>
-                Final section with affixed navigation. Scroll back up to see it return to normal
-                position.
-              </p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Progress Indicator -->
-      <app-example-section
-        id="progress-indicator"
-        title="Progress Indicator"
-        description="Track reading progress with visual progress bar"
-        [code]="progressCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            show-progress="true"
-            [items]="progressItems"
-            scroll-container="#progress-scroll"
-          ></app-anchor>
-          <div id="progress-scroll" class="scroll-area tall-scroll">
-            <div id="ch-1" class="content-block">
-              <strong>Chapter 1</strong>
-              <p>
-                Watch the progress bar at the bottom of the anchor navigation as you scroll. Lorem
-                ipsum dolor sit amet, consectetur adipiscing elit...
-              </p>
-            </div>
-            <div id="ch-2" class="content-block">
-              <strong>Chapter 2</strong>
-              <p>
-                The progress bar fills up based on your scroll position. Sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua...
-              </p>
-            </div>
-            <div id="ch-3" class="content-block">
-              <strong>Chapter 3</strong>
-              <p>
-                Scroll to the bottom to see 100% progress. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris...
-              </p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Hash/URL Synchronization -->
-      <app-example-section
-        id="hash-sync"
-        title="Hash/URL Synchronization"
-        description="Enable URL hash updates when navigating between sections"
-        [code]="hashCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            update-hash="true"
-            smooth-scroll="true"
-            [items]="hashItems"
-            scroll-container="#hash-scroll"
-          ></app-anchor>
-          <div id="hash-scroll" class="scroll-area">
-            <div id="hash-intro" class="content-block">
-              <strong>01. Introduction</strong>
-              <p>
-                Click any anchor item above and notice the URL hash changes (e.g., `#hash-intro`).
-                You can share URLs with specific sections, and they'll scroll automatically when the
-                page loads.
-              </p>
-            </div>
-            <div id="hash-features" class="content-block">
-              <strong>02. Features</strong>
-              <p>
-                The `update-hash` property enables this behavior. Key benefits: Browser back/forward
-                buttons work, Deep linking to specific sections, Shareable URLs with section
-                context.
-              </p>
-            </div>
-            <div id="hash-examples" class="content-block">
-              <strong>03. Examples</strong>
-              <p>
-                Perfect for: Documentation sites, Long-form content and articles, Educational
-                materials, Landing pages with multiple sections.
-              </p>
-            </div>
-            <div id="hash-api" class="content-block">
-              <strong>04. API Reference</strong>
-              <p>
-                Enable URL synchronization with the `update-hash` attribute. Each section gets a
-                unique, bookmarkable URL.
-              </p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Keyboard Navigation -->
-      <app-example-section
-        id="keyboard-nav"
-        title="Keyboard Navigation"
-        description="Navigate through sections using arrow keys"
-        [code]="keyboardCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            arrow-navigation="true"
-            [items]="keyboardItems"
-            scroll-container="#keyboard-scroll"
-          ></app-anchor>
-          <div id="keyboard-scroll" class="scroll-area">
-            <div id="kb-1" class="content-block">
-              <strong>1. Setup</strong>
-              <p>
-                Try it: Click on any anchor item above, then use your arrow keys ↑↓ to navigate. The
-                keyboard navigation improves accessibility and allows power users to navigate
-                quickly without using the mouse.
-              </p>
-            </div>
-            <div id="kb-2" class="content-block">
-              <strong>2. Configure</strong>
-              <p>
-                Arrow navigation provides better accessibility compliance and keyboard-only
-                navigation support. WCAG 2.1 compliant, Screen reader friendly, No mouse required.
-              </p>
-            </div>
-            <div id="kb-3" class="content-block">
-              <strong>3. Build</strong>
-              <p>
-                Navigate efficiently without reaching for your mouse - perfect for developers and
-                power users.
-              </p>
-            </div>
-            <div id="kb-4" class="content-block">
-              <strong>4. Deploy</strong>
-              <p>
-                Press Enter on the focused item to scroll smoothly to the section. The anchor
-                component handles all keyboard events and focus management automatically.
-              </p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-
-      <!-- Nested Items -->
-      <app-example-section
-        id="nested-items"
-        title="Nested & Collapsible Items"
-        description="Support for recursive nested items with collapsible capabilities"
-        [code]="nestedCode()"
-      >
-        <div class="layout-wrapper vertical">
-          <app-anchor
-            mode="vertical"
-            collapsible="true"
-            [items]="nestedItems"
-            scroll-container="#nested-scroll"
-          ></app-anchor>
-          <div id="nested-scroll" class="scroll-area tall-scroll">
-            <div id="n-1" class="content-block">
-              <strong>1. Getting Started</strong>
-              <p>Main section content with nested subsections...</p>
-            </div>
-            <div id="n-1-1" class="content-block indent">
-              <strong>1.1 Installation</strong>
-              <p>npm install set-ui-lib</p>
-            </div>
-            <div id="n-1-2" class="content-block indent">
-              <strong>1.2 Setup</strong>
-              <p>Import the styles and scripts...</p>
-            </div>
-            <div id="n-2" class="content-block">
-              <strong>2. Components</strong>
-              <p>We provide a wide range of components.</p>
-            </div>
-            <div id="n-2-1" class="content-block indent">
-              <strong>2.1 Basics</strong>
-              <p>Basic components section...</p>
-            </div>
-            <div id="n-2-1-1" class="content-block indent-2">
-              <strong>2.1.1 Button</strong>
-              <p>Standard button component...</p>
-            </div>
-            <div id="n-2-1-2" class="content-block indent-2">
-              <strong>2.1.2 Input</strong>
-              <p>Input field with validation...</p>
-            </div>
-            <div id="n-2-2" class="content-block indent">
-              <strong>2.2 Advanced</strong>
-              <p>Advanced components section...</p>
-            </div>
-            <div id="n-3" class="content-block">
-              <strong>3. Conclusion</strong>
-              <p>That wraps up the nested demo.</p>
-            </div>
-          </div>
-        </div>
-      </app-example-section>
-    </div>
-
     <!-- Playground Slot -->
     <div slot="playground">
+      <app-anchor-playground></app-anchor-playground>
       <section class="demo-section">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure mode, position, behavior, and visual options</p>
-        </div>
-        <app-anchor-playground></app-anchor-playground>
+        <ui-code-preview
+          [htmlCode]="playgroundCode()"
+          [label]="'Anchor Usage'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </section>
+    </div>
+
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="examples-sidebar">
+        <div class="sidebar-title">Sections</div>
+        <div class="sidebar-nav">
+          <ui-anchor
+            [links]="anchorLinks"
+            scroll-container=".pane-examples"
+            type="line"
+            show-progress
+          ></ui-anchor>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Vertical Left -->
+        <app-example-section
+          id="vertical-left"
+          title="Vertical Navigation (Left)"
+          description="Perfect for documentation sites and long articles"
+          [code]="verticalLeftCode()"
+          style="margin-top: 0"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              position="left"
+              [items]="verticalLeftItems"
+              scroll-container="#v-left-scroll"
+            ></app-anchor>
+            <div id="v-left-scroll" class="scroll-area">
+              <div id="intro" class="content-block">
+                <strong>Introduction</strong>
+                <p>
+                  Perfect for documentation sites and long articles. The navigation stays on the
+                  left side and follows you as you scroll.
+                </p>
+              </div>
+              <div id="features" class="content-block">
+                <strong>Features</strong>
+                <p>
+                  Automatic Scroll Spy, Smooth Scrolling, Vertical & Horizontal Modes, Customizable
+                  Position, Sticky Navigation, Icon Support.
+                </p>
+              </div>
+              <div id="api" class="content-block">
+                <strong>API Reference</strong>
+                <p>
+                  Complete reference of all available properties and options for the anchor
+                  component.
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Vertical Right -->
+        <app-example-section
+          id="vertical-right"
+          title="Vertical Navigation (Right)"
+          description="Alternative placement for right-to-left layouts"
+          [code]="verticalRightCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              position="right"
+              [items]="verticalRightItems"
+              scroll-container="#v-right-scroll"
+            ></app-anchor>
+            <div id="v-right-scroll" class="scroll-area">
+              <div id="r-intro" class="content-block">
+                <strong>Introduction</strong>
+                <p>Alternative placement for right-to-left layouts or design preferences.</p>
+              </div>
+              <div id="r-features" class="content-block">
+                <strong>Features</strong>
+                <p>All the same great features as the left variant.</p>
+              </div>
+              <div id="r-api" class="content-block">
+                <strong>API Reference</strong>
+                <p>Same API as the left variant with different positioning.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Horizontal Top -->
+        <app-example-section
+          id="horizontal-top"
+          title="Horizontal Navigation (Top)"
+          description="Great for landing pages and marketing sites"
+          [code]="horizontalTopCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <app-anchor
+              mode="horizontal"
+              position="top"
+              [items]="horizontalTopItems"
+              scroll-container="#h-top-scroll"
+            ></app-anchor>
+            <div id="h-top-scroll" class="scroll-area-horizontal">
+              <div id="t-home" class="content-block">
+                <strong>Home</strong>
+                <p>Great for landing pages and marketing sites with multiple sections.</p>
+              </div>
+              <div id="t-about" class="content-block">
+                <strong>About</strong>
+                <p>Horizontal navigation works beautifully at the top of your page.</p>
+              </div>
+              <div id="t-contact" class="content-block">
+                <strong>Contact</strong>
+                <p>Keep navigation easily accessible at the top.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Horizontal Bottom -->
+        <app-example-section
+          id="horizontal-bottom"
+          title="Horizontal Navigation (Bottom)"
+          description="Useful for footer navigation or persistent bottom bars"
+          [code]="horizontalBottomCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <div id="h-bottom-scroll" class="scroll-area-horizontal">
+              <div id="b-home" class="content-block">
+                <strong>Home</strong>
+                <p>Useful for footer navigation or persistent bottom bars.</p>
+              </div>
+              <div id="b-about" class="content-block">
+                <strong>About</strong>
+                <p>Bottom navigation anchors are perfect for footer sections.</p>
+              </div>
+              <div id="b-contact" class="content-block">
+                <strong>Contact</strong>
+                <p>Keep your footer organized with anchor navigation.</p>
+              </div>
+            </div>
+            <app-anchor
+              mode="horizontal"
+              position="bottom"
+              [items]="horizontalBottomItems"
+              scroll-container="#h-bottom-scroll"
+            ></app-anchor>
+          </div>
+        </app-example-section>
+
+        <!-- Badges -->
+        <app-example-section
+          id="with-badges"
+          title="Anchor with Badges"
+          description="Navigation with notification badges"
+          [code]="badgeCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              position="left"
+              show-badge="true"
+              [items]="badgeItems"
+              scroll-container="#badge-scroll"
+            ></app-anchor>
+            <div id="badge-scroll" class="scroll-area">
+              <div id="intro-badge" class="content-block">
+                <strong>Introduction</strong>
+                <p>This is the introduction section with some sample content.</p>
+              </div>
+              <div id="content-badge" class="content-block">
+                <strong>Main Content</strong>
+                <p>
+                  Notice the badge indicator showing "5" on this section's anchor item. Badges can
+                  display numbers or text.
+                </p>
+              </div>
+              <div id="conclusion-badge" class="content-block">
+                <strong>Conclusion</strong>
+                <p>This is the conclusion section wrapping up the content.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Events -->
+        <app-example-section
+          id="with-events"
+          title="Horizontal with Events"
+          description="Navigation with event handling and keyboard support"
+          [code]="eventsCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <app-anchor
+              mode="horizontal"
+              position="top"
+              [items]="horizontalTopItems"
+              scroll-container="#event-scroll"
+            ></app-anchor>
+            <div id="event-scroll" class="scroll-area-horizontal">
+              <div id="t-home" class="content-block">
+                <strong>Home</strong>
+                <p>
+                  Click different anchor items to see events. Try using keyboard navigation too!
+                </p>
+              </div>
+              <div id="t-about" class="content-block">
+                <strong>About</strong>
+                <p>Event handling improves interactivity and allows for custom behaviors.</p>
+              </div>
+              <div id="t-contact" class="content-block">
+                <strong>Contact</strong>
+                <p>Notice the badge indicator "!" on sections that have attention markers.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Small Size -->
+        <app-example-section
+          id="size-small"
+          title="Small Size"
+          description="Compact size for sidebars and narrow spaces"
+          [code]="sizeSmallCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              size="small"
+              [items]="smallItems"
+              scroll-container="#small-scroll"
+            ></app-anchor>
+            <div id="small-scroll" class="scroll-area">
+              <div id="s-1" class="content-block">
+                <strong>Section 1</strong>
+                <p>Compact size for sidebars</p>
+              </div>
+              <div id="s-2" class="content-block">
+                <strong>Section 2</strong>
+                <p>Perfect for narrow spaces</p>
+              </div>
+              <div id="s-3" class="content-block">
+                <strong>Section 3</strong>
+                <p>Reduced padding and font size</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Medium Size -->
+        <app-example-section
+          id="size-medium"
+          title="Medium Size (Default)"
+          description="Standard size for most uses"
+          [code]="sizeMediumCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              size="medium"
+              [items]="mediumItems"
+              scroll-container="#medium-scroll"
+            ></app-anchor>
+            <div id="medium-scroll" class="scroll-area">
+              <div id="m-1" class="content-block">
+                <strong>Section 1</strong>
+                <p>Standard size for most uses</p>
+              </div>
+              <div id="m-2" class="content-block">
+                <strong>Section 2</strong>
+                <p>Balanced spacing and readability</p>
+              </div>
+              <div id="m-3" class="content-block">
+                <strong>Section 3</strong>
+                <p>Default anchor size</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Large Size -->
+        <app-example-section
+          id="size-large"
+          title="Large Size"
+          description="Larger size for better visibility"
+          [code]="sizeLargeCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              size="large"
+              [items]="largeItems"
+              scroll-container="#large-scroll"
+            ></app-anchor>
+            <div id="large-scroll" class="scroll-area">
+              <div id="l-1" class="content-block">
+                <strong>Section 1</strong>
+                <p>Larger size for better visibility</p>
+              </div>
+              <div id="l-2" class="content-block">
+                <strong>Section 2</strong>
+                <p>Increased padding and font size</p>
+              </div>
+              <div id="l-3" class="content-block">
+                <strong>Section 3</strong>
+                <p>Great for main navigation</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Light Theme -->
+        <app-example-section
+          id="theme-light"
+          title="Light Theme"
+          description="Default light theme appearance"
+          [code]="lightThemeCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              theme="light"
+              [items]="smallItems"
+              scroll-container="#light-scroll"
+            ></app-anchor>
+            <div id="light-scroll" class="scroll-area">
+              <div id="s-1" class="content-block">Light theme with bright colors</div>
+              <div id="s-2" class="content-block">Suitable for most applications</div>
+              <div id="s-3" class="content-block">Clean and professional look</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Dark Theme -->
+        <app-example-section
+          id="theme-dark"
+          title="Dark Theme"
+          description="Dark theme for low-light environments"
+          [code]="darkThemeCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              theme="dark"
+              [items]="mediumItems"
+              scroll-container="#dark-scroll"
+            ></app-anchor>
+            <div id="dark-scroll" class="scroll-area">
+              <div id="m-1" class="content-block">Dark theme with muted colors</div>
+              <div id="m-2" class="content-block">Reduced eye strain</div>
+              <div id="m-3" class="content-block">Modern aesthetic</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Custom Theme -->
+        <app-example-section
+          id="theme-custom"
+          title="Custom Theme"
+          description="Custom themed anchor with brand colors"
+          [code]="customThemeCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              theme="custom"
+              [items]="largeItems"
+              scroll-container="#custom-scroll"
+            ></app-anchor>
+            <div id="custom-scroll" class="scroll-area">
+              <div id="l-1" class="content-block">Fully customizable theme</div>
+              <div id="l-2" class="content-block">Match your brand colors</div>
+              <div id="l-3" class="content-block">Unlimited styling options</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Numeric Style -->
+        <app-example-section
+          id="number-numeric"
+          title="Numeric Style (1, 2, 3)"
+          description="Standard numeric numbering"
+          [code]="numericCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              show-numbers="true"
+              number-style="numeric"
+              [items]="numericItems"
+              scroll-container="#numeric-scroll"
+            ></app-anchor>
+            <div id="numeric-scroll" class="scroll-area">
+              <div id="num-1" class="content-block">
+                <strong>Introduction</strong>
+                <p>Different numbering styles for your table of contents.</p>
+              </div>
+              <div id="num-2" class="content-block">
+                <strong>Features</strong>
+                <p>Supports Numeric (1, 2), Decimal (01, 02), Alpha (a, b), and Roman (i, ii).</p>
+              </div>
+              <div id="num-3" class="content-block">
+                <strong>Installation</strong>
+                <p>Easy to configure via props.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Decimal Style -->
+        <app-example-section
+          id="number-decimal"
+          title="Decimal Style (01, 02, 03)"
+          description="Zero-padded decimal numbering"
+          [code]="decimalCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              show-numbers="true"
+              number-style="decimal"
+              [items]="decimalItems"
+              scroll-container="#decimal-scroll"
+            ></app-anchor>
+            <div id="decimal-scroll" class="scroll-area">
+              <div id="dec-1" class="content-block">
+                <strong>Introduction</strong>
+                <p>Decimal style with leading zeros.</p>
+              </div>
+              <div id="dec-2" class="content-block">
+                <strong>Features</strong>
+                <p>Professional appearance for formal documents.</p>
+              </div>
+              <div id="dec-3" class="content-block">
+                <strong>Installation</strong>
+                <p>Just add `show-numbers` and pick your style!</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Alphabetic Style -->
+        <app-example-section
+          id="number-alpha"
+          title="Alphabetic Style (a, b, c)"
+          description="Lowercase alphabetic numbering"
+          [code]="alphaCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              show-numbers="true"
+              number-style="alpha"
+              [items]="alphaItems"
+              scroll-container="#alpha-scroll"
+            ></app-anchor>
+            <div id="alpha-scroll" class="scroll-area">
+              <div id="alpha-1" class="content-block">
+                <strong>Introduction</strong>
+                <p>Alphabetic numbering for a different look.</p>
+              </div>
+              <div id="alpha-2" class="content-block">
+                <strong>Features</strong>
+                <p>Great for appendices and reference sections.</p>
+              </div>
+              <div id="alpha-3" class="content-block">
+                <strong>Installation</strong>
+                <p>Configure with the `number-style` prop.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Roman Style -->
+        <app-example-section
+          id="number-roman"
+          title="Roman Style (i, ii, iii)"
+          description="Lowercase Roman numeral numbering"
+          [code]="romanCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              show-numbers="true"
+              number-style="roman"
+              [items]="romanItems"
+              scroll-container="#roman-scroll"
+            ></app-anchor>
+            <div id="roman-scroll" class="scroll-area">
+              <div id="roman-1" class="content-block">
+                <strong>Introduction</strong>
+                <p>Classic Roman numeral style.</p>
+              </div>
+              <div id="roman-2" class="content-block">
+                <strong>Features</strong>
+                <p>Perfect for traditional or academic documents.</p>
+              </div>
+              <div id="roman-3" class="content-block">
+                <strong>Installation</strong>
+                <p>Adds an elegant touch to your navigation.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Align Left -->
+        <app-example-section
+          id="align-left"
+          title="Horizontal Left Aligned"
+          description="Left alignment for horizontal anchor"
+          [code]="alignLeftCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <app-anchor
+              mode="horizontal"
+              align="left"
+              [items]="horizontalTopItems"
+              scroll-container="#align-left-scroll"
+            ></app-anchor>
+            <div id="align-left-scroll" class="scroll-area-horizontal">
+              <div id="t-home" class="content-block">Left aligned horizontal navigation</div>
+              <div id="t-about" class="content-block">Items aligned to the left</div>
+              <div id="t-contact" class="content-block">Great for LTR layouts</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Align Center -->
+        <app-example-section
+          id="align-center"
+          title="Horizontal Center Aligned"
+          description="Center alignment for horizontal anchor"
+          [code]="alignCenterCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <app-anchor
+              mode="horizontal"
+              align="center"
+              [items]="horizontalTopItems"
+              scroll-container="#align-center-scroll"
+            ></app-anchor>
+            <div id="align-center-scroll" class="scroll-area-horizontal">
+              <div id="t-home" class="content-block">Center aligned horizontal navigation</div>
+              <div id="t-about" class="content-block">Items centered in the container</div>
+              <div id="t-contact" class="content-block">Balanced appearance</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Align Right -->
+        <app-example-section
+          id="align-right"
+          title="Horizontal Right Aligned"
+          description="Right alignment for horizontal anchor"
+          [code]="alignRightCode()"
+        >
+          <div class="preview-box horizontal-preview">
+            <app-anchor
+              mode="horizontal"
+              align="right"
+              [items]="horizontalTopItems"
+              scroll-container="#align-right-scroll"
+            ></app-anchor>
+            <div id="align-right-scroll" class="scroll-area-horizontal">
+              <div id="t-home" class="content-block">Right aligned horizontal navigation</div>
+              <div id="t-about" class="content-block">Items aligned to the right</div>
+              <div id="t-contact" class="content-block">Great for RTL layouts</div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Affix Behavior -->
+        <app-example-section
+          id="affix-behavior"
+          title="Affix Behavior"
+          description="Anchor becomes fixed when scrolling past offset"
+          [code]="affixCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              affix
+              affix-offset="50"
+              [items]="affixItems"
+              scroll-container="#affix-scroll"
+            ></app-anchor>
+            <div id="affix-scroll" class="scroll-area tall-scroll">
+              <div id="aff-1" class="content-block">
+                <strong>Section 1: Introduction</strong>
+                <p>
+                  Scroll down to see the anchor affix to the top at 50px offset. The affix feature
+                  is perfect for long documents where you want the navigation to remain visible.
+                </p>
+              </div>
+              <div id="aff-2" class="content-block">
+                <strong>Section 2: Features</strong>
+                <p>
+                  The anchor navigation is now affixed to the top of the container. Notice how it
+                  stays visible as you scroll through different sections.
+                </p>
+              </div>
+              <div id="aff-3" class="content-block">
+                <strong>Section 3: Usage</strong>
+                <p>
+                  Continue scrolling to see all sections with the affixed navigation. The smooth
+                  animation on affix enhances user experience.
+                </p>
+              </div>
+              <div id="aff-4" class="content-block">
+                <strong>Section 4: Summary</strong>
+                <p>
+                  Final section with affixed navigation. Scroll back up to see it return to normal
+                  position.
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Progress Indicator -->
+        <app-example-section
+          id="progress-indicator"
+          title="Progress Indicator"
+          description="Track reading progress with visual progress bar"
+          [code]="progressCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              show-progress="true"
+              [items]="progressItems"
+              scroll-container="#progress-scroll"
+            ></app-anchor>
+            <div id="progress-scroll" class="scroll-area tall-scroll">
+              <div id="ch-1" class="content-block">
+                <strong>Chapter 1</strong>
+                <p>
+                  Watch the progress bar at the bottom of the anchor navigation as you scroll. Lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit...
+                </p>
+              </div>
+              <div id="ch-2" class="content-block">
+                <strong>Chapter 2</strong>
+                <p>
+                  The progress bar fills up based on your scroll position. Sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua...
+                </p>
+              </div>
+              <div id="ch-3" class="content-block">
+                <strong>Chapter 3</strong>
+                <p>
+                  Scroll to the bottom to see 100% progress. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris...
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Hash/URL Synchronization -->
+        <app-example-section
+          id="hash-sync"
+          title="Hash/URL Synchronization"
+          description="Enable URL hash updates when navigating between sections"
+          [code]="hashCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              update-hash="true"
+              smooth-scroll="true"
+              [items]="hashItems"
+              scroll-container="#hash-scroll"
+            ></app-anchor>
+            <div id="hash-scroll" class="scroll-area">
+              <div id="hash-intro" class="content-block">
+                <strong>01. Introduction</strong>
+                <p>
+                  Click any anchor item above and notice the URL hash changes (e.g., `#hash-intro`).
+                  You can share URLs with specific sections, and they'll scroll automatically when
+                  the page loads.
+                </p>
+              </div>
+              <div id="hash-features" class="content-block">
+                <strong>02. Features</strong>
+                <p>
+                  The `update-hash` property enables this behavior. Key benefits: Browser
+                  back/forward buttons work, Deep linking to specific sections, Shareable URLs with
+                  section context.
+                </p>
+              </div>
+              <div id="hash-examples" class="content-block">
+                <strong>03. Examples</strong>
+                <p>
+                  Perfect for: Documentation sites, Long-form content and articles, Educational
+                  materials, Landing pages with multiple sections.
+                </p>
+              </div>
+              <div id="hash-api" class="content-block">
+                <strong>04. API Reference</strong>
+                <p>
+                  Enable URL synchronization with the `update-hash` attribute. Each section gets a
+                  unique, bookmarkable URL.
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Keyboard Navigation -->
+        <app-example-section
+          id="keyboard-nav"
+          title="Keyboard Navigation"
+          description="Navigate through sections using arrow keys"
+          [code]="keyboardCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              arrow-navigation="true"
+              [items]="keyboardItems"
+              scroll-container="#keyboard-scroll"
+            ></app-anchor>
+            <div id="keyboard-scroll" class="scroll-area">
+              <div id="kb-1" class="content-block">
+                <strong>1. Setup</strong>
+                <p>
+                  Try it: Click on any anchor item above, then use your arrow keys ↑↓ to navigate.
+                  The keyboard navigation improves accessibility and allows power users to navigate
+                  quickly without using the mouse.
+                </p>
+              </div>
+              <div id="kb-2" class="content-block">
+                <strong>2. Configure</strong>
+                <p>
+                  Arrow navigation provides better accessibility compliance and keyboard-only
+                  navigation support. WCAG 2.1 compliant, Screen reader friendly, No mouse required.
+                </p>
+              </div>
+              <div id="kb-3" class="content-block">
+                <strong>3. Build</strong>
+                <p>
+                  Navigate efficiently without reaching for your mouse - perfect for developers and
+                  power users.
+                </p>
+              </div>
+              <div id="kb-4" class="content-block">
+                <strong>4. Deploy</strong>
+                <p>
+                  Press Enter on the focused item to scroll smoothly to the section. The anchor
+                  component handles all keyboard events and focus management automatically.
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Nested Items -->
+        <app-example-section
+          id="nested-items"
+          title="Nested & Collapsible Items"
+          description="Support for recursive nested items with collapsible capabilities"
+          [code]="nestedCode()"
+        >
+          <div class="layout-wrapper vertical">
+            <app-anchor
+              mode="vertical"
+              collapsible="true"
+              [items]="nestedItems"
+              scroll-container="#nested-scroll"
+            ></app-anchor>
+            <div id="nested-scroll" class="scroll-area tall-scroll">
+              <div id="n-1" class="content-block">
+                <strong>1. Getting Started</strong>
+                <p>Main section content with nested subsections...</p>
+              </div>
+              <div id="n-1-1" class="content-block indent">
+                <strong>1.1 Installation</strong>
+                <p>npm install set-ui-lib</p>
+              </div>
+              <div id="n-1-2" class="content-block indent">
+                <strong>1.2 Setup</strong>
+                <p>Import the styles and scripts...</p>
+              </div>
+              <div id="n-2" class="content-block">
+                <strong>2. Components</strong>
+                <p>We provide a wide range of components.</p>
+              </div>
+              <div id="n-2-1" class="content-block indent">
+                <strong>2.1 Basics</strong>
+                <p>Basic components section...</p>
+              </div>
+              <div id="n-2-1-1" class="content-block indent-2">
+                <strong>2.1.1 Button</strong>
+                <p>Standard button component...</p>
+              </div>
+              <div id="n-2-1-2" class="content-block indent-2">
+                <strong>2.1.2 Input</strong>
+                <p>Input field with validation...</p>
+              </div>
+              <div id="n-2-2" class="content-block indent">
+                <strong>2.2 Advanced</strong>
+                <p>Advanced components section...</p>
+              </div>
+              <div id="n-3" class="content-block">
+                <strong>3. Conclusion</strong>
+                <p>That wraps up the nested demo.</p>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+      </div>
     </div>
 
     <!-- Documentation Slot -->

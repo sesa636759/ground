@@ -23,12 +23,25 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   styleUrl: './app-chip-demo.component.scss',
 })
 export class AppChipDemoComponent extends BaseDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'variants', title: 'Variants', icon: '🎨' },
-    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏' },
-    { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤' },
-    { id: 'actions', title: 'Actions', icon: '⚡' },
+  variants = [
+    { id: 'variants', title: 'Variants', icon: '🎨', color: '#8b5cf6' },
+    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏', color: '#3b82f6' },
+    { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤', color: '#10b981' },
+    { id: 'actions', title: 'Actions', icon: '⚡', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   ngOnInit() {}
 

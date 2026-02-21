@@ -1,10 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TagPlaygroundComponent } from './components/tag-playground/tag-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-tag-demo',
@@ -14,43 +15,49 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     TagPlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-tag-demo.component.html',
   styleUrl: './app-tag-demo.component.scss',
 })
-export class AppTagDemoComponent {
+export class AppTagDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'severities', name: 'Severities', icon: '🚨', color: '#3b82f6' },
-    { id: 'styles', name: 'Styles & Sizes', icon: '🎨', color: '#10b981' },
+    { id: 'severities', title: 'Severities', icon: '🚨', color: '#3b82f6' },
+    { id: 'styles', title: 'Styles & Sizes', icon: '🎨', color: '#10b981' },
+    { id: 'visuals', title: 'Visual Enhancements', icon: '✨', color: '#f59e0b' },
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
+    return this.variants;
   }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   playgroundCode = `<ui-tag value="New" severity="info" rounded></ui-tag>`;
 
-  severitiesCode = `<!-- Error/Danger -->
-<ui-tag severity="danger" value="Error"></ui-tag>
+  severitiesCode = `<ui-tag severity="primary" value="Primary"></ui-tag>
+<ui-tag severity="success" value="Success"></ui-tag>
+<ui-tag severity="info" value="Info"></ui-tag>
+<ui-tag severity="warning" value="Warning"></ui-tag>
+<ui-tag severity="danger" value="Danger"></ui-tag>`;
 
-<!-- Success -->
-<ui-tag severity="success" value="Completed"></ui-tag>
+  stylesCode = `<ui-tag value="Square" [rounded]="false"></ui-tag>
+<ui-tag value="Rounded" rounded></ui-tag>
+<ui-tag value="Small" size="small"></ui-tag>
+<ui-tag value="Large" size="large"></ui-tag>`;
 
-<!-- Warning -->
-<ui-tag severity="warning" value="Low Battery"></ui-tag>`;
+  visualsCode = `<ui-tag icon="⭐" value="Starred"></ui-tag>
+<ui-tag value="Tag with Counter" counter="5"></ui-tag>
+<ui-tag value="Removable" removable></ui-tag>`;
 
-  stylesCode = `<!-- With Icons -->
-<ui-tag icon="pi pi-check" value="Standard"></ui-tag>
-
-<!-- Large Rounded Tag -->
-<ui-tag value="PRO" rounded size="large"></ui-tag>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }

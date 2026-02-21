@@ -39,6 +39,19 @@ export const topNavItems: NavItem[] = [
 
 export const categoryNavItems: NavItem[] = [
   {
+    id: 'future',
+    label: 'need fix',
+    icon: '🏗️',
+    children: [
+      { id: 'dock-host', label: 'Dock Host', icon: '🏠' },
+      { id: 'horizontal-nav', label: 'Horizontal Nav', icon: '↔️' },
+      { id: 'nav-bar', label: 'Nav Bar', icon: '📊' },
+      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+      { id: 'pagination', label: 'Pagination', icon: '📄' },
+    ],
+  },
+
+  {
     id: 'layout',
     label: 'Foundation & Layout',
     icon: '🏗️',
@@ -47,7 +60,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'card-set', label: 'Card Set', icon: '🃏' },
       { id: 'divider', label: 'Divider', icon: '➖' },
       { id: 'dock', label: 'Dock', icon: '⚓' },
-      { id: 'dock-host', label: 'Dock Host', icon: '🏠' },
+      // { id: 'dock-host', label: 'Dock Host', icon: '🏠' },  not working as of now//
       { id: 'layout-manager', label: 'Layout Manager', badge: '✨', icon: '📐' },
       { id: 'layout-manager-set', label: 'Layout Manager Set', icon: '📐' },
       { id: 'masonry-set', label: 'Masonry Set', icon: '🧱' },
@@ -64,12 +77,11 @@ export const categoryNavItems: NavItem[] = [
       { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
       { id: 'breadcrumb', label: 'Breadcrumb', icon: '🍞' },
       { id: 'context-menu', label: 'Context Menu', icon: '📋' },
-      { id: 'horizontal-nav', label: 'Horizontal Nav', icon: '↔️' },
+
       { id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: '📱' },
-      { id: 'nav-bar', label: 'Nav Bar', icon: '📊' },
-      { id: 'pagination', label: 'Pagination', icon: '📄' },
+
       { id: 'scroll-top', label: 'Scroll Top', icon: '⬆️' },
-      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+
       { id: 'sidebar-set', label: 'Sidebar Set', icon: '📑' },
       { id: 'speed-dial', label: 'Speed Dial', icon: '⚡' },
       { id: 'tabs', label: 'Tabs', icon: '📑' },

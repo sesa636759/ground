@@ -1,9 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
   selector: 'app-set-empty-state-demo',
@@ -14,29 +16,40 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     EmptyStatePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-empty-state-demo.component.html',
   styleUrl: './set-empty-state-demo.component.scss',
 })
-export class SetEmptyStateDemoComponent {
+export class SetEmptyStateDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'types', title: 'Standard Types', icon: '📋' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Size Options', icon: '📏' },
-    { id: 'alignment', title: 'Alignment Options', icon: '↔️' },
-    { id: 'images', title: 'Custom Images', icon: '🖼️' },
-    { id: 'suggestions', title: 'Suggestion Items', icon: '📝' },
-    { id: 'actions', title: 'Multiple Actions', icon: '🎯' },
-    { id: 'features', title: 'Special Features', icon: '✨' },
-    { id: 'premium', title: 'Premium Features', icon: '💎' },
+    { id: 'types', title: 'Standard Types', icon: '📋', color: '#3b82f6' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#10b981' },
+    { id: 'sizes', title: 'Size Options', icon: '📏', color: '#f59e0b' },
+    { id: 'alignment', title: 'Alignment Options', icon: '↔️', color: '#ef4444' },
+    { id: 'images', title: 'Custom Images', icon: '🖼️', color: '#8b5cf6' },
+    { id: 'suggestions', title: 'Suggestion Items', icon: '📝', color: '#ec4899' },
+    { id: 'actions', title: 'Multiple Actions', icon: '🎯', color: '#06b6d4' },
+    { id: 'features', title: 'Special Features', icon: '✨', color: '#64748b' },
+    { id: 'premium', title: 'Premium Features', icon: '💎', color: '#3b82f6' },
   ];
 
   get exampleVariants() {
     return this.variants;
   }
 
-  typesCode = signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
+
+  typesCode =
+    signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>
 
 <app-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters"></app-empty-state>
 
@@ -62,7 +75,8 @@ export class SetEmptyStateDemoComponent {
   <h3>No Data Available</h3>
 </app-empty-state>`);
 
-  sizesCode = signal(`<app-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
+  sizesCode =
+    signal(`<app-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
 
 <app-empty-state size="medium" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
 
@@ -143,10 +157,5 @@ export class SetEmptyStateDemoComponent {
   primary-action="Continue"
 ></app-empty-state>`);
 
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  ngOnInit() {}
 }

@@ -1,268 +1,464 @@
 <div class="demo-container">
   <h1>🧱 Masonry Layout Component</h1>
   <p class="intro-text">
-    Flexible masonry, grid, and column layouts with responsive design, filtering, selection, lazy loading, and lightbox gallery.
+    Flexible masonry, grid, and column layouts with responsive design, filtering, selection, lazy
+    loading, and lightbox gallery.
   </p>
+
   <demo-tabs>
-    <!-- Examples Slot -->
-    <div slot="examples">
-      <!-- Masonry Layout -->
-      <section class="demo-section" id="masonry">
-        <div class="section-header">
-          <h2>🧱 Masonry Layout</h2>
-          <p>Traditional waterfall layout that fills vertical space efficiently</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Automatic Height Masonry Grid</h3>
-          <div class="preview-box">
-            <div class="masonry-grid">
-              <div class="masonry-item" style="height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="masonry-item" style="height: 300px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="masonry-item" style="height: 280px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="masonry-item" style="height: 320px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="masonry-item" style="height: 260px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="masonry-item" style="height: 290px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="masonry-item" style="height: 270px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="masonry-item" style="height: 310px; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="masonryCode()" [label]="'Masonry Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Grid Layout -->
-      <section class="demo-section" id="grid">
-        <div class="section-header">
-          <h2>📦 Grid Layout</h2>
-          <p>Equal-height grid perfect for product listings and galleries</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Equal Height Grid with 4 Columns</h3>
-          <div class="preview-box">
-            <div class="grid-grid">
-              <div class="grid-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="grid-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="gridCode()" [label]="'Grid Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Columns Layout -->
-      <section class="demo-section" id="columns">
-        <div class="section-header">
-          <h2>📰 Columns Layout</h2>
-          <p>Newspaper-style columns for blog posts and articles</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Multi-Column Text Flow</h3>
-          <div class="preview-box">
-            <div class="columns-layout">
-              <div class="column-content">
-                <div class="column-item" style="height: 150px;"></div>
-                <div class="column-item" style="height: 200px;"></div>
-                <div class="column-item" style="height: 180px;"></div>
-              </div>
-              <div class="column-content">
-                <div class="column-item" style="height: 190px;"></div>
-                <div class="column-item" style="height: 170px;"></div>
-                <div class="column-item" style="height: 210px;"></div>
-              </div>
-              <div class="column-content">
-                <div class="column-item" style="height: 160px;"></div>
-                <div class="column-item" style="height: 195px;"></div>
-                <div class="column-item" style="height: 175px;"></div>
-              </div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="columnsCode()" [label]="'Columns Layout Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Responsive Design -->
-      <section class="demo-section" id="responsive">
-        <div class="section-header">
-          <h2>📱 Responsive Design</h2>
-          <p>Automatic column adjustment based on screen size</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Responsive Breakpoints (640/768/1024/1280)</h3>
-          <div class="preview-box">
-            <div class="masonry-grid">
-              <div class="masonry-item" style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="masonry-item" style="height: 250px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="masonry-item" style="height: 220px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="masonry-item" style="height: 270px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="masonry-item" style="height: 230px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="masonry-item" style="height: 260px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="masonry-item" style="height: 210px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="masonry-item" style="height: 280px; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-              <div class="masonry-item" style="height: 240px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="masonry-item" style="height: 265px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="masonry-item" style="height: 225px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="masonry-item" style="height: 255px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="responsiveCode()" [label]="'Responsive Design Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Filtering & Sorting -->
-      <section class="demo-section" id="filtering">
-        <div class="section-header">
-          <h2>🔍 Filtering & Sorting</h2>
-          <p>Filter by category and sort items dynamically</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Filter by Category and Sort Options</h3>
-          <div class="filter-controls">
-            <div class="filter-group">
-              <label>Category:</label>
-              <button class="filter-btn">All</button>
-              <button class="filter-btn">Nature</button>
-              <button class="filter-btn">Architecture</button>
-              <button class="filter-btn">Food</button>
-            </div>
-            <div class="filter-group">
-              <label>Sort by:</label>
-              <button class="filter-btn">Newest</button>
-              <button class="filter-btn">Popular</button>
-              <button class="filter-btn">Name</button>
-            </div>
-          </div>
-          <div class="preview-box">
-            <div class="masonry-grid">
-              <div class="masonry-item" style="height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="masonry-item" style="height: 300px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="masonry-item" style="height: 280px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="masonry-item" style="height: 320px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="masonry-item" style="height: 260px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="masonry-item" style="height: 290px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="masonry-item" style="height: 270px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="masonry-item" style="height: 310px; background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="filteringCode()" [label]="'Filtering Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Multi-Select -->
-      <section class="demo-section" id="selection">
-        <div class="section-header">
-          <h2>✅ Multi-Select Mode</h2>
-          <p>Select multiple items with batch actions</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Selectable Items with Checkboxes</h3>
-          <div class="selection-toolbar">
-            <span class="selection-count">0 items selected</span>
-            <div class="batch-actions">
-              <button class="action-btn">✓ Select All</button>
-              <button class="action-btn">× Delete</button>
-              <button class="action-btn">📋 Copy</button>
-            </div>
-          </div>
-          <div class="preview-box">
-            <div class="selection-grid">
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-              <div class="selection-item"><span class="checkbox">☐</span></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="selectionCode()" [label]="'Multi-Select Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Lightbox Gallery -->
-      <section class="demo-section" id="lightbox">
-        <div class="section-header">
-          <h2>📸 Lightbox Gallery</h2>
-          <p>Immersive lightbox view with smooth animations</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Click any image to open lightbox</h3>
-          <div class="preview-box">
-            <div class="gallery-grid">
-              <div class="gallery-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="gallery-item" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="lightboxCode()" [label]="'Lightbox Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
-      </section>
-
-      <!-- Skeleton Loading -->
-      <section class="demo-section" id="skeleton">
-        <div class="section-header">
-          <h2>💀 Skeleton Loading State</h2>
-          <p>Realistic placeholder animation during content load</p>
-        </div>
-        <div class="demo-card full-width">
-          <h3>Loading Animation Placeholder</h3>
-          <div class="preview-box">
-            <div class="skeleton-grid">
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-              <div class="skeleton-item"></div>
-            </div>
-          </div>
-          <ui-code-preview [htmlCode]="skeletonCode()" [label]="'Skeleton Loading Code'" activeLang="html" expanded="true"></ui-code-preview>
-        </div>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <app-masonry-playground></app-masonry-playground>
+      <section class="demo-section">
+        <ui-code-preview
+          [htmlCode]="playgroundCode()"
+          [label]="'Masonry Usage'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </section>
     </div>
 
-    <!-- Playground Slot -->
-    <div slot="playground">
-      <section class="demo-section" id="playground">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Configure layout, filtering, sorting, and selection options</p>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="examples-sidebar">
+        <div class="sidebar-title">Sections</div>
+        <div class="sidebar-nav">
+          <ui-anchor
+            [links]="anchorLinks"
+            scroll-container=".pane-examples"
+            type="line"
+            show-progress
+          ></ui-anchor>
         </div>
-        <app-masonry-playground></app-masonry-playground>
-        <ui-code-preview [htmlCode]="playgroundCode()" [label]="'Masonry Usage'" activeLang="html" expanded="true"></ui-code-preview>
-      </section>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="examples-content pane-examples" id="examples-scroll-area">
+        <!-- Masonry Layout -->
+        <app-example-section
+          id="masonry"
+          title="Masonry Layout"
+          description="Traditional waterfall layout that fills vertical space efficiently"
+          [code]="masonryCode()"
+          style="margin-top: 0"
+        >
+          <div class="demo-card full-width">
+            <h3>Automatic Height Masonry Grid</h3>
+            <div class="preview-box">
+              <div class="masonry-grid">
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 250px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 300px;
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 280px;
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 320px;
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 260px;
+                    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 290px;
+                    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 270px;
+                    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 310px;
+                    background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Grid Layout -->
+        <app-example-section
+          id="grid"
+          title="Grid Layout"
+          description="Equal-height grid perfect for product listings and galleries"
+          [code]="gridCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Equal Height Grid with 4 Columns</h3>
+            <div class="preview-box">
+              <div class="grid-grid">
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+                ></div>
+                <div
+                  class="grid-item"
+                  style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Columns Layout -->
+        <app-example-section
+          id="columns"
+          title="Columns Layout"
+          description="Newspaper-style columns for blog posts and articles"
+          [code]="columnsCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Multi-Column Text Flow</h3>
+            <div class="preview-box">
+              <div class="columns-layout">
+                <div class="column-content">
+                  <div class="column-item" style="height: 150px"></div>
+                  <div class="column-item" style="height: 200px"></div>
+                  <div class="column-item" style="height: 180px"></div>
+                </div>
+                <div class="column-content">
+                  <div class="column-item" style="height: 190px"></div>
+                  <div class="column-item" style="height: 170px"></div>
+                  <div class="column-item" style="height: 210px"></div>
+                </div>
+                <div class="column-content">
+                  <div class="column-item" style="height: 160px"></div>
+                  <div class="column-item" style="height: 195px"></div>
+                  <div class="column-item" style="height: 175px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Responsive Design -->
+        <app-example-section
+          id="responsive"
+          title="Responsive Design"
+          description="Automatic column adjustment based on screen size"
+          [code]="responsiveCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Responsive Breakpoints (640/768/1024/1280)</h3>
+            <div class="preview-box">
+              <div class="masonry-grid">
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 200px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 250px;
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 220px;
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 270px;
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 230px;
+                    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 260px;
+                    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 210px;
+                    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 280px;
+                    background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 240px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 265px;
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 225px;
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 255px;
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Filtering & Sorting -->
+        <app-example-section
+          id="filtering"
+          title="Filtering & Sorting"
+          description="Filter by category and sort items dynamically"
+          [code]="filteringCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Filter by Category and Sort Options</h3>
+            <div class="filter-controls">
+              <div class="filter-group">
+                <label>Category:</label>
+                <button class="filter-btn">All</button>
+                <button class="filter-btn">Nature</button>
+                <button class="filter-btn">Architecture</button>
+                <button class="filter-btn">Food</button>
+              </div>
+              <div class="filter-group">
+                <label>Sort by:</label>
+                <button class="filter-btn">Newest</button>
+                <button class="filter-btn">Popular</button>
+                <button class="filter-btn">Name</button>
+              </div>
+            </div>
+            <div class="preview-box">
+              <div class="masonry-grid">
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 250px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 300px;
+                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 280px;
+                    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+                  "
+                ></div>
+                <div
+                  class="masonry-item"
+                  style="
+                    height: 320px;
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Multi-Select -->
+        <app-example-section
+          id="selection"
+          title="Multi-Select Mode"
+          description="Select multiple items with batch actions"
+          [code]="selectionCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Selectable Items with Checkboxes</h3>
+            <div class="selection-toolbar">
+              <span class="selection-count">0 items selected</span>
+              <div class="batch-actions">
+                <button class="action-btn">✓ Select All</button>
+                <button class="action-btn">× Delete</button>
+                <button class="action-btn">📋 Copy</button>
+              </div>
+            </div>
+            <div class="preview-box">
+              <div class="selection-grid">
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+                <div class="selection-item"><span class="checkbox">☐</span></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Lightbox Gallery -->
+        <app-example-section
+          id="lightbox"
+          title="Lightbox Gallery"
+          description="Immersive lightbox view with smooth animations"
+          [code]="lightboxCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Click any image to open lightbox</h3>
+            <div class="preview-box">
+              <div class="gallery-grid">
+                <div
+                  class="gallery-item"
+                  style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                ></div>
+                <div
+                  class="gallery-item"
+                  style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                ></div>
+                <div
+                  class="gallery-item"
+                  style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+                ></div>
+                <div
+                  class="gallery-item"
+                  style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+
+        <!-- Skeleton Loading -->
+        <app-example-section
+          id="skeleton"
+          title="Skeleton Loading State"
+          description="Realistic placeholder animation during content load"
+          [code]="skeletonCode()"
+        >
+          <div class="demo-card full-width">
+            <h3>Loading Animation Placeholder</h3>
+            <div class="preview-box">
+              <div class="skeleton-grid">
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+              </div>
+            </div>
+          </div>
+        </app-example-section>
+      </div>
     </div>
 
     <!-- Documentation Slot -->

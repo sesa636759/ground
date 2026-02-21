@@ -23,19 +23,32 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   styleUrl: './set-stepper-demo.component.scss',
 })
 export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit {
-  exampleVariants = [
-    { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️' },
-    { id: 'vertical', title: 'Vertical Modes', icon: '⬇️' },
-    { id: 'labels', title: 'Label Placement', icon: '🏷️' },
-    { id: 'descriptions', title: 'Descriptions', icon: '📝' },
-    { id: 'content', title: 'Content & Navigation', icon: '📦' },
-    { id: 'steps-count', title: 'Step Counts', icon: '🔢' },
-    { id: 'connectors', title: 'Custom Connectors', icon: '🔗' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'colors', title: 'Color Schemes', icon: '🌈' },
-    { id: 'scrolling', title: 'Large Scale', icon: '📜' },
-    { id: 'interactive', title: 'Interactive Demo', icon: '🎯' },
+  variants = [
+    { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️', color: '#3b82f6' },
+    { id: 'vertical', title: 'Vertical Modes', icon: '⬇️', color: '#10b981' },
+    { id: 'labels', title: 'Label Placement', icon: '🏷️', color: '#f59e0b' },
+    { id: 'descriptions', title: 'Descriptions', icon: '📝', color: '#ef4444' },
+    { id: 'content', title: 'Content & Navigation', icon: '📦', color: '#8b5cf6' },
+    { id: 'steps-count', title: 'Step Counts', icon: '🔢', color: '#ec4899' },
+    { id: 'connectors', title: 'Custom Connectors', icon: '🔗', color: '#06b6d4' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#64748b' },
+    { id: 'colors', title: 'Color Schemes', icon: '🌈', color: '#3b82f6' },
+    { id: 'scrolling', title: 'Large Scale', icon: '📜', color: '#10b981' },
+    { id: 'interactive', title: 'Interactive Demo', icon: '🎯', color: '#f59e0b' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   currentStep25 = 12;
 
@@ -184,4 +197,12 @@ export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit
   [attr.active-step]="currentStep"
   [attr.steps]="stepsArray">
 </app-stepper-container>`;
+
+  playgroundCode = `<app-stepper-container
+  [mode]="mode"
+  [variant]="variant"
+  [color-scheme]="colorScheme"
+  [active-step]="activeStep"
+  [steps]="steps"
+></app-stepper-container>`;
 }

@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CarouselPlaygroundComponent } from './components/carousel-playground/carousel-playground.component';
@@ -22,37 +22,50 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   templateUrl: './set-carousel-demo.component.html',
   styleUrl: './set-carousel-demo.component.scss',
 })
-export class SetCarouselDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
+export class SetCarouselDemoComponent extends BaseDemoComponent implements OnInit {
+  variants = [
     // Transition Effects
-    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀' },
-    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️' },
+    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀', color: '#8b5cf6' },
+    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️', color: '#3b82f6' },
     // Layout Modes
-    { id: 'center-mode', title: 'Center Mode', icon: '🎯' },
-    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋' },
-    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️' },
-    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️' },
+    { id: 'center-mode', title: 'Center Mode', icon: '🎯', color: '#10b981' },
+    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋', color: '#f59e0b' },
+    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️', color: '#ef4444' },
+    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️', color: '#ec4899' },
     // Interaction & Controls
-    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆' },
-    { id: 'autoplay-control', title: 'Autoplay with Pause Control', icon: '⏯️' },
-    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯' },
-    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨' },
+    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆', color: '#06b6d4' },
+    { id: 'autoplay-control', title: 'Autoplay with Pause Control', icon: '⏯️', color: '#64748b' },
+    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯', color: '#8b5cf6' },
+    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨', color: '#3b82f6' },
     // Indicators & Navigation
-    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•' },
-    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢' },
-    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊' },
+    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•', color: '#10b981' },
+    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢', color: '#f59e0b' },
+    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊', color: '#ef4444' },
     // Size Variants
-    { id: 'size-small', title: 'Small Size', icon: '🔸' },
-    { id: 'size-medium', title: 'Medium Size', icon: '🔶' },
-    { id: 'size-large', title: 'Large Size', icon: '🟠' },
+    { id: 'size-small', title: 'Small Size', icon: '🔸', color: '#ec4899' },
+    { id: 'size-medium', title: 'Medium Size', icon: '🔶', color: '#06b6d4' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠', color: '#64748b' },
     // Speed Variants
-    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡' },
-    { id: 'speed-normal', title: 'Normal Speed', icon: '👌' },
-    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢' },
+    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡', color: '#8b5cf6' },
+    { id: 'speed-normal', title: 'Normal Speed', icon: '👌', color: '#3b82f6' },
+    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢', color: '#10b981' },
     // Advanced Features
-    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱' },
-    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮' },
+    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱', color: '#f59e0b' },
+    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮', color: '#ef4444' },
   ];
+
+  get exampleVariants() {
+    return this.variants;
+  }
+
+  anchorLinks = JSON.stringify(
+    this.variants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Basic Layout Examples
   fadeSlides = JSON.stringify([
@@ -429,4 +442,6 @@ export class SetCarouselDemoComponent extends BaseDemoComponent {
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
 </app-carousel>`;
+
+  ngOnInit() {}
 }
