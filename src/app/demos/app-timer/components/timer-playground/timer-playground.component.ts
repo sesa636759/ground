@@ -81,7 +81,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       <div class="playground-preview">
         <div class="timer-preview-card">
           <ui-timer
-            #timer
+            #timerEl
             [duration]="pgConfig.duration"
             [mode]="pgConfig.mode"
             [format]="pgConfig.format"
@@ -92,19 +92,19 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             <ui-button
               class="action-btn"
               variant="primary"
-              (click)="timer.start()"
+              (click)="timerStart(timerEl)"
               label="Start"
             ></ui-button>
             <ui-button
               class="action-btn"
               variant="secondary"
-              (click)="timer.pause()"
+              (click)="timerPause(timerEl)"
               label="Pause"
             ></ui-button>
             <ui-button
               class="action-btn"
               variant="ghost"
-              (click)="timer.reset()"
+              (click)="timerReset(timerEl)"
               label="Reset Timer"
             ></ui-button>
           </div>
@@ -137,6 +137,18 @@ export class TimerPlaygroundComponent {
 
   constructor() {
     this.updateConfig();
+  }
+
+  timerStart(el: HTMLElement): void {
+    (el as any).start?.();
+  }
+
+  timerPause(el: HTMLElement): void {
+    (el as any).pause?.();
+  }
+
+  timerReset(el: HTMLElement): void {
+    (el as any).reset?.();
   }
 
   updateConfig() {

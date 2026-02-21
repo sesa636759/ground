@@ -14,10 +14,8 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "app-ui-library/loader": ["node_modules/app-ui-library/loader/index"]
-    }
+    "moduleResolution": "bundler",
+    "baseUrl": "."
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
