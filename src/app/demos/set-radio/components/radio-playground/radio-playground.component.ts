@@ -109,43 +109,36 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Pro-tip: You can now access the actual rendered DOM element
-    // this.radioGroup.nativeElement
+    // Initial load: read the exact attributes from #radioGroup element in the Light DOM
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
-  updateConfig() {
+  getCleanFormatedDom(): string {
+    if (!this.radioGroup) return '';
+    const el = this.radioGroup.nativeElement as Element;
     let code = `<app-radio-group\n`;
-    if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
-    if (this.pgConfig.label) code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
-    if (this.pgConfig.layout !== 'vertical') code += `  layout="${this.pgConfig.layout}"\n`;
-    if (this.pgConfig.layout === 'grid') code += `  columns="${this.pgConfig.columns}"\n`;
-    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.color !== 'primary') code += `  color="${this.pgConfig.color}"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.labelPosition !== 'right')
-      code += `  label-position="${this.pgConfig.labelPosition}"\n`;
-    if (this.pgConfig.disabled) code += `  disabled\n`;
-    if (this.pgConfig.readonly) code += `  readonly\n`;
-    if (this.pgConfig.required) code += `  required\n`;
-    if (this.pgConfig.invalid) {
-      code += `  invalid\n`;
-      if (this.pgConfig.errorMessage) code += `  error-message="${this.pgConfig.errorMessage}"\n`;
-    }
-    if (!this.pgConfig.enableAnimation) code += `  enable-animation="false"\n`;
-    if (!this.pgConfig.rippleEffect) code += `  ripple-effect="false"\n`;
-    if (this.pgConfig.buttonGroup) code += `  button-group="true"\n`;
-    if (this.pgConfig.skeleton) code += `  skeleton="true"\n`;
-    if (this.pgConfig.allowEmpty) code += `  allow-empty="true"\n`;
-    if (!this.pgConfig.showDot) code += `  show-dot="false"\n`;
-    if (this.pgConfig.fullWidth) code += `  full-width\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
-    if (this.pgConfig.elevation > 0) code += `  elevation="${this.pgConfig.elevation}"\n`;
-    if (this.pgConfig.value) code += `  value="${this.pgConfig.value}"\n`;
+
+    // Read directly from DOM
+    Array.from(el.attributes).forEach((attr) => {
+      // Ignore Angular system bindings and general class
+      if (attr.name.startsWith('_ng') || attr.name.startsWith('ng-') || attr.name === 'class') {
+        return;
+      }
+
+      if (attr.value === '' || attr.value === attr.name) {
+        code += `  ${attr.name}\n`;
+      } else {
+        code += `  ${attr.name}="${attr.value}"\n`;
+      }
+    });
 
     code += `>\n`;
 
-    // Individual child tags - "Child Code"
+    // Stencil mounts child slots inside shadow root.
+    // They won't appear in OuterHTML of Light DOM, so we append the known options.
     this.radioOptions.forEach((opt) => {
       code += `  <app-radio\n`;
       code += `    value="${opt.value}"\n`;
@@ -162,8 +155,15 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
     });
 
     code += `</app-radio-group>`;
-    this.generatedCode = code;
-    this.refreshCode();
+    return code;
+  }
+
+  updateConfig() {
+    // Wait for Angular and Stencil to finish DOM updates
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
