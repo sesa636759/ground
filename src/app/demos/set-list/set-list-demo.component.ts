@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { ListPlaygroundComponent } from './components/list-playground/list-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-list-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, ListPlaygroundComponent, DemoTabsComponent, ComponentDocumentationComponent],
+  imports: [
+    CommonModule, FormsModule, ListPlaygroundComponent, DemoTabsComponent, ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-list-demo.component.html',
   styleUrl: './set-list-demo.component.scss',

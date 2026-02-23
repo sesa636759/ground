@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-context-menu-demo',
@@ -15,7 +16,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     ContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-context-menu-demo.component.html',

@@ -20,7 +20,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ExampleSectionComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-progress-demo.component.html',

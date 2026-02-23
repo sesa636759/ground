@@ -6,11 +6,17 @@ import { AppInputValueAccessorDirective } from '../../directives/app-input-value
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { SplitButtonPlaygroundComponent } from './components/split-button-playground/split-button-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-split-button-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, SplitButtonPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent],
+  imports: [
+  CommonModule, FormsModule, SplitButtonPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent,
+  ComponentDocumentationComponent,
+  DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-split-button-demo.component.html',
   styleUrl: './app-split-button-demo.component.scss',

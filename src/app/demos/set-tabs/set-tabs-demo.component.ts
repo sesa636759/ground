@@ -7,6 +7,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+
 
 @Component({
   selector: 'app-set-tabs-demo',
@@ -16,9 +18,10 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     FormsModule,
     TabsPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
+
     ExampleSectionComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tabs-demo.component.html',

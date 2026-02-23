@@ -15,7 +15,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     TimelinePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-timeline-demo.component.html',

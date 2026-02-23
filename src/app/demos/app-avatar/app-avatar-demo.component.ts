@@ -17,7 +17,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-demo.component.html',
