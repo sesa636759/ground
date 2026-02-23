@@ -7,9 +7,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <header class="demo-header">
-      <h1>
-        {{ title }}
-      </h1>
+      <div class="title-row">
+        <div class="icon-container" *ngIf="icon">
+          <ui-icon [name]="icon" library="default" size="lg"></ui-icon>
+        </div>
+        <h2>
+          {{ title }}
+        </h2>
+      </div>
       <p class="intro-text" *ngIf="description">
         {{ description }}
       </p>
@@ -21,6 +26,19 @@ import { CommonModule } from '@angular/common';
 
       .demo-header {
         margin-bottom: var(--space-xl);
+      }
+
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .title-row h1,
+      .title-row h2,
+      .title-row h3 {
+        margin: 0;
       }
     `,
   ],

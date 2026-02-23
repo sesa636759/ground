@@ -33,7 +33,7 @@ import { CommonModule } from '@angular/common';
 
       <div *ngIf="useAnchor; else navList" class="sidebar-nav">
         <ui-anchor
-          [links]="anchorLinks"
+          [attr.links]="anchorLinks"
           [attr.scroll-container]="scrollContainer"
           type="line"
           show-progress
@@ -45,7 +45,7 @@ import { CommonModule } from '@angular/common';
           <li *ngFor="let variant of variants">
             <a (click)="scrollToSection(variant.id)">
               <span class="nav-icon" *ngIf="variant.icon">{{ variant.icon }}</span>
-              {{ variant.name || variant.title }}
+              {{ variant.label || variant.title || variant.name || variant.id }}
             </a>
           </li>
         </ul>
@@ -109,7 +109,7 @@ export class DemoSidebarComponent implements AfterViewInit, OnDestroy, OnChanges
       this.variants.map((v) => ({
         id: v.id,
         target: v.id,
-        label: v.title || v.name || v.id,
+        label: v.label || v.title || v.name || v.id,
         icon: v.icon,
       })),
     );
