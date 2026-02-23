@@ -7,18 +7,23 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <header class="demo-header">
-      <!-- Soft radial background blobs -->
+      <!-- Drifting radial orbs -->
       <span class="bg-orb bg-orb-1" aria-hidden="true"></span>
       <span class="bg-orb bg-orb-2" aria-hidden="true"></span>
+      <span class="bg-orb bg-orb-3" aria-hidden="true"></span>
+      <!-- Dot-grid texture -->
+      <span class="bg-grid"         aria-hidden="true"></span>
 
       <div class="header-body">
-        <!-- Gradient icon badge -->
+
+        <!-- Animated icon badge -->
         <div class="icon-badge" *ngIf="icon">
-          <span class="icon-halo" aria-hidden="true"></span>
+          <span class="badge-pulse-ring" aria-hidden="true"></span>
+          <span class="badge-shine"      aria-hidden="true"></span>
           <span class="icon-emoji">{{ icon }}</span>
         </div>
 
-        <!-- Text block -->
+        <!-- Text -->
         <div class="header-text">
           <div class="eyebrow">
             <span class="eyebrow-pip"></span>
@@ -28,227 +33,329 @@ import { CommonModule } from '@angular/common';
           <p class="header-desc" *ngIf="description">{{ description }}</p>
         </div>
 
-        <!-- Decorative concentric rings -->
+        <!-- Spinning decorative rings -->
         <div class="deco-circles" aria-hidden="true">
           <span class="deco-ring deco-ring-sm"></span>
           <span class="deco-ring deco-ring-md"></span>
           <span class="deco-ring deco-ring-lg"></span>
+          <span class="deco-dot"></span>
         </div>
+
       </div>
 
-      <!-- Bottom gradient accent bar -->
-      <div class="header-accent-bar"></div>
+      <!-- Animated accent bar -->
+      <div class="header-accent-bar">
+        <span class="accent-shimmer" aria-hidden="true"></span>
+      </div>
     </header>
   `,
-  styles: [
-    `
-      /* -- Demo Header --------------------------------------- */
-      .demo-header {
-        position: relative;
-        margin-bottom: var(--space-xl);
-        border-radius: 18px;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          var(--bg-accent, #f0f4ff) 0%,
-          var(--surface-1, #fff) 65%
+  styles: [`
+
+    /* --------------------------------------------------------
+       KEYFRAMES
+    -------------------------------------------------------- */
+
+    @keyframes headerIn {
+      from { opacity: 0; transform: translateY(-14px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)      scale(1);   }
+    }
+    @keyframes badgeIn {
+      0%   { opacity: 0; transform: scale(0.55) rotate(-15deg); }
+      65%  {             transform: scale(1.1)  rotate(4deg);   }
+      100% { opacity: 1; transform: scale(1)    rotate(0deg);   }
+    }
+    @keyframes eyebrowIn {
+      from { opacity: 0; transform: translateX(-14px); }
+      to   { opacity: 1; transform: translateX(0);     }
+    }
+    @keyframes titleIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    @keyframes descIn {
+      from { opacity: 0; transform: translateY(7px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
+    @keyframes pulseRing {
+      0%   { transform: scale(1);    opacity: 0.65; }
+      60%  { transform: scale(1.5);  opacity: 0;    }
+      100% { transform: scale(1.5);  opacity: 0;    }
+    }
+    @keyframes orbDrift1 {
+      0%, 100% { transform: translate(0,    0)    scale(1);    }
+      50%       { transform: translate(20px, 14px) scale(1.09); }
+    }
+    @keyframes orbDrift2 {
+      0%, 100% { transform: translate(0,     0)   scale(1);    }
+      50%       { transform: translate(-14px, 9px) scale(1.07); }
+    }
+    @keyframes orbDrift3 {
+      0%, 100% { transform: translate(0,     0)    scale(1);    }
+      50%       { transform: translate(10px, -16px) scale(1.05); }
+    }
+    @keyframes rotateCW {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotateCCW {
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0%   50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0%   50%; }
+    }
+    @keyframes shimmerSweep {
+      0%   { left: -65%; }
+      100% { left: 130%;  }
+    }
+    @keyframes pipGlow {
+      0%, 100% { box-shadow: 0 0 4px  var(--primary-glow, rgba(79,70,229,.55)); }
+      50%       { box-shadow: 0 0 11px var(--primary-glow, rgba(79,70,229,.9));  }
+    }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1);   opacity: 1;   }
+      50%       { transform: scale(1.4); opacity: 0.7; }
+    }
+
+    /* --------------------------------------------------------
+       CARD
+    -------------------------------------------------------- */
+    .demo-header {
+      position: relative;
+      margin-bottom: var(--space-xl);
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg,
+          rgba(79,  70, 229, 0.08) 0%,
+          rgba(139, 92, 246, 0.05) 40%,
+          rgba(0,   0,   0,  0)    80%
+        ),
+        linear-gradient(to bottom right,
+          var(--bg-accent,  #f0f4ff) 0%,
+          var(--surface-1,  #ffffff) 100%
         );
-        border: 1px solid var(--border-color, #e2e8f0);
-        box-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.04),
-          0 6px 24px -6px rgba(79, 70, 229, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.85);
-      }
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        0 2px  8px  rgba(0,0,0,0.04),
+        0 10px 36px -8px rgba(79,70,229,0.18);
+      animation: headerIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
 
-      /* -- Background decorative radial blobs ---------------- */
-      .bg-orb {
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 0;
-      }
-      .bg-orb-1 {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        left: -70px;
-        background: radial-gradient(
-          circle,
-          rgba(79, 70, 229, 0.1) 0%,
-          transparent 65%
-        );
-      }
-      .bg-orb-2 {
-        width: 220px;
-        height: 220px;
-        top: -50px;
-        right: 60px;
-        background: radial-gradient(
-          circle,
-          rgba(139, 92, 246, 0.07) 0%,
-          transparent 65%
-        );
-      }
+    /* -- Drifting orbs ------------------------------------ */
+    .bg-orb {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; z-index: 0; will-change: transform;
+    }
+    .bg-orb-1 {
+      width: 360px; height: 360px; top: -140px; left: -100px;
+      background: radial-gradient(circle, rgba(79,70,229,.14) 0%, transparent 65%);
+      animation: orbDrift1 9s  ease-in-out infinite;
+    }
+    .bg-orb-2 {
+      width: 270px; height: 270px; top: -70px; right: 30px;
+      background: radial-gradient(circle, rgba(139,92,246,.11) 0%, transparent 65%);
+      animation: orbDrift2 11s ease-in-out infinite 1.5s;
+    }
+    .bg-orb-3 {
+      width: 190px; height: 190px; bottom: -65px; left: 38%;
+      background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 65%);
+      animation: orbDrift3 13s ease-in-out infinite 3s;
+    }
 
-      /* -- Header body row ----------------------------------- */
-      .header-body {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        gap: 1.25rem;
-        padding: 1.625rem 2rem;
-      }
+    /* -- Dot-grid texture --------------------------------- */
+    .bg-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(79,70,229,.13) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to right,
+        transparent 0%, rgba(0,0,0,.3) 25%, rgba(0,0,0,.3) 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right,
+        transparent 0%, rgba(0,0,0,.3) 25%, rgba(0,0,0,.3) 75%, transparent 100%);
+    }
 
-      /* -- Icon badge ---------------------------------------- */
-      .icon-badge {
-        position: relative;
-        flex-shrink: 0;
-        width: 62px;
-        height: 62px;
-        border-radius: 16px;
-        background: linear-gradient(
-          135deg,
-          var(--primary, #4f46e5) 0%,
-          var(--primary-light, #6366f1) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow:
-          0 4px 16px -2px var(--primary-glow, rgba(79, 70, 229, 0.35)),
-          inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        transition:
-          transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.28s ease;
-      }
-      .icon-badge:hover {
-        transform: translateY(-4px) rotate(-4deg);
-        box-shadow:
-          0 12px 28px -4px var(--primary-glow, rgba(79, 70, 229, 0.5)),
-          inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      }
-      .icon-halo {
-        position: absolute;
-        inset: -8px;
-        border-radius: 22px;
-        background: radial-gradient(
-          circle at center,
-          var(--primary-glow, rgba(79, 70, 229, 0.2)) 0%,
-          transparent 70%
-        );
-        z-index: -1;
-      }
-      .icon-emoji {
-        font-size: 1.875rem;
-        line-height: 1;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-      }
+    /* -- Header body -------------------------------------- */
+    .header-body {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.875rem 2.25rem;
+    }
 
-      /* -- Text block ---------------------------------------- */
-      .header-text {
-        flex: 1;
-        min-width: 0;
-      }
+    /* -- Icon badge --------------------------------------- */
+    .icon-badge {
+      position: relative; flex-shrink: 0;
+      width: 70px; height: 70px; border-radius: 20px;
+      background: linear-gradient(145deg,
+        var(--primary-lighter, #818cf8) 0%,
+        var(--primary,         #4f46e5) 50%,
+        #7c3aed                         100%
+      );
+      display: flex; align-items: center; justify-content: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 6px 22px -4px var(--primary-glow, rgba(79,70,229,.55)),
+        0 2px  6px       rgba(0,0,0,.12);
+      overflow: hidden;
+      animation: badgeIn 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+      transition:
+        transform  0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.32s ease;
+      cursor: default;
+    }
+    .icon-badge:hover {
+      transform: translateY(-6px) rotate(-6deg) scale(1.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 18px 40px -6px var(--primary-glow, rgba(79,70,229,.7)),
+        0  4px 10px       rgba(0,0,0,.16);
+    }
 
-      /* Eyebrow badge */
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 7px;
-        padding: 3px 10px 3px 7px;
-        border-radius: 99px;
-        background: rgba(79, 70, 229, 0.08);
-        border: 1px solid rgba(79, 70, 229, 0.18);
-      }
-      .eyebrow-pip {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--primary, #4f46e5);
-        box-shadow: 0 0 6px var(--primary-glow, rgba(79, 70, 229, 0.5));
-      }
-      .eyebrow-label {
-        font-size: 0.67rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.09em;
-        color: var(--primary, #4f46e5);
-      }
+    /* Pulsing border ring */
+    .badge-pulse-ring {
+      position: absolute; inset: -3px; border-radius: 23px;
+      border: 2.5px solid var(--primary, #4f46e5);
+      opacity: 0;
+      animation: pulseRing 2.6s cubic-bezier(0.2,.5,.5,1) infinite 0.9s;
+    }
 
-      /* Title */
-      .header-title {
-        margin: 0 0 8px;
-        font-size: 1.875rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.2;
-        background: linear-gradient(
-          135deg,
-          var(--text-primary, #0f172a) 20%,
-          var(--primary, #4f46e5) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+    /* Shine sweep on hover */
+    .badge-shine {
+      position: absolute; inset: 0; border-radius: 20px;
+      background: linear-gradient(115deg,
+        transparent 25%,
+        rgba(255,255,255,.32) 50%,
+        transparent 75%
+      );
+      background-size: 220% 100%;
+      background-position: -110% 0;
+      transition: background-position 0.55s ease;
+    }
+    .icon-badge:hover .badge-shine { background-position: 210% 0; }
 
-      /* Description */
-      .header-desc {
-        margin: 0;
-        font-size: 0.9375rem;
-        color: var(--text-secondary, #475569);
-        line-height: 1.65;
-        font-weight: 400;
-      }
+    .icon-emoji {
+      font-size: 2.1rem; line-height: 1; position: relative; z-index: 1;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
+    }
 
-      /* -- Decorative concentric rings ----------------------- */
-      .deco-circles {
-        position: relative;
-        flex-shrink: 0;
-        width: 72px;
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .deco-ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 1.5px solid var(--primary, #4f46e5);
-      }
-      .deco-ring-sm  { width: 18px; height: 18px; opacity: 0.5;  }
-      .deco-ring-md  { width: 38px; height: 38px; opacity: 0.25; }
-      .deco-ring-lg  { width: 62px; height: 62px; opacity: 0.12; }
+    /* -- Text block --------------------------------------- */
+    .header-text { flex: 1; min-width: 0; }
 
-      /* -- Bottom accent bar --------------------------------- */
-      .header-accent-bar {
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary, #4f46e5) 0%,
-          var(--primary-light, #6366f1) 35%,
-          transparent 100%
-        );
-        opacity: 0.55;
-      }
+    /* Eyebrow pill */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      margin-bottom: 9px; padding: 4px 13px 4px 9px;
+      border-radius: 99px;
+      background: linear-gradient(135deg,
+        rgba(79,70,229,.11) 0%, rgba(139,92,246,.07) 100%
+      );
+      border: 1px solid rgba(79,70,229,.22);
+      box-shadow: 0 1px 6px rgba(79,70,229,.09);
+      animation: eyebrowIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+    }
+    .eyebrow-pip {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-lighter,#818cf8), var(--primary,#4f46e5));
+      box-shadow: 0 0 0 2.5px rgba(79,70,229,.15);
+      animation: pipGlow 2s ease-in-out infinite;
+    }
+    .eyebrow-label {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.11em;
+      background: linear-gradient(135deg, var(--primary,#4f46e5), #7c3aed);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-      /* -- Responsive tweaks --------------------------------- */
-      @media (max-width: 600px) {
-        .header-body {
-          padding: 1.25rem 1.25rem;
-          gap: 1rem;
-        }
-        .deco-circles {
-          display: none;
-        }
-        .header-title {
-          font-size: 1.5rem;
-        }
-      }
-    `,
-  ],
+    /* Title — flowing animated gradient */
+    .header-title {
+      margin: 0 0 10px;
+      font-size: 2.05rem; font-weight: 800;
+      letter-spacing: -0.038em; line-height: 1.15;
+      background: linear-gradient(270deg,
+        var(--primary,         #4f46e5),
+        #7c3aed,
+        var(--primary-lighter, #818cf8),
+        var(--text-primary,    #0f172a),
+        var(--primary,         #4f46e5)
+      );
+      background-size: 320% 320%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation:
+        titleIn       0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both,
+        gradientShift 7s   ease                             infinite;
+    }
+
+    /* Description */
+    .header-desc {
+      margin: 0; font-size: 0.9375rem;
+      color: var(--text-secondary, #475569);
+      line-height: 1.72; font-weight: 400;
+      animation: descIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
+    }
+
+    /* -- Spinning decorative rings ------------------------ */
+    .deco-circles {
+      position: relative; flex-shrink: 0;
+      width: 84px; height: 84px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .deco-ring {
+      position: absolute; border-radius: 50%;
+      border-style: solid; border-color: transparent;
+    }
+    .deco-ring-sm {
+      width: 22px; height: 22px; border-width: 2.5px;
+      border-top-color:   rgba(79,70,229,.7);
+      border-right-color: rgba(79,70,229,.2);
+      animation: rotateCW 3s linear infinite;
+    }
+    .deco-ring-md {
+      width: 46px; height: 46px; border-width: 2px;
+      border-top-color:  rgba(139,92,246,.45);
+      border-left-color: rgba(139,92,246,.15);
+      animation: rotateCCW 7s linear infinite;
+    }
+    .deco-ring-lg {
+      width: 74px; height: 74px; border-width: 1.5px;
+      border-top-color:   rgba(99,102,241,.28);
+      border-right-color: rgba(99,102,241,.08);
+      animation: rotateCW 14s linear infinite;
+    }
+    .deco-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary,#4f46e5), #7c3aed);
+      box-shadow: 0 0 10px var(--primary-glow, rgba(79,70,229,.65));
+      animation: dotPulse 2.2s ease-in-out infinite;
+    }
+
+    /* -- Bottom accent bar -------------------------------- */
+    .header-accent-bar {
+      position: relative; height: 3.5px; overflow: hidden;
+      background: linear-gradient(90deg,
+        transparent                       0%,
+        var(--primary,          #4f46e5) 18%,
+        var(--primary-lighter,  #818cf8) 50%,
+        #7c3aed                          80%,
+        transparent                      100%
+      );
+    }
+    .accent-shimmer {
+      position: absolute; top: 0; bottom: 0; width: 55%;
+      background: linear-gradient(90deg,
+        transparent, rgba(255,255,255,.75), transparent
+      );
+      animation: shimmerSweep 2.8s ease-in-out infinite 1.2s;
+    }
+
+    /* -- Responsive --------------------------------------- */
+    @media (max-width: 600px) {
+      .header-body { padding: 1.375rem 1.375rem; gap: 1rem; }
+      .deco-circles { display: none; }
+      .header-title { font-size: 1.5rem; }
+    }
+  `],
 })
 export class DemoHeaderComponent {
   @Input() icon: string = '';

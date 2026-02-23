@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-checkbox-playground',
@@ -17,7 +27,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   templateUrl: './checkbox-playground.component.html',
   styleUrl: './checkbox-playground.component.scss',
 })
-export class CheckboxPlaygroundComponent implements OnInit {
+export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Group Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   // Playground State
   pgConfig = {
     size: 'medium',
@@ -41,33 +61,38 @@ export class CheckboxPlaygroundComponent implements OnInit {
   eventMessage = signal('Interact with the checkbox...');
   generatedCode = signal('');
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   ngOnInit() {
     this.updateConfig();
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.demoElement) return '';
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-checkbox');
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
   updateConfig() {
-    let code = `<app-checkbox\n`;
-    if (this.pgConfig.label) code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
-    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.color !== 'primary') code += `  color="${this.pgConfig.color}"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.labelPosition !== 'right')
-      code += `  label-position="${this.pgConfig.labelPosition}"\n`;
-    if (this.pgConfig.checked) code += `  checked\n`;
-    if (this.pgConfig.indeterminate) code += `  indeterminate\n`;
-    if (this.pgConfig.disabled) code += `  disabled\n`;
-    if (this.pgConfig.readonly) code += `  readonly\n`;
-    if (this.pgConfig.required) code += `  required\n`;
-    if (this.pgConfig.invalid) {
-      code += `  invalid\n`;
-      if (this.pgConfig.errorMessage) code += `  error-message="${this.pgConfig.errorMessage}"\n`;
-    }
-    if (!this.pgConfig.enableAnimation) code += `  enable-animation="false"\n`;
-    if (!this.pgConfig.rippleEffect) code += `  ripple-effect="false"\n`;
-    if (this.pgConfig.skeleton) code += `  skeleton\n`;
-    code += `></app-checkbox>`;
-    this.generatedCode.set(code);
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onCheckboxChange(event: any) {

@@ -151,7 +151,6 @@
   </div>
 
   <div class="playground-preview">
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
     <div class="preview-stage">
       <app-input
         [attr.type]="pgConfig.type"
@@ -199,5 +198,6 @@
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
   </div>
 </div>

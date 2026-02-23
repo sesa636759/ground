@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-dropdown-playground',
@@ -17,18 +27,21 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Configuration</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <div slot="content-config" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.placeholder"
+                (ngModelChange)="updateConfig()"
+              />
             </div>
             <div class="control-group">
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -36,71 +49,64 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Appearance</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.appearance"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="appearanceOptions"
               ></ui-dropdown>
             </div>
           </div>
 
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="multi"
-                [(ngModel)]="pgConfig.multiSelect"
-                (change)="updateConfig()"
-                label="Multi-Select"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="search"
-                [(ngModel)]="pgConfig.searchable"
-                (change)="updateConfig()"
-                label="Searchable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="clear"
-                [(ngModel)]="pgConfig.clearable"
-                (change)="updateConfig()"
-                label="Clearable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="cascade"
-                [(ngModel)]="pgConfig.cascading"
-                (change)="updateConfig()"
-                label="Cascading (Hierarchical)"
-              ></app-checkbox>
+          <div slot="content-features" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="multi"
+                  [(ngModel)]="pgConfig.multiSelect"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Multi-Select
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="search"
+                  [(ngModel)]="pgConfig.searchable"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Searchable
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="clear"
+                  [(ngModel)]="pgConfig.clearable"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Clearable
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="cascade"
+                  [(ngModel)]="pgConfig.cascading"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Cascading
+              </label>
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
+        </ui-accordion>
       </div>
 
       <div class="playground-preview">
-        <div>
-          <label class="preview-label">Pick your favorite tech stack:</label>
+        <div
+          class="preview-stage"
+          style="flex-direction: column; align-items: flex-start; gap: 1rem;"
+        >
+          <label class="preview-label" style="font-weight: 500; font-size: 0.9rem;"
+            >Pick your favorite tech stack:</label
+          >
           <ui-dropdown
+            #demoElement
             [attr.placeholder]="pgConfig.placeholder"
-            [attr.size]="pgConfig.size"
-            [attr.appearance]="pgConfig.appearance"
+            [attr.size]="pgConfig.size !== 'md' ? pgConfig.size : null"
+            [attr.appearance]="pgConfig.appearance !== 'dropdown' ? pgConfig.appearance : null"
             [attr.multi-select]="pgConfig.multiSelect ? '' : null"
             [attr.searchable]="pgConfig.searchable ? '' : null"
             [attr.clearable]="pgConfig.clearable ? '' : null"
@@ -111,17 +117,35 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
           <div
             *ngIf="currentValue"
-            style="margin-top: 24px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;"
+            style="margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;"
           >
             <strong>Selected Value:</strong> {{ currentValue }}
           </div>
         </div>
+
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './dropdown-playground.component.scss',
 })
-export class DropdownPlaygroundComponent {
+export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'config', title: 'Configuration', icon: '⚙️' },
+    { id: 'features', title: 'Features', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['config', 'features']);
+  showCode = true;
+
   pgConfig = {
     placeholder: 'Select technology...',
     size: 'md',
@@ -179,11 +203,20 @@ export class DropdownPlaygroundComponent {
   currentValue = '';
   generatedCode = signal('');
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
+  }
+
+  getCleanFormatedDom(): string {
     let code = '<ui-dropdown\n';
     code += `  placeholder="${this.pgConfig.placeholder}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
@@ -191,11 +224,27 @@ export class DropdownPlaygroundComponent {
       code += `  appearance="${this.pgConfig.appearance}"\n`;
     if (this.pgConfig.multiSelect) code += `  multi-select\n`;
     if (this.pgConfig.searchable) code += `  searchable\n`;
+    if (this.pgConfig.clearable) code += `  clearable\n`;
     if (this.pgConfig.cascading) code += `  cascading\n`;
     code += `  [options]="dropdownOptions"\n`;
     code += '></ui-dropdown>';
+    return code;
+  }
 
-    this.generatedCode.set(code);
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onValueChange(event: any) {

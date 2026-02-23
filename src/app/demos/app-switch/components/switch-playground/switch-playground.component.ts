@@ -29,11 +29,21 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Icon On</label>
-              <input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" placeholder="e.g. 🌙" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.iconOn"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. 🌙"
+              />
             </div>
             <div class="control-group">
               <label>Icon Off</label>
-              <input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" placeholder="e.g. ☀️" />
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.iconOff"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. ☀️"
+              />
             </div>
           </div>
 
@@ -127,29 +137,31 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         </div>
 
         <div class="playground-preview">
-          <ui-switch
-            [attr.label]="pgConfig.label"
-            [attr.checked]="pgConfig.checked ? '' : null"
-            [attr.disabled]="pgConfig.disabled ? '' : null"
-            [attr.loading]="pgConfig.loading ? '' : null"
-            [attr.size]="pgConfig.size"
-            [attr.variant]="pgConfig.variant"
-            [attr.shape]="pgConfig.shape"
-            [attr.label-position]="pgConfig.labelPosition"
-            [attr.icon-on]="pgConfig.iconOn"
-            [attr.icon-off]="pgConfig.iconOff"
-            [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
-            (switchChange)="onSwitchChange($event)"
-          ></ui-switch>
-        </div>
-
-        <div class="event-log">
-          <div *ngFor="let log of eventLog" class="log-entry">
-            <span class="timestamp">[{{ log.time }}]</span>
-            <span class="message">{{ log.msg }}</span>
+          <div class="preview-stage">
+            <ui-switch
+              [attr.label]="pgConfig.label"
+              [attr.checked]="pgConfig.checked ? '' : null"
+              [attr.disabled]="pgConfig.disabled ? '' : null"
+              [attr.loading]="pgConfig.loading ? '' : null"
+              [attr.size]="pgConfig.size"
+              [attr.variant]="pgConfig.variant"
+              [attr.shape]="pgConfig.shape"
+              [attr.label-position]="pgConfig.labelPosition"
+              [attr.icon-on]="pgConfig.iconOn"
+              [attr.icon-off]="pgConfig.iconOff"
+              [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
+              (switchChange)="onSwitchChange($event)"
+            ></ui-switch>
           </div>
-          <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-            Toggle switch to see events...
+
+          <div class="event-log">
+            <div *ngFor="let log of eventLog" class="log-entry">
+              <span class="timestamp">[{{ log.time }}]</span>
+              <span class="message">{{ log.msg }}</span>
+            </div>
+            <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
+              Toggle switch to see events...
+            </div>
           </div>
         </div>
       </div>

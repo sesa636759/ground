@@ -117,7 +117,6 @@
   </div>
 
   <div class="playground-preview">
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
     <div class="preview-stage" [style.height]="pgConfig.orientation === 'vertical' ? '400px' : ''">
       <app-tab-stack
         [attr.orientation]="pgConfig.orientation"
@@ -162,6 +161,12 @@
       </app-tab-stack>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
   </div>
 </div>

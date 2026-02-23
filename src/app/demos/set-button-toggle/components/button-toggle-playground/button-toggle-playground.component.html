@@ -133,10 +133,6 @@
   </div>
 
   <div class="playground-preview">
-    <div class="event-log">
-      <strong>Event Log:</strong>
-      <span [style.color]="eventColor()">{{ eventMessage() }}</span>
-    </div>
     <div class="preview-stage">
       <app-button-toggle-group
         #pgGroup
@@ -172,6 +168,15 @@
         </div>
       </app-button-toggle-group>
     </div>
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+    <div class="event-log">
+      <strong>Event Log:</strong>
+      <span [style.color]="eventColor()">{{ eventMessage() }}</span>
+    </div>
   </div>
 </div>
