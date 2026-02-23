@@ -9,6 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-avatar-demo',
@@ -20,7 +21,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',

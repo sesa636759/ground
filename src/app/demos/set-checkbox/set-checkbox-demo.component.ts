@@ -22,7 +22,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ExampleSectionComponent,
     AppCheckboxValueAccessorDirective,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-checkbox-demo.component.html',

@@ -7,6 +7,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-app-dialog-box-demo',
@@ -19,6 +20,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dialog-box-demo.component.html',

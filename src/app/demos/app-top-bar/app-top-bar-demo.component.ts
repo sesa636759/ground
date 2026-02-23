@@ -6,6 +6,7 @@ import { AppInputValueAccessorDirective } from '../../directives/app-input-value
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { TopBarPlaygroundComponent } from './components/top-bar-playground/top-bar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-top-bar-demo',
@@ -15,7 +16,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     TopBarPlaygroundComponent,
     DemoTabsComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-top-bar-demo.component.html',

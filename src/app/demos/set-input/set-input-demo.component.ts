@@ -20,7 +20,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-input-demo.component.html',

@@ -15,7 +15,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     TabStackPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tab-stack-demo.component.html',

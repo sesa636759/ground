@@ -6,6 +6,8 @@ import { AppInputValueAccessorDirective } from '../../directives/app-input-value
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { PicklistPlaygroundComponent } from './components/picklist-playground/picklist-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-picklist-demo',
@@ -15,7 +17,9 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     PicklistPlaygroundComponent,
     DemoTabsComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-picklist-demo.component.html',

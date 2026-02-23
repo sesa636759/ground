@@ -7,6 +7,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-tag-demo',
@@ -18,7 +19,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-tag-demo.component.html',

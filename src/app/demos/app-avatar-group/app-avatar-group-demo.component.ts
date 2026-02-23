@@ -6,6 +6,8 @@ import { AppInputValueAccessorDirective } from '../../directives/app-input-value
 import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
 import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-avatar-group-demo',
@@ -15,7 +17,9 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
     FormsModule,
     AvatarGroupPlaygroundComponent,
     DemoTabsComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-avatar-group-demo.component.html',

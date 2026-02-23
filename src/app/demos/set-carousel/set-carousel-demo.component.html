@@ -1,9 +1,9 @@
 <div class="demo-container">
-  <h1>🎠 Carousel Component</h1>
-  <p class="intro-text">
-    Flexible and responsive carousel/slideshow component with multiple transition effects, autoplay,
-    responsive layouts, and extensive customization options.
-  </p>
+  <app-demo-header
+    icon="🎠"
+    title="Carousel Component"
+    description="Flexible and responsive carousel/slideshow component with multiple transition effects, autoplay, responsive layouts, and extensive customization options."
+  ></app-demo-header>
 
   <demo-tabs>
     <!-- Playground Slot -->
@@ -863,34 +863,9 @@
     </div>
 
     <!-- Documentation Slot -->
-    <div slot="docs">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <div class="demo-container">
-            <section class="demo-section">
-              <div class="section-header">
-                <h2>📖 Documentation</h2>
-                <p>Links, API references, and detailed usage notes</p>
-              </div>
-              <div class="demo-card" style="padding: 24px">
-                <p>
-                  The documentation for this component is currently being compiled. Our technical
-                  writers are working to provide comprehensive API references, accessibility
-                  guidelines, and best practices.
-                </p>
-                <p>
-                  In the meantime, please explore the <strong>Playground</strong> for interactive
-                  testing and the <strong>Examples</strong> tab for common implementation patterns.
-                </p>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
+        <div slot="docs">
+      <app-component-documentation componentId="carousel"></app-component-documentation>
     </div>
+
   </demo-tabs>
 </div>

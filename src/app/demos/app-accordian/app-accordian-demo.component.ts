@@ -18,7 +18,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',

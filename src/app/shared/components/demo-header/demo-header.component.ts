@@ -51,9 +51,9 @@ import { CommonModule } from '@angular/common';
   `,
   styles: [`
 
-    /* --------------------------------------------------------
+    /* ════════════════════════════════════════════════════════
        KEYFRAMES
-    -------------------------------------------------------- */
+    ════════════════════════════════════════════════════════ */
 
     @keyframes headerIn {
       from { opacity: 0; transform: translateY(-14px) scale(0.97); }
@@ -117,9 +117,9 @@ import { CommonModule } from '@angular/common';
       50%       { transform: scale(1.4); opacity: 0.7; }
     }
 
-    /* --------------------------------------------------------
+    /* ════════════════════════════════════════════════════════
        CARD
-    -------------------------------------------------------- */
+    ════════════════════════════════════════════════════════ */
     .demo-header {
       position: relative;
       margin-bottom: var(--space-xl);
@@ -143,7 +143,7 @@ import { CommonModule } from '@angular/common';
       animation: headerIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    /* -- Drifting orbs ------------------------------------ */
+    /* ── Drifting orbs ──────────────────────────────────── */
     .bg-orb {
       position: absolute; border-radius: 50%;
       pointer-events: none; z-index: 0; will-change: transform;
@@ -164,7 +164,7 @@ import { CommonModule } from '@angular/common';
       animation: orbDrift3 13s ease-in-out infinite 3s;
     }
 
-    /* -- Dot-grid texture --------------------------------- */
+    /* ── Dot-grid texture ───────────────────────────────── */
     .bg-grid {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background-image: radial-gradient(circle, rgba(79,70,229,.13) 1px, transparent 1px);
@@ -175,14 +175,14 @@ import { CommonModule } from '@angular/common';
         transparent 0%, rgba(0,0,0,.3) 25%, rgba(0,0,0,.3) 75%, transparent 100%);
     }
 
-    /* -- Header body -------------------------------------- */
+    /* ── Header body ────────────────────────────────────── */
     .header-body {
       position: relative; z-index: 1;
       display: flex; align-items: center; gap: 1.5rem;
       padding: 1.875rem 2.25rem;
     }
 
-    /* -- Icon badge --------------------------------------- */
+    /* ── Icon badge ─────────────────────────────────────── */
     .icon-badge {
       position: relative; flex-shrink: 0;
       width: 70px; height: 70px; border-radius: 20px;
@@ -238,7 +238,7 @@ import { CommonModule } from '@angular/common';
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.28));
     }
 
-    /* -- Text block --------------------------------------- */
+    /* ── Text block ─────────────────────────────────────── */
     .header-text { flex: 1; min-width: 0; }
 
     /* Eyebrow pill */
@@ -267,7 +267,7 @@ import { CommonModule } from '@angular/common';
       background-clip: text;
     }
 
-    /* Title � flowing animated gradient */
+    /* Title — flowing animated gradient */
     .header-title {
       margin: 0 0 10px;
       font-size: 2.05rem; font-weight: 800;
@@ -295,7 +295,7 @@ import { CommonModule } from '@angular/common';
       animation: descIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
     }
 
-    /* -- Spinning decorative rings ------------------------ */
+    /* ── Spinning decorative rings ──────────────────────── */
     .deco-circles {
       position: relative; flex-shrink: 0;
       width: 84px; height: 84px;
@@ -330,7 +330,7 @@ import { CommonModule } from '@angular/common';
       animation: dotPulse 2.2s ease-in-out infinite;
     }
 
-    /* -- Bottom accent bar -------------------------------- */
+    /* ── Bottom accent bar ──────────────────────────────── */
     .header-accent-bar {
       position: relative; height: 3.5px; overflow: hidden;
       background: linear-gradient(90deg,
@@ -349,7 +349,7 @@ import { CommonModule } from '@angular/common';
       animation: shimmerSweep 2.8s ease-in-out infinite 1.2s;
     }
 
-    /* -- Responsive --------------------------------------- */
+    /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 600px) {
       .header-body { padding: 1.375rem 1.375rem; gap: 1rem; }
       .deco-circles { display: none; }
