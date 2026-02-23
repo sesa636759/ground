@@ -1,170 +1,146 @@
 <div class="playground-layout">
   <div class="playground-controls">
-    <!-- Accordion Section: Group Configuration -->
-    <div class="pg-accordion-item" [class.active]="activeSection() === 'global'">
-      <div
-        class="pg-accordion-header"
-        (click)="activeSection.set(activeSection() === 'global' ? '' : 'global')"
-      >
-        <span class="header-icon">⚙️</span>
-        <span class="header-title">Group Configuration</span>
-        <span class="chevron" [class.open]="activeSection() === 'global'">▼</span>
-      </div>
+    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+      <div slot="content-global" class="control-grid">
+        <div class="control-group">
+          <label>Layout</label>
+          <ui-dropdown
+            name="layout"
+            [(ngModel)]="pgConfig.layout"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Vertical', value: 'vertical' },
+              { label: 'Horizontal', value: 'horizontal' },
+              { label: 'Grid', value: 'grid' },
+            ]"
+          ></ui-dropdown>
+        </div>
 
-      <div class="pg-accordion-content" *ngIf="activeSection() === 'global'">
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Layout</label>
-            <ui-dropdown
-              name="layout"
-              [(ngModel)]="pgConfig.layout"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Vertical', value: 'vertical' },
-                { label: 'Horizontal', value: 'horizontal' },
-                { label: 'Grid', value: 'grid' },
-              ]"
-            ></ui-dropdown>
-          </div>
+        <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
+          <label>Columns</label>
+          <app-input
+            name="columns"
+            type="number"
+            [(ngModel)]="pgConfig.columns"
+            (ngModelChange)="updateConfig()"
+            min="1"
+            max="4"
+          />
+        </div>
 
-          <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
-            <label>Columns</label>
-            <app-input
-              name="columns"
-              type="number"
-              [(ngModel)]="pgConfig.columns"
-              (ngModelChange)="updateConfig()"
-              min="1"
-              max="4"
-            />
-          </div>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            name="size"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Small', value: 'small' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Large', value: 'large' },
+            ]"
+          ></ui-dropdown>
+        </div>
 
-          <div class="control-group">
-            <label>Size</label>
-            <ui-dropdown
-              name="size"
-              [(ngModel)]="pgConfig.size"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Small', value: 'small' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Large', value: 'large' },
-              ]"
-            ></ui-dropdown>
-          </div>
+        <div class="control-group">
+          <label>Color</label>
+          <ui-dropdown
+            name="color"
+            [(ngModel)]="pgConfig.color"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Primary', value: 'primary' },
+              { label: 'Secondary', value: 'secondary' },
+              { label: 'Success', value: 'success' },
+              { label: 'Danger', value: 'danger' },
+              { label: 'Warning', value: 'warning' },
+              { label: 'Info', value: 'info' },
+            ]"
+          ></ui-dropdown>
+        </div>
 
-          <div class="control-group">
-            <label>Color</label>
-            <ui-dropdown
-              name="color"
-              [(ngModel)]="pgConfig.color"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Primary', value: 'primary' },
-                { label: 'Secondary', value: 'secondary' },
-                { label: 'Success', value: 'success' },
-                { label: 'Danger', value: 'danger' },
-                { label: 'Warning', value: 'warning' },
-                { label: 'Info', value: 'info' },
-              ]"
-            ></ui-dropdown>
-          </div>
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            name="variant"
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Default', value: 'default' },
+              { label: 'Bordered', value: 'bordered' },
+              { label: 'Underlined', value: 'underlined' },
+              { label: 'Card', value: 'card' },
+            ]"
+          ></ui-dropdown>
+        </div>
 
-          <div class="control-group">
-            <label>Variant</label>
-            <ui-dropdown
-              name="variant"
-              [(ngModel)]="pgConfig.variant"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Default', value: 'default' },
-                { label: 'Bordered', value: 'bordered' },
-                { label: 'Underlined', value: 'underlined' },
-                { label: 'Card', value: 'card' },
-              ]"
-            ></ui-dropdown>
-          </div>
+        <div class="control-group">
+          <label>Label Position</label>
+          <ui-dropdown
+            name="labelPosition"
+            [(ngModel)]="pgConfig.labelPosition"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Left', value: 'left' },
+              { label: 'Right', value: 'right' },
+            ]"
+          ></ui-dropdown>
+        </div>
 
-          <div class="control-group">
-            <label>Label Position</label>
-            <ui-dropdown
-              name="labelPosition"
-              [(ngModel)]="pgConfig.labelPosition"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Left', value: 'left' },
-                { label: 'Right', value: 'right' },
-              ]"
-            ></ui-dropdown>
-          </div>
+        <div class="control-group">
+          <label>Elevation</label>
+          <app-input
+            name="elevation"
+            type="number"
+            [(ngModel)]="pgConfig.elevation"
+            (ngModelChange)="updateConfig()"
+            min="0"
+            max="5"
+          />
+        </div>
 
-          <div class="control-group">
-            <label>Elevation</label>
-            <app-input
-              name="elevation"
-              type="number"
-              [(ngModel)]="pgConfig.elevation"
-              (ngModelChange)="updateConfig()"
-              min="0"
-              max="5"
-            />
-          </div>
+        <div class="control-group">
+          <label>Group Name</label>
+          <app-input
+            name="groupName"
+            type="text"
+            [(ngModel)]="pgConfig.name"
+            (ngModelChange)="updateConfig()"
+          />
+        </div>
 
-          <div class="control-group">
-            <label>Group Name</label>
-            <app-input
-              name="groupName"
-              type="text"
-              [(ngModel)]="pgConfig.name"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
+        <div class="control-group">
+          <label>Group Label</label>
+          <app-input
+            name="groupLabel"
+            type="text"
+            [(ngModel)]="pgConfig.label"
+            (ngModelChange)="updateConfig()"
+          />
+        </div>
 
-          <div class="control-group">
-            <label>Group Label</label>
-            <app-input
-              name="groupLabel"
-              type="text"
-              [(ngModel)]="pgConfig.label"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
+        <div class="control-group">
+          <label>Helper Text</label>
+          <app-input
+            name="helperText"
+            type="text"
+            [(ngModel)]="pgConfig.helperText"
+            (ngModelChange)="updateConfig()"
+          />
+        </div>
 
-          <div class="control-group">
-            <label>Helper Text</label>
-            <app-input
-              name="helperText"
-              type="text"
-              [(ngModel)]="pgConfig.helperText"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group" *ngIf="pgConfig.invalid">
-            <label>Error Message</label>
-            <app-input
-              name="errorMessage"
-              type="text"
-              [(ngModel)]="pgConfig.errorMessage"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
+        <div class="control-group" *ngIf="pgConfig.invalid">
+          <label>Error Message</label>
+          <app-input
+            name="errorMessage"
+            type="text"
+            [(ngModel)]="pgConfig.errorMessage"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
       </div>
-    </div>
 
-    <!-- Accordion Section: Behavioral States -->
-    <div class="pg-accordion-item" [class.active]="activeSection() === 'states'">
-      <div
-        class="pg-accordion-header"
-        (click)="activeSection.set(activeSection() === 'states' ? '' : 'states')"
-      >
-        <span class="header-icon">⚡</span>
-        <span class="header-title">Behavioral States</span>
-        <span class="chevron" [class.open]="activeSection() === 'states'">▼</span>
-      </div>
-
-      <div class="pg-accordion-content" *ngIf="activeSection() === 'states'">
+      <div slot="content-states">
         <div class="checkbox-grid">
           <label class="checkbox-item">
             <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
@@ -216,20 +192,8 @@
           </label>
         </div>
       </div>
-    </div>
 
-    <!-- Accordion Section: Radio Items -->
-    <div class="pg-accordion-item" [class.active]="activeSection() === 'items'">
-      <div
-        class="pg-accordion-header"
-        (click)="activeSection.set(activeSection() === 'items' ? '' : 'items')"
-      >
-        <span class="header-icon">🔘</span>
-        <span class="header-title">Manage Radio Options</span>
-        <span class="chevron" [class.open]="activeSection() === 'items'">▼</span>
-      </div>
-
-      <div class="pg-accordion-content" *ngIf="activeSection() === 'items'">
+      <div slot="content-items">
         <div class="options-header">
           <button class="btn-add" (click)="addOption()">
             <i class="fas fa-plus"></i> Add Option
@@ -328,7 +292,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">

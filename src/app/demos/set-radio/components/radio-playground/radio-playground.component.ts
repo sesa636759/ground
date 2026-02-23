@@ -2,6 +2,7 @@
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { AppRadioGroupValueAccessorDirective } from '../../../../directives/app-radio-group-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import {
@@ -99,8 +100,16 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
 
   eventMessage = signal('Select an option...');
   generatedCode: string = '';
-  activeSection = signal('global');
   showCode = true;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Group Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'items', title: 'Manage Radio Options', icon: '🔘' },
+    { id: 'validation', title: 'Validation & Help', icon: '✅' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -118,44 +127,30 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
 
   getCleanFormatedDom(): string {
     if (!this.radioGroup) return '';
-    const el = this.radioGroup.nativeElement as Element;
-    let code = `<app-radio-group\n`;
 
-    // Read directly from DOM
-    Array.from(el.attributes).forEach((attr) => {
-      // Ignore Angular system bindings and general class
-      if (attr.name.startsWith('_ng') || attr.name.startsWith('ng-') || attr.name === 'class') {
-        return;
-      }
-
-      if (attr.value === '' || attr.value === attr.name) {
-        code += `  ${attr.name}\n`;
-      } else {
-        code += `  ${attr.name}="${attr.value}"\n`;
-      }
-    });
-
-    code += `>\n`;
-
+    let innerContent = '';
     // Stencil mounts child slots inside shadow root.
     // They won't appear in OuterHTML of Light DOM, so we append the known options.
     this.radioOptions.forEach((opt) => {
-      code += `  <app-radio\n`;
-      code += `    value="${opt.value}"\n`;
-      code += `    label="${opt.label}"\n`;
-      if (opt.description) code += `    description="${opt.description}"\n`;
-      if (opt.badge) code += `    badge="${opt.badge}"\n`;
-      if (opt.tooltip) code += `    tooltip="${opt.tooltip}"\n`;
-      if (opt.icon) code += `    icon="${opt.icon}"\n`;
-      if (opt.iconPosition) code += `    icon-position="${opt.iconPosition}"\n`;
-      if (opt.color) code += `    color="${opt.color}"\n`;
-      if (opt.size) code += `    size="${opt.size}"\n`;
-      if (opt.disabled) code += `    disabled\n`;
-      code += `  ></app-radio>\n`;
+      innerContent += `  <app-radio\n`;
+      innerContent += `    value="${opt.value}"\n`;
+      innerContent += `    label="${opt.label}"\n`;
+      if (opt.description) innerContent += `    description="${opt.description}"\n`;
+      if (opt.badge) innerContent += `    badge="${opt.badge}"\n`;
+      if (opt.tooltip) innerContent += `    tooltip="${opt.tooltip}"\n`;
+      if (opt.icon) innerContent += `    icon="${opt.icon}"\n`;
+      if (opt.iconPosition) innerContent += `    icon-position="${opt.iconPosition}"\n`;
+      if (opt.color) innerContent += `    color="${opt.color}"\n`;
+      if (opt.size) innerContent += `    size="${opt.size}"\n`;
+      if (opt.disabled) innerContent += `    disabled\n`;
+      innerContent += `  ></app-radio>\n`;
     });
 
-    code += `</app-radio-group>`;
-    return code;
+    return generatePlaygroundCode(
+      this.radioGroup.nativeElement as Element,
+      'app-radio-group',
+      innerContent,
+    );
   }
 
   updateConfig() {
