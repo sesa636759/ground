@@ -9,7 +9,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-avatar-demo',
