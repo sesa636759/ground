@@ -167,10 +167,13 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   refreshCode() {
-    this.showCode = false;
-    this.cd.detectChanges();
-    this.showCode = true;
-    this.cd.detectChanges();
+    // Defer outside current change detection cycle to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   trackByOption(index: number, opt: any) {
