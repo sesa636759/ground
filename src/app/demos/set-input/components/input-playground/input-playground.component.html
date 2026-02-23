@@ -1,158 +1,173 @@
 <div class="playground-layout">
   <div class="playground-controls">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Type</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.type"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Text', value: 'text' },
-            { label: 'Password', value: 'password' },
-            { label: 'Email', value: 'email' },
-            { label: 'Number', value: 'number' },
-            { label: 'Tel', value: 'tel' },
-            { label: 'URL', value: 'url' },
-            { label: 'Search', value: 'search' },
-            { label: 'Date', value: 'date' },
-          ]"
-        ></ui-dropdown>
+    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+      <div slot="content-global" class="control-grid" style="padding: 16px">
+        <div class="control-group">
+          <label>Type</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.type"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Text', value: 'text' },
+              { label: 'Password', value: 'password' },
+              { label: 'Email', value: 'email' },
+              { label: 'Number', value: 'number' },
+              { label: 'Tel', value: 'tel' },
+              { label: 'URL', value: 'url' },
+              { label: 'Search', value: 'search' },
+              { label: 'Date', value: 'date' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Outlined', value: 'outlined' },
+              { label: 'Filled', value: 'filled' },
+              { label: 'Underlined', value: 'underlined' },
+              { label: 'Soft', value: 'soft' },
+              { label: 'Ghost', value: 'ghost' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Small', value: 'small' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Large', value: 'large' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Validation State</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.validationState"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'None', value: 'none' },
+              { label: 'Success', value: 'success' },
+              { label: 'Warning', value: 'warning' },
+              { label: 'Error', value: 'error' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Label</label>
+          <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Placeholder</label>
+          <app-input type="text" [(ngModel)]="pgConfig.placeholder" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Prefix Text</label>
+          <app-input type="text" [(ngModel)]="pgConfig.prefixText" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Suffix Text</label>
+          <app-input type="text" [(ngModel)]="pgConfig.suffixText" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Helper Text</label>
+          <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Max Length</label>
+          <app-input type="number" [(ngModel)]="pgConfig.maxLength" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Rows (Multiline)</label>
+          <app-input type="number" [(ngModel)]="pgConfig.rows" (input)="updateConfig()" />
+        </div>
+
+        <div class="control-group">
+          <label>Max Rows</label>
+          <app-input type="number" [(ngModel)]="pgConfig.maxRows" (input)="updateConfig()" />
+        </div>
       </div>
 
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Filled', value: 'filled' },
-            { label: 'Underlined', value: 'underlined' },
-            { label: 'Soft', value: 'soft' },
-            { label: 'Ghost', value: 'ghost' },
-          ]"
-        ></ui-dropdown>
+      <div slot="content-states" style="padding: 16px">
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full
+            Width
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
+            Disabled
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" />
+            Readonly
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" />
+            Required
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showClear" (ngModelChange)="updateConfig()" /> Clear
+            Btn
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.showPasswordToggle"
+              (ngModelChange)="updateConfig()"
+            />
+            Pwd Toggle
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showSteppers" (ngModelChange)="updateConfig()" />
+            Steppers
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.multiline" (ngModelChange)="updateConfig()" />
+            Multiline
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.autoResize" (ngModelChange)="updateConfig()" />
+            Auto-Resize
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
+            Skeleton
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showCharCount" (ngModelChange)="updateConfig()" />
+            Char Count
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.floatingLabel" (ngModelChange)="updateConfig()" />
+            Floating Label
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+          </label>
+        </div>
       </div>
-
-      <div class="control-group">
-        <label>Size</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Small', value: 'small' },
-            { label: 'Medium', value: 'medium' },
-            { label: 'Large', value: 'large' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Validation State</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.validationState"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'None', value: 'none' },
-            { label: 'Success', value: 'success' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Error', value: 'error' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Placeholder</label>
-        <app-input type="text" [(ngModel)]="pgConfig.placeholder" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Prefix Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.prefixText" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Suffix Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.suffixText" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Helper Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Max Length</label>
-        <app-input type="number" [(ngModel)]="pgConfig.maxLength" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Rows (Multiline)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.rows" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Max Rows</label>
-        <app-input type="number" [(ngModel)]="pgConfig.maxRows" (input)="updateConfig()" />
-      </div>
-    </div>
-
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.fullWidth" (change)="updateConfig()" /> Full Width
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showClear" (change)="updateConfig()" /> Clear Btn
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showPasswordToggle" (change)="updateConfig()" />
-        Pwd Toggle
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showSteppers" (change)="updateConfig()" />
-        Steppers
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.multiline" (change)="updateConfig()" />
-        Multiline
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoResize" (change)="updateConfig()" />
-        Auto-Resize
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showCharCount" (change)="updateConfig()" /> Char Count
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.floatingLabel" (change)="updateConfig()" /> Floating
-        Label
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading
-      </label>
-    </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
     <div class="preview-stage">
       <app-input
+        #demoElement
         [attr.type]="pgConfig.type"
         [attr.label]="pgConfig.label"
         [attr.placeholder]="pgConfig.placeholder"
@@ -160,9 +175,9 @@
         [attr.size]="pgConfig.size"
         [attr.validation-state]="pgConfig.validationState"
         [attr.full-width]="pgConfig.fullWidth ? '' : null"
-        [disabled]="pgConfig.disabled"
-        [readonly]="pgConfig.readonly"
-        [required]="pgConfig.required"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
         [attr.show-clear]="pgConfig.showClear ? '' : null"
         [attr.show-password-toggle]="pgConfig.showPasswordToggle ? '' : null"
         [attr.show-steppers]="pgConfig.showSteppers ? '' : null"
@@ -170,8 +185,8 @@
         [attr.auto-trim]="pgConfig.autoTrim ? '' : null"
         [attr.multiline]="pgConfig.multiline ? '' : null"
         [attr.auto-resize]="pgConfig.autoResize ? '' : null"
-        [attr.max-rows]="pgConfig.maxRows"
-        [skeleton]="pgConfig.skeleton"
+        [attr.max-rows]="pgConfig.multiline && pgConfig.maxRows !== 3 ? pgConfig.maxRows : null"
+        [attr.skeleton]="pgConfig.skeleton ? '' : null"
         [attr.prefix-text]="pgConfig.prefixText"
         [attr.suffix-text]="pgConfig.suffixText"
         [attr.helper-text]="pgConfig.helperText"
@@ -180,7 +195,7 @@
         [attr.warning-text]="pgConfig.validationState === 'warning' ? pgConfig.warningText : null"
         [attr.max-length]="pgConfig.maxLength > 0 ? pgConfig.maxLength : null"
         [attr.show-char-count]="pgConfig.showCharCount ? '' : null"
-        [attr.rows]="pgConfig.rows"
+        [attr.rows]="pgConfig.multiline && pgConfig.rows !== 3 ? pgConfig.rows : null"
         [attr.floating-label]="pgConfig.floatingLabel ? '' : null"
         [attr.loading]="pgConfig.loading ? '' : null"
         [attr.debounce]="pgConfig.debounce > 0 ? pgConfig.debounce : null"
@@ -193,6 +208,7 @@
     </div>
 
     <ui-code-preview
+      *ngIf="showCode"
       [htmlCode]="generatedCode()"
       label="Generated Code"
       activeLang="html"

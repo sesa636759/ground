@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-pattern-input-playground',
@@ -17,14 +27,13 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Pattern</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Mask Pattern</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.pattern"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="patternOptions"
               ></ui-dropdown>
             </div>
@@ -38,55 +47,63 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
           </div>
 
-          <div class="control-section">
-            <h3>States</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="disabled"
-                [(ngModel)]="pgConfig.disabled"
-                (change)="updateConfig()"
-                label="Disabled"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="readonly"
-                [(ngModel)]="pgConfig.readonly"
-                (change)="updateConfig()"
-                label="Readonly"
-              ></app-checkbox>
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="disabled"
+                  [(ngModel)]="pgConfig.disabled"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Disabled
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="readonly"
+                  [(ngModel)]="pgConfig.readonly"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Readonly
+              </label>
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
+        </ui-accordion>
       </div>
 
       <div class="playground-preview">
-        <ui-pattern-input
-          [attr.mask]="pgConfig.pattern"
-          [attr.placeholder]="pgConfig.placeholder"
-          [attr.disabled]="pgConfig.disabled ? '' : null"
-          [attr.readonly]="pgConfig.readonly ? '' : null"
-        ></ui-pattern-input>
+        <div class="preview-stage">
+          <ui-pattern-input
+            #demoElement
+            [attr.mask]="pgConfig.pattern"
+            [attr.placeholder]="pgConfig.placeholder"
+            [attr.disabled]="pgConfig.disabled ? '' : null"
+            [attr.readonly]="pgConfig.readonly ? '' : null"
+          ></ui-pattern-input>
+        </div>
+
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './pattern-input-playground.component.scss',
 })
-export class PatternInputPlaygroundComponent {
+export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   pgConfig = {
     pattern: '(999) 999-9999',
     placeholder: 'Enter phone number',
@@ -103,17 +120,38 @@ export class PatternInputPlaygroundComponent {
 
   generatedCode = signal('');
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-pattern-input\n';
-    code += `  mask="${this.pgConfig.pattern}"\n`;
-    code += `  placeholder="${this.pgConfig.placeholder}"\n`;
-    code += '></ui-pattern-input>';
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
+  }
 
-    this.generatedCode.set(code);
+  getCleanFormatedDom(): string {
+    if (!this.demoElement) return '';
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-pattern-input');
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {

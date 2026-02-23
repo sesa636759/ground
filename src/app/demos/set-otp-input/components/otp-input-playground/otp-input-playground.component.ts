@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-otp-input-playground',
@@ -17,7 +27,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   templateUrl: './otp-input-playground.component.html',
   styleUrl: './otp-input-playground.component.scss',
 })
-export class OtpInputPlaygroundComponent implements OnInit {
+export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   pgConfig = {
     length: 6,
     size: 'medium',
@@ -35,31 +55,38 @@ export class OtpInputPlaygroundComponent implements OnInit {
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   ngOnInit() {
     this.updateConfig();
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.demoElement) return '';
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-otp-input');
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
   updateConfig() {
-    let code = `<app-otp-input\n`;
-    if (this.pgConfig.length !== 6) code += `  length="${this.pgConfig.length}"\n`;
-    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.color !== 'primary') code += `  color="${this.pgConfig.color}"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.groupSize > 0) code += `  group-size="${this.pgConfig.groupSize}"\n`;
-
-    if (this.pgConfig.label) code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
-
-    if (this.pgConfig.secure) code += `  secure="true"\n`;
-    if (this.pgConfig.skeleton) code += `  skeleton="true"\n`;
-    if (this.pgConfig.invalid) {
-      code += `  invalid="true"\n`;
-      if (this.pgConfig.errorText) code += `  error-text="${this.pgConfig.errorText}"\n`;
-    }
-
-    code += `></app-otp-input>`;
-
-    this.generatedCode.set(code);
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onOtpChange(event: any) {
