@@ -31,8 +31,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 type="text"
                 [(ngModel)]="pgConfig.icon"
                 (ngModelChange)="updateConfig()"
-                placeholder="e.g. ⭐, fa-user"
+                placeholder="e.g. ⭐, user, rocket"
               />
+            </div>
+            <div class="control-group">
+              <label>Icon Library</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.iconLibrary"
+                (change)="updateConfig()"
+                [options]="iconLibraryOptions"
+              ></ui-dropdown>
             </div>
             <div class="control-group">
               <label>Badge</label>
@@ -69,11 +77,28 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 (ngModelChange)="updateConfig()"
               />
             </div>
+            <div class="control-group">
+              <label>Icon Position</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.iconPosition"
+                (change)="updateConfig()"
+                [options]="positionOptions"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Icon Size</label>
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.iconSize"
+                (ngModelChange)="updateConfig()"
+                placeholder="e.g. 1.2em, 20px"
+              />
+            </div>
           </div>
 
-          <!-- Configuration -->
+          <!-- Layout & States -->
           <div class="control-section">
-            <h3>Behavior</h3>
+            <h3>Layout & States</h3>
             <div class="checkbox-group">
               <app-checkbox
                 id="iconOnly"
@@ -89,6 +114,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 (change)="updateConfig()"
                 label="Loading"
               ></app-checkbox>
+            </div>
+            <div class="control-group" *ngIf="pgConfig.loading">
+              <label>Loading Position</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.loadingPosition"
+                (change)="updateConfig()"
+                [options]="positionOptions"
+              ></ui-dropdown>
             </div>
             <div class="checkbox-group">
               <app-checkbox
@@ -108,11 +141,75 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                id="rounded"
+                [(ngModel)]="pgConfig.rounded"
+                (change)="updateConfig()"
+                label="Rounded"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
                 id="fullWidth"
                 [(ngModel)]="pgConfig.fullWidth"
                 (change)="updateConfig()"
                 label="Full Width"
               ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="selected"
+                [(ngModel)]="pgConfig.selected"
+                (change)="updateConfig()"
+                label="Selected"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="noRipple"
+                [(ngModel)]="pgConfig.noRipple"
+                (change)="updateConfig()"
+                label="No Ripple"
+              ></app-checkbox>
+            </div>
+          </div>
+
+          <!-- Advanced -->
+          <div class="control-section">
+            <h3>Link & Type</h3>
+            <div class="control-group">
+              <label>Type</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.type"
+                (change)="updateConfig()"
+                [options]="typeOptions"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Href (renders as Link)</label>
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.href"
+                (ngModelChange)="updateConfig()"
+                placeholder="https://..."
+              />
+            </div>
+            <div class="control-group" *ngIf="pgConfig.href">
+              <label>Target</label>
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.target"
+                (ngModelChange)="updateConfig()"
+                placeholder="_blank"
+              />
+            </div>
+            <div class="control-group" *ngIf="pgConfig.href">
+              <label>Rel</label>
+              <input
+                type="text"
+                [(ngModel)]="pgConfig.rel"
+                (ngModelChange)="updateConfig()"
+                placeholder="noopener"
+              />
             </div>
           </div>
         </div>
@@ -131,15 +228,26 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <ui-button
           [attr.label]="pgConfig.label"
           [attr.icon]="pgConfig.icon"
+          [attr.icon-library]="pgConfig.iconLibrary"
+          [attr.icon-position]="pgConfig.iconPosition"
+          [attr.icon-size]="pgConfig.iconSize"
           [attr.badge]="pgConfig.badge"
           [attr.variant]="pgConfig.variant"
           [attr.size]="pgConfig.size"
           [attr.elevation]="pgConfig.elevation"
           [attr.icon-only]="pgConfig.iconOnly ? '' : null"
           [attr.loading]="pgConfig.loading ? '' : null"
+          [attr.loading-position]="pgConfig.loadingPosition"
           [attr.disabled]="pgConfig.disabled ? '' : null"
           [attr.pill]="pgConfig.pill ? '' : null"
+          [attr.rounded]="pgConfig.rounded ? '' : null"
           [attr.full-width]="pgConfig.fullWidth ? '' : null"
+          [attr.selected]="pgConfig.selected ? '' : null"
+          [attr.no-ripple]="pgConfig.noRipple ? '' : null"
+          [attr.type]="pgConfig.type"
+          [attr.href]="pgConfig.href"
+          [attr.target]="pgConfig.target"
+          [attr.rel]="pgConfig.rel"
           (buttonClick)="onEvent('Button Clicked')"
         ></ui-button>
         <div class="code-output">
@@ -168,15 +276,26 @@ export class ButtonPlaygroundComponent {
   pgConfig = {
     label: 'Explore Components',
     icon: '🚀',
+    iconLibrary: 'default',
+    iconPosition: 'left',
+    iconSize: '',
     badge: '',
     variant: 'primary',
     size: 'md',
     elevation: 2,
     iconOnly: false,
     loading: false,
+    loadingPosition: 'left',
     disabled: false,
     pill: false,
+    rounded: false,
     fullWidth: false,
+    selected: false,
+    noRipple: false,
+    type: 'button',
+    href: '',
+    target: '',
+    rel: '',
   };
 
   variantOptions = [
@@ -188,6 +307,7 @@ export class ButtonPlaygroundComponent {
     { label: 'Info', value: 'info' },
     { label: 'Outline', value: 'outline' },
     { label: 'Ghost', value: 'ghost' },
+    { label: 'Dark', value: 'dark' },
   ];
 
   sizeOptions = [
@@ -196,6 +316,30 @@ export class ButtonPlaygroundComponent {
     { label: 'Medium', value: 'md' },
     { label: 'Large', value: 'lg' },
     { label: 'Extra Large', value: 'xl' },
+  ];
+
+  iconLibraryOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Lucide', value: 'lucide' },
+    { label: 'FontAwesome', value: 'fontawesome' },
+    { label: 'Icons8', value: 'icons8' },
+    { label: 'Iconoir', value: 'iconoir' },
+    { label: 'Ionicons', value: 'ionicons' },
+    { label: 'Bootstrap', value: 'bootstrap' },
+    { label: 'QuartzDS (SE)', value: 'se' },
+  ];
+
+  positionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+  ];
+
+  typeOptions = [
+    { label: 'Button', value: 'button' },
+    { label: 'Submit', value: 'submit' },
+    { label: 'Reset', value: 'reset' },
   ];
 
   generatedCode = signal('');
@@ -207,17 +351,42 @@ export class ButtonPlaygroundComponent {
 
   updateConfig() {
     let code = '<ui-button\n';
-    if (!this.pgConfig.iconOnly) code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
+    if (this.pgConfig.href) {
+      code += `  href="${this.pgConfig.href}"\n`;
+      if (this.pgConfig.target) code += `  target="${this.pgConfig.target}"\n`;
+      if (this.pgConfig.rel) code += `  rel="${this.pgConfig.rel}"\n`;
+    } else if (this.pgConfig.type !== 'button') {
+      code += `  type="${this.pgConfig.type}"\n`;
+    }
+
+    if (!this.pgConfig.iconOnly && this.pgConfig.label)
+      code += `  label="${this.pgConfig.label}"\n`;
+    if (this.pgConfig.icon) {
+      code += `  icon="${this.pgConfig.icon}"\n`;
+      if (this.pgConfig.iconLibrary !== 'default')
+        code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+      if (this.pgConfig.iconPosition !== 'left')
+        code += `  icon-position="${this.pgConfig.iconPosition}"\n`;
+      if (this.pgConfig.iconSize) code += `  icon-size="${this.pgConfig.iconSize}"\n`;
+    }
+
     if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.elevation) code += `  elevation="${this.pgConfig.elevation}"\n`;
+    if (this.pgConfig.variant !== 'primary') code += `  variant="${this.pgConfig.variant}"\n`;
+    if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
+    if (this.pgConfig.elevation !== 0) code += `  elevation="${this.pgConfig.elevation}"\n`;
+
     if (this.pgConfig.iconOnly) code += `  icon-only\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
+    if (this.pgConfig.loading) {
+      code += `  loading\n`;
+      if (this.pgConfig.loadingPosition !== 'left')
+        code += `  loading-position="${this.pgConfig.loadingPosition}"\n`;
+    }
     if (this.pgConfig.disabled) code += `  disabled\n`;
     if (this.pgConfig.pill) code += `  pill\n`;
+    if (this.pgConfig.rounded) code += `  rounded\n`;
     if (this.pgConfig.fullWidth) code += `  full-width\n`;
+    if (this.pgConfig.selected) code += `  selected\n`;
+    if (this.pgConfig.noRipple) code += `  no-ripple\n`;
     code += '></ui-button>';
 
     this.generatedCode.set(code);
@@ -231,15 +400,26 @@ export class ButtonPlaygroundComponent {
     this.pgConfig = {
       label: 'Explore Components',
       icon: '🚀',
+      iconLibrary: 'default',
+      iconPosition: 'left',
+      iconSize: '',
       badge: '',
       variant: 'primary',
       size: 'md',
       elevation: 2,
       iconOnly: false,
       loading: false,
+      loadingPosition: 'left',
       disabled: false,
       pill: false,
+      rounded: false,
       fullWidth: false,
+      selected: false,
+      noRipple: false,
+      type: 'button',
+      href: '',
+      target: '',
+      rel: '',
     };
     this.updateConfig();
     this.eventLog = [];

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,165 +6,189 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-preferences-settings-section',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="settings-section">
       <div class="section-header">
-        <h2>⚙️ Preferences</h2>
-        <p>Customize your application experience</p>
+        <div class="title-row">
+          <span class="section-icon">⚙️</span>
+          <h2>Preferences</h2>
+        </div>
+        <p>Tailor your workspace and viewing experience to your liking</p>
       </div>
 
-      <div class="section-content">
-        <div class="preference-group">
-          <h3>Display Settings</h3>
-
-          <div class="form-group">
-            <label for="fontSize">Font Size</label>
-            <select id="fontSize" [(ngModel)]="fontSize">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-              <option value="xlarge">Extra Large</option>
-            </select>
+      <div class="section-content grid-layout">
+        <!-- Display Settings -->
+        <div class="settings-card">
+          <div class="card-header">
+            <h3>Visual Style</h3>
+            <p>Control how the interface looks and feels</p>
           </div>
-
-          <div class="form-group">
-            <label for="density">UI Density</label>
-            <select id="density" [(ngModel)]="density">
-              <option value="compact">Compact</option>
-              <option value="comfortable">Comfortable</option>
-              <option value="spacious">Spacious</option>
-            </select>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Animations</div>
-              <div class="setting-description">Enable smooth transitions and animations</div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="fontSize">Font Size</label>
+              <select id="fontSize" [(ngModel)]="fontSize">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium (Default)</option>
+                <option value="large">Large</option>
+                <option value="xlarge">Extra Large</option>
+              </select>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="form-group">
+              <label for="density">UI Density</label>
+              <select id="density" [(ngModel)]="density">
+                <option value="compact">Compact</option>
+                <option value="comfortable" selected>Comfortable</option>
+                <option value="spacious">Spacious</option>
+              </select>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Interface Animations</span>
+                <span class="desc">Enable smooth transitions and micro-interactions</span>
+              </div>
+              <ui-switch
                 [checked]="animations()"
-                (change)="animations.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Reduce Motion</div>
-              <div class="setting-description">Minimize animations for accessibility</div>
+                variant="primary"
+                (switchChange)="animations.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Reduced Motion</span>
+                <span class="desc">Minimize animations for better accessibility</span>
+              </div>
+              <ui-switch
                 [checked]="reduceMotion()"
-                (change)="reduceMotion.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="preference-group">
-          <h3>Content Settings</h3>
-
-          <div class="form-group">
-            <label for="itemsPerPage">Items Per Page</label>
-            <select id="itemsPerPage" [(ngModel)]="itemsPerPage">
-              <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="dateFormat">Date Format</label>
-            <select id="dateFormat" [(ngModel)]="dateFormat">
-              <option value="MM/DD/YYYY">MM/DD/YYYY</option>
-              <option value="DD/MM/YYYY">DD/MM/YYYY</option>
-              <option value="YYYY-MM-DD">YYYY-MM-DD</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="timeFormat">Time Format</label>
-            <select id="timeFormat" [(ngModel)]="timeFormat">
-              <option value="12">12-hour</option>
-              <option value="24">24-hour</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="preference-group">
-          <h3>Behavior Settings</h3>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Auto-save</div>
-              <div class="setting-description">Automatically save changes as you work</div>
+                variant="warning"
+                (switchChange)="reduceMotion.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+          </div>
+        </div>
+
+        <!-- Content Settings -->
+        <div class="settings-card">
+          <div class="card-header">
+            <h3>Data & Content</h3>
+            <p>Configure how data is displayed and formatted</p>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="itemsPerPage">Items Per Page</label>
+              <select id="itemsPerPage" [(ngModel)]="itemsPerPage">
+                <option value="10">10 items</option>
+                <option value="25" selected>25 items</option>
+                <option value="50">50 items</option>
+                <option value="100">100 items</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dateFormat">Date Format</label>
+              <select id="dateFormat" [(ngModel)]="dateFormat">
+                <option value="MM/DD/YYYY">MM / DD / YYYY</option>
+                <option value="DD/MM/YYYY">DD / MM / YYYY</option>
+                <option value="YYYY-MM-DD">YYYY - MM - DD</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="timeFormat">Time Format</label>
+              <select id="timeFormat" [(ngModel)]="timeFormat">
+                <option value="12">12-hour (AM/PM)</option>
+                <option value="24">24-hour (Military)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Behavior Settings -->
+        <div class="settings-card full-width">
+          <div class="card-header">
+            <h3>App Behavior</h3>
+            <p>Customize interactions and automation</p>
+          </div>
+          <div class="card-body behavior-grid">
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Navigation Orientation</span>
+                <span class="desc"
+                  >Choose between vertical sidebar or horizontal top navigation</span
+                >
+              </div>
+              <div class="segmented-control">
+                <button
+                  [class.active]="navOrientation() === 'vertical'"
+                  (click)="navOrientation.set('vertical')"
+                >
+                  Vertical
+                </button>
+                <button
+                  [class.active]="navOrientation() === 'horizontal'"
+                  (click)="navOrientation.set('horizontal')"
+                >
+                  Horizontal
+                </button>
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Cloud Auto-save</span>
+                <span class="desc">Automatically save changes to your profile as you work</span>
+              </div>
+              <ui-switch
                 [checked]="autoSave()"
-                (change)="autoSave.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Keyboard Shortcuts</div>
-              <div class="setting-description">Enable keyboard navigation and shortcuts</div>
+                variant="success"
+                (switchChange)="autoSave.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Keyboard Shortcuts</span>
+                <span class="desc">Enable quick navigation using hotkeys</span>
+              </div>
+              <ui-switch
                 [checked]="keyboardShortcuts()"
-                (change)="keyboardShortcuts.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Tooltips</div>
-              <div class="setting-description">Show helpful tooltips on hover</div>
+                variant="primary"
+                (switchChange)="keyboardShortcuts.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Contextual Tooltips</span>
+                <span class="desc">Show helpful hints when hovering over UI elements</span>
+              </div>
+              <ui-switch
                 [checked]="tooltips()"
-                (change)="tooltips.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Confirm Before Delete</div>
-              <div class="setting-description">Show confirmation dialog before deleting items</div>
+                variant="info"
+                (switchChange)="tooltips.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Destructive Action Confirmation</span>
+                <span class="desc">Ask before deleting or permanently modifying items</span>
+              </div>
+              <ui-switch
                 [checked]="confirmDelete()"
-                (change)="confirmDelete.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
+                variant="danger"
+                (switchChange)="confirmDelete.set($event.detail.checked)"
+              ></ui-switch>
+            </div>
           </div>
         </div>
 
-        <div class="form-actions">
-          <button class="btn-secondary" (click)="reset()">Reset to Defaults</button>
-          <button class="btn-primary" (click)="save()">Save Preferences</button>
+        <div class="form-actions-full">
+          <ui-button label="Reset to Defaults" variant="secondary" (click)="reset()"></ui-button>
+          <ui-button label="Save Preferences" variant="primary" (click)="save()"></ui-button>
         </div>
       </div>
     </div>
@@ -172,85 +196,124 @@ import { FormsModule } from '@angular/forms';
   styles: [
     `
       .settings-section {
-        padding: 24px;
+        padding: 8px;
       }
 
       .section-header {
-        margin-bottom: 24px;
+        margin-bottom: 40px;
+
+        .title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 8px;
+        }
+
+        .section-icon {
+          font-size: 1.5rem;
+        }
 
         h2 {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           font-weight: 700;
+          margin: 0;
           color: var(--text-primary);
-          margin-bottom: 8px;
         }
 
         p {
           color: var(--text-secondary);
-          font-size: 0.95rem;
+          font-size: 1rem;
+          margin: 0;
         }
       }
 
-      .section-content {
+      .grid-layout {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .settings-card {
         background: var(--surface-raised);
-        border-radius: 12px;
-        padding: 24px;
-        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 20px rgba(0, 0, 10, 0.02);
+
+        &.full-width {
+          grid-column: span 2;
+        }
       }
 
-      .preference-group {
-        margin-bottom: 32px;
-
-        &:last-of-type {
-          margin-bottom: 24px;
-        }
+      .card-header {
+        padding: 24px 28px;
+        border-bottom: 1px solid var(--border-subtle);
+        background: rgba(var(--primary-rgb), 0.02);
 
         h3 {
-          font-size: 1.1rem;
-          font-weight: 600;
+          font-size: 1.125rem;
+          font-weight: 700;
+          margin: 0 0 4px 0;
           color: var(--text-primary);
-          margin-bottom: 16px;
-          padding-bottom: 12px;
-          border-bottom: 1px solid var(--border-color);
+        }
+
+        p {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          margin: 0;
+        }
+      }
+
+      .card-body {
+        padding: 12px 28px;
+
+        &.behavior-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0 40px;
         }
       }
 
       .form-group {
-        margin-bottom: 20px;
+        padding: 16px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
         label {
-          display: block;
+          font-size: 0.875rem;
           font-weight: 600;
           color: var(--text-primary);
-          margin-bottom: 8px;
-          font-size: 0.9rem;
         }
 
         select {
           width: 100%;
-          max-width: 400px;
-          padding: 12px 16px;
-          border: 1px solid var(--border-color);
-          border-radius: 8px;
+          padding: 10px 14px;
           background: var(--surface-base);
+          border: 1px solid var(--border-subtle);
+          border-radius: 10px;
           color: var(--text-primary);
           font-size: 0.95rem;
           cursor: pointer;
-          transition: all 0.2s ease;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 14px center;
 
           &:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
           }
         }
       }
 
-      .setting-item {
+      .setting-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 16px 0;
+        padding: 20px 0;
         border-bottom: 1px solid var(--border-subtle);
 
         &:last-child {
@@ -258,140 +321,99 @@ import { FormsModule } from '@angular/forms';
         }
       }
 
-      .setting-info {
-        flex: 1;
-        padding-right: 16px;
+      .setting-main {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding-right: 20px;
 
-        .setting-label {
+        .label {
           font-weight: 600;
           color: var(--text-primary);
-          margin-bottom: 4px;
           font-size: 0.95rem;
         }
 
-        .setting-description {
+        .desc {
+          font-size: 0.8125rem;
           color: var(--text-secondary);
-          font-size: 0.85rem;
+          line-height: 1.4;
         }
       }
 
-      .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 48px;
-        height: 26px;
-        flex-shrink: 0;
-
-        input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-
-          &:checked + .slider {
-            background-color: var(--primary-color);
-          }
-
-          &:checked + .slider:before {
-            transform: translateX(22px);
-          }
-
-          &:focus + .slider {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-          }
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: var(--surface-sunken);
-          border: 1px solid var(--border-color);
-          transition: 0.3s;
-          border-radius: 34px;
-
-          &:before {
-            position: absolute;
-            content: '';
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.3s;
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          }
-        }
-      }
-
-      .form-actions {
-        display: flex;
-        gap: 12px;
-        justify-content: flex-end;
-        padding-top: 8px;
+      .segmented-control {
+        display: inline-flex;
+        background: var(--surface-sunken);
+        padding: 4px;
+        border-radius: 10px;
+        border: 1px solid var(--border-subtle);
 
         button {
-          padding: 10px 24px;
-          border-radius: 8px;
+          padding: 6px 16px;
+          border-radius: 7px;
+          border: none;
+          background: transparent;
+          color: var(--text-secondary);
+          font-size: 0.875rem;
           font-weight: 600;
-          font-size: 0.95rem;
           cursor: pointer;
           transition: all 0.2s ease;
-          border: none;
 
-          &.btn-primary {
-            background: var(--primary-color);
-            color: white;
-
-            &:hover {
-              background: var(--primary-hover);
-              transform: translateY(-1px);
-              box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-            }
-          }
-
-          &.btn-secondary {
-            background: var(--surface-sunken);
+          &:hover {
             color: var(--text-primary);
-            border: 1px solid var(--border-color);
-
-            &:hover {
-              background: var(--surface-raised);
-            }
           }
+
+          &.active {
+            background: var(--surface-raised);
+            color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          }
+        }
+      }
+
+      .form-actions-full {
+        grid-column: span 2;
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        padding: 24px 0;
+      }
+
+      @media (max-width: 1024px) {
+        .grid-layout {
+          grid-template-columns: 1fr;
+        }
+        .settings-card.full-width,
+        .form-actions-full {
+          grid-column: auto;
+        }
+        .card-body.behavior-grid {
+          grid-template-columns: 1fr;
         }
       }
     `,
   ],
 })
 export class PreferencesSettingsSectionComponent {
-  // Display settings
   fontSize = signal('medium');
   density = signal('comfortable');
   animations = signal(true);
   reduceMotion = signal(false);
-
-  // Content settings
+  navOrientation = signal('vertical');
   itemsPerPage = signal('25');
   dateFormat = signal('MM/DD/YYYY');
   timeFormat = signal('12');
-
-  // Behavior settings
   autoSave = signal(true);
   keyboardShortcuts = signal(true);
   tooltips = signal(true);
   confirmDelete = signal(true);
 
   save(): void {}
-
   reset(): void {
     this.fontSize.set('medium');
     this.density.set('comfortable');
     this.animations.set(true);
     this.reduceMotion.set(false);
+    this.navOrientation.set('vertical');
     this.itemsPerPage.set('25');
     this.dateFormat.set('MM/DD/YYYY');
     this.timeFormat.set('12');

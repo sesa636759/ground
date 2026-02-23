@@ -11,9 +11,9 @@
     </div>
 
     <div slot="examples">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
+      <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -61,9 +61,9 @@
     </div>
 
     <div slot="docs">
-      <div class="examples-split-layout" style="height: auto; overflow: visible">
+      <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -76,8 +76,8 @@
               <div class="demo-card" style="padding: 24px">
                 <p>
                   The documentation for this component is currently being compiled. Our technical
-                  writers are working to provide comprehensive API references, accessibility guidelines,
-                  and best practices.
+                  writers are working to provide comprehensive API references, accessibility
+                  guidelines, and best practices.
                 </p>
                 <p>
                   In the meantime, please explore the <strong>Playground</strong> for interactive

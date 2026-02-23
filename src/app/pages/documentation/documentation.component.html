@@ -1,0 +1,257 @@
+<div class="docs-hub-wrapper animate-in">
+  <!-- 🌟 Premium Search Hero -->
+  <section class="hub-hero">
+    <div class="hero-bg-accent"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hub-badge animate-slide-down">Enterprise Design System</div>
+        <h1 class="animate-slide-up">Documentation <span class="text-gradient">Hub</span></h1>
+        <p class="hero-lead animate-slide-up" style="animation-delay: 0.1s">
+          Search the registry for components, utilities, and design guidelines. Built for speed,
+          efficiency, and engineering excellence.
+        </p>
+
+        <!-- 🔍 High-Performance Hub Search -->
+        <div class="hub-search-vessel animate-slide-up" style="animation-delay: 0.2s">
+          <div class="search-input-group" [class.focused]="isSearchFocused()">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              placeholder="What are you looking for? (e.g. 'Table', 'Validation', 'Input')"
+              (input)="onSearchInput($event)"
+              (focus)="isSearchFocused.set(true)"
+              (blur)="isSearchFocused.set(false)"
+              #searchInput
+            />
+            <div class="search-kbd" *ngIf="!searchText()">⌘K</div>
+            <button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+
+          <div class="popular-searches" *ngIf="!searchText()">
+            <span>Popular:</span>
+            <button (click)="searchText.set('table')">Table</button>
+            <button (click)="searchText.set('form')">Forms</button>
+            <button (click)="searchText.set('navigation')">Navigation</button>
+            <button (click)="searchText.set('overlay')">Overlays</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hub-main-content">
+    <!-- 🧭 Quick Access Navigation -->
+    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s">
+      <button
+        class="nav-card"
+        [class.active]="activeTab() === 'all'"
+        (click)="activeTab.set('all')"
+      >
+        <div class="card-icon gradient-blue"><i class="fas fa-th-large"></i></div>
+        <div class="card-text">
+          <span class="title">All Components</span>
+          <span class="count">{{ components().length }} Assets</span>
+        </div>
+      </button>
+
+      <button
+        class="nav-card"
+        [class.active]="activeTab() === 'guides'"
+        (click)="activeTab.set('guides')"
+      >
+        <div class="card-icon gradient-purple"><i class="fas fa-map"></i></div>
+        <div class="card-text">
+          <span class="title">Guides & Setup</span>
+          <span class="count">3 Documentations</span>
+        </div>
+      </button>
+
+      <button
+        class="nav-card"
+        [class.active]="activeTab() === 'utilities'"
+        (click)="activeTab.set('utilities')"
+      >
+        <div class="card-icon gradient-green"><i class="fas fa-tools"></i></div>
+        <div class="card-text">
+          <span class="title">Design Tokens</span>
+          <span class="count">12 Categories</span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- 📄 Main Results Display -->
+    <div class="results-viewer">
+      <!-- 📚 Guides Logic -->
+      <div
+        class="guides-grid"
+        *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
+      >
+        <div class="section-heading" *ngIf="activeTab() === 'all'">Guides</div>
+        <div
+          class="guide-card glass-card"
+          *ngFor="let guide of filteredGuides()"
+          (click)="selectGuide(guide.id)"
+        >
+          <div class="guide-icon"><i [class]="guide.icon"></i></div>
+          <div class="guide-info">
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.desc }}</p>
+          </div>
+          <div class="guide-arrow"><i class="fas fa-chevron-right"></i></div>
+        </div>
+      </div>
+
+      <!-- 💎 Component Grid Logic -->
+      <div
+        class="components-section"
+        *ngIf="activeTab() === 'all' || activeTab() === 'components' || searchText()"
+      >
+        <div class="section-heading">
+          {{ searchText() ? 'Search Results' : 'Library Registry' }}
+          <span class="results-count" *ngIf="searchText()"
+            >({{ filteredComponents().length }} found)</span
+          >
+        </div>
+
+        <div class="comp-hub-grid">
+          <div
+            class="comp-card glass-card animate-in"
+            *ngFor="let comp of filteredComponents()"
+            (click)="viewComponentDoc(comp.id)"
+          >
+            <div class="card-header">
+              <div class="comp-symbol">{{ comp.name.charAt(0) }}</div>
+              <div class="status-indicator">READY</div>
+            </div>
+            <div class="card-body">
+              <h3>{{ comp.name }}</h3>
+              <p>{{ comp.shortDescription }}</p>
+            </div>
+            <div class="card-footer">
+              <span class="tag">Standalone</span>
+              <div class="view-action">Explore <i class="fas fa-arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="empty-results" *ngIf="filteredComponents().length === 0 && searchText()">
+          <div class="empty-icon"><i class="fas fa-ghost"></i></div>
+          <h3>No components found</h3>
+          <p>Try adjusting your search query or browse categories.</p>
+          <button class="btn-reset" (click)="searchText.set('')">View All Components</button>
+        </div>
+      </div>
+
+      <!-- 📂 Selected Guide Content (Standalone View) -->
+      <div class="guide-content-viewer animate-slide-up" *ngIf="selectedGuideId()">
+        <div class="viewer-header">
+          <button class="back-link" (click)="selectedGuideId.set('')">
+            <i class="fas fa-arrow-left"></i>
+            Back to Hub
+          </button>
+          <div class="viewer-meta">Guide / {{ getSelectedGuide()?.title }}</div>
+        </div>
+
+        <article class="doc-article intro-view" *ngIf="selectedGuideId() === 'introduction'">
+          <div class="article-header">
+            <h2>Introduction</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">
+            GROUND UI is an elite design system built on atomic principles, engineered for maximum
+            performance and visual sophistication.
+          </p>
+
+          <div class="principle-grid">
+            <div class="principle-card">
+              <i class="fas fa-microchip"></i>
+              <h4>Performance First</h4>
+              <p>Optimized for Core Web Vitals with zero overhead architectures.</p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-universal-access"></i>
+              <h4>Accessible</h4>
+              <p>WCAG 2.1 compliant components that everyone can use intuitively.</p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-sync"></i>
+              <h4>Consistent</h4>
+              <p>Shared tokens ensure every component feels like part of one family.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'installation'">
+          <div class="article-header">
+            <h2>Installation</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">01</div>
+            <div class="step-detail">
+              <h3>Install Core Package</h3>
+              <ui-code-preview
+                active-lang="html"
+                html-code="npm install @enterprise/ui-ground"
+                label="Terminal"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">02</div>
+            <div class="step-detail">
+              <h3>Setup Styles</h3>
+              <p>Add the following to your global <code>styles.scss</code> file:</p>
+              <ui-code-preview
+                active-lang="css"
+                css-code='@use "@enterprise/ui-ground/theme";'
+                label="styles.scss"
+              ></ui-code-preview>
+            </div>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'usage'">
+          <div class="article-header">
+            <h2>Basic Usage</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <div class="usage-pattern">
+            <p>
+              GROUND components are standalone. Import only what you need to keep your bundles lean.
+            </p>
+            <ui-code-preview
+              active-lang="ts"
+              ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
+
+&#64;Component({{ '{' }}
+  selector: 'app-home',
+  standalone: true,
+  imports: [UiButton],
+  template: `<ui-button variant='primary'>Action</ui-button>`
+{{ '}' }})"
+              label="App Component"
+              expanded="true"
+            ></ui-code-preview>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <footer class="hub-footer">
+    <div class="footer-container">
+      <div class="brand-group">
+        <span class="brand-logo">GROUND</span>
+        <span class="brand-sub">DESIGN SYSTEM</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">Support</a>
+        <a href="#">Github</a>
+        <a href="#">Changelog</a>
+      </div>
+    </div>
+  </footer>
+</div>

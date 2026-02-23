@@ -1,0 +1,232 @@
+<div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
+  <div class="examples-split-layout" *ngIf="componentDoc">
+    <!-- Sidebar Navigation -->
+    <app-demo-sidebar
+      [variants]="sidebarSections"
+      [useAnchor]="true"
+      scrollContainer="#docs-scroll-area"
+      type="line"
+      show-progress
+      [active-Link]="getSectionId(activeSection())"
+    ></app-demo-sidebar>
+
+    <!-- Main Content Area -->
+    <div class="examples-content" id="docs-scroll-area">
+      <!-- Hero Header (Desktop Only) -->
+      <header class="docs-header" *ngIf="!isEmbedded">
+        <div class="header-inner">
+          <div class="breadcrumb-mini">Components / API</div>
+          <div class="title-row">
+            <h1>{{ componentDoc.name }}</h1>
+            <div class="version-tag">STABLE</div>
+          </div>
+          <p class="lead-text">{{ componentDoc.shortDescription }}</p>
+        </div>
+        <div class="header-decoration"></div>
+      </header>
+
+      <div class="docs-sections">
+        <!-- Overview Section -->
+        <section [id]="getSectionId('overview')" class="doc-section hero-section">
+          <div class="section-title">
+            <div class="icon-orb"><i class="fas fa-rocket"></i></div>
+            <div class="title-text">
+              <h2>Overview</h2>
+              <p>Core functionality and conceptual overview</p>
+            </div>
+          </div>
+          <div class="glass-card overview-content">
+            <p class="description-text">{{ componentDoc.detailedDescription }}</p>
+          </div>
+        </section>
+
+        <!-- Usage Section -->
+        <section [id]="getSectionId('usage')" class="doc-section">
+          <div class="section-title">
+            <div class="icon-orb secondary"><i class="fas fa-terminal"></i></div>
+            <div class="title-text">
+              <h2>Quick Start</h2>
+              <p>Basic implementation and markup</p>
+            </div>
+          </div>
+          <ui-code-preview
+            [htmlCode]="componentDoc.usage"
+            [label]="componentDoc.name + ' Basic Implementation'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </section>
+
+        <!-- Props Section -->
+        <section
+          [id]="getSectionId('properties')"
+          class="doc-section"
+          *ngIf="componentDoc.props.length > 0"
+        >
+          <div class="section-title">
+            <div class="icon-orb success"><i class="fas fa-sliders-h"></i></div>
+            <div class="title-text">
+              <h2>Properties</h2>
+              <p>Configurable inputs and attributes</p>
+            </div>
+          </div>
+
+          <div class="table-controls" *ngIf="componentDoc.props.length > 5">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Filter properties..."
+                (input)="filterText.set($any($event.target).value)"
+              />
+            </div>
+          </div>
+
+          <div class="props-grid-container glass-card">
+            <div class="props-table-header">
+              <div class="col-prop">Member</div>
+              <div class="col-type">Type</div>
+              <div class="col-default">Default</div>
+              <div class="col-desc">Description</div>
+            </div>
+            <div class="props-table-body">
+              <div class="props-row" *ngFor="let prop of filteredProps()">
+                <div class="col-prop">
+                  <div class="prop-id-group">
+                    <span class="prop-name">{{ prop.name }}</span>
+                    <button
+                      class="copy-tiny"
+                      (click)="copyText(prop.name)"
+                      title="Copy property name"
+                    >
+                      <i class="far fa-copy"></i>
+                    </button>
+                  </div>
+                  <span class="required-indicator" *ngIf="prop.required">Required</span>
+                </div>
+                <div class="col-type">
+                  <code class="type-pill">{{ prop.type }}</code>
+                </div>
+                <div class="col-default">
+                  <code class="default-pill" *ngIf="prop.defaultValue">{{
+                    prop.defaultValue
+                  }}</code>
+                  <span class="no-default" *ngIf="!prop.defaultValue">—</span>
+                </div>
+                <div class="col-desc">{{ prop.description }}</div>
+              </div>
+              <div class="empty-filter" *ngIf="filteredProps().length === 0">
+                No properties match your filter.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Events Section -->
+        <section
+          [id]="getSectionId('events')"
+          class="doc-section"
+          *ngIf="componentDoc.events.length > 0"
+        >
+          <div class="section-title">
+            <div class="icon-orb warning"><i class="fas fa-broadcast-tower"></i></div>
+            <div class="title-text">
+              <h2>Events</h2>
+              <p>Custom outputs and event emitters</p>
+            </div>
+          </div>
+          <div class="events-stack">
+            <div class="event-entry glass-card" *ngFor="let event of componentDoc.events">
+              <div class="event-main">
+                <div class="event-name-group">
+                  <span class="event-symbol">(</span>
+                  <span class="event-name">{{ event.name }}</span>
+                  <span class="event-symbol">)</span>
+                </div>
+                <p class="event-desc">{{ event.description }}</p>
+              </div>
+              <div class="event-payload" *ngIf="event.payloadType">
+                <div class="payload-label">Payload Type</div>
+                <code class="payload-type">{{ event.payloadType }}</code>
+                <p class="payload-desc" *ngIf="event.payloadDescription">
+                  {{ event.payloadDescription }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Considerations Section -->
+        <section
+          [id]="getSectionId('limitations')"
+          class="doc-section"
+          *ngIf="componentDoc.limitations.length > 0"
+        >
+          <div class="section-title">
+            <div class="icon-orb danger"><i class="fas fa-shield-alt"></i></div>
+            <div class="title-text">
+              <h2>Considerations</h2>
+              <p>Best practices and versioning notes</p>
+            </div>
+          </div>
+          <div class="considerations-card">
+            <ul class="checklist">
+              <li *ngFor="let limitation of componentDoc.limitations">
+                <i class="fas fa-check-circle"></i>
+                <span>{{ limitation }}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Advanced Examples -->
+        <section
+          [id]="getSectionId('examples')"
+          class="doc-section"
+          *ngIf="componentDoc.examples && componentDoc.examples.length > 0"
+        >
+          <div class="section-title">
+            <div class="icon-orb info"><i class="fas fa-puzzle-piece"></i></div>
+            <div class="title-text">
+              <h2>Implementation Patterns</h2>
+              <p>Common real-world usage scenarios</p>
+            </div>
+          </div>
+          <div class="patterns-grid">
+            <div class="pattern-card" *ngFor="let example of componentDoc.examples; let i = index">
+              <div class="pattern-header">
+                <span class="pattern-number">0{{ i + 1 }}</span>
+                <h3>Pattern Variation</h3>
+              </div>
+              <ui-code-preview
+                [htmlCode]="example"
+                [label]="'Composition Example ' + (i + 1)"
+                activeLang="html"
+                expanded="true"
+              ></ui-code-preview>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="no-docs-empty" *ngIf="!componentDoc">
+    <div class="empty-state-card glass-card">
+      <div class="empty-icon"><i class="fas fa-compass"></i></div>
+      <h3>API Specification Missing</h3>
+      <p>
+        We couldn't locate the documentation metadata for
+        <strong>{{ componentId || 'unknown' }}</strong
+        >.
+      </p>
+      <button (click)="goBack()" class="btn-primary">Return to Library</button>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+</div>

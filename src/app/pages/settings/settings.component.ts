@@ -7,7 +7,7 @@ import { SecuritySettingsSectionComponent } from './sections/security-settings.c
 import { PreferencesSettingsSectionComponent } from './sections/preferences-settings.component';
 
 @Component({
-  selector: 'app-theme-settings',
+  selector: 'app-settings',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,37 +15,49 @@ import { PreferencesSettingsSectionComponent } from './sections/preferences-sett
     ProfileSettingsSectionComponent,
     NotificationSettingsSectionComponent,
     SecuritySettingsSectionComponent,
-    PreferencesSettingsSectionComponent
+    PreferencesSettingsSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="settings-container">
       <header class="settings-header">
-        <h1>⚙️ Settings</h1>
-        <p>Customize your experience and manage your account</p>
+        <div class="header-content">
+          <div class="title-with-icon">
+            <span class="header-icon">⚙️</span>
+            <h1>Settings</h1>
+          </div>
+          <p>Customize your experience and manage your account preferences</p>
+        </div>
+        <div class="header-decoration"></div>
       </header>
 
       <div class="settings-body">
-        <ui-tabs variant="pills" align="start" class="settings-tabs">
-          <ui-tab label="Theme" icon="🎨">
+        <ui-tabs
+          [items]="settingsTabs"
+          variant="pill"
+          size="lg"
+          [iconLibrary]="'lucide'"
+          class="settings-tabs"
+        >
+          <div slot="theme" class="tab-panel">
             <app-theme-settings-section></app-theme-settings-section>
-          </ui-tab>
+          </div>
 
-          <ui-tab label="Profile" icon="👤">
+          <div slot="profile" class="tab-panel">
             <app-profile-settings-section></app-profile-settings-section>
-          </ui-tab>
+          </div>
 
-          <ui-tab label="Notifications" icon="🔔">
+          <div slot="notifications" class="tab-panel">
             <app-notification-settings-section></app-notification-settings-section>
-          </ui-tab>
+          </div>
 
-          <ui-tab label="Security" icon="🔐">
+          <div slot="security" class="tab-panel">
             <app-security-settings-section></app-security-settings-section>
-          </ui-tab>
+          </div>
 
-          <ui-tab label="Preferences" icon="⚙️">
+          <div slot="preferences" class="tab-panel">
             <app-preferences-settings-section></app-preferences-settings-section>
-          </ui-tab>
+          </div>
         </ui-tabs>
       </div>
     </div>
@@ -57,85 +69,167 @@ import { PreferencesSettingsSectionComponent } from './sections/preferences-sett
         display: flex;
         flex-direction: column;
         background: var(--surface-base);
+        color: var(--text-primary);
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          sans-serif;
       }
 
       .settings-header {
-        padding: 32px 40px;
+        position: relative;
+        padding: 48px 60px;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
+          rgba(16, 185, 129, 0.05) 0%,
+          rgba(5, 150, 105, 0.05) 100%
         );
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-subtle);
+        overflow: hidden;
+
+        .header-content {
+          position: relative;
+          z-index: 2;
+        }
+
+        .title-with-icon {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 12px;
+        }
+
+        .header-icon {
+          font-size: 2.5rem;
+          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
 
         h1 {
-          font-size: 2rem;
+          font-size: 2.5rem;
           font-weight: 800;
-          color: var(--text-primary);
-          margin-bottom: 8px;
+          letter-spacing: -0.025em;
+          margin: 0;
+          background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         p {
           color: var(--text-secondary);
-          font-size: 1.1rem;
+          font-size: 1.125rem;
+          max-width: 600px;
+          margin: 0;
+          line-height: 1.6;
+        }
+
+        .header-decoration {
+          position: absolute;
+          top: -100px;
+          right: -100px;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+          border-radius: 50%;
+          z-index: 1;
         }
       }
 
       .settings-body {
         flex: 1;
-        overflow: hidden;
-        padding: 24px 40px;
+        padding: 40px 60px;
+        overflow-y: auto;
       }
 
       .settings-tabs {
         height: 100%;
-        
-        ::ng-deep ui-tab {
-          height: 100%;
-          overflow-y: auto;
+        --tabs-header-margin: 0 0 32px 0;
+
+        ::part(tabs-header) {
+          background: var(--surface-raised);
+          padding: 8px;
+          border-radius: 16px;
+          border: 1px solid var(--border-subtle);
+          display: inline-flex;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        ::part(tab) {
+          padding: 10px 24px;
+          font-weight: 600;
+          font-size: 0.95rem;
+          border-radius: 10px;
+          color: var(--text-secondary);
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &:hover {
+            color: var(--text-primary);
+            background: var(--surface-base);
+          }
+        }
+
+        ::part(tab-active) {
+          background: var(--primary-color);
+          color: white;
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+
+          &:hover {
+            background: var(--primary-hover);
+            color: white;
+          }
         }
       }
 
-      /* Custom tab styling */
-      :host ::part(tabs-container) {
-        background: var(--surface-raised);
-        border-radius: 12px;
-        padding: 8px;
-        border: 1px solid var(--border-color);
-        margin-bottom: 20px;
+      .tab-panel {
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      :host ::part(tab) {
-        padding: 12px 20px;
-        font-weight: 600;
-        border-radius: 8px;
-        transition: all 0.2s ease;
-        
-        &:hover {
-          background: var(--surface-base);
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      :host ::part(tab-active) {
-        background: var(--primary-color);
-        color: white;
-        
-        &:hover {
-          background: var(--primary-hover);
+      @media (max-width: 768px) {
+        .settings-header {
+          padding: 32px 24px;
+          h1 {
+            font-size: 2rem;
+          }
         }
-      }
-
-      :host ::part(panels-container) {
-        background: transparent;
-        padding: 0;
-      }
-
-      :host ::part(panel) {
-        height: 100%;
-        overflow-y: auto;
-        padding: 0;
+        .settings-body {
+          padding: 24px;
+        }
       }
     `,
   ],
 })
-export class ThemeSettingsComponent {}
+export class SettingsComponent {
+  settingsTabs = [
+    { id: 'theme', title: 'Theme', icon: 'palette', iconLibrary: 'lucide', useSlot: true },
+    { id: 'profile', title: 'Profile', icon: 'user', iconLibrary: 'lucide', useSlot: true },
+    {
+      id: 'notifications',
+      title: 'Notifications',
+      icon: 'bell',
+      iconLibrary: 'lucide',
+      useSlot: true,
+    },
+    { id: 'security', title: 'Security', icon: 'shield', iconLibrary: 'lucide', useSlot: true },
+    {
+      id: 'preferences',
+      title: 'Preferences',
+      icon: 'settings',
+      iconLibrary: 'lucide',
+      useSlot: true,
+    },
+  ];
+}

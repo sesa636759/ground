@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,128 +6,188 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-security-settings-section',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="settings-section">
       <div class="section-header">
-        <h2>🔐 Security Settings</h2>
-        <p>Manage your account security and privacy</p>
+        <div class="title-row">
+          <span class="section-icon">🛡️</span>
+          <h2>Security Settings</h2>
+        </div>
+        <p>Take control of your account security and monitor active sessions</p>
       </div>
 
-      <div class="section-content">
-        <div class="security-group">
-          <h3>Password & Authentication</h3>
-
-          <div class="form-group">
-            <label for="currentPassword">Current Password</label>
-            <input
-              type="password"
-              id="currentPassword"
-              [(ngModel)]="currentPassword"
-              placeholder="Enter current password"
-            />
+      <div class="section-content grid-layout">
+        <!-- Password Section -->
+        <div class="settings-card">
+          <div class="card-header">
+            <h3>Password & Authentication</h3>
+            <p>Update your password to keep your account secure</p>
           </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <div class="input-wrapper">
+                <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
+                <input
+                  type="password"
+                  id="currentPassword"
+                  [(ngModel)]="currentPassword"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
 
-          <div class="form-group">
-            <label for="newPassword">New Password</label>
-            <input
-              type="password"
-              id="newPassword"
-              [(ngModel)]="newPassword"
-              placeholder="Enter new password"
-            />
+            <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <div class="input-wrapper">
+                <ui-icon name="key-round" library="lucide" size="18px" class="input-icon"></ui-icon>
+                <input
+                  type="password"
+                  id="newPassword"
+                  [(ngModel)]="newPassword"
+                  placeholder="New password"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="input-wrapper">
+                <ui-icon
+                  name="check-circle"
+                  library="lucide"
+                  size="18px"
+                  class="input-icon"
+                ></ui-icon>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  [(ngModel)]="confirmPassword"
+                  placeholder="Confirm new password"
+                />
+              </div>
+            </div>
+
+            <div class="form-actions-inline">
+              <ui-button
+                label="Change Password"
+                variant="primary"
+                (click)="changePassword()"
+              ></ui-button>
+            </div>
           </div>
-
-          <div class="form-group">
-            <label for="confirmPassword">Confirm New Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              [(ngModel)]="confirmPassword"
-              placeholder="Confirm new password"
-            />
-          </div>
-
-          <button class="btn-primary" (click)="changePassword()">Change Password</button>
         </div>
 
-        <div class="security-group">
-          <h3>Two-Factor Authentication</h3>
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Enable 2FA</div>
-              <div class="setting-description">Add an extra layer of security to your account</div>
-            </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+        <!-- Security Features -->
+        <div class="settings-card">
+          <div class="card-header">
+            <h3>Enhanced Protection</h3>
+            <p>Additional layers of security for your peace of mind</p>
+          </div>
+          <div class="card-body">
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Two-Factor Authentication (2FA)</span>
+                <span class="desc">A verification code will be required during login</span>
+              </div>
+              <ui-switch
                 [checked]="twoFactorEnabled()"
-                (change)="twoFactorEnabled.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="security-group">
-          <h3>Privacy Settings</h3>
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Profile Visibility</div>
-              <div class="setting-description">Make your profile visible to other users</div>
+                variant="success"
+                (switchChange)="twoFactorEnabled.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div role="separator" class="row-divider"></div>
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Profile Privacy</span>
+                <span class="desc">Control who can see your profile and activity</span>
+              </div>
+              <ui-switch
                 [checked]="profileVisibility()"
-                (change)="profileVisibility.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
-
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Activity Status</div>
-              <div class="setting-description">Show when you're online</div>
+                variant="primary"
+                (switchChange)="profileVisibility.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
-                [checked]="activityStatus()"
-                (change)="activityStatus.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
-          </div>
 
-          <div class="setting-item">
-            <div class="setting-info">
-              <div class="setting-label">Search Engine Indexing</div>
-              <div class="setting-description">
-                Allow search engines to index your public profile
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Online Status</span>
+                <span class="desc">Show your active status to your connections</span>
               </div>
+              <ui-switch
+                [checked]="activityStatus()"
+                variant="primary"
+                (switchChange)="activityStatus.set($event.detail.checked)"
+              ></ui-switch>
             </div>
-            <label class="toggle-switch">
-              <input
-                type="checkbox"
+
+            <div class="setting-row">
+              <div class="setting-main">
+                <span class="label">Search Indexing</span>
+                <span class="desc">Allow search engines to index your public content</span>
+              </div>
+              <ui-switch
                 [checked]="searchIndexing()"
-                (change)="searchIndexing.set($any($event.target).checked)"
-              />
-              <span class="slider"></span>
-            </label>
+                variant="warning"
+                (switchChange)="searchIndexing.set($event.detail.checked)"
+              ></ui-switch>
+            </div>
           </div>
         </div>
 
-        <div class="security-group">
-          <h3>Active Sessions</h3>
-          <div class="session-list">
-            <div class="session-item" *ngFor="let session of activeSessions()">
-              <div class="session-icon">💻</div>
-              <div class="session-info">
-                <div class="session-device">{{ session.device }}</div>
-                <div class="session-details">{{ session.location }} • {{ session.lastActive }}</div>
+        <!-- Active Sessions -->
+        <div class="settings-card full-width">
+          <div class="card-header header-with-action">
+            <div class="header-main">
+              <h3>Active Sessions</h3>
+              <p>Where you're currently logged in across all devices</p>
+            </div>
+            <ui-button
+              label="Log out of all other sessions"
+              variant="secondary"
+              size="sm"
+              icon="log-out"
+              iconLibrary="lucide"
+            ></ui-button>
+          </div>
+          <div class="card-body">
+            <div class="session-list">
+              <div class="session-item" *ngFor="let session of activeSessions()">
+                <div
+                  class="session-icon-container"
+                  [class.current]="session.lastActive === 'Active now'"
+                >
+                  <ui-icon
+                    [name]="session.device.includes('iPhone') ? 'smartphone' : 'monitor'"
+                    library="lucide"
+                    size="24px"
+                  ></ui-icon>
+                </div>
+                <div class="session-details">
+                  <div class="session-device">
+                    {{ session.device }}
+                    <span class="current-badge" *ngIf="session.lastActive === 'Active now'"
+                      >This device</span
+                    >
+                  </div>
+                  <div class="session-meta">
+                    <span class="location">{{ session.location }}</span>
+                    <span class="dot">•</span>
+                    <span class="time">{{ session.lastActive }}</span>
+                  </div>
+                </div>
+                <ui-button
+                  label="Revoke"
+                  variant="danger"
+                  size="sm"
+                  outline
+                  (click)="revokeSession(session.id)"
+                  *ngIf="session.lastActive !== 'Active now'"
+                ></ui-button>
               </div>
-              <button class="btn-revoke" (click)="revokeSession(session.id)">Revoke</button>
             </div>
           </div>
         </div>
@@ -137,238 +197,251 @@ import { FormsModule } from '@angular/forms';
   styles: [
     `
       .settings-section {
-        padding: 24px;
+        padding: 8px;
       }
 
       .section-header {
-        margin-bottom: 24px;
+        margin-bottom: 40px;
+
+        .title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 8px;
+        }
+
+        .section-icon {
+          font-size: 1.5rem;
+        }
 
         h2 {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           font-weight: 700;
+          margin: 0;
           color: var(--text-primary);
-          margin-bottom: 8px;
         }
 
         p {
           color: var(--text-secondary);
-          font-size: 0.95rem;
+          font-size: 1rem;
+          margin: 0;
         }
       }
 
-      .section-content {
-        background: var(--surface-raised);
-        border-radius: 12px;
-        padding: 24px;
-        border: 1px solid var(--border-color);
+      .grid-layout {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
       }
 
-      .security-group {
-        margin-bottom: 32px;
+      .settings-card {
+        background: var(--surface-raised);
+        border-radius: 20px;
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 20px rgba(0, 0, 10, 0.02);
 
-        &:last-child {
-          margin-bottom: 0;
+        &.full-width {
+          grid-column: span 2;
+        }
+      }
+
+      .card-header {
+        padding: 24px 28px;
+        border-bottom: 1px solid var(--border-subtle);
+        background: rgba(var(--primary-rgb), 0.02);
+
+        &.header-with-action {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
         }
 
         h3 {
-          font-size: 1.1rem;
-          font-weight: 600;
+          font-size: 1.125rem;
+          font-weight: 700;
+          margin: 0 0 4px 0;
           color: var(--text-primary);
-          margin-bottom: 16px;
-          padding-bottom: 12px;
-          border-bottom: 1px solid var(--border-color);
         }
+
+        p {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          margin: 0;
+        }
+      }
+
+      .card-body {
+        padding: 20px 28px;
       }
 
       .form-group {
-        margin-bottom: 16px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
         label {
-          display: block;
+          font-size: 0.875rem;
           font-weight: 600;
           color: var(--text-primary);
-          margin-bottom: 8px;
-          font-size: 0.9rem;
         }
 
-        input {
-          width: 100%;
-          max-width: 400px;
-          padding: 12px 16px;
-          border: 1px solid var(--border-color);
-          border-radius: 8px;
-          background: var(--surface-base);
-          color: var(--text-primary);
-          font-size: 0.95rem;
-          transition: all 0.2s ease;
+        .input-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
 
-          &:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+          .input-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-tertiary);
           }
 
-          &::placeholder {
-            color: var(--text-tertiary);
+          input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            background: var(--surface-base);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+
+            &:focus {
+              outline: none;
+              border-color: var(--primary-color);
+              box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+            }
           }
         }
       }
 
-      .setting-item {
+      .form-actions-inline {
+        padding-top: 8px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .setting-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 16px 0;
-        border-bottom: 1px solid var(--border-subtle);
+        padding: 20px 0;
 
-        &:last-child {
-          border-bottom: none;
-        }
-      }
+        .setting-main {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          padding-right: 20px;
 
-      .setting-info {
-        flex: 1;
-        padding-right: 16px;
-
-        .setting-label {
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-          font-size: 0.95rem;
-        }
-
-        .setting-description {
-          color: var(--text-secondary);
-          font-size: 0.85rem;
-        }
-      }
-
-      .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 48px;
-        height: 26px;
-        flex-shrink: 0;
-
-        input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-
-          &:checked + .slider {
-            background-color: var(--primary-color);
+          .label {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
           }
 
-          &:checked + .slider:before {
-            transform: translateX(22px);
-          }
-
-          &:focus + .slider {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-          }
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: var(--surface-sunken);
-          border: 1px solid var(--border-color);
-          transition: 0.3s;
-          border-radius: 34px;
-
-          &:before {
-            position: absolute;
-            content: '';
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.3s;
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          .desc {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
           }
         }
       }
 
-      .btn-primary {
-        padding: 10px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border: none;
-        background: var(--primary-color);
-        color: white;
-        margin-top: 8px;
-
-        &:hover {
-          background: var(--primary-hover);
-          transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
+      .row-divider {
+        height: 1px;
+        background: var(--border-subtle);
+        margin: 4px 0;
       }
 
       .session-list {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
 
       .session-item {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 20px;
         padding: 16px;
         background: var(--surface-base);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
         transition: all 0.2s ease;
 
         &:hover {
           border-color: var(--primary-color);
-          box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+          background: rgba(var(--primary-rgb), 0.01);
         }
-      }
 
-      .session-icon {
-        font-size: 2rem;
-      }
+        .session-icon-container {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          background: var(--surface-sunken);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-secondary);
 
-      .session-info {
-        flex: 1;
-
-        .session-device {
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
+          &.current {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-color);
+          }
         }
 
         .session-details {
-          color: var(--text-secondary);
-          font-size: 0.85rem;
+          flex: 1;
+
+          .session-device {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .current-badge {
+              font-size: 0.625rem;
+              text-transform: uppercase;
+              padding: 2px 8px;
+              background: var(--primary-color);
+              color: white;
+              border-radius: 10px;
+              letter-spacing: 0.05em;
+            }
+          }
+
+          .session-meta {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            .dot {
+              font-size: 1.2rem;
+              line-height: 1;
+              color: var(--text-tertiary);
+            }
+          }
         }
       }
 
-      .btn-revoke {
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-weight: 500;
-        font-size: 0.85rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border: 1px solid var(--error-color);
-        background: transparent;
-        color: var(--error-color);
-
-        &:hover {
-          background: var(--error-color);
-          color: white;
+      @media (max-width: 1024px) {
+        .grid-layout {
+          grid-template-columns: 1fr;
+        }
+        .settings-card.full-width {
+          grid-column: auto;
+        }
+        .card-header.header-with-action {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     `,
@@ -385,9 +458,19 @@ export class SecuritySettingsSectionComponent {
   searchIndexing = signal(false);
 
   activeSessions = signal([
-    { id: 1, device: 'Chrome on Windows', location: 'New York, USA', lastActive: 'Active now' },
-    { id: 2, device: 'Safari on iPhone', location: 'Los Angeles, USA', lastActive: '2 hours ago' },
-    { id: 3, device: 'Firefox on MacOS', location: 'San Francisco, USA', lastActive: '1 day ago' },
+    { id: 1, device: 'Chrome on Windows 11', location: 'New York, USA', lastActive: 'Active now' },
+    {
+      id: 2,
+      device: 'Safari on iPhone 15',
+      location: 'Los Angeles, USA',
+      lastActive: '2 hours ago',
+    },
+    {
+      id: 3,
+      device: 'Firefox on MacOS Sonoma',
+      location: 'San Francisco, USA',
+      lastActive: '1 day ago',
+    },
   ]);
 
   changePassword(): void {}
