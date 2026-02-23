@@ -57,6 +57,14 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
     );
   });
 
+  get sidebarSections() {
+    return this.sections.map((s) => ({
+      ...s,
+      // The anchor specifically needs to exact target HTML ID
+      id: this.getSectionId(s.id),
+    }));
+  }
+
   private observer: IntersectionObserver | undefined;
 
   constructor(
@@ -128,9 +136,16 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
       threshold: 0,
     };
 
+    // Pre-select the first section as active immediately
+    if (this.sections.length > 0 && !this.activeSection()) {
+      this.activeSection.set(this.sections[0].id);
+    }
+
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        // If the viewport/tabs are currently hidden (display: none via pane-hidden),
+        // bounding client rects become 0. We should ignore intersection hits if rect is size 0.
+        if (entry.isIntersecting && entry.boundingClientRect.height > 0) {
           // Extract the original ID if prefixed
           const id = entry.target.id;
           const originalId =

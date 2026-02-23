@@ -324,6 +324,122 @@ export class ComponentDocsService {
       },
     ],
     [
+      'button-toggle',
+      {
+        id: 'button-toggle',
+        name: 'Button Toggle',
+        shortDescription:
+          'Configurable interactive button groups for single and multiple selections',
+        detailedDescription:
+          'The Button Toggle component (app-button-toggle-group) handles mutually exclusive (or multiple) choices through an intuitive row of buttons. It supports segmented controls, animated gliding indicators, split buttons, comprehensive custom styling, dropdown modes, and custom slots.',
+        usage: `<app-button-toggle-group
+  mode="segmented"
+  value="list"
+  color="primary"
+  [options]="[
+    { value: 'list', label: 'List', icon: 'fas fa-list' },
+    { value: 'grid', label: 'Grid', icon: 'fas fa-th' }
+  ]"
+></app-button-toggle-group>`,
+        props: [
+          {
+            name: 'value',
+            type: 'any',
+            description: 'Currently selected value or array of values',
+            defaultValue: 'undefined',
+          },
+          {
+            name: 'options',
+            type: 'ToggleOption[]',
+            description: 'Array of options: {value, label, icon}',
+            defaultValue: '[]',
+          },
+          {
+            name: 'mode',
+            type: "'segmented' | 'dropdown' | 'default'",
+            description: 'Behavior mode of the toggle group',
+            defaultValue: "'default'",
+          },
+          {
+            name: 'label',
+            type: 'string',
+            description: 'Optional text label for the entire group',
+            defaultValue: "''",
+          },
+          {
+            name: 'color',
+            type: 'string',
+            description: 'Color theme (e.g. primary, secondary, success, danger, warning, info)',
+            defaultValue: "'primary'",
+          },
+          {
+            name: 'variant',
+            type: "'filled' | 'outlined' | 'text' | 'soft' | 'classic' | 'solid' | 'surface'",
+            description: 'Styling variant of the buttons',
+            defaultValue: "'filled'",
+          },
+          {
+            name: 'size',
+            type: "'small' | 'medium' | 'large'",
+            description: 'Size scaling of the buttons',
+            defaultValue: "'medium'",
+          },
+          {
+            name: 'display-mode',
+            type: "'default' | 'icon-only'",
+            description: 'Mode to hide text and show icons only',
+            defaultValue: "'default'",
+          },
+          {
+            name: 'keep-button-label',
+            type: 'boolean',
+            description: 'Whether to keep the original label in split-button setups',
+            defaultValue: 'false',
+          },
+          {
+            name: 'orientation',
+            type: "'horizontal' | 'vertical'",
+            description: 'Layout direction of the toggle buttons',
+            defaultValue: "'horizontal'",
+          },
+          {
+            name: 'custom-content',
+            type: 'boolean',
+            description: 'Use custom HTML slot content instead of data options',
+            defaultValue: 'false',
+          },
+          {
+            name: 'loading',
+            type: 'boolean',
+            description: 'Renders the group in a visually loading state',
+            defaultValue: 'false',
+          },
+          {
+            name: 'disabled',
+            type: 'boolean',
+            description: 'Disables interaction for all inner buttons',
+            defaultValue: 'false',
+          },
+        ],
+        events: [
+          {
+            name: 'valueChange / ngModelChange',
+            description: 'Fired when the selection is updated',
+            payloadType: 'any',
+            payloadDescription: 'The newly selected value (or array of values)',
+          },
+        ],
+        limitations: [
+          'Gliding Pill Animation is only cleanly supported in mode="segmented".',
+          'Responsive collapsing into dropdowns must be handled manually or by using mode="dropdown".',
+        ],
+        examples: [
+          `<app-button-toggle-group mode="segmented" value="list" color="primary" [options]="viewOptions"></app-button-toggle-group>`,
+          `<app-button-toggle-group value="option2" color="success" variant="soft" [options]="basicOptions"></app-button-toggle-group>`,
+        ],
+      },
+    ],
+    [
       'card',
       {
         id: 'card',
@@ -654,6 +770,197 @@ export class ComponentDocsService {
           '<app-checkbox label="Frontend" variant="button" color="info"></app-checkbox>',
           '<app-checkbox label="React" variant="chip" color="success" checked></app-checkbox>',
           '<app-checkbox label="Agree to terms" required invalid error-message="Required field"></app-checkbox>',
+        ],
+      },
+    ],
+    [
+      'radio',
+      {
+        id: 'radio',
+        name: 'Radio Group',
+        shortDescription:
+          'Flexible radio group component for selecting a single option from a list',
+        detailedDescription:
+          'A robust radio group and radio component implementation supporting multiple visual styles (default, bordered, underlined, card), layouts (vertical, horizontal, grid), button group modes, color variations, validation states, and detailed option configuration (icons, badges, descriptions).',
+        usage: `<app-radio-group
+  name="payment-method"
+  [(ngModel)]="payment"
+  variant="card"
+  layout="grid"
+  columns="2"
+  [options]="[
+    { value: 'card', label: 'Credit Card', icon: 'fas fa-credit-card' },
+    { value: 'paypal', label: 'PayPal', icon: 'fab fa-paypal' }
+  ]"
+></app-radio-group>`,
+        props: [
+          {
+            name: 'name',
+            type: 'string',
+            description: 'Form name for the radio group',
+            defaultValue: "''",
+          },
+          {
+            name: 'value',
+            type: 'any',
+            description: 'Currently selected value',
+            defaultValue: 'undefined',
+          },
+          {
+            name: 'options',
+            type: 'RadioOption[]',
+            description:
+              'Array of options: {value, label, description, badge, tooltip, icon, iconPosition, color, size, disabled}',
+          },
+          {
+            name: 'layout',
+            type: "'vertical' | 'horizontal' | 'grid'",
+            description: 'Layout direction of the radio buttons',
+            defaultValue: "'vertical'",
+          },
+          {
+            name: 'columns',
+            type: 'number',
+            description: 'Number of columns when layout="grid"',
+            defaultValue: '1',
+          },
+          {
+            name: 'variant',
+            type: "'default' | 'bordered' | 'underlined' | 'card'",
+            description: 'Visual style variant of the radio items',
+            defaultValue: "'default'",
+          },
+          {
+            name: 'button-group',
+            type: 'boolean',
+            description: 'Display the group as attached toggle buttons',
+            defaultValue: 'false',
+          },
+          {
+            name: 'color',
+            type: 'string',
+            description: 'Color theme (e.g. primary, success, warning, danger, info)',
+            defaultValue: "'primary'",
+          },
+          {
+            name: 'size',
+            type: "'small' | 'medium' | 'large'",
+            description: 'Overall size of the radio indicators and text',
+            defaultValue: "'medium'",
+          },
+          {
+            name: 'label',
+            type: 'string',
+            description: 'Top label text for the radio group layout',
+            defaultValue: "''",
+          },
+          {
+            name: 'helper-text',
+            type: 'string',
+            description: 'Help text displayed below the group label',
+            defaultValue: "''",
+          },
+          {
+            name: 'label-position',
+            type: "'left' | 'right'",
+            description: 'Position of individual radio labels relative to the indicator',
+            defaultValue: "'right'",
+          },
+          {
+            name: 'disabled',
+            type: 'boolean',
+            description: 'Disable the entire radio group',
+            defaultValue: 'false',
+          },
+          {
+            name: 'readonly',
+            type: 'boolean',
+            description: 'Make the group strictly read-only',
+            defaultValue: 'false',
+          },
+          {
+            name: 'required',
+            type: 'boolean',
+            description: 'Mark the group as form required',
+            defaultValue: 'false',
+          },
+          {
+            name: 'invalid',
+            type: 'boolean',
+            description: 'Force invalid/error state styling',
+            defaultValue: 'false',
+          },
+          {
+            name: 'error-message',
+            type: 'string',
+            description: 'Error message to display when invalid',
+            defaultValue: "''",
+          },
+          {
+            name: 'allow-empty',
+            type: 'boolean',
+            description: 'If true, clicking a selected radio will deselect it to empty string',
+            defaultValue: 'false',
+          },
+          {
+            name: 'skeleton',
+            type: 'boolean',
+            description: 'Show skeleton loading state placeholder',
+            defaultValue: 'false',
+          },
+          {
+            name: 'loading',
+            type: 'boolean',
+            description: 'Show a loading indicator instead',
+            defaultValue: 'false',
+          },
+          {
+            name: 'show-dot',
+            type: 'boolean',
+            description: 'Toggle the inner circle dot visual',
+            defaultValue: 'true',
+          },
+          {
+            name: 'full-width',
+            type: 'boolean',
+            description: 'Ensure the group takes 100% width of container',
+            defaultValue: 'false',
+          },
+          {
+            name: 'enable-animation',
+            type: 'boolean',
+            description: 'Enable visual transition animations',
+            defaultValue: 'true',
+          },
+          {
+            name: 'ripple-effect',
+            type: 'boolean',
+            description: 'Enable material-style ripple click effect',
+            defaultValue: 'true',
+          },
+          {
+            name: 'elevation',
+            type: 'number',
+            description: 'Shadow elevation (0-5, primarily used for card variant)',
+            defaultValue: '0',
+          },
+        ],
+        events: [
+          {
+            name: 'radioGroupChange',
+            description: 'Fired when the selected value changes',
+            payloadType: 'CustomEvent<any>',
+            payloadDescription: 'The new value is available in event.detail',
+          },
+        ],
+        limitations: [
+          'If you use [options] property instead of slotting child <app-radio> tags, custom HTML projections inside items are not directly supported.',
+          'Button Group layout relies on HTML flexbox behaviors, and may not play nice with external grid systems if not wrapped correctly.',
+        ],
+        examples: [
+          `<app-radio-group layout="horizontal" [options]="basicOptions"></app-radio-group>`,
+          `<app-radio-group variant="card" layout="grid" columns="2" [options]="planOptions"></app-radio-group>`,
+          `<app-radio-group button-group="true" color="danger">\n  <app-radio value="yes" label="Yes"></app-radio>\n  <app-radio value="no" label="No"></app-radio>\n</app-radio-group>`,
         ],
       },
     ],

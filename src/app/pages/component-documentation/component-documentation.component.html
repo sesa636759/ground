@@ -1,10 +1,17 @@
 <div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
   <div class="examples-split-layout" *ngIf="componentDoc">
     <!-- Sidebar Navigation -->
-    <app-demo-sidebar [variants]="sections" [useAnchor]="true"></app-demo-sidebar>
+    <app-demo-sidebar
+      [variants]="sidebarSections"
+      [useAnchor]="true"
+      scrollContainer="#docs-scroll-area"
+      type="line"
+      show-progress
+      [active-Link]="getSectionId(activeSection())"
+    ></app-demo-sidebar>
 
     <!-- Main Content Area -->
-    <div class="examples-content">
+    <div class="examples-content" id="docs-scroll-area">
       <!-- Hero Header (Desktop Only) -->
       <header class="docs-header" *ngIf="!isEmbedded">
         <div class="header-inner">
