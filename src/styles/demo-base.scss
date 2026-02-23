@@ -181,7 +181,10 @@ h1 {
   box-sizing: border-box;
   overflow: hidden;
   padding: 1rem;
-  background: #f4faf6; // subtle green-tinted background between the two boxes
+  background:
+    radial-gradient(ellipse at 5%  50%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 95% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 55%),
+    var(--bg-secondary);
 
   .examples-sidebar {
     width: 226px;
@@ -190,14 +193,14 @@ h1 {
     min-height: 0; // allows shrinking so overflow-y triggers
     overflow-y: auto;
     overflow-x: hidden;
-    background: #ffffff;
+    background: var(--surface-1);
     padding: 1.5rem 1rem;
     border-radius: 16px;
-    border: 1px solid #d1fae5;
-    box-shadow: 0 2px 12px rgba(22, 163, 74, 0.07);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: #16a34a transparent;
+    scrollbar-color: var(--primary) transparent;
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -208,31 +211,31 @@ h1 {
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #16a34a;
+      background: var(--primary);
       border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background: #15803d;
+      background: var(--primary-hover);
     }
 
     .sidebar-title {
       font-size: 0.75rem;
       font-weight: 700;
-      color: #16a34a;
+      color: var(--primary);
       margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       padding-left: 0.5rem;
     }
 
-    /* Force ui-anchor to use green */
+    /* Follow theme primary color */
     ui-anchor {
-      --primary-color: #16a34a;
-      --text-secondary: #4b5563;
-      --hover-bg: #f0fdf4;
-      --active-bg: #e6f8ec;
-      --anchor-active-color: #16a34a;
+      --primary-color: var(--primary);
+      --text-secondary: var(--text-secondary);
+      --hover-bg: var(--bg-accent);
+      --active-bg: var(--bg-accent);
+      --anchor-active-color: var(--primary);
     }
   }
 
@@ -243,13 +246,13 @@ h1 {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem;
-    background: #ffffff;
+    background: var(--surface-1);
     border-radius: 16px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: #16a34a transparent;
+    scrollbar-color: var(--primary) transparent;
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -260,12 +263,12 @@ h1 {
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #16a34a;
+      background: var(--primary);
       border-radius: 4px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
-      background: #15803d;
+      background: var(--primary-hover);
     }
   }
 }

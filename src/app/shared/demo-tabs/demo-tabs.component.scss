@@ -18,18 +18,20 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #ffffff;
+  background: var(--surface-1);
   flex: 1;
   min-height: 0;
   overflow: hidden;
   border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
 app-tab-stack {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  --tab-header-bg: #ffffff;
+  --tab-header-bg: var(--surface-1);
   --tab-active-color: var(--primary);
   --tab-border-color: var(--border-color);
   --tab-header-padding: 0 4rem;
@@ -62,7 +64,7 @@ app-tab {
 .pane-examples {
   overflow: hidden;
   padding: 0;
-  background: #ffffff;
+  background: var(--bg-secondary);
   height: 100%;
   box-sizing: border-box;
 }
@@ -70,14 +72,17 @@ app-tab {
 .pane-playground {
   overflow-y: auto;
   padding: 2rem;
-  background: #ffffff;
+  background:
+    radial-gradient(ellipse at 80% 8%,  rgba(79, 70, 229, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 88%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    var(--bg-secondary);
   height: 100%;
 }
 
 .pane-docs {
   overflow: hidden;
   padding: 0;
-  background: #ffffff;
+  background: var(--bg-secondary);
   height: 100%;
   box-sizing: border-box;
 }
