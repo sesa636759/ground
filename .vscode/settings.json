@@ -1,0 +1,9 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^Get-Content \"c:\\\\Praveen\\\\Personal-repo\\\\Duplicate\\\\AngularGround\\\\node_modules\\\\@stencil\\\\core\\\\internal\\\\client\\\\index\\.js\" \\| Select-String \"function transformTag\\|transformTag=\" \\| Select-Object -First 3 \\| ForEach-Object \\{ \\$_\\.Line \\}$/": {
+      "approve": true,
+      "matchCommandLine": true
+    }
+  },
+  "chatgpt.autoAddCurrentFile": false
+}

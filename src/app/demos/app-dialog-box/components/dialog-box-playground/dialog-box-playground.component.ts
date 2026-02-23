@@ -159,23 +159,23 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
         <ui-dialog-box
           dialog-title="Playground Dialog"
           icon-library="lucide"
-          [attr.size]="pgConfig.size !== 'custom' ? pgConfig.size : null"
-          [attr.variant]="pgConfig.variant !== 'outlined' ? pgConfig.variant : null"
-          [attr.status]="pgConfig.status !== 'default' ? pgConfig.status : null"
-          [attr.backdrop]="pgConfig.backdrop !== 'default' ? pgConfig.backdrop : null"
-          [attr.position]="pgConfig.position !== 'center' ? pgConfig.position : null"
-          [attr.ok-text]="pgConfig.okText || null"
-          [attr.cancel-text]="pgConfig.cancelText || null"
-          [attr.draggable]="pgConfig.draggable ? 'true' : null"
-          [attr.resizable]="pgConfig.resizable ? 'true' : null"
-          [attr.show-header]="!pgConfig.showHeader ? 'false' : null"
-          [attr.show-footer]="!pgConfig.showFooter ? 'false' : null"
-          [attr.show-menu]="pgConfig.showMenu ? 'true' : null"
-          [attr.show-minimize]="!pgConfig.showMin ? 'false' : null"
-          [attr.show-maximize]="!pgConfig.showMax ? 'false' : null"
-          [attr.show-close]="!pgConfig.showClose ? 'false' : null"
-          [attr.menu-items]="pgConfig.showMenu ? menuItems : null"
-          [attr.visible]="visible ? 'true' : null"
+          [size]="pgConfig.size !== 'custom' ? pgConfig.size : 'custom'"
+          [variant]="pgConfig.variant"
+          [status]="pgConfig.status"
+          [backdrop]="pgConfig.backdrop"
+          [position]="pgConfig.position"
+          [okText]="pgConfig.okText || null"
+          [cancelText]="pgConfig.cancelText || null"
+          [is-draggable]="pgConfig.draggable"
+          [resizable]="pgConfig.resizable"
+          [showHeader]="pgConfig.showHeader"
+          [showFooter]="pgConfig.showFooter"
+          [showMenu]="pgConfig.showMenu"
+          [showMinimize]="pgConfig.showMin"
+          [showMaximize]="pgConfig.showMax"
+          [showClose]="pgConfig.showClose"
+          [menuItems]="pgConfig.showMenu ? menuItems : []"
+          [open]="visible"
           (dialogClosed)="visible = false"
         >
           <div style="padding: 20px;">
@@ -188,9 +188,11 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             </p>
           </div>
           <div slot="footer" *ngIf="!pgConfig.okText && !pgConfig.cancelText">
-            <ui-button variant="secondary" (click)="visible = false"
-              >Close (Slot Fallback)</ui-button
-            >
+            <ui-button
+              label="Close (Slot Fallback)"
+              variant="secondary"
+              (click)="visible = false"
+            ></ui-button>
           </div>
         </ui-dialog-box>
 
@@ -296,7 +298,7 @@ export class DialogBoxPlaygroundComponent {
     if (this.pgConfig.position !== 'center') code += `  position="${this.pgConfig.position}"\n`;
     if (this.pgConfig.okText) code += `  ok-text="${this.pgConfig.okText}"\n`;
     if (this.pgConfig.cancelText) code += `  cancel-text="${this.pgConfig.cancelText}"\n`;
-    if (this.pgConfig.draggable) code += `  draggable\n`;
+    if (this.pgConfig.draggable) code += `  is-draggable\n`;
     if (this.pgConfig.resizable) code += `  resizable\n`;
     if (!this.pgConfig.showHeader) code += `  show-header="false"\n`;
     if (!this.pgConfig.showFooter) code += `  show-footer="false"\n`;
@@ -309,7 +311,7 @@ export class DialogBoxPlaygroundComponent {
     code += '  <div>Dialog content goes here</div>\n';
 
     if (!this.pgConfig.okText && !this.pgConfig.cancelText && this.pgConfig.showFooter) {
-      code += '  <div slot="footer">\n    <ui-button>Close</ui-button>\n  </div>\n';
+      code += '  <div slot="footer">\n    <ui-button label="Close"></ui-button>\n  </div>\n';
     }
 
     code += '</ui-dialog-box>';
