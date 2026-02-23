@@ -570,7 +570,6 @@ export const routes: Routes = [
             (m) => m.AppStepperDemoComponent,
           ),
       },
-    
       {
         path: 'pill',
         loadComponent: () =>

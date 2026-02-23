@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
   selector: 'app-set-modern-sidebar-demo',
@@ -15,7 +14,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
     DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

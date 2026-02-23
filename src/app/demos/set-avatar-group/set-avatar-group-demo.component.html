@@ -8,10 +8,10 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
       <!-- Main Content Area -->
-      <div class="examples-content pane-examples" id="examples-scroll-area">
+      <div class="examples-content" id="examples-scroll-area">
         <!-- Basic Group -->
         <app-example-section
           id="basic"

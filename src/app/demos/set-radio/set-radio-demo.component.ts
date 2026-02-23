@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { AppRadioGroupValueAccessorDirective } from '../../directives/app-radio-group-value-accessor.directive';
@@ -18,7 +17,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     RadioPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
     ExampleSectionComponent,
     AppRadioGroupValueAccessorDirective,
     DemoHeaderComponent,

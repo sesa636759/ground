@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -18,7 +17,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     AvatarPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
     DemoSidebarComponent
   ],

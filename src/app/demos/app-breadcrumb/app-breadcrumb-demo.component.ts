@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BreadcrumbPlaygroundComponent } from './components/breadcrumb-playground/breadcrumb-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
@@ -16,7 +15,6 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     FormsModule,
     BreadcrumbPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoSidebarComponent
   ],
