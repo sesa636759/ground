@@ -47,7 +47,7 @@ export const routes: Routes = [
   {
     path: 'settings',
     loadComponent: () =>
-      import('./pages/settings/settings.component').then((m) => m.ThemeSettingsComponent),
+      import('./pages/settings/settings.component').then((m) => m.SettingsComponent),
   },
   {
     path: 'user-management',
@@ -457,7 +457,7 @@ export const routes: Routes = [
             (m) => m.SetDashboardDemoComponent,
           ),
       },
-   
+
       {
         path: 'tabs',
         loadComponent: () =>
@@ -570,7 +570,7 @@ export const routes: Routes = [
             (m) => m.AppStepperDemoComponent,
           ),
       },
-    
+
       {
         path: 'pill',
         loadComponent: () =>
@@ -637,7 +637,7 @@ export const routes: Routes = [
             (m) => m.AppTimelineDemoComponent,
           ),
       },
-  
+
       {
         path: 'tabs',
         loadComponent: () =>
@@ -693,7 +693,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demos/app-timer/app-timer-demo.component').then((m) => m.AppTimerDemoComponent),
       },
-  
+
       {
         path: 'smart-stepper',
         loadComponent: () =>

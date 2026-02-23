@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,64 +6,100 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-profile-settings-section',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="settings-section">
       <div class="section-header">
-        <h2>👤 Profile Settings</h2>
-        <p>Manage your personal information and preferences</p>
+        <div class="title-row">
+          <span class="section-icon">👤</span>
+          <h2>Profile Settings</h2>
+        </div>
+        <p>Update your personal information and how it appears to others</p>
       </div>
 
       <div class="section-content">
-        <div class="form-group">
-          <label for="displayName">Display Name</label>
-          <input
-            type="text"
-            id="displayName"
-            [(ngModel)]="displayName"
-            placeholder="Enter your display name"
-          />
-        </div>
+        <div class="settings-card profile-card">
+          <div class="avatar-edit-section">
+            <div class="avatar-wrapper">
+              <img src="https://i.pravatar.cc/150?img=12" alt="Avatar" />
+              <button class="change-avatar-btn">
+                <ui-icon name="camera" library="lucide" size="16px"></ui-icon>
+              </button>
+            </div>
+            <div class="avatar-info">
+              <h3>Profile Picture</h3>
+              <p>JPG, GIF or PNG. Max size of 800K</p>
+              <div class="avatar-actions">
+                <ui-button label="Upload New" variant="primary" size="sm"></ui-button>
+                <ui-button label="Remove" variant="secondary" size="sm"></ui-button>
+              </div>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" [(ngModel)]="email" placeholder="your.email@example.com" />
-        </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="displayName">Display Name</label>
+              <div class="input-wrapper">
+                <ui-icon name="user" library="lucide" size="18px" class="input-icon"></ui-icon>
+                <input
+                  type="text"
+                  id="displayName"
+                  [(ngModel)]="displayName"
+                  placeholder="Enter your display name"
+                />
+              </div>
+            </div>
 
-        <div class="form-group">
-          <label for="bio">Bio</label>
-          <textarea
-            id="bio"
-            [(ngModel)]="bio"
-            placeholder="Tell us about yourself"
-            rows="4"
-          ></textarea>
-        </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <div class="input-wrapper">
+                <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="email"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+            </div>
 
-        <div class="form-group">
-          <label for="language">Language</label>
-          <select id="language" [(ngModel)]="language">
-            <option value="en">English</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="ja">Japanese</option>
-          </select>
-        </div>
+            <div class="form-group full-width">
+              <label for="bio">Bio</label>
+              <textarea
+                id="bio"
+                [(ngModel)]="bio"
+                placeholder="Tell us about yourself..."
+                rows="4"
+              ></textarea>
+            </div>
 
-        <div class="form-group">
-          <label for="timezone">Timezone</label>
-          <select id="timezone" [(ngModel)]="timezone">
-            <option value="UTC">UTC</option>
-            <option value="America/New_York">Eastern Time</option>
-            <option value="America/Chicago">Central Time</option>
-            <option value="America/Denver">Mountain Time</option>
-            <option value="America/Los_Angeles">Pacific Time</option>
-          </select>
-        </div>
+            <div class="form-group">
+              <label for="language">Language</label>
+              <select id="language" [(ngModel)]="language">
+                <option value="en">🇺🇸 English</option>
+                <option value="es">🇪🇸 Spanish</option>
+                <option value="fr">🇫🇷 French</option>
+                <option value="de">🇩🇪 German</option>
+                <option value="ja">🇯🇵 Japanese</option>
+              </select>
+            </div>
 
-        <div class="form-actions">
-          <button class="btn-secondary" (click)="cancel()">Cancel</button>
-          <button class="btn-primary" (click)="save()">Save Changes</button>
+            <div class="form-group">
+              <label for="timezone">Timezone</label>
+              <select id="timezone" [(ngModel)]="timezone">
+                <option value="UTC">UTC (Universal Time)</option>
+                <option value="America/New_York">Eastern Time (ET)</option>
+                <option value="America/Chicago">Central Time (CT)</option>
+                <option value="America/Denver">Mountain Time (MT)</option>
+                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <ui-button label="Discard" variant="secondary" (click)="cancel()"></ui-button>
+            <ui-button label="Save Changes" variant="primary" (click)="save()"></ui-button>
+          </div>
         </div>
       </div>
     </div>
@@ -71,45 +107,144 @@ import { FormsModule } from '@angular/forms';
   styles: [
     `
       .settings-section {
-        padding: 24px;
+        padding: 8px;
       }
 
       .section-header {
-        margin-bottom: 24px;
+        margin-bottom: 40px;
+
+        .title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 8px;
+        }
+
+        .section-icon {
+          font-size: 1.5rem;
+        }
 
         h2 {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           font-weight: 700;
+          margin: 0;
           color: var(--text-primary);
-          margin-bottom: 8px;
         }
 
         p {
           color: var(--text-secondary);
-          font-size: 0.95rem;
+          font-size: 1rem;
+          margin: 0;
         }
       }
 
-      .section-content {
+      .settings-card {
         background: var(--surface-raised);
-        border-radius: 12px;
-        padding: 24px;
-        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        border: 1px solid var(--border-subtle);
+        padding: 32px;
+        box-shadow: 0 4px 20px rgba(0, 0, 10, 0.02);
+      }
+
+      .avatar-edit-section {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid var(--border-subtle);
+
+        .avatar-wrapper {
+          position: relative;
+          width: 100px;
+          height: 100px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--surface-base);
+            box-shadow: 0 0 0 1px var(--border-subtle);
+          }
+
+          .change-avatar-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: 3px solid var(--surface-raised);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            &:hover {
+              background: var(--primary-hover);
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .avatar-info {
+          h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.125rem;
+            font-weight: 700;
+          }
+          p {
+            margin: 0 0 16px 0;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+          }
+          .avatar-actions {
+            display: flex;
+            gap: 12px;
+          }
+        }
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-bottom: 32px;
       }
 
       .form-group {
-        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
-        &:last-of-type {
-          margin-bottom: 24px;
+        &.full-width {
+          grid-column: span 2;
         }
 
         label {
-          display: block;
+          font-size: 0.875rem;
           font-weight: 600;
           color: var(--text-primary);
-          margin-bottom: 8px;
-          font-size: 0.9rem;
+        }
+
+        .input-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          .input-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-tertiary);
+          }
+
+          input {
+            padding-left: 42px;
+          }
         }
 
         input,
@@ -117,17 +252,17 @@ import { FormsModule } from '@angular/forms';
         select {
           width: 100%;
           padding: 12px 16px;
-          border: 1px solid var(--border-color);
-          border-radius: 8px;
           background: var(--surface-base);
+          border: 1px solid var(--border-subtle);
+          border-radius: 12px;
           color: var(--text-primary);
           font-size: 0.95rem;
-          transition: all 0.2s ease;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
           &:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
           }
 
           &::placeholder {
@@ -137,50 +272,38 @@ import { FormsModule } from '@angular/forms';
 
         textarea {
           resize: vertical;
-          min-height: 100px;
-          font-family: inherit;
+          min-height: 120px;
+          line-height: 1.5;
         }
 
         select {
-          cursor: pointer;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 14px center;
+          padding-right: 40px;
         }
       }
 
       .form-actions {
         display: flex;
-        gap: 12px;
         justify-content: flex-end;
-        padding-top: 8px;
+        gap: 16px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border-subtle);
+      }
 
-        button {
-          padding: 10px 24px;
-          border-radius: 8px;
-          font-weight: 600;
-          font-size: 0.95rem;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          border: none;
-
-          &.btn-primary {
-            background: var(--primary-color);
-            color: white;
-
-            &:hover {
-              background: var(--primary-hover);
-              transform: translateY(-1px);
-              box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-            }
-          }
-
-          &.btn-secondary {
-            background: var(--surface-sunken);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-
-            &:hover {
-              background: var(--surface-raised);
-            }
-          }
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: auto;
+        }
+        .avatar-edit-section {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
         }
       }
     `,
@@ -194,6 +317,5 @@ export class ProfileSettingsSectionComponent {
   timezone = signal('America/New_York');
 
   save(): void {}
-
   cancel(): void {}
 }

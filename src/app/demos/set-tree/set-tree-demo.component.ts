@@ -18,7 +18,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tree-demo.component.html',
