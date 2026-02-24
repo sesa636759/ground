@@ -11,84 +11,87 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Basic Config</h3>
-            <div class="control-group">
-              <label>Label</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.label"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Basic Config</h3>
+                <div class="control-group">
+                  <label>Label</label>
+                  <app-input
+                    type="text"
+                    [(ngModel)]="pgConfig.label"
+                    (ngModelChange)="updateConfig()"
+                  ></app-input>
+                </div>
+                <div class="control-group">
+                  <label>Icon (Home/Save/etc)</label>
+                  <app-input
+                    type="text"
+                    [(ngModel)]="pgConfig.icon"
+                    (ngModelChange)="updateConfig()"
+                  ></app-input>
+                </div>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Behavior</h3>
+                <div class="control-group">
+                  <label>Size</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                    [options]="sizeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="disabled"
+                    [(ngModel)]="pgConfig.disabled"
+                    (ngModelChange)="updateConfig()"
+                    label="Disabled"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="loading"
+                    [(ngModel)]="pgConfig.loading"
+                    (ngModelChange)="updateConfig()"
+                    label="Loading"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Icon (Home/Save/etc)</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
             </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="disabled"
-                [(ngModel)]="pgConfig.disabled"
-                (ngModelChange)="updateConfig()"
-                label="Disabled"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-split-button
           [attr.label]="pgConfig.label"
           [attr.icon]="pgConfig.icon"

@@ -4,11 +4,15 @@
   signal,
   OnInit,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-card-playground',
@@ -23,7 +27,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   templateUrl: './card-playground.component.html',
   styleUrl: './card-playground.component.scss',
 })
-export class CardPlaygroundComponent implements OnInit {
+export class CardPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('cardSet') cardSet!: ElementRef;
   // Playground State
   pgConfig = {
     title: 'Card Title',
@@ -57,13 +62,18 @@ export class CardPlaygroundComponent implements OnInit {
   accordionDefaultOpen = JSON.stringify(['config']);
 
   eventMessage = signal('Interact with the card...');
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this.updateConfig();
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -75,44 +85,17 @@ export class CardPlaygroundComponent implements OnInit {
     }, 0);
   }
 
-  updateConfig() {
-    let code = `<app-card\n`;
-    if (this.pgConfig.title) code += `  card-title="${this.pgConfig.title}"\n`;
-    if (this.pgConfig.extra) code += `  extra="${this.pgConfig.extra}"\n`;
-    if (this.pgConfig.cover) code += `  cover="${this.pgConfig.cover}"\n`;
-    if (this.pgConfig.actions) code += `  actions="${this.pgConfig.actions}"\n`;
-    if (this.pgConfig.hoverable) code += `  hoverable="true"\n`;
-    if (this.pgConfig.size !== 'default') code += `  size="${this.pgConfig.size}"\n`;
-    if (!this.pgConfig.bordered) code += `  bordered="false"\n`;
-    if (this.pgConfig.type !== 'default') code += `  type="${this.pgConfig.type}"\n`;
-    if (this.pgConfig.loading) code += `  loading="true"\n`;
-    if (this.pgConfig.flippable)
-      code += `  flippable="true" flip-trigger="${this.pgConfig.flipTrigger}"\n`;
-    if (this.pgConfig.closable) code += `  closable="true"\n`;
-    if (this.pgConfig.menuActions) code += `  menu-actions="${this.pgConfig.menuActions}"\n`;
-    if (this.pgConfig.layout !== 'vertical') code += `  layout="${this.pgConfig.layout}"\n`;
-    if (this.pgConfig.glass) code += `  glass="true"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.ribbon) {
-      code += `  ribbon="${this.pgConfig.ribbon}"\n`;
-      code += `  ribbon-position="${this.pgConfig.ribbonPosition}"\n`;
-      code += `  ribbon-color="${this.pgConfig.ribbonColor}"\n`;
-    }
-    if (this.pgConfig.collapsible) code += `  collapsible="true"\n`;
-    if (this.pgConfig.collapsed) code += `  collapsed="true"\n`;
-    if (this.pgConfig.selectable) code += `  selectable="true"\n`;
-    if (this.pgConfig.selected) code += `  selected="true"\n`;
-    if (this.pgConfig.avatar) code += `  avatar="${this.pgConfig.avatar}"\n`;
-    if (this.pgConfig.avatarIcon) code += `  avatar-icon="${this.pgConfig.avatarIcon}"\n`;
+  getCleanFormatedDom(): string {
+    if (!this.cardSet) return '';
 
-    code += `>\n`;
-    code += `  <p>Card content goes here...</p>\n`;
-    if (this.pgConfig.flippable) {
-      code += `  <div slot="back">Back side content</div>\n`;
-    }
-    code += `</app-card>`;
-    this.generatedCode.set(code);
-    this.refreshCode();
+    return generatePlaygroundCode(this.cardSet.nativeElement as Element, 'app-card');
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   onCardAction(event: any) {
@@ -136,6 +119,6 @@ export class CardPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 }

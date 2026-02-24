@@ -11,103 +11,108 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Layout -->
-          <div class="control-section">
-            <h3>Layout</h3>
-            <div class="control-group">
-              <label>Direction</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.direction"
-                (ngModelChange)="updateConfig()"
-                [options]="directionOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Layout -->
+              <div class="control-section">
+                <h3>Layout</h3>
+                <div class="control-group">
+                  <label>Direction</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.direction"
+                    (ngModelChange)="updateConfig()"
+                    [options]="directionOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Spacing</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.spacing"
+                    (ngModelChange)="updateConfig()"
+                    placeholder="e.g. 16px, -10px"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Align</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.align"
+                    (ngModelChange)="updateConfig()"
+                    [options]="alignOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Justify</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.justify"
+                    (ngModelChange)="updateConfig()"
+                    [options]="justifyOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <!-- Behavior -->
+              <div class="control-section">
+                <h3>Behavior</h3>
+                <div class="control-group">
+                  <label>Max Items (0 = all)</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.max"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="overlap"
+                    [(ngModel)]="pgConfig.overlap"
+                    (ngModelChange)="updateConfig()"
+                    label="Overlap"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showDividers"
+                    [(ngModel)]="pgConfig.showDividers"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Dividers"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Content</h3>
+                <div class="control-group">
+                  <label>Num Boxes</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="10"
+                    [(ngModel)]="numBoxes"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Spacing</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.spacing"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. 16px, -10px"
-              />
-            </div>
-            <div class="control-group">
-              <label>Align</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.align"
-                (ngModelChange)="updateConfig()"
-                [options]="alignOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Justify</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.justify"
-                (ngModelChange)="updateConfig()"
-                [options]="justifyOptions"
-              ></ui-dropdown>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Behavior -->
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Max Items (0 = all)</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="overlap"
-                [(ngModel)]="pgConfig.overlap"
-                (ngModelChange)="updateConfig()"
-                label="Overlap"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showDividers"
-                [(ngModel)]="pgConfig.showDividers"
-                (ngModelChange)="updateConfig()"
-                label="Show Dividers"
-              ></app-checkbox>
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Num Boxes</label>
-              <input
-                type="number"
-                min="1"
-                max="10"
-                [(ngModel)]="numBoxes"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-stack
           [attr.direction]="pgConfig.direction"
           [attr.spacing]="pgConfig.spacing"
@@ -120,8 +125,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         >
           <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
         </ui-stack>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -130,7 +135,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './stack-playground.component.scss',

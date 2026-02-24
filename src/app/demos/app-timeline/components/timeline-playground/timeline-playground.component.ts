@@ -11,73 +11,74 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Layout</h3>
-            <div class="control-group">
-              <label>Orientation</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.orientation"
-                (ngModelChange)="updateConfig()"
-                [options]="[
-                  { label: 'Horizontal', value: 'horizontal' },
-                  { label: 'Vertical', value: 'vertical' },
-                ]"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Layout</h3>
+                <div class="control-group">
+                  <label>Orientation</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.orientation"
+                    (ngModelChange)="updateConfig()"
+                    [options]="[
+                      { label: 'Horizontal', value: 'horizontal' },
+                      { label: 'Vertical', value: 'vertical' },
+                    ]"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Alignment</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.align"
+                    (ngModelChange)="updateConfig()"
+                    [options]="[
+                      { label: 'Left', value: 'left' },
+                      { label: 'Right', value: 'right' },
+                      { label: 'Alternate', value: 'alternate' },
+                    ]"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Content</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="opposite"
+                    [(ngModel)]="pgConfig.showOpposite"
+                    (ngModelChange)="updateConfig()"
+                  />
+                  <label for="opposite">Show Opposite Side</label>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="customMarker"
+                    [(ngModel)]="pgConfig.customMarker"
+                    (ngModelChange)="updateConfig()"
+                  />
+                  <label for="customMarker">Custom Markers</label>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Alignment</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.align"
-                (ngModelChange)="updateConfig()"
-                [options]="[
-                  { label: 'Left', value: 'left' },
-                  { label: 'Right', value: 'right' },
-                  { label: 'Alternate', value: 'alternate' },
-                ]"
-              ></ui-dropdown>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="opposite"
-                [(ngModel)]="pgConfig.showOpposite"
-                (ngModelChange)="updateConfig()"
-              />
-              <label for="opposite">Show Opposite Side</label>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="customMarker"
-                [(ngModel)]="pgConfig.customMarker"
-                (ngModelChange)="updateConfig()"
-              />
-              <label for="customMarker">Custom Markers</label>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="timeline-container">
           <ui-timeline
             [attr.orientation]="pgConfig.orientation"
@@ -97,8 +98,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </ng-template>
           </ui-timeline>
         </div>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -107,7 +108,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './timeline-playground.component.scss',

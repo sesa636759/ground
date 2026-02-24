@@ -17,155 +17,162 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Header -->
-          <div class="control-section">
-            <h3>Header</h3>
-            <div class="control-group">
-              <label>Title</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.panelTitle"
-                (ngModelChange)="updateConfig()"
-              />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Header -->
+              <div class="control-section">
+                <h3>Header</h3>
+                <div class="control-group">
+                  <label>Title</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.panelTitle"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Subtitle</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.panelSubtitle"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Badge</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.badge"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showClose"
+                    [(ngModel)]="pgConfig.showClose"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Close"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showSettings"
+                    [(ngModel)]="pgConfig.showSettings"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Settings"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <!-- Style -->
+              <div class="control-section">
+                <h3>Style</h3>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Theme</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.theme"
+                    (ngModelChange)="updateConfig()"
+                    [options]="themeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="glass"
+                    [(ngModel)]="pgConfig.glass"
+                    (ngModelChange)="updateConfig()"
+                    label="Glassmorphism"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="noPadding"
+                    [(ngModel)]="pgConfig.noPadding"
+                    (ngModelChange)="updateConfig()"
+                    label="No Padding"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <!-- Interactivity -->
+              <div class="control-section">
+                <h3>Interactivity</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="toggleable"
+                    [(ngModel)]="pgConfig.toggleable"
+                    (ngModelChange)="updateConfig()"
+                    label="Toggleable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="minimizable"
+                    [(ngModel)]="pgConfig.minimizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Minimizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="maximizable"
+                    [(ngModel)]="pgConfig.maximizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Maximizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="isDraggable"
+                    [(ngModel)]="pgConfig.isDraggable"
+                    (ngModelChange)="updateConfig()"
+                    label="Draggable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="resizable"
+                    [(ngModel)]="pgConfig.resizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Resizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="loading"
+                    [(ngModel)]="pgConfig.loading"
+                    (ngModelChange)="updateConfig()"
+                    label="Loading State"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Subtitle</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.panelSubtitle"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showClose"
-                [(ngModel)]="pgConfig.showClose"
-                (ngModelChange)="updateConfig()"
-                label="Show Close"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showSettings"
-                [(ngModel)]="pgConfig.showSettings"
-                (ngModelChange)="updateConfig()"
-                label="Show Settings"
-              ></app-checkbox>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Style -->
-          <div class="control-section">
-            <h3>Style</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Theme</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.theme"
-                (ngModelChange)="updateConfig()"
-                [options]="themeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="glass"
-                [(ngModel)]="pgConfig.glass"
-                (ngModelChange)="updateConfig()"
-                label="Glassmorphism"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="noPadding"
-                [(ngModel)]="pgConfig.noPadding"
-                (ngModelChange)="updateConfig()"
-                label="No Padding"
-              ></app-checkbox>
-            </div>
-          </div>
-
-          <!-- Interactivity -->
-          <div class="control-section">
-            <h3>Interactivity</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="toggleable"
-                [(ngModel)]="pgConfig.toggleable"
-                (ngModelChange)="updateConfig()"
-                label="Toggleable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="minimizable"
-                [(ngModel)]="pgConfig.minimizable"
-                (ngModelChange)="updateConfig()"
-                label="Minimizable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="maximizable"
-                [(ngModel)]="pgConfig.maximizable"
-                (ngModelChange)="updateConfig()"
-                label="Maximizable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="isDraggable"
-                [(ngModel)]="pgConfig.isDraggable"
-                (ngModelChange)="updateConfig()"
-                label="Draggable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="resizable"
-                [(ngModel)]="pgConfig.resizable"
-                (ngModelChange)="updateConfig()"
-                label="Resizable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading State"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-panel
           [attr.panel-title]="pgConfig.panelTitle"
           [attr.panel-subtitle]="pgConfig.panelSubtitle"
@@ -197,8 +204,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </ui-panel>
 
-        
-
         <div class="event-log">
           <div class="log-title">Event Tracker</div>
           <div *ngFor="let log of eventLog" class="log-entry">
@@ -209,15 +214,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             Interact with the panel to see events...
           </div>
         </div>
-      
-      <ui-code-preview
+
+        <ui-code-preview
           *ngIf="showCode"
           [htmlCode]="generatedCode()"
           [label]="'Generated Code'"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './panel-playground.component.scss',

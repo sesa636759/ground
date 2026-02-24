@@ -20,7 +20,6 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <!-- Global Configuration -->
           <div slot="content-global" class="control-grid" style="padding: 16px;">
@@ -103,7 +102,6 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
         </ui-accordion>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
             class="btn-secondary"
             variant="secondary"
@@ -111,9 +109,9 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             label="Reset"
           ></ui-button>
         </div>
-              </div>
+      </div>
 
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="preview-stage h-scrollable">
           <ui-rating
             [attr.type]="pgConfig.type"
@@ -132,15 +130,13 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
           </div>
         </div>
 
-        
-      
-      <ui-code-preview
+        <ui-code-preview
           [htmlCode]="generatedCode()"
           [label]="'Generated Code'"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './rating-playground.component.scss',

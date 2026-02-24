@@ -2,124 +2,181 @@
   <div class="playground-controls">
     <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
       <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Title</label>
-        <input type="text" [(ngModel)]="pgConfig.title" (ngModelChange)="updateConfig()" />
-      </div>
+        <div class="control-grid">
+          <div class="control-group">
+            <label>Title</label>
+            <input
+              name="title"
+              type="text"
+              [(ngModel)]="pgConfig.title"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Extra (Header)</label>
-        <input type="text" [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()" />
-      </div>
+          <div class="control-group">
+            <label>Extra (Header)</label>
+            <input
+              name="extra"
+              type="text"
+              [(ngModel)]="pgConfig.extra"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Layout</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.layout"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Vertical', value: 'vertical' },
-            { label: 'Horizontal', value: 'horizontal' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Layout</label>
+            <ui-dropdown
+              name="layout"
+              [(ngModel)]="pgConfig.layout"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Vertical', value: 'vertical' },
+                { label: 'Horizontal', value: 'horizontal' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Size</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.size"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Small', value: 'small' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Size</label>
+            <ui-dropdown
+              name="size"
+              [(ngModel)]="pgConfig.size"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Default', value: 'default' },
+                { label: 'Small', value: 'small' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Primary', value: 'primary' },
-            { label: 'Success', value: 'success' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Danger', value: 'danger' },
-            { label: 'Info', value: 'info' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Variant</label>
+            <ui-dropdown
+              name="variant"
+              [(ngModel)]="pgConfig.variant"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Default', value: 'default' },
+                { label: 'Primary', value: 'primary' },
+                { label: 'Success', value: 'success' },
+                { label: 'Warning', value: 'warning' },
+                { label: 'Danger', value: 'danger' },
+                { label: 'Info', value: 'info' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Type</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.type"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Inner', value: 'inner' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Type</label>
+            <ui-dropdown
+              name="type"
+              [(ngModel)]="pgConfig.type"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Default', value: 'default' },
+                { label: 'Inner', value: 'inner' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Ribbon Text</label>
-        <input type="text" [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()" />
-      </div>
+          <div class="control-group">
+            <label>Ribbon Text</label>
+            <input
+              name="ribbon"
+              type="text"
+              [(ngModel)]="pgConfig.ribbon"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Ribbon Pos</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.ribbonPosition"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Top Right', value: 'top-right' },
-            { label: 'Top Left', value: 'top-left' },
-          ]"
-        ></ui-dropdown>
-      </div>
-    </div>
-
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.hoverable" (ngModelChange)="updateConfig()" />
-        Hoverable
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.bordered" (ngModelChange)="updateConfig()" /> Bordered
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.flippable" (ngModelChange)="updateConfig()" />
-        Flippable
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
-        Collapsible
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
-        Selectable
-      </label>
-    </div>
+          <div class="control-group">
+            <label>Ribbon Pos</label>
+            <ui-dropdown
+              name="ribbonPosition"
+              [(ngModel)]="pgConfig.ribbonPosition"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Top Right', value: 'top-right' },
+                { label: 'Top Left', value: 'top-left' },
+              ]"
+            ></ui-dropdown>
+          </div>
         </div>
+
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox
+              name="hoverable"
+              [(ngModel)]="pgConfig.hoverable"
+              (ngModelChange)="updateConfig()"
+            />
+            Hoverable
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="bordered"
+              [(ngModel)]="pgConfig.bordered"
+              (ngModelChange)="updateConfig()"
+            />
+            Bordered
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="loading"
+              [(ngModel)]="pgConfig.loading"
+              (ngModelChange)="updateConfig()"
+            />
+            Loading
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="flippable"
+              [(ngModel)]="pgConfig.flippable"
+              (ngModelChange)="updateConfig()"
+            />
+            Flippable
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="closable"
+              [(ngModel)]="pgConfig.closable"
+              (ngModelChange)="updateConfig()"
+            />
+            Closable
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="glass"
+              [(ngModel)]="pgConfig.glass"
+              (ngModelChange)="updateConfig()"
+            />
+            Glass
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="collapsible"
+              [(ngModel)]="pgConfig.collapsible"
+              (ngModelChange)="updateConfig()"
+            />
+            Collapsible
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              name="selectable"
+              [(ngModel)]="pgConfig.selectable"
+              (ngModelChange)="updateConfig()"
+            />
+            Selectable
+          </label>
+        </div>
+      </div>
     </ui-accordion>
   </div>
 
   <div class="playground-preview" [class.glass-bg]="pgConfig.glass">
     <div class="preview-stage">
       <app-card
+        #cardSet
         [attr.card-title]="pgConfig.title"
         [attr.extra]="pgConfig.extra"
         [attr.cover]="pgConfig.cover"
@@ -161,15 +218,14 @@
       </app-card>
     </div>
 
-    
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-  
-      <ui-code-preview
+    <ui-code-preview
       *ngIf="showCode"
-      [htmlCode]="generatedCode()"
+      [htmlCode]="generatedCode"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-    </div>
+
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+  </div>
 </div>

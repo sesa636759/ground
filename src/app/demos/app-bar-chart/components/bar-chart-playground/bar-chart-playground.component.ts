@@ -17,66 +17,67 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Orientation</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.orientation"
-                (ngModelChange)="updateConfig()"
-                [options]="orientationOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Appearance</h3>
+                <div class="control-group">
+                  <label>Orientation</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.orientation"
+                    (ngModelChange)="updateConfig()"
+                    [options]="orientationOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Color Scheme</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.colorScheme"
+                    (ngModelChange)="updateConfig()"
+                    [options]="colorSchemeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Features</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showLegend"
+                    [(ngModel)]="pgConfig.showLegend"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Legend"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="animated"
+                    [(ngModel)]="pgConfig.animated"
+                    (ngModelChange)="updateConfig()"
+                    label="Animated"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Color Scheme</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.colorScheme"
-                (ngModelChange)="updateConfig()"
-                [options]="colorSchemeOptions"
-              ></ui-dropdown>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLegend"
-                [(ngModel)]="pgConfig.showLegend"
-                (ngModelChange)="updateConfig()"
-                label="Show Legend"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="animated"
-                [(ngModel)]="pgConfig.animated"
-                (ngModelChange)="updateConfig()"
-                label="Animated"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-bar-chart
           [attr.orientation]="pgConfig.orientation"
           [attr.color-scheme]="pgConfig.colorScheme"
@@ -86,8 +87,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           style="width: 100%; height: 350px;"
         >
         </ui-bar-chart>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -96,7 +97,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './bar-chart-playground.component.scss',

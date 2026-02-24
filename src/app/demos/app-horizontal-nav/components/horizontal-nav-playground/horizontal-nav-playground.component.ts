@@ -17,60 +17,63 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Theme</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.theme"
-                (ngModelChange)="updateConfig()"
-                [options]="themeOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Appearance</h3>
+                <div class="control-group">
+                  <label>Theme</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.theme"
+                    (ngModelChange)="updateConfig()"
+                    [options]="themeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="sticky"
+                    [(ngModel)]="pgConfig.sticky"
+                    (ngModelChange)="updateConfig()"
+                    label="Sticky Position"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Layout</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showIcons"
+                    [(ngModel)]="pgConfig.showIcons"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Icons"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="sticky"
-                [(ngModel)]="pgConfig.sticky"
-                (ngModelChange)="updateConfig()"
-                label="Sticky Position"
-              ></app-checkbox>
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Layout</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showIcons"
-                [(ngModel)]="pgConfig.showIcons"
-                (ngModelChange)="updateConfig()"
-                label="Show Icons"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="nav-wrapper">
           <ui-horizontal-nav
             [attr.theme]="pgConfig.theme"

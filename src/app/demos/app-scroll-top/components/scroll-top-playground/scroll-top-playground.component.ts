@@ -11,56 +11,67 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Threshold (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.threshold" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Behavior</h3>
+                <div class="control-group">
+                  <label>Threshold (px)</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.threshold"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Scroll Speed (ms)</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.speed"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Visuals</h3>
+                <div class="control-group">
+                  <label>Icon</label>
+                  <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+                </div>
+                <div class="control-group">
+                  <label>Shape</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.shape"
+                    (ngModelChange)="updateConfig()"
+                    [options]="shapeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Scroll Speed (ms)</label>
-              <input type="number" [(ngModel)]="pgConfig.speed" (ngModelChange)="updateConfig()" />
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="scroll-content" #container>
           <h3>Scroll down to see the button!</h3>
           <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>

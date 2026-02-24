@@ -1,8 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-divider-playground',
@@ -17,103 +26,121 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Content -->
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Text</label>
-              <input type="text" [(ngModel)]="pgConfig.text" (ngModelChange)="updateConfig()" />
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Content -->
+              <div class="control-section">
+                <h3>Content</h3>
+                <div class="control-group">
+                  <label>Text</label>
+                  <input
+                    name="text"
+                    type="text"
+                    [(ngModel)]="pgConfig.text"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Icon</label>
+                  <input
+                    name="icon"
+                    type="text"
+                    [(ngModel)]="pgConfig.icon"
+                    (ngModelChange)="updateConfig()"
+                    placeholder="e.g. ⭐"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Badge</label>
+                  <input
+                    name="badge"
+                    type="text"
+                    [(ngModel)]="pgConfig.badge"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
+
+              <!-- Line Style -->
+              <div class="control-section">
+                <h3>Line Style</h3>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    name="variant"
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Size</label>
+                  <ui-dropdown
+                    name="size"
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                    [options]="sizeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Orientation</label>
+                  <ui-dropdown
+                    name="orientation"
+                    [(ngModel)]="pgConfig.orientation"
+                    (ngModelChange)="updateConfig()"
+                    [options]="orientationOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <!-- Special -->
+              <div class="control-section">
+                <h3>Special</h3>
+                <div class="control-group">
+                  <label>Pattern</label>
+                  <ui-dropdown
+                    name="pattern"
+                    [(ngModel)]="pgConfig.pattern"
+                    (ngModelChange)="updateConfig()"
+                    [options]="patternOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Shape</label>
+                  <ui-dropdown
+                    name="shape"
+                    [(ngModel)]="pgConfig.shape"
+                    (ngModelChange)="updateConfig()"
+                    [options]="shapeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="loading"
+                    name="loading"
+                    [(ngModel)]="pgConfig.loading"
+                    (ngModelChange)="updateConfig()"
+                    label="Loading"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. ⭐"
-              />
-            </div>
-            <div class="control-group">
-              <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+
+            <div class="action-buttons">
+              <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Line Style -->
-          <div class="control-section">
-            <h3>Line Style</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Orientation</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.orientation"
-                (ngModelChange)="updateConfig()"
-                [options]="orientationOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Special -->
-          <div class="control-section">
-            <h3>Special</h3>
-            <div class="control-group">
-              <label>Pattern</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.pattern"
-                (ngModelChange)="updateConfig()"
-                [options]="patternOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div
+      <div
         class="playground-preview"
         [class.vertical-container]="pgConfig.orientation === 'vertical'"
       >
         <div *ngIf="pgConfig.orientation === 'vertical'">Panel Start</div>
         <ui-divider
+          #divider
           [attr.text]="pgConfig.text"
           [attr.icon]="pgConfig.icon"
           [attr.badge]="pgConfig.badge"
@@ -126,23 +153,22 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         ></ui-divider>
         <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
 
-        
-      
-      <div class="code-output">
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
-            [htmlCode]="generatedCode()"
+            [htmlCode]="generatedCode"
             label="Generated Code"
             activeLang="html"
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './divider-playground.component.scss',
 })
-export class DividerPlaygroundComponent {
+export class DividerPlaygroundComponent implements AfterViewInit {
+  @ViewChild('divider') divider!: ElementRef;
   pgConfig = {
     text: 'OR',
     icon: '',
@@ -193,11 +219,16 @@ export class DividerPlaygroundComponent {
     { label: 'Arrow', value: 'arrow' },
   ];
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -209,26 +240,21 @@ export class DividerPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-divider\n';
-    if (this.pgConfig.text) code += `  text="${this.pgConfig.text}"\n`;
-    if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
-    if (this.pgConfig.badge) code += `  badge="${this.pgConfig.badge}"\n`;
-    if (this.pgConfig.variant !== 'solid') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.orientation !== 'horizontal')
-      code += `  orientation="${this.pgConfig.orientation}"\n`;
-    if (this.pgConfig.pattern !== 'none') code += `  pattern="${this.pgConfig.pattern}"\n`;
-    if (this.pgConfig.shape !== 'none') code += `  shape="${this.pgConfig.shape}"\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
-    code += '></ui-divider>';
+  getCleanFormatedDom(): string {
+    if (!this.divider) return '';
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+    return generatePlaygroundCode(this.divider.nativeElement as Element, 'ui-divider');
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

@@ -11,86 +11,107 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Value Control</h3>
-            <div class="control-group">
-              <label>Current Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Value Control</h3>
+                <div class="control-group">
+                  <label>Current Value</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.value"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Min</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.min"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Max</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.max"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Step</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.step"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Visuals</h3>
+                <div class="control-group">
+                  <label>Size</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Stroke Width</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.strokeWidth"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Color</label>
+                  <input
+                    type="color"
+                    [(ngModel)]="pgConfig.valueColor"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="readonly"
+                    [(ngModel)]="pgConfig.readonly"
+                    (ngModelChange)="updateConfig()"
+                    label="Readonly"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showValue"
+                    [(ngModel)]="pgConfig.showValue"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Value"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Min</label>
-              <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Max</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Step</label>
-              <input type="number" [(ngModel)]="pgConfig.step" (ngModelChange)="updateConfig()" />
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Size</label>
-              <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Stroke Width</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.strokeWidth"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Color</label>
-              <input
-                type="color"
-                [(ngModel)]="pgConfig.valueColor"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="readonly"
-                [(ngModel)]="pgConfig.readonly"
-                (ngModelChange)="updateConfig()"
-                label="Readonly"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showValue"
-                [(ngModel)]="pgConfig.showValue"
-                (ngModelChange)="updateConfig()"
-                label="Show Value"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-knob
           [attr.value]="pgConfig.value"
           [attr.min]="pgConfig.min"
@@ -107,8 +128,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div style="margin-top: 16px; font-weight: 600; color: var(--text-primary);">
           Value: {{ pgConfig.value }}
         </div>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -117,7 +138,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './knob-playground.component.scss',

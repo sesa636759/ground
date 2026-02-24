@@ -1,177 +1,174 @@
 ﻿<div class="playground-layout">
   <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
+    <ui-accordion
+      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["config"]'
+      multiple
+    >
       <div slot="content-config">
-    <h4 class="section-title">Layout Configuration</h4>
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Layout Type</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.layoutType"
-          (ngModelChange)="updateConfig()"
-          [options]="layoutTypeOptions"
-        ></ui-dropdown>
-      </div>
+        <h4 class="section-title">Layout Configuration</h4>
+        <div class="control-grid">
+          <div class="control-group">
+            <label>Layout Type</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.layoutType"
+              (ngModelChange)="updateConfig()"
+              [options]="layoutTypeOptions"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Columns</label>
-        <app-input
-          type="number"
-          min="1"
-          max="6"
-          [(ngModel)]="pgConfig.columns"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
+          <div class="control-group">
+            <label>Columns</label>
+            <app-input
+              type="number"
+              min="1"
+              max="6"
+              [(ngModel)]="pgConfig.columns"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Gap (px)</label>
-        <app-input
-          type="number"
-          min="0"
-          max="50"
-          [(ngModel)]="pgConfig.gap"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
+          <div class="control-group">
+            <label>Gap (px)</label>
+            <app-input
+              type="number"
+              min="0"
+              max="50"
+              [(ngModel)]="pgConfig.gap"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Min Width (px)</label>
-        <app-input
-          type="number"
-          min="100"
-          max="500"
-          [(ngModel)]="pgConfig.itemMinWidth"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
+          <div class="control-group">
+            <label>Min Width (px)</label>
+            <app-input
+              type="number"
+              min="100"
+              max="500"
+              [(ngModel)]="pgConfig.itemMinWidth"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Max Width (px)</label>
-        <app-input
-          type="number"
-          min="200"
-          max="800"
-          [(ngModel)]="pgConfig.itemMaxWidth"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
-    </div>
-
-    <h4 class="section-title">Filtering & Sorting</h4>
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Sort By</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.sortBy"
-          (ngModelChange)="updateConfig()"
-          [options]="sortByOptions"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Sort Order</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.sortOrder"
-          (ngModelChange)="updateConfig()"
-          [options]="sortOrderOptions"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group full-width">
-        <label>Filter Category</label>
-        <ui-dropdown
-          [(ngModel)]="filterCategory"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'All', value: '' },
-            { label: 'Nature', value: 'nature' },
-            { label: 'Architecture', value: 'architecture' },
-            { label: 'Food', value: 'food' },
-            { label: 'Technology', value: 'technology' },
-          ]"
-        ></ui-dropdown>
-      </div>
-    </div>
-
-    <h4 class="section-title">Features</h4>
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.enableAnimation"
-          (ngModelChange)="updateConfig()"
-          label="Animations"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.showFilters"
-          (ngModelChange)="updateConfig()"
-          label="Show Filters"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.selectable"
-          (ngModelChange)="updateConfig()"
-          label="Selectable"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.multiSelect"
-          (ngModelChange)="updateConfig()"
-          label="Multi-Select"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.showBatchActions"
-          (ngModelChange)="updateConfig()"
-          label="Batch Actions"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.lazyLoad"
-          (ngModelChange)="updateConfig()"
-          label="Lazy Load"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.infiniteScroll"
-          (ngModelChange)="updateConfig()"
-          label="Infinite Scroll"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.lightbox"
-          (ngModelChange)="updateConfig()"
-          label="Lightbox"
-        />
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.loadingState"
-          (ngModelChange)="updateConfig()"
-          label="Loading State"
-        />
-      </label>
-    </div>
+          <div class="control-group">
+            <label>Max Width (px)</label>
+            <app-input
+              type="number"
+              min="200"
+              max="800"
+              [(ngModel)]="pgConfig.itemMaxWidth"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
         </div>
+
+        <h4 class="section-title">Filtering & Sorting</h4>
+        <div class="control-grid">
+          <div class="control-group">
+            <label>Sort By</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.sortBy"
+              (ngModelChange)="updateConfig()"
+              [options]="sortByOptions"
+            ></ui-dropdown>
+          </div>
+
+          <div class="control-group">
+            <label>Sort Order</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.sortOrder"
+              (ngModelChange)="updateConfig()"
+              [options]="sortOrderOptions"
+            ></ui-dropdown>
+          </div>
+
+          <div class="control-group full-width">
+            <label>Filter Category</label>
+            <ui-dropdown
+              [(ngModel)]="filterCategory"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'All', value: '' },
+                { label: 'Nature', value: 'nature' },
+                { label: 'Architecture', value: 'architecture' },
+                { label: 'Food', value: 'food' },
+                { label: 'Technology', value: 'technology' },
+              ]"
+            ></ui-dropdown>
+          </div>
+        </div>
+
+        <h4 class="section-title">Features</h4>
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.enableAnimation"
+              (ngModelChange)="updateConfig()"
+              label="Animations"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.showFilters"
+              (ngModelChange)="updateConfig()"
+              label="Show Filters"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.selectable"
+              (ngModelChange)="updateConfig()"
+              label="Selectable"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.multiSelect"
+              (ngModelChange)="updateConfig()"
+              label="Multi-Select"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.showBatchActions"
+              (ngModelChange)="updateConfig()"
+              label="Batch Actions"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.lazyLoad"
+              (ngModelChange)="updateConfig()"
+              label="Lazy Load"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.infiniteScroll"
+              (ngModelChange)="updateConfig()"
+              label="Infinite Scroll"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.lightbox"
+              (ngModelChange)="updateConfig()"
+              label="Lightbox"
+            />
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              [(ngModel)]="pgConfig.loadingState"
+              (ngModelChange)="updateConfig()"
+              label="Loading State"
+            />
+          </label>
+        </div>
+      </div>
     </ui-accordion>
   </div>
 
   <div class="playground-preview">
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
-    </div>
-
     <div class="preview-stage masonry-stage">
       <app-masonry
         [attr.layout-type]="pgConfig.layoutType"
@@ -196,16 +193,20 @@
       ></app-masonry>
     </div>
 
-    
-  
-      <ui-code-preview
+    <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+    <div class="event-log-container">
+      <strong>Event Log</strong>
+      <div class="log-items">
+        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+      </div>
     </div>
+  </div>
 </div>
 
 <script>

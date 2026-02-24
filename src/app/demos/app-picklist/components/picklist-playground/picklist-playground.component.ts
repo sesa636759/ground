@@ -27,7 +27,6 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
@@ -79,7 +78,6 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
         </ui-accordion>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
             class="btn-secondary"
             variant="secondary"
@@ -87,9 +85,9 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             label="Reset"
           ></ui-button>
         </div>
-              </div>
+      </div>
 
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="preview-stage">
           <ui-picklist
             #demoElement
@@ -110,16 +108,14 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
           </ui-picklist>
         </div>
 
-        
-      
-      <ui-code-preview
+        <ui-code-preview
           *ngIf="showCode"
           [htmlCode]="generatedCode()"
           [label]="'Generated Code'"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './picklist-playground.component.scss',

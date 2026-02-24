@@ -17,58 +17,59 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Chart Type</h3>
-            <div class="control-group">
-              <label>Type</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.type"
-                (ngModelChange)="updateConfig()"
-                [options]="typeOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Chart Type</h3>
+                <div class="control-group">
+                  <label>Type</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.type"
+                    (ngModelChange)="updateConfig()"
+                    [options]="typeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Features</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showLegend"
+                    [(ngModel)]="pgConfig.showLegend"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Legend"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="responsive"
+                    [(ngModel)]="pgConfig.responsive"
+                    (ngModelChange)="updateConfig()"
+                    label="Responsive"
+                  ></app-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLegend"
-                [(ngModel)]="pgConfig.showLegend"
-                (ngModelChange)="updateConfig()"
-                label="Show Legend"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="responsive"
-                [(ngModel)]="pgConfig.responsive"
-                (ngModelChange)="updateConfig()"
-                label="Responsive"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-chart
           [attr.type]="pgConfig.type"
           [attr.show-legend]="pgConfig.showLegend ? '' : null"
@@ -77,8 +78,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           style="width: 100%; height: 350px;"
         >
         </ui-chart>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -87,7 +88,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './chart-playground.component.scss',

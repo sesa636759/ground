@@ -17,7 +17,6 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <!-- Global Configuration -->
           <div slot="content-global" class="control-grid" style="padding: 16px;">
@@ -53,7 +52,6 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
         </ui-accordion>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
             class="btn-secondary"
             variant="secondary"
@@ -61,9 +59,9 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             label="Reset"
           ></ui-button>
         </div>
-              </div>
+      </div>
 
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="transfer-container">
           <ui-transfer-list
             [attr.search-placeholder]="pgConfig.searchPlaceholder"
@@ -74,15 +72,14 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
           >
           </ui-transfer-list>
         </div>
-        
-      
-      <ui-code-preview
+
+        <ui-code-preview
           [htmlCode]="generatedCode()"
           [label]="'Generated Code'"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './transfer-list-playground.component.scss',
