@@ -1,4 +1,11 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, HostListener, computed } from '@angular/core';
+import {
+  Component,
+  signal,
+  computed,
+  CUSTOM_ELEMENTS_SCHEMA,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -988,11 +995,14 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
     `,
   ],
 })
-export class OverviewComponent {
+export class OverviewComponent implements AfterViewInit, OnDestroy {
   categories = categoryNavItems;
   searchQuery = signal<string>('');
   viewMode = signal<'grid' | 'list'>('grid');
   activeCategory = signal<string>(this.categories[0]?.id || '');
+
+  private scrollContainer: Element | null = null;
+  private boundScrollHandler = this._onContainerScroll.bind(this);
 
   /** Masonry responsive breakpoints — passed to <app-masonry> */
   masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 1, 0: 1 };
@@ -1025,32 +1035,36 @@ export class OverviewComponent {
     private sanitizer: DomSanitizer,
   ) {}
 
-  @HostListener('window:scroll')
-  onScroll() {
-    const currentScrollPos = window.scrollY + 200; // Trigger offset
-    const activeData = this.filteredCategories();
+  ngAfterViewInit() {
+    this.scrollContainer = document.querySelector('.content-body');
+    if (this.scrollContainer) {
+      this.scrollContainer.addEventListener('scroll', this.boundScrollHandler, { passive: true });
+    }
+  }
 
-    // Find section closest to top
-    for (let i = activeData.length - 1; i >= 0; i--) {
-      const category = activeData[i];
-      const element = document.getElementById('cat-' + category.id);
-      if (element && element.offsetTop <= currentScrollPos) {
-        if (this.activeCategory() !== category.id) {
-          this.activeCategory.set(category.id);
-        }
-        break;
+  ngOnDestroy() {
+    if (this.scrollContainer) {
+      this.scrollContainer.removeEventListener('scroll', this.boundScrollHandler);
+    }
+  }
+
+  private _onContainerScroll() {
+    const offset = (this.scrollContainer?.scrollTop ?? 0) + 120;
+    let newActive = this.activeCategory();
+    for (const category of this.filteredCategories()) {
+      const el = document.getElementById('cat-' + category.id);
+      if (el && el.offsetTop <= offset) {
+        newActive = category.id;
       }
     }
+    this.activeCategory.set(newActive);
   }
 
   scrollToCategory(id: string) {
     this.activeCategory.set(id);
-    const element = document.getElementById('cat-' + id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80, // Accounts for sticky headers/spacing
-        behavior: 'smooth',
-      });
+    const el = document.getElementById('cat-' + id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
