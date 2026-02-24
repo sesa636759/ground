@@ -20,8 +20,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
-      <div slot="content-config">
+    
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <!-- Global Configuration -->
           <div slot="content-global" class="control-grid" style="padding: 16px;">
@@ -112,9 +111,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             label="Reset"
           ></ui-button>
         </div>
-            </div>
-    </ui-accordion>
-  </div>
+              </div>
 
   <div class="playground-preview">
         <div class="preview-stage h-scrollable">

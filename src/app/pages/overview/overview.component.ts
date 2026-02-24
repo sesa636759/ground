@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +26,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
             </svg>
             <span>Component Library</span>
           </div>
-          <h1>Component Overview</h1>
+          <h1>Explore Components</h1>
           <p>Browse all {{ totalComponents }} production-ready components organized by category</p>
 
           <div class="header-actions">
@@ -66,12 +66,60 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
                 (click)="viewMode.set('list')"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <line x1="8" y1="6"  x2="21" y2="6"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="3" y1="6"  x2="3.01" y2="6"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="3" y1="12" x2="3.01" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <line x1="3" y1="18" x2="3.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line
+                    x1="8"
+                    y1="6"
+                    x2="21"
+                    y2="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="8"
+                    y1="12"
+                    x2="21"
+                    y2="12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="8"
+                    y1="18"
+                    x2="21"
+                    y2="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="3"
+                    y1="6"
+                    x2="3.01"
+                    y2="6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="3"
+                    y1="12"
+                    x2="3.01"
+                    y2="12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="3"
+                    y1="18"
+                    x2="3.01"
+                    y2="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
                 </svg>
               </button>
             </div>
@@ -79,61 +127,92 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         </div>
       </header>
 
-      <!-- Content -->
-      <div class="overview-content">
-        <div *ngFor="let category of filteredCategories()" class="category-section">
-          <div class="category-header">
-            <div class="category-title">
-              <div class="category-icon" [innerHTML]="category.icon"></div>
-              <div>
+      <!-- Main Layout with Sidebar -->
+      <div class="overview-layout">
+        <aside class="sidebar-nav">
+          <div class="sidebar-inner">
+            <h3 class="sidebar-title">Categories</h3>
+            <nav class="category-menu">
+              <button
+                *ngFor="let category of filteredCategories()"
+                class="menu-item"
+                [class.active]="activeCategory === category.id"
+                (click)="scrollToCategory(category.id)"
+              >
+                <span class="menu-icon">{{ category.icon }}</span>
+                <span class="menu-label">{{ category.label }}</span>
+                <span class="menu-count">{{ category.children?.length || 0 }}</span>
+              </button>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="overview-content">
+          <div
+            *ngFor="let category of filteredCategories()"
+            class="category-section"
+            [id]="'cat-' + category.id"
+          >
+            <div class="category-header">
+              <div class="category-title">
                 <h2>{{ category.label }}</h2>
-                <p>{{ category.children?.length || 0 }} components</p>
+                <div class="category-divider"></div>
               </div>
             </div>
+
+            <ng-masonry-grid
+              [columns]="viewMode() === 'list' ? 1 : 3"
+              gap="24px"
+              [rowGap]="24"
+              [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
+            >
+              <div
+                *ngFor="let component of category.children"
+                class="component-card"
+                [class.list-card]="viewMode() === 'list'"
+                (click)="navigateToComponent(component.id)"
+              >
+                <div class="card-icon-row">
+                  <div class="comp-letter">{{ component.label.charAt(0) }}</div>
+                  <span *ngIf="component.badge" class="badge">{{ component.badge }}</span>
+                </div>
+                <div class="card-preview" [innerHTML]="getPreviewSvg(component.id)"></div>
+                <h3 class="comp-name">{{ component.label }}</h3>
+                <p class="card-description">{{ getComponentDescription(component.id) }}</p>
+                <div class="card-footer">
+                  <span class="view-demo">
+                    Explore Component
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M5 12H19M13 6l6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </ng-masonry-grid>
           </div>
 
-          <ng-masonry-grid
-            [columns]="viewMode() === 'list' ? 1 : 4"
-            gap="20px"
-            [rowGap]="20"
-            [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
-          >
-            <div
-              *ngFor="let component of category.children"
-              class="component-card"
-              [class.list-card]="viewMode() === 'list'"
-              (click)="navigateToComponent(component.id)"
-            >
-              <div class="card-icon-row">
-                <div class="comp-letter">{{ component.label.charAt(0) }}</div>
-                <span *ngIf="component.badge" class="badge">{{ component.badge }}</span>
-              </div>
-              <div class="card-preview" [innerHTML]="getPreviewSvg(component.id)"></div>
-              <h3 class="comp-name">{{ component.label }}</h3>
-              <p class="card-description">{{ getComponentDescription(component.id) }}</p>
-              <div class="card-footer">
-                <span class="view-demo">View Demo
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-              </div>
-            </div>
-          </ng-masonry-grid>
-        </div>
-
-        <!-- No Results -->
-        <div *ngIf="filteredCategories().length === 0" class="no-results">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
-            <path
-              d="M21 21L16.65 16.65"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-          <h3>No components found</h3>
-          <p>Try adjusting your search query</p>
-        </div>
+          <!-- No Results -->
+          <div *ngIf="filteredCategories().length === 0" class="no-results">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+              <path
+                d="M21 21L16.65 16.65"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <h3>No components found</h3>
+            <p>Try adjusting your search query</p>
+          </div>
+        </main>
       </div>
     </div>
   `,
@@ -141,39 +220,26 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
     `
       /* ── Schneider Green base color override (scoped to this page) ── */
       :host {
-        --primary:          #3DCD58;
-        --primary-hover:    #2db84d;
-        --primary-light:    #5edb72;
-        --primary-lighter:  #86e898;
-        --primary-glow:     rgba(61, 205, 88, 0.4);
+        --primary: #3dcd58;
+        --primary-hover: #2db84d;
+        --primary-light: #5edb72;
+        --primary-lighter: #86e898;
+        --primary-glow: rgba(61, 205, 88, 0.4);
 
-        --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
-        --gradient-hero:    linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-        --gradient-premium: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
-        --gradient-mesh:
-          radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.08) 0px, transparent 50%),
-          radial-gradient(at 80% 0%,  rgba(5, 150, 105, 0.08) 0px, transparent 50%),
-          radial-gradient(at 0%  50%, rgba(61, 205, 88, 0.06) 0px, transparent 50%);
+        --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
+        --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
 
-        --bg-primary:   #f8faf9;
+        --bg-primary: #f8faf9;
         --bg-secondary: #ffffff;
-        --bg-tertiary:  #ecfdf5;
-        --bg-accent:    #d1fae5;
-        --surface-1:    #ffffff;
-        --surface-2:    #f0fdf4;
-        --surface-3:    #ecfdf5;
-        --surface-elevated: #ffffff;
+        --bg-tertiary: #ecfdf5;
+        --surface-1: #ffffff;
+        --surface-2: #f0fdf4;
 
-        --text-primary:   #064e3b;
+        --text-primary: #064e3b;
         --text-secondary: #065f46;
-        --text-tertiary:  #10b981;
-        --text-muted:     #6ee7b7;
-        --border-color:   #d1fae5;
-        --border-light:   #ecfdf5;
-        --border-strong:  #34d399;
-
-        --shadow-premium: 0 24px 48px -12px rgba(61, 205, 88, 0.15), 0 12px 24px -8px rgba(0, 0, 0, 0.06);
-        --shadow-glow:    0 0 24px 0 rgba(61, 205, 88, 0.35);
+        --text-tertiary: #10b981;
+        --border-color: #d1fae5;
+        --border-strong: #34d399;
       }
 
       .overview-container {
@@ -181,64 +247,33 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         display: flex;
         flex-direction: column;
         background: var(--bg-primary);
-      }
-
-      /* ── Keyframes ─────────────────────────────────────────── */
-      @keyframes ovHeaderIn {
-        from { opacity: 0; transform: translateY(-16px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes ovOrbDrift {
-        0%,100% { transform: translateY(0) scale(1); }
-        50%      { transform: translateY(-24px) scale(1.05); }
-      }
-      @keyframes ovCardIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes ovShimmer {
-        0%   { background-position: -200% center; }
-        100% { background-position:  200% center; }
+        overflow-y: auto;
+        scroll-behavior: smooth;
       }
 
       /* Header */
       .overview-header {
         background:
-          radial-gradient(ellipse 70% 90% at 90% 20%, color-mix(in srgb, var(--primary) 22%, transparent) 0%, transparent 55%),
-          radial-gradient(ellipse 55% 65% at 5% 80%,  color-mix(in srgb, var(--primary) 14%, transparent) 0%, transparent 50%),
+          radial-gradient(
+            ellipse 70% 90% at 90% 20%,
+            color-mix(in srgb, var(--primary) 22%, transparent) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 55% 65% at 5% 80%,
+            color-mix(in srgb, var(--primary) 14%, transparent) 0%,
+            transparent 50%
+          ),
           var(--gradient-hero);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 72px 60px 96px;
+        padding: 60px 0 80px;
         position: relative;
         overflow: hidden;
-        animation: ovHeaderIn .5s cubic-bezier(.22,1,.36,1) both;
-      }
-
-      .overview-header::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle, color-mix(in srgb, var(--primary) 14%, transparent) 1px, transparent 1px);
-        background-size: 32px 32px;
-        mask-image: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, transparent 100%);
-        pointer-events: none;
-      }
-
-      .overview-header::after {
-        content: '';
-        position: absolute;
-        width: 600px; height: 600px;
-        top: -300px; right: -150px;
-        border-radius: 50%;
-        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 15%, transparent) 0%, transparent 70%);
-        animation: ovOrbDrift 10s ease-in-out infinite;
-        pointer-events: none;
       }
 
       .header-content {
-        max-width: 1400px;
+        max-width: 1500px;
         margin: 0 auto;
+        padding: 0 40px;
         position: relative;
         z-index: 1;
       }
@@ -247,155 +282,192 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 7px 18px 7px 12px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.18);
+        padding: 6px 16px 6px 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 100px;
         color: rgba(255, 255, 255, 0.9);
         font-size: 0.72rem;
         font-weight: 800;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
         backdrop-filter: blur(14px);
-        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
       }
+
       .header-badge svg {
-        opacity: 0.8;
-        flex-shrink: 0;
         color: var(--primary);
       }
 
       .overview-header h1 {
-        font-size: clamp(2.4rem, 4vw, 3.6rem);
-        font-weight: 950;
+        font-size: clamp(2.4rem, 4vw, 3.2rem);
+        font-weight: 900;
         color: #ffffff;
-        margin-bottom: 16px;
-        letter-spacing: -0.04em;
+        margin-bottom: 12px;
+        letter-spacing: -0.03em;
         line-height: 1.1;
-        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 1;
       }
 
       .overview-header > p,
       .header-content > p {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.62);
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.7);
         margin-bottom: 32px;
-        position: relative;
-        z-index: 1;
-        line-height: 1.7;
+        line-height: 1.6;
         font-weight: 400;
-        max-width: 620px;
+        max-width: 600px;
       }
 
       .header-actions {
         display: flex;
         gap: 16px;
         align-items: center;
+        max-width: 640px;
       }
 
       .search-box {
         flex: 1;
-        max-width: 560px;
         position: relative;
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 14px 22px;
-        background: rgba(255,255,255,0.96);
-        border: 1.5px solid rgba(255,255,255,0.3);
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid transparent;
         border-radius: 14px;
-        transition: all 0.28s cubic-bezier(.4,0,.2,1);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.25s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
       }
 
       .search-box:focus-within {
-        transform: translateY(-2px);
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent),
-                    0 12px 36px rgba(0,0,0,0.2);
+        box-shadow:
+          0 12px 36px rgba(0, 0, 0, 0.2),
+          0 0 0 4px color-mix(in srgb, var(--primary) 20%, transparent);
+        transform: translateY(-2px);
       }
 
       .search-box svg {
         color: #9ca3af;
-        flex-shrink: 0;
       }
 
       .search-box input {
         flex: 1;
         border: none;
         background: transparent;
+        font-size: 1rem;
         color: #1f2937;
-        font-size: 0.95rem;
         font-weight: 500;
         outline: none;
       }
 
-      .search-box input::placeholder {
-        color: #9ca3af;
-        font-weight: 400;
-      }
-
-      .view-toggle {
+      /* Layout */
+      .overview-layout {
         display: flex;
-        gap: 4px;
-        padding: 5px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 12px;
-        backdrop-filter: blur(12px);
-        flex-shrink: 0;
-      }
-
-      .view-toggle button {
-        width: 42px;
-        height: 42px;
-        background: transparent;
-        border: none;
-        border-radius: 9px;
-        color: rgba(255,255,255,0.55);
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .view-toggle button:hover {
-        color: rgba(255,255,255,0.9);
-        background: rgba(255,255,255,0.1);
-      }
-
-      .view-toggle button.active {
-        background: var(--gradient-primary);
-        color: #fff;
-        box-shadow: 0 3px 10px color-mix(in srgb, var(--primary) 45%, transparent);
-      }
-
-      /* Content */
-      .overview-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 0 60px 80px;
-        margin-top: -40px;
+        align-items: flex-start;
+        max-width: 1540px;
+        margin: -40px auto 0;
+        padding: 0 40px 80px;
+        gap: 40px;
         position: relative;
         z-index: 10;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Sidebar */
+      .sidebar-nav {
+        flex: 0 0 280px;
+        position: sticky;
+        top: 24px;
+      }
+
+      .sidebar-inner {
+        background: var(--surface-1);
+        border-radius: 20px;
+        padding: 24px 16px;
+        box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-color);
+      }
+
+      .sidebar-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-tertiary);
+        margin: 0 0 16px 16px;
+        font-weight: 800;
+      }
+
+      .category-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        background: transparent;
+        border-radius: 12px;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.2s ease;
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .menu-item:hover {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+      }
+
+      .menu-item.active {
+        background: color-mix(in srgb, var(--primary) 12%, transparent);
+        color: var(--primary);
+      }
+
+      .menu-icon {
+        margin-right: 12px;
+        font-size: 1.1rem;
+        opacity: 0.8;
+      }
+      .menu-item.active .menu-icon {
+        opacity: 1;
+      }
+
+      .menu-label {
+        flex: 1;
+      }
+
+      .menu-count {
+        background: var(--surface-2);
+        padding: 2px 8px;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        border: 1px solid var(--border-color);
+        color: var(--text-tertiary);
+      }
+      .menu-item.active .menu-count {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      /* Content Area */
+      .overview-content {
+        flex: 1;
+        min-width: 0;
       }
 
       .category-section {
-        max-width: 1400px;
-        margin: 0 auto 80px;
-      }
-
-      .category-section {
-        max-width: 1400px;
-        margin: 0 auto 80px;
-        position: relative;
-        padding-left: 1.5rem;
-        border-left: 3px solid transparent;
-        border-image: linear-gradient(180deg, var(--primary, #4f46e5), color-mix(in srgb, var(--primary) 20%, transparent)) 1;
+        margin-bottom: 72px;
+        scroll-margin-top: 40px;
       }
 
       .category-header {
@@ -408,141 +480,91 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         gap: 20px;
       }
 
-      .category-icon {
-        width: 60px;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 6%, transparent));
-        border-radius: 18px;
-        color: var(--primary);
-        box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 12%, transparent);
-        border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
-        transition: all 0.3s ease;
-      }
-      .category-section:hover .category-icon {
-        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--primary) 12%, transparent));
-        transform: scale(1.06) rotate(-3deg);
-        box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 20%, transparent);
-      }
-
       .category-title h2 {
-        font-size: 1.75rem;
+        font-size: 1.8rem;
         font-weight: 800;
         color: var(--text-primary);
-        margin-bottom: 4px;
         letter-spacing: -0.02em;
+        margin: 0;
+        white-space: nowrap;
       }
 
-      .category-title p {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        font-weight: 500;
+      .category-divider {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--border-strong), transparent);
+        opacity: 0.3;
       }
 
-      .category-count-chip {
-        display: inline-flex;
-        align-items: center;
-        padding: 3px 10px;
-        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 7%, transparent));
-        border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
-        border-radius: 100px;
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: var(--primary, #4f46e5);
-        letter-spacing: 0.05em;
-      }
-
-      /* Component Grid — layout handled by <app-masonry> component */
-
+      /* Component Grid */
       .component-card {
-        break-inside: avoid;
-        -webkit-column-break-inside: avoid;
-        margin-bottom: 20px;
-        padding: 1.375rem 1.5rem;
         background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
+        border-radius: 20px;
+        padding: 24px;
         cursor: pointer;
-        transition: all 0.32s cubic-bezier(.4,0,.2,1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,.05);
-        animation: ovCardIn .5s cubic-bezier(.22,1,.36,1) both;
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         display: flex;
         flex-direction: column;
-        min-height: 160px;
+        position: relative;
+        overflow: hidden;
       }
 
-      /* Gradient top border – subtle at rest, vivid on hover */
       .component-card::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary, #4f46e5), var(--primary-light, #6366f1), var(--primary-lighter, #818cf8));
-        opacity: 0.3;
-        transition: opacity .3s ease;
-      }
-
-      /* Shimmer sweep on hover */
-      .component-card::after {
-        content: '';
-        position: absolute; inset: 0;
-        background: linear-gradient(115deg, transparent 30%, color-mix(in srgb, var(--primary) 4%, transparent) 50%, transparent 70%);
-        background-size: 200% 100%;
-        background-position: 200% center;
-        transition: background-position .7s ease;
-        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
       .component-card:hover {
-        transform: translateY(-8px) scale(1.01);
-        border-color: var(--primary);
-        box-shadow: 0 20px 40px -12px color-mix(in srgb, var(--primary) 22%, transparent), 0 6px 12px -3px rgba(0,0,0,.06);
+        transform: translateY(-6px);
+        box-shadow:
+          0 20px 40px -12px color-mix(in srgb, var(--primary) 20%, transparent),
+          0 0 0 1px var(--primary);
       }
 
-      .component-card:hover::before { opacity: 1; }
-      .component-card:hover::after  { background-position: -200% center; }
-
-      .list-card {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 24px;
-        min-height: 0;
-      }
-
-      .card-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-        position: relative;
+      .component-card:hover::before {
+        opacity: 1;
       }
 
       .card-icon-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: .85rem;
+        margin-bottom: 16px;
       }
 
-      /* Component preview illustration strip */
-      .card-preview {
-        width: 100%;
-        height: 84px;
-        background: color-mix(in srgb, var(--primary) 5%, var(--bg-tertiary, #f8fafc));
-        border-radius: 10px;
-        margin-bottom: 1rem;
-        overflow: hidden;
-        border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
-        color: var(--primary, #4f46e5);
+      .comp-letter {
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background .3s ease;
+        background: var(--gradient-primary);
+        color: white;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 800;
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+      }
+
+      .card-preview {
+        height: 100px;
+        background: color-mix(in srgb, var(--primary) 4%, var(--bg-tertiary));
+        border-radius: 12px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-color);
+        color: var(--primary);
+        transition: background 0.3s ease;
       }
 
       .card-preview svg {
@@ -552,179 +574,135 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       }
 
       .component-card:hover .card-preview {
-        background: color-mix(in srgb, var(--primary) 9%, var(--bg-tertiary, #f8fafc));
-      }
-
-      /* In list mode, hide the preview to keep rows compact */
-      .list-card .card-preview {
-        display: none;
-      }
-
-      .comp-letter {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--gradient-primary);
-        color: white;
-        border-radius: 12px;
-        font-size: 1.15rem;
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
-        transition: transform .3s ease;
-        flex-shrink: 0;
-      }
-
-      .component-card:hover .comp-letter {
-        transform: scale(1.1) rotate(-5deg);
+        background: color-mix(in srgb, var(--primary) 8%, var(--bg-tertiary));
       }
 
       .comp-name {
-        font-size: 1rem;
+        font-size: 1.15rem;
         font-weight: 800;
         color: var(--text-primary);
+        margin-bottom: 8px;
         letter-spacing: -0.01em;
-        margin-bottom: 6px;
-      }
-
-      .list-card .card-header {
-        flex: 0 0 200px;
-        margin-bottom: 0;
-      }
-
-      .list-card .card-icon-row {
-        flex: 0 0 auto;
-        margin-bottom: 0;
-      }
-
-      .list-card .comp-name {
-        flex: 0 0 150px;
-        margin-bottom: 0;
-      }
-
-      .component-card h3 {
-        font-size: 1.05rem;
-        font-weight: 800;
-        color: var(--text-primary);
-        letter-spacing: -0.01em;
-      }
-
-      .badge {
-        padding: 6px 12px;
-        background: var(--bg-secondary);
-        color: var(--primary);
-        border-radius: 100px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        border: 1px solid var(--border-color);
       }
 
       .card-description {
         color: var(--text-secondary);
-        font-size: 0.875rem;
-        line-height: 1.55;
-        margin-bottom: 0;
-        position: relative;
+        font-size: 0.9rem;
+        line-height: 1.6;
         flex: 1;
-      }
-
-      .list-card .card-description {
-        flex: 1;
-        margin-bottom: 0;
+        margin-bottom: 24px;
       }
 
       .card-footer {
-        position: relative;
-        margin-top: 1rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid var(--border-color);
-      }
-
-      .list-card .card-footer {
-        flex: 0 0 auto;
-        margin-top: 0;
-        padding-top: 0;
-        border-top: none;
-        border-left: 1px solid var(--border-color);
-        padding-left: 1.25rem;
+        padding-top: 16px;
+        border-top: 1px dashed var(--border-color);
       }
 
       .view-demo {
         color: var(--primary);
         font-weight: 700;
-        font-size: 0.78rem;
-        transition: all 0.3s ease;
+        font-size: 0.85rem;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
+        gap: 8px;
       }
-
       .view-demo svg {
-        transition: transform .25s ease;
+        transition: transform 0.2s ease;
+      }
+      .component-card:hover .view-demo svg {
+        transform: translateX(6px);
       }
 
-      .component-card:hover .view-demo svg {
-        transform: translateX(4px);
+      /* List View Override */
+      .list-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 20px 24px;
+        gap: 24px;
+      }
+      .list-card .card-preview {
+        display: none;
+      }
+      .list-card .card-icon-row {
+        margin-bottom: 0;
+      }
+      .list-card .comp-name {
+        width: 220px;
+        margin-bottom: 0;
+      }
+      .list-card .card-description {
+        margin-bottom: 0;
+      }
+      .list-card .card-footer {
+        border-top: none;
+        padding-top: 0;
+        padding-left: 24px;
+        border-left: 1px solid var(--border-color);
+        margin-top: 0;
+      }
+
+      /* View Toggle */
+      .view-toggle button {
+        width: 46px;
+        height: 46px;
+        background: transparent;
+        border: none;
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .view-toggle button.active {
+        background: var(--gradient-primary);
+        color: white;
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 40%, transparent);
       }
 
       /* No Results */
       .no-results {
         text-align: center;
-        padding: 120px 20px;
+        padding: 100px 20px;
         color: var(--text-tertiary);
       }
-
       .no-results svg {
-        margin-bottom: 24px;
         opacity: 0.2;
+        margin-bottom: 24px;
       }
-
       .no-results h3 {
         font-size: 1.5rem;
-        font-weight: 700;
         color: var(--text-primary);
         margin-bottom: 8px;
-      }
-
-      .no-results p {
-        font-size: 1rem;
+        font-weight: 700;
       }
 
       /* Responsive */
-      @media (max-width: 768px) {
-        .overview-header {
-          padding: 32px 24px;
-        }
-
-        .overview-header h1 {
-          font-size: 2rem;
-        }
-
-        .header-actions {
+      @media (max-width: 1024px) {
+        .overview-layout {
           flex-direction: column;
-          align-items: stretch;
         }
-
-        .search-box {
-          max-width: none;
+        .sidebar-nav {
+          width: 100%;
+          position: relative;
+          top: 0;
         }
-
-        .overview-content {
-          padding: 40px 24px;
+        .sidebar-inner {
+          display: flex;
+          overflow-x: auto;
+          padding: 12px;
+          gap: 8px;
         }
-
-        .list-card {
-          flex-direction: column;
-          align-items: flex-start;
+        .category-menu {
+          flex-direction: row;
         }
-
-        .list-card .card-header,
-        .list-card .card-description {
-          flex: 1;
+        .sidebar-title {
+          display: none;
+        }
+        .menu-item {
+          width: auto;
+          white-space: nowrap;
         }
       }
     `,
@@ -734,16 +712,46 @@ export class OverviewComponent {
   categories = categoryNavItems;
   searchQuery = '';
   viewMode = signal<'grid' | 'list'>('grid');
+  activeCategory: string = this.categories[0]?.id;
 
   /** Masonry responsive breakpoints — passed to <app-masonry> */
-  masonryBp: Record<number, number> = { 1400: 4, 1000: 3, 600: 2, 0: 1 };
-  listBp:    Record<number, number> = { 0: 1 };
+  masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 2, 0: 1 };
+  listBp: Record<number, number> = { 0: 1 };
 
   get totalComponents(): number {
     return this.categories.reduce((total, cat) => total + (cat.children?.length || 0), 0);
   }
 
-  constructor(private router: Router, private sanitizer: DomSanitizer) {}
+  constructor(
+    private router: Router,
+    private sanitizer: DomSanitizer,
+  ) {}
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    // Determine active category based on scroll position
+    const currentScrollPos = window.scrollY + 100; // offset
+    let newActiveCategory = this.activeCategory;
+
+    for (const category of this.filteredCategories()) {
+      const element = document.getElementById('cat-' + category.id);
+      if (element && element.offsetTop <= currentScrollPos) {
+        newActiveCategory = category.id;
+      }
+    }
+    this.activeCategory = newActiveCategory;
+  }
+
+  scrollToCategory(id: string) {
+    this.activeCategory = id;
+    const element = document.getElementById('cat-' + id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 30,
+        behavior: 'smooth',
+      });
+    }
+  }
 
   getPreviewSvg(id: string): SafeHtml {
     const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
@@ -757,10 +765,6 @@ export class OverviewComponent {
   onSearchInput(event: Event) {
     const input = event.target as HTMLInputElement;
     this.searchQuery = input.value;
-  }
-
-  onSearch() {
-    // Search functionality would filter categories
   }
 
   filteredCategories() {
@@ -797,6 +801,6 @@ export class OverviewComponent {
       skeleton: 'Loading placeholder for content',
       timeline: 'Display events in chronological order',
     };
-    return descriptions[id] || 'Explore this component in the playground';
+    return descriptions[id] || 'Seamlessly explore this component in the interactive playground.';
   }
 }

@@ -92,47 +92,44 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             </div>
           </div>
         </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <div
-          class="preview-stage"
-          style="flex-direction: column; align-items: flex-start; gap: 1rem;"
-        >
-          <label class="preview-label" style="font-weight: 500; font-size: 0.9rem;"
-            >Pick your favorite tech stack:</label
-          >
-          <ui-dropdown
-            #demoElement
-            [attr.placeholder]="pgConfig.placeholder"
-            [attr.size]="pgConfig.size !== 'md' ? pgConfig.size : null"
-            [attr.appearance]="pgConfig.appearance !== 'dropdown' ? pgConfig.appearance : null"
-            [attr.multi-select]="pgConfig.multiSelect ? '' : null"
-            [attr.searchable]="pgConfig.searchable ? '' : null"
-            [attr.clearable]="pgConfig.clearable ? '' : null"
-            [attr.cascading]="pgConfig.cascading ? '' : null"
-            [options]="pgConfig.cascading ? cascadingOptionsJson : optionsJson"
-            (valueChange)="onValueChange($event)"
-          ></ui-dropdown>
-
+        <div class="playground-preview">
           <div
-            *ngIf="currentValue"
-            style="margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;"
+            class="preview-stage"
+            style="flex-direction: column; align-items: flex-start; gap: 1rem;"
           >
-            <strong>Selected Value:</strong> {{ currentValue }}
-          </div>
-        </div>
+            <label class="preview-label" style="font-weight: 500; font-size: 0.9rem;"
+              >Pick your favorite tech stack:</label
+            >
+            <ui-dropdown
+              #demoElement
+              [attr.placeholder]="pgConfig.placeholder"
+              [attr.size]="pgConfig.size !== 'md' ? pgConfig.size : null"
+              [attr.appearance]="pgConfig.appearance !== 'dropdown' ? pgConfig.appearance : null"
+              [attr.multi-select]="pgConfig.multiSelect ? '' : null"
+              [attr.searchable]="pgConfig.searchable ? '' : null"
+              [attr.clearable]="pgConfig.clearable ? '' : null"
+              [attr.cascading]="pgConfig.cascading ? '' : null"
+              [options]="pgConfig.cascading ? cascadingOptionsJson : optionsJson"
+              (valueChange)="onValueChange($event)"
+            ></ui-dropdown>
 
-        
-      
-      <ui-code-preview
-          *ngIf="showCode"
-          [htmlCode]="generatedCode()"
-          label="Generated Code"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-    </div>
+            <div
+              *ngIf="currentValue"
+              style="margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;"
+            >
+              <strong>Selected Value:</strong> {{ currentValue }}
+            </div>
+          </div>
+
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+      </div>
     </div>
   `,
   styleUrl: './dropdown-playground.component.scss',

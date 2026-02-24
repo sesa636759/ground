@@ -39,8 +39,8 @@ export const topNavItems: NavItem[] = [
 
 export const categoryNavItems: NavItem[] = [
   {
-    id: 'future',
-    label: 'need fix',
+    id: 'wip',
+    label: 'Work in Progress',
     icon: '🏗️',
     children: [
       { id: 'dock-host', label: 'Dock Host', icon: '🏠' },

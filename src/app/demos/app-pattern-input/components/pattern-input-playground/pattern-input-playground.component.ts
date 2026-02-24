@@ -27,8 +27,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
-      <div slot="content-config">
+    
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
@@ -70,9 +69,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             </div>
           </div>
         </ui-accordion>
-            </div>
-    </ui-accordion>
-  </div>
+              </div>
 
   <div class="playground-preview">
         <div class="preview-stage">

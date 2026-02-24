@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './demo-tabs.component.scss',
 })
 export class DemoTabsComponent {
-  active = signal('examples');
+  active = signal('playground');
   @Input() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   onTabChange(event: any) {
