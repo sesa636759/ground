@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, HostListener } from '@angular/core';
+import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -739,11 +739,14 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
     `,
   ],
 })
-export class OverviewComponent {
+export class OverviewComponent implements AfterViewInit, OnDestroy {
   categories = categoryNavItems;
   searchQuery = '';
   viewMode = signal<'grid' | 'list'>('grid');
   activeCategory: string = this.categories[0]?.id;
+
+  private scrollContainer: Element | null = null;
+  private boundScrollHandler = this._onContainerScroll.bind(this);
 
   /** Masonry responsive breakpoints — passed to <app-masonry> */
   masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 2, 0: 1 };
@@ -758,29 +761,36 @@ export class OverviewComponent {
     private sanitizer: DomSanitizer,
   ) {}
 
-  @HostListener('window:scroll')
-  onScroll() {
-    // Determine active category based on scroll position
-    const currentScrollPos = window.scrollY + 100; // offset
-    let newActiveCategory = this.activeCategory;
+  ngAfterViewInit() {
+    this.scrollContainer = document.querySelector('.content-body');
+    if (this.scrollContainer) {
+      this.scrollContainer.addEventListener('scroll', this.boundScrollHandler, { passive: true });
+    }
+  }
 
+  ngOnDestroy() {
+    if (this.scrollContainer) {
+      this.scrollContainer.removeEventListener('scroll', this.boundScrollHandler);
+    }
+  }
+
+  private _onContainerScroll() {
+    const offset = (this.scrollContainer?.scrollTop ?? 0) + 120;
+    let newActive = this.activeCategory;
     for (const category of this.filteredCategories()) {
-      const element = document.getElementById('cat-' + category.id);
-      if (element && element.offsetTop <= currentScrollPos) {
-        newActiveCategory = category.id;
+      const el = document.getElementById('cat-' + category.id);
+      if (el && el.offsetTop <= offset) {
+        newActive = category.id;
       }
     }
-    this.activeCategory = newActiveCategory;
+    this.activeCategory = newActive;
   }
 
   scrollToCategory(id: string) {
     this.activeCategory = id;
-    const element = document.getElementById('cat-' + id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 30,
-        behavior: 'smooth',
-      });
+    const el = document.getElementById('cat-' + id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
