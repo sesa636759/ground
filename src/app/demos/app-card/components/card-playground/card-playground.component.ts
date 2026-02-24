@@ -24,132 +24,136 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>🎨 Appearance</h3>
-            <div class="control-group">
-              <label>Design Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>🎨 Appearance</h3>
+                <div class="control-group">
+                  <label>Design Variant</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+
+                <div
+                  class="control-grid"
+                  style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0;"
+                >
+                  <div class="control-group">
+                    <label>Width</label>
+                    <input
+                      type="text"
+                      [(ngModel)]="pgConfig.width"
+                      (ngModelChange)="updateConfig()"
+                    />
+                  </div>
+                  <div class="control-group">
+                    <label>Radius</label>
+                    <input
+                      type="text"
+                      [(ngModel)]="pgConfig.borderRadius"
+                      (ngModelChange)="updateConfig()"
+                    />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label>Content Layout</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.layout"
+                    (ngModelChange)="updateConfig()"
+                    [options]="[
+                      { label: 'Vertical stacking', value: 'vertical' },
+                      { label: 'Horizontal flow', value: 'horizontal' },
+                    ]"
+                  ></ui-dropdown>
+                </div>
+
+                <div class="control-group">
+                  <label>Special Effects</label>
+                  <div class="checkbox-grid">
+                    <app-checkbox
+                      id="glass"
+                      [(ngModel)]="pgConfig.glass"
+                      (ngModelChange)="updateConfig()"
+                      label="Glassmorphism"
+                    ></app-checkbox>
+                    <app-checkbox
+                      id="hoverable"
+                      [(ngModel)]="pgConfig.hoverable"
+                      (ngModelChange)="updateConfig()"
+                      label="Raise on hover"
+                    ></app-checkbox>
+                  </div>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>⚡ Functional Features</h3>
+                <div class="checkbox-grid">
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="flippable"
+                      [(ngModel)]="pgConfig.flippable"
+                      (ngModelChange)="updateConfig()"
+                      label="Flippable"
+                    ></app-checkbox>
+                  </div>
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="loading"
+                      [(ngModel)]="pgConfig.loading"
+                      (ngModelChange)="updateConfig()"
+                      label="Skeleton"
+                    ></app-checkbox>
+                  </div>
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="showMenu"
+                      [(ngModel)]="pgConfig.showMenu"
+                      (ngModelChange)="updateConfig()"
+                      label="Menu"
+                    ></app-checkbox>
+                  </div>
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="closable"
+                      [(ngModel)]="pgConfig.closable"
+                      (ngModelChange)="updateConfig()"
+                      label="Closable"
+                    ></app-checkbox>
+                  </div>
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="selectable"
+                      [(ngModel)]="pgConfig.selectable"
+                      (ngModelChange)="updateConfig()"
+                      label="Selectable"
+                    ></app-checkbox>
+                  </div>
+                  <div class="checkbox-group">
+                    <app-checkbox
+                      id="collapsible"
+                      [(ngModel)]="pgConfig.collapsible"
+                      (ngModelChange)="updateConfig()"
+                      label="Collapsible"
+                    ></app-checkbox>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div
-              class="control-grid"
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0;"
-            >
-              <div class="control-group">
-                <label>Width</label>
-                <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
-              </div>
-              <div class="control-group">
-                <label>Radius</label>
-                <input
-                  type="text"
-                  [(ngModel)]="pgConfig.borderRadius"
-                  (ngModelChange)="updateConfig()"
-                />
-              </div>
-            </div>
-
-            <div class="control-group">
-              <label>Content Layout</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.layout"
-                (ngModelChange)="updateConfig()"
-                [options]="[
-                  { label: 'Vertical stacking', value: 'vertical' },
-                  { label: 'Horizontal flow', value: 'horizontal' },
-                ]"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>Special Effects</label>
-              <div class="checkbox-grid">
-                <app-checkbox
-                  id="glass"
-                  [(ngModel)]="pgConfig.glass"
-                  (ngModelChange)="updateConfig()"
-                  label="Glassmorphism"
-                ></app-checkbox>
-                <app-checkbox
-                  id="hoverable"
-                  [(ngModel)]="pgConfig.hoverable"
-                  (ngModelChange)="updateConfig()"
-                  label="Raise on hover"
-                ></app-checkbox>
-              </div>
+            <div class="action-buttons">
+              <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>⚡ Functional Features</h3>
-            <div class="checkbox-grid">
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="flippable"
-                  [(ngModel)]="pgConfig.flippable"
-                  (ngModelChange)="updateConfig()"
-                  label="Flippable"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="loading"
-                  [(ngModel)]="pgConfig.loading"
-                  (ngModelChange)="updateConfig()"
-                  label="Skeleton"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="showMenu"
-                  [(ngModel)]="pgConfig.showMenu"
-                  (ngModelChange)="updateConfig()"
-                  label="Menu"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="closable"
-                  [(ngModel)]="pgConfig.closable"
-                  (ngModelChange)="updateConfig()"
-                  label="Closable"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="selectable"
-                  [(ngModel)]="pgConfig.selectable"
-                  (ngModelChange)="updateConfig()"
-                  label="Selectable"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="collapsible"
-                  [(ngModel)]="pgConfig.collapsible"
-                  (ngModelChange)="updateConfig()"
-                  label="Collapsible"
-                ></app-checkbox>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-card
           [attr.variant]="pgConfig.variant"
           [attr.hoverable]="pgConfig.hoverable ? '' : null"
@@ -186,14 +190,13 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <ui-button
               variant="primary"
               label="Details"
-              icon="fa-solid fa-circle-info"
-              iconLibrary="fontawesome"
+              icon="info"
+              icon-library="lucide"
             ></ui-button>
             <ui-button
               label="With Icon"
-              icon="fa fa-circle-info"
-              iconLibrary="fontawesome"
-              size="xs"
+              icon="info"
+              icon-library="lucide"
               variant="primary"
             ></ui-button>
           </div>
@@ -208,9 +211,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </ui-card>
 
-        
-      
-      <div class="code-output">
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -219,7 +220,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './card-playground.component.scss',
@@ -255,10 +256,10 @@ export class CardPlaygroundComponent {
   ];
 
   menuItems = [
-    { id: 'save', label: 'Save trip', icon: '🔖' },
-    { id: 'share', label: 'Share', icon: '📤' },
+    { id: 'save', label: 'Save trip', icon: 'bookmark', iconLibrary: 'lucide' },
+    { id: 'share', label: 'Share', icon: 'share-2', iconLibrary: 'lucide' },
     { separator: true },
-    { id: 'report', label: 'Report', icon: '🚩', disabled: true },
+    { id: 'report', label: 'Report', icon: 'flag', iconLibrary: 'lucide', disabled: true },
   ];
 
   menuJson = JSON.stringify(this.menuItems);
