@@ -17,7 +17,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
       <div slot="content-config">
         <div class="control-grid">
           <!-- Content -->
@@ -154,6 +154,9 @@ export class DividerPlaygroundComponent {
     shape: 'none',
     loading: false,
   };
+
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  accordionDefaultOpen = JSON.stringify(['config']);
 
   variantOptions = [
     { label: 'Solid', value: 'solid' },

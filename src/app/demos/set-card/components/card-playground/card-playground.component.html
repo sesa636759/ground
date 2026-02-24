@@ -1,16 +1,16 @@
 <div class="playground-layout">
   <div class="playground-controls">
-    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen" multiple>
       <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Title</label>
-        <app-input type="text" [(ngModel)]="pgConfig.title" (ngModelChange)="updateConfig()" />
+        <input type="text" [(ngModel)]="pgConfig.title" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Extra (Header)</label>
-        <app-input type="text" [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()" />
+        <input type="text" [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -67,7 +67,7 @@
 
       <div class="control-group">
         <label>Ribbon Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()" />
+        <input type="text" [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">

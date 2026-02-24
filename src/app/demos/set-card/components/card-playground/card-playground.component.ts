@@ -53,6 +53,9 @@ export class CardPlaygroundComponent implements OnInit {
     avatarIcon: '',
   };
 
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  accordionDefaultOpen = JSON.stringify(['config']);
+
   eventMessage = signal('Interact with the card...');
   generatedCode = signal('');
   showCode = true;
