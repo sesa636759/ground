@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Content -->
           <div class="control-section">
@@ -59,7 +61,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -67,7 +69,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Color</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.color"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="colorOptions"
               ></ui-dropdown>
             </div>
@@ -75,7 +77,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -83,7 +85,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -96,7 +98,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="removable"
                 [(ngModel)]="pgConfig.removable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Removable"
               ></app-checkbox>
             </div>
@@ -104,7 +106,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="clickable"
                 [(ngModel)]="pgConfig.clickable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Clickable"
               ></app-checkbox>
             </div>
@@ -112,7 +114,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="selected"
                 [(ngModel)]="pgConfig.selected"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Selected"
               ></app-checkbox>
             </div>
@@ -120,7 +122,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Loading"
               ></app-checkbox>
             </div>
@@ -130,9 +132,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-chip
           [attr.label]="pgConfig.label"
           [attr.icon]="pgConfig.icon"
@@ -151,14 +155,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           (chipRemove)="onEvent('Chip Removed')"
         ></ui-chip>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="event-log">
           <div *ngFor="let log of eventLog" class="log-entry">
@@ -169,7 +166,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             Interact with the chip to see events...
           </div>
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './chip-playground.component.scss',

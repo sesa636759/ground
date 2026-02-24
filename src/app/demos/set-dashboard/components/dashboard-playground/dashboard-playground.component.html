@@ -1,5 +1,7 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-section">
       <h3>Visual Settings</h3>
       <div class="control-grid">
@@ -157,6 +159,8 @@
         </label>
       </div>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -189,6 +193,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

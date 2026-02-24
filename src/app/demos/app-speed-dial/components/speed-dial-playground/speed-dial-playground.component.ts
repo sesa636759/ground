@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Direction</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.direction"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="directionOptions"
               ></ui-dropdown>
             </div>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Type</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.type"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="typeOptions"
               ></ui-dropdown>
             </div>
@@ -46,7 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="ripple"
                 [(ngModel)]="pgConfig.ripple"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Ripple Effect"
               ></app-checkbox>
             </div>
@@ -54,7 +56,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="mask"
                 [(ngModel)]="pgConfig.mask"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Display Mask"
               ></app-checkbox>
             </div>
@@ -74,9 +76,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-speed-dial
           [attr.direction]="pgConfig.direction"
           [attr.type]="pgConfig.type"

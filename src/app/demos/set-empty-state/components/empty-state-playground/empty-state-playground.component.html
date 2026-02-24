@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Type</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.type"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'No Data', value: 'no-data' },
             { label: 'No Results', value: 'no-results' },
@@ -23,7 +25,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Outlined', value: 'outlined' },
@@ -38,7 +40,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -51,7 +53,7 @@
         <label>Alignment</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.align"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Left', value: 'left' },
             { label: 'Center', value: 'center' },
@@ -65,7 +67,7 @@
         <app-input
           type="text"
           [(ngModel)]="pgConfig.heading"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="Default"
         />
       </div>
@@ -74,7 +76,7 @@
         <label>Message</label>
         <textarea
           [(ngModel)]="pgConfig.message"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="Default"
           rows="3"
         ></textarea>
@@ -82,37 +84,39 @@
 
       <div class="control-group full-width">
         <label>Primary Action</label>
-        <app-input type="text" [(ngModel)]="pgConfig.primaryAction" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.primaryAction" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group full-width">
         <label>Secondary Action</label>
-        <app-input type="text" [(ngModel)]="pgConfig.secondaryAction" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.secondaryAction" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (change)="updateConfig()" /> Rounded
+        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (change)="updateConfig()" /> Elevated
+        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (change)="updateConfig()" /> Compact
+        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showBackButton" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
         Show Back Button
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loadingAction" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
         Loading State
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -149,11 +153,13 @@
       </div>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       [htmlCode]="generatedCode()"
       label="Generated Code"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

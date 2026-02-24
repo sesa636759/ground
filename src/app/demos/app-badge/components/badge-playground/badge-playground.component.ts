@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Content -->
           <div class="control-section">
@@ -47,7 +49,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Color</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.color"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="colorOptions"
               ></ui-dropdown>
             </div>
@@ -55,7 +57,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -63,7 +65,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -76,7 +78,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.position"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="positionOptions"
               ></ui-dropdown>
             </div>
@@ -84,7 +86,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Animation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.animation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="animationOptions"
               ></ui-dropdown>
             </div>
@@ -92,7 +94,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="dot"
                 [(ngModel)]="pgConfig.dot"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Dot Mode"
               ></app-checkbox>
             </div>
@@ -100,7 +102,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="glow"
                 [(ngModel)]="pgConfig.glow"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Glow Effect"
               ></app-checkbox>
             </div>
@@ -115,9 +117,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-badge
           [attr.value]="pgConfig.value"
           [attr.max]="pgConfig.max"
@@ -136,7 +140,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </ui-badge>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -144,7 +150,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './badge-playground.component.scss',

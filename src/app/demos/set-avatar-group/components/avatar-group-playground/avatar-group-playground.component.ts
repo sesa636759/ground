@@ -24,12 +24,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-group">
             <label>Size</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.size"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Small', value: 'small' },
                 { label: 'Medium', value: 'medium' },
@@ -44,14 +46,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               min="1"
               max="10"
               [(ngModel)]="pgConfig.max"
-              (input)="updateConfig()"
+              (ngModelChange)="updateConfig()"
             />
           </div>
           <div class="control-group">
             <label>Layout</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.layout"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Stacked', value: 'stacked' },
                 { label: 'Spaced', value: 'spaced' },
@@ -63,7 +65,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <label>Shape</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.shape"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Circle', value: 'circle' },
                 { label: 'Rounded', value: 'rounded' },
@@ -75,7 +77,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <label>Direction</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.direction"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Horizontal', value: 'horizontal' },
                 { label: 'Vertical', value: 'vertical' },
@@ -89,7 +91,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               min="0"
               max="20"
               [(ngModel)]="pgConfig.spacing"
-              (input)="updateConfig()"
+              (ngModelChange)="updateConfig()"
             />
           </div>
           <div class="control-group">
@@ -99,12 +101,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               min="0"
               max="10"
               [(ngModel)]="pgConfig.borderWidth"
-              (input)="updateConfig()"
+              (ngModelChange)="updateConfig()"
             />
           </div>
           <div class="control-group">
             <label>Border Color</label>
-            <input type="color" [(ngModel)]="pgConfig.borderColor" (input)="updateConfig()" />
+            <input type="color" [(ngModel)]="pgConfig.borderColor" (ngModelChange)="updateConfig()" />
           </div>
           <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
             <label>Grid Columns</label>
@@ -113,14 +115,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               min="1"
               max="6"
               [(ngModel)]="pgConfig.columns"
-              (input)="updateConfig()"
+              (ngModelChange)="updateConfig()"
             />
           </div>
           <div class="control-group">
             <label>Hover Effect</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.hoverEffect"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'None', value: 'none' },
                 { label: 'Zoom', value: 'zoom' },
@@ -132,24 +134,27 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         </div>
         <div class="checkbox-grid">
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.showTooltips" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
             Show Tooltips
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.clickable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
             Clickable
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.showPopover" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
             Show Popover
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
             Animated
           </label>
         </div>
-      </div>
-      <div class="playground-preview">
+            </div>
+    </ui-accordion>
+  </div>
+
+  <div class="playground-preview">
         <div class="event-log-container">
           <strong>Event Log</strong>
           <div class="log-items">
@@ -175,13 +180,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             [users]="users"
           ></app-avatar-group>
         </div>
-        <ui-code-preview
+        
+      
+      <ui-code-preview
           [htmlCode]="generatedCode()"
           label="Generated Code"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-      </div>
+    </div>
     </div>
   `,
   styles: [

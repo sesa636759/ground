@@ -162,15 +162,7 @@ import { FormsModule } from '@angular/forms';
           (menuItemClick)="onItemClick($event)"
         ></ui-smart-context-menu>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <!-- Event log -->
         @if (clickLog().length) {
@@ -184,7 +176,17 @@ import { FormsModule } from '@angular/forms';
             }
           </div>
         }
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './smart-menu-playground.component.scss',

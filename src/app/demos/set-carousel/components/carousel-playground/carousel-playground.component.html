@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Slides To Show</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.slidesToShow"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: '1', value: 1 },
             { label: '2', value: 2 },
@@ -19,7 +21,7 @@
         <label>Slides To Scroll</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.slidesToScroll"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: '1', value: 1 },
             { label: '2', value: 2 },
@@ -32,7 +34,7 @@
         <label>Orientation</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.vertical"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: false },
             { label: 'Vertical', value: true },
@@ -44,7 +46,7 @@
         <label>Effect</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.effect"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Slide', value: 'slide' },
             { label: 'Fade', value: 'fade' },
@@ -59,7 +61,7 @@
         <app-input
           type="number"
           [(ngModel)]="pgConfig.animationDuration"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           step="100"
         />
       </div>
@@ -69,7 +71,7 @@
         <app-input
           type="number"
           [(ngModel)]="pgConfig.autoplayInterval"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           step="500"
         />
       </div>
@@ -77,40 +79,42 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoplay" (change)="updateConfig()" /> Autoplay
+        <app-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" /> Autoplay
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.arrows" (change)="updateConfig()" /> Arrows
+        <app-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" /> Arrows
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.indicators" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.indicators" (ngModelChange)="updateConfig()" />
         Indicators
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.infinite" (change)="updateConfig()" /> Infinite
+        <app-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" /> Infinite
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.swipe" (change)="updateConfig()" /> Swipe
+        <app-checkbox [(ngModel)]="pgConfig.swipe" (ngModelChange)="updateConfig()" /> Swipe
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.keyboard" (change)="updateConfig()" /> Keyboard
+        <app-checkbox [(ngModel)]="pgConfig.keyboard" (ngModelChange)="updateConfig()" /> Keyboard
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.pauseOnHover" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.pauseOnHover" (ngModelChange)="updateConfig()" />
         Pause On Hover
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.centerMode" (change)="updateConfig()" /> Center Mode
+        <app-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" /> Center Mode
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Progress Bar
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
         Draggable
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -146,6 +150,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

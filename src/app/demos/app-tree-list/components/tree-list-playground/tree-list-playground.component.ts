@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Features</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="selectable"
                 [(ngModel)]="pgConfig.selectable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Selectable"
               ></app-checkbox>
             </div>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Icons"
               ></app-checkbox>
             </div>
@@ -38,22 +40,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="expandAll"
                 [(ngModel)]="pgConfig.expandAll"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Expand All"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -64,12 +58,24 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-tree-list [attr.selectable]="pgConfig.selectable ? '' : null" [model]="modelJson">
         </ui-tree-list>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './tree-list-playground.component.scss',

@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Behavior</h3>
@@ -34,7 +36,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -54,9 +56,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="scroll-content" #container>
           <h3>Scroll down to see the button!</h3>
           <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>

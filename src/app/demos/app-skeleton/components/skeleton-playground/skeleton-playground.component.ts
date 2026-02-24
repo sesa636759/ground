@@ -125,7 +125,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           ></skeleton-loader>
         }
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="code()"
@@ -134,7 +136,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './skeleton-playground.component.scss',

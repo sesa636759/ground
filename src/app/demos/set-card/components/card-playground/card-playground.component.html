@@ -1,5 +1,7 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Title</label>
@@ -111,6 +113,8 @@
         Selectable
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview" [class.glass-bg]="pgConfig.glass">
@@ -157,13 +161,15 @@
       </app-card>
     </div>
 
-    <ui-code-preview
+    
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-  </div>
+    </div>
 </div>

@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Configuration</h3>
@@ -24,7 +26,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
@@ -32,7 +34,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Style Type</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.type"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="typeOptions"
               ></ui-dropdown>
             </div>
@@ -52,7 +54,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="indicator"
                 [(ngModel)]="pgConfig.showIndicator"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Indicator"
               ></app-checkbox>
             </div>
@@ -60,7 +62,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="progress"
                 [(ngModel)]="pgConfig.showProgress"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Progress"
               ></app-checkbox>
             </div>
@@ -68,73 +70,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="affix"
                 [(ngModel)]="pgConfig.affix"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Enable Affix (Sticky)"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-      </div>
-
-      <div class="playground-preview">
-        <div class="scroll-content" id="pg-anchor-container">
-          <section id="basics-pg">
-            <h2>Basics Section</h2>
-            <p>
-              Scroll down to see the anchor update automatically. This section demonstrates the core
-              scrolling behavior of the anchor component.
-            </p>
-            <div style="height: 100px; background: #f1f5f9; border-radius: 8px;"></div>
-          </section>
-
-          <section id="api-pg">
-            <h2>API Reference</h2>
-            <p>
-              The anchor component can be configured via a JSON array of links or can auto-detect
-              headers within a container.
-            </p>
-            <div style="height: 100px; background: #f1f5f9; border-radius: 8px;"></div>
-          </section>
-
-          <section id="theming-pg">
-            <h2>Theming Guide</h2>
-            <p>
-              Easily customize colors, spacing, and transition effects to match your application's
-              design system.
-            </p>
-            <div style="height: 100px; background: #f1f5f9; border-radius: 8px;"></div>
-          </section>
-        </div>
-
-        <div class="anchor-nav">
-          <ui-anchor
-            [attr.orientation]="pgConfig.orientation"
-            [attr.type]="pgConfig.type"
-            [attr.scroll-offset]="pgConfig.scrollOffset"
-            [attr.show-indicator]="pgConfig.showIndicator ? '' : null"
-            [attr.show-progress]="pgConfig.showProgress ? '' : null"
-            [attr.affix]="pgConfig.affix ? '' : null"
-            scroll-container="#pg-anchor-container"
-            [links]="linksJson"
-          ></ui-anchor>
-        </div>
-
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
       </div>
     </div>
   `,

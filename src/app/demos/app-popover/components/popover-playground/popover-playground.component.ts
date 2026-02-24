@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Content -->
           <div class="control-section">
@@ -27,7 +29,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
             <div class="control-group">
               <label>Body Content (HTML)</label>
-              <textarea [(ngModel)]="pgConfig.content" (change)="updateConfig()"></textarea>
+              <textarea [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()"></textarea>
             </div>
           </div>
 
@@ -38,7 +40,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Trigger</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.trigger"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="triggerOptions"
               ></ui-dropdown>
             </div>
@@ -46,7 +48,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Placement</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.placement"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="placementOptions"
               ></ui-dropdown>
             </div>
@@ -59,7 +61,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -71,7 +73,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showArrow"
                 [(ngModel)]="pgConfig.showArrow"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Arrow"
               ></app-checkbox>
             </div>
@@ -79,7 +81,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="closeButton"
                 [(ngModel)]="pgConfig.showCloseButton"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Close Button"
               ></app-checkbox>
             </div>
@@ -87,30 +89,24 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="backdrop"
                 [(ngModel)]="pgConfig.backdrop"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Backdrop"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            [label]="'Generated Code'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <button (click)="copyCode()">Copy Code</button>
           <button class="btn-secondary" (click)="resetConfig()">Reset</button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-popover
           [attr.heading]="pgConfig.heading"
           [attr.content]="pgConfig.content"
@@ -124,7 +120,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         >
           <button class="btn-primary">Target Element</button>
         </ui-popover>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            [label]="'Generated Code'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './popover-playground.component.scss',

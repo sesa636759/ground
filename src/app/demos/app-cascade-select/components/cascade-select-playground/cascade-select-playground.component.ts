@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Basic Config</h3>
@@ -32,7 +34,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -40,7 +42,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Expand Trigger</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.expandTrigger"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="triggerOptions"
               ></ui-dropdown>
             </div>
@@ -52,7 +54,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="fullpath"
                 [(ngModel)]="pgConfig.showFullPath"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Full Path"
               ></app-checkbox>
             </div>
@@ -68,7 +70,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="changeonselect"
                 [(ngModel)]="pgConfig.changeOnSelect"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Change On Select (Any Level)"
               ></app-checkbox>
             </div>
@@ -78,9 +80,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-cascade-select
           [attr.placeholder]="pgConfig.placeholder"
           [attr.size]="pgConfig.size"
@@ -99,7 +103,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           Selection Value: {{ currentValue | json }}
         </div>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -107,7 +113,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './cascade-select-playground.component.scss',

@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Filled', value: 'filled' },
             { label: 'Outlined', value: 'outlined' },
@@ -20,7 +22,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -33,7 +35,7 @@
         <label>Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.position"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Bottom Right', value: 'bottom-right' },
             { label: 'Bottom Left', value: 'bottom-left' },
@@ -49,7 +51,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
@@ -60,19 +62,19 @@
 
       <div class="control-group">
         <label>Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.color" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.offset" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Tooltip Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.tooltipPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Top', value: 'top' },
             { label: 'Bottom', value: 'bottom' },
@@ -86,7 +88,7 @@
         <label>Target</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.targetType"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Window (Page)', value: 'window' },
             { label: 'Local Container', value: 'container' },
@@ -97,24 +99,26 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Show Progress
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showText" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
         Show Text
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.pulse" (change)="updateConfig()" /> Pulse Animation
+        <app-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse Animation
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
         Always Visible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -149,6 +153,8 @@
       ></app-scroll-top>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

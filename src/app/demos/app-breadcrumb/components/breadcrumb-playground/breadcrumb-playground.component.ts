@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Configuration</h3>
@@ -40,7 +42,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -52,7 +54,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showHome"
                 [(ngModel)]="pgConfig.showHome"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Home"
               ></app-checkbox>
             </div>
@@ -60,7 +62,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -70,9 +72,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-breadcrumb
           [attr.separator]="pgConfig.separator"
           [attr.max-items]="pgConfig.maxItems"
@@ -82,7 +86,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [items]="itemsJson"
         ></ui-breadcrumb>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -90,7 +96,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './breadcrumb-playground.component.scss',

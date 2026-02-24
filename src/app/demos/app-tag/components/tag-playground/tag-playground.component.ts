@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Visuals</h3>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Severity</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.severity"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="severityOptions"
               ></ui-dropdown>
             </div>
@@ -38,7 +40,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="rounded"
                 [(ngModel)]="pgConfig.rounded"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Rounded Corners"
               ></app-checkbox>
             </div>
@@ -46,21 +48,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button
@@ -70,9 +65,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-tag
           [attr.value]="pgConfig.value"
           [attr.icon]="pgConfig.icon"
@@ -80,7 +77,16 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.rounded]="pgConfig.rounded ? '' : null"
           [attr.size]="pgConfig.size"
         ></ui-tag>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './tag-playground.component.scss',

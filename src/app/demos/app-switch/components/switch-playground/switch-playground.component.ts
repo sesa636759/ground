@@ -20,6 +20,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
           <!-- Global Visuals -->
           <div slot="content-global" class="control-grid" style="padding: 16px;">
@@ -35,7 +37,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -43,7 +45,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -51,7 +53,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -59,7 +61,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
               <label>Label Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.labelPosition"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="labelPositionOptions"
               ></ui-dropdown>
             </div>
@@ -129,9 +131,11 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="preview-stage">
           <ui-switch
             #demoElement
@@ -150,12 +154,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
           ></ui-switch>
         </div>
 
-        <ui-code-preview
-          [htmlCode]="generatedCode()"
-          [label]="'Generated Code'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
+        
 
         <div class="event-log-container">
           <strong>Event Log</strong>
@@ -166,7 +165,14 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
             </div>
           </div>
         </div>
-      </div>
+      
+      <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+    </div>
     </div>
   `,
   styleUrl: './switch-playground.component.scss',

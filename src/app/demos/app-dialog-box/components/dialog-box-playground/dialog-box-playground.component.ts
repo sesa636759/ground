@@ -19,6 +19,8 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Appearance Settings -->
           <div class="control-section">
@@ -27,7 +29,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -35,7 +37,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -43,7 +45,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Status</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.status"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="statusOptions"
               ></ui-dropdown>
             </div>
@@ -72,7 +74,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Backdrop</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.backdrop"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="backdropOptions"
               ></ui-dropdown>
             </div>
@@ -80,21 +82,21 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.position"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="positionOptions"
               ></ui-dropdown>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.draggable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Draggable"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.resizable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Resizable"
               ></app-checkbox>
             </div>
@@ -106,42 +108,42 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showHeader"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Header"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showFooter"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Footer"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showMenu"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Menu"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showMin"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Minimize"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showMax"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Maximize"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showClose"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Close"
               ></app-checkbox>
             </div>
@@ -151,9 +153,11 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-button (click)="openDialog()" label="Test Dialog"></ui-button>
 
         <ui-dialog-box
@@ -196,7 +200,9 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
           </div>
         </ui-dialog-box>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -205,7 +211,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './dialog-box-playground.component.scss',

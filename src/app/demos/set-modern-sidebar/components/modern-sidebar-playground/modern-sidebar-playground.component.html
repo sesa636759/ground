@@ -1,31 +1,33 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <h4 class="section-title">Branding</h4>
     <div class="control-grid">
       <div class="control-group">
         <label>Brand Name</label>
-        <app-input type="text" [(ngModel)]="pgConfig.brandName" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Accent Color</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.accentColor"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="accentColorOptions"
         ></ui-dropdown>
       </div>
 
       <div class="control-group">
         <label>Custom Accent</label>
-        <app-input type="color" [(ngModel)]="pgConfig.accentColor" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.accentColor" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="themeOptions"
         ></ui-dropdown>
       </div>
@@ -35,17 +37,17 @@
     <div class="control-grid">
       <div class="control-group">
         <label>User Name</label>
-        <app-input type="text" [(ngModel)]="pgConfig.userName" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>User Role</label>
-        <app-input type="text" [(ngModel)]="pgConfig.userRole" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group full-width">
         <label>Avatar URL</label>
-        <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
@@ -54,11 +56,13 @@
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.collapsed"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Collapsed"
         />
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -99,11 +103,13 @@
       </div>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       [htmlCode]="generatedCode()"
       label="Generated Code"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

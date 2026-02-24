@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -51,15 +53,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -70,9 +64,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="layout-wrapper">
           <ui-layout-manager
             [attr.mode]="pgConfig.mode"
@@ -93,7 +89,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             </div>
           </ui-layout-manager>
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './layout-manager-playground.component.scss',

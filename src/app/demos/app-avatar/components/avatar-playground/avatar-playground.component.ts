@@ -11,6 +11,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Identity -->
           <div class="control-section">
@@ -46,7 +48,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -58,7 +60,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Status</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.status"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="statusOptions"
               ></ui-dropdown>
             </div>
@@ -96,9 +98,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-avatar
           [attr.name]="pgConfig.name"
           [attr.src]="pgConfig.src"
@@ -110,7 +114,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [attr.badge-color]="pgConfig.badgeColor"
         ></ui-avatar>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -118,7 +124,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './avatar-playground.component.scss',

@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Visuals</h3>
@@ -24,7 +26,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Theme</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
               ></ui-dropdown>
             </div>
@@ -32,7 +34,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="collapsed"
                 [(ngModel)]="pgConfig.collapsed"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Collapsed"
               ></app-checkbox>
             </div>
@@ -44,7 +46,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showFooter"
                 [(ngModel)]="pgConfig.showFooter"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Footer"
               ></app-checkbox>
             </div>
@@ -64,9 +66,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="nav-container" [style.width]="pgConfig.collapsed ? '80px' : '280px'">
           <ui-nav-bar
             [attr.theme]="pgConfig.theme"

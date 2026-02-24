@@ -1,12 +1,14 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Name</label>
         <app-input
           type="text"
           [(ngModel)]="pgConfig.name"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="Name"
         />
       </div>
@@ -16,7 +18,7 @@
         <app-input
           type="text"
           [(ngModel)]="pgConfig.src"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="https://..."
         />
       </div>
@@ -25,7 +27,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'XS (24px)', value: 'xs' },
             { label: 'Small (32px)', value: 's' },
@@ -41,7 +43,7 @@
         <label>Shape</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.shape"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Circle', value: 'circle' },
             { label: 'Square', value: 'square' },
@@ -54,14 +56,14 @@
         <app-input
           type="text"
           [(ngModel)]="pgConfig.icon"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="fa-solid fa-user"
         />
       </div>
 
       <div class="control-group">
         <label>Tooltip Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.tooltipText" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.tooltipText" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -69,7 +71,7 @@
         <app-input
           type="color"
           [(ngModel)]="pgConfig.bgColor"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           style="height: 40px; padding: 0"
         />
       </div>
@@ -79,7 +81,7 @@
         <app-input
           type="color"
           [(ngModel)]="pgConfig.textColor"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           style="height: 40px; padding: 0"
         />
       </div>
@@ -88,7 +90,7 @@
         <label>Status</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.status"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Online', value: 'online' },
             { label: 'Offline', value: 'offline' },
@@ -103,7 +105,7 @@
         <label>Status Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.statusPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Top Left', value: 'top-left' },
             { label: 'Top Right', value: 'top-right' },
@@ -117,7 +119,7 @@
         <label>Animation</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.animation"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'None', value: 'none' },
             { label: 'Pulse', value: 'pulse' },
@@ -130,24 +132,26 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showStatus" (change)="updateConfig()" /> Show Status
+        <app-checkbox [(ngModel)]="pgConfig.showStatus" (ngModelChange)="updateConfig()" /> Show Status
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.verified" (change)="updateConfig()" /> Verified
+        <app-checkbox [(ngModel)]="pgConfig.verified" (ngModelChange)="updateConfig()" /> Verified
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading
+        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.editable" (change)="updateConfig()" /> Editable
+        <app-checkbox [(ngModel)]="pgConfig.editable" (ngModelChange)="updateConfig()" /> Editable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoColor" (change)="updateConfig()" /> Auto Color
+        <app-checkbox [(ngModel)]="pgConfig.autoColor" (ngModelChange)="updateConfig()" /> Auto Color
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.gradient" (change)="updateConfig()" /> Gradient
+        <app-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()" /> Gradient
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -184,6 +188,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

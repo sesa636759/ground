@@ -12,6 +12,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -19,7 +21,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -41,30 +43,25 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()"
             >Reset</ui-button
           >
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-avatar-group
           [attr.size]="pgConfig.size"
           [attr.max]="pgConfig.max"
@@ -96,7 +93,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             [attr.shape]="pgConfig.shape"
           ></ui-avatar>
         </ui-avatar-group>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './avatar-group-playground.component.scss',

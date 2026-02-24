@@ -1,12 +1,14 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <h4 class="section-title">Basic Animation</h4>
     <div class="control-grid">
       <div class="control-group">
         <label>Animation</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.animation"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="animationOptions"
         ></ui-dropdown>
       </div>
@@ -15,7 +17,7 @@
         <label>Direction</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.direction"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="directionOptions"
         ></ui-dropdown>
       </div>
@@ -28,7 +30,7 @@
           max="3000"
           step="100"
           [(ngModel)]="pgConfig.duration"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -40,7 +42,7 @@
           max="2000"
           step="100"
           [(ngModel)]="pgConfig.delay"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -52,7 +54,7 @@
           max="500"
           step="10"
           [(ngModel)]="pgConfig.offset"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -60,7 +62,7 @@
         <label>Easing</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.easing"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="easingOptions"
         ></ui-dropdown>
       </div>
@@ -73,7 +75,7 @@
           max="1"
           step="0.1"
           [(ngModel)]="pgConfig.threshold"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
@@ -88,7 +90,7 @@
           max="50"
           step="1"
           [(ngModel)]="pgConfig.blurAmount"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -100,7 +102,7 @@
           max="2000"
           step="100"
           [(ngModel)]="pgConfig.perspective"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -112,7 +114,7 @@
           max="180"
           step="15"
           [(ngModel)]="pgConfig.rotateX"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -124,7 +126,7 @@
           max="180"
           step="15"
           [(ngModel)]="pgConfig.rotateY"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -136,7 +138,7 @@
           max="360"
           step="15"
           [(ngModel)]="pgConfig.rotateZ"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -148,7 +150,7 @@
           max="3"
           step="0.1"
           [(ngModel)]="pgConfig.scale"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -160,7 +162,7 @@
           max="500"
           step="50"
           [(ngModel)]="pgConfig.stagger"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -168,7 +170,7 @@
         <label>Text Mode</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.textMode"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="textModeOptions"
         ></ui-dropdown>
       </div>
@@ -179,32 +181,34 @@
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.repeat"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Repeat"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.once"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Once"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.mirror"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Mirror"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.scrub"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Scrub"
         ></app-checkbox>
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -247,6 +251,8 @@
       <div class="spacer"></div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Content -->
           <div class="control-section">
@@ -102,9 +104,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div
+  <div
         class="playground-preview"
         [class.vertical-container]="pgConfig.orientation === 'vertical'"
       >
@@ -122,7 +126,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         ></ui-divider>
         <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -131,7 +137,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './divider-playground.component.scss',

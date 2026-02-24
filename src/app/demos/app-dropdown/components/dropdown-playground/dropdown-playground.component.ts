@@ -123,14 +123,16 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
           </div>
         </div>
 
-        <ui-code-preview
+        
+      
+      <ui-code-preview
           *ngIf="showCode"
           [htmlCode]="generatedCode()"
           label="Generated Code"
           activeLang="html"
           expanded="true"
         ></ui-code-preview>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './dropdown-playground.component.scss',

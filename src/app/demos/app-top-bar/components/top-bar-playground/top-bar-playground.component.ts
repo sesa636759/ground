@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Structure</h3>
@@ -22,7 +24,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="sticky"
                 [(ngModel)]="pgConfig.sticky"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Sticky Position"
               ></app-checkbox>
             </div>
@@ -50,9 +52,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="top-bar-container">
           <ui-top-bar
             [attr.sticky]="pgConfig.sticky ? '' : null"

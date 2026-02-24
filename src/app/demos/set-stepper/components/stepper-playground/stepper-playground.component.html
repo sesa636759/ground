@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.mode"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: 'horizontal' },
             { label: 'Vertical', value: 'vertical' },
@@ -18,7 +20,7 @@
         <app-input
           type="number"
           [(ngModel)]="pgConfig.activeStep"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           min="0"
           max="4"
         />
@@ -28,7 +30,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Outlined', value: 'outlined' },
@@ -43,7 +45,7 @@
         <label>Color Scheme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.colorScheme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Primary', value: 'primary' },
             { label: 'Success', value: 'success' },
@@ -58,7 +60,7 @@
         <label>Label Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.labelPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Bottom', value: 'bottom' },
             { label: 'Top', value: 'top' },
@@ -71,7 +73,7 @@
         <label>Description Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.descriptionPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Right', value: 'right' },
             { label: 'Left', value: 'left' },
@@ -83,28 +85,30 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showContentArea" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showContentArea" (ngModelChange)="updateConfig()" />
         Content Area
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showNavigation" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showNavigation" (ngModelChange)="updateConfig()" />
         Navigation buttons
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.clickable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Progress
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (change)="updateConfig()" /> Compact
+        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -155,6 +159,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

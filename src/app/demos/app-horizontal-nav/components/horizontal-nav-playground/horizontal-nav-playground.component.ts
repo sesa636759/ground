@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Appearance</h3>
@@ -24,7 +26,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Theme</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
               ></ui-dropdown>
             </div>
@@ -32,7 +34,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="sticky"
                 [(ngModel)]="pgConfig.sticky"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Sticky Position"
               ></app-checkbox>
             </div>
@@ -44,7 +46,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Icons"
               ></app-checkbox>
             </div>
@@ -64,9 +66,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="nav-wrapper">
           <ui-horizontal-nav
             [attr.theme]="pgConfig.theme"

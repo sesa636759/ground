@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Layout</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.layout"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Standard Tree', value: 'tree' },
             { label: 'Org Chart', value: 'org-chart' },
@@ -17,7 +19,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Bordered', value: 'bordered' },
@@ -32,7 +34,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -45,7 +47,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
@@ -57,7 +59,7 @@
         <label>Orientation</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.orientation"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Vertical', value: 'vertical' },
             { label: 'Horizontal', value: 'horizontal' },
@@ -67,17 +69,17 @@
 
       <div class="control-group">
         <label>Indent (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.indent" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.indent" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Connector Width</label>
-        <app-input type="number" [(ngModel)]="pgConfig.connectorWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.connectorWidth" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Connector Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.connectorColor" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.connectorColor" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -88,45 +90,45 @@
           min="0"
           max="1"
           [(ngModel)]="pgConfig.connectorOpacity"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLines" (change)="updateConfig()" /> Lines
+        <app-checkbox [(ngModel)]="pgConfig.showLines" (ngModelChange)="updateConfig()" /> Lines
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()" /> Icons
+        <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Icons
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.expandable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.expandable" (ngModelChange)="updateConfig()" />
         Expandable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
         Selectable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()" />
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.checkboxes" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.checkboxes" (ngModelChange)="updateConfig()" />
         Checkboxes
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.searchable" (change)="updateConfig()" /> Search
+        <app-checkbox [(ngModel)]="pgConfig.searchable" (ngModelChange)="updateConfig()" /> Search
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGlow" (change)="updateConfig()" /> Glow
+        <app-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.enableDrag" (change)="updateConfig()" /> Drag & Drop
+        <app-checkbox [(ngModel)]="pgConfig.enableDrag" (ngModelChange)="updateConfig()" /> Drag & Drop
       </label>
     </div>
 
@@ -144,6 +146,8 @@
         label="Collapse All"
       ></ui-button>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview" [style.background]="pgConfig.theme === 'dark' ? '#0f172a' : ''">
@@ -184,12 +188,14 @@
       </app-tree>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

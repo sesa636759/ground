@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Features</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="paginator"
                 [(ngModel)]="pgConfig.paginator"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Enable Paginator"
               ></app-checkbox>
             </div>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="sorting"
                 [(ngModel)]="pgConfig.sorting"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Enable Sorting"
               ></app-checkbox>
             </div>
@@ -34,7 +36,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="filtering"
                 [(ngModel)]="pgConfig.filtering"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Global Filtering"
               ></app-checkbox>
             </div>
@@ -50,7 +52,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="responsive"
                 [(ngModel)]="pgConfig.responsive"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Responsive Layout"
               ></app-checkbox>
             </div>
@@ -60,8 +62,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
-      <div class="playground-preview">
+            </div>
+    </ui-accordion>
+  </div>
+
+  <div class="playground-preview">
         <div class="table-container">
           <ui-advanced-data-table
             [attr.paginator]="pgConfig.paginator ? '' : null"
@@ -73,7 +78,9 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </ui-advanced-data-table>
         </div>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -82,7 +89,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './advanced-data-table-playground.component.scss',

@@ -1,5 +1,7 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
       <div slot="content-global" class="control-grid">
         <div class="control-group">
@@ -293,6 +295,8 @@
         </div>
       </div>
     </ui-accordion>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -330,14 +334,16 @@
     </div>
 
     <!-- ui-code-preview is a Stencil web component; wrap with *ngIf to force full re-mount on each update -->
-    <ui-code-preview
+    
+
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode"
       label="Generated Code"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-  </div>
+    </div>
 </div>

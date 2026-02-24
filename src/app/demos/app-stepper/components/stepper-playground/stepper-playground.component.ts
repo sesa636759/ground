@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -34,7 +36,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -46,7 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showNumbers"
                 [(ngModel)]="pgConfig.showNumbers"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Numbers"
               ></app-checkbox>
             </div>
@@ -54,7 +56,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showDesc"
                 [(ngModel)]="pgConfig.showDescriptions"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Descriptions"
               ></app-checkbox>
             </div>
@@ -62,7 +64,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="dot"
                 [(ngModel)]="pgConfig.progressDot"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Progress Dot"
               ></app-checkbox>
             </div>
@@ -92,9 +94,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-stepper
           [attr.orientation]="pgConfig.orientation"
           [attr.size]="pgConfig.size"

@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Trigger</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.trigger"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Right Click', value: 'rightClick' },
             { label: 'Click', value: 'click' },
@@ -18,7 +20,7 @@
         <label>Animation Type</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.animationType"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Slide', value: 'slide' },
             { label: 'Zoom', value: 'zoom' },
@@ -31,7 +33,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Glass', value: 'glass' },
@@ -41,63 +43,65 @@
 
       <div class="control-group">
         <label>Min Width</label>
-        <app-input type="text" [(ngModel)]="pgConfig.minWidth" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.minWidth" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Max Height</label>
-        <app-input type="text" [(ngModel)]="pgConfig.maxHeight" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.maxHeight" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Backdrop Blur</label>
-        <app-input type="text" [(ngModel)]="pgConfig.backdropBlur" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.backdropBlur" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.searchable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.searchable" (ngModelChange)="updateConfig()" />
         Searchable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.staggered" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.staggered" (ngModelChange)="updateConfig()" />
         Staggered
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.backdrop" (change)="updateConfig()" /> Backdrop
+        <app-checkbox [(ngModel)]="pgConfig.backdrop" (ngModelChange)="updateConfig()" /> Backdrop
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.commandPalette" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.commandPalette" (ngModelChange)="updateConfig()" />
         Palette Mode
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()" />
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGroups" (change)="updateConfig()" /> Groups
+        <app-checkbox [(ngModel)]="pgConfig.showGroups" (ngModelChange)="updateConfig()" /> Groups
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.closeOnSelect" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.closeOnSelect" (ngModelChange)="updateConfig()" />
         Close On Select
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.reflection" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.reflection" (ngModelChange)="updateConfig()" />
         Reflection
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.highlightSearch" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.highlightSearch" (ngModelChange)="updateConfig()" />
         Highlight Search
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.keyboardNavigation" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.keyboardNavigation" (ngModelChange)="updateConfig()" />
         Keyboard Navigation
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview" [class.glass-bg]="pgConfig.variant === 'glass'">
@@ -142,13 +146,15 @@
       </app-context-menu>
     </div>
 
-    <ui-code-preview
+    
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-  </div>
+    </div>
 </div>

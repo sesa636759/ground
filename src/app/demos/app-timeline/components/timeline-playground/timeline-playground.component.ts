@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="[
                   { label: 'Horizontal', value: 'horizontal' },
                   { label: 'Vertical', value: 'vertical' },
@@ -29,7 +31,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Alignment</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.align"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="[
                   { label: 'Left', value: 'left' },
                   { label: 'Right', value: 'right' },
@@ -45,7 +47,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="opposite"
                 [(ngModel)]="pgConfig.showOpposite"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
               />
               <label for="opposite">Show Opposite Side</label>
             </div>
@@ -53,22 +55,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="customMarker"
                 [(ngModel)]="pgConfig.customMarker"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
               />
               <label for="customMarker">Custom Markers</label>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -79,9 +73,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="timeline-container">
           <ui-timeline
             [attr.orientation]="pgConfig.orientation"
@@ -101,7 +97,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </ng-template>
           </ui-timeline>
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './timeline-playground.component.scss',

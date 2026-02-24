@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Value Control</h3>
@@ -58,7 +60,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="readonly"
                 [(ngModel)]="pgConfig.readonly"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Readonly"
               ></app-checkbox>
             </div>
@@ -66,22 +68,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showValue"
                 [(ngModel)]="pgConfig.showValue"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Value"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -92,9 +86,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-knob
           [attr.value]="pgConfig.value"
           [attr.min]="pgConfig.min"
@@ -111,7 +107,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div style="margin-top: 16px; font-weight: 600; color: var(--text-primary);">
           Value: {{ pgConfig.value }}
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './knob-playground.component.scss',

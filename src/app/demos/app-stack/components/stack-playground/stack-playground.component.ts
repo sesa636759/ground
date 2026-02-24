@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Layout -->
           <div class="control-section">
@@ -90,15 +92,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -109,9 +103,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-stack
           [attr.direction]="pgConfig.direction"
           [attr.spacing]="pgConfig.spacing"
@@ -124,7 +120,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         >
           <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
         </ui-stack>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './stack-playground.component.scss',

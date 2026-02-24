@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -24,7 +26,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
@@ -32,7 +34,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Label Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.labelOrientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="labelOrientationOptions"
               ></ui-dropdown>
             </div>
@@ -40,7 +42,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Label Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.labelPosition"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="labelPositionOptions"
               ></ui-dropdown>
             </div>
@@ -60,7 +62,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showLabels"
                 [(ngModel)]="pgConfig.showLabels"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Labels"
               ></app-checkbox>
             </div>
@@ -68,22 +70,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showMarkers"
                 [(ngModel)]="pgConfig.showMarkers"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Markers"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -94,9 +88,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div
           class="meter-wrapper"
           [style.height]="pgConfig.orientation === 'vertical' ? '300px' : 'auto'"
@@ -111,7 +107,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             [values]="valuesJson"
           ></ui-meter-group>
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './meter-group-playground.component.scss',

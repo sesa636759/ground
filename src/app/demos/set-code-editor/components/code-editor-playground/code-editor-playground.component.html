@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Dark (VS Code)', value: 'vs-dark' },
             { label: 'Light (VS Code)', value: 'vs-light' },
@@ -32,7 +34,7 @@
         <label>Label Display</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.labelDisplay"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Always', value: 'always' },
             { label: 'Hover', value: 'hover' },
@@ -46,7 +48,7 @@
         <app-input
           type="text"
           [(ngModel)]="pgConfig.height"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           placeholder="400px"
         />
       </div>
@@ -54,15 +56,17 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.toolbar" (change)="updateConfig()" /> Show Toolbar
+        <app-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show Toolbar
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.lineNumbers" (change)="updateConfig()" /> Line Numbers
+        <app-checkbox [(ngModel)]="pgConfig.lineNumbers" (ngModelChange)="updateConfig()" /> Line Numbers
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Read Only
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Read Only
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -90,6 +94,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

@@ -19,6 +19,8 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Basic Settings -->
           <div class="control-section">
@@ -56,7 +58,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Type</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.type"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="typeOptions"
               ></ui-dropdown>
             </div>
@@ -64,7 +66,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -72,7 +74,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -80,7 +82,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Theme</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
               ></ui-dropdown>
             </div>
@@ -88,7 +90,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -100,56 +102,56 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.keyboardNav"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Keyboard Nav"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.responsiveMode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Responsive"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.rtl"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="RTL Mode"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showFirstLast"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show First/Last"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showPageSize"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Page Size"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showTotal"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Total"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.showJumpTo"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Jump To"
               ></app-checkbox>
             </div>
             <div class="checkbox-group">
               <app-checkbox
                 [(ngModel)]="pgConfig.iconOnly"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Icon Only"
               ></app-checkbox>
             </div>
@@ -169,9 +171,11 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-pagination
           [attr.total-items]="pgConfig.totalItems"
           [attr.items-per-page]="pgConfig.itemsPerPage"

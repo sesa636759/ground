@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Orientation</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.orientation"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Vertical', value: 'vertical' },
             { label: 'Horizontal', value: 'horizontal' },
@@ -17,7 +19,7 @@
         <label>Align</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.align"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Left', value: 'left' },
             { label: 'Right', value: 'right' },
@@ -31,7 +33,7 @@
         <label>Icon Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.iconPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Top', value: 'top' },
             { label: 'Center', value: 'center' },
@@ -44,7 +46,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Outlined', value: 'outlined' },
@@ -59,7 +61,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
@@ -69,29 +71,31 @@
 
       <div class="control-group">
         <label>Line Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.lineColor" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animateOnScroll" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.animateOnScroll" (ngModelChange)="updateConfig()" />
         Animate on Scroll
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (change)="updateConfig()" /> Compact
+        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.clickable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLine" (change)="updateConfig()" /> Show Line
+        <app-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.wrap" (change)="updateConfig()" /> Wrap (Snake Layout)
+        <app-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake Layout)
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -122,6 +126,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

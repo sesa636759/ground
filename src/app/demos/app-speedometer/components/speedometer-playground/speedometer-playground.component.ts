@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Metric</h3>
@@ -50,22 +52,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Color Mode</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.colorMode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="colorModeOptions"
               ></ui-dropdown>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -76,9 +70,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-speedometer
           [attr.value]="pgConfig.value"
           [attr.min]="pgConfig.min"
@@ -88,7 +84,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.arc-width]="pgConfig.arcWidth"
           [attr.color-mode]="pgConfig.colorMode"
         ></ui-speedometer>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './speedometer-playground.component.scss',

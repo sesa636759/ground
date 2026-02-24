@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Layout</h3>
@@ -18,7 +20,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Theme</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
               ></ui-dropdown>
             </div>
@@ -38,7 +40,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showIcons"
                 [(ngModel)]="pgConfig.showIcons"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Icons"
               ></app-checkbox>
             </div>
@@ -46,7 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="allowBranching"
                 [(ngModel)]="pgConfig.allowBranching"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Allow Branching"
               ></app-checkbox>
             </div>
@@ -66,9 +68,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="stepper-container">
           <ui-smart-stepper
             [attr.orientation]="pgConfig.orientation"

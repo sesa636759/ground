@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.position"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Left', value: 'left' },
             { label: 'Right', value: 'right' },
@@ -17,7 +19,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Floating', value: 'floating' },
@@ -29,26 +31,28 @@
 
       <div class="control-group">
         <label>Width</label>
-        <app-input type="text" [(ngModel)]="pgConfig.width" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
         Collapsible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsed" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsed" (ngModelChange)="updateConfig()" />
         Collapsed
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showBackdrop" (change)="updateConfig()" /> Show Backdrop
+        <app-checkbox [(ngModel)]="pgConfig.showBackdrop" (ngModelChange)="updateConfig()" /> Show Backdrop
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.overlay" (change)="updateConfig()" /> Overlay
+        <app-checkbox [(ngModel)]="pgConfig.overlay" (ngModelChange)="updateConfig()" /> Overlay
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -74,6 +78,8 @@
       <div class="content-placeholder">Main Content Area</div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

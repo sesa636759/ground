@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Type</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.type"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Line', value: 'line' },
             { label: 'Circle', value: 'circle' },
@@ -18,7 +20,7 @@
         <label>Status</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.status"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Normal', value: 'normal' },
             { label: 'Active', value: 'active' },
@@ -35,13 +37,13 @@
           min="0"
           max="100"
           [(ngModel)]="pgConfig.percent"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
       <div class="control-group">
         <label>Stroke Width</label>
-        <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -49,21 +51,21 @@
         <app-input
           type="number"
           [(ngModel)]="pgConfig.width"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type === 'line'"
         />
       </div>
 
       <div class="control-group">
         <label>Steps</label>
-        <app-input type="number" [(ngModel)]="pgConfig.steps" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.steps" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Linecap</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.strokeLinecap"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Round', value: 'round' },
             { label: 'Square', value: 'square' },
@@ -78,7 +80,7 @@
           min="0"
           max="360"
           [(ngModel)]="pgConfig.gapDegree"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type !== 'dashboard'"
         />
       </div>
@@ -87,7 +89,7 @@
         <label>Gap Pos (Dash)</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.gapPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type !== 'dashboard'"
           [options]="[
             { label: 'Top', value: 'top' },
@@ -100,33 +102,35 @@
 
       <div class="control-group">
         <label>Stroke Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.strokeColor" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.strokeColor" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Trail Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.trailColor" (input)="updateConfig()" />
+        <app-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showInfo" (change)="updateConfig()" /> Show Info
+        <app-checkbox [(ngModel)]="pgConfig.showInfo" (ngModelChange)="updateConfig()" /> Show Info
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.indeterminate" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.indeterminate" (ngModelChange)="updateConfig()" />
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.liquid" (change)="updateConfig()" /> Liquid
+        <app-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()" /> Liquid
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glass" (change)="updateConfig()" /> Glass
+        <app-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glow" (change)="updateConfig()" /> Glow
+        <app-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()" /> Glow
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -153,12 +157,14 @@
       </div>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

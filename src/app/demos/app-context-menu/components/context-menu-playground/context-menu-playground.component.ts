@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3>Visuals</h3>
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="autoZIndex"
                 [(ngModel)]="pgConfig.autoZIndex"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Auto Z-Index"
               ></app-checkbox>
             </div>
@@ -48,9 +50,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
         <div class="action-buttons">
           <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="context-target" #target>Right click me to see the menu</div>
         <ui-context-menu
           [attr.breakpoint]="pgConfig.breakpoint"
@@ -67,7 +71,9 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           Last Action: <strong>{{ lastAction }}</strong>
         </div>
 
-        <div class="code-output">
+        
+      
+      <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -75,7 +81,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-      </div>
+    </div>
     </div>
   `,
   styleUrl: './context-menu-playground.component.scss',

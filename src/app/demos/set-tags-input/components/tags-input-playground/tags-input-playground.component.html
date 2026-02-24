@@ -1,21 +1,23 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Placeholder</label>
-        <app-input type="text" [(ngModel)]="pgConfig.placeholder" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -28,7 +30,7 @@
         <label>Color</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.color"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Primary', value: 'primary' },
             { label: 'Secondary', value: 'secondary' },
@@ -44,7 +46,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Outlined', value: 'outlined' },
@@ -60,37 +62,39 @@
           min="1"
           max="20"
           [(ngModel)]="pgConfig.maxTags"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.enableAutocomplete" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.enableAutocomplete" (ngModelChange)="updateConfig()" />
         Autocomplete
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.allowDuplicates" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.allowDuplicates" (ngModelChange)="updateConfig()" />
         Allow Duplicates
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.caseSensitive" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.caseSensitive" (ngModelChange)="updateConfig()" />
         Case Sensitive
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
+        <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
+        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -121,6 +125,8 @@
       ></app-tags-input>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

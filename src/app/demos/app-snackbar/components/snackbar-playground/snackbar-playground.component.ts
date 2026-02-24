@@ -18,6 +18,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Global Config -->
           <div class="control-section">
@@ -26,7 +28,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.position"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="positionOptions"
               ></ui-dropdown>
             </div>
@@ -42,7 +44,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Stack Mode</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.stackMode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="stackModeOptions"
               ></ui-dropdown>
             </div>
@@ -50,7 +52,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Open Mode</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.openMode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="openModeOptions"
               ></ui-dropdown>
             </div>
@@ -58,7 +60,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="cardStack"
                 [(ngModel)]="pgConfig.cardStack"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Card Stacking"
               ></app-checkbox>
             </div>
@@ -86,15 +88,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            [label]="'Generated Code'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -105,9 +99,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-snackbar
           #snackbar
           icon-library="lucide"
@@ -130,7 +126,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           (click)="clearAll()"
           label="Clear All"
         ></ui-button>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            [label]="'Generated Code'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './snackbar-playground.component.scss',

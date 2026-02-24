@@ -1,15 +1,17 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
       <div slot="content-global" class="control-grid" style="padding: 16px">
         <div class="control-group">
           <label>Label</label>
-          <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
         </div>
 
         <div class="control-group">
           <label>Helper Text</label>
-          <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
         </div>
 
         <div class="control-group">
@@ -17,7 +19,7 @@
           <app-input
             type="number"
             [(ngModel)]="pgConfig.length"
-            (input)="updateConfig()"
+            (ngModelChange)="updateConfig()"
             min="1"
             max="10"
           />
@@ -71,7 +73,7 @@
           <app-input
             type="number"
             [(ngModel)]="pgConfig.groupSize"
-            (input)="updateConfig()"
+            (ngModelChange)="updateConfig()"
             min="0"
             max="5"
           />
@@ -79,7 +81,7 @@
 
         <div class="control-group" *ngIf="pgConfig.invalid">
           <label>Error Text</label>
-          <app-input type="text" [(ngModel)]="pgConfig.errorText" (input)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()" />
         </div>
       </div>
 
@@ -99,6 +101,8 @@
           </label>
         </div>
       </div>
+    </ui-accordion>
+        </div>
     </ui-accordion>
   </div>
 
@@ -124,18 +128,20 @@
       </div>
     </div>
 
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+    
     <div class="event-log-container">
       <strong>Event Log</strong>
       <div class="log-items">
         <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
       </div>
     </div>
-  </div>
+  
+      <ui-code-preview
+      *ngIf="showCode"
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+    </div>
 </div>

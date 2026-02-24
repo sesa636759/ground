@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Segmented', value: 'segmented' },
@@ -19,7 +21,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -32,7 +34,7 @@
         <label>Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.position"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Inline', value: 'inline' },
             { label: 'Fixed Top', value: 'fixed-top' },
@@ -49,23 +51,25 @@
           max="1000"
           step="50"
           [(ngModel)]="pgConfig.animationDuration"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()" /> Show Icons
+        <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show Icons
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLabels" (change)="updateConfig()" /> Show Labels
+        <app-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show Labels
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />
         Enable Animation
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -89,6 +93,8 @@
       ></app-theme-switcher>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

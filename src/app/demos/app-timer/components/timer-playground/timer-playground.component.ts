@@ -11,6 +11,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-section">
             <h3 class="section-title">
@@ -29,7 +31,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Mode</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.mode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="modeOptions"
               ></ui-dropdown>
             </div>
@@ -44,7 +46,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Format</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.format"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="formatOptions"
               ></ui-dropdown>
             </div>
@@ -52,22 +54,14 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="autoStart"
                 [(ngModel)]="pgConfig.autoStart"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Auto Start"
               ></app-checkbox>
             </div>
           </div>
         </div>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" variant="primary" label="Copy Implementation"></ui-button>
@@ -77,9 +71,11 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             label="Reset Configuration"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <div class="timer-preview-card">
           <ui-timer
             #timerEl
@@ -110,7 +106,17 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             ></ui-button>
           </div>
         </div>
-      </div>
+      
+      <div class="code-output">
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </div>
+    </div>
     </div>
   `,
   styleUrl: './timer-playground.component.scss',

@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.mode"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="modeOptions"
         ></ui-dropdown>
       </div>
@@ -14,7 +16,7 @@
         <label>Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.position"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="positionOptions"
         ></ui-dropdown>
       </div>
@@ -23,7 +25,7 @@
         <label>Alignment</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.alignment"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="alignmentOptions"
         ></ui-dropdown>
       </div>
@@ -32,7 +34,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="sizeOptions"
         ></ui-dropdown>
       </div>
@@ -41,7 +43,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="themeOptions"
         ></ui-dropdown>
       </div>
@@ -50,14 +52,14 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Scroll Offset</label>
-        <app-input type="number" [(ngModel)]="pgConfig.scrollOffset" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.scrollOffset" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Number Style</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.numberStyle"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [disabled]="!pgConfig.showNumbers"
           [options]="numberStyleOptions"
         ></ui-dropdown>
@@ -68,53 +70,55 @@
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showTooltip"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Show Tooltip"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showIndicator"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Show Indicator"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showProgress"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Show Progress"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showNumbers"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Show Numbers"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.sticky"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Sticky"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.smoothScroll"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Smooth Scroll"
         ></app-checkbox>
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.affix"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Affix"
         ></app-checkbox>
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -205,6 +209,8 @@
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-  </div>
+    
+  
+      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    </div>
 </div>

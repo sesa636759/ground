@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Direction</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.direction"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: 'horizontal' },
             { label: 'Vertical', value: 'vertical' },
@@ -17,7 +19,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
@@ -27,35 +29,37 @@
 
       <div class="control-group">
         <label>Handle Size (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.handleSize" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.handleSize" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Snap Threshold (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.snapThreshold" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.snapThreshold" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showHandleIcon" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showHandleIcon" (ngModelChange)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.snapToEdge" (change)="updateConfig()" /> Snap to Edge
+        <app-checkbox [(ngModel)]="pgConfig.snapToEdge" (ngModelChange)="updateConfig()" /> Snap to Edge
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible1" (change)="updateConfig()" /> P1
+        <app-checkbox [(ngModel)]="pgConfig.collapsible1" (ngModelChange)="updateConfig()" /> P1
         Collapsible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible3" (change)="updateConfig()" /> P3
+        <app-checkbox [(ngModel)]="pgConfig.collapsible3" (ngModelChange)="updateConfig()" /> P3
         Collapsible
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -95,12 +99,14 @@
       </app-resizable-panel>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

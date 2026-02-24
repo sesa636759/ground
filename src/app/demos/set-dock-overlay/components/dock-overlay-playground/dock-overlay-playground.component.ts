@@ -17,12 +17,14 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <div class="control-group">
             <label>Position</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.position"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Top', value: 'top' },
                 { label: 'Bottom', value: 'bottom' },
@@ -35,7 +37,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <label>Mode</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.mode"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Docked', value: 'docked' },
                 { label: 'Floating', value: 'floating' },
@@ -47,7 +49,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             <label>Variant</label>
             <ui-dropdown
               [(ngModel)]="pgConfig.variant"
-              (change)="updateConfig()"
+              (ngModelChange)="updateConfig()"
               [options]="[
                 { label: 'Default', value: 'default' },
                 { label: 'Glass', value: 'glass' },
@@ -57,20 +59,23 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         </div>
         <div class="checkbox-grid">
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.resizable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" />
             Resizable
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.draggable" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
             Draggable
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
+            <app-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
             Collapsible
           </label>
         </div>
-      </div>
-      <div class="playground-preview">
+            </div>
+    </ui-accordion>
+  </div>
+
+  <div class="playground-preview">
         <div class="event-log-container">
           <strong>Event Log</strong>
           <div class="log-items">

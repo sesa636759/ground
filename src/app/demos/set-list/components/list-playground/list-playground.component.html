@@ -1,11 +1,13 @@
 <div class="playground-layout">
   <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Text', value: 'text' },
             { label: 'Filled', value: 'filled' },
@@ -19,7 +21,7 @@
         <label>Color</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.color"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Primary', value: 'primary' },
             { label: 'Secondary', value: 'secondary' },
@@ -35,7 +37,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Small', value: 'small' },
             { label: 'Medium', value: 'medium' },
@@ -46,65 +48,67 @@
 
       <div class="control-group">
         <label>Item Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemLabel" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Sublabel</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemSublabel" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Icon (FA Class)</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemIcon" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Action Icon</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemActionIcon" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.itemActionIcon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Badge Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemBadge" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
       </div>
       <div class="control-group">
         <label>Counter Value</label>
-        <app-input type="number" [(ngModel)]="pgConfig.itemCounter" (input)="updateConfig()" />
+        <app-input type="number" [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.dense" (change)="updateConfig()" /> Dense
+        <app-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.dividers" (change)="updateConfig()" /> Dividers
+        <app-checkbox [(ngModel)]="pgConfig.dividers" (ngModelChange)="updateConfig()" /> Dividers
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.flush" (change)="updateConfig()" /> Flush
+        <app-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()" /> Flush
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.horizontal" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.horizontal" (ngModelChange)="updateConfig()" />
         Horizontal
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.numbered" (change)="updateConfig()" /> Numbered
+        <app-checkbox [(ngModel)]="pgConfig.numbered" (ngModelChange)="updateConfig()" /> Numbered
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.grouped" (change)="updateConfig()" /> Grouped
+        <app-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" /> Grouped
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
         Selectable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (change)="updateConfig()" /> Rounded
+        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (change)="updateConfig()" /> Elevated
+        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
     </div>
+        </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -161,12 +165,14 @@
       </div>
     </div>
 
-    <ui-code-preview
+    
+  
+      <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-  </div>
+    </div>
 </div>

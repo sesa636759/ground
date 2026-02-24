@@ -17,6 +17,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
+    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+      <div slot="content-config">
         <div class="control-grid">
           <!-- Header -->
           <div class="control-section">
@@ -45,7 +47,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showClose"
                 [(ngModel)]="pgConfig.showClose"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Close"
               ></app-checkbox>
             </div>
@@ -53,7 +55,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="showSettings"
                 [(ngModel)]="pgConfig.showSettings"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Settings"
               ></app-checkbox>
             </div>
@@ -66,7 +68,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -74,7 +76,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Theme</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.theme"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
               ></ui-dropdown>
             </div>
@@ -82,7 +84,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="glass"
                 [(ngModel)]="pgConfig.glass"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Glassmorphism"
               ></app-checkbox>
             </div>
@@ -90,7 +92,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="noPadding"
                 [(ngModel)]="pgConfig.noPadding"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="No Padding"
               ></app-checkbox>
             </div>
@@ -103,7 +105,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="toggleable"
                 [(ngModel)]="pgConfig.toggleable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Toggleable"
               ></app-checkbox>
             </div>
@@ -111,7 +113,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="minimizable"
                 [(ngModel)]="pgConfig.minimizable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Minimizable"
               ></app-checkbox>
             </div>
@@ -119,7 +121,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="maximizable"
                 [(ngModel)]="pgConfig.maximizable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Maximizable"
               ></app-checkbox>
             </div>
@@ -127,7 +129,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="isDraggable"
                 [(ngModel)]="pgConfig.isDraggable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Draggable"
               ></app-checkbox>
             </div>
@@ -135,7 +137,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Resizable"
               ></app-checkbox>
             </div>
@@ -143,7 +145,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Loading State"
               ></app-checkbox>
             </div>
@@ -159,9 +161,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             label="Reset"
           ></ui-button>
         </div>
-      </div>
+            </div>
+    </ui-accordion>
+  </div>
 
-      <div class="playground-preview">
+  <div class="playground-preview">
         <ui-panel
           [attr.panel-title]="pgConfig.panelTitle"
           [attr.panel-subtitle]="pgConfig.panelSubtitle"
@@ -193,13 +197,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </ui-panel>
 
-        <ui-code-preview
-          *ngIf="showCode"
-          [htmlCode]="generatedCode()"
-          [label]="'Generated Code'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
+        
 
         <div class="event-log">
           <div class="log-title">Event Tracker</div>
@@ -211,7 +209,15 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             Interact with the panel to see events...
           </div>
         </div>
-      </div>
+      
+      <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+    </div>
     </div>
   `,
   styleUrl: './panel-playground.component.scss',
