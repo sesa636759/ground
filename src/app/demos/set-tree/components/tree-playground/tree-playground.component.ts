@@ -6,6 +6,7 @@
   ViewChild,
   ElementRef,
   ViewEncapsulation,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -93,9 +94,21 @@ export class TreePlaygroundComponent implements OnInit {
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -124,6 +137,7 @@ export class TreePlaygroundComponent implements OnInit {
     code += `  [data]="treeData"\n`;
     code += `></app-tree>`;
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   logEvent(msg: string) {

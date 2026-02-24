@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -61,6 +61,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
         <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
@@ -134,9 +135,19 @@ export class TimerPlaygroundComponent {
   ];
 
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   timerStart(el: HTMLElement): void {
@@ -162,6 +173,7 @@ export class TimerPlaygroundComponent {
     code += '></ui-timer>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {
