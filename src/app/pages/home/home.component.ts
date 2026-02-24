@@ -57,12 +57,18 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
           <app-animate-on-scroll animation="slide-up" [delay]="300">
             <div class="hero-actions">
-              <ui-button variant="primary" class="btn-primary" (click)="navigateTo('overview')" label="Explore Components"></ui-button>
+              <ui-button
+                variant="primary"
+                class="btn-primary"
+                (click)="navigateTo('overview')"
+                label="Explore Components"
+              ></ui-button>
               <ui-button
                 variant="secondary"
                 class="btn-secondary"
                 (click)="navigateTo('documentation')"
-               label="View Documentation"></ui-button>
+                label="View Documentation"
+              ></ui-button>
             </div>
           </app-animate-on-scroll>
 
@@ -491,7 +497,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .hero-content {
         position: relative;
         z-index: 1;
-        max-width: 900px;
+        max-width: 90%;
         text-align: center;
       }
 
@@ -879,7 +885,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 30%, transparent) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          color-mix(in srgb, var(--primary) 30%, transparent) 0%,
+          transparent 70%
+        );
         transform: translate(-50%, -50%);
         transition:
           width 0.5s,

@@ -4,6 +4,7 @@
   signal,
   OnInit,
   ViewEncapsulation,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    ],
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './masonry-playground.component.html',
@@ -77,10 +78,22 @@ export class MasonryPlaygroundComponent implements OnInit {
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.playgroundItems = JSON.stringify(this.generateItems(24));
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   generateItems(count: number) {
@@ -132,6 +145,7 @@ export class MasonryPlaygroundComponent implements OnInit {
     code += `></app-masonry>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onItemClick(event: any) {

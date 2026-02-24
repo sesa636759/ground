@@ -1,4 +1,10 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ViewEncapsulation,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -200,6 +206,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
         <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
@@ -247,9 +254,19 @@ export class CardPlaygroundComponent {
 
   menuJson = JSON.stringify(this.menuItems);
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -281,6 +298,7 @@ export class CardPlaygroundComponent {
     code += '</ui-card>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

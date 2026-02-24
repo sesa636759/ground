@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -70,7 +70,13 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         </div>
 
         <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
+          <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
         </div>
 
         <div class="action-buttons">
@@ -134,9 +140,19 @@ export class DockPlaygroundComponent {
   modelJson = JSON.stringify(this.model);
   generatedCode = signal('');
   lastAction = '';
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -161,6 +177,7 @@ export class DockPlaygroundComponent {
     code += '></ui-dock>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   logAction(action: string) {

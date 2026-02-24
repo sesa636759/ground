@@ -163,7 +163,12 @@ import { ThemeService } from '../../services/theme.service';
 
         <div class="current-layout">
           <p>
-            Current Layout: <strong>{{ themeService.navigationLayout() === 'sidebar' ? 'Sidebar Navigation' : 'Top Bar Navigation' }}</strong>
+            Current Layout:
+            <strong>{{
+              themeService.navigationLayout() === 'sidebar'
+                ? 'Sidebar Navigation'
+                : 'Top Bar Navigation'
+            }}</strong>
           </p>
         </div>
       </div>
@@ -173,7 +178,7 @@ import { ThemeService } from '../../services/theme.service';
     `
       .theme-selector {
         padding: 40px;
-        max-width: 900px;
+        max-width: 90%;
         margin: 0 auto;
 
         h2 {
@@ -300,7 +305,7 @@ import { ThemeService } from '../../services/theme.service';
                 background: #f0fdf4;
 
                 .preview-header {
-                  background: #3DCD58;
+                  background: #3dcd58;
                 }
                 .preview-sidebar {
                   background: #34d399;
