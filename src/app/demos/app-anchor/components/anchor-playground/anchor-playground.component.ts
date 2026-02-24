@@ -27,8 +27,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     <div class="playground-layout">
       <div class="playground-controls">
         <ui-accordion
-          [items]="[{ id: 'config', title: 'Configuration', icon: '⚙️' }]"
-          default-open='["config"]'
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
           multiple
         >
           <div slot="content-config">
