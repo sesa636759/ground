@@ -1,0 +1,133 @@
+<div class="demo-container">
+  <app-demo-header
+    icon="🥧"
+    title="Pie Chart"
+    description="Circular chart components for visualizing part-to-whole relationships. Supports pie, doughnut, polar area, and multi-ring variants with rich customization."
+  ></app-demo-header>
+
+  <demo-tabs>
+    <div slot="playground">
+      <app-pie-chart-playground></app-pie-chart-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+
+        <div class="examples-content">
+
+          <!-- Pie -->
+          <section class="demo-section" id="pie" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🥧 Pie Chart</h2>
+              <p>Classic pie chart showing proportional distribution of categorical values.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 340px; display: flex; justify-content: center;">
+                <app-chart
+                  chartType="pie"
+                  [showLegend]="true"
+                  legendPosition="right"
+                  [responsive]="true"
+                  [data]="pieData"
+                  style="width: 100%; max-width: 520px;"
+                ></app-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="pieCode"
+              [label]="'Pie Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Doughnut -->
+          <section class="demo-section" id="doughnut">
+            <div class="section-header">
+              <h2>🍩 Doughnut Chart</h2>
+              <p>A hollow pie chart — the centre cutout makes it easy to display a summary value.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 340px; display: flex; justify-content: center;">
+                <app-chart
+                  chartType="doughnut"
+                  [showLegend]="true"
+                  legendPosition="right"
+                  [responsive]="true"
+                  [data]="doughnutData"
+                  [options]="doughnutOptions"
+                  style="width: 100%; max-width: 520px;"
+                ></app-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="doughnutCode"
+              [label]="'Doughnut Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Polar Area -->
+          <section class="demo-section" id="polar-area">
+            <div class="section-header">
+              <h2>🌐 Polar Area Chart</h2>
+              <p>Like a pie chart but each segment extends outward proportionally — useful for ranking.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 340px; display: flex; justify-content: center;">
+                <app-chart
+                  chartType="polarArea"
+                  [showLegend]="true"
+                  legendPosition="right"
+                  [responsive]="true"
+                  [data]="polarData"
+                  style="width: 100%; max-width: 520px;"
+                ></app-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="polarCode"
+              [label]="'Polar Area Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Multi Ring -->
+          <section class="demo-section" id="multi-ring">
+            <div class="section-header">
+              <h2>🎯 Multi-Ring Doughnut</h2>
+              <p>Nest multiple datasets to show hierarchical or quarterly breakdowns at a glance.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 340px; display: flex; justify-content: center;">
+                <app-chart
+                  chartType="doughnut"
+                  [showLegend]="true"
+                  legendPosition="bottom"
+                  [responsive]="true"
+                  [data]="multiRingData"
+                  [options]="multiRingOptions"
+                  style="width: 100%; max-width: 520px;"
+                ></app-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="multiRingCode"
+              [label]="'Multi-Ring Doughnut'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <app-component-documentation componentId="pie-chart"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

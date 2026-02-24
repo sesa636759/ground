@@ -1,0 +1,132 @@
+<div class="demo-container">
+  <app-demo-header
+    icon="💹"
+    title="Line Chart"
+    description="A flexible line chart component for visualizing trends over time. Supports single and multi-series data, filled areas, smooth curves, stepped lines, and rich customization options."
+  ></app-demo-header>
+
+  <demo-tabs>
+    <div slot="playground">
+      <app-line-chart-playground></app-line-chart-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+
+        <div class="examples-content">
+
+          <!-- Basic -->
+          <section class="demo-section" id="basic" style="margin-top: 0">
+            <div class="section-header">
+              <h2>💹 Basic Line Chart</h2>
+              <p>A smooth single-series line chart showing monthly revenue trends.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 320px;">
+                <ui-chart
+                  type="line"
+                  show-legend
+                  show-grid
+                  responsive
+                  enable-animation
+                  [data]="basicData"
+                ></ui-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="basicCode"
+              [label]="'Basic Line Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Multi Series -->
+          <section class="demo-section" id="multi-series">
+            <div class="section-header">
+              <h2>📈 Multi Series</h2>
+              <p>Compare multiple metrics side-by-side on the same timeline.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 320px;">
+                <ui-chart
+                  type="line"
+                  show-legend
+                  show-grid
+                  responsive
+                  enable-animation
+                  [data]="multiSeriesData"
+                ></ui-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="multiSeriesCode"
+              [label]="'Multi-Series Line Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Filled Area -->
+          <section class="demo-section" id="filled-area">
+            <div class="section-header">
+              <h2>🎨 Filled Area</h2>
+              <p>Fill the area under the line to emphasize volume or magnitude over time.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 320px;">
+                <ui-chart
+                  type="line"
+                  fill="true"
+                  show-legend
+                  show-grid
+                  responsive
+                  enable-animation
+                  [data]="filledAreaData"
+                ></ui-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="filledAreaCode"
+              [label]="'Filled Area Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Stepped Line -->
+          <section class="demo-section" id="stepped">
+            <div class="section-header">
+              <h2>🪜 Stepped Line</h2>
+              <p>A stepped/staircase style is ideal for discrete state changes over time.</p>
+            </div>
+            <div class="demo-card">
+              <div style="height: 320px;">
+                <ui-chart
+                  type="line"
+                  show-legend
+                  show-grid
+                  responsive
+                  enable-animation
+                  [data]="steppedData"
+                ></ui-chart>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="steppedCode"
+              [label]="'Stepped Line Chart'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <app-component-documentation componentId="line-chart"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

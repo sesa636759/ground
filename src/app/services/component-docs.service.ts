@@ -2992,6 +2992,61 @@ export class ComponentDocsService {
       },
     ],
     [
+      'pie-chart',
+      {
+        id: 'pie-chart',
+        name: 'Pie Chart',
+        shortDescription: 'Circular charts for proportional data — pie, doughnut and polar area',
+        detailedDescription:
+          'Powered by Chart.js, the Pie Chart component renders pie, doughnut, and polar area variants from a single API. Ideal for showing part-to-whole relationships with up to 6 segments.',
+        usage: `<ui-app-chart chartType="pie" showLegend="true" [data]="chartData"></ui-app-chart>`,
+        props: [
+          { name: 'chartType', type: "'pie' | 'doughnut' | 'polarArea'", description: 'Chart variant to render', defaultValue: "'pie'", required: true },
+          { name: 'data', type: 'ChartData | string', description: 'Chart.js data object with labels and datasets', defaultValue: '—', required: true },
+          { name: 'options', type: 'ChartOptions | string', description: 'Chart.js options override (e.g. { cutout: "60%" })', defaultValue: '{}' },
+          { name: 'showLegend', type: "'true' | 'false'", description: 'Toggle legend visibility', defaultValue: "'true'" },
+          { name: 'legendPosition', type: "'top' | 'bottom' | 'left' | 'right'", description: 'Legend placement', defaultValue: "'top'" },
+          { name: 'responsive', type: "'true' | 'false'", description: 'Scale with container', defaultValue: "'true'" },
+          { name: 'chartTitle', type: 'string', description: 'Optional title above the chart', defaultValue: "''" },
+        ],
+        events: [
+          { name: 'chartClick', description: 'Fired when a segment is clicked', payloadType: '{ event, active, data }' },
+        ],
+        limitations: ['Maximum 6 segments recommended for readability', 'Requires Chart.js'],
+        examples: [
+          '<ui-app-chart chartType="pie" showLegend="true" legendPosition="right" [data]="salesData"></ui-app-chart>',
+          '<ui-app-chart chartType="doughnut" showLegend="true" [data]="budgetData" [options]="{ cutout: \'60%\' }"></ui-app-chart>',
+        ],
+      },
+    ],
+    [
+      'waffle-chart',
+      {
+        id: 'waffle-chart',
+        name: 'Waffle Chart',
+        shortDescription: 'Grid-based chart showing part-to-whole percentages',
+        detailedDescription:
+          'A 10×10 CSS grid where each cell represents 1% of the total. Segments are colour-coded and normalised automatically. Supports rounded cells, legend, gap control, hover tooltips, and side-by-side comparison.',
+        usage: `<app-waffle-chart [segments]="segments" [showLegend]="true"></app-waffle-chart>`,
+        props: [
+          { name: 'segments', type: 'WaffleSegment[]', description: 'Array of { label, value, color } objects', defaultValue: '[]', required: true },
+          { name: 'cellSize', type: 'number', description: 'Width/height of each cell in px', defaultValue: '28' },
+          { name: 'gap', type: 'number', description: 'Gap between cells in px', defaultValue: '3' },
+          { name: 'rounded', type: 'boolean', description: 'Apply border-radius to cells', defaultValue: 'true' },
+          { name: 'showLegend', type: 'boolean', description: 'Show colour legend below grid', defaultValue: 'true' },
+          { name: 'emptyColor', type: 'string', description: 'CSS colour for unfilled cells', defaultValue: "'#e5e7eb'" },
+          { name: 'title', type: 'string', description: 'Optional label below the legend', defaultValue: "''" },
+          { name: 'rows', type: 'number', description: 'Grid row count', defaultValue: '10' },
+          { name: 'cols', type: 'number', description: 'Grid column count', defaultValue: '10' },
+        ],
+        events: [],
+        limitations: ['Keep segments ≤ 5 to avoid visual clutter', 'Values are normalised — they do not need to sum to 100'],
+        examples: [
+          '<app-waffle-chart [segments]="[{label:\'Done\',value:72,color:\'#6366f1\'},{label:\'Left\',value:28,color:\'#e5e7eb\'}]" [showLegend]="true"></app-waffle-chart>',
+        ],
+      },
+    ],
+    [
       'bar-chart',
       {
         id: 'bar-chart',

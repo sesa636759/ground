@@ -58,6 +58,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'bar-chart', label: 'Bar Chart', icon: '📉' },
       { id: 'line-chart', label: 'Line Chart', icon: '💹' },
       { id: 'pie-chart', label: 'Pie Chart', icon: '🥧' },
+      { id: 'waffle-chart', label: 'Waffle Chart', icon: '🧇' },
       { id: 'donut-chart', label: 'Donut Chart', icon: '🍩' },
       { id: 'area-chart', label: 'Area Chart', icon: '🏔️' },
     ],
@@ -129,6 +130,9 @@ export const categoryNavItems: NavItem[] = [
     children: [
       { id: 'advanced-data-table', label: 'Advanced Table', icon: '🗄️' },
       { id: 'bar-chart', label: 'Bar Chart', icon: '📶' },
+      { id: 'line-chart', label: 'Line Chart', icon: '💹' },
+      { id: 'pie-chart', label: 'Pie Chart', icon: '🥧' },
+      { id: 'waffle-chart', label: 'Waffle Chart', icon: '🧇' },
       { id: 'chart', label: 'Charts', icon: '📊' },
       { id: 'knob', label: 'Knob', icon: '🎛️' },
       { id: 'list-set', label: 'List Set', icon: '📜' },

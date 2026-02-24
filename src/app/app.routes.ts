@@ -777,6 +777,27 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'line-chart',
+        loadComponent: () =>
+          import('./demos/app-line-chart/app-line-chart-demo.component').then(
+            (m) => m.AppLineChartDemoComponent,
+          ),
+      },
+      {
+        path: 'pie-chart',
+        loadComponent: () =>
+          import('./demos/app-pie-chart/app-pie-chart-demo.component').then(
+            (m) => m.AppPieChartDemoComponent,
+          ),
+      },
+      {
+        path: 'waffle-chart',
+        loadComponent: () =>
+          import('./demos/app-waffle-chart/app-waffle-chart-demo.component').then(
+            (m) => m.AppWaffleChartDemoComponent,
+          ),
+      },
+      {
         path: 'chart',
         loadComponent: () =>
           import('./demos/app-chart/app-chart-demo.component').then((m) => m.AppChartDemoComponent),
