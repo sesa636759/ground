@@ -790,13 +790,13 @@ export const routes: Routes = [
             (m) => m.AppPieChartDemoComponent,
           ),
       },
-      // {
-      //   path: 'waffle-chart',
-      //   loadComponent: () =>
-      //     import('./demos/app-waffle-chart/app-waffle-chart-demo.component').then(
-      //       (m) => m.AppWaffleChartDemoComponent,
-      //     ),
-      // },
+      {
+        path: 'waffle-chart',
+        loadComponent: () =>
+          import('./demos/app-waffle-chart/app-waffle-chart-demo.component').then(
+            (m) => m.AppWaffleChartDemoComponent,
+          ),
+      },
       {
         path: 'chart',
         loadComponent: () =>

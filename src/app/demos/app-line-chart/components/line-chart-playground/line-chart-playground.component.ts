@@ -1,8 +1,8 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-line-chart-playground',
@@ -10,8 +10,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   imports: [
     CommonModule,
     FormsModule,
-    AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
@@ -31,39 +31,27 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                     [options]="datasetOptions"
                   ></ui-dropdown>
                 </div>
-                <div class="control-group">
-                  <label>Curve Style</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.curveStyle"
-                    (ngModelChange)="updateConfig()"
-                    [options]="curveOptions"
-                  ></ui-dropdown>
-                </div>
               </div>
 
               <div class="control-section">
                 <h3>🎨 Appearance</h3>
                 <div class="control-group">
-                  <label>Legend Position</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.legendPosition"
-                    (ngModelChange)="updateConfig()"
-                    [options]="legendPositionOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Point Radius</label>
-                  <input type="range" min="0" max="8" step="1"
-                    [(ngModel)]="pgConfig.pointRadius"
-                    (ngModelChange)="updateConfig()" />
-                  <span style="font-size:0.8rem;color:var(--text-secondary)">{{ pgConfig.pointRadius }}px</span>
-                </div>
-                <div class="control-group">
-                  <label>Line Width</label>
+                  <label>Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label>
                   <input type="range" min="1" max="6" step="1"
-                    [(ngModel)]="pgConfig.lineWidth"
+                    [(ngModel)]="pgConfig.strokeWidth"
                     (ngModelChange)="updateConfig()" />
-                  <span style="font-size:0.8rem;color:var(--text-secondary)">{{ pgConfig.lineWidth }}px</span>
+                </div>
+                <div class="control-group">
+                  <label>Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label>
+                  <input type="range" min="300" max="800" step="50"
+                    [(ngModel)]="pgConfig.width"
+                    (ngModelChange)="updateConfig()" />
+                </div>
+                <div class="control-group">
+                  <label>Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label>
+                  <input type="range" min="200" max="500" step="50"
+                    [(ngModel)]="pgConfig.height"
+                    (ngModelChange)="updateConfig()" />
                 </div>
               </div>
 
@@ -78,20 +66,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                     (ngModelChange)="updateConfig()" label="Show Grid"></app-checkbox>
                 </div>
                 <div class="checkbox-group">
-                  <app-checkbox id="fillArea" [(ngModel)]="pgConfig.fillArea"
-                    (ngModelChange)="updateConfig()" label="Fill Area"></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox id="showPoints" [(ngModel)]="pgConfig.showPoints"
-                    (ngModelChange)="updateConfig()" label="Show Points"></app-checkbox>
+                  <app-checkbox id="showMarkers" [(ngModel)]="pgConfig.showMarkers"
+                    (ngModelChange)="updateConfig()" label="Show Markers"></app-checkbox>
                 </div>
                 <div class="checkbox-group">
                   <app-checkbox id="enableAnimation" [(ngModel)]="pgConfig.enableAnimation"
-                    (ngModelChange)="updateConfig()" label="Animate on Load"></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox id="responsive" [(ngModel)]="pgConfig.responsive"
-                    (ngModelChange)="updateConfig()" label="Responsive"></app-checkbox>
+                    (ngModelChange)="updateConfig()" label="Enable Animation"></app-checkbox>
                 </div>
               </div>
 
@@ -105,24 +85,22 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
       </div>
 
       <div class="playground-preview">
-        <ui-chart
-          type="line"
-          [attr.fill]="pgConfig.fillArea ? 'true' : 'false'"
+        <chart-line
+          [attr.chart-title]="activeTitle"
+          [attr.x-axis-label]="activeXLabel"
+          [attr.y-axis-label]="activeYLabel"
           [attr.show-legend]="pgConfig.showLegend ? '' : null"
           [attr.show-grid]="pgConfig.showGrid ? '' : null"
-          [attr.responsive]="pgConfig.responsive ? '' : null"
+          [attr.show-markers]="pgConfig.showMarkers ? '' : null"
           [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
-          [attr.legend-position]="pgConfig.legendPosition"
-          [attr.point-radius]="pgConfig.pointRadius"
-          [attr.border-width]="pgConfig.lineWidth"
-          [attr.tension]="tensionValue"
-          [data]="chartDataJson"
-          style="width: 100%; height: 380px;"
-        ></ui-chart>
+          [attr.stroke-width]="pgConfig.strokeWidth"
+          [attr.width]="pgConfig.width"
+          [attr.height]="pgConfig.height"
+          [data]="chartData"
+        ></chart-line>
 
         <div class="code-output">
           <ui-code-preview
-            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
@@ -137,135 +115,108 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 export class LineChartPlaygroundComponent {
   pgConfig = {
     dataset: 'monthly',
-    curveStyle: 'smooth',
-    legendPosition: 'top',
-    pointRadius: 4,
-    lineWidth: 2,
+    strokeWidth: 2,
+    width: 600,
+    height: 300,
     showLegend: true,
     showGrid: true,
-    fillArea: false,
-    showPoints: true,
+    showMarkers: true,
     enableAnimation: true,
-    responsive: true,
   };
 
   datasetOptions = [
     { label: 'Monthly Revenue', value: 'monthly' },
     { label: 'Multi Series', value: 'multi' },
-    { label: 'Weekly Trend', value: 'weekly' },
+    { label: 'Weekly Visitors', value: 'weekly' },
   ];
 
-  curveOptions = [
-    { label: 'Smooth (Bezier)', value: 'smooth' },
-    { label: 'Straight Lines', value: 'straight' },
-    { label: 'Step', value: 'step' },
+  monthlyData = [
+    {
+      name: 'Revenue ($k)',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 42 }, { x: 2, y: 58 }, { x: 3, y: 53 }, { x: 4, y: 70 },
+        { x: 5, y: 89 }, { x: 6, y: 95 }, { x: 7, y: 112 }, { x: 8, y: 104 },
+      ],
+    },
   ];
 
-  legendPositionOptions = [
-    { label: 'Top', value: 'top' },
-    { label: 'Bottom', value: 'bottom' },
-    { label: 'Left', value: 'left' },
-    { label: 'Right', value: 'right' },
+  multiData = [
+    {
+      name: 'Revenue',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 42 }, { x: 2, y: 58 }, { x: 3, y: 53 }, { x: 4, y: 70 },
+        { x: 5, y: 89 }, { x: 6, y: 95 }, { x: 7, y: 112 }, { x: 8, y: 104 },
+      ],
+    },
+    {
+      name: 'Expenses',
+      color: '#f59e0b',
+      points: [
+        { x: 1, y: 30 }, { x: 2, y: 40 }, { x: 3, y: 45 }, { x: 4, y: 55 },
+        { x: 5, y: 60 }, { x: 6, y: 65 }, { x: 7, y: 75 }, { x: 8, y: 80 },
+      ],
+    },
+    {
+      name: 'Profit',
+      color: '#10b981',
+      points: [
+        { x: 1, y: 12 }, { x: 2, y: 18 }, { x: 3, y: 8 }, { x: 4, y: 15 },
+        { x: 5, y: 29 }, { x: 6, y: 30 }, { x: 7, y: 37 }, { x: 8, y: 24 },
+      ],
+    },
   ];
 
-  monthlyData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-    datasets: [
-      {
-        label: 'Revenue ($k)',
-        data: [42, 58, 53, 70, 89, 95, 112, 104],
-        borderColor: '#6366f1',
-        backgroundColor: 'rgba(99,102,241,0.15)',
-      },
-    ],
+  weeklyData = [
+    {
+      name: 'Visitors',
+      color: '#0ea5e9',
+      points: [
+        { x: 1, y: 1200 }, { x: 2, y: 1900 }, { x: 3, y: 1700 },
+        { x: 4, y: 2100 }, { x: 5, y: 2400 }, { x: 6, y: 1800 }, { x: 7, y: 1100 },
+      ],
+    },
+  ];
+
+  private datasets: Record<string, { data: any[]; title: string; x: string; y: string }> = {
+    monthly: { data: this.monthlyData, title: 'Monthly Revenue', x: 'Month', y: 'Revenue ($k)' },
+    multi: { data: this.multiData, title: 'Financial Overview', x: 'Month', y: 'Amount ($k)' },
+    weekly: { data: this.weeklyData, title: 'Weekly Visitors', x: 'Day', y: 'Visitors' },
   };
 
-  multiData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-    datasets: [
-      {
-        label: 'Revenue',
-        data: [42, 58, 53, 70, 89, 95, 112, 104],
-        borderColor: '#6366f1',
-        backgroundColor: 'rgba(99,102,241,0.1)',
-      },
-      {
-        label: 'Expenses',
-        data: [30, 40, 45, 55, 60, 65, 75, 80],
-        borderColor: '#f59e0b',
-        backgroundColor: 'rgba(245,158,11,0.1)',
-      },
-      {
-        label: 'Profit',
-        data: [12, 18, 8, 15, 29, 30, 37, 24],
-        borderColor: '#10b981',
-        backgroundColor: 'rgba(16,185,129,0.1)',
-      },
-    ],
-  };
-
-  weeklyData = {
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    datasets: [
-      {
-        label: 'Visitors',
-        data: [1200, 1900, 1700, 2100, 2400, 1800, 1100],
-        borderColor: '#0ea5e9',
-        backgroundColor: 'rgba(14,165,233,0.15)',
-      },
-    ],
-  };
-
-  chartDataJson = JSON.stringify(this.monthlyData);
+  chartData: any[] = this.monthlyData;
+  activeTitle = 'Monthly Revenue';
+  activeXLabel = 'Month';
+  activeYLabel = 'Revenue ($k)';
   generatedCode = signal('');
-  showCode = true;
 
-  get tensionValue(): number {
-    if (this.pgConfig.curveStyle === 'smooth') return 0.4;
-    if (this.pgConfig.curveStyle === 'step') return 0;
-    return 0;
-  }
-
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
     this.updateConfig();
   }
 
   onDatasetChange() {
-    if (this.pgConfig.dataset === 'multi') {
-      this.chartDataJson = JSON.stringify(this.multiData);
-    } else if (this.pgConfig.dataset === 'weekly') {
-      this.chartDataJson = JSON.stringify(this.weeklyData);
-    } else {
-      this.chartDataJson = JSON.stringify(this.monthlyData);
-    }
+    const ds = this.datasets[this.pgConfig.dataset];
+    this.chartData = ds.data;
+    this.activeTitle = ds.title;
+    this.activeXLabel = ds.x;
+    this.activeYLabel = ds.y;
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
   updateConfig() {
-    let code = '<ui-chart\n';
-    code += `  type="line"\n`;
-    if (this.pgConfig.fillArea) code += `  fill="true"\n`;
-    if (this.pgConfig.showLegend) code += `  show-legend\n`;
-    if (this.pgConfig.showGrid) code += `  show-grid\n`;
-    if (this.pgConfig.responsive) code += `  responsive\n`;
-    if (this.pgConfig.enableAnimation) code += `  enable-animation\n`;
-    code += `  legend-position="${this.pgConfig.legendPosition}"\n`;
-    code += `  point-radius="${this.pgConfig.pointRadius}"\n`;
-    code += `  border-width="${this.pgConfig.lineWidth}"\n`;
-    if (this.pgConfig.curveStyle === 'smooth') code += `  tension="0.4"\n`;
-    code += `  [data]="chartData"\n`;
-    code += '></ui-chart>';
-    this.generatedCode.set(code);
-    this.refreshCode();
+    const d = this.pgConfig;
+    const attrs: string[] = [`chart-title="${this.activeTitle}"`, `x-axis-label="${this.activeXLabel}"`, `y-axis-label="${this.activeYLabel}"`];
+    if (d.showLegend) attrs.push('show-legend');
+    if (d.showGrid) attrs.push('show-grid');
+    if (d.showMarkers) attrs.push('show-markers');
+    if (d.enableAnimation) attrs.push('enable-animation');
+    if (d.strokeWidth !== 2) attrs.push(`stroke-width="${d.strokeWidth}"`);
+    if (d.width !== 600) attrs.push(`width="${d.width}"`);
+    if (d.height !== 300) attrs.push(`height="${d.height}"`);
+    attrs.push('[data]="seriesData"');
+
+    this.generatedCode.set('<chart-line\n  ' + attrs.join('\n  ') + '\n></chart-line>');
   }
 
   copyCode() {
@@ -275,18 +226,18 @@ export class LineChartPlaygroundComponent {
   resetConfig() {
     this.pgConfig = {
       dataset: 'monthly',
-      curveStyle: 'smooth',
-      legendPosition: 'top',
-      pointRadius: 4,
-      lineWidth: 2,
+      strokeWidth: 2,
+      width: 600,
+      height: 300,
       showLegend: true,
       showGrid: true,
-      fillArea: false,
-      showPoints: true,
+      showMarkers: true,
       enableAnimation: true,
-      responsive: true,
     };
-    this.chartDataJson = JSON.stringify(this.monthlyData);
+    this.chartData = this.monthlyData;
+    this.activeTitle = 'Monthly Revenue';
+    this.activeXLabel = 'Month';
+    this.activeYLabel = 'Revenue ($k)';
     this.updateConfig();
   }
 }
