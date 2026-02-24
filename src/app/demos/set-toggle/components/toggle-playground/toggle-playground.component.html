@@ -1,6 +1,5 @@
 <div class="playground-layout">
   <div class="playground-controls">
-    
     <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
       <!-- Global Configuration -->
       <div slot="content-global" class="control-grid" style="padding: 16px">
@@ -109,7 +108,11 @@
 
         <div class="control-group">
           <label>Label</label>
-          <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></app-input>
+          <app-input
+            type="text"
+            [(ngModel)]="pgConfig.label"
+            (ngModelChange)="updateConfig()"
+          ></app-input>
         </div>
 
         <div class="control-group">
@@ -150,46 +153,60 @@
       <div slot="content-states" style="padding: 16px">
         <div class="checkbox-grid">
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.showIcons"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Show Icons
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.disabled"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Disabled
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.readonly"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Readonly
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.required"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Required
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.invalid"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Invalid
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.animation" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.animation"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Animation
           </label>
           <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></app-checkbox>
+            <app-checkbox
+              [(ngModel)]="pgConfig.skeleton"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
             Skeleton
           </label>
         </div>
       </div>
     </ui-accordion>
-          </div>
+  </div>
 
   <div class="playground-preview">
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
-    </div>
-
     <div class="preview-stage h-scrollable">
       <div class="toggle-container">
         <app-toggle-group
@@ -218,13 +235,17 @@
       </div>
     </div>
 
-    
-  
-      <ui-code-preview
+    <ui-code-preview
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+    <div class="event-log-container">
+      <strong>Event Log</strong>
+      <div class="log-items">
+        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+      </div>
     </div>
+  </div>
 </div>

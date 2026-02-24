@@ -351,9 +351,34 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
   `,
   styles: [
     `
+      /* ── Schneider Green base color override (scoped to this page) ── */
+      :host {
+        --primary: #3dcd58;
+        --primary-hover: #2db84d;
+        --primary-light: #5edb72;
+        --primary-lighter: #86e898;
+        --primary-glow: rgba(61, 205, 88, 0.4);
+
+        --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
+        --gradient-premium: linear-gradient(135deg, #059669 0%, #3dcd58 100%);
+        --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+
+        --bg-primary: #030712;
+        --bg-secondary: #050a16;
+        --surface-1: #111827;
+        --surface-2: #1f2937;
+
+        --text-primary: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-tertiary: #6b7280;
+        --border-color: rgba(255, 255, 255, 0.08);
+      }
+
       .home-container {
         min-height: 100%;
         overflow-y: auto;
+        background: var(--bg-primary);
+        color: var(--text-primary);
       }
 
       /* Icons Section */
@@ -389,7 +414,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         transform: translateY(-4px);
         border-color: var(--primary);
         color: var(--primary);
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 4px 20px rgba(61, 205, 88, 0.2);
       }
 
       .icon-demo-card fa-icon {
@@ -414,6 +439,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         display: flex;
         align-items: center;
         justify-content: center;
+        background: var(--bg-primary);
       }
 
       .hero-background {
@@ -438,9 +464,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 600px;
         background: radial-gradient(
           circle,
-          color-mix(in srgb, var(--primary) 40%, transparent) 0%,
-          color-mix(in srgb, var(--primary) 25%, transparent) 30%,
-          color-mix(in srgb, var(--primary) 15%, transparent) 60%,
+          var(--primary-glow) 0%,
+          color-mix(in srgb, var(--primary) 20%, transparent) 40%,
           transparent 100%
         );
         top: -300px;
@@ -453,8 +478,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 500px;
         background: radial-gradient(
           circle,
-          color-mix(in srgb, var(--success, #10b981) 35%, transparent) 0%,
-          color-mix(in srgb, var(--success, #10b981) 20%, transparent) 40%,
+          color-mix(in srgb, var(--primary-light) 30%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 20%, transparent) 40%,
           transparent 100%
         );
         bottom: -250px;
@@ -467,8 +492,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 450px;
         background: radial-gradient(
           circle,
-          color-mix(in srgb, var(--warning, #d97706) 28%, transparent) 0%,
-          color-mix(in srgb, var(--warning-light, #f59e0b) 15%, transparent) 50%,
+          color-mix(in srgb, #059669 35%, transparent) 0%,
+          color-mix(in srgb, #064e3b 25%, transparent) 50%,
           transparent 100%
         );
         top: 40%;
@@ -544,11 +569,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .status-dot {
         width: 8px;
         height: 8px;
-        background: #10b981;
+        background: var(--primary);
         border-radius: 50%;
         position: relative;
         animation: pulse 2s infinite;
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        box-shadow: 0 0 0 0 var(--primary-glow);
       }
 
       .status-dot::before,
@@ -561,7 +586,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        border: 2px solid #10b981;
+        border: 2px solid var(--primary);
         animation: ripple 2s infinite;
       }
 

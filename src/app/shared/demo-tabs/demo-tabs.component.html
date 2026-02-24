@@ -1,8 +1,8 @@
 <div class="demo-page-container">
   <div class="demo-master-container">
-    <app-tab-stack [activeTab]="active()" (tabChange)="onTabChange($event)">
-      <app-tab label="Examples" value="examples" icon="fas fa-layer-group"></app-tab>
+    <app-tab-stack [attr.active-tab]="active()" (tabChange)="onTabChange($event)">
       <app-tab label="Playground" value="playground" icon="fas fa-gamepad"></app-tab>
+      <app-tab label="Examples" value="examples" icon="fas fa-layer-group"></app-tab>
       <app-tab label="Documentation" value="docs" icon="fas fa-book-open"></app-tab>
     </app-tab-stack>
 
