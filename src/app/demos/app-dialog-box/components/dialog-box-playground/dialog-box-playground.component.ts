@@ -19,7 +19,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion [items]="[{id: 'config', title: 'Configuration', icon: '⚙️'}]" [defaultOpen]="['config']" [multiple]="true">
+    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
       <div slot="content-config">
         <div class="control-grid">
           <!-- Appearance Settings -->
