@@ -1,9 +1,10 @@
 <!-- App Container with conditional layout classes -->
-<div class="app-container" 
-     [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
-     [class.layout-topbar]="themeService.navigationLayout() === 'topbar'"
-     [class.sidebar-collapsed]="sidebarCollapsed()">
-  
+<div
+  class="app-container"
+  [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
+  [class.layout-topbar]="themeService.navigationLayout() === 'topbar'"
+  [class.sidebar-collapsed]="sidebarCollapsed()"
+>
   <!-- Navigation -->
   <ui-navigation
     class="main-nav"
@@ -15,7 +16,7 @@
     [theme]="themeService.resolvedTheme()"
     [selected-item]="currentRoute()"
     [show-search]="true"
-    max-items="10"
+    max-items="7"
     (navItemClick)="onNavItemClick($event)"
   >
     <!-- User Profile rendered as bottom item (consistent with other categories) -->

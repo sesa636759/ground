@@ -11,76 +11,79 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Layout</h3>
-            <div class="control-group">
-              <label>Direction</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.direction"
-                (ngModelChange)="updateConfig()"
-                [options]="directionOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Layout</h3>
+                <div class="control-group">
+                  <label>Direction</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.direction"
+                    (ngModelChange)="updateConfig()"
+                    [options]="directionOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Type</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.type"
+                    (ngModelChange)="updateConfig()"
+                    [options]="typeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Visuals</h3>
+                <div class="control-group">
+                  <label>Radius (for circles)</label>
+                  <app-input
+                    type="number"
+                    [(ngModel)]="pgConfig.radius"
+                    (ngModelChange)="updateConfig()"
+                  ></app-input>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="ripple"
+                    [(ngModel)]="pgConfig.ripple"
+                    (ngModelChange)="updateConfig()"
+                    label="Ripple Effect"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="mask"
+                    [(ngModel)]="pgConfig.mask"
+                    (ngModelChange)="updateConfig()"
+                    label="Display Mask"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Type</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.type"
-                (ngModelChange)="updateConfig()"
-                [options]="typeOptions"
-              ></ui-dropdown>
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Radius (for circles)</label>
-              <app-input
-                type="number"
-                [(ngModel)]="pgConfig.radius"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="ripple"
-                [(ngModel)]="pgConfig.ripple"
-                (ngModelChange)="updateConfig()"
-                label="Ripple Effect"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="mask"
-                [(ngModel)]="pgConfig.mask"
-                (ngModelChange)="updateConfig()"
-                label="Display Mask"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-speed-dial
           [attr.direction]="pgConfig.direction"
           [attr.type]="pgConfig.type"

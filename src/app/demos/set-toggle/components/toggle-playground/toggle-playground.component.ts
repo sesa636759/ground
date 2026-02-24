@@ -4,6 +4,10 @@
   signal,
   OnInit,
   ViewEncapsulation,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +33,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   styleUrl: './toggle-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class TogglePlaygroundComponent implements OnInit {
+export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('toggleGroup') toggleGroup!: ElementRef;
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
@@ -69,52 +74,46 @@ export class TogglePlaygroundComponent implements OnInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCode: string = '';
 
-  constructor() {}
+  constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this.updateConfig();
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.toggleGroup) return '';
+
+    return generatePlaygroundCode(this.toggleGroup.nativeElement as Element, 'app-toggle-group');
   }
 
   updateConfig() {
-    let code = `<app-toggle-group\n`;
-    code += `  layout="${this.pgConfig.layout}"\n`;
-    if (this.pgConfig.layout === 'grid') code += `  columns="${this.pgConfig.columns}"\n`;
-    code += `  selection-mode="${this.pgConfig.selectionMode}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  color="${this.pgConfig.color}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-
-    if (this.pgConfig.elevation > 0) code += `  elevation="${this.pgConfig.elevation}"\n`;
-    if (this.pgConfig.thumbShape !== 'circle')
-      code += `  thumb-shape="${this.pgConfig.thumbShape}"\n`;
-
-    code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.helperText) code += `  helper-text="${this.pgConfig.helperText}"\n`;
-    if (this.pgConfig.labelPosition !== 'right')
-      code += `  label-position="${this.pgConfig.labelPosition}"\n`;
-
-    if (this.pgConfig.showIcons) code += `  show-icons="true"\n`;
-    if (this.pgConfig.disabled) code += `  disabled="true"\n`;
-    if (this.pgConfig.readonly) code += `  readonly="true"\n`;
-    if (this.pgConfig.required) code += `  required="true"\n`;
-    if (this.pgConfig.invalid) code += `  invalid="true"\n`;
-    if (!this.pgConfig.animation) code += `  enable-animation="false"\n`;
-    if (this.pgConfig.skeleton) code += `  show-skeleton="true"\n`;
-    if (this.pgConfig.orientation !== 'horizontal')
-      code += `  orientation="${this.pgConfig.orientation}"\n`;
-
-    code += `  [options]="playgroundOptions"\n`;
-    code += `></app-toggle-group>`;
-
-    this.generatedCode.set(code);
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   onToggleChange(event: any) {
     const value = event.detail.value;
     const displayValue = Array.isArray(value) ? value.join(', ') : value;
     this.logEvent(`Selection changed: ${displayValue}`);
+    this.updateConfig();
   }
 
   logEvent(msg: string) {
@@ -123,7 +122,7 @@ export class TogglePlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   jsonOptions = JSON.stringify(this.playgroundOptions);

@@ -1,8 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-accordion-playground',
@@ -30,6 +39,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Variant</label>
                   <ui-dropdown
+                    name="variant"
                     [(ngModel)]="pgConfig.variant"
                     (ngModelChange)="updateConfig()"
                     [options]="variantOptions"
@@ -39,6 +49,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Size</label>
                   <ui-dropdown
+                    name="size"
                     [(ngModel)]="pgConfig.size"
                     (ngModelChange)="updateConfig()"
                     [options]="sizeOptions"
@@ -48,6 +59,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Icon Position</label>
                   <ui-dropdown
+                    name="iconPosition"
                     [(ngModel)]="pgConfig.iconPosition"
                     (ngModelChange)="updateConfig()"
                     [options]="iconPositionOptions"
@@ -57,6 +69,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Selected Header Color</label>
                   <input
+                    name="selectedHeaderColor"
                     type="color"
                     [(ngModel)]="pgConfig.selectedHeaderColor"
                     (ngModelChange)="updateConfig()"
@@ -66,6 +79,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Header Level (1-6)</label>
                   <input
+                    name="headerLevel"
                     type="number"
                     min="1"
                     max="6"
@@ -78,6 +92,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="hideArrow"
+                      name="hideArrow"
                       [(ngModel)]="pgConfig.hideArrow"
                       (ngModelChange)="updateConfig()"
                       label="Hide Arrow"
@@ -87,6 +102,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="showNumbers"
+                      name="showNumbers"
                       [(ngModel)]="pgConfig.showNumbers"
                       (ngModelChange)="updateConfig()"
                       label="Show Numbers"
@@ -96,6 +112,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="rtl"
+                      name="rtl"
                       [(ngModel)]="pgConfig.rtl"
                       (ngModelChange)="updateConfig()"
                       label="RTL"
@@ -105,6 +122,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="dense"
+                      name="dense"
                       [(ngModel)]="pgConfig.dense"
                       (ngModelChange)="updateConfig()"
                       label="Dense"
@@ -119,6 +137,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Expansion Mode</label>
                   <ui-dropdown
+                    name="multiple"
                     [(ngModel)]="pgConfig.multiple"
                     (ngModelChange)="updateConfig()"
                     [options]="expansionModeOptions"
@@ -129,6 +148,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="disabled"
+                      name="disabled"
                       [(ngModel)]="pgConfig.disabled"
                       (ngModelChange)="updateConfig()"
                       label="Disabled"
@@ -138,6 +158,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="enableSearch"
+                      name="enableSearch"
                       [(ngModel)]="pgConfig.enableSearch"
                       (ngModelChange)="updateConfig()"
                       label="Enable Search"
@@ -147,6 +168,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="enableExpandCollapseAll"
+                      name="enableExpandCollapseAll"
                       [(ngModel)]="pgConfig.enableExpandCollapseAll"
                       (ngModelChange)="updateConfig()"
                       label="Show Expand/Collapse All"
@@ -156,6 +178,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="enableDragDrop"
+                      name="enableDragDrop"
                       [(ngModel)]="pgConfig.enableDragDrop"
                       (ngModelChange)="updateConfig()"
                       label="Enable Drag & Drop"
@@ -165,6 +188,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="enableNested"
+                      name="enableNested"
                       [(ngModel)]="pgConfig.enableNested"
                       (ngModelChange)="updateConfig()"
                       label="Enable Nested"
@@ -173,6 +197,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                   <div class="checkbox-group">
                     <app-checkbox
                       id="loading"
+                      name="loading"
                       [(ngModel)]="pgConfig.loading"
                       (ngModelChange)="updateConfig()"
                       label="Loading State"
@@ -187,6 +212,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Duration (ms)</label>
                   <input
+                    name="animationDuration"
                     type="number"
                     [(ngModel)]="pgConfig.animationDuration"
                     (ngModelChange)="updateConfig()"
@@ -195,6 +221,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Timing Function</label>
                   <ui-dropdown
+                    name="animationTiming"
                     [(ngModel)]="pgConfig.animationTiming"
                     (ngModelChange)="updateConfig()"
                     [options]="timingOptions"
@@ -203,6 +230,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="checkbox-group">
                   <app-checkbox
                     id="lazy"
+                    name="lazy"
                     [(ngModel)]="pgConfig.lazy"
                     (ngModelChange)="updateConfig()"
                     label="Lazy Load Content"
@@ -225,6 +253,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
       <div class="playground-preview">
         <ui-accordion
+          #accordion
           [items]="playgroundItems"
           [multiple]="pgConfig.multiple"
           [variant]="pgConfig.variant"
@@ -248,21 +277,20 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         >
         </ui-accordion>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './accordian-playground.component.scss',
 })
-export class AccordianPlaygroundComponent {
+export class AccordianPlaygroundComponent implements AfterViewInit {
+  @ViewChild('accordion') accordion!: ElementRef;
   pgConfig = {
     multiple: false,
     variant: 'default',
@@ -351,11 +379,16 @@ export class AccordianPlaygroundComponent {
     },
   ]);
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -367,45 +400,21 @@ export class AccordianPlaygroundComponent {
     }, 0);
   }
 
+  getCleanFormatedDom(): string {
+    if (!this.accordion) return '';
+
+    return generatePlaygroundCode(this.accordion.nativeElement as Element, 'ui-accordion');
+  }
+
   updateConfig() {
-    let code = '<ui-accordion';
-    code += ` [items]="items"`;
-
-    if (this.pgConfig.multiple) code += ' multiple';
-    if (this.pgConfig.variant !== 'default') code += ` variant="${this.pgConfig.variant}"`;
-    if (this.pgConfig.size !== 'md') code += ` size="${this.pgConfig.size}"`;
-    if (this.pgConfig.iconPosition !== 'end')
-      code += ` icon-position="${this.pgConfig.iconPosition}"`;
-    if (this.pgConfig.selectedHeaderColor !== '#3b82f6')
-      code += ` selected-header-color="${this.pgConfig.selectedHeaderColor}"`;
-    if (this.pgConfig.headerLevel !== 3) code += ` [headerLevel]="${this.pgConfig.headerLevel}"`;
-
-    if (this.pgConfig.hideArrow) code += ' hide-arrow';
-    if (this.pgConfig.showNumbers) code += ' show-numbers';
-    if (this.pgConfig.rtl) code += ' rtl';
-    if (this.pgConfig.dense) code += ' dense';
-
-    if (this.pgConfig.disabled) code += ' disabled';
-    if (this.pgConfig.enableSearch) code += ' enable-search';
-    if (this.pgConfig.enableExpandCollapseAll) code += ' enable-expand-collapse-all';
-    if (this.pgConfig.enableDragDrop) code += ' enable-drag-drop';
-    if (this.pgConfig.enableNested) code += ' enable-nested';
-    if (this.pgConfig.loading) code += ' loading';
-
-    if (this.pgConfig.animationDuration !== 300)
-      code += ` [animationDuration]="${this.pgConfig.animationDuration}"`;
-    if (this.pgConfig.animationTiming !== 'ease')
-      code += ` animation-timing="${this.pgConfig.animationTiming}"`;
-    if (this.pgConfig.lazy) code += ' lazy';
-
-    code += '></ui-accordion>';
-
-    this.generatedCode.set(code);
-    this.refreshCode();
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

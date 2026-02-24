@@ -6,6 +6,7 @@
         <div class="control-group">
           <label>Layout</label>
           <ui-dropdown
+            name="layout"
             [(ngModel)]="pgConfig.layout"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -19,6 +20,7 @@
         <div class="control-group">
           <label>Grid Columns</label>
           <app-input
+            name="columns"
             type="number"
             min="1"
             max="4"
@@ -31,6 +33,7 @@
         <div class="control-group">
           <label>Selection Mode</label>
           <ui-dropdown
+            name="selectionMode"
             [(ngModel)]="pgConfig.selectionMode"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -43,6 +46,7 @@
         <div class="control-group">
           <label>Size</label>
           <ui-dropdown
+            name="size"
             [(ngModel)]="pgConfig.size"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -56,6 +60,7 @@
         <div class="control-group">
           <label>Color</label>
           <ui-dropdown
+            name="color"
             [(ngModel)]="pgConfig.color"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -72,6 +77,7 @@
         <div class="control-group">
           <label>Variant</label>
           <ui-dropdown
+            name="variant"
             [(ngModel)]="pgConfig.variant"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -86,6 +92,7 @@
         <div class="control-group">
           <label>Elevation (0-5)</label>
           <app-input
+            name="elevation"
             type="number"
             min="0"
             max="5"
@@ -97,6 +104,7 @@
         <div class="control-group">
           <label>Thumb Shape</label>
           <ui-dropdown
+            name="thumbShape"
             [(ngModel)]="pgConfig.thumbShape"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -109,6 +117,7 @@
         <div class="control-group">
           <label>Label</label>
           <app-input
+            name="label"
             type="text"
             [(ngModel)]="pgConfig.label"
             (ngModelChange)="updateConfig()"
@@ -118,6 +127,7 @@
         <div class="control-group">
           <label>Helper Text</label>
           <app-input
+            name="helperText"
             type="text"
             [(ngModel)]="pgConfig.helperText"
             (ngModelChange)="updateConfig()"
@@ -127,6 +137,7 @@
         <div class="control-group">
           <label>Label Position</label>
           <ui-dropdown
+            name="labelPosition"
             [(ngModel)]="pgConfig.labelPosition"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -139,6 +150,7 @@
         <div class="control-group">
           <label>Orientation</label>
           <ui-dropdown
+            name="orientation"
             [(ngModel)]="pgConfig.orientation"
             (ngModelChange)="updateConfig()"
             [options]="[
@@ -154,6 +166,7 @@
         <div class="checkbox-grid">
           <label class="checkbox-item">
             <app-checkbox
+              name="showIcons"
               [(ngModel)]="pgConfig.showIcons"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -161,6 +174,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="disabled"
               [(ngModel)]="pgConfig.disabled"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -168,6 +182,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="readonly"
               [(ngModel)]="pgConfig.readonly"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -175,6 +190,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="required"
               [(ngModel)]="pgConfig.required"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -182,6 +198,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="invalid"
               [(ngModel)]="pgConfig.invalid"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -189,6 +206,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="animation"
               [(ngModel)]="pgConfig.animation"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -196,6 +214,7 @@
           </label>
           <label class="checkbox-item">
             <app-checkbox
+              name="skeleton"
               [(ngModel)]="pgConfig.skeleton"
               (ngModelChange)="updateConfig()"
             ></app-checkbox>
@@ -210,6 +229,7 @@
     <div class="preview-stage h-scrollable">
       <div class="toggle-container">
         <app-toggle-group
+          #toggleGroup
           [options]="playgroundOptions"
           [attr.layout]="pgConfig.layout"
           [attr.columns]="pgConfig.columns"
@@ -235,17 +255,19 @@
       </div>
     </div>
 
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
     <div class="event-log-container">
       <strong>Event Log</strong>
       <div class="log-items">
         <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
       </div>
     </div>
+
+    <ui-code-preview
+      *ngIf="showCode"
+      [htmlCode]="generatedCode"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
   </div>
 </div>

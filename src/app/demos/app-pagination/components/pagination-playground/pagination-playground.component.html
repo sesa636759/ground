@@ -13,6 +13,7 @@
             <div class="control-group">
               <label>Total Items</label>
               <app-input
+                name="totalItems"
                 type="number"
                 [(ngModel)]="pgConfig.totalItems"
                 (ngModelChange)="updateConfig()"
@@ -21,6 +22,7 @@
             <div class="control-group">
               <label>Items Per Page</label>
               <app-input
+                name="itemsPerPage"
                 type="number"
                 [(ngModel)]="pgConfig.itemsPerPage"
                 (ngModelChange)="updateConfig()"
@@ -29,6 +31,7 @@
             <div class="control-group">
               <label>Max Visible Pages</label>
               <app-input
+                name="maxVisiblePages"
                 type="number"
                 [(ngModel)]="pgConfig.maxVisiblePages"
                 (ngModelChange)="updateConfig()"
@@ -42,6 +45,7 @@
             <div class="control-group">
               <label>Type</label>
               <ui-dropdown
+                name="type"
                 [(ngModel)]="pgConfig.type"
                 (ngModelChange)="updateConfig()"
                 [options]="typeOptions"
@@ -50,6 +54,7 @@
             <div class="control-group">
               <label>Size</label>
               <ui-dropdown
+                name="size"
                 [(ngModel)]="pgConfig.size"
                 (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
@@ -58,6 +63,7 @@
             <div class="control-group">
               <label>Variant</label>
               <ui-dropdown
+                name="variant"
                 [(ngModel)]="pgConfig.variant"
                 (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
@@ -66,6 +72,7 @@
             <div class="control-group">
               <label>Theme</label>
               <ui-dropdown
+                name="theme"
                 [(ngModel)]="pgConfig.theme"
                 (ngModelChange)="updateConfig()"
                 [options]="themeOptions"
@@ -74,6 +81,7 @@
             <div class="control-group">
               <label>Shape</label>
               <ui-dropdown
+                name="shape"
                 [(ngModel)]="pgConfig.shape"
                 (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
@@ -86,6 +94,7 @@
             <h3>Features</h3>
             <div class="checkbox-group">
               <app-checkbox
+                name="keyboardNav"
                 [(ngModel)]="pgConfig.keyboardNav"
                 (ngModelChange)="updateConfig()"
                 label="Keyboard Nav"
@@ -93,6 +102,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="responsiveMode"
                 [(ngModel)]="pgConfig.responsiveMode"
                 (ngModelChange)="updateConfig()"
                 label="Responsive"
@@ -100,6 +110,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="rtl"
                 [(ngModel)]="pgConfig.rtl"
                 (ngModelChange)="updateConfig()"
                 label="RTL Mode"
@@ -107,6 +118,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="showFirstLast"
                 [(ngModel)]="pgConfig.showFirstLast"
                 (ngModelChange)="updateConfig()"
                 label="Show First/Last"
@@ -114,6 +126,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="showPageSize"
                 [(ngModel)]="pgConfig.showPageSize"
                 (ngModelChange)="updateConfig()"
                 label="Show Page Size"
@@ -121,6 +134,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="showTotal"
                 [(ngModel)]="pgConfig.showTotal"
                 (ngModelChange)="updateConfig()"
                 label="Show Total"
@@ -128,6 +142,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="showJumpTo"
                 [(ngModel)]="pgConfig.showJumpTo"
                 (ngModelChange)="updateConfig()"
                 label="Show Jump To"
@@ -135,6 +150,7 @@
             </div>
             <div class="checkbox-group">
               <app-checkbox
+                name="iconOnly"
                 [(ngModel)]="pgConfig.iconOnly"
                 (ngModelChange)="updateConfig()"
                 label="Icon Only"
@@ -144,7 +160,6 @@
         </div>
 
         <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
           <ui-button
             class="btn-secondary"
             variant="secondary"
@@ -157,33 +172,38 @@
   </div>
 
   <div class="playground-preview">
-    <ui-pagination
-      [attr.total-items]="pgConfig.totalItems"
-      [attr.items-per-page]="pgConfig.itemsPerPage"
-      [attr.max-visible-pages]="pgConfig.maxVisiblePages"
-      [attr.type]="pgConfig.type"
-      [attr.size]="pgConfig.size"
-      [attr.variant]="pgConfig.variant"
-      [attr.theme]="pgConfig.theme"
-      [attr.shape]="pgConfig.shape"
-      [attr.keyboard-nav]="pgConfig.keyboardNav ? 'true' : 'false'"
-      [attr.responsive-mode]="pgConfig.responsiveMode ? 'true' : 'false'"
-      [attr.rtl]="pgConfig.rtl ? 'true' : null"
-      [attr.show-first-last]="pgConfig.showFirstLast ? 'true' : 'false'"
-      [attr.show-page-size]="pgConfig.showPageSize ? 'true' : null"
-      [attr.show-total]="pgConfig.showTotal ? 'true' : null"
-      [attr.show-jump-to]="pgConfig.showJumpTo ? 'true' : null"
-      [attr.icon-only]="pgConfig.iconOnly ? 'true' : null"
-      current-page="1"
-    ></ui-pagination>
-
-    <div class="code-output">
-      <ui-code-preview
-        [htmlCode]="generatedCode()"
-        label="Generated Code"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
+    <div class="preview-stage">
+      <ui-pagination
+        #pagination
+        [attr.total-items]="pgConfig.totalItems"
+        [attr.items-per-page]="pgConfig.itemsPerPage"
+        [attr.max-visible-pages]="pgConfig.maxVisiblePages"
+        [attr.type]="pgConfig.type"
+        [attr.size]="pgConfig.size"
+        [attr.variant]="pgConfig.variant"
+        [attr.theme]="pgConfig.theme"
+        [attr.shape]="pgConfig.shape"
+        [attr.keyboard-nav]="pgConfig.keyboardNav ? 'true' : 'false'"
+        [attr.responsive-mode]="pgConfig.responsiveMode ? 'true' : 'false'"
+        [attr.rtl]="pgConfig.rtl ? 'true' : null"
+        [attr.show-first-last]="pgConfig.showFirstLast ? 'true' : 'false'"
+        [attr.show-page-size]="pgConfig.showPageSize ? 'true' : null"
+        [attr.show-total]="pgConfig.showTotal ? 'true' : null"
+        [attr.show-jump-to]="pgConfig.showJumpTo ? 'true' : null"
+        [attr.icon-only]="pgConfig.iconOnly ? 'true' : null"
+        [attr.current-page]="pgConfig.currentPage"
+        (pageChange)="onPageChange($event)"
+      ></ui-pagination>
     </div>
+
+    <ui-code-preview
+      *ngIf="showCode"
+      [htmlCode]="generatedCode"
+      label="Generated Code"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
   </div>
 </div>

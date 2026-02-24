@@ -207,178 +207,178 @@ export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit 
   ]);
 
   // Code examples
-  verticalLeftCode = signal(`<app-anchor
+  verticalLeftCode = signal(`<ui-anchor
   mode="vertical"
   position="left"
   sticky="true"
   smooth-scroll="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  verticalRightCode = signal(`<app-anchor
+  verticalRightCode = signal(`<ui-anchor
   mode="vertical"
   position="right"
   sticky="true"
   smooth-scroll="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  horizontalTopCode = signal(`<app-anchor
+  horizontalTopCode = signal(`<ui-anchor
   mode="horizontal"
   position="top"
   sticky="true"
   smooth-scroll="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  horizontalBottomCode = signal(`<app-anchor
+  horizontalBottomCode = signal(`<ui-anchor
   mode="horizontal"
   position="bottom"
   sticky="true"
   smooth-scroll="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  badgeCode = signal(`<app-anchor
+  badgeCode = signal(`<ui-anchor
   mode="vertical"
   position="left"
   show-badge="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  sizeSmallCode = signal(`<app-anchor
+  sizeSmallCode = signal(`<ui-anchor
   mode="vertical"
   size="small"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  sizeMediumCode = signal(`<app-anchor
+  sizeMediumCode = signal(`<ui-anchor
   mode="vertical"
   size="medium"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  sizeLargeCode = signal(`<app-anchor
+  sizeLargeCode = signal(`<ui-anchor
   mode="vertical"
   size="large"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  numericCode = signal(`<app-anchor
+  numericCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="numeric"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  decimalCode = signal(`<app-anchor
+  decimalCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="decimal"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  alphaCode = signal(`<app-anchor
+  alphaCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="alpha"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  romanCode = signal(`<app-anchor
+  romanCode = signal(`<ui-anchor
   mode="vertical"
   show-numbers="true"
   number-style="roman"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  affixCode = signal(`<app-anchor
+  affixCode = signal(`<ui-anchor
   mode="vertical"
   affix
   affix-offset="50"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  progressCode = signal(`<app-anchor
+  progressCode = signal(`<ui-anchor
   mode="vertical"
   show-progress="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  hashCode = signal(`<app-anchor
+  hashCode = signal(`<ui-anchor
   mode="vertical"
   update-hash="true"
   smooth-scroll="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  keyboardCode = signal(`<app-anchor
+  keyboardCode = signal(`<ui-anchor
   mode="vertical"
   arrow-navigation="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  nestedCode = signal(`<app-anchor
+  nestedCode = signal(`<ui-anchor
   mode="vertical"
   collapsible="true"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
   // Theme variants
-  lightThemeCode = signal(`<app-anchor
+  lightThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="light"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  darkThemeCode = signal(`<app-anchor
+  darkThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="dark"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  customThemeCode = signal(`<app-anchor
+  customThemeCode = signal(`<ui-anchor
   mode="vertical"
   theme="custom"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
   // Event handling
-  eventsCode = signal(`<app-anchor
+  eventsCode = signal(`<ui-anchor
   mode="horizontal"
   position="top"
   (change)="onActiveChange($event)"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
   // Alignment options
-  alignLeftCode = signal(`<app-anchor
+  alignLeftCode = signal(`<ui-anchor
   mode="horizontal"
   align="left"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  alignCenterCode = signal(`<app-anchor
+  alignCenterCode = signal(`<ui-anchor
   mode="horizontal"
   align="center"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  alignRightCode = signal(`<app-anchor
+  alignRightCode = signal(`<ui-anchor
   mode="horizontal"
   align="right"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
-  playgroundCode = signal(`<app-anchor
+  playgroundCode = signal(`<ui-anchor
   [mode]="mode"
   [position]="position"
   [sticky]="sticky"
   [smooth-scroll]="smoothScroll"
   [offset-top]="offsetTop"
   [show-numbers]="showNumbers"
-  [items]="items"
-></app-anchor>`);
+  [links]="items"
+></ui-anchor>`);
 
   ngOnInit() {}
 }

@@ -38,18 +38,7 @@ export const topNavItems: NavItem[] = [
 ];
 
 export const categoryNavItems: NavItem[] = [
-  {
-    id: 'wip',
-    label: 'Work in Progress',
-    icon: '🚧',
-    children: [
-      { id: 'dock-host', label: 'Dock Host', icon: '🐳' },
-      { id: 'horizontal-nav', label: 'Horizontal Nav', icon: '🛶' },
-      { id: 'nav-bar', label: 'Nav Bar', icon: '🧭' },
-      { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '🚀' },
-      { id: 'pagination', label: 'Pagination', icon: '📑' },
-    ],
-  },
+
   {
     id: 'charts',
     label: 'Charts',
@@ -70,8 +59,8 @@ export const categoryNavItems: NavItem[] = [
     icon: 'layout-dashboard',
     iconLibrary: 'lucide',
     children: [
-      { id: 'card', label: 'Card', icon: '🃏' },
-      { id: 'card-set', label: 'Card Set', icon: '🎴' },
+      { id: 'card', label: 'Card', icon: 'credit-card', iconLibrary: 'lucide' },
+      { id: 'card-set', label: 'Card Set', icon: 'layers', iconLibrary: 'lucide' },
       { id: 'divider', label: 'Divider', icon: '➖' },
       { id: 'dock', label: 'Dock', icon: '⚓' },
       // { id: 'dock-host', label: 'Dock Host', icon: '🏠' },  not working as of now//
@@ -129,6 +118,7 @@ export const categoryNavItems: NavItem[] = [
     icon: '🗃️',
     children: [
       { id: 'advanced-data-table', label: 'Advanced Table', icon: '🗄️' },
+      { id: 'pagination', label: 'Pagination', icon: '📑' },
       { id: 'bar-chart', label: 'Bar Chart', icon: '📶' },
       { id: 'line-chart', label: 'Line Chart', icon: '💹' },
       { id: 'pie-chart', label: 'Pie Chart', icon: '🥧' },
@@ -189,6 +179,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'tooltip-set', label: 'Tooltip Set', icon: '🗯️' },
     ],
   },
+
   {
     id: 'navigation1',
     label: 'Navigation',
@@ -205,8 +196,7 @@ export const categoryNavItems: NavItem[] = [
         iconLibrary: 'lucide',
       },
       { id: 'nav-bar', label: 'Nav Bar', icon: 'navigation', iconLibrary: 'lucide' },
-      { id: 'pagination', label: 'Pagination', icon: 'pager', iconLibrary: 'lucide' },
-      { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
+         { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
       { id: 'smart-menu', label: 'Smart Menu', icon: 'zap', iconLibrary: 'lucide' },
       { id: 'smart-stepper', label: 'Smart Stepper', icon: 'list-checks', iconLibrary: 'lucide' },
       { id: 'speed-dial', label: 'Speed Dial', icon: 'plus-circle', iconLibrary: 'lucide' },
@@ -228,7 +218,6 @@ export const categoryNavItems: NavItem[] = [
         iconLibrary: 'lucide',
       },
       { id: 'nav-bar', label: 'Nav Bar', icon: 'compass', iconLibrary: 'lucide' },
-      { id: 'pagination', label: 'Pagination', icon: 'book-open', iconLibrary: 'lucide' },
       { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up-circle', iconLibrary: 'lucide' },
       { id: 'smart-menu', label: 'Smart Menu', icon: 'lightbulb', iconLibrary: 'lucide' },
       { id: 'smart-stepper', label: 'Smart Stepper', icon: 'check-square', iconLibrary: 'lucide' },

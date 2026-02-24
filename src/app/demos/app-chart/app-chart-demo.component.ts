@@ -40,10 +40,10 @@ export class AppChartDemoComponent {
     datasets: [{ label: 'Data', data: [10, 20, 30, 40] }],
   });
 
-  playgroundCode = `<ui-chart type="line" [data]="data" responsive></ui-chart>`;
+  playgroundCode = `<ui-chart-line [data]="data" responsive></ui-chart-line>`;
 
   typesCode = `<!-- Line Chart -->
-<ui-chart type="line" [data]="data"></ui-chart>
+<ui-chart-line [data]="data"></ui-chart-line>
 
 <!-- Bar Chart -->
 <ui-chart type="bar" [data]="data"></ui-chart>

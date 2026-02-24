@@ -1,8 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-popover-playground',
@@ -17,97 +26,119 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Content -->
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Heading</label>
-              <input type="text" [(ngModel)]="pgConfig.heading" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Content -->
+              <div class="control-section">
+                <h3>Content</h3>
+                <div class="control-group">
+                  <label>Heading</label>
+                  <input
+                    name="heading"
+                    type="text"
+                    [(ngModel)]="pgConfig.heading"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Body Content (HTML)</label>
+                  <textarea
+                    name="content"
+                    [(ngModel)]="pgConfig.content"
+                    (ngModelChange)="updateConfig()"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Behavior -->
+              <div class="control-section">
+                <h3>Behavior</h3>
+                <div class="control-group">
+                  <label>Trigger</label>
+                  <ui-dropdown
+                    name="trigger"
+                    [(ngModel)]="pgConfig.trigger"
+                    (ngModelChange)="updateConfig()"
+                    [options]="triggerOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Placement</label>
+                  <ui-dropdown
+                    name="placement"
+                    [(ngModel)]="pgConfig.placement"
+                    (ngModelChange)="updateConfig()"
+                    [options]="placementOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <!-- Appearance -->
+              <div class="control-section">
+                <h3>Appearance</h3>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    name="variant"
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Width</label>
+                  <input
+                    name="width"
+                    type="text"
+                    [(ngModel)]="pgConfig.width"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showArrow"
+                    name="showArrow"
+                    [(ngModel)]="pgConfig.showArrow"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Arrow"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="closeButton"
+                    name="closeButton"
+                    [(ngModel)]="pgConfig.showCloseButton"
+                    (ngModelChange)="updateConfig()"
+                    label="Close Button"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="backdrop"
+                    name="backdrop"
+                    [(ngModel)]="pgConfig.backdrop"
+                    (ngModelChange)="updateConfig()"
+                    label="Backdrop"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Body Content (HTML)</label>
-              <textarea [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()"></textarea>
+
+            <div class="action-buttons">
+              <button class="btn-secondary" (click)="resetConfig()">Reset</button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Behavior -->
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Trigger</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.trigger"
-                (ngModelChange)="updateConfig()"
-                [options]="triggerOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Placement</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.placement"
-                (ngModelChange)="updateConfig()"
-                [options]="placementOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Appearance -->
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Width</label>
-              <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showArrow"
-                [(ngModel)]="pgConfig.showArrow"
-                (ngModelChange)="updateConfig()"
-                label="Show Arrow"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="closeButton"
-                [(ngModel)]="pgConfig.showCloseButton"
-                (ngModelChange)="updateConfig()"
-                label="Close Button"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="backdrop"
-                [(ngModel)]="pgConfig.backdrop"
-                (ngModelChange)="updateConfig()"
-                label="Backdrop"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <button (click)="copyCode()">Copy Code</button>
-          <button class="btn-secondary" (click)="resetConfig()">Reset</button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-popover
+          #popover
           [attr.heading]="pgConfig.heading"
           [attr.content]="pgConfig.content"
           [attr.trigger]="pgConfig.trigger"
@@ -120,22 +151,23 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         >
           <button class="btn-primary">Target Element</button>
         </ui-popover>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
-            [htmlCode]="generatedCode()"
+            [htmlCode]="generatedCode"
             [label]="'Generated Code'"
             activeLang="html"
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './popover-playground.component.scss',
 })
-export class PopoverPlaygroundComponent {
+export class PopoverPlaygroundComponent implements AfterViewInit {
+  @ViewChild('popover') popover!: ElementRef;
   pgConfig = {
     heading: 'Popover Title',
     content: 'This is the <b>popover</b> content. You can use <i>HTML</i> here!',
@@ -170,11 +202,16 @@ export class PopoverPlaygroundComponent {
     { label: 'Dark', value: 'dark' },
   ];
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -186,27 +223,24 @@ export class PopoverPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-popover\n';
-    code += `  heading="${this.pgConfig.heading}"\n`;
-    code += `  content="${this.pgConfig.content.replace(/"/g, '&quot;')}"\n`;
-    code += `  trigger="${this.pgConfig.trigger}"\n`;
-    code += `  placement="${this.pgConfig.placement}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.width !== '280px') code += `  width="${this.pgConfig.width}"\n`;
-    if (!this.pgConfig.showArrow) code += `  [show-arrow]="false"\n`;
-    if (this.pgConfig.showCloseButton) code += `  show-close-button\n`;
-    if (this.pgConfig.backdrop) code += `  backdrop\n`;
-    code += '>\n';
-    code += '  <button>Trigger</button>\n';
-    code += '</ui-popover>';
+  getCleanFormatedDom(): string {
+    if (!this.popover) return '';
+    return generatePlaygroundCode(
+      this.popover.nativeElement as Element,
+      'ui-popover',
+      '  <button>Target Element</button>\n',
+    );
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

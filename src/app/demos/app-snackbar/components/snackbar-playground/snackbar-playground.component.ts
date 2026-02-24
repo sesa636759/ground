@@ -18,92 +18,93 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Global Config -->
-          <div class="control-section">
-            <h3>Global Configuration</h3>
-            <div class="control-group">
-              <label>Position</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.position"
-                (ngModelChange)="updateConfig()"
-                [options]="positionOptions"
-              ></ui-dropdown>
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Global Config -->
+              <div class="control-section">
+                <h3>Global Configuration</h3>
+                <div class="control-group">
+                  <label>Position</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.position"
+                    (ngModelChange)="updateConfig()"
+                    [options]="positionOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Max Visible</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.maxVisible"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Stack Mode</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.stackMode"
+                    (ngModelChange)="updateConfig()"
+                    [options]="stackModeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Open Mode</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.openMode"
+                    (ngModelChange)="updateConfig()"
+                    [options]="openModeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="cardStack"
+                    [(ngModel)]="pgConfig.cardStack"
+                    (ngModelChange)="updateConfig()"
+                    label="Card Stacking"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <!-- Notification settings -->
+              <div class="control-section">
+                <h3>Notification Settings</h3>
+                <div class="control-group">
+                  <label>Type</label>
+                  <ui-dropdown [(ngModel)]="notiConfig.type" [options]="typeOptions"></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Title</label>
+                  <input type="text" [(ngModel)]="notiConfig.title" />
+                </div>
+                <div class="control-group">
+                  <label>Message</label>
+                  <input type="text" [(ngModel)]="notiConfig.message" />
+                </div>
+                <div class="control-group">
+                  <label>Duration (ms)</label>
+                  <input type="number" [(ngModel)]="notiConfig.duration" />
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Max Visible</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.maxVisible"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Stack Mode</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.stackMode"
-                (ngModelChange)="updateConfig()"
-                [options]="stackModeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Open Mode</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.openMode"
-                (ngModelChange)="updateConfig()"
-                [options]="openModeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="cardStack"
-                [(ngModel)]="pgConfig.cardStack"
-                (ngModelChange)="updateConfig()"
-                label="Card Stacking"
-              ></app-checkbox>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Notification settings -->
-          <div class="control-section">
-            <h3>Notification Settings</h3>
-            <div class="control-group">
-              <label>Type</label>
-              <ui-dropdown [(ngModel)]="notiConfig.type" [options]="typeOptions"></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Title</label>
-              <input type="text" [(ngModel)]="notiConfig.title" />
-            </div>
-            <div class="control-group">
-              <label>Message</label>
-              <input type="text" [(ngModel)]="notiConfig.message" />
-            </div>
-            <div class="control-group">
-              <label>Duration (ms)</label>
-              <input type="number" [(ngModel)]="notiConfig.duration" />
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-snackbar
           #snackbar
           icon-library="lucide"
@@ -126,8 +127,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           (click)="clearAll()"
           label="Clear All"
         ></ui-button>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -136,7 +137,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './snackbar-playground.component.scss',

@@ -11,52 +11,63 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Structure</h3>
-            <div class="control-group">
-              <label>Logo Text</label>
-              <input type="text" [(ngModel)]="pgConfig.logoText" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Structure</h3>
+                <div class="control-group">
+                  <label>Logo Text</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.logoText"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="sticky"
+                    [(ngModel)]="pgConfig.sticky"
+                    (ngModelChange)="updateConfig()"
+                    label="Sticky Position"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Visuals</h3>
+                <div class="control-group">
+                  <label>Height (px)</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.height"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="sticky"
-                [(ngModel)]="pgConfig.sticky"
-                (ngModelChange)="updateConfig()"
-                label="Sticky Position"
-              ></app-checkbox>
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Height (px)</label>
-              <input type="number" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" />
-            </div>
-          </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <div class="top-bar-container">
           <ui-top-bar
             [attr.sticky]="pgConfig.sticky ? '' : null"

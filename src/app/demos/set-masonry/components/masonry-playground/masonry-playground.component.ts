@@ -5,11 +5,15 @@
   OnInit,
   ViewEncapsulation,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-masonry-playground',
@@ -25,7 +29,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   templateUrl: './masonry-playground.component.html',
   styleUrl: './masonry-playground.component.scss',
 })
-export class MasonryPlaygroundComponent implements OnInit {
+export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('masonryLayout') masonryLayout!: ElementRef;
   // Playground State
   pgConfig = {
     layoutType: 'masonry',
@@ -77,7 +82,7 @@ export class MasonryPlaygroundComponent implements OnInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -96,6 +101,13 @@ export class MasonryPlaygroundComponent implements OnInit {
     }, 0);
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
+  }
+
   generateItems(count: number) {
     const categories = ['nature', 'architecture', 'food', 'technology'];
     const heights = [200, 250, 300, 350, 400, 450];
@@ -112,40 +124,19 @@ export class MasonryPlaygroundComponent implements OnInit {
     }));
   }
 
+  getCleanFormatedDom(): string {
+    if (!this.masonryLayout) return '';
+    let code = generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
+    return code.replace('></app-masonry>', '  [items]="items"\n></app-masonry>');
+  }
+
   updateConfig() {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
 
-    let code = `<app-masonry\n`;
-    code += `  layout-type="${this.pgConfig.layoutType}"\n`;
-    code += `  columns="${this.pgConfig.columns}"\n`;
-    code += `  gap="${this.pgConfig.gap}"\n`;
-
-    if (this.pgConfig.sortBy) {
-      code += `  sort-by="${this.pgConfig.sortBy}"\n`;
-      code += `  sort-order="${this.pgConfig.sortOrder}"\n`;
-    }
-    if (this.pgConfig.filterBy) code += `  filter-by="${this.pgConfig.filterBy}"\n`;
-
-    if (this.pgConfig.enableAnimation) code += `  enable-animation="true"\n`;
-    if (this.pgConfig.showFilters) code += `  show-filters="true"\n`;
-    if (this.pgConfig.selectable) code += `  selectable="true"\n`;
-    if (this.pgConfig.multiSelect) code += `  multi-select="true"\n`;
-    if (this.pgConfig.showBatchActions) code += `  show-batch-actions="true"\n`;
-    if (this.pgConfig.lazyLoad) code += `  lazy-load="true"\n`;
-    if (this.pgConfig.infiniteScroll) code += `  infinite-scroll="true"\n`;
-    if (this.pgConfig.lightbox) code += `  lightbox="true"\n`;
-    if (this.pgConfig.loadingState) code += `  loading-state="true"\n`;
-
-    if (this.pgConfig.itemMinWidth !== 200)
-      code += `  item-min-width="${this.pgConfig.itemMinWidth}"\n`;
-    if (this.pgConfig.itemMaxWidth !== 400)
-      code += `  item-max-width="${this.pgConfig.itemMaxWidth}"\n`;
-
-    code += `  [items]="items"\n`;
-    code += `></app-masonry>`;
-
-    this.generatedCode.set(code);
-    this.refreshCode();
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   onItemClick(event: any) {
@@ -164,7 +155,7 @@ export class MasonryPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   getBreakpointsJson() {

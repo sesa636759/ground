@@ -11,70 +11,91 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Metric</h3>
-            <div class="control-group">
-              <label>Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Metric</h3>
+                <div class="control-group">
+                  <label>Value</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.value"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Min</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.min"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Max</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.max"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Label</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.label"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Appearance</h3>
+                <div class="control-group">
+                  <label>Size</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Arc Width</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="pgConfig.arcWidth"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Color Mode</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.colorMode"
+                    (ngModelChange)="updateConfig()"
+                    [options]="colorModeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Min</label>
-              <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Max</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Size</label>
-              <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Arc Width</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.arcWidth"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Color Mode</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.colorMode"
-                (ngModelChange)="updateConfig()"
-                [options]="colorModeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-speedometer
           [attr.value]="pgConfig.value"
           [attr.min]="pgConfig.min"
@@ -84,8 +105,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           [attr.arc-width]="pgConfig.arcWidth"
           [attr.color-mode]="pgConfig.colorMode"
         ></ui-speedometer>
-      
-      <div class="code-output">
+
+        <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
             [htmlCode]="generatedCode()"
@@ -94,7 +115,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './speedometer-playground.component.scss',
