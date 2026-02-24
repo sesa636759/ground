@@ -1,49 +1,55 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 
 @Component({
   selector: 'app-transfer-list-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    AppInputValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <!-- Global Configuration -->
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Search Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.searchPlaceholder" (ngModelChange)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.searchPlaceholder"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
 
-          <div class="control-section">
-            <h3>States</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="disabled"
-                [(ngModel)]="pgConfig.disabled"
-                (change)="updateConfig()"
-                label="Disabled State"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showSearch"
-                [(ngModel)]="pgConfig.showSearch"
-                (change)="updateConfig()"
-                label="Show Search Bar"
-              ></app-checkbox>
+          <!-- Behavioral States -->
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.disabled"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Disabled State
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.showSearch"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Show Search Bar
+              </label>
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
+        </ui-accordion>
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -67,12 +73,25 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           >
           </ui-transfer-list>
         </div>
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './transfer-list-playground.component.scss',
 })
-export class TransferListPlaygroundComponent {
+export class TransferListPlaygroundComponent implements OnInit {
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
   pgConfig = {
     searchPlaceholder: 'Search items...',
     disabled: false,
@@ -92,7 +111,9 @@ export class TransferListPlaygroundComponent {
   targetJson = JSON.stringify(this.target);
   generatedCode = signal('');
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 

@@ -1,7 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-picklist-playground',
@@ -10,52 +21,61 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
+    AppInputValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Source Header</label>
-              <input type="text" [(ngModel)]="pgConfig.sourceHeader" (ngModelChange)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.sourceHeader"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Target Header</label>
-              <input type="text" [(ngModel)]="pgConfig.targetHeader" (ngModelChange)="updateConfig()" />
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showSourceControls"
-                [(ngModel)]="pgConfig.showSourceControls"
-                (change)="updateConfig()"
-                label="Source Controls"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showTargetControls"
-                [(ngModel)]="pgConfig.showTargetControls"
-                (change)="updateConfig()"
-                label="Target Controls"
-              ></app-checkbox>
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.targetHeader"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Filter Placeholder</label>
-              <input type="text" [(ngModel)]="pgConfig.filterPlaceholder" (ngModelChange)="updateConfig()" />
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.filterPlaceholder"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
           </div>
-        </div>
 
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="showSourceControls"
+                  [(ngModel)]="pgConfig.showSourceControls"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Source Controls
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="showTargetControls"
+                  [(ngModel)]="pgConfig.showTargetControls"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Target Controls
+              </label>
+            </div>
+          </div>
+        </ui-accordion>
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -69,8 +89,9 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       </div>
 
       <div class="playground-preview">
-        <div class="picklist-container">
+        <div class="preview-stage">
           <ui-picklist
+            #demoElement
             [attr.source-header]="pgConfig.sourceHeader"
             [attr.target-header]="pgConfig.targetHeader"
             [attr.show-source-controls]="pgConfig.showSourceControls ? '' : null"
@@ -87,12 +108,30 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </ng-template>
           </ui-picklist>
         </div>
+
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './picklist-playground.component.scss',
 })
-export class PicklistPlaygroundComponent {
+export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   pgConfig = {
     sourceHeader: 'Available Products',
     targetHeader: 'Selected Products',
@@ -114,14 +153,26 @@ export class PicklistPlaygroundComponent {
   targetJson = JSON.stringify(this.target);
   generatedCode = signal('');
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
+  }
+
+  getCleanFormatedDom(): string {
     let code = '<ui-picklist\n';
     code += `  source-header="${this.pgConfig.sourceHeader}"\n`;
     code += `  target-header="${this.pgConfig.targetHeader}"\n`;
+    if (this.pgConfig.showSourceControls) code += `  show-source-controls\n`;
+    if (this.pgConfig.showTargetControls) code += `  show-target-controls\n`;
+    code += `  filter-placeholder="${this.pgConfig.filterPlaceholder}"\n`;
     code += `  [source]="availableItems"\n`;
     code += `  [target]="selectedItems"\n`;
     code += '>\n';
@@ -129,8 +180,23 @@ export class PicklistPlaygroundComponent {
     code += '     {{ item.name }}\n';
     code += '  </ng-template>\n';
     code += '</ui-picklist>';
+    return code;
+  }
 
-    this.generatedCode.set(code);
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {

@@ -12,19 +12,19 @@
   --primary-lighter: #818cf8;
   --primary-color: var(--primary);
   --primary-glow: rgba(79, 70, 229, 0.25);
-  
+
   --success: #059669;
   --success-light: #10b981;
   --success-color: var(--success);
-  
+
   --warning: #d97706;
   --warning-light: #f59e0b;
   --warning-color: var(--warning);
-  
+
   --danger: #dc2626;
   --danger-light: #ef4444;
   --danger-color: var(--danger);
-  
+
   --info: #0284c7;
   --info-light: #0ea5e9;
   --info-color: var(--info);
@@ -46,8 +46,8 @@
   --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
   --gradient-mesh: radial-gradient(at 40% 20%, rgba(79, 70, 229, 0.08) 0px, transparent 50%),
-                   radial-gradient(at 80% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
-                   radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.06) 0px, transparent 50%);
+    radial-gradient(at 80% 0%, rgba(124, 58, 237, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.06) 0px, transparent 50%);
 
   /* Smooth Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,6 +80,14 @@
   --surface-2: #fafbfc;
   --surface-3: #f5f7fa;
   --surface-elevated: #ffffff;
+
+  /* Stencil Compatibility Tokens */
+  --surface-color: var(--surface-1);
+  --background-secondary: var(--bg-secondary);
+  --background-tertiary: var(--bg-tertiary);
+  --scroll-color: var(--primary);
+  --scroll-color-rgb: 79, 70, 229;
+
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-tertiary: #94a3b8;
@@ -91,7 +99,8 @@
 }
 
 /* Dark Theme - Premium Deep Slate */
-[data-theme="dark"], :root.dark {
+[data-theme="dark"],
+:root.dark {
   --bg-primary: #0a0e1a;
   --bg-secondary: #0f172a;
   --bg-tertiary: #1e293b;
@@ -100,6 +109,14 @@
   --surface-2: #1e293b;
   --surface-3: #334155;
   --surface-elevated: #1e293b;
+
+  /* Stencil Compatibility Tokens */
+  --surface-color: var(--surface-1);
+  --background-secondary: var(--bg-secondary);
+  --background-tertiary: var(--bg-tertiary);
+  --scroll-color: var(--primary);
+  --scroll-color-rgb: 129, 140, 248;
+
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
@@ -108,7 +125,7 @@
   --border-light: #1e293b;
   --border-strong: #334155;
   --overlay: rgba(0, 0, 0, 0.75);
-  
+
   --primary: #818cf8;
   --primary-hover: #6366f1;
   --primary-light: #a5b4fc;
@@ -117,8 +134,8 @@
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
   --gradient-glass: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.85) 100%);
   --gradient-mesh: radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-                   radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
-                   radial-gradient(at 0% 50%, rgba(124, 58, 237, 0.08) 0px, transparent 50%);
+    radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(124, 58, 237, 0.08) 0px, transparent 50%);
   --shadow-premium: 0 24px 48px -12px rgba(0, 0, 0, 0.6), 0 12px 24px -8px rgba(99, 102, 241, 0.2);
   --shadow-glow: 0 0 32px 0 rgba(99, 102, 241, 0.3);
 }
@@ -135,7 +152,7 @@
   --text-tertiary: #10b981;
   --border-color: #d1fae5;
   --border-strong: #34d399;
-  
+
   --primary: #3DCD58;
   --primary-glow: rgba(61, 205, 88, 0.4);
   --gradient-premium: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
@@ -154,7 +171,7 @@
   --text-tertiary: #0ea5e9;
   --border-color: #bae6fd;
   --border-strong: #38bdf8;
-  
+
   --primary: #0284c7;
   --primary-glow: rgba(2, 132, 199, 0.4);
   --gradient-premium: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
@@ -173,7 +190,7 @@
   --text-tertiary: #ffffff;
   --border-color: #ffffff;
   --border-strong: #ffffff;
-  
+
   --primary: #facc15;
   --primary-glow: rgba(250, 204, 21, 0.6);
   --gradient-premium: none;
@@ -248,7 +265,7 @@ body {
   border: 2px solid transparent;
   background-clip: padding-box;
   transition: background-color var(--transition-fast);
-  
+
   &:hover {
     background: var(--text-tertiary);
     background-clip: padding-box;
@@ -261,12 +278,13 @@ body {
 
 /* Premium Animations */
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateY(12px);
   }
-  to { 
-    opacity: 1; 
+
+  to {
+    opacity: 1;
     transform: none;
   }
 }
@@ -276,6 +294,7 @@ body {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -287,6 +306,7 @@ body {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -297,6 +317,7 @@ body {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }

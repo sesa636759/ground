@@ -1,168 +1,184 @@
 <div class="playground-layout">
   <div class="playground-controls">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Layout</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.layout"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Horizontal', value: 'horizontal' },
-            { label: 'Vertical', value: 'vertical' },
-            { label: 'Grid', value: 'grid' },
-          ]"
-        ></ui-dropdown>
+    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+      <!-- Global Configuration -->
+      <div slot="content-global" class="control-grid" style="padding: 16px">
+        <div class="control-group">
+          <label>Layout</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.layout"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Horizontal', value: 'horizontal' },
+              { label: 'Vertical', value: 'vertical' },
+              { label: 'Grid', value: 'grid' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Grid Columns</label>
+          <app-input
+            type="number"
+            min="1"
+            max="4"
+            [(ngModel)]="pgConfig.columns"
+            (input)="updateConfig()"
+            [disabled]="pgConfig.layout !== 'grid'"
+          ></app-input>
+        </div>
+
+        <div class="control-group">
+          <label>Selection Mode</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.selectionMode"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Single', value: 'single' },
+              { label: 'Multiple', value: 'multiple' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.size"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Small', value: 'small' },
+              { label: 'Medium', value: 'medium' },
+              { label: 'Large', value: 'large' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Color</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.color"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Primary', value: 'primary' },
+              { label: 'Secondary', value: 'secondary' },
+              { label: 'Success', value: 'success' },
+              { label: 'Danger', value: 'danger' },
+              { label: 'Warning', value: 'warning' },
+              { label: 'Info', value: 'info' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.variant"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Default', value: 'default' },
+              { label: 'Rounded', value: 'rounded' },
+              { label: 'Outlined', value: 'outlined' },
+              { label: 'Glass', value: 'glass' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Elevation (0-5)</label>
+          <app-input
+            type="number"
+            min="0"
+            max="5"
+            [(ngModel)]="pgConfig.elevation"
+            (input)="updateConfig()"
+          ></app-input>
+        </div>
+
+        <div class="control-group">
+          <label>Thumb Shape</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.thumbShape"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Circle', value: 'circle' },
+              { label: 'Square', value: 'square' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Label</label>
+          <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()"></app-input>
+        </div>
+
+        <div class="control-group">
+          <label>Helper Text</label>
+          <app-input
+            type="text"
+            [(ngModel)]="pgConfig.helperText"
+            (input)="updateConfig()"
+          ></app-input>
+        </div>
+
+        <div class="control-group">
+          <label>Label Position</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.labelPosition"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Left', value: 'left' },
+              { label: 'Right', value: 'right' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Orientation</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.orientation"
+            (change)="updateConfig()"
+            [options]="[
+              { label: 'Horizontal', value: 'horizontal' },
+              { label: 'Vertical', value: 'vertical' },
+            ]"
+          ></ui-dropdown>
+        </div>
       </div>
 
-      <div class="control-group">
-        <label>Grid Columns</label>
-        <app-input
-          type="number"
-          min="1"
-          max="4"
-          [(ngModel)]="pgConfig.columns"
-          (input)="updateConfig()"
-          [disabled]="pgConfig.layout !== 'grid'"
-        />
+      <!-- Behavioral States -->
+      <div slot="content-states" style="padding: 16px">
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()"></app-checkbox>
+            Show Icons
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()"></app-checkbox>
+            Disabled
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()"></app-checkbox>
+            Readonly
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()"></app-checkbox>
+            Required
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()"></app-checkbox>
+            Invalid
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.animation" (change)="updateConfig()"></app-checkbox>
+            Animation
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()"></app-checkbox>
+            Skeleton
+          </label>
+        </div>
       </div>
-
-      <div class="control-group">
-        <label>Selection Mode</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.selectionMode"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Single', value: 'single' },
-            { label: 'Multiple', value: 'multiple' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Size</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Small', value: 'small' },
-            { label: 'Medium', value: 'medium' },
-            { label: 'Large', value: 'large' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Color</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.color"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Primary', value: 'primary' },
-            { label: 'Secondary', value: 'secondary' },
-            { label: 'Success', value: 'success' },
-            { label: 'Danger', value: 'danger' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Info', value: 'info' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Rounded', value: 'rounded' },
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Glass', value: 'glass' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Elevation (0-5)</label>
-        <app-input
-          type="number"
-          min="0"
-          max="5"
-          [(ngModel)]="pgConfig.elevation"
-          (input)="updateConfig()"
-        />
-      </div>
-
-      <div class="control-group">
-        <label>Thumb Shape</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.thumbShape"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Circle', value: 'circle' },
-            { label: 'Square', value: 'square' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.label" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Helper Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.helperText" (input)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Label Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.labelPosition"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Left', value: 'left' },
-            { label: 'Right', value: 'right' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Orientation</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.orientation"
-          (change)="updateConfig()"
-          [options]="[
-            { label: 'Horizontal', value: 'horizontal' },
-            { label: 'Vertical', value: 'vertical' },
-          ]"
-        ></ui-dropdown>
-      </div>
-    </div>
-
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showIcons" (change)="updateConfig()" /> Show Icons
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (change)="updateConfig()" /> Disabled
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (change)="updateConfig()" /> Readonly
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.required" (change)="updateConfig()" /> Required
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (change)="updateConfig()" /> Invalid
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animation" (change)="updateConfig()" />
-        Animation
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.skeleton" (change)="updateConfig()" /> Skeleton
-      </label>
-    </div>
+    </ui-accordion>
   </div>
 
   <div class="playground-preview">
@@ -188,19 +204,24 @@
           [attr.label]="pgConfig.label"
           [attr.helper-text]="pgConfig.helperText"
           [attr.label-position]="pgConfig.labelPosition"
-          [attr.show-icons]="pgConfig.showIcons"
-          [attr.disabled]="pgConfig.disabled"
-          [attr.readonly]="pgConfig.readonly"
-          [attr.required]="pgConfig.required"
-          [attr.invalid]="pgConfig.invalid"
-          [attr.enable-animation]="pgConfig.animation"
-          [attr.show-skeleton]="pgConfig.skeleton"
+          [attr.show-icons]="pgConfig.showIcons ? '' : null"
+          [attr.disabled]="pgConfig.disabled ? '' : null"
+          [attr.readonly]="pgConfig.readonly ? '' : null"
+          [attr.required]="pgConfig.required ? '' : null"
+          [attr.invalid]="pgConfig.invalid ? '' : null"
+          [attr.enable-animation]="pgConfig.animation ? '' : null"
+          [attr.show-skeleton]="pgConfig.skeleton ? '' : null"
           [attr.orientation]="pgConfig.orientation"
           (toggleGroupChange)="onToggleChange($event)"
         ></app-toggle-group>
       </div>
     </div>
 
-    <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
   </div>
 </div>

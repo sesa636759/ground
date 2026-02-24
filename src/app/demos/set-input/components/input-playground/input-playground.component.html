@@ -167,7 +167,6 @@
   <div class="playground-preview">
     <div class="preview-stage">
       <app-input
-        #demoElement
         [attr.type]="pgConfig.type"
         [attr.label]="pgConfig.label"
         [attr.placeholder]="pgConfig.placeholder"
@@ -208,7 +207,6 @@
     </div>
 
     <ui-code-preview
-      *ngIf="showCode"
       [htmlCode]="generatedCode()"
       label="Generated Code"
       activeLang="html"

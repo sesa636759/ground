@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
@@ -127,6 +127,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
         <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="code()"
             label="Generated Code"
             activeLang="html"
@@ -189,9 +190,19 @@ export class SkeletonPlaygroundComponent {
 
   code = signal('');
   recreate = true;
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.update();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   update() {
@@ -209,6 +220,7 @@ export class SkeletonPlaygroundComponent {
     if (this.cfg.borderRadius) lines.push(`  border-radius="${this.cfg.borderRadius}"`);
     lines.push('></skeleton-loader>');
     this.code.set(lines.join('\n'));
+    this.refreshCode();
   }
 
   copy() {

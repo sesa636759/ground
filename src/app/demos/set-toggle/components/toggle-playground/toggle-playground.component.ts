@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppToggleGroupValueAccessorDirective } from '../../../../directives/app-toggle-group-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-toggle-playground',
@@ -20,13 +22,21 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     AppCheckboxValueAccessorDirective,
     AppToggleGroupValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    ],
+    AppInputValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './toggle-playground.component.html',
   styleUrl: './toggle-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class TogglePlaygroundComponent implements OnInit {
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
   // Playground State
   pgConfig = {
     layout: 'horizontal',
@@ -61,6 +71,8 @@ export class TogglePlaygroundComponent implements OnInit {
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
 
+  constructor() {}
+
   ngOnInit() {
     this.updateConfig();
   }
@@ -93,7 +105,7 @@ export class TogglePlaygroundComponent implements OnInit {
     if (this.pgConfig.orientation !== 'horizontal')
       code += `  orientation="${this.pgConfig.orientation}"\n`;
 
-    code += `  [options]="options"\n`;
+    code += `  [options]="playgroundOptions"\n`;
     code += `></app-toggle-group>`;
 
     this.generatedCode.set(code);

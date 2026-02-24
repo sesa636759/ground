@@ -143,6 +143,7 @@
     </div>
 
     <ui-code-preview
+      *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"

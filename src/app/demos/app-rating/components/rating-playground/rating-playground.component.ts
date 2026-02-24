@@ -1,20 +1,28 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-rating-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <!-- Model -->
-          <div class="control-section">
-            <h3>Model</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <!-- Global Configuration -->
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Type</label>
               <ui-dropdown
@@ -25,17 +33,20 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
             <div class="control-group">
               <label>Value</label>
-              <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.value"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
             <div class="control-group">
               <label>Max (Stars/Smiley)</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
+              <app-input
+                type="number"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
             </div>
-          </div>
-
-          <!-- Appearance -->
-          <div class="control-section">
-            <h3>Appearance</h3>
             <div class="control-group">
               <label>Size</label>
               <ui-dropdown
@@ -52,50 +63,43 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 [options]="colorOptions"
               ></ui-dropdown>
             </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="half"
-                [(ngModel)]="pgConfig.allowHalf"
-                (change)="updateConfig()"
-                label="Allow Half (Star only)"
-                [disabled]="pgConfig.type !== 'star'"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showVal"
-                [(ngModel)]="pgConfig.showValue"
-                (change)="updateConfig()"
-                label="Show Value Text"
-              ></app-checkbox>
-            </div>
           </div>
 
-          <!-- State -->
-          <div class="control-section">
-            <h3>State</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="readonly"
-                [(ngModel)]="pgConfig.readonly"
-                (change)="updateConfig()"
-                label="Read-Only"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="disabled"
-                [(ngModel)]="pgConfig.disabled"
-                (change)="updateConfig()"
-                label="Disabled"
-              ></app-checkbox>
+          <!-- Behavioral States -->
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.allowHalf"
+                  (ngModelChange)="updateConfig()"
+                  [disabled]="pgConfig.type !== 'star'"
+                ></app-checkbox>
+                Allow Half
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.showValue"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Show Text
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.readonly"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Read-Only
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.disabled"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Disabled
+              </label>
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
+        </ui-accordion>
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -109,25 +113,44 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       </div>
 
       <div class="playground-preview">
-        <ui-rating
-          [attr.type]="pgConfig.type"
-          [attr.value]="pgConfig.value"
-          [attr.max]="pgConfig.max"
-          [attr.size]="pgConfig.size"
-          [attr.color]="pgConfig.color"
-          [attr.readonly]="pgConfig.readonly ? '' : null"
-          [attr.disabled]="pgConfig.disabled ? '' : null"
-          [attr.allow-half]="pgConfig.allowHalf ? '' : null"
-          [attr.show-value]="pgConfig.showValue ? '' : null"
-          (ratingChange)="onRatingChange($event)"
-        ></ui-rating>
-        <div class="rating-display">Current Value: {{ pgConfig.value }}</div>
+        <div class="preview-stage h-scrollable">
+          <ui-rating
+            [attr.type]="pgConfig.type"
+            [attr.value]="pgConfig.value"
+            [attr.max]="pgConfig.max"
+            [attr.size]="pgConfig.size"
+            [attr.color]="pgConfig.color"
+            [attr.readonly]="pgConfig.readonly ? '' : null"
+            [attr.disabled]="pgConfig.disabled ? '' : null"
+            [attr.allow-half]="pgConfig.allowHalf ? '' : null"
+            [attr.show-value]="pgConfig.showValue ? '' : null"
+            (ratingChange)="onRatingChange($event)"
+          ></ui-rating>
+          <div class="rating-display" style="margin-top: 24px; font-weight: 600;">
+            Current Value: {{ pgConfig.value }}
+          </div>
+        </div>
+
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './rating-playground.component.scss',
 })
-export class RatingPlaygroundComponent {
+export class RatingPlaygroundComponent implements OnInit {
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   pgConfig = {
     type: 'star',
     value: 3,
@@ -161,7 +184,9 @@ export class RatingPlaygroundComponent {
 
   generatedCode = signal('');
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 

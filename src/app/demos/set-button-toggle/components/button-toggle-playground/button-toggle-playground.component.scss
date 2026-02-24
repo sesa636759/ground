@@ -4,3 +4,7 @@
 .preview-stage {
   min-height: 250px;
 }
+
+app-button-toggle-group {
+  --button-group-bg: var(--surface-3);
+}

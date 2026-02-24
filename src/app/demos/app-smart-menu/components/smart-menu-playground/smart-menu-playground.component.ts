@@ -1,4 +1,11 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, signal, ViewChild } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ElementRef,
+  signal,
+  ViewChild,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -157,6 +164,7 @@ import { FormsModule } from '@angular/forms';
 
         <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
@@ -291,9 +299,19 @@ export class SmartMenuPlaygroundComponent {
   menuJson = '';
   generatedCode = signal('');
   clickLog = signal<string[]>([]);
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.rebuild();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   rebuild() {
@@ -353,6 +371,7 @@ export class SmartMenuPlaygroundComponent {
         `];`,
       ].join('\n'),
     );
+    this.refreshCode();
   }
 
   async openViaButton(event: MouseEvent) {

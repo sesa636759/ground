@@ -5,6 +5,7 @@
   OnInit,
   ViewChild,
   ElementRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -50,9 +51,21 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -79,6 +92,7 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     // Trigger CDR/Re-render if needed (In Angular, inputs usually handle this)
     // We recreate the array to trigger change detection for [panels]
     this.panelsData = [...this.panelsData];
+    this.refreshCode();
   }
 
   logEvent(msg: string) {

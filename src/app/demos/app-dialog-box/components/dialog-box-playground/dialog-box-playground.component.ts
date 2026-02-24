@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -198,6 +198,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
 
         <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
@@ -214,6 +215,20 @@ export class DialogBoxPlaygroundComponent {
 
   visible = false;
   generatedCode = signal('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {
+    this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
 
   sizeOptions = [
     { label: 'Custom', value: 'custom' },
@@ -259,10 +274,6 @@ export class DialogBoxPlaygroundComponent {
     { type: 'separator' },
     { label: 'Close', id: 'close', icon: 'x', variant: 'danger' },
   ]);
-
-  constructor() {
-    this.updateConfig();
-  }
 
   getDefaultConfig() {
     return {
@@ -317,6 +328,7 @@ export class DialogBoxPlaygroundComponent {
     code += '</ui-dialog-box>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

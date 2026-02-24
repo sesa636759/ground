@@ -1,8 +1,9 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 
 @Component({
   selector: 'app-range-slider-playground',
@@ -11,15 +12,17 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Value Control</h3>
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <!-- Global Configuration -->
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
             <div class="control-group">
               <label>Min</label>
               <app-input
@@ -44,10 +47,6 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 (ngModelChange)="updateConfig()"
               ></app-input>
             </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Visuals</h3>
             <div class="control-group">
               <label>Orientation</label>
               <ui-dropdown
@@ -56,28 +55,28 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="range"
-                [(ngModel)]="pgConfig.range"
-                (change)="updateConfig()"
-                label="Range Mode (Dual)"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showValue"
-                [(ngModel)]="pgConfig.showValue"
-                (change)="updateConfig()"
-                label="Show Tooltip"
-              ></app-checkbox>
+          </div>
+
+          <!-- Behavioral States -->
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.range"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Range Mode (Dual)
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.showValue"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Show Tooltip
+              </label>
             </div>
           </div>
-        </div>
-
-        <div class="code-output">
-          <pre>{{ generatedCode() }}</pre>
-        </div>
+        </ui-accordion>
 
         <div class="action-buttons">
           <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
@@ -91,29 +90,48 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
       </div>
 
       <div class="playground-preview">
-        <div
-          class="slider-container"
-          [style.height]="pgConfig.orientation === 'vertical' ? '250px' : 'auto'"
-        >
-          <ui-range-slider
-            [attr.min]="pgConfig.min"
-            [attr.max]="pgConfig.max"
-            [attr.step]="pgConfig.step"
-            [attr.orientation]="pgConfig.orientation"
-            [attr.range]="pgConfig.range ? '' : null"
-            [attr.show-value]="pgConfig.showValue ? '' : null"
-            [value]="currentValue"
-            (rangeChange)="onValueChange($event)"
-          ></ui-range-slider>
+        <div class="preview-stage h-scrollable">
+          <div
+            class="slider-container"
+            [style.height]="pgConfig.orientation === 'vertical' ? '250px' : 'auto'"
+            [style.width]="'100%'"
+          >
+            <ui-range-slider
+              [attr.min]="pgConfig.min"
+              [attr.max]="pgConfig.max"
+              [attr.step]="pgConfig.step"
+              [attr.orientation]="pgConfig.orientation"
+              [attr.range]="pgConfig.range ? '' : null"
+              [attr.show-value]="pgConfig.showValue ? '' : null"
+              [value]="currentValue"
+              (rangeChange)="onValueChange($event)"
+            ></ui-range-slider>
+          </div>
+          <div style="margin-top: 24px; font-weight: 600;">
+            Current Value: {{ currentValue | json }}
+          </div>
         </div>
 
-        <div style="margin-top: 24px; font-weight: 600;">Value: {{ currentValue | json }}</div>
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './range-slider-playground.component.scss',
 })
-export class RangeSliderPlaygroundComponent {
+export class RangeSliderPlaygroundComponent implements OnInit {
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
+  showCode = true;
+
   pgConfig = {
     min: 0,
     max: 100,
@@ -131,7 +149,9 @@ export class RangeSliderPlaygroundComponent {
   currentValue: any = [20, 80];
   generatedCode = signal('');
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.updateConfig();
   }
 
