@@ -1,8 +1,8 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <app-demo-header
     icon="💹"
     title="Line Chart"
-    description="A flexible line chart component for visualizing trends over time. Supports single and multi-series data, filled areas, smooth curves, stepped lines, and rich customization options."
+    description="An SVG-based line chart for visualising trends over time. Supports single and multi-series data, custom colours, grid, legend, markers, and animation."
   ></app-demo-header>
 
   <demo-tabs>
@@ -20,19 +20,20 @@
           <section class="demo-section" id="basic" style="margin-top: 0">
             <div class="section-header">
               <h2>💹 Basic Line Chart</h2>
-              <p>A smooth single-series line chart showing monthly revenue trends.</p>
+              <p>A single-series line chart showing monthly revenue trends.</p>
             </div>
             <div class="demo-card">
-              <div style="height: 320px;">
-                <ui-chart
-                  type="line"
-                  show-legend
-                  show-grid
-                  responsive
-                  enable-animation
-                  [data]="basicData"
-                ></ui-chart>
-              </div>
+              <chart-line
+                chart-title="Monthly Revenue"
+                x-axis-label="Month"
+                y-axis-label="Revenue ($k)"
+                show-legend
+                show-grid
+                enable-animation
+                width="600"
+                height="300"
+                [data]="basicData"
+              ></chart-line>
             </div>
             <ui-code-preview
               [htmlCode]="basicCode"
@@ -46,19 +47,20 @@
           <section class="demo-section" id="multi-series">
             <div class="section-header">
               <h2>📈 Multi Series</h2>
-              <p>Compare multiple metrics side-by-side on the same timeline.</p>
+              <p>Compare multiple metrics on the same chart using different colours per series.</p>
             </div>
             <div class="demo-card">
-              <div style="height: 320px;">
-                <ui-chart
-                  type="line"
-                  show-legend
-                  show-grid
-                  responsive
-                  enable-animation
-                  [data]="multiSeriesData"
-                ></ui-chart>
-              </div>
+              <chart-line
+                chart-title="Financial Overview"
+                x-axis-label="Month"
+                y-axis-label="Amount ($k)"
+                show-legend
+                show-grid
+                enable-animation
+                width="600"
+                height="300"
+                [data]="multiSeriesData"
+              ></chart-line>
             </div>
             <ui-code-preview
               [htmlCode]="multiSeriesCode"
@@ -68,50 +70,24 @@
             ></ui-code-preview>
           </section>
 
-          <!-- Filled Area -->
-          <section class="demo-section" id="filled-area">
-            <div class="section-header">
-              <h2>🎨 Filled Area</h2>
-              <p>Fill the area under the line to emphasize volume or magnitude over time.</p>
-            </div>
-            <div class="demo-card">
-              <div style="height: 320px;">
-                <ui-chart
-                  type="line"
-                  fill="true"
-                  show-legend
-                  show-grid
-                  responsive
-                  enable-animation
-                  [data]="filledAreaData"
-                ></ui-chart>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="filledAreaCode"
-              [label]="'Filled Area Chart'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Stepped Line -->
+          <!-- Stepped -->
           <section class="demo-section" id="stepped">
             <div class="section-header">
               <h2>🪜 Stepped Line</h2>
-              <p>A stepped/staircase style is ideal for discrete state changes over time.</p>
+              <p>Use closely-spaced points to represent discrete state changes over time.</p>
             </div>
             <div class="demo-card">
-              <div style="height: 320px;">
-                <ui-chart
-                  type="line"
-                  show-legend
-                  show-grid
-                  responsive
-                  enable-animation
-                  [data]="steppedData"
-                ></ui-chart>
-              </div>
+              <chart-line
+                chart-title="Server Load (%)"
+                x-axis-label="Hour"
+                y-axis-label="Load (%)"
+                show-markers
+                show-grid
+                stroke-width="2"
+                width="600"
+                height="300"
+                [data]="steppedData"
+              ></chart-line>
             </div>
             <ui-code-preview
               [htmlCode]="steppedCode"

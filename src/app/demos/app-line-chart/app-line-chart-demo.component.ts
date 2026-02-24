@@ -1,7 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { LineChartPlaygroundComponent } from './components/line-chart-playground/line-chart-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -12,7 +11,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     LineChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
@@ -28,7 +26,6 @@ export class AppLineChartDemoComponent {
     { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', name: 'Basic', icon: '💹', color: '#6366f1' },
     { id: 'multi-series', name: 'Multi Series', icon: '📈', color: '#10b981' },
-    { id: 'filled-area', name: 'Filled Area', icon: '🎨', color: '#f59e0b' },
     { id: 'stepped', name: 'Stepped Line', icon: '🪜', color: '#0ea5e9' },
   ];
 
@@ -36,161 +33,105 @@ export class AppLineChartDemoComponent {
     return this.variants.filter((v) => v.id !== 'playground');
   }
 
-  /* ── Basic single-line ── */
-  basicData = JSON.stringify({
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-    datasets: [
-      {
-        label: 'Monthly Revenue ($k)',
-        data: [42, 58, 53, 70, 89, 95, 112, 104],
-        borderColor: '#6366f1',
-        backgroundColor: 'rgba(99,102,241,0.08)',
-        tension: 0.4,
-      },
-    ],
-  });
+  // chart-line data format: LineSeries[] = { name, color, points: {x, y}[] }
+  // x = month index (1–8), y = value
 
-  /* ── Multi series ── */
-  multiSeriesData = JSON.stringify({
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-    datasets: [
-      {
-        label: 'Revenue',
-        data: [42, 58, 53, 70, 89, 95, 112, 104],
-        borderColor: '#6366f1',
-        backgroundColor: 'rgba(99,102,241,0.08)',
-        tension: 0.4,
-      },
-      {
-        label: 'Expenses',
-        data: [30, 40, 45, 55, 60, 65, 75, 80],
-        borderColor: '#f59e0b',
-        backgroundColor: 'rgba(245,158,11,0.08)',
-        tension: 0.4,
-      },
-      {
-        label: 'Profit',
-        data: [12, 18, 8, 15, 29, 30, 37, 24],
-        borderColor: '#10b981',
-        backgroundColor: 'rgba(16,185,129,0.08)',
-        tension: 0.4,
-      },
-    ],
-  });
+  basicData = [
+    {
+      name: 'Revenue ($k)',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 42 }, { x: 2, y: 58 }, { x: 3, y: 53 }, { x: 4, y: 70 },
+        { x: 5, y: 89 }, { x: 6, y: 95 }, { x: 7, y: 112 }, { x: 8, y: 104 },
+      ],
+    },
+  ];
 
-  /* ── Filled area ── */
-  filledAreaData = JSON.stringify({
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
-    datasets: [
-      {
-        label: 'Active Users',
-        data: [3200, 4100, 3800, 5200, 4900, 6100],
-        borderColor: '#8b5cf6',
-        backgroundColor: 'rgba(139,92,246,0.25)',
-        fill: true,
-        tension: 0.4,
-      },
-    ],
-  });
+  multiSeriesData = [
+    {
+      name: 'Revenue',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 42 }, { x: 2, y: 58 }, { x: 3, y: 53 }, { x: 4, y: 70 },
+        { x: 5, y: 89 }, { x: 6, y: 95 }, { x: 7, y: 112 }, { x: 8, y: 104 },
+      ],
+    },
+    {
+      name: 'Expenses',
+      color: '#f59e0b',
+      points: [
+        { x: 1, y: 30 }, { x: 2, y: 40 }, { x: 3, y: 45 }, { x: 4, y: 55 },
+        { x: 5, y: 60 }, { x: 6, y: 65 }, { x: 7, y: 75 }, { x: 8, y: 80 },
+      ],
+    },
+    {
+      name: 'Profit',
+      color: '#10b981',
+      points: [
+        { x: 1, y: 12 }, { x: 2, y: 18 }, { x: 3, y: 8 }, { x: 4, y: 15 },
+        { x: 5, y: 29 }, { x: 6, y: 30 }, { x: 7, y: 37 }, { x: 8, y: 24 },
+      ],
+    },
+  ];
 
-  /* ── Stepped ── */
-  steppedData = JSON.stringify({
-    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
-    datasets: [
-      {
-        label: 'Server Load (%)',
-        data: [15, 12, 45, 72, 68, 55, 20],
-        borderColor: '#0ea5e9',
-        backgroundColor: 'rgba(14,165,233,0.12)',
-        stepped: true,
-        fill: true,
-      },
-    ],
-  });
+  steppedData = [
+    {
+      name: 'Server Load (%)',
+      color: '#0ea5e9',
+      points: [
+        { x: 0, y: 15 }, { x: 4, y: 12 }, { x: 8, y: 45 },
+        { x: 12, y: 72 }, { x: 16, y: 68 }, { x: 20, y: 55 }, { x: 24, y: 20 },
+      ],
+    },
+  ];
 
-  /* ── Code examples ── */
-  basicCode = `<!-- Basic Line Chart -->
-<ui-chart
-  type="line"
+  basicCode = `<chart-line
+  chart-title="Revenue ($k)"
+  x-axis-label="Month"
+  y-axis-label="Revenue ($k)"
   show-legend
   show-grid
-  responsive
   enable-animation
-  tension="0.4"
-  [data]="chartData"
-></ui-chart>
+  stroke-width="2"
+  [data]="seriesData"
+></chart-line>
 
-// TypeScript
-chartData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-  datasets: [{
-    label: 'Monthly Revenue ($k)',
-    data: [42, 58, 53, 70, 89, 95, 112, 104],
-    borderColor: '#6366f1',
-    backgroundColor: 'rgba(99,102,241,0.08)',
-    tension: 0.4
-  }]
-};`;
+// TypeScript — LineSeries[] format
+seriesData = [
+  {
+    name: 'Revenue ($k)',
+    color: '#6366f1',
+    points: [
+      { x: 1, y: 42 }, { x: 2, y: 58 }, { x: 3, y: 53 }, { x: 4, y: 70 },
+      { x: 5, y: 89 }, { x: 6, y: 95 }, { x: 7, y: 112 }, { x: 8, y: 104 },
+    ],
+  },
+];`;
 
-  multiSeriesCode = `<!-- Multi-Series Line Chart -->
-<ui-chart
-  type="line"
+  multiSeriesCode = `<chart-line
+  chart-title="Financial Overview"
+  x-axis-label="Month"
+  y-axis-label="Amount ($k)"
   show-legend
   show-grid
-  responsive
-  enable-animation
-  [data]="chartData"
-></ui-chart>
+  [data]="seriesData"
+></chart-line>
 
-// TypeScript — multiple datasets
-chartData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-  datasets: [
-    { label: 'Revenue', data: [...], borderColor: '#6366f1' },
-    { label: 'Expenses', data: [...], borderColor: '#f59e0b' },
-    { label: 'Profit',   data: [...], borderColor: '#10b981' }
-  ]
-};`;
+// Multiple series
+seriesData = [
+  { name: 'Revenue',  color: '#6366f1', points: [...] },
+  { name: 'Expenses', color: '#f59e0b', points: [...] },
+  { name: 'Profit',   color: '#10b981', points: [...] },
+];`;
 
-  filledAreaCode = `<!-- Filled Area Chart -->
-<ui-chart
-  type="line"
-  fill="true"
-  show-legend
+  steppedCode = `<!-- Stepped appearance via closely-spaced points -->
+<chart-line
+  chart-title="Server Load (%)"
+  x-axis-label="Hour"
+  y-axis-label="Load (%)"
   show-grid
-  responsive
-  tension="0.4"
-  [data]="chartData"
-></ui-chart>
-
-// TypeScript — set fill: true on dataset
-chartData = {
-  datasets: [{
-    label: 'Active Users',
-    data: [3200, 4100, 3800, 5200, 4900, 6100],
-    borderColor: '#8b5cf6',
-    backgroundColor: 'rgba(139,92,246,0.25)',
-    fill: true
-  }]
-};`;
-
-  steppedCode = `<!-- Stepped Line Chart -->
-<ui-chart
-  type="line"
-  show-legend
-  show-grid
-  responsive
-  [data]="chartData"
-></ui-chart>
-
-// TypeScript — set stepped: true on dataset
-chartData = {
-  datasets: [{
-    label: 'Server Load (%)',
-    data: [15, 12, 45, 72, 68, 55, 20],
-    borderColor: '#0ea5e9',
-    stepped: true,
-    fill: true
-  }]
-};`;
+  show-markers
+  stroke-width="2"
+  [data]="seriesData"
+></chart-line>`;
 }
