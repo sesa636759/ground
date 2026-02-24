@@ -150,6 +150,7 @@
               <div class="comp-symbol">{{ comp.name.charAt(0) }}</div>
               <div class="status-indicator">READY</div>
             </div>
+            <div class="card-preview" [innerHTML]="getPreviewSvg(comp.id)"></div>
             <div class="card-body">
               <h3>{{ comp.name }}</h3>
               <p>{{ comp.shortDescription }}</p>

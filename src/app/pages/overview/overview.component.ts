@@ -2,8 +2,10 @@ import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';
 import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
+import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
 @Component({
   selector: 'app-overview',
@@ -157,6 +159,7 @@ import { AppMasonryComponent } from '../../shared/components/app-masonry/app-mas
                 <div class="comp-letter">{{ component.label.charAt(0) }}</div>
                 <span *ngIf="component.badge" class="badge">{{ component.badge }}</span>
               </div>
+              <div class="card-preview" [innerHTML]="getPreviewSvg(component.id)"></div>
               <h3 class="comp-name">{{ component.label }}</h3>
               <p class="card-description">{{ getComponentDescription(component.id) }}</p>
               <div class="card-footer">
@@ -570,7 +573,38 @@ import { AppMasonryComponent } from '../../shared/components/app-masonry/app-mas
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: .85rem;
+      }
+
+      /* Component preview illustration strip */
+      .card-preview {
+        width: 100%;
+        height: 84px;
+        background: color-mix(in srgb, var(--primary) 5%, var(--bg-tertiary, #f8fafc));
+        border-radius: 10px;
         margin-bottom: 1rem;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+        color: var(--primary, #4f46e5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background .3s ease;
+      }
+
+      .card-preview svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .component-card:hover .card-preview {
+        background: color-mix(in srgb, var(--primary) 9%, var(--bg-tertiary, #f8fafc));
+      }
+
+      /* In list mode, hide the preview to keep rows compact */
+      .list-card .card-preview {
+        display: none;
       }
 
       .comp-letter {
@@ -756,7 +790,12 @@ export class OverviewComponent {
     return this.categories.reduce((total, cat) => total + (cat.children?.length || 0), 0);
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sanitizer: DomSanitizer) {}
+
+  getPreviewSvg(id: string): SafeHtml {
+    const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
+    return this.sanitizer.bypassSecurityTrustHtml(svg);
+  }
 
   navigateToComponent(componentId: string) {
     this.router.navigate(['playground', componentId]);

@@ -1,11 +1,13 @@
 import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import {
   ComponentDocsService,
   ComponentDocumentation,
 } from '../../services/component-docs.service';
+import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
 @Component({
   selector: 'app-documentation',
@@ -71,10 +73,16 @@ export class DocumentationComponent implements OnInit {
   constructor(
     private router: Router,
     private componentDocsService: ComponentDocsService,
+    private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
     this.components.set(this.componentDocsService.getAllComponents());
+  }
+
+  getPreviewSvg(id: string): SafeHtml {
+    const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
+    return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
   onSearchInput(event: Event) {
