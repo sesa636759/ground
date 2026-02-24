@@ -24,11 +24,11 @@
               <p>Choose between circular and square designs to match your UI style.</p>
             </div>
             <div class="demo-card" style="display: flex; flex-direction: row; gap: 40px">
-              <div class="scroll-preview-box" #box1>
+              <div class="scroll-preview-box" id="box1-id">
                 <div class="long-content">
                   <p>Scroll me (Square + Text)</p>
                   <ui-scroll-top
-                    [target]="box1"
+                    target="#box1-id"
                     threshold="100"
                     shape="square"
                     icon="TOP"
@@ -36,11 +36,11 @@
                   ></ui-scroll-top>
                 </div>
               </div>
-              <div class="scroll-preview-box" #box2>
+              <div class="scroll-preview-box" id="box2-id">
                 <div class="long-content">
                   <p>Scroll me (Circle + Icon)</p>
                   <ui-scroll-top
-                    [target]="box2"
+                    target="#box2-id"
                     threshold="100"
                     shape="circle"
                     icon="🚀"
@@ -60,9 +60,8 @@
       </div>
     </div>
 
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="scroll-top"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>

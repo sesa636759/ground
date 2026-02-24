@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -17,66 +17,75 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Configuration</h3>
-            <div class="control-group">
-              <label>Separator</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.separator"
-                (ngModelChange)="updateConfig()"
-              />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Configuration</h3>
+                <div class="control-group">
+                  <label>Separator</label>
+                  <input
+                    type="text"
+                    name="separator"
+                    [(ngModel)]="pgConfig.separator"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Max Items (Collapse)</label>
+                  <input
+                    type="number"
+                    name="maxItems"
+                    [(ngModel)]="pgConfig.maxItems"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Size</label>
+                  <ui-dropdown
+                    name="size"
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                    [options]="sizeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Home & Variant</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showHome"
+                    name="showHome"
+                    [(ngModel)]="pgConfig.showHome"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Home"
+                  ></app-checkbox>
+                </div>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    name="variant"
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Max Items (Collapse)</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.maxItems"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
+
+            <div class="action-buttons">
+              <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <div class="control-section">
-            <h3>Home & Variant</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showHome"
-                [(ngModel)]="pgConfig.showHome"
-                (ngModelChange)="updateConfig()"
-                label="Show Home"
-              ></app-checkbox>
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-breadcrumb
           [attr.separator]="pgConfig.separator"
           [attr.max-items]="pgConfig.maxItems"
@@ -86,17 +95,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           [items]="itemsJson"
         ></ui-breadcrumb>
 
-        
-      
-      <div class="code-output">
+        <div class="code-output">
           <ui-code-preview
+            *ngIf="showCode"
             [htmlCode]="generatedCode()"
             label="Generated Code"
             activeLang="html"
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+      </div>
     </div>
   `,
   styleUrl: './breadcrumb-playground.component.scss',
@@ -131,9 +139,19 @@ export class BreadcrumbPlaygroundComponent {
 
   itemsJson = JSON.stringify(this.items);
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -147,6 +165,7 @@ export class BreadcrumbPlaygroundComponent {
     code += '></ui-breadcrumb>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

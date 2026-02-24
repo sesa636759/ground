@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
@@ -95,9 +96,22 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
+  showCode = true;
+  sidebarItemsJson = JSON.stringify(this.sidebarItems);
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -110,12 +124,13 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     if (this.pgConfig.userAvatar) code += `  user-avatar="${this.pgConfig.userAvatar}"\n`;
     if (this.pgConfig.collapsed) code += `  collapsed="true"\n`;
     if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
-    code += `  [items]="sidebarItems"\n`;
-    code += `  (item-selected)="onItemSelected($event)"\n`;
-    code += `  (sidebar-toggled)="onSidebarToggled($event)"\n`;
+    code += `  [items]="sidebarItemsJson"\n`;
+    code += `  (itemSelected)="onItemSelected($event)"\n`;
+    code += `  (sidebarToggled)="onSidebarToggled($event)"\n`;
     code += `></app-modern-sidebar>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   logEvent(msg: string) {

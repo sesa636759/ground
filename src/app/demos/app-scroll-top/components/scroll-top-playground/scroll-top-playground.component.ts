@@ -1,12 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-scroll-top-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -56,7 +62,13 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
             </div>
 
             <div class="code-output">
-              <pre>{{ generatedCode() }}</pre>
+              <ui-code-preview
+                *ngIf="showCode"
+                [htmlCode]="generatedCode()"
+                label="Generated Code"
+                activeLang="html"
+                expanded="true"
+              ></ui-code-preview>
             </div>
 
             <div class="action-buttons">
@@ -72,12 +84,12 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
       </div>
 
       <div class="playground-preview">
-        <div class="scroll-content" #container>
+        <div class="scroll-content" id="pg-scroll-target">
           <h3>Scroll down to see the button!</h3>
           <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>
 
           <ui-scroll-top
-            [attr.target]="container"
+            target="#pg-scroll-target"
             [attr.threshold]="pgConfig.threshold"
             [attr.icon]="pgConfig.icon"
             [attr.shape]="pgConfig.shape"
@@ -103,19 +115,31 @@ export class ScrollTopPlaygroundComponent {
   ];
 
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
     let code = '<ui-scroll-top\n';
-    code += `  [threshold]="${this.pgConfig.threshold}"\n`;
+    code += `  target="#scroll-container"\n`;
+    code += `  threshold="${this.pgConfig.threshold}"\n`;
     code += `  icon="${this.pgConfig.icon}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
     code += '></ui-scroll-top>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

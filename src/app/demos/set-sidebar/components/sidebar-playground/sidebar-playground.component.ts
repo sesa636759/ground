@@ -1,4 +1,10 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
@@ -37,9 +43,21 @@ export class SidebarPlaygroundComponent implements OnInit {
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -57,6 +75,7 @@ export class SidebarPlaygroundComponent implements OnInit {
     code += `></app-sidebar>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onSidebarToggle(event: any) {

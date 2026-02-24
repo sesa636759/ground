@@ -184,6 +184,9 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
     { label: 'Dot', value: 'dot' },
   ];
 
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  defaultOpen = JSON.stringify(['config']);
+
   links = [
     { id: 'basics', label: 'Basics', target: 'basics-pg' },
     { id: 'api', label: 'API Reference', target: 'api-pg' },

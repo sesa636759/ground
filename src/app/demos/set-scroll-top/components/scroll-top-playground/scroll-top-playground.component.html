@@ -1,123 +1,133 @@
 ﻿<div class="playground-layout">
   <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
+    <ui-accordion
+      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["config"]'
+      multiple
+    >
       <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Filled', value: 'filled' },
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Minimal', value: 'minimal' },
-            { label: 'Circular', value: 'circular' },
-            { label: 'Rounded', value: 'rounded' },
-          ]"
-        ></ui-dropdown>
-      </div>
+        <div class="control-grid">
+          <div class="control-group">
+            <label>Variant</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.variant"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Filled', value: 'filled' },
+                { label: 'Outlined', value: 'outlined' },
+                { label: 'Minimal', value: 'minimal' },
+                { label: 'Circular', value: 'circular' },
+                { label: 'Rounded', value: 'rounded' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Size</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.size"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Small', value: 'small' },
-            { label: 'Medium', value: 'medium' },
-            { label: 'Large', value: 'large' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Size</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.size"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Small', value: 'small' },
+                { label: 'Medium', value: 'medium' },
+                { label: 'Large', value: 'large' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.position"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Bottom Right', value: 'bottom-right' },
-            { label: 'Bottom Left', value: 'bottom-left' },
-            { label: 'Top Right', value: 'top-right' },
-            { label: 'Top Left', value: 'top-left' },
-            { label: 'Bottom Center', value: 'bottom-center' },
-            { label: 'Top Center', value: 'top-center' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Position</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.position"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Bottom Right', value: 'bottom-right' },
+                { label: 'Bottom Left', value: 'bottom-left' },
+                { label: 'Top Right', value: 'top-right' },
+                { label: 'Top Left', value: 'top-left' },
+                { label: 'Bottom Center', value: 'bottom-center' },
+                { label: 'Top Center', value: 'top-center' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Theme</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.theme"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Light', value: 'light' },
-            { label: 'Dark', value: 'dark' },
-            { label: 'Auto', value: 'auto' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Theme</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.theme"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Light', value: 'light' },
+                { label: 'Dark', value: 'dark' },
+                { label: 'Auto', value: 'auto' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
-      </div>
+          <div class="control-group">
+            <label>Color</label>
+            <app-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
+          </div>
 
-      <div class="control-group">
-        <label>Offset (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
-      </div>
+          <div class="control-group">
+            <label>Offset (px)</label>
+            <app-input
+              type="number"
+              [(ngModel)]="pgConfig.offset"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
 
-      <div class="control-group">
-        <label>Tooltip Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.tooltipPosition"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Top', value: 'top' },
-            { label: 'Bottom', value: 'bottom' },
-            { label: 'Left', value: 'left' },
-            { label: 'Right', value: 'right' },
-          ]"
-        ></ui-dropdown>
-      </div>
+          <div class="control-group">
+            <label>Tooltip Position</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.tooltipPosition"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Top', value: 'top' },
+                { label: 'Bottom', value: 'bottom' },
+                { label: 'Left', value: 'left' },
+                { label: 'Right', value: 'right' },
+              ]"
+            ></ui-dropdown>
+          </div>
 
-      <div class="control-group">
-        <label>Target</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.targetType"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Window (Page)', value: 'window' },
-            { label: 'Local Container', value: 'container' },
-          ]"
-        ></ui-dropdown>
-      </div>
-    </div>
-
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
-        Show Progress
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
-        Show Text
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse Animation
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
-        Always Visible
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
-      </label>
-    </div>
+          <div class="control-group">
+            <label>Target</label>
+            <ui-dropdown
+              [(ngModel)]="pgConfig.targetType"
+              (ngModelChange)="updateConfig()"
+              [options]="[
+                { label: 'Window (Page)', value: 'window' },
+                { label: 'Local Container', value: 'container' },
+              ]"
+            ></ui-dropdown>
+          </div>
         </div>
+
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
+            Show Progress
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
+            Show Text
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse
+            Animation
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
+            Always Visible
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
+            Disabled
+          </label>
+        </div>
+      </div>
     </ui-accordion>
   </div>
 
@@ -130,31 +140,34 @@
       </div>
 
       <app-scroll-top
-        [variant]="pgConfig.variant"
-        [size]="pgConfig.size"
-        [position]="pgConfig.position"
-        [theme]="pgConfig.theme"
-        [color]="pgConfig.color"
-        [offset]="pgConfig.offset"
-        [duration]="pgConfig.duration"
-        [icon]="pgConfig.icon"
-        [tooltip]="pgConfig.tooltip"
-        [tooltipPosition]="pgConfig.tooltipPosition"
-        [showProgress]="pgConfig.showProgress"
-        [showText]="pgConfig.showText"
-        [text]="pgConfig.text"
-        [pulse]="pgConfig.pulse"
-        [alwaysVisible]="pgConfig.alwaysVisible"
-        [smooth]="pgConfig.smooth"
-        [hideOnTop]="pgConfig.hideOnTop"
-        [disabled]="pgConfig.disabled"
-        [zIndex]="pgConfig.zIndex"
-        [target]="pgConfig.targetType === 'container' ? '#playground-scroll-target' : 'window'"
+        [attr.variant]="pgConfig.variant"
+        [attr.size]="pgConfig.size"
+        [attr.position]="pgConfig.position"
+        [attr.theme]="pgConfig.theme"
+        [attr.color]="pgConfig.color"
+        [attr.offset]="pgConfig.offset"
+        [attr.duration]="pgConfig.duration"
+        [attr.icon]="pgConfig.icon"
+        [attr.tooltip]="pgConfig.tooltip"
+        [attr.tooltipPosition]="pgConfig.tooltipPosition"
+        [attr.show-progress]="pgConfig.showProgress ? '' : null"
+        [attr.show-text]="pgConfig.showText ? '' : null"
+        [attr.text]="pgConfig.text"
+        [attr.pulse]="pgConfig.pulse ? '' : null"
+        [attr.always-visible]="pgConfig.alwaysVisible ? '' : null"
+        [attr.smooth]="pgConfig.smooth ? '' : null"
+        [attr.hide-on-top]="pgConfig.hideOnTop ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.z-index]="pgConfig.zIndex"
+        [attr.target]="pgConfig.targetType === 'container' ? '#playground-scroll-target' : 'window'"
       ></app-scroll-top>
     </div>
 
-    
-  
-      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-    </div>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
 </div>
