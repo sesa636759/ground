@@ -29,6 +29,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/overview/overview.component').then((m) => m.OverviewComponent),
   },
+  {
+    path: 'showroom',
+    loadComponent: () =>
+      import('./pages/showroom/showroom.component').then((m) => m.ShowroomComponent),
+  },
 
   {
     path: 'documentation',

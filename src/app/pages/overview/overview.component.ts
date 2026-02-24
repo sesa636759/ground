@@ -498,16 +498,21 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
       /* Component Grid */
       .component-card {
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 20px;
         padding: 24px;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         display: flex;
         flex-direction: column;
         position: relative;
         overflow: hidden;
+        box-shadow:
+          0 4px 20px -2px rgba(0, 0, 0, 0.03),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.2);
       }
 
       .component-card::before {
@@ -516,21 +521,47 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         top: 0;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         background: var(--gradient-primary);
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.4s ease;
+        z-index: 2;
+      }
+
+      .component-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          115deg,
+          transparent 20%,
+          rgba(255, 255, 255, 0.8) 40%,
+          rgba(255, 255, 255, 0.9) 50%,
+          transparent 80%
+        );
+        background-size: 200% 100%;
+        background-position: -200% center;
+        transition: background-position 0.1s ease;
+        pointer-events: none;
+        opacity: 0;
       }
 
       .component-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-8px) scale(1.02);
         box-shadow:
-          0 20px 40px -12px color-mix(in srgb, var(--primary) 20%, transparent),
+          0 24px 48px -12px color-mix(in srgb, var(--primary) 22%, transparent),
           0 0 0 1px var(--primary);
+        background: rgba(255, 255, 255, 0.9);
       }
 
       .component-card:hover::before {
         opacity: 1;
+      }
+
+      .component-card:hover::after {
+        opacity: 1;
+        background-position: 200% center;
+        transition: background-position 0.9s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .card-icon-row {
@@ -727,7 +758,7 @@ export class OverviewComponent {
     private sanitizer: DomSanitizer,
   ) {}
 
-  @HostListener('window:scroll', ['$event'])
+  @HostListener('window:scroll')
   onScroll() {
     // Determine active category based on scroll position
     const currentScrollPos = window.scrollY + 100; // offset

@@ -110,6 +110,8 @@ export class App implements OnInit {
       this.currentRoute.set('home');
     } else if (url.startsWith('/overview')) {
       this.currentRoute.set('overview');
+    } else if (url.startsWith('/showroom')) {
+      this.currentRoute.set('showroom');
     } else if (url.startsWith('/documentation')) {
       this.currentRoute.set('documentation');
     } else if (url.startsWith('/playground/')) {
@@ -152,6 +154,7 @@ export class App implements OnInit {
         [
           'home',
           'overview',
+          'showroom',
           'documentation',
           'settings',
           'playground',
