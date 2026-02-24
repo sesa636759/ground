@@ -432,9 +432,9 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 600px;
         background: radial-gradient(
           circle,
-          rgba(99, 102, 241, 0.4) 0%,
-          rgba(139, 92, 246, 0.3) 30%,
-          rgba(236, 72, 153, 0.2) 60%,
+          color-mix(in srgb, var(--primary) 40%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 25%, transparent) 30%,
+          color-mix(in srgb, var(--primary) 15%, transparent) 60%,
           transparent 100%
         );
         top: -300px;
@@ -447,8 +447,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 500px;
         background: radial-gradient(
           circle,
-          rgba(16, 185, 129, 0.4) 0%,
-          rgba(6, 182, 212, 0.3) 40%,
+          color-mix(in srgb, var(--success, #10b981) 35%, transparent) 0%,
+          color-mix(in srgb, var(--success, #10b981) 20%, transparent) 40%,
           transparent 100%
         );
         bottom: -250px;
@@ -461,8 +461,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 450px;
         background: radial-gradient(
           circle,
-          rgba(249, 115, 22, 0.3) 0%,
-          rgba(251, 191, 36, 0.2) 50%,
+          color-mix(in srgb, var(--warning, #d97706) 28%, transparent) 0%,
+          color-mix(in srgb, var(--warning-light, #f59e0b) 15%, transparent) 50%,
           transparent 100%
         );
         top: 40%;
@@ -502,15 +502,15 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         padding: 10px 24px;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
+          color-mix(in srgb, var(--primary) 10%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 8%, transparent) 100%
         );
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
         border-radius: 100px;
         margin-bottom: 32px;
         box-shadow:
-          0 0 20px rgba(99, 102, 241, 0.2),
-          inset 0 0 20px rgba(99, 102, 241, 0.05);
+          0 0 20px color-mix(in srgb, var(--primary) 20%, transparent),
+          inset 0 0 20px color-mix(in srgb, var(--primary) 5%, transparent);
         position: relative;
         overflow: hidden;
       }
@@ -644,11 +644,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        background: var(--gradient-primary);
         background-size: 200% 200%;
         color: white;
         box-shadow:
-          0 10px 40px -10px rgba(99, 102, 241, 0.6),
+          0 10px 40px -10px color-mix(in srgb, var(--primary) 60%, transparent),
           0 0 0 1px rgba(255, 255, 255, 0.1) inset;
         position: relative;
         overflow: hidden;
@@ -678,9 +678,9 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .btn-primary:hover {
         transform: translateY(-6px) scale(1.02);
         box-shadow:
-          0 20px 60px -10px rgba(99, 102, 241, 0.8),
+          0 20px 60px -10px color-mix(in srgb, var(--primary) 80%, transparent),
           0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-          0 0 40px rgba(99, 102, 241, 0.4);
+          0 0 40px color-mix(in srgb, var(--primary) 40%, transparent);
       }
 
       @keyframes gradientSlide {
@@ -720,14 +720,12 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         justify-content: center;
         gap: 32px;
         padding: 32px 48px;
-        background: rgba(255, 255, 255, 0.03);
+        background: color-mix(in srgb, var(--surface-1) 60%, transparent);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
         border-radius: 28px;
-        box-shadow:
-          0 8px 32px 0 rgba(31, 38, 135, 0.15),
-          0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        box-shadow: var(--shadow-lg);
         animation: floatStats 6s ease-in-out infinite;
       }
 
@@ -748,14 +746,14 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .stat-value {
         font-size: 2rem;
         font-weight: 900;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+        background: var(--gradient-primary);
         background-size: 200% 200%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-bottom: 4px;
         animation: gradientShift 4s ease infinite;
-        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        text-shadow: none;
       }
 
       .stat-label {
@@ -832,8 +830,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 100%;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
+          color-mix(in srgb, var(--primary) 10%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 8%, transparent) 100%
         );
         opacity: 0;
         transition: opacity 0.4s;
@@ -846,10 +844,10 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
       .feature-card:hover {
         transform: translateY(-12px) rotateX(2deg) scale(1.02);
         box-shadow:
-          0 20px 60px rgba(99, 102, 241, 0.3),
-          0 0 0 1px rgba(99, 102, 241, 0.2),
-          0 0 40px rgba(99, 102, 241, 0.1);
-        border-color: rgba(99, 102, 241, 0.5);
+          0 20px 60px color-mix(in srgb, var(--primary) 30%, transparent),
+          0 0 0 1px color-mix(in srgb, var(--primary) 20%, transparent),
+          0 0 40px color-mix(in srgb, var(--primary) 10%, transparent);
+        border-color: color-mix(in srgb, var(--primary) 50%, transparent);
       }
 
       .feature-icon {
@@ -860,17 +858,17 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         justify-content: center;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.15) 0%,
-          rgba(139, 92, 246, 0.1) 100%
+          color-mix(in srgb, var(--primary) 15%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 10%, transparent) 100%
         );
         border-radius: 20px;
         margin-bottom: 24px;
-        color: #8b5cf6;
-        border: 1px solid rgba(139, 92, 246, 0.2);
+        color: var(--primary);
+        border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
         position: relative;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 16px rgba(139, 92, 246, 0.1);
+        box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 10%, transparent);
       }
 
       .feature-icon::before {
@@ -881,7 +879,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 30%, transparent) 0%, transparent 70%);
         transform: translate(-50%, -50%);
         transition:
           width 0.5s,
@@ -890,7 +888,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       .feature-card:hover .feature-icon {
         transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+        box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 30%, transparent);
       }
 
       .feature-card:hover .feature-icon::before {
@@ -942,9 +940,9 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         inset: 0;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.15) 0%,
-          rgba(139, 92, 246, 0.15) 50%,
-          rgba(236, 72, 153, 0.15) 100%
+          color-mix(in srgb, var(--primary) 15%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 12%, transparent) 50%,
+          color-mix(in srgb, var(--primary) 8%, transparent) 100%
         );
         background-size: 200% 200%;
         opacity: 0;
@@ -978,11 +976,11 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 
       .category-card:hover {
         transform: translateY(-12px) scale(1.02);
-        border-color: rgba(99, 102, 241, 0.5);
+        border-color: color-mix(in srgb, var(--primary) 50%, transparent);
         box-shadow:
-          0 24px 60px rgba(99, 102, 241, 0.25),
-          0 0 0 1px rgba(99, 102, 241, 0.2) inset,
-          0 0 60px rgba(99, 102, 241, 0.15);
+          0 24px 60px color-mix(in srgb, var(--primary) 25%, transparent),
+          0 0 0 1px color-mix(in srgb, var(--primary) 20%, transparent) inset,
+          0 0 60px color-mix(in srgb, var(--primary) 15%, transparent);
       }
 
       .category-header {
@@ -1001,23 +999,23 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         justify-content: center;
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.2) 0%,
-          rgba(139, 92, 246, 0.15) 100%
+          color-mix(in srgb, var(--primary) 20%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 15%, transparent) 100%
         );
         border-radius: 16px;
-        color: #8b5cf6;
-        border: 1px solid rgba(139, 92, 246, 0.3);
+        color: var(--primary);
+        border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+        box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 20%, transparent);
       }
 
       .category-card:hover .category-icon {
         transform: scale(1.1) rotate(-5deg);
-        box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
+        box-shadow: 0 8px 32px color-mix(in srgb, var(--primary) 40%, transparent);
         background: linear-gradient(
           135deg,
-          rgba(99, 102, 241, 0.3) 0%,
-          rgba(139, 92, 246, 0.25) 100%
+          color-mix(in srgb, var(--primary) 30%, transparent) 0%,
+          color-mix(in srgb, var(--primary) 25%, transparent) 100%
         );
       }
 
@@ -1100,18 +1098,18 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         padding: 18px 40px;
         font-size: 1.125rem;
         font-weight: 600;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        background: var(--gradient-primary);
         color: white;
         border: none;
         border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s;
-        box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.5);
+        box-shadow: 0 10px 40px -10px color-mix(in srgb, var(--primary) 50%, transparent);
       }
 
       .btn-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 20px 50px -10px rgba(99, 102, 241, 0.6);
+        box-shadow: 0 20px 50px -10px color-mix(in srgb, var(--primary) 60%, transparent);
       }
 
       /* Animations */

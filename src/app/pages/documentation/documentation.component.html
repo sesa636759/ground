@@ -1,7 +1,9 @@
 <div class="docs-hub-wrapper animate-in">
   <!-- 🌟 Premium Search Hero -->
   <section class="hub-hero">
-    <div class="hero-bg-accent"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid"></div>
     <div class="hero-container">
       <div class="hero-content">
         <div class="hub-badge animate-slide-down">Enterprise Design System</div>
@@ -35,6 +37,29 @@
             <button (click)="searchText.set('form')">Forms</button>
             <button (click)="searchText.set('navigation')">Navigation</button>
             <button (click)="searchText.set('overlay')">Overlays</button>
+          </div>
+        </div>
+
+        <!-- 📊 Hero Stats Bar -->
+        <div class="hero-stats animate-slide-up" style="animation-delay: 0.35s">
+          <div class="stat-item">
+            <div class="stat-value">{{ components().length }}+</div>
+            <div class="stat-label">Components</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">TypeScript</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-value">WCAG</div>
+            <div class="stat-label">Accessible</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-value">MIT</div>
+            <div class="stat-label">License</div>
           </div>
         </div>
       </div>

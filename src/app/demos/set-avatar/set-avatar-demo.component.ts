@@ -21,7 +21,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ComponentDocumentationComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-avatar-demo.component.html',

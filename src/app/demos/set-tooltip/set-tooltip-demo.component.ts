@@ -21,7 +21,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ExampleSectionComponent,
     DemoHeaderComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tooltip-demo.component.html',

@@ -184,25 +184,56 @@ import { categoryNavItems } from '../../data/navigation.data';
         background: var(--bg-primary);
       }
 
+      /* ── Keyframes ─────────────────────────────────────────── */
+      @keyframes ovHeaderIn {
+        from { opacity: 0; transform: translateY(-16px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes ovOrbDrift {
+        0%,100% { transform: translateY(0) scale(1); }
+        50%      { transform: translateY(-24px) scale(1.05); }
+      }
+      @keyframes ovCardIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes ovShimmer {
+        0%   { background-position: -200% center; }
+        100% { background-position:  200% center; }
+      }
+
       /* Header */
       .overview-header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background:
+          radial-gradient(ellipse 60% 80% at 85% 30%, color-mix(in srgb, var(--primary) 18%, transparent) 0%, transparent 55%),
+          radial-gradient(ellipse 50% 60% at 10% 70%, color-mix(in srgb, var(--primary) 12%, transparent) 0%, transparent 50%),
+          var(--gradient-hero);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding: 64px 60px 100px;
         position: relative;
         overflow: hidden;
+        animation: ovHeaderIn .5s cubic-bezier(.22,1,.36,1) both;
       }
 
       .overview-header::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+        inset: 0;
+        background-image: radial-gradient(circle, color-mix(in srgb, var(--primary) 14%, transparent) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.25) 0%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .overview-header::after {
+        content: '';
+        position: absolute;
+        width: 600px; height: 600px;
+        top: -300px; right: -150px;
+        border-radius: 50%;
+        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 15%, transparent) 0%, transparent 70%);
+        animation: ovOrbDrift 10s ease-in-out infinite;
         pointer-events: none;
       }
 
@@ -217,15 +248,22 @@ import { categoryNavItems } from '../../data/navigation.data';
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 8px 16px;
-        background: rgba(99, 102, 241, 0.15);
-        border: 1px solid rgba(129, 140, 248, 0.3);
+        padding: 6px 16px 6px 10px;
+        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--primary) 12%, transparent));
+        border: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
         border-radius: 100px;
-        color: #a5b4fc;
-        font-size: 0.85rem;
-        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         margin-bottom: 24px;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 2px 12px color-mix(in srgb, var(--primary) 20%, transparent);
+      }
+      .header-badge svg {
+        opacity: 0.85;
+        flex-shrink: 0;
       }
 
       .overview-header h1 {
@@ -233,18 +271,22 @@ import { categoryNavItems } from '../../data/navigation.data';
         font-weight: 900;
         color: #f8fafc;
         margin-bottom: 12px;
-        letter-spacing: -0.02em;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
         position: relative;
         z-index: 1;
       }
 
-      .overview-header > p {
-        font-size: 1.25rem;
-        color: #cbd5e1;
+      .overview-header > p,
+      .header-content > p {
+        font-size: 1.15rem;
+        color: #94a3b8;
         margin-bottom: 32px;
         position: relative;
         z-index: 1;
+        line-height: 1.65;
+        font-weight: 400;
       }
 
       .header-actions {
@@ -344,6 +386,15 @@ import { categoryNavItems } from '../../data/navigation.data';
         margin: 0 auto 80px;
       }
 
+      .category-section {
+        max-width: 1400px;
+        margin: 0 auto 80px;
+        position: relative;
+        padding-left: 1.5rem;
+        border-left: 3px solid transparent;
+        border-image: linear-gradient(180deg, var(--primary, #4f46e5), rgba(124,58,237,.3)) 1;
+      }
+
       .category-header {
         margin-bottom: 32px;
       }
@@ -355,28 +406,49 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .category-icon {
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--surface-1);
+        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 6%, transparent));
         border-radius: 18px;
         color: var(--primary);
-        box-shadow: var(--shadow-sm);
-        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 12%, transparent);
+        border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+        transition: all 0.3s ease;
+      }
+      .category-section:hover .category-icon {
+        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--primary) 12%, transparent));
+        transform: scale(1.06) rotate(-3deg);
+        box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 20%, transparent);
       }
 
       .category-title h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: 800;
         color: var(--text-primary);
         margin-bottom: 4px;
+        letter-spacing: -0.02em;
       }
 
       .category-title p {
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
         color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .category-count-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 3px 10px;
+        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary) 7%, transparent));
+        border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+        border-radius: 100px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: var(--primary, #4f46e5);
+        letter-spacing: 0.05em;
       }
 
       /* Component Grid */
@@ -391,22 +463,48 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .component-card {
-        padding: 32px;
+        padding: 28px;
         background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 24px;
+        border-radius: 20px;
         cursor: pointer;
-        transition: all var(--transition-base);
+        transition: all 0.32s cubic-bezier(.4,0,.2,1);
         position: relative;
         overflow: hidden;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 1px 4px rgba(0,0,0,.04);
+        animation: ovCardIn .5s cubic-bezier(.22,1,.36,1) both;
+      }
+
+      /* Gradient top border – revealed on hover */
+      .component-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2.5px;
+        background: linear-gradient(90deg, var(--primary, #4f46e5), #7c3aed, #818cf8);
+        opacity: 0;
+        transition: opacity .3s ease;
+      }
+
+      /* Shimmer sweep on hover */
+      .component-card::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(115deg, transparent 30%, color-mix(in srgb, var(--primary) 4%, transparent) 50%, transparent 70%);
+        background-size: 200% 100%;
+        background-position: 200% center;
+        transition: background-position .7s ease;
+        pointer-events: none;
       }
 
       .component-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-8px) scale(1.01);
         border-color: var(--primary);
-        box-shadow: var(--shadow-premium);
+        box-shadow: 0 20px 40px -12px color-mix(in srgb, var(--primary) 22%, transparent), 0 6px 12px -3px rgba(0,0,0,.06);
       }
+
+      .component-card:hover::before { opacity: 1; }
+      .component-card:hover::after  { background-position: -200% center; }
 
       .list-view .component-card {
         display: flex;
@@ -428,9 +526,10 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .component-card h3 {
-        font-size: 1.125rem;
-        font-weight: 700;
+        font-size: 1.05rem;
+        font-weight: 800;
         color: var(--text-primary);
+        letter-spacing: -0.01em;
       }
 
       .badge {
@@ -467,15 +566,17 @@ import { categoryNavItems } from '../../data/navigation.data';
       .view-demo {
         color: var(--primary);
         font-weight: 700;
-        font-size: 0.95rem;
-        transition: all 0.3s;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
+        letter-spacing: 0.01em;
       }
 
       .component-card:hover .view-demo {
-        transform: translateX(8px);
+        gap: 12px;
+        letter-spacing: 0.04em;
       }
 
       /* No Results */

@@ -154,8 +154,12 @@
   --border-strong: #34d399;
 
   --primary: #3DCD58;
+  --primary-light: #5edb72;
+  --primary-lighter: #86e898;
   --primary-glow: rgba(61, 205, 88, 0.4);
   --gradient-premium: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+  --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+  --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
   --gradient-main: var(--gradient-premium);
 }
 
@@ -173,8 +177,12 @@
   --border-strong: #38bdf8;
 
   --primary: #0284c7;
+  --primary-light: #38bdf8;
+  --primary-lighter: #7dd3fc;
   --primary-glow: rgba(2, 132, 199, 0.4);
   --gradient-premium: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  --gradient-hero: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
   --gradient-main: var(--gradient-premium);
 }
 
@@ -192,8 +200,12 @@
   --border-strong: #ffffff;
 
   --primary: #facc15;
+  --primary-light: #fde047;
+  --primary-lighter: #fef08a;
   --primary-glow: rgba(250, 204, 21, 0.6);
   --gradient-premium: none;
+  --gradient-primary: linear-gradient(135deg, #facc15 0%, #ca8a04 100%);
+  --gradient-hero: linear-gradient(135deg, #000000 0%, #171717 100%);
   --shadow-premium: none;
 }
 
