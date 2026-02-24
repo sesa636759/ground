@@ -24,7 +24,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Mode</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.mode"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="modeOptions"
               ></ui-dropdown>
             </div>
@@ -36,7 +36,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="resizable"
                 [(ngModel)]="pgConfig.resizable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Resizable Panels"
               ></app-checkbox>
             </div>
@@ -44,7 +44,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="closable"
                 [(ngModel)]="pgConfig.closable"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Closable Panels"
               ></app-checkbox>
             </div>

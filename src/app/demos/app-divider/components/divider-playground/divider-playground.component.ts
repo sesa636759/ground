@@ -47,7 +47,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -55,7 +55,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Size</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.size"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="sizeOptions"
               ></ui-dropdown>
             </div>
@@ -63,7 +63,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Orientation</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.orientation"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="orientationOptions"
               ></ui-dropdown>
             </div>
@@ -76,7 +76,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Pattern</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.pattern"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="patternOptions"
               ></ui-dropdown>
             </div>
@@ -84,7 +84,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Shape</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.shape"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="shapeOptions"
               ></ui-dropdown>
             </div>
@@ -92,7 +92,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="loading"
                 [(ngModel)]="pgConfig.loading"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Loading"
               ></app-checkbox>
             </div>

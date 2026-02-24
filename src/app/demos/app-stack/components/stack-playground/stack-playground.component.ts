@@ -19,7 +19,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Direction</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.direction"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="directionOptions"
               ></ui-dropdown>
             </div>
@@ -36,7 +36,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Align</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.align"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="alignOptions"
               ></ui-dropdown>
             </div>
@@ -44,7 +44,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <label>Justify</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.justify"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="justifyOptions"
               ></ui-dropdown>
             </div>
@@ -61,7 +61,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="overlap"
                 [(ngModel)]="pgConfig.overlap"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Overlap"
               ></app-checkbox>
             </div>
@@ -69,7 +69,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
               <app-checkbox
                 id="showDividers"
                 [(ngModel)]="pgConfig.showDividers"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Dividers"
               ></app-checkbox>
             </div>

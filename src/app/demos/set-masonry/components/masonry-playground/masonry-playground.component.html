@@ -6,7 +6,7 @@
         <label>Layout Type</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.layoutType"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="layoutTypeOptions"
         ></ui-dropdown>
       </div>
@@ -18,7 +18,7 @@
           min="1"
           max="6"
           [(ngModel)]="pgConfig.columns"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -29,7 +29,7 @@
           min="0"
           max="50"
           [(ngModel)]="pgConfig.gap"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -40,7 +40,7 @@
           min="100"
           max="500"
           [(ngModel)]="pgConfig.itemMinWidth"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -51,7 +51,7 @@
           min="200"
           max="800"
           [(ngModel)]="pgConfig.itemMaxWidth"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
@@ -62,7 +62,7 @@
         <label>Sort By</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.sortBy"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="sortByOptions"
         ></ui-dropdown>
       </div>
@@ -71,7 +71,7 @@
         <label>Sort Order</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.sortOrder"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="sortOrderOptions"
         ></ui-dropdown>
       </div>
@@ -80,7 +80,7 @@
         <label>Filter Category</label>
         <ui-dropdown
           [(ngModel)]="filterCategory"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'All', value: '' },
             { label: 'Nature', value: 'nature' },
@@ -97,55 +97,63 @@
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.enableAnimation"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Animations"
         />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showFilters"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Show Filters"
         />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.selectable"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Selectable"
         />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.multiSelect"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Multi-Select"
         />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.showBatchActions"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Batch Actions"
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.lazyLoad" (change)="updateConfig()" label="Lazy Load" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.lazyLoad"
+          (ngModelChange)="updateConfig()"
+          label="Lazy Load"
+        />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.infiniteScroll"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Infinite Scroll"
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.lightbox" (change)="updateConfig()" label="Lightbox" />
+        <app-checkbox
+          [(ngModel)]="pgConfig.lightbox"
+          (ngModelChange)="updateConfig()"
+          label="Lightbox"
+        />
       </label>
       <label class="checkbox-item">
         <app-checkbox
           [(ngModel)]="pgConfig.loadingState"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           label="Loading State"
         />
       </label>

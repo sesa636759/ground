@@ -5,7 +5,7 @@
         <label>Direction</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.direction"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Horizontal', value: 'horizontal' },
             { label: 'Vertical', value: 'vertical' },
@@ -17,7 +17,7 @@
         <label>Theme</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.theme"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Light', value: 'light' },
             { label: 'Dark', value: 'dark' },
@@ -33,7 +33,7 @@
           [(ngModel)]="pgConfig.gutterSize"
           min="4"
           max="20"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
 
@@ -44,27 +44,27 @@
           [(ngModel)]="pgConfig.snapThreshold"
           min="0"
           max="50"
-          (input)="updateConfig()"
+          (ngModelChange)="updateConfig()"
         />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (change)="updateConfig()" /> Animated
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (change)="updateConfig()" /> Rounded
+        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (change)="updateConfig()" /> Elevated
+        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (ngModelChange)="updateConfig()" />
         DB Click Collapse
       </label>
     </div>

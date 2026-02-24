@@ -3,19 +3,19 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Title</label>
-        <app-input type="text" [(ngModel)]="pgConfig.title" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.title" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Extra (Header)</label>
-        <app-input type="text" [(ngModel)]="pgConfig.extra" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Layout</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.layout"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Vertical', value: 'vertical' },
             { label: 'Horizontal', value: 'horizontal' },
@@ -27,7 +27,7 @@
         <label>Size</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Small', value: 'small' },
@@ -39,7 +39,7 @@
         <label>Variant</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.variant"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Primary', value: 'primary' },
@@ -55,7 +55,7 @@
         <label>Type</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.type"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Default', value: 'default' },
             { label: 'Inner', value: 'inner' },
@@ -65,14 +65,14 @@
 
       <div class="control-group">
         <label>Ribbon Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.ribbon" (input)="updateConfig()" />
+        <app-input type="text" [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Ribbon Pos</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.ribbonPosition"
-          (change)="updateConfig()"
+          (ngModelChange)="updateConfig()"
           [options]="[
             { label: 'Top Right', value: 'top-right' },
             { label: 'Top Left', value: 'top-left' },
@@ -83,31 +83,31 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.hoverable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.hoverable" (ngModelChange)="updateConfig()" />
         Hoverable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.bordered" (change)="updateConfig()" /> Bordered
+        <app-checkbox [(ngModel)]="pgConfig.bordered" (ngModelChange)="updateConfig()" /> Bordered
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (change)="updateConfig()" /> Loading
+        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.flippable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.flippable" (ngModelChange)="updateConfig()" />
         Flippable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.closable" (change)="updateConfig()" /> Closable
+        <app-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glass" (change)="updateConfig()" /> Glass
+        <app-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
         Collapsible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (change)="updateConfig()" />
+        <app-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
         Selectable
       </label>
     </div>

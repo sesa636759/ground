@@ -24,7 +24,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Position</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.position"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="positionOptions"
               ></ui-dropdown>
             </div>
@@ -44,25 +44,25 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <app-checkbox
                 id="autoZIndex"
                 [(ngModel)]="pgConfig.autoZIndex"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Auto Z-Index"
               ></app-checkbox>
               <app-checkbox
                 id="magnify"
                 [(ngModel)]="pgConfig.magnify"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Magnify"
               ></app-checkbox>
               <app-checkbox
                 id="blurEffect"
                 [(ngModel)]="pgConfig.blurEffect"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Blur Effect"
               ></app-checkbox>
               <app-checkbox
                 id="showLabels"
                 [(ngModel)]="pgConfig.showLabels"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 label="Show Labels"
               ></app-checkbox>
             </div>

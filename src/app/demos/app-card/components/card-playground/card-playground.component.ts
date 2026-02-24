@@ -31,7 +31,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Design Variant</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.variant"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="variantOptions"
               ></ui-dropdown>
             </div>
@@ -58,7 +58,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
               <label>Content Layout</label>
               <ui-dropdown
                 [(ngModel)]="pgConfig.layout"
-                (change)="updateConfig()"
+                (ngModelChange)="updateConfig()"
                 [options]="[
                   { label: 'Vertical stacking', value: 'vertical' },
                   { label: 'Horizontal flow', value: 'horizontal' },
@@ -72,13 +72,13 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="glass"
                   [(ngModel)]="pgConfig.glass"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Glassmorphism"
                 ></app-checkbox>
                 <app-checkbox
                   id="hoverable"
                   [(ngModel)]="pgConfig.hoverable"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Raise on hover"
                 ></app-checkbox>
               </div>
@@ -92,7 +92,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="flippable"
                   [(ngModel)]="pgConfig.flippable"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Flippable"
                 ></app-checkbox>
               </div>
@@ -100,7 +100,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="loading"
                   [(ngModel)]="pgConfig.loading"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Skeleton"
                 ></app-checkbox>
               </div>
@@ -108,7 +108,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="showMenu"
                   [(ngModel)]="pgConfig.showMenu"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Menu"
                 ></app-checkbox>
               </div>
@@ -116,7 +116,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="closable"
                   [(ngModel)]="pgConfig.closable"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Closable"
                 ></app-checkbox>
               </div>
@@ -124,7 +124,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="selectable"
                   [(ngModel)]="pgConfig.selectable"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Selectable"
                 ></app-checkbox>
               </div>
@@ -132,7 +132,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <app-checkbox
                   id="collapsible"
                   [(ngModel)]="pgConfig.collapsible"
-                  (change)="updateConfig()"
+                  (ngModelChange)="updateConfig()"
                   label="Collapsible"
                 ></app-checkbox>
               </div>
