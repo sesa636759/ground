@@ -1,8 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-bar-chart-playground',
@@ -29,6 +38,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Orientation</label>
                   <ui-dropdown
+                    name="orientation"
                     [(ngModel)]="pgConfig.orientation"
                     (ngModelChange)="updateConfig()"
                     [options]="orientationOptions"
@@ -37,6 +47,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Color Scheme</label>
                   <ui-dropdown
+                    name="colorScheme"
                     [(ngModel)]="pgConfig.colorScheme"
                     (ngModelChange)="updateConfig()"
                     [options]="colorSchemeOptions"
@@ -49,6 +60,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="checkbox-group">
                   <app-checkbox
                     id="showLegend"
+                    name="showLegend"
                     [(ngModel)]="pgConfig.showLegend"
                     (ngModelChange)="updateConfig()"
                     label="Show Legend"
@@ -57,6 +69,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="checkbox-group">
                   <app-checkbox
                     id="animated"
+                    name="animated"
                     [(ngModel)]="pgConfig.animated"
                     (ngModelChange)="updateConfig()"
                     label="Animated"
@@ -79,6 +92,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
       <div class="playground-preview">
         <ui-bar-chart
+          #barChart
           [attr.orientation]="pgConfig.orientation"
           [attr.color-scheme]="pgConfig.colorScheme"
           [attr.show-legend]="pgConfig.showLegend ? '' : null"
@@ -91,7 +105,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
-            [htmlCode]="generatedCode()"
+            [htmlCode]="generatedCode"
             label="Generated Code"
             activeLang="html"
             expanded="true"
@@ -102,7 +116,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   `,
   styleUrl: './bar-chart-playground.component.scss',
 })
-export class BarChartPlaygroundComponent {
+export class BarChartPlaygroundComponent implements AfterViewInit {
+  @ViewChild('barChart') barChart!: ElementRef;
   pgConfig = {
     orientation: 'vertical',
     colorScheme: 'default',
@@ -132,11 +147,16 @@ export class BarChartPlaygroundComponent {
   };
 
   chartDataJson = JSON.stringify(this.chartData);
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -148,20 +168,20 @@ export class BarChartPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-bar-chart\n';
-    code += `  orientation="${this.pgConfig.orientation}"\n`;
-    if (this.pgConfig.showLegend) code += `  show-legend\n`;
-    if (this.pgConfig.animated) code += `  animated\n`;
-    code += `  [data]="chartData"\n`;
-    code += '></ui-bar-chart>';
+  getCleanFormatedDom(): string {
+    if (!this.barChart) return '';
+    return generatePlaygroundCode(this.barChart.nativeElement as Element, 'ui-bar-chart');
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

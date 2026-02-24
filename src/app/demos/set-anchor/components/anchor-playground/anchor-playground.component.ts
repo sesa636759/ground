@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-anchor-playground',
@@ -17,7 +27,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   templateUrl: './anchor-playground.component.html',
   styleUrl: './anchor-playground.component.scss',
 })
-export class AnchorPlaygroundComponent implements OnInit {
+export class AnchorPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('anchor') anchor!: ElementRef;
   // Playground State
   pgConfig = {
     mode: 'vertical',
@@ -89,46 +100,39 @@ export class AnchorPlaygroundComponent implements OnInit {
   ]);
 
   eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCode: string = '';
+  showCode = true;
 
-  ngOnInit() {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.anchor) return '';
+    return generatePlaygroundCode(this.anchor.nativeElement as Element, 'ui-anchor');
   }
 
   updateConfig() {
-    let code = `<app-anchor\n`;
-    code += `  mode="${this.pgConfig.mode}"\n`;
-    if (this.pgConfig.position !== 'left') code += `  position="${this.pgConfig.position}"\n`;
-    if (this.pgConfig.alignment !== 'left') code += `  alignment="${this.pgConfig.alignment}"\n`;
-    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
-
-    code += `  [items]="anchorItems"\n`;
-    code += `  [scrollOffset]="${this.pgConfig.scrollOffset}"\n`;
-
-    if (this.pgConfig.showTooltip) code += `  show-tooltip="true"\n`;
-    if (this.pgConfig.showIndicator) code += `  show-indicator="true"\n`;
-    if (this.pgConfig.showProgress) code += `  show-progress="true"\n`;
-
-    if (this.pgConfig.showNumbers) {
-      code += `  show-numbers="true"\n`;
-      code += `  number-style="${this.pgConfig.numberStyle}"\n`;
-    }
-
-    if (!this.pgConfig.sticky) code += `  [sticky]="false"\n`;
-    if (this.pgConfig.affix) {
-      code += `  affix="true"\n`;
-      code += `  [affixOffset]="${this.pgConfig.affixOffset}"\n`;
-    }
-    if (!this.pgConfig.smoothScroll) code += `  [smoothScroll]="false"\n`;
-
-    if (this.pgConfig.targetType === 'container') {
-      code += `  scroll-container="#playground-scroll-content"\n`;
-    }
-
-    code += `></app-anchor>`;
-
-    this.generatedCode.set(code);
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   logEvent(msg: string) {
@@ -141,6 +145,6 @@ export class AnchorPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 }

@@ -1,8 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-chart-playground',
@@ -29,6 +38,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="control-group">
                   <label>Type</label>
                   <ui-dropdown
+                    name="type"
                     [(ngModel)]="pgConfig.type"
                     (ngModelChange)="updateConfig()"
                     [options]="typeOptions"
@@ -41,6 +51,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="checkbox-group">
                   <app-checkbox
                     id="showLegend"
+                    name="showLegend"
                     [(ngModel)]="pgConfig.showLegend"
                     (ngModelChange)="updateConfig()"
                     label="Show Legend"
@@ -49,6 +60,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
                 <div class="checkbox-group">
                   <app-checkbox
                     id="responsive"
+                    name="responsive"
                     [(ngModel)]="pgConfig.responsive"
                     (ngModelChange)="updateConfig()"
                     label="Responsive"
@@ -71,6 +83,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
       <div class="playground-preview">
         <ui-chart
+          #chart
           [attr.type]="pgConfig.type"
           [attr.show-legend]="pgConfig.showLegend ? '' : null"
           [attr.responsive]="pgConfig.responsive ? '' : null"
@@ -82,7 +95,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
         <div class="code-output">
           <ui-code-preview
             *ngIf="showCode"
-            [htmlCode]="generatedCode()"
+            [htmlCode]="generatedCode"
             label="Generated Code"
             activeLang="html"
             expanded="true"
@@ -93,7 +106,8 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   `,
   styleUrl: './chart-playground.component.scss',
 })
-export class ChartPlaygroundComponent {
+export class ChartPlaygroundComponent implements AfterViewInit {
+  @ViewChild('chart') chart!: ElementRef;
   pgConfig = {
     type: 'line',
     showLegend: true,
@@ -120,11 +134,16 @@ export class ChartPlaygroundComponent {
   };
 
   chartDataJson = JSON.stringify(this.chartData);
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -136,20 +155,20 @@ export class ChartPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-chart\n';
-    code += `  type="${this.pgConfig.type}"\n`;
-    if (this.pgConfig.showLegend) code += `  show-legend\n`;
-    if (this.pgConfig.responsive) code += `  responsive\n`;
-    code += `  [data]="chartData"\n`;
-    code += '></ui-chart>';
+  getCleanFormatedDom(): string {
+    if (!this.chart) return '';
+    return generatePlaygroundCode(this.chart.nativeElement as Element, 'ui-chart');
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

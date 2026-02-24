@@ -1,12 +1,27 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-stack-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
@@ -24,6 +39,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Direction</label>
                   <ui-dropdown
+                    name="direction"
                     [(ngModel)]="pgConfig.direction"
                     (ngModelChange)="updateConfig()"
                     [options]="directionOptions"
@@ -32,6 +48,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Spacing</label>
                   <input
+                    name="spacing"
                     type="text"
                     [(ngModel)]="pgConfig.spacing"
                     (ngModelChange)="updateConfig()"
@@ -41,6 +58,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Align</label>
                   <ui-dropdown
+                    name="align"
                     [(ngModel)]="pgConfig.align"
                     (ngModelChange)="updateConfig()"
                     [options]="alignOptions"
@@ -49,6 +67,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Justify</label>
                   <ui-dropdown
+                    name="justify"
                     [(ngModel)]="pgConfig.justify"
                     (ngModelChange)="updateConfig()"
                     [options]="justifyOptions"
@@ -62,6 +81,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Max Items (0 = all)</label>
                   <input
+                    name="max"
                     type="number"
                     [(ngModel)]="pgConfig.max"
                     (ngModelChange)="updateConfig()"
@@ -70,6 +90,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="checkbox-group">
                   <app-checkbox
                     id="overlap"
+                    name="overlap"
                     [(ngModel)]="pgConfig.overlap"
                     (ngModelChange)="updateConfig()"
                     label="Overlap"
@@ -78,6 +99,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="checkbox-group">
                   <app-checkbox
                     id="showDividers"
+                    name="showDividers"
                     [(ngModel)]="pgConfig.showDividers"
                     (ngModelChange)="updateConfig()"
                     label="Show Dividers"
@@ -90,6 +112,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
                 <div class="control-group">
                   <label>Num Boxes</label>
                   <input
+                    name="numBoxes"
                     type="number"
                     min="1"
                     max="10"
@@ -114,6 +137,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 
       <div class="playground-preview">
         <ui-stack
+          #stack
           [attr.direction]="pgConfig.direction"
           [attr.spacing]="pgConfig.spacing"
           [attr.align]="pgConfig.align"
@@ -126,21 +150,20 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
           <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
         </ui-stack>
 
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
       </div>
     </div>
   `,
   styleUrl: './stack-playground.component.scss',
 })
-export class StackPlaygroundComponent {
+export class StackPlaygroundComponent implements AfterViewInit {
+  @ViewChild('stack') stack!: ElementRef;
   numBoxes = 5;
   get boxes() {
     return Array.from({ length: this.numBoxes }, (_, i) => i + 1);
@@ -175,11 +198,16 @@ export class StackPlaygroundComponent {
     { label: 'Space Between', value: 'space-between' },
   ];
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   refreshCode() {
@@ -191,28 +219,24 @@ export class StackPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-stack\n';
-    if (this.pgConfig.direction !== 'horizontal')
-      code += `  direction="${this.pgConfig.direction}"\n`;
-    if (this.pgConfig.spacing !== '8px') code += `  spacing="${this.pgConfig.spacing}"\n`;
-    if (this.pgConfig.align !== 'center') code += `  align="${this.pgConfig.align}"\n`;
-    if (this.pgConfig.justify !== 'start') code += `  justify="${this.pgConfig.justify}"\n`;
-    if (this.pgConfig.max > 0) code += `  [max]="${this.pgConfig.max}"\n`;
-    if (this.pgConfig.overlap) code += `  overlap\n`;
-    if (this.pgConfig.showDividers) code += `  show-dividers\n`;
-    code += '>\n';
-    code += '  <div>Item 1</div>\n';
-    code += '  <div>Item 2</div>\n';
-    code += '  <div>Item 3</div>\n';
-    code += '</ui-stack>';
+  getCleanFormatedDom(): string {
+    if (!this.stack) return '';
+    const items = Array.from(
+      { length: Math.min(this.numBoxes, 3) },
+      (_, i) => `  <div>Item ${i + 1}</div>`,
+    ).join('\n');
+    return generatePlaygroundCode(this.stack.nativeElement as Element, 'ui-stack', `${items}\n`);
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {
