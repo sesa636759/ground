@@ -40,91 +40,40 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
                   stroke-linecap="round"
                 />
               </svg>
-              <app-input
+              <input
                 type="text"
-                name="searchQuery"
                 placeholder="Search components..."
                 [value]="searchQuery"
                 (input)="onSearchInput($event)"
               />
             </div>
             <div class="view-toggle">
-              <ui-button
-                [variant]="viewMode() === 'grid' ? 'primary' : 'ghost'"
-                icon-only
+              <button
+                [class.active]="viewMode() === 'grid'"
                 title="Grid view"
                 (click)="viewMode.set('grid')"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" />
                   <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" />
                   <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" />
                   <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" />
                 </svg>
-              </ui-button>
-              <ui-button
-                [variant]="viewMode() === 'list' ? 'primary' : 'ghost'"
-                icon-only
+              </button>
+              <button
+                [class.active]="viewMode() === 'list'"
                 title="List view"
                 (click)="viewMode.set('list')"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <line
-                    x1="8"
-                    y1="6"
-                    x2="21"
-                    y2="6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="8"
-                    y1="12"
-                    x2="21"
-                    y2="12"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="8"
-                    y1="18"
-                    x2="21"
-                    y2="18"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="3"
-                    y1="6"
-                    x2="3.01"
-                    y2="6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="3"
-                    y1="12"
-                    x2="3.01"
-                    y2="12"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="3"
-                    y1="18"
-                    x2="3.01"
-                    y2="18"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <line x1="8" y1="6"  x2="21" y2="6"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="3" y1="6"  x2="3.01" y2="6"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="3" y1="12" x2="3.01" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="3" y1="18" x2="3.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-              </ui-button>
+              </button>
             </div>
           </div>
         </div>
@@ -255,11 +204,11 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       /* Header */
       .overview-header {
         background:
-          radial-gradient(ellipse 60% 80% at 85% 30%, color-mix(in srgb, var(--primary) 18%, transparent) 0%, transparent 55%),
-          radial-gradient(ellipse 50% 60% at 10% 70%, color-mix(in srgb, var(--primary) 12%, transparent) 0%, transparent 50%),
+          radial-gradient(ellipse 70% 90% at 90% 20%, color-mix(in srgb, var(--primary) 22%, transparent) 0%, transparent 55%),
+          radial-gradient(ellipse 55% 65% at 5% 80%,  color-mix(in srgb, var(--primary) 14%, transparent) 0%, transparent 50%),
           var(--gradient-hero);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 64px 60px 100px;
+        padding: 72px 60px 96px;
         position: relative;
         overflow: hidden;
         animation: ovHeaderIn .5s cubic-bezier(.22,1,.36,1) both;
@@ -298,45 +247,47 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 6px 16px 6px 10px;
-        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--primary) 12%, transparent));
-        border: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
+        padding: 7px 18px 7px 12px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.18);
         border-radius: 100px;
         color: rgba(255, 255, 255, 0.9);
-        font-size: 0.78rem;
+        font-size: 0.72rem;
         font-weight: 800;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 24px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 2px 12px color-mix(in srgb, var(--primary) 20%, transparent);
+        margin-bottom: 28px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
       }
       .header-badge svg {
-        opacity: 0.85;
+        opacity: 0.8;
         flex-shrink: 0;
+        color: var(--primary);
       }
 
       .overview-header h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        color: #f8fafc;
-        margin-bottom: 12px;
-        letter-spacing: -0.03em;
-        line-height: 1.12;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        font-weight: 950;
+        color: #ffffff;
+        margin-bottom: 16px;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         position: relative;
         z-index: 1;
       }
 
       .overview-header > p,
       .header-content > p {
-        font-size: 1.15rem;
-        color: #94a3b8;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.62);
         margin-bottom: 32px;
         position: relative;
         z-index: 1;
-        line-height: 1.65;
+        line-height: 1.7;
         font-weight: 400;
+        max-width: 620px;
       }
 
       .header-actions {
@@ -347,27 +298,28 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
       .search-box {
         flex: 1;
-        max-width: 600px;
+        max-width: 560px;
         position: relative;
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 16px 24px;
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
-        border-radius: 16px;
-        transition: all var(--transition-base);
-        box-shadow: var(--shadow-md);
+        padding: 14px 22px;
+        background: rgba(255,255,255,0.96);
+        border: 1.5px solid rgba(255,255,255,0.3);
+        border-radius: 14px;
+        transition: all 0.28s cubic-bezier(.4,0,.2,1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
       }
 
       .search-box:focus-within {
         transform: translateY(-2px);
         border-color: var(--primary);
-        box-shadow: var(--shadow-lg);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent),
+                    0 12px 36px rgba(0,0,0,0.2);
       }
 
       .search-box svg {
-        color: var(--text-tertiary);
+        color: #9ca3af;
         flex-shrink: 0;
       }
 
@@ -375,50 +327,51 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         flex: 1;
         border: none;
         background: transparent;
-        color: var(--text-primary);
-        font-size: 1rem;
+        color: #1f2937;
+        font-size: 0.95rem;
+        font-weight: 500;
         outline: none;
       }
 
       .search-box input::placeholder {
-        color: var(--text-tertiary);
+        color: #9ca3af;
+        font-weight: 400;
       }
 
       .view-toggle {
         display: flex;
         gap: 4px;
-        padding: 6px;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 14px;
-        backdrop-filter: blur(10px);
+        padding: 5px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        flex-shrink: 0;
       }
 
       .view-toggle button {
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
         background: transparent;
         border: none;
-        border-radius: 10px;
-        color: white;
+        border-radius: 9px;
+        color: rgba(255,255,255,0.55);
         cursor: pointer;
         transition: all 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: 0.7;
       }
 
       .view-toggle button:hover {
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.1);
       }
 
       .view-toggle button.active {
         background: var(--gradient-primary);
-        color: white;
-        opacity: 1;
-        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+        color: #fff;
+        box-shadow: 0 3px 10px color-mix(in srgb, var(--primary) 45%, transparent);
       }
 
       /* Content */
