@@ -34,12 +34,16 @@ export class SidebarPlaygroundComponent implements OnInit {
     overlay: false,
   };
 
-  menuItems = JSON.stringify([
+  menuItems = [
     { id: '1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: '2', label: 'Analytics', icon: 'fas fa-chart-line' },
     { id: '3', label: 'Settings', icon: 'fas fa-cog' },
     { id: '4', label: 'Profile', icon: 'fas fa-user' },
-  ]);
+  ];
+
+  get menuItemsJson() {
+    return JSON.stringify(this.menuItems);
+  }
 
   eventLog = signal<string[]>([]);
   generatedCode = signal('');

@@ -29,12 +29,12 @@ export class SetSidebarDemoComponent implements OnInit {
     { id: 'premium', title: 'Premium Features', icon: '💎' },
   ];
 
-  menuItems = JSON.stringify([
+  menuItems = [
     { id: '1', label: 'Dashboard', icon: 'fas fa-home', href: '#dashboard' },
     { id: '2', label: 'Analytics', icon: 'fas fa-chart-line', href: '#analytics' },
     { id: '3', label: 'Settings', icon: 'fas fa-cog', href: '#settings' },
     { id: '4', label: 'Profile', icon: 'fas fa-user', href: '#profile' },
-  ]);
+  ];
 
   playgroundCode = `<app-sidebar
   [position]="left"
