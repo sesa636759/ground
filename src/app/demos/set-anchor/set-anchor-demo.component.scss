@@ -9,7 +9,7 @@
     flex-direction: row;
     align-items: flex-start;
 
-    app-anchor {
+    ui-anchor {
       flex: 0 0 auto;
       width: 200px;
     }
@@ -18,7 +18,7 @@
   &.horizontal {
     flex-direction: column;
 
-    app-anchor {
+    ui-anchor {
       flex: 0 0 auto;
       height: auto;
     }
@@ -133,8 +133,8 @@
   .layout-wrapper {
     flex-direction: column !important;
 
-    &.vertical app-anchor,
-    &.horizontal app-anchor {
+    &.vertical ui-anchor,
+    &.horizontal ui-anchor {
       width: 100% !important;
       height: auto !important;
     }

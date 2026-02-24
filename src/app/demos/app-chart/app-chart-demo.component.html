@@ -25,7 +25,7 @@
             </div>
             <div class="demo-card">
               <div style="height: 300px">
-                <ui-chart type="line" [data]="chartData" show-legend responsive></ui-chart>
+                <ui-chart-line [data]="chartData" show-legend responsive></ui-chart-line>
               </div>
             </div>
             <ui-code-preview
@@ -39,9 +39,8 @@
       </div>
     </div>
 
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="app-chart"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>

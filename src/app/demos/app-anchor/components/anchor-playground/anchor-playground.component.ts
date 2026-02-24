@@ -28,8 +28,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
       <div class="playground-controls">
         <ui-accordion
           [items]="[{ id: 'config', title: 'Configuration', icon: '⚙️' }]"
-          [defaultOpen]="['config']"
-          [multiple]="true"
+          default-open='["config"]'
+          multiple
         >
           <div slot="content-config">
             <div class="control-grid">
