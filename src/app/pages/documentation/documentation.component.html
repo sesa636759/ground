@@ -140,7 +140,7 @@
           >
         </div>
 
-        <div class="comp-hub-grid">
+        <ng-masonry-grid [columns]="4" gap="1.5rem" [rowGap]="24" [breakpoints]="masonryBreakpoints">
           <div
             class="comp-card glass-card animate-in"
             *ngFor="let comp of filteredComponents()"
@@ -159,7 +159,7 @@
               <div class="view-action">Explore <i class="fas fa-arrow-right"></i></div>
             </div>
           </div>
-        </div>
+        </ng-masonry-grid>
 
         <div class="empty-results" *ngIf="filteredComponents().length === 0 && searchText()">
           <div class="empty-icon"><i class="fas fa-ghost"></i></div>

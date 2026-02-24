@@ -1,6 +1,7 @@
 import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import {
   ComponentDocsService,
   ComponentDocumentation,
@@ -9,12 +10,14 @@ import {
 @Component({
   selector: 'app-documentation',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppMasonryComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './documentation.component.html',
   styleUrl: './documentation.component.scss',
 })
 export class DocumentationComponent implements OnInit {
+  masonryBreakpoints = { 1400: 4, 1000: 3, 600: 2, 0: 1 };
+
   searchText = signal('');
   isSearchFocused = signal(false);
   activeTab = signal<'all' | 'guides' | 'components' | 'utilities'>('all');

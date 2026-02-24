@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { categoryNavItems } from '../../data/navigation.data';
+import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppMasonryComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="overview-container">
@@ -140,22 +141,31 @@ import { categoryNavItems } from '../../data/navigation.data';
             </div>
           </div>
 
-          <div class="component-grid" [class.list-view]="viewMode() === 'list'">
+          <ng-masonry-grid
+            [columns]="viewMode() === 'list' ? 1 : 4"
+            gap="20px"
+            [rowGap]="20"
+            [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
+          >
             <div
               *ngFor="let component of category.children"
               class="component-card"
+              [class.list-card]="viewMode() === 'list'"
               (click)="navigateToComponent(component.id)"
             >
-              <div class="card-header">
-                <h3>{{ component.label }}</h3>
+              <div class="card-icon-row">
+                <div class="comp-letter">{{ component.label.charAt(0) }}</div>
                 <span *ngIf="component.badge" class="badge">{{ component.badge }}</span>
               </div>
+              <h3 class="comp-name">{{ component.label }}</h3>
               <p class="card-description">{{ getComponentDescription(component.id) }}</p>
               <div class="card-footer">
-                <span class="view-demo">View Demo →</span>
+                <span class="view-demo">View Demo
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
               </div>
             </div>
-          </div>
+          </ng-masonry-grid>
         </div>
 
         <!-- No Results -->
@@ -177,6 +187,43 @@ import { categoryNavItems } from '../../data/navigation.data';
   `,
   styles: [
     `
+      /* ── Schneider Green base color override (scoped to this page) ── */
+      :host {
+        --primary:          #3DCD58;
+        --primary-hover:    #2db84d;
+        --primary-light:    #5edb72;
+        --primary-lighter:  #86e898;
+        --primary-glow:     rgba(61, 205, 88, 0.4);
+
+        --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+        --gradient-hero:    linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+        --gradient-premium: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+        --gradient-mesh:
+          radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.08) 0px, transparent 50%),
+          radial-gradient(at 80% 0%,  rgba(5, 150, 105, 0.08) 0px, transparent 50%),
+          radial-gradient(at 0%  50%, rgba(61, 205, 88, 0.06) 0px, transparent 50%);
+
+        --bg-primary:   #f8faf9;
+        --bg-secondary: #ffffff;
+        --bg-tertiary:  #ecfdf5;
+        --bg-accent:    #d1fae5;
+        --surface-1:    #ffffff;
+        --surface-2:    #f0fdf4;
+        --surface-3:    #ecfdf5;
+        --surface-elevated: #ffffff;
+
+        --text-primary:   #064e3b;
+        --text-secondary: #065f46;
+        --text-tertiary:  #10b981;
+        --text-muted:     #6ee7b7;
+        --border-color:   #d1fae5;
+        --border-light:   #ecfdf5;
+        --border-strong:  #34d399;
+
+        --shadow-premium: 0 24px 48px -12px rgba(61, 205, 88, 0.15), 0 12px 24px -8px rgba(0, 0, 0, 0.06);
+        --shadow-glow:    0 0 24px 0 rgba(61, 205, 88, 0.35);
+      }
+
       .overview-container {
         height: 100%;
         display: flex;
@@ -365,10 +412,10 @@ import { categoryNavItems } from '../../data/navigation.data';
       }
 
       .view-toggle button.active {
-        background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+        background: var(--gradient-primary);
         color: white;
         opacity: 1;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
       }
 
       /* Content */
@@ -392,7 +439,7 @@ import { categoryNavItems } from '../../data/navigation.data';
         position: relative;
         padding-left: 1.5rem;
         border-left: 3px solid transparent;
-        border-image: linear-gradient(180deg, var(--primary, #4f46e5), rgba(124,58,237,.3)) 1;
+        border-image: linear-gradient(180deg, var(--primary, #4f46e5), color-mix(in srgb, var(--primary) 20%, transparent)) 1;
       }
 
       .category-header {
@@ -451,38 +498,35 @@ import { categoryNavItems } from '../../data/navigation.data';
         letter-spacing: 0.05em;
       }
 
-      /* Component Grid */
-      .component-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
-      }
-
-      .component-grid.list-view {
-        grid-template-columns: 1fr;
-      }
+      /* Component Grid — layout handled by <app-masonry> component */
 
       .component-card {
-        padding: 28px;
+        break-inside: avoid;
+        -webkit-column-break-inside: avoid;
+        margin-bottom: 20px;
+        padding: 1.375rem 1.5rem;
         background: var(--surface-1);
         border: 1px solid var(--border-color);
-        border-radius: 20px;
+        border-radius: 16px;
         cursor: pointer;
         transition: all 0.32s cubic-bezier(.4,0,.2,1);
         position: relative;
         overflow: hidden;
-        box-shadow: 0 1px 4px rgba(0,0,0,.04);
+        box-shadow: 0 2px 8px rgba(0,0,0,.05);
         animation: ovCardIn .5s cubic-bezier(.22,1,.36,1) both;
+        display: flex;
+        flex-direction: column;
+        min-height: 160px;
       }
 
-      /* Gradient top border – revealed on hover */
+      /* Gradient top border – subtle at rest, vivid on hover */
       .component-card::before {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: 2.5px;
-        background: linear-gradient(90deg, var(--primary, #4f46e5), #7c3aed, #818cf8);
-        opacity: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary, #4f46e5), var(--primary-light, #6366f1), var(--primary-lighter, #818cf8));
+        opacity: 0.3;
         transition: opacity .3s ease;
       }
 
@@ -506,10 +550,12 @@ import { categoryNavItems } from '../../data/navigation.data';
       .component-card:hover::before { opacity: 1; }
       .component-card:hover::after  { background-position: -200% center; }
 
-      .list-view .component-card {
+      .list-card {
         display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 24px;
+        min-height: 0;
       }
 
       .card-header {
@@ -520,8 +566,54 @@ import { categoryNavItems } from '../../data/navigation.data';
         position: relative;
       }
 
-      .list-view .card-header {
+      .card-icon-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .comp-letter {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-primary);
+        color: white;
+        border-radius: 12px;
+        font-size: 1.15rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 30%, transparent);
+        transition: transform .3s ease;
+        flex-shrink: 0;
+      }
+
+      .component-card:hover .comp-letter {
+        transform: scale(1.1) rotate(-5deg);
+      }
+
+      .comp-name {
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+        margin-bottom: 6px;
+      }
+
+      .list-card .card-header {
         flex: 0 0 200px;
+        margin-bottom: 0;
+      }
+
+      .list-card .card-icon-row {
+        flex: 0 0 auto;
+        margin-bottom: 0;
+      }
+
+      .list-card .comp-name {
+        flex: 0 0 150px;
         margin-bottom: 0;
       }
 
@@ -544,39 +636,52 @@ import { categoryNavItems } from '../../data/navigation.data';
 
       .card-description {
         color: var(--text-secondary);
-        font-size: 0.9375rem;
-        line-height: 1.5;
-        margin-bottom: 16px;
+        font-size: 0.875rem;
+        line-height: 1.55;
+        margin-bottom: 0;
         position: relative;
+        flex: 1;
       }
 
-      .list-view .card-description {
+      .list-card .card-description {
         flex: 1;
         margin-bottom: 0;
       }
 
       .card-footer {
         position: relative;
+        margin-top: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border-color);
       }
 
-      .list-view .card-footer {
+      .list-card .card-footer {
         flex: 0 0 auto;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        border-left: 1px solid var(--border-color);
+        padding-left: 1.25rem;
       }
 
       .view-demo {
         color: var(--primary);
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         transition: all 0.3s ease;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        letter-spacing: 0.01em;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
       }
 
-      .component-card:hover .view-demo {
-        gap: 12px;
-        letter-spacing: 0.04em;
+      .view-demo svg {
+        transition: transform .25s ease;
+      }
+
+      .component-card:hover .view-demo svg {
+        transform: translateX(4px);
       }
 
       /* No Results */
@@ -625,17 +730,13 @@ import { categoryNavItems } from '../../data/navigation.data';
           padding: 40px 24px;
         }
 
-        .component-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .list-view .component-card {
+        .list-card {
           flex-direction: column;
           align-items: flex-start;
         }
 
-        .list-view .card-header,
-        .list-view .card-description {
+        .list-card .card-header,
+        .list-card .card-description {
           flex: 1;
         }
       }
@@ -646,6 +747,10 @@ export class OverviewComponent {
   categories = categoryNavItems;
   searchQuery = '';
   viewMode = signal<'grid' | 'list'>('grid');
+
+  /** Masonry responsive breakpoints — passed to <app-masonry> */
+  masonryBp: Record<number, number> = { 1400: 4, 1000: 3, 600: 2, 0: 1 };
+  listBp:    Record<number, number> = { 0: 1 };
 
   get totalComponents(): number {
     return this.categories.reduce((total, cat) => total + (cat.children?.length || 0), 0);
