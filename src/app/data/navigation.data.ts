@@ -196,7 +196,7 @@ export const categoryNavItems: NavItem[] = [
         iconLibrary: 'lucide',
       },
       { id: 'nav-bar', label: 'Nav Bar', icon: 'navigation', iconLibrary: 'lucide' },
-         { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
+      { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up', iconLibrary: 'lucide' },
       { id: 'smart-menu', label: 'Smart Menu', icon: 'zap', iconLibrary: 'lucide' },
       { id: 'smart-stepper', label: 'Smart Stepper', icon: 'list-checks', iconLibrary: 'lucide' },
       { id: 'speed-dial', label: 'Speed Dial', icon: 'plus-circle', iconLibrary: 'lucide' },
