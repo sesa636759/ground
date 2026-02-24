@@ -100,7 +100,7 @@
         [attr.user-avatar]="pgConfig.userAvatar"
         [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
         [attr.theme]="pgConfig.theme"
-        [items]="sidebarItemsJson"
+        [items]="sidebarItems"
         (itemSelected)="onItemSelected($event)"
         (sidebarToggled)="onSidebarToggled($event)"
         (profileClicked)="onProfileClick()"
