@@ -142,21 +142,10 @@
             (beforeClose)="logEvent('Before Close', $event)"
             (afterClose)="logEvent('After Close', $event)"
           ></ui-accordion>
-          <div
-            class="event-log"
-            style="
-              margin-top: 1rem;
-              padding: 1rem;
-              background: var(--color-bg-tertiary);
-              border-radius: 4px;
-              font-family: monospace;
-              font-size: 0.85rem;
-              color: var(--color-text-secondary);
-            "
-          >
-            <div *ngFor="let log of eventsLog">{{ log }}</div>
-            <div *ngIf="eventsLog.length === 0">Perform interactions to see events...</div>
-          </div>
+          <app-playground-event-log
+            [logs]="eventsLog"
+            (clear)="eventsLog = []"
+          ></app-playground-event-log>
         </app-example-section>
 
         <!-- Controlled -->
@@ -216,9 +205,8 @@
       <app-accordion-playground></app-accordion-playground>
     </div>
 
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="accordion"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>

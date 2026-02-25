@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
@@ -22,6 +23,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    PlaygroundEventLogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './checkbox-playground.component.html',
@@ -58,7 +60,7 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
     skeleton: false,
   };
 
-  eventMessage = signal('Interact with the checkbox...');
+  eventLog = signal<string[]>([]);
   generatedCode = signal('');
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -97,20 +99,23 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
 
   onCheckboxChange(event: any) {
     const { checked, indeterminate } = event.detail;
-    this.eventMessage.set(
-      `Changed: checked=${checked}, indeterminate=${indeterminate} at ${new Date().toLocaleTimeString()}`,
-    );
+    this.logEvent(`Changed: checked=${checked}, indeterminate=${indeterminate}`);
     this.pgConfig.checked = checked;
     this.pgConfig.indeterminate = indeterminate;
     this.updateConfig();
   }
 
   onCheckboxFocus() {
-    this.eventMessage.set(`Focused at ${new Date().toLocaleTimeString()}`);
+    this.logEvent(`Focused`);
   }
 
   onCheckboxBlur() {
-    this.eventMessage.set(`Blurred at ${new Date().toLocaleTimeString()}`);
+    this.logEvent(`Blurred`);
+  }
+
+  private logEvent(msg: string) {
+    const time = new Date().toLocaleTimeString();
+    this.eventLog.update((logs) => [`[${time}] ${msg}`, ...logs.slice(0, 4)]);
   }
 
   copyCode() {

@@ -3,7 +3,8 @@
 .preview-stage {
   min-height: 400px;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+
 
   &.sidebar-preview {
     .content-placeholder {

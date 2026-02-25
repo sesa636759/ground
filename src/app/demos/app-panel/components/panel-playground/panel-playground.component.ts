@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
   selector: 'app-panel-playground',
@@ -12,6 +13,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    PlaygroundEventLogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
@@ -204,16 +206,10 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           </div>
         </ui-panel>
 
-        <div class="event-log">
-          <div class="log-title">Event Tracker</div>
-          <div *ngFor="let log of eventLog" class="log-entry">
-            <span class="timestamp">[{{ log.time }}]</span>
-            <span class="message">{{ log.msg }}</span>
-          </div>
-          <div *ngIf="eventLog.length === 0" class="empty-log">
-            Interact with the panel to see events...
-          </div>
-        </div>
+        <app-playground-event-log
+          [logs]="eventLog"
+          (clear)="eventLog = []"
+        ></app-playground-event-log>
 
         <ui-code-preview
           *ngIf="showCode"

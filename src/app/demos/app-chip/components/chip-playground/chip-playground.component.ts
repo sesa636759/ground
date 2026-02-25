@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
   selector: 'app-chip-playground',
@@ -12,131 +13,148 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    PlaygroundEventLogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-layout">
       <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Content -->
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Content -->
+              <div class="control-section">
+                <h3>Content</h3>
+                <div class="control-group">
+                  <label>Label</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.label"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Icon</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.icon"
+                    (ngModelChange)="updateConfig()"
+                    placeholder="e.g. ⭐"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Avatar URL</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.userAvatar"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Counter</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.counter"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Badge</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.badge"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+              </div>
+
+              <!-- Style -->
+              <div class="control-section">
+                <h3>Style</h3>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Color</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.color"
+                    (ngModelChange)="updateConfig()"
+                    [options]="colorOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Size</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                    [options]="sizeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Shape</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.shape"
+                    (ngModelChange)="updateConfig()"
+                    [options]="shapeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <!-- Configuration -->
+              <div class="control-section">
+                <h3>Behavior</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="removable"
+                    [(ngModel)]="pgConfig.removable"
+                    (ngModelChange)="updateConfig()"
+                    label="Removable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="clickable"
+                    [(ngModel)]="pgConfig.clickable"
+                    (ngModelChange)="updateConfig()"
+                    label="Clickable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="selected"
+                    [(ngModel)]="pgConfig.selected"
+                    (ngModelChange)="updateConfig()"
+                    label="Selected"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="loading"
+                    [(ngModel)]="pgConfig.loading"
+                    (ngModelChange)="updateConfig()"
+                    label="Loading"
+                  ></app-checkbox>
+                </div>
+              </div>
             </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. ⭐"
-              />
-            </div>
-            <div class="control-group">
-              <label>Avatar URL</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.userAvatar"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Counter</label>
-              <input type="text" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Badge</label>
-              <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+
+            <div class="action-buttons">
+              <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
             </div>
           </div>
+        </ui-accordion>
+      </div>
 
-          <!-- Style -->
-          <div class="control-section">
-            <h3>Style</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Color</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.color"
-                (ngModelChange)="updateConfig()"
-                [options]="colorOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Configuration -->
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="removable"
-                [(ngModel)]="pgConfig.removable"
-                (ngModelChange)="updateConfig()"
-                label="Removable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="clickable"
-                [(ngModel)]="pgConfig.clickable"
-                (ngModelChange)="updateConfig()"
-                label="Clickable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="selected"
-                [(ngModel)]="pgConfig.selected"
-                (ngModelChange)="updateConfig()"
-                label="Selected"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
+      <div class="playground-preview">
         <ui-chip
           [attr.label]="pgConfig.label"
           [attr.icon]="pgConfig.icon"
@@ -155,19 +173,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
           (chipRemove)="onEvent('Chip Removed')"
         ></ui-chip>
 
-        
-
-        <div class="event-log">
-          <div *ngFor="let log of eventLog" class="log-entry">
-            <span class="timestamp">[{{ log.time }}]</span>
-            <span class="message">{{ log.msg }}</span>
-          </div>
-          <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-            Interact with the chip to see events...
-          </div>
-        </div>
-      
-      <div class="code-output">
+        <div class="code-output">
           <ui-code-preview
             [htmlCode]="generatedCode()"
             label="Generated Code"
@@ -175,7 +181,12 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
             expanded="true"
           ></ui-code-preview>
         </div>
-    </div>
+
+        <app-playground-event-log
+          [logs]="eventLog"
+          (clear)="eventLog = []"
+        ></app-playground-event-log>
+      </div>
     </div>
   `,
   styleUrl: './chip-playground.component.scss',

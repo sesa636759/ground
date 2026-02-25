@@ -7,6 +7,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { PlaygroundEventLogComponent } from '../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
@@ -19,6 +20,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     ExampleSectionComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
+    PlaygroundEventLogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
