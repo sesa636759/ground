@@ -118,7 +118,8 @@ export class App implements OnInit {
       const componentId = url.split('/')[2]?.split('?')[0];
       this.currentRoute.set(componentId);
     } else if (url.startsWith('/demos/')) {
-      const componentId = url.split('/')[2]?.split('?')[0];
+      // Join all segments after '/demos/' to support nested paths like 'charts/area-chart'
+      const componentId = url.split('/').slice(2).join('/').split('?')[0];
       this.currentRoute.set(componentId);
     } else if (url.startsWith('/playground')) {
       this.currentRoute.set('playground');
@@ -182,7 +183,8 @@ export class App implements OnInit {
         this.router.navigate(['/profile'], { queryParams: { tab: itemId } });
       } else {
         // Component routes allow generic handling -> Docs
-        this.router.navigate(['demos', itemId]);
+        // Split itemId by '/' to handle nested paths like 'charts/timeline-range'
+        this.router.navigate(['demos', ...itemId.split('/')]);
       }
     }
   }

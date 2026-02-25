@@ -798,6 +798,104 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'charts/timeline-range',
+        loadComponent: () =>
+          import('./demos/charts/timeline-range/timeline-range-demo.component').then(
+            (m) => m.TimelineRangeDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/sparkline',
+        loadComponent: () =>
+          import('./demos/charts/sparkline/sparkline-demo.component').then(
+            (m) => m.SparklineDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/radial-bar',
+        loadComponent: () =>
+          import('./demos/charts/radial-bar/radial-bar-demo.component').then(
+            (m) => m.RadialBarDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/gantt-chart',
+        loadComponent: () =>
+          import('./demos/charts/gantt-chart/gantt-chart-demo.component').then(
+            (m) => m.GanttChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/step-line-chart',
+        loadComponent: () =>
+          import('./demos/charts/step-line-chart/step-line-chart-demo.component').then(
+            (m) => m.StepLineChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/waterfall-chart',
+        loadComponent: () =>
+          import('./demos/charts/waterfall-chart/waterfall-chart-demo.component').then(
+            (m) => m.WaterfallChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/funnel-chart',
+        loadComponent: () =>
+          import('./demos/charts/funnel-chart/funnel-chart-demo.component').then(
+            (m) => m.FunnelChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/area-chart',
+        loadComponent: () =>
+          import('./demos/charts/area-chart/area-chart-demo.component').then(
+            (m) => m.AreaChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/rose-chart',
+        loadComponent: () =>
+          import('./demos/charts/rose-chart/rose-chart-demo.component').then(
+            (m) => m.RoseChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/lollipop-chart',
+        loadComponent: () =>
+          import('./demos/charts/lollipop-chart/lollipop-chart-demo.component').then(
+            (m) => m.LollipopChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/polar-area-chart',
+        loadComponent: () =>
+          import('./demos/charts/polar-area-chart/polar-area-chart-demo.component').then(
+            (m) => m.PolarAreaChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/candlestick-chart',
+        loadComponent: () =>
+          import('./demos/charts/candlestick-chart/candlestick-chart-demo.component').then(
+            (m) => m.CandlestickChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/ohlc-chart',
+        loadComponent: () =>
+          import('./demos/charts/ohlc-chart/ohlc-chart-demo.component').then(
+            (m) => m.OhlcChartDemoComponent,
+          ),
+      },
+      {
+        path: 'charts/tree-diagram',
+        loadComponent: () =>
+          import('./demos/charts/tree-diagram/tree-diagram-demo.component').then(
+            (m) => m.TreeDiagramDemoComponent,
+          ),
+      },
+      {
         path: 'chart',
         loadComponent: () =>
           import('./demos/app-chart/app-chart-demo.component').then((m) => m.AppChartDemoComponent),
