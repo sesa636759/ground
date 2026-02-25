@@ -1,0 +1,95 @@
+<div class="demo-container">
+  <app-demo-header
+    icon="🌹"
+    title="Rose Chart (Nightingale)"
+    description="A polar area chart where each segment has equal angular width but varying radius. Named after Florence Nightingale, it excels at comparing cyclical categorical data like monthly or directional distributions."
+  ></app-demo-header>
+
+  <demo-tabs>
+    <div slot="playground">
+      <app-rose-chart-playground></app-rose-chart-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <div class="examples-content">
+
+          <section class="demo-section" id="monthly" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🌹 Monthly Revenue</h2>
+              <p>Display monthly revenue distribution in a Nightingale rose format for seasonal patterns.</p>
+            </div>
+            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
+              <app-chart
+                chartType="polarArea"
+                [showLegend]="true"
+                legendPosition="right"
+                [responsive]="true"
+                [data]="monthlyData"
+                style="width: 480px; height: 360px;"
+              ></app-chart>
+            </div>
+            <ui-code-preview
+              [htmlCode]="monthlyCode"
+              label="Monthly Revenue Rose"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <section class="demo-section" id="performance">
+            <div class="section-header">
+              <h2>📊 Performance Radar</h2>
+              <p>Compare performance metrics across multiple dimensions using a rose chart.</p>
+            </div>
+            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
+              <app-chart
+                chartType="polarArea"
+                [showLegend]="true"
+                legendPosition="bottom"
+                [responsive]="true"
+                [data]="perfData"
+                style="width: 480px; height: 360px;"
+              ></app-chart>
+            </div>
+            <ui-code-preview
+              [htmlCode]="monthlyCode"
+              label="Performance Rose"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <section class="demo-section" id="wind">
+            <div class="section-header">
+              <h2>💨 Wind Direction</h2>
+              <p>Classic meteorological wind rose showing frequency by compass direction.</p>
+            </div>
+            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
+              <app-chart
+                chartType="polarArea"
+                [showLegend]="true"
+                legendPosition="right"
+                [responsive]="true"
+                [data]="windData"
+                style="width: 480px; height: 360px;"
+              ></app-chart>
+            </div>
+            <ui-code-preview
+              [htmlCode]="'<!-- Wind Rose Chart -->'"
+              label="Wind Direction"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <app-component-documentation componentId="rose-chart"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

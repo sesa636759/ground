@@ -1,0 +1,43 @@
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { WaterfallChartPlaygroundComponent } from './components/waterfall-chart-playground/waterfall-chart-playground.component';
+import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+
+@Component({
+  selector: 'app-waterfall-chart-demo',
+  standalone: true,
+  imports: [CommonModule, WaterfallChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './waterfall-chart-demo.component.html',
+  styleUrl: './waterfall-chart-demo.component.scss',
+})
+export class WaterfallChartDemoComponent {
+  variants = [
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'revenue',    name: 'Revenue',    icon: '💰', color: '#10b981' },
+    { id: 'pl',         name: 'P&L',        icon: '📊', color: '#6366f1' },
+    { id: 'budget',     name: 'Budget',     icon: '💼', color: '#f59e0b' },
+  ];
+
+  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
+
+  revenueCode = `<!-- Waterfall Chart (floating SVG bars) -->
+<svg width="620" height="340">
+  <!-- Total: Start=200 -->
+  <rect x="44" y="..." width="64" height="..." fill="#6366f1"/>
+  <!-- Positive: Sales=+120 -->
+  <rect x="116" y="..." width="64" height="..." fill="#10b981"/>
+  <!-- Negative: Returns=-30 -->
+  <rect x="188" y="..." width="64" height="..." fill="#f43f5e"/>
+  <!-- Connector lines between bars -->
+  <line x1="108" y1="..." x2="116" y2="..." stroke="#9ca3af" stroke-dasharray="3,3"/>
+</svg>`;
+
+  plCode = `<!-- P&L Waterfall -->
+<svg width="620" height="340">
+  <!-- Gross Revenue → COGS → Gross Profit → OPEX → EBITDA → D&A → Net Profit -->
+</svg>`;
+}

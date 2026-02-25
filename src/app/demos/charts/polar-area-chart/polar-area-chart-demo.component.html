@@ -1,0 +1,72 @@
+<div class="demo-container">
+  <app-demo-header
+    icon="🌐"
+    title="Polar Area Chart"
+    description="A circular chart where each segment spans an equal angle but varies in radius based on value. Powered by Chart.js, it supports legend, animation, and rich color customization for multi-category comparison."
+  ></app-demo-header>
+
+  <demo-tabs>
+    <div slot="playground">
+      <app-polar-area-chart-playground></app-polar-area-chart-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <div class="examples-content">
+
+          <section class="demo-section" id="skills" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🌐 Skills Assessment</h2>
+              <p>Compare proficiency levels across technical skill categories.</p>
+            </div>
+            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
+              <app-chart
+                chartType="polarArea"
+                [showLegend]="true"
+                legendPosition="right"
+                [responsive]="true"
+                [data]="skillsData"
+                style="width: 520px; height: 380px;"
+              ></app-chart>
+            </div>
+            <ui-code-preview
+              [htmlCode]="skillsCode"
+              label="Skills Polar Area"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <section class="demo-section" id="sales">
+            <div class="section-header">
+              <h2>🗺️ Sales by Region</h2>
+              <p>Visualize regional sales distribution in a polar area format.</p>
+            </div>
+            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
+              <app-chart
+                chartType="polarArea"
+                [showLegend]="true"
+                legendPosition="bottom"
+                [responsive]="true"
+                [data]="salesData"
+                style="width: 520px; height: 380px;"
+              ></app-chart>
+            </div>
+            <ui-code-preview
+              [htmlCode]="salesCode"
+              label="Sales Polar Area"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <app-component-documentation componentId="polar-area-chart"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>
