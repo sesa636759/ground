@@ -1,129 +1,124 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion
-      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      default-open='["config"]'
-      multiple
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Direction</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.direction"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
+          ]"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Theme</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.theme"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Light', value: 'light' },
+            { label: 'Dark', value: 'dark' },
+            { label: 'Auto', value: 'auto' },
+          ]"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Gutter Size (px)</label>
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.gutterSize"
+          min="4"
+          max="20"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Snap Threshold (%)</label>
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.snapThreshold"
+          min="0"
+          max="50"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
+        Animated
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" />
+        Elevated
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
+        Show Icon
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.doubleClickCollapse"
+          (ngModelChange)="updateConfig()"
+        />
+        DB Click Collapse
+      </label>
+    </div>
+  </div>
+
+  <div preview class="preview-stage h-scrollable">
+    <app-splitter
+      [attr.direction]="pgConfig.direction"
+      [attr.theme]="pgConfig.theme"
+      [gutterSize]="pgConfig.gutterSize"
+      [snapThreshold]="pgConfig.snapThreshold"
+      [animated]="pgConfig.animated"
+      [rounded]="pgConfig.rounded"
+      [elevated]="pgConfig.elevated"
+      [showGutterIcon]="pgConfig.showGutterIcon"
+      [doubleClickCollapse]="pgConfig.doubleClickCollapse"
+      (sizeChange)="onSizeChange($event)"
+      (panelCollapse)="onPanelCollapse($event)"
+      (splitterDragStart)="onDragStart($event)"
+      (splitterDragEnd)="onDragEnd($event)"
+      style="height: 100%; width: 100%"
     >
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Direction</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.direction"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Horizontal', value: 'horizontal' },
-                { label: 'Vertical', value: 'vertical' },
-              ]"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Theme</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.theme"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Light', value: 'light' },
-                { label: 'Dark', value: 'dark' },
-                { label: 'Auto', value: 'auto' },
-              ]"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Gutter Size (px)</label>
-            <app-input
-              type="number"
-              [(ngModel)]="pgConfig.gutterSize"
-              min="4"
-              max="20"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Snap Threshold (%)</label>
-            <app-input
-              type="number"
-              [(ngModel)]="pgConfig.snapThreshold"
-              min="0"
-              max="50"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-        </div>
-
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
-            Animated
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" />
-            Elevated
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
-            Show Icon
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.doubleClickCollapse"
-              (ngModelChange)="updateConfig()"
-            />
-            DB Click Collapse
-          </label>
-        </div>
+      <div slot="panel-0" class="panel-content highlight">
+        <h3>Left Panel</h3>
+        <p>Drag the gutter to resize.</p>
       </div>
-    </ui-accordion>
+      <div slot="panel-1" class="panel-content">
+        <h3>Right Panel</h3>
+        <p>Resizable content area.</p>
+      </div>
+    </app-splitter>
   </div>
 
-  <div class="playground-preview">
-    <div class="preview-stage">
-      <app-splitter
-        [attr.direction]="pgConfig.direction"
-        [attr.theme]="pgConfig.theme"
-        [gutterSize]="pgConfig.gutterSize"
-        [snapThreshold]="pgConfig.snapThreshold"
-        [animated]="pgConfig.animated"
-        [rounded]="pgConfig.rounded"
-        [elevated]="pgConfig.elevated"
-        [showGutterIcon]="pgConfig.showGutterIcon"
-        [doubleClickCollapse]="pgConfig.doubleClickCollapse"
-        (sizeChange)="onSizeChange($event)"
-        (panelCollapse)="onPanelCollapse($event)"
-        (splitterDragStart)="onDragStart($event)"
-        (splitterDragEnd)="onDragEnd($event)"
-        style="height: 100%; width: 100%"
-      >
-        <div slot="panel-0" class="panel-content highlight">
-          <h3>Left Panel</h3>
-          <p>Drag the gutter to resize.</p>
-        </div>
-        <div slot="panel-1" class="panel-content">
-          <h3>Right Panel</h3>
-          <p>Resizable content area.</p>
-        </div>
-      </app-splitter>
-    </div>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
+  <div events class="event-log-container">
+    <strong>Event Log</strong>
+    <div class="log-items">
+      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
     </div>
   </div>
-</div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

@@ -126,7 +126,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
 
   getCleanFormatedDom(): string {
     if (!this.masonryLayout) return '';
-    let code = generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
+    const code = generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
     return code.replace('></app-masonry>', '  [items]="items"\n></app-masonry>');
   }
 

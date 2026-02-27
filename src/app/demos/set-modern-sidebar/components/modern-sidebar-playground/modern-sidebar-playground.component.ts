@@ -11,6 +11,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
@@ -21,6 +22,7 @@ import { ChangeDetectorRef } from '@angular/core';
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     PlaygroundEventLogComponent,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,

@@ -5,22 +5,9 @@
   width: 100%;
 }
 
-.playground-layout {
-  flex-direction: column;
-}
 
-.playground-controls {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
-  .control-section {
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 16px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-bottom: 8px;
-    }
+
   }
 
   .control-grid {
@@ -29,27 +16,7 @@
   }
 }
 
-.playground-preview {
-  .toolbar {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    background: var(--surface-1);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
 
-    button {
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      background: var(--surface-2);
-      color: var(--text-primary);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background: var(--bg-hover);
-      }
 
       &.danger {
         color: var(--status-danger);

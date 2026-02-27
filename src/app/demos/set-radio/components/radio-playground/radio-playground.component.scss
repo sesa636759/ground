@@ -1,24 +1,8 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-layout {
-  display: flex;
-  gap: 24px;
-  min-height: 600px;
-  color: var(--color-text-primary, #2d3748);
-}
 
-.playground-controls {
-  flex: 0 0 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow-y: auto;
-  max-height: calc(100vh - 200px);
-  padding-right: 8px;
 
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
+
 
   &::-webkit-scrollbar-thumb {
     background: var(--color-border, #e2e8f0);
@@ -98,12 +82,7 @@
   }
 }
 
-.playground-preview {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+
 
 .preview-stage {
   padding: 40px;

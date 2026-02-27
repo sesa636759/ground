@@ -1,0 +1,94 @@
+
+    <app-playground
+      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["config"]'
+    >
+      <div slot="content-config">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>📊 Data</h3>
+            <div class="control-group">
+              <label>Value</label>
+              <input type="number" [(ngModel)]="pgConfig.value" min="0" [max]="pgConfig.total" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Total</label>
+              <input type="number" [(ngModel)]="pgConfig.total" min="1" max="1000" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Title</label>
+              <input type="text" [(ngModel)]="pgConfig.chartTitle" (ngModelChange)="updateConfig()" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>🎨 Colours</h3>
+            <div class="control-group">
+              <label>Fill colour</label>
+              <input type="color" [(ngModel)]="pgConfig.fillColor" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Empty colour</label>
+              <input type="color" [(ngModel)]="pgConfig.emptyColor" (ngModelChange)="updateConfig()" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>📐 Grid</h3>
+            <div class="control-group">
+              <label>Rows</label>
+              <input type="number" [(ngModel)]="pgConfig.rows" min="1" max="20" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Columns</label>
+              <input type="number" [(ngModel)]="pgConfig.columns" min="1" max="20" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Cell size <span class="range-val">{{ pgConfig.cellSize }}px</span></label>
+              <input type="range" [(ngModel)]="pgConfig.cellSize" min="8" max="48" step="2" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="control-group">
+              <label>Gap <span class="range-val">{{ pgConfig.gap }}px</span></label>
+              <input type="range" [(ngModel)]="pgConfig.gap" min="1" max="8" step="1" (ngModelChange)="updateConfig()" />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>⚙️ Options</h3>
+            <div class="control-group">
+              <label>Show percentage</label>
+              <input type="checkbox" [(ngModel)]="pgConfig.showPercentage" (ngModelChange)="updateConfig()" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div actions class="action-buttons">
+        <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+        <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+      </div>
+
+      <div preview class="preview-stage">
+        <chart-waffle
+          [attr.value]="pgConfig.value"
+          [attr.total]="pgConfig.total"
+          [attr.chart-title]="pgConfig.chartTitle"
+          [attr.fill-color]="pgConfig.fillColor"
+          [attr.empty-color]="pgConfig.emptyColor"
+          [attr.rows]="pgConfig.rows"
+          [attr.columns]="pgConfig.columns"
+          [attr.cell-size]="pgConfig.cellSize"
+          [attr.gap]="pgConfig.gap"
+          [attr.show-percentage]="pgConfig.showPercentage ? 'true' : 'false'"
+        ></chart-waffle>
+      </div>
+
+      <ui-code-preview
+        code
+        [htmlCode]="generatedCode()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </app-playground>
+  

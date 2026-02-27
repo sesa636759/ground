@@ -1,0 +1,98 @@
+
+    <app-playground accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]'>
+      <div slot="content-config">
+            <div class="control-grid">
+
+              <div class="control-section">
+                <h3>📐 Layout</h3>
+                <div class="control-group">
+                  <label>Orientation</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.orientation"
+                    (ngModelChange)="updateConfig()"
+                    [options]="orientationOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Dataset Mode</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.mode"
+                    (ngModelChange)="onModeChange()"
+                    [options]="modeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Bar Width %</label>
+                  <input type="range" min="20" max="90" step="5"
+                    [(ngModel)]="pgConfig.barWidth"
+                    (ngModelChange)="updateConfig()" />
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">{{ pgConfig.barWidth }}%</span>
+                </div>
+                <div class="control-group">
+                  <label>Border Radius</label>
+                  <input type="range" min="0" max="16" step="2"
+                    [(ngModel)]="pgConfig.borderRadius"
+                    (ngModelChange)="updateConfig()" />
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">{{ pgConfig.borderRadius }}px</span>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>✨ Features</h3>
+                <div class="checkbox-group">
+                  <app-checkbox id="showLegend" [(ngModel)]="pgConfig.showLegend"
+                    (ngModelChange)="updateConfig()" label="Show Legend"></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox id="showGrid" [(ngModel)]="pgConfig.showGrid"
+                    (ngModelChange)="updateConfig()" label="Show Grid"></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox id="showValues" [(ngModel)]="pgConfig.showValues"
+                    (ngModelChange)="updateConfig()" label="Show Values"></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox id="stacked" [(ngModel)]="pgConfig.stacked"
+                    (ngModelChange)="updateConfig()" label="Stacked"></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox id="enableAnimation" [(ngModel)]="pgConfig.enableAnimation"
+                    (ngModelChange)="updateConfig()" label="Animate on Load"></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox id="showTooltip" [(ngModel)]="pgConfig.showTooltip"
+                    (ngModelChange)="updateConfig()" label="Show Tooltip"></app-checkbox>
+                </div>
+              </div>
+
+            </div>
+            <div class="action-buttons">
+              <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+              <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+            </div>
+      </div>
+      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <ui-bar-chart
+          [attr.orientation]="pgConfig.orientation"
+          [attr.bar-width]="pgConfig.barWidth"
+          [attr.border-radius]="pgConfig.borderRadius"
+          [attr.show-legend]="pgConfig.showLegend ? '' : null"
+          [attr.show-grid]="pgConfig.showGrid ? '' : null"
+          [attr.show-values]="pgConfig.showValues ? '' : null"
+          [attr.stacked]="pgConfig.stacked ? '' : null"
+          [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
+          [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
+          [labels]="labelsJson"
+          [datasets]="datasetsJson"
+          style="width: 100%; height: 380px;"
+        ></ui-bar-chart>
+
+        <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+    </app-playground>
+  

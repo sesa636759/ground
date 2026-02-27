@@ -16,6 +16,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-toggle-playground',
@@ -27,6 +28,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './toggle-playground.component.html',

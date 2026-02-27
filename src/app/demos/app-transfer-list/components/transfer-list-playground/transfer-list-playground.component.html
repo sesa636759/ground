@@ -1,0 +1,67 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <!-- Global Configuration -->
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
+            <div class="control-group">
+              <label>Search Placeholder</label>
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.searchPlaceholder"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
+            </div>
+          </div>
+
+          <!-- Behavioral States -->
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.disabled"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Disabled State
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  [(ngModel)]="pgConfig.showSearch"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Show Search Bar
+              </label>
+            </div>
+          </div>
+        </ui-accordion>
+
+        <div class="action-buttons">
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
+        </div>
+      </div>
+
+      <div class="playground-preview">
+        <div class="transfer-container">
+          <ui-transfer-list
+            [attr.search-placeholder]="pgConfig.searchPlaceholder"
+            [attr.disabled]="pgConfig.disabled ? '' : null"
+            [attr.show-search]="pgConfig.showSearch ? '' : null"
+            [source]="sourceJson"
+            [target]="targetJson"
+          >
+          </ui-transfer-list>
+        </div>
+
+        <ui-code-preview
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </app-playground>
+  

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-aside-playground',
@@ -12,174 +13,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Configuration -->
-          <div class="control-section">
-            <h3>Configuration</h3>
-            <div class="control-group">
-              <label>Direction</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.direction"
-                (ngModelChange)="updateConfig()"
-                [options]="directionOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size (px/%/rem)</label>
-              <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Backdrop Blur</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.backdropBlur"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. 8px"
-              />
-            </div>
-          </div>
+  templateUrl: './aside-playground.component.html',
 
-          <!-- Behavior -->
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="closeable"
-                [(ngModel)]="pgConfig.closeable"
-                (ngModelChange)="updateConfig()"
-                label="Closeable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="overlayClick"
-                [(ngModel)]="pgConfig.closeOnOverlayClick"
-                (ngModelChange)="updateConfig()"
-                label="Close on Overlay Click"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="resizable"
-                [(ngModel)]="pgConfig.resizable"
-                (ngModelChange)="updateConfig()"
-                label="Resizable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading State"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <div class="preview-content">
-          <p>Click the button below to trigger the Aside Panel.</p>
-          <ui-button
-            class="btn-primary"
-            variant="primary"
-            (click)="pgConfig.open = true"
-            label="Open Panel"
-          ></ui-button>
-        </div>
-
-        <aside-panel
-          [attr.open]="pgConfig.open ? '' : null"
-          [attr.direction]="pgConfig.direction"
-          [attr.size]="pgConfig.size"
-          [attr.variant]="pgConfig.variant"
-          [attr.closeable]="pgConfig.closeable ? '' : null"
-          [attr.close-on-overlay-click]="pgConfig.closeOnOverlayClick ? '' : null"
-          [attr.resizable]="pgConfig.resizable ? '' : null"
-          [attr.backdrop-blur]="pgConfig.backdropBlur"
-          [attr.loading]="pgConfig.loading ? '' : null"
-          (asideClosed)="pgConfig.open = false"
-        >
-          <div slot="header">
-            <h3 style="margin: 0;">Panel Settings</h3>
-          </div>
-          <div slot="content" class="aside-content-demo">
-            <h2>Welcome Home</h2>
-            <p>
-              This is a highly customizable aside panel. You can change its direction, size, and
-              even enable resizing dynamically from the controls!
-            </p>
-
-            <div style="margin: 20px 0; padding: 16px; background: #f1f5f9; border-radius: 8px;">
-              <h4 style="margin-top: 0;">Did you know?</h4>
-              <p style="font-size: 0.9rem;">
-                You can use slots for header, content, and footer to maintain a consistent layout.
-              </p>
-            </div>
-
-            <ui-divider></ui-divider>
-
-            <div style="margin-top: 20px;">
-              <label>Quick Note</label>
-              <textarea
-                style="width: 100%; margin-top: 8px; border: 1px solid #ddd; border-radius: 4px; padding: 8px;"
-                rows="4"
-                placeholder="Type something..."
-              ></textarea>
-            </div>
-          </div>
-          <div slot="footer" class="aside-footer-demo">
-            <ui-button
-              class="btn-secondary"
-              variant="secondary"
-              (click)="pgConfig.open = false"
-              label="Cancel"
-            ></ui-button>
-            <ui-button
-              class="btn-primary"
-              variant="primary"
-              (click)="pgConfig.open = false"
-              label="Save Changes"
-            ></ui-button>
-          </div>
-        </aside-panel>
-
-        
-      
-      <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
   styleUrl: './aside-playground.component.scss',
 })
 export class AsidePlaygroundComponent {

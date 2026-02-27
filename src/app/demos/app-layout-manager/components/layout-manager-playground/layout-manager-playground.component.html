@@ -1,0 +1,76 @@
+
+    <app-playground
+      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["config"]'
+    >
+      <div slot="content-config">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Layout</h3>
+            <div class="control-group">
+              <label>Mode</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.mode"
+                (ngModelChange)="updateConfig()"
+                [options]="modeOptions"
+              ></ui-dropdown>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Features</h3>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="resizable"
+                [(ngModel)]="pgConfig.resizable"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="resizable">Resizable Panels</label>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="closable"
+                [(ngModel)]="pgConfig.closable"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="closable">Closable Panels</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
+      <div preview class="preview-stage h-scrollable">
+        <div class="layout-wrapper" style="width: 100%;">
+          <ui-layout-manager
+            [attr.mode]="pgConfig.mode"
+            [attr.resizable]="pgConfig.resizable ? '' : null"
+            [attr.closable]="pgConfig.closable ? '' : null"
+          >
+            <div slot="panel-1" style="padding: 20px; background: #f0f9ff;">
+              <h3>Panel 1</h3>
+              <p>Main content area</p>
+            </div>
+            <div slot="panel-2" style="padding: 20px; background: #fef3c7;">
+              <h3>Panel 2</h3>
+              <p>Secondary content</p>
+            </div>
+            <div slot="panel-3" style="padding: 20px; background: #fce7f3;">
+              <h3>Panel 3</h3>
+              <p>Sidebar content</p>
+            </div>
+          </ui-layout-manager>
+        </div>
+      </div>
+
+      <ui-code-preview
+        code
+        *ngIf="showCode"
+        [htmlCode]="generatedCode()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </app-playground>
+  

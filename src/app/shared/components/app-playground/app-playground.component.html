@@ -1,0 +1,33 @@
+<div class="playground-layout">
+  <!-- Controls Side -->
+  <div class="playground-controls">
+    <ui-accordion 
+      [items]="stringifiedItems" 
+      [defaultOpen]="stringifiedDefaultOpen" 
+      multiple>
+      <ng-content></ng-content>
+    </ui-accordion>
+  </div>
+
+  <!-- Preview Side -->
+  <div class="playground-preview">
+    <div class="preview-stage">
+      <ng-content select="[preview]"></ng-content>
+    </div>
+
+    <!-- Actions/Reset area -->
+    <div class="preview-actions">
+      <ng-content select="[actions]"></ng-content>
+    </div>
+
+    <!-- Event Log -->
+    <div class="event-log-container">
+      <ng-content select="[events]"></ng-content>
+    </div>
+
+    <!-- Code Preview -->
+    <div class="code-preview-area">
+      <ng-content select="[code]"></ng-content>
+    </div>
+  </div>
+</div>

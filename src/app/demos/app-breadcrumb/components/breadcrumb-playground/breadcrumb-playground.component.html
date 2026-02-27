@@ -1,0 +1,87 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Configuration</h3>
+                <div class="control-group">
+                  <label>Separator</label>
+                  <input
+                    type="text"
+                    name="separator"
+                    [(ngModel)]="pgConfig.separator"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Max Items (Collapse)</label>
+                  <input
+                    type="number"
+                    name="maxItems"
+                    [(ngModel)]="pgConfig.maxItems"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Size</label>
+                  <ui-dropdown
+                    name="size"
+                    [(ngModel)]="pgConfig.size"
+                    (ngModelChange)="updateConfig()"
+                    [options]="sizeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Home & Variant</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showHome"
+                    name="showHome"
+                    [(ngModel)]="pgConfig.showHome"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Home"
+                  ></app-checkbox>
+                </div>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    name="variant"
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+            </div>
+      </div>
+      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <ui-breadcrumb
+          [attr.separator]="pgConfig.separator"
+          [attr.max-items]="pgConfig.maxItems"
+          [attr.size]="pgConfig.size"
+          [attr.variant]="pgConfig.variant"
+          [attr.show-home]="pgConfig.showHome ? '' : null"
+          [items]="itemsJson"
+        ></ui-breadcrumb>
+
+        <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+    </app-playground>
+  

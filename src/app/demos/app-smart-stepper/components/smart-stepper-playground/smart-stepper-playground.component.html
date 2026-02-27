@@ -1,0 +1,118 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <div class="control-section">
+                <h3>Layout</h3>
+                <div class="control-group">
+                  <label>Orientation</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.orientation"
+                    (ngModelChange)="updateConfig()"
+                    [options]="orientationOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Theme</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.theme"
+                    (ngModelChange)="updateConfig()"
+                    [options]="themeOptions"
+                  ></ui-dropdown>
+                </div>
+              </div>
+
+              <div class="control-section">
+                <h3>Visuals</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showIcons"
+                    [(ngModel)]="pgConfig.showIcons"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Icons"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="allowBranching"
+                    [(ngModel)]="pgConfig.allowBranching"
+                    (ngModelChange)="updateConfig()"
+                    label="Allow Branching"
+                  ></app-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="code-output">
+              <pre>{{ generatedCode() }}</pre>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
+            </div>
+      </div>
+      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <div class="stepper-container">
+          <ui-smart-stepper
+            [attr.orientation]="pgConfig.orientation"
+            [attr.theme]="pgConfig.theme"
+            [attr.show-icons]="pgConfig.showIcons ? '' : null"
+            [value]="currentStep"
+            (valueChange)="onStepChange($event)"
+          >
+            <ui-smart-step label="Profile" icon="👤" value="1">
+              <div style="padding: 24px;">
+                <h4>Profile Setup</h4>
+                <p>Enter your basic account information.</p>
+                <ui-button
+                  class="variant-btn"
+                  (click)="currentStep = '2'"
+                  label="Next Step"
+                ></ui-button>
+              </div>
+            </ui-smart-step>
+            <ui-smart-step label="Verify" icon="🛡️" value="2">
+              <div style="padding: 24px;">
+                <h4>Identity Verification</h4>
+                <p>Protect your account with multi-factor authentication.</p>
+                <ui-button
+                  class="variant-btn btn-secondary"
+                  variant="secondary"
+                  (click)="currentStep = '1'"
+                  label="Back"
+                ></ui-button>
+                <ui-button
+                  class="variant-btn"
+                  style="margin-left: 12px;"
+                  (click)="currentStep = '3'"
+                  label="Next Step"
+                ></ui-button>
+              </div>
+            </ui-smart-step>
+            <ui-smart-step label="Finish" icon="✅" value="3">
+              <div style="padding: 24px;">
+                <h4>All Done!</h4>
+                <p>Your account is ready to use.</p>
+                <ui-button
+                  class="variant-btn btn-secondary"
+                  variant="secondary"
+                  (click)="currentStep = '2'"
+                  label="Back"
+                ></ui-button>
+              </div>
+            </ui-smart-step>
+          </ui-smart-stepper>
+        </div>
+    </app-playground>
+  

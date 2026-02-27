@@ -1,0 +1,65 @@
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>Structure</h3>
+        <div class="control-group">
+          <label>Logo Text</label>
+          <input type="text" [(ngModel)]="pgConfig.logoText" (ngModelChange)="updateConfig()" />
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="sticky"
+            [(ngModel)]="pgConfig.sticky"
+            (ngModelChange)="updateConfig()"
+            label="Sticky Position"
+          ></app-checkbox>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h3>Visuals</h3>
+        <div class="control-group">
+          <label>Height (px)</label>
+          <input type="number" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+    "
+  >
+    <div class="top-bar-container" style="width: 100%">
+      <ui-top-bar [attr.sticky]="pgConfig.sticky ? '' : null" [style.height.px]="pgConfig.height">
+        <div slot="start" style="padding: 0 20px; font-weight: 700">
+          {{ pgConfig.logoText }}
+        </div>
+        <div slot="end" style="padding: 0 20px; display: flex; gap: 16px; align-items: center">
+          <span>Alerts</span>
+          <span>Profile</span>
+        </div>
+      </ui-top-bar>
+    </div>
+    <div class="content-placeholder">
+      <p>Body content goes here. If sticky is enabled, the bar will stay at the top on scroll.</p>
+    </div>
+  </div>
+  <ui-code-preview
+    code
+    [htmlCode]="generatedCode()"
+    label="Generated Code"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

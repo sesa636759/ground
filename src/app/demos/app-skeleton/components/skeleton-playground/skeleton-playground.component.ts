@@ -2,143 +2,15 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-skeleton-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <div class="control-grid">
-          <!-- Shape & Animation -->
-          <div class="control-section">
-            <h3>Appearance</h3>
+  templateUrl: './skeleton-playground.component.html',
 
-            <div class="control-group">
-              <label>shape</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.shape"
-                (change)="update()"
-                [options]="shapeOpts"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>animation-type</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.animationType"
-                (change)="update()"
-                [options]="animTypeOpts"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>animated</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.animated"
-                (change)="update()"
-                [options]="boolOpts"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Sizing -->
-          <div class="control-section">
-            <h3>Sizing</h3>
-
-            <div class="control-group">
-              <label
-                >size <span style="font-weight:400;font-size:0.75rem">(predefined)</span></label
-              >
-              <ui-dropdown
-                [(ngModel)]="cfg.size"
-                (change)="update()"
-                [options]="sizeOpts"
-              ></ui-dropdown>
-              <span class="control-hint">Overrides width/height for most shapes</span>
-            </div>
-
-            <div class="control-group">
-              <label>width</label>
-              <input
-                type="text"
-                [(ngModel)]="cfg.width"
-                (ngModelChange)="update()"
-                placeholder="100%"
-              />
-            </div>
-
-            <div class="control-group">
-              <label>height</label>
-              <input
-                type="text"
-                [(ngModel)]="cfg.height"
-                (ngModelChange)="update()"
-                placeholder="20px"
-              />
-            </div>
-
-            <div class="control-group">
-              <label
-                >border-radius
-                <span style="font-weight:400;font-size:0.75rem">(rounded shapes)</span></label
-              >
-              <input
-                type="text"
-                [(ngModel)]="cfg.borderRadius"
-                (ngModelChange)="update()"
-                placeholder="4px"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
-        </div>
-      </div>
-
-      <!-- Preview — @if toggle forces element recreation on every prop change  -->
-      <!-- (skeleton-loader has mutable:false props that don't react to attr mutations) -->
-      <div class="playground-preview">
-        @if (recreate) {
-          <skeleton-loader
-            [attr.shape]="cfg.shape"
-            [attr.animation-type]="cfg.animationType"
-            [attr.animated]="cfg.animated"
-            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-            [attr.border-radius]="cfg.borderRadius || null"
-          ></skeleton-loader>
-        } @else {
-          <skeleton-loader
-            [attr.shape]="cfg.shape"
-            [attr.animation-type]="cfg.animationType"
-            [attr.animated]="cfg.animated"
-            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-            [attr.border-radius]="cfg.borderRadius || null"
-          ></skeleton-loader>
-        }
-
-        
-      
-      <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="code()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
   styleUrl: './skeleton-playground.component.scss',
 })
 export class SkeletonPlaygroundComponent {

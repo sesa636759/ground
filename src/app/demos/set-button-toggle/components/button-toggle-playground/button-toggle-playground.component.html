@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
@@ -104,39 +105,34 @@
     </div>
 
     <div class="checkbox-grid">
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full
-        Width</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" /> Keep
-        Label</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" /> Custom
-        Content</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required</label
-      >
-      <label class="checkbox-item"
-        ><app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid</label
-      >
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" /> Keep Label
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" /> Custom Content
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+      </label>
     </div>
-        </div>
-    </ui-accordion>
   </div>
 
-  <div class="playground-preview">
+  <div preview>
     <div class="preview-stage">
       <app-button-toggle-group
         #pgGroup
@@ -172,17 +168,18 @@
         </div>
       </app-button-toggle-group>
     </div>
-    
-    <div class="event-log">
-      <strong>Event Log:</strong>
-      <span [style.color]="eventColor()">{{ eventMessage() }}</span>
-    </div>
-  
-      <ui-code-preview
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-    </div>
-</div>
+  </div>
+
+  <div events class="event-log">
+    <strong>Event Log:</strong>
+    <span [style.color]="eventColor()">{{ eventMessage() }}</span>
+  </div>
+
+  <ui-code-preview
+    code
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

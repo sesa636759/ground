@@ -1,0 +1,201 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <ui-accordion
+          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+          defaultOpen='["config"]'
+          multiple
+        >
+          <div slot="content-config">
+            <div class="control-grid">
+              <!-- Header -->
+              <div class="control-section">
+                <h3>Header</h3>
+                <div class="control-group">
+                  <label>Title</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.panelTitle"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Subtitle</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.panelSubtitle"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="control-group">
+                  <label>Badge</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="pgConfig.badge"
+                    (ngModelChange)="updateConfig()"
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showClose"
+                    [(ngModel)]="pgConfig.showClose"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Close"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="showSettings"
+                    [(ngModel)]="pgConfig.showSettings"
+                    (ngModelChange)="updateConfig()"
+                    label="Show Settings"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <!-- Style -->
+              <div class="control-section">
+                <h3>Style</h3>
+                <div class="control-group">
+                  <label>Variant</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.variant"
+                    (ngModelChange)="updateConfig()"
+                    [options]="variantOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="control-group">
+                  <label>Theme</label>
+                  <ui-dropdown
+                    [(ngModel)]="pgConfig.theme"
+                    (ngModelChange)="updateConfig()"
+                    [options]="themeOptions"
+                  ></ui-dropdown>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="glass"
+                    [(ngModel)]="pgConfig.glass"
+                    (ngModelChange)="updateConfig()"
+                    label="Glassmorphism"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="noPadding"
+                    [(ngModel)]="pgConfig.noPadding"
+                    (ngModelChange)="updateConfig()"
+                    label="No Padding"
+                  ></app-checkbox>
+                </div>
+              </div>
+
+              <!-- Interactivity -->
+              <div class="control-section">
+                <h3>Interactivity</h3>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="toggleable"
+                    [(ngModel)]="pgConfig.toggleable"
+                    (ngModelChange)="updateConfig()"
+                    label="Toggleable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="minimizable"
+                    [(ngModel)]="pgConfig.minimizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Minimizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="maximizable"
+                    [(ngModel)]="pgConfig.maximizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Maximizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="isDraggable"
+                    [(ngModel)]="pgConfig.isDraggable"
+                    (ngModelChange)="updateConfig()"
+                    label="Draggable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="resizable"
+                    [(ngModel)]="pgConfig.resizable"
+                    (ngModelChange)="updateConfig()"
+                    label="Resizable"
+                  ></app-checkbox>
+                </div>
+                <div class="checkbox-group">
+                  <app-checkbox
+                    id="loading"
+                    [(ngModel)]="pgConfig.loading"
+                    (ngModelChange)="updateConfig()"
+                    label="Loading State"
+                  ></app-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <ui-button
+                class="btn-secondary"
+                variant="secondary"
+                (click)="resetConfig()"
+                label="Reset"
+              ></ui-button>
+            </div>
+      </div>
+      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <ui-panel
+          [attr.panel-title]="pgConfig.panelTitle"
+          [attr.panel-subtitle]="pgConfig.panelSubtitle"
+          [attr.badge]="pgConfig.badge"
+          [attr.variant]="pgConfig.variant"
+          [attr.theme]="pgConfig.theme"
+          [attr.show-close]="pgConfig.showClose ? '' : null"
+          [attr.show-settings]="pgConfig.showSettings ? '' : null"
+          [attr.toggleable]="pgConfig.toggleable ? '' : null"
+          [attr.minimizable]="pgConfig.minimizable ? '' : null"
+          [attr.maximizable]="pgConfig.maximizable ? '' : null"
+          [attr.is-draggable]="pgConfig.isDraggable ? '' : null"
+          [attr.resizable]="pgConfig.resizable ? '' : null"
+          [attr.loading]="pgConfig.loading ? '' : null"
+          [attr.no-padding]="pgConfig.noPadding ? '' : null"
+          [attr.glass]="pgConfig.glass ? '' : null"
+          width="100%"
+          (panelClose)="onEvent('Close')"
+          (panelSettings)="onEvent('Settings')"
+          (toggle)="onEvent('Toggle')"
+        >
+          <div slot="content" class="panel-content-demo">
+            This is the main content area of the panel. You can toggle behaviors like draggability
+            and resizing from the controls on the left.
+          </div>
+          <div slot="footer" class="panel-footer-demo">
+            <ui-button class="btn-secondary" variant="secondary" label="Cancel"></ui-button>
+            <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
+          </div>
+        </ui-panel>
+
+        <app-playground-event-log
+          [logs]="eventLog"
+          (clear)="eventLog = []"
+        ></app-playground-event-log>
+
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </app-playground>
+  

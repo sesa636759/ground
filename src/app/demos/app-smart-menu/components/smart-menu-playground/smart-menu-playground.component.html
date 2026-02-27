@@ -1,0 +1,172 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <div class="control-grid">
+          <!-- ── Component Props ── -->
+          <div class="control-section">
+            <h3>Component Props</h3>
+
+            <!-- icon-library -->
+            <div class="control-group">
+              <label>icon-library</label>
+              <ui-dropdown
+                [(ngModel)]="cfg.iconLibrary"
+                (change)="rebuild()"
+                [options]="iconLibraryOpts"
+              ></ui-dropdown>
+              <span class="control-hint">Changes how item icons are resolved</span>
+            </div>
+
+            <!-- target mode -->
+            <div class="control-group">
+              <label>target / trigger mode</label>
+              <ui-dropdown
+                [(ngModel)]="cfg.triggerMode"
+                (change)="rebuild()"
+                [options]="triggerModeOpts"
+              ></ui-dropdown>
+              <span class="control-hint">
+                "right-click zone" binds target="#pg-zone"<br />
+                "button click" calls show(x,y) programmatically<br />
+                "no target" listens on the whole document
+              </span>
+            </div>
+          </div>
+
+          <!-- ── MenuItem structure ── -->
+          <div class="control-section">
+            <h3>MenuItem Fields</h3>
+
+            <div class="control-group">
+              <label>Preset</label>
+              <ui-dropdown
+                [(ngModel)]="cfg.preset"
+                (change)="rebuild()"
+                [options]="presetOpts"
+              ></ui-dropdown>
+            </div>
+
+            <div class="checkbox-group">
+              <app-checkbox
+                id="pg-icons"
+                [(ngModel)]="cfg.showIcons"
+                (change)="rebuild()"
+                label="item.icon — show icons"
+              ></app-checkbox>
+
+              <app-checkbox
+                id="pg-desc"
+                [(ngModel)]="cfg.showDescriptions"
+                (change)="rebuild()"
+                label="item.description — secondary text"
+              ></app-checkbox>
+
+              <app-checkbox
+                id="pg-nested"
+                [(ngModel)]="cfg.showNested"
+                (change)="rebuild()"
+                label="item.submenu — nested sub-menu (hover ▶)"
+              ></app-checkbox>
+
+              <app-checkbox
+                id="pg-dividers"
+                [(ngModel)]="cfg.showDividers"
+                (change)="rebuild()"
+                label="item.divider — separator line"
+              ></app-checkbox>
+
+              <app-checkbox
+                id="pg-disabled"
+                [(ngModel)]="cfg.showDisabled"
+                (change)="rebuild()"
+                label="item.disabled — greyed-out item"
+              ></app-checkbox>
+
+              <app-checkbox
+                id="pg-action"
+                [(ngModel)]="cfg.showAction"
+                (change)="rebuild()"
+                label="item.action — callback on click (see console)"
+              ></app-checkbox>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        </div>
+      </div>
+
+      <!-- ── Preview ── -->
+      <div
+        class="playground-preview"
+        style="display:flex;flex-direction:column;gap:16px;align-items:stretch"
+      >
+        <!-- Right-click zone (used when triggerMode = 'zone') -->
+        @if (cfg.triggerMode === 'zone' || cfg.triggerMode === 'no-target') {
+          <div
+            id="pg-zone"
+            style="padding:64px 24px;border:2px dashed var(--color-border,#ccc);border-radius:12px;
+                   text-align:center;cursor:context-menu;user-select:none;
+                   color:var(--color-text-secondary,#6b7280);box-sizing:border-box"
+          >
+            @if (cfg.triggerMode === 'zone') {
+              🖱️ <strong>Right-click anywhere in this area</strong> to open the menu
+            } @else {
+              🌐 <strong>Right-click anywhere on the page</strong> to open the menu<br />
+              <small>(no target set — listens on whole document)</small>
+            }
+          </div>
+        }
+
+        <!-- Button trigger (used when triggerMode = 'button') -->
+        @if (cfg.triggerMode === 'button') {
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+            <p style="margin:0;color:var(--color-text-secondary,#6b7280);font-size:0.875rem">
+              Click the button to open the menu at its position via <code>el.show(x, y)</code>
+            </p>
+            <ui-button
+              id="pg-open-btn"
+              label="Open Context Menu"
+              icon="menu"
+              icon-library="lucide"
+              (click)="openViaButton($event)"
+            ></ui-button>
+          </div>
+        }
+
+        <!-- The context menu element -->
+        <ui-smart-context-menu
+          #smartMenu
+          [attr.target]="
+            cfg.triggerMode === 'zone' ? '#pg-zone' : cfg.triggerMode === 'no-target' ? null : null
+          "
+          icon-library="{{ cfg.iconLibrary }}"
+          [items]="menuJson"
+          (menuItemClick)="onItemClick($event)"
+        ></ui-smart-context-menu>
+
+        
+
+        <!-- Event log -->
+        @if (clickLog().length) {
+          <div
+            style="padding:10px 14px;background:var(--color-surface-2,#f1f5f9);border-radius:8px;
+                      font-size:0.8rem;color:var(--color-text-secondary,#6b7280)"
+          >
+            <strong>Last clicked:</strong>
+            @for (entry of clickLog(); track entry) {
+              <div>• {{ entry }}</div>
+            }
+          </div>
+        }
+      
+      <ui-code-preview
+            *ngIf="showCode"
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+    </app-playground>
+  

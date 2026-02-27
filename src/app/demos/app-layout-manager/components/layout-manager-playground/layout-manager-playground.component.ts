@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-layout-manager-playground',
@@ -12,97 +13,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Layout</h3>
-                <div class="control-group">
-                  <label>Mode</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.mode"
-                    (ngModelChange)="updateConfig()"
-                    [options]="modeOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
+  templateUrl: './layout-manager-playground.component.html',
 
-              <div class="control-section">
-                <h3>Features</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="resizable"
-                    [(ngModel)]="pgConfig.resizable"
-                    (ngModelChange)="updateConfig()"
-                    label="Resizable Panels"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="closable"
-                    [(ngModel)]="pgConfig.closable"
-                    (ngModelChange)="updateConfig()"
-                    label="Closable Panels"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <div class="layout-wrapper">
-          <ui-layout-manager
-            [attr.mode]="pgConfig.mode"
-            [attr.resizable]="pgConfig.resizable ? '' : null"
-            [attr.closable]="pgConfig.closable ? '' : null"
-          >
-            <div slot="panel-1" style="padding: 20px; background: #f0f9ff;">
-              <h3>Panel 1</h3>
-              <p>Main content area</p>
-            </div>
-            <div slot="panel-2" style="padding: 20px; background: #fef3c7;">
-              <h3>Panel 2</h3>
-              <p>Secondary content</p>
-            </div>
-            <div slot="panel-3" style="padding: 20px; background: #fce7f3;">
-              <h3>Panel 3</h3>
-              <p>Sidebar content</p>
-            </div>
-          </ui-layout-manager>
-        </div>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './layout-manager-playground.component.scss',
 })
 export class LayoutManagerPlaygroundComponent {

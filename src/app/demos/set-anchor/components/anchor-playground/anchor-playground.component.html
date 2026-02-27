@@ -1,143 +1,138 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion
-      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-      multiple
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Mode</label>
-            <ui-dropdown
-              name="mode"
-              [(ngModel)]="pgConfig.mode"
-              (ngModelChange)="updateConfig()"
-              [options]="modeOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Position</label>
-            <ui-dropdown
-              name="position"
-              [(ngModel)]="pgConfig.position"
-              (ngModelChange)="updateConfig()"
-              [options]="positionOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Alignment</label>
-            <ui-dropdown
-              name="alignment"
-              [(ngModel)]="pgConfig.alignment"
-              (ngModelChange)="updateConfig()"
-              [options]="alignmentOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Size</label>
-            <ui-dropdown
-              name="size"
-              [(ngModel)]="pgConfig.size"
-              (ngModelChange)="updateConfig()"
-              [options]="sizeOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Theme</label>
-            <ui-dropdown
-              name="theme"
-              [(ngModel)]="pgConfig.theme"
-              (ngModelChange)="updateConfig()"
-              [options]="themeOptions"
-            ></ui-dropdown>
-          </div>
-        </div>
-
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Scroll Offset</label>
-            <app-input
-              name="scrollOffset"
-              type="number"
-              [(ngModel)]="pgConfig.scrollOffset"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Number Style</label>
-            <ui-dropdown
-              name="numberStyle"
-              [(ngModel)]="pgConfig.numberStyle"
-              (ngModelChange)="updateConfig()"
-              [disabled]="!pgConfig.showNumbers"
-              [options]="numberStyleOptions"
-            ></ui-dropdown>
-          </div>
-        </div>
-
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.showTooltip"
-              (ngModelChange)="updateConfig()"
-              label="Show Tooltip"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.showIndicator"
-              (ngModelChange)="updateConfig()"
-              label="Show Indicator"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.showProgress"
-              (ngModelChange)="updateConfig()"
-              label="Show Progress"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.showNumbers"
-              (ngModelChange)="updateConfig()"
-              label="Show Numbers"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.sticky"
-              (ngModelChange)="updateConfig()"
-              label="Sticky"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.smoothScroll"
-              (ngModelChange)="updateConfig()"
-              label="Smooth Scroll"
-            ></app-checkbox>
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.affix"
-              (ngModelChange)="updateConfig()"
-              label="Affix"
-            ></app-checkbox>
-          </label>
-        </div>
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Mode</label>
+        <ui-dropdown
+          name="mode"
+          [(ngModel)]="pgConfig.mode"
+          (ngModelChange)="updateConfig()"
+          [options]="modeOptions"
+        ></ui-dropdown>
       </div>
-    </ui-accordion>
+
+      <div class="control-group">
+        <label>Position</label>
+        <ui-dropdown
+          name="position"
+          [(ngModel)]="pgConfig.position"
+          (ngModelChange)="updateConfig()"
+          [options]="positionOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Alignment</label>
+        <ui-dropdown
+          name="alignment"
+          [(ngModel)]="pgConfig.alignment"
+          (ngModelChange)="updateConfig()"
+          [options]="alignmentOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Size</label>
+        <ui-dropdown
+          name="size"
+          [(ngModel)]="pgConfig.size"
+          (ngModelChange)="updateConfig()"
+          [options]="sizeOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Theme</label>
+        <ui-dropdown
+          name="theme"
+          [(ngModel)]="pgConfig.theme"
+          (ngModelChange)="updateConfig()"
+          [options]="themeOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Scroll Offset</label>
+        <app-input
+          name="scrollOffset"
+          type="number"
+          [(ngModel)]="pgConfig.scrollOffset"
+          (ngModelChange)="updateConfig()"
+        ></app-input>
+      </div>
+
+      <div class="control-group">
+        <label>Number Style</label>
+        <ui-dropdown
+          name="numberStyle"
+          [(ngModel)]="pgConfig.numberStyle"
+          (ngModelChange)="updateConfig()"
+          [disabled]="!pgConfig.showNumbers"
+          [options]="numberStyleOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showTooltip"
+          (ngModelChange)="updateConfig()"
+          label="Show Tooltip"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showIndicator"
+          (ngModelChange)="updateConfig()"
+          label="Show Indicator"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showProgress"
+          (ngModelChange)="updateConfig()"
+          label="Show Progress"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showNumbers"
+          (ngModelChange)="updateConfig()"
+          label="Show Numbers"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.sticky"
+          (ngModelChange)="updateConfig()"
+          label="Sticky"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.smoothScroll"
+          (ngModelChange)="updateConfig()"
+          label="Smooth Scroll"
+        ></app-checkbox>
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.affix"
+          (ngModelChange)="updateConfig()"
+          label="Affix"
+        ></app-checkbox>
+      </label>
+    </div>
   </div>
 
-  <div class="playground-preview">
-    <div class="preview-stage">
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div class="preview-stage" style="width: 100%">
       <div
         class="anchor-demo-wrapper"
         [class.horizontal]="pgConfig.mode === 'horizontal'"
@@ -217,19 +212,21 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+
+  <div events class="event-log-container">
+    <strong>Event Log</strong>
+    <div class="log-items">
+      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
     </div>
   </div>
-</div>
+</app-playground>

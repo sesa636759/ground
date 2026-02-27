@@ -8,87 +8,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   standalone: true,
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Value / Text</label>
-              <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Severity</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.severity"
-                (ngModelChange)="updateConfig()"
-                [options]="severityOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
+  templateUrl: './tag-playground.component.html',
 
-          <div class="control-section">
-            <h3>Styling</h3>
-            <div class="checkpoint-group">
-              <app-checkbox
-                id="rounded"
-                [(ngModel)]="pgConfig.rounded"
-                (ngModelChange)="updateConfig()"
-                label="Rounded Corners"
-              ></app-checkbox>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <ui-tag
-          [attr.value]="pgConfig.value"
-          [attr.icon]="pgConfig.icon"
-          [attr.severity]="pgConfig.severity"
-          [attr.rounded]="pgConfig.rounded ? '' : null"
-          [attr.size]="pgConfig.size"
-        ></ui-tag>
-      
-      <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
   styleUrl: './tag-playground.component.scss',
 })
 export class TagPlaygroundComponent {

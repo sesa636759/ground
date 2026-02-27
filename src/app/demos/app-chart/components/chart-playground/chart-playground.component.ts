@@ -23,87 +23,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Chart Type</h3>
-                <div class="control-group">
-                  <label>Type</label>
-                  <ui-dropdown
-                    name="type"
-                    [(ngModel)]="pgConfig.type"
-                    (ngModelChange)="updateConfig()"
-                    [options]="typeOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
+  templateUrl: './chart-playground.component.html',
 
-              <div class="control-section">
-                <h3>Features</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showLegend"
-                    name="showLegend"
-                    [(ngModel)]="pgConfig.showLegend"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Legend"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="responsive"
-                    name="responsive"
-                    [(ngModel)]="pgConfig.responsive"
-                    (ngModelChange)="updateConfig()"
-                    label="Responsive"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-chart
-          #chart
-          [attr.type]="pgConfig.type"
-          [attr.show-legend]="pgConfig.showLegend ? '' : null"
-          [attr.responsive]="pgConfig.responsive ? '' : null"
-          [data]="chartDataJson"
-          style="width: 100%; height: 350px;"
-        >
-        </ui-chart>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './chart-playground.component.scss',
 })
 export class ChartPlaygroundComponent implements AfterViewInit {

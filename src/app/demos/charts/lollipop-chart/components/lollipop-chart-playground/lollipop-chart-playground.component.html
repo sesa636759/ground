@@ -1,0 +1,160 @@
+
+    <app-playground
+      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["cfg"]'
+    >
+      <div slot="content-cfg">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>📐 Style</h3>
+            <div class="control-group">
+              <label>Circle Radius</label>
+              <input
+                type="range"
+                min="4"
+                max="16"
+                step="2"
+                [(ngModel)]="cfg.circleR"
+                (ngModelChange)="update()"
+              />
+              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.circleR }}px</span>
+            </div>
+            <div class="control-group">
+              <label>Stick Width</label>
+              <input
+                type="range"
+                min="1"
+                max="6"
+                step="1"
+                [(ngModel)]="cfg.stickW"
+                (ngModelChange)="update()"
+              />
+              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.stickW }}px</span>
+            </div>
+            <div class="control-group">
+              <label>Orientation</label>
+              <ui-dropdown
+                [(ngModel)]="cfg.orientation"
+                (ngModelChange)="update()"
+                [options]="orientOpts"
+              ></ui-dropdown>
+            </div>
+          </div>
+          <div class="control-section">
+            <h3>✨ Features</h3>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="showVals"
+                [(ngModel)]="cfg.showValues"
+                (ngModelChange)="update()"
+                label="Show Values"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="multiColor"
+                [(ngModel)]="cfg.multiColor"
+                (ngModelChange)="update()"
+                label="Multi Color"
+              ></app-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="filled"
+                [(ngModel)]="cfg.filled"
+                (ngModelChange)="update()"
+                label="Filled Circles"
+              ></app-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="action-buttons">
+          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
+          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        </div>
+      </div>
+      <div
+        preview
+        class="chart-preview-wrapper"
+        style="width: 100%; display: flex; justify-content: center;"
+      >
+        <svg width="580" height="320" style="display:block;font-family:inherit;">
+          <!-- Y grid -->
+          <g *ngFor="let t of yTicks">
+            <line
+              [attr.x1]="padL"
+              [attr.y1]="t.y"
+              x2="565"
+              [attr.y2]="t.y"
+              stroke="#f3f4f6"
+              stroke-width="1"
+            />
+            <text
+              [attr.x]="padL - 6"
+              [attr.y]="t.y + 4"
+              text-anchor="end"
+              font-size="11"
+              fill="#9ca3af"
+            >
+              {{ t.val }}
+            </text>
+          </g>
+          <!-- Baseline -->
+          <line
+            [attr.x1]="padL"
+            [attr.y1]="baseY"
+            x2="565"
+            [attr.y2]="baseY"
+            stroke="#d1d5db"
+            stroke-width="1.5"
+          />
+          <!-- Lollipops -->
+          <g *ngFor="let d of data; let i = index">
+            <!-- Stick -->
+            <line
+              [attr.x1]="lx(i)"
+              [attr.y1]="baseY"
+              [attr.x2]="lx(i)"
+              [attr.y2]="ly(d.value)"
+              [attr.stroke]="cfg.multiColor ? d.color : '#6366f1'"
+              [attr.stroke-width]="cfg.stickW"
+              stroke-linecap="round"
+            />
+            <!-- Circle -->
+            <circle
+              [attr.cx]="lx(i)"
+              [attr.cy]="ly(d.value)"
+              [attr.r]="cfg.circleR"
+              [attr.fill]="cfg.filled ? (cfg.multiColor ? d.color : '#6366f1') : 'white'"
+              [attr.stroke]="cfg.multiColor ? d.color : '#6366f1'"
+              [attr.stroke-width]="cfg.stickW"
+            />
+            <!-- Value -->
+            <text
+              *ngIf="cfg.showValues"
+              [attr.x]="lx(i)"
+              [attr.y]="ly(d.value) - cfg.circleR - 6"
+              text-anchor="middle"
+              font-size="11"
+              font-weight="700"
+              [attr.fill]="cfg.multiColor ? d.color : '#374151'"
+            >
+              {{ d.value }}
+            </text>
+            <!-- X label -->
+            <text [attr.x]="lx(i)" y="308" text-anchor="middle" font-size="11" fill="#6b7280">
+              {{ d.label }}
+            </text>
+          </g>
+        </svg>
+      </div>
+      <ui-code-preview
+        code
+        *ngIf="showCode"
+        [htmlCode]="code()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </app-playground>
+  

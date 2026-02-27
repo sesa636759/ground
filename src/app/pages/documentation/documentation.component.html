@@ -41,7 +41,7 @@
         </div>
 
         <!-- 📊 Hero Stats Bar -->
-        <div class="hero-stats animate-slide-up" style="animation-delay: 0.35s">
+        <!-- <div class="hero-stats animate-slide-up" style="animation-delay: 0.35s">
           <div class="stat-item">
             <div class="stat-value">{{ components().length }}+</div>
             <div class="stat-label">Components</div>
@@ -61,7 +61,7 @@
             <div class="stat-value">MIT</div>
             <div class="stat-label">License</div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -140,7 +140,12 @@
           >
         </div>
 
-        <ng-masonry-grid [columns]="4" gap="1.5rem" [rowGap]="24" [breakpoints]="masonryBreakpoints">
+        <ng-masonry-grid
+          [columns]="4"
+          gap="1.5rem"
+          [rowGap]="24"
+          [breakpoints]="masonryBreakpoints"
+        >
           <div
             class="comp-card glass-card animate-in"
             *ngFor="let comp of filteredComponents()"

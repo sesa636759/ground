@@ -1,0 +1,93 @@
+
+    <div class="playground-layout">
+      <div class="playground-controls">
+        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+          <div slot="content-global" class="control-grid" style="padding: 16px;">
+            <div class="control-group">
+              <label>Source Header</label>
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.sourceHeader"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
+            </div>
+            <div class="control-group">
+              <label>Target Header</label>
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.targetHeader"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
+            </div>
+            <div class="control-group">
+              <label>Filter Placeholder</label>
+              <app-input
+                type="text"
+                [(ngModel)]="pgConfig.filterPlaceholder"
+                (ngModelChange)="updateConfig()"
+              ></app-input>
+            </div>
+          </div>
+
+          <div slot="content-states" style="padding: 16px;">
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="showSourceControls"
+                  [(ngModel)]="pgConfig.showSourceControls"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Source Controls
+              </label>
+              <label class="checkbox-item">
+                <app-checkbox
+                  id="showTargetControls"
+                  [(ngModel)]="pgConfig.showTargetControls"
+                  (ngModelChange)="updateConfig()"
+                ></app-checkbox>
+                Target Controls
+              </label>
+            </div>
+          </div>
+        </ui-accordion>
+
+        <div class="action-buttons">
+          <ui-button
+            class="btn-secondary"
+            variant="secondary"
+            (click)="resetConfig()"
+            label="Reset"
+          ></ui-button>
+        </div>
+      </div>
+
+      <div class="playground-preview">
+        <div class="preview-stage">
+          <ui-picklist
+            #demoElement
+            [attr.source-header]="pgConfig.sourceHeader"
+            [attr.target-header]="pgConfig.targetHeader"
+            [attr.show-source-controls]="pgConfig.showSourceControls ? '' : null"
+            [attr.show-target-controls]="pgConfig.showTargetControls ? '' : null"
+            [attr.filter-placeholder]="pgConfig.filterPlaceholder"
+            [source]="sourceJson"
+            [target]="targetJson"
+          >
+            <ng-template let-item>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span>{{ item.icon }}</span>
+                <span>{{ item.name }}</span>
+              </div>
+            </ng-template>
+          </ui-picklist>
+        </div>
+
+        <ui-code-preview
+          *ngIf="showCode"
+          [htmlCode]="generatedCode()"
+          [label]="'Generated Code'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </app-playground>
+  

@@ -1,0 +1,78 @@
+
+    <app-playground
+      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+      defaultOpen='["config"]'
+    >
+      <div slot="content-config">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Features</h3>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="paginator"
+                [(ngModel)]="pgConfig.paginator"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="paginator">Enable Paginator</label>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="sorting"
+                [(ngModel)]="pgConfig.sorting"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="sorting">Enable Sorting</label>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="filtering"
+                [(ngModel)]="pgConfig.filtering"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="filtering">Global Filtering</label>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Layout</h3>
+            <div class="control-group">
+              <label>Rows per page</label>
+              <input type="number" [(ngModel)]="pgConfig.rows" (ngModelChange)="updateConfig()" />
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox
+                id="responsive"
+                [(ngModel)]="pgConfig.responsive"
+                (ngModelChange)="updateConfig()"
+              ></app-checkbox>
+              <label for="responsive">Responsive Layout</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
+      <div preview class="preview-stage h-scrollable">
+        <div class="table-container" style="width: 100%;">
+          <ui-advanced-data-table
+            [attr.paginator]="pgConfig.paginator ? '' : null"
+            [attr.rows]="pgConfig.rows"
+            [attr.responsive]="pgConfig.responsive ? '' : null"
+            [value]="dataJson"
+            [columns]="columnsJson"
+          >
+          </ui-advanced-data-table>
+        </div>
+      </div>
+
+      <ui-code-preview
+        code
+        *ngIf="showCode"
+        [htmlCode]="generatedCode()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </app-playground>
+  

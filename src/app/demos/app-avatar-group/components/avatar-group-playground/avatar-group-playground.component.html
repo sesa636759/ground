@@ -1,0 +1,88 @@
+
+    <app-playground accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]'>
+      <div slot="content-config">
+        <div class="control-grid">
+          <div class="control-section">
+            <h3>Layout</h3>
+            <div class="control-group">
+              <label>Size</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.size"
+                (ngModelChange)="updateConfig()"
+                [options]="sizeOptions"
+              ></ui-dropdown>
+            </div>
+            <div class="control-group">
+              <label>Max Display</label>
+              <input
+                type="number"
+                min="1"
+                max="10"
+                [(ngModel)]="pgConfig.max"
+                (ngModelChange)="updateConfig()"
+              />
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h3>Style</h3>
+            <div class="control-group">
+              <label>Shape</label>
+              <ui-dropdown
+                [(ngModel)]="pgConfig.shape"
+                (ngModelChange)="updateConfig()"
+                [options]="shapeOptions"
+              ></ui-dropdown>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="action-buttons">
+          <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()"
+            >Reset</ui-button
+          >
+        </div>
+      </div>
+      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
+        <ui-avatar-group
+          [attr.size]="pgConfig.size"
+          [attr.max]="pgConfig.max"
+          [attr.shape]="pgConfig.shape"
+        >
+          <ui-avatar
+            label="JD"
+            [attr.size]="pgConfig.size"
+            [attr.shape]="pgConfig.shape"
+          ></ui-avatar>
+          <ui-avatar
+            label="AB"
+            [attr.size]="pgConfig.size"
+            [attr.shape]="pgConfig.shape"
+          ></ui-avatar>
+          <ui-avatar
+            label="CD"
+            [attr.size]="pgConfig.size"
+            [attr.shape]="pgConfig.shape"
+          ></ui-avatar>
+          <ui-avatar
+            label="EF"
+            [attr.size]="pgConfig.size"
+            [attr.shape]="pgConfig.shape"
+          ></ui-avatar>
+          <ui-avatar
+            label="GH"
+            [attr.size]="pgConfig.size"
+            [attr.shape]="pgConfig.shape"
+          ></ui-avatar>
+        </ui-avatar-group>
+      
+      <ui-code-preview
+            [htmlCode]="generatedCode()"
+            label="Generated Code"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+    </app-playground>
+  
