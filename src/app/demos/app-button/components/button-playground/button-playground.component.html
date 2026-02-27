@@ -1,4 +1,3 @@
-          <ui-dropdown
 <app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
   <!-- Accordion Slots -->
   <div slot="content-content" class="control-grid" style="padding: 16px">
@@ -99,10 +98,7 @@
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.pill"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <app-checkbox [(ngModel)]="pgConfig.pill" (ngModelChange)="updateConfig()"></app-checkbox>
         Pill
       </label>
       <label class="checkbox-item">
@@ -214,10 +210,13 @@
   ></ui-button>
 
   <!-- Actions -->
-  <ui-button actions variant="outline" (click)="resetConfig()" label="Reset Configuration" icon="🔄"></ui-button>
-
-  <!-- Events -->
-  <app-playground-event-log events [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
+  <ui-button
+    actions
+    variant="outline"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+    icon="🔄"
+  ></ui-button>
 
   <!-- Code -->
   <ui-code-preview
@@ -228,4 +227,10 @@
     activeLang="html"
     expanded="true"
   ></ui-code-preview>
+  <!-- Events -->
+  <app-playground-event-log
+    events
+    [logs]="eventLog"
+    (clear)="eventLog = []"
+  ></app-playground-event-log>
 </app-playground>
