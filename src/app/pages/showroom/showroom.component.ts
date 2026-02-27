@@ -123,8 +123,6 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
             </div>
           </header>
 
-
-
           <!-- Component Grid -->
           <section class="components-grid">
             <div
@@ -195,7 +193,11 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         position: fixed;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 12%, transparent) 0%, transparent 60%);
+        background: radial-gradient(
+          circle,
+          color-mix(in srgb, var(--primary) 12%, transparent) 0%,
+          transparent 60%
+        );
         border-radius: 50%;
         pointer-events: none;
         z-index: 0;
@@ -208,7 +210,11 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .glow-orb.bottom-right {
         bottom: -200px;
         right: -200px;
-        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 60%);
+        background: radial-gradient(
+          circle,
+          color-mix(in srgb, var(--primary) 10%, transparent) 0%,
+          transparent 60%
+        );
       }
 
       /* Layout */
@@ -332,7 +338,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
               top: 20%;
               bottom: 20%;
               width: 3px;
-              background: var(--accent-blue);
+              background: var(--accent-green);
               border-radius: 0 4px 4px 0;
             }
           }
@@ -501,7 +507,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
             border-radius: 50%;
             overflow: hidden;
             border: 2px solid var(--bg-surface);
-            box-shadow: 0 0 0 2px var(--accent-blue);
+            box-shadow: 0 0 0 2px var(--accent-green);
             img {
               width: 100%;
               height: 100%;
@@ -605,9 +611,9 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
           border-color: rgba(255, 255, 255, 0.2);
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
           .action-btn {
-            background: var(--accent-blue);
+            background: var(--accent-green);
             color: white;
-            border-color: var(--accent-blue);
+            border-color: var(--accent-green);
           }
         }
 
@@ -626,7 +632,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
             justify-content: center;
             font-size: 1.25rem;
             font-weight: 800;
-            color: var(--accent-blue);
+            color: var(--accent-green);
           }
           .comp-info {
             flex: 1;
@@ -699,7 +705,6 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         .dashboard-layout {
           grid-template-columns: 240px 1fr;
         }
-
       }
       @media (max-width: 900px) {
         .dashboard-layout {
@@ -712,7 +717,6 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         .dashboard-topbar .topbar-right .search-box {
           width: 200px;
         }
-
       }
     `,
   ],
@@ -722,16 +726,12 @@ export class ShowroomComponent implements OnInit {
   activeCategoryId = signal<string>(this.categories[0]?.id || '');
   searchQuery = signal<string>('');
 
-
-
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
   ) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   activeCategory() {
     return this.categories.find((c) => c.id === this.activeCategoryId());
