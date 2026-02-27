@@ -1,0 +1,1 @@
+var i=class{listeners=new Map;on(s,t){let e=this.listeners.get(s)||[];return e.push(t),this.listeners.set(s,e),()=>this.off(s,t)}off(s,t){let e=this.listeners.get(s)||[];this.listeners.set(s,e.filter(r=>r!==t))}emit(s,...t){let e=this.listeners.get(s)||[];for(let r of e.slice())r(...t)}},n=new i;export{n as a};
