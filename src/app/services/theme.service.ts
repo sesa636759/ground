@@ -59,7 +59,7 @@ export class ThemeService {
     ) {
       return saved as Theme;
     }
-    return 'schneider-blue'; // Default theme
+    return 'schneider-green'; // Default theme
   }
 
   setTheme(theme: Theme) {

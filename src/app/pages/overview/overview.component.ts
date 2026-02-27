@@ -186,8 +186,8 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
             <ng-masonry-grid
               [columns]="viewMode() === 'list' ? 1 : 3"
-              gap="24px"
-              [rowGap]="24"
+              gap="32px"
+              [rowGap]="32"
               [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
             >
               <div
@@ -269,34 +269,14 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
       :host {
-        /* Enterprise Dark Palette */
-        --bg-base: #030712; /* deepest gray almost black */
-        --bg-glass: rgba(17, 24, 39, 0.6);
-        --bg-glass-hover: rgba(31, 41, 55, 0.7);
-
-        --text-pure: #ffffff;
-        --text-primary: #f3f4f6;
-        --text-secondary: #9ca3af;
-        --text-muted: #6b7280;
-
-        --accent-primary: #6366f1; /* Indigo */
-        --accent-secondary: #8b5cf6; /* Violet */
-        --accent-tertiary: #ec4899; /* Pink */
-
-        --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-focus: rgba(99, 102, 241, 0.5);
-
-        --gradient-text: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
-        --gradient-glow: conic-gradient(
-          from 180deg at 50% 50%,
-          #6366f1 0deg,
-          #8b5cf6 180deg,
-          #3b82f6 360deg
-        );
-
         font-family: 'Plus Jakarta Sans', sans-serif;
         display: block;
         height: 100%;
+        --bg-glass: color-mix(in srgb, var(--surface-2) 60%, transparent);
+        --bg-glass-hover: color-mix(in srgb, var(--surface-3) 70%, transparent);
+        --accent-primary: var(--primary);
+        --accent-secondary: var(--primary-light);
+        --accent-tertiary: var(--danger);
       }
 
       * {
@@ -305,7 +285,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
       .overview-container {
         min-height: 100vh;
-        background-color: var(--bg-base);
+        background-color: var(--bg-primary);
         color: var(--text-primary);
         position: relative;
         overflow-x: hidden;
@@ -375,7 +355,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .badge-wrapper {
         margin-bottom: 24px;
         padding: 1px;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(236, 72, 153, 0.1));
+        background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 40%, transparent), color-mix(in srgb, var(--accent-tertiary) 10%, transparent));
         border-radius: 100px;
       }
 
@@ -383,7 +363,8 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         display: flex;
         align-items: center;
         gap: 8px;
-        background: rgba(17, 24, 39, 0.9);
+        background: var(--surface-1);
+        border: 1px solid var(--border-color);
         padding: 6px 16px;
         border-radius: 100px;
         font-size: 0.8rem;
@@ -391,10 +372,11 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         letter-spacing: 0.05em;
         color: var(--text-primary);
         text-transform: uppercase;
+        box-shadow: var(--shadow-sm);
       }
 
       .enterprise-badge svg {
-        color: var(--accent-primary);
+        color: var(--primary);
       }
 
       .hero-title {
@@ -403,7 +385,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         line-height: 1.1;
         letter-spacing: -0.02em;
         margin: 0 0 24px;
-        color: var(--text-pure);
+        color: var(--text-primary);
       }
 
       .text-gradient {
@@ -435,12 +417,12 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         position: relative;
         display: flex;
         align-items: center;
-        background: rgba(17, 24, 39, 0.8);
-        border: 1px solid var(--border-subtle);
+        background: var(--surface-1);
+        border: 1px solid var(--border-color);
         border-radius: 16px;
         padding: 4px;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        box-shadow: var(--shadow-md);
         backdrop-filter: blur(10px);
       }
 
@@ -462,7 +444,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         flex: 1;
         background: transparent;
         border: none;
-        color: var(--text-pure);
+        color: var(--text-primary);
         font-size: 1.05rem;
         padding: 12px 0;
         font-family: inherit;
@@ -484,16 +466,17 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         transition: color 0.2s;
       }
       .clear-btn:hover {
-        color: var(--text-pure);
+        color: var(--text-primary);
       }
 
       .view-toggle {
         display: flex;
-        background: rgba(17, 24, 39, 0.8);
-        border: 1px solid var(--border-subtle);
+        background: var(--surface-1);
+        border: 1px solid var(--border-color);
         border-radius: 16px;
         padding: 4px;
         backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
       }
 
       .toggle-btn {
@@ -517,7 +500,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
       .toggle-btn.active {
         background: var(--bg-glass-hover);
-        color: var(--accent-primary);
+        color: var(--primary);
         box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
       }
 
@@ -620,7 +603,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       }
 
       .menu-item:hover {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--bg-accent);
         color: var(--text-primary);
       }
 
@@ -632,7 +615,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .menu-item.active {
         background: rgba(99, 102, 241, 0.1);
         border-color: rgba(99, 102, 241, 0.2);
-        color: var(--text-pure);
+        color: var(--text-primary);
       }
 
       .menu-item.active .menu-icon {
@@ -640,7 +623,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       }
 
       .menu-item.active .menu-count {
-        background: var(--accent-primary);
+        background: var(--primary);
         color: white;
         border-color: transparent;
       }
@@ -669,21 +652,21 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 
       .category-icon-large {
         font-size: 2rem;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--surface-2);
         width: 56px;
         height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 16px;
-        border: 1px solid var(--border-subtle);
+        border: 1px solid var(--border-color);
       }
 
       .category-title-wrapper h2 {
         font-size: 2rem;
         font-weight: 800;
         margin: 0;
-        color: var(--text-pure);
+        color: var(--text-primary);
         letter-spacing: -0.02em;
       }
 
@@ -704,12 +687,14 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
           box-shadow 0.3s;
         position: relative;
         overflow: hidden;
+        break-inside: avoid;
+        margin-bottom: 32px;
       }
 
       .card-glow {
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 70%);
+        background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--primary) 15%, transparent), transparent 70%);
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;
@@ -737,15 +722,15 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .comp-avatar {
         width: 44px;
         height: 44px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-        border: 1px solid var(--border-subtle);
+        background: var(--surface-2);
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
         font-weight: 800;
-        color: var(--text-pure);
+        color: var(--text-primary);
       }
 
       .comp-title-area {
@@ -756,7 +741,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         margin: 0 0 4px;
         font-size: 1.1rem;
         font-weight: 700;
-        color: var(--text-pure);
+        color: var(--text-primary);
       }
 
       .comp-meta {
@@ -784,8 +769,8 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         border-radius: 16px;
         margin-bottom: 20px;
         overflow: hidden;
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--border-subtle);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
         z-index: 2;
       }
 
@@ -829,8 +814,8 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       }
 
       .explore-btn {
-        background: var(--text-pure);
-        color: var(--bg-base);
+        background: var(--primary);
+        color: white;
         border: none;
         padding: 10px 20px;
         border-radius: 100px;
@@ -903,20 +888,20 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .empty-icon {
         width: 80px;
         height: 80px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--surface-2);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--text-muted);
         margin-bottom: 24px;
-        border: 1px solid var(--border-subtle);
+        border: 1px solid var(--border-color);
       }
 
       .empty-state h3 {
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--text-pure);
+        color: var(--text-primary);
         margin: 0 0 12px;
       }
 
@@ -927,9 +912,9 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       }
 
       .reset-btn {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid var(--border-subtle);
-        color: var(--text-pure);
+        background: var(--surface-2);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
         padding: 12px 24px;
         border-radius: 12px;
         font-weight: 600;
@@ -1093,7 +1078,7 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   }
 
   navigateToComponent(componentId: string) {
-    this.router.navigate(['playground', componentId]);
+    this.router.navigate(['/demos', ...componentId.split('/')]);
   }
 
   onSearchInput(event: Event) {

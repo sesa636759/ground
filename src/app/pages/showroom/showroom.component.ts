@@ -123,52 +123,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
             </div>
           </header>
 
-          <!-- Metrics Widgets Row -->
-          <section class="metrics-row">
-            <div class="metric-card">
-              <div class="card-header">
-                <span class="title">Total Assets</span>
-                <i class="fas fa-cubes neon-text-blue"></i>
-              </div>
-              <div class="metric-value">{{ totalCount }}</div>
-              <div class="metric-trend positive">+14 this week</div>
-            </div>
 
-            <div class="metric-card">
-              <div class="card-header">
-                <span class="title">Production Ready</span>
-                <i class="fas fa-check-circle neon-text-green"></i>
-              </div>
-              <div class="metric-value">100<span class="symbol">%</span></div>
-              <div class="metric-trend positive">Fully tested</div>
-            </div>
-
-            <!-- Fake Chart Card for aesthetics -->
-            <div class="metric-card chart-card">
-              <div class="card-header">
-                <span class="title">Adoption Rate</span>
-                <i class="fas fa-chart-line neon-text-purple"></i>
-              </div>
-              <div class="fake-chart">
-                <svg viewBox="0 0 100 30" preserveAspectRatio="none">
-                  <path
-                    d="M0,30 Q20,25 30,15 T60,20 T100,5"
-                    fill="none"
-                    stroke="url(#purpleGradient)"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                  />
-                  <defs>
-                    <linearGradient id="purpleGradient" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stop-color="#a855f7" />
-                      <stop offset="100%" stop-color="#ec4899" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div class="metric-trend positive">+2.4% vs last month</div>
-            </div>
-          </section>
 
           <!-- Component Grid -->
           <section class="components-grid">
@@ -203,33 +158,32 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
       :host {
-        --bg-base: #0d0f14;
-        --bg-surface: #16181d;
-        --bg-surface-elevated: #1a1c23;
+        display: block;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        height: 100%;
+        overflow: hidden;
 
-        --text-main: #ffffff;
-        --text-muted: #94a3b8;
-        --text-faint: #64748b;
+        --bg-surface: var(--surface-1);
+        --bg-surface-elevated: var(--surface-2);
 
-        --accent-purple: #a855f7;
-        --accent-blue: #3b82f6;
-        --accent-green: #10b981;
-        --accent-pink: #f43f5e;
-        --accent-orange: #f97316;
+        --text-main: var(--text-primary);
+        --text-muted: var(--text-secondary);
+        --text-faint: var(--text-tertiary);
 
-        --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-hover: rgba(255, 255, 255, 0.15);
+        --accent-purple: var(--primary);
+        --accent-blue: var(--info);
+        --accent-green: var(--success);
+        --accent-pink: var(--danger);
+        --accent-orange: var(--warning);
+
+        --border-subtle: var(--border-color);
+        --border-hover: var(--border-strong);
 
         --radius-lg: 28px;
         --radius-md: 20px;
         --radius-sm: 12px;
-
-        display: block;
-        background-color: var(--bg-base);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        min-height: 100vh;
-        overflow-x: hidden;
       }
 
       * {
@@ -241,7 +195,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         position: fixed;
         width: 600px;
         height: 600px;
-        background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 60%);
+        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 12%, transparent) 0%, transparent 60%);
         border-radius: 50%;
         pointer-events: none;
         z-index: 0;
@@ -254,14 +208,15 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
       .glow-orb.bottom-right {
         bottom: -200px;
         right: -200px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent) 0%, transparent 60%);
       }
 
       /* Layout */
       .showroom-wrapper {
         position: relative;
         padding: 24px;
-        min-height: 100vh;
+        height: 100%;
+        overflow: hidden;
       }
 
       .dashboard-layout {
@@ -272,7 +227,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         gap: 24px;
         max-width: 1800px;
         margin: 0 auto;
-        height: calc(100vh - 48px);
+        height: 100%;
       }
 
       /* Sidebar */
@@ -285,9 +240,14 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         flex-direction: column;
         gap: 32px;
         overflow-y: auto;
+        min-height: 0;
       }
       .dashboard-sidebar::-webkit-scrollbar {
-        display: none;
+        width: 4px;
+      }
+      .dashboard-sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
       }
 
       .sidebar-header {
@@ -364,7 +324,17 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
           &.selected {
             background: rgba(255, 255, 255, 0.08);
             color: var(--text-main);
-            box-shadow: inset 3px 0 0 var(--accent-blue);
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 20%;
+              bottom: 20%;
+              width: 3px;
+              background: var(--accent-blue);
+              border-radius: 0 4px 4px 0;
+            }
           }
 
           .badge {
@@ -427,6 +397,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         gap: 32px;
         overflow-y: auto;
         padding-right: 12px;
+        min-height: 0;
       }
       .dashboard-main::-webkit-scrollbar {
         width: 6px;
@@ -728,9 +699,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         .dashboard-layout {
           grid-template-columns: 240px 1fr;
         }
-        .metrics-row {
-          grid-template-columns: repeat(2, 1fr);
-        }
+
       }
       @media (max-width: 900px) {
         .dashboard-layout {
@@ -743,9 +712,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
         .dashboard-topbar .topbar-right .search-box {
           width: 200px;
         }
-        .metrics-row {
-          grid-template-columns: 1fr;
-        }
+
       }
     `,
   ],
@@ -755,7 +722,7 @@ export class ShowroomComponent implements OnInit {
   activeCategoryId = signal<string>(this.categories[0]?.id || '');
   searchQuery = signal<string>('');
 
-  totalCount = 0;
+
 
   constructor(
     private router: Router,
@@ -763,7 +730,7 @@ export class ShowroomComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.totalCount = this.categories.reduce((acc, cat) => acc + (cat.children?.length || 0), 0);
+
   }
 
   activeCategory() {
@@ -803,6 +770,6 @@ export class ShowroomComponent implements OnInit {
   }
 
   navigateTo(id: string) {
-    this.router.navigate(['playground', id]);
+    this.router.navigate(['/demos', ...id.split('/')]);
   }
 }

@@ -353,25 +353,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
     `
       /* ── Schneider Green base color override (scoped to this page) ── */
       :host {
-        --primary: #3dcd58;
-        --primary-hover: #2db84d;
-        --primary-light: #5edb72;
-        --primary-lighter: #86e898;
-        --primary-glow: rgba(61, 205, 88, 0.4);
-
-        --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
-        --gradient-premium: linear-gradient(135deg, #059669 0%, #3dcd58 100%);
-        --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
-
-        --bg-primary: #030712;
-        --bg-secondary: #050a16;
-        --surface-1: #111827;
-        --surface-2: #1f2937;
-
-        --text-primary: #f3f4f6;
-        --text-secondary: #9ca3af;
-        --text-tertiary: #6b7280;
-        --border-color: rgba(255, 255, 255, 0.08);
+        display: block;
+        height: 100%;
       }
 
       .home-container {
@@ -414,7 +397,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         transform: translateY(-4px);
         border-color: var(--primary);
         color: var(--primary);
-        box-shadow: 0 4px 20px rgba(61, 205, 88, 0.2);
+        box-shadow: 0 4px 20px var(--primary-glow);
       }
 
       .icon-demo-card fa-icon {
@@ -492,8 +475,8 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
         height: 450px;
         background: radial-gradient(
           circle,
-          color-mix(in srgb, #059669 35%, transparent) 0%,
-          color-mix(in srgb, #064e3b 25%, transparent) 50%,
+          color-mix(in srgb, var(--success) 35%, transparent) 0%,
+          color-mix(in srgb, var(--success-light) 25%, transparent) 50%,
           transparent 100%
         );
         top: 40%;
