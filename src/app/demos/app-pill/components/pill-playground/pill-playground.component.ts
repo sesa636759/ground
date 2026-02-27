@@ -1,8 +1,9 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-pill-playground',
@@ -12,10 +13,10 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pill-playground.component.html',
-
   styleUrl: './pill-playground.component.scss',
 })
 export class PillPlaygroundComponent {
@@ -54,9 +55,19 @@ export class PillPlaygroundComponent {
   ];
 
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -72,6 +83,7 @@ export class PillPlaygroundComponent {
     code += '></ui-pill>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

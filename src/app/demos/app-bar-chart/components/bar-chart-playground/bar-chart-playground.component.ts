@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-bar-chart-playground',
@@ -12,10 +13,10 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './bar-chart-playground.component.html',
-
   styleUrl: './bar-chart-playground.component.scss',
 })
 export class BarChartPlaygroundComponent {
@@ -44,9 +45,7 @@ export class BarChartPlaygroundComponent {
 
   labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
 
-  singleDatasets = [
-    { label: 'Revenue ($k)', data: [42, 58, 75, 63, 89, 104], color: '#6366f1' },
-  ];
+  singleDatasets = [{ label: 'Revenue ($k)', data: [42, 58, 75, 63, 89, 104], color: '#6366f1' }];
 
   multiDatasets = [
     { label: 'Revenue ($k)', data: [42, 58, 75, 63, 89, 104], color: '#6366f1' },

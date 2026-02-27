@@ -1,68 +1,60 @@
-
-    <app-playground accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]'>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Breakpoint</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.breakpoint"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="autoZIndex"
-                [(ngModel)]="pgConfig.autoZIndex"
-                (ngModelChange)="updateConfig()"
-                label="Auto Z-Index"
-              ></app-checkbox>
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Base Z-Index</label>
-              <input
-                type="number"
-                [(ngModel)]="pgConfig.baseZIndex"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>Visuals</h3>
+        <div class="control-group">
+          <label>Breakpoint</label>
+          <input type="number" [(ngModel)]="pgConfig.breakpoint" (ngModelChange)="updateConfig()" />
         </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="autoZIndex"
+            [(ngModel)]="pgConfig.autoZIndex"
+            (ngModelChange)="updateConfig()"
+            label="Auto Z-Index"
+          ></app-checkbox>
         </div>
       </div>
-      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
-        <div class="context-target" #target>Right click me to see the menu</div>
-        <ui-context-menu
-          [attr.breakpoint]="pgConfig.breakpoint"
-          [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
-          [attr.base-z-index]="pgConfig.baseZIndex"
-          [model]="modelJson"
-          [target]="target"
-        ></ui-context-menu>
 
-        <div
-          *ngIf="lastAction"
-          style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem;"
-        >
-          Last Action: <strong>{{ lastAction }}</strong>
+      <div class="control-section">
+        <h3>Behavior</h3>
+        <div class="control-group">
+          <label>Base Z-Index</label>
+          <input type="number" [(ngModel)]="pgConfig.baseZIndex" (ngModelChange)="updateConfig()" />
         </div>
+      </div>
+    </div>
 
-        
-      
-      <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-    </app-playground>
-  
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div class="context-target" #target>Right click me to see the menu</div>
+    <ui-context-menu
+      [attr.breakpoint]="pgConfig.breakpoint"
+      [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
+      [attr.base-z-index]="pgConfig.baseZIndex"
+      [model]="modelJson"
+      [target]="target"
+    ></ui-context-menu>
+
+    <div
+      *ngIf="lastAction"
+      style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem"
+    >
+      Last Action: <strong>{{ lastAction }}</strong>
+    </div>
+
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      label="Generated Code"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</app-playground>

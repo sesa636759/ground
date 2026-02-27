@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-range-slider-playground',
@@ -12,13 +13,12 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './range-slider-playground.component.html',
-
   styleUrl: './range-slider-playground.component.scss',
 })
 export class RangeSliderPlaygroundComponent implements OnInit {

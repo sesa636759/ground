@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-transfer-list-playground',
@@ -12,10 +13,10 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
     FormsModule,
     AppCheckboxValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './transfer-list-playground.component.html',
-
   styleUrl: './transfer-list-playground.component.scss',
 })
 export class TransferListPlaygroundComponent implements OnInit {

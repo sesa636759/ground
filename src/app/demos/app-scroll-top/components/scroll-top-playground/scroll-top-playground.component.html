@@ -1,79 +1,68 @@
-
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Behavior</h3>
-                <div class="control-group">
-                  <label>Threshold (px)</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.threshold"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Scroll Speed (ms)</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.speed"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-              </div>
-
-              <div class="control-section">
-                <h3>Visuals</h3>
-                <div class="control-group">
-                  <label>Icon</label>
-                  <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
-                </div>
-                <div class="control-group">
-                  <label>Shape</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.shape"
-                    (ngModelChange)="updateConfig()"
-                    [options]="shapeOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
-            </div>
-
-            <ui-code-preview
-                *ngIf="showCode"
-                [htmlCode]="generatedCode()"
-                label="Generated Code"
-                activeLang="html"
-                expanded="true"
-              ></ui-code-preview>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-      </div>
-      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center;">
-        <div class="scroll-content" id="pg-scroll-target">
-          <h3>Scroll down to see the button!</h3>
-          <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>
-
-          <ui-scroll-top
-            target="#pg-scroll-target"
-            [attr.threshold]="pgConfig.threshold"
-            [attr.icon]="pgConfig.icon"
-            [attr.shape]="pgConfig.shape"
-            [attr.speed]="pgConfig.speed"
-          ></ui-scroll-top>
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+  multiple
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>Behavior</h3>
+        <div class="control-group">
+          <label>Threshold (px)</label>
+          <input type="number" [(ngModel)]="pgConfig.threshold" (ngModelChange)="updateConfig()" />
         </div>
-    </app-playground>
-  
+        <div class="control-group">
+          <label>Scroll Speed (ms)</label>
+          <input type="number" [(ngModel)]="pgConfig.speed" (ngModelChange)="updateConfig()" />
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h3>Visuals</h3>
+        <div class="control-group">
+          <label>Icon</label>
+          <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+        </div>
+        <div class="control-group">
+          <label>Shape</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.shape"
+            (ngModelChange)="updateConfig()"
+            [options]="shapeOptions"
+          ></ui-dropdown>
+        </div>
+      </div>
+    </div>
+
+    <ui-code-preview
+      *ngIf="showCode"
+      [htmlCode]="generatedCode()"
+      label="Generated Code"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+
+    <div class="action-buttons">
+      <ui-button
+        class="btn-secondary"
+        variant="secondary"
+        (click)="resetConfig()"
+        label="Reset"
+      ></ui-button>
+    </div>
+  </div>
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div class="scroll-content" id="pg-scroll-target">
+      <h3>Scroll down to see the button!</h3>
+      <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>
+
+      <ui-scroll-top
+        target="#pg-scroll-target"
+        [attr.threshold]="pgConfig.threshold"
+        [attr.icon]="pgConfig.icon"
+        [attr.shape]="pgConfig.shape"
+        [attr.speed]="pgConfig.speed"
+      ></ui-scroll-top>
+    </div>
+  </div>
+</app-playground>
