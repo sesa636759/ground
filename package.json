@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint:fix": "eslint . --fix",
-    "format:fix": "prettier --write \"src/**/*.{ts,html,scss,json}\""
+    "format:fix": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
+    "deploy": "ng build --base-href /ground/ && npx angular-cli-ghpages --dir=dist/ground/browser"
   },
   "prettier": {
     "printWidth": 100,
@@ -48,6 +49,7 @@
     "@angular/compiler-cli": "^21.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "angular-cli-ghpages": "^3.0.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
