@@ -1,6 +1,7 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'app-preferences-settings-section',
@@ -8,6 +9,22 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
+          <!-- Language Selector -->
+          <div class="settings-card">
+            <div class="card-header">
+              <h3>Language</h3>
+              <p>Select your preferred language for documentation</p>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="languageSelect">Language</label>
+                <select id="languageSelect" [ngModel]="selectedLanguage" (ngModelChange)="changeLanguage($event)">
+                  <option value="en">English</option>
+                  <option value="de">Deutsch</option>
+                </select>
+              </div>
+            </div>
+          </div>
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
@@ -407,6 +424,17 @@ export class PreferencesSettingsSectionComponent {
   tooltips = signal(true);
   confirmDelete = signal(true);
 
+  selectedLanguage: string;
+
+  constructor(private languageService: LanguageService) {
+    this.selectedLanguage = this.languageService.getLanguage();
+  }
+
+  changeLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.languageService.setLanguage(lang);
+  }
+
   save(): void {}
   reset(): void {
     this.fontSize.set('medium');
@@ -421,5 +449,7 @@ export class PreferencesSettingsSectionComponent {
     this.keyboardShortcuts.set(true);
     this.tooltips.set(true);
     this.confirmDelete.set(true);
+    this.selectedLanguage = 'en';
+    this.languageService.setLanguage('en');
   }
 }
