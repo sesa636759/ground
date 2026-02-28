@@ -63,7 +63,7 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
   ];
 
   itemsJson = JSON.stringify(this.items);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -86,16 +86,15 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
     return generatePlaygroundCode(this.breadcrumb.nativeElement as Element, 'ui-breadcrumb');
   }
 
- 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

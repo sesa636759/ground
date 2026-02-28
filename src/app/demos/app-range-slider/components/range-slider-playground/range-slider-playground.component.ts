@@ -45,7 +45,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
   ];
 
   currentValue: any = [20, 80];
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {}
 
@@ -63,7 +63,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
     code += `  [value]="${JSON.stringify(this.currentValue)}"\n`;
     code += '></ui-range-slider>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onValueChange(event: any) {
@@ -72,7 +72,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

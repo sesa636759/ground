@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -110,42 +112,28 @@
     </div>
   </div>
 
-  <ui-chip
+  <div
     preview
-    [attr.label]="pgConfig.label"
-    [attr.icon]="pgConfig.icon"
-    [attr.user-avatar]="pgConfig.userAvatar"
-    [attr.counter]="pgConfig.counter"
-    [attr.badge]="pgConfig.badge"
-    [attr.variant]="pgConfig.variant"
-    [attr.color]="pgConfig.color"
-    [attr.size]="pgConfig.size"
-    [attr.shape]="pgConfig.shape"
-    [attr.removable]="pgConfig.removable ? '' : null"
-    [attr.clickable]="pgConfig.clickable ? '' : null"
-    [attr.selected]="pgConfig.selected ? '' : null"
-    [attr.loading]="pgConfig.loading ? '' : null"
-    (chipClick)="onEvent('Chip Clicked')"
-    (chipRemove)="onEvent('Chip Removed')"
-  ></ui-chip>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 32px"
+  >
+    <ui-chip
+      [attr.label]="pgConfig.label"
+      [attr.icon]="pgConfig.icon"
+      [attr.user-avatar]="pgConfig.userAvatar"
+      [attr.counter]="pgConfig.counter"
+      [attr.badge]="pgConfig.badge"
+      [attr.variant]="pgConfig.variant"
+      [attr.color]="pgConfig.color"
+      [attr.size]="pgConfig.size"
+      [attr.shape]="pgConfig.shape"
+      [attr.removable]="pgConfig.removable ? '' : null"
+      [attr.clickable]="pgConfig.clickable ? '' : null"
+      [attr.selected]="pgConfig.selected ? '' : null"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      (chipClick)="onEvent('Chip Clicked')"
+      (chipRemove)="onEvent('Chip Removed')"
+    ></ui-chip>
+  </div>
 
   <app-playground-event-log
     events

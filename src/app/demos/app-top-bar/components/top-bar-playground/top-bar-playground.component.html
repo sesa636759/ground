@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -29,6 +31,7 @@
       </div>
     </div>
   </div>
+
   <div
     preview
     style="
@@ -38,6 +41,7 @@
       align-items: center;
       flex-direction: column;
       gap: 20px;
+      padding: 40px;
     "
   >
     <div class="top-bar-container" style="width: 100%">
@@ -55,11 +59,4 @@
       <p>Body content goes here. If sticky is enabled, the bar will stay at the top on scroll.</p>
     </div>
   </div>
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

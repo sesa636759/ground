@@ -95,7 +95,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   cascadingOptionsJson = JSON.stringify(this.cascadingOptions);
 
   currentValue = '';
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -105,7 +105,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -136,7 +136,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -146,7 +146,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

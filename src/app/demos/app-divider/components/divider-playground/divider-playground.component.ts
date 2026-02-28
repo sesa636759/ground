@@ -81,14 +81,14 @@ export class DividerPlaygroundComponent implements AfterViewInit {
     { label: 'Arrow', value: 'arrow' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
-  this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -110,13 +110,13 @@ export class DividerPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

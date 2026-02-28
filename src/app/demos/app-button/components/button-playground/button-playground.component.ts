@@ -113,7 +113,7 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Reset', value: 'reset' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   eventLog: { time: string; msg: string }[] = [];
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -124,7 +124,7 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -145,13 +145,13 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

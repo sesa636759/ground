@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -108,15 +110,6 @@
     </div>
   </div>
 
-  <div actions class="action-buttons">
-    <ui-button
-      actions
-      variant="secondary"
-      (click)="resetConfig()"
-      label="Reset Configuration"
-    ></ui-button>
-  </div>
-
   <div preview class="preview-stage">
     <chart-waffle
       [attr.value]="pgConfig.value"
@@ -131,12 +124,4 @@
       [attr.show-percentage]="pgConfig.showPercentage ? 'true' : 'false'"
     ></chart-waffle>
   </div>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

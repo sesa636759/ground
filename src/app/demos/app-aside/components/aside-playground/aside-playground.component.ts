@@ -45,7 +45,7 @@ export class AsidePlaygroundComponent {
     { label: 'Glass', value: 'glass' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -79,12 +79,12 @@ export class AsidePlaygroundComponent {
     code += '  <div slot="footer">Footer actions</div>\n';
     code += '</aside-panel>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

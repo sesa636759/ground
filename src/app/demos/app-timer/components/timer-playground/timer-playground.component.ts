@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
@@ -13,7 +13,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
-    AppInputValueAccessorDirective,
+
     UiDropdownValueAccessorDirective,
     AppPlaygroundComponent,
   ],
@@ -40,7 +40,7 @@ export class TimerPlaygroundComponent {
     { label: 'ss', value: 'ss' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -78,12 +78,12 @@ export class TimerPlaygroundComponent {
     }
     code += '></ui-timer>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

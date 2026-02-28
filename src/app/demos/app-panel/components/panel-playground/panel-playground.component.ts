@@ -57,7 +57,7 @@ export class PanelPlaygroundComponent {
     { label: 'Info', value: 'info' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
   eventLog: { time: string; msg: string }[] = [];
 
@@ -96,12 +96,12 @@ export class PanelPlaygroundComponent {
     code += '  <div slot="footer">Panel footer here...</div>\n';
     code += '</ui-panel>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

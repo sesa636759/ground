@@ -55,7 +55,7 @@ export class BarChartPlaygroundComponent {
 
   labelsJson = JSON.stringify(this.labels);
   datasetsJson = JSON.stringify(this.singleDatasets);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -93,12 +93,12 @@ export class BarChartPlaygroundComponent {
     code += `  [labels]="labels"\n`;
     code += `  [datasets]="datasets"\n`;
     code += '></ui-bar-chart>';
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -1,4 +1,9 @@
-﻿<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+﻿<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
   <!-- Layout Section -->
   <div slot="content-layout" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -136,16 +141,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     style="
@@ -212,14 +207,4 @@
       </app-carousel>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      [expanded]="true"
-    ></ui-code-preview>
-  }
 </app-playground>

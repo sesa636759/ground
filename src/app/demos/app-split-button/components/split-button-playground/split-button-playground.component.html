@@ -1,7 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -9,19 +10,11 @@
         <h3>Basic Config</h3>
         <div class="control-group">
           <label>Label</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.label"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
+          <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Icon (Home/Save/etc)</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.icon"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
+          <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -61,21 +54,19 @@
         </div>
       </div>
     </div>
-
-    <div class="code-output">
-      <pre>{{ generatedCode() }}</pre>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    "
+  >
     <ui-split-button
       [attr.label]="pgConfig.label"
       [attr.icon]="pgConfig.icon"

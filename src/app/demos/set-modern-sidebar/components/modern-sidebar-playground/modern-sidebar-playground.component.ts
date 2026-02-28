@@ -112,7 +112,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
 
   sidebarItemsJson = JSON.stringify(this.sidebarItems);
   eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -148,7 +148,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -178,7 +178,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

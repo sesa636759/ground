@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <div slot="content-features" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
@@ -30,16 +35,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     style="
@@ -47,7 +42,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 20px;
+      padding: 40px;
     "
   >
     <div
@@ -68,14 +63,4 @@
       </ui-tree-list>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

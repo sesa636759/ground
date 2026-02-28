@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Accordion Slots -->
   <div slot="content-content" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -209,26 +214,6 @@
     (buttonClick)="onEvent('Button Clicked')"
   ></ui-button>
 
-  <!-- Actions -->
-  <ui-button
-    actions
-    variant="outline"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-    icon="🔄"
-  ></ui-button>
-
-  <!-- Code -->
-  @if (showCode) {
-    <ui-code-preview
-      code
-        [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
-  <!-- Events -->
   <app-playground-event-log
     events
     [logs]="eventLog"

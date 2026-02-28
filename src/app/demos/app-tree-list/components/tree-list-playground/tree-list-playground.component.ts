@@ -23,7 +23,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 })
 export class TreeListPlaygroundComponent implements AfterViewInit {
   @ViewChild('treeElement') treeElement!: ElementRef;
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
 
   pgConfig = {
     selectable: true,
@@ -98,13 +98,13 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

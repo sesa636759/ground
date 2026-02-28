@@ -54,7 +54,7 @@ export class PillPlaygroundComponent {
     { label: 'Large', value: 'lg' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -82,12 +82,12 @@ export class PillPlaygroundComponent {
     if (this.pgConfig.counter !== null) code += `  counter="${this.pgConfig.counter}"\n`;
     code += '></ui-pill>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

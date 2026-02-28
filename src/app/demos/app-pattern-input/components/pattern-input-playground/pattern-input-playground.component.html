@@ -1,6 +1,8 @@
 <app-playground
-  accordionItems='[{"id":"global","title":"Global Configuration","icon":"⚙️"},{"id":"states","title":"Behavioral States","icon":"⚡"}]'
-  defaultOpen='["global"]'
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -13,11 +15,7 @@
     </div>
     <div class="control-group">
       <label>Placeholder</label>
-      <app-input
-        type="text"
-        [(ngModel)]="pgConfig.placeholder"
-        (ngModelChange)="updateConfig()"
-      ></app-input>
+      <input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
@@ -42,7 +40,10 @@
     </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="preview-stage">
       <ui-pattern-input
         #demoElement
@@ -53,14 +54,4 @@
       ></ui-pattern-input>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

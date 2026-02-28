@@ -36,7 +36,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   pgConfig = this.getDefaultConfig();
 
   eventMessage = signal('Navigate to a page...');
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   typeOptions = [
     { label: 'Basic', value: 'basic' },
@@ -81,7 +81,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -126,7 +126,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -140,7 +140,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

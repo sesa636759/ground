@@ -52,7 +52,7 @@ export class SpeedDialPlaygroundComponent {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -77,12 +77,12 @@ export class SpeedDialPlaygroundComponent {
     code += `  [model]="items"\n`;
     code += '></ui-speed-dial>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

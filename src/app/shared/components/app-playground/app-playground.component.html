@@ -15,6 +15,14 @@
     <!-- Actions/Reset area -->
     <div class="preview-actions">
       <ng-content select="[actions]"></ng-content>
+      <ui-button
+        icon="rotate-ccw"
+        iconPosition="left"
+        [iconLibrary]="'lucide'"
+        variant="secondary"
+        (click)="reset.emit()"
+        label="Reset Configuration"
+      ></ui-button>
     </div>
 
     <!-- Event Log Slot -->
@@ -25,6 +33,14 @@
     <!-- Code Preview -->
     <div class="code-preview-area">
       <ng-content select="[code]"></ng-content>
+      @if (code) {
+        <ui-code-preview
+          [htmlCode]="code"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      }
     </div>
   </div>
 </div>

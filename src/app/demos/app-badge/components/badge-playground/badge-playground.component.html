@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -92,16 +94,8 @@
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
   </div>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-badge
       [attr.value]="pgConfig.value"
@@ -115,21 +109,22 @@
       [attr.glow]="pgConfig.glow ? '' : null"
       [attr.icon]="pgConfig.icon"
     >
-      <div class="badge-target">
+      <div
+        class="badge-target"
+        style="
+          padding: 12px;
+          border-radius: 8px;
+          background: var(--surface-1);
+          box-shadow: var(--shadow-sm);
+        "
+      >
         @if (!pgConfig.icon) {
-          <span>✉️</span>
+          <span style="font-size: 24px">✉️</span>
         }
         @if (pgConfig.icon) {
-          <span>{{ pgConfig.icon }}</span>
+          <span style="font-size: 24px">{{ pgConfig.icon }}</span>
         }
       </div>
     </ui-badge>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
 </app-playground>

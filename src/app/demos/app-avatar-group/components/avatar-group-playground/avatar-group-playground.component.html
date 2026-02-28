@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <div slot="content-layout" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Size</label>
@@ -40,16 +45,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     style="
@@ -75,13 +70,4 @@
       <ui-avatar label="GH" [attr.size]="pgConfig.size" [attr.shape]="pgConfig.shape"></ui-avatar>
     </ui-avatar-group>
   </div>
-
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    label="Generated Code"
-    activeLang="html"
-    [expanded]="true"
-  ></ui-code-preview>
 </app-playground>

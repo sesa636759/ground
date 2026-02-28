@@ -1,7 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -100,12 +101,12 @@
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <button class="btn-secondary" (click)="resetConfig()">Reset</button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-popover
       #popover
       [attr.heading]="pgConfig.heading"
@@ -120,15 +121,5 @@
     >
       <button class="btn-primary">Target Element</button>
     </ui-popover>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
   </div>
 </app-playground>

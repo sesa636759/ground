@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Global Configuration -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -52,15 +57,6 @@
     </div>
   </div>
 
-  <div class="action-buttons">
-    <ui-button
-      class="btn-secondary"
-      variant="secondary"
-      (click)="resetConfig()"
-      label="Reset"
-    ></ui-button>
-  </div>
-
   <div
     preview
     style="
@@ -69,6 +65,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 40px;
     "
   >
     <div
@@ -87,13 +84,8 @@
         (rangeChange)="onValueChange($event)"
       ></ui-range-slider>
     </div>
-    <div style="margin-top: 24px; font-weight: 600">Current Value: {{ currentValue | json }}</div>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+    <div style="margin-top: 24px; font-weight: 600; color: var(--text-primary)">
+      Current Value: {{ currentValue | json }}
+    </div>
   </div>
 </app-playground>

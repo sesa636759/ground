@@ -69,7 +69,7 @@ export class ChipPlaygroundComponent {
     { label: 'Circle', value: 'circle' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   eventLog: { time: string; msg: string }[] = [];
 
   constructor() {
@@ -91,11 +91,11 @@ export class ChipPlaygroundComponent {
     if (this.pgConfig.loading) code += `  loading\n`;
     code += '></ui-chip>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

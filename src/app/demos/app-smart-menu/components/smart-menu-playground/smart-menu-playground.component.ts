@@ -134,7 +134,7 @@ export class SmartMenuPlaygroundComponent {
   };
 
   menuJson = '';
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   clickLog = signal<string[]>([]);
   showCode = true;
 
@@ -185,7 +185,7 @@ export class SmartMenuPlaygroundComponent {
           ? `  <!-- no target: right-click anywhere on page -->`
           : `  <!-- show/hide programmatically via el.show(x,y) / el.hide() -->`;
 
-    this.generatedCode.set(
+    this.generatedCodeSignal.set(
       [
         `<!-- Trigger element (only needed for right-click mode) -->`,
         `<div id="pg-zone">Right-click here</div>`,
@@ -228,7 +228,7 @@ export class SmartMenuPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   reset() {

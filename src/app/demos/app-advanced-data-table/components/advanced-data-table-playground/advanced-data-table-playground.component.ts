@@ -40,7 +40,7 @@ export class AdvancedDataTablePlaygroundComponent {
 
   dataJson = JSON.stringify(this.data);
   columnsJson = JSON.stringify(this.columns);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -64,12 +64,12 @@ export class AdvancedDataTablePlaygroundComponent {
     if (this.pgConfig.rows) code += `  [rows]="${this.pgConfig.rows}"\n`;
     code += '></ui-advanced-data-table>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

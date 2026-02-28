@@ -19,7 +19,7 @@ export class TopBarPlaygroundComponent {
     height: 64,
   };
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {
     this.updateConfig();
@@ -33,11 +33,11 @@ export class TopBarPlaygroundComponent {
     code += '  <div slot="end"> Actions </div>\n';
     code += '</ui-top-bar>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

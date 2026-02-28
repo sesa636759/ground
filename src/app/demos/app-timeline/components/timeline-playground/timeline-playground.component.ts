@@ -60,7 +60,7 @@ export class TimelinePlaygroundComponent {
   ];
 
   valueJson = JSON.stringify(this.events);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -88,12 +88,12 @@ export class TimelinePlaygroundComponent {
     code += '  </ng-template>\n';
     code += '</ui-timeline>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

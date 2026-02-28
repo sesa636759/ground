@@ -1,6 +1,8 @@
 ﻿<app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <h4 class="section-title">Layout Configuration</h4>
@@ -180,16 +182,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div preview style="width: 100%">
     <app-masonry
       #masonryLayout
@@ -217,16 +209,8 @@
   </div>
 
   <div events class="event-log-container">
-    <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+    @for (log of eventLog(); track log) {
+      <div class="log-item">{{ log }}</div>
+    }
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

@@ -1,6 +1,8 @@
 <app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"},{"id":"features","title":"Features","icon":"⚡"}]'
-  defaultOpen='["config", "features"]'
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -62,20 +64,10 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     class="preview-stage"
-    style="flex-direction: column; align-items: flex-start; gap: 1rem"
+    style="flex-direction: column; align-items: flex-start; gap: 1rem; width: 100%; padding: 40px"
   >
     <label class="preview-label" style="font-weight: 500; font-size: 0.9rem"
       >Pick your favorite tech stack:</label
@@ -106,14 +98,4 @@
       <strong>Selected Value:</strong> {{ currentValue }}
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

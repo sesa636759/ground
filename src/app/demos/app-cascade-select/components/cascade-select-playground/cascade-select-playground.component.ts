@@ -67,7 +67,7 @@ export class CascadeSelectPlaygroundComponent {
   ];
 
   optionsJson = JSON.stringify(this.options);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   currentValue: any = null;
 
   constructor() {
@@ -85,7 +85,7 @@ export class CascadeSelectPlaygroundComponent {
     code += `  [options]="locations"\n`;
     code += '></ui-cascade-select>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onValueChange(event: any) {
@@ -93,7 +93,7 @@ export class CascadeSelectPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -55,7 +55,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   lastAction = '';
   showCode = true;
 
@@ -63,7 +63,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-  this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -85,7 +85,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -95,7 +95,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

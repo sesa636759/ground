@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -53,15 +55,6 @@
       </div>
     </div>
   </div>
-  <ui-button
-    actions
-    icon="rotate-ccw"
-    iconPosition="left"
-    [iconLibrary]="'lucide'"
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
   <div
     preview
     style="
@@ -83,26 +76,20 @@
       (cascadeChange)="onValueChange($event)"
     ></ui-cascade-select>
 
-    <div
-      *ngIf="currentValue"
-      style="
-        margin-top: 40px;
-        padding: 12px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 0.8rem;
-      "
-    >
-      Selection Value: {{ currentValue | json }}
-    </div>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+    @if (currentValue) {
+      <div
+        style="
+          margin-top: 40px;
+          padding: 12px;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 8px;
+          font-family: monospace;
+          font-size: 0.8rem;
+        "
+      >
+        Selection Value: {{ currentValue | json }}
+      </div>
+    }
   </div>
 </app-playground>

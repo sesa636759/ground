@@ -40,7 +40,7 @@ export class TagPlaygroundComponent {
     { label: 'Large', value: 'large' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -64,12 +64,12 @@ export class TagPlaygroundComponent {
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     code += '></ui-tag>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {
