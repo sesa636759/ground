@@ -1,18 +1,28 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-speedometer-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './speedometer-playground.component.html',
-
   styleUrl: './speedometer-playground.component.scss',
 })
-export class SpeedometerPlaygroundComponent {
+export class SpeedometerPlaygroundComponent implements AfterViewInit {
+  @ViewChild('speedometerElement') speedometerElement!: ElementRef;
+
   pgConfig = {
     value: 65,
     min: 0,
@@ -23,16 +33,25 @@ export class SpeedometerPlaygroundComponent {
     colorMode: 'gradient',
   };
 
+  pgAccordionItems = JSON.stringify([
+    { id: 'metric', title: 'Metric Controls', icon: '📊' },
+    { id: 'appearance', title: 'Appearance', icon: '🎨' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['metric']);
+
   colorModeOptions = [
     { label: 'Solid', value: 'solid' },
     { label: 'Gradient', value: 'gradient' },
     { label: 'Segments', value: 'segments' },
   ];
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -45,22 +64,23 @@ export class SpeedometerPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-speedometer\n';
-    code += `  [value]="${this.pgConfig.value}"\n`;
-    code += `  [min]="${this.pgConfig.min}"\n`;
-    code += `  [max]="${this.pgConfig.max}"\n`;
-    code += `  label="${this.pgConfig.label}"\n`;
-    code += `  [size]="${this.pgConfig.size}"\n`;
-    code += `  color-mode="${this.pgConfig.colorMode}"\n`;
-    code += '></ui-speedometer>';
+  getCleanFormatedDom(): string {
+    if (!this.speedometerElement) return '';
+    return generatePlaygroundCode(
+      this.speedometerElement.nativeElement as Element,
+      'ui-speedometer',
+    );
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

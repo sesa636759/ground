@@ -2,7 +2,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
+import { SetAvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -14,7 +14,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     CommonModule,
-    AvatarGroupPlaygroundComponent,
+    SetAvatarGroupPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

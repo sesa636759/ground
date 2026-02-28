@@ -1,82 +1,68 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  multiple
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Orientation</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.orientation"
-            (ngModelChange)="updateConfig()"
-            [options]="orientationOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Label Orientation</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.labelOrientation"
-            (ngModelChange)="updateConfig()"
-            [options]="labelOrientationOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Label Position</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.labelPosition"
-            (ngModelChange)="updateConfig()"
-            [options]="labelPositionOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Visuals</h3>
-        <div class="control-group">
-          <label>Min Height (H) / Width (V)</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.meterHeight"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="showLabels"
-            [(ngModel)]="pgConfig.showLabels"
-            (ngModelChange)="updateConfig()"
-            label="Show Labels"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="showMarkers"
-            [(ngModel)]="pgConfig.showMarkers"
-            (ngModelChange)="updateConfig()"
-            label="Show Markers"
-          ></app-checkbox>
-        </div>
-      </div>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+        [options]="orientationOptions"
+      ></ui-dropdown>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
+    <div class="control-group">
+      <label>Label Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.labelOrientation"
+        (ngModelChange)="updateConfig()"
+        [options]="labelOrientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Label Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.labelPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="labelPositionOptions"
+      ></ui-dropdown>
     </div>
   </div>
+
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Min Height (H) / Width (V)</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.meterHeight"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showLabels"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Show Labels
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showMarkers"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Show Markers
+      </label>
+    </div>
+  </div>
+
+  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <div
       class="meter-wrapper"
       [style.height]="pgConfig.orientation === 'vertical' ? '300px' : 'auto'"
+      style="width: 100%; display: flex; justify-content: center"
     >
       <ui-meter-group
+        #meterElement
         [attr.orientation]="pgConfig.orientation"
         [attr.label-orientation]="pgConfig.labelOrientation"
         [attr.label-position]="pgConfig.labelPosition"
@@ -97,4 +83,5 @@
     ></ui-code-preview>
   }
   </div>
+
 </app-playground>

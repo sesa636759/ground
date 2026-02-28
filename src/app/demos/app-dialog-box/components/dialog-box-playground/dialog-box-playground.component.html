@@ -1,173 +1,185 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <!-- Appearance Settings -->
-      <div class="control-section">
-        <h3>Appearance</h3>
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="sizeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="variantOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Status</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.status"
-            (ngModelChange)="updateConfig()"
-            [options]="statusOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>OK Button Text</label>
-          <app-input
-            [(ngModel)]="pgConfig.okText"
-            (ngModelChange)="updateConfig()"
-            placeholder="e.g. Save"
-          ></app-input>
-        </div>
-        <div class="control-group">
-          <label>Cancel Button Text</label>
-          <app-input
-            [(ngModel)]="pgConfig.cancelText"
-            (ngModelChange)="updateConfig()"
-            placeholder="e.g. Cancel"
-          ></app-input>
-        </div>
-      </div>
-
-      <!-- Behavior & Position -->
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="control-group">
-          <label>Backdrop</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.backdrop"
-            (ngModelChange)="updateConfig()"
-            [options]="backdropOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Position</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.position"
-            (ngModelChange)="updateConfig()"
-            [options]="positionOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.draggable"
-            (ngModelChange)="updateConfig()"
-            label="Draggable"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.resizable"
-            (ngModelChange)="updateConfig()"
-            label="Resizable"
-          ></app-checkbox>
-        </div>
-      </div>
-
-      <!-- Toggles -->
-      <div class="control-section">
-        <h3>Toggles</h3>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showHeader"
-            (ngModelChange)="updateConfig()"
-            label="Show Header"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showFooter"
-            (ngModelChange)="updateConfig()"
-            label="Show Footer"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showMenu"
-            (ngModelChange)="updateConfig()"
-            label="Show Menu"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showMin"
-            (ngModelChange)="updateConfig()"
-            label="Show Minimize"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showMax"
-            (ngModelChange)="updateConfig()"
-            label="Show Maximize"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            [(ngModel)]="pgConfig.showClose"
-            (ngModelChange)="updateConfig()"
-            label="Show Close"
-          ></app-checkbox>
-        </div>
-      </div>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <!-- Appearance Slot -->
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOptions"
+      ></ui-dropdown>
     </div>
-
-    <div class="action-buttons">
-      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Status</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.status"
+        (ngModelChange)="updateConfig()"
+        [options]="statusOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>OK Button Text</label>
+      <app-input
+        [(ngModel)]="pgConfig.okText"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Save"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Cancel Button Text</label>
+      <app-input
+        [(ngModel)]="pgConfig.cancelText"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Cancel"
+      ></app-input>
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-    <ui-button (click)="openDialog()" label="Test Dialog"></ui-button>
+
+  <!-- Behavior Slot -->
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Backdrop</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.backdrop"
+        (ngModelChange)="updateConfig()"
+        [options]="backdropOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="positionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-group" style="margin-top: 12px">
+      <app-checkbox
+        id="draggable"
+        [(ngModel)]="pgConfig.draggable"
+        (ngModelChange)="updateConfig()"
+        label="Draggable"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="resizable"
+        [(ngModel)]="pgConfig.resizable"
+        (ngModelChange)="updateConfig()"
+        label="Resizable"
+      ></app-checkbox>
+    </div>
+  </div>
+
+  <!-- Visibility Slot -->
+  <div slot="content-visibility" class="control-grid" style="padding: 16px">
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showHeader"
+        [(ngModel)]="pgConfig.showHeader"
+        (ngModelChange)="updateConfig()"
+        label="Show Header"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showFooter"
+        [(ngModel)]="pgConfig.showFooter"
+        (ngModelChange)="updateConfig()"
+        label="Show Footer"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showMenu"
+        [(ngModel)]="pgConfig.showMenu"
+        (ngModelChange)="updateConfig()"
+        label="Show Menu"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showMin"
+        [(ngModel)]="pgConfig.showMin"
+        (ngModelChange)="updateConfig()"
+        label="Show Minimize"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showMax"
+        [(ngModel)]="pgConfig.showMax"
+        (ngModelChange)="updateConfig()"
+        label="Show Maximize"
+      ></app-checkbox>
+    </div>
+    <div class="checkbox-group">
+      <app-checkbox
+        id="showClose"
+        [(ngModel)]="pgConfig.showClose"
+        (ngModelChange)="updateConfig()"
+        label="Show Close"
+      ></app-checkbox>
+    </div>
+  </div>
+
+  <ui-button
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    "
+  >
+    <ui-button (click)="openDialog()" label="Test Dialog Display"></ui-button>
 
     <ui-dialog-box
+      #dialogBoxElement
       dialog-title="Playground Dialog"
       icon-library="lucide"
-      [size]="pgConfig.size !== 'custom' ? pgConfig.size : 'custom'"
-      [variant]="pgConfig.variant"
-      [status]="pgConfig.status"
-      [backdrop]="pgConfig.backdrop"
-      [position]="pgConfig.position"
-      [okText]="pgConfig.okText || null"
-      [cancelText]="pgConfig.cancelText || null"
-      [is-draggable]="pgConfig.draggable"
-      [resizable]="pgConfig.resizable"
-      [showHeader]="pgConfig.showHeader"
-      [showFooter]="pgConfig.showFooter"
-      [showMenu]="pgConfig.showMenu"
-      [showMinimize]="pgConfig.showMin"
-      [showMaximize]="pgConfig.showMax"
-      [showClose]="pgConfig.showClose"
-      [menuItems]="pgConfig.showMenu ? menuItems : []"
-      [open]="visible"
+      [attr.size]="pgConfig.size"
+      [attr.variant]="pgConfig.variant"
+      [attr.status]="pgConfig.status"
+      [attr.backdrop]="pgConfig.backdrop"
+      [attr.position]="pgConfig.position"
+      [attr.ok-text]="pgConfig.okText || null"
+      [attr.cancel-text]="pgConfig.cancelText || null"
+      [attr.is-draggable]="pgConfig.draggable"
+      [attr.resizable]="pgConfig.resizable"
+      [attr.show-header]="pgConfig.showHeader"
+      [attr.show-footer]="pgConfig.showFooter"
+      [attr.show-menu]="pgConfig.showMenu"
+      [attr.show-minimize]="pgConfig.showMin"
+      [attr.show-maximize]="pgConfig.showMax"
+      [attr.show-close]="pgConfig.showClose"
+      [attr.menu-items]="pgConfig.showMenu ? menuItems : null"
+      [attr.open]="visible ? '' : null"
       (dialogClosed)="visible = false"
     >
       <div style="padding: 20px">
         <p>
           This is the content of the dialog. Interact with the controls on the left to see changes
           in real-time.
-        </p>
-        <p *ngIf="pgConfig.size !== 'custom'">
-          Current size limit: <strong>{{ pgConfig.size | uppercase }}</strong>
         </p>
       </div>
       <div slot="footer" *ngIf="!pgConfig.okText && !pgConfig.cancelText">
@@ -189,4 +201,6 @@
     ></ui-code-preview>
   }
   </div>
+
+ 
 </app-playground>

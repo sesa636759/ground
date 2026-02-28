@@ -1,55 +1,64 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Features</h3>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="selectable"
-            [(ngModel)]="pgConfig.selectable"
-            (ngModelChange)="updateConfig()"
-            label="Selectable"
-          ></app-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="showIcons"
-            [(ngModel)]="pgConfig.showIcons"
-            (ngModelChange)="updateConfig()"
-            label="Show Icons"
-          ></app-checkbox>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="expandAll"
-            [(ngModel)]="pgConfig.expandAll"
-            (ngModelChange)="updateConfig()"
-            label="Expand All"
-          ></app-checkbox>
-        </div>
-      </div>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <div slot="content-features" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.selectable"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Selectable
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showIcons"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Show Icons
+      </label>
     </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-    <ui-tree-list [attr.selectable]="pgConfig.selectable ? '' : null" [model]="modelJson">
-    </ui-tree-list>
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.expandAll"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Expand All
+      </label>
+    </div>
+  </div>
+
+  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+    "
+  >
+    <div
+      style="
+        width: 100%;
+        max-width: 400px;
+        background: var(--surface-1);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        padding: 16px;
+      "
+    >
+      <ui-tree-list
+        #treeElement
+        [attr.selectable]="pgConfig.selectable ? '' : null"
+        [model]="modelJson"
+      >
+      </ui-tree-list>
+    </div>
   </div>
 
     @if (showCode) {
