@@ -140,6 +140,14 @@ export class App implements OnInit {
     this.sidebarCollapsed.set(!this.sidebarCollapsed());
   }
 
+  onNavToggle(event: any) {
+    // event.detail.expanded = true means nav just opened
+    const expanded = event?.detail?.expanded;
+    if (typeof expanded === 'boolean') {
+      this.sidebarCollapsed.set(!expanded);
+    }
+  }
+
   onNavItemClick(event: any) {
     const itemId = event.detail?.id;
     if (itemId) {

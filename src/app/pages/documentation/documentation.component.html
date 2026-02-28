@@ -152,12 +152,19 @@
             (click)="viewComponentDoc(comp.id)"
           >
             <div class="card-header">
-              <div class="comp-symbol">{{ comp.name.charAt(0) }}</div>
+              <div class="comp-symbol">
+                <ui-icon
+                  [name]="getComponentIcon(comp.id)"
+                  library="lucide"
+                  size="22"
+                  color="white"
+                ></ui-icon>
+              </div>
+              <div class="comp-title">{{ comp.name }}</div>
               <div class="status-indicator">READY</div>
             </div>
             <div class="card-preview" [innerHTML]="getPreviewSvg(comp.id)"></div>
             <div class="card-body">
-              <h3>{{ comp.name }}</h3>
               <p>{{ comp.shortDescription }}</p>
             </div>
             <div class="card-footer">

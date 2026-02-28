@@ -740,3 +740,65 @@
     }
   }
 }
+
+// Nav Brand Header (slotted into ui-navigation header slot)
+.nav-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  // Use padding (not justify-content) so it can be smoothly transitioned
+  padding: 0 16px;
+  height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  // Match the ui-navigation transition exactly for perfect sync
+  transition:
+    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .nav-brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 8px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 4px 12px rgba(61, 205, 88, 0.4));
+    }
+  }
+
+  .nav-brand-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    background: var(--gradient-primary, linear-gradient(135deg, #3DCD58, #008a16));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.01em;
+    // Transitionable: name fades + shrinks when collapsing
+    max-width: 200px;
+    opacity: 1;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+// Collapsed: center logo using padding (animatable!) instead of justify-content (not animatable)
+// calc(50% - 18px) = half of nav width minus half of 36px logo = centers the logo
+.sidebar-collapsed .nav-brand-header {
+  padding: 0 calc(50% - 18px);
+  gap: 0;
+
+  .nav-brand-name {
+    max-width: 0;
+    opacity: 0;
+  }
+}
