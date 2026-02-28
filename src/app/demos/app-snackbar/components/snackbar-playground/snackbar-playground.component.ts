@@ -5,22 +5,32 @@
   ViewChild,
   ElementRef,
   ChangeDetectorRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-snackbar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './snackbar-playground.component.html',
 
   styleUrl: './snackbar-playground.component.scss',
 })
-export class SnackbarPlaygroundComponent {
-  @ViewChild('snackbar') snackbarEl!: ElementRef;
+export class SnackbarPlaygroundComponent implements AfterViewInit {
+  @ViewChild('snackbarElement') snackbarElement!: ElementRef;
 
   pgConfig = {
     position: 'top-right',
@@ -29,6 +39,20 @@ export class SnackbarPlaygroundComponent {
     openMode: 'slide-down',
     cardStack: false,
   };
+
+  notiConfig = {
+    type: 'success',
+    title: 'New Notification',
+    message: 'This is a test notification message!',
+    duration: 5000,
+  };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '🌐' },
+    { id: 'notification', title: 'Notification Settings', icon: '🔔' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   positionOptions = [
     { label: 'Top Right', value: 'top-right' },
@@ -61,17 +85,13 @@ export class SnackbarPlaygroundComponent {
     { label: 'Warning', value: 'warning' },
     { label: 'Error', value: 'error' },
   ];
-  notiConfig = {
-    type: 'success',
-    title: 'New Notification',
-    message: 'This is a test notification message!',
-    duration: 5000,
-  };
 
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -84,42 +104,43 @@ export class SnackbarPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-snackbar\n';
-    code += `  position="${this.pgConfig.position}"\n`;
-    code += `  [max-visible]="${this.pgConfig.maxVisible}"\n`;
-    code += `  stack-mode="${this.pgConfig.stackMode}"\n`;
-    code += `  open-mode="${this.pgConfig.openMode}"\n`;
-    if (this.pgConfig.cardStack) code += `  card-stack\n`;
-    code += '></ui-snackbar>\n\n';
-    code += '// Trigger from TS:\n';
-    code += `snackbar.add({\n`;
-    code += `  type: '${this.notiConfig.type}',\n`;
-    code += `  title: '${this.notiConfig.title}',\n`;
-    code += `  message: '${this.notiConfig.message}',\n`;
-    code += `  duration: ${this.notiConfig.duration}\n`;
-    code += `});`;
+  getCleanFormatedDom(): string {
+    if (!this.snackbarElement) return '';
+    let code = generatePlaygroundCode(this.snackbarElement.nativeElement as Element, 'ui-snackbar');
+    code += `\n\n/* Usage in TS */
+const snackbar = document.querySelector('ui-snackbar');
+snackbar.add({
+  type: '${this.notiConfig.type}',
+  title: '${this.notiConfig.title}',
+  message: '${this.notiConfig.message}',
+  duration: ${this.notiConfig.duration}
+});`;
+    return code;
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   async showSnackbar() {
-    const el = this.snackbarEl.nativeElement;
+    const el = this.snackbarElement.nativeElement;
     if (el && typeof el.add === 'function') {
       await el.add({ ...this.notiConfig });
     }
   }
 
   async clearAll() {
-    const el = this.snackbarEl.nativeElement;
+    const el = this.snackbarElement.nativeElement;
     if (el && typeof el.closeAll === 'function') {
       await el.closeAll();
     }
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {

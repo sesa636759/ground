@@ -1,10 +1,7 @@
 <div class="playground-layout">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion 
-      [items]="stringifiedItems" 
-      [defaultOpen]="stringifiedDefaultOpen" 
-      multiple>
+    <ui-accordion [items]="stringifiedItems" [defaultOpen]="stringifiedDefaultOpen" multiple>
       <ng-content></ng-content>
     </ui-accordion>
   </div>
@@ -20,8 +17,8 @@
       <ng-content select="[actions]"></ng-content>
     </div>
 
-    <!-- Event Log -->
-    <div class="event-log-container">
+    <!-- Event Log Slot -->
+    <div class="playground-events-area">
       <ng-content select="[events]"></ng-content>
     </div>
 

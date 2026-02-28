@@ -1,85 +1,109 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  multiple
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <!-- Global Config -->
-      <div class="control-section">
-        <h3>Global Configuration</h3>
-        <div class="control-group">
-          <label>Position</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.position"
-            (ngModelChange)="updateConfig()"
-            [options]="positionOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Max Visible</label>
-          <input type="number" [(ngModel)]="pgConfig.maxVisible" (ngModelChange)="updateConfig()" />
-        </div>
-        <div class="control-group">
-          <label>Stack Mode</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.stackMode"
-            (ngModelChange)="updateConfig()"
-            [options]="stackModeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Open Mode</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.openMode"
-            (ngModelChange)="updateConfig()"
-            [options]="openModeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="cardStack"
-            [(ngModel)]="pgConfig.cardStack"
-            (ngModelChange)="updateConfig()"
-            label="Card Stacking"
-          ></app-checkbox>
-        </div>
-      </div>
-
-      <!-- Notification settings -->
-      <div class="control-section">
-        <h3>Notification Settings</h3>
-        <div class="control-group">
-          <label>Type</label>
-          <ui-dropdown [(ngModel)]="notiConfig.type" [options]="typeOptions"></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Title</label>
-          <input type="text" [(ngModel)]="notiConfig.title" />
-        </div>
-        <div class="control-group">
-          <label>Message</label>
-          <input type="text" [(ngModel)]="notiConfig.message" />
-        </div>
-        <div class="control-group">
-          <label>Duration (ms)</label>
-          <input type="number" [(ngModel)]="notiConfig.duration" />
-        </div>
-      </div>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <!-- Global Configuration Slot -->
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="positionOptions"
+      ></ui-dropdown>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
+    <div class="control-group">
+      <label>Max Visible</label>
+      <app-input
+        type="number"
+        [(ngModel)]="pgConfig.maxVisible"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 5"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Stack Mode</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.stackMode"
+        (ngModelChange)="updateConfig()"
+        [options]="stackModeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Open Mode</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.openMode"
+        (ngModelChange)="updateConfig()"
+        [options]="openModeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-group" style="margin-top: 12px">
+      <app-checkbox
+        id="cardStack"
+        [(ngModel)]="pgConfig.cardStack"
+        (ngModelChange)="updateConfig()"
+        label="Card Stacking"
+      ></app-checkbox>
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <!-- Notification Settings Slot -->
+  <div slot="content-notification" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        [(ngModel)]="notiConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="typeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Title</label>
+      <app-input
+        [(ngModel)]="notiConfig.title"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Success!"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Message</label>
+      <app-input
+        [(ngModel)]="notiConfig.message"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Action completed."
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Duration (ms)</label>
+      <app-input
+        type="number"
+        [(ngModel)]="notiConfig.duration"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 5000"
+      ></app-input>
+    </div>
+  </div>
+
+  <ui-button
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      height: 300px;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    "
+  >
     <ui-snackbar
-      #snackbar
+      #snackbarElement
       icon-library="lucide"
       [attr.position]="pgConfig.position"
       [attr.max-visible]="pgConfig.maxVisible"
@@ -88,25 +112,16 @@
       [attr.card-stack]="pgConfig.cardStack ? '' : null"
     ></ui-snackbar>
 
-    <ui-button
-      class="btn-primary"
-      variant="primary"
-      (click)="showSnackbar()"
-      label="Show Snackbar"
-    ></ui-button>
-    <ui-button
-      class="btn-secondary"
-      variant="secondary"
-      (click)="clearAll()"
-      label="Clear All"
-    ></ui-button>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+    <ui-button (click)="showSnackbar()" label="Trigger Snackbar" variant="primary"></ui-button>
+    <ui-button (click)="clearAll()" label="Clear All" variant="secondary"></ui-button>
   </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>

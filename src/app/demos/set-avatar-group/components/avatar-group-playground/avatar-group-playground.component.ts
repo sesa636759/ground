@@ -18,7 +18,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
-  selector: 'app-avatar-group-playground',
+  selector: 'app-set-avatar-group-playground',
   standalone: true,
   imports: [
     CommonModule,
@@ -33,7 +33,7 @@ import { PlaygroundEventLogComponent } from '../../../../shared/components/playg
   templateUrl: './avatar-group-playground.component.html',
   styleUrl: './avatar-group-playground.component.scss',
 })
-export class AvatarGroupPlaygroundComponent implements OnInit, AfterViewInit {
+export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
 
   pgConfig = {

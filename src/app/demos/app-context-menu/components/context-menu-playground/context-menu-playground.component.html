@@ -1,60 +1,133 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Visuals</h3>
-        <div class="control-group">
-          <label>Breakpoint</label>
-          <input type="number" [(ngModel)]="pgConfig.breakpoint" (ngModelChange)="updateConfig()" />
-        </div>
-        <div class="checkbox-group">
-          <app-checkbox
-            id="autoZIndex"
-            [(ngModel)]="pgConfig.autoZIndex"
-            (ngModelChange)="updateConfig()"
-            label="Auto Z-Index"
-          ></app-checkbox>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="control-group">
-          <label>Base Z-Index</label>
-          <input type="number" [(ngModel)]="pgConfig.baseZIndex" (ngModelChange)="updateConfig()" />
-        </div>
-      </div>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <!-- Menu Configuration Slot -->
+  <div slot="content-settings" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Base Z-Index</label>
+      <input
+        type="number"
+        [(ngModel)]="pgConfig.baseZIndex"
+        (ngModelChange)="updateConfig()"
+        style="
+          width: 100%;
+          height: 36px;
+          border-radius: 8px;
+          border: 1px solid var(--border-color);
+          background: var(--surface-1);
+          color: var(--text-primary);
+          padding: 0 12px;
+        "
+      />
     </div>
-
-    <div class="action-buttons">
-      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+    <div class="control-group">
+      <label>Breakpoint</label>
+      <input
+        type="number"
+        [(ngModel)]="pgConfig.breakpoint"
+        (ngModelChange)="updateConfig()"
+        style="
+          width: 100%;
+          height: 36px;
+          border-radius: 8px;
+          border: 1px solid var(--border-color);
+          background: var(--surface-1);
+          color: var(--text-primary);
+          padding: 0 12px;
+        "
+      />
+    </div>
+    <div class="checkbox-group" style="margin-top: 12px">
+      <app-checkbox
+        id="autoZIndex"
+        [(ngModel)]="pgConfig.autoZIndex"
+        (ngModelChange)="updateConfig()"
+        label="Auto Z-Index"
+      ></app-checkbox>
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-    <div class="context-target" #target>Right click me to see the menu</div>
+
+  <!-- Visual Styles Slot -->
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Theme</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.theme"
+        (ngModelChange)="updateConfig()"
+        [options]="themeOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <ui-button
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      position: relative;
+    "
+  >
+    <div
+      class="context-target"
+      #targetElement
+      style="
+        padding: 40px 60px;
+        border: 2px dashed var(--border-color);
+        border-radius: 12px;
+        color: var(--text-secondary);
+        font-weight: 500;
+        cursor: context-menu;
+        user-select: none;
+        transition: all 0.3s ease;
+      "
+    >
+      Right click me to see the menu
+    </div>
+
     <ui-context-menu
+      #contextMenuElement
+      [attr.theme]="pgConfig.theme"
       [attr.breakpoint]="pgConfig.breakpoint"
-      [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
+      [attr.auto-z-index]="pgConfig.autoZIndex"
       [attr.base-z-index]="pgConfig.baseZIndex"
-      [model]="modelJson"
-      [target]="target"
+      [items]="modelJson"
+      [target]="targetElement"
     ></ui-context-menu>
 
     <div
       *ngIf="lastAction"
-      style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem"
+      style="
+        margin-top: 24px;
+        padding: 8px 16px;
+        background: var(--surface-2);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: var(--primary-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      "
     >
       Last Action: <strong>{{ lastAction }}</strong>
     </div>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>
