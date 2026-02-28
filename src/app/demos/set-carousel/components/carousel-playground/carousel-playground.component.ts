@@ -1,7 +1,7 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
+  
   OnInit,
   ViewChild,
   ElementRef,
