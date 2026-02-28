@@ -176,12 +176,14 @@
 
     <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
 
+  @if (showCode) {
     <ui-code-preview
-      *ngIf="showCode"
+      code
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+  }
   </div>
 </app-playground>

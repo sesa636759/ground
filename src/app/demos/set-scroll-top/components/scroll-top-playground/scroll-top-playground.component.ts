@@ -87,7 +87,7 @@ export class ScrollTopPlaygroundComponent implements OnInit {
     this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
   }
 
-  onScroll(event: any) {
+  onScroll(_event: any) {
     // Component events if any
   }
 

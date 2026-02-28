@@ -116,22 +116,19 @@
   </div>
 
   <!-- Events -->
-  <div events class="event-log-container">
-    <div class="event-log" *ngIf="eventLog().length > 0">
-      <strong>Event Logs:</strong>
-      <div class="log-items">
-        <div class="log-item" *ngFor="let log of eventLog()">{{ log }}</div>
-      </div>
-    </div>
-  </div>
+  <app-playground-event-log
+            [logs]="eventLog()"
+            (clear)="eventLog.set([])"
+          ></app-playground-event-log>
 
   <!-- Code -->
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      label="Generated Code"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
 </app-playground>

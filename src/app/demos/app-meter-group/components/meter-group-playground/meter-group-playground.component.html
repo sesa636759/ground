@@ -87,12 +87,14 @@
       ></ui-meter-group>
     </div>
 
+    @if (showCode) {
     <ui-code-preview
-      *ngIf="showCode"
+      code
       [htmlCode]="generatedCode()"
-      label="Generated Code"
+      [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+  }
   </div>
 </app-playground>

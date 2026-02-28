@@ -1,6 +1,6 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
 
@@ -69,7 +69,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private fb: FormBuilder,
+   // private fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {

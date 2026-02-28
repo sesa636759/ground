@@ -101,7 +101,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   eventMessage = signal('Select an option...');
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   pgAccordionItems = JSON.stringify([
@@ -122,7 +122,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // Initial load: read the exact attributes from #radioGroup element in the Light DOM
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+  this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -158,7 +158,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+  this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -196,7 +196,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());;
   }
 
   jsonOptions = (opts: any) => JSON.stringify(opts);

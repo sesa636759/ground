@@ -15,8 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 import {
   ComponentDocsService,
   ComponentDocumentation,
-  ComponentProp,
-} from '../../services/component-docs.service';
+  } from '../../services/component-docs.service';
 
 @Component({
   selector: 'app-component-documentation',

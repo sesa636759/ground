@@ -1,4 +1,5 @@
-<div class="profile-container" *ngIf="user()">
+@if (user()) {
+<div class="profile-container">
   <!-- Profile Header -->
   <div class="profile-header">
     <div class="header-background"></div>
@@ -18,22 +19,28 @@
         <p class="username">&#64;{{ user()!.username }}</p>
         <div class="user-meta">
           <span class="badge" [class]="'badge-' + user()!.role">{{ user()!.role }}</span>
-          <span class="meta-item" *ngIf="user()!.department">
-            <span class="icon">🏢</span>
-            {{ user()!.department }}
-          </span>
-          <span class="meta-item" *ngIf="user()!.location">
-            <span class="icon">📍</span>
-            {{ user()!.location }}
-          </span>
+          @if (user()!.department) {
+            <span class="meta-item">
+              <span class="icon">🏢</span>
+              {{ user()!.department }}
+            </span>
+          }
+          @if (user()!.location) {
+            <span class="meta-item">
+              <span class="icon">📍</span>
+              {{ user()!.location }}
+            </span>
+          }
         </div>
       </div>
 
       <div class="header-actions">
-        <button class="btn btn-secondary" (click)="startEdit()" *ngIf="!editMode()">
-          <span class="icon">✏️</span>
-          Edit Profile
-        </button>
+        @if (!editMode()) {
+          <button class="btn btn-secondary" (click)="startEdit()">
+            <span class="icon">✏️</span>
+            Edit Profile
+          </button>
+        }
         <button class="btn btn-danger" (click)="logout()">
           <span class="icon">🚪</span>
           Logout
@@ -79,15 +86,17 @@
   </div>
 
   <!-- Message Alert -->
-  <div class="alert" [class]="'alert-' + message()!.type" *ngIf="message()">
+    @if (message()) {
+      <div class="alert" [class]="'alert-' + message()!.type">
     <span class="alert-icon">{{ message()!.type === 'success' ? '✅' : '⚠️' }}</span>
     <span>{{ message()!.text }}</span>
   </div>
-
+    }
   <!-- Tab Content -->
   <div class="tab-content">
     <!-- Overview Tab -->
-    <div class="overview-tab" *ngIf="activeTab() === 'overview'">
+    @if (activeTab() === 'overview') {
+      <div class="overview-tab">
       <div class="content-grid">
         <!-- About Section -->
         <div class="card">
@@ -95,10 +104,11 @@
             <h2>About</h2>
           </div>
           <div class="card-body">
-            <p class="bio" *ngIf="user()!.bio; else noBio">{{ user()!.bio }}</p>
-            <ng-template #noBio>
+            @if (user()!.bio) {
+              <p class="bio">{{ user()!.bio }}</p>
+            } @else {
               <p class="empty-state">No bio added yet. Click "Edit Profile" to add one!</p>
-            </ng-template>
+            }
           </div>
         </div>
 
@@ -117,21 +127,24 @@
                 </div>
               </div>
               
-              <div class="info-item" *ngIf="user()!.phone">
-                <span class="info-icon">📱</span>
-                <div class="info-content">
-                  <span class="info-label">Phone</span>
-                  <span class="info-value">{{ user()!.phone }}</span>
+              @if (user()!.phone) {
+                <div class="info-item">
+                  <span class="info-icon">📱</span>
+                  <div class="info-content">
+                    <span class="info-label">Phone</span>
+                    <span class="info-value">{{ user()!.phone }}</span>
+                  </div>
                 </div>
-              </div>
-              
-              <div class="info-item" *ngIf="user()!.website">
-                <span class="info-icon">🌐</span>
-                <div class="info-content">
-                  <span class="info-label">Website</span>
-                  <a [href]="user()!.website" target="_blank" class="info-link">{{ user()!.website }}</a>
+              }
+              @if (user()!.website) {
+                <div class="info-item">
+                  <span class="info-icon">🌐</span>
+                  <div class="info-content">
+                    <span class="info-label">Website</span>
+                    <a [href]="user()!.website" target="_blank" class="info-link">{{ user()!.website }}</a>
+                  </div>
                 </div>
-              </div>
+              }
 
               <div class="info-item">
                 <span class="info-icon">📅</span>
@@ -180,19 +193,23 @@
         </div>
       </div>
     </div>
-
+  }
     <!-- Settings Tab -->
-    <div class="settings-tab" *ngIf="activeTab() === 'settings'">
+    @if (activeTab() === 'settings') {
+      <div class="settings-tab">
       <div class="card">
         <div class="card-header">
           <h2>Profile Settings</h2>
-          <button class="btn btn-secondary btn-sm" (click)="startEdit()" *ngIf="!editMode()">
-            Edit
-          </button>
+          @if (!editMode()) {
+            <button class="btn btn-secondary btn-sm" (click)="startEdit()">
+              Edit
+            </button>
+          }
         </div>
         
         <div class="card-body">
-          <form *ngIf="editMode()" class="settings-form">
+          @if (editMode()) {
+            <form class="settings-form">
             <div class="form-group">
               <label for="fullName">Full Name</label>
               <app-input 
@@ -286,8 +303,9 @@
               </button>
             </div>
           </form>
-
-          <div *ngIf="!editMode()" class="info-list">
+        }
+          @if (!editMode()) {
+            <div class="info-list">
             <div class="info-item">
               <span class="info-label">Full Name:</span>
               <span class="info-value">{{ user()!.fullName }}</span>
@@ -313,12 +331,14 @@
               <span class="info-value">{{ user()!.department || 'Not set' }}</span>
             </div>
           </div>
+        }
         </div>
       </div>
     </div>
-
+  }
     <!-- Security Tab -->
-    <div class="security-tab" *ngIf="activeTab() === 'security'">
+    @if (activeTab() === 'security') {
+      <div class="security-tab">
       <div class="card">
         <div class="card-header">
           <h2>Change Password</h2>
@@ -417,9 +437,10 @@
         </div>
       </div>
     </div>
-
+  }
     <!-- Activity Tab -->
-    <div class="activity-tab" *ngIf="activeTab() === 'activity'">
+    @if (activeTab() === 'activity') {
+      <div class="activity-tab">
       <div class="card">
         <div class="card-header">
           <h2>Recent Activity</h2>
@@ -440,13 +461,17 @@
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    }
   </div>
 </div>
 
-<div class="not-authenticated" *ngIf="!user()">
+}
+@if (!user()) {
+  <div class="not-authenticated">
   <div class="empty-icon">🔒</div>
   <h2>Please Log In</h2>
   <p>You need to be logged in to view this page.</p>
   <a routerLink="/login" class="btn btn-primary">Go to Login</a>
 </div>
+}

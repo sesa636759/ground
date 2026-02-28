@@ -9,8 +9,12 @@ import { CommonModule } from '@angular/common';
   template: `
     <section class="demo-section" [id]="id">
       <div class="section-header">
-        <h2 *ngIf="title">{{ title }}</h2>
-        <p class="description" *ngIf="description">{{ description }}</p>
+        @if (title) {
+          <h2>{{ title }}</h2>
+        }
+        @if (description) {
+          <p class="description">{{ description }}</p>
+        }
       </div>
 
       <div class="preview-box">
@@ -87,5 +91,5 @@ export class ExampleSectionComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: any): void {}
+  ngOnChanges(_changes: any): void {}
 }

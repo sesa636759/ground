@@ -70,7 +70,7 @@ export class CardPlaygroundComponent implements AfterViewInit {
   ];
 
   menuJson = JSON.stringify(this.menuItems);
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -95,13 +95,13 @@ export class CardPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());;
   }
 
   resetConfig() {
