@@ -88,8 +88,8 @@
       >
         <div class="card-icon gradient-purple"><i class="fas fa-map"></i></div>
         <div class="card-text">
-          <span class="title">Guides & Setup</span>
-          <span class="count">3 Documentations</span>
+          <span class="title">Guides &amp; Setup</span>
+          <span class="count">{{ totalGuides }} Guides</span>
         </div>
       </button>
 
@@ -114,18 +114,33 @@
         *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
       >
         <div class="section-heading" *ngIf="activeTab() === 'all'">Guides</div>
-        <div
-          class="guide-card glass-card"
-          *ngFor="let guide of filteredGuides()"
-          (click)="selectGuide(guide.id)"
-        >
-          <div class="guide-icon"><i [class]="guide.icon"></i></div>
-          <div class="guide-info">
-            <h3>{{ guide.title }}</h3>
-            <p>{{ guide.desc }}</p>
+
+        <!-- Categorized view (Guides tab, no search) -->
+        <ng-container *ngIf="activeTab() === 'guides' && !searchText()">
+          <!-- ui-accordion per category: each item navigates to guide on click -->
+          <div class="guide-category" *ngFor="let cat of filteredGuideCategories()">
+            <div class="category-label">
+              <i [class]="cat.icon"></i> {{ cat.label }}
+              <span class="cat-count">{{ cat.guides.length }}</span>
+            </div>
+            <ui-accordion
+              variant="card-list"
+              selected-header-color="#10b981"
+              [items]="getGuideAccordionItems(cat)"
+              (afterOpen)="selectGuide($event.detail.itemId || '')"
+            ></ui-accordion>
           </div>
-          <div class="guide-arrow"><i class="fas fa-chevron-right"></i></div>
-        </div>
+        </ng-container>
+
+        <!-- Flat list (search results or 'all' tab) -->
+        <ng-container *ngIf="searchText() || activeTab() !== 'guides'">
+          <ui-accordion
+            variant="card-list"
+            selected-header-color="#10b981"
+            [items]="flatGuideAccordionItems()"
+            (afterOpen)="selectGuide($event.detail.itemId || '')"
+          ></ui-accordion>
+        </ng-container>
       </div>
 
       <!-- 💎 Component Grid Logic -->
@@ -273,6 +288,383 @@
               label="App Component"
               expanded="true"
             ></ui-code-preview>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'quick-start'">
+          <div class="article-header">
+            <h2>Quick Start</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">Get GROUND UI running in your project in under 5 minutes.</p>
+          <div class="step-vessel">
+            <div class="step-num-ring">01</div>
+            <div class="step-detail">
+              <h3>Install the package</h3>
+              <ui-code-preview
+                active-lang="html"
+                html-code="npm install @enterprise/ui-ground"
+                label="Terminal"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">02</div>
+            <div class="step-detail">
+              <h3>Import the theme</h3>
+              <p>Add the theme import to your global <code>styles.scss</code>:</p>
+              <ui-code-preview
+                active-lang="css"
+                css-code='@use "@enterprise/ui-ground/theme";'
+                label="styles.scss"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">03</div>
+            <div class="step-detail">
+              <h3>Import &amp; use a component</h3>
+              <ui-code-preview
+                active-lang="ts"
+                ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
+
+&#64;Component({{ '{' }}
+  selector: 'app-root',
+  standalone: true,
+  imports: [UiButton],
+  template: &#96;&lt;ui-button variant='primary' label='Click Me'&gt;&lt;/ui-button&gt;&#96;
+{{ '}' }})
+export class AppComponent {{ '{' }}{{ '}' }}"
+                label="app.component.ts"
+                expanded="true"
+              ></ui-code-preview>
+            </div>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'frameworks'">
+          <div class="article-header">
+            <h2>Supported Frameworks</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">
+            GROUND UI ships as standard Web Components — usable in any framework without wrappers.
+          </p>
+          <div class="frameworks-grid">
+            <div class="framework-card supported">
+              <div class="fw-logo"><i class="fab fa-angular"></i></div>
+              <div class="fw-info">
+                <h4>Angular</h4>
+                <p>Full support with typed bindings, reactive forms and signal integration.</p>
+              </div>
+              <span class="fw-badge supported">Supported</span>
+            </div>
+            <div class="framework-card wip">
+              <div class="fw-logo"><i class="fab fa-react"></i></div>
+              <div class="fw-info">
+                <h4>React</h4>
+                <p>Web Component interop works today. React-native wrappers coming in v3.</p>
+              </div>
+              <span class="fw-badge wip">In Progress</span>
+            </div>
+            <div class="framework-card wip">
+              <div class="fw-logo"><i class="fab fa-vuejs"></i></div>
+              <div class="fw-info">
+                <h4>Vue</h4>
+                <p>Compatible via Web Components. Official Vue plugin planned for v3.</p>
+              </div>
+              <span class="fw-badge wip">Planned</span>
+            </div>
+            <div class="framework-card supported">
+              <div class="fw-logo"><i class="fas fa-code"></i></div>
+              <div class="fw-info">
+                <h4>Web Components</h4>
+                <p>Vanilla JS / HTML usage with no build step required. Zero dependencies.</p>
+              </div>
+              <span class="fw-badge supported">Supported</span>
+            </div>
+          </div>
+          <div class="info-callout">
+            <i class="fas fa-info-circle"></i>
+            <span
+              >All components follow the Custom Elements v1 spec and work in all modern browsers
+              (Chrome, Firefox, Safari, Edge).</span
+            >
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'theming'">
+          <div class="article-header">
+            <h2>Theming</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">
+            GROUND UI is fully themeable via CSS custom properties. Override any token to match your
+            brand.
+          </p>
+          <div class="principle-grid">
+            <div class="principle-card">
+              <i class="fas fa-palette"></i>
+              <h4>Design Tokens</h4>
+              <p>
+                Every color, size and shadow is a CSS variable you can override globally or
+                per-component.
+              </p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-moon"></i>
+              <h4>Dark Mode</h4>
+              <p>
+                Built-in dark theme activated with a single <code>data-theme="dark"</code> attribute
+                on your root element.
+              </p>
+            </div>
+            <div class="principle-card">
+              <i class="fas fa-sliders-h"></i>
+              <h4>Custom Palettes</h4>
+              <p>Replace the primary palette entirely. Every component adapts automatically.</p>
+            </div>
+          </div>
+          <h3 style="margin: 1.5rem 0 1rem; font-weight: 800">Core Tokens</h3>
+          <div class="token-grid">
+            <div class="token-row">
+              <span class="token-name">--primary</span
+              ><span class="token-desc">Primary brand color</span>
+            </div>
+            <div class="token-row">
+              <span class="token-name">--primary-light</span
+              ><span class="token-desc">Lighter variant for hover states</span>
+            </div>
+            <div class="token-row">
+              <span class="token-name">--bg-primary</span
+              ><span class="token-desc">Page background</span>
+            </div>
+            <div class="token-row">
+              <span class="token-name">--text-primary</span
+              ><span class="token-desc">Main text color</span>
+            </div>
+            <div class="token-row">
+              <span class="token-name">--border-color</span
+              ><span class="token-desc">Default border / divider color</span>
+            </div>
+            <div class="token-row">
+              <span class="token-name">--surface-elevated</span
+              ><span class="token-desc">Card and popover surfaces</span>
+            </div>
+          </div>
+          <ui-code-preview
+            active-lang="css"
+            css-code=":root {{ '{' }}
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-lighter: #a5b4fc;
+{{ '}' }}"
+            label="custom-theme.scss"
+          ></ui-code-preview>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'styling'">
+          <div class="article-header">
+            <h2>Custom Styling</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">
+            Safely extend or override component styles using CSS custom properties and the Shadow
+            Parts API.
+          </p>
+          <div class="step-vessel">
+            <div class="step-num-ring">01</div>
+            <div class="step-detail">
+              <h3>Override via CSS tokens (recommended)</h3>
+              <p>The safest method — no knowledge of internals needed.</p>
+              <ui-code-preview
+                active-lang="css"
+                css-code="ui-button {{ '{' }}
+  --btn-radius: 4px;
+  --btn-font-weight: 900;
+{{ '}' }}"
+                label="component.scss"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">02</div>
+            <div class="step-detail">
+              <h3>Target Shadow Parts</h3>
+              <p>Use <code>::part()</code> to reach inside Shadow DOM safely:</p>
+              <ui-code-preview
+                active-lang="css"
+                css-code="ui-button::part(label) {{ '{' }}
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+{{ '}' }}"
+                label="component.scss"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">03</div>
+            <div class="step-detail">
+              <h3>Global overrides in styles.scss</h3>
+              <ui-code-preview
+                active-lang="css"
+                css-code='@use "@enterprise/ui-ground/theme" with (
+  $border-radius-base: 6px,
+  $font-family: "Inter", sans-serif
+);'
+                label="styles.scss"
+              ></ui-code-preview>
+            </div>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'faq'">
+          <div class="article-header">
+            <h2>FAQ</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">Common questions about GROUND UI, answered.</p>
+          <ui-accordion
+            variant="card-list"
+            selected-header-color="#10b981"
+            [items]="faqAccordionItems"
+            class="faq-accordion"
+          ></ui-accordion>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'changelog'">
+          <div class="article-header">
+            <h2>Changelog</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">What's new in each release of GROUND UI.</p>
+          <div class="changelog-list">
+            <div class="changelog-entry">
+              <div class="cl-version">v2.5.0 <span class="cl-date">Feb 2026</span></div>
+              <div class="cl-badge latest">Latest</div>
+              <ul class="cl-items">
+                <li>
+                  <span class="cl-tag added">Added</span> Speed Dial, OTP Input, Resizable Panel
+                  components
+                </li>
+                <li>
+                  <span class="cl-tag added">Added</span> Lucide icon library integration for all
+                  component cards
+                </li>
+                <li>
+                  <span class="cl-tag improved">Improved</span> Documentation hub with
+                  category-based guide navigation
+                </li>
+                <li>
+                  <span class="cl-tag fixed">Fixed</span> Shimmer hover effect now renders behind
+                  card content
+                </li>
+              </ul>
+            </div>
+            <div class="changelog-entry">
+              <div class="cl-version">v2.4.0 <span class="cl-date">Jan 2026</span></div>
+              <ul class="cl-items">
+                <li>
+                  <span class="cl-tag added">Added</span> Transfer List, Pattern Input, Timeline,
+                  Tree components
+                </li>
+                <li>
+                  <span class="cl-tag added">Added</span> Masonry grid layout for documentation
+                  cards
+                </li>
+                <li>
+                  <span class="cl-tag improved">Improved</span> Dark mode token coverage across all
+                  components
+                </li>
+                <li>
+                  <span class="cl-tag fixed">Fixed</span> Radio group keyboard navigation in grid
+                  layout
+                </li>
+              </ul>
+            </div>
+            <div class="changelog-entry">
+              <div class="cl-version">v2.0.0 <span class="cl-date">Dec 2025</span></div>
+              <div class="cl-badge major">Major</div>
+              <ul class="cl-items">
+                <li>
+                  <span class="cl-tag breaking">Breaking</span> Migrated to Web Components + Angular
+                  17 signals
+                </li>
+                <li>
+                  <span class="cl-tag added">Added</span> Full theming system with CSS custom
+                  properties
+                </li>
+                <li><span class="cl-tag added">Added</span> 40+ components in initial release</li>
+                <li>
+                  <span class="cl-tag improved">Improved</span> Bundle size reduced by 60% vs v1
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="doc-article" *ngIf="selectedGuideId() === 'migration'">
+          <div class="article-header">
+            <h2>Migration Guide</h2>
+            <div class="separator-premium"></div>
+          </div>
+          <p class="lead-text">Steps to upgrade from GROUND UI v1 to v2.</p>
+          <div class="info-callout warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span
+              >v2 is a major release with breaking changes. Allow ~1 hour for a medium-sized
+              project.</span
+            >
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">01</div>
+            <div class="step-detail">
+              <h3>Update package</h3>
+              <ui-code-preview
+                active-lang="html"
+                html-code="npm install @enterprise/ui-ground@latest"
+                label="Terminal"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">02</div>
+            <div class="step-detail">
+              <h3>Replace NgModule imports with standalone</h3>
+              <p>
+                v2 components are standalone. Remove <code>GroundUiModule</code> from your
+                <code>AppModule</code> and import directly:
+              </p>
+              <ui-code-preview
+                active-lang="ts"
+                ts-code="// Before (v1)
+imports: [GroundUiModule]
+
+// After (v2)
+imports: [UiButton, UiInput, UiDialog]"
+                label="app.module.ts"
+              ></ui-code-preview>
+            </div>
+          </div>
+          <div class="step-vessel">
+            <div class="step-num-ring">03</div>
+            <div class="step-detail">
+              <h3>Rename changed CSS tokens</h3>
+              <div class="token-grid">
+                <div class="token-row migration">
+                  <span class="token-name old">--color-primary</span
+                  ><i class="fas fa-arrow-right"></i><span class="token-name">--primary</span>
+                </div>
+                <div class="token-row migration">
+                  <span class="token-name old">--color-text</span><i class="fas fa-arrow-right"></i
+                  ><span class="token-name">--text-primary</span>
+                </div>
+                <div class="token-row migration">
+                  <span class="token-name old">--surface-bg</span><i class="fas fa-arrow-right"></i
+                  ><span class="token-name">--bg-primary</span>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
       </div>
