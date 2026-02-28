@@ -75,10 +75,10 @@
 
     <div class="action-buttons">
       <ui-button
-        class="btn-secondary"
+        actions
         variant="secondary"
         (click)="resetConfig()"
-        label="Reset"
+        label="Reset Configuration"
       ></ui-button>
     </div>
   </div>
@@ -97,7 +97,7 @@
     ></ui-pill>
   </div>
 
-    @if (showCode) {
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"

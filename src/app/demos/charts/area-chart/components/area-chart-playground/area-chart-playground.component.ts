@@ -22,6 +22,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './area-chart-playground.component.scss',
 })
 export class AreaChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     dataset: 'revenue',
     strokeWidth: 2,

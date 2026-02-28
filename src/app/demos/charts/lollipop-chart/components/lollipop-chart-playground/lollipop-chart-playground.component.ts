@@ -22,6 +22,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './lollipop-chart-playground.component.scss',
 })
 export class LollipopChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     circleR: 8,
     stickW: 2,

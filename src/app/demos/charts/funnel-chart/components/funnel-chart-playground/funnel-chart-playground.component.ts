@@ -22,6 +22,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './funnel-chart-playground.component.scss',
 })
 export class FunnelChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     orientation: 'vertical',
     gap: 4,

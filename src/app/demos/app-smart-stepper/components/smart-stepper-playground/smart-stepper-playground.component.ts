@@ -56,7 +56,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
   ];
 
   currentStep = '1';
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -89,7 +89,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -100,7 +100,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

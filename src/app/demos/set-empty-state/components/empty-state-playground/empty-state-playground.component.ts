@@ -14,7 +14,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-empty-state-playground',
@@ -65,7 +65,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
   defaultOpen = JSON.stringify(['general']);
 
   eventLog = signal<string[]>([]);
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -93,7 +93,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -112,7 +112,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

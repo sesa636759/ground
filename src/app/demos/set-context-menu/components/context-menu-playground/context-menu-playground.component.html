@@ -153,6 +153,9 @@
   </div>
 
   <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
     actions
     variant="secondary"
     (click)="resetConfig()"
@@ -260,6 +263,5 @@
       expanded="true"
     ></ui-code-preview>
   }
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
- 
+  <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
 </app-playground>

@@ -157,7 +157,15 @@
     </div>
   </div>
 
-  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+  <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
 
   <div preview>
     <div class="preview-stage">

@@ -21,7 +21,6 @@
     }
   </div>
 
-
   @if (viewMode !== 'list') {
     <div class="card-preview-container">
       @if (!imageUrl) {
@@ -49,7 +48,9 @@
     </div>
   }
 
-  <div class="card-footer" *ngIf="description">
-    <p class="card-description">{{ description }}</p>
-  </div>
+  @if (description) {
+    <div class="card-footer">
+      <p class="card-description">{{ description }}</p>
+    </div>
+  }
 </div>

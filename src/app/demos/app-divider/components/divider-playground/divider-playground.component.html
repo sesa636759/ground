@@ -1,133 +1,140 @@
-
-    <app-playground
-      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Content -->
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Text</label>
-              <input
-                name="text"
-                type="text"
-                [(ngModel)]="pgConfig.text"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input
-                name="icon"
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. ⭐"
-              />
-            </div>
-            <div class="control-group">
-              <label>Badge</label>
-              <input
-                name="badge"
-                type="text"
-                [(ngModel)]="pgConfig.badge"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-          </div>
-
-          <!-- Line Style -->
-          <div class="control-section">
-            <h3>Line Style</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                name="variant"
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                name="size"
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Orientation</label>
-              <ui-dropdown
-                name="orientation"
-                [(ngModel)]="pgConfig.orientation"
-                (ngModelChange)="updateConfig()"
-                [options]="orientationOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Special -->
-          <div class="control-section">
-            <h3>Special</h3>
-            <div class="control-group">
-              <label>Pattern</label>
-              <ui-dropdown
-                name="pattern"
-                [(ngModel)]="pgConfig.pattern"
-                (ngModelChange)="updateConfig()"
-                [options]="patternOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                name="shape"
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                name="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <!-- Content -->
+      <div class="control-section">
+        <h3>Content</h3>
+        <div class="control-group">
+          <label>Text</label>
+          <input
+            name="text"
+            type="text"
+            [(ngModel)]="pgConfig.text"
+            (ngModelChange)="updateConfig()"
+          />
+        </div>
+        <div class="control-group">
+          <label>Icon</label>
+          <input
+            name="icon"
+            type="text"
+            [(ngModel)]="pgConfig.icon"
+            (ngModelChange)="updateConfig()"
+            placeholder="e.g. ⭐"
+          />
+        </div>
+        <div class="control-group">
+          <label>Badge</label>
+          <input
+            name="badge"
+            type="text"
+            [(ngModel)]="pgConfig.badge"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
       </div>
 
-      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-
-      <div
-        preview
-        class="preview-stage"
-        [class.vertical-container]="pgConfig.orientation === 'vertical'"
-      >
-        <div *ngIf="pgConfig.orientation === 'vertical'">Panel Start</div>
-        <ui-divider
-          #divider
-          [attr.text]="pgConfig.text"
-          [attr.icon]="pgConfig.icon"
-          [attr.badge]="pgConfig.badge"
-          [attr.variant]="pgConfig.variant"
-          [attr.size]="pgConfig.size"
-          [attr.orientation]="pgConfig.orientation"
-          [attr.pattern]="pgConfig.pattern"
-          [attr.shape]="pgConfig.shape"
-          [attr.loading]="pgConfig.loading ? '' : null"
-        ></ui-divider>
-        <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
+      <!-- Line Style -->
+      <div class="control-section">
+        <h3>Line Style</h3>
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            name="variant"
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="variantOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            name="size"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="sizeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Orientation</label>
+          <ui-dropdown
+            name="orientation"
+            [(ngModel)]="pgConfig.orientation"
+            (ngModelChange)="updateConfig()"
+            [options]="orientationOptions"
+          ></ui-dropdown>
+        </div>
       </div>
 
-       @if (showCode) {
+      <!-- Special -->
+      <div class="control-section">
+        <h3>Special</h3>
+        <div class="control-group">
+          <label>Pattern</label>
+          <ui-dropdown
+            name="pattern"
+            [(ngModel)]="pgConfig.pattern"
+            (ngModelChange)="updateConfig()"
+            [options]="patternOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Shape</label>
+          <ui-dropdown
+            name="shape"
+            [(ngModel)]="pgConfig.shape"
+            (ngModelChange)="updateConfig()"
+            [options]="shapeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="loading"
+            name="loading"
+            [(ngModel)]="pgConfig.loading"
+            (ngModelChange)="updateConfig()"
+            label="Loading"
+          ></app-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
+
+  <div
+    preview
+    class="preview-stage"
+    [class.vertical-container]="pgConfig.orientation === 'vertical'"
+  >
+    <div *ngIf="pgConfig.orientation === 'vertical'">Panel Start</div>
+    <ui-divider
+      #divider
+      [attr.text]="pgConfig.text"
+      [attr.icon]="pgConfig.icon"
+      [attr.badge]="pgConfig.badge"
+      [attr.variant]="pgConfig.variant"
+      [attr.size]="pgConfig.size"
+      [attr.orientation]="pgConfig.orientation"
+      [attr.pattern]="pgConfig.pattern"
+      [attr.shape]="pgConfig.shape"
+      [attr.loading]="pgConfig.loading ? '' : null"
+    ></ui-divider>
+    <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
+  </div>
+
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -136,5 +143,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

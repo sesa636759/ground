@@ -1,10 +1,11 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-    ChangeDetectorRef,
+  ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -45,7 +46,7 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
     { label: 'Segments', value: 'segments' },
   ];
 
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -73,13 +74,13 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

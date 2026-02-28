@@ -29,6 +29,8 @@ interface WfBar {
   styleUrl: './waterfall-chart-playground.component.scss',
 })
 export class WaterfallChartPlaygroundComponent {
+  generatedCode = signal<string>('');
+
   cfg = {
     posColor: '#10b981',
     negColor: '#f43f5e',

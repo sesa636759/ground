@@ -82,6 +82,9 @@
   </div>
 
   <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
     actions
     variant="secondary"
     (click)="resetConfig()"
@@ -124,7 +127,7 @@
       (click)="clearAll()"
       label="Clear All"
     ></ui-button>
-
+  </div>
   @if (showCode) {
     <ui-code-preview
       code
@@ -134,7 +137,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-  </div>
-
- 
 </app-playground>

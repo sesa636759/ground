@@ -30,6 +30,7 @@ interface Candle {
   styleUrl: './candlestick-chart-playground.component.scss',
 })
 export class CandlestickChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     candleW: 14,
     upColor: '#10b981',

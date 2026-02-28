@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './step-line-chart-playground.component.scss',
 })
 export class StepLineChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     strokeWidth: 2.5,
     pointR: 4,

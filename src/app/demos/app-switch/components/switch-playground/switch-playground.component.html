@@ -1,137 +1,140 @@
+<app-playground
+  accordionItems='[{"id":"global","title":"Global Configuration","icon":"⚙️"}, {"id":"states","title":"Behavioral States","icon":"⚡"}]'
+  defaultOpen='["global"]'
+>
+  <!-- Global Visuals -->
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Label</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.label"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Label Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.labelPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="labelPositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Icon On</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.iconOn"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Icon Off</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.iconOff"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+  </div>
 
-    <app-playground
-      accordionItems='[{"id":"global","title":"Global Configuration","icon":"⚙️"}, {"id":"states","title":"Behavioral States","icon":"⚡"}]'
-      defaultOpen='["global"]'
-    >
-      <!-- Global Visuals -->
-      <div slot="content-global" class="control-grid" style="padding: 16px;">
-        <div class="control-group">
-          <label>Label</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.label"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
-        </div>
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="variantOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="sizeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Shape</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.shape"
-            (ngModelChange)="updateConfig()"
-            [options]="shapeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Label Position</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.labelPosition"
-            (ngModelChange)="updateConfig()"
-            [options]="labelPositionOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Icon On</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.iconOn"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
-        </div>
-        <div class="control-group">
-          <label>Icon Off</label>
-          <app-input
-            type="text"
-            [(ngModel)]="pgConfig.iconOff"
-            (ngModelChange)="updateConfig()"
-          ></app-input>
-        </div>
-      </div>
+  <!-- Behavioral States -->
+  <div slot="content-states" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          id="checked"
+          [(ngModel)]="pgConfig.checked"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Checked
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          id="disabled"
+          [(ngModel)]="pgConfig.disabled"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          id="loading"
+          [(ngModel)]="pgConfig.loading"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Loading
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          id="showIcons"
+          [(ngModel)]="pgConfig.showDefaultIcons"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Default Icons
+      </label>
+    </div>
+  </div>
 
-      <!-- Behavioral States -->
-      <div slot="content-states" style="padding: 16px;">
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox
-              id="checked"
-              [(ngModel)]="pgConfig.checked"
-              (ngModelChange)="updateConfig()"
-            ></app-checkbox>
-            Checked
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              id="disabled"
-              [(ngModel)]="pgConfig.disabled"
-              (ngModelChange)="updateConfig()"
-            ></app-checkbox>
-            Disabled
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              id="loading"
-              [(ngModel)]="pgConfig.loading"
-              (ngModelChange)="updateConfig()"
-            ></app-checkbox>
-            Loading
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              id="showIcons"
-              [(ngModel)]="pgConfig.showDefaultIcons"
-              (ngModelChange)="updateConfig()"
-            ></app-checkbox>
-            Default Icons
-          </label>
-        </div>
-      </div>
+  <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
 
-      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+  <div preview class="preview-stage">
+    <ui-switch
+      #demoElement
+      [attr.label]="pgConfig.label"
+      [attr.checked]="pgConfig.checked ? '' : null"
+      [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.size]="pgConfig.size"
+      [attr.variant]="pgConfig.variant"
+      [attr.shape]="pgConfig.shape"
+      [attr.label-position]="pgConfig.labelPosition"
+      [attr.icon-on]="pgConfig.iconOn || null"
+      [attr.icon-off]="pgConfig.iconOff || null"
+      [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
+      (switchChange)="onSwitchChange($event)"
+    ></ui-switch>
+  </div>
 
-      <div preview class="preview-stage">
-        <ui-switch
-          #demoElement
-          [attr.label]="pgConfig.label"
-          [attr.checked]="pgConfig.checked ? '' : null"
-          [attr.disabled]="pgConfig.disabled ? '' : null"
-          [attr.loading]="pgConfig.loading ? '' : null"
-          [attr.size]="pgConfig.size"
-          [attr.variant]="pgConfig.variant"
-          [attr.shape]="pgConfig.shape"
-          [attr.label-position]="pgConfig.labelPosition"
-          [attr.icon-on]="pgConfig.iconOn || null"
-          [attr.icon-off]="pgConfig.iconOff || null"
-          [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
-          (switchChange)="onSwitchChange($event)"
-        ></ui-switch>
-      </div>
+  <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
 
-      <app-playground-event-log
-        [logs]="eventLog"
-        (clear)="eventLog = []"
-      ></app-playground-event-log>
-
-      <ui-code-preview
-        code
-        [htmlCode]="generatedCode()"
-        [label]="'Generated Code'"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
-    </app-playground>
-  
+  <ui-code-preview
+    code
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

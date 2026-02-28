@@ -112,7 +112,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   ]);
 
   eventMessage = signal('Click the trigger to see the menu...');
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -140,7 +140,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -160,7 +160,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

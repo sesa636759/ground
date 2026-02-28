@@ -36,7 +36,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
   pgConfig = this.getDefaultConfig();
 
   visible = false;
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   pgAccordionItems = JSON.stringify([
@@ -145,13 +145,13 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

@@ -1,8 +1,8 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  
   ChangeDetectorRef,
+  signal,
   ViewChild,
   ElementRef,
   AfterViewInit,
@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from 'src/app/directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-knob-playground',
@@ -48,7 +49,7 @@ export class KnobPlaygroundComponent implements AfterViewInit {
   ]);
 
   defaultOpen = JSON.stringify(['value']);
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -73,7 +74,7 @@ export class KnobPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -84,7 +85,7 @@ export class KnobPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

@@ -14,6 +14,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   styleUrl: './skeleton-playground.component.scss',
 })
 export class SkeletonPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     shape: 'rectangle',
     animationType: 'pulse',

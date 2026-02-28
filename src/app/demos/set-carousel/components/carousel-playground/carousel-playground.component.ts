@@ -1,12 +1,12 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  
   OnInit,
   ViewChild,
   ElementRef,
   AfterViewInit,
   ChangeDetectorRef,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -68,7 +68,7 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
     desc: 'Interactive Slide Content',
   }));
 
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -103,13 +103,13 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   getRandomColor() {

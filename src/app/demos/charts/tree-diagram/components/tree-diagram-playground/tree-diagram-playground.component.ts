@@ -31,6 +31,8 @@ interface TreeNode {
   styleUrl: './tree-diagram-playground.component.scss',
 })
 export class TreeDiagramPlaygroundComponent {
+  generatedCode = signal<string>('');
+
   cfg = {
     orientation: 'horizontal',
     dataset: 'org',

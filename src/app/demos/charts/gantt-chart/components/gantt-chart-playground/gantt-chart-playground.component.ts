@@ -23,6 +23,7 @@ interface GanttTask {
   styleUrl: './gantt-chart-playground.component.scss',
 })
 export class GanttChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { rowH: 36, radius: 4, showDeps: true, showGrid: true, showLabels: true, zebra: true };
 
   labelW = 120;

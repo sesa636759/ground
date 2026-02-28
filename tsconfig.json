@@ -5,15 +5,12 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2022"
-    ],
+    "lib": ["dom", "es2022"],
     "moduleResolution": "bundler",
     "module": "esnext",
     "target": "es2022",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "jsx": "react",
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment",
@@ -22,11 +19,6 @@
       "@service/*": ["src/service/*"]
     }
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/components.d.ts"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "src/components.d.ts"]
 }

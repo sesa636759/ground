@@ -1,6 +1,7 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
+  signal,
   ViewEncapsulation,
   ChangeDetectorRef,
   ViewChild,
@@ -101,7 +102,7 @@ export class CardPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

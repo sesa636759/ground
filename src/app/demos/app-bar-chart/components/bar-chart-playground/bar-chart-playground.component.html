@@ -104,10 +104,16 @@
         </div>
       </div>
     </div>
-    <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-    </div>
   </div>
+  <ui-button
+    actions
+    icon="rotate-ccw"
+    iconPosition="left"
+    [iconLibrary]="'lucide'"
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
   <div
     preview
     style="
@@ -135,13 +141,12 @@
     ></ui-bar-chart>
   </div>
 
-    <ng-container [ngIf]="showCode">
-      <ui-code-preview
-        [htmlCode]="generatedCode()"
-        label="Generated Code"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
-    </ng-container>
-  </div>
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode()"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>

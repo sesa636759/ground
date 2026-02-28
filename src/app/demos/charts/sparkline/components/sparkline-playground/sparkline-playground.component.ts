@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './sparkline-playground.component.scss',
 })
 export class SparklinePlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { width: 140, height: 55, strokeWidth: 2, color: '#6366f1', fill: true, showDot: true };
 
   colorOpts = [

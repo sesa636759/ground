@@ -21,6 +21,8 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './timeline-range-playground.component.scss',
 })
 export class TimelineRangePlaygroundComponent {
+  generatedCode = signal<string>('');
+
   cfg = { dataset: 'project', rowHeight: 36, radius: 6, showTooltip: true, showLabels: true };
 
   datasetOpts = [

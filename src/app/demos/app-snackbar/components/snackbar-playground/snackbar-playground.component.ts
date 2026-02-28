@@ -86,7 +86,7 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
     { label: 'Error', value: 'error' },
   ];
 
-  generatedCode: string = '';
+  generatedCode = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -120,7 +120,7 @@ snackbar.add({
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -140,7 +140,7 @@ snackbar.add({
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

@@ -1,11 +1,11 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 })
 export class TreeListPlaygroundComponent implements AfterViewInit {
   @ViewChild('treeElement') treeElement!: ElementRef;
+  generatedCode = signal<string>('');
 
   pgConfig = {
     selectable: true,
@@ -70,7 +71,6 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode: string = '';
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -98,13 +98,13 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

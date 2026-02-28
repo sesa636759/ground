@@ -135,10 +135,10 @@
 
     <div class="action-buttons">
       <ui-button
-        class="btn-secondary"
+        actions
         variant="secondary"
         (click)="resetConfig()"
-        label="Reset"
+        label="Reset Configuration"
       ></ui-button>
     </div>
   </div>
@@ -176,14 +176,14 @@
 
     <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
 
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
+    @if (showCode) {
+      <ui-code-preview
+        code
+        [htmlCode]="generatedCode()"
+        [label]="'Generated Code'"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    }
   </div>
 </app-playground>

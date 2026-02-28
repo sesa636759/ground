@@ -14,6 +14,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './radial-bar-playground.component.scss',
 })
 export class RadialBarPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { size: 280, trackWidth: 18, gap: 8, showValues: true, showLabels: true, rounded: true };
 
   bars = [

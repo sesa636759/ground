@@ -29,6 +29,7 @@ interface OhlcBar {
   styleUrl: './ohlc-chart-playground.component.scss',
 })
 export class OhlcChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     barW: 10,
     upColor: '#10b981',

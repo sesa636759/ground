@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './rose-chart-playground.component.scss',
 })
 export class RoseChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     size: 320,
     innerR: 0,

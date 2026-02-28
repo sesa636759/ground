@@ -55,25 +55,27 @@
         ]"
       ></ui-dropdown>
     </div>
-    <div class="control-group" *ngIf="pgConfig.layout === 'grid'">
-      <label>Grid Columns</label>
-      <input
-        type="number"
-        min="1"
-        max="6"
-        [(ngModel)]="pgConfig.columns"
-        (ngModelChange)="updateConfig()"
-        style="
-          width: 100%;
-          height: 36px;
-          border-radius: 8px;
-          border: 1px solid var(--border-color);
-          background: var(--surface-1);
-          color: var(--text-primary);
-          padding: 0 12px;
-        "
-      />
-    </div>
+    @if (pgConfig.layout === 'grid') {
+      <div class="control-group">
+        <label>Grid Columns</label>
+        <input
+          type="number"
+          min="1"
+          max="6"
+          [(ngModel)]="pgConfig.columns"
+          (ngModelChange)="updateConfig()"
+          style="
+            width: 100%;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-1);
+            color: var(--text-primary);
+            padding: 0 12px;
+          "
+        />
+      </div>
+    }
     <div class="control-group">
       <label>Spacing</label>
       <input
@@ -175,6 +177,9 @@
   </div>
 
   <ui-button
+    icon=""
+    iconPosition="left"
+    [iconLibrary]="'se'"
     actions
     variant="secondary"
     (click)="resetConfig()"
@@ -223,12 +228,13 @@
     ></app-playground-event-log>
   </div>
 
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    label="Generated Code"
-    activeLang="html"
-    [expanded]="true"
-  ></ui-code-preview>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      label="Generated Code"
+      activeLang="html"
+      [expanded]="true"
+    ></ui-code-preview>
+  }
 </app-playground>

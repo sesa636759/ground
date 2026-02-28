@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './polar-area-chart-playground.component.scss',
 })
 export class PolarAreaChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { dataset: 'skills', legendPos: 'right', opacity: 0.7, showLegend: true, animate: true };
 
   datasetOpts = [
