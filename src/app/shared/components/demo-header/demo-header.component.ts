@@ -17,11 +17,13 @@ import { CommonModule } from '@angular/common';
       <div class="header-body">
 
         <!-- Animated icon badge -->
-        <div class="icon-badge" *ngIf="icon">
-          <span class="badge-pulse-ring" aria-hidden="true"></span>
-          <span class="badge-shine"      aria-hidden="true"></span>
-          <span class="icon-emoji">{{ icon }}</span>
-        </div>
+        @if (icon) {
+          <div class="icon-badge">
+            <span class="badge-pulse-ring" aria-hidden="true"></span>
+            <span class="badge-shine"      aria-hidden="true"></span>
+            <span class="icon-emoji">{{ icon }}</span>
+          </div>
+        }
 
         <!-- Text -->
         <div class="header-text">
@@ -30,7 +32,9 @@ import { CommonModule } from '@angular/common';
             <span class="eyebrow-label">Component</span>
           </div>
           <h2 class="header-title">{{ title }}</h2>
-          <p class="header-desc" *ngIf="description">{{ description }}</p>
+          @if (description) {
+            <p class="header-desc">{{ description }}</p>
+          }
         </div>
 
         <!-- Spinning decorative rings -->

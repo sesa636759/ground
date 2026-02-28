@@ -221,7 +221,7 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     alert(`Action clicked: ${event.detail.actionId} on item ${event.detail.itemId}`);
   }
 
-  handleReorder(event: Event) {}
+  handleReorder(_event: Event) {}
 
   logEvent(name: string, event: any) {
     const timestamp = new Date().toLocaleTimeString();

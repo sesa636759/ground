@@ -8,17 +8,19 @@
     </div>
 
     <!-- Success Message -->
-    <div class="alert alert-success" *ngIf="success()">
+    @if (success()) {
+    <div class="alert alert-success">
       <span class="alert-icon">✅</span>
       <span>{{ success() }}</span>
     </div>
-
-    <!-- Error Message -->
-    <div class="alert alert-error" *ngIf="error()">
+    }
+       <!-- Error Message -->
+    @if (error()) {
+    <div class="alert alert-error">
       <span class="alert-icon">⚠️</span>
       <span>{{ error() }}</span>
     </div>
-
+    }
     <!-- Registration Form -->
     <form (ngSubmit)="onSubmit()" class="register-form">
       <!-- Full Name -->
@@ -136,14 +138,20 @@
             {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
           </button>
         </div>
-        <div class="password-match" *ngIf="confirmPassword">
-          <span *ngIf="formData.password === confirmPassword" class="match-success">
-            ✓ Passwords match
-          </span>
-          <span *ngIf="formData.password !== confirmPassword" class="match-error">
-            ✗ Passwords do not match
-          </span>
-        </div>
+        @if (confirmPassword) {
+          <div class="password-match">
+            @if (formData.password === confirmPassword) {
+              <span class="match-success">
+                ✓ Passwords match
+              </span>
+            }
+            @if (formData.password !== confirmPassword) {
+              <span class="match-error">
+                ✗ Passwords do not match
+              </span>
+            }
+          </div>
+        }
       </div>
 
       <!-- Terms and Conditions -->
@@ -170,11 +178,15 @@
         class="btn-primary btn-large"
         [disabled]="loading()"
       >
-        <span *ngIf="!loading()">Create Account</span>
-        <span *ngIf="loading()" class="loading-content">
-          <span class="spinner"></span>
-          <span>Creating account...</span>
-        </span>
+        @if (!loading()) {
+          <span>Create Account</span>
+        }
+        @if (loading()) {
+          <span class="loading-content">
+            <span class="spinner"></span>
+            <span>Creating account...</span>
+          </span>
+        }
       </button>
     </form>
 

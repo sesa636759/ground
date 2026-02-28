@@ -84,7 +84,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -132,7 +132,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
 
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+  this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }

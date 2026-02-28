@@ -121,12 +121,14 @@
       <button class="btn-primary">Target Element</button>
     </ui-popover>
 
+  @if (showCode) {
     <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode"
+      code
+      [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
+  }
   </div>
 </app-playground>

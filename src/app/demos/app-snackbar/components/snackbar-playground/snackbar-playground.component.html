@@ -112,16 +112,29 @@
       [attr.card-stack]="pgConfig.cardStack ? '' : null"
     ></ui-snackbar>
 
-    <ui-button (click)="showSnackbar()" label="Trigger Snackbar" variant="primary"></ui-button>
-    <ui-button (click)="clearAll()" label="Clear All" variant="secondary"></ui-button>
+    <ui-button
+      class="btn-primary"
+      variant="primary"
+      (click)="showSnackbar()"
+      label="Show Snackbar"
+    ></ui-button>
+    <ui-button
+      class="btn-secondary"
+      variant="secondary"
+      (click)="clearAll()"
+      label="Clear All"
+    ></ui-button>
+
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
   </div>
 
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    label="Generated Code"
-    activeLang="html"
-    [expanded]="true"
-  ></ui-code-preview>
+ 
 </app-playground>

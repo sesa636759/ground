@@ -3,36 +3,51 @@
 
   <div class="card-header">
     <div class="comp-avatar">
-      <ui-icon *ngIf="icon" [name]="icon" [library]="iconLibrary" size="22" color="white"></ui-icon>
-      <span *ngIf="!icon">{{ label.charAt(0) }}</span>
+      @if (icon) {
+        <ui-icon [name]="icon" [library]="iconLibrary" size="22" color="white"></ui-icon>
+      }
+      @if (!icon) {
+        <span>{{ label.charAt(0) }}</span>
+      }
     </div>
     <div class="comp-title-area">
       <h3 class="comp-name">{{ label }}</h3>
-      <span class="comp-meta" *ngIf="category">{{ category }}</span>
+      @if (category) {
+        <span class="comp-meta">{{ category }}</span>
+      }
     </div>
-    <span *ngIf="badge" class="status-badge">{{ badge }}</span>
+    @if (badge) {
+      <span class="status-badge">{{ badge }}</span>
+    }
   </div>
 
-  <div class="card-preview-container" *ngIf="viewMode !== 'list'">
-    <div class="card-preview" *ngIf="!imageUrl" [innerHTML]="previewSvg"></div>
-    <img *ngIf="imageUrl" [src]="imageUrl" [alt]="label" class="card-image" />
-    <div class="preview-overlay">
-      <button class="explore-btn">
-        <span>Explore Demo</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
+
+  @if (viewMode !== 'list') {
+    <div class="card-preview-container">
+      @if (!imageUrl) {
+        <div class="card-preview" [innerHTML]="previewSvg"></div>
+      }
+      @if (imageUrl) {
+        <img [src]="imageUrl" [alt]="label" class="card-image" />
+      }
+      <div class="preview-overlay">
+        <button class="explore-btn">
+          <span>Explore Demo</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
+  }
 
   <div class="card-footer" *ngIf="description">
     <p class="card-description">{{ description }}</p>

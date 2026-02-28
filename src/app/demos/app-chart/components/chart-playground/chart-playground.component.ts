@@ -55,14 +55,14 @@ export class ChartPlaygroundComponent implements AfterViewInit {
   };
 
   chartDataJson = JSON.stringify(this.chartData);
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+  this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -83,13 +83,13 @@ export class ChartPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());;
   }
 
   resetConfig() {

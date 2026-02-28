@@ -1,3 +1,4 @@
+
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   styleUrl: './tabs-playground.component.scss',
 })
 export class TabsPlaygroundComponent implements OnInit {
+    public eventLog: Array<any> = [];
   // Playground State
   pgConfig = {
     orientation: 'horizontal',

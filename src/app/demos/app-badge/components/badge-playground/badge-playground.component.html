@@ -116,8 +116,12 @@
       [attr.icon]="pgConfig.icon"
     >
       <div class="badge-target">
-        <span *ngIf="!pgConfig.icon">✉️</span>
-        <span *ngIf="pgConfig.icon">{{ pgConfig.icon }}</span>
+        @if (!pgConfig.icon) {
+          <span>✉️</span>
+        }
+        @if (pgConfig.icon) {
+          <span>{{ pgConfig.icon }}</span>
+        }
       </div>
     </ui-badge>
 

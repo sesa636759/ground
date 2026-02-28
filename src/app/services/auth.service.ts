@@ -156,7 +156,7 @@ export class AuthService {
 
   async changePassword(
     currentPassword: string,
-    newPassword: string,
+    _newPassword: string,
   ): Promise<{ success: boolean; message: string }> {
     await this.delay(1000);
 

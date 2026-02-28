@@ -76,13 +76,15 @@
         </ng-template>
       </ui-picklist>
 
-      <ui-code-preview
-        *ngIf="showCode"
-        [htmlCode]="generatedCode()"
-        [label]="'Generated Code'"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
     </div>
   </app-playground>
 </div>

@@ -5,7 +5,7 @@
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  AfterViewInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -65,14 +65,14 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
     { label: 'Dark', value: 'dark' },
   ];
 
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -97,13 +97,13 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

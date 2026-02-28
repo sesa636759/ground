@@ -65,7 +65,7 @@ export class StackPlaygroundComponent implements AfterViewInit {
     { label: 'Space Between', value: 'space-between' },
   ];
 
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -94,13 +94,13 @@ export class StackPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

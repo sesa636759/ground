@@ -57,7 +57,21 @@
             [value]="searchQuery()"
             (input)="onSearchInput($event)"
           />
-          <button class="clear-btn" *ngIf="searchQuery()" (click)="clearSearch()">
+          @if (searchQuery()) {
+            <button class="clear-btn" (click)="clearSearch()">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          }
             <svg
               width="16"
               height="16"
@@ -69,7 +83,7 @@
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
-          </button>
+    
         </div>
 
         <div class="view-toggle">
@@ -139,9 +153,9 @@
               <ui-icon [name]="category.icon" [library]="category.iconLibrary"></ui-icon>
               <span class="menu-label">{{ category.label }}</span>
             </div>
-            <span class="menu-count" *ngIf="category.children?.length">{{
-              category.children?.length
-            }}</span>
+            @if (category.children?.length) {
+              <span class="menu-count">{{ category.children?.length }}</span>
+            }
           </button>
         </nav>
       </div>
@@ -186,7 +200,8 @@
       </div>
 
       <!-- Empty State -->
-      <div *ngIf="filteredCategories().length === 0" class="empty-state glass-panel">
+      @if (filteredCategories().length === 0) {
+        <div class="empty-state glass-panel">
         <div class="empty-icon">
           <svg
             width="48"
@@ -210,6 +225,7 @@
         </p>
         <button class="reset-btn" (click)="clearSearch()">Clear Search</button>
       </div>
+    }
     </main>
   </div>
 </div>

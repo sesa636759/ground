@@ -192,7 +192,7 @@ export class TreeDiagramPlaygroundComponent {
   }
 
   getCurvedPath(e: { x1: number; y1: number; x2: number; y2: number }): string {
-    const mx = (e.x1 + e.x2) / 2;
+    //const mx = (e.x1 + e.x2) / 2;
     const my = (e.y1 + e.y2) / 2;
     if (this.cfg.orientation === 'horizontal') {
       return `M${e.x1},${e.y1} C${e.x1 + 40},${e.y1} ${e.x2 - 40},${e.y2} ${e.x2},${e.y2}`;

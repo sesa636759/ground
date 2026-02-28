@@ -1,8 +1,7 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
+    ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,

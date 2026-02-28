@@ -88,12 +88,18 @@
         class="btn-primary btn-large"
         [disabled]="loading()"
       >
-        <span *ngIf="!loading()">Sign In</span>
-        <span *ngIf="loading()" class="loading-content">
+        @if (!loading()) {
+          <span>Sign In</span>
+        }
+        @if (loading()) {
+          <span class="loading-content">
           <span class="spinner"></span>
           <span>Signing in...</span>
-        </span>
+          </span>
+        }
       </button>
+    
+    |
     </form>
 
     <!-- Divider -->

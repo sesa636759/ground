@@ -1,8 +1,6 @@
 import {
   Component,
   Input,
-  Output,
-  EventEmitter,
   CUSTOM_ELEMENTS_SCHEMA,
   AfterViewInit,
   OnDestroy,
@@ -31,25 +29,27 @@ import { CommonModule } from '@angular/common';
     <aside class="examples-sidebar">
       <div class="sidebar-title">{{ title }}</div>
 
-      <div *ngIf="useAnchor; else navList" class="sidebar-nav">
-        <ui-anchor
-          [attr.links]="anchorLinks"
-          [attr.scroll-container]="scrollContainer"
-          type="line"
-          show-progress
-        ></ui-anchor>
-      </div>
-
-      <ng-template #navList>
+      @if (useAnchor) {
+        <div class="sidebar-nav">
+          <ui-anchor
+            [attr.links]="anchorLinks"
+            [attr.scroll-container]="scrollContainer"
+            type="line"
+            show-progress
+          ></ui-anchor>
+        </div>
+      } @else {
         <ul class="nav-list" *ngIf="variants && variants.length > 0">
           <li *ngFor="let variant of variants">
             <a (click)="scrollToSection(variant.id)">
-              <span class="nav-icon" *ngIf="variant.icon">{{ variant.icon }}</span>
+              @if (variant.icon) {
+                <span class="nav-icon">{{ variant.icon }}</span>
+              }
               {{ variant.label || variant.title || variant.name || variant.id }}
             </a>
           </li>
         </ul>
-      </ng-template>
+      }
     </aside>
   `,
 })

@@ -76,7 +76,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode: string = '';
+  generatedCode = signal('');
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -84,7 +84,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -106,7 +106,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -124,7 +124,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   jsonOptions = JSON.stringify(this.playgroundOptions);

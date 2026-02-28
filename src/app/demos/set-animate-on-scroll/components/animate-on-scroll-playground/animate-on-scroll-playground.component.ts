@@ -7,8 +7,8 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-animate-on-scroll-playground',
@@ -124,7 +124,7 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     this.generatedCode.set(code);
   }
 
-  onAnimate(event: any) {
+  onAnimate(_event: any) {
     this.logEvent(`Animation triggered: ${this.pgConfig.animation}`);
   }
 

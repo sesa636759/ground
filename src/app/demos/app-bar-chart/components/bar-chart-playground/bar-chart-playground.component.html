@@ -105,8 +105,7 @@
       </div>
     </div>
     <div class="action-buttons">
-      <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
     </div>
   </div>
   <div
@@ -136,12 +135,13 @@
     ></ui-bar-chart>
   </div>
 
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    [expanded]="true"
-  ></ui-code-preview>
+    <ng-container [ngIf]="showCode">
+      <ui-code-preview
+        [htmlCode]="generatedCode()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </ng-container>
+  </div>
 </app-playground>

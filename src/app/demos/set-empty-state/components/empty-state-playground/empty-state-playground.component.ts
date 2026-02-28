@@ -10,11 +10,11 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/app-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-empty-state-playground',
@@ -102,7 +102,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
     this.logEvent(`Action clicked: ${event.detail.action}`);
   }
 
-  onBackClick(event: any) {
+  onBackClick(_event: any) {
     this.logEvent('Back button clicked');
   }
 
