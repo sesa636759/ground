@@ -26,7 +26,12 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    // Redirect to home if already logged in
+    if (this.authService.isAuthenticated && typeof this.authService.isAuthenticated === 'function' ? this.authService.isAuthenticated() : this.authService.isAuthenticated) {
+      this.router.navigate(['/home']);
+    }
+  }
 
   async onSubmit(): Promise<void> {
     if (!this.credentials.email || !this.credentials.password) {
@@ -41,7 +46,9 @@ export class LoginComponent {
       const result = await this.authService.login(this.credentials);
 
       if (result.success) {
-        this.router.navigate(['/profile']);
+        const redirectUrl = localStorage.getItem('redirectUrl') || '/home';
+        localStorage.removeItem('redirectUrl');
+        this.router.navigate([redirectUrl]);
       } else {
         this.error.set(result.message);
       }
