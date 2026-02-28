@@ -40,6 +40,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
   },
+  {
+    path: 'documentation/:section',
+    loadComponent: () =>
+      import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
+  },
 
   {
     path: 'component-documentation',

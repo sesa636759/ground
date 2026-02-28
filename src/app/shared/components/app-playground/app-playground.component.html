@@ -4,6 +4,19 @@
     <ui-accordion [items]="stringifiedItems" [defaultOpen]="stringifiedDefaultOpen" multiple>
       <ng-content></ng-content>
     </ui-accordion>
+
+    <div class="playground-controls-actions">
+      <ui-button
+        class="reset-btn"
+        icon="rotate-ccw"
+        iconPosition="left"
+        [iconLibrary]="'lucide'"
+        variant="secondary"
+        (click)="reset.emit()"
+        label="Reset Configuration"
+        style="width: 100%"
+      ></ui-button>
+    </div>
   </div>
 
   <!-- Preview Side -->
@@ -15,14 +28,6 @@
     <!-- Actions/Reset area -->
     <div class="preview-actions">
       <ng-content select="[actions]"></ng-content>
-      <ui-button
-        icon="rotate-ccw"
-        iconPosition="left"
-        [iconLibrary]="'lucide'"
-        variant="secondary"
-        (click)="reset.emit()"
-        label="Reset Configuration"
-      ></ui-button>
     </div>
 
     <!-- Event Log Slot -->

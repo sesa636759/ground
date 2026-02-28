@@ -1,6 +1,6 @@
 import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import {
@@ -25,6 +25,7 @@ export class DocumentationComponent implements OnInit {
   isSearchFocused = signal(false);
   activeTab = signal<'all' | 'guides' | 'components' | 'utilities'>('all');
   selectedGuideId = signal<string>('');
+  isHubArea = signal(true);
 
   components = signal<ComponentDocumentation[]>([]);
 
@@ -73,12 +74,23 @@ export class DocumentationComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private componentDocsService: ComponentDocsService,
     private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
     this.components.set(this.componentDocsService.getAllComponents());
+    this.route.paramMap.subscribe((params) => {
+      const section = params.get('section');
+      if (section && ['components', 'guides', 'utilities'].includes(section)) {
+        this.activeTab.set(section as any);
+        this.isHubArea.set(false);
+      } else {
+        this.activeTab.set('all');
+        this.isHubArea.set(true);
+      }
+    });
   }
 
   getPreviewSvg(id: string): SafeHtml {
@@ -110,10 +122,18 @@ export class DocumentationComponent implements OnInit {
     return JSON.stringify(items);
   });
 
+  navigateTo(section: string) {
+    if (section === 'all') {
+      this.router.navigate(['/documentation']);
+    } else {
+      this.router.navigate(['/documentation', section]);
+    }
+  }
+
   selectGuide(id: string) {
     this.selectedGuideId.set(id);
-    this.activeTab.set('guides');
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+    this.router.navigate(['/documentation', 'guides']);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
   }
 
   getSelectedGuide() {

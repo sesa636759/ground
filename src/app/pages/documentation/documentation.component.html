@@ -1,6 +1,6 @@
 <div class="docs-hub-wrapper animate-in">
-  <!-- 🌟 Premium Search Hero -->
-  <section class="hub-hero">
+  <!-- 🌟 Premium Search Hero (Only shown on the Hub) -->
+  <section class="hub-hero" *ngIf="isHubArea()">
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-grid"></div>
@@ -67,12 +67,24 @@
   </section>
 
   <div class="hub-main-content">
+    <!-- 📄 Page Title for Sub Routes -->
+    <div class="sub-hero-header animate-slide-up" *ngIf="!isHubArea()">
+      <div class="breadcrumb">
+        <button class="back-link" (click)="navigateTo('all')">
+          <i class="fas fa-arrow-left"></i> Back to Hub
+        </button>
+      </div>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'components'">Components Registry</h1>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'guides'">Guides & Documentation</h1>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'utilities'">Design Tokens</h1>
+    </div>
+
     <!-- 🧭 Quick Access Navigation -->
-    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s">
+    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s" *ngIf="isHubArea()">
       <button
         class="nav-card"
-        [class.active]="activeTab() === 'all'"
-        (click)="activeTab.set('all')"
+        [class.active]="activeTab() === 'components'"
+        (click)="navigateTo('components')"
       >
         <div class="card-icon gradient-blue"><i class="fas fa-th-large"></i></div>
         <div class="card-text">
@@ -84,7 +96,7 @@
       <button
         class="nav-card"
         [class.active]="activeTab() === 'guides'"
-        (click)="activeTab.set('guides')"
+        (click)="navigateTo('guides')"
       >
         <div class="card-icon gradient-purple"><i class="fas fa-map"></i></div>
         <div class="card-text">
@@ -96,7 +108,7 @@
       <button
         class="nav-card"
         [class.active]="activeTab() === 'utilities'"
-        (click)="activeTab.set('utilities')"
+        (click)="navigateTo('utilities')"
       >
         <div class="card-icon gradient-green"><i class="fas fa-tools"></i></div>
         <div class="card-text">
@@ -113,7 +125,7 @@
         class="guides-grid"
         *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
       >
-        <div class="section-heading" *ngIf="activeTab() === 'all'">Guides</div>
+        <div class="section-heading" *ngIf="isHubArea() || searchText()">Guides</div>
         <ui-accordion
           variant="card-list"
           selected-header-color="#10b981"
@@ -215,11 +227,8 @@
       </div>
 
       <!-- 💎 Component Grid Logic -->
-      <div
-        class="components-section"
-        *ngIf="activeTab() === 'all' || activeTab() === 'components' || searchText()"
-      >
-        <div class="section-heading">
+      <div class="components-section" *ngIf="activeTab() === 'components' || searchText()">
+        <div class="section-heading" *ngIf="isHubArea() || searchText()">
           {{ searchText() ? 'Search Results' : 'Library Registry' }}
           <span class="results-count" *ngIf="searchText()"
             >({{ filteredComponents().length }} found)</span
