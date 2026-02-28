@@ -46,7 +46,7 @@ export const categoryNavItems: NavItem[] = [
   {
     id: 'charts',
     label: 'Charts',
-    icon: 'trending-up',
+    icon: 'chart-no-axes-combined',
     iconLibrary: 'lucide',
     children: [
       { id: 'bar-chart', label: 'Bar Chart', icon: 'bar-chart-2', iconLibrary: 'lucide' },

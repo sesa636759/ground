@@ -1,0 +1,199 @@
+﻿[33mΓ¥»[39m Building...
+[32mΓ£ö[39m Building...
+[1mInitial chunk files[22m  [2m | [22m[1mNames[22m                               [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-AFPMIVF2.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m[36m193.85 kB[39m[2m | [22m               [36m55.64 kB[39m
+[32mmain-OLKVIHDC.js[39m     [2m | [22m[2mmain[22m                                [2m | [22m[36m138.26 kB[39m[2m | [22m               [36m23.46 kB[39m
+[32mchunk-6WH7ZHPQ.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m91.87 kB[39m[2m | [22m               [36m23.09 kB[39m
+[32mchunk-XMOMMXKV.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m85.59 kB[39m[2m | [22m               [36m23.11 kB[39m
+[32mpolyfills-DOYHMSTV.js[39m[2m | [22m[2mpolyfills[22m                           [2m | [22m [36m35.73 kB[39m[2m | [22m               [36m11.58 kB[39m
+[32mstyles-FMEOQBZB.css[39m  [2m | [22m[2mstyles[22m                              [2m | [22m [36m33.90 kB[39m[2m | [22m                [36m5.59 kB[39m
+[32mchunk-Z2WP5KCX.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m32.10 kB[39m[2m | [22m               [36m10.72 kB[39m
+[32mchunk-OSRZDIUB.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m28.21 kB[39m[2m | [22m                [36m9.83 kB[39m
+[32mchunk-4WUYMSYQ.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m22.93 kB[39m[2m | [22m                [36m7.93 kB[39m
+[32mchunk-PW5MAKFT.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m16.71 kB[39m[2m | [22m                [36m4.79 kB[39m
+[32mchunk-3KJCIUT5.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m11.91 kB[39m[2m | [22m                [36m2.05 kB[39m
+[32mchunk-NO2X3AZQ.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m  [36m3.01 kB[39m[2m | [22m              [36m972 bytes[39m
+[32mchunk-RVSZLM5R.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m  [36m2.23 kB[39m[2m | [22m              [36m728 bytes[39m
+[32mchunk-RINRXYSM.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m[36m962 bytes[39m[2m | [22m              [36m962 bytes[39m
+
+[1m [22m                    [2m | [22m[1mInitial total[22m                       [2m | [22m[1m[93m697.27 kB[39m[22m[2m | [22m              [1m180.45 kB[22m
+
+[1mLazy chunk files[22m     [2m | [22m[1mNames[22m                               [2m | [22m [1mRaw size[22m[2m | [22m[1mEstimated transfer size[22m
+[32mchunk-54JXOIS2.js[39m    [2m | [22m[2mapp-chart-entry[22m                     [2m | [22m[36m207.99 kB[39m[2m | [22m               [36m61.97 kB[39m
+[32mchunk-CEV6EAAK.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m[36m133.69 kB[39m[2m | [22m               [36m26.43 kB[39m
+[32mchunk-CQFSLMP4.js[39m    [2m | [22m[2mui-advanced-data-table-entry[22m        [2m | [22m[36m111.85 kB[39m[2m | [22m               [36m21.27 kB[39m
+[32mchunk-XFE4V3PX.js[39m    [2m | [22m[2m-[22m                                   [2m | [22m [36m66.82 kB[39m[2m | [22m                [36m7.16 kB[39m
+[32mchunk-UY3TZZFF.js[39m    [2m | [22m[2mset-anchor-demo-component[22m           [2m | [22m [36m63.32 kB[39m[2m | [22m               [36m11.83 kB[39m
+[32mchunk-X3LMO36E.js[39m    [2m | [22m[2msettings-component[22m                  [2m | [22m [36m62.96 kB[39m[2m | [22m                [36m9.51 kB[39m
+[32mchunk-SOP3SFA4.js[39m    [2m | [22m[2mset-modern-sidebar-demo-component[22m   [2m | [22m [36m61.23 kB[39m[2m | [22m               [36m11.21 kB[39m
+[32mchunk-CCLUMY26.js[39m    [2m | [22m[2mset-animate-on-scroll-demo-component[22m[2m | [22m [36m56.57 kB[39m[2m | [22m               [36m10.27 kB[39m
+[32mchunk-RRGX3FAB.js[39m    [2m | [22m[2mset-carousel-demo-component[22m         [2m | [22m [36m53.46 kB[39m[2m | [22m                [36m9.05 kB[39m
+[32mchunk-CMEXU5GJ.js[39m    [2m | [22m[2mset-tooltip-demo-component[22m          [2m | [22m [36m52.74 kB[39m[2m | [22m                [36m9.64 kB[39m
+[32mchunk-5TIIC6KQ.js[39m    [2m | [22m[2mset-avatar-demo-component[22m           [2m | [22m [36m52.08 kB[39m[2m | [22m               [36m10.17 kB[39m
+[32mchunk-WINX2U2M.js[39m    [2m | [22m[2mapp-layout-manager-entry[22m            [2m | [22m [36m50.65 kB[39m[2m | [22m                [36m9.11 kB[39m
+[32mchunk-X545CTGT.js[39m    [2m | [22m[2mapp-code-editor-entry[22m               [2m | [22m [36m49.60 kB[39m[2m | [22m               [36m11.52 kB[39m
+[32mchunk-LUNO3XNO.js[39m    [2m | [22m[2mapp-dialog-box-demo-component[22m       [2m | [22m [36m48.41 kB[39m[2m | [22m                [36m9.15 kB[39m
+[32mchunk-2ALLCBC6.js[39m    [2m | [22m[2mapp-pagination-demo-component[22m       [2m | [22m [36m48.06 kB[39m[2m | [22m                [36m8.12 kB[39m
+[2m...and 295 more lazy chunks files. Use "--verbose" to show all the files.[22m
+
+Application bundle generation complete. [17.566 seconds] - 2026-02-28T09:12:25.912Z
+
+node.exe : [1m[33m[33mΓû▓ 
+[43;33m[[43;30mWARNING[43;33
+m][0m [1mNG8113: ComponentDo
+cumentationComponent is not 
+used within the template of 
+AppAnchorDemoComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+At C:\Users\sesa636759\AppData
+\Roaming\npm\ng.ps1:24 char:5
++     & "node$exe"  "$basedir/
+node_modules/@angular/cli/bin/
+ng.js" $arg ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: ([1m[33m  
+  [33mΓ...r-compiler][0m:   
+ String) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+
+    src/app/demos/app-anchor/a
+pp-anchor-demo.component.ts:21
+:4:
+[37m      21 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: C
+omponentDocumentationComponent
+ is not used within the 
+template of 
+SetAnchorDemoComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-anchor/s
+et-anchor-demo.component.ts:20
+:4:
+[37m      20 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: C
+omponentDocumentationComponent
+ is not used within the 
+template of SetEmptyStateDemoC
+omponent[0m [1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-empty-st
+ate/set-empty-state-demo.compo
+nent.ts:20:4:
+[37m      20 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: A
+ppCheckboxValueAccessorDirecti
+ve is not used within the 
+template of LayoutManagerPlayg
+roundComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-layout-m
+anager/components/layout-manag
+er-playground/layout-manager-p
+layground.component.ts:22:4:
+[37m      22 Γöé     [32mApp
+CheckboxValueAccessorDirective
+[37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: C
+omponentDocumentationComponent
+ is not used within the 
+template of 
+SetMasonryDemoComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-masonry/
+set-masonry-demo.component.ts:
+20:4:
+[37m      20 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: C
+omponentDocumentationComponent
+ is not used within the 
+template of SetModernSidebarDe
+moComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-modern-s
+idebar/set-modern-sidebar-demo
+.component.ts:19:4:
+[37m      19 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mNG8113: C
+omponentDocumentationComponent
+ is not used within the 
+template of 
+SetSplitterDemoComponent[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/demos/set-splitter
+/set-splitter-demo.component.t
+s:19:4:
+[37m      19 Γöé     [32mCom
+ponentDocumentationComponent[
+37m,
+         Γò╡     [32m~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;30mWARN
+ING[43;33m][0m [1mbundle 
+initial exceeded maximum 
+budget. Budget 500.00 kB was 
+not met by 197.27 kB with a 
+total of 697.27 kB.[0m
+
+[39m[22m
+Output location: C:\Praveen\Personal-repo\Duplicate\AngularGround\dist\ground
+

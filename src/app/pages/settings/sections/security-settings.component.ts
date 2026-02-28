@@ -94,7 +94,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="twoFactorEnabled()"
                 variant="success"
-                (switchChange)="twoFactorEnabled.set($event.detail.checked)"
+                (switchChange)="twoFactorEnabled.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -108,7 +108,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="profileVisibility()"
                 variant="primary"
-                (switchChange)="profileVisibility.set($event.detail.checked)"
+                (switchChange)="profileVisibility.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -120,7 +120,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="activityStatus()"
                 variant="primary"
-                (switchChange)="activityStatus.set($event.detail.checked)"
+                (switchChange)="activityStatus.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -132,7 +132,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="searchIndexing()"
                 variant="warning"
-                (switchChange)="searchIndexing.set($event.detail.checked)"
+                (switchChange)="searchIndexing.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>

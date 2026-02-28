@@ -8,11 +8,12 @@ import {
   ComponentDocumentation,
 } from '../../services/component-docs.service';
 import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
+import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
   selector: 'app-documentation',
   standalone: true,
-  imports: [CommonModule, AppMasonryComponent],
+  imports: [CommonModule, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './documentation.component.html',
   styleUrl: './documentation.component.scss',
@@ -81,7 +82,8 @@ export class DocumentationComponent implements OnInit {
   }
 
   getPreviewSvg(id: string): SafeHtml {
-    const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
+    const normalizedId = id.split('/').pop() || id;
+    const svg = COMPONENT_SVG_MAP[normalizedId] ?? COMPONENT_SVG_MAP['default'];
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
@@ -96,6 +98,17 @@ export class DocumentationComponent implements OnInit {
     this.searchText.set('');
     input.focus();
   }
+
+  flatGuideAccordionItems = computed(() => {
+    const items = this.filteredGuides().map((g) => ({
+      id: g.id,
+      title: g.title,
+      subtitle: g.desc,
+      icon: g.icon.replace('fas fa-', ''),
+      iconLibrary: g.icon.includes('fas') ? 'fontawesome' : 'default',
+    }));
+    return JSON.stringify(items);
+  });
 
   selectGuide(id: string) {
     this.selectedGuideId.set(id);

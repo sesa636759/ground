@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="emailProductUpdates()"
                 variant="success"
-                (switchChange)="emailProductUpdates.set($event.detail.checked)"
+                (switchChange)="emailProductUpdates.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -44,7 +44,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="emailSecurityAlerts()"
                 variant="success"
-                (switchChange)="emailSecurityAlerts.set($event.detail.checked)"
+                (switchChange)="emailSecurityAlerts.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -56,7 +56,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="emailMarketing()"
                 variant="success"
-                (switchChange)="emailMarketing.set($event.detail.checked)"
+                (switchChange)="emailMarketing.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>
@@ -77,7 +77,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="pushBrowser()"
                 variant="primary"
-                (switchChange)="pushBrowser.set($event.detail.checked)"
+                (switchChange)="pushBrowser.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -89,7 +89,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="pushImportantOnly()"
                 variant="primary"
-                (switchChange)="pushImportantOnly.set($event.detail.checked)"
+                (switchChange)="pushImportantOnly.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>
@@ -110,7 +110,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="inAppActivity()"
                 variant="info"
-                (switchChange)="inAppActivity.set($event.detail.checked)"
+                (switchChange)="inAppActivity.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -122,7 +122,7 @@ import { CommonModule } from '@angular/common';
               <ui-switch
                 [checked]="inAppSystem()"
                 variant="info"
-                (switchChange)="inAppSystem.set($event.detail.checked)"
+                (switchChange)="inAppSystem.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>

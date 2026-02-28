@@ -13,11 +13,12 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';
 import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
+import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppMasonryComponent],
+  imports: [CommonModule, FormsModule, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
@@ -96,12 +97,105 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   }
 
   getPreviewSvg(id: string): SafeHtml {
-    const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
+    const normalizedId = id.split('/').pop() || id;
+    const svg = COMPONENT_SVG_MAP[normalizedId] ?? COMPONENT_SVG_MAP['default'];
     // Ensures SVG fits properly in preview box by removing predefined sizing limits
     const cleanedSvg = svg
       ?.replace(/width="[0-9]+"/, 'width="100%"')
       .replace(/height="[0-9]+"/, 'height="100%"');
     return this.sanitizer.bypassSecurityTrustHtml(cleanedSvg || '');
+  }
+
+  getImageUrl(id: string): string | undefined {
+    const normalizedId = id.split('/').pop() || id;
+    const downloadedCharts = [
+      'bar-chart',
+      'line-chart',
+      'pie-chart',
+      'donut-chart',
+      'area-chart',
+      'polar-area-chart',
+      'radial-bar',
+      'sparkline',
+      'timeline-range',
+      'candlestick-chart',
+      'ohlc-chart',
+      'rose-chart',
+      'gantt-chart',
+      'waffle-chart',
+      'tree-diagram',
+      'step-line-chart',
+      'waterfall-chart',
+      'funnel-chart',
+      'lollipop-chart',
+    ];
+    if (downloadedCharts.includes(normalizedId)) {
+      return `assets/charts/${normalizedId}.png`;
+    }
+
+    const downloadedComponents = [
+      'accordion',
+      'advanced-data-table',
+      'anchor',
+      'animate-on-scroll',
+      'aside',
+      'avatar-group',
+      'avatar',
+      'badge',
+      'breadcrumb',
+      'button-toggle',
+      'button',
+      'card',
+      'carousel',
+      'cascade-select',
+      'chart',
+      'checkbox',
+      'chip',
+      'code-editor',
+      'context-menu',
+      'dashboard',
+      'dialog-box',
+      'divider',
+      'dock',
+      'dropdown',
+      'horizontal-nav',
+      'knob',
+      'layout-manager',
+      'meter-group',
+      'nav-bar',
+      'pagination',
+      'panel',
+      'pattern-input',
+      'picklist',
+      'pill',
+      'popover',
+      'range-slider',
+      'rating',
+      'scroll-top',
+      'skeleton',
+      'smart-menu',
+      'smart-stepper',
+      'snackbar',
+      'speed-dial',
+      'speedometer',
+      'split-button',
+      'stack',
+      'stepper',
+      'switch',
+      'tabs',
+      'tag',
+      'timeline',
+      'timer',
+      'top-bar',
+      'transfer-list',
+      'tree-list',
+    ];
+
+    if (downloadedComponents.includes(normalizedId)) {
+      return `assets/components/${normalizedId}.jpg`;
+    }
+
+    return undefined;
   }
 
   getComponentDescription(id: string): string {

@@ -114,18 +114,104 @@
         *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
       >
         <div class="section-heading" *ngIf="activeTab() === 'all'">Guides</div>
-        <div
-          class="guide-card glass-card"
-          *ngFor="let guide of filteredGuides()"
-          (click)="selectGuide(guide.id)"
+        <ui-accordion
+          variant="card-list"
+          selected-header-color="#10b981"
+          [items]="flatGuideAccordionItems()"
+          (afterOpen)="selectGuide($any($event).detail.itemId || '')"
         >
-          <div class="guide-icon"><i [class]="guide.icon"></i></div>
-          <div class="guide-info">
-            <h3>{{ guide.title }}</h3>
-            <p>{{ guide.desc }}</p>
+          <!-- Slots for accordion items -->
+          <div slot="content-introduction" class="guide-content-viewer nested-guide">
+            <article class="doc-article intro-view">
+              <div class="article-header">
+                <h2>Introduction</h2>
+                <div class="separator-premium"></div>
+              </div>
+              <p class="lead-text">
+                GROUND UI is an elite design system built on atomic principles, engineered for
+                maximum performance and visual sophistication.
+              </p>
+
+              <div class="principle-grid">
+                <div class="principle-card">
+                  <i class="fas fa-microchip"></i>
+                  <h4>Performance First</h4>
+                  <p>Optimized for Core Web Vitals with zero overhead architectures.</p>
+                </div>
+                <div class="principle-card">
+                  <i class="fas fa-universal-access"></i>
+                  <h4>Accessible</h4>
+                  <p>WCAG 2.1 compliant components that everyone can use intuitively.</p>
+                </div>
+                <div class="principle-card">
+                  <i class="fas fa-sync"></i>
+                  <h4>Consistent</h4>
+                  <p>Shared tokens ensure every component feels like part of one family.</p>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="guide-arrow"><i class="fas fa-chevron-right"></i></div>
-        </div>
+
+          <div slot="content-installation" class="guide-content-viewer nested-guide">
+            <article class="doc-article">
+              <div class="article-header">
+                <h2>Installation</h2>
+                <div class="separator-premium"></div>
+              </div>
+              <div class="step-vessel">
+                <div class="step-num-ring">01</div>
+                <div class="step-detail">
+                  <h3>Install Core Package</h3>
+                  <ui-code-preview
+                    active-lang="html"
+                    html-code="npm install @enterprise/ui-ground"
+                    label="Terminal"
+                  ></ui-code-preview>
+                </div>
+              </div>
+              <div class="step-vessel">
+                <div class="step-num-ring">02</div>
+                <div class="step-detail">
+                  <h3>Setup Styles</h3>
+                  <p>Add the following to your global <code>styles.scss</code> file:</p>
+                  <ui-code-preview
+                    active-lang="css"
+                    css-code='@use "@enterprise/ui-ground/theme";'
+                    label="styles.scss"
+                  ></ui-code-preview>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div slot="content-usage" class="guide-content-viewer nested-guide">
+            <article class="doc-article">
+              <div class="article-header">
+                <h2>Basic Usage</h2>
+                <div class="separator-premium"></div>
+              </div>
+              <div class="usage-pattern">
+                <p>
+                  GROUND components are standalone. Import only what you need to keep your bundles
+                  lean.
+                </p>
+                <ui-code-preview
+                  active-lang="ts"
+                  ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
+
+&#64;Component({{ '{' }}
+  selector: 'app-home',
+  standalone: true,
+  imports: [UiButton],
+  template: `<ui-button variant='primary'>Action</ui-button>`
+{{ '}' }})"
+                  label="App Component"
+                  expanded="true"
+                ></ui-code-preview>
+              </div>
+            </article>
+          </div>
+        </ui-accordion>
       </div>
 
       <!-- 💎 Component Grid Logic -->
@@ -146,32 +232,18 @@
           [rowGap]="24"
           [breakpoints]="masonryBreakpoints"
         >
-          <div
-            class="comp-card glass-card animate-in"
+          <app-component-card
             *ngFor="let comp of filteredComponents()"
-            (click)="viewComponentDoc(comp.id)"
-          >
-            <div class="card-header">
-              <div class="comp-symbol">
-                <ui-icon
-                  [name]="getComponentIcon(comp.id)"
-                  library="lucide"
-                  size="22"
-                  color="white"
-                ></ui-icon>
-              </div>
-              <div class="comp-title">{{ comp.name }}</div>
-              <div class="status-indicator">READY</div>
-            </div>
-            <div class="card-preview" [innerHTML]="getPreviewSvg(comp.id)"></div>
-            <div class="card-body">
-              <p>{{ comp.shortDescription }}</p>
-            </div>
-            <div class="card-footer">
-              <span class="tag">Standalone</span>
-              <div class="view-action">Explore <i class="fas fa-arrow-right"></i></div>
-            </div>
-          </div>
+            [componentId]="comp.id"
+            [label]="comp.name"
+            category="Standalone"
+            [icon]="getComponentIcon(comp.id)"
+            iconLibrary="lucide"
+            badge="READY"
+            [description]="comp.shortDescription"
+            [previewSvg]="getPreviewSvg(comp.id)"
+            (cardClick)="viewComponentDoc($event)"
+          ></app-component-card>
         </ng-masonry-grid>
 
         <div class="empty-results" *ngIf="filteredComponents().length === 0 && searchText()">
@@ -182,100 +254,7 @@
         </div>
       </div>
 
-      <!-- 📂 Selected Guide Content (Standalone View) -->
-      <div class="guide-content-viewer animate-slide-up" *ngIf="selectedGuideId()">
-        <div class="viewer-header">
-          <button class="back-link" (click)="selectedGuideId.set('')">
-            <i class="fas fa-arrow-left"></i>
-            Back to Hub
-          </button>
-          <div class="viewer-meta">Guide / {{ getSelectedGuide()?.title }}</div>
-        </div>
-
-        <article class="doc-article intro-view" *ngIf="selectedGuideId() === 'introduction'">
-          <div class="article-header">
-            <h2>Introduction</h2>
-            <div class="separator-premium"></div>
-          </div>
-          <p class="lead-text">
-            GROUND UI is an elite design system built on atomic principles, engineered for maximum
-            performance and visual sophistication.
-          </p>
-
-          <div class="principle-grid">
-            <div class="principle-card">
-              <i class="fas fa-microchip"></i>
-              <h4>Performance First</h4>
-              <p>Optimized for Core Web Vitals with zero overhead architectures.</p>
-            </div>
-            <div class="principle-card">
-              <i class="fas fa-universal-access"></i>
-              <h4>Accessible</h4>
-              <p>WCAG 2.1 compliant components that everyone can use intuitively.</p>
-            </div>
-            <div class="principle-card">
-              <i class="fas fa-sync"></i>
-              <h4>Consistent</h4>
-              <p>Shared tokens ensure every component feels like part of one family.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="doc-article" *ngIf="selectedGuideId() === 'installation'">
-          <div class="article-header">
-            <h2>Installation</h2>
-            <div class="separator-premium"></div>
-          </div>
-          <div class="step-vessel">
-            <div class="step-num-ring">01</div>
-            <div class="step-detail">
-              <h3>Install Core Package</h3>
-              <ui-code-preview
-                active-lang="html"
-                html-code="npm install @enterprise/ui-ground"
-                label="Terminal"
-              ></ui-code-preview>
-            </div>
-          </div>
-          <div class="step-vessel">
-            <div class="step-num-ring">02</div>
-            <div class="step-detail">
-              <h3>Setup Styles</h3>
-              <p>Add the following to your global <code>styles.scss</code> file:</p>
-              <ui-code-preview
-                active-lang="css"
-                css-code='@use "@enterprise/ui-ground/theme";'
-                label="styles.scss"
-              ></ui-code-preview>
-            </div>
-          </div>
-        </article>
-
-        <article class="doc-article" *ngIf="selectedGuideId() === 'usage'">
-          <div class="article-header">
-            <h2>Basic Usage</h2>
-            <div class="separator-premium"></div>
-          </div>
-          <div class="usage-pattern">
-            <p>
-              GROUND components are standalone. Import only what you need to keep your bundles lean.
-            </p>
-            <ui-code-preview
-              active-lang="ts"
-              ts-code="import {{ '{' }} UiButton {{ '}' }} from '&#64;enterprise/ui-ground';
-
-&#64;Component({{ '{' }}
-  selector: 'app-home',
-  standalone: true,
-  imports: [UiButton],
-  template: `<ui-button variant='primary'>Action</ui-button>`
-{{ '}' }})"
-              label="App Component"
-              expanded="true"
-            ></ui-code-preview>
-          </div>
-        </article>
-      </div>
+      <!-- Guides now rendered inside accordion via slots -->
     </div>
   </div>
 

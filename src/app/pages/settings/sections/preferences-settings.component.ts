@@ -52,7 +52,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="animations()"
                 variant="primary"
-                (switchChange)="animations.set($event.detail.checked)"
+                (switchChange)="animations.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -64,7 +64,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="reduceMotion()"
                 variant="warning"
-                (switchChange)="reduceMotion.set($event.detail.checked)"
+                (switchChange)="reduceMotion.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>
@@ -144,7 +144,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="autoSave()"
                 variant="success"
-                (switchChange)="autoSave.set($event.detail.checked)"
+                (switchChange)="autoSave.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -156,7 +156,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="keyboardShortcuts()"
                 variant="primary"
-                (switchChange)="keyboardShortcuts.set($event.detail.checked)"
+                (switchChange)="keyboardShortcuts.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -168,7 +168,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="tooltips()"
                 variant="info"
-                (switchChange)="tooltips.set($event.detail.checked)"
+                (switchChange)="tooltips.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -180,7 +180,7 @@ import { FormsModule } from '@angular/forms';
               <ui-switch
                 [checked]="confirmDelete()"
                 variant="danger"
-                (switchChange)="confirmDelete.set($event.detail.checked)"
+                (switchChange)="confirmDelete.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>
