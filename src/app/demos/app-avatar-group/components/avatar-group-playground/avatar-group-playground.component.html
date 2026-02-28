@@ -1,50 +1,66 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="sizeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Max Display</label>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            [(ngModel)]="pgConfig.max"
-            (ngModelChange)="updateConfig()"
-          />
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Style</h3>
-        <div class="control-group">
-          <label>Shape</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.shape"
-            (ngModelChange)="updateConfig()"
-            [options]="shapeOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOptions"
+      ></ui-dropdown>
     </div>
-
-    <div class="action-buttons">
-      <ui-button class="btn-secondary" variant="secondary" (click)="resetConfig()">Reset</ui-button>
+    <div class="control-group">
+      <label>Max Display</label>
+      <input
+        type="number"
+        min="1"
+        max="10"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+        style="
+          width: 100%;
+          height: 36px;
+          border-radius: 8px;
+          border: 1px solid var(--border-color);
+          background: var(--surface-1);
+          color: var(--text-primary);
+          padding: 0 12px;
+        "
+      />
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <ui-button
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    "
+  >
     <ui-avatar-group
+      #avatarGroupElement
       [attr.size]="pgConfig.size"
       [attr.max]="pgConfig.max"
       [attr.shape]="pgConfig.shape"
@@ -55,12 +71,14 @@
       <ui-avatar label="EF" [attr.size]="pgConfig.size" [attr.shape]="pgConfig.shape"></ui-avatar>
       <ui-avatar label="GH" [attr.size]="pgConfig.size" [attr.shape]="pgConfig.shape"></ui-avatar>
     </ui-avatar-group>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>

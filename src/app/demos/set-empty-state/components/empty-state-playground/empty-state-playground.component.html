@@ -1,107 +1,158 @@
-﻿<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
->
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Type</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.type"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'No Data', value: 'no-data' },
-            { label: 'No Results', value: 'no-results' },
-            { label: 'Error', value: 'error' },
-            { label: '404 Not Found', value: '404' },
-            { label: 'Empty', value: 'empty' },
-            { label: 'Coming Soon', value: 'coming-soon' },
-            { label: 'Maintenance', value: 'maintenance' },
-            { label: 'Custom', value: 'custom' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Filled', value: 'filled' },
-            { label: 'Minimal', value: 'minimal' },
-            { label: 'Premium Glass', value: 'glass' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Size</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.size"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Small', value: 'small' },
-            { label: 'Medium', value: 'medium' },
-            { label: 'Large', value: 'large' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Alignment</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.align"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Left', value: 'left' },
-            { label: 'Center', value: 'center' },
-            { label: 'Right', value: 'right' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group full-width">
-        <label>Heading</label>
-        <app-input
-          type="text"
-          [(ngModel)]="pgConfig.heading"
-          (ngModelChange)="updateConfig()"
-          placeholder="Default"
-        />
-      </div>
-
-      <div class="control-group full-width">
-        <label>Message</label>
-        <textarea
-          [(ngModel)]="pgConfig.message"
-          (ngModelChange)="updateConfig()"
-          placeholder="Default"
-          rows="3"
-        ></textarea>
-      </div>
-
-      <div class="control-group full-width">
-        <label>Primary Action</label>
-        <app-input
-          type="text"
-          [(ngModel)]="pgConfig.primaryAction"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
-
-      <div class="control-group full-width">
-        <label>Secondary Action</label>
-        <app-input
-          type="text"
-          [(ngModel)]="pgConfig.secondaryAction"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
+﻿<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
+  <!-- General Section -->
+  <div slot="content-general" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'No Data', value: 'no-data' },
+          { label: 'No Results', value: 'no-results' },
+          { label: 'Error', value: 'error' },
+          { label: '404 Not Found', value: '404' },
+          { label: 'Empty', value: 'empty' },
+          { label: 'Coming Soon', value: 'coming-soon' },
+          { label: 'Maintenance', value: 'maintenance' },
+          { label: 'Custom', value: 'custom' },
+        ]"
+      ></ui-dropdown>
     </div>
 
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Outlined', value: 'outlined' },
+          { label: 'Filled', value: 'filled' },
+          { label: 'Minimal', value: 'minimal' },
+          { label: 'Premium Glass', value: 'glass' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Alignment</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.align"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Left', value: 'left' },
+          { label: 'Center', value: 'center' },
+          { label: 'Right', value: 'right' },
+        ]"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div slot="content-content" class="control-grid" style="padding: 16px">
+    <div class="control-group full-width">
+      <label>Heading</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.heading"
+        (ngModelChange)="updateConfig()"
+        placeholder="Default"
+      />
+    </div>
+
+    <div class="control-group full-width">
+      <label>Message</label>
+      <textarea
+        class="custom-textarea"
+        [(ngModel)]="pgConfig.message"
+        (ngModelChange)="updateConfig()"
+        placeholder="Default"
+        rows="3"
+        style="
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid var(--border-color);
+          background: var(--surface-1);
+          color: var(--text-primary);
+          padding: 8px;
+        "
+      ></textarea>
+    </div>
+
+    <div class="control-group full-width">
+      <label>Illustration URL</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.illustration"
+        (ngModelChange)="updateConfig()"
+        placeholder="Optional image URL"
+      />
+    </div>
+  </div>
+
+  <!-- Actions Section -->
+  <div slot="content-actions" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Primary Action</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.primaryAction"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+    <div class="control-group">
+      <label>Primary Icon</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.primaryActionIcon"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+
+    <div class="control-group">
+      <label>Secondary Action</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.secondaryAction"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+    <div class="control-group">
+      <label>Secondary Icon</label>
+      <app-input
+        type="text"
+        [(ngModel)]="pgConfig.secondaryActionIcon"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+
+    <div class="checkbox-grid full-width" style="margin-top: 8px">
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
+        Show Back Button
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
+        Loading State
+      </label>
+    </div>
+  </div>
+
+  <!-- Visuals Section -->
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
@@ -115,55 +166,66 @@
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
-        Show Back Button
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
-        Loading State
-      </label>
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
-    </div>
 
-    <div class="preview-stage h-scrollable">
-      <div class="empty-state-container">
-        <app-empty-state
-          [attr.type]="pgConfig.type"
-          [attr.variant]="pgConfig.variant"
-          [attr.size]="pgConfig.size"
-          [attr.align]="pgConfig.align"
-          [attr.heading]="pgConfig.heading || null"
-          [attr.message]="pgConfig.message || null"
-          [attr.illustration]="pgConfig.illustration || null"
-          [attr.rounded]="pgConfig.rounded"
-          [attr.elevated]="pgConfig.elevated"
-          [attr.compact]="pgConfig.compact"
-          [attr.animated]="pgConfig.animated"
-          [attr.show-back-button]="pgConfig.showBackButton"
-          [attr.primary-action]="pgConfig.primaryAction || null"
-          [attr.primary-action-icon]="pgConfig.primaryActionIcon"
-          [attr.secondary-action]="pgConfig.secondaryAction || null"
-          [attr.secondary-action-icon]="pgConfig.secondaryActionIcon"
-          [attr.loading-action]="pgConfig.loadingAction ? 'primary' : null"
-          (actionClick)="onActionClick($event)"
-          (backClick)="onBackClick($event)"
-        ></app-empty-state>
-      </div>
-    </div>
+  <ui-button
+    actions
+    variant="secondary"
+    (click)="resetConfig()"
+    label="Reset Configuration"
+  ></ui-button>
 
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+  <div
+    preview
+    style="
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    "
+  >
+    <app-empty-state
+      #emptyStateElement
+      [attr.type]="pgConfig.type"
+      [attr.variant]="pgConfig.variant"
+      [attr.size]="pgConfig.size"
+      [attr.align]="pgConfig.align"
+      [attr.heading]="pgConfig.heading || null"
+      [attr.message]="pgConfig.message || null"
+      [attr.illustration]="pgConfig.illustration || null"
+      [attr.rounded]="pgConfig.rounded ? '' : null"
+      [attr.elevated]="pgConfig.elevated ? '' : null"
+      [attr.compact]="pgConfig.compact ? '' : null"
+      [attr.animated]="pgConfig.animated ? '' : null"
+      [attr.show-back-button]="pgConfig.showBackButton ? '' : null"
+      [attr.primary-action]="pgConfig.primaryAction || null"
+      [attr.primary-action-icon]="pgConfig.primaryActionIcon"
+      [attr.secondary-action]="pgConfig.secondaryAction || null"
+      [attr.secondary-action-icon]="pgConfig.secondaryActionIcon"
+      [attr.loading-action]="pgConfig.loadingAction ? 'primary' : null"
+      (actionClick)="onActionClick($event)"
+      (backClick)="onBackClick($event)"
+    ></app-empty-state>
   </div>
+
+  <div events>
+    <app-playground-event-log
+      [logs]="eventLog()"
+      (clear)="eventLog.set([])"
+    ></app-playground-event-log>
+  </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>
