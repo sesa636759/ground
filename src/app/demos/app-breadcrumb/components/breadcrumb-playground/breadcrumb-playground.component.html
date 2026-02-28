@@ -1,8 +1,4 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  multiple
->
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
   <div slot="content-config">
     <div class="control-grid">
       <div class="control-section">
@@ -58,13 +54,13 @@
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-    </div>
   </div>
+
+  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-breadcrumb
+      #breadcrumb
       [attr.separator]="pgConfig.separator"
       [attr.max-items]="pgConfig.maxItems"
       [attr.size]="pgConfig.size"
@@ -72,13 +68,14 @@
       [attr.show-home]="pgConfig.showHome ? '' : null"
       [items]="itemsJson"
     ></ui-breadcrumb>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>

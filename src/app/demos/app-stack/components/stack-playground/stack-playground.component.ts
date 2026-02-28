@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-stack-playground',
@@ -21,6 +22,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stack-playground.component.html',
@@ -69,10 +71,7 @@ export class StackPlaygroundComponent implements AfterViewInit {
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
-      this.refreshCode();
-    }, 50);
+    this.updateConfig();
   }
 
   refreshCode() {

@@ -1,7 +1,6 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -94,16 +93,10 @@
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
-    </div>
   </div>
+
+  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-stack
       #stack
@@ -114,17 +107,18 @@
       [attr.max]="pgConfig.max"
       [attr.overlap]="pgConfig.overlap ? '' : null"
       [attr.show-dividers]="pgConfig.showDividers ? '' : null"
-      style="width: 100%; height: 100%"
+      style="width: 100%"
     >
       <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
     </ui-stack>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    [expanded]="true"
+  ></ui-code-preview>
 </app-playground>
