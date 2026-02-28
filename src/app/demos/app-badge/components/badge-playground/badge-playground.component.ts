@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-badge-playground',
@@ -12,147 +13,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Content -->
-          <div class="control-section">
-            <h3>Content</h3>
-            <div class="control-group">
-              <label>Value</label>
-              <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Max Value</label>
-              <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input
-                type="text"
-                [(ngModel)]="pgConfig.icon"
-                (ngModelChange)="updateConfig()"
-                placeholder="e.g. ⭐"
-              />
-            </div>
-          </div>
+  templateUrl: './badge-playground.component.html',
 
-          <!-- Appearance -->
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Color</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.color"
-                (ngModelChange)="updateConfig()"
-                [options]="colorOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Position & Style -->
-          <div class="control-section">
-            <h3>Position & Style</h3>
-            <div class="control-group">
-              <label>Position</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.position"
-                (ngModelChange)="updateConfig()"
-                [options]="positionOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Animation</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.animation"
-                (ngModelChange)="updateConfig()"
-                [options]="animationOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="dot"
-                [(ngModel)]="pgConfig.dot"
-                (ngModelChange)="updateConfig()"
-                label="Dot Mode"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="glow"
-                [(ngModel)]="pgConfig.glow"
-                (ngModelChange)="updateConfig()"
-                label="Glow Effect"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <ui-badge
-          [attr.value]="pgConfig.value"
-          [attr.max]="pgConfig.max"
-          [attr.color]="pgConfig.color"
-          [attr.size]="pgConfig.size"
-          [attr.variant]="pgConfig.variant"
-          [attr.position]="pgConfig.position"
-          [attr.animation]="pgConfig.animation"
-          [attr.dot]="pgConfig.dot ? '' : null"
-          [attr.glow]="pgConfig.glow ? '' : null"
-          [attr.icon]="pgConfig.icon"
-        >
-          <div class="badge-target">
-            <span *ngIf="!pgConfig.icon">✉️</span>
-            <span *ngIf="pgConfig.icon">{{ pgConfig.icon }}</span>
-          </div>
-        </ui-badge>
-
-        
-      
-      <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
   styleUrl: './badge-playground.component.scss',
 })
 export class BadgePlaygroundComponent {

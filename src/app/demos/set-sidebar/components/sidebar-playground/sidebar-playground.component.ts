@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-sidebar-playground',
@@ -19,7 +19,7 @@ import { PlaygroundEventLogComponent } from '../../../../shared/components/playg
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './sidebar-playground.component.html',

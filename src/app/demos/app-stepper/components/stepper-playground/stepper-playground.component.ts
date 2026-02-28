@@ -1,126 +1,22 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-stepper-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Layout</h3>
-                <div class="control-group">
-                  <label>Orientation</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.orientation"
-                    (ngModelChange)="updateConfig()"
-                    [options]="orientationOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Size</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.size"
-                    (ngModelChange)="updateConfig()"
-                    [options]="sizeOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Variant</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.variant"
-                    (ngModelChange)="updateConfig()"
-                    [options]="variantOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
-
-              <div class="control-section">
-                <h3>Options</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showNumbers"
-                    [(ngModel)]="pgConfig.showNumbers"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Numbers"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showDesc"
-                    [(ngModel)]="pgConfig.showDescriptions"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Descriptions"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="dot"
-                    [(ngModel)]="pgConfig.progressDot"
-                    (ngModelChange)="updateConfig()"
-                    label="Progress Dot"
-                  ></app-checkbox>
-                </div>
-                <div class="control-group">
-                  <label>Active Step</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="3"
-                    [(ngModel)]="pgConfig.activeStep"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="code-output">
-              <pre>{{ generatedCode() }}</pre>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-stepper
-          [attr.orientation]="pgConfig.orientation"
-          [attr.size]="pgConfig.size"
-          [attr.variant]="pgConfig.variant"
-          [attr.active-step]="pgConfig.activeStep"
-          [attr.show-numbers]="pgConfig.showNumbers ? '' : null"
-          [attr.show-descriptions]="pgConfig.showDescriptions ? '' : null"
-          [attr.progress-dot]="pgConfig.progressDot ? '' : null"
-          [steps]="stepsJson"
-          (stepperChange)="onStepChange($event)"
-        ></ui-stepper>
-
-        <div class="step-content-preview">
-          <h3>{{ steps[pgConfig.activeStep].label }}</h3>
-          <p>{{ steps[pgConfig.activeStep].description }}</p>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './stepper-playground.component.html',
   styleUrl: './stepper-playground.component.scss',
 })
 export class StepperPlaygroundComponent {
@@ -159,9 +55,19 @@ export class StepperPlaygroundComponent {
 
   stepsJson = JSON.stringify(this.steps);
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -177,6 +83,7 @@ export class StepperPlaygroundComponent {
     code += '></ui-stepper>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onStepChange(event: any) {

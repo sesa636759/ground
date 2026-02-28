@@ -22,51 +22,66 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 export class SetAnimateOnScrollDemoComponent {
   exampleVariants = [
     // Basic Animations
-    { id: 'fade-in-basic', title: 'Fade In', icon: '🌅' },
-    { id: 'fade-out-basic', title: 'Fade Out', icon: '🌇' },
-    { id: 'slide-up', title: 'Slide Up', icon: '⬆️' },
-    { id: 'slide-down', title: 'Slide Down', icon: '⬇️' },
-    { id: 'slide-left', title: 'Slide Left', icon: '⬅️' },
-    { id: 'slide-right', title: 'Slide Right', icon: '➡️' },
-    { id: 'zoom-in', title: 'Zoom In', icon: '🔍' },
-    { id: 'zoom-out', title: 'Zoom Out', icon: '🔎' },
-    { id: 'bounce', title: 'Bounce', icon: '⚡' },
-    { id: 'flip', title: 'Flip', icon: '🔄' },
-    
+    { id: 'fade-in-basic', title: 'Fade In', icon: 'sunrise', iconLibrary: 'lucide' },
+    { id: 'fade-out-basic', title: 'Fade Out', icon: 'sunset', iconLibrary: 'lucide' },
+    { id: 'slide-up', title: 'Slide Up', icon: 'arrow-up', iconLibrary: 'lucide' },
+    { id: 'slide-down', title: 'Slide Down', icon: 'arrow-down', iconLibrary: 'lucide' },
+    { id: 'slide-left', title: 'Slide Left', icon: 'arrow-left', iconLibrary: 'lucide' },
+    { id: 'slide-right', title: 'Slide Right', icon: 'arrow-right', iconLibrary: 'lucide' },
+    { id: 'zoom-in', title: 'Zoom In', icon: 'zoom-in', iconLibrary: 'lucide' },
+    { id: 'zoom-out', title: 'Zoom Out', icon: 'zoom-out', iconLibrary: 'lucide' },
+    { id: 'bounce', title: 'Bounce', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'flip', title: 'Flip', icon: 'refresh-cw', iconLibrary: 'lucide' },
+
     // Cinematic Effects
-    { id: 'blur-entrance', title: 'Blur Entrance', icon: '🌫️' },
-    { id: 'glassmorphic-blur', title: 'Glassmorphic Blur', icon: '🎬' },
-    { id: 'elastic-easing', title: 'Elastic Easing', icon: '🎪' },
-    
+    { id: 'blur-entrance', title: 'Blur Entrance', icon: 'sparkles', iconLibrary: 'lucide' },
+    {
+      id: 'glassmorphic-blur',
+      title: 'Glassmorphic Blur',
+      icon: 'clapperboard',
+      iconLibrary: 'lucide',
+    },
+    { id: 'elastic-easing', title: 'Elastic Easing', icon: 'activity', iconLibrary: 'lucide' },
+
     // 3D Transforms
-    { id: 'flip-in-3d', title: 'Flip In 3D', icon: '🎲' },
-    { id: 'rotate-3d', title: 'Rotate 3D', icon: '🌀' },
-    { id: 'perspective-depth', title: 'Perspective Depth', icon: '🏔️' },
-    
+    { id: 'flip-in-3d', title: 'Flip In 3D', icon: 'dice-3', iconLibrary: 'lucide' },
+    { id: 'rotate-3d', title: 'Rotate 3D', icon: 'rotate-3d', iconLibrary: 'lucide' },
+    {
+      id: 'perspective-depth',
+      title: 'Perspective Depth',
+      icon: 'mountain',
+      iconLibrary: 'lucide',
+    },
+
     // Stagger Effects
-    { id: 'stagger-children', title: 'Stagger Children', icon: '🎵' },
-    { id: 'stagger-fast', title: 'Stagger Fast', icon: '⚡' },
-    { id: 'stagger-slow', title: 'Stagger Slow', icon: '🐌' },
-    
+    { id: 'stagger-children', title: 'Stagger Children', icon: 'music', iconLibrary: 'lucide' },
+    { id: 'stagger-fast', title: 'Stagger Fast', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'stagger-slow', title: 'Stagger Slow', icon: 'turtle', iconLibrary: 'lucide' },
+
     // Scroll Interactions
-    { id: 'scroll-trigger', title: 'Scroll Trigger', icon: '🎯' },
-    { id: 'scroll-scrubbing', title: 'Scroll Scrubbing', icon: '🎛️' },
-    { id: 'scrub-rotate', title: 'Scrub Rotate', icon: '🔄' },
-    { id: 'scrub-scale', title: 'Scrub Scale', icon: '📏' },
-    
+    { id: 'scroll-trigger', title: 'Scroll Trigger', icon: 'target', iconLibrary: 'lucide' },
+    { id: 'scroll-scrubbing', title: 'Scroll Scrubbing', icon: 'sliders', iconLibrary: 'lucide' },
+    { id: 'scrub-rotate', title: 'Scrub Rotate', icon: 'refresh-cw', iconLibrary: 'lucide' },
+    { id: 'scrub-scale', title: 'Scrub Scale', icon: 'ruler', iconLibrary: 'lucide' },
+
     // Text Animations
-    { id: 'text-char', title: 'Text Character', icon: '🔤' },
-    { id: 'text-word', title: 'Text Word', icon: '📝' },
-    { id: 'text-stagger', title: 'Text Stagger', icon: '✍️' },
-    
+    { id: 'text-char', title: 'Text Character', icon: 'case-sensitive', iconLibrary: 'lucide' },
+    { id: 'text-word', title: 'Text Word', icon: 'file-text', iconLibrary: 'lucide' },
+    { id: 'text-stagger', title: 'Text Stagger', icon: 'pen-line', iconLibrary: 'lucide' },
+
     // Advanced Features
-    { id: 'shake-animation', title: 'Shake', icon: '📳' },
-    { id: 'repeat-animation', title: 'Repeat Animation', icon: '🔁' },
-    { id: 'mirror-effect', title: 'Mirror Effect', icon: '🪞' },
-    { id: 'custom-threshold', title: 'Custom Threshold', icon: '📊' },
-    { id: 'delay-timing', title: 'Delay Timing', icon: '⏱️' },
-    { id: 'duration-control', title: 'Duration Control', icon: '⏳' },
-    { id: 'combined-effects', title: 'Combined Effects', icon: '🎨' },
+    { id: 'shake-animation', title: 'Shake', icon: 'waves', iconLibrary: 'lucide' },
+    { id: 'repeat-animation', title: 'Repeat Animation', icon: 'repeat', iconLibrary: 'lucide' },
+    { id: 'mirror-effect', title: 'Mirror Effect', icon: 'flip-horizontal', iconLibrary: 'lucide' },
+    {
+      id: 'custom-threshold',
+      title: 'Custom Threshold',
+      icon: 'bar-chart-2',
+      iconLibrary: 'lucide',
+    },
+    { id: 'delay-timing', title: 'Delay Timing', icon: 'timer', iconLibrary: 'lucide' },
+    { id: 'duration-control', title: 'Duration Control', icon: 'hourglass', iconLibrary: 'lucide' },
+    { id: 'combined-effects', title: 'Combined Effects', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
   scrollToSection(sectionId: string) {

@@ -1,0 +1,119 @@
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+  multiple
+>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="typeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Value</label>
+      <app-input
+        type="number"
+        [(ngModel)]="pgConfig.value"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Max (Stars/Smiley)</label>
+      <app-input
+        type="number"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+      ></app-input>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="colorOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <!-- Behavioral States -->
+  <div slot="content-states" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.allowHalf"
+          (ngModelChange)="updateConfig()"
+          [disabled]="pgConfig.type !== 'star'"
+        ></app-checkbox>
+        Allow Half
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.showValue"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Show Text
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.readonly"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Read-Only
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.disabled"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Disabled
+      </label>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <ui-button
+      class="btn-secondary"
+      variant="secondary"
+      (click)="resetConfig()"
+      label="Reset"
+    ></ui-button>
+  </div>
+
+  <div class="playground-preview">
+    <div class="preview-stage h-scrollable">
+      <ui-rating
+        [attr.type]="pgConfig.type"
+        [attr.value]="pgConfig.value"
+        [attr.max]="pgConfig.max"
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.allow-half]="pgConfig.allowHalf ? '' : null"
+        [attr.show-value]="pgConfig.showValue ? '' : null"
+        (ratingChange)="onRatingChange($event)"
+      ></ui-rating>
+      <div class="rating-display" style="margin-top: 24px; font-weight: 600">
+        Current Value: {{ pgConfig.value }}
+      </div>
+    </div>
+
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</app-playground>

@@ -2,115 +2,22 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-timeline-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Layout</h3>
-                <div class="control-group">
-                  <label>Orientation</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.orientation"
-                    (ngModelChange)="updateConfig()"
-                    [options]="[
-                      { label: 'Horizontal', value: 'horizontal' },
-                      { label: 'Vertical', value: 'vertical' },
-                    ]"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Alignment</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.align"
-                    (ngModelChange)="updateConfig()"
-                    [options]="[
-                      { label: 'Left', value: 'left' },
-                      { label: 'Right', value: 'right' },
-                      { label: 'Alternate', value: 'alternate' },
-                    ]"
-                  ></ui-dropdown>
-                </div>
-              </div>
+  templateUrl: './timeline-playground.component.html',
 
-              <div class="control-section">
-                <h3>Content</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="opposite"
-                    [(ngModel)]="pgConfig.showOpposite"
-                    (ngModelChange)="updateConfig()"
-                  />
-                  <label for="opposite">Show Opposite Side</label>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="customMarker"
-                    [(ngModel)]="pgConfig.customMarker"
-                    (ngModelChange)="updateConfig()"
-                  />
-                  <label for="customMarker">Custom Markers</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <div class="timeline-container">
-          <ui-timeline
-            [attr.orientation]="pgConfig.orientation"
-            [attr.align]="pgConfig.align"
-            [value]="valueJson"
-          >
-            <ng-template let-item>
-              <div style="font-weight: 600;">{{ item.status }}</div>
-              <div style="font-size: 0.85rem; color: #64748b;">{{ item.date }}</div>
-              <div *ngIf="pgConfig.showOpposite" slot="opposite">{{ item.description }}</div>
-              <div
-                *ngIf="pgConfig.customMarker"
-                slot="marker"
-                [style.background]="item.color"
-                style="width: 12px; height: 12px; border-radius: 50%;"
-              ></div>
-            </ng-template>
-          </ui-timeline>
-        </div>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './timeline-playground.component.scss',
 })
 export class TimelinePlaygroundComponent {

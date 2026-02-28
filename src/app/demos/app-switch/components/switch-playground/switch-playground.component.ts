@@ -5,6 +5,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-switch-playground',
@@ -15,159 +16,11 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
-          <!-- Global Visuals -->
-          <div slot="content-global" class="control-grid" style="padding: 16px;">
-            <div class="control-group">
-              <label>Label</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.label"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Label Position</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.labelPosition"
-                (ngModelChange)="updateConfig()"
-                [options]="labelPositionOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Icon On</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.iconOn"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-            <div class="control-group">
-              <label>Icon Off</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.iconOff"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-          </div>
+  templateUrl: './switch-playground.component.html',
 
-          <!-- Behavioral States -->
-          <div slot="content-states" style="padding: 16px;">
-            <div class="checkbox-grid">
-              <label class="checkbox-item">
-                <app-checkbox
-                  id="checked"
-                  [(ngModel)]="pgConfig.checked"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Checked
-              </label>
-              <label class="checkbox-item">
-                <app-checkbox
-                  id="disabled"
-                  [(ngModel)]="pgConfig.disabled"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Disabled
-              </label>
-              <label class="checkbox-item">
-                <app-checkbox
-                  id="loading"
-                  [(ngModel)]="pgConfig.loading"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Loading
-              </label>
-              <label class="checkbox-item">
-                <app-checkbox
-                  id="showIcons"
-                  [(ngModel)]="pgConfig.showDefaultIcons"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Default Icons
-              </label>
-            </div>
-          </div>
-        </ui-accordion>
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-      </div>
-
-      <div class="playground-preview">
-        <div class="preview-stage">
-          <ui-switch
-            #demoElement
-            [attr.label]="pgConfig.label"
-            [attr.checked]="pgConfig.checked ? '' : null"
-            [attr.disabled]="pgConfig.disabled ? '' : null"
-            [attr.loading]="pgConfig.loading ? '' : null"
-            [attr.size]="pgConfig.size"
-            [attr.variant]="pgConfig.variant"
-            [attr.shape]="pgConfig.shape"
-            [attr.label-position]="pgConfig.labelPosition"
-            [attr.icon-on]="pgConfig.iconOn || null"
-            [attr.icon-off]="pgConfig.iconOff || null"
-            [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
-            (switchChange)="onSwitchChange($event)"
-          ></ui-switch>
-        </div>
-
-        <div class="event-log-container">
-          <strong>Event Log</strong>
-          <div class="log-items">
-            <div *ngFor="let log of eventLog" class="log-item">[{{ log.time }}] {{ log.msg }}</div>
-            <div *ngIf="eventLog.length === 0" style="color: #666; font-style: italic;">
-              Toggle switch to see events...
-            </div>
-          </div>
-        </div>
-
-        <ui-code-preview
-          [htmlCode]="generatedCode()"
-          [label]="'Generated Code'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-      </div>
-    </div>
-  `,
   styleUrl: './switch-playground.component.scss',
 })
 export class SwitchPlaygroundComponent implements OnInit {

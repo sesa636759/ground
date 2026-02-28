@@ -2,96 +2,15 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-advanced-data-table-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="paginator"
-                [(ngModel)]="pgConfig.paginator"
-                (ngModelChange)="updateConfig()"
-                label="Enable Paginator"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="sorting"
-                [(ngModel)]="pgConfig.sorting"
-                (ngModelChange)="updateConfig()"
-                label="Enable Sorting"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="filtering"
-                [(ngModel)]="pgConfig.filtering"
-                (ngModelChange)="updateConfig()"
-                label="Global Filtering"
-              ></app-checkbox>
-            </div>
-          </div>
+  templateUrl: './advanced-data-table-playground.component.html',
 
-          <div class="control-section">
-            <h3>Layout</h3>
-            <div class="control-group">
-              <label>Rows per page</label>
-              <input type="number" [(ngModel)]="pgConfig.rows" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="responsive"
-                [(ngModel)]="pgConfig.responsive"
-                (ngModelChange)="updateConfig()"
-                label="Responsive Layout"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-
-        <div class="action-buttons">
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <div class="table-container">
-          <ui-advanced-data-table
-            [attr.paginator]="pgConfig.paginator ? '' : null"
-            [attr.rows]="pgConfig.rows"
-            [attr.responsive]="pgConfig.responsive ? '' : null"
-            [value]="dataJson"
-            [columns]="columnsJson"
-          >
-          </ui-advanced-data-table>
-        </div>
-
-        
-      
-      <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
   styleUrl: './advanced-data-table-playground.component.scss',
 })
 export class AdvancedDataTablePlaygroundComponent {

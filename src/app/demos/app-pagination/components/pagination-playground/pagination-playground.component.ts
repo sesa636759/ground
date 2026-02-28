@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
@@ -23,6 +24,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pagination-playground.component.html',

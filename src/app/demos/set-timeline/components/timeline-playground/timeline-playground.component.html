@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Orientation</label>
@@ -94,40 +95,40 @@
         <app-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake Layout)
       </label>
     </div>
-        </div>
-    </ui-accordion>
   </div>
 
-  <div class="playground-preview">
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
+  <div preview class="preview-stage h-scrollable">
+    <div class="timeline-container">
+      <app-timeline
+        [items]="timelineItems"
+        [attr.orientation]="pgConfig.orientation"
+        [attr.align]="pgConfig.align"
+        [attr.icon-position]="pgConfig.iconPosition"
+        [attr.variant]="pgConfig.variant"
+        [attr.line-color]="pgConfig.lineColor"
+        [attr.animate-on-scroll]="pgConfig.animateOnScroll"
+        [attr.compact]="pgConfig.compact"
+        [attr.clickable]="pgConfig.clickable"
+        [attr.show-line]="pgConfig.showLine"
+        [attr.wrap]="pgConfig.wrap"
+        [attr.theme]="pgConfig.theme"
+        (itemClick)="onItemClick($event)"
+      ></app-timeline>
     </div>
+  </div>
 
-    <div class="preview-stage h-scrollable">
-      <div class="timeline-container">
-        <app-timeline
-          [items]="timelineItems"
-          [attr.orientation]="pgConfig.orientation"
-          [attr.align]="pgConfig.align"
-          [attr.icon-position]="pgConfig.iconPosition"
-          [attr.variant]="pgConfig.variant"
-          [attr.line-color]="pgConfig.lineColor"
-          [attr.animate-on-scroll]="pgConfig.animateOnScroll"
-          [attr.compact]="pgConfig.compact"
-          [attr.clickable]="pgConfig.clickable"
-          [attr.show-line]="pgConfig.showLine"
-          [attr.wrap]="pgConfig.wrap"
-          [attr.theme]="pgConfig.theme"
-          (itemClick)="onItemClick($event)"
-        ></app-timeline>
-      </div>
+  <div events class="event-log-container">
+    <strong>Event Log</strong>
+    <div class="log-items">
+      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
     </div>
+  </div>
 
-    
-  
-      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-    </div>
-</div>
+  <ui-code-preview
+    code
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

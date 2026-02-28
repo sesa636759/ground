@@ -9,128 +9,111 @@
         <h4 class="section-title">Branding</h4>
         <div class="control-grid">
           <div class="control-group">
-            <label>Brand Name</label>
-            <app-input
-              type="text"
-              [(ngModel)]="pgConfig.brandName"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Accent Color</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.accentColor"
-              (ngModelChange)="updateConfig()"
-              [options]="accentColorOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Custom Accent</label>
-            <app-input
-              type="color"
-              [(ngModel)]="pgConfig.accentColor"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Theme</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.theme"
-              (ngModelChange)="updateConfig()"
-              [options]="themeOptions"
-            ></ui-dropdown>
-          </div>
-        </div>
-
-        <h4 class="section-title">User Profile</h4>
-        <div class="control-grid">
-          <div class="control-group">
-            <label>User Name</label>
-            <app-input
-              type="text"
-              [(ngModel)]="pgConfig.userName"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>User Role</label>
-            <app-input
-              type="text"
-              [(ngModel)]="pgConfig.userRole"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group full-width">
-            <label>Avatar URL</label>
-            <app-input
-              type="text"
-              [(ngModel)]="pgConfig.userAvatar"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-        </div>
-
-        <h4 class="section-title">Options</h4>
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox
-              [(ngModel)]="pgConfig.collapsed"
-              (ngModelChange)="updateConfig()"
-              label="Collapsed"
-            />
-          </label>
-        </div>
-      </div>
-    </ui-accordion>
+<app-playground
+  [accordionItems]="[
+    { id: 'brand', title: 'Brand & Identity', icon: '🏢' },
+    { id: 'user', title: 'User Profile', icon: '👤' },
+    { id: 'style', title: 'Visual Style', icon: '🎨' }
+  ]"
+  [defaultOpen]="['brand']"
+>
+  <!-- Accordion Slots -->
+  <div slot="content-brand" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Brand Name</label>
+      <app-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
+    </div>
   </div>
 
-  <div class="playground-preview">
-    <div class="preview-stage sidebar-stage" [class.dark-theme]="pgConfig.theme === 'dark'">
-      <div class="sidebar-wrapper">
-        <app-modern-sidebar
-          [attr.brand-name]="pgConfig.brandName"
-          [attr.selected-id]="pgConfig.selectedId"
-          [attr.accent-color]="pgConfig.accentColor"
-          [attr.user-name]="pgConfig.userName"
-          [attr.user-role]="pgConfig.userRole"
-          [attr.user-avatar]="pgConfig.userAvatar"
-          [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
-          [attr.theme]="pgConfig.theme"
-          [items]="sidebarItems"
-          (itemSelected)="onItemSelected($event)"
-          (sidebarToggled)="onSidebarToggled($event)"
-          (profileClicked)="onProfileClick()"
-        ></app-modern-sidebar>
-      </div>
+  <div slot="content-user" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>User Name</label>
+      <app-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>User Role</label>
+      <app-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>User Avatar URL</label>
+      <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+    </div>
+  </div>
 
-      <div class="content-area-preview">
-        <div class="content-header-sim">
-          <h3>Main Content Area</h3>
-          <p>Interact with the sidebar to see events logged</p>
-        </div>
-        <div class="content-cards">
-          <div class="sim-card"></div>
-          <div class="sim-card"></div>
-        </div>
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Theme</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.theme"
+        (ngModelChange)="updateConfig()"
+        [options]="themeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Accent Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.accentColor"
+        (ngModelChange)="updateConfig()"
+        [options]="accentColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-group" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <app-checkbox
+          [(ngModel)]="pgConfig.collapsed"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
+        Collapsed
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div preview style="height: 600px; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background: var(--bg-primary);">
+    <div class="sidebar-wrapper">
+      <app-modern-sidebar
+        [attr.brand-name]="pgConfig.brandName"
+        [attr.selected-id]="pgConfig.selectedId"
+        [attr.accent-color]="pgConfig.accentColor"
+        [attr.user-name]="pgConfig.userName"
+        [attr.user-role]="pgConfig.userRole"
+        [attr.user-avatar]="pgConfig.userAvatar"
+        [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
+        [attr.theme]="pgConfig.theme"
+        [items]="sidebarItems"
+        (itemSelected)="onItemSelected($event)"
+        (sidebarToggled)="onSidebarToggled($event)"
+        (profileClicked)="onProfileClick()"
+      ></app-modern-sidebar>
+    </div>
+    
+    <div class="content-area-preview">
+      <div class="content-header-sim">
+        <h3>Main Content Area</h3>
+        <p>Interact with the sidebar to see events logged</p>
+      </div>
+      <div class="content-cards">
+        <div class="sim-card"></div>
+        <div class="sim-card"></div>
       </div>
     </div>
+  </div>
 
+  <!-- Events -->
+  <div events>
     <app-playground-event-log
       [logs]="eventLog()"
       (clear)="eventLog.set([])"
     ></app-playground-event-log>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
-</div>
+
+  <!-- Code -->
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode()"
+    label="Generated Code"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

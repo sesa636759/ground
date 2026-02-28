@@ -8,77 +8,8 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
   standalone: true,
   imports: [CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Features</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="selectable"
-                    [(ngModel)]="pgConfig.selectable"
-                    (ngModelChange)="updateConfig()"
-                    label="Selectable"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showIcons"
-                    [(ngModel)]="pgConfig.showIcons"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Icons"
-                  ></app-checkbox>
-                </div>
-              </div>
+  templateUrl: './tree-list-playground.component.html',
 
-              <div class="control-section">
-                <h3>Behavior</h3>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="expandAll"
-                    [(ngModel)]="pgConfig.expandAll"
-                    (ngModelChange)="updateConfig()"
-                    label="Expand All"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-tree-list [attr.selectable]="pgConfig.selectable ? '' : null" [model]="modelJson">
-        </ui-tree-list>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './tree-list-playground.component.scss',
 })
 export class TreeListPlaygroundComponent {

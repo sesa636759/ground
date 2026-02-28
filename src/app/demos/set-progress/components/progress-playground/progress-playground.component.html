@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Type</label>
@@ -129,11 +130,9 @@
         <app-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()" /> Glow
       </label>
     </div>
-        </div>
-    </ui-accordion>
   </div>
 
-  <div class="playground-preview">
+  <div preview>
     <div class="preview-stage h-scrollable">
       <div class="progress-container">
         <app-progress
@@ -156,15 +155,14 @@
         ></app-progress>
       </div>
     </div>
+  </div>
 
-    
-  
-      <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-    </div>
-</div>
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

@@ -1,104 +1,15 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 @Component({
   selector: 'app-scroll-top-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Behavior</h3>
-                <div class="control-group">
-                  <label>Threshold (px)</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.threshold"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Scroll Speed (ms)</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.speed"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-              </div>
+  templateUrl: './scroll-top-playground.component.html',
 
-              <div class="control-section">
-                <h3>Visuals</h3>
-                <div class="control-group">
-                  <label>Icon</label>
-                  <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
-                </div>
-                <div class="control-group">
-                  <label>Shape</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.shape"
-                    (ngModelChange)="updateConfig()"
-                    [options]="shapeOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
-            </div>
-
-            <div class="code-output">
-              <ui-code-preview
-                *ngIf="showCode"
-                [htmlCode]="generatedCode()"
-                label="Generated Code"
-                activeLang="html"
-                expanded="true"
-              ></ui-code-preview>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <div class="scroll-content" id="pg-scroll-target">
-          <h3>Scroll down to see the button!</h3>
-          <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>
-
-          <ui-scroll-top
-            target="#pg-scroll-target"
-            [attr.threshold]="pgConfig.threshold"
-            [attr.icon]="pgConfig.icon"
-            [attr.shape]="pgConfig.shape"
-            [attr.speed]="pgConfig.speed"
-          ></ui-scroll-top>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './scroll-top-playground.component.scss',
 })
 export class ScrollTopPlaygroundComponent {
