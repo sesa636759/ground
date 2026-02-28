@@ -1,14 +1,18 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   ViewEncapsulation,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-card-playground',
@@ -18,6 +22,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
@@ -25,7 +30,9 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 
   styleUrl: './card-playground.component.scss',
 })
-export class CardPlaygroundComponent {
+export class CardPlaygroundComponent implements AfterViewInit {
+  @ViewChild('cardElement') cardElement!: ElementRef;
+
   pgConfig = {
     variant: 'elevated',
     hoverable: true,
@@ -63,10 +70,12 @@ export class CardPlaygroundComponent {
   ];
 
   menuJson = JSON.stringify(this.menuItems);
-  generatedCode = signal('');
+  generatedCode: string = '';
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -79,40 +88,20 @@ export class CardPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-card\n';
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.hoverable) code += `  hoverable\n`;
-    if (this.pgConfig.flippable) code += `  flippable\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
-    if (this.pgConfig.showMenu) code += `  show-menu [menuItems]="menu"\n`;
-    if (this.pgConfig.closable) code += `  closable\n`;
-    if (this.pgConfig.selectable) code += `  selectable\n`;
-    if (this.pgConfig.collapsible) code += `  collapsible\n`;
-    if (this.pgConfig.glass) code += `  glass="true"\n`;
-    if (this.pgConfig.layout !== 'vertical') code += `  layout="${this.pgConfig.layout}"\n`;
-    if (this.pgConfig.size !== 'medium') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.type !== 'default') code += `  type="${this.pgConfig.type}"\n`;
-    if (this.pgConfig.ribbon)
-      code += `  ribbon="${this.pgConfig.ribbon}" ribbon-color="${this.pgConfig.ribbonColor}"\n`;
-    code += `  border-radius="${this.pgConfig.borderRadius}"\n`;
-    code += `  width="${this.pgConfig.width}"\n`;
-    code += '>\n';
-    code += '  <img slot="cover" src="..." />\n';
-    code += '  <div slot="header"><h3>Card Title</h3></div>\n';
-    code += '  <div slot="content">Card body here...</div>\n';
-    code += '  <div slot="footer"><ui-button label="Action"></ui-button></div>\n';
-    if (this.pgConfig.flippable) {
-      code += '  <div slot="back-content">Back side content...</div>\n';
-    }
-    code += '</ui-card>';
+  getCleanFormatedDom(): string {
+    if (!this.cardElement) return '';
+    return generatePlaygroundCode(this.cardElement.nativeElement as Element, 'ui-card');
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCode = this.getCleanFormatedDom();
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCode);
   }
 
   resetConfig() {
