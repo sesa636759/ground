@@ -1,20 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoTabsComponent } from 'src/app/shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-animate-on-scroll-demo',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AnimateOnScrollPlaygroundComponent,
-    DemoTabsComponent,
-    ComponentDocumentationComponent,
-  ],
+  imports: [CommonModule, FormsModule, AnimateOnScrollPlaygroundComponent,  DemoTabsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-animate-on-scroll-demo.component.html',
   styleUrl: './set-animate-on-scroll-demo.component.scss',
