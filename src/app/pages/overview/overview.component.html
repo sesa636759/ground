@@ -130,6 +130,7 @@
           <h3>Directory</h3>
           <span class="count-badge">{{ filteredCategories().length }} Sets</span>
         </div>
+<<<<<<< HEAD
         <nav class="category-menu">
           <ui-button
             *ngFor="let category of filteredCategories()"
@@ -146,6 +147,16 @@
             }
           </ui-button>
         </nav>
+=======
+        <div class="sidebar-nav-container" style="margin-top: 16px">
+          <ui-anchor
+            [attr.links]="overviewAnchorLinks()"
+            scroll-container=".content-body"
+            type="line"
+            show-progress="true"
+          ></ui-anchor>
+        </div>
+>>>>>>> d0070016ba7c5bb75489b1a47d9f2442e32cfc29
       </div>
     </aside>
 

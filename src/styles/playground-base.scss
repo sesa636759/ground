@@ -8,6 +8,10 @@
   @media (max-width: 1200px) {
     flex-direction: column;
   }
+
+  &.layout-col {
+    flex-direction: column;
+  }
 }
 
 .playground-controls {

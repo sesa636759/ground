@@ -3,6 +3,7 @@
   defaultOpen='["config"]'
   [code]="generatedCodeSignal()"
   (reset)="resetConfig()"
+  layout="column"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -169,7 +170,11 @@
         <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
       </div>
     </ui-panel>
-
-    <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog"
+    (clear)="eventLog = []"
+  ></app-playground-event-log>
 </app-playground>

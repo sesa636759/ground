@@ -58,6 +58,17 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
       .filter((cat) => cat.children && cat.children.length > 0);
   });
 
+  overviewAnchorLinks = computed(() => {
+    return JSON.stringify(
+      this.filteredCategories().map((cat) => ({
+        id: cat.id,
+        target: 'cat-' + cat.id,
+        label: `${cat.label} (${cat.children?.length || 0})`,
+        icon: cat.icon,
+      })),
+    );
+  });
+
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,

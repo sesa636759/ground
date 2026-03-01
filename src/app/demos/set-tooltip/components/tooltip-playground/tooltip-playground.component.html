@@ -1,4 +1,6 @@
 ﻿<app-playground
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
 >
@@ -99,22 +101,38 @@
 
       <div class="control-group">
         <label>Elevation (0-5)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.elevation"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Arrow Size (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.arrowSize"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Show Delay (ms)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.showDelay"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Hide Delay (ms)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
+        <app-input
+          type="number"
+          [(ngModel)]="pgConfig.hideDelay"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
@@ -189,24 +207,27 @@
         <app-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
+        <app-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow
+        Effect
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track Mouse
+        <app-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track
+        Mouse
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" /> Open
-        at Mouse
+        <app-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
+        Open at Mouse
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
+        <app-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto
+        Shift
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use Custom
-        Colors
+        <app-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
+        Custom Colors
       </label>
     </div>
   </div>
@@ -247,20 +268,4 @@
       </app-tooltip>
     </div>
   </div>
-
-  <app-playground-event-log
-    events
-    [logs]="eventLog()"
-    (clear)="eventLog.set([])"
-  ></app-playground-event-log>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

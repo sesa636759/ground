@@ -13,6 +13,7 @@ export class AppPlaygroundComponent {
   @Input() accordionItems: any[] | string = [];
   @Input() defaultOpen: any[] | string = [];
   @Input() code: string = '';
+  @Input() layout: 'row' | 'column' = 'row';
   @Output() reset = new EventEmitter<void>();
 
   get parsedItems(): any[] {

@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
@@ -19,6 +20,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
     AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -58,8 +60,7 @@ export class TooltipPlaygroundComponent implements OnInit {
     useCustomColor: false,
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -119,11 +120,45 @@ export class TooltipPlaygroundComponent implements OnInit {
     code += `  </ui-button>\n`;
     code += `</app-tooltip>`;
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      content: 'Tooltip Content',
+      position: 'top',
+      trigger: 'hover',
+      variant: 'dark',
+      shape: 'rounded',
+      animation: 'fade',
+      arrow: true,
+      showDelay: 0,
+      hideDelay: 0,
+      maxWidth: 250,
+      interactive: false,
+      followCursor: false,
+      html: false,
+      showGlow: false,
+      customColor: '#3DCD58',
+      textColor: '#ffffff',
+      transitionDuration: 200,
+      targetText: 'Hover Me',
+      targetIcon: 'fas fa-info-circle',
+      elevation: 0,
+      offset: 8,
+      transitionTiming: 'ease',
+      arrowSize: 8,
+      trackMouse: false,
+      openAtMousePosition: false,
+      autoShift: true,
+      portal: true,
+      useCustomColor: false,
+    };
+    this.updateConfig();
   }
 }

@@ -34,12 +34,6 @@ export const topNavItems: NavItem[] = [
     icon: 'building-2',
     iconLibrary: 'lucide',
   },
-  {
-    id: 'login',
-    label: 'Login',
-    icon: 'key-round',
-    iconLibrary: 'lucide',
-  },
 ];
 
 export const categoryNavItems: NavItem[] = [

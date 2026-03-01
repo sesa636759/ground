@@ -60,7 +60,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
 
   accordionDefaultOpen = JSON.stringify(['core']);
 
-  demoItems = JSON.stringify([
+  demoItems = [
     {
       id: 'file',
       label: 'File Operations',
@@ -109,10 +109,10 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     { divider: true },
     { id: 'delete', label: 'Delete Item', icon: 'fas fa-trash', color: 'danger', group: 'Danger' },
     { id: 'archive', label: 'Archive', icon: 'fas fa-archive', color: 'warning', group: 'Danger' },
-  ]);
+  ];
 
   eventMessage = signal('Click the trigger to see the menu...');
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -140,7 +140,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -160,7 +160,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

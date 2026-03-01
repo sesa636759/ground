@@ -1,4 +1,9 @@
-﻿<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+﻿<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Core Configuration Slot -->
   <div slot="content-core" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -152,16 +157,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     style="
@@ -181,6 +176,7 @@
   >
     <div
       class="trigger-area"
+      #playgroundTrigger
       id="playgroundTrigger"
       style="
         padding: 60px 80px;
@@ -209,24 +205,25 @@
 
     <app-context-menu
       #contextMenuElement
-      [attr.trigger]="pgConfig.trigger"
-      [attr.searchable]="pgConfig.searchable"
-      [attr.animated]="pgConfig.animated"
-      [attr.animation-type]="pgConfig.animationType"
-      [attr.variant]="pgConfig.variant"
-      [attr.staggered]="pgConfig.staggered"
-      [attr.backdrop]="pgConfig.backdrop"
-      [attr.command-palette]="pgConfig.commandPalette"
-      [attr.multi-select]="pgConfig.multiSelect"
-      [attr.close-on-select]="pgConfig.closeOnSelect"
-      [attr.show-groups]="pgConfig.showGroups"
-      [attr.highlight-search]="pgConfig.highlightSearch"
-      [attr.reflection]="pgConfig.reflection"
-      [attr.keyboard-navigation]="pgConfig.keyboardNavigation"
-      [attr.max-height]="pgConfig.maxHeight"
-      [attr.min-width]="pgConfig.minWidth"
-      [attr.backdrop-blur]="pgConfig.backdropBlur"
-      [attr.items]="demoItems"
+      [triggerElement]="playgroundTrigger"
+      [trigger]="pgConfig.trigger"
+      [searchable]="pgConfig.searchable"
+      [animated]="pgConfig.animated"
+      [animationType]="pgConfig.animationType"
+      [variant]="pgConfig.variant"
+      [staggered]="pgConfig.staggered"
+      [backdrop]="pgConfig.backdrop"
+      [commandPalette]="pgConfig.commandPalette"
+      [multiSelect]="pgConfig.multiSelect"
+      [closeOnSelect]="pgConfig.closeOnSelect"
+      [showGroups]="pgConfig.showGroups"
+      [highlightSearch]="pgConfig.highlightSearch"
+      [reflection]="pgConfig.reflection"
+      [keyboardNavigation]="pgConfig.keyboardNavigation"
+      [maxHeight]="pgConfig.maxHeight"
+      [minWidth]="pgConfig.minWidth"
+      [backdropBlur]="pgConfig.backdropBlur"
+      [items]="demoItems"
       (menuSelect)="onMenuSelect($event)"
       (menuOpen)="onMenuOpen()"
       (menuClose)="onMenuClose()"
@@ -253,15 +250,4 @@
       <strong>Last Event:</strong> {{ eventMessage() }}
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
-  <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
 </app-playground>

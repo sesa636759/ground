@@ -1,7 +1,7 @@
 <app-playground
   [accordionItems]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCode()"
+  [code]="generatedCodeSignal()"
   (reset)="resetConfig()"
 >
   <!-- Menu Configuration Slot -->
