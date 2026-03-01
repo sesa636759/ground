@@ -191,41 +191,12 @@
   border-bottom: 1px solid var(--border-color);
 
   .breadcrumb-mini {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--p-docs);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 1rem;
-
-    .breadcrumb-back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: rgba(79, 70, 229, 0.1);
-      border: 1px solid rgba(79, 70, 229, 0.2);
-      color: var(--p-docs);
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: all 0.2s;
-
-      &:hover {
-        background: var(--p-docs);
-        color: white;
-      }
-    }
-
-    .breadcrumb-separator {
-      color: var(--text-tertiary, #94a3b8);
-    }
   }
 
   .title-row {

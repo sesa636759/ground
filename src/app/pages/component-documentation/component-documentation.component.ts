@@ -9,18 +9,20 @@ import {
   OnDestroy,
   ElementRef,
 } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 import { CommonModule } from '@angular/common';
-import { DocsPageLayoutComponent } from '../../shared/components/docs-page-layout/docs-page-layout.component';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { ActivatedRoute } from '@angular/router';
 import {
   ComponentDocsService,
   ComponentDocumentation,
+  ComponentProp,
 } from '../../services/component-docs.service';
 
 @Component({
   selector: 'app-component-documentation',
   standalone: true,
-  imports: [CommonModule, DocsPageLayoutComponent],
+  imports: [CommonModule, DemoSidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './component-documentation.component.html',
   styleUrl: './component-documentation.component.scss',
@@ -66,25 +68,23 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
 
   private observer: IntersectionObserver | undefined;
 
+  selectedLanguage = 'en';
+  languageSubscription: any;
+
   constructor(
     private route: ActivatedRoute,
     private componentDocsService: ComponentDocsService,
     private elementRef: ElementRef,
+    private languageService: LanguageService,
   ) {}
 
   ngOnInit(): void {
-    if (this.componentId) {
-      this.isEmbedded = true;
-      this.componentDoc = this.componentDocsService.getComponentDocs(this.componentId);
-    } else {
-      this.route.queryParams.subscribe((params) => {
-        const id = params['component'];
-        if (id) {
-          this.componentDoc = this.componentDocsService.getComponentDocs(id);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    }
+    this.selectedLanguage = this.languageService.getLanguage();
+    this.languageSubscription = this.languageService.language$.subscribe((lang) => {
+      this.selectedLanguage = lang;
+      this.loadComponentDoc();
+    });
+    this.loadComponentDoc();
 
     const scrollHandler = () => {
       if (this.isEmbedded) {
@@ -111,12 +111,59 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
     }
   }
 
+  loadComponentDoc() {
+    if (this.componentId) {
+      this.isEmbedded = true;
+      this.loadDocByLang(this.componentId);
+    } else {
+      this.route.queryParams.subscribe((params) => {
+        const id = params['component'];
+        if (id) {
+          this.loadDocByLang(id);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+  }
+
+  loadDocByLang(componentId: string) {
+    // 1. Initial Load from Sync Service (Metadata + Fallback content)
+    this.componentDoc = this.componentDocsService.getComponentDocs(componentId);
+
+    if (!this.componentDoc) {
+      console.warn(`No documentation metadata found for: ${componentId}`);
+    }
+
+    // 2. Load Extended Markdown (Optional augmentation)
+    const lang = this.selectedLanguage;
+    const docPath = `assets/docs/${lang}/${componentId}.md`;
+
+    fetch(docPath)
+      .then((res) => {
+        if (res.ok) return res.text();
+        if (lang !== 'en') {
+          return fetch(`assets/docs/en/${componentId}.md`).then((r) => (r.ok ? r.text() : null));
+        }
+        return null;
+      })
+      .then((md) => {
+        if (md && this.componentDoc) {
+          // Augment with the markdown content if desired
+          this.componentDoc.detailedDescription = md;
+        }
+      })
+      .catch((err) => {
+        console.warn(`Failed to fetch markdown for ${componentId}`, err);
+      });
+  }
+
   ngAfterViewInit() {
     this.initIntersectionObserver();
   }
 
   ngOnDestroy() {
     if (this.observer) this.observer.disconnect();
+    if (this.languageSubscription) this.languageSubscription.unsubscribe();
     window.removeEventListener('scroll', () => {});
     if ((this as any)._scrollContainer && (this as any)._scrollHandler) {
       (this as any)._scrollContainer.removeEventListener('scroll', (this as any)._scrollHandler);
