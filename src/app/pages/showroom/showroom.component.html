@@ -29,16 +29,16 @@
       <div class="menu-section">
         <h4 class="menu-label">MENU</h4>
         <nav class="sidebar-nav">
-          <button class="nav-btn active"><i class="fas fa-home"></i> Component Hub</button>
-          <button class="nav-btn"><i class="fas fa-chart-pie"></i> Analytics</button>
-          <button class="nav-btn"><i class="fas fa-cog"></i> Settings</button>
+          <ui-button class="nav-btn active"><i class="fas fa-home"></i> Component Hub</ui-button>
+          <ui-button class="nav-btn"><i class="fas fa-chart-pie"></i> Analytics</ui-button>
+          <ui-button class="nav-btn"><i class="fas fa-cog"></i> Settings</ui-button>
         </nav>
       </div>
 
       <div class="menu-section">
         <h4 class="menu-label">CATEGORIES</h4>
         <nav class="sidebar-nav">
-          <button
+          <ui-button
             *ngFor="let cat of categories; let i = index"
             class="nav-btn"
             [class.selected]="activeCategoryId() === cat.id"
@@ -49,7 +49,7 @@
             @if (cat.children && cat.children.length) {
               <span class="badge">{{ cat.children.length }}</span>
             }
-          </button>
+          </ui-button>
         </nav>
       </div>
 
@@ -58,7 +58,7 @@
           <div class="cta-glow"></div>
           <h5>Premium Available</h5>
           <p>Unlock all components</p>
-          <button>Upgrade Pro</button>
+          <ui-button>Upgrade Pro</ui-button>
         </div>
       </div>
     </aside>
@@ -77,9 +77,9 @@
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search resources..." (input)="onSearch($event)" />
           </div>
-          <button class="icon-btn">
+          <ui-button class="icon-btn">
             <i class="fas fa-bell"></i><span class="dot-indicator"></span>
-          </button>
+          </ui-button>
           <div class="avatar-profile">
             <img src="https://i.pravatar.cc/150?u=groundui" alt="User" />
           </div>
