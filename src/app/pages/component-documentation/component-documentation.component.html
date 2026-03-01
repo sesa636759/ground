@@ -1,14 +1,12 @@
-<div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
-  <div class="examples-split-layout" *ngIf="componentDoc">
-    <!-- Sidebar Navigation -->
-    <app-demo-sidebar
-      [variants]="sidebarSections"
-      [useAnchor]="true"
-      scrollContainer="#docs-scroll-area"
-      type="line"
-      show-progress
-      [active-Link]="getSectionId(activeSection())"
-    ></app-demo-sidebar>
+<app-docs-page-layout
+  *ngIf="componentDoc"
+  [title]="componentDoc.name + ' API'"
+  [description]="componentDoc.shortDescription"
+  [sections]="sidebarSections"
+>
+  <section [id]="getSectionId('overview')">
+    <h2 class="section-heading">Overview</h2>
+    <p>{{ componentDoc.detailedDescription }}</p>
 
     <!-- Main Content Area -->
     <div class="examples-content" id="docs-scroll-area">
@@ -24,52 +22,23 @@
             <span class="breadcrumb-separator">/</span>
             <span>API</span>
           </div>
-          <div class="title-row">
-            <h1>{{ componentDoc.name }}</h1>
-            <div class="version-tag">STABLE</div>
+          <div class="col-type">
+            <code class="inline-code">{{ prop.type }}</code>
           </div>
-          <p class="lead-text">{{ componentDoc.shortDescription }}</p>
+          <div class="col-default">
+            <code class="inline-code" *ngIf="prop.defaultValue">{{ prop.defaultValue }}</code>
+            <span class="no-default" *ngIf="!prop.defaultValue" style="color: var(--text-muted)"
+              >—</span
+            >
+          </div>
+          <div class="col-desc" style="color: var(--text-secondary); line-height: 1.6">
+            {{ prop.description }}
+          </div>
         </div>
-        <div class="header-decoration"></div>
-      </header>
-
-      <div class="docs-sections">
-        <!-- Overview Section -->
-        <section [id]="getSectionId('overview')" class="doc-section hero-section">
-          <div class="section-title">
-            <div class="icon-orb"><i class="fas fa-rocket"></i></div>
-            <div class="title-text">
-              <h2>Overview</h2>
-              <p>Core functionality and conceptual overview</p>
-            </div>
-          </div>
-          <div class="glass-card overview-content">
-            <p class="description-text">{{ componentDoc.detailedDescription }}</p>
-          </div>
-        </section>
-
-        <!-- Usage Section -->
-        <section [id]="getSectionId('usage')" class="doc-section">
-          <div class="section-title">
-            <div class="icon-orb secondary"><i class="fas fa-terminal"></i></div>
-            <div class="title-text">
-              <h2>Quick Start</h2>
-              <p>Basic implementation and markup</p>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="componentDoc.usage"
-            [label]="componentDoc.name + ' Basic Implementation'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
-
-        <!-- Props Section -->
-        <section
-          [id]="getSectionId('properties')"
-          class="doc-section"
-          *ngIf="componentDoc.props.length > 0"
+        <div
+          class="empty-filter"
+          *ngIf="filteredProps().length === 0"
+          style="padding: 32px; text-align: center; color: var(--text-muted)"
         >
           <div class="section-title">
             <div class="icon-orb success"><i class="fas fa-sliders-h"></i></div>
@@ -128,7 +97,7 @@
               </div>
             </div>
           </div>
-        </section>
+        <!-- End Properties Section -->
 
         <!-- Events Section -->
         <section
@@ -216,8 +185,7 @@
           </div>
         </section>
       </div>
-    </div>
-  </div>
+    <!-- End Main Content Area -->
 
   <!-- Empty State -->
   <div class="no-docs-empty" *ngIf="!componentDoc">
@@ -237,4 +205,4 @@
   <ui-button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </ui-button>
-</div>
+
