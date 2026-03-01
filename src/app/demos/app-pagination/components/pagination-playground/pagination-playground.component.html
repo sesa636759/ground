@@ -1,177 +1,165 @@
-<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion
-      items='[{"id": "config", "title": "Configuration", "icon": "⚙️"}]'
-      default-open='["config"]'
-      multiple="true"
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Basic Settings -->
-          <div class="control-section">
-            <h3>Basic Settings</h3>
-            <div class="control-group">
-              <label>Total Items</label>
-              <app-input
-                name="totalItems"
-                type="number"
-                [(ngModel)]="pgConfig.totalItems"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-            <div class="control-group">
-              <label>Items Per Page</label>
-              <app-input
-                name="itemsPerPage"
-                type="number"
-                [(ngModel)]="pgConfig.itemsPerPage"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-            <div class="control-group">
-              <label>Max Visible Pages</label>
-              <app-input
-                name="maxVisiblePages"
-                type="number"
-                [(ngModel)]="pgConfig.maxVisiblePages"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-          </div>
-
-          <!-- Appearance -->
-          <div class="control-section">
-            <h3>Appearance</h3>
-            <div class="control-group">
-              <label>Type</label>
-              <ui-dropdown
-                name="type"
-                [(ngModel)]="pgConfig.type"
-                (ngModelChange)="updateConfig()"
-                [options]="typeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                name="size"
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                name="variant"
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Theme</label>
-              <ui-dropdown
-                name="theme"
-                [(ngModel)]="pgConfig.theme"
-                (ngModelChange)="updateConfig()"
-                [options]="themeOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Shape</label>
-              <ui-dropdown
-                name="shape"
-                [(ngModel)]="pgConfig.shape"
-                (ngModelChange)="updateConfig()"
-                [options]="shapeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Features -->
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="keyboardNav"
-                [(ngModel)]="pgConfig.keyboardNav"
-                (ngModelChange)="updateConfig()"
-                label="Keyboard Nav"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="responsiveMode"
-                [(ngModel)]="pgConfig.responsiveMode"
-                (ngModelChange)="updateConfig()"
-                label="Responsive"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="rtl"
-                [(ngModel)]="pgConfig.rtl"
-                (ngModelChange)="updateConfig()"
-                label="RTL Mode"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="showFirstLast"
-                [(ngModel)]="pgConfig.showFirstLast"
-                (ngModelChange)="updateConfig()"
-                label="Show First/Last"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="showPageSize"
-                [(ngModel)]="pgConfig.showPageSize"
-                (ngModelChange)="updateConfig()"
-                label="Show Page Size"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="showTotal"
-                [(ngModel)]="pgConfig.showTotal"
-                (ngModelChange)="updateConfig()"
-                label="Show Total"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="showJumpTo"
-                [(ngModel)]="pgConfig.showJumpTo"
-                (ngModelChange)="updateConfig()"
-                label="Show Jump To"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                name="iconOnly"
-                [(ngModel)]="pgConfig.iconOnly"
-                (ngModelChange)="updateConfig()"
-                label="Icon Only"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id": "config", "title": "Configuration", "icon": "⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <!-- Basic Settings -->
+      <div class="control-section">
+        <h3>Basic Settings</h3>
+        <div class="control-group">
+          <label>Total Items</label>
+          <app-input
+            name="totalItems"
+            type="number"
+            [(ngModel)]="pgConfig.totalItems"
+            (ngModelChange)="updateConfig()"
+          ></app-input>
         </div>
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
+        <div class="control-group">
+          <label>Items Per Page</label>
+          <app-input
+            name="itemsPerPage"
+            type="number"
+            [(ngModel)]="pgConfig.itemsPerPage"
+            (ngModelChange)="updateConfig()"
+          ></app-input>
+        </div>
+        <div class="control-group">
+          <label>Max Visible Pages</label>
+          <app-input
+            name="maxVisiblePages"
+            type="number"
+            [(ngModel)]="pgConfig.maxVisiblePages"
+            (ngModelChange)="updateConfig()"
+          ></app-input>
         </div>
       </div>
-    </ui-accordion>
+
+      <!-- Appearance -->
+      <div class="control-section">
+        <h3>Appearance</h3>
+        <div class="control-group">
+          <label>Type</label>
+          <ui-dropdown
+            name="type"
+            [(ngModel)]="pgConfig.type"
+            (ngModelChange)="updateConfig()"
+            [options]="typeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            name="size"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="sizeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            name="variant"
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="variantOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Theme</label>
+          <ui-dropdown
+            name="theme"
+            [(ngModel)]="pgConfig.theme"
+            (ngModelChange)="updateConfig()"
+            [options]="themeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Shape</label>
+          <ui-dropdown
+            name="shape"
+            [(ngModel)]="pgConfig.shape"
+            (ngModelChange)="updateConfig()"
+            [options]="shapeOptions"
+          ></ui-dropdown>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="control-section">
+        <h3>Features</h3>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="keyboardNav"
+            [(ngModel)]="pgConfig.keyboardNav"
+            (ngModelChange)="updateConfig()"
+            label="Keyboard Nav"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="responsiveMode"
+            [(ngModel)]="pgConfig.responsiveMode"
+            (ngModelChange)="updateConfig()"
+            label="Responsive"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="rtl"
+            [(ngModel)]="pgConfig.rtl"
+            (ngModelChange)="updateConfig()"
+            label="RTL Mode"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="showFirstLast"
+            [(ngModel)]="pgConfig.showFirstLast"
+            (ngModelChange)="updateConfig()"
+            label="Show First/Last"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="showPageSize"
+            [(ngModel)]="pgConfig.showPageSize"
+            (ngModelChange)="updateConfig()"
+            label="Show Page Size"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="showTotal"
+            [(ngModel)]="pgConfig.showTotal"
+            (ngModelChange)="updateConfig()"
+            label="Show Total"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="showJumpTo"
+            [(ngModel)]="pgConfig.showJumpTo"
+            (ngModelChange)="updateConfig()"
+            label="Show Jump To"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            name="iconOnly"
+            [(ngModel)]="pgConfig.iconOnly"
+            (ngModelChange)="updateConfig()"
+            label="Icon Only"
+          ></app-checkbox>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="playground-preview">
+  <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
+  <div preview>
     <div class="preview-stage">
       <ui-pagination
         #pagination
@@ -195,15 +183,16 @@
         (pageChange)="onPageChange($event)"
       ></ui-pagination>
     </div>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
   </div>
-</div>
+
+  <div events class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode"
+    label="Generated Code"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

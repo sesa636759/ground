@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-popover-playground',
@@ -21,149 +22,11 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <!-- Content -->
-              <div class="control-section">
-                <h3>Content</h3>
-                <div class="control-group">
-                  <label>Heading</label>
-                  <input
-                    name="heading"
-                    type="text"
-                    [(ngModel)]="pgConfig.heading"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Body Content (HTML)</label>
-                  <textarea
-                    name="content"
-                    [(ngModel)]="pgConfig.content"
-                    (ngModelChange)="updateConfig()"
-                  ></textarea>
-                </div>
-              </div>
+  templateUrl: './popover-playground.component.html',
 
-              <!-- Behavior -->
-              <div class="control-section">
-                <h3>Behavior</h3>
-                <div class="control-group">
-                  <label>Trigger</label>
-                  <ui-dropdown
-                    name="trigger"
-                    [(ngModel)]="pgConfig.trigger"
-                    (ngModelChange)="updateConfig()"
-                    [options]="triggerOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Placement</label>
-                  <ui-dropdown
-                    name="placement"
-                    [(ngModel)]="pgConfig.placement"
-                    (ngModelChange)="updateConfig()"
-                    [options]="placementOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
-
-              <!-- Appearance -->
-              <div class="control-section">
-                <h3>Appearance</h3>
-                <div class="control-group">
-                  <label>Variant</label>
-                  <ui-dropdown
-                    name="variant"
-                    [(ngModel)]="pgConfig.variant"
-                    (ngModelChange)="updateConfig()"
-                    [options]="variantOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Width</label>
-                  <input
-                    name="width"
-                    type="text"
-                    [(ngModel)]="pgConfig.width"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showArrow"
-                    name="showArrow"
-                    [(ngModel)]="pgConfig.showArrow"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Arrow"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="closeButton"
-                    name="closeButton"
-                    [(ngModel)]="pgConfig.showCloseButton"
-                    (ngModelChange)="updateConfig()"
-                    label="Close Button"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="backdrop"
-                    name="backdrop"
-                    [(ngModel)]="pgConfig.backdrop"
-                    (ngModelChange)="updateConfig()"
-                    label="Backdrop"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <button class="btn-secondary" (click)="resetConfig()">Reset</button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-popover
-          #popover
-          [attr.heading]="pgConfig.heading"
-          [attr.content]="pgConfig.content"
-          [attr.trigger]="pgConfig.trigger"
-          [attr.placement]="pgConfig.placement"
-          [attr.variant]="pgConfig.variant"
-          [attr.width]="pgConfig.width"
-          [attr.show-arrow]="pgConfig.showArrow ? '' : null"
-          [attr.show-close-button]="pgConfig.showCloseButton ? '' : null"
-          [attr.backdrop]="pgConfig.backdrop ? '' : null"
-        >
-          <button class="btn-primary">Target Element</button>
-        </ui-popover>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode"
-            [label]="'Generated Code'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './popover-playground.component.scss',
 })
 export class PopoverPlaygroundComponent implements AfterViewInit {

@@ -1,4 +1,4 @@
-<!-- App Container with conditional layout classes -->
+<!-- App Container with conditional layout classes  -->
 <div
   class="app-container"
   [class.layout-sidebar]="themeService.navigationLayout() === 'sidebar'"
@@ -18,8 +18,12 @@
     [show-search]="true"
     max-items="7"
     (navItemClick)="onNavItemClick($event)"
+    (navToggle)="onNavToggle($event)"
   >
-    <!-- User Profile rendered as bottom item (consistent with other categories) -->
+    <div slot="header" class="nav-brand-header">
+      <img src="assets/images/components.png" alt="Component Hub" class="nav-brand-logo" />
+      <span class="nav-brand-name">Component Hub</span>
+    </div>
   </ui-navigation>
 
   <!-- Main Content with Router Outlet -->

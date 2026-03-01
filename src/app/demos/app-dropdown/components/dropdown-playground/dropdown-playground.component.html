@@ -1,0 +1,110 @@
+
+    <app-playground
+      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"},{"id":"features","title":"Features","icon":"⚡"}]'
+      defaultOpen='["config", "features"]'
+    >
+      <div slot="content-config" class="control-grid" style="padding: 16px;">
+        <div class="control-group">
+          <label>Placeholder</label>
+          <input
+            type="text"
+            [(ngModel)]="pgConfig.placeholder"
+            (ngModelChange)="updateConfig()"
+          />
+        </div>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="sizeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Appearance</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.appearance"
+            (ngModelChange)="updateConfig()"
+            [options]="appearanceOptions"
+          ></ui-dropdown>
+        </div>
+      </div>
+
+      <div slot="content-features" style="padding: 16px;">
+        <div class="checkbox-grid">
+          <label class="checkbox-item">
+            <app-checkbox
+              id="multi"
+              [(ngModel)]="pgConfig.multiSelect"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
+            Multi-Select
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              id="search"
+              [(ngModel)]="pgConfig.searchable"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
+            Searchable
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              id="clear"
+              [(ngModel)]="pgConfig.clearable"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
+            Clearable
+          </label>
+          <label class="checkbox-item">
+            <app-checkbox
+              id="cascade"
+              [(ngModel)]="pgConfig.cascading"
+              (ngModelChange)="updateConfig()"
+            ></app-checkbox>
+            Cascading
+          </label>
+        </div>
+      </div>
+
+      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+
+      <div
+        preview
+        class="preview-stage"
+        style="flex-direction: column; align-items: flex-start; gap: 1rem;"
+      >
+        <label class="preview-label" style="font-weight: 500; font-size: 0.9rem;"
+          >Pick your favorite tech stack:</label
+        >
+        <ui-dropdown
+          #demoElement
+          [attr.placeholder]="pgConfig.placeholder"
+          [attr.size]="pgConfig.size !== 'md' ? pgConfig.size : null"
+          [attr.appearance]="pgConfig.appearance !== 'dropdown' ? pgConfig.appearance : null"
+          [attr.multi-select]="pgConfig.multiSelect ? '' : null"
+          [attr.searchable]="pgConfig.searchable ? '' : null"
+          [attr.clearable]="pgConfig.clearable ? '' : null"
+          [attr.cascading]="pgConfig.cascading ? '' : null"
+          [options]="pgConfig.cascading ? cascadingOptionsJson : optionsJson"
+          (valueChange)="onValueChange($event)"
+        ></ui-dropdown>
+
+        <div
+          *ngIf="currentValue"
+          style="margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem;"
+        >
+          <strong>Selected Value:</strong> {{ currentValue }}
+        </div>
+      </div>
+
+      <ui-code-preview
+        code
+        *ngIf="showCode"
+        [htmlCode]="generatedCode()"
+        label="Generated Code"
+        activeLang="html"
+        expanded="true"
+      ></ui-code-preview>
+    </app-playground>
+  

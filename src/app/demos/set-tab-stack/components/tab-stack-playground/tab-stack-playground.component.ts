@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-tab-stack-playground',
@@ -13,108 +14,11 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Orientation</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.orientation"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Horizontal', value: 'horizontal' },
-                { label: 'Vertical', value: 'vertical' },
-              ]"
-            ></ui-dropdown>
-          </div>
-          <div class="control-group">
-            <label>Variant</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.variant"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Default', value: 'default' },
-                { label: 'Pills', value: 'pills' },
-                { label: 'Underline', value: 'underline' },
-                { label: 'Glass', value: 'glass' },
-              ]"
-            ></ui-dropdown>
-          </div>
-          <div class="control-group">
-            <label>Size</label>
-            <ui-dropdown
-              [(ngModel)]="pgConfig.size"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'Small', value: 'small' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Large', value: 'large' },
-              ]"
-            ></ui-dropdown>
-          </div>
-        </div>
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" />
-            Closable
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
-            Draggable
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
-            Scrollable
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" />
-            Grouped
-          </label>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
+  templateUrl: './tab-stack-playground.component.html',
 
-  <div class="playground-preview">
-        <div class="event-log-container">
-          <strong>Event Log</strong>
-          <div class="log-items">
-            <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-          </div>
-        </div>
-        <div class="preview-stage">
-          <app-tab-stack
-            [attr.orientation]="pgConfig.orientation"
-            [attr.variant]="pgConfig.variant"
-            [attr.size]="pgConfig.size"
-            [attr.closable]="pgConfig.closable"
-            [attr.draggable]="pgConfig.draggable"
-            [attr.scrollable]="pgConfig.scrollable"
-            [attr.grouped]="pgConfig.grouped"
-            [tabs]="tabs"
-          ></app-tab-stack>
-        </div>
-        <div class="code-block">
-          <div class="code-header">
-            <span>Generated Code</span>
-            <ui-button
-              class="copy-btn"
-              variant="secondary"
-              size="sm"
-              (click)="copyCode()"
-              label="Copy"
-            ></ui-button>
-          </div>
-          <pre><code>{{ generatedCode() }}</code></pre>
-        </div>
-      </div>
-    </div>
-  `,
   styles: [
     `
       @use '../../../../../styles/playground-base.scss';

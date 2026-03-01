@@ -2,145 +2,16 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 
 @Component({
   selector: 'app-knob-playground',
   standalone: true,
   imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Value Control</h3>
-                <div class="control-group">
-                  <label>Current Value</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.value"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Min</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.min"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Max</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.max"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Step</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.step"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-              </div>
+  templateUrl: './knob-playground.component.html',
 
-              <div class="control-section">
-                <h3>Visuals</h3>
-                <div class="control-group">
-                  <label>Size</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.size"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Stroke Width</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="pgConfig.strokeWidth"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="control-group">
-                  <label>Color</label>
-                  <input
-                    type="color"
-                    [(ngModel)]="pgConfig.valueColor"
-                    (ngModelChange)="updateConfig()"
-                  />
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="readonly"
-                    [(ngModel)]="pgConfig.readonly"
-                    (ngModelChange)="updateConfig()"
-                    label="Readonly"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="showValue"
-                    [(ngModel)]="pgConfig.showValue"
-                    (ngModelChange)="updateConfig()"
-                    label="Show Value"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-knob
-          [attr.value]="pgConfig.value"
-          [attr.min]="pgConfig.min"
-          [attr.max]="pgConfig.max"
-          [attr.step]="pgConfig.step"
-          [attr.size]="pgConfig.size"
-          [attr.stroke-width]="pgConfig.strokeWidth"
-          [attr.value-color]="pgConfig.valueColor"
-          [attr.readonly]="pgConfig.readonly ? '' : null"
-          [attr.show-value]="pgConfig.showValue ? '' : null"
-          (knobChange)="onValueChange($event)"
-        ></ui-knob>
-
-        <div style="margin-top: 16px; font-weight: 600; color: var(--text-primary);">
-          Value: {{ pgConfig.value }}
-        </div>
-
-        <div class="code-output">
-          <ui-code-preview
-            *ngIf="showCode"
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-      </div>
-    </div>
-  `,
   styleUrl: './knob-playground.component.scss',
 })
 export class KnobPlaygroundComponent {

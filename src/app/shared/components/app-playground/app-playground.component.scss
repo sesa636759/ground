@@ -1,0 +1,21 @@
+@use '../../../../styles/playground-base.scss';
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.preview-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    margin-top: calc(-1 * var(--space-md)); // Pull closer to preview stage if needed
+}
+
+.event-log-container {
+    margin-top: var(--space-md);
+}
+
+.code-preview-area {
+    margin-top: var(--space-lg);
+}

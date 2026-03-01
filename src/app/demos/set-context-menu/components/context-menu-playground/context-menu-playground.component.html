@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Trigger</label>
@@ -53,7 +54,11 @@
 
       <div class="control-group">
         <label>Backdrop Blur</label>
-        <app-input type="text" [(ngModel)]="pgConfig.backdropBlur" (ngModelChange)="updateConfig()" />
+        <app-input
+          type="text"
+          [(ngModel)]="pgConfig.backdropBlur"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
     </div>
 
@@ -100,8 +105,6 @@
         Keyboard Navigation
       </label>
     </div>
-        </div>
-    </ui-accordion>
   </div>
 
   <div class="playground-preview" [class.glass-bg]="pgConfig.variant === 'glass'">
@@ -146,15 +149,13 @@
       </app-context-menu>
     </div>
 
-    
-    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-  
-      <ui-code-preview
+    <ui-code-preview
       *ngIf="showCode"
       [htmlCode]="generatedCode()"
       [label]="'Generated Code'"
       activeLang="html"
       expanded="true"
     ></ui-code-preview>
-    </div>
-</div>
+    <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
+  </div>
+</app-playground>

@@ -27,32 +27,95 @@ export class DocumentationComponent implements OnInit {
 
   components = signal<ComponentDocumentation[]>([]);
 
-  guides = [
+  guideCategories = [
     {
-      id: 'introduction',
-      title: 'Getting Started',
-      desc: 'Design philosophy and core concepts',
+      label: 'Getting Started',
       icon: 'fas fa-rocket',
+      guides: [
+        {
+          id: 'introduction',
+          title: 'Overview',
+          desc: 'Design philosophy and core principles',
+          icon: 'fas fa-layer-group',
+        },
+        {
+          id: 'installation',
+          title: 'Installation',
+          desc: 'Install the package and configure dependencies',
+          icon: 'fas fa-download',
+        },
+        {
+          id: 'quick-start',
+          title: 'Quick Start',
+          desc: 'Build your first UI component in minutes',
+          icon: 'fas fa-bolt',
+        },
+        {
+          id: 'frameworks',
+          title: 'Supported Frameworks',
+          desc: 'Angular, React, Vue and Web Components',
+          icon: 'fas fa-puzzle-piece',
+        },
+      ],
     },
     {
-      id: 'installation',
-      title: 'Installation',
-      desc: 'Step-by-step setup and dependencies',
-      icon: 'fas fa-download',
+      label: 'Customization',
+      icon: 'fas fa-palette',
+      guides: [
+        {
+          id: 'theming',
+          title: 'Theming',
+          desc: 'Design tokens, dark mode and color systems',
+          icon: 'fas fa-paint-brush',
+        },
+        {
+          id: 'usage',
+          title: 'Usage Guide',
+          desc: 'Patterns and principles for every component',
+          icon: 'fas fa-laptop-code',
+        },
+        {
+          id: 'styling',
+          title: 'Custom Styling',
+          desc: 'Override and extend component styles safely',
+          icon: 'fas fa-css3-alt',
+        },
+      ],
     },
     {
-      id: 'usage',
-      title: 'Usage Guide',
-      desc: 'Principles for implementing components',
-      icon: 'fas fa-laptop-code',
+      label: 'Support',
+      icon: 'fas fa-life-ring',
+      guides: [
+        {
+          id: 'faq',
+          title: 'FAQ',
+          desc: 'Frequently asked questions answered',
+          icon: 'fas fa-question-circle',
+        },
+        {
+          id: 'changelog',
+          title: 'Changelog',
+          desc: 'Release notes and version history',
+          icon: 'fas fa-history',
+        },
+        {
+          id: 'migration',
+          title: 'Migration Guide',
+          desc: 'Upgrade smoothly from previous versions',
+          icon: 'fas fa-exchange-alt',
+        },
+      ],
     },
   ];
+
+  get totalGuides() {
+    return this.guideCategories.reduce((s, c) => s + c.guides.length, 0);
+  }
 
   filteredComponents = computed(() => {
     const list = this.components();
     const search = this.searchText().toLowerCase();
     if (!search) return list;
-
     return list.filter(
       (c) =>
         (c.name && c.name.toLowerCase().includes(search)) ||
@@ -60,13 +123,37 @@ export class DocumentationComponent implements OnInit {
     );
   });
 
-  filteredGuides = computed(() => {
+  filteredGuideCategories = computed(() => {
     const search = this.searchText().toLowerCase();
-    if (!search) return this.guides;
-    return this.guides.filter(
-      (g) =>
-        (g.title && g.title.toLowerCase().includes(search)) ||
-        (g.desc && g.desc.toLowerCase().includes(search)),
+    return this.guideCategories
+      .map((cat) => ({
+        ...cat,
+        guides: !search
+          ? cat.guides
+          : cat.guides.filter(
+              (g) =>
+                g.title.toLowerCase().includes(search) || g.desc.toLowerCase().includes(search),
+            ),
+      }))
+      .filter((cat) => cat.guides.length > 0);
+  });
+
+  filteredGuides = computed(() => {
+    const allGuides = this.guideCategories.flatMap((c) => c.guides);
+    const search = this.searchText().toLowerCase();
+    if (!search) return allGuides;
+    return allGuides.filter(
+      (g) => g.title.toLowerCase().includes(search) || g.desc.toLowerCase().includes(search),
+    );
+  });
+
+  flatGuideAccordionItems = computed(() => {
+    return JSON.stringify(
+      this.filteredGuides().map((g) => ({
+        id: g.id,
+        title: g.title,
+        content: `<p style="margin:0;color:var(--text-secondary,#64748b);font-size:.9rem">${g.desc}</p>`,
+      })),
     );
   });
 
@@ -103,8 +190,62 @@ export class DocumentationComponent implements OnInit {
     window.scrollTo({ top: 500, behavior: 'smooth' });
   }
 
+  getGuideAccordionItems(cat: (typeof this.guideCategories)[0]): string {
+    return JSON.stringify(
+      cat.guides.map((g) => ({
+        id: g.id,
+        title: g.title,
+        content: `<p style="margin:0;color:var(--text-secondary,#64748b);font-size:.9rem">${g.desc}</p>`,
+      })),
+    );
+  }
+
+  faqAccordionItems = JSON.stringify([
+    {
+      id: 'faq-1',
+      title: 'Is GROUND UI free to use?',
+      content:
+        '<p>Yes. GROUND UI is MIT licensed and completely free for personal and commercial projects.</p>',
+    },
+    {
+      id: 'faq-2',
+      title: 'Does it work with Angular standalone components?',
+      content:
+        "<p>Yes — all components work with Angular's standalone API and are tree-shakeable. No NgModule setup required.</p>",
+    },
+    {
+      id: 'faq-3',
+      title: 'Are the components WCAG accessible?',
+      content:
+        '<p>All components meet WCAG 2.1 AA standards with full keyboard navigation, focus management and ARIA attribute support.</p>',
+    },
+    {
+      id: 'faq-4',
+      title: 'Can I use it with Tailwind CSS?',
+      content:
+        '<p>Yes. Components expose CSS custom properties so Tailwind utility classes can coexist without conflicts.</p>',
+    },
+    {
+      id: 'faq-5',
+      title: 'How do I report a bug or request a feature?',
+      content:
+        '<p>Open an issue on our GitHub repository. Include a minimal reproduction and environment details for the fastest response.</p>',
+    },
+    {
+      id: 'faq-6',
+      title: 'Is server-side rendering (SSR) supported?',
+      content:
+        '<p>SSR support is experimental in v2. Full Angular Universal and Next.js SSR stability is planned for v3.</p>',
+    },
+  ]);
+
   getSelectedGuide() {
-    return this.guides.find((g) => g.id === this.selectedGuideId());
+    const id = this.selectedGuideId();
+    for (const cat of this.guideCategories) {
+      const found = cat.guides.find((g) => g.id === id);
+      if (found) return found;
+    }
+    return undefined;
   }
 
   viewComponentDoc(componentId: string) {
@@ -115,5 +256,93 @@ export class DocumentationComponent implements OnInit {
 
   async copyText(text: string) {
     await navigator.clipboard.writeText(text);
+  }
+
+  getComponentIcon(id: string): string {
+    const iconMap: Record<string, string> = {
+      accordion: 'chevrons-up-down',
+      button: 'mouse-pointer-click',
+      'button-toggle': 'toggle-left',
+      card: 'square',
+      input: 'text-cursor-input',
+      dialog: 'layout-panel-top',
+      'dialog-box': 'layout-panel-top',
+      checkbox: 'check-square',
+      radio: 'circle-dot',
+      select: 'chevron-down-circle',
+      table: 'table',
+      tabs: 'panel-top',
+      badge: 'tag',
+      tooltip: 'message-circle-more',
+      alert: 'triangle-alert',
+      progress: 'loader',
+      spinner: 'refresh-cw',
+      slider: 'sliders-horizontal',
+      switch: 'toggle-right',
+      toggle: 'toggle-right',
+      avatar: 'user-circle',
+      'avatar-group': 'users',
+      breadcrumb: 'chevrons-right',
+      pagination: 'list-ordered',
+      navigation: 'navigation',
+      sidebar: 'panel-left',
+      drawer: 'panel-right',
+      stepper: 'git-commit-horizontal',
+      'smart-stepper': 'footprints',
+      timeline: 'git-branch',
+      tree: 'git-branch-plus',
+      'tree-list': 'git-branch-plus',
+      'data-grid': 'layout-grid',
+      'advanced-data-table': 'table-2',
+      chart: 'bar-chart-2',
+      'app-chart': 'bar-chart-2',
+      'bar-chart': 'bar-chart-2',
+      'pie-chart': 'pie-chart',
+      'waffle-chart': 'grid-2x2',
+      speedometer: 'gauge',
+      knob: 'disc',
+      calendar: 'calendar',
+      datepicker: 'calendar-days',
+      'color-picker': 'pipette',
+      autocomplete: 'search',
+      'pattern-input': 'regex',
+      'transfer-list': 'arrow-left-right',
+      picklist: 'move-horizontal',
+      'speed-dial': 'zap',
+      'file-upload': 'upload',
+      'rich-text': 'pencil-line',
+      menu: 'menu',
+      'smart-menu': 'square-menu',
+      popover: 'message-square',
+      'context-menu': 'list',
+      skeleton: 'loader-circle',
+      divider: 'minus',
+      chip: 'hash',
+      rating: 'star',
+      snackbar: 'bell',
+      notification: 'bell-ring',
+      carousel: 'gallery-horizontal',
+      'image-viewer': 'image',
+      'code-preview': 'code',
+      'code-editor': 'code-2',
+      icon: 'shapes',
+      dropdown: 'chevron-down',
+      'range-slider': 'sliders-horizontal',
+      'meter-group': 'activity',
+      'split-button': 'split',
+      timer: 'timer',
+      'aside-panel': 'panel-right-open',
+      dock: 'app-window',
+      pill: 'pill',
+      'scroll-top': 'arrow-up-circle',
+      'tag-group': 'tags',
+      tag: 'tags',
+      'otp-input': 'key-round',
+      'resizable-panel': 'panel-right',
+      'layout-manager': 'layout-dashboard',
+      dashboard: 'layout-dashboard',
+      panel: 'layout-panel-left',
+    };
+    return iconMap[id] ?? 'box';
   }
 }

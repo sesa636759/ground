@@ -1,105 +1,24 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-speed-dial-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion
-          items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-          defaultOpen='["config"]'
-          multiple
-        >
-          <div slot="content-config">
-            <div class="control-grid">
-              <div class="control-section">
-                <h3>Layout</h3>
-                <div class="control-group">
-                  <label>Direction</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.direction"
-                    (ngModelChange)="updateConfig()"
-                    [options]="directionOptions"
-                  ></ui-dropdown>
-                </div>
-                <div class="control-group">
-                  <label>Type</label>
-                  <ui-dropdown
-                    [(ngModel)]="pgConfig.type"
-                    (ngModelChange)="updateConfig()"
-                    [options]="typeOptions"
-                  ></ui-dropdown>
-                </div>
-              </div>
-
-              <div class="control-section">
-                <h3>Visuals</h3>
-                <div class="control-group">
-                  <label>Radius (for circles)</label>
-                  <app-input
-                    type="number"
-                    [(ngModel)]="pgConfig.radius"
-                    (ngModelChange)="updateConfig()"
-                  ></app-input>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="ripple"
-                    [(ngModel)]="pgConfig.ripple"
-                    (ngModelChange)="updateConfig()"
-                    label="Ripple Effect"
-                  ></app-checkbox>
-                </div>
-                <div class="checkbox-group">
-                  <app-checkbox
-                    id="mask"
-                    [(ngModel)]="pgConfig.mask"
-                    (ngModelChange)="updateConfig()"
-                    label="Display Mask"
-                  ></app-checkbox>
-                </div>
-              </div>
-            </div>
-
-            <div class="code-output">
-              <pre>{{ generatedCode() }}</pre>
-            </div>
-
-            <div class="action-buttons">
-              <ui-button
-                class="btn-secondary"
-                variant="secondary"
-                (click)="resetConfig()"
-                label="Reset"
-              ></ui-button>
-            </div>
-          </div>
-        </ui-accordion>
-      </div>
-
-      <div class="playground-preview">
-        <ui-speed-dial
-          [attr.direction]="pgConfig.direction"
-          [attr.type]="pgConfig.type"
-          [attr.radius]="pgConfig.radius"
-          [attr.ripple]="pgConfig.ripple ? '' : null"
-          [attr.mask]="pgConfig.mask ? '' : null"
-          [model]="modelJson"
-          button-class="ui-button-primary"
-        ></ui-speed-dial>
-
-        <p style="position: absolute; bottom: 20px; font-size: 0.8rem; color: #94a3b8;">
-          Direction: {{ pgConfig.direction }} | Type: {{ pgConfig.type }}
-        </p>
-      </div>
-    </div>
-  `,
+  templateUrl: './speed-dial-playground.component.html',
   styleUrl: './speed-dial-playground.component.scss',
 })
 export class SpeedDialPlaygroundComponent {
@@ -134,9 +53,19 @@ export class SpeedDialPlaygroundComponent {
 
   modelJson = JSON.stringify(this.model);
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -149,6 +78,7 @@ export class SpeedDialPlaygroundComponent {
     code += '></ui-speed-dial>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

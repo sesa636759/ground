@@ -5,6 +5,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { AppRadioGroupValueAccessorDirective } from '../../../../directives/app-radio-group-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -27,6 +28,7 @@ import {
     UiDropdownValueAccessorDirective,
     AppRadioGroupValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './radio-playground.component.html',

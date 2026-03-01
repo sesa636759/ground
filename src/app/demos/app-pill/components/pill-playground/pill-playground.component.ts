@@ -1,8 +1,9 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-pill-playground',
@@ -12,117 +13,10 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Label</label>
-              <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Color</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.color"
-                (ngModelChange)="updateConfig()"
-                [options]="colorOptions"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="removable"
-                [(ngModel)]="pgConfig.removable"
-                (ngModelChange)="updateConfig()"
-                label="Removable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="clickable"
-                [(ngModel)]="pgConfig.clickable"
-                (ngModelChange)="updateConfig()"
-                label="Clickable"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="loading"
-                [(ngModel)]="pgConfig.loading"
-                (ngModelChange)="updateConfig()"
-                label="Loading"
-              ></app-checkbox>
-            </div>
-            <div class="control-group">
-              <label>Counter</label>
-              <app-input type="number" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" ></app-input>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <ui-pill
-          [attr.label]="pgConfig.label"
-          [attr.variant]="pgConfig.variant"
-          [attr.color]="pgConfig.color"
-          [attr.size]="pgConfig.size"
-          [attr.removable]="pgConfig.removable ? '' : null"
-          [attr.clickable]="pgConfig.clickable ? '' : null"
-          [attr.loading]="pgConfig.loading ? '' : null"
-          [attr.counter]="pgConfig.counter"
-          icon="🏷️"
-        ></ui-pill>
-      
-      <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
+  templateUrl: './pill-playground.component.html',
   styleUrl: './pill-playground.component.scss',
 })
 export class PillPlaygroundComponent {
@@ -161,9 +55,19 @@ export class PillPlaygroundComponent {
   ];
 
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -179,6 +83,7 @@ export class PillPlaygroundComponent {
     code += '></ui-pill>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {

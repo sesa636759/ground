@@ -1,0 +1,188 @@
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+  multiple
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>🎨 Appearance</h3>
+        <div class="control-group">
+          <label>Design Variant</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="variantOptions"
+          ></ui-dropdown>
+        </div>
+
+        <div
+          class="control-grid"
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0"
+        >
+          <div class="control-group">
+            <label>Width</label>
+            <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
+          </div>
+          <div class="control-group">
+            <label>Radius</label>
+            <input
+              type="text"
+              [(ngModel)]="pgConfig.borderRadius"
+              (ngModelChange)="updateConfig()"
+            />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Content Layout</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.layout"
+            (ngModelChange)="updateConfig()"
+            [options]="[
+              { label: 'Vertical stacking', value: 'vertical' },
+              { label: 'Horizontal flow', value: 'horizontal' },
+            ]"
+          ></ui-dropdown>
+        </div>
+
+        <div class="control-group">
+          <label>Special Effects</label>
+          <div class="checkbox-grid">
+            <app-checkbox
+              id="glass"
+              [(ngModel)]="pgConfig.glass"
+              (ngModelChange)="updateConfig()"
+              label="Glassmorphism"
+            ></app-checkbox>
+            <app-checkbox
+              id="hoverable"
+              [(ngModel)]="pgConfig.hoverable"
+              (ngModelChange)="updateConfig()"
+              label="Raise on hover"
+            ></app-checkbox>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h3>⚡ Functional Features</h3>
+        <div class="checkbox-grid">
+          <div class="checkbox-group">
+            <app-checkbox
+              id="flippable"
+              [(ngModel)]="pgConfig.flippable"
+              (ngModelChange)="updateConfig()"
+              label="Flippable"
+            ></app-checkbox>
+          </div>
+          <div class="checkbox-group">
+            <app-checkbox
+              id="loading"
+              [(ngModel)]="pgConfig.loading"
+              (ngModelChange)="updateConfig()"
+              label="Skeleton"
+            ></app-checkbox>
+          </div>
+          <div class="checkbox-group">
+            <app-checkbox
+              id="showMenu"
+              [(ngModel)]="pgConfig.showMenu"
+              (ngModelChange)="updateConfig()"
+              label="Menu"
+            ></app-checkbox>
+          </div>
+          <div class="checkbox-group">
+            <app-checkbox
+              id="closable"
+              [(ngModel)]="pgConfig.closable"
+              (ngModelChange)="updateConfig()"
+              label="Closable"
+            ></app-checkbox>
+          </div>
+          <div class="checkbox-group">
+            <app-checkbox
+              id="selectable"
+              [(ngModel)]="pgConfig.selectable"
+              (ngModelChange)="updateConfig()"
+              label="Selectable"
+            ></app-checkbox>
+          </div>
+          <div class="checkbox-group">
+            <app-checkbox
+              id="collapsible"
+              [(ngModel)]="pgConfig.collapsible"
+              (ngModelChange)="updateConfig()"
+              label="Collapsible"
+            ></app-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <ui-button variant="ghost" (click)="resetConfig()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <ui-card
+      [attr.variant]="pgConfig.variant"
+      [attr.hoverable]="pgConfig.hoverable ? '' : null"
+      [attr.flippable]="pgConfig.flippable ? '' : null"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.show-menu]="pgConfig.showMenu ? '' : null"
+      [attr.closable]="pgConfig.closable ? '' : null"
+      [attr.selectable]="pgConfig.selectable ? '' : null"
+      [attr.collapsible]="pgConfig.collapsible ? '' : null"
+      [attr.glass]="pgConfig.glass ? '' : null"
+      [attr.layout]="pgConfig.layout"
+      [attr.size]="pgConfig.size"
+      [attr.type]="pgConfig.type"
+      [attr.ribbon]="pgConfig.ribbon || null"
+      [attr.ribbon-color]="pgConfig.ribbon ? pgConfig.ribbonColor : null"
+      [attr.border-radius]="pgConfig.borderRadius"
+      [attr.width]="pgConfig.width"
+      [menuItems]="menuJson"
+    >
+      <div slot="cover" class="demo-cover-image">
+        <i class="fas fa-mountain"></i>
+      </div>
+      <div slot="header">
+        <h3 style="margin: 0; font-weight: 700">Exploring the Alps</h3>
+      </div>
+      <div slot="content" class="demo-card-content">
+        <p>
+          Experience the breathtaking views and serene landscapes of the highest mountain range in
+          Europe. Perfect for adventure seekers!
+        </p>
+      </div>
+      <div slot="footer" style="display: flex; gap: 12px; width: 100%">
+        <ui-button variant="primary" style="flex: 1" label="Book Now"></ui-button>
+        <ui-button variant="primary" label="Details" icon="info" icon-library="lucide"></ui-button>
+        <ui-button
+          label="With Icon"
+          icon="info"
+          icon-library="lucide"
+          variant="primary"
+        ></ui-button>
+      </div>
+      <div slot="back-content" style="padding: 24px">
+        <h3 style="color: var(--primary); margin-bottom: 16px">Tour Statistics</h3>
+        <ul style="padding-left: 20px; color: var(--text-secondary); line-height: 2">
+          <li>Elevation: 4,808m</li>
+          <li>Length: 1,200km</li>
+          <li>Area: 200,000 km²</li>
+          <li>Duration: 5-7 Days</li>
+        </ul>
+      </div>
+    </ui-card>
+
+    <ui-code-preview
+      *ngIf="showCode"
+      [htmlCode]="generatedCode()"
+      label="Generated Code"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</app-playground>

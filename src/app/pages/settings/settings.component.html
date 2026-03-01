@@ -1,0 +1,42 @@
+    <div class="settings-container">
+      <header class="settings-header">
+        <div class="header-content">
+          <div class="title-with-icon">
+            <span class="header-icon">⚙️</span>
+            <h1>Settings</h1>
+          </div>
+          <p>Customize your experience and manage your account preferences</p>
+        </div>
+        <div class="header-decoration"></div>
+      </header>
+
+      <div class="settings-body">
+        <ui-tabs
+          [items]="settingsTabs"
+          variant="pill"
+          size="lg"
+          [iconLibrary]="'lucide'"
+          class="settings-tabs"
+        >
+          <div slot="theme" class="tab-panel">
+            <app-theme-settings-section></app-theme-settings-section>
+          </div>
+
+          <div slot="profile" class="tab-panel">
+            <app-profile-settings-section></app-profile-settings-section>
+          </div>
+
+          <div slot="notifications" class="tab-panel">
+            <app-notification-settings-section></app-notification-settings-section>
+          </div>
+
+          <div slot="security" class="tab-panel">
+            <app-security-settings-section></app-security-settings-section>
+          </div>
+
+          <div slot="preferences" class="tab-panel">
+            <app-preferences-settings-section></app-preferences-settings-section>
+          </div>
+        </ui-tabs>
+      </div>
+    </div>

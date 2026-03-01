@@ -1,0 +1,94 @@
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>Layout</h3>
+        <div class="control-group">
+          <label>Direction</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.direction"
+            (ngModelChange)="updateConfig()"
+            [options]="directionOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Type</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.type"
+            (ngModelChange)="updateConfig()"
+            [options]="typeOptions"
+          ></ui-dropdown>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h3>Visuals</h3>
+        <div class="control-group">
+          <label>Radius (for circles)</label>
+          <app-input
+            type="number"
+            [(ngModel)]="pgConfig.radius"
+            (ngModelChange)="updateConfig()"
+          ></app-input>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="ripple"
+            [(ngModel)]="pgConfig.ripple"
+            (ngModelChange)="updateConfig()"
+            label="Ripple Effect"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="mask"
+            [(ngModel)]="pgConfig.mask"
+            (ngModelChange)="updateConfig()"
+            label="Display Mask"
+          ></app-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="code-output">
+      <pre>{{ generatedCode() }}</pre>
+    </div>
+
+    <div class="action-buttons">
+      <ui-button
+        class="btn-secondary"
+        variant="secondary"
+        (click)="resetConfig()"
+        label="Reset"
+      ></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 300px;
+    "
+  >
+    <ui-speed-dial
+      [attr.direction]="pgConfig.direction"
+      [attr.type]="pgConfig.type"
+      [attr.radius]="pgConfig.radius"
+      [attr.ripple]="pgConfig.ripple ? '' : null"
+      [attr.mask]="pgConfig.mask ? '' : null"
+      [model]="modelJson"
+      button-class="ui-button-primary"
+    ></ui-speed-dial>
+
+    <p style="position: absolute; bottom: 20px; font-size: 0.8rem; color: #94a3b8">
+      Direction: {{ pgConfig.direction }} | Type: {{ pgConfig.type }}
+    </p>
+  </div>
+</app-playground>

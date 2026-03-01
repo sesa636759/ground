@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-transfer-list-playground',
@@ -12,76 +13,10 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
     FormsModule,
     AppCheckboxValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-        <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
-          <!-- Global Configuration -->
-          <div slot="content-global" class="control-grid" style="padding: 16px;">
-            <div class="control-group">
-              <label>Search Placeholder</label>
-              <app-input
-                type="text"
-                [(ngModel)]="pgConfig.searchPlaceholder"
-                (ngModelChange)="updateConfig()"
-              ></app-input>
-            </div>
-          </div>
-
-          <!-- Behavioral States -->
-          <div slot="content-states" style="padding: 16px;">
-            <div class="checkbox-grid">
-              <label class="checkbox-item">
-                <app-checkbox
-                  [(ngModel)]="pgConfig.disabled"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Disabled State
-              </label>
-              <label class="checkbox-item">
-                <app-checkbox
-                  [(ngModel)]="pgConfig.showSearch"
-                  (ngModelChange)="updateConfig()"
-                ></app-checkbox>
-                Show Search Bar
-              </label>
-            </div>
-          </div>
-        </ui-accordion>
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-      </div>
-
-      <div class="playground-preview">
-        <div class="transfer-container">
-          <ui-transfer-list
-            [attr.search-placeholder]="pgConfig.searchPlaceholder"
-            [attr.disabled]="pgConfig.disabled ? '' : null"
-            [attr.show-search]="pgConfig.showSearch ? '' : null"
-            [source]="sourceJson"
-            [target]="targetJson"
-          >
-          </ui-transfer-list>
-        </div>
-
-        <ui-code-preview
-          [htmlCode]="generatedCode()"
-          [label]="'Generated Code'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-      </div>
-    </div>
-  `,
+  templateUrl: './transfer-list-playground.component.html',
   styleUrl: './transfer-list-playground.component.scss',
 })
 export class TransferListPlaygroundComponent implements OnInit {

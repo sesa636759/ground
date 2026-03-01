@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-grid">
       <div class="control-group">
         <label>Slides To Show</label>
@@ -102,7 +103,8 @@
         Pause On Hover
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" /> Center Mode
+        <app-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" /> Center
+        Mode
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
@@ -113,11 +115,8 @@
         Draggable
       </label>
     </div>
-        </div>
-    </ui-accordion>
   </div>
-
-  <div class="playground-preview">
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <div class="preview-stage">
       <div class="carousel-container" [class.vertical-mode]="pgConfig.vertical">
         <app-carousel
@@ -150,8 +149,11 @@
       </div>
     </div>
 
-    
-  
-      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-    </div>
-</div>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</app-playground>

@@ -1,7 +1,8 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
     <div class="control-section">
       <h3>Visual Settings</h3>
       <div class="control-grid">
@@ -159,11 +160,8 @@
         </label>
       </div>
     </div>
-        </div>
-    </ui-accordion>
   </div>
-
-  <div class="playground-preview">
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <div class="toolbar">
       <ui-button (click)="triggerAction('undo')" label="Undo"></ui-button>
       <ui-button (click)="triggerAction('redo')" label="Redo"></ui-button>
@@ -192,9 +190,11 @@
         <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
       </div>
     </div>
-
-    
-  
-      <ui-code-preview [htmlCode]="generatedCode()" [label]="'Generated Code'" activeLang="html" expanded="true"></ui-code-preview>
-    </div>
-</div>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</app-playground>

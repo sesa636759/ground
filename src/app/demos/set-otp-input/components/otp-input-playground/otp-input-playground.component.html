@@ -1,144 +1,140 @@
-<div class="playground-layout">
-  <div class="playground-controls">
-    
-    <ui-accordion [items]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
-      <div slot="content-global" class="control-grid" style="padding: 16px">
-        <div class="control-group">
-          <label>Label</label>
-          <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
-        </div>
-
-        <div class="control-group">
-          <label>Helper Text</label>
-          <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
-        </div>
-
-        <div class="control-group">
-          <label>Length</label>
-          <app-input
-            type="number"
-            [(ngModel)]="pgConfig.length"
-            (ngModelChange)="updateConfig()"
-            min="1"
-            max="10"
-          />
-        </div>
-
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="[
-              { label: 'Small', value: 'small' },
-              { label: 'Medium', value: 'medium' },
-              { label: 'Large', value: 'large' },
-            ]"
-          ></ui-dropdown>
-        </div>
-
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="[
-              { label: 'Default', value: 'default' },
-              { label: 'Underlined', value: 'underlined' },
-              { label: 'Flushed', value: 'flushed' },
-              { label: 'Separated', value: 'separated' },
-            ]"
-          ></ui-dropdown>
-        </div>
-
-        <div class="control-group">
-          <label>Color</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.color"
-            (ngModelChange)="updateConfig()"
-            [options]="[
-              { label: 'Primary', value: 'primary' },
-              { label: 'Secondary', value: 'secondary' },
-              { label: 'Success', value: 'success' },
-              { label: 'Warning', value: 'warning' },
-              { label: 'Danger', value: 'danger' },
-              { label: 'Info', value: 'info' },
-            ]"
-          ></ui-dropdown>
-        </div>
-
-        <div class="control-group">
-          <label>Group Size</label>
-          <app-input
-            type="number"
-            [(ngModel)]="pgConfig.groupSize"
-            (ngModelChange)="updateConfig()"
-            min="0"
-            max="5"
-          />
-        </div>
-
-        <div class="control-group" *ngIf="pgConfig.invalid">
-          <label>Error Text</label>
-          <app-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()" />
-        </div>
-      </div>
-
-      <div slot="content-states" style="padding: 16px">
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
-            (Password)
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
-            Skeleton
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
-            State
-          </label>
-        </div>
-      </div>
-    </ui-accordion>
-          </div>
-
-  <div class="playground-preview">
-    <div class="preview-stage">
-      <div class="otp-container">
-        <app-otp-input
-          #demoElement
-          [attr.length]="pgConfig.length"
-          [attr.size]="pgConfig.size === 'medium' ? null : pgConfig.size"
-          [attr.color]="pgConfig.color === 'primary' ? null : pgConfig.color"
-          [attr.variant]="pgConfig.variant === 'default' ? null : pgConfig.variant"
-          [attr.group-size]="pgConfig.groupSize > 0 ? pgConfig.groupSize : null"
-          [attr.label]="pgConfig.label"
-          [attr.helper-text]="pgConfig.helperText"
-          [attr.secure]="pgConfig.secure ? '' : null"
-          [attr.skeleton]="pgConfig.skeleton ? '' : null"
-          [attr.invalid]="pgConfig.invalid ? '' : null"
-          [attr.error-text]="pgConfig.invalid ? pgConfig.errorText : null"
-          (otpChange)="onOtpChange($event)"
-          (otpComplete)="onOtpComplete($event)"
-        ></app-otp-input>
-      </div>
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Label</label>
+      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
 
-    
-    <div class="event-log-container">
-      <strong>Event Log</strong>
-      <div class="log-items">
-        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-      </div>
+    <div class="control-group">
+      <label>Helper Text</label>
+      <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
-  
-      <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+
+    <div class="control-group">
+      <label>Length</label>
+      <app-input
+        type="number"
+        [(ngModel)]="pgConfig.length"
+        (ngModelChange)="updateConfig()"
+        min="1"
+        max="10"
+      />
     </div>
-</div>
+
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Underlined', value: 'underlined' },
+          { label: 'Flushed', value: 'flushed' },
+          { label: 'Separated', value: 'separated' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Primary', value: 'primary' },
+          { label: 'Secondary', value: 'secondary' },
+          { label: 'Success', value: 'success' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Danger', value: 'danger' },
+          { label: 'Info', value: 'info' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Group Size</label>
+      <app-input
+        type="number"
+        [(ngModel)]="pgConfig.groupSize"
+        (ngModelChange)="updateConfig()"
+        min="0"
+        max="5"
+      />
+    </div>
+
+    <div class="control-group" *ngIf="pgConfig.invalid">
+      <label>Error Text</label>
+      <app-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()" />
+    </div>
+  </div>
+
+  <div slot="content-states" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
+        (Password)
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
+        Skeleton
+      </label>
+      <label class="checkbox-item">
+        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        State
+      </label>
+    </div>
+  </div>
+
+  <div preview class="preview-stage h-scrollable">
+    <div class="otp-container">
+      <app-otp-input
+        #demoElement
+        [attr.length]="pgConfig.length"
+        [attr.size]="pgConfig.size === 'medium' ? null : pgConfig.size"
+        [attr.color]="pgConfig.color === 'primary' ? null : pgConfig.color"
+        [attr.variant]="pgConfig.variant === 'default' ? null : pgConfig.variant"
+        [attr.group-size]="pgConfig.groupSize > 0 ? pgConfig.groupSize : null"
+        [attr.label]="pgConfig.label"
+        [attr.helper-text]="pgConfig.helperText"
+        [attr.secure]="pgConfig.secure ? '' : null"
+        [attr.skeleton]="pgConfig.skeleton ? '' : null"
+        [attr.invalid]="pgConfig.invalid ? '' : null"
+        [attr.error-text]="pgConfig.invalid ? pgConfig.errorText : null"
+        (otpChange)="onOtpChange($event)"
+        (otpComplete)="onOtpComplete($event)"
+      ></app-otp-input>
+    </div>
+  </div>
+
+  <div events class="event-log-container">
+    <strong>Event Log</strong>
+    <div class="log-items">
+      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+    </div>
+  </div>
+
+  <ui-code-preview
+    code
+    *ngIf="showCode"
+    [htmlCode]="generatedCode()"
+    [label]="'Generated Code'"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

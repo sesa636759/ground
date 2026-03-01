@@ -1,94 +1,22 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-tag-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <div class="playground-layout">
-      <div class="playground-controls">
-    <ui-accordion items='[{"id":"config","title":"Configuration","icon":"⚙️"}]' defaultOpen='["config"]' multiple>
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>Visuals</h3>
-            <div class="control-group">
-              <label>Value / Text</label>
-              <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Icon</label>
-              <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
-            </div>
-            <div class="control-group">
-              <label>Severity</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.severity"
-                (ngModelChange)="updateConfig()"
-                [options]="severityOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>Styling</h3>
-            <div class="checkpoint-group">
-              <app-checkbox
-                id="rounded"
-                [(ngModel)]="pgConfig.rounded"
-                (ngModelChange)="updateConfig()"
-                label="Rounded Corners"
-              ></app-checkbox>
-            </div>
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-        </div>
-
-        
-
-        <div class="action-buttons">
-          <ui-button
-            class="btn-secondary"
-            variant="secondary"
-            (click)="resetConfig()"
-            label="Reset"
-          ></ui-button>
-        </div>
-            </div>
-    </ui-accordion>
-  </div>
-
-  <div class="playground-preview">
-        <ui-tag
-          [attr.value]="pgConfig.value"
-          [attr.icon]="pgConfig.icon"
-          [attr.severity]="pgConfig.severity"
-          [attr.rounded]="pgConfig.rounded ? '' : null"
-          [attr.size]="pgConfig.size"
-        ></ui-tag>
-      
-      <div class="code-output">
-          <ui-code-preview
-            [htmlCode]="generatedCode()"
-            label="Generated Code"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </div>
-    </div>
-    </div>
-  `,
+  templateUrl: './tag-playground.component.html',
   styleUrl: './tag-playground.component.scss',
 })
 export class TagPlaygroundComponent {
@@ -113,9 +41,19 @@ export class TagPlaygroundComponent {
   ];
 
   generatedCode = signal('');
+  showCode = true;
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     this.updateConfig();
+  }
+
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
   }
 
   updateConfig() {
@@ -127,6 +65,7 @@ export class TagPlaygroundComponent {
     code += '></ui-tag>';
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   copyCode() {
