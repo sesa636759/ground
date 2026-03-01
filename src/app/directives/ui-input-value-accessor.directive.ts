@@ -22,9 +22,11 @@ export class AppInputValueAccessorDirective implements ControlValueAccessor {
   ) {}
 
   @HostListener('input', ['$event'])
+  @HostListener('change', ['$event'])
+  @HostListener('uiInput', ['$event'])
   onInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.onChange(target.value);
+    const value = (event.target as any).value;
+    this.onChange(value);
   }
 
   @HostListener('blur')

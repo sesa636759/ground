@@ -2,7 +2,9 @@
   <div class="register-card">
     <!-- Logo/Brand -->
     <div class="register-header">
-      <div class="logo">🚀</div>
+      <div class="logo">
+        <img class="register-logo-img" [src]="assets.ICONS.BRAND" alt="Schneider Electric" />
+      </div>
       <h1>Create Account</h1>
       <p class="subtitle">Join us and start your journey today</p>
     </div>
@@ -210,7 +212,7 @@
     <div class="social-login">
       <ui-button
         type="button"
-        class="btn-social btn-google"
+        size="xxl"
         label="Google"
         icon="logo-google"
         icon-library="ionicons"
@@ -221,7 +223,7 @@
       </ui-button>
       <ui-button
         type="button"
-        class="btn-social btn-github"
+        size="xxl"
         label="GitHub"
         icon="logo-github"
         icon-library="ionicons"
@@ -232,7 +234,7 @@
       </ui-button>
       <ui-button
         type="button"
-        class="btn-social btn-microsoft"
+        size="xxl"
         label="Microsoft"
         icon="logo-microsoft"
         icon-library="ionicons"

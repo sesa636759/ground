@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
+import { ASSETS } from '../../shared/constants/assets.constants';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,28 @@ export class LoginComponent {
   loading = signal(false);
   error = signal<string | null>(null);
   showPassword = signal(false);
+  readonly assets = ASSETS;
+  passwordStrength = signal<'weak' | 'medium' | 'strong'>('weak');
+
+  onPasswordChange(): void {
+    const password = this.credentials.password;
+    console.log('Password changed:', password);
+    if (!password) {
+      this.passwordStrength.set('weak');
+      return;
+    }
+
+    let score = 0;
+    if (password.length >= 6) score++; // Minimum safe length
+    if (password.length >= 10) score++; // Better length
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++; // Mixed case
+    if (/\d/.test(password)) score++; // Numbers
+    if (/[^a-zA-Z0-9]/.test(password)) score++; // Symbols
+
+    if (score <= 2) this.passwordStrength.set('weak');
+    else if (score <= 4) this.passwordStrength.set('medium');
+    else this.passwordStrength.set('strong');
+  }
 
   constructor(
     private authService: AuthService,

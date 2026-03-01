@@ -2,7 +2,9 @@
   <div class="login-card">
     <!-- Logo/Brand -->
     <div class="login-header">
-      <div class="logo">🚀</div>
+      <div class="logo">
+        <img [src]="assets.ICONS.BRAND" alt="Schneider Electric" class="login-logo-img" />
+      </div>
       <h1>Welcome Back</h1>
       <p class="subtitle">Sign in to your account to continue</p>
     </div>
@@ -51,12 +53,12 @@
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
           <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
             [(ngModel)]="credentials.password"
+            (ngModelChange)="onPasswordChange()"
             placeholder="Enter your password"
             required
             autocomplete="current-password"
@@ -80,6 +82,33 @@
             </ng-container>
           </ui-input>
         </div>
+
+        <!-- Password Strength Indicator -->
+        <!-- <div class="password-strength" *ngIf="credentials.password">
+          <ui-icon
+            name="lock"
+            library="lucide"
+            size="16px"
+            [class]="'strength-icon ' + passwordStrength()"
+          ></ui-icon>
+          <div class="strength-bar">
+            <div
+              class="strength-fill"
+              [class.weak]="passwordStrength() === 'weak'"
+              [class.medium]="passwordStrength() === 'medium'"
+              [class.strong]="passwordStrength() === 'strong'"
+            ></div>
+          </div>
+          <span class="strength-label" [class]="passwordStrength()">
+            {{
+              passwordStrength() === 'weak'
+                ? 'Weak'
+                : passwordStrength() === 'medium'
+                  ? 'Medium'
+                  : 'Strong'
+            }}
+          </span>
+        </div> -->
       </div>
 
       <!-- Remember Me & Forgot Password -->
@@ -111,6 +140,7 @@
     <!-- Social Login Options -->
     <div class="social-login">
       <ui-button
+        size="xxl"
         label="Google"
         icon="logo-google"
         icon-library="ionicons"
@@ -121,6 +151,7 @@
       >
       </ui-button>
       <ui-button
+        size="xxl"
         label="GitHub"
         icon="logo-github"
         icon-library="ionicons"
@@ -131,6 +162,7 @@
       >
       </ui-button>
       <ui-button
+        size="xxl"
         label="Microsoft"
         icon="logo-microsoft"
         icon-library="ionicons"
@@ -141,6 +173,19 @@
       >
       </ui-button>
     </div>
+    <div class="primary-login-container">
+      <ui-button
+        size="xl"
+        label="Schneider Elec."
+        [icon]="assets.ICONS.BRAND"
+        icon-position="top"
+        type="button"
+        variant="outline"
+        class="btn-social btn-schneider"
+      >
+      </ui-button>
+    </div>
+
     <!-- Register Link -->
     <div class="register-prompt">
       Don't have an account?

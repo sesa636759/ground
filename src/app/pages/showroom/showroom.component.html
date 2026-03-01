@@ -39,6 +39,7 @@
         <h4 class="menu-label">CATEGORIES</h4>
         <nav class="sidebar-nav">
           <ui-button
+            variant="ghost"
             *ngFor="let cat of categories; let i = index"
             class="nav-btn"
             [class.selected]="activeCategoryId() === cat.id"
