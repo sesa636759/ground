@@ -9,27 +9,27 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="paginator"
             [(ngModel)]="pgConfig.paginator"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="paginator">Enable Paginator</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="sorting"
             [(ngModel)]="pgConfig.sorting"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="sorting">Enable Sorting</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="filtering"
             [(ngModel)]="pgConfig.filtering"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="filtering">Global Filtering</label>
         </div>
       </div>
@@ -38,14 +38,18 @@
         <h3>Layout</h3>
         <div class="control-group">
           <label>Rows per page</label>
-          <app-input type="number" [(ngModel)]="pgConfig.rows" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.rows"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="responsive"
             [(ngModel)]="pgConfig.responsive"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="responsive">Responsive Layout</label>
         </div>
       </div>

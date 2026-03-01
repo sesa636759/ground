@@ -20,37 +20,37 @@
     </div>
     <div class="control-group">
       <label>Min Width</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.minWidth"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 200px"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Height</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.maxHeight"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 400px"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="searchable"
         [(ngModel)]="pgConfig.searchable"
         (ngModelChange)="updateConfig()"
         label="Searchable"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="closeOnSelect"
         [(ngModel)]="pgConfig.closeOnSelect"
         (ngModelChange)="updateConfig()"
         label="Close On Select"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
@@ -80,80 +80,80 @@
       ></ui-dropdown>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="animated"
         [(ngModel)]="pgConfig.animated"
         (ngModelChange)="updateConfig()"
         label="Animated"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="staggered"
         [(ngModel)]="pgConfig.staggered"
         (ngModelChange)="updateConfig()"
         label="Staggered"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="reflection"
         [(ngModel)]="pgConfig.reflection"
         (ngModelChange)="updateConfig()"
         label="Glass Reflection"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
   <!-- Advanced Behavior Slot -->
   <div slot="content-behavior" class="control-grid" style="padding: 16px">
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="backdrop"
         [(ngModel)]="pgConfig.backdrop"
         (ngModelChange)="updateConfig()"
         label="Enable Backdrop"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="multiSelect"
         [(ngModel)]="pgConfig.multiSelect"
         (ngModelChange)="updateConfig()"
         label="Multi-Select Mode"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="commandPalette"
         [(ngModel)]="pgConfig.commandPalette"
         (ngModelChange)="updateConfig()"
         label="Command Palette Mode"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showGroups"
         [(ngModel)]="pgConfig.showGroups"
         (ngModelChange)="updateConfig()"
         label="Show Item Groups"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="highlightSearch"
         [(ngModel)]="pgConfig.highlightSearch"
         (ngModelChange)="updateConfig()"
         label="Highlight Search Matched"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="keyboardNav"
         [(ngModel)]="pgConfig.keyboardNavigation"
         (ngModelChange)="updateConfig()"
         label="Keyboard Navigation"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 

@@ -10,11 +10,19 @@
         <h3>Behavior</h3>
         <div class="control-group">
           <label>Threshold (px)</label>
-          <app-input type="number" [(ngModel)]="pgConfig.threshold" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.threshold"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Scroll Speed (ms)</label>
-          <app-input type="number" [(ngModel)]="pgConfig.speed" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.speed"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
       </div>
 
@@ -22,7 +30,11 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Icon</label>
-          <app-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.icon"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Shape</label>

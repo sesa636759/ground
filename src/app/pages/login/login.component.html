@@ -18,7 +18,6 @@
         label="Use Demo"
         variant="filled"
         type="button"
-        class="btn-demo-fill"
         (click)="loginWithDemo()"
       ></ui-button>
     </div>
@@ -36,7 +35,7 @@
         <label for="email">Email Address</label>
         <div class="input-wrapper">
           <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <app-input
+          <ui-input
             type="email"
             id="email"
             name="email"
@@ -44,7 +43,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
 
@@ -53,7 +52,7 @@
         <label for="password">Password</label>
         <div class="input-wrapper">
           <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
-          <app-input
+          <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -69,20 +68,24 @@
                 (click)="togglePasswordVisibility()"
                 variant="ghost"
                 size="sm"
-                style="padding:0 6px;min-width:0;"
+                style="padding: 0 6px; min-width: 0"
                 [title]="showPassword() ? 'Hide password' : 'Show password'"
               >
-                <ui-icon [name]="showPassword() ? 'eye-off' : 'eye'" library="lucide" size="18px"></ui-icon>
+                <ui-icon
+                  [name]="showPassword() ? 'eye-off' : 'eye'"
+                  library="lucide"
+                  size="18px"
+                ></ui-icon>
               </ui-button>
             </ng-container>
-          </app-input>
+          </ui-input>
         </div>
       </div>
 
       <!-- Remember Me & Forgot Password -->
       <div class="form-options">
         <label class="checkbox-label">
-          <app-checkbox name="rememberMe" [(ngModel)]="credentials.rememberMe"></app-checkbox>
+          <ui-checkbox name="rememberMe" [(ngModel)]="credentials.rememberMe"></ui-checkbox>
           <span>Remember me</span>
         </label>
         <a href="#" class="forgot-link">Forgot password?</a>
@@ -92,22 +95,12 @@
       <ui-button
         type="submit"
         [label]="!loading() ? 'Sign In' : 'Signing in...'"
-        icon="spinner"
-        class="btn-primary btn-large"
+        size="xl"
+        variant="primary"
+        full-width
         [disabled]="loading()"
       >
-        <!-- @if (!loading()) {
-          <span>Sign In</span>
-        }
-        @if (loading()) {
-          <span class="loading-content">
-            <span class="spinner"></span>
-            <span>Signing in...</span>
-          </span>
-        } -->
       </ui-button>
-
-      |
     </form>
 
     <!-- Divider -->
@@ -116,32 +109,49 @@
     </div>
 
     <!-- Social Login Options -->
-
-      <ui-button label="Google" icon="lucide-google" type="button" class="btn-social btn-google">
+    <div class="social-login">
+      <ui-button
+        label="Google"
+        icon="logo-google"
+        icon-library="ionicons"
+        icon-position="top"
+        type="button"
+        variant="outline"
+        class="btn-social btn-google"
+      >
       </ui-button>
-      <ui-button label="GitHub" icon="github" type="button" class="btn-social btn-github">
+      <ui-button
+        label="GitHub"
+        icon="logo-github"
+        icon-library="ionicons"
+        icon-position="top"
+        type="button"
+        variant="outline"
+        class="btn-social btn-github"
+      >
       </ui-button>
       <ui-button
         label="Microsoft"
-        icon="lucide-microsoft"
+        icon="logo-microsoft"
+        icon-library="ionicons"
+        icon-position="top"
         type="button"
+        variant="outline"
         class="btn-social btn-microsoft"
       >
-
       </ui-button>
     </div>
-
     <!-- Register Link -->
     <div class="register-prompt">
       Don't have an account?
       <a routerLink="/register" class="register-link">Create one now</a>
     </div>
   </div>
+</div>
 
-  <!-- Background Decoration -->
-  <div class="background-decoration">
-    <div class="circle circle-1"></div>
-    <div class="circle circle-2"></div>
-    <div class="circle circle-3"></div>
-  </div>
-
+<!-- Background Decoration -->
+<div class="background-decoration">
+  <div class="circle circle-1"></div>
+  <div class="circle circle-2"></div>
+  <div class="circle circle-3"></div>
+</div>

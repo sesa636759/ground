@@ -72,27 +72,28 @@
 
       <div class="control-group">
         <label>Line Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animateOnScroll" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.animateOnScroll" (ngModelChange)="updateConfig()" />
         Animate on Scroll
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
+        <ui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
+        <ui-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake Layout)
+        <ui-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake
+        Layout)
       </label>
     </div>
   </div>

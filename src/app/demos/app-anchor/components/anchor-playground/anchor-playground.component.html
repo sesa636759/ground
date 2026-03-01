@@ -28,43 +28,43 @@
         </div>
         <div class="control-group">
           <label>Scroll Offset (px)</label>
-          <app-input
+          <ui-input
             name="scrollOffset"
             type="number"
             [(ngModel)]="pgConfig.scrollOffset"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Visuals</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="indicator"
             name="indicator"
             [(ngModel)]="pgConfig.showIndicator"
             (ngModelChange)="updateConfig()"
             label="Show Indicator"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="progress"
             name="progress"
             [(ngModel)]="pgConfig.showProgress"
             (ngModelChange)="updateConfig()"
             label="Show Progress"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="affix"
             name="affix"
             [(ngModel)]="pgConfig.affix"
             (ngModelChange)="updateConfig()"
             label="Enable Affix (Sticky)"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

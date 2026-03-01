@@ -34,25 +34,25 @@
   <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Min Height (H) / Width (V)</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.meterHeight"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showLabels"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Labels
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showMarkers"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Markers
       </label>
     </div>

@@ -25,7 +25,7 @@
 
       <div class="control-group">
         <label>Duration (ms)</label>
-        <app-input
+        <ui-input
           type="number"
           min="100"
           max="3000"
@@ -37,7 +37,7 @@
 
       <div class="control-group">
         <label>Delay (ms)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="2000"
@@ -49,7 +49,7 @@
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="500"
@@ -70,7 +70,7 @@
 
       <div class="control-group">
         <label>Threshold</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="1"
@@ -85,7 +85,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Blur Amount</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="50"
@@ -97,7 +97,7 @@
 
       <div class="control-group">
         <label>Perspective</label>
-        <app-input
+        <ui-input
           type="number"
           min="500"
           max="2000"
@@ -109,7 +109,7 @@
 
       <div class="control-group">
         <label>Rotate X (deg)</label>
-        <app-input
+        <ui-input
           type="number"
           min="-180"
           max="180"
@@ -121,7 +121,7 @@
 
       <div class="control-group">
         <label>Rotate Y (deg)</label>
-        <app-input
+        <ui-input
           type="number"
           min="-180"
           max="180"
@@ -133,7 +133,7 @@
 
       <div class="control-group">
         <label>Rotate Z (deg)</label>
-        <app-input
+        <ui-input
           type="number"
           min="-360"
           max="360"
@@ -145,7 +145,7 @@
 
       <div class="control-group">
         <label>Scale</label>
-        <app-input
+        <ui-input
           type="number"
           min="0.1"
           max="3"
@@ -157,7 +157,7 @@
 
       <div class="control-group">
         <label>Stagger (ms)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="500"
@@ -180,32 +180,32 @@
     <h4 class="section-title">Options</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.repeat"
           (ngModelChange)="updateConfig()"
           label="Repeat"
-        ></app-checkbox>
+        ></ui-checkbox>
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.once"
           (ngModelChange)="updateConfig()"
           label="Once"
-        ></app-checkbox>
+        ></ui-checkbox>
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.mirror"
           (ngModelChange)="updateConfig()"
           label="Mirror"
-        ></app-checkbox>
+        ></ui-checkbox>
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.scrub"
           (ngModelChange)="updateConfig()"
           label="Scrub"
-        ></app-checkbox>
+        ></ui-checkbox>
       </label>
     </div>
   </div>

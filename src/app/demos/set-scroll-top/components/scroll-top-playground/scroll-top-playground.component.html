@@ -63,16 +63,12 @@
 
       <div class="control-group">
         <label>Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.offset"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -104,23 +100,23 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Show Progress
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showText" (ngModelChange)="updateConfig()" />
         Show Text
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse
+        <ui-checkbox [(ngModel)]="pgConfig.pulse" (ngModelChange)="updateConfig()" /> Pulse
         Animation
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.alwaysVisible" (ngModelChange)="updateConfig()" />
         Always Visible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
         Disabled
       </label>
     </div>

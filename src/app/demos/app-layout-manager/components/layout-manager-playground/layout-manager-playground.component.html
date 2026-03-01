@@ -19,19 +19,19 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="resizable"
             [(ngModel)]="pgConfig.resizable"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="resizable">Resizable Panels</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closable"
             [(ngModel)]="pgConfig.closable"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="closable">Closable Panels</label>
         </div>
       </div>

@@ -47,7 +47,7 @@
 
     <div class="checkbox-group" style="padding-top: 24px">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" />
         Center Mode
       </label>
     </div>
@@ -71,7 +71,7 @@
 
     <div class="control-group">
       <label>Duration (ms)</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.animationDuration"
         (ngModelChange)="updateConfig()"
@@ -81,7 +81,7 @@
 
     <div class="control-group">
       <label>Autoplay Interval (ms)</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.autoplayInterval"
         (ngModelChange)="updateConfig()"
@@ -91,7 +91,7 @@
 
     <div class="checkbox-group" style="padding-top: 24px">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" />
         Autoplay
       </label>
     </div>
@@ -101,15 +101,15 @@
   <div slot="content-controls" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" />
         Show Arrows
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.indicators" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.indicators" (ngModelChange)="updateConfig()" />
         Show Indicators
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
         Progress Bar
       </label>
     </div>
@@ -119,23 +119,23 @@
   <div slot="content-behavior" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" />
         Infinite Loop
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.swipe" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.swipe" (ngModelChange)="updateConfig()" />
         Touch Swipe
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
         Mouse Draggable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.keyboard" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.keyboard" (ngModelChange)="updateConfig()" />
         Keyboard Navigation
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.pauseOnHover" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.pauseOnHover" (ngModelChange)="updateConfig()" />
         Pause On Hover
       </label>
     </div>

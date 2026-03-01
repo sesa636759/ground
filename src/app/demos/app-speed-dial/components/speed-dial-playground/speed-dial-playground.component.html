@@ -30,27 +30,27 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Radius (for circles)</label>
-          <app-input
+          <ui-input
             type="number"
             [(ngModel)]="pgConfig.radius"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="ripple"
             [(ngModel)]="pgConfig.ripple"
             (ngModelChange)="updateConfig()"
             label="Ripple Effect"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="mask"
             [(ngModel)]="pgConfig.mask"
             (ngModelChange)="updateConfig()"
             label="Display Mask"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

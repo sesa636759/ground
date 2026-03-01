@@ -8,27 +8,27 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Min</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Step</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Orientation</label>
@@ -44,14 +44,14 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></ui-checkbox>
         Range Mode (Dual)
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Tooltip
       </label>
     </div>

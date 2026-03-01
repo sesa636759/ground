@@ -35,38 +35,38 @@
       <div class="control-section">
         <h3>Options</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showNumbers"
             [(ngModel)]="pgConfig.showNumbers"
             (ngModelChange)="updateConfig()"
             label="Show Numbers"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDesc"
             [(ngModel)]="pgConfig.showDescriptions"
             (ngModelChange)="updateConfig()"
             label="Show Descriptions"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="dot"
             [(ngModel)]="pgConfig.progressDot"
             (ngModelChange)="updateConfig()"
             label="Progress Dot"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Active Step</label>
-          <app-input
+          <ui-input
             type="number"
             min="0"
             max="3"
             [(ngModel)]="pgConfig.activeStep"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
     </div>

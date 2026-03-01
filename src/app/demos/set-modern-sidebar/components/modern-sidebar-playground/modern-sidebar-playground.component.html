@@ -8,22 +8,22 @@
   <div slot="content-brand" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Brand Name</label>
-      <app-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
   <div slot="content-user" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>User Name</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Role</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Avatar URL</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
@@ -46,10 +46,10 @@
     </div>
     <div class="checkbox-group" style="margin-top: 16px">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.collapsed"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Collapsed
       </label>
     </div>

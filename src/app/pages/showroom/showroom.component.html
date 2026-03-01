@@ -75,7 +75,11 @@
         <div class="topbar-right">
           <div class="search-box">
             <i class="fas fa-search"></i>
-            <app-input type="text" placeholder="Search resources..." (input)="onSearch($event)" ></app-input>
+            <ui-input
+              type="text"
+              placeholder="Search resources..."
+              (input)="onSearch($event)"
+            ></ui-input>
           </div>
           <ui-button class="icon-btn">
             <i class="fas fa-bell"></i><span class="dot-indicator"></span>

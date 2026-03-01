@@ -1,21 +1,18 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
-  [defaultOpen]="defaultOpen"
->
+<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Helper Text</label>
-      <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
 
     <div class="control-group">
       <label>Length</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.length"
         (ngModelChange)="updateConfig()"
@@ -69,7 +66,7 @@
 
     <div class="control-group">
       <label>Group Size</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.groupSize"
         (ngModelChange)="updateConfig()"
@@ -81,7 +78,7 @@
     @if (pgConfig.invalid) {
       <div class="control-group">
         <label>Error Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()" />
       </div>
     }
   </div>
@@ -89,15 +86,15 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
+        <ui-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
         (Password)
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
         Skeleton
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
         State
       </label>
     </div>

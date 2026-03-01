@@ -2,7 +2,7 @@ import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@ang
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'app-checkbox[ngModel], app-checkbox[formControl], app-checkbox[formControlName]',
+  selector: 'ui-checkbox[ngModel], ui-checkbox[formControl], ui-checkbox[formControlName]',
   standalone: true,
   providers: [
     {

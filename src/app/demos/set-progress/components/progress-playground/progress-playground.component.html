@@ -33,7 +33,7 @@
 
       <div class="control-group">
         <label>Percent</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="100"
@@ -44,12 +44,16 @@
 
       <div class="control-group">
         <label>Stroke Width</label>
-        <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.strokeWidth"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Width (Circle/Dash)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.width"
           (ngModelChange)="updateConfig()"
@@ -59,7 +63,7 @@
 
       <div class="control-group">
         <label>Steps</label>
-        <app-input type="number" [(ngModel)]="pgConfig.steps" (ngModelChange)="updateConfig()" />
+        <ui-input type="number" [(ngModel)]="pgConfig.steps" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -76,7 +80,7 @@
 
       <div class="control-group">
         <label>Gap Degree (Dash)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="360"
@@ -103,31 +107,35 @@
 
       <div class="control-group">
         <label>Stroke Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.strokeColor" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="color"
+          [(ngModel)]="pgConfig.strokeColor"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Trail Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showInfo" (ngModelChange)="updateConfig()" /> Show Info
+        <ui-checkbox [(ngModel)]="pgConfig.showInfo" (ngModelChange)="updateConfig()" /> Show Info
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.indeterminate" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.indeterminate" (ngModelChange)="updateConfig()" />
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()" /> Liquid
+        <ui-checkbox [(ngModel)]="pgConfig.liquid" (ngModelChange)="updateConfig()" /> Liquid
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass
+        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" /> Glass
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()" /> Glow
+        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()" /> Glow
       </label>
     </div>
   </div>

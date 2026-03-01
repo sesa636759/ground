@@ -15,26 +15,30 @@
     </div>
     <div class="control-group">
       <label>Placeholder</label>
-      <app-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" ></app-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.placeholder"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="disabled"
           [(ngModel)]="pgConfig.disabled"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="readonly"
           [(ngModel)]="pgConfig.readonly"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Readonly
       </label>
     </div>

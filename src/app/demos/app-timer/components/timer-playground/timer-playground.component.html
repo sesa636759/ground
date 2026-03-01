@@ -13,7 +13,11 @@
         </h3>
         <div class="control-group">
           <label>Initial Duration (s)</label>
-          <app-input type="number" [(ngModel)]="pgConfig.duration" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.duration"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Mode</label>
@@ -39,12 +43,12 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="autoStart"
             [(ngModel)]="pgConfig.autoStart"
             (ngModelChange)="updateConfig()"
             label="Auto Start"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

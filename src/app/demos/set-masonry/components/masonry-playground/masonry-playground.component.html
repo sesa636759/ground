@@ -19,7 +19,7 @@
 
       <div class="control-group">
         <label>Columns</label>
-        <app-input
+        <ui-input
           name="columns"
           type="number"
           min="1"
@@ -31,7 +31,7 @@
 
       <div class="control-group">
         <label>Gap (px)</label>
-        <app-input
+        <ui-input
           name="gap"
           type="number"
           min="0"
@@ -43,7 +43,7 @@
 
       <div class="control-group">
         <label>Min Width (px)</label>
-        <app-input
+        <ui-input
           name="itemMinWidth"
           type="number"
           min="100"
@@ -55,7 +55,7 @@
 
       <div class="control-group">
         <label>Max Width (px)</label>
-        <app-input
+        <ui-input
           name="itemMaxWidth"
           type="number"
           min="200"
@@ -108,7 +108,7 @@
     <h4 class="section-title">Features</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="enableAnimation"
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
@@ -116,7 +116,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="showFilters"
           [(ngModel)]="pgConfig.showFilters"
           (ngModelChange)="updateConfig()"
@@ -124,7 +124,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="selectable"
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
@@ -132,7 +132,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="multiSelect"
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
@@ -140,7 +140,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="showBatchActions"
           [(ngModel)]="pgConfig.showBatchActions"
           (ngModelChange)="updateConfig()"
@@ -148,7 +148,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="lazyLoad"
           [(ngModel)]="pgConfig.lazyLoad"
           (ngModelChange)="updateConfig()"
@@ -156,7 +156,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="infiniteScroll"
           [(ngModel)]="pgConfig.infiniteScroll"
           (ngModelChange)="updateConfig()"
@@ -164,7 +164,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="lightbox"
           [(ngModel)]="pgConfig.lightbox"
           (ngModelChange)="updateConfig()"
@@ -172,7 +172,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="loadingState"
           [(ngModel)]="pgConfig.loadingState"
           (ngModelChange)="updateConfig()"

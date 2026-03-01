@@ -8,11 +8,11 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Search Placeholder</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.searchPlaceholder"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
   </div>
 
@@ -20,17 +20,14 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled State
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showSearch"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Search Bar
       </label>
     </div>

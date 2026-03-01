@@ -96,38 +96,40 @@
       </div>
       <div class="control-group">
         <label>Group Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
       </div>
       <div class="control-group" style="grid-column: span 2">
         <label>Helper Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
+        <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" /> Keep Label
+        <ui-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" />
+        Keep Label
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" /> Custom Content
+        <ui-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" />
+        Custom Content
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
       </label>
     </div>
   </div>
@@ -160,7 +162,7 @@
       >
         <div *ngIf="pgConfig.customContent" slot="dropdown-content" class="custom-slot-content">
           <p>Custom Playground Content</p>
-          <app-input type="text" placeholder="Enter something..." />
+          <ui-input type="text" placeholder="Enter something..." />
           <div class="slot-actions">
             <ui-button class="btn-confirm" label="Confirm"></ui-button>
             <ui-button class="btn-cancel" label="Cancel"></ui-button>

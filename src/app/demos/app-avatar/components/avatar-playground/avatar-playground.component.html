@@ -11,25 +11,29 @@
         <h3>Identity</h3>
         <div class="control-group">
           <label>Name (Initials)</label>
-          <app-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.name"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Image Source</label>
-          <app-input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.src"
             (ngModelChange)="updateConfig()"
             placeholder="URL"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <app-input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="emoji or icon"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
 
@@ -46,7 +50,11 @@
         </div>
         <div class="control-group">
           <label>Size (e.g. 64px)</label>
-          <app-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" ></app-input>
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Status</label>
@@ -63,21 +71,21 @@
         <h3>Decorations</h3>
         <div class="control-group">
           <label>Badge</label>
-          <app-input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
             placeholder="'dot' or text"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge Color</label>
-          <app-input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.badgeColor"
             (ngModelChange)="updateConfig()"
             placeholder="hex or color name"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
     </div>

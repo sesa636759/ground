@@ -10,21 +10,21 @@
         <h3>Configuration</h3>
         <div class="control-group">
           <label>Separator</label>
-          <app-input
+          <ui-input
             type="text"
             name="separator"
             [(ngModel)]="pgConfig.separator"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Max Items (Collapse)</label>
-          <app-input
+          <ui-input
             type="number"
             name="maxItems"
             [(ngModel)]="pgConfig.maxItems"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Size</label>
@@ -40,13 +40,13 @@
       <div class="control-section">
         <h3>Home & Variant</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showHome"
             name="showHome"
             [(ngModel)]="pgConfig.showHome"
             (ngModelChange)="updateConfig()"
             label="Show Home"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Variant</label>

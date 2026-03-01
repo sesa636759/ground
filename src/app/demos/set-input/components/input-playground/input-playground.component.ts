@@ -7,12 +7,12 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
-  selector: 'app-input-playground',
+  selector: 'ui-input-playground',
   standalone: true,
   imports: [
     CommonModule,
@@ -81,7 +81,7 @@ export class InputPlaygroundComponent implements OnInit {
   }
 
   updateConfig() {
-    let code = `<app-input\n`;
+    let code = `<ui-input\n`;
     code += `  type="${this.pgConfig.type}"\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
@@ -116,7 +116,7 @@ export class InputPlaygroundComponent implements OnInit {
     if (this.pgConfig.floatingLabel) code += `  floating-label="true"\n`;
     if (this.pgConfig.loading) code += `  show-loading="true"\n`;
 
-    code += `></app-input>`;
+    code += `></ui-input>`;
 
     this.generatedCode.set(code);
   }

@@ -1,95 +1,93 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Layout</h3>
-            <div class="control-group">
-              <label>Size</label>
-              <app-input
-                type="range"
-                min="200"
-                max="380"
-                step="20"
-                [(ngModel)]="cfg.size"
-                (ngModelChange)="update()"
-              ></app-input>
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.size }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Inner Radius</label>
-              <app-input
-                type="range"
-                min="0"
-                max="60"
-                step="5"
-                [(ngModel)]="cfg.innerR"
-                (ngModelChange)="update()"
-              ></app-input>
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.innerR }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Dataset</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.dataset"
-                (ngModelChange)="onDataset()"
-                [options]="datasetOpts"
-              ></ui-dropdown>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLabels"
-                [(ngModel)]="cfg.showLabels"
-                (ngModelChange)="update()"
-                label="Show Labels"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showVals"
-                [(ngModel)]="cfg.showValues"
-                (ngModelChange)="update()"
-                label="Show Values"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="legend"
-                [(ngModel)]="cfg.showLegend"
-                (ngModelChange)="update()"
-                label="Show Legend"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Layout</h3>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-input
+            type="range"
+            min="200"
+            max="380"
+            step="20"
+            [(ngModel)]="cfg.size"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
         </div>
-        <div class="action-buttons">
-        
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Inner Radius</label>
+          <ui-input
+            type="range"
+            min="0"
+            max="60"
+            step="5"
+            [(ngModel)]="cfg.innerR"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.innerR }}px</span>
+        </div>
+        <div class="control-group">
+          <label>Dataset</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.dataset"
+            (ngModelChange)="onDataset()"
+            [options]="datasetOpts"
+          ></ui-dropdown>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <div class="chart-preview-wrapper" style="flex-direction:column;gap:16px;">
-          <app-chart
-            chartType="polarArea"
-            [showLegend]="cfg.showLegend"
-            legendPosition="right"
-            [responsive]="true"
-            [data]="activeData"
-            style="width:100%;max-width:480px;height:360px;margin:0 auto;display:block;"
-          ></app-chart>
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showLabels"
+            [(ngModel)]="cfg.showLabels"
+            (ngModelChange)="update()"
+            label="Show Labels"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showVals"
+            [(ngModel)]="cfg.showValues"
+            (ngModelChange)="update()"
+            label="Show Values"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="legend"
+            [(ngModel)]="cfg.showLegend"
+            (ngModelChange)="update()"
+            label="Show Legend"
+          ></ui-checkbox>
         </div>
       </div>
-       @if (showCode) {
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div class="chart-preview-wrapper" style="flex-direction: column; gap: 16px">
+      <app-chart
+        chartType="polarArea"
+        [showLegend]="cfg.showLegend"
+        legendPosition="right"
+        [responsive]="true"
+        [data]="activeData"
+        style="width: 100%; max-width: 480px; height: 360px; margin: 0 auto; display: block"
+      ></app-chart>
+    </div>
+  </div>
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -98,5 +96,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

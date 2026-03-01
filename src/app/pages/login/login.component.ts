@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 
 @Component({
   selector: 'app-login',

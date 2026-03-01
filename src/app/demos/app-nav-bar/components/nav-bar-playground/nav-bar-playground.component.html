@@ -17,24 +17,24 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="collapsed"
             [(ngModel)]="pgConfig.collapsed"
             (ngModelChange)="updateConfig()"
             label="Collapsed"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Structure</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showFooter"
             [(ngModel)]="pgConfig.showFooter"
             (ngModelChange)="updateConfig()"
             label="Show Footer"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

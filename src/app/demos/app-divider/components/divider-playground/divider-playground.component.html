@@ -11,31 +11,31 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Text</label>
-          <app-input
+          <ui-input
             name="text"
             type="text"
             [(ngModel)]="pgConfig.text"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <app-input
+          <ui-input
             name="icon"
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. ⭐"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <app-input
+          <ui-input
             name="badge"
             type="text"
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
 
@@ -93,13 +93,13 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             name="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

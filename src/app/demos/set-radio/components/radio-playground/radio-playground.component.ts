@@ -1,10 +1,10 @@
 ﻿import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { AppRadioGroupValueAccessorDirective } from '../../../../directives/app-radio-group-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import {
   AfterViewInit,
@@ -122,7 +122,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // Initial load: read the exact attributes from #radioGroup element in the Light DOM
     setTimeout(() => {
-  this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -158,7 +158,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-  this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -196,7 +196,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   jsonOptions = (opts: any) => JSON.stringify(opts);
