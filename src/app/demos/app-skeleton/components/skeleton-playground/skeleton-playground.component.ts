@@ -14,6 +14,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   styleUrl: './skeleton-playground.component.scss',
 })
 export class SkeletonPlaygroundComponent {
+  generatedCodeSignal = signal<string>('');
   cfg = {
     shape: 'rectangle',
     animationType: 'pulse',
@@ -62,7 +63,6 @@ export class SkeletonPlaygroundComponent {
     { label: '2xl — 80px', value: '2xl' },
   ];
 
-  code = signal('');
   recreate = true;
   showCode = true;
 
@@ -93,12 +93,12 @@ export class SkeletonPlaygroundComponent {
     }
     if (this.cfg.borderRadius) lines.push(`  border-radius="${this.cfg.borderRadius}"`);
     lines.push('></skeleton-loader>');
-    this.code.set(lines.join('\n'));
+    this.generatedCodeSignal.set(lines.join('\n'));
     this.refreshCode();
   }
 
   copy() {
-    navigator.clipboard.writeText(this.code());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   reset() {

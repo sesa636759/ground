@@ -9,7 +9,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
@@ -55,7 +55,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode: string = '';
+  generatedCodeSignal = signal('');
   lastAction = '';
   showCode = true;
 
@@ -63,7 +63,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -85,7 +85,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -95,7 +95,7 @@ export class DockPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

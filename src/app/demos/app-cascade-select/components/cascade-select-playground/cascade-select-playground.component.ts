@@ -1,9 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-cascade-select-playground',
@@ -67,7 +67,7 @@ export class CascadeSelectPlaygroundComponent {
   ];
 
   optionsJson = JSON.stringify(this.options);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   currentValue: any = null;
 
   constructor() {
@@ -85,7 +85,7 @@ export class CascadeSelectPlaygroundComponent {
     code += `  [options]="locations"\n`;
     code += '></ui-cascade-select>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onValueChange(event: any) {
@@ -93,7 +93,7 @@ export class CascadeSelectPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

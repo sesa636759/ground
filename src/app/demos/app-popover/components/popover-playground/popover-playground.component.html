@@ -1,7 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -10,12 +11,12 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Heading</label>
-          <input
+          <ui-input
             name="heading"
             type="text"
             [(ngModel)]="pgConfig.heading"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Body Content (HTML)</label>
@@ -64,48 +65,48 @@
         </div>
         <div class="control-group">
           <label>Width</label>
-          <input
+          <ui-input
             name="width"
             type="text"
             [(ngModel)]="pgConfig.width"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showArrow"
             name="showArrow"
             [(ngModel)]="pgConfig.showArrow"
             (ngModelChange)="updateConfig()"
             label="Show Arrow"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closeButton"
             name="closeButton"
             [(ngModel)]="pgConfig.showCloseButton"
             (ngModelChange)="updateConfig()"
             label="Close Button"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="backdrop"
             name="backdrop"
             [(ngModel)]="pgConfig.backdrop"
             (ngModelChange)="updateConfig()"
             label="Backdrop"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <button class="btn-secondary" (click)="resetConfig()">Reset</button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-popover
       #popover
       [attr.heading]="pgConfig.heading"
@@ -118,15 +119,7 @@
       [attr.show-close-button]="pgConfig.showCloseButton ? '' : null"
       [attr.backdrop]="pgConfig.backdrop ? '' : null"
     >
-      <button class="btn-primary">Target Element</button>
+      <ui-button slot="target" class="btn-primary" label="Target Element"></ui-button>
     </ui-popover>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
 </app-playground>

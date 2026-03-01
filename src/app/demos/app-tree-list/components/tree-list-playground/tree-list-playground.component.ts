@@ -1,23 +1,42 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-tree-list-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppPlaygroundComponent, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-list-playground.component.html',
-
   styleUrl: './tree-list-playground.component.scss',
 })
-export class TreeListPlaygroundComponent {
+export class TreeListPlaygroundComponent implements AfterViewInit {
+  @ViewChild('treeElement') treeElement!: ElementRef;
+  generatedCodeSignal = signal<string>('');
+
   pgConfig = {
     selectable: true,
     showIcons: true,
     expandAll: false,
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'features', title: 'Features', icon: '✨' },
+    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['features']);
 
   model = [
     {
@@ -52,10 +71,11 @@ export class TreeListPlaygroundComponent {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode = signal('');
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -68,18 +88,23 @@ export class TreeListPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-tree-list\n';
-    if (this.pgConfig.selectable) code += `  selectable\n`;
-    code += `  [model]="treeData"\n`;
-    code += '></ui-tree-list>';
+  getCleanFormatedDom(): string {
+    if (!this.treeElement) return '';
+    let code = generatePlaygroundCode(this.treeElement.nativeElement as Element, 'ui-tree-list');
+    // Add model prop to code manually
+    code = code.replace('></ui-tree-list>', '\n  [model]="treeData"\n></ui-tree-list>');
+    return code;
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

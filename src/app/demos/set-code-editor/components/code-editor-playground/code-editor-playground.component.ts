@@ -1,9 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-code-editor-playground',
@@ -108,11 +108,11 @@ console.log(user.greet());`,
     this.updateConfig();
   }
 
-  onValueChange(event: any) {
+  onValueChange(_event: any) {
     // this.logEvent(`Value changed. Length: ${event.detail?.length || 0}`);
   }
 
-  onRunCode(event: any) {
+  onRunCode(_event: any) {
     this.logEvent(`Run Code Triggered! Executing ${this.pgConfig.language}...`);
   }
 

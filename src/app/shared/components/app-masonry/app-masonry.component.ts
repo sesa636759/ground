@@ -53,7 +53,7 @@ export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy 
 
   constructor(private el: ElementRef<HTMLElement>, private zone: NgZone) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(_changes: SimpleChanges): void {
     if (!this.host) return;
     this.applyCssVars();
     this.applyCols();

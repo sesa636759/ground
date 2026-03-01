@@ -1,10 +1,20 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-rating-playground',
@@ -15,20 +25,21 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './rating-playground.component.html',
-
   styleUrl: './rating-playground.component.scss',
 })
-export class RatingPlaygroundComponent implements OnInit {
+export class RatingPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('ratingElement') ratingElement!: ElementRef;
+
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
-  showCode = true;
 
   pgConfig = {
     type: 'star',
@@ -61,37 +72,45 @@ export class RatingPlaygroundComponent implements OnInit {
     { label: 'Danger', value: 'danger' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal<string>('');
+  showCode = true;
 
-  constructor() {}
+  constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-rating\n';
-    code += `  type="${this.pgConfig.type}"\n`;
-    code += `  [value]="${this.pgConfig.value}"\n`;
-    if (this.pgConfig.type !== 'thumb') code += `  [max]="${this.pgConfig.max}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  color="${this.pgConfig.color}"\n`;
-    if (this.pgConfig.readonly) code += `  readonly\n`;
-    if (this.pgConfig.disabled) code += `  disabled\n`;
-    if (this.pgConfig.allowHalf && this.pgConfig.type === 'star') code += `  allow-half\n`;
-    if (this.pgConfig.showValue) code += `  show-value\n`;
-    code += '></ui-rating>';
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
 
-    this.generatedCode.set(code);
+  getCleanFormatedDom(): string {
+    if (!this.ratingElement) return '';
+    return generatePlaygroundCode(this.ratingElement.nativeElement as Element, 'ui-rating');
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onRatingChange(event: any) {
-    this.pgConfig.value = event.detail;
+    this.pgConfig.value = event.detail?.value ?? event.detail;
     this.updateConfig();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

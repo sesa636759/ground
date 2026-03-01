@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
@@ -87,7 +87,7 @@ export class ScrollTopPlaygroundComponent implements OnInit {
     this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
   }
 
-  onScroll(event: any) {
+  onScroll(_event: any) {
     // Component events if any
   }
 

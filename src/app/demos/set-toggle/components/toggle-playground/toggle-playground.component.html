@@ -19,7 +19,7 @@
 
     <div class="control-group">
       <label>Grid Columns</label>
-      <app-input
+      <ui-input
         name="columns"
         type="number"
         min="1"
@@ -27,7 +27,7 @@
         [(ngModel)]="pgConfig.columns"
         (ngModelChange)="updateConfig()"
         [disabled]="pgConfig.layout !== 'grid'"
-      ></app-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
@@ -91,14 +91,14 @@
 
     <div class="control-group">
       <label>Elevation (0-5)</label>
-      <app-input
+      <ui-input
         name="elevation"
         type="number"
         min="0"
         max="5"
         [(ngModel)]="pgConfig.elevation"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
@@ -116,22 +116,22 @@
 
     <div class="control-group">
       <label>Label</label>
-      <app-input
+      <ui-input
         name="label"
         type="text"
         [(ngModel)]="pgConfig.label"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
       <label>Helper Text</label>
-      <app-input
+      <ui-input
         name="helperText"
         type="text"
         [(ngModel)]="pgConfig.helperText"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
 
     <div class="control-group">
@@ -165,59 +165,59 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="showIcons"
           [(ngModel)]="pgConfig.showIcons"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Icons
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="disabled"
           [(ngModel)]="pgConfig.disabled"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="readonly"
           [(ngModel)]="pgConfig.readonly"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Readonly
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="required"
           [(ngModel)]="pgConfig.required"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="invalid"
           [(ngModel)]="pgConfig.invalid"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Invalid
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="animation"
           [(ngModel)]="pgConfig.animation"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Animation
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="skeleton"
           [(ngModel)]="pgConfig.skeleton"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Skeleton
       </label>
     </div>
@@ -251,20 +251,19 @@
       ></app-toggle-group>
     </div>
   </div>
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 
-  <div events class="event-log-container">
-    <strong>Event Log</strong>
-    <div class="log-items">
-      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-    </div>
-  </div>
-
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    [label]="'Generated Code'"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
 </app-playground>

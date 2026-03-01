@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
@@ -69,7 +69,7 @@ export class ChipPlaygroundComponent {
     { label: 'Circle', value: 'circle' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   eventLog: { time: string; msg: string }[] = [];
 
   constructor() {
@@ -91,11 +91,11 @@ export class ChipPlaygroundComponent {
     if (this.pgConfig.loading) code += `  loading\n`;
     code += '></ui-chip>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

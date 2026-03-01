@@ -2,28 +2,35 @@
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
-  OnInit,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
-  selector: 'app-context-menu-playground',
+  selector: 'app-set-context-menu-playground',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-playground.component.html',
   styleUrl: './context-menu-playground.component.scss',
 })
-export class ContextMenuPlaygroundComponent implements OnInit {
+export class ContextMenuPlaygroundComponent implements AfterViewInit {
+  @ViewChild('contextMenuElement') contextMenuElement!: ElementRef;
+
   // Playground State
   pgConfig = {
     trigger: 'click',
@@ -45,7 +52,15 @@ export class ContextMenuPlaygroundComponent implements OnInit {
     highlightSearch: true,
   };
 
-  demoItems = JSON.stringify([
+  pgAccordionItems = JSON.stringify([
+    { id: 'core', title: 'Core Configuration', icon: '⚙️' },
+    { id: 'visuals', title: 'Visual & Animation', icon: '🎨' },
+    { id: 'behavior', title: 'Advanced Behavior', icon: '⚡' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['core']);
+
+  demoItems = [
     {
       id: 'file',
       label: 'File Operations',
@@ -94,15 +109,15 @@ export class ContextMenuPlaygroundComponent implements OnInit {
     { divider: true },
     { id: 'delete', label: 'Delete Item', icon: 'fas fa-trash', color: 'danger', group: 'Danger' },
     { id: 'archive', label: 'Archive', icon: 'fas fa-archive', color: 'warning', group: 'Danger' },
-  ]);
+  ];
 
   eventMessage = signal('Click the trigger to see the menu...');
-  generatedCode = signal('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -115,39 +130,19 @@ export class ContextMenuPlaygroundComponent implements OnInit {
     }, 0);
   }
 
+  getCleanFormatedDom(): string {
+    if (!this.contextMenuElement) return '';
+    return generatePlaygroundCode(
+      this.contextMenuElement.nativeElement as Element,
+      'app-context-menu',
+    );
+  }
+
   updateConfig() {
-    let code = `<app-context-menu\n`;
-    code += `  trigger="${this.pgConfig.trigger}"\n`;
-    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.animationType !== 'slide')
-      code += `  animation-type="${this.pgConfig.animationType}"\n`;
-
-    // Boolean properties
-    if (this.pgConfig.searchable) code += `  searchable\n`;
-    if (this.pgConfig.animated) code += `  animated\n`;
-    if (this.pgConfig.staggered) code += `  staggered\n`;
-    if (this.pgConfig.backdrop) code += `  backdrop\n`;
-    if (this.pgConfig.commandPalette) code += `  command-palette\n`;
-    if (this.pgConfig.multiSelect) code += `  multi-select\n`;
-    if (this.pgConfig.showGroups) code += `  show-groups\n`;
-    if (this.pgConfig.highlightSearch) code += `  highlight-search\n`;
-    if (this.pgConfig.reflection) code += `  reflection\n`;
-    if (this.pgConfig.keyboardNavigation) code += `  keyboard-navigation\n`;
-
-    // Numeric/String properties with defaults
-    if (this.pgConfig.maxHeight !== '400px') code += `  max-height="${this.pgConfig.maxHeight}"\n`;
-    if (this.pgConfig.minWidth !== '220px') code += `  min-width="${this.pgConfig.minWidth}"\n`;
-    if (this.pgConfig.backdropBlur !== '8px')
-      code += `  backdrop-blur="${this.pgConfig.backdropBlur}"\n`;
-
-    if (!this.pgConfig.closeOnSelect) code += `  close-on-select="false"\n`;
-
-    code += `  [items]="menuItems"\n`;
-    code += `  (menuSelect)="onSelect($event)"\n`;
-    code += `>\n`;
-    code += `</app-context-menu>`;
-    this.generatedCode.set(code);
-    this.refreshCode();
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onMenuSelect(event: any) {
@@ -165,8 +160,29 @@ export class ContextMenuPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
-  jsonItems = () => JSON.stringify(this.demoItems);
+  resetConfig() {
+    this.pgConfig = {
+      trigger: 'click',
+      searchable: true,
+      animated: true,
+      maxHeight: '400px',
+      minWidth: '220px',
+      closeOnSelect: true,
+      staggered: true,
+      animationType: 'slide',
+      variant: 'default',
+      reflection: false,
+      backdropBlur: '8px',
+      backdrop: false,
+      keyboardNavigation: true,
+      commandPalette: false,
+      multiSelect: false,
+      showGroups: true,
+      highlightSearch: true,
+    };
+    this.updateConfig();
+  }
 }

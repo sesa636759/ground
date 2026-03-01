@@ -1,6 +1,6 @@
 import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import {
@@ -8,11 +8,12 @@ import {
   ComponentDocumentation,
 } from '../../services/component-docs.service';
 import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
+import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
   selector: 'app-documentation',
   standalone: true,
-  imports: [CommonModule, AppMasonryComponent],
+  imports: [CommonModule, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './documentation.component.html',
   styleUrl: './documentation.component.scss',
@@ -24,6 +25,7 @@ export class DocumentationComponent implements OnInit {
   isSearchFocused = signal(false);
   activeTab = signal<'all' | 'guides' | 'components' | 'utilities'>('all');
   selectedGuideId = signal<string>('');
+  isHubArea = signal(true);
 
   components = signal<ComponentDocumentation[]>([]);
 
@@ -159,16 +161,28 @@ export class DocumentationComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private componentDocsService: ComponentDocsService,
     private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
     this.components.set(this.componentDocsService.getAllComponents());
+    this.route.paramMap.subscribe((params) => {
+      const section = params.get('section');
+      if (section && ['components', 'guides', 'utilities'].includes(section)) {
+        this.activeTab.set(section as any);
+        this.isHubArea.set(false);
+      } else {
+        this.activeTab.set('all');
+        this.isHubArea.set(true);
+      }
+    });
   }
 
   getPreviewSvg(id: string): SafeHtml {
-    const svg = COMPONENT_SVG_MAP[id] ?? COMPONENT_SVG_MAP['default'];
+    const normalizedId = id.split('/').pop() || id;
+    const svg = COMPONENT_SVG_MAP[normalizedId] ?? COMPONENT_SVG_MAP['default'];
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 
@@ -184,10 +198,29 @@ export class DocumentationComponent implements OnInit {
     input.focus();
   }
 
+  flatGuideAccordionItems = computed(() => {
+    const items = this.filteredGuides().map((g) => ({
+      id: g.id,
+      title: g.title,
+      subtitle: g.desc,
+      icon: g.icon.replace('fas fa-', ''),
+      iconLibrary: g.icon.includes('fas') ? 'fontawesome' : 'default',
+    }));
+    return JSON.stringify(items);
+  });
+
+  navigateTo(section: string) {
+    if (section === 'all') {
+      this.router.navigate(['/documentation']);
+    } else {
+      this.router.navigate(['/documentation', section]);
+    }
+  }
+
   selectGuide(id: string) {
     this.selectedGuideId.set(id);
-    this.activeTab.set('guides');
-    window.scrollTo({ top: 500, behavior: 'smooth' });
+    this.router.navigate(['/documentation', 'guides']);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
   }
 
   getGuideAccordionItems(cat: (typeof this.guideCategories)[0]): string {

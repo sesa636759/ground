@@ -4,32 +4,38 @@
   signal,
   OnInit,
   ViewEncapsulation,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
-  selector: 'app-avatar-group-playground',
+  selector: 'app-set-avatar-group-playground',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
+    PlaygroundEventLogComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './avatar-group-playground.component.html',
-
-  styles: [
-    `
-      @use '../../../../../styles/playground-base.scss';
-    `,
-  ],
+  styleUrl: './avatar-group-playground.component.scss',
 })
-export class AvatarGroupPlaygroundComponent implements OnInit {
+export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
+
   pgConfig = {
     size: 'medium',
     max: 4,
@@ -46,6 +52,15 @@ export class AvatarGroupPlaygroundComponent implements OnInit {
     hoverEffect: 'none',
     columns: 3,
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
+    { id: 'visuals', title: 'Visual Styles', icon: '🎨' },
+    { id: 'behavior', title: 'Interaction Behavior', icon: '⚙️' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['layout']);
+
   users = [
     { name: 'John Doe', image: 'https://i.pravatar.cc/150?img=1' },
     { name: 'Jane Smith', image: 'https://i.pravatar.cc/150?img=2' },
@@ -56,31 +71,67 @@ export class AvatarGroupPlaygroundComponent implements OnInit {
     { name: 'Emma Davis', image: 'https://i.pravatar.cc/150?img=7' },
     { name: 'Frank Wilson', image: 'https://i.pravatar.cc/150?img=8' },
   ];
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
 
-  ngOnInit() {
+  eventLog = signal<string[]>([]);
+  generatedCode = signal<string>('');
+  showCode = true;
+
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.avatarGroupElement) return '';
+    let code = generatePlaygroundCode(
+      this.avatarGroupElement.nativeElement as Element,
+      'app-avatar-group',
+    );
+    // Add users prop to code manually
+    code = code.replace('></app-avatar-group>', '\n  [users]="avatarUsers"\n></app-avatar-group>');
+    return code;
+  }
+
   updateConfig() {
-    let code = `<app-avatar-group\n  size="${this.pgConfig.size}"\n  max="${this.pgConfig.max}"\n  layout="${this.pgConfig.layout}"\n  shape="${this.pgConfig.shape}"\n  direction="${this.pgConfig.direction}"`;
-    if (this.pgConfig.spacing !== 8) code += `\n  spacing="${this.pgConfig.spacing}"`;
-    if (this.pgConfig.borderWidth !== 2) code += `\n  border-width="${this.pgConfig.borderWidth}"`;
-    if (this.pgConfig.borderColor !== '#ffffff')
-      code += `\n  border-color="${this.pgConfig.borderColor}"`;
-    if (this.pgConfig.showTooltips) code += `\n  show-tooltips="true"`;
-    if (this.pgConfig.clickable) code += `\n  clickable="true"`;
-    if (this.pgConfig.showPopover) code += `\n  show-popover="true"`;
-    if (this.pgConfig.animated) code += `\n  animated="true"`;
-    if (this.pgConfig.hoverEffect !== 'none')
-      code += `\n  hover-effect="${this.pgConfig.hoverEffect}"`;
-    if (this.pgConfig.layout === 'grid') code += `\n  columns="${this.pgConfig.columns}"`;
-    code += `\n>\n  <!-- Child avatars -->\n</app-avatar-group>`;
-    this.generatedCode.set(code);
+    setTimeout(() => {
+      this.generatedCode.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
     navigator.clipboard.writeText(this.generatedCode());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      size: 'medium',
+      max: 4,
+      layout: 'stacked',
+      shape: 'circle',
+      showTooltips: true,
+      clickable: false,
+      spacing: 8,
+      borderWidth: 2,
+      borderColor: '#ffffff',
+      direction: 'horizontal',
+      showPopover: false,
+      animated: false,
+      hoverEffect: 'none',
+      columns: 3,
+    };
+    this.updateConfig();
   }
 }

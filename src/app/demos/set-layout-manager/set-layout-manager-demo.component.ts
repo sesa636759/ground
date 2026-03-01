@@ -165,9 +165,9 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
     });
   }
 
-  handleLayoutChange(event: CustomEvent) {}
+  handleLayoutChange(_event: CustomEvent) {}
 
-  handlePanelAdded(event: CustomEvent) {}
+  handlePanelAdded(_event: CustomEvent) {}
 
-  handlePanelRemoved(event: CustomEvent) {}
+  handlePanelRemoved(_event: CustomEvent) {}
 }

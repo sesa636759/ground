@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
 
 interface GanttTask {
@@ -23,6 +23,7 @@ interface GanttTask {
   styleUrl: './gantt-chart-playground.component.scss',
 })
 export class GanttChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { rowH: 36, radius: 4, showDeps: true, showGrid: true, showLabels: true, zebra: true };
 
   labelW = 120;

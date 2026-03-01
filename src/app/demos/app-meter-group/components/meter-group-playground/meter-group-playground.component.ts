@@ -1,8 +1,19 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-meter-group-playground',
@@ -12,13 +23,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './meter-group-playground.component.html',
-
   styleUrl: './meter-group-playground.component.scss',
 })
-export class MeterGroupPlaygroundComponent {
+export class MeterGroupPlaygroundComponent implements AfterViewInit {
+  @ViewChild('meterElement') meterElement!: ElementRef;
+
   pgConfig = {
     orientation: 'horizontal',
     labelOrientation: 'horizontal',
@@ -27,6 +41,13 @@ export class MeterGroupPlaygroundComponent {
     showLabels: true,
     showMarkers: true,
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'layout', title: 'Layout', icon: '📏' },
+    { id: 'visuals', title: 'Visuals', icon: '🎨' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['layout']);
 
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -51,10 +72,12 @@ export class MeterGroupPlaygroundComponent {
   ];
 
   valuesJson = JSON.stringify(this.values);
-  generatedCode = signal('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -67,20 +90,23 @@ export class MeterGroupPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-meter-group\n';
-    code += `  orientation="${this.pgConfig.orientation}"\n`;
-    code += `  label-position="${this.pgConfig.labelPosition}"\n`;
-    if (!this.pgConfig.showLabels) code += `  [show-labels]="false"\n`;
-    code += `  [values]="storageData"\n`;
-    code += '></ui-meter-group>';
+  getCleanFormatedDom(): string {
+    if (!this.meterElement) return '';
+    let code = generatePlaygroundCode(this.meterElement.nativeElement as Element, 'ui-meter-group');
+    // Add values prop to code manually
+    code = code.replace('></ui-meter-group>', '\n  [values]="meterValues"\n></ui-meter-group>');
+    return code;
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

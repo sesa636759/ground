@@ -1,20 +1,36 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ChangeDetectorRef,
+  signal,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-knob-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './knob-playground.component.html',
-
   styleUrl: './knob-playground.component.scss',
 })
-export class KnobPlaygroundComponent {
+export class KnobPlaygroundComponent implements AfterViewInit {
+  @ViewChild('knobElement') knobElement!: ElementRef;
+
   pgConfig = {
     value: 50,
     min: 0,
@@ -27,10 +43,18 @@ export class KnobPlaygroundComponent {
     showValue: true,
   };
 
-  generatedCode = signal('');
+  pgAccordionItems = JSON.stringify([
+    { id: 'value', title: 'Value Control', icon: '🔢' },
+    { id: 'visuals', title: 'Visuals', icon: '🎨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['value']);
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -43,19 +67,16 @@ export class KnobPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-knob\n';
-    code += `  [value]="${this.pgConfig.value}"\n`;
-    code += `  [min]="${this.pgConfig.min}"\n`;
-    code += `  [max]="${this.pgConfig.max}"\n`;
-    code += `  [size]="${this.pgConfig.size}"\n`;
-    code += `  value-color="${this.pgConfig.valueColor}"\n`;
-    if (this.pgConfig.readonly) code += `  readonly\n`;
-    if (!this.pgConfig.showValue) code += `  [show-value]="false"\n`;
-    code += '></ui-knob>';
+  getCleanFormatedDom(): string {
+    if (!this.knobElement) return '';
+    return generatePlaygroundCode(this.knobElement.nativeElement as Element, 'ui-knob');
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   onValueChange(event: any) {
@@ -64,7 +85,7 @@ export class KnobPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

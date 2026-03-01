@@ -1,12 +1,13 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+
 
 @Component({
   selector: 'app-split-button-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './split-button-playground.component.html',
 
@@ -45,7 +46,7 @@ export class SplitButtonPlaygroundComponent {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   lastAction = '';
 
   constructor() {
@@ -60,7 +61,7 @@ export class SplitButtonPlaygroundComponent {
     code += `  [model]="menuItems"\n`;
     code += '></ui-split-button>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onPrimaryClick() {
@@ -72,7 +73,7 @@ export class SplitButtonPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

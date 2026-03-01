@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
 
@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './polar-area-chart-playground.component.scss',
 })
 export class PolarAreaChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = { dataset: 'skills', legendPos: 'right', opacity: 0.7, showLegend: true, animate: true };
 
   datasetOpts = [

@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
@@ -54,7 +54,7 @@ export class PillPlaygroundComponent {
     { label: 'Large', value: 'lg' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -82,12 +82,12 @@ export class PillPlaygroundComponent {
     if (this.pgConfig.counter !== null) code += `  counter="${this.pgConfig.counter}"\n`;
     code += '></ui-pill>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

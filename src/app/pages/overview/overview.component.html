@@ -1,243 +1,159 @@
-    <div class="overview-container">
-      <!-- Background Ambient Glows -->
-      <div class="ambient-glow glow-top-left"></div>
-      <div class="ambient-glow glow-bottom-right"></div>
-      <div class="grid-overlay"></div>
+<div class="overview-container">
+  <!-- Background Ambient Glows -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+  <div class="grid-overlay"></div>
 
-      <!-- Hero Header -->
-      <header class="overview-header">
-        <div class="header-content">
-          <div class="badge-wrapper">
-            <div class="enterprise-badge">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-              <span>Enterprise Component Registry</span>
-            </div>
-          </div>
+  <!-- Hero Header -->
+  <header class="overview-header">
+    <div class="header-content">
+      <h1 class="hero-title">
+        The Building Blocks of <br />
+        <span class="text-gradient">Ground UI System</span>
+      </h1>
+      <!-- <p class="hero-subtitle">
+        Explore {{ totalComponents }} meticulously crafted, fully responsive, and accessible
+        components designed for scalable enterprise applications.
+      </p> -->
 
-          <h1 class="hero-title">
-            The Building Blocks of <br />
-            <span class="text-gradient">Ground UI System</span>
-          </h1>
-          <p class="hero-subtitle">
-            Explore {{ totalComponents }} meticulously crafted, fully responsive, and accessible
-            components designed for scalable enterprise applications.
-          </p>
-
-          <div class="header-actions">
-            <div class="search-box">
-              <i class="search-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </i>
-              <input
-                type="text"
-                placeholder="Search components, categories, or keywords..."
-                [value]="searchQuery()"
-                (input)="onSearchInput($event)"
-              />
-              <button class="clear-btn" *ngIf="searchQuery()" (click)="clearSearch()">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-
-            <div class="view-toggle">
-              <button
-                class="toggle-btn"
-                [class.active]="viewMode() === 'grid'"
-                (click)="viewMode.set('grid')"
-                title="Grid View"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="3" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="3" width="7" height="7"></rect>
-                  <rect x="14" y="14" width="7" height="7"></rect>
-                  <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-              </button>
-              <button
-                class="toggle-btn"
-                [class.active]="viewMode() === 'list'"
-                (click)="viewMode.set('list')"
-                title="List View"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <line x1="8" y1="6" x2="21" y2="6"></line>
-                  <line x1="8" y1="12" x2="21" y2="12"></line>
-                  <line x1="8" y1="18" x2="21" y2="18"></line>
-                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Main Layout -->
-      <div class="overview-layout">
-        <aside class="sidebar-nav">
-          <div class="sidebar-inner glass-panel">
-            <div class="sidebar-header">
-              <h3>Directory</h3>
-              <span class="count-badge">{{ filteredCategories().length }} Sets</span>
-            </div>
-            <nav class="category-menu">
-              <button
-                *ngFor="let category of filteredCategories()"
-                class="menu-item"
-                [class.active]="activeCategory() === category.id"
-                (click)="scrollToCategory(category.id)"
-              >
-                <div class="menu-item-content">
-                  <span class="menu-icon">{{ category.icon }}</span>
-                  <span class="menu-label">{{ category.label }}</span>
-                </div>
-                <span class="menu-count" *ngIf="category.children?.length">{{
-                  category.children?.length
-                }}</span>
-              </button>
-            </nav>
-          </div>
-        </aside>
-
-        <!-- Content Area -->
-        <main class="overview-content">
-          <div
-            *ngFor="let category of filteredCategories()"
-            class="category-section"
-            [id]="'cat-' + category.id"
-          >
-            <div class="category-header">
-              <div class="category-title-wrapper">
-                <span class="category-icon-large">{{ category.icon }}</span>
-                <h2>{{ category.label }}</h2>
-              </div>
-              <div class="category-divider"></div>
-            </div>
-
-            <ng-masonry-grid
-              [columns]="viewMode() === 'list' ? 1 : 3"
-              gap="32px"
-              [rowGap]="32"
-              [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
+      <div class="header-actions">
+        <div class="search-box">
+          <i class="search-icon">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-              <div
-                *ngFor="let component of category.children"
-                class="component-card glass-panel"
-                [class.list-card]="viewMode() === 'list'"
-                (click)="navigateToComponent(component.id)"
-              >
-                <!-- Card Glow Effect on Hover -->
-                <div class="card-glow"></div>
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </i>
+          <ui-input
+            type="text"
+            placeholder="Search components, categories, or keywords..."
+            [value]="searchQuery()"
+            (input)="onSearchInput($event)"
+            variant="ghost"
+            size="large"
+            full-width
+          ></ui-input>
+          @if (searchQuery()) {
+            <ui-button
+              variant="ghost"
+              icon="lucide-x"
+              [iconOnly]="true"
+              (buttonClick)="clearSearch()"
+            ></ui-button>
+          }
+        </div>
 
-                <div class="card-header">
-                  <div class="comp-avatar">{{ component.label.charAt(0) }}</div>
-                  <div class="comp-title-area">
-                    <h3 class="comp-name">{{ component.label }}</h3>
-                    <span class="comp-meta">{{ category.label }}</span>
-                  </div>
-                  <span *ngIf="component.badge" class="status-badge">{{ component.badge }}</span>
-                </div>
-
-                <div class="card-preview-container">
-                  <div class="card-preview" [innerHTML]="getPreviewSvg(component.id)"></div>
-                  <div class="preview-overlay">
-                    <button class="explore-btn">
-                      <span>Explore Demo</span>
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="card-footer">
-                  <p class="card-description">{{ getComponentDescription(component.id) }}</p>
-                </div>
-              </div>
-            </ng-masonry-grid>
-          </div>
-
-          <!-- Empty State -->
-          <div *ngIf="filteredCategories().length === 0" class="empty-state glass-panel">
-            <div class="empty-icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="M21 21l-4.3-4.3"></path>
-                <line x1="9" y1="11" x2="13" y2="11"></line>
-                <line x1="11" y1="9" x2="11" y2="13"></line>
-              </svg>
-            </div>
-            <h3>No matching components</h3>
-            <p>
-              We couldn't find anything matching "<strong>{{ searchQuery() }}</strong
-              >". <br />
-              Try adjusting your search terms or filters.
-            </p>
-            <button class="reset-btn" (click)="clearSearch()">Clear Search</button>
-          </div>
-        </main>
+        <div class="view-toggle">
+          <app-button-toggle-group
+            mode="segmented"
+            display-mode="icon-only"
+            variant="surface"
+            [value]="viewMode()"
+            [options]="viewOptions"
+            (buttonToggleGroupChange)="viewMode.set($event.detail.value)"
+          ></app-button-toggle-group>
+        </div>
       </div>
     </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="overview-layout">
+    <aside class="sidebar-nav">
+      <div class="sidebar-inner glass-panel">
+        <div class="sidebar-header">
+          <h3>Directory</h3>
+          <span class="count-badge">{{ filteredCategories().length }} Sets</span>
+        </div>
+        <div class="sidebar-nav-container" style="margin-top: 16px">
+          <ui-anchor
+            [attr.links]="overviewAnchorLinks()"
+            scroll-container=".overview-content"
+            type="line"
+            show-progress="true"
+          ></ui-anchor>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="overview-content">
+      <div
+        *ngFor="let category of filteredCategories()"
+        class="category-section"
+        [id]="'cat-' + category.id"
+      >
+        <div class="category-header">
+          <div class="category-title-wrapper">
+            <ui-icon
+              [name]="category.icon"
+              [library]="category.iconLibrary"
+              [size]="'2.5rem'"
+            ></ui-icon>
+            <h2>{{ category.label }}</h2>
+          </div>
+          <div class="category-divider"></div>
+        </div>
+
+        <ng-masonry-grid
+          [columns]="viewMode() === 'list' ? 1 : 3"
+          gap="32px"
+          [rowGap]="32"
+          [breakpoints]="viewMode() === 'list' ? listBp : masonryBp"
+        >
+          <app-component-card
+            *ngFor="let component of category.children"
+            [componentId]="component.id"
+            [label]="component.label"
+            [category]="category.label"
+            [icon]="component.icon"
+            [iconLibrary]="component.iconLibrary || 'lucide'"
+            [badge]="component.badge"
+            [description]="getComponentDescription(component.id)"
+            [previewSvg]="getPreviewSvg(component.id)"
+            [imageUrl]="getImageUrl(component.id)"
+            [viewMode]="viewMode()"
+            (cardClick)="navigateToComponent(component.id)"
+            (docsClick)="navigateToDocs(component.id)"
+            [viewMode]="viewMode()"
+          ></app-component-card>
+        </ng-masonry-grid>
+      </div>
+
+      <!-- Empty State -->
+      @if (filteredCategories().length === 0) {
+        <div class="empty-state glass-panel">
+          <div class="empty-icon">
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.3-4.3"></path>
+              <line x1="9" y1="11" x2="13" y2="11"></line>
+              <line x1="11" y1="9" x2="11" y2="13"></line>
+            </svg>
+          </div>
+          <h3>No matching components</h3>
+          <p>
+            We couldn't find anything matching "<strong>{{ searchQuery() }}</strong
+            >". <br />
+            Try adjusting your search terms or filters.
+          </p>
+          <ui-button class="reset-btn" (click)="clearSearch()">Clear Search</ui-button>
+        </div>
+      }
+    </main>
+  </div>
+</div>

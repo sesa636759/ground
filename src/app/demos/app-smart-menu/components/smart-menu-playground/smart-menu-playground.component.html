@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"props","title":"Component Props","icon":"⚙️"},{"id":"fields","title":"MenuItem Fields","icon":"📋"}]'
   defaultOpen='["props","fields"]'
+  [code]="generatedCodeSignal()"
+  (reset)="reset()"
 >
   <div slot="content-props">
     <div class="control-grid">
@@ -44,54 +46,57 @@
         </div>
 
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="pg-icons"
             [(ngModel)]="cfg.showIcons"
             (change)="rebuild()"
             label="item.icon — show icons"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-desc"
             [(ngModel)]="cfg.showDescriptions"
             (change)="rebuild()"
             label="item.description — secondary text"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-nested"
             [(ngModel)]="cfg.showNested"
             (change)="rebuild()"
             label="item.submenu — nested sub-menu (hover ▶)"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-dividers"
             [(ngModel)]="cfg.showDividers"
             (change)="rebuild()"
             label="item.divider — separator line"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-disabled"
             [(ngModel)]="cfg.showDisabled"
             (change)="rebuild()"
             label="item.disabled — greyed-out item"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-action"
             [(ngModel)]="cfg.showAction"
             (change)="rebuild()"
             label="item.action — callback on click (see console)"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
 
   <div
     preview
-    style="display: flex; flex-direction: column; gap: 16px; align-items: stretch; width: 100%"
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+      width: 100%;
+      padding: 40px;
+    "
   >
     <!-- Right-click zone (used when triggerMode = 'zone') -->
     @if (cfg.triggerMode === 'zone' || cfg.triggerMode === 'no-target') {
@@ -143,7 +148,9 @@
       [items]="menuJson"
       (menuItemClick)="onItemClick($event)"
     ></ui-smart-context-menu>
+  </div>
 
+  <div events>
     <!-- Event log -->
     @if (clickLog().length) {
       <div
@@ -162,13 +169,4 @@
       </div>
     }
   </div>
-
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

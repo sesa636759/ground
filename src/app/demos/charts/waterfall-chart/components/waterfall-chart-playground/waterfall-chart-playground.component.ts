@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
 
@@ -29,6 +29,8 @@ interface WfBar {
   styleUrl: './waterfall-chart-playground.component.scss',
 })
 export class WaterfallChartPlaygroundComponent {
+  generatedCode = signal<string>('');
+
   cfg = {
     posColor: '#10b981',
     negColor: '#f43f5e',

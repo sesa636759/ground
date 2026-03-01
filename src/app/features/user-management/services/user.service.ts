@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, tap, delay } from 'rxjs/operators';
 import {
@@ -14,18 +14,21 @@ import {
   Permission,
 } from '../models/user.model';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = '/api/users'; // Replace with your actual API URL
+  //private apiUrl = '/api/users'; // Replace with your actual API URL
   private usersSubject = new BehaviorSubject<User[]>([]);
   public users$ = this.usersSubject.asObservable();
 
   // Mock data for demonstration
   private mockUsers: User[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(
+    //private _http: HttpClient
+    ) {
     this.initializeMockData();
   }
 
@@ -206,7 +209,7 @@ export class UserService {
   /**
    * Change user password
    */
-  changePassword(userId: string, oldPassword: string, newPassword: string): Observable<void> {
+  changePassword(_userId: string, _oldPassword: string, _newPassword: string): Observable<void> {
     // return this.http.post<void>(`${this.apiUrl}/${userId}/change-password`, { oldPassword, newPassword });
     return of(void 0).pipe(delay(300));
   }
@@ -214,7 +217,7 @@ export class UserService {
   /**
    * Reset user password (admin)
    */
-  resetPassword(userId: string): Observable<{ temporaryPassword: string }> {
+  resetPassword(_userId: string): Observable<{ temporaryPassword: string }> {
     // return this.http.post<{ temporaryPassword: string }>(`${this.apiUrl}/${userId}/reset-password`, {});
     return of({ temporaryPassword: 'Temp@123' }).pipe(delay(300));
   }
@@ -236,7 +239,7 @@ export class UserService {
   /**
    * Export users to CSV/Excel
    */
-  exportUsers(format: 'csv' | 'excel', filters?: UserFilters): Observable<Blob> {
+  exportUsers(_format: 'csv' | 'excel', _filters?: UserFilters): Observable<Blob> {
     // return this.http.post(`${this.apiUrl}/export`, { format, filters }, { responseType: 'blob' });
 
     // Mock CSV export
@@ -248,7 +251,7 @@ export class UserService {
   /**
    * Import users from file
    */
-  importUsers(file: File): Observable<{ success: number; failed: number; errors: string[] }> {
+  importUsers(_file: File): Observable<{ success: number; failed: number; errors: string[] }> {
     // const formData = new FormData();
     // formData.append('file', file);
     // return this.http.post<ImportResult>(`${this.apiUrl}/import`, formData);
@@ -263,7 +266,7 @@ export class UserService {
   /**
    * Get user activity log
    */
-  getUserActivityLog(userId: string, page: number = 1, pageSize: number = 20): Observable<any> {
+  getUserActivityLog(_userId: string, _page: number = 1, _pageSize: number = 20): Observable<any> {
     // return this.http.get(`${this.apiUrl}/${userId}/activity`, { params: { page, pageSize } });
     return of({
       activities: [
@@ -277,7 +280,7 @@ export class UserService {
   /**
    * Send verification email
    */
-  sendVerificationEmail(userId: string): Observable<void> {
+  sendVerificationEmail(_userId: string): Observable<void> {
     // return this.http.post<void>(`${this.apiUrl}/${userId}/send-verification`, {});
     return of(void 0).pipe(delay(300));
   }

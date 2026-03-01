@@ -1,0 +1,41 @@
+<div class="chakra-like-page">
+  <div class="content-wrapper">
+    <!-- Main Content -->
+    <main class="docs-content">
+      <div class="docs-header">
+        <h1>{{ title }}</h1>
+        <p class="lead-text" *ngIf="description">{{ description }}</p>
+      </div>
+
+      <div class="docs-body">
+        <ng-content></ng-content>
+
+        <!-- Dynamic Post Footer links (next/prev) -->
+        <div class="docs-footer-nav" *ngIf="prevLink || nextLink">
+          <a *ngIf="prevLink; else spacer" [routerLink]="prevLink.url" class="nav-prev">
+            <span class="nav-label">{{ prevLink.label || 'Previous' }}</span>
+            <span class="nav-title">{{ prevLink.title }}</span>
+          </a>
+          <ng-template #spacer><div></div></ng-template>
+
+          <a *ngIf="nextLink" [routerLink]="nextLink.url" class="nav-next">
+            <span class="nav-label">{{ nextLink.label || 'Next' }}</span>
+            <span class="nav-title">{{ nextLink.title }}</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Table of Contents Sidebar -->
+    <aside class="docs-toc" *ngIf="sections.length > 0">
+      <div class="toc-sticky">
+        <h4 class="toc-title">On this page</h4>
+        <ul class="toc-list">
+          <li *ngFor="let section of sections" [class.active]="activeSection() === section.id">
+            <a (click)="scrollTo(section.id)">{{ section.label }}</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

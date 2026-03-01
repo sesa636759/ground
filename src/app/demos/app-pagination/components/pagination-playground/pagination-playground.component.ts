@@ -9,9 +9,9 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -36,7 +36,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   pgConfig = this.getDefaultConfig();
 
   eventMessage = signal('Navigate to a page...');
-  generatedCode: string = '';
+  generatedCodeSignal = signal('');
 
   typeOptions = [
     { label: 'Basic', value: 'basic' },
@@ -81,7 +81,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -126,7 +126,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -140,7 +140,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -1,6 +1,6 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd, } from '@angular/router';
 import {
   topNavItems,
   categoryNavItems,
@@ -84,11 +84,16 @@ export class App implements OnInit {
     };
   });
 
+
   constructor(
     public router: Router,
     public themeService: ThemeService,
-    private authService: AuthService,
+    public authService: AuthService,
   ) {}
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 
   ngOnInit() {
     // Track route changes to update selected item

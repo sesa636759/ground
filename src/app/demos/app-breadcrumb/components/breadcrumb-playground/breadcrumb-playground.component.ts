@@ -1,8 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-breadcrumb-playground',
@@ -12,13 +22,16 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './breadcrumb-playground.component.html',
 
   styleUrl: './breadcrumb-playground.component.scss',
 })
-export class BreadcrumbPlaygroundComponent {
+export class BreadcrumbPlaygroundComponent implements AfterViewInit {
+  @ViewChild('breadcrumb') breadcrumb!: ElementRef;
+
   pgConfig = {
     separator: '/',
     maxItems: 0,
@@ -26,6 +39,9 @@ export class BreadcrumbPlaygroundComponent {
     variant: 'default',
     showHome: true,
   };
+
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  accordionDefaultOpen = JSON.stringify(['config']);
 
   sizeOptions = [
     { label: 'Small', value: 'sm' },
@@ -47,10 +63,12 @@ export class BreadcrumbPlaygroundComponent {
   ];
 
   itemsJson = JSON.stringify(this.items);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -63,22 +81,20 @@ export class BreadcrumbPlaygroundComponent {
     }, 0);
   }
 
-  updateConfig() {
-    let code = '<ui-breadcrumb\n';
-    code += `  separator="${this.pgConfig.separator}"\n`;
-    if (this.pgConfig.maxItems > 0) code += `  [max-items]="${this.pgConfig.maxItems}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.showHome) code += `  show-home\n`;
-    code += `  [items]="breadcrumbItems"\n`;
-    code += '></ui-breadcrumb>';
+  getCleanFormatedDom(): string {
+    if (!this.breadcrumb) return '';
+    return generatePlaygroundCode(this.breadcrumb.nativeElement as Element, 'ui-breadcrumb');
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

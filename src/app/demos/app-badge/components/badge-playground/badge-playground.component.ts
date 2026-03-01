@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
 
@@ -70,7 +70,7 @@ export class BadgePlaygroundComponent {
     { label: 'Shake', value: 'shake' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {
     this.updateConfig();
@@ -92,11 +92,11 @@ export class BadgePlaygroundComponent {
     code += '  <icon>✉️</icon>\n';
     code += '</ui-badge>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -1,249 +1,216 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion
-      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-      multiple
-    >
-      <div slot="content-config">
-        <h4 class="section-title">Layout Configuration</h4>
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Layout Type</label>
-            <ui-dropdown
-              name="layoutType"
-              [(ngModel)]="pgConfig.layoutType"
-              (ngModelChange)="updateConfig()"
-              [options]="layoutTypeOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Columns</label>
-            <app-input
-              name="columns"
-              type="number"
-              min="1"
-              max="6"
-              [(ngModel)]="pgConfig.columns"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Gap (px)</label>
-            <app-input
-              name="gap"
-              type="number"
-              min="0"
-              max="50"
-              [(ngModel)]="pgConfig.gap"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Min Width (px)</label>
-            <app-input
-              name="itemMinWidth"
-              type="number"
-              min="100"
-              max="500"
-              [(ngModel)]="pgConfig.itemMinWidth"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-
-          <div class="control-group">
-            <label>Max Width (px)</label>
-            <app-input
-              name="itemMaxWidth"
-              type="number"
-              min="200"
-              max="800"
-              [(ngModel)]="pgConfig.itemMaxWidth"
-              (ngModelChange)="updateConfig()"
-            />
-          </div>
-        </div>
-
-        <h4 class="section-title">Filtering & Sorting</h4>
-        <div class="control-grid">
-          <div class="control-group">
-            <label>Sort By</label>
-            <ui-dropdown
-              name="sortBy"
-              [(ngModel)]="pgConfig.sortBy"
-              (ngModelChange)="updateConfig()"
-              [options]="sortByOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group">
-            <label>Sort Order</label>
-            <ui-dropdown
-              name="sortOrder"
-              [(ngModel)]="pgConfig.sortOrder"
-              (ngModelChange)="updateConfig()"
-              [options]="sortOrderOptions"
-            ></ui-dropdown>
-          </div>
-
-          <div class="control-group full-width">
-            <label>Filter Category</label>
-            <ui-dropdown
-              name="filterCategory"
-              [(ngModel)]="filterCategory"
-              (ngModelChange)="updateConfig()"
-              [options]="[
-                { label: 'All', value: '' },
-                { label: 'Nature', value: 'nature' },
-                { label: 'Architecture', value: 'architecture' },
-                { label: 'Food', value: 'food' },
-                { label: 'Technology', value: 'technology' },
-              ]"
-            ></ui-dropdown>
-          </div>
-        </div>
-
-        <h4 class="section-title">Features</h4>
-        <div class="checkbox-grid">
-          <label class="checkbox-item">
-            <app-checkbox
-              name="enableAnimation"
-              [(ngModel)]="pgConfig.enableAnimation"
-              (ngModelChange)="updateConfig()"
-              label="Animations"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="showFilters"
-              [(ngModel)]="pgConfig.showFilters"
-              (ngModelChange)="updateConfig()"
-              label="Show Filters"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="selectable"
-              [(ngModel)]="pgConfig.selectable"
-              (ngModelChange)="updateConfig()"
-              label="Selectable"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="multiSelect"
-              [(ngModel)]="pgConfig.multiSelect"
-              (ngModelChange)="updateConfig()"
-              label="Multi-Select"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="showBatchActions"
-              [(ngModel)]="pgConfig.showBatchActions"
-              (ngModelChange)="updateConfig()"
-              label="Batch Actions"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="lazyLoad"
-              [(ngModel)]="pgConfig.lazyLoad"
-              (ngModelChange)="updateConfig()"
-              label="Lazy Load"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="infiniteScroll"
-              [(ngModel)]="pgConfig.infiniteScroll"
-              (ngModelChange)="updateConfig()"
-              label="Infinite Scroll"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="lightbox"
-              [(ngModel)]="pgConfig.lightbox"
-              (ngModelChange)="updateConfig()"
-              label="Lightbox"
-            />
-          </label>
-          <label class="checkbox-item">
-            <app-checkbox
-              name="loadingState"
-              [(ngModel)]="pgConfig.loadingState"
-              (ngModelChange)="updateConfig()"
-              label="Loading State"
-            />
-          </label>
-        </div>
-      </div>
-      <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
-        <div class="preview-stage masonry-stage">
-          <app-masonry
-            #masonryLayout
-            [attr.layout-type]="pgConfig.layoutType"
-            [attr.columns]="pgConfig.columns"
-            [attr.gap]="pgConfig.gap"
-            [attr.sort-by]="pgConfig.sortBy || null"
-            [attr.sort-order]="pgConfig.sortOrder"
-            [attr.filter-by]="pgConfig.filterBy || null"
-            [attr.enable-animation]="pgConfig.enableAnimation"
-            [attr.show-filters]="pgConfig.showFilters"
-            [attr.selectable]="pgConfig.selectable"
-            [attr.multi-select]="pgConfig.multiSelect"
-            [attr.show-batch-actions]="pgConfig.showBatchActions"
-            [attr.lazy-load]="pgConfig.lazyLoad"
-            [attr.infinite-scroll]="pgConfig.infiniteScroll"
-            [attr.lightbox]="pgConfig.lightbox"
-            [attr.loading-state]="pgConfig.loadingState"
-            [attr.item-min-width]="pgConfig.itemMinWidth"
-            [attr.item-max-width]="pgConfig.itemMaxWidth"
-            [items]="playgroundItems"
-            (item-click)="onItemClick($event)"
-            (selection-change)="onSelectionChange($event)"
-          ></app-masonry>
-        </div>
-
-        <ui-code-preview
-          *ngIf="showCode"
-          [htmlCode]="generatedCode"
-          [label]="'Generated Code'"
-          activeLang="html"
-          expanded="true"
-        ></ui-code-preview>
-        <div class="event-log-container">
-          <strong>Event Log</strong>
-          <div class="log-items">
-            <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-          </div>
-        </div>
+﻿<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-config">
+    <h4 class="section-title">Layout Configuration</h4>
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Layout Type</label>
+        <ui-dropdown
+          name="layoutType"
+          [(ngModel)]="pgConfig.layoutType"
+          (ngModelChange)="updateConfig()"
+          [options]="layoutTypeOptions"
+        ></ui-dropdown>
       </div>
 
-      <script>
-        // Set initial items for playground masonry
-        setTimeout(() => {
-          const playgroundMasonry = document.querySelector('app-masonry-playground app-masonry');
-          if (playgroundMasonry) {
-            const categories = ['nature', 'architecture', 'food', 'technology'];
-            const heights = [200, 250, 300, 350, 400, 450];
-            playgroundMasonry.items = Array.from({ length: 24 }, (_, i) => ({
-              id: i + 1,
-              image: `https://picsum.photos/400/${heights[i % heights.length]}?random=${i}`,
-              title: `Item ${i + 1}`,
-              description: `Sample description for item ${i + 1}.`,
-              category: categories[i % categories.length],
-              height: heights[i % heights.length],
-              tags: [`tag${(i % 3) + 1}`, `${categories[i % categories.length]}`],
-              date: new Date(Date.now() - Math.random() * 10000000000).toISOString(),
-            }));
-          }
-        }, 100);
-      </script>
-    </ui-accordion>
+      <div class="control-group">
+        <label>Columns</label>
+        <ui-input
+          name="columns"
+          type="number"
+          min="1"
+          max="6"
+          [(ngModel)]="pgConfig.columns"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Gap (px)</label>
+        <ui-input
+          name="gap"
+          type="number"
+          min="0"
+          max="50"
+          [(ngModel)]="pgConfig.gap"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Min Width (px)</label>
+        <ui-input
+          name="itemMinWidth"
+          type="number"
+          min="100"
+          max="500"
+          [(ngModel)]="pgConfig.itemMinWidth"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+
+      <div class="control-group">
+        <label>Max Width (px)</label>
+        <ui-input
+          name="itemMaxWidth"
+          type="number"
+          min="200"
+          max="800"
+          [(ngModel)]="pgConfig.itemMaxWidth"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+    </div>
+
+    <h4 class="section-title">Filtering & Sorting</h4>
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Sort By</label>
+        <ui-dropdown
+          name="sortBy"
+          [(ngModel)]="pgConfig.sortBy"
+          (ngModelChange)="updateConfig()"
+          [options]="sortByOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group">
+        <label>Sort Order</label>
+        <ui-dropdown
+          name="sortOrder"
+          [(ngModel)]="pgConfig.sortOrder"
+          (ngModelChange)="updateConfig()"
+          [options]="sortOrderOptions"
+        ></ui-dropdown>
+      </div>
+
+      <div class="control-group full-width">
+        <label>Filter Category</label>
+        <ui-dropdown
+          name="filterCategory"
+          [(ngModel)]="filterCategory"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'All', value: '' },
+            { label: 'Nature', value: 'nature' },
+            { label: 'Architecture', value: 'architecture' },
+            { label: 'Food', value: 'food' },
+            { label: 'Technology', value: 'technology' },
+          ]"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <h4 class="section-title">Features</h4>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="enableAnimation"
+          [(ngModel)]="pgConfig.enableAnimation"
+          (ngModelChange)="updateConfig()"
+          label="Animations"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="showFilters"
+          [(ngModel)]="pgConfig.showFilters"
+          (ngModelChange)="updateConfig()"
+          label="Show Filters"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="selectable"
+          [(ngModel)]="pgConfig.selectable"
+          (ngModelChange)="updateConfig()"
+          label="Selectable"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="multiSelect"
+          [(ngModel)]="pgConfig.multiSelect"
+          (ngModelChange)="updateConfig()"
+          label="Multi-Select"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="showBatchActions"
+          [(ngModel)]="pgConfig.showBatchActions"
+          (ngModelChange)="updateConfig()"
+          label="Batch Actions"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="lazyLoad"
+          [(ngModel)]="pgConfig.lazyLoad"
+          (ngModelChange)="updateConfig()"
+          label="Lazy Load"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="infiniteScroll"
+          [(ngModel)]="pgConfig.infiniteScroll"
+          (ngModelChange)="updateConfig()"
+          label="Infinite Scroll"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="lightbox"
+          [(ngModel)]="pgConfig.lightbox"
+          (ngModelChange)="updateConfig()"
+          label="Lightbox"
+        />
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          name="loadingState"
+          [(ngModel)]="pgConfig.loadingState"
+          (ngModelChange)="updateConfig()"
+          label="Loading State"
+        />
+      </label>
+    </div>
   </div>
-</div>
+
+  <div preview style="width: 100%">
+    <app-masonry
+      #masonryLayout
+      [attr.layout-type]="pgConfig.layoutType"
+      [attr.columns]="pgConfig.columns"
+      [attr.gap]="pgConfig.gap"
+      [attr.sort-by]="pgConfig.sortBy || null"
+      [attr.sort-order]="pgConfig.sortOrder"
+      [attr.filter-by]="pgConfig.filterBy || null"
+      [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
+      [attr.show-filters]="pgConfig.showFilters ? '' : null"
+      [attr.selectable]="pgConfig.selectable ? '' : null"
+      [attr.multi-select]="pgConfig.multiSelect ? '' : null"
+      [attr.show-batch-actions]="pgConfig.showBatchActions ? '' : null"
+      [attr.lazy-load]="pgConfig.lazyLoad ? '' : null"
+      [attr.infinite-scroll]="pgConfig.infiniteScroll ? '' : null"
+      [attr.lightbox]="pgConfig.lightbox ? '' : null"
+      [attr.loading-state]="pgConfig.loadingState ? '' : null"
+      [attr.item-min-width]="pgConfig.itemMinWidth"
+      [attr.item-max-width]="pgConfig.itemMaxWidth"
+      [items]="playgroundItems"
+      (item-click)="onItemClick($event)"
+      (selection-change)="onSelectionChange($event)"
+    ></app-masonry>
+  </div>
+
+  <div events class="event-log-container">
+    @for (log of eventLog(); track log) {
+      <div class="log-item">{{ log }}</div>
+    }
+  </div>
+</app-playground>

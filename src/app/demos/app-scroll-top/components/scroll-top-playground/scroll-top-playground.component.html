@@ -1,7 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -9,11 +10,19 @@
         <h3>Behavior</h3>
         <div class="control-group">
           <label>Threshold (px)</label>
-          <input type="number" [(ngModel)]="pgConfig.threshold" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.threshold"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Scroll Speed (ms)</label>
-          <input type="number" [(ngModel)]="pgConfig.speed" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.speed"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
       </div>
 
@@ -21,7 +30,11 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Icon</label>
-          <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.icon"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Shape</label>
@@ -33,25 +46,12 @@
         </div>
       </div>
     </div>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="scroll-content" id="pg-scroll-target">
       <h3>Scroll down to see the button!</h3>
       <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>

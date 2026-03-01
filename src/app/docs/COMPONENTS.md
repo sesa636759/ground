@@ -254,7 +254,7 @@ Collapsible content panels for hierarchical data.
 
 ---
 
-## 🧩 Checkbox `app-checkbox`
+## 🧩 Checkbox `ui-checkbox`
 
 Selection control for binary choices.
 
@@ -278,8 +278,8 @@ Selection control for binary choices.
 ### Usage
 
 ```html
-<app-checkbox label="Accept Terms" (change)="onCheck($event)"></app-checkbox>
-<app-checkbox label="Draft" variant="chip" color="warning"></app-checkbox>
+<ui-checkbox label="Accept Terms" (change)="onCheck($event)"></ui-checkbox>
+<ui-checkbox label="Draft" variant="chip" color="warning"></ui-checkbox>
 ```
 
 ---

@@ -11,9 +11,10 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-masonry-playground',
@@ -23,6 +24,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
@@ -82,7 +84,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode: string = '';
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -102,10 +104,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
-      this.refreshCode();
-    }, 50);
+    this.updateConfig();
   }
 
   generateItems(count: number) {
@@ -126,15 +125,14 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
 
   getCleanFormatedDom(): string {
     if (!this.masonryLayout) return '';
-    const code = generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
-    return code.replace('></app-masonry>', '  [items]="items"\n></app-masonry>');
+    return generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
   }
 
   updateConfig() {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
 
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -154,20 +152,29 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
-  }
-
-  getBreakpointsJson() {
-    return JSON.stringify(this.pgConfig.breakpoints);
-  }
-
-  updateBreakpoints(event: any) {
-    try {
-      this.pgConfig.breakpoints = JSON.parse(event.target.value);
-      this.updateConfig();
-    } catch (e) {
-      // ignore invalid json
-    }
+  resetConfig() {
+    this.pgConfig = {
+      layoutType: 'masonry',
+      columns: 3,
+      gap: 16,
+      sortBy: '',
+      sortOrder: 'asc',
+      filterBy: '',
+      enableAnimation: true,
+      showFilters: false,
+      selectable: true,
+      multiSelect: false,
+      showBatchActions: false,
+      lazyLoad: false,
+      infiniteScroll: false,
+      lightbox: false,
+      loadingState: false,
+      itemMinWidth: 200,
+      itemMaxWidth: 400,
+      breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
+    };
+    this.filterCategory = '';
+    this.eventLog.set([]);
+    this.updateConfig();
   }
 }

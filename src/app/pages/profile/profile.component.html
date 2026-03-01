@@ -1,452 +1,483 @@
-<div class="profile-container" *ngIf="user()">
-  <!-- Profile Header -->
-  <div class="profile-header">
-    <div class="header-background"></div>
-    <div class="header-content">
-      <div class="avatar-section">
-        <div class="avatar-wrapper">
-          <img [src]="user()!.avatar || 'https://via.placeholder.com/150'" alt="{{ user()!.fullName }}" class="avatar" />
-          <label class="avatar-upload" title="Change avatar">
-            <app-input type="file" accept="image/*" (change)="onAvatarChange($event)" hidden />
-            <span class="upload-icon">📷</span>
-          </label>
+@if (user()) {
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <div class="header-background"></div>
+      <div class="header-content">
+        <div class="avatar-section">
+          <div class="avatar-wrapper">
+            <img
+              [src]="user()!.avatar || 'https://via.placeholder.com/150'"
+              alt="{{ user()!.fullName }}"
+              class="avatar"
+            />
+            <label class="avatar-upload" title="Change avatar">
+              <ui-input type="file" accept="image/*" (change)="onAvatarChange($event)" hidden />
+              <span class="upload-icon">📷</span>
+            </label>
+          </div>
         </div>
-      </div>
-      
-      <div class="user-info">
-        <h1>{{ user()!.fullName }}</h1>
-        <p class="username">&#64;{{ user()!.username }}</p>
-        <div class="user-meta">
-          <span class="badge" [class]="'badge-' + user()!.role">{{ user()!.role }}</span>
-          <span class="meta-item" *ngIf="user()!.department">
-            <span class="icon">🏢</span>
-            {{ user()!.department }}
-          </span>
-          <span class="meta-item" *ngIf="user()!.location">
-            <span class="icon">📍</span>
-            {{ user()!.location }}
-          </span>
-        </div>
-      </div>
 
-      <div class="header-actions">
-        <button class="btn btn-secondary" (click)="startEdit()" *ngIf="!editMode()">
-          <span class="icon">✏️</span>
-          Edit Profile
-        </button>
-        <button class="btn btn-danger" (click)="logout()">
-          <span class="icon">🚪</span>
-          Logout
-        </button>
+        <div class="user-info">
+          <h1>{{ user()!.fullName }}</h1>
+          <p class="username">&#64;{{ user()!.username }}</p>
+          <div class="user-meta">
+            <span class="badge" [class]="'badge-' + user()!.role">{{ user()!.role }}</span>
+            @if (user()!.department) {
+              <span class="meta-item">
+                <span class="icon">🏢</span>
+                {{ user()!.department }}
+              </span>
+            }
+            @if (user()!.location) {
+              <span class="meta-item">
+                <span class="icon">📍</span>
+                {{ user()!.location }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <div class="header-actions">
+          @if (!editMode()) {
+            <ui-button class="btn btn-secondary" (click)="startEdit()">
+              <span class="icon">✏️</span>
+              Edit Profile
+            </ui-button>
+          }
+          <ui-button class="btn btn-danger" (click)="logout()">
+            <span class="icon">🚪</span>
+            Logout
+          </ui-button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Tabs Navigation -->
-  <div class="tabs-navigation">
-    <button 
-      class="tab-button" 
-      [class.active]="activeTab() === 'overview'"
-      (click)="setActiveTab('overview')"
-    >
-      <span class="tab-icon">👤</span>
-      Overview
-    </button>
-    <button 
-      class="tab-button" 
-      [class.active]="activeTab() === 'settings'"
-      (click)="setActiveTab('settings')"
-    >
-      <span class="tab-icon">⚙️</span>
-      Settings
-    </button>
-    <button 
-      class="tab-button" 
-      [class.active]="activeTab() === 'security'"
-      (click)="setActiveTab('security')"
-    >
-      <span class="tab-icon">🔒</span>
-      Security
-    </button>
-    <button 
-      class="tab-button" 
-      [class.active]="activeTab() === 'activity'"
-      (click)="setActiveTab('activity')"
-    >
-      <span class="tab-icon">📊</span>
-      Activity
-    </button>
-  </div>
+    <!-- Tabs Navigation -->
+    <div class="tabs-navigation">
+      <ui-button
+        class="tab-button"
+        [class.active]="activeTab() === 'overview'"
+        (click)="setActiveTab('overview')"
+      >
+        <span class="tab-icon">👤</span>
+        Overview
+      </ui-button>
+      <ui-button
+        class="tab-button"
+        [class.active]="activeTab() === 'settings'"
+        (click)="setActiveTab('settings')"
+      >
+        <span class="tab-icon">⚙️</span>
+        Settings
+      </ui-button>
+      <ui-button
+        class="tab-button"
+        [class.active]="activeTab() === 'security'"
+        (click)="setActiveTab('security')"
+      >
+        <span class="tab-icon">🔒</span>
+        Security
+      </ui-button>
+      <ui-button
+        class="tab-button"
+        [class.active]="activeTab() === 'activity'"
+        (click)="setActiveTab('activity')"
+      >
+        <span class="tab-icon">📊</span>
+        Activity
+      </ui-button>
+    </div>
 
-  <!-- Message Alert -->
-  <div class="alert" [class]="'alert-' + message()!.type" *ngIf="message()">
-    <span class="alert-icon">{{ message()!.type === 'success' ? '✅' : '⚠️' }}</span>
-    <span>{{ message()!.text }}</span>
-  </div>
+    <!-- Message Alert -->
+    @if (message()) {
+      <div class="alert" [class]="'alert-' + message()!.type">
+        <span class="alert-icon">{{ message()!.type === 'success' ? '✅' : '⚠️' }}</span>
+        <span>{{ message()!.text }}</span>
+      </div>
+    }
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Overview Tab -->
+      @if (activeTab() === 'overview') {
+        <div class="overview-tab">
+          <div class="content-grid">
+            <!-- About Section -->
+            <div class="card">
+              <div class="card-header">
+                <h2>About</h2>
+              </div>
+              <div class="card-body">
+                @if (user()!.bio) {
+                  <p class="bio">{{ user()!.bio }}</p>
+                } @else {
+                  <p class="empty-state">No bio added yet. Click "Edit Profile" to add one!</p>
+                }
+              </div>
+            </div>
 
-  <!-- Tab Content -->
-  <div class="tab-content">
-    <!-- Overview Tab -->
-    <div class="overview-tab" *ngIf="activeTab() === 'overview'">
-      <div class="content-grid">
-        <!-- About Section -->
-        <div class="card">
-          <div class="card-header">
-            <h2>About</h2>
-          </div>
-          <div class="card-body">
-            <p class="bio" *ngIf="user()!.bio; else noBio">{{ user()!.bio }}</p>
-            <ng-template #noBio>
-              <p class="empty-state">No bio added yet. Click "Edit Profile" to add one!</p>
-            </ng-template>
-          </div>
-        </div>
+            <!-- Contact Information -->
+            <div class="card">
+              <div class="card-header">
+                <h2>Contact Information</h2>
+              </div>
+              <div class="card-body">
+                <div class="info-list">
+                  <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <div class="info-content">
+                      <span class="info-label">Email</span>
+                      <span class="info-value">{{ user()!.email }}</span>
+                    </div>
+                  </div>
 
-        <!-- Contact Information -->
-        <div class="card">
-          <div class="card-header">
-            <h2>Contact Information</h2>
-          </div>
-          <div class="card-body">
-            <div class="info-list">
-              <div class="info-item">
-                <span class="info-icon">📧</span>
-                <div class="info-content">
-                  <span class="info-label">Email</span>
-                  <span class="info-value">{{ user()!.email }}</span>
+                  @if (user()!.phone) {
+                    <div class="info-item">
+                      <span class="info-icon">📱</span>
+                      <div class="info-content">
+                        <span class="info-label">Phone</span>
+                        <span class="info-value">{{ user()!.phone }}</span>
+                      </div>
+                    </div>
+                  }
+                  @if (user()!.website) {
+                    <div class="info-item">
+                      <span class="info-icon">🌐</span>
+                      <div class="info-content">
+                        <span class="info-label">Website</span>
+                        <a [href]="user()!.website" target="_blank" class="info-link">{{
+                          user()!.website
+                        }}</a>
+                      </div>
+                    </div>
+                  }
+
+                  <div class="info-item">
+                    <span class="info-icon">📅</span>
+                    <div class="info-content">
+                      <span class="info-label">Member Since</span>
+                      <span class="info-value">{{ user()!.createdAt | date: 'longDate' }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <div class="info-item" *ngIf="user()!.phone">
-                <span class="info-icon">📱</span>
-                <div class="info-content">
-                  <span class="info-label">Phone</span>
-                  <span class="info-value">{{ user()!.phone }}</span>
+            </div>
+          </div>
+
+          <!-- Statistics -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📝</div>
+              <div class="stat-content">
+                <div class="stat-value">124</div>
+                <div class="stat-label">Posts</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-content">
+                <div class="stat-value">2.5K</div>
+                <div class="stat-label">Followers</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">💬</div>
+              <div class="stat-content">
+                <div class="stat-value">568</div>
+                <div class="stat-label">Comments</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-content">
+                <div class="stat-value">1.2K</div>
+                <div class="stat-label">Likes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+      <!-- Settings Tab -->
+      @if (activeTab() === 'settings') {
+        <div class="settings-tab">
+          <div class="card">
+            <div class="card-header">
+              <h2>Profile Settings</h2>
+              @if (!editMode()) {
+                <ui-button class="btn btn-secondary btn-sm" (click)="startEdit()"> Edit </ui-button>
+              }
+            </div>
+
+            <div class="card-body">
+              @if (editMode()) {
+                <form class="settings-form">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <ui-input
+                      type="text"
+                      id="fullName"
+                      [(ngModel)]="editForm().fullName"
+                      name="fullName"
+                      class="form-input"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea
+                      id="bio"
+                      [(ngModel)]="editForm().bio"
+                      name="bio"
+                      rows="4"
+                      class="form-input"
+                      placeholder="Tell us about yourself..."
+                    ></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="phone">Phone</label>
+                      <ui-input
+                        type="tel"
+                        id="phone"
+                        [(ngModel)]="editForm().phone"
+                        name="phone"
+                        class="form-input"
+                        placeholder="+1 234 567 8900"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <ui-input
+                        type="text"
+                        id="location"
+                        [(ngModel)]="editForm().location"
+                        name="location"
+                        class="form-input"
+                        placeholder="City, Country"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="website">Website</label>
+                      <ui-input
+                        type="url"
+                        id="website"
+                        [(ngModel)]="editForm().website"
+                        name="website"
+                        class="form-input"
+                        placeholder="https://example.com"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="department">Department</label>
+                      <ui-input
+                        type="text"
+                        id="department"
+                        [(ngModel)]="editForm().department"
+                        name="department"
+                        class="form-input"
+                        placeholder="Engineering"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <ui-button type="button" class="btn btn-secondary" (click)="cancelEdit()">
+                      Cancel
+                    </ui-button>
+                    <ui-button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="saveProfile()"
+                      [disabled]="loading()"
+                    >
+                      <span *ngIf="!loading()">Save Changes</span>
+                      <span *ngIf="loading()" class="loading-text">
+                        <span class="spinner"></span>
+                        Saving...
+                      </span>
+                    </ui-button>
+                  </div>
+                </form>
+              }
+              @if (!editMode()) {
+                <div class="info-list">
+                  <div class="info-item">
+                    <span class="info-label">Full Name:</span>
+                    <span class="info-value">{{ user()!.fullName }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Bio:</span>
+                    <span class="info-value">{{ user()!.bio || 'Not set' }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Phone:</span>
+                    <span class="info-value">{{ user()!.phone || 'Not set' }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Location:</span>
+                    <span class="info-value">{{ user()!.location || 'Not set' }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Website:</span>
+                    <span class="info-value">{{ user()!.website || 'Not set' }}</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Department:</span>
+                    <span class="info-value">{{ user()!.department || 'Not set' }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+      <!-- Security Tab -->
+      @if (activeTab() === 'security') {
+        <div class="security-tab">
+          <div class="card">
+            <div class="card-header">
+              <h2>Change Password</h2>
+            </div>
+
+            <div class="card-body">
+              <form class="security-form">
+                <div class="form-group">
+                  <label for="currentPassword">Current Password</label>
+                  <div class="password-input">
+                    <ui-input
+                      [type]="showCurrentPassword() ? 'text' : 'password'"
+                      id="currentPassword"
+                      [(ngModel)]="passwordForm.currentPassword"
+                      name="currentPassword"
+                      class="form-input"
+                    />
+                    <ui-button
+                      type="button"
+                      class="toggle-password"
+                      (click)="showCurrentPassword.set(!showCurrentPassword())"
+                    >
+                      {{ showCurrentPassword() ? '👁️' : '👁️‍🗨️' }}
+                    </ui-button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="newPassword">New Password</label>
+                  <div class="password-input">
+                    <ui-input
+                      [type]="showNewPassword() ? 'text' : 'password'"
+                      id="newPassword"
+                      [(ngModel)]="passwordForm.newPassword"
+                      name="newPassword"
+                      class="form-input"
+                    />
+                    <ui-button
+                      type="button"
+                      class="toggle-password"
+                      (click)="showNewPassword.set(!showNewPassword())"
+                    >
+                      {{ showNewPassword() ? '👁️' : '👁️‍🗨️' }}
+                    </ui-button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="confirmPassword">Confirm New Password</label>
+                  <div class="password-input">
+                    <ui-input
+                      [type]="showConfirmPassword() ? 'text' : 'password'"
+                      id="confirmPassword"
+                      [(ngModel)]="passwordForm.confirmPassword"
+                      name="confirmPassword"
+                      class="form-input"
+                    />
+                    <ui-button
+                      type="button"
+                      class="toggle-password"
+                      (click)="showConfirmPassword.set(!showConfirmPassword())"
+                    >
+                      {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
+                    </ui-button>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <ui-button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="changePassword()"
+                    [disabled]="loading()"
+                  >
+                    <span *ngIf="!loading()">Update Password</span>
+                    <span *ngIf="loading()" class="loading-text">
+                      <span class="spinner"></span>
+                      Updating...
+                    </span>
+                  </ui-button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>Two-Factor Authentication</h2>
+            </div>
+            <div class="card-body">
+              <p class="info-text">
+                Add an extra layer of security to your account by enabling two-factor
+                authentication.
+              </p>
+              <ui-button class="btn btn-secondary">
+                <span class="icon">🔐</span>
+                Enable 2FA
+              </ui-button>
+            </div>
+          </div>
+        </div>
+      }
+      <!-- Activity Tab -->
+      @if (activeTab() === 'activity') {
+        <div class="activity-tab">
+          <div class="card">
+            <div class="card-header">
+              <h2>Recent Activity</h2>
+            </div>
+
+            <div class="card-body">
+              <div class="activity-list">
+                <div class="activity-item" *ngFor="let activity of activities()">
+                  <div class="activity-icon" [class]="'activity-' + activity.type">
+                    {{ activity.icon }}
+                  </div>
+                  <div class="activity-content">
+                    <h4>{{ activity.title }}</h4>
+                    <p>{{ activity.description }}</p>
+                    <span class="activity-time">{{ getRelativeTime(activity.timestamp) }}</span>
+                  </div>
                 </div>
               </div>
-              
-              <div class="info-item" *ngIf="user()!.website">
-                <span class="info-icon">🌐</span>
-                <div class="info-content">
-                  <span class="info-label">Website</span>
-                  <a [href]="user()!.website" target="_blank" class="info-link">{{ user()!.website }}</a>
-                </div>
-              </div>
-
-              <div class="info-item">
-                <span class="info-icon">📅</span>
-                <div class="info-content">
-                  <span class="info-label">Member Since</span>
-                  <span class="info-value">{{ user()!.createdAt | date: 'longDate' }}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Statistics -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">📝</div>
-          <div class="stat-content">
-            <div class="stat-value">124</div>
-            <div class="stat-label">Posts</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">👥</div>
-          <div class="stat-content">
-            <div class="stat-value">2.5K</div>
-            <div class="stat-label">Followers</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">💬</div>
-          <div class="stat-content">
-            <div class="stat-value">568</div>
-            <div class="stat-label">Comments</div>
-          </div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-icon">⭐</div>
-          <div class="stat-content">
-            <div class="stat-value">1.2K</div>
-            <div class="stat-label">Likes</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Settings Tab -->
-    <div class="settings-tab" *ngIf="activeTab() === 'settings'">
-      <div class="card">
-        <div class="card-header">
-          <h2>Profile Settings</h2>
-          <button class="btn btn-secondary btn-sm" (click)="startEdit()" *ngIf="!editMode()">
-            Edit
-          </button>
-        </div>
-        
-        <div class="card-body">
-          <form *ngIf="editMode()" class="settings-form">
-            <div class="form-group">
-              <label for="fullName">Full Name</label>
-              <app-input 
-                type="text" 
-                id="fullName" 
-                [(ngModel)]="editForm().fullName"
-                name="fullName"
-                class="form-input"
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="bio">Bio</label>
-              <textarea 
-                id="bio" 
-                [(ngModel)]="editForm().bio"
-                name="bio"
-                rows="4"
-                class="form-input"
-                placeholder="Tell us about yourself..."
-              ></textarea>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone">Phone</label>
-                <app-input 
-                  type="tel" 
-                  id="phone" 
-                  [(ngModel)]="editForm().phone"
-                  name="phone"
-                  class="form-input"
-                  placeholder="+1 234 567 8900"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="location">Location</label>
-                <app-input 
-                  type="text" 
-                  id="location" 
-                  [(ngModel)]="editForm().location"
-                  name="location"
-                  class="form-input"
-                  placeholder="City, Country"
-                />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="website">Website</label>
-                <app-input 
-                  type="url" 
-                  id="website" 
-                  [(ngModel)]="editForm().website"
-                  name="website"
-                  class="form-input"
-                  placeholder="https://example.com"
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="department">Department</label>
-                <app-input 
-                  type="text" 
-                  id="department" 
-                  [(ngModel)]="editForm().department"
-                  name="department"
-                  class="form-input"
-                  placeholder="Engineering"
-                />
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn btn-secondary" (click)="cancelEdit()">
-                Cancel
-              </button>
-              <button 
-                type="button" 
-                class="btn btn-primary" 
-                (click)="saveProfile()"
-                [disabled]="loading()"
-              >
-                <span *ngIf="!loading()">Save Changes</span>
-                <span *ngIf="loading()" class="loading-text">
-                  <span class="spinner"></span>
-                  Saving...
-                </span>
-              </button>
-            </div>
-          </form>
-
-          <div *ngIf="!editMode()" class="info-list">
-            <div class="info-item">
-              <span class="info-label">Full Name:</span>
-              <span class="info-value">{{ user()!.fullName }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Bio:</span>
-              <span class="info-value">{{ user()!.bio || 'Not set' }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Phone:</span>
-              <span class="info-value">{{ user()!.phone || 'Not set' }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Location:</span>
-              <span class="info-value">{{ user()!.location || 'Not set' }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Website:</span>
-              <span class="info-value">{{ user()!.website || 'Not set' }}</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">Department:</span>
-              <span class="info-value">{{ user()!.department || 'Not set' }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Security Tab -->
-    <div class="security-tab" *ngIf="activeTab() === 'security'">
-      <div class="card">
-        <div class="card-header">
-          <h2>Change Password</h2>
-        </div>
-        
-        <div class="card-body">
-          <form class="security-form">
-            <div class="form-group">
-              <label for="currentPassword">Current Password</label>
-              <div class="password-input">
-                <app-input 
-                  [type]="showCurrentPassword() ? 'text' : 'password'"
-                  id="currentPassword" 
-                  [(ngModel)]="passwordForm.currentPassword"
-                  name="currentPassword"
-                  class="form-input"
-                />
-                <button 
-                  type="button" 
-                  class="toggle-password"
-                  (click)="showCurrentPassword.set(!showCurrentPassword())"
-                >
-                  {{ showCurrentPassword() ? '👁️' : '👁️‍🗨️' }}
-                </button>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="newPassword">New Password</label>
-              <div class="password-input">
-                <app-input 
-                  [type]="showNewPassword() ? 'text' : 'password'"
-                  id="newPassword" 
-                  [(ngModel)]="passwordForm.newPassword"
-                  name="newPassword"
-                  class="form-input"
-                />
-                <button 
-                  type="button" 
-                  class="toggle-password"
-                  (click)="showNewPassword.set(!showNewPassword())"
-                >
-                  {{ showNewPassword() ? '👁️' : '👁️‍🗨️' }}
-                </button>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="confirmPassword">Confirm New Password</label>
-              <div class="password-input">
-                <app-input 
-                  [type]="showConfirmPassword() ? 'text' : 'password'"
-                  id="confirmPassword" 
-                  [(ngModel)]="passwordForm.confirmPassword"
-                  name="confirmPassword"
-                  class="form-input"
-                />
-                <button 
-                  type="button" 
-                  class="toggle-password"
-                  (click)="showConfirmPassword.set(!showConfirmPassword())"
-                >
-                  {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
-                </button>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button 
-                type="button" 
-                class="btn btn-primary" 
-                (click)="changePassword()"
-                [disabled]="loading()"
-              >
-                <span *ngIf="!loading()">Update Password</span>
-                <span *ngIf="loading()" class="loading-text">
-                  <span class="spinner"></span>
-                  Updating...
-                </span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h2>Two-Factor Authentication</h2>
-        </div>
-        <div class="card-body">
-          <p class="info-text">Add an extra layer of security to your account by enabling two-factor authentication.</p>
-          <button class="btn btn-secondary">
-            <span class="icon">🔐</span>
-            Enable 2FA
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Activity Tab -->
-    <div class="activity-tab" *ngIf="activeTab() === 'activity'">
-      <div class="card">
-        <div class="card-header">
-          <h2>Recent Activity</h2>
-        </div>
-        
-        <div class="card-body">
-          <div class="activity-list">
-            <div class="activity-item" *ngFor="let activity of activities()">
-              <div class="activity-icon" [class]="'activity-' + activity.type">
-                {{ activity.icon }}
-              </div>
-              <div class="activity-content">
-                <h4>{{ activity.title }}</h4>
-                <p>{{ activity.description }}</p>
-                <span class="activity-time">{{ getRelativeTime(activity.timestamp) }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
-</div>
-
-<div class="not-authenticated" *ngIf="!user()">
-  <div class="empty-icon">🔒</div>
-  <h2>Please Log In</h2>
-  <p>You need to be logged in to view this page.</p>
-  <a routerLink="/login" class="btn btn-primary">Go to Login</a>
-</div>
+}
+@if (!user()) {
+  <div class="not-authenticated">
+    <div class="empty-icon">🔒</div>
+    <h2>Please Log In</h2>
+    <p>You need to be logged in to view this page.</p>
+    <a routerLink="/login" class="btn btn-primary">Go to Login</a>
+  </div>
+}

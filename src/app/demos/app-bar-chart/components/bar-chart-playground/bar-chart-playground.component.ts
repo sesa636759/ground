@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
@@ -55,7 +55,7 @@ export class BarChartPlaygroundComponent {
 
   labelsJson = JSON.stringify(this.labels);
   datasetsJson = JSON.stringify(this.singleDatasets);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -93,12 +93,12 @@ export class BarChartPlaygroundComponent {
     code += `  [labels]="labels"\n`;
     code += `  [datasets]="datasets"\n`;
     code += '></ui-bar-chart>';
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

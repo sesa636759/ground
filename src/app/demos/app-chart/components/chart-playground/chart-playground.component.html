@@ -22,32 +22,32 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLegend"
             name="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="responsive"
             name="responsive"
             [(ngModel)]="pgConfig.responsive"
             (ngModelChange)="updateConfig()"
             label="Responsive"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
 
     <div class="action-buttons">
       <ui-button
-        class="btn-secondary"
+        actions
         variant="secondary"
         (click)="resetConfig()"
-        label="Reset"
+        label="Reset Configuration"
       ></ui-button>
     </div>
   </div>
@@ -63,13 +63,15 @@
     </ui-chart>
   </div>
 
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
 </app-playground>
-``
+
+``

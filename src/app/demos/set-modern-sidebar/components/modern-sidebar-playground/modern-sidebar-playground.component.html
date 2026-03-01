@@ -1,42 +1,29 @@
-﻿<div class="playground-layout">
-  <div class="playground-controls">
-    <ui-accordion
-      items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-      multiple
-    >
-      <div slot="content-config">
-        <h4 class="section-title">Branding</h4>
-        <div class="control-grid">
-          <div class="control-group">
-<app-playground
-  [accordionItems]="[
-    { id: 'brand', title: 'Brand & Identity', icon: '🏢' },
-    { id: 'user', title: 'User Profile', icon: '👤' },
-    { id: 'style', title: 'Visual Style', icon: '🎨' }
-  ]"
+﻿<app-playground
+  [accordionItems]="pgAccordionItems"
   [defaultOpen]="['brand']"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <!-- Accordion Slots -->
   <div slot="content-brand" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Brand Name</label>
-      <app-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
   <div slot="content-user" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>User Name</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Role</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>User Avatar URL</label>
-      <app-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
@@ -59,61 +46,43 @@
     </div>
     <div class="checkbox-group" style="margin-top: 16px">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.collapsed"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Collapsed
       </label>
     </div>
   </div>
 
   <!-- Preview Area -->
-  <div preview style="height: 600px; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background: var(--bg-primary);">
-    <div class="sidebar-wrapper">
-      <app-modern-sidebar
-        [attr.brand-name]="pgConfig.brandName"
-        [attr.selected-id]="pgConfig.selectedId"
-        [attr.accent-color]="pgConfig.accentColor"
-        [attr.user-name]="pgConfig.userName"
-        [attr.user-role]="pgConfig.userRole"
-        [attr.user-avatar]="pgConfig.userAvatar"
-        [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
-        [attr.theme]="pgConfig.theme"
-        [items]="sidebarItems"
-        (itemSelected)="onItemSelected($event)"
-        (sidebarToggled)="onSidebarToggled($event)"
-        (profileClicked)="onProfileClick()"
-      ></app-modern-sidebar>
-    </div>
-    
-    <div class="content-area-preview">
-      <div class="content-header-sim">
-        <h3>Main Content Area</h3>
-        <p>Interact with the sidebar to see events logged</p>
-      </div>
-      <div class="content-cards">
-        <div class="sim-card"></div>
-        <div class="sim-card"></div>
-      </div>
-    </div>
+  <div class="sidebar-wrapper" preview>
+    <app-modern-sidebar
+      #sidebarElement
+      [attr.brand-name]="pgConfig.brandName"
+      [attr.selected-id]="pgConfig.selectedId"
+      [attr.accent-color]="pgConfig.accentColor"
+      [attr.user-name]="pgConfig.userName"
+      [attr.user-role]="pgConfig.userRole"
+      [attr.user-avatar]="pgConfig.userAvatar"
+      [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
+      [attr.theme]="pgConfig.theme"
+      [items]="sidebarItemsJson"
+      (itemSelected)="onItemSelected($event)"
+      (sidebarToggled)="onSidebarToggled($event)"
+      (profileClicked)="onProfileClick()"
+      style="display: block; height: 100%"
+    ></app-modern-sidebar>
   </div>
 
-  <!-- Events -->
-  <div events>
-    <app-playground-event-log
-      [logs]="eventLog()"
-      (clear)="eventLog.set([])"
-    ></app-playground-event-log>
+  <div class="content-area-preview" preview>
+    <div class="content-header-sim">
+      <h3>Main Content Area</h3>
+      <p>Interact with the sidebar to see events logged in the Events tab.</p>
+    </div>
+    <div class="content-cards">
+      <div class="sim-card"></div>
+      <div class="sim-card"></div>
+    </div>
   </div>
-
-  <!-- Code -->
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

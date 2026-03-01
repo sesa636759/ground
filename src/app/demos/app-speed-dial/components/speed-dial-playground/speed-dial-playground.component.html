@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -28,44 +30,32 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Radius (for circles)</label>
-          <app-input
+          <ui-input
             type="number"
             [(ngModel)]="pgConfig.radius"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="ripple"
             [(ngModel)]="pgConfig.ripple"
             (ngModelChange)="updateConfig()"
             label="Ripple Effect"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="mask"
             [(ngModel)]="pgConfig.mask"
             (ngModelChange)="updateConfig()"
             label="Display Mask"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-
-    <div class="code-output">
-      <pre>{{ generatedCode() }}</pre>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
-    </div>
   </div>
+
   <div
     preview
     style="
@@ -75,6 +65,7 @@
       align-items: center;
       position: relative;
       height: 300px;
+      padding: 40px;
     "
   >
     <ui-speed-dial

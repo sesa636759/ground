@@ -1,252 +1,252 @@
-
-    <app-playground
-      accordionItems='[{"id": "config", "title": "Configuration", "icon": "⚙️"}]'
-      defaultOpen='["config"]'
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Visual Settings -->
-          <div class="control-section">
-            <h3>Visual</h3>
-            <div class="control-group">
-              <label>Variant</label>
-              <ui-dropdown
-                name="variant"
-                [(ngModel)]="pgConfig.variant"
-                (ngModelChange)="updateConfig()"
-                [options]="variantOptions"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>Size</label>
-              <ui-dropdown
-                name="size"
-                [(ngModel)]="pgConfig.size"
-                (ngModelChange)="updateConfig()"
-                [options]="sizeOptions"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>Icon Position</label>
-              <ui-dropdown
-                name="iconPosition"
-                [(ngModel)]="pgConfig.iconPosition"
-                (ngModelChange)="updateConfig()"
-                [options]="iconPositionOptions"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>Selected Header Color</label>
-              <input
-                name="selectedHeaderColor"
-                type="color"
-                [(ngModel)]="pgConfig.selectedHeaderColor"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-
-            <div class="control-group">
-              <label>Header Level (1-6)</label>
-              <input
-                name="headerLevel"
-                type="number"
-                min="1"
-                max="6"
-                [(ngModel)]="pgConfig.headerLevel"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-
-            <div class="checkbox-row">
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="hideArrow"
-                  name="hideArrow"
-                  [(ngModel)]="pgConfig.hideArrow"
-                  (ngModelChange)="updateConfig()"
-                  label="Hide Arrow"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="showNumbers"
-                  name="showNumbers"
-                  [(ngModel)]="pgConfig.showNumbers"
-                  (ngModelChange)="updateConfig()"
-                  label="Show Numbers"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="rtl"
-                  name="rtl"
-                  [(ngModel)]="pgConfig.rtl"
-                  (ngModelChange)="updateConfig()"
-                  label="RTL"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="dense"
-                  name="dense"
-                  [(ngModel)]="pgConfig.dense"
-                  (ngModelChange)="updateConfig()"
-                  label="Dense"
-                ></app-checkbox>
-              </div>
-            </div>
+<app-playground
+  accordionItems='[{"id": "config", "title": "Configuration", "icon": "⚙️"}]'
+  defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-config">
+    <div style="display: flex; align-items: flex-start">
+      <ui-button
+        style="margin-right: 16px"
+        icon=""
+        iconPosition="left"
+        [iconLibrary]="'se'"
+        actions
+        variant="secondary"
+        (click)="resetConfig()"
+        label="Reset Configuration"
+      ></ui-button>
+      <div class="control-grid" style="flex: 1">
+        <!-- Visual Settings -->
+        <div class="control-section">
+          <h3>Visual</h3>
+          <div class="control-group">
+            <label>Variant</label>
+            <ui-dropdown
+              name="variant"
+              [(ngModel)]="pgConfig.variant"
+              (ngModelChange)="updateConfig()"
+              [options]="variantOptions"
+            ></ui-dropdown>
           </div>
 
-          <!-- Behavior Settings -->
-          <div class="control-section">
-            <h3>Behavior</h3>
-            <div class="control-group">
-              <label>Expansion Mode</label>
-              <ui-dropdown
-                name="multiple"
-                [(ngModel)]="pgConfig.multiple"
-                (ngModelChange)="updateConfig()"
-                [options]="expansionModeOptions"
-              ></ui-dropdown>
-            </div>
-
-            <div class="checkbox-row">
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="disabled"
-                  name="disabled"
-                  [(ngModel)]="pgConfig.disabled"
-                  (ngModelChange)="updateConfig()"
-                  label="Disabled"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="enableSearch"
-                  name="enableSearch"
-                  [(ngModel)]="pgConfig.enableSearch"
-                  (ngModelChange)="updateConfig()"
-                  label="Enable Search"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="enableExpandCollapseAll"
-                  name="enableExpandCollapseAll"
-                  [(ngModel)]="pgConfig.enableExpandCollapseAll"
-                  (ngModelChange)="updateConfig()"
-                  label="Show Expand/Collapse All"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="enableDragDrop"
-                  name="enableDragDrop"
-                  [(ngModel)]="pgConfig.enableDragDrop"
-                  (ngModelChange)="updateConfig()"
-                  label="Enable Drag & Drop"
-                ></app-checkbox>
-              </div>
-
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="enableNested"
-                  name="enableNested"
-                  [(ngModel)]="pgConfig.enableNested"
-                  (ngModelChange)="updateConfig()"
-                  label="Enable Nested"
-                ></app-checkbox>
-              </div>
-              <div class="checkbox-group">
-                <app-checkbox
-                  id="loading"
-                  name="loading"
-                  [(ngModel)]="pgConfig.loading"
-                  (ngModelChange)="updateConfig()"
-                  label="Loading State"
-                ></app-checkbox>
-              </div>
-            </div>
+          <div class="control-group">
+            <label>Size</label>
+            <ui-dropdown
+              name="size"
+              [(ngModel)]="pgConfig.size"
+              (ngModelChange)="updateConfig()"
+              [options]="sizeOptions"
+            ></ui-dropdown>
           </div>
 
-          <!-- Animation Settings -->
-          <div class="control-section">
-            <h3>Animation</h3>
-            <div class="control-group">
-              <label>Duration (ms)</label>
-              <input
-                name="animationDuration"
-                type="number"
-                [(ngModel)]="pgConfig.animationDuration"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label>Timing Function</label>
-              <ui-dropdown
-                name="animationTiming"
-                [(ngModel)]="pgConfig.animationTiming"
-                (ngModelChange)="updateConfig()"
-                [options]="timingOptions"
-              ></ui-dropdown>
-            </div>
+          <div class="control-group">
+            <label>Icon Position</label>
+            <ui-dropdown
+              name="iconPosition"
+              [(ngModel)]="pgConfig.iconPosition"
+              (ngModelChange)="updateConfig()"
+              [options]="iconPositionOptions"
+            ></ui-dropdown>
+          </div>
+
+          <div class="control-group">
+            <label>Selected Header Color</label>
+            <ui-input
+              name="selectedHeaderColor"
+              type="color"
+              [(ngModel)]="pgConfig.selectedHeaderColor"
+              (ngModelChange)="updateConfig()"
+            ></ui-input>
+          </div>
+
+          <div class="control-group">
+            <label>Header Level (1-6)</label>
+            <ui-input
+              name="headerLevel"
+              type="number"
+              min="1"
+              max="6"
+              [(ngModel)]="pgConfig.headerLevel"
+              (ngModelChange)="updateConfig()"
+            ></ui-input>
+          </div>
+
+          <div class="checkbox-row">
             <div class="checkbox-group">
-              <app-checkbox
-                id="lazy"
-                name="lazy"
-                [(ngModel)]="pgConfig.lazy"
+              <ui-checkbox
+                id="hideArrow"
+                name="hideArrow"
+                [(ngModel)]="pgConfig.hideArrow"
                 (ngModelChange)="updateConfig()"
-                label="Lazy Load Content"
-              ></app-checkbox>
+                label="Hide Arrow"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="showNumbers"
+                name="showNumbers"
+                [(ngModel)]="pgConfig.showNumbers"
+                (ngModelChange)="updateConfig()"
+                label="Show Numbers"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="rtl"
+                name="rtl"
+                [(ngModel)]="pgConfig.rtl"
+                (ngModelChange)="updateConfig()"
+                label="RTL"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="dense"
+                name="dense"
+                [(ngModel)]="pgConfig.dense"
+                (ngModelChange)="updateConfig()"
+                label="Dense"
+              ></ui-checkbox>
             </div>
           </div>
         </div>
+
+        <!-- Behavior Settings -->
+        <div class="control-section">
+          <h3>Behavior</h3>
+          <div class="control-group">
+            <label>Expansion Mode</label>
+            <ui-dropdown
+              name="multiple"
+              [(ngModel)]="pgConfig.multiple"
+              (ngModelChange)="updateConfig()"
+              [options]="expansionModeOptions"
+            ></ui-dropdown>
+          </div>
+
+          <div class="checkbox-row">
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="disabled"
+                name="disabled"
+                [(ngModel)]="pgConfig.disabled"
+                (ngModelChange)="updateConfig()"
+                label="Disabled"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="enableSearch"
+                name="enableSearch"
+                [(ngModel)]="pgConfig.enableSearch"
+                (ngModelChange)="updateConfig()"
+                label="Enable Search"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="enableExpandCollapseAll"
+                name="enableExpandCollapseAll"
+                [(ngModel)]="pgConfig.enableExpandCollapseAll"
+                (ngModelChange)="updateConfig()"
+                label="Show Expand/Collapse All"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="enableDragDrop"
+                name="enableDragDrop"
+                [(ngModel)]="pgConfig.enableDragDrop"
+                (ngModelChange)="updateConfig()"
+                label="Enable Drag & Drop"
+              ></ui-checkbox>
+            </div>
+
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="enableNested"
+                name="enableNested"
+                [(ngModel)]="pgConfig.enableNested"
+                (ngModelChange)="updateConfig()"
+                label="Enable Nested"
+              ></ui-checkbox>
+            </div>
+            <div class="checkbox-group">
+              <ui-checkbox
+                id="loading"
+                name="loading"
+                [(ngModel)]="pgConfig.loading"
+                (ngModelChange)="updateConfig()"
+                label="Loading State"
+              ></ui-checkbox>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animation Settings -->
+        <div class="control-section">
+          <h3>Animation</h3>
+          <div class="control-group">
+            <label>Duration (ms)</label>
+            <ui-input
+              name="animationDuration"
+              type="number"
+              [(ngModel)]="pgConfig.animationDuration"
+              (ngModelChange)="updateConfig()"
+            ></ui-input>
+          </div>
+          <div class="control-group">
+            <label>Timing Function</label>
+            <ui-dropdown
+              name="animationTiming"
+              [(ngModel)]="pgConfig.animationTiming"
+              (ngModelChange)="updateConfig()"
+              [options]="timingOptions"
+            ></ui-dropdown>
+          </div>
+          <div class="checkbox-group">
+            <ui-checkbox
+              id="lazy"
+              name="lazy"
+              [(ngModel)]="pgConfig.lazy"
+              (ngModelChange)="updateConfig()"
+              label="Lazy Load Content"
+            ></ui-checkbox>
+          </div>
+        </div>
       </div>
-
-      <ui-button actions variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-
-      <ui-accordion
-        preview
-        #accordion
-        [items]="playgroundItems"
-        [multiple]="pgConfig.multiple"
-        [variant]="pgConfig.variant"
-        [size]="pgConfig.size"
-        [iconPosition]="pgConfig.iconPosition"
-        [selectedHeaderColor]="pgConfig.selectedHeaderColor"
-        [hideArrow]="pgConfig.hideArrow"
-        [showNumbers]="pgConfig.showNumbers"
-        [rtl]="pgConfig.rtl"
-        [dense]="pgConfig.dense"
-        [disabled]="pgConfig.disabled"
-        [enableSearch]="pgConfig.enableSearch"
-        [enableExpandCollapseAll]="pgConfig.enableExpandCollapseAll"
-        [enableDragDrop]="pgConfig.enableDragDrop"
-        [enableNested]="pgConfig.enableNested"
-        [loading]="pgConfig.loading"
-        [animationDuration]="pgConfig.animationDuration"
-        [animationTiming]="pgConfig.animationTiming"
-        [lazy]="pgConfig.lazy"
-        [headerLevel]="pgConfig.headerLevel"
-      >
-      </ui-accordion>
-
-      <ui-code-preview
-        code
-        *ngIf="showCode"
-        [htmlCode]="generatedCode"
-        label="Generated Code"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
-    </app-playground>
-  
+    </div>
+  </div>
+  <ui-accordion
+    preview
+    #accordion
+    [items]="playgroundItems"
+    [multiple]="pgConfig.multiple"
+    [variant]="pgConfig.variant"
+    [size]="pgConfig.size"
+    [iconPosition]="pgConfig.iconPosition"
+    [selectedHeaderColor]="pgConfig.selectedHeaderColor"
+    [hideArrow]="pgConfig.hideArrow"
+    [showNumbers]="pgConfig.showNumbers"
+    [rtl]="pgConfig.rtl"
+    [dense]="pgConfig.dense"
+    [disabled]="pgConfig.disabled"
+    [enableSearch]="pgConfig.enableSearch"
+    [enableExpandCollapseAll]="pgConfig.enableExpandCollapseAll"
+    [enableDragDrop]="pgConfig.enableDragDrop"
+    [enableNested]="pgConfig.enableNested"
+    [loading]="pgConfig.loading"
+    [animationDuration]="pgConfig.animationDuration"
+    [animationTiming]="pgConfig.animationTiming"
+    [lazy]="pgConfig.lazy"
+    [headerLevel]="pgConfig.headerLevel"
+  >
+  </ui-accordion>
+</app-playground>

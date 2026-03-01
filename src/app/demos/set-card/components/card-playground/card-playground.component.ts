@@ -10,10 +10,10 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-card-playground',
@@ -64,7 +64,7 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
   accordionDefaultOpen = JSON.stringify(['config']);
 
   eventMessage = signal('Interact with the card...');
-  generatedCode: string = '';
+  generatedCode = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -73,7 +73,7 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -95,7 +95,7 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCode.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
@@ -121,6 +121,6 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCode());
   }
 }

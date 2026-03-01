@@ -4,14 +4,18 @@
   signal,
   OnInit,
   ViewEncapsulation,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { ChangeDetectorRef } from '@angular/core';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
@@ -29,7 +33,9 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   templateUrl: './modern-sidebar-playground.component.html',
   styleUrl: './modern-sidebar-playground.component.scss',
 })
-export class ModernSidebarPlaygroundComponent implements OnInit {
+export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
+  @ViewChild('sidebarElement') sidebarElement!: ElementRef;
+
   // Playground State
   pgConfig = {
     brandName: 'Set UI Lib',
@@ -41,6 +47,12 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     collapsed: false,
     theme: 'light',
   };
+
+  pgAccordionItems = [
+    { id: 'brand', title: 'Brand & Identity', icon: '🏢' },
+    { id: 'user', title: 'User Profile', icon: '👤' },
+    { id: 'style', title: 'Visual Style', icon: '🎨' },
+  ];
 
   themeOptions = [
     { label: 'Light', value: 'light' },
@@ -98,14 +110,16 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' },
   ];
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
   sidebarItemsJson = JSON.stringify(this.sidebarItems);
+  eventLog = signal<string[]>([]);
+  generatedCodeSignal = signal('');
+  showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
 
@@ -118,23 +132,25 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
     }, 0);
   }
 
-  updateConfig() {
-    let code = `<app-modern-sidebar\n`;
-    code += `  brand-name="${this.pgConfig.brandName}"\n`;
-    code += `  selected-id="${this.pgConfig.selectedId}"\n`;
-    code += `  accent-color="${this.pgConfig.accentColor}"\n`;
-    if (this.pgConfig.userName) code += `  user-name="${this.pgConfig.userName}"\n`;
-    if (this.pgConfig.userRole) code += `  user-role="${this.pgConfig.userRole}"\n`;
-    if (this.pgConfig.userAvatar) code += `  user-avatar="${this.pgConfig.userAvatar}"\n`;
-    if (this.pgConfig.collapsed) code += `  collapsed="true"\n`;
-    if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
-    code += `  [items]="sidebarItemsJson"\n`;
-    code += `  (itemSelected)="onItemSelected($event)"\n`;
-    code += `  (sidebarToggled)="onSidebarToggled($event)"\n`;
-    code += `></app-modern-sidebar>`;
+  getCleanFormatedDom(): string {
+    if (!this.sidebarElement) return '';
+    let code = generatePlaygroundCode(
+      this.sidebarElement.nativeElement as Element,
+      'app-modern-sidebar',
+    );
+    // Add items prop to the string manually since it's not a DOM attribute
+    code = code.replace(
+      '></app-modern-sidebar>',
+      '\n  [items]="sidebarItems"\n></app-modern-sidebar>',
+    );
+    return code;
+  }
 
-    this.generatedCode.set(code);
-    this.refreshCode();
+  updateConfig() {
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   logEvent(msg: string) {
@@ -143,14 +159,17 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
   }
 
   onItemSelected(event: any) {
-    this.logEvent(`Item selected: ${event.detail.label} (${event.detail.id})`);
-    this.pgConfig.selectedId = event.detail.id;
+    const detail = event.detail;
+    this.logEvent(`Item selected: ${detail.label} (${detail.id})`);
+    this.pgConfig.selectedId = detail.id;
     this.updateConfig();
   }
 
   onSidebarToggled(event: any) {
-    this.logEvent(`Sidebar ${event.detail ? 'collapsed' : 'expanded'}`);
-    this.pgConfig.collapsed = event.detail;
+    const detail = event.detail;
+    const collapsed = typeof detail === 'boolean' ? detail : detail.collapsed;
+    this.logEvent(`Sidebar ${collapsed ? 'collapsed' : 'expanded'}`);
+    this.pgConfig.collapsed = collapsed;
     this.updateConfig();
   }
 
@@ -159,9 +178,20 @@ export class ModernSidebarPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
-  // Helper for JSON strings
-  jsonOptions = (opts: any) => JSON.stringify(opts);
+  resetConfig() {
+    this.pgConfig = {
+      brandName: 'Set UI Lib',
+      selectedId: 'dashboard',
+      accentColor: '#6366f1',
+      userName: 'John Doe',
+      userRole: 'Administrator',
+      userAvatar: 'https://i.pravatar.cc/100?img=11',
+      collapsed: false,
+      theme: 'light',
+    };
+    this.updateConfig();
+  }
 }

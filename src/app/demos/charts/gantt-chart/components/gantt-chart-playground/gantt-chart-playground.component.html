@@ -1,167 +1,160 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📋 Display</h3>
-            <div class="control-group">
-              <label>Row Height</label>
-              <input
-                type="range"
-                min="28"
-                max="56"
-                step="4"
-                [(ngModel)]="cfg.rowH"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.rowH }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Corner Radius</label>
-              <input
-                type="range"
-                min="0"
-                max="10"
-                step="2"
-                [(ngModel)]="cfg.radius"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.radius }}px</span>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showDeps"
-                [(ngModel)]="cfg.showDeps"
-                (ngModelChange)="update()"
-                label="Show Dependencies"
-              ></app-checkbox>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>🎨 Style</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showGrid"
-                [(ngModel)]="cfg.showGrid"
-                (ngModelChange)="update()"
-                label="Show Grid"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLabels"
-                [(ngModel)]="cfg.showLabels"
-                (ngModelChange)="update()"
-                label="Bar Labels"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="zebra"
-                [(ngModel)]="cfg.zebra"
-                (ngModelChange)="update()"
-                label="Zebra Rows"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📋 Display</h3>
+        <div class="control-group">
+          <label>Row Height</label>
+          <ui-input
+            type="range"
+            min="28"
+            max="56"
+            step="4"
+            [(ngModel)]="cfg.rowH"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.rowH }}px</span>
         </div>
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Corner Radius</label>
+          <ui-input
+            type="range"
+            min="0"
+            max="10"
+            step="2"
+            [(ngModel)]="cfg.radius"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.radius }}px</span>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showDeps"
+            [(ngModel)]="cfg.showDeps"
+            (ngModelChange)="update()"
+            label="Show Dependencies"
+          ></ui-checkbox>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <div style="width:100%;max-width:720px;overflow-x:auto;">
-          <svg [attr.width]="svgW" [attr.height]="svgH" style="display:block;font-family:inherit;">
-            <!-- Header -->
-            <rect x="0" y="0" [attr.width]="svgW" [attr.height]="headerH" fill="#f9fafb" />
-            <text x="4" [attr.y]="headerH - 8" font-size="11" font-weight="600" fill="#6b7280">
-              TASK
-            </text>
-            <g *ngFor="let col of cols">
-              <text
-                [attr.x]="labelW + col.x + colW / 2"
-                [attr.y]="headerH - 8"
-                text-anchor="middle"
-                font-size="11"
-                fill="#6b7280"
-              >
-                {{ col.label }}
-              </text>
-              <line
-                *ngIf="cfg.showGrid"
-                [attr.x1]="labelW + col.x"
-                [attr.y1]="headerH"
-                [attr.x2]="labelW + col.x"
-                [attr.y2]="svgH"
-                stroke="#e5e7eb"
-                stroke-width="1"
-              />
-            </g>
-            <line
-              [attr.x1]="0"
-              [attr.y1]="headerH"
-              [attr.x2]="svgW"
-              [attr.y2]="headerH"
-              stroke="#e5e7eb"
-              stroke-width="1"
-            />
-            <!-- Tasks -->
-            <g *ngFor="let task of tasks; let i = index">
-              <rect
-                *ngIf="cfg.zebra && i % 2 === 0"
-                x="0"
-                [attr.y]="rowY(i)"
-                [attr.width]="svgW"
-                [attr.height]="cfg.rowH"
-                fill="#fafafa"
-              />
-              <text
-                [attr.x]="4"
-                [attr.y]="rowY(i) + cfg.rowH / 2 + 4"
-                font-size="12"
-                fill="#374151"
-              >
-                {{ task.name }}
-              </text>
-              <rect
-                [attr.x]="labelW + xScale(task.start)"
-                [attr.y]="rowY(i) + 4"
-                [attr.width]="xScale(task.end) - xScale(task.start)"
-                [attr.height]="cfg.rowH - 8"
-                [attr.rx]="cfg.radius"
-                [attr.fill]="task.color"
-                opacity="0.85"
-              />
-              <text
-                *ngIf="cfg.showLabels && xScale(task.end) - xScale(task.start) > 50"
-                [attr.x]="labelW + xScale(task.start) + (xScale(task.end) - xScale(task.start)) / 2"
-                [attr.y]="rowY(i) + cfg.rowH / 2 + 4"
-                text-anchor="middle"
-                font-size="11"
-                fill="white"
-                font-weight="600"
-              >
-                {{ task.name }}
-              </text>
-            </g>
-          </svg>
+      <div class="control-section">
+        <h3>🎨 Style</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showGrid"
+            [(ngModel)]="cfg.showGrid"
+            (ngModelChange)="update()"
+            label="Show Grid"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showLabels"
+            [(ngModel)]="cfg.showLabels"
+            (ngModelChange)="update()"
+            label="Bar Labels"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="zebra"
+            [(ngModel)]="cfg.zebra"
+            (ngModelChange)="update()"
+            label="Zebra Rows"
+          ></ui-checkbox>
         </div>
       </div>
-      <ui-code-preview
-        code
-        *ngIf="showCode"
-        [htmlCode]="code()"
-        label="Generated Code"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
-    </app-playground>
-  
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div style="width: 100%; max-width: 720px; overflow-x: auto">
+      <svg [attr.width]="svgW" [attr.height]="svgH" style="display: block; font-family: inherit">
+        <!-- Header -->
+        <rect x="0" y="0" [attr.width]="svgW" [attr.height]="headerH" fill="#f9fafb" />
+        <text x="4" [attr.y]="headerH - 8" font-size="11" font-weight="600" fill="#6b7280">
+          TASK
+        </text>
+        <g *ngFor="let col of cols">
+          <text
+            [attr.x]="labelW + col.x + colW / 2"
+            [attr.y]="headerH - 8"
+            text-anchor="middle"
+            font-size="11"
+            fill="#6b7280"
+          >
+            {{ col.label }}
+          </text>
+          <line
+            *ngIf="cfg.showGrid"
+            [attr.x1]="labelW + col.x"
+            [attr.y1]="headerH"
+            [attr.x2]="labelW + col.x"
+            [attr.y2]="svgH"
+            stroke="#e5e7eb"
+            stroke-width="1"
+          />
+        </g>
+        <line
+          [attr.x1]="0"
+          [attr.y1]="headerH"
+          [attr.x2]="svgW"
+          [attr.y2]="headerH"
+          stroke="#e5e7eb"
+          stroke-width="1"
+        />
+        <!-- Tasks -->
+        <g *ngFor="let task of tasks; let i = index">
+          <rect
+            *ngIf="cfg.zebra && i % 2 === 0"
+            x="0"
+            [attr.y]="rowY(i)"
+            [attr.width]="svgW"
+            [attr.height]="cfg.rowH"
+            fill="#fafafa"
+          />
+          <text [attr.x]="4" [attr.y]="rowY(i) + cfg.rowH / 2 + 4" font-size="12" fill="#374151">
+            {{ task.name }}
+          </text>
+          <rect
+            [attr.x]="labelW + xScale(task.start)"
+            [attr.y]="rowY(i) + 4"
+            [attr.width]="xScale(task.end) - xScale(task.start)"
+            [attr.height]="cfg.rowH - 8"
+            [attr.rx]="cfg.radius"
+            [attr.fill]="task.color"
+            opacity="0.85"
+          />
+          <text
+            *ngIf="cfg.showLabels && xScale(task.end) - xScale(task.start) > 50"
+            [attr.x]="labelW + xScale(task.start) + (xScale(task.end) - xScale(task.start)) / 2"
+            [attr.y]="rowY(i) + cfg.rowH / 2 + 4"
+            text-anchor="middle"
+            font-size="11"
+            fill="white"
+            font-weight="600"
+          >
+            {{ task.name }}
+          </text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
+</app-playground>

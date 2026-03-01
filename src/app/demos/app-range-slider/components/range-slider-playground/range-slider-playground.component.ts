@@ -1,9 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
@@ -45,7 +45,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
   ];
 
   currentValue: any = [20, 80];
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {}
 
@@ -63,7 +63,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
     code += `  [value]="${JSON.stringify(this.currentValue)}"\n`;
     code += '></ui-range-slider>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onValueChange(event: any) {
@@ -72,7 +72,7 @@ export class RangeSliderPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

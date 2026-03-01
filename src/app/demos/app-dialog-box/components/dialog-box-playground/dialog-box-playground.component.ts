@@ -1,9 +1,19 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  signal,
+  ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-dialog-box-playground',
@@ -14,34 +24,30 @@ import { AppInputValueAccessorDirective } from '../../../../directives/app-input
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dialog-box-playground.component.html',
-
   styleUrl: './dialog-box-playground.component.scss',
 })
-export class DialogBoxPlaygroundComponent {
+export class DialogBoxPlaygroundComponent implements AfterViewInit {
+  @ViewChild('dialogBoxElement') dialogBoxElement!: ElementRef;
+
   pgConfig = this.getDefaultConfig();
 
   visible = false;
-  generatedCode = signal('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
-  }
+  pgAccordionItems = JSON.stringify([
+    { id: 'appearance', title: 'Appearance & Styles', icon: '🎨' },
+    { id: 'behavior', title: 'Behavior & Logic', icon: '⚡' },
+    { id: 'visibility', title: 'Header & Footer Controls', icon: '👁️' },
+  ]);
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
+  accordionDefaultOpen = JSON.stringify(['appearance']);
 
   sizeOptions = [
-    { label: 'Custom', value: 'custom' },
     { label: 'XS (320px)', value: 'xs' },
     { label: 'SM (480px)', value: 'sm' },
     { label: 'MD (768px)', value: 'md' },
@@ -85,6 +91,12 @@ export class DialogBoxPlaygroundComponent {
     { label: 'Close', id: 'close', icon: 'x', variant: 'danger' },
   ]);
 
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit() {
+    this.updateConfig();
+  }
+
   getDefaultConfig() {
     return {
       size: 'sm',
@@ -109,40 +121,37 @@ export class DialogBoxPlaygroundComponent {
     this.visible = true;
   }
 
+  refreshCode() {
+    setTimeout(() => {
+      this.showCode = false;
+      this.cd.detectChanges();
+      this.showCode = true;
+      this.cd.detectChanges();
+    }, 0);
+  }
+
+  getCleanFormatedDom(): string {
+    if (!this.dialogBoxElement) return '';
+    const innerContent = `
+  <div style="padding: 20px">
+    <p>This is the content of the dialog.</p>
+  </div>`;
+    return generatePlaygroundCode(
+      this.dialogBoxElement.nativeElement as Element,
+      'ui-dialog-box',
+      innerContent,
+    );
+  }
+
   updateConfig() {
-    let code = '<ui-dialog-box dialog-title="Dialog Title"\n';
-
-    if (this.pgConfig.size !== 'custom') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.variant !== 'outlined') code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.status !== 'default') code += `  status="${this.pgConfig.status}"\n`;
-    if (this.pgConfig.backdrop !== 'default') code += `  backdrop="${this.pgConfig.backdrop}"\n`;
-    if (this.pgConfig.position !== 'center') code += `  position="${this.pgConfig.position}"\n`;
-    if (this.pgConfig.okText) code += `  ok-text="${this.pgConfig.okText}"\n`;
-    if (this.pgConfig.cancelText) code += `  cancel-text="${this.pgConfig.cancelText}"\n`;
-    if (this.pgConfig.draggable) code += `  is-draggable\n`;
-    if (this.pgConfig.resizable) code += `  resizable\n`;
-    if (!this.pgConfig.showHeader) code += `  show-header="false"\n`;
-    if (!this.pgConfig.showFooter) code += `  show-footer="false"\n`;
-    if (this.pgConfig.showMenu) code += `  show-menu="true"\n`;
-    if (!this.pgConfig.showMin) code += `  show-minimize="false"\n`;
-    if (!this.pgConfig.showMax) code += `  show-maximize="false"\n`;
-    if (!this.pgConfig.showClose) code += `  show-close="false"\n`;
-
-    code += '>\n';
-    code += '  <div>Dialog content goes here</div>\n';
-
-    if (!this.pgConfig.okText && !this.pgConfig.cancelText && this.pgConfig.showFooter) {
-      code += '  <div slot="footer">\n    <ui-button label="Close"></ui-button>\n  </div>\n';
-    }
-
-    code += '</ui-dialog-box>';
-
-    this.generatedCode.set(code);
-    this.refreshCode();
+    setTimeout(() => {
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.refreshCode();
+    }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

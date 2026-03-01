@@ -14,16 +14,23 @@ export interface LogEntry {
     <div class="event-log-container">
       <div class="header">
         <strong>Event Log</strong>
-        <button *ngIf="logs.length > 0" (click)="clear.emit()" class="clear-btn">Clear</button>
+        @if (logs.length > 0) {
+          <ui-button (click)="clear.emit()" class="clear-btn" variant="ghost" size="sm">Clear</ui-button>
+        }
       </div>
       <div class="log-items">
         <div *ngFor="let log of normalizedLogs" class="log-item">
-          <span class="timestamp" *ngIf="log.time">[{{ log.time }}]</span>
+          @if (log.time) {
+            <span class="timestamp">[{{ log.time }}]</span>
+          }
           <span class="message">{{ log.msg }}</span>
         </div>
-        <div *ngIf="logs.length === 0" class="empty-state">
-          {{ emptyMessage }}
-        </div>
+        @if (logs.length === 0) {
+          <div class="empty-state">
+            <!-- Empty state content here -->
+            {{ emptyMessage }}
+          </div>
+        }
       </div>
     </div>
   `,

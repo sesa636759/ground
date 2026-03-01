@@ -46,7 +46,7 @@
 
       <div class="control-group">
         <label>Height</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.height"
           (ngModelChange)="updateConfig()"
@@ -57,19 +57,20 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show Toolbar
+        <ui-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show Toolbar
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.lineNumbers" (ngModelChange)="updateConfig()" /> Line Numbers
+        <ui-checkbox [(ngModel)]="pgConfig.lineNumbers" (ngModelChange)="updateConfig()" /> Line
+        Numbers
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Read Only
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Read Only
       </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div class="editor-container" style="width: 100%;">
+    <div class="editor-container" style="width: 100%">
       <app-code-editor
         [attr.theme]="pgConfig.theme"
         [attr.language]="pgConfig.language"
@@ -85,12 +86,10 @@
     </div>
   </div>
 
-  <div events class="event-log-container">
-    <strong>Event Log</strong>
-    <div class="log-items">
-      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
-    </div>
-  </div>
+  <app-playground-event-log
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 
   <ui-code-preview
     code

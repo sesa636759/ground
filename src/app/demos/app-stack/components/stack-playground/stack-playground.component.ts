@@ -9,9 +9,10 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-stack-playground',
@@ -21,6 +22,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stack-playground.component.html',
@@ -63,16 +65,13 @@ export class StackPlaygroundComponent implements AfterViewInit {
     { label: 'Space Between', value: 'space-between' },
   ];
 
-  generatedCode: string = '';
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
-      this.refreshCode();
-    }, 50);
+    this.updateConfig();
   }
 
   refreshCode() {
@@ -95,13 +94,13 @@ export class StackPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode = this.getCleanFormatedDom();
+      this.generatedCodeSignal.set(this.getCleanFormatedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode);
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

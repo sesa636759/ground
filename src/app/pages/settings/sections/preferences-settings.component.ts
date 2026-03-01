@@ -69,7 +69,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="animations()"
                 variant="primary"
-                (switchChange)="animations.set($event.detail.checked)"
+                (switchChange)="animations.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -81,7 +81,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="reduceMotion()"
                 variant="warning"
-                (switchChange)="reduceMotion.set($event.detail.checked)"
+                (switchChange)="reduceMotion.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>
@@ -138,18 +138,24 @@ import { LanguageService } from '../../../services/language.service';
                 >
               </div>
               <div class="segmented-control">
-                <button
+                <ui-button
                   [class.active]="navOrientation() === 'vertical'"
                   (click)="navOrientation.set('vertical')"
+                  variant="ghost"
+                  size="sm"
+                  style="min-width: 80px;"
                 >
                   Vertical
-                </button>
-                <button
+                </ui-button>
+                <ui-button
                   [class.active]="navOrientation() === 'horizontal'"
                   (click)="navOrientation.set('horizontal')"
+                  variant="ghost"
+                  size="sm"
+                  style="min-width: 80px;"
                 >
                   Horizontal
-                </button>
+                </ui-button>
               </div>
             </div>
 
@@ -161,7 +167,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="autoSave()"
                 variant="success"
-                (switchChange)="autoSave.set($event.detail.checked)"
+                (switchChange)="autoSave.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -173,7 +179,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="keyboardShortcuts()"
                 variant="primary"
-                (switchChange)="keyboardShortcuts.set($event.detail.checked)"
+                (switchChange)="keyboardShortcuts.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -185,7 +191,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="tooltips()"
                 variant="info"
-                (switchChange)="tooltips.set($event.detail.checked)"
+                (switchChange)="tooltips.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
 
@@ -197,7 +203,7 @@ import { LanguageService } from '../../../services/language.service';
               <ui-switch
                 [checked]="confirmDelete()"
                 variant="danger"
-                (switchChange)="confirmDelete.set($event.detail.checked)"
+                (switchChange)="confirmDelete.set($any($event).detail.checked)"
               ></ui-switch>
             </div>
           </div>

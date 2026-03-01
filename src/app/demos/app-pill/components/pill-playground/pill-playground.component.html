@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -8,7 +10,11 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Label</label>
-          <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.label"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -39,51 +45,45 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="removable"
             [(ngModel)]="pgConfig.removable"
             (ngModelChange)="updateConfig()"
             label="Removable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="clickable"
             [(ngModel)]="pgConfig.clickable"
             (ngModelChange)="updateConfig()"
             label="Clickable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Counter</label>
-          <app-input
+          <ui-input
             type="number"
             [(ngModel)]="pgConfig.counter"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
-    </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-pill
       [attr.label]="pgConfig.label"
       [attr.variant]="pgConfig.variant"
@@ -96,13 +96,4 @@
       icon="🏷️"
     ></ui-pill>
   </div>
-
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

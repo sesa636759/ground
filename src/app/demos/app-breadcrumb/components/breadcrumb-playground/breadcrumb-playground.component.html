@@ -1,7 +1,8 @@
 <app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  multiple
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -9,21 +10,21 @@
         <h3>Configuration</h3>
         <div class="control-group">
           <label>Separator</label>
-          <input
+          <ui-input
             type="text"
             name="separator"
             [(ngModel)]="pgConfig.separator"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Max Items (Collapse)</label>
-          <input
+          <ui-input
             type="number"
             name="maxItems"
             [(ngModel)]="pgConfig.maxItems"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Size</label>
@@ -39,13 +40,13 @@
       <div class="control-section">
         <h3>Home & Variant</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showHome"
             name="showHome"
             [(ngModel)]="pgConfig.showHome"
             (ngModelChange)="updateConfig()"
             label="Show Home"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -58,13 +59,11 @@
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
-    </div>
   </div>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-breadcrumb
+      #breadcrumb
       [attr.separator]="pgConfig.separator"
       [attr.max-items]="pgConfig.maxItems"
       [attr.size]="pgConfig.size"
@@ -72,13 +71,5 @@
       [attr.show-home]="pgConfig.showHome ? '' : null"
       [items]="itemsJson"
     ></ui-breadcrumb>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
 </app-playground>

@@ -60,7 +60,7 @@
 - **Description**: Group wrapper for button toggles
 - **Status**: Pending
 
-### 9. app-checkbox-group
+### 9. ui-checkbox-group
 
 - **Priority**: Low (group variant of existing component)
 - **Description**: Group wrapper for checkboxes

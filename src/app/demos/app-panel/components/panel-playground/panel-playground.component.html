@@ -1,7 +1,9 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
-  multiple
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+  layout="column"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -10,35 +12,43 @@
         <h3>Header</h3>
         <div class="control-group">
           <label>Title</label>
-          <input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.panelTitle"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Subtitle</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.panelSubtitle"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.badge"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showClose"
             [(ngModel)]="pgConfig.showClose"
             (ngModelChange)="updateConfig()"
             label="Show Close"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showSettings"
             [(ngModel)]="pgConfig.showSettings"
             (ngModelChange)="updateConfig()"
             label="Show Settings"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
@@ -62,20 +72,20 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="glass"
             [(ngModel)]="pgConfig.glass"
             (ngModelChange)="updateConfig()"
             label="Glassmorphism"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="noPadding"
             [(ngModel)]="pgConfig.noPadding"
             (ngModelChange)="updateConfig()"
             label="No Padding"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
@@ -83,66 +93,61 @@
       <div class="control-section">
         <h3>Interactivity</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="toggleable"
             [(ngModel)]="pgConfig.toggleable"
             (ngModelChange)="updateConfig()"
             label="Toggleable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="minimizable"
             [(ngModel)]="pgConfig.minimizable"
             (ngModelChange)="updateConfig()"
             label="Minimizable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="maximizable"
             [(ngModel)]="pgConfig.maximizable"
             (ngModelChange)="updateConfig()"
             label="Maximizable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="isDraggable"
             [(ngModel)]="pgConfig.isDraggable"
             (ngModelChange)="updateConfig()"
             label="Draggable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="resizable"
             [(ngModel)]="pgConfig.resizable"
             (ngModelChange)="updateConfig()"
             label="Resizable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading State"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        class="btn-secondary"
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset"
-      ></ui-button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-panel
       [attr.panel-title]="pgConfig.panelTitle"
       [attr.panel-subtitle]="pgConfig.panelSubtitle"
@@ -173,15 +178,11 @@
         <ui-button class="btn-primary" variant="primary" label="Save Changes"></ui-button>
       </div>
     </ui-panel>
-
-    <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
-
-    <ui-code-preview
-      *ngIf="showCode"
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog"
+    (clear)="eventLog = []"
+  ></app-playground-event-log>
 </app-playground>

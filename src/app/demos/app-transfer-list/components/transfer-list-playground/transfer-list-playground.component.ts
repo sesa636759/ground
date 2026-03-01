@@ -1,20 +1,14 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
+
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-transfer-list-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './transfer-list-playground.component.html',
   styleUrl: './transfer-list-playground.component.scss',
@@ -44,7 +38,7 @@ export class TransferListPlaygroundComponent implements OnInit {
 
   sourceJson = JSON.stringify(this.source);
   targetJson = JSON.stringify(this.target);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {}
 
@@ -59,11 +53,11 @@ export class TransferListPlaygroundComponent implements OnInit {
     if (this.pgConfig.showSearch) code += `  show-search\n`;
     code += '></ui-transfer-list>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

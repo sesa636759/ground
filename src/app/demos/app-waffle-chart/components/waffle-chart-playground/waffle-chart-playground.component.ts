@@ -26,7 +26,7 @@ export class WaffleChartPlaygroundComponent {
     showPercentage: true,
   };
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {
     this.updateConfig();
@@ -46,11 +46,11 @@ export class WaffleChartPlaygroundComponent {
 
     const nl = attrs.length > 2 ? '\n  ' : ' ';
     const end = attrs.length > 2 ? '\n' : '';
-    this.generatedCode.set(`<chart-waffle${nl}${attrs.join(nl)}${end}></chart-waffle>`);
+    this.generatedCodeSignal.set(`<chart-waffle${nl}${attrs.join(nl)}${end}></chart-waffle>`);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

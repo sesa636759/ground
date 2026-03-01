@@ -1,12 +1,22 @@
-<div class="playground-layout">
+<div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion 
-      [items]="stringifiedItems" 
-      [defaultOpen]="stringifiedDefaultOpen" 
-      multiple>
+    <ui-accordion [items]="stringifiedItems" [defaultOpen]="stringifiedDefaultOpen" multiple>
       <ng-content></ng-content>
     </ui-accordion>
+
+    <div class="playground-controls-actions">
+      <ui-button
+        class="reset-btn"
+        icon="rotate-ccw"
+        iconPosition="left"
+        [iconLibrary]="'lucide'"
+        variant="secondary"
+        (click)="reset.emit()"
+        label="Reset Configuration"
+        label="Reset Configuration"
+      ></ui-button>
+    </div>
   </div>
 
   <!-- Preview Side -->
@@ -20,14 +30,22 @@
       <ng-content select="[actions]"></ng-content>
     </div>
 
-    <!-- Event Log -->
-    <div class="event-log-container">
-      <ng-content select="[events]"></ng-content>
-    </div>
-
     <!-- Code Preview -->
     <div class="code-preview-area">
       <ng-content select="[code]"></ng-content>
+      @if (code) {
+        <ui-code-preview
+          [htmlCode]="code"
+          label="Generated Code"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      }
+    </div>
+
+    <!-- Event Log Slot -->
+    <div class="playground-events-area">
+      <ng-content select="[events]"></ng-content>
     </div>
   </div>
 </div>

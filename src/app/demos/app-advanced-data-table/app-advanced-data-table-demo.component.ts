@@ -2,8 +2,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { AdvancedDataTablePlaygroundComponent } from './components/advanced-data-table-playground/advanced-data-table-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -50,13 +49,15 @@ export class AppAdvancedDataTableDemoComponent {
   playgroundCode = `<ui-advanced-data-table [value]="data" [columns]="cols" paginator [rows]="10"></ui-advanced-data-table>`;
 
   featuresCode = `<!-- Custom Templates -->
-<ui-advanced-data-table ...>
+  <ui-advanced-data-table ...>
     <ng-template let-row let-col="column">
-        <span *ngIf="col.field === 'status'">
-            {{ row.status === 'Active' ? '✅' : '❌' }}
+      @if (col.field === 'status') {
+        <span>
+          {{ row.status === 'Active' ? '✅' : '❌' }}
         </span>
+      }
     </ng-template>
-</ui-advanced-data-table>`;
+  </ui-advanced-data-table>`;
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);

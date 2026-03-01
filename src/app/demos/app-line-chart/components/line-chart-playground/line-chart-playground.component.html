@@ -1,131 +1,133 @@
-
-    <app-playground
-      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Data</h3>
-            <div class="control-group">
-              <label>Dataset</label>
-              <ui-dropdown
-                [(ngModel)]="pgConfig.dataset"
-                (ngModelChange)="onDatasetChange()"
-                [options]="datasetOptions"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>🎨 Appearance</h3>
-            <div class="control-group">
-              <label
-                >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
-              >
-              <input
-                type="range"
-                min="1"
-                max="6"
-                step="1"
-                [(ngModel)]="pgConfig.strokeWidth"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label
-                >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
-              >
-              <input
-                type="range"
-                min="300"
-                max="800"
-                step="50"
-                [(ngModel)]="pgConfig.width"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-            <div class="control-group">
-              <label
-                >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
-              >
-              <input
-                type="range"
-                min="200"
-                max="500"
-                step="50"
-                [(ngModel)]="pgConfig.height"
-                (ngModelChange)="updateConfig()"
-              />
-            </div>
-          </div>
-
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLegend"
-                [(ngModel)]="pgConfig.showLegend"
-                (ngModelChange)="updateConfig()"
-                label="Show Legend"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showGrid"
-                [(ngModel)]="pgConfig.showGrid"
-                (ngModelChange)="updateConfig()"
-                label="Show Grid"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showMarkers"
-                [(ngModel)]="pgConfig.showMarkers"
-                (ngModelChange)="updateConfig()"
-                label="Show Markers"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="enableAnimation"
-                [(ngModel)]="pgConfig.enableAnimation"
-                (ngModelChange)="updateConfig()"
-                label="Enable Animation"
-              ></app-checkbox>
-            </div>
-          </div>
-        </div>
-        <div class="action-buttons">
-          <ui-button (click)="copyCode()" label="Copy Code"></ui-button>
-          <ui-button variant="secondary" (click)="resetConfig()" label="Reset"></ui-button>
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Data</h3>
+        <div class="control-group">
+          <label>Dataset</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.dataset"
+            (ngModelChange)="onDatasetChange()"
+            [options]="datasetOptions"
+          ></ui-dropdown>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <chart-line
-          [attr.chart-title]="activeTitle"
-          [attr.x-axis-label]="activeXLabel"
-          [attr.y-axis-label]="activeYLabel"
-          [attr.show-legend]="pgConfig.showLegend ? '' : null"
-          [attr.show-grid]="pgConfig.showGrid ? '' : null"
-          [attr.show-markers]="pgConfig.showMarkers ? '' : null"
-          [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
-          [attr.stroke-width]="pgConfig.strokeWidth"
-          [attr.width]="pgConfig.width"
-          [attr.height]="pgConfig.height"
-          [data]="chartData"
-        ></chart-line>
+
+      <div class="control-section">
+        <h3>🎨 Appearance</h3>
+        <div class="control-group">
+          <label
+            >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
+          >
+          <ui-input
+            type="range"
+            min="1"
+            max="6"
+            step="1"
+            [(ngModel)]="pgConfig.strokeWidth"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
+        </div>
+        <div class="control-group">
+          <label
+            >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
+          >
+          <ui-input
+            type="range"
+            min="300"
+            max="800"
+            step="50"
+            [(ngModel)]="pgConfig.width"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
+        </div>
+        <div class="control-group">
+          <label
+            >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
+          >
+          <ui-input
+            type="range"
+            min="200"
+            max="500"
+            step="50"
+            [(ngModel)]="pgConfig.height"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
+        </div>
       </div>
-      <ui-code-preview
-        code
-        [htmlCode]="generatedCode()"
-        label="Generated Code"
-        activeLang="html"
-        expanded="true"
-      ></ui-code-preview>
-    </app-playground>
-  
+
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showLegend"
+            [(ngModel)]="pgConfig.showLegend"
+            (ngModelChange)="updateConfig()"
+            label="Show Legend"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showGrid"
+            [(ngModel)]="pgConfig.showGrid"
+            (ngModelChange)="updateConfig()"
+            label="Show Grid"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showMarkers"
+            [(ngModel)]="pgConfig.showMarkers"
+            (ngModelChange)="updateConfig()"
+            label="Show Markers"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="enableAnimation"
+            [(ngModel)]="pgConfig.enableAnimation"
+            (ngModelChange)="updateConfig()"
+            label="Enable Animation"
+          ></ui-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <ui-button
+        actions
+        variant="secondary"
+        (click)="resetConfig()"
+        label="Reset Configuration"
+      ></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <chart-line
+      [attr.chart-title]="activeTitle"
+      [attr.x-axis-label]="activeXLabel"
+      [attr.y-axis-label]="activeYLabel"
+      [attr.show-legend]="pgConfig.showLegend ? '' : null"
+      [attr.show-grid]="pgConfig.showGrid ? '' : null"
+      [attr.show-markers]="pgConfig.showMarkers ? '' : null"
+      [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
+      [attr.stroke-width]="pgConfig.strokeWidth"
+      [attr.width]="pgConfig.width"
+      [attr.height]="pgConfig.height"
+      [data]="chartData"
+    ></chart-line>
+  </div>
+  <ui-code-preview
+    code
+    [htmlCode]="generatedCode()"
+    label="Generated Code"
+    activeLang="html"
+    expanded="true"
+  ></ui-code-preview>
+</app-playground>

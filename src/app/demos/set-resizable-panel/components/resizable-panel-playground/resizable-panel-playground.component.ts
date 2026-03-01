@@ -3,15 +3,13 @@
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
   OnInit,
-  ViewChild,
-  ElementRef,
   ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-resizable-panel-playground',
@@ -52,7 +50,7 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
   ];
 
   eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -90,7 +88,7 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     code += `  <div slot="panel-3">Panel 3 Content</div>\n`;
     code += `</app-resizable-panel>`;
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     // Trigger CDR/Re-render if needed (In Angular, inputs usually handle this)
     // We recreate the array to trigger change detection for [panels]
     this.panelsData = [...this.panelsData];
@@ -114,6 +112,26 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
+  }
+
+  resetConfig() {
+    this.pgConfig = {
+      direction: 'horizontal',
+      theme: 'light',
+      handleSize: 8,
+      minPanelSize: 10,
+      maxPanelSize: -1,
+      snapThreshold: 30,
+      animated: true,
+      showHandleIcon: true,
+      snapToEdge: true,
+      saveState: false,
+      collapsible1: true,
+      collapsible2: false,
+      collapsible3: true,
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }

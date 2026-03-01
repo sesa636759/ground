@@ -1,10 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
@@ -15,7 +14,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
+
     AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -75,7 +74,7 @@ export class SwitchPlaygroundComponent implements OnInit {
     { label: 'Right', value: 'right' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   eventLog: { time: string; msg: string }[] = [];
 
   constructor() {}
@@ -100,11 +99,11 @@ export class SwitchPlaygroundComponent implements OnInit {
     if (this.pgConfig.showDefaultIcons) code += `  show-default-icons\n`;
     code += '></ui-switch>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

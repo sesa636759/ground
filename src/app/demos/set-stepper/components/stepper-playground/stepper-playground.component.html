@@ -4,165 +4,119 @@
 >
   <div slot="content-config">
     <div class="control-grid">
-      <div class="control-group">
-        <label>Mode</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.mode"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Horizontal', value: 'horizontal' },
-            { label: 'Vertical', value: 'vertical' },
-          ]"
-        ></ui-dropdown>
+      <div class="control-section">
+        <h3>Layout</h3>
+        <div class="control-group">
+          <label>Orientation</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.orientation"
+            (ngModelChange)="updateConfig()"
+            [options]="orientationOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+            [options]="sizeOptions"
+          ></ui-dropdown>
+        </div>
+        <div class="control-group">
+          <label>Variant</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.variant"
+            (ngModelChange)="updateConfig()"
+            [options]="variantOptions"
+          ></ui-dropdown>
+        </div>
       </div>
 
-      <div class="control-group">
-        <label>Active Step</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.activeStep"
-          (ngModelChange)="updateConfig()"
-          min="0"
-          max="4"
-        />
-      </div>
-
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Filled', value: 'filled' },
-            { label: 'Minimal', value: 'minimal' },
-            { label: 'Snack', value: 'snack' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Color Scheme</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.colorScheme"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Primary', value: 'primary' },
-            { label: 'Success', value: 'success' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Danger', value: 'danger' },
-            { label: 'Info', value: 'info' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group" *ngIf="pgConfig.mode === 'horizontal'">
-        <label>Label Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.labelPosition"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Bottom', value: 'bottom' },
-            { label: 'Top', value: 'top' },
-            { label: 'Alternate', value: 'alternate' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group" *ngIf="pgConfig.mode === 'vertical'">
-        <label>Description Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.descriptionPosition"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Right', value: 'right' },
-            { label: 'Left', value: 'left' },
-            { label: 'Alternate', value: 'alternate' },
-          ]"
-        ></ui-dropdown>
+      <div class="control-section">
+        <h3>Options</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showNumbers"
+            [(ngModel)]="pgConfig.showNumbers"
+            (ngModelChange)="updateConfig()"
+            label="Show Numbers"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showDesc"
+            [(ngModel)]="pgConfig.showDescriptions"
+            (ngModelChange)="updateConfig()"
+            label="Show Descriptions"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="dot"
+            [(ngModel)]="pgConfig.progressDot"
+            (ngModelChange)="updateConfig()"
+            label="Progress Dot"
+          ></ui-checkbox>
+        </div>
+        <div class="control-group">
+          <label>Active Step</label>
+          <ui-input
+            type="number"
+            min="0"
+            max="3"
+            [(ngModel)]="pgConfig.activeStep"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
+        </div>
       </div>
     </div>
 
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showContentArea" (ngModelChange)="updateConfig()" />
-        Content Area
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showNavigation" (ngModelChange)="updateConfig()" />
-        Navigation buttons
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
-        Clickable
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()" />
-        Progress
-      </label>
-      <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
-      </label>
+    <div class="code-output">
+      <pre>{{ generatedCode() }}</pre>
+    </div>
+
+    <div class="action-buttons">
+      <ui-button
+        actions
+        variant="secondary"
+        (click)="resetConfig()"
+        label="Reset Configuration"
+      ></ui-button>
     </div>
   </div>
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    "
+  >
+    <ui-stepper
+      [attr.orientation]="pgConfig.orientation"
+      [attr.size]="pgConfig.size"
+      [attr.variant]="pgConfig.variant"
+      [attr.active-step]="pgConfig.activeStep"
+      [attr.show-numbers]="pgConfig.showNumbers ? '' : null"
+      [attr.show-descriptions]="pgConfig.showDescriptions ? '' : null"
+      [attr.progress-dot]="pgConfig.progressDot ? '' : null"
+      [steps]="stepsJson"
+      (stepperChange)="onStepChange($event)"
+    ></ui-stepper>
 
-  <div preview>
-    <div class="preview-stage">
-      <div class="stepper-container" [class.vertical-stage]="pgConfig.mode === 'vertical'">
-        <app-stepper-container
-          [attr.mode]="pgConfig.mode"
-          [attr.active-step]="pgConfig.activeStep"
-          [attr.variant]="pgConfig.variant === 'default' ? null : pgConfig.variant"
-          [attr.color-scheme]="pgConfig.colorScheme === 'primary' ? null : pgConfig.colorScheme"
-          [attr.label-position]="pgConfig.mode === 'horizontal' ? pgConfig.labelPosition : null"
-          [attr.description-position]="
-            pgConfig.mode === 'vertical' ? pgConfig.descriptionPosition : null
-          "
-          [attr.theme]="pgConfig.theme === 'light' ? null : pgConfig.theme"
-          [attr.show-content-area]="pgConfig.showContentArea ? 'true' : null"
-          [attr.show-navigation]="pgConfig.showNavigation ? 'true' : null"
-          [attr.animated]="pgConfig.animated"
-          [attr.clickable]="pgConfig.clickable"
-          [attr.show-progress]="pgConfig.showProgress"
-          [attr.compact]="pgConfig.compact"
-          [attr.steps]="stepsJson"
-          (stepChange)="onStepChange($event)"
-        >
-          <div *ngIf="pgConfig.showContentArea">
-            <div
-              *ngFor="let step of stepsData; let i = index"
-              [attr.slot]="'step-' + i"
-              class="step-content"
-            >
-              <h3>{{ step.label }}</h3>
-              <p>{{ step.description }}</p>
-              <div class="dummy-form">
-                <div class="form-row"></div>
-                <div class="form-row half"></div>
-                <div class="form-row half"></div>
-              </div>
-            </div>
-          </div>
-        </app-stepper-container>
-      </div>
-    </div>
-  </div>
-
-  <div events class="event-log-container">
-    <strong>Event Log</strong>
-    <div class="log-items">
-      <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+    <div class="step-content-preview">
+      <h3>{{ steps[pgConfig.activeStep].label }}</h3>
+      <p>{{ steps[pgConfig.activeStep].description }}</p>
     </div>
   </div>
 
   <ui-code-preview
     code
+    *ngIf="showCode"
     [htmlCode]="generatedCode()"
-    [label]="'Generated Code'"
+    label="Generated Code"
     activeLang="html"
     expanded="true"
   ></ui-code-preview>

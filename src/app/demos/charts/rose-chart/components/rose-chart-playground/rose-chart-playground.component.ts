@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
 
@@ -21,6 +21,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   styleUrl: './rose-chart-playground.component.scss',
 })
 export class RoseChartPlaygroundComponent {
+  generatedCode = signal<string>('');
   cfg = {
     size: 320,
     innerR: 0,
