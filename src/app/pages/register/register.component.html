@@ -9,17 +9,17 @@
 
     <!-- Success Message -->
     @if (success()) {
-    <div class="alert alert-success">
-      <span class="alert-icon">✅</span>
-      <span>{{ success() }}</span>
-    </div>
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <span>{{ success() }}</span>
+      </div>
     }
-       <!-- Error Message -->
+    <!-- Error Message -->
     @if (error()) {
-    <div class="alert alert-error">
-      <span class="alert-icon">⚠️</span>
-      <span>{{ error() }}</span>
-    </div>
+      <div class="alert alert-error">
+        <span class="alert-icon">⚠️</span>
+        <span>{{ error() }}</span>
+      </div>
     }
     <!-- Registration Form -->
     <form (ngSubmit)="onSubmit()" class="register-form">
@@ -36,7 +36,7 @@
             placeholder="Enter your full name"
             required
             autocomplete="name"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
             placeholder="Choose a username"
             required
             autocomplete="username"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -88,29 +88,35 @@
             placeholder="Create a password"
             required
             autocomplete="new-password"
-          />
+          ></app-input>
           <ui-button
             type="button"
             class="toggle-password"
             (click)="togglePasswordVisibility()"
             [title]="showPassword() ? 'Hide password' : 'Show password'"
+            [label]="showPassword() ? '👁️' : '👁️‍🗨️'"
           >
-            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
           </ui-button>
         </div>
-        
+
         <!-- Password Strength Indicator -->
         <div class="password-strength" *ngIf="formData.password">
           <div class="strength-bar">
-            <div 
-              class="strength-fill" 
+            <div
+              class="strength-fill"
               [class.weak]="passwordStrength() === 'weak'"
               [class.medium]="passwordStrength() === 'medium'"
               [class.strong]="passwordStrength() === 'strong'"
             ></div>
           </div>
           <span class="strength-label" [class]="passwordStrength()">
-            {{ passwordStrength() === 'weak' ? 'Weak' : passwordStrength() === 'medium' ? 'Medium' : 'Strong' }}
+            {{
+              passwordStrength() === 'weak'
+                ? 'Weak'
+                : passwordStrength() === 'medium'
+                  ? 'Medium'
+                  : 'Strong'
+            }}
           </span>
         </div>
       </div>
@@ -128,27 +134,23 @@
             placeholder="Re-enter your password"
             required
             autocomplete="new-password"
-          />
+          ></app-input>
           <ui-button
             type="button"
             class="toggle-password"
             (click)="toggleConfirmPasswordVisibility()"
             [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
+            [label]="showConfirmPassword() ? '👁️' : '👁️‍🗨️'"
           >
-            {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
           </ui-button>
         </div>
         @if (confirmPassword) {
           <div class="password-match">
             @if (formData.password === confirmPassword) {
-              <span class="match-success">
-                ✓ Passwords match
-              </span>
+              <span class="match-success"> ✓ Passwords match </span>
             }
             @if (formData.password !== confirmPassword) {
-              <span class="match-error">
-                ✗ Passwords do not match
-              </span>
+              <span class="match-error"> ✗ Passwords do not match </span>
             }
           </div>
         }
@@ -157,12 +159,11 @@
       <!-- Terms and Conditions -->
       <div class="form-group">
         <label class="checkbox-label">
-          <app-input
-            type="checkbox"
+          <app-checkbox
             name="acceptTerms"
             [(ngModel)]="formData.acceptTerms"
             required
-          />
+          ></app-checkbox>
           <span>
             I agree to the
             <a href="#" class="link">Terms & Conditions</a>
@@ -177,16 +178,8 @@
         type="submit"
         class="btn-primary btn-large"
         [disabled]="loading()"
+        [label]="!loading() ? 'Create Account' : 'Creating account...'"
       >
-        @if (!loading()) {
-          <span>Create Account</span>
-        }
-        @if (loading()) {
-          <span class="loading-content">
-            <span class="spinner"></span>
-            <span>Creating account...</span>
-          </span>
-        }
       </ui-button>
     </form>
 

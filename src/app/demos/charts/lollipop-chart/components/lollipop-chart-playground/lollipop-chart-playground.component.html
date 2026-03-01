@@ -9,26 +9,26 @@
             <h3>📐 Style</h3>
             <div class="control-group">
               <label>Circle Radius</label>
-              <input
+              <app-input
                 type="range"
                 min="4"
                 max="16"
                 step="2"
                 [(ngModel)]="cfg.circleR"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.circleR }}px</span>
             </div>
             <div class="control-group">
               <label>Stick Width</label>
-              <input
+              <app-input
                 type="range"
                 min="1"
                 max="6"
                 step="1"
                 [(ngModel)]="cfg.stickW"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.stickW }}px</span>
             </div>
             <div class="control-group">

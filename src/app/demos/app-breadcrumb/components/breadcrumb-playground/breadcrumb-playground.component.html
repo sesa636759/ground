@@ -10,21 +10,21 @@
         <h3>Configuration</h3>
         <div class="control-group">
           <label>Separator</label>
-          <input
+          <app-input
             type="text"
             name="separator"
             [(ngModel)]="pgConfig.separator"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Max Items (Collapse)</label>
-          <input
+          <app-input
             type="number"
             name="maxItems"
             [(ngModel)]="pgConfig.maxItems"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Size</label>

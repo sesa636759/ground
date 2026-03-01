@@ -25,14 +25,14 @@
             </div>
             <div class="control-group">
               <label>Node Radius</label>
-              <input
+              <app-input
                 type="range"
                 min="16"
                 max="36"
                 step="2"
                 [(ngModel)]="cfg.nodeR"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.nodeR }}px</span>
             </div>
           </div>

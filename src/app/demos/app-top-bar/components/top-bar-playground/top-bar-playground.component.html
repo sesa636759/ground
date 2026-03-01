@@ -10,7 +10,7 @@
         <h3>Structure</h3>
         <div class="control-group">
           <label>Logo Text</label>
-          <input type="text" [(ngModel)]="pgConfig.logoText" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.logoText" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="checkbox-group">
           <app-checkbox
@@ -26,7 +26,7 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Height (px)</label>
-          <input type="number" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" />
+          <app-input type="number" [(ngModel)]="pgConfig.height" (ngModelChange)="updateConfig()" ></app-input>
         </div>
       </div>
     </div>

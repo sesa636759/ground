@@ -29,12 +29,12 @@ import { FormsModule } from '@angular/forms';
               <label for="currentPassword">Current Password</label>
               <div class="input-wrapper">
                 <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <input
+                <app-input
                   type="password"
                   id="currentPassword"
                   [(ngModel)]="currentPassword"
                   placeholder="••••••••"
-                />
+                ></app-input>
               </div>
             </div>
 
@@ -42,12 +42,12 @@ import { FormsModule } from '@angular/forms';
               <label for="newPassword">New Password</label>
               <div class="input-wrapper">
                 <ui-icon name="key-round" library="lucide" size="18px" class="input-icon"></ui-icon>
-                <input
+                <app-input
                   type="password"
                   id="newPassword"
                   [(ngModel)]="newPassword"
                   placeholder="New password"
-                />
+                ></app-input>
               </div>
             </div>
 
@@ -60,12 +60,12 @@ import { FormsModule } from '@angular/forms';
                   size="18px"
                   class="input-icon"
                 ></ui-icon>
-                <input
+                <app-input
                   type="password"
                   id="confirmPassword"
                   [(ngModel)]="confirmPassword"
                   placeholder="Confirm new password"
-                />
+                ></app-input>
               </div>
             </div>
 

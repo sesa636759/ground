@@ -9,26 +9,26 @@
             <h3>📋 Display</h3>
             <div class="control-group">
               <label>Row Height</label>
-              <input
+              <app-input
                 type="range"
                 min="28"
                 max="56"
                 step="4"
                 [(ngModel)]="cfg.rowH"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.rowH }}px</span>
             </div>
             <div class="control-group">
               <label>Corner Radius</label>
-              <input
+              <app-input
                 type="range"
                 min="0"
                 max="10"
                 step="2"
                 [(ngModel)]="cfg.radius"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.radius }}px</span>
             </div>
             <div class="checkbox-group">

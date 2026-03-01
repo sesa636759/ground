@@ -11,31 +11,31 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Text</label>
-          <input
+          <app-input
             name="text"
             type="text"
             [(ngModel)]="pgConfig.text"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <input
+          <app-input
             name="icon"
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. ⭐"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input
+          <app-input
             name="badge"
             type="text"
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
       </div>
 

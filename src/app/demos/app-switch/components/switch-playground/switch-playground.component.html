@@ -8,7 +8,7 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Variant</label>
@@ -44,11 +44,11 @@
     </div>
     <div class="control-group">
       <label>Icon On</label>
-      <input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" />
+      <app-input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Icon Off</label>
-      <input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" />
+      <app-input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" ></app-input>
     </div>
   </div>
 

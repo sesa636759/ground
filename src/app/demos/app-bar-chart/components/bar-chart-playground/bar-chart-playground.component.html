@@ -26,28 +26,28 @@
         </div>
         <div class="control-group">
           <label>Bar Width %</label>
-          <input
+          <app-input
             type="range"
             min="20"
             max="90"
             step="5"
             [(ngModel)]="pgConfig.barWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.barWidth }}%</span
           >
         </div>
         <div class="control-group">
           <label>Border Radius</label>
-          <input
+          <app-input
             type="range"
             min="0"
             max="16"
             step="2"
             [(ngModel)]="pgConfig.borderRadius"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.borderRadius }}px</span
           >

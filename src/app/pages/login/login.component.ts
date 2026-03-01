@@ -3,20 +3,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
+import { AppInputValueAccessorDirective } from '../../directives/app-input-value-accessor.directive';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, AppInputValueAccessorDirective],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   credentials: LoginCredentials = {
     email: '',
     password: '',
-    rememberMe: false
+    rememberMe: false,
   };
 
   loading = signal(false);
@@ -25,10 +27,14 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {
     // Redirect to home if already logged in
-    if (this.authService.isAuthenticated && typeof this.authService.isAuthenticated === 'function' ? this.authService.isAuthenticated() : this.authService.isAuthenticated) {
+    if (
+      this.authService.isAuthenticated && typeof this.authService.isAuthenticated === 'function'
+        ? this.authService.isAuthenticated()
+        : this.authService.isAuthenticated
+    ) {
       this.router.navigate(['/home']);
     }
   }
@@ -67,7 +73,7 @@ export class LoginComponent {
     this.credentials = {
       email: 'demo@example.com',
       password: 'demo123',
-      rememberMe: true
+      rememberMe: true,
     };
     this.onSubmit();
   }

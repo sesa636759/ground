@@ -51,11 +51,11 @@
           <div class="table-controls" *ngIf="componentDoc.props.length > 5">
             <div class="search-box">
               <i class="fas fa-search"></i>
-              <input
+              <app-input
                 type="text"
                 placeholder="Filter properties..."
                 (input)="filterText.set($any($event.target).value)"
-              />
+              ></app-input>
             </div>
           </div>
 

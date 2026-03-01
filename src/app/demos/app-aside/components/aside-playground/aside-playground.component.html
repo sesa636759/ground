@@ -19,7 +19,7 @@
         </div>
         <div class="control-group">
           <label>Size (px/%/rem)</label>
-          <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -31,12 +31,12 @@
         </div>
         <div class="control-group">
           <label>Backdrop Blur</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.backdropBlur"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. 8px"
-          />
+          ></app-input>
         </div>
       </div>
 

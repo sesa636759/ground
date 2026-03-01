@@ -232,6 +232,14 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
     this.router.navigate(['/demos', ...componentId.split('/')]);
   }
 
+  navigateToDocs(componentId: string) {
+    // The component documentation page expects component ID (the last part of the path usually)
+    const id = componentId.split('/').pop();
+    this.router.navigate(['/component-documentation'], {
+      queryParams: { component: id },
+    });
+  }
+
   onSearchInput(event: Event) {
     const input = event.target as HTMLInputElement;
     this.searchQuery.set(input.value);

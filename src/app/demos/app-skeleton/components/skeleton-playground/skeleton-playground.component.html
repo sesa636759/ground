@@ -54,22 +54,22 @@
 
         <div class="control-group">
           <label>width</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="cfg.width"
             (ngModelChange)="update()"
             placeholder="100%"
-          />
+          ></app-input>
         </div>
 
         <div class="control-group">
           <label>height</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="cfg.height"
             (ngModelChange)="update()"
             placeholder="20px"
-          />
+          ></app-input>
         </div>
 
         <div class="control-group">
@@ -77,12 +77,12 @@
             >border-radius
             <span style="font-weight: 400; font-size: 0.75rem">(rounded shapes)</span></label
           >
-          <input
+          <app-input
             type="text"
             [(ngModel)]="cfg.borderRadius"
             (ngModelChange)="update()"
             placeholder="4px"
-          />
+          ></app-input>
         </div>
       </div>
     </div>

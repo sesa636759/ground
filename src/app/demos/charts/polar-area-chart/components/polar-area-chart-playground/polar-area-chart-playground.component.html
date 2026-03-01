@@ -25,14 +25,14 @@
             </div>
             <div class="control-group">
               <label>Fill Opacity</label>
-              <input
+              <app-input
                 type="range"
                 min="0.3"
                 max="1"
                 step="0.05"
                 [(ngModel)]="cfg.opacity"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.opacity }}</span>
             </div>
           </div>

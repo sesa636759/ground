@@ -1,4 +1,8 @@
-<div class="component-card glass-panel" [class.list-card]="viewMode === 'list'" (click)="onClick()">
+<div
+  class="component-card glass-panel"
+  [class.list-card]="viewMode === 'list'"
+  (click)="onDemoClick()"
+>
   <div class="card-glow"></div>
 
   <div class="card-header">
@@ -30,20 +34,35 @@
         <img [src]="imageUrl" [alt]="label" class="card-image" />
       }
       <div class="preview-overlay">
-        <ui-button class="explore-btn">
-          <span>Explore Demo</span>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </ui-button>
+        <div class="overlay-actions">
+          <ui-button class="explore-btn" (click)="onDemoClick($event)" label="Demo">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </ui-button>
+
+          <ui-button class="docs-btn" (click)="onDocsClick($event)" label="API" variant="ghost">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </ui-button>
+        </div>
       </div>
     </div>
   }

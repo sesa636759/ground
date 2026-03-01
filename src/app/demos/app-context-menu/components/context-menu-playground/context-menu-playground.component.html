@@ -8,7 +8,7 @@
   <div slot="content-settings" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Base Z-Index</label>
-      <input
+      <app-input
         type="number"
         [(ngModel)]="pgConfig.baseZIndex"
         (ngModelChange)="updateConfig()"
@@ -21,11 +21,11 @@
           color: var(--text-primary);
           padding: 0 12px;
         "
-      />
+      ></app-input>
     </div>
     <div class="control-group">
       <label>Breakpoint</label>
-      <input
+      <app-input
         type="number"
         [(ngModel)]="pgConfig.breakpoint"
         (ngModelChange)="updateConfig()"
@@ -38,7 +38,7 @@
           color: var(--text-primary);
           padding: 0 12px;
         "
-      />
+      ></app-input>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
       <app-checkbox

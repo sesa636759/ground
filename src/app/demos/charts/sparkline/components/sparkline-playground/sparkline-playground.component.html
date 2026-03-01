@@ -9,38 +9,38 @@
             <h3>📐 Size</h3>
             <div class="control-group">
               <label>Width</label>
-              <input
+              <app-input
                 type="range"
                 min="80"
                 max="240"
                 step="10"
                 [(ngModel)]="cfg.width"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.width }}px</span>
             </div>
             <div class="control-group">
               <label>Height</label>
-              <input
+              <app-input
                 type="range"
                 min="30"
                 max="100"
                 step="5"
                 [(ngModel)]="cfg.height"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.height }}px</span>
             </div>
             <div class="control-group">
               <label>Stroke Width</label>
-              <input
+              <app-input
                 type="range"
                 min="1"
                 max="4"
                 step="0.5"
                 [(ngModel)]="cfg.strokeWidth"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{
                 cfg.strokeWidth
               }}</span>
