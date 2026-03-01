@@ -119,6 +119,7 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
       this.route.queryParams.subscribe((params) => {
         const id = params['component'];
         if (id) {
+          this.componentId = id; // Ensure consistent ID generation
           this.loadDocByLang(id);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
