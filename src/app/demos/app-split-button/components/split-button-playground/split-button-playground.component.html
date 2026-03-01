@@ -10,11 +10,11 @@
         <h3>Basic Config</h3>
         <div class="control-group">
           <label>Label</label>
-          <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Icon (Home/Save/etc)</label>
-          <input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Variant</label>

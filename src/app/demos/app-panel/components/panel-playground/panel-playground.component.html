@@ -12,19 +12,19 @@
         <h3>Header</h3>
         <div class="control-group">
           <label>Title</label>
-          <input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Subtitle</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.panelSubtitle"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="checkbox-group">
           <app-checkbox

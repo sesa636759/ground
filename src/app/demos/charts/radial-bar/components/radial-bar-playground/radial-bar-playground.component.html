@@ -9,40 +9,40 @@
             <h3>📐 Layout</h3>
             <div class="control-group">
               <label>Size</label>
-              <input
+              <app-input
                 type="range"
                 min="180"
                 max="360"
                 step="20"
                 [(ngModel)]="cfg.size"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.size }}px</span>
             </div>
             <div class="control-group">
               <label>Track Width</label>
-              <input
+              <app-input
                 type="range"
                 min="10"
                 max="30"
                 step="2"
                 [(ngModel)]="cfg.trackWidth"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)"
                 >{{ cfg.trackWidth }}px</span
               >
             </div>
             <div class="control-group">
               <label>Gap</label>
-              <input
+              <app-input
                 type="range"
                 min="4"
                 max="16"
                 step="2"
                 [(ngModel)]="cfg.gap"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.gap }}px</span>
             </div>
           </div>

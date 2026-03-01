@@ -23,15 +23,15 @@
         >
           <div class="control-group">
             <label>Width</label>
-            <input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" />
+            <app-input type="text" [(ngModel)]="pgConfig.width" (ngModelChange)="updateConfig()" ></app-input>
           </div>
           <div class="control-group">
             <label>Radius</label>
-            <input
+            <app-input
               type="text"
               [(ngModel)]="pgConfig.borderRadius"
               (ngModelChange)="updateConfig()"
-            />
+            ></app-input>
           </div>
         </div>
 

@@ -11,25 +11,25 @@
         <h3>Identity</h3>
         <div class="control-group">
           <label>Name (Initials)</label>
-          <input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Image Source</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.src"
             (ngModelChange)="updateConfig()"
             placeholder="URL"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="emoji or icon"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -46,7 +46,7 @@
         </div>
         <div class="control-group">
           <label>Size (e.g. 64px)</label>
-          <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+          <app-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" ></app-input>
         </div>
         <div class="control-group">
           <label>Status</label>
@@ -63,21 +63,21 @@
         <h3>Decorations</h3>
         <div class="control-group">
           <label>Badge</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
             placeholder="'dot' or text"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label>Badge Color</label>
-          <input
+          <app-input
             type="text"
             [(ngModel)]="pgConfig.badgeColor"
             (ngModelChange)="updateConfig()"
             placeholder="hex or color name"
-          />
+          ></app-input>
         </div>
       </div>
     </div>

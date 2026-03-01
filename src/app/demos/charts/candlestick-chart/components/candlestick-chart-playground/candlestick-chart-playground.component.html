@@ -9,14 +9,14 @@
             <h3>📐 Style</h3>
             <div class="control-group">
               <label>Candle Width</label>
-              <input
+              <app-input
                 type="range"
                 min="8"
                 max="28"
                 step="2"
                 [(ngModel)]="cfg.candleW"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.candleW }}px</span>
             </div>
             <div class="control-group">

@@ -48,11 +48,11 @@ export interface PlaygroundConfig {
             @if (control.type === 'text') {
             <label class="text-control">
             <span class="control-label">{{ control.label }}</span>
-            <input
+            <app-input
               type="text"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            />
+            ></app-input>
             </label>
             }
 
@@ -60,14 +60,14 @@ export interface PlaygroundConfig {
             @if (control.type === 'number') {
             <label class="number-control">
             <span class="control-label">{{ control.label }}</span>
-            <input
+            <app-input
               type="number"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [min]="control.min ?? null"
               [max]="control.max ?? null"
               [step]="control.step ?? null"
-            />
+            ></app-input>
             </label>
             }
 
@@ -87,11 +87,11 @@ export interface PlaygroundConfig {
             @if (control.type === 'color') {
             <label class="color-control">
             <span class="control-label">{{ control.label }}</span>
-            <input
+            <app-input
               type="color"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
-            />
+            ></app-input>
             </label>
             }
 
@@ -99,14 +99,14 @@ export interface PlaygroundConfig {
             @if (control.type === 'range') {
             <label class="range-control">
             <span class="control-label">{{ control.label }}: {{ values[control.name] }}</span>
-            <input
+            <app-input
               type="range"
               [ngModel]="values[control.name]"
               (ngModelChange)="onValueChange(control.name, $event)"
               [min]="control.min"
               [max]="control.max"
               [step]="control.step"
-            />
+            ></app-input>
             </label>
             }
         </div>

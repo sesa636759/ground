@@ -22,40 +22,40 @@
           <label
             >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
           >
-          <input
+          <app-input
             type="range"
             min="1"
             max="6"
             step="1"
             [(ngModel)]="pgConfig.strokeWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label
             >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
           >
-          <input
+          <app-input
             type="range"
             min="300"
             max="800"
             step="50"
             [(ngModel)]="pgConfig.width"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
         <div class="control-group">
           <label
             >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
           >
-          <input
+          <app-input
             type="range"
             min="200"
             max="500"
             step="50"
             [(ngModel)]="pgConfig.height"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
       </div>
 

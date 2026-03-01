@@ -9,26 +9,26 @@
             <h3>📐 Layout</h3>
             <div class="control-group">
               <label>Size</label>
-              <input
+              <app-input
                 type="range"
                 min="200"
                 max="380"
                 step="20"
                 [(ngModel)]="cfg.size"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.size }}px</span>
             </div>
             <div class="control-group">
               <label>Inner Radius</label>
-              <input
+              <app-input
                 type="range"
                 min="0"
                 max="60"
                 step="5"
                 [(ngModel)]="cfg.innerR"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.innerR }}px</span>
             </div>
             <div class="control-group">

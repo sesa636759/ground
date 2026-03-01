@@ -24,14 +24,14 @@
         </div>
         <div class="control-group" *ngIf="pgConfig.chartType === 'doughnut'">
           <label>Cutout %</label>
-          <input
+          <app-input
             type="range"
             min="30"
             max="80"
             step="5"
             [(ngModel)]="pgConfig.cutout"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.cutout }}%</span
           >
@@ -50,14 +50,14 @@
         </div>
         <div class="control-group">
           <label>Border Width</label>
-          <input
+          <app-input
             type="range"
             min="0"
             max="6"
             step="1"
             [(ngModel)]="pgConfig.borderWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.borderWidth }}px</span
           >

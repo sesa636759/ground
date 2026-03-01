@@ -7,30 +7,30 @@
   <div slot="content-metric" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Value</label>
-      <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+      <app-input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Min</label>
-      <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
+      <app-input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Max</label>
-      <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
+      <app-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Label</label>
-      <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" ></app-input>
     </div>
   </div>
 
   <div slot="content-appearance" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Size</label>
-      <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+      <app-input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Arc Width</label>
-      <input type="number" [(ngModel)]="pgConfig.arcWidth" (ngModelChange)="updateConfig()" />
+      <app-input type="number" [(ngModel)]="pgConfig.arcWidth" (ngModelChange)="updateConfig()" ></app-input>
     </div>
     <div class="control-group">
       <label>Color Mode</label>

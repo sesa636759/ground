@@ -25,14 +25,14 @@
             </div>
             <div class="control-group">
               <label>Bar Gap</label>
-              <input
+              <app-input
                 type="range"
                 min="4"
                 max="20"
                 step="2"
                 [(ngModel)]="cfg.gap"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.gap }}px</span>
             </div>
           </div>

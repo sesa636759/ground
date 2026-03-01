@@ -60,13 +60,13 @@
         </div>
         <div class="control-group">
           <label>Active Step</label>
-          <input
+          <app-input
             type="number"
             min="0"
             max="3"
             [(ngModel)]="pgConfig.activeStep"
             (ngModelChange)="updateConfig()"
-          />
+          ></app-input>
         </div>
       </div>
     </div>

@@ -17,26 +17,26 @@
             </div>
             <div class="control-group">
               <label>Segment Gap</label>
-              <input
+              <app-input
                 type="range"
                 min="0"
                 max="12"
                 step="2"
                 [(ngModel)]="cfg.gap"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.gap }}px</span>
             </div>
             <div class="control-group">
               <label>Neck Width %</label>
-              <input
+              <app-input
                 type="range"
                 min="10"
                 max="50"
                 step="5"
                 [(ngModel)]="cfg.neckPct"
                 (ngModelChange)="update()"
-              />
+              ></app-input>
               <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.neckPct }}%</span>
             </div>
           </div>

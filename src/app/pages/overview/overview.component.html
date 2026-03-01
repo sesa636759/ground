@@ -120,7 +120,9 @@
             [previewSvg]="getPreviewSvg(component.id)"
             [imageUrl]="getImageUrl(component.id)"
             [viewMode]="viewMode()"
-            (cardClick)="navigateToComponent($event)"
+            (cardClick)="navigateToComponent(component.id)"
+            (docsClick)="navigateToDocs(component.id)"
+            [viewMode]="viewMode()"
           ></app-component-card>
         </ng-masonry-grid>
       </div>

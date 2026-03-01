@@ -14,9 +14,13 @@
         <strong>Demo Login:</strong>
         <span>demo@example.com / demo123</span>
       </div>
-      <ui-button type="button" class="btn-demo-fill" (click)="loginWithDemo()">
-        Use Demo
-      </ui-button>
+      <ui-button
+        label="Use Demo"
+        variant="filled"
+        type="button"
+        class="btn-demo-fill"
+        (click)="loginWithDemo()"
+      ></ui-button>
     </div>
 
     <!-- Error Message -->
@@ -40,7 +44,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -57,14 +61,14 @@
             placeholder="Enter your password"
             required
             autocomplete="current-password"
-          />
+          ></app-input>
           <ui-button
+            [label]="showPassword() ? '👁️' : '👁️'"
             type="button"
             class="toggle-password"
             (click)="togglePasswordVisibility()"
             [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
-            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
           </ui-button>
         </div>
       </div>
@@ -72,11 +76,7 @@
       <!-- Remember Me & Forgot Password -->
       <div class="form-options">
         <label class="checkbox-label">
-          <app-input
-            type="checkbox"
-            name="rememberMe"
-            [(ngModel)]="credentials.rememberMe"
-          />
+          <app-checkbox name="rememberMe" [(ngModel)]="credentials.rememberMe"></app-checkbox>
           <span>Remember me</span>
         </label>
         <a href="#" class="forgot-link">Forgot password?</a>
@@ -85,21 +85,23 @@
       <!-- Submit Button -->
       <ui-button
         type="submit"
+        [label]="!loading() ? 'Sign In' : 'Signing in...'"
+        icon="spinner"
         class="btn-primary btn-large"
         [disabled]="loading()"
       >
-        @if (!loading()) {
+        <!-- @if (!loading()) {
           <span>Sign In</span>
         }
         @if (loading()) {
           <span class="loading-content">
-          <span class="spinner"></span>
-          <span>Signing in...</span>
+            <span class="spinner"></span>
+            <span>Signing in...</span>
           </span>
-        }
+        } -->
       </ui-button>
-    
-    |
+
+      |
     </form>
 
     <!-- Divider -->
@@ -109,17 +111,16 @@
 
     <!-- Social Login Options -->
     <div class="social-login">
-      <ui-button type="button" class="btn-social btn-google">
-        <span class="social-icon">🔍</span>
-        Google
+      <ui-button label="Google" icon="lucide-google" type="button" class="btn-social btn-google">
       </ui-button>
-      <ui-button type="button" class="btn-social btn-github">
-        <span class="social-icon">🐙</span>
-        GitHub
+      <ui-button label="GitHub" icon="github" type="button" class="btn-social btn-github">
       </ui-button>
-      <ui-button type="button" class="btn-social btn-microsoft">
-        <span class="social-icon">🪟</span>
-        Microsoft
+      <ui-button
+        label="Microsoft"
+        icon="lucide-microsoft"
+        type="button"
+        class="btn-social btn-microsoft"
+      >
       </ui-button>
     </div>
 
