@@ -44,7 +44,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          />
+          ></app-input>
         </div>
       </div>
 
@@ -61,19 +61,21 @@
             placeholder="Enter your password"
             required
             autocomplete="current-password"
-          ></app-input>
-          <ui-button
-            [label]="showPassword() ? '👁️' : '👁️'"
-            type="button"
-            class="toggle-password"
-            (click)="togglePasswordVisibility()"
-            [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
-<<<<<<< HEAD
-            <ui-icon [name]="showPassword() ? 'eye-off' : 'eye'" library="lucide" size="18px"></ui-icon>
-=======
->>>>>>> 6fbc73bf8cc8db9fdf53ee6634818180f06d1aca
-          </ui-button>
+            <ng-container suffix>
+              <ui-button
+                type="button"
+                class="toggle-password"
+                (click)="togglePasswordVisibility()"
+                variant="ghost"
+                size="sm"
+                style="padding:0 6px;min-width:0;"
+                [title]="showPassword() ? 'Hide password' : 'Show password'"
+              >
+                <ui-icon [name]="showPassword() ? 'eye-off' : 'eye'" library="lucide" size="18px"></ui-icon>
+              </ui-button>
+            </ng-container>
+          </app-input>
         </div>
       </div>
 
@@ -114,19 +116,7 @@
     </div>
 
     <!-- Social Login Options -->
-    <div class="social-login">
-      <ui-button type="button" class="btn-social btn-google">
-        <ui-icon name="search" library="lucide" size="18px" class="social-icon"></ui-icon>
-        Google
-      </ui-button>
-      <ui-button type="button" class="btn-social btn-github">
-        <ui-icon name="github" library="lucide" size="18px" class="social-icon"></ui-icon>
-        GitHub
-      </ui-button>
-      <ui-button type="button" class="btn-social btn-microsoft">
-        <ui-icon name="windows" library="lucide" size="18px" class="social-icon"></ui-icon>
-        Microsoft
-=======
+
       <ui-button label="Google" icon="lucide-google" type="button" class="btn-social btn-google">
       </ui-button>
       <ui-button label="GitHub" icon="github" type="button" class="btn-social btn-github">
@@ -137,7 +127,7 @@
         type="button"
         class="btn-social btn-microsoft"
       >
->>>>>>> 6fbc73bf8cc8db9fdf53ee6634818180f06d1aca
+
       </ui-button>
     </div>
 
@@ -154,4 +144,4 @@
     <div class="circle circle-2"></div>
     <div class="circle circle-3"></div>
   </div>
-</div>
+
