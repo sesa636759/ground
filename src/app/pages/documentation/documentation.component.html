@@ -26,17 +26,17 @@
               #searchInput
             />
             <div class="search-kbd" *ngIf="!searchText()">⌘K</div>
-            <button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
+            <ui-button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
               <i class="fas fa-times"></i>
-            </button>
+            </ui-button>
           </div>
 
           <div class="popular-searches" *ngIf="!searchText()">
             <span>Popular:</span>
-            <button (click)="searchText.set('table')">Table</button>
-            <button (click)="searchText.set('form')">Forms</button>
-            <button (click)="searchText.set('navigation')">Navigation</button>
-            <button (click)="searchText.set('overlay')">Overlays</button>
+            <ui-button (click)="searchText.set('table')">Table</ui-button>
+            <ui-button (click)="searchText.set('form')">Forms</ui-button>
+            <ui-button (click)="searchText.set('navigation')">Navigation</ui-button>
+            <ui-button (click)="searchText.set('overlay')">Overlays</ui-button>
           </div>
         </div>
 
@@ -70,9 +70,9 @@
     <!-- 📄 Page Title for Sub Routes -->
     <div class="sub-hero-header animate-slide-up" *ngIf="!isHubArea()">
       <div class="breadcrumb">
-        <button class="back-link" (click)="navigateTo('all')">
+        <ui-button class="back-link" (click)="navigateTo('all')">
           <i class="fas fa-arrow-left"></i> Back to Hub
-        </button>
+        </ui-button>
       </div>
       <h1 class="subpage-title" *ngIf="activeTab() === 'components'">Components Registry</h1>
       <h1 class="subpage-title" *ngIf="activeTab() === 'guides'">Guides & Documentation</h1>
@@ -81,7 +81,7 @@
 
     <!-- 🧭 Quick Access Navigation -->
     <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s" *ngIf="isHubArea()">
-      <button
+      <ui-button
         class="nav-card"
         [class.active]="activeTab() === 'components'"
         (click)="navigateTo('components')"
@@ -91,9 +91,9 @@
           <span class="title">All Components</span>
           <span class="count">{{ components().length }} Assets</span>
         </div>
-      </button>
+      </ui-button>
 
-      <button
+      <ui-button
         class="nav-card"
         [class.active]="activeTab() === 'guides'"
         (click)="navigateTo('guides')"
@@ -103,9 +103,9 @@
           <span class="title">Guides & Setup</span>
           <span class="count">3 Documentations</span>
         </div>
-      </button>
+      </ui-button>
 
-      <button
+      <ui-button
         class="nav-card"
         [class.active]="activeTab() === 'utilities'"
         (click)="navigateTo('utilities')"
@@ -115,7 +115,7 @@
           <span class="title">Design Tokens</span>
           <span class="count">12 Categories</span>
         </div>
-      </button>
+      </ui-button>
     </nav>
 
     <!-- 📄 Main Results Display -->
@@ -259,7 +259,7 @@
           <div class="empty-icon"><i class="fas fa-ghost"></i></div>
           <h3>No components found</h3>
           <p>Try adjusting your search query or browse categories.</p>
-          <button class="btn-reset" (click)="searchText.set('')">View All Components</button>
+          <ui-button class="btn-reset" (click)="searchText.set('')">View All Components</ui-button>
         </div>
       </div>
 
