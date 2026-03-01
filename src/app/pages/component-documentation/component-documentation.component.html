@@ -15,7 +15,15 @@
       <!-- Hero Header (Desktop Only) -->
       <header class="docs-header" *ngIf="!isEmbedded">
         <div class="header-inner">
-          <div class="breadcrumb-mini">Components / API</div>
+          <div class="breadcrumb-mini">
+            <button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
+              <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <span class="breadcrumb-separator">/</span>
+            <span>Components</span>
+            <span class="breadcrumb-separator">/</span>
+            <span>API</span>
+          </div>
           <div class="title-row">
             <h1>{{ componentDoc.name }}</h1>
             <div class="version-tag">STABLE</div>

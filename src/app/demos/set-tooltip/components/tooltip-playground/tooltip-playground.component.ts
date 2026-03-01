@@ -11,7 +11,6 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-ch
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 @Component({
   selector: 'app-tooltip-playground',
@@ -22,7 +21,6 @@ import { PlaygroundEventLogComponent } from '../../../../shared/components/playg
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppInputValueAccessorDirective,
-    PlaygroundEventLogComponent,
     AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -62,7 +60,6 @@ export class TooltipPlaygroundComponent implements OnInit {
     useCustomColor: false,
   };
 
-  eventLog = signal<string[]>([]);
   generatedCodeSignal = signal('');
   showCode = true;
 
@@ -163,6 +160,5 @@ export class TooltipPlaygroundComponent implements OnInit {
       useCustomColor: false,
     };
     this.updateConfig();
-    this.eventLog.set([]);
   }
 }

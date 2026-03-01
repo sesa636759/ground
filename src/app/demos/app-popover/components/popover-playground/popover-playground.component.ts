@@ -1,4 +1,4 @@
-﻿import {
+﻿0import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,

@@ -1,137 +1,125 @@
 <!-- Auto-wrapped by scripts/wrap-demos.js -->
-<div class="demo-container header-only">
-  <h1><span class="header-icon">💬</span> Tooltip Component</h1>
-  <p class="intro-text">
-    A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling.
-  </p>
-</div>
+<div class="demo-container">
+  <app-demo-header
+    icon="💬"
+    title="Tooltip"
+    description="A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling."
+  ></app-demo-header>
 
-<demo-tabs>
-  <div slot="playground">
-    <div class="demo-container">
-      <section class="demo-section">
-        <div class="section-header">
-          <h2>🎮 Interactive Playground</h2>
-          <p>Test various configurations and behaviors</p>
-        </div>
-        <app-tooltip-playground></app-tooltip-playground>
-        <app-code-block
-          [code]="playgroundCode"
-          title="Tooltip Usage"
-          language="html"
-        ></app-code-block>
-      </section>
+  <demo-tabs>
+    <div slot="playground">
+      <app-tooltip-playground></app-tooltip-playground>
     </div>
-  </div>
 
-  <div slot="examples">
-    <div class="demo-split-layout">
-      <app-demo-sidebar [links]="anchorLinks"></app-demo-sidebar>
+    <div slot="examples">
+      <div class="demo-split-layout">
+        <app-demo-sidebar [links]="anchorLinks"></app-demo-sidebar>
 
-      <div class="examples-content scroll-spy-container">
-        <!-- Triggers -->
-        <app-example-section
-          id="triggers"
-          title="Triggers"
-          description="Different ways to trigger the tooltip"
-          [code]="hoverCode"
-        >
-          <div class="demo-grid col-3">
-            <div class="preview-box">
-              <app-tooltip content="I appear on hover" position="top">
-                <ui-button slot="target" label="Hover Me"></ui-button>
-              </app-tooltip>
+        <div class="examples-content scroll-spy-container">
+          <!-- Triggers -->
+          <app-example-section
+            id="triggers"
+            title="Triggers"
+            description="Different ways to trigger the tooltip"
+            [code]="hoverCode"
+          >
+            <div class="demo-grid col-3">
+              <div class="preview-box">
+                <app-tooltip content="I appear on hover" position="top">
+                  <ui-button slot="target" label="Hover Me"></ui-button>
+                </app-tooltip>
+              </div>
+              <div class="preview-box">
+                <app-tooltip content="I appear on click" position="top" trigger="click">
+                  <ui-button slot="target" label="Click Me"></ui-button>
+                </app-tooltip>
+              </div>
+              <div class="preview-box">
+                <app-tooltip content="I appear on focus" position="top" trigger="focus">
+                  <input
+                    type="text"
+                    placeholder="Focus me"
+                    slot="target"
+                    style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
+                  />
+                </app-tooltip>
+              </div>
             </div>
-            <div class="preview-box">
-              <app-tooltip content="I appear on click" position="top" trigger="click">
-                <ui-button slot="target" label="Click Me"></ui-button>
-              </app-tooltip>
-            </div>
-            <div class="preview-box">
-              <app-tooltip content="I appear on focus" position="top" trigger="focus">
-                <input
-                  type="text"
-                  placeholder="Focus me"
-                  slot="target"
-                  style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
-                />
-              </app-tooltip>
-            </div>
-          </div>
-        </app-example-section>
+          </app-example-section>
 
-        <!-- Positioning -->
-        <app-example-section
-          id="positioning"
-          title="Positioning"
-          description="Tooltips can be positioned in 8 different directions"
-          [code]="positionCode"
-        >
-          <div class="position-grid">
-            <div class="pos-cell top-left">
-              <app-tooltip content="Top Left" position="top-left">
-                <ui-button slot="target" label="Top Left"></ui-button>
-              </app-tooltip>
+          <!-- Positioning -->
+          <app-example-section
+            id="positioning"
+            title="Positioning"
+            description="Tooltips can be positioned in 8 different directions"
+            [code]="positionCode"
+          >
+            <div class="position-grid">
+              <div class="pos-cell top-left">
+                <app-tooltip content="Top Left" position="top-left">
+                  <ui-button slot="target" label="Top Left"></ui-button>
+                </app-tooltip>
+              </div>
+              <div class="pos-cell top">
+                <app-tooltip content="Top Center" position="top">
+                  <ui-button slot="target" label="Top"></ui-button>
+                </app-tooltip>
+              </div>
+              <div class="pos-cell top-right">
+                <app-tooltip content="Top Right" position="top-right">
+                  <ui-button slot="target" label="Top Right"></ui-button>
+                </app-tooltip>
+              </div>
             </div>
-            <div class="pos-cell top">
-              <app-tooltip content="Top Center" position="top">
-                <ui-button slot="target" label="Top"></ui-button>
-              </app-tooltip>
-            </div>
-            <div class="pos-cell top-right">
-              <app-tooltip content="Top Right" position="top-right">
-                <ui-button slot="target" label="Top Right"></ui-button>
-              </app-tooltip>
-            </div>
-          </div>
-        </app-example-section>
+          </app-example-section>
 
-        <app-example-section
-          id="variants"
-          title="Variants & Themes"
-          description="Built-in color schemes for different contexts"
-          [code]="darkVariantCode"
-        >
-          <div class="demo-grid col-3">
-            <div class="preview-box">
-              <app-tooltip content="Dark Theme" variant="dark">
-                <ui-button
-                  slot="target"
-                  class="demo-btn dark"
-                  variant="dark"
-                  label="Dark"
-                ></ui-button>
-              </app-tooltip>
+          <app-example-section
+            id="variants"
+            title="Variants & Themes"
+            description="Built-in color schemes for different contexts"
+            [code]="darkVariantCode"
+          >
+            <div class="demo-grid col-3">
+              <div class="preview-box">
+                <app-tooltip content="Dark Theme" variant="dark">
+                  <ui-button
+                    slot="target"
+                    class="demo-btn dark"
+                    variant="dark"
+                    label="Dark"
+                  ></ui-button>
+                </app-tooltip>
+              </div>
+              <div class="preview-box">
+                <app-tooltip content="Light Theme" variant="light">
+                  <ui-button
+                    slot="target"
+                    class="demo-btn light"
+                    variant="light"
+                    label="Light"
+                  ></ui-button>
+                </app-tooltip>
+              </div>
+              <div
+                class="preview-box glass-bg"
+                style="background: linear-gradient(135deg, #667eea, #764ba2)"
+              >
+                <app-tooltip content="Glass Effect" variant="glass">
+                  <ui-button
+                    slot="target"
+                    class="demo-btn glass"
+                    variant="ghost"
+                    label="Glass"
+                  ></ui-button>
+                </app-tooltip>
+              </div>
             </div>
-            <div class="preview-box">
-              <app-tooltip content="Light Theme" variant="light">
-                <ui-button
-                  slot="target"
-                  class="demo-btn light"
-                  variant="light"
-                  label="Light"
-                ></ui-button>
-              </app-tooltip>
-            </div>
-            <div
-              class="preview-box glass-bg"
-              style="background: linear-gradient(135deg, #667eea, #764ba2)"
-            >
-              <app-tooltip content="Glass Effect" variant="glass">
-                <ui-button
-                  slot="target"
-                  class="demo-btn glass"
-                  variant="ghost"
-                  label="Glass"
-                ></ui-button>
-              </app-tooltip>
-            </div>
-          </div>
-        </app-example-section>
+          </app-example-section>
+        </div>
       </div>
     </div>
-  </div>
-  <div slot="docs">
-    <app-component-documentation componentId="tooltip"></app-component-documentation>
-  </div>
-</demo-tabs>
+    <div slot="docs">
+      <app-component-documentation componentId="tooltip"></app-component-documentation>
+    </div>
+  </demo-tabs>
+</div>

@@ -130,22 +130,14 @@
           <h3>Directory</h3>
           <span class="count-badge">{{ filteredCategories().length }} Sets</span>
         </div>
-        <nav class="category-menu">
-          <button
-            *ngFor="let category of filteredCategories()"
-            class="menu-item"
-            [class.active]="activeCategory() === category.id"
-            (click)="scrollToCategory(category.id)"
-          >
-            <div class="menu-item-content">
-              <ui-icon [name]="category.icon" [library]="category.iconLibrary"></ui-icon>
-              <span class="menu-label">{{ category.label }}</span>
-            </div>
-            @if (category.children?.length) {
-              <span class="menu-count">{{ category.children?.length }}</span>
-            }
-          </button>
-        </nav>
+        <div class="sidebar-nav-container" style="margin-top: 16px">
+          <ui-anchor
+            [attr.links]="overviewAnchorLinks()"
+            scroll-container=".content-body"
+            type="line"
+            show-progress="true"
+          ></ui-anchor>
+        </div>
       </div>
     </aside>
 
