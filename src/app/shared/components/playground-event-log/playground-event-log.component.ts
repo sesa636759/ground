@@ -15,7 +15,7 @@ export interface LogEntry {
       <div class="header">
         <strong>Event Log</strong>
         @if (logs.length > 0) {
-          <button (click)="clear.emit()" class="clear-btn">Clear</button>
+          <ui-button (click)="clear.emit()" class="clear-btn" variant="ghost" size="sm">Clear</ui-button>
         }
       </div>
       <div class="log-items">

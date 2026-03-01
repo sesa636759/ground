@@ -91,7 +91,7 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
     return generatePlaygroundCode(
       this.popover.nativeElement as Element,
       'ui-popover',
-      '  <button>Target Element</button>\n',
+      '  <ui-button>Target Element</ui-button>\n',
     );
   }
 

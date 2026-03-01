@@ -16,9 +16,9 @@
       <header class="docs-header" *ngIf="!isEmbedded">
         <div class="header-inner">
           <div class="breadcrumb-mini">
-            <button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
+            <ui-button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
               <i class="fas fa-arrow-left"></i> Back
-            </button>
+            </ui-button>
             <span class="breadcrumb-separator">/</span>
             <span>Components</span>
             <span class="breadcrumb-separator">/</span>
@@ -102,13 +102,13 @@
                 <div class="col-prop">
                   <div class="prop-id-group">
                     <span class="prop-name">{{ prop.name }}</span>
-                    <button
+                    <ui-button
                       class="copy-tiny"
                       (click)="copyText(prop.name)"
                       title="Copy property name"
                     >
                       <i class="far fa-copy"></i>
-                    </button>
+                    </ui-button>
                   </div>
                   <span class="required-indicator" *ngIf="prop.required">Required</span>
                 </div>
@@ -229,12 +229,12 @@
         <strong>{{ componentId || 'unknown' }}</strong
         >.
       </p>
-      <button (click)="goBack()" class="btn-primary">Return to Library</button>
+      <ui-button (click)="goBack()" class="btn-primary">Return to Library</ui-button>
     </div>
   </div>
 
   <!-- Back to Top -->
-  <button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
+  <ui-button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
-  </button>
+  </ui-button>
 </div>

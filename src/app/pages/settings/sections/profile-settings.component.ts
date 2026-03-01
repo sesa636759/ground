@@ -22,9 +22,9 @@ import { FormsModule } from '@angular/forms';
           <div class="avatar-edit-section">
             <div class="avatar-wrapper">
               <img src="https://i.pravatar.cc/150?img=12" alt="Avatar" />
-              <button class="change-avatar-btn">
+              <ui-button class="change-avatar-btn" variant="ghost" size="sm" style="padding: 4px 8px; min-width: 0;">
                 <ui-icon name="camera" library="lucide" size="16px"></ui-icon>
-              </button>
+              </ui-button>
             </div>
             <div class="avatar-info">
               <h3>Profile Picture</h3>
