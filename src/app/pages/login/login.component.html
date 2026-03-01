@@ -14,9 +14,9 @@
         <strong>Demo Login:</strong>
         <span>demo@example.com / demo123</span>
       </div>
-      <button type="button" class="btn-demo-fill" (click)="loginWithDemo()">
+      <ui-button type="button" class="btn-demo-fill" (click)="loginWithDemo()">
         Use Demo
-      </button>
+      </ui-button>
     </div>
 
     <!-- Error Message -->
@@ -58,14 +58,14 @@
             required
             autocomplete="current-password"
           />
-          <button
+          <ui-button
             type="button"
             class="toggle-password"
             (click)="togglePasswordVisibility()"
             [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
             {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
-          </button>
+          </ui-button>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
       </div>
 
       <!-- Submit Button -->
-      <button
+      <ui-button
         type="submit"
         class="btn-primary btn-large"
         [disabled]="loading()"
@@ -97,7 +97,7 @@
           <span>Signing in...</span>
           </span>
         }
-      </button>
+      </ui-button>
     
     |
     </form>
@@ -109,18 +109,18 @@
 
     <!-- Social Login Options -->
     <div class="social-login">
-      <button type="button" class="btn-social btn-google">
+      <ui-button type="button" class="btn-social btn-google">
         <span class="social-icon">🔍</span>
         Google
-      </button>
-      <button type="button" class="btn-social btn-github">
+      </ui-button>
+      <ui-button type="button" class="btn-social btn-github">
         <span class="social-icon">🐙</span>
         GitHub
-      </button>
-      <button type="button" class="btn-social btn-microsoft">
+      </ui-button>
+      <ui-button type="button" class="btn-social btn-microsoft">
         <span class="social-icon">🪟</span>
         Microsoft
-      </button>
+      </ui-button>
     </div>
 
     <!-- Register Link -->

@@ -89,14 +89,14 @@
             required
             autocomplete="new-password"
           />
-          <button
+          <ui-button
             type="button"
             class="toggle-password"
             (click)="togglePasswordVisibility()"
             [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
             {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
-          </button>
+          </ui-button>
         </div>
         
         <!-- Password Strength Indicator -->
@@ -129,14 +129,14 @@
             required
             autocomplete="new-password"
           />
-          <button
+          <ui-button
             type="button"
             class="toggle-password"
             (click)="toggleConfirmPasswordVisibility()"
             [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
           >
             {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
-          </button>
+          </ui-button>
         </div>
         @if (confirmPassword) {
           <div class="password-match">
@@ -173,7 +173,7 @@
       </div>
 
       <!-- Submit Button -->
-      <button
+      <ui-button
         type="submit"
         class="btn-primary btn-large"
         [disabled]="loading()"
@@ -187,7 +187,7 @@
             <span>Creating account...</span>
           </span>
         }
-      </button>
+      </ui-button>
     </form>
 
     <!-- Divider -->
@@ -197,18 +197,15 @@
 
     <!-- Social Registration Options -->
     <div class="social-login">
-      <button type="button" class="btn-social btn-google">
+      <ui-button type="button" class="btn-social btn-google" label="Google">
         <span class="social-icon">🔍</span>
-        Google
-      </button>
-      <button type="button" class="btn-social btn-github">
+      </ui-button>
+      <ui-button type="button" class="btn-social btn-github" label="GitHub">
         <span class="social-icon">🐙</span>
-        GitHub
-      </button>
-      <button type="button" class="btn-social btn-microsoft">
+      </ui-button>
+      <ui-button type="button" class="btn-social btn-microsoft" label="Microsoft">
         <span class="social-icon">🪟</span>
-        Microsoft
-      </button>
+      </ui-button>
     </div>
 
     <!-- Login Link -->
