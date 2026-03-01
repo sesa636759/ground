@@ -11,9 +11,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -23,9 +21,9 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   imports: [
     CommonModule,
     FormsModule,
-    AppCheckboxValueAccessorDirective,
+
     UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
+
     AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -132,7 +130,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.sidebarElement) return '';
     let code = generatePlaygroundCode(
       this.sidebarElement.nativeElement as Element,
@@ -148,7 +146,7 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

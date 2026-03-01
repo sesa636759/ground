@@ -8,21 +8,49 @@
 
     <!-- Tab panels managed by Angular, not by app-tab's slot system -->
     <div class="tab-panels-host">
+
+      <!-- ═══ EXAMPLES PANE ═══
+           Two-container layout: ui-anchor sidebar + scrollable content area.
+           Sidebar only renders when [exampleLinks] is provided.
+           When not provided, content fills full width (demos may use their own split layout). -->
       <div
         class="viewport-pane pane-examples animate-in"
         [class.pane-hidden]="active() !== 'examples'"
       >
-        <ng-content select="[slot=examples]"></ng-content>
+        <div class="tab-split-layout" [class.sidebar-active]="exampleLinks">
+          <!-- Left: Anchor Sidebar -->
+          <aside class="tab-sidebar" *ngIf="exampleLinks">
+            <div class="tab-sidebar-title">Sections</div>
+            <ui-anchor
+              [links]="exampleLinks"
+              scroll-container="#examples-scroll-area"
+              type="line"
+              show-progress
+            ></ui-anchor>
+          </aside>
+
+          <!-- Right: Scrollable Content -->
+          <div class="tab-content-area" id="examples-scroll-area">
+            <ng-content select="[slot=examples]"></ng-content>
+          </div>
+        </div>
       </div>
+
+      <!-- ═══ PLAYGROUND PANE ═══ -->
       <div
         class="viewport-pane pane-playground animate-in"
         [class.pane-hidden]="active() !== 'playground'"
       >
         <ng-content select="[slot=playground]"></ng-content>
-      </div>
+      </div>  
+
+      <!-- ═══ DOCUMENTATION PANE ═══
+           component-documentation owns its own sidebar (app-demo-sidebar) and scroll
+           tracking (IntersectionObserver). Just pass the content through full-width. -->
       <div class="viewport-pane pane-docs animate-in" [class.pane-hidden]="active() !== 'docs'">
         <ng-content select="[slot=docs]"></ng-content>
       </div>
+
     </div>
   </div>
 </div>

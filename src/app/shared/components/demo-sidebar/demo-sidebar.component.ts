@@ -81,7 +81,7 @@ import { CommonModule } from '@angular/common';
         <li *ngFor="let variant of variants">
           <a (click)="onLinkClick(variant.id, $event)" [class.active]="activeId === variant.id">
             <span class="nav-icon" *ngIf="variant.icon || variant.emoji">
-              {{ variant.icon || variant.emoji }}
+              <ui-icon [icon]="variant.icon" [library]="'fontawesome'"></ui-icon>
             </span>
             {{ variant.label || variant.title || variant.name || variant.id }}
           </a>

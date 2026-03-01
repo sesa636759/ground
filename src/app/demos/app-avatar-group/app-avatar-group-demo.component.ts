@@ -2,8 +2,6 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';

@@ -181,6 +181,17 @@
       overflow: hidden;
     }
 
+    /* Demo pages use internal scrolling (playground/examples/docs panes scroll themselves).
+       Lock content-body so height:100% propagates down through demo-container → demo-tabs. */
+    &:has(demo-tabs) {
+      overflow: hidden;
+
+      > * {
+        height: 100%;
+        min-height: 0;
+      }
+    }
+
     >* {
       display: block;
       animation: fadeInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;

@@ -74,7 +74,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.stepperElement) return '';
     const innerContent = `
   <ui-smart-step label="Profile" icon="👤" value="1"> ... content ... </ui-smart-step>
@@ -89,7 +89,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

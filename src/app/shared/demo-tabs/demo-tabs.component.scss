@@ -45,13 +45,14 @@ app-tab {
   display: none !important;
 }
 
-/* Angular-managed tab panels */
+/* Angular-managed tab panels host */
 .tab-panels-host {
   flex: 1;
   min-height: 0;
   overflow: hidden;
 }
 
+/* ─── Viewport Pane (base) ── */
 .viewport-pane {
   height: 100%;
   overflow: hidden;
@@ -59,14 +60,11 @@ app-tab {
   flex-direction: column;
 }
 
-.pane-examples {
-  overflow: hidden;
-  padding: 0;
-  background: #ffffff;
-  height: 100%;
-  box-sizing: border-box;
+.pane-hidden {
+  display: none !important;
 }
 
+/* ─── Playground Pane ── */
 .pane-playground {
   overflow-y: auto;
   padding: 2rem;
@@ -74,16 +72,149 @@ app-tab {
   height: 100%;
 }
 
-.pane-docs {
+/* ─── Two-container split layout (Examples & Docs panes) ── */
+.tab-split-layout {
+  display: flex;
+  height: 90vh;
   overflow: hidden;
-  padding: 0;
-  background: #ffffff;
-  height: 100%;
-  box-sizing: border-box;
+  background: #f4faf6; /* subtle green-tinted gap between sidebar and content */
+
+  /* When sidebar is active: show genuine two-column gap */
+  &.sidebar-active {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  /* No sidebar: remove all decoration so inner demos render cleanly */
+  &:not(.sidebar-active) {
+    background: transparent;
+    gap: 0;
+    padding: 0;
+  }
 }
 
-.pane-hidden {
-  display: none !important;
+/* ─── Left: Anchor Sidebar ── */
+.tab-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  border: 1px solid #d1fae5;
+  box-shadow: 0 2px 12px rgba(22, 163, 74, 0.07);
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #16a34a;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #15803d;
+  }
+
+  /* Green theme for ui-anchor */
+  ui-anchor {
+    --primary-color: #16a34a;
+    --anchor-active-color: #16a34a;
+    --text-secondary: #4b5563;
+    --hover-bg: #f0fdf4;
+    --active-bg: #e6f8ec;
+    display: block;
+    width: 100%;
+  }
+}
+
+.tab-sidebar-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-left: 0.25rem;
+}
+
+/* ─── Right: Scrollable Content Area ── */
+.tab-content-area {
+  flex: 1;
+  min-width: 0;
+  height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: #ffffff;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #16a34a transparent;
+
+  /* When the sidebar is active, give the content nice styling */
+  .sidebar-active & {
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    padding: 2rem;
+  }
+
+  /* No sidebar: no decorations – inner demo content fills flush.
+     CRITICAL: override overflow so .examples-split-layout inside controls its own scroll.
+     Without this, .tab-content-area scrolls and .examples-split-layout height:100% breaks. */
+  .tab-split-layout:not(.sidebar-active) & {
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #16a34a;
+    border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #15803d;
+  }
+}
+
+/* ─── Height propagation for slot wrappers ── */
+/* Propagates height through: pane -> slot wrapper div -> component host */
+.pane-examples,
+.pane-docs {
+  > *,
+  > * > * {
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* In no-sidebar mode, propagate height through slot wrapper divs & component hosts
+   so that demos using their own examples-split-layout fill the content area correctly */
+.tab-split-layout:not(.sidebar-active) .tab-content-area {
+  > *,
+  > * > * {
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
+  }
 }
 
 @keyframes fadeIn {
@@ -91,7 +222,6 @@ app-tab {
     opacity: 0;
     margin-top: 10px;
   }
-
   to {
     opacity: 1;
     margin-top: 0;

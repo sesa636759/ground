@@ -4,10 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
-import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-empty-state-demo',
@@ -17,10 +14,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     EmptyStatePlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
-    ExampleSectionComponent,
+
     DemoSidebarComponent,
-    DemoHeaderComponent,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-empty-state-demo.component.html',

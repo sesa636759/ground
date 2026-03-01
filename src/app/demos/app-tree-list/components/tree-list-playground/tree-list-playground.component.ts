@@ -88,7 +88,7 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.treeElement) return '';
     let code = generatePlaygroundCode(this.treeElement.nativeElement as Element, 'ui-tree-list');
     // Add model prop to code manually
@@ -98,7 +98,7 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

@@ -130,7 +130,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.dialogBoxElement) return '';
     const innerContent = `
   <div style="padding: 20px">
@@ -145,7 +145,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

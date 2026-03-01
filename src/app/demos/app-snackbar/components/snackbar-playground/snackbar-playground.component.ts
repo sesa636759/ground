@@ -104,7 +104,7 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.snackbarElement) return '';
     let code = generatePlaygroundCode(this.snackbarElement.nativeElement as Element, 'ui-snackbar');
     code += `\n\n/* Usage in TS */
@@ -120,7 +120,7 @@ snackbar.add({
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
