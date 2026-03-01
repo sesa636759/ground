@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #064e3b 0%, #3DCD58 100%);
   position: relative;
   overflow: hidden;
 }
@@ -89,9 +89,18 @@
   margin-bottom: 32px;
 
   .logo {
-    font-size: 4rem;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     animation: bounce 2s infinite;
+    display: flex;
+    justify-content: center;
+
+    .register-logo-img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+    }
+
+
   }
 
   h1 {
@@ -239,10 +248,29 @@
 }
 
 .password-strength {
-  margin-top: 8px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  position: relative;
+  z-index: 5;
+
+  .strength-icon {
+    flex-shrink: 0;
+    transition: color 0.3s;
+
+    &.weak {
+      color: #ef4444;
+    }
+
+    &.medium {
+      color: #f59e0b;
+    }
+
+    &.strong {
+      color: #10b981;
+    }
+  }
 
   .strength-bar {
     flex: 1;
@@ -322,7 +350,7 @@
   }
 
   .link {
-    color: #f5576c;
+    color: #3DCD58;
     text-decoration: none;
     font-weight: 600;
 
@@ -338,7 +366,7 @@
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+    box-shadow: 0 10px 20px rgba(61, 205, 88, 0.3);
   }
 
   &:disabled {
@@ -410,8 +438,8 @@
   }
 
   &:hover {
-    border-color: #f5576c;
-    background: #fef2f2;
+    border-color: #3DCD58;
+    background: #f9fafb;
     transform: translateY(-2px);
   }
 
@@ -434,14 +462,14 @@
   color: #6b7280;
 
   .login-link {
-    color: #f5576c;
+    color: #3DCD58;
     font-weight: 600;
     text-decoration: none;
     margin-left: 4px;
     transition: color 0.2s;
 
     &:hover {
-      color: #f093fb;
+      color: #059669;
       text-decoration: underline;
     }
   }
