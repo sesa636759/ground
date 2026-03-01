@@ -9,7 +9,7 @@
 
     <!-- Demo Credentials Info -->
     <div class="demo-banner">
-      <span class="demo-icon">💡</span>
+      <ui-icon name="lightbulb" library="lucide" size="18px" class="demo-icon"></ui-icon>
       <div class="demo-content">
         <strong>Demo Login:</strong>
         <span>demo@example.com / demo123</span>
@@ -21,7 +21,7 @@
 
     <!-- Error Message -->
     <div class="alert alert-error" *ngIf="error()">
-      <span class="alert-icon">⚠️</span>
+      <ui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></ui-icon>
       <span>{{ error() }}</span>
     </div>
 
@@ -31,7 +31,7 @@
       <div class="form-group">
         <label for="email">Email Address</label>
         <div class="input-wrapper">
-          <span class="input-icon">📧</span>
+          <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
           <app-input
             type="email"
             id="email"
@@ -48,7 +48,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <span class="input-icon">🔒</span>
+          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
           <app-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
@@ -64,7 +64,7 @@
             (click)="togglePasswordVisibility()"
             [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
-            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
+            <ui-icon [name]="showPassword() ? 'eye-off' : 'eye'" library="lucide" size="18px"></ui-icon>
           </ui-button>
         </div>
       </div>
@@ -110,15 +110,15 @@
     <!-- Social Login Options -->
     <div class="social-login">
       <ui-button type="button" class="btn-social btn-google">
-        <span class="social-icon">🔍</span>
+        <ui-icon name="search" library="lucide" size="18px" class="social-icon"></ui-icon>
         Google
       </ui-button>
       <ui-button type="button" class="btn-social btn-github">
-        <span class="social-icon">🐙</span>
+        <ui-icon name="github" library="lucide" size="18px" class="social-icon"></ui-icon>
         GitHub
       </ui-button>
       <ui-button type="button" class="btn-social btn-microsoft">
-        <span class="social-icon">🪟</span>
+        <ui-icon name="windows" library="lucide" size="18px" class="social-icon"></ui-icon>
         Microsoft
       </ui-button>
     </div>
