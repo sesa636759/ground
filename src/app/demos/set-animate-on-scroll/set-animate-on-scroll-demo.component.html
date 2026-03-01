@@ -1,14 +1,30 @@
-<demo-tabs>
-  <div slot="examples">
+
+<div class="demo-container">
+  <app-demo-header
+    icon="✨"
+    title="Animate on Scroll"
+    description="Add stunning, hardware-accelerated scroll animations to any element with a single directive or component wrapper."
+  ></app-demo-header>
+
+  <demo-tabs>
+    <div slot="playground">
+      <app-animate-on-scroll-playground></app-animate-on-scroll-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="demo-split-layout">
+        <app-demo-sidebar [links]="anchorLinks"></app-demo-sidebar>
+        <div class="examples-content scroll-spy-container">
+
     <!-- Basic Animations -->
-    <demo-section id="fade-in-basic">
-      <section-header>
-        <h2>🌅 Fade In</h2>
-        <p>Smooth fade entrance with configurable duration.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="fade-in-basic"
+          title="🌅 Fade In"
+          description="Smooth fade entrance with configurable duration."
+          [code]="fadeInBasicCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="fade-in" duration="600">
               <div
                 class="content-box"
@@ -24,19 +40,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="fadeInBasicCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="fade-out-basic">
-      <section-header>
-        <h2>🌇 Fade Out</h2>
-        <p>Fade out effect triggered on scroll.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="fade-out-basic"
+          title="🌇 Fade Out"
+          description="Fade out effect triggered on scroll."
+          [code]="fadeOutBasicCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="fade-out" duration="600">
               <div
                 class="content-box"
@@ -52,19 +66,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="fadeOutBasicCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="slide-up">
-      <section-header>
-        <h2>⬆️ Slide Up</h2>
-        <p>Element slides up from bottom with smooth motion.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="slide-up"
+          title="⬆️ Slide Up"
+          description="Element slides up from bottom with smooth motion."
+          [code]="slideUpCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-up" duration="800" offset="100">
               <div
                 class="content-box"
@@ -80,19 +92,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="slideUpCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="slide-down">
-      <section-header>
-        <h2>⬇️ Slide Down</h2>
-        <p>Element slides down from top.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="slide-down"
+          title="⬇️ Slide Down"
+          description="Element slides down from top."
+          [code]="slideDownCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-down" duration="800">
               <div
                 class="content-box"
@@ -108,19 +118,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="slideDownCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="slide-left">
-      <section-header>
-        <h2>⬅️ Slide Left</h2>
-        <p>Element slides from right to left.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="slide-left"
+          title="⬅️ Slide Left"
+          description="Element slides from right to left."
+          [code]="slideLeftCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-left" duration="800">
               <div
                 class="content-box"
@@ -136,19 +144,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="slideLeftCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="slide-right">
-      <section-header>
-        <h2>➡️ Slide Right</h2>
-        <p>Element slides from left to right.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="slide-right"
+          title="➡️ Slide Right"
+          description="Element slides from left to right."
+          [code]="slideRightCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-right" duration="800">
               <div
                 class="content-box"
@@ -164,19 +170,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="slideRightCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="zoom-in">
-      <section-header>
-        <h2>🔍 Zoom In</h2>
-        <p>Scale up entrance effect from 50% to full size.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="zoom-in"
+          title="🔍 Zoom In"
+          description="Scale up entrance effect from 50% to full size."
+          [code]="zoomInCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="zoom-in" duration="700" scale="0.5">
               <div
                 class="content-box"
@@ -192,19 +196,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="zoomInCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="zoom-out">
-      <section-header>
-        <h2>🔎 Zoom Out</h2>
-        <p>Scale down entrance effect from 150% to normal size.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="zoom-out"
+          title="🔎 Zoom Out"
+          description="Scale down entrance effect from 150% to normal size."
+          [code]="zoomOutCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="zoom-out" duration="700" scale="1.5">
               <div
                 class="content-box"
@@ -220,19 +222,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="zoomOutCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="bounce">
-      <section-header>
-        <h2>⚡ Bounce</h2>
-        <p>Bouncy, energetic entrance effect.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="bounce"
+          title="⚡ Bounce"
+          description="Bouncy, energetic entrance effect."
+          [code]="bounceCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="bounce" duration="1000">
               <div
                 class="content-box"
@@ -248,19 +248,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="bounceCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="flip">
-      <section-header>
-        <h2>🔄 Flip</h2>
-        <p>Classic flip animation effect.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="flip"
+          title="🔄 Flip"
+          description="Classic flip animation effect."
+          [code]="flipCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="flip" duration="900">
               <div
                 class="content-box"
@@ -276,20 +274,18 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="flipCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- Cinematic Effects -->
-    <demo-section id="blur-entrance">
-      <section-header>
-        <h2>🌫️ Blur Entrance</h2>
-        <p>Starts blurry and becomes sharp for premium feel.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="blur-entrance"
+          title="🌫️ Blur Entrance"
+          description="Starts blurry and becomes sharp for premium feel."
+          [code]="blurEntranceCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll
               animation="fade-in"
               blur-amount="10"
@@ -316,19 +312,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="blurEntranceCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="glassmorphic-blur">
-      <section-header>
-        <h2>🎬 Glassmorphic Blur</h2>
-        <p>20px Gaussian blur with elastic easing for native-app feel.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="glassmorphic-blur"
+          title="🎬 Glassmorphic Blur"
+          description="20px Gaussian blur with elastic easing for native-app feel."
+          [code]="glassmorphicBlurCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll
               animation="fade-in"
               blur-amount="20"
@@ -355,19 +349,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="glassmorphicBlurCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="elastic-easing">
-      <section-header>
-        <h2>🎪 Elastic Easing</h2>
-        <p>Bouncy, playful animation curve using cubic-bezier.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="elastic-easing"
+          title="🎪 Elastic Easing"
+          description="Bouncy, playful animation curve using cubic-bezier."
+          [code]="elasticEasingCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll
               animation="slide-up"
               easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)"
@@ -387,20 +379,18 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="elasticEasingCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- 3D Transforms -->
-    <demo-section id="flip-in-3d">
-      <section-header>
-        <h2>🎲 Flip In 3D</h2>
-        <p>Hardware-accelerated 3D flip along X-axis with perspective.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
+    <app-example-section
+          id="flip-in-3d"
+          title="🎲 Flip In 3D"
+          description="Hardware-accelerated 3D flip along X-axis with perspective."
+          [code]="flipIn3dCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
             <app-animate-on-scroll
               animation="flip-in"
               perspective="1000"
@@ -422,19 +412,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="flipIn3dCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="rotate-3d">
-      <section-header>
-        <h2>🌀 Rotate 3D</h2>
-        <p>Complex 3D rotation from center point along Y-axis.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
+    <app-example-section
+          id="rotate-3d"
+          title="🌀 Rotate 3D"
+          description="Complex 3D rotation from center point along Y-axis."
+          [code]="rotate3dCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
             <app-animate-on-scroll
               animation="rotate-3d"
               perspective="1500"
@@ -456,19 +444,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="rotate3dCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="perspective-depth">
-      <section-header>
-        <h2>🏔️ Perspective Depth</h2>
-        <p>Deep 3D perspective with multiple rotation axes.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
+    <app-example-section
+          id="perspective-depth"
+          title="🏔️ Perspective Depth"
+          description="Deep 3D perspective with multiple rotation axes."
+          [code]="perspectiveDepthCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
             <app-animate-on-scroll
               animation="zoom-in"
               perspective="2000"
@@ -491,20 +477,18 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="perspectiveDepthCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- Stagger Effects -->
-    <demo-section id="stagger-children">
-      <section-header>
-        <h2>🎵 Stagger Children</h2>
-        <p>Sequentially animate child elements with 100ms delay.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
+    <app-example-section
+          id="stagger-children"
+          title="🎵 Stagger Children"
+          description="Sequentially animate child elements with 100ms delay."
+          [code]="staggerChildrenCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
             <app-animate-on-scroll animation="fade-in" stagger="100">
               <div
                 style="
@@ -552,19 +536,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="staggerChildrenCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="stagger-fast">
-      <section-header>
-        <h2>⚡ Stagger Fast</h2>
-        <p>Quick sequential animation with 50ms stagger delay.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
+    <app-example-section
+          id="stagger-fast"
+          title="⚡ Stagger Fast"
+          description="Quick sequential animation with 50ms stagger delay."
+          [code]="staggerFastCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
             <app-animate-on-scroll animation="slide-up" stagger="50">
               <div
                 style="
@@ -623,19 +605,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="staggerFastCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="stagger-slow">
-      <section-header>
-        <h2>🐌 Stagger Slow</h2>
-        <p>Deliberate sequential animation with 200ms stagger.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
+    <app-example-section
+          id="stagger-slow"
+          title="🐌 Stagger Slow"
+          description="Deliberate sequential animation with 200ms stagger."
+          [code]="staggerSlowCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
             <app-animate-on-scroll animation="fade-in" stagger="200">
               <div
                 style="
@@ -672,20 +652,18 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="staggerSlowCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- Scroll Interactions -->
-    <demo-section id="scroll-trigger">
-      <section-header>
-        <h2>🎯 Scroll Trigger</h2>
-        <p>Animate one element based on another element's scroll position.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 1200px">
+    <app-example-section
+          id="scroll-trigger"
+          title="🎯 Scroll Trigger"
+          description="Animate one element based on another element's scroll position."
+          [code]="scrollTriggerCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 1200px">
             <div style="display: flex; gap: 20px">
               <div style="flex: 0 0 200px; position: sticky; top: 20px; height: fit-content">
                 <app-animate-on-scroll animation="shake" trigger="#trigger-zone">
@@ -740,19 +718,17 @@
               </div>
             </div>
           </preview-box>
-          <ui-code-preview [htmlCode]="scrollTriggerCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="scroll-scrubbing">
-      <section-header>
-        <h2>🎛️ Scroll Scrubbing</h2>
-        <p>Directly bind animation progress to scrollbar position.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box
+    <app-example-section
+          id="scroll-scrubbing"
+          title="🎛️ Scroll Scrubbing"
+          description="Directly bind animation progress to scrollbar position."
+          [code]="scrollScrubbingCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box
             class="scrollable-preview"
             style="min-height: 1500px; padding-top: 600px; padding-bottom: 600px"
           >
@@ -779,19 +755,17 @@
               </app-animate-on-scroll>
             </div>
           </preview-box>
-          <ui-code-preview [htmlCode]="scrollScrubbingCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="scrub-rotate">
-      <section-header>
-        <h2>🔄 Scrub Rotate</h2>
-        <p>Double rotation (720 degrees) tied to scroll progress.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box
+    <app-example-section
+          id="scrub-rotate"
+          title="🔄 Scrub Rotate"
+          description="Double rotation (720 degrees) tied to scroll progress."
+          [code]="scrubRotateCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box
             class="scrollable-preview"
             style="min-height: 1500px; padding-top: 600px; padding-bottom: 600px"
           >
@@ -817,19 +791,17 @@
               </app-animate-on-scroll>
             </div>
           </preview-box>
-          <ui-code-preview [htmlCode]="scrubRotateCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="scrub-scale">
-      <section-header>
-        <h2>📏 Scrub Scale</h2>
-        <p>Scale to 2x size based on scroll position.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box
+    <app-example-section
+          id="scrub-scale"
+          title="📏 Scrub Scale"
+          description="Scale to 2x size based on scroll position."
+          [code]="scrubScaleCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box
             class="scrollable-preview"
             style="min-height: 1500px; padding-top: 600px; padding-bottom: 600px"
           >
@@ -855,56 +827,50 @@
               </app-animate-on-scroll>
             </div>
           </preview-box>
-          <ui-code-preview [htmlCode]="scrubScaleCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- Text Animations -->
-    <demo-section id="text-char">
-      <section-header>
-        <h2>🔤 Text Character</h2>
-        <p>Reveal text character-by-character with 50ms stagger.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
+    <app-example-section
+          id="text-char"
+          title="🔤 Text Character"
+          description="Reveal text character-by-character with 50ms stagger."
+          [code]="textCharCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
             <app-animate-on-scroll animation="text-reveal" text-mode="char" stagger="50">
               <h2 style="text-align: center; font-size: 2.5em; margin: 0">Start Building</h2>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="textCharCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="text-word">
-      <section-header>
-        <h2>📝 Text Word</h2>
-        <p>Reveal text word-by-word with 100ms stagger.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
+    <app-example-section
+          id="text-word"
+          title="📝 Text Word"
+          description="Reveal text word-by-word with 100ms stagger."
+          [code]="textWordCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
             <app-animate-on-scroll animation="text-reveal" text-mode="word" stagger="100">
               <p style="text-align: center; font-size: 1.5em; margin: 0">
                 Create amazing scroll experiences today
               </p>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="textWordCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="text-stagger">
-      <section-header>
-        <h2>✍️ Text Stagger</h2>
-        <p>Fast character reveal with 30ms stagger for dramatic effect.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
+    <app-example-section
+          id="text-stagger"
+          title="✍️ Text Stagger"
+          description="Fast character reveal with 30ms stagger for dramatic effect."
+          [code]="textStaggerCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 800px; padding-top: 400px">
             <app-animate-on-scroll
               animation="text-reveal"
               text-mode="char"
@@ -914,20 +880,18 @@
               <h1 style="text-align: center; font-size: 3em; margin: 0">Fast Character Reveal</h1>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="textStaggerCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
     <!-- Advanced Features -->
-    <demo-section id="shake-animation">
-      <section-header>
-        <h2>📳 Shake</h2>
-        <p>Attention-grabbing shake effect for notifications or alerts.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="shake-animation"
+          title="📳 Shake"
+          description="Attention-grabbing shake effect for notifications or alerts."
+          [code]="shakeAnimationCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="shake" duration="500">
               <div
                 class="content-box"
@@ -943,19 +907,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="shakeAnimationCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="repeat-animation">
-      <section-header>
-        <h2>🔁 Repeat Animation</h2>
-        <p>Animation repeats every time element enters viewport.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="repeat-animation"
+          title="🔁 Repeat Animation"
+          description="Animation repeats every time element enters viewport."
+          [code]="repeatAnimationCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="bounce" repeat="true" duration="1000">
               <div
                 class="content-box"
@@ -971,19 +933,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="repeatAnimationCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="mirror-effect">
-      <section-header>
-        <h2>🪞 Mirror Effect</h2>
-        <p>Animation reverses when scrolling up.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="mirror-effect"
+          title="🪞 Mirror Effect"
+          description="Animation reverses when scrolling up."
+          [code]="mirrorEffectCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-up" mirror="true" duration="800">
               <div
                 class="content-box"
@@ -999,19 +959,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="mirrorEffectCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="custom-threshold">
-      <section-header>
-        <h2>📊 Custom Threshold</h2>
-        <p>Trigger animation at 50% visibility instead of default.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="custom-threshold"
+          title="📊 Custom Threshold"
+          description="Trigger animation at 50% visibility instead of default."
+          [code]="customThresholdCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="fade-in" threshold="0.5" duration="600">
               <div
                 class="content-box"
@@ -1027,19 +985,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="customThresholdCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="delay-timing">
-      <section-header>
-        <h2>⏱️ Delay Timing</h2>
-        <p>500ms delay before animation starts.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="delay-timing"
+          title="⏱️ Delay Timing"
+          description="500ms delay before animation starts."
+          [code]="delayTimingCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="fade-in" delay="500" duration="800">
               <div
                 class="content-box"
@@ -1055,19 +1011,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="delayTimingCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="duration-control">
-      <section-header>
-        <h2>⏳ Duration Control</h2>
-        <p>Extended 2 second duration for dramatic slow-motion effect.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
+    <app-example-section
+          id="duration-control"
+          title="⏳ Duration Control"
+          description="Extended 2 second duration for dramatic slow-motion effect."
+          [code]="durationControlCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 600px; padding-top: 300px">
             <app-animate-on-scroll animation="slide-up" duration="2000">
               <div
                 class="content-box"
@@ -1083,19 +1037,17 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="durationControlCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
+      </div>
+    </app-example-section>
 
-    <demo-section id="combined-effects">
-      <section-header>
-        <h2>🎨 Combined Effects</h2>
-        <p>Combines blur, 3D perspective, rotation, scale, and elastic easing.</p>
-      </section-header>
-      <demo-grid>
-        <demo-card>
-          <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
+    <app-example-section
+          id="combined-effects"
+          title="🎨 Combined Effects"
+          description="Combines blur, 3D perspective, rotation, scale, and elastic easing."
+          [code]="combinedEffectsCode()"
+        >
+      <div class="demo-grid col-1">
+        <preview-box class="scrollable-preview" style="min-height: 700px; padding-top: 350px">
             <app-animate-on-scroll
               animation="fade-in"
               blur-amount="15"
@@ -1125,17 +1077,14 @@
               </div>
             </app-animate-on-scroll>
           </preview-box>
-          <ui-code-preview [htmlCode]="combinedEffectsCode()" activeLang="html" />
-        </demo-card>
-      </demo-grid>
-    </demo-section>
-  </div>
-
-  <div slot="playground">
-    <app-animate-on-scroll-playground />
-  </div>
-
-  <div slot="docs">
+      </div>
+    </app-example-section>
+  
+        </div>
+      </div>
+    </div>
+    <div slot="docs">
     <app-component-documentation componentId="animate-on-scroll" />
   </div>
 </demo-tabs>
+</div>

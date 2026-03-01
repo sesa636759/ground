@@ -10,17 +10,17 @@ import {
   ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DocsPageLayoutComponent } from '../../shared/components/docs-page-layout/docs-page-layout.component';
 import { ActivatedRoute } from '@angular/router';
 import {
   ComponentDocsService,
   ComponentDocumentation,
-  } from '../../services/component-docs.service';
+} from '../../services/component-docs.service';
 
 @Component({
   selector: 'app-component-documentation',
   standalone: true,
-  imports: [CommonModule, DemoSidebarComponent],
+  imports: [CommonModule, DocsPageLayoutComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './component-documentation.component.html',
   styleUrl: './component-documentation.component.scss',

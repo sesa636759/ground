@@ -1,240 +1,277 @@
-<div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
-  <div class="examples-split-layout" *ngIf="componentDoc">
-    <!-- Sidebar Navigation -->
-    <app-demo-sidebar
-      [variants]="sidebarSections"
-      [useAnchor]="true"
-      scrollContainer="#docs-scroll-area"
-      type="line"
-      show-progress
-      [active-Link]="getSectionId(activeSection())"
-    ></app-demo-sidebar>
+<app-docs-page-layout
+  *ngIf="componentDoc"
+  [title]="componentDoc.name + ' API'"
+  [description]="componentDoc.shortDescription"
+  [sections]="sidebarSections"
+>
+  <section [id]="getSectionId('overview')">
+    <h2 class="section-heading">Overview</h2>
+    <p>{{ componentDoc.detailedDescription }}</p>
+  </section>
 
-    <!-- Main Content Area -->
-    <div class="examples-content" id="docs-scroll-area">
-      <!-- Hero Header (Desktop Only) -->
-      <header class="docs-header" *ngIf="!isEmbedded">
-        <div class="header-inner">
-          <div class="breadcrumb-mini">
-            <button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
-              <i class="fas fa-arrow-left"></i> Back
-            </button>
-            <span class="breadcrumb-separator">/</span>
-            <span>Components</span>
-            <span class="breadcrumb-separator">/</span>
-            <span>API</span>
+  <section [id]="getSectionId('usage')">
+    <h2 class="section-heading">Quick Start</h2>
+    <ui-code-preview
+      [htmlCode]="componentDoc.usage"
+      [label]="componentDoc.name + ' Basic Implementation'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </section>
+
+  <section [id]="getSectionId('properties')" *ngIf="componentDoc.props.length > 0">
+    <h2 class="section-heading">Properties</h2>
+    <div class="table-controls" *ngIf="componentDoc.props.length > 5" style="margin-bottom: 24px">
+      <input
+        type="text"
+        placeholder="Filter properties..."
+        (input)="filterText.set($any($event.target).value)"
+        style="
+          padding: 10px 16px;
+          border-radius: 8px;
+          border: 1px solid var(--border-color);
+          background: var(--surface-1);
+          color: var(--text-primary);
+          width: 100%;
+          max-width: 400px;
+          font-family: var(--font-sans);
+        "
+      />
+    </div>
+
+    <div
+      class="props-grid-container"
+      style="
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--surface-1);
+      "
+    >
+      <div
+        class="props-table-header"
+        style="
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr 3fr;
+          padding: 16px 20px;
+          background: var(--surface-2);
+          font-weight: 600;
+          font-size: 0.875rem;
+          border-bottom: 1px solid var(--border-color);
+          color: var(--text-primary);
+        "
+      >
+        <div class="col-prop">Member</div>
+        <div class="col-type">Type</div>
+        <div class="col-default">Default</div>
+        <div class="col-desc">Description</div>
+      </div>
+      <div class="props-table-body">
+        <div
+          class="props-row"
+          *ngFor="let prop of filteredProps()"
+          style="
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 3fr;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            align-items: start;
+            font-size: 0.95rem;
+          "
+        >
+          <div class="col-prop" style="display: flex; flex-direction: column; gap: 6px">
+            <div class="prop-id-group" style="display: flex; align-items: center; gap: 8px">
+              <span
+                class="prop-name"
+                style="font-weight: 600; font-family: var(--font-mono); color: var(--primary)"
+                >{{ prop.name }}</span
+              >
+            </div>
+            <span
+              class="required-indicator"
+              *ngIf="prop.required"
+              style="font-size: 0.75rem; color: var(--danger-color); font-weight: 500"
+              >Required</span
+            >
           </div>
-          <div class="title-row">
-            <h1>{{ componentDoc.name }}</h1>
-            <div class="version-tag">STABLE</div>
+          <div class="col-type">
+            <code class="inline-code">{{ prop.type }}</code>
           </div>
-          <p class="lead-text">{{ componentDoc.shortDescription }}</p>
+          <div class="col-default">
+            <code class="inline-code" *ngIf="prop.defaultValue">{{ prop.defaultValue }}</code>
+            <span class="no-default" *ngIf="!prop.defaultValue" style="color: var(--text-muted)"
+              >—</span
+            >
+          </div>
+          <div class="col-desc" style="color: var(--text-secondary); line-height: 1.6">
+            {{ prop.description }}
+          </div>
         </div>
-        <div class="header-decoration"></div>
-      </header>
-
-      <div class="docs-sections">
-        <!-- Overview Section -->
-        <section [id]="getSectionId('overview')" class="doc-section hero-section">
-          <div class="section-title">
-            <div class="icon-orb"><i class="fas fa-rocket"></i></div>
-            <div class="title-text">
-              <h2>Overview</h2>
-              <p>Core functionality and conceptual overview</p>
-            </div>
-          </div>
-          <div class="glass-card overview-content">
-            <p class="description-text">{{ componentDoc.detailedDescription }}</p>
-          </div>
-        </section>
-
-        <!-- Usage Section -->
-        <section [id]="getSectionId('usage')" class="doc-section">
-          <div class="section-title">
-            <div class="icon-orb secondary"><i class="fas fa-terminal"></i></div>
-            <div class="title-text">
-              <h2>Quick Start</h2>
-              <p>Basic implementation and markup</p>
-            </div>
-          </div>
-          <ui-code-preview
-            [htmlCode]="componentDoc.usage"
-            [label]="componentDoc.name + ' Basic Implementation'"
-            activeLang="html"
-            expanded="true"
-          ></ui-code-preview>
-        </section>
-
-        <!-- Props Section -->
-        <section
-          [id]="getSectionId('properties')"
-          class="doc-section"
-          *ngIf="componentDoc.props.length > 0"
+        <div
+          class="empty-filter"
+          *ngIf="filteredProps().length === 0"
+          style="padding: 32px; text-align: center; color: var(--text-muted)"
         >
-          <div class="section-title">
-            <div class="icon-orb success"><i class="fas fa-sliders-h"></i></div>
-            <div class="title-text">
-              <h2>Properties</h2>
-              <p>Configurable inputs and attributes</p>
-            </div>
-          </div>
-
-          <div class="table-controls" *ngIf="componentDoc.props.length > 5">
-            <div class="search-box">
-              <i class="fas fa-search"></i>
-              <input
-                type="text"
-                placeholder="Filter properties..."
-                (input)="filterText.set($any($event.target).value)"
-              />
-            </div>
-          </div>
-
-          <div class="props-grid-container glass-card">
-            <div class="props-table-header">
-              <div class="col-prop">Member</div>
-              <div class="col-type">Type</div>
-              <div class="col-default">Default</div>
-              <div class="col-desc">Description</div>
-            </div>
-            <div class="props-table-body">
-              <div class="props-row" *ngFor="let prop of filteredProps()">
-                <div class="col-prop">
-                  <div class="prop-id-group">
-                    <span class="prop-name">{{ prop.name }}</span>
-                    <button
-                      class="copy-tiny"
-                      (click)="copyText(prop.name)"
-                      title="Copy property name"
-                    >
-                      <i class="far fa-copy"></i>
-                    </button>
-                  </div>
-                  <span class="required-indicator" *ngIf="prop.required">Required</span>
-                </div>
-                <div class="col-type">
-                  <code class="type-pill">{{ prop.type }}</code>
-                </div>
-                <div class="col-default">
-                  <code class="default-pill" *ngIf="prop.defaultValue">{{
-                    prop.defaultValue
-                  }}</code>
-                  <span class="no-default" *ngIf="!prop.defaultValue">—</span>
-                </div>
-                <div class="col-desc">{{ prop.description }}</div>
-              </div>
-              <div class="empty-filter" *ngIf="filteredProps().length === 0">
-                No properties match your filter.
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Events Section -->
-        <section
-          [id]="getSectionId('events')"
-          class="doc-section"
-          *ngIf="componentDoc.events.length > 0"
-        >
-          <div class="section-title">
-            <div class="icon-orb warning"><i class="fas fa-broadcast-tower"></i></div>
-            <div class="title-text">
-              <h2>Events</h2>
-              <p>Custom outputs and event emitters</p>
-            </div>
-          </div>
-          <div class="events-stack">
-            <div class="event-entry glass-card" *ngFor="let event of componentDoc.events">
-              <div class="event-main">
-                <div class="event-name-group">
-                  <span class="event-symbol">(</span>
-                  <span class="event-name">{{ event.name }}</span>
-                  <span class="event-symbol">)</span>
-                </div>
-                <p class="event-desc">{{ event.description }}</p>
-              </div>
-              <div class="event-payload" *ngIf="event.payloadType">
-                <div class="payload-label">Payload Type</div>
-                <code class="payload-type">{{ event.payloadType }}</code>
-                <p class="payload-desc" *ngIf="event.payloadDescription">
-                  {{ event.payloadDescription }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Considerations Section -->
-        <section
-          [id]="getSectionId('limitations')"
-          class="doc-section"
-          *ngIf="componentDoc.limitations.length > 0"
-        >
-          <div class="section-title">
-            <div class="icon-orb danger"><i class="fas fa-shield-alt"></i></div>
-            <div class="title-text">
-              <h2>Considerations</h2>
-              <p>Best practices and versioning notes</p>
-            </div>
-          </div>
-          <div class="considerations-card">
-            <ul class="checklist">
-              <li *ngFor="let limitation of componentDoc.limitations">
-                <i class="fas fa-check-circle"></i>
-                <span>{{ limitation }}</span>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Advanced Examples -->
-        <section
-          [id]="getSectionId('examples')"
-          class="doc-section"
-          *ngIf="componentDoc.examples && componentDoc.examples.length > 0"
-        >
-          <div class="section-title">
-            <div class="icon-orb info"><i class="fas fa-puzzle-piece"></i></div>
-            <div class="title-text">
-              <h2>Implementation Patterns</h2>
-              <p>Common real-world usage scenarios</p>
-            </div>
-          </div>
-          <div class="patterns-grid">
-            <div class="pattern-card" *ngFor="let example of componentDoc.examples; let i = index">
-              <div class="pattern-header">
-                <span class="pattern-number">0{{ i + 1 }}</span>
-                <h3>Pattern Variation</h3>
-              </div>
-              <ui-code-preview
-                [htmlCode]="example"
-                [label]="'Composition Example ' + (i + 1)"
-                activeLang="html"
-                expanded="true"
-              ></ui-code-preview>
-            </div>
-          </div>
-        </section>
+          No properties match your filter.
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Empty State -->
-  <div class="no-docs-empty" *ngIf="!componentDoc">
-    <div class="empty-state-card glass-card">
-      <div class="empty-icon"><i class="fas fa-compass"></i></div>
-      <h3>API Specification Missing</h3>
-      <p>
-        We couldn't locate the documentation metadata for
-        <strong>{{ componentId || 'unknown' }}</strong
-        >.
-      </p>
-      <button (click)="goBack()" class="btn-primary">Return to Library</button>
+  <section [id]="getSectionId('events')" *ngIf="componentDoc.events.length > 0">
+    <h2 class="section-heading">Events</h2>
+    <div class="events-stack" style="display: flex; flex-direction: column; gap: 20px">
+      <div
+        class="event-entry alert-box warning"
+        *ngFor="let event of componentDoc.events"
+        style="display: flex; flex-direction: column; gap: 0; align-items: stretch; margin: 0"
+      >
+        <div class="event-main" style="margin-bottom: 12px">
+          <div
+            class="event-name-group"
+            style="
+              font-family: var(--font-mono);
+              font-weight: 600;
+              color: color-mix(in srgb, var(--warning-color) 80%, var(--text-primary));
+              margin-bottom: 8px;
+              font-size: 1.1rem;
+            "
+          >
+            ({{ event.name }})
+          </div>
+          <p class="event-desc" style="margin: 0; color: var(--text-primary); line-height: 1.6">
+            {{ event.description }}
+          </p>
+        </div>
+        <div
+          class="event-payload"
+          *ngIf="event.payloadType"
+          style="
+            margin-top: 12px;
+            padding-top: 16px;
+            border-top: 1px dashed
+              color-mix(in srgb, var(--border-color) 50%, var(--warning-color) 20%);
+          "
+        >
+          <div
+            style="
+              font-size: 0.75rem;
+              text-transform: uppercase;
+              color: var(--text-secondary);
+              font-weight: 600;
+              letter-spacing: 0.05em;
+              margin-bottom: 8px;
+            "
+          >
+            Payload Type
+          </div>
+          <code class="inline-code" style="background: rgba(var(--bg-primary-rgb), 0.5)">{{
+            event.payloadType
+          }}</code>
+          <p
+            class="payload-desc"
+            *ngIf="event.payloadDescription"
+            style="
+              margin: 12px 0 0;
+              font-size: 0.95rem;
+              color: var(--text-secondary);
+              line-height: 1.5;
+            "
+          >
+            {{ event.payloadDescription }}
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
+  <section [id]="getSectionId('limitations')" *ngIf="componentDoc.limitations.length > 0">
+    <h2 class="section-heading">Considerations</h2>
+    <div class="alert-box danger" style="margin: 0">
+      <ul
+        class="checklist"
+        style="
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          width: 100%;
+        "
+      >
+        <li
+          *ngFor="let limitation of componentDoc.limitations"
+          style="
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            line-height: 1.6;
+            color: var(--text-primary);
+          "
+        >
+          <span style="font-size: 1.25rem">🛑</span>
+          <span>{{ limitation }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section
+    [id]="getSectionId('examples')"
+    *ngIf="componentDoc.examples && componentDoc.examples.length > 0"
+  >
+    <h2 class="section-heading">Implementation Patterns</h2>
+    <div class="patterns-grid" style="display: flex; flex-direction: column; gap: 40px">
+      <div class="pattern-card" *ngFor="let example of componentDoc.examples; let i = index">
+        <h3
+          style="
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+          "
+        >
+          Example {{ i + 1 }}
+        </h3>
+        <ui-code-preview
+          [htmlCode]="example"
+          [label]="'Composition Example ' + (i + 1)"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </div>
+    </div>
+  </section>
+</app-docs-page-layout>
+
+<div
+  class="no-docs-empty"
+  *ngIf="!componentDoc"
+  style="padding: 100px 20px; text-align: center; max-width: 600px; margin: 0 auto"
+>
+  <div style="font-size: 3rem; margin-bottom: 24px; color: var(--text-muted)">📚</div>
+  <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 12px">
+    Component API Missing
+  </h3>
+  <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6">
+    We couldn't locate the documentation metadata for
+    <strong>{{ componentId || 'unknown' }}</strong> in the component registry.
+  </p>
+  <button
+    (click)="goBack()"
+    style="
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    "
+  >
+    Return to Library
   </button>
 </div>

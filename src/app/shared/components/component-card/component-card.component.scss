@@ -1,11 +1,12 @@
 :host {
     display: block;
     height: 100%;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: var(--am-row-gap, 32px);
 }
 
 .component-card {
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
     padding: 1.75rem;
     cursor: pointer;
     display: flex;
