@@ -1,6 +1,9 @@
 ﻿<app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+  layout="column"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -30,32 +33,41 @@
 
       <div class="control-group">
         <label>Handle Size (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.handleSize" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.handleSize"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Snap Threshold (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.snapThreshold" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.snapThreshold"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showHandleIcon" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showHandleIcon" (ngModelChange)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.snapToEdge" (ngModelChange)="updateConfig()" /> Snap to Edge
+        <ui-checkbox [(ngModel)]="pgConfig.snapToEdge" (ngModelChange)="updateConfig()" /> Snap to
+        Edge
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible1" (ngModelChange)="updateConfig()" /> P1
+        <ui-checkbox [(ngModel)]="pgConfig.collapsible1" (ngModelChange)="updateConfig()" /> P1
         Collapsible
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.collapsible3" (ngModelChange)="updateConfig()" /> P3
+        <ui-checkbox [(ngModel)]="pgConfig.collapsible3" (ngModelChange)="updateConfig()" /> P3
         Collapsible
       </label>
     </div>
@@ -95,14 +107,4 @@
     [logs]="eventLog()"
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

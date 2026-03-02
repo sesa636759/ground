@@ -1,141 +1,139 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Layout</h3>
-            <div class="control-group">
-              <label>Size</label>
-              <input
-                type="range"
-                min="180"
-                max="360"
-                step="20"
-                [(ngModel)]="cfg.size"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.size }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Track Width</label>
-              <input
-                type="range"
-                min="10"
-                max="30"
-                step="2"
-                [(ngModel)]="cfg.trackWidth"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)"
-                >{{ cfg.trackWidth }}px</span
-              >
-            </div>
-            <div class="control-group">
-              <label>Gap</label>
-              <input
-                type="range"
-                min="4"
-                max="16"
-                step="2"
-                [(ngModel)]="cfg.gap"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.gap }}px</span>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showVal"
-                [(ngModel)]="cfg.showValues"
-                (ngModelChange)="update()"
-                label="Show Values"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showLabels"
-                [(ngModel)]="cfg.showLabels"
-                (ngModelChange)="update()"
-                label="Show Labels"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="rounded"
-                [(ngModel)]="cfg.rounded"
-                (ngModelChange)="update()"
-                label="Rounded Caps"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Layout</h3>
+        <div class="control-group">
+          <label>Size</label>
+          <ui-input
+            type="range"
+            min="180"
+            max="360"
+            step="20"
+            [(ngModel)]="cfg.size"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
         </div>
-        <div class="action-buttons">
-        
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Track Width</label>
+          <ui-input
+            type="range"
+            min="10"
+            max="30"
+            step="2"
+            [(ngModel)]="cfg.trackWidth"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+            >{{ cfg.trackWidth }}px</span
+          >
+        </div>
+        <div class="control-group">
+          <label>Gap</label>
+          <ui-input
+            type="range"
+            min="4"
+            max="16"
+            step="2"
+            [(ngModel)]="cfg.gap"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <div style="position:relative;display:inline-block;">
-          <svg [attr.width]="cfg.size" [attr.height]="cfg.size" style="display:block;">
-            <g
-              *ngFor="let bar of bars; let i = index"
-              [attr.transform]="'translate(' + cfg.size / 2 + ',' + cfg.size / 2 + ')'"
-            >
-              <!-- Track -->
-              <circle
-                [attr.r]="getR(i)"
-                fill="none"
-                stroke="#f3f4f6"
-                [attr.stroke-width]="cfg.trackWidth"
-              />
-              <!-- Arc -->
-              <circle
-                [attr.r]="getR(i)"
-                fill="none"
-                [attr.stroke]="bar.color"
-                [attr.stroke-width]="cfg.trackWidth"
-                [attr.stroke-dasharray]="getDash(bar.value, i)"
-                stroke-dashoffset="0"
-                [attr.stroke-linecap]="cfg.rounded ? 'round' : 'butt'"
-                transform="rotate(-90)"
-              />
-              <!-- Label -->
-              <text
-                *ngIf="cfg.showLabels"
-                [attr.x]="-(getR(i) + cfg.trackWidth / 2 + 4)"
-                y="4"
-                text-anchor="end"
-                font-size="11"
-                [attr.fill]="bar.color"
-                font-weight="600"
-              >
-                {{ bar.label }}
-              </text>
-              <text
-                *ngIf="cfg.showValues"
-                [attr.x]="getR(i) + cfg.trackWidth / 2 + 4"
-                y="4"
-                text-anchor="start"
-                font-size="11"
-                fill="#374151"
-                font-weight="700"
-              >
-                {{ bar.value }}%
-              </text>
-            </g>
-          </svg>
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showVal"
+            [(ngModel)]="cfg.showValues"
+            (ngModelChange)="update()"
+            label="Show Values"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showLabels"
+            [(ngModel)]="cfg.showLabels"
+            (ngModelChange)="update()"
+            label="Show Labels"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="rounded"
+            [(ngModel)]="cfg.rounded"
+            (ngModelChange)="update()"
+            label="Rounded Caps"
+          ></ui-checkbox>
         </div>
       </div>
-       @if (showCode) {
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div style="position: relative; display: inline-block">
+      <svg [attr.width]="cfg.size" [attr.height]="cfg.size" style="display: block">
+        <g
+          *ngFor="let bar of bars; let i = index"
+          [attr.transform]="'translate(' + cfg.size / 2 + ',' + cfg.size / 2 + ')'"
+        >
+          <!-- Track -->
+          <circle
+            [attr.r]="getR(i)"
+            fill="none"
+            stroke="#f3f4f6"
+            [attr.stroke-width]="cfg.trackWidth"
+          />
+          <!-- Arc -->
+          <circle
+            [attr.r]="getR(i)"
+            fill="none"
+            [attr.stroke]="bar.color"
+            [attr.stroke-width]="cfg.trackWidth"
+            [attr.stroke-dasharray]="getDash(bar.value, i)"
+            stroke-dashoffset="0"
+            [attr.stroke-linecap]="cfg.rounded ? 'round' : 'butt'"
+            transform="rotate(-90)"
+          />
+          <!-- Label -->
+          <text
+            *ngIf="cfg.showLabels"
+            [attr.x]="-(getR(i) + cfg.trackWidth / 2 + 4)"
+            y="4"
+            text-anchor="end"
+            font-size="11"
+            [attr.fill]="bar.color"
+            font-weight="600"
+          >
+            {{ bar.label }}
+          </text>
+          <text
+            *ngIf="cfg.showValues"
+            [attr.x]="getR(i) + cfg.trackWidth / 2 + 4"
+            y="4"
+            text-anchor="start"
+            font-size="11"
+            fill="#374151"
+            font-weight="700"
+          >
+            {{ bar.value }}%
+          </text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -144,5 +142,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

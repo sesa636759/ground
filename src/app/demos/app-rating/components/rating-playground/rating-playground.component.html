@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Type</label>
@@ -10,19 +15,19 @@
     </div>
     <div class="control-group">
       <label>Value</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max (Stars/Smiley)</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Size</label>
@@ -46,46 +51,30 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.allowHalf"
           (ngModelChange)="updateConfig()"
           [disabled]="pgConfig.type !== 'star'"
-        ></app-checkbox>
+        ></ui-checkbox>
         Allow Half
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Text
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.readonly"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
         Read-Only
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div
     preview
@@ -117,13 +106,4 @@
       Current Value: {{ pgConfig.value }}
     </div>
   </div>
-
-  <ui-code-preview
-    code
-    *ngIf="showCode"
-    [htmlCode]="generatedCode"
-    [label]="'Generated Code'"
-    activeLang="html"
-    [expanded]="true"
-  ></ui-code-preview>
 </app-playground>

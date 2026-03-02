@@ -9,7 +9,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
@@ -56,7 +56,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
   ];
 
   currentStep = '1';
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -74,7 +74,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.stepperElement) return '';
     const innerContent = `
   <ui-smart-step label="Profile" icon="👤" value="1"> ... content ... </ui-smart-step>
@@ -89,7 +89,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -100,7 +100,7 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

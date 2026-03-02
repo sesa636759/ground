@@ -10,13 +10,13 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
-  selector: 'app-checkbox-playground',
+  selector: 'ui-checkbox-playground',
   standalone: true,
   imports: [
     CommonModule,
@@ -71,14 +71,14 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-checkbox');
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-checkbox');
   }
 
   refreshCode() {
@@ -92,7 +92,7 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

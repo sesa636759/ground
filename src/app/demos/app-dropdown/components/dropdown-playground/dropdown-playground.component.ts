@@ -10,7 +10,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
@@ -95,7 +95,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   cascadingOptionsJson = JSON.stringify(this.cascadingOptions);
 
   currentValue = '';
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -105,12 +105,12 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     let code = '<ui-dropdown\n';
     code += `  placeholder="${this.pgConfig.placeholder}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
@@ -136,7 +136,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -146,7 +146,7 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

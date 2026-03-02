@@ -36,11 +36,11 @@ All 8 low-priority group/utility components are **ALREADY COVERED** in their par
 
 ---
 
-### 2. app-checkbox-group ❌ NOT USED
+### 2. ui-checkbox-group ❌ NOT USED
 
 **Status**: **NOT FOUND** in `set-checkbox` demo
 **Location**: `src/app/demos/set-checkbox/set-checkbox-demo.component.html`
-**Analysis**: The checkbox demo shows individual checkboxes in groups using CSS classes (`.checkbox-group`), but does NOT use the `app-checkbox-group` component.
+**Analysis**: The checkbox demo shows individual checkboxes in groups using CSS classes (`.checkbox-group`), but does NOT use the `ui-checkbox-group` component.
 **Coverage**: Individual checkboxes are extensively covered (212 lines)
 **Features Demonstrated**:
 
@@ -54,7 +54,7 @@ All 8 low-priority group/utility components are **ALREADY COVERED** in their par
 - Label positions
 - Form examples
 
-**Conclusion**: If `app-checkbox-group` is a wrapper component, it's not currently used. Individual checkboxes are fully covered.
+**Conclusion**: If `ui-checkbox-group` is a wrapper component, it's not currently used. Individual checkboxes are fully covered.
 
 ---
 
@@ -163,7 +163,7 @@ All 8 low-priority group/utility components are **ALREADY COVERED** in their par
 | Component               | Status           | Parent Demo       | Needs Separate Demo?           |
 | ----------------------- | ---------------- | ----------------- | ------------------------------ |
 | app-button-toggle-group | ✅ Fully Covered | set-button-toggle | ❌ No                          |
-| app-checkbox-group      | ⚠️ Not Used      | set-checkbox      | ❌ No (if wrapper)             |
+| ui-checkbox-group       | ⚠️ Not Used      | set-checkbox      | ❌ No (if wrapper)             |
 | app-radio-group         | ✅ Fully Covered | set-radio         | ❌ No                          |
 | app-toggle-group        | ✅ Fully Covered | set-toggle        | ❌ No                          |
 | app-list-group          | ✅ Covered       | set-list          | ❌ No                          |
@@ -190,7 +190,7 @@ The following components are adequately covered in their parent demos:
 
 The following components need clarification:
 
-1. **app-checkbox-group**: Not currently used in the checkbox demo.
+1. **ui-checkbox-group**: Not currently used in the checkbox demo.
    - If it's a wrapper component similar to radio-group, consider adding examples.
    - If it's deprecated or not meant for standalone use, no action needed.
 

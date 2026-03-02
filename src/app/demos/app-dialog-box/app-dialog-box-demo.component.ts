@@ -85,9 +85,9 @@ export class AppDialogBoxDemoComponent extends BaseDemoComponent {
       <span style="font-size:12px; color:#666;">With subtitle</span>
     </div>
   </div>
-  <button slot="header-actions" title="Star" style="background:transparent; border:none; cursor:pointer;">
+  <ui-button slot="header-actions" title="Star" style="background:transparent; border:none; cursor:pointer;">
     <ui-icon name="star" library="lucide" size="16px"></ui-icon>
-  </button>
+  </ui-button>
   <div style="padding:16px; background:#f0fdf4; border:1px dashed #10b981; border-radius:6px;">
     <h4 style="margin-top:0;">Slot Content Area</h4>
     <p>This content is injected via the default slot. It is fully customizable.</p>

@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   imports: [
     CommonModule,
     FormsModule,
-    ContextMenuPlaygroundComponent,
+    
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,

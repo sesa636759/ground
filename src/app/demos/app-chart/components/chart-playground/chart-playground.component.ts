@@ -9,7 +9,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -62,7 +62,7 @@ export class ChartPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-  this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -76,20 +76,20 @@ export class ChartPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.chart) return '';
     return generatePlaygroundCode(this.chart.nativeElement as Element, 'ui-chart');
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());;
+    navigator.clipboard.writeText(this.generatedCode());
   }
 
   resetConfig() {

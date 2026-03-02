@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -9,31 +11,31 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Text</label>
-          <input
+          <ui-input
             name="text"
             type="text"
             [(ngModel)]="pgConfig.text"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <input
+          <ui-input
             name="icon"
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. ⭐"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input
+          <ui-input
             name="badge"
             type="text"
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -91,32 +93,23 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             name="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div
     preview
     class="preview-stage"
     [class.vertical-container]="pgConfig.orientation === 'vertical'"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
   >
     <div *ngIf="pgConfig.orientation === 'vertical'">Panel Start</div>
     <ui-divider
@@ -133,14 +126,4 @@
     ></ui-divider>
     <div *ngIf="pgConfig.orientation === 'vertical'">Panel End</div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

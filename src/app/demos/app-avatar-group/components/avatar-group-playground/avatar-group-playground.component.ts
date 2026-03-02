@@ -48,7 +48,7 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     { label: 'Square', value: 'square' },
   ];
 
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -66,7 +66,7 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.avatarGroupElement) return '';
     const innerContent = `
   <ui-avatar label="JD"></ui-avatar>
@@ -82,13 +82,13 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

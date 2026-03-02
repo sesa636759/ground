@@ -10,8 +10,8 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -72,7 +72,7 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
   ];
 
   valuesJson = JSON.stringify(this.values);
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -90,7 +90,7 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.meterElement) return '';
     let code = generatePlaygroundCode(this.meterElement.nativeElement as Element, 'ui-meter-group');
     // Add values prop to code manually
@@ -100,13 +100,13 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -40,7 +40,7 @@ export class AvatarPlaygroundComponent {
     { label: 'Offline', value: 'offline' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {
     this.updateConfig();
@@ -58,11 +58,11 @@ export class AvatarPlaygroundComponent {
     if (this.pgConfig.badgeColor) code += `  badge-color="${this.pgConfig.badgeColor}"\n`;
     code += '></ui-avatar>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

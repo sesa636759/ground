@@ -9,9 +9,9 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -36,7 +36,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
   pgConfig = this.getDefaultConfig();
 
   visible = false;
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   pgAccordionItems = JSON.stringify([
@@ -130,7 +130,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.dialogBoxElement) return '';
     const innerContent = `
   <div style="padding: 20px">
@@ -145,13 +145,13 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -9,7 +9,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -53,7 +53,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
   lastAction = '';
 
@@ -72,7 +72,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.contextMenuElement) return '';
     return generatePlaygroundCode(
       this.contextMenuElement.nativeElement as Element,
@@ -82,7 +82,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -92,7 +92,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

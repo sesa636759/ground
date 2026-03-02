@@ -1,29 +1,34 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen" multiple>
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Global Configuration -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Min</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Step</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
         (ngModelChange)="updateConfig()"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Orientation</label>
@@ -39,26 +44,17 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></ui-checkbox>
         Range Mode (Dual)
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Tooltip
       </label>
     </div>
-  </div>
-
-  <div class="action-buttons">
-    <ui-button
-      class="btn-secondary"
-      variant="secondary"
-      (click)="resetConfig()"
-      label="Reset"
-    ></ui-button>
   </div>
 
   <div
@@ -69,6 +65,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 40px;
     "
   >
     <div
@@ -87,13 +84,8 @@
         (rangeChange)="onValueChange($event)"
       ></ui-range-slider>
     </div>
-    <div style="margin-top: 24px; font-weight: 600">Current Value: {{ currentValue | json }}</div>
-
-    <ui-code-preview
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
+    <div style="margin-top: 24px; font-weight: 600; color: var(--text-primary)">
+      Current Value: {{ currentValue | json }}
+    </div>
   </div>
 </app-playground>

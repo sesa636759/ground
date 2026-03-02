@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA,  OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TooltipPlaygroundComponent } from './components/tooltip-playground/tooltip-playground.component';
@@ -60,7 +60,7 @@ export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit
 </app-tooltip>`;
 
   focusCode = `<app-tooltip content="I appear on focus" position="top" trigger="focus">
-  <input type="text" placeholder="Focus me" slot="target" />
+  <ui-input type="text" placeholder="Focus me" slot="target" ></ui-input>
 </app-tooltip>`;
 
   positionCode = `<!-- Top Left -->

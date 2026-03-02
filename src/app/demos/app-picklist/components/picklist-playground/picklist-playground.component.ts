@@ -10,8 +10,8 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
@@ -70,12 +70,12 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     let code = '<ui-picklist\n';
     code += `  source-header="${this.pgConfig.sourceHeader}"\n`;
     code += `  target-header="${this.pgConfig.targetHeader}"\n`;
@@ -103,7 +103,7 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

@@ -22,87 +22,80 @@
           <label
             >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
           >
-          <input
+          <ui-input
             type="range"
             min="1"
             max="6"
             step="1"
             [(ngModel)]="pgConfig.strokeWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label
             >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
           >
-          <input
+          <ui-input
             type="range"
             min="300"
             max="800"
             step="50"
             [(ngModel)]="pgConfig.width"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label
             >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
           >
-          <input
+          <ui-input
             type="range"
             min="200"
             max="500"
             step="50"
             [(ngModel)]="pgConfig.height"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="pgConfig.showGrid"
             (ngModelChange)="updateConfig()"
             label="Show Grid"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showMarkers"
             [(ngModel)]="pgConfig.showMarkers"
             (ngModelChange)="updateConfig()"
             label="Show Markers"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="enableAnimation"
             [(ngModel)]="pgConfig.enableAnimation"
             (ngModelChange)="updateConfig()"
             label="Enable Animation"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
+   
   </div>
   <div
     preview

@@ -1,4 +1,4 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,11 +7,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-playground.component.html',
-  styleUrl: './app-playground.component.scss'
+  styleUrl: './app-playground.component.scss',
 })
 export class AppPlaygroundComponent {
   @Input() accordionItems: any[] | string = [];
   @Input() defaultOpen: any[] | string = [];
+  @Input() code: string = '';
+  @Input() layout: 'row' | 'column' = 'row';
+  @Output() reset = new EventEmitter<void>();
 
   get parsedItems(): any[] {
     if (typeof this.accordionItems === 'string') {
@@ -34,13 +37,13 @@ export class AppPlaygroundComponent {
         return items.length > 0 ? [items[0].id] : [];
       }
     }
-    
+
     // If it's an array but empty, and we have items, open the first one
     const openArray = this.defaultOpen as string[];
     if ((!openArray || openArray.length === 0) && this.parsedItems.length > 0) {
-        return [this.parsedItems[0].id];
+      return [this.parsedItems[0].id];
     }
-    
+
     return openArray || [];
   }
 

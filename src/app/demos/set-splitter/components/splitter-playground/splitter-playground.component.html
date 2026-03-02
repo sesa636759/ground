@@ -31,7 +31,7 @@
 
       <div class="control-group">
         <label>Gutter Size (px)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.gutterSize"
           min="4"
@@ -42,7 +42,7 @@
 
       <div class="control-group">
         <label>Snap Threshold (%)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.snapThreshold"
           min="0"
@@ -54,25 +54,22 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
         Animated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" />
         Elevated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
         Show Icon
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.doubleClickCollapse"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (ngModelChange)="updateConfig()" />
         DB Click Collapse
       </label>
     </div>

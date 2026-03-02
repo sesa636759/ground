@@ -42,7 +42,7 @@ export class TabsPlaygroundComponent {
   ];
 
   currentTab = 'overview';
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
 
   constructor() {
     this.updateConfig();
@@ -58,7 +58,7 @@ export class TabsPlaygroundComponent {
     code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
     code += '</ui-tabs>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
   }
 
   onTabChange(event: any) {
@@ -66,7 +66,7 @@ export class TabsPlaygroundComponent {
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

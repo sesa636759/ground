@@ -10,7 +10,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
@@ -65,12 +65,12 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.demoElement) return '';
     return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-otp-input');
   }
@@ -86,7 +86,7 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

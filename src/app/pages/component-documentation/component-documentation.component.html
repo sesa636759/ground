@@ -3,11 +3,8 @@
     <!-- Sidebar Navigation -->
     <app-demo-sidebar
       [variants]="sidebarSections"
-      [useAnchor]="true"
       scrollContainer="#docs-scroll-area"
-      type="line"
-      show-progress
-      [active-Link]="getSectionId(activeSection())"
+      [activeLink]="getSectionId(activeSection())"
     ></app-demo-sidebar>
 
     <!-- Main Content Area -->

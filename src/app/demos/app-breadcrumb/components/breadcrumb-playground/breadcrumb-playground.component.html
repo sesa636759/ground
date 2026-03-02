@@ -1,25 +1,30 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <div slot="content-config">
     <div class="control-grid">
       <div class="control-section">
         <h3>Configuration</h3>
         <div class="control-group">
           <label>Separator</label>
-          <input
+          <ui-input
             type="text"
             name="separator"
             [(ngModel)]="pgConfig.separator"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Max Items (Collapse)</label>
-          <input
+          <ui-input
             type="number"
             name="maxItems"
             [(ngModel)]="pgConfig.maxItems"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Size</label>
@@ -35,13 +40,13 @@
       <div class="control-section">
         <h3>Home & Variant</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showHome"
             name="showHome"
             [(ngModel)]="pgConfig.showHome"
             (ngModelChange)="updateConfig()"
             label="Show Home"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -56,16 +61,6 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-breadcrumb
       #breadcrumb
@@ -77,14 +72,4 @@
       [items]="itemsJson"
     ></ui-breadcrumb>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

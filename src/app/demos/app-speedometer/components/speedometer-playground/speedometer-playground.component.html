@@ -1,31 +1,60 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <div slot="content-metric" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Value</label>
-      <input type="number" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.value"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Min</label>
-      <input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.min"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max</label>
-      <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Label</label>
-      <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.label"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <div slot="content-appearance" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Size</label>
-      <input type="number" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Arc Width</label>
-      <input type="number" [(ngModel)]="pgConfig.arcWidth" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.arcWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Color Mode</label>
@@ -37,17 +66,10 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-speedometer
       #speedometerElement
       [attr.value]="pgConfig.value"
@@ -59,13 +81,4 @@
       [attr.color-mode]="pgConfig.colorMode"
     ></ui-speedometer>
   </div>
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

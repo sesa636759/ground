@@ -84,11 +84,16 @@ export class App implements OnInit {
     };
   });
 
+
   constructor(
     public router: Router,
     public themeService: ThemeService,
-    private authService: AuthService,
+    public authService: AuthService,
   ) {}
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
+  }
 
   ngOnInit() {
     // Track route changes to update selected item

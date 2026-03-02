@@ -1,163 +1,161 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Style</h3>
-            <div class="control-group">
-              <label>Stroke Width</label>
-              <input
-                type="range"
-                min="1"
-                max="5"
-                step="0.5"
-                [(ngModel)]="cfg.strokeWidth"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)"
-                >{{ cfg.strokeWidth }}px</span
-              >
-            </div>
-            <div class="control-group">
-              <label>Point Radius</label>
-              <input
-                type="range"
-                min="0"
-                max="8"
-                step="1"
-                [(ngModel)]="cfg.pointR"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.pointR }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Color</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.color"
-                (ngModelChange)="update()"
-                [options]="colorOpts"
-              ></ui-dropdown>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="fill"
-                [(ngModel)]="cfg.fill"
-                (ngModelChange)="update()"
-                label="Fill Area"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showGrid"
-                [(ngModel)]="cfg.showGrid"
-                (ngModelChange)="update()"
-                label="Show Grid"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showAxes"
-                [(ngModel)]="cfg.showAxes"
-                (ngModelChange)="update()"
-                label="Show Axes"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Style</h3>
+        <div class="control-group">
+          <label>Stroke Width</label>
+          <ui-input
+            type="range"
+            min="1"
+            max="5"
+            step="0.5"
+            [(ngModel)]="cfg.strokeWidth"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+            >{{ cfg.strokeWidth }}px</span
+          >
         </div>
-        <div class="action-buttons">
-        
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Point Radius</label>
+          <ui-input
+            type="range"
+            min="0"
+            max="8"
+            step="1"
+            [(ngModel)]="cfg.pointR"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.pointR }}px</span>
+        </div>
+        <div class="control-group">
+          <label>Color</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.color"
+            (ngModelChange)="update()"
+            [options]="colorOpts"
+          ></ui-dropdown>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <div class="chart-preview-wrapper">
-          <svg width="600" height="300" style="display:block;font-family:inherit;">
-            <defs>
-              <linearGradient id="slg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" [attr.stop-color]="cfg.color" stop-opacity="0.3" />
-                <stop offset="100%" [attr.stop-color]="cfg.color" stop-opacity="0.02" />
-              </linearGradient>
-            </defs>
-            <!-- Grid -->
-            <g *ngIf="cfg.showGrid">
-              <line
-                *ngFor="let g of hGridLines"
-                [attr.x1]="pad"
-                [attr.y1]="g"
-                x2="570"
-                [attr.y2]="g"
-                stroke="#f3f4f6"
-                stroke-width="1"
-              />
-            </g>
-            <!-- Axes -->
-            <g *ngIf="cfg.showAxes">
-              <line
-                [attr.x1]="pad"
-                [attr.y1]="pad"
-                [attr.x2]="pad"
-                y2="270"
-                stroke="#d1d5db"
-                stroke-width="1"
-              />
-              <line [attr.x1]="pad" y1="270" x2="570" y2="270" stroke="#d1d5db" stroke-width="1" />
-              <text
-                *ngFor="let lbl of xLabels"
-                [attr.x]="lbl.x"
-                y="288"
-                text-anchor="middle"
-                font-size="11"
-                fill="#6b7280"
-              >
-                {{ lbl.label }}
-              </text>
-              <text
-                *ngFor="let lbl of yLabels"
-                [attr.x]="pad - 6"
-                [attr.y]="lbl.y + 4"
-                text-anchor="end"
-                font-size="11"
-                fill="#6b7280"
-              >
-                {{ lbl.label }}
-              </text>
-            </g>
-            <!-- Fill area -->
-            <path *ngIf="cfg.fill" [attr.d]="areaPath" [attr.fill]="'url(#slg)'" />
-            <!-- Step line -->
-            <polyline
-              [attr.points]="stepPolyline"
-              fill="none"
-              [attr.stroke]="cfg.color"
-              [attr.stroke-width]="cfg.strokeWidth"
-              stroke-linejoin="miter"
-            />
-            <!-- Points -->
-            <g *ngFor="let p of dataPoints">
-              <circle
-                *ngIf="cfg.pointR > 0"
-                [attr.cx]="p.x"
-                [attr.cy]="p.y"
-                [attr.r]="cfg.pointR"
-                [attr.fill]="cfg.color"
-                stroke="white"
-                [attr.stroke-width]="1.5"
-              />
-            </g>
-          </svg>
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="fill"
+            [(ngModel)]="cfg.fill"
+            (ngModelChange)="update()"
+            label="Fill Area"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showGrid"
+            [(ngModel)]="cfg.showGrid"
+            (ngModelChange)="update()"
+            label="Show Grid"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showAxes"
+            [(ngModel)]="cfg.showAxes"
+            (ngModelChange)="update()"
+            label="Show Axes"
+          ></ui-checkbox>
         </div>
       </div>
-       @if (showCode) {
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div class="chart-preview-wrapper">
+      <svg width="600" height="300" style="display: block; font-family: inherit">
+        <defs>
+          <linearGradient id="slg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" [attr.stop-color]="cfg.color" stop-opacity="0.3" />
+            <stop offset="100%" [attr.stop-color]="cfg.color" stop-opacity="0.02" />
+          </linearGradient>
+        </defs>
+        <!-- Grid -->
+        <g *ngIf="cfg.showGrid">
+          <line
+            *ngFor="let g of hGridLines"
+            [attr.x1]="pad"
+            [attr.y1]="g"
+            x2="570"
+            [attr.y2]="g"
+            stroke="#f3f4f6"
+            stroke-width="1"
+          />
+        </g>
+        <!-- Axes -->
+        <g *ngIf="cfg.showAxes">
+          <line
+            [attr.x1]="pad"
+            [attr.y1]="pad"
+            [attr.x2]="pad"
+            y2="270"
+            stroke="#d1d5db"
+            stroke-width="1"
+          />
+          <line [attr.x1]="pad" y1="270" x2="570" y2="270" stroke="#d1d5db" stroke-width="1" />
+          <text
+            *ngFor="let lbl of xLabels"
+            [attr.x]="lbl.x"
+            y="288"
+            text-anchor="middle"
+            font-size="11"
+            fill="#6b7280"
+          >
+            {{ lbl.label }}
+          </text>
+          <text
+            *ngFor="let lbl of yLabels"
+            [attr.x]="pad - 6"
+            [attr.y]="lbl.y + 4"
+            text-anchor="end"
+            font-size="11"
+            fill="#6b7280"
+          >
+            {{ lbl.label }}
+          </text>
+        </g>
+        <!-- Fill area -->
+        <path *ngIf="cfg.fill" [attr.d]="areaPath" [attr.fill]="'url(#slg)'" />
+        <!-- Step line -->
+        <polyline
+          [attr.points]="stepPolyline"
+          fill="none"
+          [attr.stroke]="cfg.color"
+          [attr.stroke-width]="cfg.strokeWidth"
+          stroke-linejoin="miter"
+        />
+        <!-- Points -->
+        <g *ngFor="let p of dataPoints">
+          <circle
+            *ngIf="cfg.pointR > 0"
+            [attr.cx]="p.x"
+            [attr.cy]="p.y"
+            [attr.r]="cfg.pointR"
+            [attr.fill]="cfg.color"
+            stroke="white"
+            [attr.stroke-width]="1.5"
+          />
+        </g>
+      </svg>
+    </div>
+  </div>
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -166,5 +164,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -11,11 +13,11 @@
         </h3>
         <div class="control-group">
           <label>Initial Duration (s)</label>
-          <app-input
+          <ui-input
             type="number"
             [(ngModel)]="pgConfig.duration"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Mode</label>
@@ -41,22 +43,21 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="autoStart"
             [(ngModel)]="pgConfig.autoStart"
             (ngModelChange)="updateConfig()"
             label="Auto Start"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button (click)="copyCode()" variant="primary" label="Copy Implementation"></ui-button>
-      <ui-button variant="ghost" (click)="resetConfig()" label="Reset Configuration"></ui-button>
-    </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="timer-preview-card">
       <ui-timer
         #timerEl
@@ -88,14 +89,4 @@
       </div>
     </div>
   </div>
-
-    @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

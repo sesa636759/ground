@@ -27,6 +27,10 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   categories = categoryNavItems;
   searchQuery = signal<string>('');
   viewMode = signal<'grid' | 'list'>('grid');
+  viewOptions = [
+    { value: 'grid', label: 'Grid View', icon: 'fas fa-th' },
+    { value: 'list', label: 'List View', icon: 'fas fa-list' },
+  ];
   activeCategory = signal<string>(this.categories[0]?.id || '');
 
   private scrollContainer: Element | null = null;
@@ -56,6 +60,17 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
         };
       })
       .filter((cat) => cat.children && cat.children.length > 0);
+  });
+
+  overviewAnchorLinks = computed(() => {
+    return JSON.stringify(
+      this.filteredCategories().map((cat) => ({
+        id: cat.id,
+        target: 'cat-' + cat.id,
+        label: `${cat.label} (${cat.children?.length || 0})`,
+        icon: cat.icon,
+      })),
+    );
   });
 
   constructor(
@@ -215,6 +230,14 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
 
   navigateToComponent(componentId: string) {
     this.router.navigate(['/demos', ...componentId.split('/')]);
+  }
+
+  navigateToDocs(componentId: string) {
+    // The component documentation page expects component ID (the last part of the path usually)
+    const id = componentId.split('/').pop();
+    this.router.navigate(['/component-documentation'], {
+      queryParams: { component: id },
+    });
   }
 
   onSearchInput(event: Event) {

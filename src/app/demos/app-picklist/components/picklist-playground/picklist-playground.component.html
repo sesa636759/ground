@@ -3,59 +3,52 @@
     <div slot="content-global" class="control-grid" style="padding: 16px">
       <div class="control-group">
         <label>Source Header</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.sourceHeader"
           (ngModelChange)="updateConfig()"
-        ></app-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Target Header</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.targetHeader"
           (ngModelChange)="updateConfig()"
-        ></app-input>
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Filter Placeholder</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.filterPlaceholder"
           (ngModelChange)="updateConfig()"
-        ></app-input>
+        ></ui-input>
       </div>
     </div>
 
     <div slot="content-states" style="padding: 16px">
       <div class="checkbox-grid">
         <label class="checkbox-item">
-          <app-checkbox
+          <ui-checkbox
             id="showSourceControls"
             [(ngModel)]="pgConfig.showSourceControls"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           Source Controls
         </label>
         <label class="checkbox-item">
-          <app-checkbox
+          <ui-checkbox
             id="showTargetControls"
             [(ngModel)]="pgConfig.showTargetControls"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           Target Controls
         </label>
       </div>
     </div>
 
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
+
 
     <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
       <ui-picklist

@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -35,55 +37,43 @@
       <div class="control-section">
         <h3>Options</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showNumbers"
             [(ngModel)]="pgConfig.showNumbers"
             (ngModelChange)="updateConfig()"
             label="Show Numbers"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDesc"
             [(ngModel)]="pgConfig.showDescriptions"
             (ngModelChange)="updateConfig()"
             label="Show Descriptions"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="dot"
             [(ngModel)]="pgConfig.progressDot"
             (ngModelChange)="updateConfig()"
             label="Progress Dot"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Active Step</label>
-          <input
+          <ui-input
             type="number"
             min="0"
             max="3"
             [(ngModel)]="pgConfig.activeStep"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
     </div>
-
-    <div class="code-output">
-      <pre>{{ generatedCode() }}</pre>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
   </div>
+
   <div
     preview
     style="
@@ -92,6 +82,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding: 40px;
     "
   >
     <ui-stepper
@@ -111,14 +102,4 @@
       <p>{{ steps[pgConfig.activeStep].description }}</p>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

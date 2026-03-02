@@ -1,107 +1,103 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Style</h3>
-            <div class="control-group">
-              <label>Dataset</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.dataset"
-                (ngModelChange)="onDataset()"
-                [options]="datasetOpts"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Stroke Width</label>
-              <input
-                type="range"
-                min="1"
-                max="5"
-                step="0.5"
-                [(ngModel)]="cfg.strokeWidth"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)"
-                >{{ cfg.strokeWidth }}px</span
-              >
-            </div>
-            <div class="control-group">
-              <label>Opacity</label>
-              <input
-                type="range"
-                min="0.1"
-                max="0.7"
-                step="0.05"
-                [(ngModel)]="cfg.fillOpacity"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{
-                cfg.fillOpacity
-              }}</span>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="smooth"
-                [(ngModel)]="cfg.smooth"
-                (ngModelChange)="update()"
-                label="Smooth Curve"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="grid"
-                [(ngModel)]="cfg.showGrid"
-                (ngModelChange)="update()"
-                label="Show Grid"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="dots"
-                [(ngModel)]="cfg.showDots"
-                (ngModelChange)="update()"
-                label="Show Points"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="stacked"
-                [(ngModel)]="cfg.stacked"
-                (ngModelChange)="update()"
-                label="Stacked"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Style</h3>
+        <div class="control-group">
+          <label>Dataset</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.dataset"
+            (ngModelChange)="onDataset()"
+            [options]="datasetOpts"
+          ></ui-dropdown>
         </div>
-        <div class="action-buttons">
-        
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Stroke Width</label>
+          <ui-input
+            type="range"
+            min="1"
+            max="5"
+            step="0.5"
+            [(ngModel)]="cfg.strokeWidth"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+            >{{ cfg.strokeWidth }}px</span
+          >
+        </div>
+        <div class="control-group">
+          <label>Opacity</label>
+          <ui-input
+            type="range"
+            min="0.1"
+            max="0.7"
+            step="0.05"
+            [(ngModel)]="cfg.fillOpacity"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.fillOpacity }}</span>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <chart-line
-          [data]="activeData"
-          chart-title=""
-          show-legend
-          show-grid
-          enable-animation
-          [attr.stroke-width]="cfg.strokeWidth"
-          width="580"
-          height="300"
-        ></chart-line>
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="smooth"
+            [(ngModel)]="cfg.smooth"
+            (ngModelChange)="update()"
+            label="Smooth Curve"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="grid"
+            [(ngModel)]="cfg.showGrid"
+            (ngModelChange)="update()"
+            label="Show Grid"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="dots"
+            [(ngModel)]="cfg.showDots"
+            (ngModelChange)="update()"
+            label="Show Points"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="stacked"
+            [(ngModel)]="cfg.stacked"
+            (ngModelChange)="update()"
+            label="Stacked"
+          ></ui-checkbox>
+        </div>
       </div>
-       @if (showCode) {
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <chart-line
+      [data]="activeData"
+      chart-title=""
+      show-legend
+      show-grid
+      enable-animation
+      [attr.stroke-width]="cfg.strokeWidth"
+      width="580"
+      height="300"
+    ></chart-line>
+  </div>
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -110,5 +106,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

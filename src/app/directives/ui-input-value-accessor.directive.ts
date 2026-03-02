@@ -2,17 +2,17 @@ import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@ang
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'app-checkbox[ngModel], app-checkbox[formControl], app-checkbox[formControlName]',
+  selector: 'ui-input[ngModel], ui-input[formControl], ui-input[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AppCheckboxValueAccessorDirective),
+      useExisting: forwardRef(() => AppInputValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class AppCheckboxValueAccessorDirective implements ControlValueAccessor {
+export class AppInputValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -21,9 +21,12 @@ export class AppCheckboxValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('checkboxChange', ['$event'])
-  onInput(event: CustomEvent): void {
-    this.onChange(event.detail.checked);
+  @HostListener('input', ['$event'])
+  @HostListener('change', ['$event'])
+  @HostListener('uiInput', ['$event'])
+  onInput(event: Event): void {
+    const value = (event.target as any).value;
+    this.onChange(value);
   }
 
   @HostListener('blur')
@@ -32,7 +35,8 @@ export class AppCheckboxValueAccessorDirective implements ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    this.renderer.setProperty(this.el.nativeElement, 'checked', !!value);
+    const normalizedValue = value == null ? '' : value;
+    this.renderer.setProperty(this.el.nativeElement, 'value', normalizedValue);
   }
 
   registerOnChange(fn: any): void {

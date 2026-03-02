@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -18,13 +20,13 @@
         </div>
         <div class="control-group">
           <label>Spacing</label>
-          <input
+          <ui-input
             name="spacing"
             type="text"
             [(ngModel)]="pgConfig.spacing"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. 16px, -10px"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Align</label>
@@ -51,30 +53,30 @@
         <h3>Behavior</h3>
         <div class="control-group">
           <label>Max Items (0 = all)</label>
-          <input
+          <ui-input
             name="max"
             type="number"
             [(ngModel)]="pgConfig.max"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="overlap"
             name="overlap"
             [(ngModel)]="pgConfig.overlap"
             (ngModelChange)="updateConfig()"
             label="Overlap"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDividers"
             name="showDividers"
             [(ngModel)]="pgConfig.showDividers"
             (ngModelChange)="updateConfig()"
             label="Show Dividers"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
@@ -82,28 +84,18 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Num Boxes</label>
-          <input
+          <ui-input
             name="numBoxes"
             type="number"
             min="1"
             max="10"
             [(ngModel)]="numBoxes"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-stack
@@ -120,14 +112,4 @@
       <div *ngFor="let i of boxes" class="box box-{{ i }}">{{ i }}</div>
     </ui-stack>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

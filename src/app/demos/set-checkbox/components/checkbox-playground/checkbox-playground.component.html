@@ -3,11 +3,11 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Helper Text</label>
-      <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Variant</label>
@@ -50,45 +50,30 @@
   <div slot="content-states" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.checked"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
         Checked
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.indeterminate"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.required"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.invalid"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
         Invalid
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.skeleton"
-          (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
         Skeleton
       </label>
     </div>
@@ -96,7 +81,7 @@
 
   <!-- Preview Area -->
   <div preview>
-    <app-checkbox
+    <ui-checkbox
       #demoElement
       [attr.label]="pgConfig.label"
       [attr.helper-text]="pgConfig.helperText"
@@ -112,14 +97,14 @@
       (checkboxChange)="onCheckboxChange($event)"
       (checkboxFocus)="onCheckboxFocus()"
       (checkboxBlur)="onCheckboxBlur()"
-    ></app-checkbox>
+    ></ui-checkbox>
   </div>
 
   <!-- Events -->
   <app-playground-event-log
-            [logs]="eventLog()"
-            (clear)="eventLog.set([])"
-          ></app-playground-event-log>
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 
   <!-- Code -->
   @if (showCode) {

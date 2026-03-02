@@ -1,6 +1,6 @@
 <div class="docs-hub-wrapper animate-in">
-  <!-- 🌟 Premium Search Hero -->
-  <section class="hub-hero">
+  <!-- 🌟 Premium Search Hero (Only shown on the Hub) -->
+  <section class="hub-hero" *ngIf="isHubArea()">
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-grid"></div>
@@ -17,26 +17,26 @@
         <div class="hub-search-vessel animate-slide-up" style="animation-delay: 0.2s">
           <div class="search-input-group" [class.focused]="isSearchFocused()">
             <i class="fas fa-search search-icon"></i>
-            <input
+            <ui-input
               type="text"
               placeholder="What are you looking for? (e.g. 'Table', 'Validation', 'Input')"
               (input)="onSearchInput($event)"
               (focus)="isSearchFocused.set(true)"
               (blur)="isSearchFocused.set(false)"
               #searchInput
-            />
+            ></ui-input>
             <div class="search-kbd" *ngIf="!searchText()">⌘K</div>
-            <button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
+            <ui-button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
               <i class="fas fa-times"></i>
-            </button>
+            </ui-button>
           </div>
 
           <div class="popular-searches" *ngIf="!searchText()">
             <span>Popular:</span>
-            <button (click)="searchText.set('table')">Table</button>
-            <button (click)="searchText.set('form')">Forms</button>
-            <button (click)="searchText.set('navigation')">Navigation</button>
-            <button (click)="searchText.set('overlay')">Overlays</button>
+            <ui-button (click)="searchText.set('table')">Table</ui-button>
+            <ui-button (click)="searchText.set('form')">Forms</ui-button>
+            <ui-button (click)="searchText.set('navigation')">Navigation</ui-button>
+            <ui-button (click)="searchText.set('overlay')">Overlays</ui-button>
           </div>
         </div>
 
@@ -67,43 +67,55 @@
   </section>
 
   <div class="hub-main-content">
+    <!-- 📄 Page Title for Sub Routes -->
+    <div class="sub-hero-header animate-slide-up" *ngIf="!isHubArea()">
+      <div class="breadcrumb">
+        <ui-button class="back-link" (click)="navigateTo('all')">
+          <i class="fas fa-arrow-left"></i> Back to Hub
+        </ui-button>
+      </div>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'components'">Components Registry</h1>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'guides'">Guides & Documentation</h1>
+      <h1 class="subpage-title" *ngIf="activeTab() === 'utilities'">Design Tokens</h1>
+    </div>
+
     <!-- 🧭 Quick Access Navigation -->
-    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s">
-      <button
+    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s" *ngIf="isHubArea()">
+      <ui-button
         class="nav-card"
-        [class.active]="activeTab() === 'all'"
-        (click)="activeTab.set('all')"
+        [class.active]="activeTab() === 'components'"
+        (click)="navigateTo('components')"
       >
         <div class="card-icon gradient-blue"><i class="fas fa-th-large"></i></div>
         <div class="card-text">
           <span class="title">All Components</span>
           <span class="count">{{ components().length }} Assets</span>
         </div>
-      </button>
+      </ui-button>
 
-      <button
+      <ui-button
         class="nav-card"
         [class.active]="activeTab() === 'guides'"
-        (click)="activeTab.set('guides')"
+        (click)="navigateTo('guides')"
       >
         <div class="card-icon gradient-purple"><i class="fas fa-map"></i></div>
         <div class="card-text">
           <span class="title">Guides & Setup</span>
           <span class="count">3 Documentations</span>
         </div>
-      </button>
+      </ui-button>
 
-      <button
+      <ui-button
         class="nav-card"
         [class.active]="activeTab() === 'utilities'"
-        (click)="activeTab.set('utilities')"
+        (click)="navigateTo('utilities')"
       >
         <div class="card-icon gradient-green"><i class="fas fa-tools"></i></div>
         <div class="card-text">
           <span class="title">Design Tokens</span>
           <span class="count">12 Categories</span>
         </div>
-      </button>
+      </ui-button>
     </nav>
 
     <!-- 📄 Main Results Display -->
@@ -113,7 +125,7 @@
         class="guides-grid"
         *ngIf="activeTab() === 'guides' || (searchText() && filteredGuides().length > 0)"
       >
-        <div class="section-heading" *ngIf="activeTab() === 'all'">Guides</div>
+        <div class="section-heading" *ngIf="isHubArea() || searchText()">Guides</div>
         <ui-accordion
           variant="card-list"
           selected-header-color="#10b981"
@@ -215,11 +227,8 @@
       </div>
 
       <!-- 💎 Component Grid Logic -->
-      <div
-        class="components-section"
-        *ngIf="activeTab() === 'all' || activeTab() === 'components' || searchText()"
-      >
-        <div class="section-heading">
+      <div class="components-section" *ngIf="activeTab() === 'components' || searchText()">
+        <div class="section-heading" *ngIf="isHubArea() || searchText()">
           {{ searchText() ? 'Search Results' : 'Library Registry' }}
           <span class="results-count" *ngIf="searchText()"
             >({{ filteredComponents().length }} found)</span
@@ -250,7 +259,7 @@
           <div class="empty-icon"><i class="fas fa-ghost"></i></div>
           <h3>No components found</h3>
           <p>Try adjusting your search query or browse categories.</p>
-          <button class="btn-reset" (click)="searchText.set('')">View All Components</button>
+          <ui-button class="btn-reset" (click)="searchText.set('')">View All Components</ui-button>
         </div>
       </div>
 

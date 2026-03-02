@@ -121,18 +121,24 @@ import { FormsModule } from '@angular/forms';
                 >
               </div>
               <div class="segmented-control">
-                <button
+                <ui-button
                   [class.active]="navOrientation() === 'vertical'"
                   (click)="navOrientation.set('vertical')"
+                  variant="ghost"
+                  size="sm"
+                  style="min-width: 80px;"
                 >
                   Vertical
-                </button>
-                <button
+                </ui-button>
+                <ui-button
                   [class.active]="navOrientation() === 'horizontal'"
                   (click)="navOrientation.set('horizontal')"
+                  variant="ghost"
+                  size="sm"
+                  style="min-width: 80px;"
                 >
                   Horizontal
-                </button>
+                </ui-button>
               </div>
             </div>
 

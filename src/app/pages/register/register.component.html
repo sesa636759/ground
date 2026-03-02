@@ -2,24 +2,26 @@
   <div class="register-card">
     <!-- Logo/Brand -->
     <div class="register-header">
-      <div class="logo">🚀</div>
+      <div class="logo">
+        <img class="register-logo-img" [src]="assets.ICONS.BRAND" alt="Schneider Electric" />
+      </div>
       <h1>Create Account</h1>
       <p class="subtitle">Join us and start your journey today</p>
     </div>
 
     <!-- Success Message -->
     @if (success()) {
-    <div class="alert alert-success">
-      <span class="alert-icon">✅</span>
-      <span>{{ success() }}</span>
-    </div>
+      <div class="alert alert-success">
+        <ui-icon name="check-circle" library="lucide" size="18px" class="alert-icon"></ui-icon>
+        <span>{{ success() }}</span>
+      </div>
     }
-       <!-- Error Message -->
+    <!-- Error Message -->
     @if (error()) {
-    <div class="alert alert-error">
-      <span class="alert-icon">⚠️</span>
-      <span>{{ error() }}</span>
-    </div>
+      <div class="alert alert-error">
+        <ui-icon name="alert-triangle" library="lucide" size="18px" class="alert-icon"></ui-icon>
+        <span>{{ error() }}</span>
+      </div>
     }
     <!-- Registration Form -->
     <form (ngSubmit)="onSubmit()" class="register-form">
@@ -27,8 +29,8 @@
       <div class="form-group">
         <label for="fullName">Full Name <span class="required">*</span></label>
         <div class="input-wrapper">
-          <span class="input-icon">👤</span>
-          <app-input
+          <ui-icon name="user" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             type="text"
             id="fullName"
             name="fullName"
@@ -36,7 +38,7 @@
             placeholder="Enter your full name"
             required
             autocomplete="name"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -44,8 +46,8 @@
       <div class="form-group">
         <label for="username">Username <span class="required">*</span></label>
         <div class="input-wrapper">
-          <span class="input-icon">@</span>
-          <app-input
+          <ui-icon name="at-sign" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             type="text"
             id="username"
             name="username"
@@ -53,7 +55,7 @@
             placeholder="Choose a username"
             required
             autocomplete="username"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -61,8 +63,8 @@
       <div class="form-group">
         <label for="email">Email Address <span class="required">*</span></label>
         <div class="input-wrapper">
-          <span class="input-icon">📧</span>
-          <app-input
+          <ui-icon name="mail" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             type="email"
             id="email"
             name="email"
@@ -70,7 +72,7 @@
             placeholder="Enter your email"
             required
             autocomplete="email"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -78,8 +80,8 @@
       <div class="form-group">
         <label for="password">Password <span class="required">*</span></label>
         <div class="input-wrapper">
-          <span class="input-icon">🔒</span>
-          <app-input
+          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -88,29 +90,45 @@
             placeholder="Create a password"
             required
             autocomplete="new-password"
-          />
-          <button
-            type="button"
-            class="toggle-password"
-            (click)="togglePasswordVisibility()"
-            [title]="showPassword() ? 'Hide password' : 'Show password'"
           >
-            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
-          </button>
+            <ng-container suffix>
+              <ui-button
+                type="button"
+                class="toggle-password"
+                (click)="togglePasswordVisibility()"
+                variant="ghost"
+                size="sm"
+                style="padding: 0 6px; min-width: 0"
+                [title]="showPassword() ? 'Hide password' : 'Show password'"
+              >
+                <ui-icon
+                  [name]="showPassword() ? 'eye-off' : 'eye'"
+                  library="lucide"
+                  size="18px"
+                ></ui-icon>
+              </ui-button>
+            </ng-container>
+          </ui-input>
         </div>
-        
+
         <!-- Password Strength Indicator -->
         <div class="password-strength" *ngIf="formData.password">
           <div class="strength-bar">
-            <div 
-              class="strength-fill" 
+            <div
+              class="strength-fill"
               [class.weak]="passwordStrength() === 'weak'"
               [class.medium]="passwordStrength() === 'medium'"
               [class.strong]="passwordStrength() === 'strong'"
             ></div>
           </div>
           <span class="strength-label" [class]="passwordStrength()">
-            {{ passwordStrength() === 'weak' ? 'Weak' : passwordStrength() === 'medium' ? 'Medium' : 'Strong' }}
+            {{
+              passwordStrength() === 'weak'
+                ? 'Weak'
+                : passwordStrength() === 'medium'
+                  ? 'Medium'
+                  : 'Strong'
+            }}
           </span>
         </div>
       </div>
@@ -119,8 +137,8 @@
       <div class="form-group">
         <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
         <div class="input-wrapper">
-          <span class="input-icon">🔒</span>
-          <app-input
+          <ui-icon name="lock" library="lucide" size="18px" class="input-icon"></ui-icon>
+          <ui-input
             [type]="showConfirmPassword() ? 'text' : 'password'"
             id="confirmPassword"
             name="confirmPassword"
@@ -128,27 +146,33 @@
             placeholder="Re-enter your password"
             required
             autocomplete="new-password"
-          />
-          <button
-            type="button"
-            class="toggle-password"
-            (click)="toggleConfirmPasswordVisibility()"
-            [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
           >
-            {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
-          </button>
+            <ng-container suffix>
+              <ui-button
+                type="button"
+                class="toggle-password"
+                (click)="toggleConfirmPasswordVisibility()"
+                variant="ghost"
+                size="sm"
+                style="padding: 0 6px; min-width: 0"
+                [title]="showConfirmPassword() ? 'Hide password' : 'Show password'"
+              >
+                <ui-icon
+                  [name]="showConfirmPassword() ? 'eye-off' : 'eye'"
+                  library="lucide"
+                  size="18px"
+                ></ui-icon>
+              </ui-button>
+            </ng-container>
+          </ui-input>
         </div>
         @if (confirmPassword) {
           <div class="password-match">
             @if (formData.password === confirmPassword) {
-              <span class="match-success">
-                ✓ Passwords match
-              </span>
+              <span class="match-success"> ✓ Passwords match </span>
             }
             @if (formData.password !== confirmPassword) {
-              <span class="match-error">
-                ✗ Passwords do not match
-              </span>
+              <span class="match-error"> ✗ Passwords do not match </span>
             }
           </div>
         }
@@ -157,12 +181,7 @@
       <!-- Terms and Conditions -->
       <div class="form-group">
         <label class="checkbox-label">
-          <app-input
-            type="checkbox"
-            name="acceptTerms"
-            [(ngModel)]="formData.acceptTerms"
-            required
-          />
+          <ui-checkbox name="acceptTerms" [(ngModel)]="formData.acceptTerms" required></ui-checkbox>
           <span>
             I agree to the
             <a href="#" class="link">Terms & Conditions</a>
@@ -173,21 +192,15 @@
       </div>
 
       <!-- Submit Button -->
-      <button
+      <ui-button
         type="submit"
-        class="btn-primary btn-large"
+        [label]="!loading() ? 'Create Account' : 'Creating account...'"
+        size="xl"
+        variant="primary"
+        full-width
         [disabled]="loading()"
       >
-        @if (!loading()) {
-          <span>Create Account</span>
-        }
-        @if (loading()) {
-          <span class="loading-content">
-            <span class="spinner"></span>
-            <span>Creating account...</span>
-          </span>
-        }
-      </button>
+      </ui-button>
     </form>
 
     <!-- Divider -->
@@ -197,18 +210,39 @@
 
     <!-- Social Registration Options -->
     <div class="social-login">
-      <button type="button" class="btn-social btn-google">
-        <span class="social-icon">🔍</span>
-        Google
-      </button>
-      <button type="button" class="btn-social btn-github">
-        <span class="social-icon">🐙</span>
-        GitHub
-      </button>
-      <button type="button" class="btn-social btn-microsoft">
-        <span class="social-icon">🪟</span>
-        Microsoft
-      </button>
+      <ui-button
+        type="button"
+        size="xxl"
+        label="Google"
+        icon="logo-google"
+        icon-library="ionicons"
+        icon-position="top"
+        variant="outline"
+        full-width
+      >
+      </ui-button>
+      <ui-button
+        type="button"
+        size="xxl"
+        label="GitHub"
+        icon="logo-github"
+        icon-library="ionicons"
+        icon-position="top"
+        variant="outline"
+        full-width
+      >
+      </ui-button>
+      <ui-button
+        type="button"
+        size="xxl"
+        label="Microsoft"
+        icon="logo-microsoft"
+        icon-library="ionicons"
+        icon-position="top"
+        variant="outline"
+        full-width
+      >
+      </ui-button>
     </div>
 
     <!-- Login Link -->

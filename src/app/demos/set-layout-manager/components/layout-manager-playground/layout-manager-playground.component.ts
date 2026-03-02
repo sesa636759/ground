@@ -9,7 +9,7 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
@@ -19,7 +19,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     CommonModule,
     FormsModule,
     UiDropdownValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './layout-manager-playground.component.html',

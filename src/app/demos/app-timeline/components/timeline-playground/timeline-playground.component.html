@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -34,35 +36,29 @@
       <div class="control-section">
         <h3>Content</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="opposite"
             [(ngModel)]="pgConfig.showOpposite"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="opposite">Show Opposite Side</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="customMarker"
             [(ngModel)]="pgConfig.customMarker"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="customMarker">Custom Markers</label>
         </div>
       </div>
     </div>
-
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="timeline-container">
       <ui-timeline
         [attr.orientation]="pgConfig.orientation"
@@ -83,14 +79,4 @@
       </ui-timeline>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

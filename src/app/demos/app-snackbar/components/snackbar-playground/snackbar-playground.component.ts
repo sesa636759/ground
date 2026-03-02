@@ -9,9 +9,9 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
@@ -86,7 +86,7 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
     { label: 'Error', value: 'error' },
   ];
 
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {}
@@ -104,7 +104,7 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.snackbarElement) return '';
     let code = generatePlaygroundCode(this.snackbarElement.nativeElement as Element, 'ui-snackbar');
     code += `\n\n/* Usage in TS */
@@ -120,7 +120,7 @@ snackbar.add({
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -140,7 +140,7 @@ snackbar.add({
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

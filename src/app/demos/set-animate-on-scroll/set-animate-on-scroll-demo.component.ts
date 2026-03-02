@@ -1,9 +1,14 @@
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
-import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoTabsComponent } from 'src/app/shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-animate-on-scroll-demo',
@@ -13,13 +18,16 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     FormsModule,
     AnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
+    DemoSidebarComponent,
+    DemoHeaderComponent,
+    ExampleSectionComponent,
     ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-animate-on-scroll-demo.component.html',
   styleUrl: './set-animate-on-scroll-demo.component.scss',
 })
-export class SetAnimateOnScrollDemoComponent {
+export class SetAnimateOnScrollDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     // Basic Animations
     { id: 'fade-in-basic', title: 'Fade In', icon: 'sunrise', iconLibrary: 'lucide' },
@@ -84,12 +92,14 @@ export class SetAnimateOnScrollDemoComponent {
     { id: 'combined-effects', title: 'Combined Effects', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  anchorLinks = JSON.stringify(
+    this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+    })),
+  );
 
   // Basic Animations
   fadeInBasicCode = signal(`<app-animate-on-scroll

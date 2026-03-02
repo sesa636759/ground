@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -17,7 +19,11 @@
         </div>
         <div class="control-group">
           <label>Size (px/%/rem)</label>
-          <input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -29,12 +35,12 @@
         </div>
         <div class="control-group">
           <label>Backdrop Blur</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.backdropBlur"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. 8px"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -42,50 +48,40 @@
       <div class="control-section">
         <h3>Behavior</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closeable"
             [(ngModel)]="pgConfig.closeable"
             (ngModelChange)="updateConfig()"
             label="Closeable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="overlayClick"
             [(ngModel)]="pgConfig.closeOnOverlayClick"
             (ngModelChange)="updateConfig()"
             label="Close on Overlay Click"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="resizable"
             [(ngModel)]="pgConfig.resizable"
             (ngModelChange)="updateConfig()"
             label="Resizable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading State"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div preview>
     <div class="preview-content">
@@ -160,14 +156,4 @@
       </div>
     </aside-panel>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

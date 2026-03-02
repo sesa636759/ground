@@ -49,63 +49,75 @@
 
       <div class="control-group">
         <label>Item Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Sublabel</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.itemSublabel"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Icon (FA Class)</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Action Icon</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemActionIcon" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.itemActionIcon"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Badge Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
       </div>
       <div class="control-group">
         <label>Counter Value</label>
-        <app-input type="number" [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.itemCounter"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
+        <ui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.dividers" (ngModelChange)="updateConfig()" /> Dividers
+        <ui-checkbox [(ngModel)]="pgConfig.dividers" (ngModelChange)="updateConfig()" /> Dividers
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()" /> Flush
+        <ui-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()" /> Flush
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.horizontal" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.horizontal" (ngModelChange)="updateConfig()" />
         Horizontal
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.numbered" (ngModelChange)="updateConfig()" /> Numbered
+        <ui-checkbox [(ngModel)]="pgConfig.numbered" (ngModelChange)="updateConfig()" /> Numbered
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" /> Grouped
+        <ui-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" /> Grouped
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
         Selectable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
     </div>
   </div>

@@ -1,128 +1,118 @@
+<app-playground
+  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="reset()"
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <!-- Shape & Animation -->
+      <div class="control-section">
+        <h3>Appearance</h3>
 
-    <app-playground
-      accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["config"]'
-    >
-      <div slot="content-config">
-        <div class="control-grid">
-          <!-- Shape & Animation -->
-          <div class="control-section">
-            <h3>Appearance</h3>
+        <div class="control-group">
+          <label>shape</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.shape"
+            (change)="update()"
+            [options]="shapeOpts"
+          ></ui-dropdown>
+        </div>
 
-            <div class="control-group">
-              <label>shape</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.shape"
-                (change)="update()"
-                [options]="shapeOpts"
-              ></ui-dropdown>
-            </div>
+        <div class="control-group">
+          <label>animation-type</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.animationType"
+            (change)="update()"
+            [options]="animTypeOpts"
+          ></ui-dropdown>
+        </div>
 
-            <div class="control-group">
-              <label>animation-type</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.animationType"
-                (change)="update()"
-                [options]="animTypeOpts"
-              ></ui-dropdown>
-            </div>
-
-            <div class="control-group">
-              <label>animated</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.animated"
-                (change)="update()"
-                [options]="boolOpts"
-              ></ui-dropdown>
-            </div>
-          </div>
-
-          <!-- Sizing -->
-          <div class="control-section">
-            <h3>Sizing</h3>
-
-            <div class="control-group">
-              <label
-                >size <span style="font-weight:400;font-size:0.75rem">(predefined)</span></label
-              >
-              <ui-dropdown
-                [(ngModel)]="cfg.size"
-                (change)="update()"
-                [options]="sizeOpts"
-              ></ui-dropdown>
-              <span class="control-hint">Overrides width/height for most shapes</span>
-            </div>
-
-            <div class="control-group">
-              <label>width</label>
-              <input
-                type="text"
-                [(ngModel)]="cfg.width"
-                (ngModelChange)="update()"
-                placeholder="100%"
-              />
-            </div>
-
-            <div class="control-group">
-              <label>height</label>
-              <input
-                type="text"
-                [(ngModel)]="cfg.height"
-                (ngModelChange)="update()"
-                placeholder="20px"
-              />
-            </div>
-
-            <div class="control-group">
-              <label
-                >border-radius
-                <span style="font-weight:400;font-size:0.75rem">(rounded shapes)</span></label
-              >
-              <input
-                type="text"
-                [(ngModel)]="cfg.borderRadius"
-                (ngModelChange)="update()"
-                placeholder="4px"
-              />
-            </div>
-            </div>
+        <div class="control-group">
+          <label>animated</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.animated"
+            (change)="update()"
+            [options]="boolOpts"
+          ></ui-dropdown>
         </div>
       </div>
 
-      <ui-button actions variant="secondary" (click)="reset()" label="Reset"></ui-button>
+      <!-- Sizing -->
+      <div class="control-section">
+        <h3>Sizing</h3>
 
-      <div preview class="preview-stage h-scrollable">
-        @if (recreate) {
-          <skeleton-loader
-            [attr.shape]="cfg.shape"
-            [attr.animation-type]="cfg.animationType"
-            [attr.animated]="cfg.animated"
-            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-            [attr.border-radius]="cfg.borderRadius || null"
-          ></skeleton-loader>
-        } @else {
-          <skeleton-loader
-            [attr.shape]="cfg.shape"
-            [attr.animation-type]="cfg.animationType"
-            [attr.animated]="cfg.animated"
-            [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-            [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-            [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-            [attr.border-radius]="cfg.borderRadius || null"
-          ></skeleton-loader>
-        }
+        <div class="control-group">
+          <label>size <span style="font-weight: 400; font-size: 0.75rem">(predefined)</span></label>
+          <ui-dropdown
+            [(ngModel)]="cfg.size"
+            (change)="update()"
+            [options]="sizeOpts"
+          ></ui-dropdown>
+          <span class="control-hint">Overrides width/height for most shapes</span>
+        </div>
+
+        <div class="control-group">
+          <label>width</label>
+          <ui-input
+            type="text"
+            [(ngModel)]="cfg.width"
+            (ngModelChange)="update()"
+            placeholder="100%"
+          ></ui-input>
+        </div>
+
+        <div class="control-group">
+          <label>height</label>
+          <ui-input
+            type="text"
+            [(ngModel)]="cfg.height"
+            (ngModelChange)="update()"
+            placeholder="20px"
+          ></ui-input>
+        </div>
+
+        <div class="control-group">
+          <label
+            >border-radius
+            <span style="font-weight: 400; font-size: 0.75rem">(rounded shapes)</span></label
+          >
+          <ui-input
+            type="text"
+            [(ngModel)]="cfg.borderRadius"
+            (ngModelChange)="update()"
+            placeholder="4px"
+          ></ui-input>
+        </div>
       </div>
+    </div>
+  </div>
 
-       @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
-    </app-playground>
-  
+  <div
+    preview
+    class="preview-stage h-scrollable"
+    style="padding: 40px; display: flex; justify-content: center; align-items: center"
+  >
+    @if (recreate) {
+      <skeleton-loader
+        [attr.shape]="cfg.shape"
+        [attr.animation-type]="cfg.animationType"
+        [attr.animated]="cfg.animated"
+        [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
+        [attr.width]="cfg.size === 'custom' ? cfg.width : null"
+        [attr.height]="cfg.size === 'custom' ? cfg.height : null"
+        [attr.border-radius]="cfg.borderRadius || null"
+      ></skeleton-loader>
+    } @else {
+      <skeleton-loader
+        [attr.shape]="cfg.shape"
+        [attr.animation-type]="cfg.animationType"
+        [attr.animated]="cfg.animated"
+        [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
+        [attr.width]="cfg.size === 'custom' ? cfg.width : null"
+        [attr.height]="cfg.size === 'custom' ? cfg.height : null"
+        [attr.border-radius]="cfg.borderRadius || null"
+      ></skeleton-loader>
+    }
+  </div>
+</app-playground>

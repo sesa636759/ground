@@ -1,4 +1,9 @@
-﻿<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+﻿<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Core Configuration Slot -->
   <div slot="content-core" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -15,37 +20,37 @@
     </div>
     <div class="control-group">
       <label>Min Width</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.minWidth"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 200px"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Height</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.maxHeight"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 400px"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="searchable"
         [(ngModel)]="pgConfig.searchable"
         (ngModelChange)="updateConfig()"
         label="Searchable"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="closeOnSelect"
         [(ngModel)]="pgConfig.closeOnSelect"
         (ngModelChange)="updateConfig()"
         label="Close On Select"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
@@ -75,92 +80,82 @@
       ></ui-dropdown>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="animated"
         [(ngModel)]="pgConfig.animated"
         (ngModelChange)="updateConfig()"
         label="Animated"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="staggered"
         [(ngModel)]="pgConfig.staggered"
         (ngModelChange)="updateConfig()"
         label="Staggered"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="reflection"
         [(ngModel)]="pgConfig.reflection"
         (ngModelChange)="updateConfig()"
         label="Glass Reflection"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
   <!-- Advanced Behavior Slot -->
   <div slot="content-behavior" class="control-grid" style="padding: 16px">
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="backdrop"
         [(ngModel)]="pgConfig.backdrop"
         (ngModelChange)="updateConfig()"
         label="Enable Backdrop"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="multiSelect"
         [(ngModel)]="pgConfig.multiSelect"
         (ngModelChange)="updateConfig()"
         label="Multi-Select Mode"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="commandPalette"
         [(ngModel)]="pgConfig.commandPalette"
         (ngModelChange)="updateConfig()"
         label="Command Palette Mode"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showGroups"
         [(ngModel)]="pgConfig.showGroups"
         (ngModelChange)="updateConfig()"
         label="Show Item Groups"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="highlightSearch"
         [(ngModel)]="pgConfig.highlightSearch"
         (ngModelChange)="updateConfig()"
         label="Highlight Search Matched"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="keyboardNav"
         [(ngModel)]="pgConfig.keyboardNavigation"
         (ngModelChange)="updateConfig()"
         label="Keyboard Navigation"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div
     preview
@@ -181,6 +176,7 @@
   >
     <div
       class="trigger-area"
+      #playgroundTrigger
       id="playgroundTrigger"
       style="
         padding: 60px 80px;
@@ -209,24 +205,25 @@
 
     <app-context-menu
       #contextMenuElement
-      [attr.trigger]="pgConfig.trigger"
-      [attr.searchable]="pgConfig.searchable"
-      [attr.animated]="pgConfig.animated"
-      [attr.animation-type]="pgConfig.animationType"
-      [attr.variant]="pgConfig.variant"
-      [attr.staggered]="pgConfig.staggered"
-      [attr.backdrop]="pgConfig.backdrop"
-      [attr.command-palette]="pgConfig.commandPalette"
-      [attr.multi-select]="pgConfig.multiSelect"
-      [attr.close-on-select]="pgConfig.closeOnSelect"
-      [attr.show-groups]="pgConfig.showGroups"
-      [attr.highlight-search]="pgConfig.highlightSearch"
-      [attr.reflection]="pgConfig.reflection"
-      [attr.keyboard-navigation]="pgConfig.keyboardNavigation"
-      [attr.max-height]="pgConfig.maxHeight"
-      [attr.min-width]="pgConfig.minWidth"
-      [attr.backdrop-blur]="pgConfig.backdropBlur"
-      [attr.items]="demoItems"
+      [triggerElement]="playgroundTrigger"
+      [trigger]="pgConfig.trigger"
+      [searchable]="pgConfig.searchable"
+      [animated]="pgConfig.animated"
+      [animationType]="pgConfig.animationType"
+      [variant]="pgConfig.variant"
+      [staggered]="pgConfig.staggered"
+      [backdrop]="pgConfig.backdrop"
+      [commandPalette]="pgConfig.commandPalette"
+      [multiSelect]="pgConfig.multiSelect"
+      [closeOnSelect]="pgConfig.closeOnSelect"
+      [showGroups]="pgConfig.showGroups"
+      [highlightSearch]="pgConfig.highlightSearch"
+      [reflection]="pgConfig.reflection"
+      [keyboardNavigation]="pgConfig.keyboardNavigation"
+      [maxHeight]="pgConfig.maxHeight"
+      [minWidth]="pgConfig.minWidth"
+      [backdropBlur]="pgConfig.backdropBlur"
+      [items]="demoItems"
       (menuSelect)="onMenuSelect($event)"
       (menuOpen)="onMenuOpen()"
       (menuClose)="onMenuClose()"
@@ -253,15 +250,4 @@
       <strong>Last Event:</strong> {{ eventMessage() }}
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
-  <div class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
 </app-playground>

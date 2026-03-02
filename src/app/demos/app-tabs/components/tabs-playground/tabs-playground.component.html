@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -35,7 +37,7 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="scrollable"
             [(ngModel)]="pgConfig.scrollable"
             (ngModelChange)="updateConfig()"
@@ -43,7 +45,7 @@
           <label for="scrollable">Scrollable</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closable"
             [(ngModel)]="pgConfig.closeable"
             (ngModelChange)="updateConfig()"
@@ -54,17 +56,7 @@
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
-  <div preview class="preview-stage h-scrollable">
+  <div preview class="preview-stage h-scrollable" style="padding: 40px">
     <div class="tabs-container">
       <ui-tabs
         [attr.orientation]="pgConfig.orientation"
@@ -99,12 +91,4 @@
       </ui-tabs>
     </div>
   </div>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>

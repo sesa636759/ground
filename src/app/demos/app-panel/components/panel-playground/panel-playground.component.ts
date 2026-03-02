@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
@@ -57,7 +57,7 @@ export class PanelPlaygroundComponent {
     { label: 'Info', value: 'info' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
   eventLog: { time: string; msg: string }[] = [];
 
@@ -96,12 +96,12 @@ export class PanelPlaygroundComponent {
     code += '  <div slot="footer">Panel footer here...</div>\n';
     code += '</ui-panel>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

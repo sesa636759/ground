@@ -25,7 +25,7 @@ export class ScrollTopPlaygroundComponent {
     { label: 'Square', value: 'square' },
   ];
 
-  generatedCode = signal('');
+  generatedCodeSignal = signal('');
   showCode = true;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -49,12 +49,12 @@ export class ScrollTopPlaygroundComponent {
     code += `  shape="${this.pgConfig.shape}"\n`;
     code += '></ui-scroll-top>';
 
-    this.generatedCode.set(code);
+    this.generatedCodeSignal.set(code);
     this.refreshCode();
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then((m) => m.HomeComponent),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
@@ -37,6 +39,11 @@ export const routes: Routes = [
 
   {
     path: 'documentation',
+    loadComponent: () =>
+      import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
+  },
+  {
+    path: 'documentation/:section',
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
   },
@@ -281,6 +288,11 @@ export const routes: Routes = [
           import('./demos/set-dock-overlay/set-dock-overlay-demo.component').then(
             (m) => m.SetDockOverlayDemoComponent,
           ),
+      },
+      {
+        path: 'label-set',
+        loadComponent: () =>
+          import('./demos/set-label/set-label-demo.component').then((m) => m.SetLabelDemoComponent),
       },
       {
         path: 'avatar-group-set',

@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id": "config", "title": "Configuration", "icon": "⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -9,30 +11,30 @@
         <h3>Basic Settings</h3>
         <div class="control-group">
           <label>Total Items</label>
-          <app-input
+          <ui-input
             name="totalItems"
             type="number"
             [(ngModel)]="pgConfig.totalItems"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Items Per Page</label>
-          <app-input
+          <ui-input
             name="itemsPerPage"
             type="number"
             [(ngModel)]="pgConfig.itemsPerPage"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Max Visible Pages</label>
-          <app-input
+          <ui-input
             name="maxVisiblePages"
             type="number"
             [(ngModel)]="pgConfig.maxVisiblePages"
             (ngModelChange)="updateConfig()"
-          ></app-input>
+          ></ui-input>
         </div>
       </div>
 
@@ -90,84 +92,77 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="keyboardNav"
             [(ngModel)]="pgConfig.keyboardNav"
             (ngModelChange)="updateConfig()"
             label="Keyboard Nav"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="responsiveMode"
             [(ngModel)]="pgConfig.responsiveMode"
             (ngModelChange)="updateConfig()"
             label="Responsive"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="rtl"
             [(ngModel)]="pgConfig.rtl"
             (ngModelChange)="updateConfig()"
             label="RTL Mode"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="showFirstLast"
             [(ngModel)]="pgConfig.showFirstLast"
             (ngModelChange)="updateConfig()"
             label="Show First/Last"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="showPageSize"
             [(ngModel)]="pgConfig.showPageSize"
             (ngModelChange)="updateConfig()"
             label="Show Page Size"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="showTotal"
             [(ngModel)]="pgConfig.showTotal"
             (ngModelChange)="updateConfig()"
             label="Show Total"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="showJumpTo"
             [(ngModel)]="pgConfig.showJumpTo"
             (ngModelChange)="updateConfig()"
             label="Show Jump To"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             name="iconOnly"
             [(ngModel)]="pgConfig.iconOnly"
             (ngModelChange)="updateConfig()"
             label="Icon Only"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
-
-  <div preview>
+  <div
+    preview
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="preview-stage">
       <ui-pagination
         #pagination
@@ -194,14 +189,4 @@
   </div>
 
   <div events class="event-log"><strong>Event Log:</strong> {{ eventMessage() }}</div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

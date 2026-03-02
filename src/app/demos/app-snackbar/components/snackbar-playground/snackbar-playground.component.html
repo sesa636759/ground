@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="accordionDefaultOpen">
+<app-playground
+  [accordionItems]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
+>
   <!-- Global Configuration Slot -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -11,12 +16,12 @@
     </div>
     <div class="control-group">
       <label>Max Visible</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.maxVisible"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 5"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Stack Mode</label>
@@ -35,12 +40,12 @@
       ></ui-dropdown>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="cardStack"
         [(ngModel)]="pgConfig.cardStack"
         (ngModelChange)="updateConfig()"
         label="Card Stacking"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
@@ -56,40 +61,30 @@
     </div>
     <div class="control-group">
       <label>Title</label>
-      <app-input
+      <ui-input
         [(ngModel)]="notiConfig.title"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. Success!"
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Message</label>
-      <app-input
+      <ui-input
         [(ngModel)]="notiConfig.message"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. Action completed."
-      ></app-input>
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Duration (ms)</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="notiConfig.duration"
         (ngModelChange)="updateConfig()"
         placeholder="e.g. 5000"
-      ></app-input>
+      ></ui-input>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div
     preview
@@ -128,13 +123,4 @@
       label="Clear All"
     ></ui-button>
   </div>
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

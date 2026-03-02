@@ -1,6 +1,8 @@
 <app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -17,57 +19,48 @@
         </div>
         <div class="control-group">
           <label>Breakpoint</label>
-          <input
+          <ui-input
             name="breakpoint"
             type="text"
             [(ngModel)]="pgConfig.breakpoint"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Behavior</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="autoZIndex"
             name="autoZIndex"
             [(ngModel)]="pgConfig.autoZIndex"
             (ngModelChange)="updateConfig()"
             label="Auto Z-Index"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="magnify"
             name="magnify"
             [(ngModel)]="pgConfig.magnify"
             (ngModelChange)="updateConfig()"
             label="Magnify"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="blurEffect"
             name="blurEffect"
             [(ngModel)]="pgConfig.blurEffect"
             (ngModelChange)="updateConfig()"
             label="Blur Effect"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="showLabels"
             name="showLabels"
             [(ngModel)]="pgConfig.showLabels"
             (ngModelChange)="updateConfig()"
             label="Show Labels"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
-    </div>
-
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
     </div>
   </div>
 
@@ -101,14 +94,4 @@
       Last Action: <strong>{{ lastAction }}</strong>
     </div>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

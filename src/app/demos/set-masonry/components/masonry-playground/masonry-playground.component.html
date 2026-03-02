@@ -1,6 +1,8 @@
 ﻿<app-playground
   accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
   defaultOpen='["config"]'
+  [code]="generatedCodeSignal()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <h4 class="section-title">Layout Configuration</h4>
@@ -17,7 +19,7 @@
 
       <div class="control-group">
         <label>Columns</label>
-        <app-input
+        <ui-input
           name="columns"
           type="number"
           min="1"
@@ -29,7 +31,7 @@
 
       <div class="control-group">
         <label>Gap (px)</label>
-        <app-input
+        <ui-input
           name="gap"
           type="number"
           min="0"
@@ -41,7 +43,7 @@
 
       <div class="control-group">
         <label>Min Width (px)</label>
-        <app-input
+        <ui-input
           name="itemMinWidth"
           type="number"
           min="100"
@@ -53,7 +55,7 @@
 
       <div class="control-group">
         <label>Max Width (px)</label>
-        <app-input
+        <ui-input
           name="itemMaxWidth"
           type="number"
           min="200"
@@ -106,7 +108,7 @@
     <h4 class="section-title">Features</h4>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="enableAnimation"
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
@@ -114,7 +116,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="showFilters"
           [(ngModel)]="pgConfig.showFilters"
           (ngModelChange)="updateConfig()"
@@ -122,7 +124,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="selectable"
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
@@ -130,7 +132,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="multiSelect"
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
@@ -138,7 +140,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="showBatchActions"
           [(ngModel)]="pgConfig.showBatchActions"
           (ngModelChange)="updateConfig()"
@@ -146,7 +148,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="lazyLoad"
           [(ngModel)]="pgConfig.lazyLoad"
           (ngModelChange)="updateConfig()"
@@ -154,7 +156,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="infiniteScroll"
           [(ngModel)]="pgConfig.infiniteScroll"
           (ngModelChange)="updateConfig()"
@@ -162,7 +164,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="lightbox"
           [(ngModel)]="pgConfig.lightbox"
           (ngModelChange)="updateConfig()"
@@ -170,7 +172,7 @@
         />
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           name="loadingState"
           [(ngModel)]="pgConfig.loadingState"
           (ngModelChange)="updateConfig()"
@@ -179,16 +181,6 @@
       </label>
     </div>
   </div>
-
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
 
   <div preview style="width: 100%">
     <app-masonry
@@ -217,16 +209,8 @@
   </div>
 
   <div events class="event-log-container">
-    <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+    @for (log of eventLog(); track log) {
+      <div class="log-item">{{ log }}</div>
+    }
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

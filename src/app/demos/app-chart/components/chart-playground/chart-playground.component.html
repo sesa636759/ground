@@ -22,34 +22,27 @@
       <div class="control-section">
         <h3>Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLegend"
             name="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="responsive"
             name="responsive"
             [(ngModel)]="pgConfig.responsive"
             (ngModelChange)="updateConfig()"
             label="Responsive"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
 
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
+
   </div>
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-chart

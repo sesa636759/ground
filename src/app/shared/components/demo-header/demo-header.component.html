@@ -1,0 +1,46 @@
+<header class="demo-header">
+  <!-- Drifting radial orbs -->
+  <span class="bg-orb bg-orb-1" aria-hidden="true"></span>
+  <span class="bg-orb bg-orb-2" aria-hidden="true"></span>
+  <span class="bg-orb bg-orb-3" aria-hidden="true"></span>
+  <!-- Dot-grid texture -->
+  <span class="bg-grid" aria-hidden="true"></span>
+
+  <div class="header-body">
+
+    <!-- Animated icon badge -->
+    @if (icon) {
+      <div class="icon-badge">
+        <span class="badge-pulse-ring" aria-hidden="true"></span>
+        <span class="badge-shine" aria-hidden="true"></span>
+        <span class="icon-emoji">{{ icon }}</span>
+      </div>
+    }
+
+    <!-- Text -->
+    <div class="header-text">
+      <div class="eyebrow">
+        <span class="eyebrow-pip"></span>
+        <span class="eyebrow-label">Component</span>
+      </div>
+      <h2 class="header-title">{{ title }}</h2>
+      @if (description) {
+        <p class="header-desc">{{ description }}</p>
+      }
+    </div>
+
+    <!-- Spinning decorative rings -->
+    <div class="deco-circles" aria-hidden="true">
+      <span class="deco-ring deco-ring-sm"></span>
+      <span class="deco-ring deco-ring-md"></span>
+      <span class="deco-ring deco-ring-lg"></span>
+      <span class="deco-dot"></span>
+    </div>
+
+  </div>
+
+  <!-- Animated accent bar -->
+  <div class="header-accent-bar">
+    <span class="accent-shimmer" aria-hidden="true"></span>
+  </div>
+</header>

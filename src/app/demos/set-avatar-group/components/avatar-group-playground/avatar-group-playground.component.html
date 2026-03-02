@@ -15,7 +15,7 @@
     </div>
     <div class="control-group">
       <label>Max Display</label>
-      <input
+      <ui-input
         type="number"
         min="1"
         max="10"
@@ -30,7 +30,7 @@
           color: var(--text-primary);
           padding: 0 12px;
         "
-      />
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Layout Type</label>
@@ -58,7 +58,7 @@
     @if (pgConfig.layout === 'grid') {
       <div class="control-group">
         <label>Grid Columns</label>
-        <input
+        <ui-input
           type="number"
           min="1"
           max="6"
@@ -73,12 +73,12 @@
             color: var(--text-primary);
             padding: 0 12px;
           "
-        />
+        ></ui-input>
       </div>
     }
     <div class="control-group">
       <label>Spacing</label>
-      <input
+      <ui-input
         type="number"
         min="0"
         max="40"
@@ -93,7 +93,7 @@
           color: var(--text-primary);
           padding: 0 12px;
         "
-      />
+      ></ui-input>
     </div>
   </div>
 
@@ -126,7 +126,7 @@
     </div>
     <div class="control-group">
       <label>Border Width</label>
-      <input
+      <ui-input
         type="number"
         min="0"
         max="10"
@@ -141,16 +141,16 @@
           color: var(--text-primary);
           padding: 0 12px;
         "
-      />
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Border Color</label>
-      <input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.borderColor"
         (ngModelChange)="updateConfig()"
         style="width: 100%; height: 40px; border: none; background: none; cursor: pointer"
-      />
+      ></ui-input>
     </div>
   </div>
 
@@ -158,33 +158,25 @@
   <div slot="content-behavior" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
         Show Tooltips
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
         Clickable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
         Show Popover
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
         Animated Transitions
       </label>
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
+
 
   <div
     preview

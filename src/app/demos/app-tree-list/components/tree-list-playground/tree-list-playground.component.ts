@@ -10,7 +10,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
@@ -23,7 +23,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 })
 export class TreeListPlaygroundComponent implements AfterViewInit {
   @ViewChild('treeElement') treeElement!: ElementRef;
-  generatedCode = signal<string>('');
+  generatedCodeSignal = signal<string>('');
 
   pgConfig = {
     selectable: true,
@@ -88,7 +88,7 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.treeElement) return '';
     let code = generatePlaygroundCode(this.treeElement.nativeElement as Element, 'ui-tree-list');
     // Add model prop to code manually
@@ -98,13 +98,13 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
   copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+    navigator.clipboard.writeText(this.generatedCodeSignal());
   }
 
   resetConfig() {

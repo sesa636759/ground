@@ -16,11 +16,13 @@
       }
 
       .overview-container {
-        min-height: 100vh;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
         background-color: var(--bg-primary);
         color: var(--text-primary);
         position: relative;
-        overflow-x: hidden;
+        overflow: hidden;
       }
 
       /* Ambient Effects */
@@ -70,11 +72,11 @@
         box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
       }
 
-      /* Header */
       .overview-header {
+        flex-shrink: 0;
         position: relative;
         z-index: 10;
-        padding: 100px 40px 60px;
+        padding: 60px 40px 40px;
         text-align: center;
       }
 
@@ -123,10 +125,25 @@
       }
 
       .text-gradient {
-        background: var(--gradient-text);
+        background: var(--gradient-premium);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        display: inline-block;
+        animation: gradientShift 3s ease infinite;
+        background-size: 200% 200%;
+      }
+
+      @keyframes gradientShift {
+
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .hero-subtitle {
@@ -154,10 +171,13 @@
         background: var(--surface-1);
         border: 1px solid var(--border-color);
         border-radius: 16px;
-        padding: 4px;
+        padding: 4px 16px;
+        /* give inside padding to match previous look */
         transition: all 0.3s ease;
         box-shadow: var(--shadow-md);
         backdrop-filter: blur(10px);
+        z-index: 20;
+        /* make sure it is above the background grid */
       }
 
       .search-box:focus-within {
@@ -174,19 +194,26 @@
         align-items: center;
       }
 
-      .search-box input {
+      .search-box ui-input {
         flex: 1;
-        background: transparent;
-        border: none;
-        color: var(--text-primary);
+        width: 100%;
         font-size: 1.05rem;
-        padding: 12px 0;
-        font-family: inherit;
-        outline: none;
+        /* Remove its internal margin/padding if needed, using variant="ghost" in HTML helps */
+        --input-bg: transparent;
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
       }
 
-      .search-box input::placeholder {
+      .search-box ui-input::part(input) {
+        padding: 12px 0;
+        font-size: 1.05rem;
+      }
+
+      .search-box ui-input::part(input)::placeholder {
         color: var(--text-muted);
+        opacity: 1;
+        /* Ensure overriding standard placeholder opacity */
       }
 
       .clear-btn {
@@ -206,56 +233,30 @@
 
       .view-toggle {
         display: flex;
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
-        border-radius: 16px;
-        padding: 4px;
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .toggle-btn {
-        background: transparent;
-        border: none;
-        color: var(--text-muted);
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        cursor: pointer;
-        display: flex;
         align-items: center;
-        justify-content: center;
-        transition: all 0.2s;
-      }
-
-      .toggle-btn:hover {
-        color: var(--text-primary);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .toggle-btn.active {
-        background: var(--bg-glass-hover);
-        color: var(--primary);
-        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
       }
 
       /* Layout */
       .overview-layout {
+        flex: 1;
+        min-height: 0;
         position: relative;
         z-index: 10;
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 40px;
         max-width: 1600px;
+        width: 100%;
         margin: 0 auto;
-        padding: 0 40px 100px;
+        padding: 0 20px;
       }
 
       /* Sidebar */
       .sidebar-nav {
         flex: 0 0 280px;
-        position: sticky;
-        top: 40px;
+        position: relative;
+        overflow-y: auto;
+        padding-bottom: 40px;
       }
 
       .sidebar-inner {
@@ -367,6 +368,9 @@
       .overview-content {
         flex: 1;
         min-width: 0;
+        overflow-y: auto;
+        padding: 0 20px 100px 20px;
+        scroll-behavior: smooth;
       }
 
       .category-section {

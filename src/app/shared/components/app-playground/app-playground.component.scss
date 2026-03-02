@@ -19,3 +19,32 @@
 .code-preview-area {
     margin-top: var(--space-lg);
 }
+
+.playground-controls {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+ui-accordion {
+    flex: 1;
+}
+
+.playground-controls-actions {
+    padding: var(--space-md);
+    border-top: 1px solid var(--border-color);
+    background: var(--surface-2);
+    border-bottom-left-radius: var(--radius-xl);
+    border-bottom-right-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+ui-button.reset-btn {
+    width: auto;
+    display: block;
+}

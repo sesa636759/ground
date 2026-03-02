@@ -7,7 +7,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-import { AppCheckboxValueAccessorDirective } from '../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -77,42 +77,42 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
 
   // Code snippets
   colorVariantsCode = `<!-- Diverse color palette -->
-<app-checkbox label="Primary" color="primary" checked></app-checkbox>
-<app-checkbox label="Success" color="success" checked></app-checkbox>
-<app-checkbox label="Danger" color="danger" checked></app-checkbox>
-<app-checkbox label="Indigo" color="indigo" checked></app-checkbox>`;
+<ui-checkbox label="Primary" color="primary" checked></ui-checkbox>
+<ui-checkbox label="Success" color="success" checked></ui-checkbox>
+<ui-checkbox label="Danger" color="danger" checked></ui-checkbox>
+<ui-checkbox label="Indigo" color="indigo" checked></ui-checkbox>`;
 
-  premiumVariantsCode = `<app-checkbox label="Button Variant" variant="button" color="primary" checked></app-checkbox>
-<app-checkbox label="Chip Variant" variant="chip" color="info" checked></app-checkbox>
-<app-checkbox label="Soft Variant" variant="soft" color="success" checked></app-checkbox>`;
+  premiumVariantsCode = `<ui-checkbox label="Button Variant" variant="button" color="primary" checked></ui-checkbox>
+<ui-checkbox label="Chip Variant" variant="chip" color="info" checked></ui-checkbox>
+<ui-checkbox label="Soft Variant" variant="soft" color="success" checked></ui-checkbox>`;
 
-  skeletonCode = `<app-checkbox skeleton size="small"></app-checkbox>
-<app-checkbox skeleton size="medium"></app-checkbox>
-<app-checkbox skeleton size="large"></app-checkbox>`;
+  skeletonCode = `<ui-checkbox skeleton size="small"></ui-checkbox>
+<ui-checkbox skeleton size="medium"></ui-checkbox>
+<ui-checkbox skeleton size="large"></ui-checkbox>`;
 
-  sizesVariantsCode = `<app-checkbox label="Small" size="small"></app-checkbox>
-<app-checkbox label="Medium" size="medium"></app-checkbox>
-<app-checkbox label="Large" size="large"></app-checkbox>`;
+  sizesVariantsCode = `<ui-checkbox label="Small" size="small"></ui-checkbox>
+<ui-checkbox label="Medium" size="medium"></ui-checkbox>
+<ui-checkbox label="Large" size="large"></ui-checkbox>`;
 
-  statesCode = `<app-checkbox label="Checked" checked></app-checkbox>
-<app-checkbox label="Indeterminate" indeterminate></app-checkbox>
-<app-checkbox label="Disabled" disabled></app-checkbox>
-<app-checkbox label="Error State" invalid error-message="Required"></app-checkbox>`;
+  statesCode = `<ui-checkbox label="Checked" checked></ui-checkbox>
+<ui-checkbox label="Indeterminate" indeterminate></ui-checkbox>
+<ui-checkbox label="Disabled" disabled></ui-checkbox>
+<ui-checkbox label="Error State" invalid error-message="Required"></ui-checkbox>`;
 
   groupExampleCode = `<!-- Master checkbox logic -->
-<app-checkbox 
+<ui-checkbox 
   label="Select All" 
   [checked]="masterChecked" 
   [indeterminate]="masterIndeterminate"
   (checkboxChange)="onMasterChange($event)">
-</app-checkbox>`;
+</ui-checkbox>`;
 
-  formExampleCode = `<app-checkbox
+  formExampleCode = `<ui-checkbox
   [(ngModel)]="formTerms"
   label="Accept Terms"
   [invalid]="termsInvalid"
   error-message="Required"
-></app-checkbox>`;
+></ui-checkbox>`;
 
   ngOnInit() {
     this.updateMasterState();
