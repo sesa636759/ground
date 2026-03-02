@@ -70,12 +70,12 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     let code = '<ui-picklist\n';
     code += `  source-header="${this.pgConfig.sourceHeader}"\n`;
     code += `  target-header="${this.pgConfig.targetHeader}"\n`;
@@ -103,7 +103,7 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

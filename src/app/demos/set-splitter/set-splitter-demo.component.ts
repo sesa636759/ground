@@ -16,7 +16,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     SplitterPlaygroundComponent,
     DemoTabsComponent,
-    ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
     DemoSidebarComponent

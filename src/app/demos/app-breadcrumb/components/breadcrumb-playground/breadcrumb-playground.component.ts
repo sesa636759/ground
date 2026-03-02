@@ -81,14 +81,14 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.breadcrumb) return '';
     return generatePlaygroundCode(this.breadcrumb.nativeElement as Element, 'ui-breadcrumb');
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

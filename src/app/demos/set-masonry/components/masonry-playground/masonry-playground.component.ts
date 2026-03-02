@@ -123,7 +123,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     }));
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.masonryLayout) return '';
     return generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
   }
@@ -132,7 +132,7 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
 
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
