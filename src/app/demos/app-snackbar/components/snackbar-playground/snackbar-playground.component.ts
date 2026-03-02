@@ -9,9 +9,9 @@
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/app-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({

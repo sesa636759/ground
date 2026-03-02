@@ -8,7 +8,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/app-checkbox-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-animate-on-scroll-playground',

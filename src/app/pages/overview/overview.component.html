@@ -7,34 +7,14 @@
   <!-- Hero Header -->
   <header class="overview-header">
     <div class="header-content">
-      <div class="badge-wrapper">
-        <div class="enterprise-badge">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-          </svg>
-          <span>Enterprise Component Registry</span>
-        </div>
-      </div>
-
       <h1 class="hero-title">
         The Building Blocks of <br />
         <span class="text-gradient">Ground UI System</span>
       </h1>
-      <p class="hero-subtitle">
+      <!-- <p class="hero-subtitle">
         Explore {{ totalComponents }} meticulously crafted, fully responsive, and accessible
         components designed for scalable enterprise applications.
-      </p>
+      </p> -->
 
       <div class="header-actions">
         <div class="search-box">
@@ -56,67 +36,29 @@
             placeholder="Search components, categories, or keywords..."
             [value]="searchQuery()"
             (input)="onSearchInput($event)"
-          />
+            variant="ghost"
+            size="large"
+            full-width
+          ></ui-input>
           @if (searchQuery()) {
-            <ui-button class="clear-btn" (click)="clearSearch()">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </ui-button>
+            <ui-button
+              variant="ghost"
+              icon="lucide-x"
+              [iconOnly]="true"
+              (buttonClick)="clearSearch()"
+            ></ui-button>
           }
         </div>
 
         <div class="view-toggle">
-          <ui-button
-            class="toggle-btn"
-            [class.active]="viewMode() === 'grid'"
-            (click)="viewMode.set('grid')"
-            title="Grid View"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-          </ui-button>
-          <ui-button
-            class="toggle-btn"
-            [class.active]="viewMode() === 'list'"
-            (click)="viewMode.set('list')"
-            title="List View"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <line x1="3" y1="6" x2="3.01" y2="6"></line>
-              <line x1="3" y1="12" x2="3.01" y2="12"></line>
-              <line x1="3" y1="18" x2="3.01" y2="18"></line>
-            </svg>
-          </ui-button>
+          <app-button-toggle-group
+            mode="segmented"
+            display-mode="icon-only"
+            variant="surface"
+            [value]="viewMode()"
+            [options]="viewOptions"
+            (buttonToggleGroupChange)="viewMode.set($event.detail.value)"
+          ></app-button-toggle-group>
         </div>
       </div>
     </div>
@@ -133,7 +75,7 @@
         <div class="sidebar-nav-container" style="margin-top: 16px">
           <ui-anchor
             [attr.links]="overviewAnchorLinks()"
-            scroll-container=".content-body"
+            scroll-container=".overview-content"
             type="line"
             show-progress="true"
           ></ui-anchor>
@@ -150,7 +92,11 @@
       >
         <div class="category-header">
           <div class="category-title-wrapper">
-            <span class="category-icon-large">{{ category.icon }}</span>
+            <ui-icon
+              [name]="category.icon"
+              [library]="category.iconLibrary"
+              [size]="'2.5rem'"
+            ></ui-icon>
             <h2>{{ category.label }}</h2>
           </div>
           <div class="category-divider"></div>
@@ -174,7 +120,9 @@
             [previewSvg]="getPreviewSvg(component.id)"
             [imageUrl]="getImageUrl(component.id)"
             [viewMode]="viewMode()"
-            (cardClick)="navigateToComponent($event)"
+            (cardClick)="navigateToComponent(component.id)"
+            (docsClick)="navigateToDocs(component.id)"
+            [viewMode]="viewMode()"
           ></app-component-card>
         </ng-masonry-grid>
       </div>

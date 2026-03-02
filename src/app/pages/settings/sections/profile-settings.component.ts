@@ -51,7 +51,7 @@ import { FormsModule } from '@angular/forms';
                   id="displayName"
                   [(ngModel)]="displayName"
                   placeholder="Enter your display name"
-                />
+                ></ui-input>
               </div>
             </div>
 
@@ -64,7 +64,7 @@ import { FormsModule } from '@angular/forms';
                   id="email"
                   [(ngModel)]="email"
                   placeholder="your.email@example.com"
-                />
+                ></ui-input>
               </div>
             </div>
 

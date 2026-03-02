@@ -34,7 +34,7 @@ import { FormsModule } from '@angular/forms';
                   id="currentPassword"
                   [(ngModel)]="currentPassword"
                   placeholder="••••••••"
-                />
+                ></ui-input>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ import { FormsModule } from '@angular/forms';
                   id="newPassword"
                   [(ngModel)]="newPassword"
                   placeholder="New password"
-                />
+                ></ui-input>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ import { FormsModule } from '@angular/forms';
                   id="confirmPassword"
                   [(ngModel)]="confirmPassword"
                   placeholder="Confirm new password"
-                />
+                ></ui-input>
               </div>
             </div>
 

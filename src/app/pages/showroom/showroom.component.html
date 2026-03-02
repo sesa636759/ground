@@ -39,6 +39,7 @@
         <h4 class="menu-label">CATEGORIES</h4>
         <nav class="sidebar-nav">
           <ui-button
+            variant="ghost"
             *ngFor="let cat of categories; let i = index"
             class="nav-btn"
             [class.selected]="activeCategoryId() === cat.id"
@@ -75,7 +76,11 @@
         <div class="topbar-right">
           <div class="search-box">
             <i class="fas fa-search"></i>
-            <ui-input type="text" placeholder="Search resources..." (input)="onSearch($event)" />
+            <ui-input
+              type="text"
+              placeholder="Search resources..."
+              (input)="onSearch($event)"
+            ></ui-input>
           </div>
           <ui-button class="icon-btn">
             <i class="fas fa-bell"></i><span class="dot-indicator"></span>
