@@ -1,3 +1,21 @@
-<div class="playground-event-log">
-  <ng-content></ng-content>
+<div class="event-log-container">
+  <div class="header">
+    <strong>Event Log</strong>
+    @if (logs.length > 0) {
+      <ui-button (click)="clear.emit()" class="clear-btn" variant="ghost" size="sm">Clear</ui-button>
+    }
+  </div>
+  <div class="log-items">
+    <div *ngFor="let log of normalizedLogs" class="log-item">
+      @if (log.time) {
+        <span class="timestamp">[{{ log.time }}]</span>
+      }
+      <span class="message">{{ log.msg }}</span>
+    </div>
+    @if (logs.length === 0) {
+      <div class="empty-state">
+        {{ emptyMessage }}
+      </div>
+    }
+  </div>
 </div>

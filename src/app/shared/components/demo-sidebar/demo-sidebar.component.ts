@@ -16,79 +16,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  styles: [
-    `
-      :host {
-        display: block;
-        height: 100%;
-        min-height: 0;
-        flex-shrink: 0;
-      }
-
-      .custom-nav {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .custom-nav li a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text-secondary, #475569);
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.18s ease;
-        border-left: 3px solid transparent;
-        line-height: 1.4;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .custom-nav li a:hover {
-        background: rgba(22, 163, 74, 0.07);
-        color: #16a34a;
-        border-left-color: rgba(22, 163, 74, 0.3);
-      }
-
-      .custom-nav li a.active {
-        background: rgba(22, 163, 74, 0.1);
-        color: #16a34a;
-        font-weight: 700;
-        border-left-color: #16a34a;
-      }
-
-      .nav-icon {
-        font-size: 0.9rem;
-        width: 18px;
-        text-align: center;
-        flex-shrink: 0;
-      }
-    `,
-  ],
-  template: `
-    <aside class="examples-sidebar">
-      <div class="sidebar-title">{{ title }}</div>
-      <ul class="custom-nav" *ngIf="variants && variants.length > 0">
-        <li *ngFor="let variant of variants">
-          <a (click)="onLinkClick(variant.id, $event)" [class.active]="activeId === variant.id">
-            <span class="nav-icon" *ngIf="variant.icon || variant.emoji">
-              <ui-icon [icon]="variant.icon" [library]="'fontawesome'"></ui-icon>
-            </span>
-            {{ variant.label || variant.title || variant.name || variant.id }}
-          </a>
-        </li>
-      </ul>
-    </aside>
-  `,
+  templateUrl: './demo-sidebar.component.html',
+  styleUrl: './demo-sidebar.component.scss',
 })
 export class DemoSidebarComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input() variants: any[] = [];

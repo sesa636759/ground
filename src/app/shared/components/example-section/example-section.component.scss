@@ -1,7 +1,33 @@
-.example-section {
-  padding: 1.5rem;
-  background: var(--section-bg, #fff);
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+.demo-section {
+  margin-bottom: 5rem;
+}
+
+.preview-box {
   margin-bottom: 2rem;
+}
+
+.preview-content {
+  width: 100%;
+  display: flex;
+  overflow: visible;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.code-content {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

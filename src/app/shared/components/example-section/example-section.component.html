@@ -1,3 +1,35 @@
-<section class="example-section">
-  <ng-content></ng-content>
+<section class="demo-section" [id]="id">
+  <div class="section-header">
+    @if (title) {
+      <h2>{{ title }}</h2>
+    }
+    @if (description) {
+      <p class="description">{{ description }}</p>
+    }
+  </div>
+
+  <div class="preview-box">
+    <div class="preview-content">
+      <ng-content></ng-content>
+    </div>
+    <div class="code-content">
+      <ui-code-preview
+        [label]="title"
+        [htmlCode]="language === 'html' ? code : ''"
+        [tsCode]="language === 'typescript' || language === 'ts' ? code : ''"
+        [jsCode]="language === 'javascript' || language === 'js' ? code : ''"
+        [cssCode]="language === 'css' ? code : ''"
+        [activeLang]="
+          language === 'typescript' || language === 'ts'
+            ? 'ts'
+            : language === 'javascript' || language === 'js'
+              ? 'js'
+              : language === 'css'
+                ? 'css'
+                : 'html'
+        "
+        [expanded]="expanded"
+      ></ui-code-preview>
+    </div>
+  </div>
 </section>
