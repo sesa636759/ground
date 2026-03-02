@@ -263,20 +263,53 @@
       </div>
     </app-animate-on-scroll>
 
-    <div class="featured-grid-container">
+    <div class="cover-cards-grid">
       @for (comp of featuredComponents; track comp.id; let i = $index) {
-        <app-animate-on-scroll animation="slide-up" [delay]="i * 50">
-          <app-component-card
-            [componentId]="comp.id"
-            [label]="comp.label"
-            [category]="comp.category"
-            [icon]="comp.icon"
-            [description]="comp.description"
-            [badge]="comp.badge"
-            [imageUrl]="comp.img"
-            (cardClick)="navigateTo('playground')"
-            class="elite-card"
-          ></app-component-card>
+        <app-animate-on-scroll animation="slide-up" [delay]="i * 60">
+          <div class="cover-card" (click)="navigateTo('playground')">
+            <!-- Background Image -->
+            <div class="cover-card__bg">
+              <img [src]="comp.img" [alt]="comp.label" loading="lazy" />
+            </div>
+
+            <!-- Gradient Overlays -->
+            <div class="cover-card__overlay"></div>
+            <div class="cover-card__glow-ring"></div>
+
+            <!-- Top Badges -->
+            <div class="cover-card__top">
+              <span class="cover-card__category">{{ comp.category }}</span>
+              @if (comp.badge) {
+                <span class="cover-card__badge">{{ comp.badge }}</span>
+              }
+            </div>
+
+            <!-- Bottom Content -->
+            <div class="cover-card__content">
+              <div class="cover-card__icon-wrap">
+                <ui-icon [name]="comp.icon" library="lucide" size="18" color="white"></ui-icon>
+              </div>
+              <h3 class="cover-card__title">{{ comp.label }}</h3>
+              <p class="cover-card__desc">{{ comp.description }}</p>
+              <div class="cover-card__cta">
+                <span>Explore Demo</span>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Shine Effect -->
+            <div class="cover-card__shine"></div>
+          </div>
         </app-animate-on-scroll>
       }
     </div>

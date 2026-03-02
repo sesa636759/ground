@@ -502,13 +502,12 @@
     }
 }
 
-/* Featured Section Showcasing app-component-card */
+/* Featured Section - Premium Cover Cards */
 .featured-section {
-    padding: 120px 0;
+    padding: 80px 40px;
     background: var(--bg-primary);
     max-width: 1400px;
     margin: 0 auto;
-    padding: 120px 40px;
 }
 
 .section-badge-tiny {
@@ -524,6 +523,259 @@
     margin-bottom: 20px;
 }
 
+/* Cover Cards Grid */
+.cover-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 560px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Individual Cover Card */
+.cover-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
+    background: var(--surface-2);
+    border: 1px solid var(--border-color);
+    transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.45s ease,
+        border-color 0.3s ease;
+
+    // --- Background Image ---
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                filter 0.4s ease;
+            filter: brightness(0.75) saturate(1.1);
+        }
+    }
+
+    // --- Dark Gradient Overlay ---
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.1) 0%,
+                rgba(0, 0, 0, 0.2) 30%,
+                rgba(0, 0, 0, 0.7) 70%,
+                rgba(0, 0, 0, 0.92) 100%);
+        transition: background 0.4s ease;
+    }
+
+    // --- Glowing Border Ring on Hover ---
+    &__glow-ring {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        border-radius: inherit;
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        pointer-events: none;
+    }
+
+    // --- Top Badges ---
+    &__top {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    &__category {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 100px;
+        background: var(--primary);
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    // --- Bottom Content Area ---
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        padding: 20px;
+        transform: translateY(0);
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    &__icon-wrap {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    &__title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 6px;
+        line-height: 1.2;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    &__desc {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.5;
+        margin-bottom: 14px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+    }
+
+    &__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 100px;
+        background: var(--primary);
+        color: white;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.3s ease 0.1s,
+            transform 0.3s ease 0.1s,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+
+        svg {
+            transition: transform 0.25s ease;
+        }
+    }
+
+    // --- Diagonal Shine overlay ---
+    &__shine {
+        position: absolute;
+        top: -100%;
+        left: -60%;
+        width: 50%;
+        height: 250%;
+        background: linear-gradient(105deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.06) 50%,
+                transparent 60%);
+        z-index: 5;
+        pointer-events: none;
+        transition: left 0.7s ease, top 0.7s ease;
+    }
+
+    // ============ HOVER STATE ============
+    &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4),
+            0 0 0 1px var(--primary),
+            0 0 30px var(--primary-glow);
+        border-color: var(--primary);
+
+        .cover-card__bg img {
+            transform: scale(1.08);
+            filter: brightness(0.55) saturate(1.3);
+        }
+
+        .cover-card__overlay {
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.15) 0%,
+                    rgba(0, 0, 0, 0.3) 25%,
+                    rgba(0, 0, 0, 0.75) 60%,
+                    rgba(0, 0, 0, 0.97) 100%);
+        }
+
+        .cover-card__glow-ring {
+            border-color: color-mix(in srgb, var(--primary) 60%, transparent);
+            box-shadow: inset 0 0 20px color-mix(in srgb, var(--primary) 15%, transparent);
+        }
+
+        .cover-card__icon-wrap {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+        }
+
+        .cover-card__desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cover-card__cta {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 6px 20px var(--primary-glow);
+
+            svg {
+                transform: translateX(3px);
+            }
+        }
+
+        .cover-card__shine {
+            left: 150%;
+        }
+    }
+}
+
+/* Legacy featured-grid-container kept for fallback */
 .featured-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -534,66 +786,6 @@
 .elite-card {
     display: block;
     height: 100%;
-
-    ::ng-deep .component-card {
-        height: 100%;
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        padding: 24px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-
-        &:hover {
-            transform: translateY(-8px);
-            background: var(--surface-2);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-lg), 0 0 20px var(--primary-glow);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-glow);
-            color: var(--primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 0;
-            flex-grow: 1;
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: var(--primary);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-    }
 }
 
 /* Keeping other sections */
