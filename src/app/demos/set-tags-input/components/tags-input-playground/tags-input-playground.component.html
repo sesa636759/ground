@@ -6,12 +6,12 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Placeholder</label>
-        <app-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -58,7 +58,7 @@
 
       <div class="control-group">
         <label>Max Tags</label>
-        <app-input
+        <ui-input
           type="number"
           min="1"
           max="20"

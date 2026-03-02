@@ -198,18 +198,18 @@ import { CodeBlockComponent } from '../../shared/components/code-block/code-bloc
   styleUrl: './set-input-demo.component.scss',
 })
 export class SetInputDemoComponent {
-  basicInputCode = `<app-input
+  basicInputCode = `<ui-input
   placeholder="Enter text"
   type="text"
 ></app-input>`;
 
-  variantsInputCode = `<app-input
+  variantsInputCode = `<ui-input
   variant="filled"
   size="large"
   placeholder="Large filled input"
 ></app-input>`;
 
-  iconsInputCode = `<app-input
+  iconsInputCode = `<ui-input
   placeholder="Search"
   prefix-icon="fas fa-search"
 ></app-input>`;

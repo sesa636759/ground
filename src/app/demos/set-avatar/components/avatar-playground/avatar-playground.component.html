@@ -6,7 +6,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Name</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.name"
           (ngModelChange)="updateConfig()"
@@ -16,7 +16,7 @@
 
       <div class="control-group">
         <label>Image Source (URL)</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.src"
           (ngModelChange)="updateConfig()"
@@ -54,7 +54,7 @@
 
       <div class="control-group">
         <label>Icon Class</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.icon"
           (ngModelChange)="updateConfig()"
@@ -64,12 +64,12 @@
 
       <div class="control-group">
         <label>Tooltip Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.tooltipText" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.tooltipText" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Background Color</label>
-        <app-input
+        <ui-input
           type="color"
           [(ngModel)]="pgConfig.bgColor"
           (ngModelChange)="updateConfig()"
@@ -79,7 +79,7 @@
 
       <div class="control-group">
         <label>Text Color</label>
-        <app-input
+        <ui-input
           type="color"
           [(ngModel)]="pgConfig.textColor"
           (ngModelChange)="updateConfig()"
@@ -133,7 +133,8 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showStatus" (ngModelChange)="updateConfig()" /> Show Status
+        <app-checkbox [(ngModel)]="pgConfig.showStatus" (ngModelChange)="updateConfig()" /> Show
+        Status
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.verified" (ngModelChange)="updateConfig()" /> Verified
@@ -145,7 +146,8 @@
         <app-checkbox [(ngModel)]="pgConfig.editable" (ngModelChange)="updateConfig()" /> Editable
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoColor" (ngModelChange)="updateConfig()" /> Auto Color
+        <app-checkbox [(ngModel)]="pgConfig.autoColor" (ngModelChange)="updateConfig()" /> Auto
+        Color
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()" /> Gradient
@@ -182,9 +184,9 @@
   </div>
 
   <app-playground-event-log
-            [logs]="eventLog()"
-            (clear)="eventLog.set([])"
-          ></app-playground-event-log>
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 
   <ui-code-preview
     code

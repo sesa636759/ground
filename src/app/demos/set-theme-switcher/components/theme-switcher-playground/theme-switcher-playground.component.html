@@ -46,7 +46,7 @@
 
       <div class="control-group">
         <label>Animation Duration (ms)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="1000"
@@ -59,10 +59,12 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show Icons
+        <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show
+        Icons
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show Labels
+        <app-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show
+        Labels
       </label>
       <label class="checkbox-item">
         <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />

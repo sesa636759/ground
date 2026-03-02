@@ -9,17 +9,17 @@
 
     <!-- Success Message -->
     @if (success()) {
-    <div class="alert alert-success">
-      <span class="alert-icon">✅</span>
-      <span>{{ success() }}</span>
-    </div>
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <span>{{ success() }}</span>
+      </div>
     }
-       <!-- Error Message -->
+    <!-- Error Message -->
     @if (error()) {
-    <div class="alert alert-error">
-      <span class="alert-icon">⚠️</span>
-      <span>{{ error() }}</span>
-    </div>
+      <div class="alert alert-error">
+        <span class="alert-icon">⚠️</span>
+        <span>{{ error() }}</span>
+      </div>
     }
     <!-- Registration Form -->
     <form (ngSubmit)="onSubmit()" class="register-form">
@@ -28,7 +28,7 @@
         <label for="fullName">Full Name <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">👤</span>
-          <app-input
+          <ui-input
             type="text"
             id="fullName"
             name="fullName"
@@ -45,7 +45,7 @@
         <label for="username">Username <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">@</span>
-          <app-input
+          <ui-input
             type="text"
             id="username"
             name="username"
@@ -62,7 +62,7 @@
         <label for="email">Email Address <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">📧</span>
-          <app-input
+          <ui-input
             type="email"
             id="email"
             name="email"
@@ -79,7 +79,7 @@
         <label for="password">Password <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
-          <app-input
+          <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -98,19 +98,25 @@
             {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
           </ui-button>
         </div>
-        
+
         <!-- Password Strength Indicator -->
         <div class="password-strength" *ngIf="formData.password">
           <div class="strength-bar">
-            <div 
-              class="strength-fill" 
+            <div
+              class="strength-fill"
               [class.weak]="passwordStrength() === 'weak'"
               [class.medium]="passwordStrength() === 'medium'"
               [class.strong]="passwordStrength() === 'strong'"
             ></div>
           </div>
           <span class="strength-label" [class]="passwordStrength()">
-            {{ passwordStrength() === 'weak' ? 'Weak' : passwordStrength() === 'medium' ? 'Medium' : 'Strong' }}
+            {{
+              passwordStrength() === 'weak'
+                ? 'Weak'
+                : passwordStrength() === 'medium'
+                  ? 'Medium'
+                  : 'Strong'
+            }}
           </span>
         </div>
       </div>
@@ -120,7 +126,7 @@
         <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
-          <app-input
+          <ui-input
             [type]="showConfirmPassword() ? 'text' : 'password'"
             id="confirmPassword"
             name="confirmPassword"
@@ -141,14 +147,10 @@
         @if (confirmPassword) {
           <div class="password-match">
             @if (formData.password === confirmPassword) {
-              <span class="match-success">
-                ✓ Passwords match
-              </span>
+              <span class="match-success"> ✓ Passwords match </span>
             }
             @if (formData.password !== confirmPassword) {
-              <span class="match-error">
-                ✗ Passwords do not match
-              </span>
+              <span class="match-error"> ✗ Passwords do not match </span>
             }
           </div>
         }
@@ -157,7 +159,7 @@
       <!-- Terms and Conditions -->
       <div class="form-group">
         <label class="checkbox-label">
-          <app-input
+          <ui-input
             type="checkbox"
             name="acceptTerms"
             [(ngModel)]="formData.acceptTerms"
@@ -173,11 +175,7 @@
       </div>
 
       <!-- Submit Button -->
-      <ui-button
-        type="submit"
-        class="btn-primary btn-large"
-        [disabled]="loading()"
-      >
+      <ui-button type="submit" class="btn-primary btn-large" [disabled]="loading()">
         @if (!loading()) {
           <span>Create Account</span>
         }

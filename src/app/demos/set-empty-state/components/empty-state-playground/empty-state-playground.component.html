@@ -65,7 +65,7 @@
   <div slot="content-content" class="control-grid" style="padding: 16px">
     <div class="control-group full-width">
       <label>Heading</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.heading"
         (ngModelChange)="updateConfig()"
@@ -94,7 +94,7 @@
 
     <div class="control-group full-width">
       <label>Illustration URL</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.illustration"
         (ngModelChange)="updateConfig()"
@@ -107,15 +107,11 @@
   <div slot="content-actions" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Primary Action</label>
-      <app-input
-        type="text"
-        [(ngModel)]="pgConfig.primaryAction"
-        (ngModelChange)="updateConfig()"
-      />
+      <ui-input type="text" [(ngModel)]="pgConfig.primaryAction" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Primary Icon</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.primaryActionIcon"
         (ngModelChange)="updateConfig()"
@@ -124,7 +120,7 @@
 
     <div class="control-group">
       <label>Secondary Action</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.secondaryAction"
         (ngModelChange)="updateConfig()"
@@ -132,7 +128,7 @@
     </div>
     <div class="control-group">
       <label>Secondary Icon</label>
-      <app-input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.secondaryActionIcon"
         (ngModelChange)="updateConfig()"

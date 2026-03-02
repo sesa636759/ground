@@ -21,21 +21,21 @@
           [code]="basicInputsCode"
         >
           <div class="demo-grid col-3">
-            <app-input label="Username" placeholder="Enter your username" full-width></app-input>
-            <app-input
+            <ui-input label="Username" placeholder="Enter your username" full-width></app-input>
+            <ui-input
               type="email"
               label="Email Address"
               placeholder="user@example.com"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               type="password"
               label="Password"
               placeholder="Enter password"
               show-password-toggle
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               type="number"
               label="Age"
               placeholder="0"
@@ -43,14 +43,14 @@
               max="120"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               type="search"
               label="Search"
               placeholder="Search..."
               show-clear
               full-width
             ></app-input>
-            <app-input type="date" label="Birth Date" full-width></app-input>
+            <ui-input type="date" label="Birth Date" full-width></app-input>
           </div>
         </app-example-section>
 
@@ -62,11 +62,11 @@
           [code]="variantsCode"
         >
           <div class="demo-grid col-3">
-            <app-input label="Outlined" variant="outlined" full-width></app-input>
-            <app-input label="Filled" variant="filled" full-width></app-input>
-            <app-input label="Underlined" variant="underlined" full-width></app-input>
-            <app-input label="Soft" variant="soft" full-width></app-input>
-            <app-input label="Ghost" variant="ghost" full-width></app-input>
+            <ui-input label="Outlined" variant="outlined" full-width></app-input>
+            <ui-input label="Filled" variant="filled" full-width></app-input>
+            <ui-input label="Underlined" variant="underlined" full-width></app-input>
+            <ui-input label="Soft" variant="soft" full-width></app-input>
+            <ui-input label="Ghost" variant="ghost" full-width></app-input>
           </div>
         </app-example-section>
 
@@ -78,9 +78,9 @@
           [code]="sizesCode"
         >
           <div class="demo-grid col-3">
-            <app-input label="Small" size="small" full-width></app-input>
-            <app-input label="Medium" size="medium" full-width></app-input>
-            <app-input label="Large" size="large" full-width></app-input>
+            <ui-input label="Small" size="small" full-width></app-input>
+            <ui-input label="Medium" size="medium" full-width></app-input>
+            <ui-input label="Large" size="large" full-width></app-input>
           </div>
         </app-example-section>
 
@@ -92,21 +92,21 @@
           [code]="validationCode"
         >
           <div class="demo-grid col-2">
-            <app-input
+            <ui-input
               label="Email"
               value="invalid-email"
               validation-state="error"
               error-text="Please enter a valid email address"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Username"
               value="john_doe"
               validation-state="success"
               success-text="Username is available!"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Password"
               type="password"
               value="12345"
@@ -114,7 +114,7 @@
               warning-text="Password is weak"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Username"
               placeholder="Choose a username"
               helper-text="Must be 3-20 characters"
@@ -131,19 +131,19 @@
           [code]="prefixSuffixCode"
         >
           <div class="demo-grid col-2">
-            <app-input
+            <ui-input
               label="Website"
               placeholder="your-site"
               prefix-text="https://"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Email"
               placeholder="username"
               suffix-text="@company.com"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Price"
               placeholder="0.00"
               prefix-text="$"
@@ -151,7 +151,7 @@
               type="number"
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               label="Search"
               placeholder="Type to search..."
               show-clear
@@ -168,7 +168,7 @@
           [code]="advancedCode"
         >
           <div class="demo-grid col-2">
-            <app-input
+            <ui-input
               type="number"
               label="Quantity"
               value="1"
@@ -177,7 +177,7 @@
               show-steppers
               full-width
             ></app-input>
-            <app-input
+            <ui-input
               multiline
               auto-resize
               max-rows="4"
@@ -186,7 +186,7 @@
               full-width
             ></app-input>
             <div class="demo-card">
-              <app-input
+              <ui-input
                 label="Loading State"
                 [attr.skeleton]="skeletonState"
                 placeholder="Content..."
@@ -209,9 +209,9 @@
           [code]="floatingLabelsCode"
         >
           <div class="demo-grid col-3">
-            <app-input variant="outlined" label="Full Name" floating-label full-width></app-input>
-            <app-input variant="filled" label="Email Address" floating-label full-width></app-input>
-            <app-input
+            <ui-input variant="outlined" label="Full Name" floating-label full-width></app-input>
+            <ui-input variant="filled" label="Email Address" floating-label full-width></app-input>
+            <ui-input
               variant="underlined"
               label="Phone Number"
               floating-label
@@ -228,8 +228,8 @@
           [code]="multilineCode"
         >
           <div class="demo-grid col-2">
-            <app-input multiline label="Description" rows="3" full-width></app-input>
-            <app-input
+            <ui-input multiline label="Description" rows="3" full-width></app-input>
+            <ui-input
               multiline
               label="Bio"
               max-length="200"
@@ -248,20 +248,20 @@
           [code]="inputStatesCode"
         >
           <div class="demo-grid col-2">
-            <app-input
+            <ui-input
               label="Disabled"
               value="Read only and disabled"
               disabled
               full-width
             ></app-input>
-            <app-input label="Read-only" value="Cannot be edited" readonly full-width></app-input>
-            <app-input
+            <ui-input label="Read-only" value="Cannot be edited" readonly full-width></app-input>
+            <ui-input
               label="Required"
               placeholder="Field is required"
               required
               full-width
             ></app-input>
-            <app-input label="Loading" value="Fetching..." loading full-width></app-input>
+            <ui-input label="Loading" value="Fetching..." loading full-width></app-input>
           </div>
         </app-example-section>
       </div>
@@ -269,7 +269,7 @@
 
     <!-- Playground Slot -->
     <div slot="playground">
-      <app-input-playground />
+      <ui-input-playground />
     </div>
 
     <!-- Documentation Slot -->

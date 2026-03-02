@@ -33,7 +33,7 @@
 
       <div class="control-group">
         <label>Percent</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="100"
@@ -44,12 +44,16 @@
 
       <div class="control-group">
         <label>Stroke Width</label>
-        <app-input type="number" [(ngModel)]="pgConfig.strokeWidth" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.strokeWidth"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Width (Circle/Dash)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.width"
           (ngModelChange)="updateConfig()"
@@ -59,7 +63,7 @@
 
       <div class="control-group">
         <label>Steps</label>
-        <app-input type="number" [(ngModel)]="pgConfig.steps" (ngModelChange)="updateConfig()" />
+        <ui-input type="number" [(ngModel)]="pgConfig.steps" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -76,7 +80,7 @@
 
       <div class="control-group">
         <label>Gap Degree (Dash)</label>
-        <app-input
+        <ui-input
           type="number"
           min="0"
           max="360"
@@ -103,12 +107,16 @@
 
       <div class="control-group">
         <label>Stroke Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.strokeColor" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="color"
+          [(ngModel)]="pgConfig.strokeColor"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Trail Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.trailColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 

@@ -49,31 +49,43 @@
 
       <div class="control-group">
         <label>Item Label</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Sublabel</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.itemSublabel"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Icon (FA Class)</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Action Icon</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemActionIcon" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.itemActionIcon"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
 
       <div class="control-group">
         <label>Badge Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
       </div>
       <div class="control-group">
         <label>Counter Value</label>
-        <app-input type="number" [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()" />
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.itemCounter"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
     </div>
 

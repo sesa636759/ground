@@ -8,7 +8,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Content</label>
-        <app-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
@@ -91,53 +91,37 @@
 
       <div class="control-group">
         <label>Max Width (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
+        <ui-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Offset (px)</label>
-        <app-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
+        <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Elevation (0-5)</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.elevation"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Arrow Size (px)</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.arrowSize"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Show Delay (ms)</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.showDelay"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Hide Delay (ms)</label>
-        <app-input
-          type="number"
-          [(ngModel)]="pgConfig.hideDelay"
-          (ngModelChange)="updateConfig()"
-        />
+        <ui-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Transition Duration (ms)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.transitionDuration"
           (ngModelChange)="updateConfig()"
@@ -161,12 +145,12 @@
 
       <div class="control-group">
         <label>Target Text</label>
-        <app-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
       </div>
 
       <div class="control-group">
         <label>Target Icon Class</label>
-        <app-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
       </div>
 
       @if (pgConfig.useCustomColor) {

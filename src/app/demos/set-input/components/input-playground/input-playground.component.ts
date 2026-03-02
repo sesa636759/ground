@@ -81,7 +81,7 @@ export class InputPlaygroundComponent implements OnInit {
   }
 
   updateConfig() {
-    let code = `<app-input\n`;
+    let code = `<ui-input\n`;
     code += `  type="${this.pgConfig.type}"\n`;
     code += `  label="${this.pgConfig.label}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;

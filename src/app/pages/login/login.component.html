@@ -32,7 +32,7 @@
         <label for="email">Email Address</label>
         <div class="input-wrapper">
           <span class="input-icon">📧</span>
-          <app-input
+          <ui-input
             type="email"
             id="email"
             name="email"
@@ -49,7 +49,7 @@
         <label for="password">Password</label>
         <div class="input-wrapper">
           <span class="input-icon">🔒</span>
-          <app-input
+          <ui-input
             [type]="showPassword() ? 'text' : 'password'"
             id="password"
             name="password"
@@ -72,34 +72,26 @@
       <!-- Remember Me & Forgot Password -->
       <div class="form-options">
         <label class="checkbox-label">
-          <app-input
-            type="checkbox"
-            name="rememberMe"
-            [(ngModel)]="credentials.rememberMe"
-          />
+          <ui-input type="checkbox" name="rememberMe" [(ngModel)]="credentials.rememberMe" />
           <span>Remember me</span>
         </label>
         <a href="#" class="forgot-link">Forgot password?</a>
       </div>
 
       <!-- Submit Button -->
-      <ui-button
-        type="submit"
-        class="btn-primary btn-large"
-        [disabled]="loading()"
-      >
+      <ui-button type="submit" class="btn-primary btn-large" [disabled]="loading()">
         @if (!loading()) {
           <span>Sign In</span>
         }
         @if (loading()) {
           <span class="loading-content">
-          <span class="spinner"></span>
-          <span>Signing in...</span>
+            <span class="spinner"></span>
+            <span>Signing in...</span>
           </span>
         }
       </ui-button>
-    
-    |
+
+      |
     </form>
 
     <!-- Divider -->

@@ -31,7 +31,7 @@
 
       <div class="control-group">
         <label>Gutter Size (px)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.gutterSize"
           min="4"
@@ -42,7 +42,7 @@
 
       <div class="control-group">
         <label>Snap Threshold (%)</label>
-        <app-input
+        <ui-input
           type="number"
           [(ngModel)]="pgConfig.snapThreshold"
           min="0"
@@ -69,10 +69,7 @@
         Show Icon
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          [(ngModel)]="pgConfig.doubleClickCollapse"
-          (ngModelChange)="updateConfig()"
-        />
+        <app-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (ngModelChange)="updateConfig()" />
         DB Click Collapse
       </label>
     </div>

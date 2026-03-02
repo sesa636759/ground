@@ -72,7 +72,7 @@
 
       <div class="control-group">
         <label>Line Color</label>
-        <app-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
+        <ui-input type="color" [(ngModel)]="pgConfig.lineColor" (ngModelChange)="updateConfig()" />
       </div>
     </div>
 
@@ -92,7 +92,8 @@
         <app-checkbox [(ngModel)]="pgConfig.showLine" (ngModelChange)="updateConfig()" /> Show Line
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake Layout)
+        <app-checkbox [(ngModel)]="pgConfig.wrap" (ngModelChange)="updateConfig()" /> Wrap (Snake
+        Layout)
       </label>
     </div>
   </div>

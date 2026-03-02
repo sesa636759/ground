@@ -3,7 +3,7 @@
     <div slot="content-global" class="control-grid" style="padding: 16px">
       <div class="control-group">
         <label>Source Header</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.sourceHeader"
           (ngModelChange)="updateConfig()"
@@ -11,7 +11,7 @@
       </div>
       <div class="control-group">
         <label>Target Header</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.targetHeader"
           (ngModelChange)="updateConfig()"
@@ -19,7 +19,7 @@
       </div>
       <div class="control-group">
         <label>Filter Placeholder</label>
-        <app-input
+        <ui-input
           type="text"
           [(ngModel)]="pgConfig.filterPlaceholder"
           (ngModelChange)="updateConfig()"

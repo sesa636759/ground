@@ -3,11 +3,11 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Helper Text</label>
-      <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Variant</label>
@@ -117,9 +117,9 @@
 
   <!-- Events -->
   <app-playground-event-log
-            [logs]="eventLog()"
-            (clear)="eventLog.set([])"
-          ></app-playground-event-log>
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 
   <!-- Code -->
   @if (showCode) {

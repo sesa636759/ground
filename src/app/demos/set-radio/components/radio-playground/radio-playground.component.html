@@ -3,11 +3,11 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Group Label</label>
-      <app-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Group Name</label>
-      <app-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Layout</label>
@@ -23,7 +23,7 @@
     </div>
     <div class="control-group" *ngIf="pgConfig.layout === 'columns'">
       <label>Columns Count</label>
-      <app-input type="number" [(ngModel)]="pgConfig.columns" (ngModelChange)="updateConfig()" />
+      <ui-input type="number" [(ngModel)]="pgConfig.columns" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Variant</label>
@@ -85,13 +85,13 @@
   <div slot="content-items" style="padding: 16px">
     <div *ngFor="let opt of radioOptions; let i = index" class="option-editor-item">
       <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
-        <app-input
+        <ui-input
           style="flex: 1"
           [label]="'Label ' + (i + 1)"
           [(ngModel)]="opt.label"
           (ngModelChange)="updateConfig()"
         ></app-input>
-        <app-input
+        <ui-input
           style="flex: 1"
           [label]="'Value ' + (i + 1)"
           [(ngModel)]="opt.value"
@@ -112,11 +112,11 @@
   <div slot="content-validation" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Helper Text</label>
-      <app-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group" *ngIf="pgConfig.invalid">
       <label>Error Message</label>
-      <app-input type="text" [(ngModel)]="pgConfig.errorMessage" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.errorMessage" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 

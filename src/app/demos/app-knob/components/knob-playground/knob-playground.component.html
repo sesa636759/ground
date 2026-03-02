@@ -7,7 +7,7 @@
   <div slot="content-value" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Current Value</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.value"
         (ngModelChange)="updateConfig()"
@@ -15,7 +15,7 @@
     </div>
     <div class="control-group">
       <label>Min</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
         (ngModelChange)="updateConfig()"
@@ -23,7 +23,7 @@
     </div>
     <div class="control-group">
       <label>Max</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
@@ -31,7 +31,7 @@
     </div>
     <div class="control-group">
       <label>Step</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
         (ngModelChange)="updateConfig()"
@@ -42,7 +42,7 @@
   <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Size</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
@@ -50,7 +50,7 @@
     </div>
     <div class="control-group">
       <label>Stroke Width</label>
-      <app-input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.strokeWidth"
         (ngModelChange)="updateConfig()"
@@ -58,7 +58,7 @@
     </div>
     <div class="control-group">
       <label>Color</label>
-      <app-input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.valueColor"
         (ngModelChange)="updateConfig()"
