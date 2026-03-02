@@ -6,7 +6,9 @@
   [class.sidebar-collapsed]="sidebarCollapsed()"
 >
   <!-- Navigation: Only show if authenticated and not on login/register -->
-  <ng-container *ngIf="isAuthenticated() && currentRoute() !== 'login' && currentRoute() !== 'register'">
+  <ng-container
+    *ngIf="isAuthenticated() && currentRoute() !== 'login' && currentRoute() !== 'register'"
+  >
     <ui-navigation
       class="main-nav"
       [orientation]="themeService.navigationLayout() === 'topbar' ? 'horizontal' : 'vertical'"
@@ -34,4 +36,48 @@
       <router-outlet></router-outlet>
     </div>
   </main>
+
+  <!-- 🎨 Floating Theme Switcher -->
+  <div class="theme-fab-container" [class.open]="themeMenuOpen()">
+    <!-- Theme Option Buttons (fan out above FAB) -->
+    @for (t of themeOptions; track t.id; let i = $index) {
+      <div
+        class="theme-fab-option"
+        [class.active]="currentTheme() === t.id"
+        [style.--delay]="i"
+        (click)="selectTheme(t.id)"
+        [title]="t.label"
+      >
+        <span class="theme-fab-option__swatch" [style.background]="t.gradient"></span>
+        <span class="theme-fab-option__label">{{ t.label }}</span>
+        @if (currentTheme() === t.id) {
+          <span class="theme-fab-option__check">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        }
+      </div>
+    }
+
+    <!-- Main FAB Trigger -->
+    <button
+      class="theme-fab"
+      (click)="toggleThemeMenu()"
+      [title]="themeMenuOpen() ? 'Close theme picker' : 'Change theme'"
+      [attr.aria-expanded]="themeMenuOpen()"
+    >
+      <span class="theme-fab__icon" [class.spinning]="themeMenuOpen()">
+        {{ themeMenuOpen() ? '✕' : currentThemeIcon() }}
+      </span>
+      <span class="theme-fab__ripple"></span>
+    </button>
+  </div>
 </div>

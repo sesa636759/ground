@@ -1,4 +1,12 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit, computed } from '@angular/core';
+import {
+  Component,
+  signal,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  computed,
+  HostListener,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import {
@@ -41,6 +49,9 @@ export class App implements OnInit {
   sidebarCollapsed = signal(true);
   currentRoute = signal('home');
 
+  public themeService = inject(ThemeService);
+  public authService = inject(AuthService);
+
   // FontAwesome Icons
   faCoffee = faCoffee;
   faMoon = faMoon;
@@ -60,6 +71,61 @@ export class App implements OnInit {
   categoryItems = categoryNavItems;
   bottomItems = bottomNavItems;
   userProfileItems = userProfileNavItems;
+
+  // Theme Switcher State
+  themeMenuOpen = signal(false);
+
+  themeOptions = [
+    {
+      id: 'schneider-green',
+      label: 'SE Green',
+      emoji: '🌿',
+      gradient: 'linear-gradient(135deg,#3DCD58,#059669)',
+    },
+    {
+      id: 'schneider-blue',
+      label: 'SE Blue',
+      emoji: '💙',
+      gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
+    },
+    { id: 'dark', label: 'Dark', emoji: '🌙', gradient: 'linear-gradient(135deg,#0f172a,#1e293b)' },
+    {
+      id: 'light',
+      label: 'Light',
+      emoji: '☀️',
+      gradient: 'linear-gradient(135deg,#f8faf9,#e2e8f0)',
+    },
+    {
+      id: 'high-contrast',
+      label: 'Contrast',
+      emoji: '👁️',
+      gradient: 'linear-gradient(135deg,#000,#facc15)',
+    },
+    { id: 'auto', label: 'Auto', emoji: '🔄', gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)' },
+  ];
+
+  currentTheme = this.themeService.currentTheme;
+
+  currentThemeIcon = computed(() => {
+    return this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? '🎨';
+  });
+
+  toggleThemeMenu() {
+    this.themeMenuOpen.set(!this.themeMenuOpen());
+  }
+
+  selectTheme(theme: any) {
+    this.themeService.setTheme(theme);
+    this.themeMenuOpen.set(false);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.theme-fab-container')) {
+      this.themeMenuOpen.set(false);
+    }
+  }
 
   // User Profile & Popover State
   userMenuOpen = signal(false);
@@ -85,11 +151,7 @@ export class App implements OnInit {
     };
   });
 
-  constructor(
-    public router: Router,
-    public themeService: ThemeService,
-    public authService: AuthService,
-  ) {}
+  constructor(public router: Router) {}
 
   isAuthenticated() {
     return this.authService.isAuthenticated();

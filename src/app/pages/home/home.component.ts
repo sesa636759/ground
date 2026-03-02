@@ -14,12 +14,12 @@ import {
   faTerminal,
 } from '@fortawesome/free-solid-svg-icons';
 import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.component';
-import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent, ComponentCardComponent],
+  imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
