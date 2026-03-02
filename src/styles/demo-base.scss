@@ -1,7 +1,7 @@
 // Enterprise Demo Page Styles
 
 .demo-container {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -166,7 +166,7 @@
 
   >*,
   >*>* {
-    height: 100%;
+    height: 100vh;
     min-height: 0;
     box-sizing: border-box;
   }
@@ -177,7 +177,7 @@
   display: flex;
   gap: 1rem;
   position: relative;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
   padding: 1rem;
@@ -186,7 +186,7 @@
   .examples-sidebar {
     width: 226px;
     flex-shrink: 0;
-    height: 100%;
+    height: 100vh;
     min-height: 0; // allows shrinking so overflow-y triggers
     overflow-y: auto;
     overflow-x: hidden;
@@ -239,7 +239,7 @@
   .examples-content {
     flex: 1;
     min-width: 0;
-    height: 100%;
+    height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem;
