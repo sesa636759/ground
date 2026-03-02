@@ -66,7 +66,7 @@
 - **Coverage**: **EXTENSIVE** (796 lines)
 - **Features**: Segmented mode, dropdown mode, split buttons, avatars, gliding indicators, all variants
 
-#### 2. app-checkbox-group ⚠️
+#### 2. ui-checkbox-group ⚠️
 
 - **Status**: Not currently used in demos
 - **Note**: Individual checkboxes fully covered
@@ -220,7 +220,7 @@ All demos are accessible at: `http://localhost:4205/demos/[component-name]`
 
 ## ⚠️ Minor Items for Consideration
 
-### 1. app-checkbox-group
+### 1. ui-checkbox-group
 
 - Not currently used in the checkbox demo
 - Individual checkboxes are fully covered
@@ -265,7 +265,7 @@ All demos are accessible at: `http://localhost:4205/demos/[component-name]`
 
 1. **Test all new demos** in the running application
 2. **Add /docs routes** for documentation pages (duplicate /demos routes)
-3. **Review app-checkbox-group** usage
+3. **Review ui-checkbox-group** usage
 4. **Verify app-layout-region** status
 5. **Update main navigation** to include new components
 6. **Add search/filter** functionality to demo list
