@@ -26,7 +26,7 @@
             </p>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="slide-up" [delay]="300">
+          <app-animate-on-scroll animation="zoom-in" [delay]="300">
             <div class="promo-stats-grid">
               @for (stat of statsCards; track stat.label) {
                 <div class="stat-flip-card">
@@ -73,42 +73,42 @@
 
         <!-- 📊 Right: Visual Stack (As it was - Overlapping) -->
         <div class="hero-visual-stack">
-          <app-animate-on-scroll animation="fade-in" [delay]="400" class="stack-card card-1">
+          <app-animate-on-scroll animation="slide-left" [delay]="400" class="stack-card card-1">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Premium Login Card</div>
               <img src="assets/images/login-ui.png" alt="Login UI" />
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="fade-in" [delay]="500" class="stack-card card-2">
+          <app-animate-on-scroll animation="slide-left" [delay]="500" class="stack-card card-2">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Smart Widget</div>
               <img src="assets/images/dashboard-ui.png" alt="Dashboard UI" />
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="fade-in" [delay]="600" class="stack-card card-3">
+          <app-animate-on-scroll animation="slide-left" [delay]="600" class="stack-card card-3">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Modern Inputs</div>
               <img src="assets/images/ui-stack.png" alt="UI Stack" />
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="fade-in" [delay]="700" class="stack-card card-4">
+          <app-animate-on-scroll animation="slide-left" [delay]="700" class="stack-card card-4">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Settings Panel</div>
               <img src="assets/images/settings-ui.png" alt="Settings UI" />
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="fade-in" [delay]="800" class="stack-card card-5">
+          <app-animate-on-scroll animation="slide-left" [delay]="800" class="stack-card card-5">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Enterprise Grid</div>
               <img src="assets/images/data-grid-ui.png" alt="Data Grid UI" />
             </div>
           </app-animate-on-scroll>
 
-          <app-animate-on-scroll animation="fade-in" [delay]="900" class="stack-card card-6">
+          <app-animate-on-scroll animation="slide-left" [delay]="900" class="stack-card card-6">
             <div class="card-inner glass-panel">
               <div class="card-header-promo">Smart Analytics</div>
               <img src="assets/images/analytics-ui.png" alt="Analytics UI" />
@@ -155,7 +155,7 @@
 
   <!-- Features Grid -->
   <section class="features-section">
-    <app-animate-on-scroll animation="fade-in" [delay]="0">
+    <app-animate-on-scroll animation="slide-down" [delay]="0">
       <div class="section-header">
         <h2>Why Choose Our Component Library</h2>
         <p>Enterprise-grade features built for scale and performance</p>
@@ -163,7 +163,7 @@
     </app-animate-on-scroll>
 
     <div class="features-grid">
-      <app-animate-on-scroll animation="slide-up" [delay]="0">
+      <app-animate-on-scroll animation="flip-up" [delay]="0">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
             <ui-icon name="layers" library="lucide"></ui-icon>
@@ -175,7 +175,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="50">
+      <app-animate-on-scroll animation="flip-up" [delay]="50">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo purple-glow">
             <ui-icon name="package-x" library="lucide"></ui-icon>
@@ -185,7 +185,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="100">
+      <app-animate-on-scroll animation="flip-up" [delay]="100">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo purple-glow">
             <ui-icon name="zap" library="lucide"></ui-icon>
@@ -195,7 +195,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="200">
+      <app-animate-on-scroll animation="flip-up" [delay]="200">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo green-glow">
             <ui-icon name="book-open" library="lucide"></ui-icon>
@@ -205,7 +205,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="300">
+      <app-animate-on-scroll animation="flip-up" [delay]="300">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
             <ui-icon name="accessibility" library="lucide"></ui-icon>
@@ -215,7 +215,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="400">
+      <app-animate-on-scroll animation="flip-up" [delay]="400">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo green-glow">
             <ui-icon name="palette" library="lucide"></ui-icon>
@@ -225,7 +225,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="500">
+      <app-animate-on-scroll animation="flip-up" [delay]="500">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo cyan-glow">
             <ui-icon name="shield-check" library="lucide"></ui-icon>
@@ -238,7 +238,7 @@
         </div>
       </app-animate-on-scroll>
 
-      <app-animate-on-scroll animation="slide-up" [delay]="600">
+      <app-animate-on-scroll animation="flip-up" [delay]="600">
         <div class="feature-card glass-panel">
           <div class="feature-icon-promo yellow-glow">
             <ui-icon name="sparkles" library="lucide"></ui-icon>
@@ -255,7 +255,7 @@
 
   <!-- 💎 Elite Components Showcase -->
   <section class="featured-section">
-    <app-animate-on-scroll animation="fade-in" [delay]="0">
+    <app-animate-on-scroll animation="slide-right" [delay]="0">
       <div class="section-header">
         <div class="section-badge-tiny">Featured Elements</div>
         <h2>Elite UI Components</h2>
@@ -265,7 +265,7 @@
 
     <div class="cover-cards-grid">
       @for (comp of featuredComponents; track comp.id; let i = $index) {
-        <app-animate-on-scroll animation="slide-up" [delay]="i * 60">
+        <app-animate-on-scroll animation="zoom-in" [delay]="i * 60">
           <div class="cover-card" (click)="navigateTo('playground')">
             <!-- Background Image -->
             <div class="cover-card__bg">
@@ -353,7 +353,7 @@
 
   <!-- Premium Icon Support Section -->
   <section class="icons-section">
-    <app-animate-on-scroll animation="fade-in" [delay]="0">
+    <app-animate-on-scroll animation="rotate-in" [delay]="0">
       <div class="section-header">
         <div class="section-badge-tiny">Icon Infrastructure</div>
         <h2>Premium Icon Support</h2>
@@ -363,7 +363,7 @@
 
     <div class="libraries-grid">
       @for (lib of iconLibraries; track lib.name; let i = $index) {
-        <app-animate-on-scroll animation="slide-up" [delay]="i * 100">
+        <app-animate-on-scroll animation="slide-left" [delay]="i * 100">
           <div class="library-card">
             <div class="library-header">
               <div class="library-info">

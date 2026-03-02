@@ -55,7 +55,6 @@
   background: var(--bg-primary);
   background-image: var(--gradient-mesh);
   position: relative;
-  contain: layout style;
   isolation: isolate;
 
   // Sidebar Layout
@@ -76,7 +75,6 @@
       -webkit-backdrop-filter: blur(10px);
       overflow: visible !important;
       position: relative;
-      contain: layout style;
 
       &::part(footer) {
         overflow: visible !important;
@@ -109,7 +107,6 @@
       -webkit-backdrop-filter: blur(10px);
       overflow: visible !important;
       position: relative;
-      contain: layout style;
     }
 
     .main-content {
@@ -802,6 +799,49 @@
     max-width: 0;
     opacity: 0;
   }
+}
+
+
+/* ============================================================
+   ?? ui-navigation Popover Alignment & Scroll Fix
+   Fixes: Navigation sub-menus jumping to top and lack of scroll
+   ============================================================ */
+ui-navigation,
+.main-nav {
+
+  // Force sub-menus and popovers to remain within viewport and scroll
+  // This prevents them from flipping to 'top' unexpectedly when too tall
+  ::part(popover-content),
+  ::part(menu-list),
+  ::part(submenu),
+  ::part(dropdown) {
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    padding: 12px 0 !important;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), var(--shadow- premium) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    z-index: 10000 !important;
+    background: rgba(15, 26, 14, 0.85) !important;
+
+    // Smooth scroll for the sub-menu if many items
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+  }
+}
+
+// Global class to handle any misaligned popovers by forcing a relative offset if needed
+// This targets the internal Stencil popover which might be at position: absolute
+ui-navigation::part(popover-viewport) {
+  display: flex !important;
+  align-items: center !important;
+}
+
+// Ensure the popover arrow doesn't look weird if we're forcing scroll
+ui-navigation ui-popover::part(arrow) {
+  display: none; // cleaner for long scrollable lists
 }
 
 /* ============================================================
