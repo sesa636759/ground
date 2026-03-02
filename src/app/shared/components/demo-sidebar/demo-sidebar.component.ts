@@ -9,12 +9,13 @@ import {
   SimpleChanges,
   NgZone,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,     } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-demo-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './demo-sidebar.component.html',
   styleUrl: './demo-sidebar.component.scss',

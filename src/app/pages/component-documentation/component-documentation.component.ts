@@ -37,12 +37,12 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   showScrollTop = signal<boolean>(false);
 
   sections = [
-    { id: 'overview', label: 'Overview', icon: 'fas fa-info-circle' },
-    { id: 'usage', label: 'Usage', icon: 'fas fa-code' },
-    { id: 'properties', label: 'Properties', icon: 'fas fa-list-ul' },
-    { id: 'events', label: 'Events', icon: 'fas fa-bolt' },
-    { id: 'limitations', label: 'Considerations', icon: 'fas fa-shield-alt' },
-    { id: 'examples', label: 'Examples', icon: 'fas fa-vials' },
+    { id: 'overview', label: 'Overview', icon: 'fas fa-info-circle', library: 'fontawesome' },
+    { id: 'usage', label: 'Usage', icon: 'fas fa-code', library: 'fontawesome' },
+    { id: 'properties', label: 'Properties', icon: 'fas fa-list-ul', library: 'fontawesome' },
+    { id: 'events', label: 'Events', icon: 'fas fa-bolt', library: 'fontawesome' },
+    { id: 'limitations', label: 'Considerations', icon: 'fas fa-shield-alt', library: 'fontawesome' },
+    { id: 'examples', label: 'Examples', icon: 'fas fa-vials', library: 'fontawesome' },
   ];
 
   filteredProps = computed(() => {
