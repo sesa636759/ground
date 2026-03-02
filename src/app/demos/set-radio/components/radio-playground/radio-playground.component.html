@@ -17,7 +17,7 @@
         [options]="[
           { label: 'Vertical', value: 'vertical' },
           { label: 'Horizontal', value: 'horizontal' },
-          { label: 'Columns', value: 'columns' }
+          { label: 'Columns', value: 'columns' },
         ]"
       ></ui-dropdown>
     </div>
@@ -33,7 +33,7 @@
         [options]="[
           { label: 'Default', value: 'default' },
           { label: 'Button', value: 'button' },
-          { label: 'Card', value: 'card' }
+          { label: 'Card', value: 'card' },
         ]"
       ></ui-dropdown>
     </div>
@@ -45,7 +45,7 @@
         [options]="[
           { label: 'Small', value: 'small' },
           { label: 'Medium', value: 'medium' },
-          { label: 'Large', value: 'large' }
+          { label: 'Large', value: 'large' },
         ]"
       ></ui-dropdown>
     </div>
@@ -55,27 +55,45 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.disabled"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.readonly"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Readonly
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.required"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Required
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.invalid"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Invalid
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.loading"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Loading
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></app-checkbox>
+        <app-checkbox
+          [(ngModel)]="pgConfig.skeleton"
+          (ngModelChange)="updateConfig()"
+        ></app-checkbox>
         Skeleton
       </label>
     </div>
@@ -84,19 +102,19 @@
   <!-- Items Slot -->
   <div slot="content-items" style="padding: 16px">
     <div *ngFor="let opt of radioOptions; let i = index" class="option-editor-item">
-      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px">
         <ui-input
           style="flex: 1"
           [label]="'Label ' + (i + 1)"
           [(ngModel)]="opt.label"
           (ngModelChange)="updateConfig()"
-        ></app-input>
+        ></ui-input>
         <ui-input
           style="flex: 1"
           [label]="'Value ' + (i + 1)"
           [(ngModel)]="opt.value"
           (ngModelChange)="updateConfig()"
-        ></app-input>
+        ></ui-input>
         <ui-button
           variant="ghost"
           (click)="removeOption(i)"
@@ -105,7 +123,12 @@
         ></ui-button>
       </div>
     </div>
-    <ui-button variant="outline" (click)="addOption()" label="Add Radio Option" icon="fas fa-plus"></ui-button>
+    <ui-button
+      variant="outline"
+      (click)="addOption()"
+      label="Add Radio Option"
+      icon="fas fa-plus"
+    ></ui-button>
   </div>
 
   <!-- Validation Slot -->
@@ -122,10 +145,7 @@
 
   <!-- Preview Area -->
   <div preview>
-    <div
-      class="radio-demo-container"
-      [style.width]="pgConfig.fullWidth ? '100%' : 'auto'"
-    >
+    <div class="radio-demo-container" [style.width]="pgConfig.fullWidth ? '100%' : 'auto'">
       <app-radio-group
         #radioGroup
         [attr.name]="pgConfig.name"
@@ -158,13 +178,30 @@
       </app-radio-group>
     </div>
 
-    <div style="margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary); background: var(--surface-2); padding: 12px; border-radius: 8px;">
+    <div
+      style="
+        margin-top: 24px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        background: var(--surface-2);
+        padding: 12px;
+        border-radius: 8px;
+      "
+    >
       <strong>Selected Value:</strong> {{ pgConfig.value || 'None' }}
     </div>
   </div>
 
   <!-- Events -->
-  <div events style="margin-top: 16px; font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary);">
+  <div
+    events
+    style="
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--primary);
+    "
+  >
     {{ eventMessage() }}
   </div>
 

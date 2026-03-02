@@ -55,35 +55,35 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
   skeletonState = false;
 
   // Code snippets
-  basicInputsCode = `<ui-input label="Username" placeholder="Enter username" full-width></app-input>
-<ui-input type="email" label="Email" placeholder="user@example.com" full-width></app-input>
-<ui-input type="password" label="Password" show-password-toggle full-width></app-input>`;
+  basicInputsCode = `<ui-input label="Username" placeholder="Enter username" full-width></ui-input>
+<ui-input type="email" label="Email" placeholder="user@example.com" full-width></ui-input>
+<ui-input type="password" label="Password" show-password-toggle full-width></ui-input>`;
 
-  variantsCode = `<ui-input label="Outlined" variant="outlined" full-width></app-input>
-<ui-input label="Filled" variant="filled" full-width></app-input>
-<ui-input label="Underlined" variant="underlined" full-width></app-input>`;
+  variantsCode = `<ui-input label="Outlined" variant="outlined" full-width></ui-input>
+<ui-input label="Filled" variant="filled" full-width></ui-input>
+<ui-input label="Underlined" variant="underlined" full-width></ui-input>`;
 
-  sizesCode = `<ui-input label="Small" size="small" full-width></app-input>
-<ui-input label="Medium" size="medium" full-width></app-input>
-<ui-input label="Large" size="large" full-width></app-input>`;
+  sizesCode = `<ui-input label="Small" size="small" full-width></ui-input>
+<ui-input label="Medium" size="medium" full-width></ui-input>
+<ui-input label="Large" size="large" full-width></ui-input>`;
 
-  validationCode = `<ui-input label="Error" validation-state="error" error-text="Invalid email" full-width></app-input>
-<ui-input label="Success" validation-state="success" success-text="Available!" full-width></app-input>`;
+  validationCode = `<ui-input label="Error" validation-state="error" error-text="Invalid email" full-width></ui-input>
+<ui-input label="Success" validation-state="success" success-text="Available!" full-width></ui-input>`;
 
-  prefixSuffixCode = `<ui-input label="Website" prefix-text="https://" full-width></app-input>
-<ui-input label="Price" prefix-text="$" suffix-text="USD" type="number" full-width></app-input>`;
+  prefixSuffixCode = `<ui-input label="Website" prefix-text="https://" full-width></ui-input>
+<ui-input label="Price" prefix-text="$" suffix-text="USD" type="number" full-width></ui-input>`;
 
-  advancedCode = `<ui-input type="number" label="Quantity" show-steppers full-width></app-input>
-<ui-input multiline auto-resize label="Auto-resize Area" full-width></app-input>`;
+  advancedCode = `<ui-input type="number" label="Quantity" show-steppers full-width></ui-input>
+<ui-input multiline auto-resize label="Auto-resize Area" full-width></ui-input>`;
 
-  floatingLabelsCode = `<ui-input variant="outlined" label="Full Name" floating-label full-width></app-input>
-<ui-input variant="filled" label="Email" floating-label full-width></app-input>`;
+  floatingLabelsCode = `<ui-input variant="outlined" label="Full Name" floating-label full-width></ui-input>
+<ui-input variant="filled" label="Email" floating-label full-width></ui-input>`;
 
-  multilineCode = `<ui-input multiline label="Description" rows="3" full-width></app-input>
-<ui-input multiline max-length="200" show-char-count label="Bio" full-width></app-input>`;
+  multilineCode = `<ui-input multiline label="Description" rows="3" full-width></ui-input>
+<ui-input multiline max-length="200" show-char-count label="Bio" full-width></ui-input>`;
 
-  inputStatesCode = `<ui-input label="Disabled" value="Locked" disabled full-width></app-input>
-<ui-input label="Readonly" value="View only" readonly full-width></app-input>`;
+  inputStatesCode = `<ui-input label="Disabled" value="Locked" disabled full-width></ui-input>
+<ui-input label="Readonly" value="View only" readonly full-width></ui-input>`;
 
   ngOnInit() {}
 

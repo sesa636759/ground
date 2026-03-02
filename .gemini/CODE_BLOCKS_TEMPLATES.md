@@ -201,18 +201,18 @@ export class SetInputDemoComponent {
   basicInputCode = `<ui-input
   placeholder="Enter text"
   type="text"
-></app-input>`;
+></ui-input>`;
 
   variantsInputCode = `<ui-input
   variant="filled"
   size="large"
   placeholder="Large filled input"
-></app-input>`;
+></ui-input>`;
 
   iconsInputCode = `<ui-input
   placeholder="Search"
   prefix-icon="fas fa-search"
-></app-input>`;
+></ui-input>`;
 }
 ```
 

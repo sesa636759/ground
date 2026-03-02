@@ -116,7 +116,7 @@ export class InputPlaygroundComponent implements OnInit {
     if (this.pgConfig.floatingLabel) code += `  floating-label="true"\n`;
     if (this.pgConfig.loading) code += `  show-loading="true"\n`;
 
-    code += `></app-input>`;
+    code += `></ui-input>`;
 
     this.generatedCode.set(code);
   }

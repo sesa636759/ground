@@ -14,7 +14,7 @@
           { label: 'Tel', value: 'tel' },
           { label: 'URL', value: 'url' },
           { label: 'Search', value: 'search' },
-          { label: 'Date', value: 'date' }
+          { label: 'Date', value: 'date' },
         ]"
       ></ui-dropdown>
     </div>
@@ -29,7 +29,7 @@
           { label: 'Filled', value: 'filled' },
           { label: 'Underlined', value: 'underlined' },
           { label: 'Soft', value: 'soft' },
-          { label: 'Ghost', value: 'ghost' }
+          { label: 'Ghost', value: 'ghost' },
         ]"
       ></ui-dropdown>
     </div>
@@ -42,7 +42,7 @@
         [options]="[
           { label: 'Small', value: 'small' },
           { label: 'Medium', value: 'medium' },
-          { label: 'Large', value: 'large' }
+          { label: 'Large', value: 'large' },
         ]"
       ></ui-dropdown>
     </div>
@@ -56,7 +56,7 @@
           { label: 'None', value: 'none' },
           { label: 'Success', value: 'success' },
           { label: 'Warning', value: 'warning' },
-          { label: 'Error', value: 'error' }
+          { label: 'Error', value: 'error' },
         ]"
       ></ui-dropdown>
     </div>
@@ -154,15 +154,22 @@
       (blur)="onInputBlur()"
       (clear)="onInputClear()"
     >
-    </app-input>
+    </ui-input>
 
-    <div style="margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono);">
+    <div
+      style="
+        margin-top: 16px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+      "
+    >
       <strong>Event Out:</strong> {{ eventMessage() }}
     </div>
   </div>
 
   <!-- Code -->
-    @if (showCode) {
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
