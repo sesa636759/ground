@@ -819,37 +819,35 @@ ui-navigation,
   ::part(menu-list),
   ::part(submenu),
   ::part(dropdown) {
-    max-height: 85vh !important;
+    max-height: calc(100vh - 100px) !important; // Ensure it ends with space at top/bottom
     overflow-y: auto !important;
     padding: 12px 0 !important;
     border-radius: var(--radius-xl) !important;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     z-index: 10000 !important;
-    background: #0d1a0f !important; // Deep solid surface
+    background: #0b140c !important;
 
-    // GPU Acceleration to prevent flickering
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
+    // Stable layout for large lists
+    margin-top: auto !important;
+    margin-bottom: 20px !important;
 
-    // Disable ALL animations/transitions to stop flickering
-    animation: none !important;
-    transition: none !important;
-    will-change: auto !important;
-
-    // Ensure mouse events are captured
-    pointer-events: auto !important;
-
-    // Smooth scroll for the sub-menu if many items
+    // Smooth scroll for the sub-menu
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
+
+    // GPU Acceleration
+    transform: translateZ(0);
+    will-change: transform;
   }
 }
 
-// Remove previously added experimental-viewport override
+// Force the popover container to align to bottom for bottom-heavy lists
 ui-navigation::part(popover-viewport) {
-  display: contents !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  pointer-events: none !important; // Let clicks through to content
 }
 
 // Hide the arrow to avoid positioning calculation jitter
