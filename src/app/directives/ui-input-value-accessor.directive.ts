@@ -2,7 +2,8 @@ import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@ang
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'ui-input[ngModel], ui-input[formControl], ui-input[formControlName]',
+  selector:
+    'ui-input[ngModel], ui-input[formControl], ui-input[formControlName], app-input[ngModel], app-input[formControl], app-input[formControlName]',
   standalone: true,
   providers: [
     {

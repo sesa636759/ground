@@ -19,8 +19,8 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
+        background-color: #0b1120;
+        color: #f1f5f9;
         position: relative;
         overflow: hidden;
       }
@@ -64,12 +64,12 @@
 
       /* Reusable Glass Panel */
       .glass-panel {
-        background: var(--bg-glass);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid var(--border-subtle);
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 24px;
-        box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       }
 
       .overview-header {
@@ -99,16 +99,16 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
+        background: rgba(0, 210, 255, 0.1);
+        border: 1px solid rgba(0, 210, 255, 0.3);
         padding: 6px 16px;
         border-radius: 100px;
         font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        color: var(--text-primary);
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: #00D2FF;
         text-transform: uppercase;
-        box-shadow: var(--shadow-sm);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
       }
 
       .enterprise-badge svg {
@@ -125,13 +125,13 @@
       }
 
       .text-gradient {
-        background: var(--gradient-premium);
+        background: linear-gradient(135deg, #00D2FF 0%, #3a7bd5 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         display: inline-block;
-        animation: gradientShift 3s ease infinite;
         background-size: 200% 200%;
+        text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
       }
 
       @keyframes gradientShift {
@@ -168,23 +168,21 @@
         position: relative;
         display: flex;
         align-items: center;
-        background: var(--surface-1);
-        border: 1px solid var(--border-color);
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 16px;
         padding: 4px 16px;
-        /* give inside padding to match previous look */
         transition: all 0.3s ease;
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(10px);
         z-index: 20;
-        /* make sure it is above the background grid */
       }
 
       .search-box:focus-within {
-        border-color: var(--border-focus);
+        border-color: #00D2FF;
         box-shadow:
-          0 0 0 4px rgba(99, 102, 241, 0.1),
-          0 8px 32px rgba(0, 0, 0, 0.3);
+          0 0 0 4px rgba(0, 210, 255, 0.1),
+          0 8px 32px rgba(0, 0, 0, 0.4);
       }
 
       .search-icon {
@@ -349,17 +347,18 @@
       }
 
       .menu-item.active {
-        background: rgba(99, 102, 241, 0.1);
-        border-color: rgba(99, 102, 241, 0.2);
-        color: var(--text-primary);
+        background: rgba(99, 102, 241, 0.15);
+        border-color: rgba(99, 102, 241, 0.4);
+        color: #ffffff;
       }
 
       .menu-item.active .menu-icon {
         opacity: 1;
+        color: #818cf8;
       }
 
       .menu-item.active .menu-count {
-        background: var(--primary);
+        background: #6366f1;
         color: white;
         border-color: transparent;
       }
