@@ -13,7 +13,11 @@
         </h3>
         <div class="control-group">
           <label>Initial Duration (s)</label>
-          <input type="number" [(ngModel)]="pgConfig.duration" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.duration"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
         <div class="control-group">
           <label>Mode</label>

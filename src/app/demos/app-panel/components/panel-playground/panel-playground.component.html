@@ -12,11 +12,15 @@
         <h3>Header</h3>
         <div class="control-group">
           <label>Title</label>
-          <input type="text" [(ngModel)]="pgConfig.panelTitle" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.panelTitle"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
         <div class="control-group">
           <label>Subtitle</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.panelSubtitle"
             (ngModelChange)="updateConfig()"
@@ -24,7 +28,7 @@
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
         </div>
         <div class="checkbox-group">
           <app-checkbox

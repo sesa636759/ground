@@ -8,7 +8,7 @@
   <div slot="content-settings" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Base Z-Index</label>
-      <input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.baseZIndex"
         (ngModelChange)="updateConfig()"
@@ -25,7 +25,7 @@
     </div>
     <div class="control-group">
       <label>Breakpoint</label>
-      <input
+      <ui-input
         type="number"
         [(ngModel)]="pgConfig.breakpoint"
         (ngModelChange)="updateConfig()"

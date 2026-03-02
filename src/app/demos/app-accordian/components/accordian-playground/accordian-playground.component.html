@@ -52,7 +52,7 @@
 
           <div class="control-group">
             <label>Selected Header Color</label>
-            <input
+            <ui-input
               name="selectedHeaderColor"
               type="color"
               [(ngModel)]="pgConfig.selectedHeaderColor"
@@ -62,7 +62,7 @@
 
           <div class="control-group">
             <label>Header Level (1-6)</label>
-            <input
+            <ui-input
               name="headerLevel"
               type="number"
               min="1"
@@ -195,7 +195,7 @@
           <h3>Animation</h3>
           <div class="control-group">
             <label>Duration (ms)</label>
-            <input
+            <ui-input
               name="animationDuration"
               type="number"
               [(ngModel)]="pgConfig.animationDuration"

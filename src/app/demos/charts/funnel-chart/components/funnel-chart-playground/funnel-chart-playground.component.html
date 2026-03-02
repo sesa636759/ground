@@ -1,106 +1,104 @@
-
-    <app-playground
-      accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
-      defaultOpen='["cfg"]'
-    >
-      <div slot="content-cfg">
-        <div class="control-grid">
-          <div class="control-section">
-            <h3>📐 Layout</h3>
-            <div class="control-group">
-              <label>Orientation</label>
-              <ui-dropdown
-                [(ngModel)]="cfg.orientation"
-                (ngModelChange)="update()"
-                [options]="orientOpts"
-              ></ui-dropdown>
-            </div>
-            <div class="control-group">
-              <label>Segment Gap</label>
-              <input
-                type="range"
-                min="0"
-                max="12"
-                step="2"
-                [(ngModel)]="cfg.gap"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.gap }}px</span>
-            </div>
-            <div class="control-group">
-              <label>Neck Width %</label>
-              <input
-                type="range"
-                min="10"
-                max="50"
-                step="5"
-                [(ngModel)]="cfg.neckPct"
-                (ngModelChange)="update()"
-              />
-              <span style="font-size:0.8rem;color:var(--text-secondary)">{{ cfg.neckPct }}%</span>
-            </div>
-          </div>
-          <div class="control-section">
-            <h3>✨ Features</h3>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showVals"
-                [(ngModel)]="cfg.showValues"
-                (ngModelChange)="update()"
-                label="Show Values"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="showPct"
-                [(ngModel)]="cfg.showPct"
-                (ngModelChange)="update()"
-                label="Show %"
-              ></app-checkbox>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox
-                id="curved"
-                [(ngModel)]="cfg.curved"
-                (ngModelChange)="update()"
-                label="Curved Sides"
-              ></app-checkbox>
-            </div>
-          </div>
+<app-playground
+  accordionItems='[{"id":"cfg","title":"Configuration","icon":"⚙️"}]'
+  defaultOpen='["cfg"]'
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Layout</h3>
+        <div class="control-group">
+          <label>Orientation</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.orientation"
+            (ngModelChange)="update()"
+            [options]="orientOpts"
+          ></ui-dropdown>
         </div>
-        <div class="action-buttons">
-        
-          <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+        <div class="control-group">
+          <label>Segment Gap</label>
+          <ui-input
+            type="range"
+            min="0"
+            max="12"
+            step="2"
+            [(ngModel)]="cfg.gap"
+            (ngModelChange)="update()"
+          />
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
+        </div>
+        <div class="control-group">
+          <label>Neck Width %</label>
+          <ui-input
+            type="range"
+            min="10"
+            max="50"
+            step="5"
+            [(ngModel)]="cfg.neckPct"
+            (ngModelChange)="update()"
+          />
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.neckPct }}%</span>
         </div>
       </div>
-      <div
-        preview
-        class="chart-preview-wrapper"
-        style="width: 100%; display: flex; justify-content: center;"
-      >
-        <svg width="420" height="380" style="display:block;font-family:inherit;">
-          <g *ngFor="let seg of segments; let i = index">
-            <polygon
-              [attr.points]="getPoints(i)"
-              [attr.fill]="seg.color"
-              [attr.opacity]="0.85 - i * 0.05"
-            />
-            <text
-              [attr.x]="210"
-              [attr.y]="segTop(i) + segH / 2 + 5"
-              text-anchor="middle"
-              font-size="13"
-              fill="white"
-              font-weight="700"
-            >
-              {{ seg.label }}
-              <tspan *ngIf="cfg.showValues">— {{ seg.value }}</tspan>
-              <tspan *ngIf="cfg.showPct">({{ pct(i) }}%)</tspan>
-            </text>
-          </g>
-        </svg>
+      <div class="control-section">
+        <h3>✨ Features</h3>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="showVals"
+            [(ngModel)]="cfg.showValues"
+            (ngModelChange)="update()"
+            label="Show Values"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="showPct"
+            [(ngModel)]="cfg.showPct"
+            (ngModelChange)="update()"
+            label="Show %"
+          ></app-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <app-checkbox
+            id="curved"
+            [(ngModel)]="cfg.curved"
+            (ngModelChange)="update()"
+            label="Curved Sides"
+          ></app-checkbox>
+        </div>
       </div>
-       @if (showCode) {
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <svg width="420" height="380" style="display: block; font-family: inherit">
+      <g *ngFor="let seg of segments; let i = index">
+        <polygon
+          [attr.points]="getPoints(i)"
+          [attr.fill]="seg.color"
+          [attr.opacity]="0.85 - i * 0.05"
+        />
+        <text
+          [attr.x]="210"
+          [attr.y]="segTop(i) + segH / 2 + 5"
+          text-anchor="middle"
+          font-size="13"
+          fill="white"
+          font-weight="700"
+        >
+          {{ seg.label }}
+          <tspan *ngIf="cfg.showValues">— {{ seg.value }}</tspan>
+          <tspan *ngIf="cfg.showPct">({{ pct(i) }}%)</tspan>
+        </text>
+      </g>
+    </svg>
+  </div>
+  @if (showCode) {
     <ui-code-preview
       code
       [htmlCode]="generatedCode()"
@@ -109,5 +107,4 @@
       expanded="true"
     ></ui-code-preview>
   }
-    </app-playground>
-  
+</app-playground>

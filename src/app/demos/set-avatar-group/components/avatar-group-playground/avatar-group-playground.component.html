@@ -15,7 +15,7 @@
     </div>
     <div class="control-group">
       <label>Max Display</label>
-      <input
+      <ui-input
         type="number"
         min="1"
         max="10"
@@ -58,7 +58,7 @@
     @if (pgConfig.layout === 'grid') {
       <div class="control-group">
         <label>Grid Columns</label>
-        <input
+        <ui-input
           type="number"
           min="1"
           max="6"
@@ -78,7 +78,7 @@
     }
     <div class="control-group">
       <label>Spacing</label>
-      <input
+      <ui-input
         type="number"
         min="0"
         max="40"
@@ -126,7 +126,7 @@
     </div>
     <div class="control-group">
       <label>Border Width</label>
-      <input
+      <ui-input
         type="number"
         min="0"
         max="10"
@@ -145,7 +145,7 @@
     </div>
     <div class="control-group">
       <label>Border Color</label>
-      <input
+      <ui-input
         type="color"
         [(ngModel)]="pgConfig.borderColor"
         (ngModelChange)="updateConfig()"

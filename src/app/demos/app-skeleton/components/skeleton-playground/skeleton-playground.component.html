@@ -54,7 +54,7 @@
 
         <div class="control-group">
           <label>width</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="cfg.width"
             (ngModelChange)="update()"
@@ -64,7 +64,7 @@
 
         <div class="control-group">
           <label>height</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="cfg.height"
             (ngModelChange)="update()"
@@ -77,7 +77,7 @@
             >border-radius
             <span style="font-weight: 400; font-size: 0.75rem">(rounded shapes)</span></label
           >
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="cfg.borderRadius"
             (ngModelChange)="update()"

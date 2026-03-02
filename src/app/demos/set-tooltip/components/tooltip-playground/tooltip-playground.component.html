@@ -172,7 +172,7 @@
       @if (pgConfig.useCustomColor) {
         <div class="control-group">
           <label>Custom BG Color</label>
-          <input
+          <ui-input
             type="color"
             [(ngModel)]="pgConfig.customColor"
             (ngModelChange)="updateConfig()"
@@ -181,7 +181,7 @@
         </div>
         <div class="control-group">
           <label>Custom Text Color</label>
-          <input
+          <ui-input
             type="color"
             [(ngModel)]="pgConfig.textColor"
             (ngModelChange)="updateConfig()"

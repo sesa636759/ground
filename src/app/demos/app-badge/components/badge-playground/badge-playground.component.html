@@ -11,15 +11,15 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Value</label>
-          <input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Max Value</label>
-          <input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
+          <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"

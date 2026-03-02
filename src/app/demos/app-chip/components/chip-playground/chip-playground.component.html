@@ -11,11 +11,11 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Label</label>
-          <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <input
+          <ui-input
             type="text"
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
@@ -24,15 +24,19 @@
         </div>
         <div class="control-group">
           <label>Avatar URL</label>
-          <input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.userAvatar"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
         <div class="control-group">
           <label>Counter</label>
-          <input type="text" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" />
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
         </div>
       </div>
 

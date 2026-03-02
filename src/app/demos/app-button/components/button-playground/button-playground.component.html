@@ -8,11 +8,11 @@
   <div slot="content-content" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
       <label>Icon</label>
-      <input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.icon"
         (ngModelChange)="updateConfig()"
@@ -29,7 +29,7 @@
     </div>
     <div class="control-group">
       <label>Badge</label>
-      <input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+      <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
@@ -52,7 +52,7 @@
     </div>
     <div class="control-group">
       <label>Elevation (0-5)</label>
-      <input
+      <ui-input
         type="number"
         min="0"
         max="5"
@@ -70,7 +70,7 @@
     </div>
     <div class="control-group">
       <label>Icon Size</label>
-      <input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.iconSize"
         (ngModelChange)="updateConfig()"
@@ -158,7 +158,7 @@
     </div>
     <div class="control-group">
       <label>Href (renders Link)</label>
-      <input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.href"
         (ngModelChange)="updateConfig()"
@@ -167,7 +167,7 @@
     </div>
     <div class="control-group" *ngIf="pgConfig.href">
       <label>Target</label>
-      <input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.target"
         (ngModelChange)="updateConfig()"
@@ -176,7 +176,7 @@
     </div>
     <div class="control-group" *ngIf="pgConfig.href">
       <label>Rel</label>
-      <input
+      <ui-input
         type="text"
         [(ngModel)]="pgConfig.rel"
         (ngModelChange)="updateConfig()"

@@ -10,7 +10,11 @@
         <h3>Basic Config</h3>
         <div class="control-group">
           <label>Placeholder</label>
-          <input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.placeholder"
+            (ngModelChange)="updateConfig()"
+          />
         </div>
         <div class="control-group">
           <label>Size</label>
@@ -42,7 +46,7 @@
         </div>
         <div class="control-group">
           <label>Separator</label>
-          <input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
+          <ui-input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
         </div>
         <div class="checkbox-group">
           <app-checkbox

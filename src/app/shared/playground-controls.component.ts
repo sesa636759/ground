@@ -34,81 +34,81 @@ export interface PlaygroundConfig {
       <div class="controls-grid">
         <div *ngFor="let control of config.controls" class="control-item">
           <!-- Boolean Control -->
-            @if (control.type === 'boolean') {
+          @if (control.type === 'boolean') {
             <label class="checkbox-control">
-            <app-checkbox
-              [(ngModel)]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-              [label]="control.label"
-            ></app-checkbox>
+              <app-checkbox
+                [(ngModel)]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+                [label]="control.label"
+              ></app-checkbox>
             </label>
-            }
+          }
 
           <!-- Text Control -->
-            @if (control.type === 'text') {
+          @if (control.type === 'text') {
             <label class="text-control">
-            <span class="control-label">{{ control.label }}</span>
-            <input
-              type="text"
-              [ngModel]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-            />
+              <span class="control-label">{{ control.label }}</span>
+              <ui-input
+                type="text"
+                [ngModel]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+              />
             </label>
-            }
+          }
 
           <!-- Number Control -->
-            @if (control.type === 'number') {
+          @if (control.type === 'number') {
             <label class="number-control">
-            <span class="control-label">{{ control.label }}</span>
-            <input
-              type="number"
-              [ngModel]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-              [min]="control.min ?? null"
-              [max]="control.max ?? null"
-              [step]="control.step ?? null"
-            />
+              <span class="control-label">{{ control.label }}</span>
+              <ui-input
+                type="number"
+                [ngModel]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+                [min]="control.min ?? null"
+                [max]="control.max ?? null"
+                [step]="control.step ?? null"
+              />
             </label>
-            }
+          }
 
           <!-- Select Control -->
-            @if (control.type === 'select') {
+          @if (control.type === 'select') {
             <label class="select-control">
-            <span class="control-label">{{ control.label }}</span>
-            <ui-dropdown
-              [(ngModel)]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-              [options]="control.options"
-            ></ui-dropdown>
+              <span class="control-label">{{ control.label }}</span>
+              <ui-dropdown
+                [(ngModel)]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+                [options]="control.options"
+              ></ui-dropdown>
             </label>
-            }
+          }
 
           <!-- Color Control -->
-            @if (control.type === 'color') {
+          @if (control.type === 'color') {
             <label class="color-control">
-            <span class="control-label">{{ control.label }}</span>
-            <input
-              type="color"
-              [ngModel]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-            />
+              <span class="control-label">{{ control.label }}</span>
+              <ui-input
+                type="color"
+                [ngModel]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+              />
             </label>
-            }
+          }
 
           <!-- Range Control -->
-            @if (control.type === 'range') {
+          @if (control.type === 'range') {
             <label class="range-control">
-            <span class="control-label">{{ control.label }}: {{ values[control.name] }}</span>
-            <input
-              type="range"
-              [ngModel]="values[control.name]"
-              (ngModelChange)="onValueChange(control.name, $event)"
-              [min]="control.min"
-              [max]="control.max"
-              [step]="control.step"
-            />
+              <span class="control-label">{{ control.label }}: {{ values[control.name] }}</span>
+              <ui-input
+                type="range"
+                [ngModel]="values[control.name]"
+                (ngModelChange)="onValueChange(control.name, $event)"
+                [min]="control.min"
+                [max]="control.max"
+                [step]="control.step"
+              />
             </label>
-            }
+          }
         </div>
       </div>
 

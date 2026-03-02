@@ -6,7 +6,7 @@
     <div class="control-grid">
       <div class="control-group">
         <label>Title</label>
-        <input
+        <ui-input
           name="title"
           type="text"
           [(ngModel)]="pgConfig.title"
@@ -16,7 +16,7 @@
 
       <div class="control-group">
         <label>Extra (Header)</label>
-        <input
+        <ui-input
           name="extra"
           type="text"
           [(ngModel)]="pgConfig.extra"
@@ -82,7 +82,7 @@
 
       <div class="control-group">
         <label>Ribbon Text</label>
-        <input
+        <ui-input
           name="ribbon"
           type="text"
           [(ngModel)]="pgConfig.ribbon"
@@ -146,11 +146,7 @@
         Closable
       </label>
       <label class="checkbox-item">
-        <app-checkbox
-          name="glass"
-          [(ngModel)]="pgConfig.glass"
-          (ngModelChange)="updateConfig()"
-        />
+        <app-checkbox name="glass" [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" />
         Glass
       </label>
       <label class="checkbox-item">
