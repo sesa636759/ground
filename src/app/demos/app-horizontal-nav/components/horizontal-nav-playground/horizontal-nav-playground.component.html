@@ -17,24 +17,24 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="sticky"
             [(ngModel)]="pgConfig.sticky"
             (ngModelChange)="updateConfig()"
             label="Sticky Position"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Layout</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showIcons"
             [(ngModel)]="pgConfig.showIcons"
             (ngModelChange)="updateConfig()"
             label="Show Icons"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

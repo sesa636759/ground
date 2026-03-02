@@ -11,7 +11,11 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Label</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.label"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
@@ -20,7 +24,7 @@
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. ⭐"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Avatar URL</label>
@@ -28,15 +32,23 @@
             type="text"
             [(ngModel)]="pgConfig.userAvatar"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Counter</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.counter" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.counter"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.badge"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
       </div>
 
@@ -81,36 +93,36 @@
       <div class="control-section">
         <h3>Behavior</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="removable"
             [(ngModel)]="pgConfig.removable"
             (ngModelChange)="updateConfig()"
             label="Removable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="clickable"
             [(ngModel)]="pgConfig.clickable"
             (ngModelChange)="updateConfig()"
             label="Clickable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="selected"
             [(ngModel)]="pgConfig.selected"
             (ngModelChange)="updateConfig()"
             label="Selected"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
-  selector: 'app-checkbox-playground',
+  selector: 'ui-checkbox-playground',
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
@@ -73,14 +73,14 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-checkbox');
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-checkbox');
   }
 
   refreshCode() {
@@ -94,7 +94,7 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

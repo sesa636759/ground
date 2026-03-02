@@ -55,7 +55,7 @@
 These are likely already covered in their parent component demos:
 
 1. **app-button-toggle-group** - Check set-button-toggle demo
-2. **app-checkbox-group** - Check set-checkbox demo
+2. **ui-checkbox-group** - Check set-checkbox demo
 3. **app-radio-group** - Check set-radio demo
 4. **app-toggle-group** - Check set-toggle demo
 5. **app-list-group** - Check set-list demo

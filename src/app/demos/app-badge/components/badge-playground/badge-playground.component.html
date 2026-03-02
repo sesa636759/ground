@@ -11,11 +11,19 @@
         <h3>Content</h3>
         <div class="control-group">
           <label>Value</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.value"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Max Value</label>
-          <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.max"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
@@ -24,7 +32,7 @@
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. ⭐"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -77,20 +85,20 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="dot"
             [(ngModel)]="pgConfig.dot"
             (ngModelChange)="updateConfig()"
             label="Dot Mode"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="glow"
             [(ngModel)]="pgConfig.glow"
             (ngModelChange)="updateConfig()"
             label="Glow Effect"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

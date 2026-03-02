@@ -137,11 +137,11 @@
 
     <div class="checkbox-grid full-width" style="margin-top: 8px">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.showBackButton" (ngModelChange)="updateConfig()" />
         Show Back Button
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.loadingAction" (ngModelChange)="updateConfig()" />
         Loading State
       </label>
     </div>
@@ -151,29 +151,21 @@
   <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
+        <ui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()" /> Compact
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" /> Animated
       </label>
     </div>
   </div>
 
-  <ui-button
-    icon=""
-    iconPosition="left"
-    [iconLibrary]="'se'"
-    actions
-    variant="secondary"
-    (click)="resetConfig()"
-    label="Reset Configuration"
-  ></ui-button>
+
 
   <div
     preview

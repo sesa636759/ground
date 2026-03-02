@@ -91,14 +91,14 @@ export class CardPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.cardElement) return '';
     return generatePlaygroundCode(this.cardElement.nativeElement as Element, 'ui-card');
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

@@ -15,7 +15,7 @@
             step="10"
             [(ngModel)]="cfg.width"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.width }}px</span>
         </div>
         <div class="control-group">
@@ -27,7 +27,7 @@
             step="5"
             [(ngModel)]="cfg.height"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.height }}px</span>
         </div>
         <div class="control-group">
@@ -39,7 +39,7 @@
             step="0.5"
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.strokeWidth }}</span>
         </div>
       </div>
@@ -54,20 +54,20 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="fill"
             [(ngModel)]="cfg.fill"
             (ngModelChange)="update()"
             label="Fill Area"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDot"
             [(ngModel)]="cfg.showDot"
             (ngModelChange)="update()"
             label="Show Last Point"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

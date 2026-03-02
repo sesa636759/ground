@@ -59,15 +59,14 @@
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show
-        Icons
+        <ui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show Icons
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show
+        <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()" /> Show
         Labels
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()" />
         Enable Animation
       </label>
     </div>

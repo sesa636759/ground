@@ -31,35 +31,35 @@
             step="2"
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showVals"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showConn"
             [(ngModel)]="cfg.showConnectors"
             (ngModelChange)="update()"
             label="Connectors"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="rounded"
             [(ngModel)]="cfg.rounded"
             (ngModelChange)="update()"
             label="Rounded Tops"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

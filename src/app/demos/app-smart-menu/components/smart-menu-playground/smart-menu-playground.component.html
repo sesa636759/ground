@@ -46,42 +46,42 @@
         </div>
 
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="pg-icons"
             [(ngModel)]="cfg.showIcons"
             (change)="rebuild()"
             label="item.icon — show icons"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-desc"
             [(ngModel)]="cfg.showDescriptions"
             (change)="rebuild()"
             label="item.description — secondary text"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-nested"
             [(ngModel)]="cfg.showNested"
             (change)="rebuild()"
             label="item.submenu — nested sub-menu (hover ▶)"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-dividers"
             [(ngModel)]="cfg.showDividers"
             (change)="rebuild()"
             label="item.divider — separator line"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-disabled"
             [(ngModel)]="cfg.showDisabled"
             (change)="rebuild()"
             label="item.disabled — greyed-out item"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="pg-action"
             [(ngModel)]="cfg.showAction"
             (change)="rebuild()"
             label="item.action — callback on click (see console)"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

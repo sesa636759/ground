@@ -151,7 +151,12 @@ export class App implements OnInit {
     };
   });
 
-  constructor(public router: Router) {}
+
+  constructor(
+    public router: Router,
+    public themeService: ThemeService,
+    public authService: AuthService,
+  ) {}
 
   isAuthenticated() {
     return this.authService.isAuthenticated();

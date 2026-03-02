@@ -28,14 +28,11 @@
               (focus)="isSearchFocused.set(true)"
               (blur)="isSearchFocused.set(false)"
               #searchInput
-            >
-              <ui-icon
-                name="search"
-                library="lucide"
-                slot="prefix"
-                style="color: #00d2ff"
-              ></ui-icon>
-            </ui-input>
+            ></ui-input>
+            <div class="search-kbd" *ngIf="!searchText()">⌘K</div>
+            <ui-button class="clear-btn" *ngIf="searchText()" (click)="clearSearch(searchInput)">
+              <i class="fas fa-times"></i>
+            </ui-button>
           </div>
           <div class="search-kbd" *ngIf="!searchText()"></div>
           <ui-button
@@ -49,28 +46,11 @@
           </ui-button>
 
           <div class="popular-searches" *ngIf="!searchText()">
-            <span>Trending:</span>
-            <ui-button
-              variant="outline"
-              icon="layout-grid"
-              icon-library="lucide"
-              (click)="searchText.set('table')"
-              >Data Grids</ui-button
-            >
-            <ui-button
-              variant="outline"
-              icon="zap"
-              icon-library="lucide"
-              (click)="searchText.set('button')"
-              >Interactions</ui-button
-            >
-            <ui-button
-              variant="outline"
-              icon="shield-check"
-              icon-library="lucide"
-              (click)="searchText.set('form')"
-              >Validation</ui-button
-            >
+            <span>Popular:</span>
+            <ui-button (click)="searchText.set('table')">Table</ui-button>
+            <ui-button (click)="searchText.set('form')">Forms</ui-button>
+            <ui-button (click)="searchText.set('navigation')">Navigation</ui-button>
+            <ui-button (click)="searchText.set('overlay')">Overlays</ui-button>
           </div>
         </div>
 

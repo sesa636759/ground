@@ -31,35 +31,35 @@
             step="2"
             [(ngModel)]="cfg.nodeR"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.nodeR }}px</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLines"
             [(ngModel)]="cfg.showLines"
             (ngModelChange)="update()"
             label="Show Lines"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="curved"
             [(ngModel)]="cfg.curved"
             (ngModelChange)="update()"
             label="Curved Lines"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="icons"
             [(ngModel)]="cfg.showIcons"
             (ngModelChange)="update()"
             label="Show Icons"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

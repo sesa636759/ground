@@ -1,4 +1,3 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +19,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-demo.component.html',
@@ -41,6 +39,16 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'icons-badges', label: 'Icons & Badges', target: 'icons-badges', icon: '🏷️' },
     { id: 'icon-libraries', label: 'Icon Libraries', target: 'icon-libraries', icon: '🎨' },
     { id: 'states', label: 'States', target: 'states', icon: '⚙️' },
+  ]);
+
+  // Sidebar links for the Documentation tab (IDs match component-documentation's getSectionId('button-*'))
+  docLinks = JSON.stringify([
+    { id: 'button-overview', label: 'Overview', target: 'button-overview' },
+    { id: 'button-usage', label: 'Usage', target: 'button-usage' },
+    { id: 'button-properties', label: 'Properties', target: 'button-properties' },
+    { id: 'button-events', label: 'Events', target: 'button-events' },
+    { id: 'button-limitations', label: 'Considerations', target: 'button-limitations' },
+    { id: 'button-examples', label: 'Examples', target: 'button-examples' },
   ]);
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;

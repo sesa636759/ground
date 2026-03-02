@@ -24,41 +24,41 @@
             type="text"
             [(ngModel)]="pgConfig.breakpoint"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
       <div class="control-section">
         <h3>Behavior</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="autoZIndex"
             name="autoZIndex"
             [(ngModel)]="pgConfig.autoZIndex"
             (ngModelChange)="updateConfig()"
             label="Auto Z-Index"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="magnify"
             name="magnify"
             [(ngModel)]="pgConfig.magnify"
             (ngModelChange)="updateConfig()"
             label="Magnify"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="blurEffect"
             name="blurEffect"
             [(ngModel)]="pgConfig.blurEffect"
             (ngModelChange)="updateConfig()"
             label="Blur Effect"
-          ></app-checkbox>
-          <app-checkbox
+          ></ui-checkbox>
+          <ui-checkbox
             id="showLabels"
             name="showLabels"
             [(ngModel)]="pgConfig.showLabels"
             (ngModelChange)="updateConfig()"
             label="Show Labels"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

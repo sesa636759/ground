@@ -81,7 +81,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -117,7 +117,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.pagination) return '';
 
     return generatePlaygroundCode(this.pagination.nativeElement as Element, 'ui-pagination');
@@ -126,7 +126,7 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

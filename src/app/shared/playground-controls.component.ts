@@ -36,11 +36,11 @@ export interface PlaygroundConfig {
           <!-- Boolean Control -->
           @if (control.type === 'boolean') {
             <label class="checkbox-control">
-              <app-checkbox
+              <ui-checkbox
                 [(ngModel)]="values[control.name]"
                 (ngModelChange)="onValueChange(control.name, $event)"
                 [label]="control.label"
-              ></app-checkbox>
+              ></ui-checkbox>
             </label>
           }
 
@@ -52,7 +52,7 @@ export interface PlaygroundConfig {
                 type="text"
                 [ngModel]="values[control.name]"
                 (ngModelChange)="onValueChange(control.name, $event)"
-              />
+              ></ui-input>
             </label>
           }
 
@@ -67,7 +67,7 @@ export interface PlaygroundConfig {
                 [min]="control.min ?? null"
                 [max]="control.max ?? null"
                 [step]="control.step ?? null"
-              />
+              ></ui-input>
             </label>
           }
 
@@ -91,7 +91,7 @@ export interface PlaygroundConfig {
                 type="color"
                 [ngModel]="values[control.name]"
                 (ngModelChange)="onValueChange(control.name, $event)"
-              />
+              ></ui-input>
             </label>
           }
 
@@ -106,7 +106,7 @@ export interface PlaygroundConfig {
                 [min]="control.min"
                 [max]="control.max"
                 [step]="control.step"
-              />
+              ></ui-input>
             </label>
           }
         </div>

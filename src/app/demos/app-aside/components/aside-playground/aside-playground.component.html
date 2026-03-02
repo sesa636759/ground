@@ -19,7 +19,11 @@
         </div>
         <div class="control-group">
           <label>Size (px/%/rem)</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -36,7 +40,7 @@
             [(ngModel)]="pgConfig.backdropBlur"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. 8px"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -44,36 +48,36 @@
       <div class="control-section">
         <h3>Behavior</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closeable"
             [(ngModel)]="pgConfig.closeable"
             (ngModelChange)="updateConfig()"
             label="Closeable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="overlayClick"
             [(ngModel)]="pgConfig.closeOnOverlayClick"
             (ngModelChange)="updateConfig()"
             label="Close on Overlay Click"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="resizable"
             [(ngModel)]="pgConfig.resizable"
             (ngModelChange)="updateConfig()"
             label="Resizable"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading State"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

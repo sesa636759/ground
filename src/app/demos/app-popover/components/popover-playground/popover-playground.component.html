@@ -16,7 +16,7 @@
             type="text"
             [(ngModel)]="pgConfig.heading"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Body Content (HTML)</label>
@@ -70,34 +70,34 @@
             type="text"
             [(ngModel)]="pgConfig.width"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showArrow"
             name="showArrow"
             [(ngModel)]="pgConfig.showArrow"
             (ngModelChange)="updateConfig()"
             label="Show Arrow"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="closeButton"
             name="closeButton"
             [(ngModel)]="pgConfig.showCloseButton"
             (ngModelChange)="updateConfig()"
             label="Close Button"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="backdrop"
             name="backdrop"
             [(ngModel)]="pgConfig.backdrop"
             (ngModelChange)="updateConfig()"
             label="Backdrop"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

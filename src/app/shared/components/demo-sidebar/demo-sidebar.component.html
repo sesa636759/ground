@@ -1,0 +1,13 @@
+<aside class="examples-sidebar">
+  <div class="sidebar-title">{{ title }}</div>
+  <ul class="custom-nav" *ngIf="variants && variants.length > 0">
+    <li *ngFor="let variant of variants">
+      <a (click)="onLinkClick(variant.id, $event)" [class.active]="activeId === variant.id">
+        <span class="nav-icon" *ngIf="variant.icon || variant.emoji">
+          {{ variant.icon || variant.emoji }}
+        </span>
+        {{ variant.label || variant.title || variant.name || variant.id }}
+      </a>
+    </li>
+  </ul>
+</aside>

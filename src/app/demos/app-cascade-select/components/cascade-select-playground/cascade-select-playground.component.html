@@ -14,7 +14,7 @@
             type="text"
             [(ngModel)]="pgConfig.placeholder"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Size</label>
@@ -37,24 +37,28 @@
       <div class="control-section">
         <h3>Path Settings</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="fullpath"
             [(ngModel)]="pgConfig.showFullPath"
             (ngModelChange)="updateConfig()"
             label="Show Full Path"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Separator</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.separator" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.separator"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="changeonselect"
             [(ngModel)]="pgConfig.changeOnSelect"
             (ngModelChange)="updateConfig()"
             label="Change On Select (Any Level)"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

@@ -44,14 +44,14 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></app-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></ui-checkbox>
         Range Mode (Dual)
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Show Tooltip
       </label>
     </div>

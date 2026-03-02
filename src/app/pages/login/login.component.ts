@@ -10,7 +10,7 @@ import { ASSETS } from '../../shared/constants/assets.constants';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, AppInputValueAccessorDirective, AppCheckboxValueAccessorDirective],
+  imports: [CommonModule, FormsModule, RouterLink, AppInputValueAccessorDirective],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',

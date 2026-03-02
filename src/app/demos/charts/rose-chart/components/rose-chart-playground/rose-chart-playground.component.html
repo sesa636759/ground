@@ -15,7 +15,7 @@
             step="20"
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
@@ -27,7 +27,7 @@
             step="5"
             [(ngModel)]="cfg.innerR"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.innerR }}px</span>
         </div>
         <div class="control-group">
@@ -42,28 +42,28 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Show Labels"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showVals"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="legend"
             [(ngModel)]="cfg.showLegend"
             (ngModelChange)="update()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

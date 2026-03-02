@@ -31,7 +31,7 @@
             step="5"
             [(ngModel)]="pgConfig.cutout"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.cutout }}%</span
           >
@@ -57,7 +57,7 @@
             step="1"
             [(ngModel)]="pgConfig.borderWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.borderWidth }}px</span
           >
@@ -67,47 +67,40 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="responsive"
             [(ngModel)]="pgConfig.responsive"
             (ngModelChange)="updateConfig()"
             label="Responsive"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="enableAnimation"
             [(ngModel)]="pgConfig.enableAnimation"
             (ngModelChange)="updateConfig()"
             label="Animate on Load"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showTooltip"
             [(ngModel)]="pgConfig.showTooltip"
             (ngModelChange)="updateConfig()"
             label="Show Tooltip"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>
-    <div class="action-buttons">
-      <ui-button
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
-    </div>
+    
   </div>
   <div
     preview

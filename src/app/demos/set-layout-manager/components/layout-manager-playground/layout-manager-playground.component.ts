@@ -21,7 +21,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
     CommonModule,
     FormsModule,
     UiDropdownValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './layout-manager-playground.component.html',

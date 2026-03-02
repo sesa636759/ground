@@ -33,7 +33,7 @@
             step="5"
             [(ngModel)]="pgConfig.barWidth"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.barWidth }}%</span
           >
@@ -47,7 +47,7 @@
             step="2"
             [(ngModel)]="pgConfig.borderRadius"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ pgConfig.borderRadius }}px</span
           >
@@ -57,52 +57,52 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLegend"
             [(ngModel)]="pgConfig.showLegend"
             (ngModelChange)="updateConfig()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="pgConfig.showGrid"
             (ngModelChange)="updateConfig()"
             label="Show Grid"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showValues"
             [(ngModel)]="pgConfig.showValues"
             (ngModelChange)="updateConfig()"
             label="Show Values"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="stacked"
             [(ngModel)]="pgConfig.stacked"
             (ngModelChange)="updateConfig()"
             label="Stacked"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="enableAnimation"
             [(ngModel)]="pgConfig.enableAnimation"
             (ngModelChange)="updateConfig()"
             label="Animate on Load"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showTooltip"
             [(ngModel)]="pgConfig.showTooltip"
             (ngModelChange)="updateConfig()"
             label="Show Tooltip"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

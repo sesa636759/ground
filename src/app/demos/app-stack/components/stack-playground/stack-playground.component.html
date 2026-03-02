@@ -26,7 +26,7 @@
             [(ngModel)]="pgConfig.spacing"
             (ngModelChange)="updateConfig()"
             placeholder="e.g. 16px, -10px"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Align</label>
@@ -58,25 +58,25 @@
             type="number"
             [(ngModel)]="pgConfig.max"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="overlap"
             name="overlap"
             [(ngModel)]="pgConfig.overlap"
             (ngModelChange)="updateConfig()"
             label="Overlap"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDividers"
             name="showDividers"
             [(ngModel)]="pgConfig.showDividers"
             (ngModelChange)="updateConfig()"
             label="Show Dividers"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
 
@@ -91,7 +91,7 @@
             max="10"
             [(ngModel)]="numBoxes"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
     </div>

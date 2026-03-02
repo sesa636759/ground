@@ -15,7 +15,7 @@
             step="2"
             [(ngModel)]="cfg.barW"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.barW }}px</span>
         </div>
         <div class="control-group">
@@ -38,28 +38,28 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDates"
             [(ngModel)]="cfg.showDates"
             (ngModelChange)="update()"
             label="Show Dates"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showMA"
             [(ngModel)]="cfg.showMA"
             (ngModelChange)="update()"
             label="Show MA Line"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

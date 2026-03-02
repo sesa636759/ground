@@ -85,7 +85,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.emptyStateElement) return '';
     return generatePlaygroundCode(
       this.emptyStateElement.nativeElement as Element,
@@ -95,7 +95,7 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

@@ -13,7 +13,7 @@ import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
-  selector: 'app-input-playground',
+  selector: 'ui-input-playground',
   standalone: true,
   imports: [
     CommonModule,

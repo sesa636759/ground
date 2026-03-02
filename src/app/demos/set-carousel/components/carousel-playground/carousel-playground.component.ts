@@ -90,7 +90,7 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.carouselElement) return '';
     const innerContent = `
   <div class="slide">Slide 1</div>
@@ -105,7 +105,7 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

@@ -10,11 +10,19 @@
         <h3>Basic Config</h3>
         <div class="control-group">
           <label>Label</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.label"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon (Home/Save/etc)</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.icon"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Variant</label>
@@ -37,20 +45,20 @@
           ></ui-dropdown>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="disabled"
             [(ngModel)]="pgConfig.disabled"
             (ngModelChange)="updateConfig()"
             label="Disabled"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="loading"
             [(ngModel)]="pgConfig.loading"
             (ngModelChange)="updateConfig()"
             label="Loading"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

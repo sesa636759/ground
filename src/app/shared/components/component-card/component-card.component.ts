@@ -23,8 +23,15 @@ export class ComponentCardComponent {
   @Input() viewMode: 'grid' | 'list' = 'grid';
 
   @Output() cardClick = new EventEmitter<string>();
+  @Output() docsClick = new EventEmitter<string>();
 
-  onClick() {
+  onDemoClick(event?: Event) {
+    if (event) event.stopPropagation();
     this.cardClick.emit(this.componentId);
+  }
+
+  onDocsClick(event: Event) {
+    event.stopPropagation();
+    this.docsClick.emit(this.componentId);
   }
 }

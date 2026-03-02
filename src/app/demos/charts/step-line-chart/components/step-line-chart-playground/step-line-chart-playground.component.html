@@ -15,7 +15,7 @@
             step="0.5"
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ cfg.strokeWidth }}px</span
           >
@@ -29,7 +29,7 @@
             step="1"
             [(ngModel)]="cfg.pointR"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.pointR }}px</span>
         </div>
         <div class="control-group">
@@ -44,28 +44,28 @@
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="fill"
             [(ngModel)]="cfg.fill"
             (ngModelChange)="update()"
             label="Fill Area"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showAxes"
             [(ngModel)]="cfg.showAxes"
             (ngModelChange)="update()"
             label="Show Axes"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

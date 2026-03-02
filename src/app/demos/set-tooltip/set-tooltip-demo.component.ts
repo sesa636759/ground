@@ -60,7 +60,7 @@ export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit
 </app-tooltip>`;
 
   focusCode = `<app-tooltip content="I appear on focus" position="top" trigger="focus">
-  <ui-input type="text" placeholder="Focus me" slot="target" />
+  <ui-input type="text" placeholder="Focus me" slot="target" ></ui-input>
 </app-tooltip>`;
 
   positionCode = `<!-- Top Left -->

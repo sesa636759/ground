@@ -11,7 +11,11 @@
         <h3>Identity</h3>
         <div class="control-group">
           <label>Name (Initials)</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.name"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Image Source</label>
@@ -20,7 +24,7 @@
             [(ngModel)]="pgConfig.src"
             (ngModelChange)="updateConfig()"
             placeholder="URL"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
@@ -29,7 +33,7 @@
             [(ngModel)]="pgConfig.icon"
             (ngModelChange)="updateConfig()"
             placeholder="emoji or icon"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -46,7 +50,11 @@
         </div>
         <div class="control-group">
           <label>Size (e.g. 64px)</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.size"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Status</label>
@@ -68,7 +76,7 @@
             [(ngModel)]="pgConfig.badge"
             (ngModelChange)="updateConfig()"
             placeholder="'dot' or text"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Badge Color</label>
@@ -77,7 +85,7 @@
             [(ngModel)]="pgConfig.badgeColor"
             (ngModelChange)="updateConfig()"
             placeholder="hex or color name"
-          />
+          ></ui-input>
         </div>
       </div>
     </div>

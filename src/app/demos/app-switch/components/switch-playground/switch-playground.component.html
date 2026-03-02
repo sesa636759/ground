@@ -8,7 +8,11 @@
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.label"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Variant</label>
@@ -44,11 +48,19 @@
     </div>
     <div class="control-group">
       <label>Icon On</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.iconOn"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Icon Off</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" />
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.iconOff"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
@@ -56,35 +68,35 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="checked"
           [(ngModel)]="pgConfig.checked"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Checked
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="disabled"
           [(ngModel)]="pgConfig.disabled"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="loading"
           [(ngModel)]="pgConfig.loading"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Loading
       </label>
       <label class="checkbox-item">
-        <app-checkbox
+        <ui-checkbox
           id="showIcons"
           [(ngModel)]="pgConfig.showDefaultIcons"
           (ngModelChange)="updateConfig()"
-        ></app-checkbox>
+        ></ui-checkbox>
         Default Icons
       </label>
     </div>

@@ -290,6 +290,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'label-set',
+        loadComponent: () =>
+          import('./demos/set-label/set-label-demo.component').then((m) => m.SetLabelDemoComponent),
+      },
+      {
         path: 'avatar-group-set',
         loadComponent: () =>
           import('./demos/set-avatar-group/set-avatar-group-demo.component').then(

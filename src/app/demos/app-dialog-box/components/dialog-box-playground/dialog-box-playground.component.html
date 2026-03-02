@@ -67,72 +67,72 @@
       ></ui-dropdown>
     </div>
     <div class="checkbox-group" style="margin-top: 12px">
-      <app-checkbox
+      <ui-checkbox
         id="draggable"
         [(ngModel)]="pgConfig.draggable"
         (ngModelChange)="updateConfig()"
         label="Draggable"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="resizable"
         [(ngModel)]="pgConfig.resizable"
         (ngModelChange)="updateConfig()"
         label="Resizable"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 
   <!-- Visibility Slot -->
   <div slot="content-visibility" class="control-grid" style="padding: 16px">
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showHeader"
         [(ngModel)]="pgConfig.showHeader"
         (ngModelChange)="updateConfig()"
         label="Show Header"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showFooter"
         [(ngModel)]="pgConfig.showFooter"
         (ngModelChange)="updateConfig()"
         label="Show Footer"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showMenu"
         [(ngModel)]="pgConfig.showMenu"
         (ngModelChange)="updateConfig()"
         label="Show Menu"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showMin"
         [(ngModel)]="pgConfig.showMin"
         (ngModelChange)="updateConfig()"
         label="Show Minimize"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showMax"
         [(ngModel)]="pgConfig.showMax"
         (ngModelChange)="updateConfig()"
         label="Show Maximize"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
     <div class="checkbox-group">
-      <app-checkbox
+      <ui-checkbox
         id="showClose"
         [(ngModel)]="pgConfig.showClose"
         (ngModelChange)="updateConfig()"
         label="Show Close"
-      ></app-checkbox>
+      ></ui-checkbox>
     </div>
   </div>
 

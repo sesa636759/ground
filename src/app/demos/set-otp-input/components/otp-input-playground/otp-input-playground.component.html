@@ -86,15 +86,15 @@
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
+        <ui-checkbox [(ngModel)]="pgConfig.secure" (ngModelChange)="updateConfig()" /> Secure
         (Password)
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()" />
         Skeleton
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
         State
       </label>
     </div>

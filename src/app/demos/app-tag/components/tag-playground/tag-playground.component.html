@@ -10,11 +10,19 @@
         <h3>Visuals</h3>
         <div class="control-group">
           <label>Value / Text</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.value"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Icon</label>
-          <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="text"
+            [(ngModel)]="pgConfig.icon"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Severity</label>
@@ -29,12 +37,12 @@
       <div class="control-section">
         <h3>Styling</h3>
         <div class="checkpoint-group">
-          <app-checkbox
+          <ui-checkbox
             id="rounded"
             [(ngModel)]="pgConfig.rounded"
             (ngModelChange)="updateConfig()"
             label="Rounded Corners"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="control-group">
           <label>Size</label>

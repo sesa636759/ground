@@ -61,7 +61,7 @@ These are wrapper components for existing components and may already be covered 
 
 **Note**: Likely already demonstrated in set-button-toggle demo
 
-### 9. app-checkbox-group
+### 9. ui-checkbox-group
 
 **Note**: Likely already demonstrated in set-checkbox demo
 

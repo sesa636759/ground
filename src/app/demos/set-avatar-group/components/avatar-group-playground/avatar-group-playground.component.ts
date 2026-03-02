@@ -95,7 +95,7 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.avatarGroupElement) return '';
     let code = generatePlaygroundCode(
       this.avatarGroupElement.nativeElement as Element,
@@ -108,7 +108,7 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

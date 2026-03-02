@@ -68,7 +68,7 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.avatarGroupElement) return '';
     const innerContent = `
   <ui-avatar label="JD"></ui-avatar>
@@ -84,7 +84,7 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

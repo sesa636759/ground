@@ -161,7 +161,7 @@
             [(ngModel)]="pgConfig.customColor"
             (ngModelChange)="updateConfig()"
             style="height: 40px; width: 100%; cursor: pointer"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Custom Text Color</label>
@@ -170,47 +170,45 @@
             [(ngModel)]="pgConfig.textColor"
             (ngModelChange)="updateConfig()"
             style="height: 40px; width: 100%; cursor: pointer"
-          />
+          ></ui-input>
         </div>
       }
     </div>
 
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
+        <ui-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
         Interactive
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
         Follow Cursor
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
+        <ui-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow
-        Effect
+        <ui-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track
+        <ui-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track
         Mouse
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
         Open at Mouse
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto
-        Shift
+        <ui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
+        <ui-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
       </label>
       <label class="checkbox-item">
-        <app-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
+        <ui-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
         Custom Colors
       </label>
     </div>

@@ -182,10 +182,10 @@
       <thead>
         <tr>
           <th width="40">
-            <app-checkbox
+            <ui-checkbox
               [checked]="selectedUsers.size === users.length && users.length > 0"
               (change)="toggleSelectAll()"
-            ></app-checkbox>
+            ></ui-checkbox>
           </th>
           <th>User</th>
           <th>Email</th>
@@ -199,10 +199,10 @@
       <tbody>
         <tr *ngFor="let user of users" [class.selected]="isSelected(user.id)">
           <td>
-            <app-checkbox
+            <ui-checkbox
               [checked]="isSelected(user.id)"
               (change)="toggleSelectUser(user.id)"
-            ></app-checkbox>
+            ></ui-checkbox>
           </td>
           <td>
             <div class="user-cell">
@@ -296,11 +296,11 @@
   <div class="users-grid" *ngIf="viewMode === 'grid' && !loading">
     <div class="user-card" *ngFor="let user of users" [class.selected]="isSelected(user.id)">
       <div class="card-header">
-        <app-checkbox
+        <ui-checkbox
           [checked]="isSelected(user.id)"
           (change)="toggleSelectUser(user.id)"
           class="card-checkbox"
-        ></app-checkbox>
+        ></ui-checkbox>
         <span class="badge" [ngClass]="getStatusBadgeClass(user.status)">{{ user.status }}</span>
       </div>
 

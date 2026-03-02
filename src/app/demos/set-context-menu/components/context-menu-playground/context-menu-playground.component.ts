@@ -132,7 +132,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.contextMenuElement) return '';
     return generatePlaygroundCode(
       this.contextMenuElement.nativeElement as Element,
@@ -142,7 +142,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

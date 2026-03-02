@@ -36,19 +36,19 @@
       <div class="control-section">
         <h3>Content</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="opposite"
             [(ngModel)]="pgConfig.showOpposite"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="opposite">Show Opposite Side</label>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="customMarker"
             [(ngModel)]="pgConfig.customMarker"
             (ngModelChange)="updateConfig()"
-          ></app-checkbox>
+          ></ui-checkbox>
           <label for="customMarker">Custom Markers</label>
         </div>
       </div>

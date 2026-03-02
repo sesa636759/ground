@@ -84,7 +84,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
@@ -98,7 +98,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.toggleGroup) return '';
 
     return generatePlaygroundCode(this.toggleGroup.nativeElement as Element, 'app-toggle-group');
@@ -106,7 +106,7 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

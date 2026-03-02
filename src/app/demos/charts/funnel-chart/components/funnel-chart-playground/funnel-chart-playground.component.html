@@ -23,7 +23,7 @@
             step="2"
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
         </div>
         <div class="control-group">
@@ -35,35 +35,35 @@
             step="5"
             [(ngModel)]="cfg.neckPct"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.neckPct }}%</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showVals"
             [(ngModel)]="cfg.showValues"
             (ngModelChange)="update()"
             label="Show Values"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showPct"
             [(ngModel)]="cfg.showPct"
             (ngModelChange)="update()"
             label="Show %"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="curved"
             [(ngModel)]="cfg.curved"
             (ngModelChange)="update()"
             label="Curved Sides"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

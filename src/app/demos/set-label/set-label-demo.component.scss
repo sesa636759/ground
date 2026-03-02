@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+.chakra-like-page {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: var(--font-sans), sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+
+    .content-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 48px;
+        position: relative;
+    }
+
+    /* Main Document Content */
+    .docs-content {
+        flex: 1;
+        min-width: 0;
+
+        .docs-header {
+            margin-bottom: 40px;
+
+            h1 {
+                font-size: 2.25rem;
+                font-weight: 700;
+                margin: 0 0 12px;
+                letter-spacing: -0.02em;
+            }
+
+            .lead-text {
+                font-size: 1.125rem;
+                color: var(--text-secondary);
+                line-height: 1.6;
+                margin: 0;
+            }
+        }
+
+        .docs-body {
+            section {
+                margin-bottom: 48px;
+
+                h2 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    margin: 0 0 16px;
+                    color: var(--text-primary);
+                    padding-top: 10px;
+                }
+
+                p {
+                    font-size: 1rem;
+                    line-height: 1.7;
+                    margin: 0 0 24px;
+                    color: var(--text-secondary);
+                }
+
+                .inline-code {
+                    font-family: var(--font-mono), monospace;
+                    background: var(--surface-2);
+                    border: 1px solid var(--border-color);
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-size: 0.875em;
+                    color: var(--text-primary);
+                }
+
+                .alert-box {
+                    display: flex;
+                    gap: 12px;
+                    padding: 16px;
+                    border-radius: 8px;
+                    margin: 24px 0;
+                    background: rgba(var(--info-color-rgb), 0.1);
+                    border: 1px solid color-mix(in srgb, var(--info-color) 20%, transparent);
+
+                    .alert-icon {
+                        font-size: 1.25rem;
+                    }
+
+                    .alert-content {
+                        font-size: 0.95rem;
+                        color: var(--text-primary);
+                        line-height: 1.6;
+
+                        strong {
+                            font-weight: 600;
+                            margin-right: 4px;
+                        }
+                    }
+                }
+            }
+
+            /* Chakra-like Prev / Next footer */
+            .docs-footer-nav {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 64px;
+                padding-top: 24px;
+                border-top: 1px solid var(--border-color);
+                gap: 24px;
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                    text-decoration: none;
+                    padding: 16px;
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+                    transition: all 0.2s;
+                    flex: 1;
+
+                    &:hover {
+                        border-color: var(--primary);
+                        background: rgba(var(--primary-color-rgb), 0.05);
+                    }
+
+                    &.nav-prev {
+                        align-items: flex-start;
+                    }
+
+                    &.nav-next {
+                        align-items: flex-end;
+                    }
+
+                    .nav-label {
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: var(--text-muted);
+                    }
+
+                    .nav-title {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: var(--text-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    /* Table of Contents */
+    .docs-toc {
+        flex: 0 0 200px;
+        display: none;
+
+        @media (min-width: 1024px) {
+            display: block;
+        }
+
+        .toc-sticky {
+            position: sticky;
+            top: 100px;
+            /* Account for navbar if needed */
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0 0 16px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            li {
+                a {
+                    font-size: 0.875rem;
+                    color: var(--text-secondary);
+                    text-decoration: none;
+                    transition: color 0.2s;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: var(--text-primary);
+                    }
+                }
+
+                &.active a {
+                    color: var(--primary);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

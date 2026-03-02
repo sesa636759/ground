@@ -23,7 +23,7 @@
             step="4"
             [(ngModel)]="cfg.rowHeight"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.rowHeight }}px</span>
         </div>
       </div>
@@ -38,24 +38,24 @@
             step="2"
             [(ngModel)]="cfg.radius"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.radius }}px</span>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showTooltip"
             [(ngModel)]="cfg.showTooltip"
             (ngModelChange)="update()"
             label="Show Tooltip"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Show Labels"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

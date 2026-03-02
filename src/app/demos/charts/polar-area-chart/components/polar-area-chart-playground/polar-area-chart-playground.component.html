@@ -31,27 +31,27 @@
             step="0.05"
             [(ngModel)]="cfg.opacity"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.opacity }}</span>
         </div>
       </div>
       <div class="control-section">
         <h3>✨ Features</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="legend"
             [(ngModel)]="cfg.showLegend"
             (ngModelChange)="update()"
             label="Show Legend"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="anim"
             [(ngModel)]="cfg.animate"
             (ngModelChange)="update()"
             label="Animate"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

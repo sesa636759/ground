@@ -12,14 +12,14 @@ From `c:\Praveen\Personal-repo\stencil\set-ui-lib\src\components`:
 6. app-button-toggle-group (group component)
 7. app-card ✅
 8. app-carousel ✅
-9. app-checkbox ✅
-10. app-checkbox-group (group component)
+9. ui-checkbox ✅
+10. ui-checkbox-group (group component)
 11. app-code-editor ✅
 12. app-context-menu ✅
 13. app-dashboard ✅
 14. app-dock-overlay ✅
 15. app-empty-state ✅
-16. app-input ✅
+16. ui-input ✅
 17. **app-layout-manager** ❌ MISSING
 18. app-layout-region (sub-component)
 19. app-list ✅

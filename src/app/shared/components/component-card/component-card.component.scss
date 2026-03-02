@@ -1,11 +1,12 @@
 :host {
     display: block;
     height: 100%;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    margin-bottom: var(--am-row-gap, 32px);
 }
 
 .component-card {
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
     padding: 1.75rem;
     cursor: pointer;
     display: flex;
@@ -208,24 +209,60 @@
     opacity: 1;
 }
 
-.explore-btn {
-    background: var(--primary, #4f46e5);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-weight: 700;
-    font-size: 0.85rem;
+.overlay-actions {
     display: flex;
+    flex-direction: column;
+    gap: 12px;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transform: translateY(10px);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(15px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.component-card:hover .explore-btn {
+.component-card:hover .overlay-actions {
     transform: translateY(0);
+}
+
+.explore-btn,
+.docs-btn {
+    width: 130px;
+    height: 38px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    --ui-button-padding: 0 12px;
+
+    &::part(button) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+.explore-btn {
+    --ui-button-bg: var(--primary, #4f46e5);
+    --ui-button-color: white;
+    box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.5);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px -4px rgba(79, 70, 229, 0.6);
+    }
+}
+
+.docs-btn {
+    --ui-button-bg: rgba(255, 255, 255, 0.15);
+    --ui-button-color: white;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
+    }
 }
 
 .card-footer {

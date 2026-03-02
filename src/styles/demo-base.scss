@@ -242,6 +242,8 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    position: relative;
+    /* needed for reliable getBoundingClientRect scroll calc */
     padding: 2rem;
     background: #ffffff;
     border-radius: 16px;

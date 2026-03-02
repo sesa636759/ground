@@ -16,7 +16,7 @@
             min="0"
             [max]="pgConfig.total"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Total</label>
@@ -26,7 +26,7 @@
             min="1"
             max="1000"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Title</label>
@@ -34,7 +34,7 @@
             type="text"
             [(ngModel)]="pgConfig.chartTitle"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -46,7 +46,7 @@
             type="color"
             [(ngModel)]="pgConfig.fillColor"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Empty colour</label>
@@ -54,7 +54,7 @@
             type="color"
             [(ngModel)]="pgConfig.emptyColor"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
             min="1"
             max="20"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label>Columns</label>
@@ -78,7 +78,7 @@
             min="1"
             max="20"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label
@@ -91,7 +91,7 @@
             max="48"
             step="2"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
         <div class="control-group">
           <label
@@ -104,7 +104,7 @@
             max="8"
             step="1"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
 
@@ -116,7 +116,7 @@
             type="checkbox"
             [(ngModel)]="pgConfig.showPercentage"
             (ngModelChange)="updateConfig()"
-          />
+          ></ui-input>
         </div>
       </div>
     </div>

@@ -90,7 +90,7 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.meterElement) return '';
     let code = generatePlaygroundCode(this.meterElement.nativeElement as Element, 'ui-meter-group');
     // Add values prop to code manually
@@ -100,7 +100,7 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

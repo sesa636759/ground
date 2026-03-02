@@ -15,7 +15,7 @@
             step="4"
             [(ngModel)]="cfg.rowH"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.rowH }}px</span>
         </div>
         <div class="control-group">
@@ -27,43 +27,43 @@
             step="2"
             [(ngModel)]="cfg.radius"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.radius }}px</span>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showDeps"
             [(ngModel)]="cfg.showDeps"
             (ngModelChange)="update()"
             label="Show Dependencies"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
       <div class="control-section">
         <h3>🎨 Style</h3>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showGrid"
             [(ngModel)]="cfg.showGrid"
             (ngModelChange)="update()"
             label="Show Grid"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="showLabels"
             [(ngModel)]="cfg.showLabels"
             (ngModelChange)="update()"
             label="Bar Labels"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
         <div class="checkbox-group">
-          <app-checkbox
+          <ui-checkbox
             id="zebra"
             [(ngModel)]="cfg.zebra"
             (ngModelChange)="update()"
             label="Zebra Rows"
-          ></app-checkbox>
+          ></ui-checkbox>
         </div>
       </div>
     </div>

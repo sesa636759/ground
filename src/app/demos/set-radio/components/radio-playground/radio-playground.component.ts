@@ -122,12 +122,12 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // Initial load: read the exact attributes from #radioGroup element in the Light DOM
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.radioGroup) return '';
 
     let innerContent = '';
@@ -158,7 +158,7 @@ export class RadioPlaygroundComponent implements OnInit, AfterViewInit {
   updateConfig() {
     // Wait for Angular and Stencil to finish DOM updates
     setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormatedDom());
+      this.generatedCode.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

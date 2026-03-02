@@ -50,14 +50,14 @@
     select,
     input[type='text'],
     input[type='number'],
-    app-input,
+    ui-input,
     ui-dropdown {
       width: 100%;
       display: block;
     }
 
-    // Ensure app-input Stencil element has visible dimensions
-    app-input {
+    // Ensure ui-input Stencil element has visible dimensions
+    ui-input {
       min-height: 40px;
       box-sizing: border-box;
     }
@@ -98,7 +98,7 @@
       cursor: pointer;
       color: var(--text-primary);
 
-      app-checkbox {
+      ui-checkbox {
         display: inline-flex;
       }
     }
@@ -204,7 +204,7 @@
     font-size: 0.95rem;
   }
 
-  app-input {
+  ui-input {
     width: 100%;
   }
 

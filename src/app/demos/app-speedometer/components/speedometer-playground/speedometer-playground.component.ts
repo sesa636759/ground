@@ -68,7 +68,7 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
     }, 0);
   }
 
-  getCleanFormatedDom(): string {
+  getCleanFormattedDom(): string {
     if (!this.speedometerElement) return '';
     return generatePlaygroundCode(
       this.speedometerElement.nativeElement as Element,
@@ -78,7 +78,7 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
+      this.generatedCodeSignal.set(this.getCleanFormattedDom());
       this.refreshCode();
     }, 50);
   }

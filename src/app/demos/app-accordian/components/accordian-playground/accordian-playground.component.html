@@ -6,16 +6,6 @@
 >
   <div slot="content-config">
     <div style="display: flex; align-items: flex-start">
-      <ui-button
-        style="margin-right: 16px"
-        icon=""
-        iconPosition="left"
-        [iconLibrary]="'se'"
-        actions
-        variant="secondary"
-        (click)="resetConfig()"
-        label="Reset Configuration"
-      ></ui-button>
       <div class="control-grid" style="flex: 1">
         <!-- Visual Settings -->
         <div class="control-section">
@@ -57,7 +47,7 @@
               type="color"
               [(ngModel)]="pgConfig.selectedHeaderColor"
               (ngModelChange)="updateConfig()"
-            />
+            ></ui-input>
           </div>
 
           <div class="control-group">
@@ -69,48 +59,48 @@
               max="6"
               [(ngModel)]="pgConfig.headerLevel"
               (ngModelChange)="updateConfig()"
-            />
+            ></ui-input>
           </div>
 
           <div class="checkbox-row">
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="hideArrow"
                 name="hideArrow"
                 [(ngModel)]="pgConfig.hideArrow"
                 (ngModelChange)="updateConfig()"
                 label="Hide Arrow"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="showNumbers"
                 name="showNumbers"
                 [(ngModel)]="pgConfig.showNumbers"
                 (ngModelChange)="updateConfig()"
                 label="Show Numbers"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="rtl"
                 name="rtl"
                 [(ngModel)]="pgConfig.rtl"
                 (ngModelChange)="updateConfig()"
                 label="RTL"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="dense"
                 name="dense"
                 [(ngModel)]="pgConfig.dense"
                 (ngModelChange)="updateConfig()"
                 label="Dense"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
           </div>
         </div>
@@ -130,62 +120,62 @@
 
           <div class="checkbox-row">
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="disabled"
                 name="disabled"
                 [(ngModel)]="pgConfig.disabled"
                 (ngModelChange)="updateConfig()"
                 label="Disabled"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="enableSearch"
                 name="enableSearch"
                 [(ngModel)]="pgConfig.enableSearch"
                 (ngModelChange)="updateConfig()"
                 label="Enable Search"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="enableExpandCollapseAll"
                 name="enableExpandCollapseAll"
                 [(ngModel)]="pgConfig.enableExpandCollapseAll"
                 (ngModelChange)="updateConfig()"
                 label="Show Expand/Collapse All"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="enableDragDrop"
                 name="enableDragDrop"
                 [(ngModel)]="pgConfig.enableDragDrop"
                 (ngModelChange)="updateConfig()"
                 label="Enable Drag & Drop"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
 
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="enableNested"
                 name="enableNested"
                 [(ngModel)]="pgConfig.enableNested"
                 (ngModelChange)="updateConfig()"
                 label="Enable Nested"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
             <div class="checkbox-group">
-              <app-checkbox
+              <ui-checkbox
                 id="loading"
                 name="loading"
                 [(ngModel)]="pgConfig.loading"
                 (ngModelChange)="updateConfig()"
                 label="Loading State"
-              ></app-checkbox>
+              ></ui-checkbox>
             </div>
           </div>
         </div>
@@ -200,7 +190,7 @@
               type="number"
               [(ngModel)]="pgConfig.animationDuration"
               (ngModelChange)="updateConfig()"
-            />
+            ></ui-input>
           </div>
           <div class="control-group">
             <label>Timing Function</label>
@@ -212,13 +202,13 @@
             ></ui-dropdown>
           </div>
           <div class="checkbox-group">
-            <app-checkbox
+            <ui-checkbox
               id="lazy"
               name="lazy"
               [(ngModel)]="pgConfig.lazy"
               (ngModelChange)="updateConfig()"
               label="Lazy Load Content"
-            ></app-checkbox>
+            ></ui-checkbox>
           </div>
         </div>
       </div>

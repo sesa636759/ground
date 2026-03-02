@@ -27,7 +27,7 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   categories = categoryNavItems;
   searchQuery = signal<string>('');
   viewMode = signal<'grid' | 'list'>('grid');
-  viewOptions: any[] = [
+  viewOptions = [
     { value: 'grid', label: 'Grid View', icon: 'fas fa-th' },
     { value: 'list', label: 'List View', icon: 'fas fa-list' },
   ];
