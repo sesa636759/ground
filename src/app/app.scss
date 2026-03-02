@@ -171,6 +171,7 @@
     overflow-y: auto;
     padding: 0;
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
     position: relative;
     contain: layout style paint;
 

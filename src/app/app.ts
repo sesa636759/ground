@@ -1,6 +1,6 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA, OnInit, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, Router, NavigationEnd, } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import {
   topNavItems,
   categoryNavItems,
@@ -11,6 +11,7 @@ import { ThemeService } from './services/theme.service';
 import { AuthService } from './services/auth.service';
 import { filter } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { registerIconLibrary } from '@quartzds/core-angular';
 
 import {
   faCoffee,
@@ -84,7 +85,6 @@ export class App implements OnInit {
     };
   });
 
-
   constructor(
     public router: Router,
     public themeService: ThemeService,
@@ -96,6 +96,16 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
+    registerIconLibrary('core', {
+      resolver: function (name) {
+        return `assets/quartzds/se-icons-core/${name}.svg`;
+      },
+    });
+    registerIconLibrary('default', {
+      resolver: function (name) {
+        return `assets/quartzds/se-icons-general/${name}.svg`;
+      },
+    });
     // Track route changes to update selected item
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

@@ -131,10 +131,10 @@
       <div class="carousel-vessel-container">
         <app-carousel
           class="premium-carousel"
-          [loop]="true"
-          [autoplay]="true"
-          [indicators]="true"
-          [arrows]="true"
+          loop="true"
+          autoplay="true"
+          indicators="true"
+          arrows="true"
           height="600px"
           slides-to-show="1"
         >
@@ -318,81 +318,36 @@
     </div>
   </section>
 
-  <!-- FontAwesome Icons Showcase -->
+  <!-- Premium Icon Support Section -->
   <section class="icons-section">
     <app-animate-on-scroll animation="fade-in" [delay]="0">
       <div class="section-header">
+        <div class="section-badge-tiny">Icon Infrastructure</div>
         <h2>Premium Icon Support</h2>
-        <p>Integrated with FontAwesome for beautiful, scalable vector icons</p>
+        <p>Native integration for the world's most popular icon libraries</p>
       </div>
     </app-animate-on-scroll>
 
-    <app-animate-on-scroll animation="zoom-in" [delay]="100">
-      <div class="icons-grid">
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faCode" size="2x"></fa-icon>
-          <span>faCode</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faLayerGroup" size="2x"></fa-icon>
-          <span>faLayerGroup</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faGaugeHigh" size="2x"></fa-icon>
-          <span>faGaugeHigh</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faBookOpen" size="2x"></fa-icon>
-          <span>faBookOpen</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faMobileScreenButton" size="2x"></fa-icon>
-          <span>faMobileScreenButton</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faCheckDouble" size="2x"></fa-icon>
-          <span>faCheckDouble</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faRocket" size="2x"></fa-icon>
-          <span>faRocket</span>
-        </div>
-        <div class="icon-demo-card">
-          <fa-icon [icon]="faTerminal" size="2x"></fa-icon>
-          <span>faTerminal</span>
-        </div>
-      </div>
-    </app-animate-on-scroll>
-  </section>
-
-  <!-- Categories Showcase -->
-  <section class="categories-section">
-    <app-animate-on-scroll animation="fade-in" [delay]="0">
-      <div class="section-header">
-        <h2>Explore by Category</h2>
-        <p>Organized components for every use case</p>
-      </div>
-    </app-animate-on-scroll>
-
-    <div class="categories-grid">
-      @for (category of categories; track category.id; let i = $index) {
+    <div class="libraries-grid">
+      @for (lib of iconLibraries; track lib.name; let i = $index) {
         <app-animate-on-scroll animation="slide-up" [delay]="i * 100">
-          <div class="category-card glass-panel" (click)="navigateTo('playground')">
-            <div class="category-header">
-              <div class="category-icon cyan-glow">
-                <ui-icon
-                  [name]="category.icon || 'folder'"
-                  [library]="category.iconLibrary || 'lucide'"
-                ></ui-icon>
+          <div class="library-card">
+            <div class="library-header">
+              <div class="library-info">
+                <h3>{{ lib.name }}</h3>
+                <span class="icon-count">{{ lib.count }} Icons</span>
               </div>
-              <span class="component-count">{{ category.children?.length || 0 }}</span>
+              <div class="category-icon" [ngClass]="lib.color">
+                <ui-icon [name]="lib.sampleIcons[0]" [library]="lib.library"></ui-icon>
+              </div>
             </div>
-            <h3>{{ category.label }}</h3>
-            <p>{{ getCategoryDescription(category.id) }}</p>
-            <div class="category-footer">
-              <span class="explore-link"
-                >Explore Gallery <ui-icon name="chevron-right" library="lucide"></ui-icon
-              ></span>
+            <p class="library-description">{{ lib.description }}</p>
+            <div class="sample-icons-grid">
+              @for (icon of lib.sampleIcons; track icon) {
+                <div class="sample-icon-box" [attr.title]="icon">
+                  <ui-icon [name]="icon" [library]="lib.library"></ui-icon>
+                </div>
+              }
             </div>
           </div>
         </app-animate-on-scroll>
