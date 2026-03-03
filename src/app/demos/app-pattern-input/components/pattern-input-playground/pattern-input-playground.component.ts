@@ -37,8 +37,9 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'labels', title: 'Labels & Text', icon: '🏷️' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
@@ -47,9 +48,25 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
   pgConfig = {
     pattern: '(999) 999-9999',
     placeholder: 'Enter phone number',
+    label: 'Phone Number',
+    size: 'md',
+    maskChar: '9',
+    maxLength: 0,
+    helperText: '',
+    errorMessage: '',
     disabled: false,
     readonly: false,
+    required: false,
+    showValidation: true,
+    autoFormat: true,
+    showCounter: false,
   };
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
+  ];
 
   patternOptions = [
     { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },
@@ -102,8 +119,18 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
     this.pgConfig = {
       pattern: '(999) 999-9999',
       placeholder: 'Enter phone number',
+      label: 'Phone Number',
+      size: 'md',
+      maskChar: '9',
+      maxLength: 0,
+      helperText: '',
+      errorMessage: '',
       disabled: false,
       readonly: false,
+      required: false,
+      showValidation: true,
+      autoFormat: true,
+      showCounter: false,
     };
     this.updateConfig();
   }

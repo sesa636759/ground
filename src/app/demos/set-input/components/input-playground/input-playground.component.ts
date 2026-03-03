@@ -71,6 +71,10 @@ export class InputPlaygroundComponent implements OnInit {
     floatingLabel: false,
     loading: false,
     debounce: 0,
+    // File & Color extras
+    accept: '',
+    multiple: false,
+    showCopy: false,
   };
 
   eventMessage = signal('Interact with the input...');
@@ -117,6 +121,9 @@ export class InputPlaygroundComponent implements OnInit {
     if (this.pgConfig.showCharCount) code += `  show-char-count="true"\n`;
     if (this.pgConfig.floatingLabel) code += `  floating-label="true"\n`;
     if (this.pgConfig.loading) code += `  show-loading="true"\n`;
+    if (this.pgConfig.accept) code += `  accept="${this.pgConfig.accept}"\n`;
+    if (this.pgConfig.multiple) code += `  multiple="true"\n`;
+    if (this.pgConfig.showCopy) code += `  show-copy="true"\n`;
 
     code += `></ui-input>`;
 

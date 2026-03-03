@@ -240,6 +240,35 @@
           </div>
         </app-example-section>
 
+        <!-- Color Input -->
+        <app-example-section
+          id="color-input"
+          title="Color Input"
+          description="Native color picker wrapped in the ui-input component. Use show-copy to let users copy the hex value."
+          [code]="colorInputCode"
+        >
+          <div class="demo-grid col-3">
+            <ui-input type="color" label="Accent Color" full-width></ui-input>
+            <ui-input type="color" label="Brand Color" value="#6366f1" full-width></ui-input>
+            <ui-input type="color" label="Background" value="#f8fafc" show-copy full-width></ui-input>
+          </div>
+        </app-example-section>
+
+        <!-- File Upload -->
+        <app-example-section
+          id="file-upload"
+          title="File Upload"
+          description="File input with accept filters and multiple-file support."
+          [code]="fileUploadCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-input type="file" label="Upload Document" full-width></ui-input>
+            <ui-input type="file" label="Upload Image" accept="image/*" full-width></ui-input>
+            <ui-input type="file" label="Upload PDF" accept=".pdf" full-width></ui-input>
+            <ui-input type="file" label="Upload Files" accept="image/*,.pdf,.docx" multiple full-width></ui-input>
+          </div>
+        </app-example-section>
+
         <!-- Input States -->
         <app-example-section
           id="input-states"

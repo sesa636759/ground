@@ -15,6 +15,8 @@
           { label: 'URL', value: 'url' },
           { label: 'Search', value: 'search' },
           { label: 'Date', value: 'date' },
+          { label: 'Color', value: 'color' },
+          { label: 'File', value: 'file' },
         ]"
       ></ui-dropdown>
     </div>
@@ -90,6 +92,15 @@
       <label>Max Length</label>
       <ui-input type="number" [(ngModel)]="pgConfig.maxLength" (ngModelChange)="updateConfig()" />
     </div>
+    <div class="control-group">
+      <label>Accept (file types)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.accept"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. image/*,.pdf"
+      />
+    </div>
   </div>
 
   <div slot="content-states" style="padding: 16px">
@@ -126,6 +137,14 @@
         <ui-checkbox [(ngModel)]="pgConfig.floatingLabel" (ngModelChange)="updateConfig()" />
         Floating Label
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showCopy" (ngModelChange)="updateConfig()" />
+        Show Copy
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.multiple" (ngModelChange)="updateConfig()" />
+        Multiple (file)
+      </label>
     </div>
   </div>
 
@@ -149,6 +168,9 @@
       [attr.helper-text]="pgConfig.helperText"
       [attr.floating-label]="pgConfig.floatingLabel ? '' : null"
       [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.accept]="pgConfig.type === 'file' ? pgConfig.accept || null : null"
+      [attr.multiple]="pgConfig.multiple ? '' : null"
+      [attr.show-copy]="pgConfig.showCopy ? '' : null"
       (input)="onInputChange($event)"
       (focus)="onInputFocus()"
       (blur)="onInputBlur()"
