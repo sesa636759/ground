@@ -95,9 +95,7 @@
 
     <!-- 🧭 Quick Access Navigation -->
     <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s" *ngIf="isHubArea()">
-      <ui-button
-        variant="ghost"
-        size="xxl"
+      <div
         class="nav-card"
         [class.active]="activeTab() === 'components'"
         (click)="navigateTo('components')"
@@ -109,11 +107,9 @@
             <span class="count">{{ components().length }} Assets</span>
           </div>
         </div>
-      </ui-button>
+      </div>
 
-      <ui-button
-        variant="ghost"
-        size="xxl"
+      <div
         class="nav-card"
         [class.active]="activeTab() === 'guides'"
         (click)="navigateTo('guides')"
@@ -125,11 +121,9 @@
             <div class="count">3 Documentations</div>
           </div>
         </div>
-      </ui-button>
+      </div>
 
-      <ui-button
-        variant="ghost"
-        size="xxl"
+      <div
         class="nav-card"
         [class.active]="activeTab() === 'utilities'"
         (click)="navigateTo('utilities')"
@@ -141,7 +135,7 @@
             <div class="count">12 Categories</div>
           </div>
         </div>
-      </ui-button>
+      </div>
     </nav>
 
     <!-- 🌟 Professional Framework Support Block -->
@@ -284,6 +278,66 @@
       </div>
     </section>
 
+    <!-- 🛡️ Enterprise Architecture Block -->
+    <section
+      class="hub-architecture animate-slide-up"
+      style="animation-delay: 0.65s"
+      *ngIf="isHubArea() && !searchText()"
+    >
+      <div class="architecture-container">
+        <div class="arch-content">
+          <div class="section-badge">Architecture</div>
+          <h2>Enterprise-Grade <span class="text-gradient">Scalability</span></h2>
+          <p class="arch-lead">
+            Ground UI isn't just a component library—it's a comprehensive architectural foundation
+            designed for cross-functional teams building mission-critical applications.
+          </p>
+          <ul class="arch-list">
+            <li>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
+              <div>
+                <strong>Strict Type Safety:</strong> Full TypeScript coverage across all properties,
+                events, and methods to eradicate runtime errors.
+              </div>
+            </li>
+            <li>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
+              <div>
+                <strong>Shadow DOM Encapsulation:</strong> Complete style isolation ensures
+                components look perfect regardless of the host environment's CSS.
+              </div>
+            </li>
+            <li>
+              <ui-icon name="check-circle" library="lucide"></ui-icon>
+              <div>
+                <strong>SSR Ready:</strong> Hydration-friendly architecture natively supporting
+                Angular Universal, Next.js, and Nuxt.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="arch-visual glass-panel">
+          <div class="status-indicator">
+            <span class="pulse-dot"></span> All Systems Operational
+          </div>
+          <div class="visual-metrics">
+            <div class="metric">
+              <span>Bundle</span>
+              <strong>Treeshaken</strong>
+            </div>
+            <div class="metric">
+              <span>Coverage</span>
+              <strong>100%</strong>
+            </div>
+            <div class="metric">
+              <span>Renders</span>
+              <strong>&lt; 1ms</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ⚡ Call to Action Banner -->
     <section
       class="hub-cta animate-slide-up"
@@ -377,6 +431,85 @@
                     css-code='@use "@enterprise/ui-ground/theme";'
                     label="styles.scss"
                   ></ui-code-preview>
+                </div>
+              </div>
+              <div class="step-vessel">
+                <div class="step-num-ring">03</div>
+                <div class="step-detail">
+                  <h3>Framework Integration</h3>
+                  <p>
+                    Ground UI is framework agnostic. Here is how you configure it in your favorite
+                    ecosystem:
+                  </p>
+
+                  <div class="framework-instructions">
+                    <div class="fw-block">
+                      <h4>
+                        <i class="fab fa-angular" style="color: #dd0031"></i> Angular Integration
+                      </h4>
+                      <p>
+                        Import <code>CUSTOM_ELEMENTS_SCHEMA</code> and initialize the component
+                        loader in your main entry file.
+                      </p>
+                      <ui-code-preview
+                        active-lang="ts"
+                        ts-code="import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { defineCustomElements } from '@enterprise/ui-ground/loader';
+
+defineCustomElements();
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `<ui-button variant='primary'>Click Me</ui-button>`
+})"
+                        label="app.component.ts"
+                      ></ui-code-preview>
+                    </div>
+
+                    <div class="fw-block">
+                      <h4><i class="fab fa-react" style="color: #61dafb"></i> React Integration</h4>
+                      <p>
+                        We provide first-class React wrapper components so you don't have to
+                        manually bind custom DOM events.
+                      </p>
+                      <ui-code-preview
+                        active-lang="tsx"
+                        ts-code="import { UiButton } from '@enterprise/ui-ground-react';
+
+export default function App() {
+  return (
+    <UiButton variant='primary' onButtonClick={() => alert('React works!')}>
+      Ground in React
+    </UiButton>
+  );
+}"
+                        label="App.tsx"
+                      ></ui-code-preview>
+                    </div>
+
+                    <div class="fw-block">
+                      <h4>
+                        <i class="fab fa-vuejs" style="color: #42b883"></i> Vue.js Integration
+                      </h4>
+                      <p>
+                        Vue 3 supports custom elements natively. Just call the web component loader.
+                      </p>
+                      <ui-code-preview
+                        active-lang="html"
+                        html-code="<script setup>
+import { defineCustomElements } from '@enterprise/ui-ground/loader';
+defineCustomElements();
+</script>
+
+<template>
+  <ui-button variant='success'>Vue Integration</ui-button>
+</template>"
+                        label="App.vue"
+                      ></ui-code-preview>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
