@@ -6,7 +6,9 @@
   [class.sidebar-collapsed]="sidebarCollapsed()"
 >
   <!-- Navigation: Only show if authenticated and not on login/register -->
-  <ng-container *ngIf="isAuthenticated() && currentRoute() !== 'login' && currentRoute() !== 'register'">
+  <ng-container
+    *ngIf="isAuthenticated() && currentRoute() !== 'login' && currentRoute() !== 'register'"
+  >
     <ui-navigation
       class="main-nav"
       [orientation]="themeService.navigationLayout() === 'topbar' ? 'horizontal' : 'vertical'"
@@ -15,9 +17,9 @@
       [bottomItems]="bottomItems"
       [bottomItemsSecondary]="userProfileItems"
       [theme]="themeService.resolvedTheme()"
-      [selected-item]="currentRoute()"
-      [show-search]="true"
-      max-items="8"
+      [selectedItem]="currentRoute()"
+      [showSearch]="true"
+      [maxItems]="8"
       (navItemClick)="onNavItemClick($event)"
       (navToggle)="onNavToggle($event)"
     >

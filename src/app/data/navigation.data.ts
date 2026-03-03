@@ -342,7 +342,7 @@ export const categoryNavItems: NavItem[] = [
 export const userProfileNavItems: NavItem[] = [
   { id: 'about', label: 'About', icon: 'info', iconLibrary: 'lucide' },
   {
-    id: 'user-profile1',
+    id: 'user-profile-praveen',
     label: 'Praveen Doe',
     status: 'away',
     icon: 'user',
@@ -361,31 +361,21 @@ export const userProfileNavItems: NavItem[] = [
     ],
   },
   {
-    id: 'user-profile',
+    id: 'user-profile-john',
     label: 'John Doe',
     status: 'away',
     icon: 'users',
     iconLibrary: 'lucide',
     children: [
+      { id: 'my-profile-john', label: 'John Profile', icon: 'contact', iconLibrary: 'lucide' },
       {
-        id: 'user-profile',
-        label: 'John Doe',
-        status: 'away',
-        icon: 'user-cog',
+        id: 'account-settings-john',
+        label: 'Account Settings',
+        icon: 'sliders',
         iconLibrary: 'lucide',
-        children: [
-          { id: 'my-profile', label: 'My Profile', icon: 'contact', iconLibrary: 'lucide' },
-          {
-            id: 'account-settings',
-            label: 'Account Settings',
-            icon: 'sliders',
-            iconLibrary: 'lucide',
-          },
-          { id: 'privacy', label: 'Privacy & Security', icon: 'lock', iconLibrary: 'lucide' },
-          { id: 'notifications', label: 'Notifications', icon: 'bell-dot', iconLibrary: 'lucide' },
-          { id: 'logout', label: 'Logout', icon: 'power', iconLibrary: 'lucide' },
-        ],
       },
+      { id: 'privacy-john', label: 'Privacy & Security', icon: 'lock', iconLibrary: 'lucide' },
+      { id: 'logout-john', label: 'Logout', icon: 'power', iconLibrary: 'lucide' },
     ],
   },
 ];
