@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
@@ -19,6 +20,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
     FormsModule,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,
     AppPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
