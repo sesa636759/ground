@@ -54,7 +54,7 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     iconSize: '',
     badge: '',
     variant: 'primary',
-    size: 'md',
+    size: 'medium',
     elevation: 2,
     iconOnly: false,
     loading: false,
@@ -63,6 +63,9 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     pill: false,
     rounded: false,
     fullWidth: false,
+    width: '',
+    minWidth: '',
+    grow: false,
     selected: false,
     noRipple: false,
     type: 'button',
@@ -81,14 +84,19 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Outline', value: 'outline' },
     { label: 'Ghost', value: 'ghost' },
     { label: 'Dark', value: 'dark' },
+    { label: 'Raised', value: 'raised' },
   ];
 
   sizeOptions = [
+    { label: 'XXX Small', value: 'xxxs' },
+    { label: 'XX Small', value: 'xxs' },
     { label: 'Extra Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' },
     { label: 'Extra Large', value: 'xl' },
+    { label: 'XX Large', value: 'xxl' },
+    { label: 'XXX Large', value: 'xxxl' },
   ];
 
   iconLibraryOptions = [
@@ -165,7 +173,7 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       iconSize: '',
       badge: '',
       variant: 'primary',
-      size: 'md',
+      size: 'medium',
       elevation: 2,
       iconOnly: false,
       loading: false,
@@ -174,6 +182,9 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       pill: false,
       rounded: false,
       fullWidth: false,
+      width: '',
+      minWidth: '',
+      grow: false,
       selected: false,
       noRipple: false,
       type: 'button',
@@ -191,4 +202,3 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     if (this.eventLog.length > 5) this.eventLog.pop();
   }
 }
-

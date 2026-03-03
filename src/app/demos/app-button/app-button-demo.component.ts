@@ -7,6 +7,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 
 @Component({
   selector: 'app-app-button-demo',
@@ -19,6 +20,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-button-demo.component.html',
@@ -32,24 +34,6 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'icon-libraries', title: 'Icon Libraries', icon: '🎨' },
     { id: 'states', title: 'States', icon: '⚙️' },
   ];
-
-  anchorLinks = JSON.stringify([
-    { id: 'visual-variants', label: 'Visual Variants', target: 'visual-variants', icon: '🎨' },
-    { id: 'sizes', label: 'Sizes', target: 'sizes', icon: '📏' },
-    { id: 'icons-badges', label: 'Icons & Badges', target: 'icons-badges', icon: '🏷️' },
-    { id: 'icon-libraries', label: 'Icon Libraries', target: 'icon-libraries', icon: '🎨' },
-    { id: 'states', label: 'States', target: 'states', icon: '⚙️' },
-  ]);
-
-  // Sidebar links for the Documentation tab (IDs match component-documentation's getSectionId('button-*'))
-  docLinks = JSON.stringify([
-    { id: 'button-overview', label: 'Overview', target: 'button-overview' },
-    { id: 'button-usage', label: 'Usage', target: 'button-usage' },
-    { id: 'button-properties', label: 'Properties', target: 'button-properties' },
-    { id: 'button-events', label: 'Events', target: 'button-events' },
-    { id: 'button-limitations', label: 'Considerations', target: 'button-limitations' },
-    { id: 'button-examples', label: 'Examples', target: 'button-examples' },
-  ]);
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;
 

@@ -117,6 +117,10 @@
         Full Width
       </label>
       <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.grow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Grow
+      </label>
+      <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.selected" (ngModelChange)="updateConfig()"></ui-checkbox>
         Selected
       </label>
@@ -126,6 +130,24 @@
       </label>
     </div>
     <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group">
+        <label>Width</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.width"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. 100%, 200px"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Min-Width</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.minWidth"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. 120px"
+        ></ui-input>
+      </div>
       <div class="control-group" *ngIf="pgConfig.loading">
         <label>Loading Pos</label>
         <ui-dropdown
@@ -195,6 +217,9 @@
     [attr.pill]="pgConfig.pill ? '' : null"
     [attr.rounded]="pgConfig.rounded ? '' : null"
     [attr.full-width]="pgConfig.fullWidth ? '' : null"
+    [attr.width]="pgConfig.width"
+    [attr.min-width]="pgConfig.minWidth"
+    [attr.grow]="pgConfig.grow ? '' : null"
     [attr.selected]="pgConfig.selected ? '' : null"
     [attr.no-ripple]="pgConfig.noRipple ? '' : null"
     [attr.type]="pgConfig.type"
