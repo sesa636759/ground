@@ -121,9 +121,9 @@
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
   --text-muted: #64748b;
-  --border-color: #1e293b;
-  --border-light: #1e293b;
-  --border-strong: #334155;
+  --border-color: rgba(61, 205, 88, 0.1);
+  --border-light: rgba(61, 205, 88, 0.05);
+  --border-strong: rgba(61, 205, 88, 0.2);
   --overlay: rgba(0, 0, 0, 0.75);
 
   --primary: #3DCD58;
@@ -228,7 +228,7 @@
 }
 
 .dark .glass {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(13, 42, 26, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 

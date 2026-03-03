@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-anchor-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -50,7 +52,7 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
     { label: 'Dot', value: 'dot' },
   ];
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
   defaultOpen = JSON.stringify(['config']);
 
   links = [
@@ -109,3 +111,4 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

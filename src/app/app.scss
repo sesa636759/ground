@@ -55,7 +55,6 @@
   background: var(--bg-primary);
   background-image: var(--gradient-mesh);
   position: relative;
-  contain: layout style;
   isolation: isolate;
 
   // Sidebar Layout
@@ -71,14 +70,16 @@
       border-right: 1px solid var(--border-color);
       box-shadow: var(--shadow-lg);
       z-index: 100;
-      transition: all var(--transition-smooth);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      transition: width var(--transition-smooth),
+        flex-basis var(--transition-smooth),
+        background var(--transition-smooth);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       overflow: visible !important;
       position: relative;
-      contain: layout style;
 
       &::part(footer) {
+        background: transparent !important;
         overflow: visible !important;
         z-index: 50;
         position: relative;
@@ -86,6 +87,13 @@
       }
 
       &::part(bottom-items) {
+        background: transparent !important;
+        overflow: visible !important;
+        position: relative;
+      }
+
+      &::part(bottom-items-secondary) {
+        background: transparent !important;
         overflow: visible !important;
         position: relative;
       }
@@ -104,12 +112,12 @@
       border-bottom: 1px solid var(--border-color);
       box-shadow: var(--shadow-md);
       z-index: 100;
-      transition: all var(--transition-smooth);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      transition: height var(--transition-smooth),
+        background var(--transition-smooth);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       overflow: visible !important;
       position: relative;
-      contain: layout style;
     }
 
     .main-content {
@@ -171,6 +179,7 @@
     overflow-y: auto;
     padding: 0;
     scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
     position: relative;
     contain: layout style paint;
 
@@ -245,7 +254,7 @@
 .sidebar-user-profile {
   padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
-  background: var(--surface-1);
+  background: var(--surface-elevated);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
@@ -262,7 +271,7 @@
   display: block;
   padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
-  background: var(--surface-1);
+  background: var(--surface-elevated);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 50;
@@ -811,5 +820,268 @@
   .nav-brand-name {
     max-width: 0;
     opacity: 0;
+  }
+}
+
+
+/* ============================================================
+   ?? ui-navigation Popover Alignment & Scroll Fix
+   Fixes: Navigation sub-menus jumping to top and lack of scroll
+   ============================================================ */
+ui-navigation,
+.main-nav {
+
+  // Force sub-menus and popovers to remain within viewport and scroll
+  ::part(popover-content),
+  ::part(menu-list),
+  ::part(submenu),
+  ::part(dropdown) {
+    max-height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
+    padding: 8px 0 !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-premium) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    z-index: 10000 !important;
+    background: #0b140c !important;
+    pointer-events: auto !important; // Ensure items are clickable
+
+    // Isolation for performance
+    contain: paint !important;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    // Minimal animation to prevent flicker
+    animation: premium-fade-in 0.1s ease-out forwards !important;
+  }
+}
+
+// Ensure the popover viewport doesn't interfere with layout but stays stable
+ui-navigation::part(popover-viewport) {
+  display: block !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 100px !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+// Specifically for the Duplicate menu or bottom items
+// We want them to pin to bottom if they are tall
+.main-nav ::part(popover-content) {
+  margin: 0 !important;
+  top: auto !important;
+  bottom: 10px !important;
+}
+
+// Hide the arrow to avoid positioning calculation jitter
+ui-navigation ::part(arrow) {
+  display: none !important;
+}
+
+/* ============================================================
+   ??  Floating Theme Switcher FAB (Global)
+   ============================================================ */
+@keyframes fabOptionIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fabSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fabPulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 60%, transparent);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.theme-fab-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.theme-fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--primary-glow),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+  animation: fabPulse 2.5s ease-in-out infinite;
+
+  &:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 32px var(--primary-glow),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.3s ease;
+
+    &.spinning {
+      animation: fabSpin 0.4s ease-out forwards;
+    }
+  }
+
+  &__ripple {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover &__ripple {
+    opacity: 1;
+  }
+}
+
+.theme-fab-container.open .theme-fab {
+  animation: none;
+  background: color-mix(in srgb, var(--primary) 80%, #000);
+  transform: scale(1.05);
+}
+
+.theme-fab-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.9);
+
+  &__swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  &__label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  &__check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &.active {
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px var(--primary-glow),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+
+    .theme-fab-option__label {
+      color: var(--primary);
+    }
+  }
+
+  &:hover {
+    transform: translateX(-4px) scale(1.04) !important;
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px var(--primary-glow);
+  }
+}
+
+.theme-fab-container.open .theme-fab-option {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+
+  &:nth-child(1) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 0ms both;
+  }
+
+  &:nth-child(2) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 45ms both;
+  }
+
+  &:nth-child(3) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 90ms both;
+  }
+
+  &:nth-child(4) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 135ms both;
+  }
+
+  &:nth-child(5) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 180ms both;
+  }
+
+  &:nth-child(6) {
+    animation: fabOptionIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) 225ms both;
   }
 }

@@ -1,3 +1,4 @@
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +10,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   selector: 'app-polar-area-chart-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -147,3 +149,4 @@ polarData = ${JSON.stringify(this.activeData, null, 2)};`;
     this.update();
   }
 }
+

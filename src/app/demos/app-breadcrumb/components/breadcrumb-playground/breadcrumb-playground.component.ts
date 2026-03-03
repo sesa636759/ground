@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-breadcrumb-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -40,7 +42,7 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
     showHome: true,
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
   accordionDefaultOpen = JSON.stringify(['config']);
 
   sizeOptions = [
@@ -108,3 +110,4 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

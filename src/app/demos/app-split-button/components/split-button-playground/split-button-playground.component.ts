@@ -1,4 +1,7 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
@@ -7,7 +10,10 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 @Component({
   selector: 'app-split-button-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './split-button-playground.component.html',
 
@@ -16,7 +22,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 export class SplitButtonPlaygroundComponent {
   pgConfig = {
     label: 'Save Changes',
-    icon: '💾',
+    icon: '??',
     variant: 'primary',
     size: 'md',
     disabled: false,
@@ -39,10 +45,10 @@ export class SplitButtonPlaygroundComponent {
   ];
 
   model = [
-    { label: 'Save and Exit', icon: '🚪', command: () => this.logAction('Save and Exit') },
-    { label: 'Save as Draft', icon: '📝', command: () => this.logAction('Save as Draft') },
+    { label: 'Save and Exit', icon: '??', command: () => this.logAction('Save and Exit') },
+    { label: 'Save as Draft', icon: '??', command: () => this.logAction('Save as Draft') },
     { separator: true },
-    { label: 'Discard', icon: '🗑️', command: () => this.logAction('Discard') },
+    { label: 'Discard', icon: '???', command: () => this.logAction('Discard') },
   ];
 
   modelJson = JSON.stringify(this.model);
@@ -79,7 +85,7 @@ export class SplitButtonPlaygroundComponent {
   resetConfig() {
     this.pgConfig = {
       label: 'Save Changes',
-      icon: '💾',
+      icon: '??',
       variant: 'primary',
       size: 'md',
       disabled: false,
@@ -88,3 +94,5 @@ export class SplitButtonPlaygroundComponent {
     this.updateConfig();
   }
 }
+
+

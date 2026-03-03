@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -7,7 +8,8 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 @Component({
   selector: 'app-top-bar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppPlaygroundComponent, AppCheckboxValueAccessorDirective],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent, AppCheckboxValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './top-bar-playground.component.html',
   styleUrl: './top-bar-playground.component.scss',
@@ -49,3 +51,4 @@ export class TopBarPlaygroundComponent {
     this.updateConfig();
   }
 }
+

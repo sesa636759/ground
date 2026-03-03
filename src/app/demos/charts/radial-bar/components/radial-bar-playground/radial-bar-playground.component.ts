@@ -2,12 +2,19 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@a
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-radial-bar-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    AppInputValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './radial-bar-playground.component.html',
 

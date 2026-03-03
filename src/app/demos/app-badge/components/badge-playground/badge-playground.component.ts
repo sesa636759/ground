@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -9,6 +10,7 @@ import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground
   selector: 'app-badge-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -89,7 +91,7 @@ export class BadgePlaygroundComponent {
     if (this.pgConfig.glow) code += `  glow\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     code += '>\n';
-    code += '  <icon>✉️</icon>\n';
+    code += '  <icon>??</icon>\n';
     code += '</ui-badge>';
 
     this.generatedCodeSignal.set(code);
@@ -115,3 +117,4 @@ export class BadgePlaygroundComponent {
     this.updateConfig();
   }
 }
+
