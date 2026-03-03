@@ -153,6 +153,7 @@ export class App implements OnInit {
 
   constructor(public router: Router) {}
 
+
   isAuthenticated() {
     return this.authService.isAuthenticated();
   }

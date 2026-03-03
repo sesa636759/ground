@@ -38,7 +38,11 @@
         <h3>Layout</h3>
         <div class="control-group">
           <label>Rows per page</label>
-          <ui-input type="number" [(ngModel)]="pgConfig.rows" (ngModelChange)="updateConfig()" />
+          <ui-input
+            type="number"
+            [(ngModel)]="pgConfig.rows"
+            (ngModelChange)="updateConfig()"
+          ></ui-input>
         </div>
         <div class="checkbox-group">
           <ui-checkbox

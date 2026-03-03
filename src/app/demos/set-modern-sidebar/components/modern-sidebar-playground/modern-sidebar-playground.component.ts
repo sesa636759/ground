@@ -12,7 +12,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
 
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
@@ -25,6 +27,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     FormsModule,
 
     UiDropdownValueAccessorDirective,
+    PlaygroundEventLogComponent,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,

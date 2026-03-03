@@ -15,7 +15,7 @@
             step="20"
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
@@ -27,7 +27,7 @@
             step="2"
             [(ngModel)]="cfg.trackWidth"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)"
             >{{ cfg.trackWidth }}px</span
           >
@@ -41,7 +41,7 @@
             step="2"
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
-          />
+          ></ui-input>
           <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
         </div>
       </div>
