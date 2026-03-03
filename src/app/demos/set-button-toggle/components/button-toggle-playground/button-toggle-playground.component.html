@@ -10,6 +10,7 @@
           [(ngModel)]="pgConfig.mode"
           (ngModelChange)="updateConfig()"
           [options]="[
+            { label: 'Default', value: 'default' },
             { label: 'Segmented', value: 'segmented' },
             { label: 'Dropdown', value: 'dropdown' },
           ]"
@@ -70,6 +71,20 @@
         ></ui-dropdown>
       </div>
       <div class="control-group">
+        <label>Shape</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.shape"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Rectangle', value: 'rectangle' },
+            { label: 'Round', value: 'round' },
+            { label: 'Pill', value: 'pill' },
+            { label: 'Circle', value: 'circle' },
+            { label: 'Square', value: 'square' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
         <label>Icon Position</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.iconPosition"
@@ -78,6 +93,7 @@
             { label: 'Left', value: 'left' },
             { label: 'Right', value: 'right' },
             { label: 'Top', value: 'top' },
+            { label: 'Both', value: 'both' },
           ]"
         ></ui-dropdown>
       </div>
@@ -98,9 +114,37 @@
         <label>Group Label</label>
         <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
       </div>
-      <div class="control-group" style="grid-column: span 2">
+      <div class="control-group">
+        <label>Name</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+      </div>
+      <div class="control-group">
         <label>Helper Text</label>
         <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      </div>
+      <div class="control-group">
+        <label>Error Message</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.errorMessage"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+      <div class="control-group">
+        <label>Action Label</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.buttonActionLabel"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+      <div class="control-group">
+        <label>Advanced Theme</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.advancedTheme"
+          (ngModelChange)="updateConfig()"
+        />
       </div>
     </div>
 
@@ -131,6 +175,27 @@
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()" /> Multi
+        Select
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.batchActions" (ngModelChange)="updateConfig()" /> Batch
+        Actions
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.searchEnabled" (ngModelChange)="updateConfig()" /> Search
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.exportEnabled" (ngModelChange)="updateConfig()" /> Export
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.importEnabled" (ngModelChange)="updateConfig()" /> Import
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.analyticsEnabled" (ngModelChange)="updateConfig()" />
+        Analytics
+      </label>
     </div>
   </div>
 
@@ -143,20 +208,31 @@
         [attr.size]="pgConfig.size"
         [attr.color]="pgConfig.color"
         [attr.variant]="pgConfig.variant"
+        [attr.shape]="pgConfig.shape"
         [attr.icon-position]="pgConfig.iconPosition"
         [attr.display-mode]="pgConfig.displayMode"
         [attr.label]="pgConfig.label"
+        [attr.name]="pgConfig.name"
+        [attr.value]="pgConfig.value"
         [attr.helper-text]="pgConfig.helperText"
         [attr.full-width]="pgConfig.fullWidth"
         [attr.keep-button-label]="pgConfig.keepButtonLabel"
         [attr.custom-content]="pgConfig.customContent"
+        [attr.button-action-label]="pgConfig.buttonActionLabel"
         [disabled]="pgConfig.disabled"
         [readonly]="pgConfig.readonly"
         [loading]="pgConfig.loading"
         [required]="pgConfig.required"
         [invalid]="pgConfig.invalid"
-        [attr.error-message]="pgConfig.invalid ? 'Please select a view mode' : ''"
+        [attr.error-message]="pgConfig.errorMessage"
         [attr.options]="jsonOptions(playgroundOptions)"
+        [attr.multi-select]="pgConfig.multiSelect"
+        [attr.batch-actions]="pgConfig.batchActions"
+        [attr.search-enabled]="pgConfig.searchEnabled"
+        [attr.export-enabled]="pgConfig.exportEnabled"
+        [attr.import-enabled]="pgConfig.importEnabled"
+        [attr.analytics-enabled]="pgConfig.analyticsEnabled"
+        [attr.advanced-theme]="pgConfig.advancedTheme"
         (buttonToggleGroupChange)="onPlaygroundChange($event)"
         (buttonToggleGroupAction)="onPlaygroundAction($event)"
       >
