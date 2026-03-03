@@ -17,7 +17,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
-  selector: 'app-otp-input-playground',
+  selector: 'ui-otp-input-playground',
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
@@ -44,6 +44,8 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
 
   pgConfig = {
     length: 6,
+    value: '',
+    type: 'number', // 'text', 'number', 'password'
     size: 'medium',
     color: 'primary',
     variant: 'default',
@@ -51,6 +53,11 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
     secure: false,
     skeleton: false,
     invalid: false,
+    disabled: false,
+    readonly: false,
+    required: false,
+    autoFocus: true,
+    autoSubmit: false,
     label: 'Verification Code',
     helperText: 'We sent a code to your phone',
     errorText: 'Verification failed. Please try again.',
@@ -74,7 +81,7 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
 
   getCleanFormattedDom(): string {
     if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-otp-input');
+    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-otp-input');
   }
 
   refreshCode() {
@@ -110,4 +117,3 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
-
