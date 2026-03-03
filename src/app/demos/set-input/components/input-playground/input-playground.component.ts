@@ -75,6 +75,7 @@ export class InputPlaygroundComponent implements OnInit {
     accept: '',
     multiple: false,
     showCopy: false,
+    mask: 'none',
   };
 
   eventMessage = signal('Interact with the input...');
@@ -124,6 +125,8 @@ export class InputPlaygroundComponent implements OnInit {
     if (this.pgConfig.accept) code += `  accept="${this.pgConfig.accept}"\n`;
     if (this.pgConfig.multiple) code += `  multiple="true"\n`;
     if (this.pgConfig.showCopy) code += `  show-copy="true"\n`;
+    if (this.pgConfig.mask && this.pgConfig.mask !== 'none')
+      code += `  mask="${this.pgConfig.mask}"\n`;
 
     code += `></ui-input>`;
 

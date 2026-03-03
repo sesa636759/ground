@@ -4,4 +4,10 @@
 .preview-stage {
   min-height: 200px;
   padding: var(--space-xl) var(--space-2xl);
+  max-width: 100%;
+  overflow: hidden;
+  
+  ui-input {
+    max-width: 100%;
+  }
 }

@@ -38,6 +38,7 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'multiline', title: 'Multiline Input', icon: '📝' },
     { id: 'color-input', title: 'Color Input', icon: '🎨' },
     { id: 'file-upload', title: 'File Upload', icon: '📁' },
+    { id: 'input-masking', title: 'Input Masking', icon: '🎭' },
     { id: 'input-states', title: 'Input States', icon: '🔄' },
   ];
 
@@ -107,6 +108,18 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
 
 <!-- Multiple file selection -->
 <ui-input type="file" label="Upload Files" accept="image/*,.pdf,.docx" multiple full-width></ui-input>`;
+
+  inputMaskCode = `<!-- Phone Mask -->
+<ui-input label="Phone Number" mask="phone" placeholder="(555) 555-5555" full-width></ui-input>
+
+<!-- Credit Card Mask -->
+<ui-input label="Credit Card" mask="credit-card" placeholder="0000 0000 0000 0000" full-width></ui-input>
+
+<!-- Currency Mask -->
+<ui-input label="Currency" mask="currency" placeholder="$0.00" full-width></ui-input>
+
+<!-- Date Mask -->
+<ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>`;
 
   ngOnInit() {}
 

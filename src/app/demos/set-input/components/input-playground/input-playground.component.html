@@ -64,6 +64,23 @@
     </div>
 
     <div class="control-group">
+      <label>Mask</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.mask"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'None', value: 'none' },
+          { label: 'Credit Card', value: 'credit-card' },
+          { label: 'Currency', value: 'currency' },
+          { label: 'Date', value: 'date' },
+          { label: 'Phone', value: 'phone' },
+          { label: 'SSN', value: 'ssn' },
+          { label: 'ZIP', value: 'zip' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
       <label>Label</label>
       <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
     </div>
@@ -171,6 +188,7 @@
       [attr.accept]="pgConfig.type === 'file' ? pgConfig.accept || null : null"
       [attr.multiple]="pgConfig.multiple ? '' : null"
       [attr.show-copy]="pgConfig.showCopy ? '' : null"
+      [attr.mask]="pgConfig.mask !== 'none' ? pgConfig.mask : null"
       (input)="onInputChange($event)"
       (focus)="onInputFocus()"
       (blur)="onInputBlur()"
