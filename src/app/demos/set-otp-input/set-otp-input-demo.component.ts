@@ -65,21 +65,12 @@ export class SetOtpInputDemoComponent {
 
     // Features (8)
     {
-      id: 'success-color',
-      title: 'Success State',
-      icon: '⚙️',
-      category: 'Features',
-      tab: 'features',
+      id: 'validation-states',
+      title: 'Validation States',
+      icon: '✅',
+      category: 'Validation',
+      tab: 'validation',
     },
-    { id: 'error-color', title: 'Error State', icon: '⚙️', category: 'Features', tab: 'features' },
-    {
-      id: 'warning-color',
-      title: 'Warning State',
-      icon: '⚙️',
-      category: 'Features',
-      tab: 'features',
-    },
-    { id: 'info-color', title: 'Info State', icon: '⚙️', category: 'Features', tab: 'features' },
     { id: 'grouping-3', title: 'Grouped 3-3', icon: '⚙️', category: 'Features', tab: 'features' },
     {
       id: 'grouping-222',
@@ -199,34 +190,32 @@ export class SetOtpInputDemoComponent {
 ></app-otp-input>`,
   );
 
-  successColorCode = signal(
-    `<app-otp-input
+  validationStatesCode = signal(
+    `<!-- Success -->
+<app-otp-input
   length="6"
   color="success"
   label="Success State"
   helper-text="Code accepted"
-></app-otp-input>`,
-  );
+></app-otp-input>
 
-  errorColorCode = signal(
-    `<app-otp-input
+<!-- Error -->
+<app-otp-input
   length="6"
   color="error"
   invalid="true"
   error-text="Invalid code"
-></app-otp-input>`,
-  );
+></app-otp-input>
 
-  warningColorCode = signal(
-    `<app-otp-input
+<!-- Warning -->
+<app-otp-input
   length="6"
   color="warning"
   label="Warning State"
-></app-otp-input>`,
-  );
+></app-otp-input>
 
-  infoColorCode = signal(
-    `<app-otp-input
+<!-- Info -->
+<app-otp-input
   length="6"
   color="info"
   label="Info Message"
