@@ -12,7 +12,15 @@
       <!-- Hero Header (Desktop Only) -->
       <header class="docs-header" *ngIf="!isEmbedded">
         <div class="header-inner">
-          <div class="breadcrumb-mini">Components / API</div>
+          <div class="breadcrumb-mini">
+            <ui-button class="breadcrumb-back-btn" (click)="goBack()" title="Go Back">
+              <i class="fas fa-arrow-left"></i> Back
+            </ui-button>
+            <span class="breadcrumb-separator">/</span>
+            <span>Components</span>
+            <span class="breadcrumb-separator">/</span>
+            <span>API</span>
+          </div>
           <div class="title-row">
             <h1>{{ componentDoc.name }}</h1>
             <div class="version-tag">STABLE</div>
@@ -71,7 +79,7 @@
           <div class="table-controls" *ngIf="componentDoc.props.length > 5">
             <div class="search-box">
               <i class="fas fa-search"></i>
-              <input
+              <ui-input
                 type="text"
                 placeholder="Filter properties..."
                 (input)="filterText.set($any($event.target).value)"
@@ -91,13 +99,13 @@
                 <div class="col-prop">
                   <div class="prop-id-group">
                     <span class="prop-name">{{ prop.name }}</span>
-                    <button
+                    <ui-button
                       class="copy-tiny"
                       (click)="copyText(prop.name)"
                       title="Copy property name"
                     >
                       <i class="far fa-copy"></i>
-                    </button>
+                    </ui-button>
                   </div>
                   <span class="required-indicator" *ngIf="prop.required">Required</span>
                 </div>
@@ -218,12 +226,12 @@
         <strong>{{ componentId || 'unknown' }}</strong
         >.
       </p>
-      <button (click)="goBack()" class="btn-primary">Return to Library</button>
+      <ui-button (click)="goBack()" class="btn-primary">Return to Library</ui-button>
     </div>
   </div>
 
   <!-- Back to Top -->
-  <button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
+  <ui-button class="back-to-top" [class.show]="showScrollTop()" (click)="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
-  </button>
+  </ui-button>
 </div>

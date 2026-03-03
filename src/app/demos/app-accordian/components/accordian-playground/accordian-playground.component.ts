@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-accordion-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -182,3 +184,4 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

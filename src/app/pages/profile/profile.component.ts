@@ -1,3 +1,4 @@
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +17,8 @@ interface ActivityItem {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
@@ -214,3 +216,4 @@ export class ProfileComponent implements OnInit {
     }
   }
 }
+

@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -14,6 +15,7 @@ import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbo
   selector: 'app-animate-on-scroll-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -137,3 +139,4 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
+

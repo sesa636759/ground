@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -9,6 +10,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-tag-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -22,7 +24,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 export class TagPlaygroundComponent {
   pgConfig = {
     value: 'New Update',
-    icon: '⚡',
+    icon: '?',
     severity: 'info',
     rounded: true,
     size: 'small',
@@ -75,7 +77,7 @@ export class TagPlaygroundComponent {
   resetConfig() {
     this.pgConfig = {
       value: 'New Update',
-      icon: '⚡',
+      icon: '?',
       severity: 'info',
       rounded: true,
       size: 'small',
@@ -83,3 +85,4 @@ export class TagPlaygroundComponent {
     this.updateConfig();
   }
 }
+

@@ -1,4 +1,6 @@
-﻿import {
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -16,7 +18,9 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 @Component({
   selector: 'app-context-menu-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-playground.component.html',
   styleUrl: './context-menu-playground.component.scss',
@@ -33,8 +37,8 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'settings', title: 'Menu Configuration', icon: '⚙️' },
-    { id: 'visuals', title: 'Visual Styles', icon: '🎨' },
+    { id: 'settings', title: 'Menu Configuration', icon: '??' },
+    { id: 'visuals', title: 'Visual Styles', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['settings']);
@@ -46,10 +50,10 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   ];
 
   model = [
-    { label: 'View Details', icon: '👁️', command: () => this.logAction('View') },
-    { label: 'Edit Entry', icon: '✏️', command: () => this.logAction('Edit') },
+    { label: 'View Details', icon: '???', command: () => this.logAction('View') },
+    { label: 'Edit Entry', icon: '??', command: () => this.logAction('Edit') },
     { separator: true },
-    { label: 'Delete', icon: '🗑️', command: () => this.logAction('Delete') },
+    { label: 'Delete', icon: '???', command: () => this.logAction('Delete') },
   ];
 
   modelJson = JSON.stringify(this.model);
@@ -105,3 +109,5 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+
+

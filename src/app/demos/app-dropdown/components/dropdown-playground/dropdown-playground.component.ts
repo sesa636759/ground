@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-dropdown-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -33,8 +35,8 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = JSON.stringify([
-    { id: 'config', title: 'Configuration', icon: '⚙️' },
-    { id: 'features', title: 'Features', icon: '⚡' },
+    { id: 'config', title: 'Configuration', icon: '??' },
+    { id: 'features', title: 'Features', icon: '?' },
   ]);
 
   defaultOpen = JSON.stringify(['config', 'features']);
@@ -62,12 +64,12 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   options = [
-    { label: 'Angular', value: 'ng', icon: '🅰️' },
-    { label: 'React', value: 'react', icon: '⚛️' },
-    { label: 'Vue.js', value: 'vue', icon: '🖖' },
-    { label: 'Svelte', value: 'svelte', icon: '🔥' },
-    { label: 'Stencil', value: 'stencil', icon: '⚡' },
-    { label: 'Solid', value: 'solid', icon: '🧊' },
+    { label: 'Angular', value: 'ng', icon: '???' },
+    { label: 'React', value: 'react', icon: '??' },
+    { label: 'Vue.js', value: 'vue', icon: '??' },
+    { label: 'Svelte', value: 'svelte', icon: '??' },
+    { label: 'Stencil', value: 'stencil', icon: '?' },
+    { label: 'Solid', value: 'solid', icon: '??' },
   ];
 
   cascadingOptions = [
@@ -162,3 +164,4 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
     this.updateConfig();
   }
 }
+

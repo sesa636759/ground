@@ -1,4 +1,5 @@
-ï»¿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
@@ -7,7 +8,8 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 @Component({
   selector: 'app-skeleton-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './skeleton-playground.component.html',
 
@@ -49,18 +51,18 @@ export class SkeletonPlaygroundComponent {
   ];
 
   boolOpts = [
-    { label: 'true â€” animated', value: 'true' },
-    { label: 'false â€” static', value: 'false' },
+    { label: 'true — animated', value: 'true' },
+    { label: 'false — static', value: 'false' },
   ];
 
   sizeOpts = [
     { label: 'custom (use width/height)', value: 'custom' },
-    { label: 'xs â€” 16px', value: 'xs' },
-    { label: 'sm â€” 24px', value: 'sm' },
-    { label: 'md â€” 32px', value: 'md' },
-    { label: 'lg â€” 48px', value: 'lg' },
-    { label: 'xl â€” 64px', value: 'xl' },
-    { label: '2xl â€” 80px', value: '2xl' },
+    { label: 'xs — 16px', value: 'xs' },
+    { label: 'sm — 24px', value: 'sm' },
+    { label: 'md — 32px', value: 'md' },
+    { label: 'lg — 48px', value: 'lg' },
+    { label: 'xl — 64px', value: 'xl' },
+    { label: '2xl — 80px', value: '2xl' },
   ];
 
   recreate = true;
@@ -114,3 +116,4 @@ export class SkeletonPlaygroundComponent {
     this.update();
   }
 }
+

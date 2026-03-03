@@ -4,12 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { ASSETS } from '../../shared/constants/assets.constants';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, AppInputValueAccessorDirective],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',

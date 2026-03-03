@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -9,6 +10,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-button-toggle-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -122,3 +124,4 @@ export class ButtonTogglePlaygroundComponent {
   // Helper for JSON strings
   jsonOptions = (opts: any) => JSON.stringify(opts);
 }
+

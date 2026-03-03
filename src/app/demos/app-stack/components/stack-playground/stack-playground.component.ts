@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-stack-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -117,3 +119,4 @@ export class StackPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

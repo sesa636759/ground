@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
@@ -9,6 +10,7 @@ import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbo
   selector: 'app-code-editor-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -125,3 +127,4 @@ console.log(user.greet());`,
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
+

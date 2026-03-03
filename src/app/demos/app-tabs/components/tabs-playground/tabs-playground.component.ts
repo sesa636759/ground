@@ -1,4 +1,6 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -7,7 +9,9 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 @Component({
   selector: 'app-tabs-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [
+    AppCheckboxValueAccessorDirective,
+    UiDropdownValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tabs-playground.component.html',
 
@@ -80,3 +84,4 @@ export class TabsPlaygroundComponent {
     this.updateConfig();
   }
 }
+

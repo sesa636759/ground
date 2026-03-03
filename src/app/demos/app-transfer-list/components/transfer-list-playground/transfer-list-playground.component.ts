@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -8,15 +9,16 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 @Component({
   selector: 'app-transfer-list-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './transfer-list-playground.component.html',
   styleUrl: './transfer-list-playground.component.scss',
 })
 export class TransferListPlaygroundComponent implements OnInit {
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'global', title: 'Global Configuration', icon: '??' },
+    { id: 'states', title: 'Behavioral States', icon: '?' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
@@ -69,3 +71,4 @@ export class TransferListPlaygroundComponent implements OnInit {
     this.updateConfig();
   }
 }
+
