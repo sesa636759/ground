@@ -1,3 +1,4 @@
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ interface Candle {
   selector: 'app-candlestick-chart-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -140,3 +142,4 @@ export class CandlestickChartPlaygroundComponent {
     this.update();
   }
 }
+

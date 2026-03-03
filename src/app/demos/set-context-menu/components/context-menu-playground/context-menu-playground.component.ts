@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-set-context-menu-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -53,9 +55,9 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'core', title: 'Core Configuration', icon: '⚙️' },
-    { id: 'visuals', title: 'Visual & Animation', icon: '🎨' },
-    { id: 'behavior', title: 'Advanced Behavior', icon: '⚡' },
+    { id: 'core', title: 'Core Configuration', icon: '??' },
+    { id: 'visuals', title: 'Visual & Animation', icon: '??' },
+    { id: 'behavior', title: 'Advanced Behavior', icon: '?' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['core']);
@@ -186,3 +188,4 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

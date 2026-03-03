@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -20,6 +21,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-pattern-input-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -35,8 +37,8 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'global', title: 'Global Configuration', icon: '??' },
+    { id: 'states', title: 'Behavioral States', icon: '?' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
@@ -106,3 +108,4 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
     this.updateConfig();
   }
 }
+

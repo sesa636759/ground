@@ -2,11 +2,12 @@
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
 
 @Component({
   selector: 'app-waffle-chart-playground',
   standalone: true,
-  imports: [FormsModule, CommonModule, AppPlaygroundComponent],
+  imports: [FormsModule, CommonModule, AppPlaygroundComponent, AppInputValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './waffle-chart-playground.component.html',
 

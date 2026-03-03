@@ -1,4 +1,6 @@
-﻿import {
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ChangeDetectorRef,
@@ -15,7 +17,9 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 @Component({
   selector: 'app-speedometer-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [
+    UiDropdownValueAccessorDirective,
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './speedometer-playground.component.html',
   styleUrl: './speedometer-playground.component.scss',
@@ -34,8 +38,8 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'metric', title: 'Metric Controls', icon: '📊' },
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
+    { id: 'metric', title: 'Metric Controls', icon: '??' },
+    { id: 'appearance', title: 'Appearance', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['metric']);
@@ -96,3 +100,5 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+
+

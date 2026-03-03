@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -19,6 +20,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-checkbox-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -33,8 +35,8 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Group Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'global', title: 'Group Configuration', icon: '??' },
+    { id: 'states', title: 'Behavioral States', icon: '?' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
@@ -122,3 +124,4 @@ export class CheckboxPlaygroundComponent implements OnInit, AfterViewInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
+

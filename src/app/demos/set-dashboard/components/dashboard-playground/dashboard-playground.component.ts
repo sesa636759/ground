@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -16,6 +17,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   selector: 'app-dashboard-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -303,3 +305,4 @@ export class DashboardPlaygroundComponent implements OnInit, AfterViewInit {
     }
   }
 }
+

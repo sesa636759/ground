@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -20,6 +21,7 @@ import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-che
   selector: 'app-empty-state-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -56,10 +58,10 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'general', title: 'General Configuration', icon: '⚙️' },
-    { id: 'content', title: 'Content & Texts', icon: '📝' },
-    { id: 'actions', title: 'Action Buttons', icon: '⚡' },
-    { id: 'visuals', title: 'Visual Enhancements', icon: '🎨' },
+    { id: 'general', title: 'General Configuration', icon: '??' },
+    { id: 'content', title: 'Content & Texts', icon: '??' },
+    { id: 'actions', title: 'Action Buttons', icon: '?' },
+    { id: 'visuals', title: 'Visual Enhancements', icon: '??' },
   ]);
 
   defaultOpen = JSON.stringify(['general']);
@@ -138,3 +140,4 @@ export class EmptyStatePlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -21,6 +22,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-modern-sidebar-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -49,9 +51,9 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
   };
 
   pgAccordionItems = [
-    { id: 'brand', title: 'Brand & Identity', icon: '🏢' },
-    { id: 'user', title: 'User Profile', icon: '👤' },
-    { id: 'style', title: 'Visual Style', icon: '🎨' },
+    { id: 'brand', title: 'Brand & Identity', icon: '??' },
+    { id: 'user', title: 'User Profile', icon: '??' },
+    { id: 'style', title: 'Visual Style', icon: '??' },
   ];
 
   themeOptions = [
@@ -195,3 +197,4 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
     this.updateConfig();
   }
 }
+

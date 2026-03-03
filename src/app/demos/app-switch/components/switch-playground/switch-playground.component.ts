@@ -1,4 +1,5 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
@@ -10,6 +11,7 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
   selector: 'app-switch-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -24,8 +26,8 @@ import { AppPlaygroundComponent } from '../../../../shared/components/app-playgr
 })
 export class SwitchPlaygroundComponent implements OnInit {
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+    { id: 'global', title: 'Global Configuration', icon: '??' },
+    { id: 'states', title: 'Behavioral States', icon: '?' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
@@ -40,8 +42,8 @@ export class SwitchPlaygroundComponent implements OnInit {
     variant: 'primary',
     shape: 'default',
     labelPosition: 'right',
-    iconOn: '🔔',
-    iconOff: '🔕',
+    iconOn: '??',
+    iconOff: '??',
     showDefaultIcons: false,
   };
 
@@ -116,8 +118,8 @@ export class SwitchPlaygroundComponent implements OnInit {
       variant: 'primary',
       shape: 'default',
       labelPosition: 'right',
-      iconOn: '🔔',
-      iconOff: '🔕',
+      iconOn: '??',
+      iconOff: '??',
       showDefaultIcons: false,
     };
     this.updateConfig();
@@ -134,3 +136,4 @@ export class SwitchPlaygroundComponent implements OnInit {
     if (this.eventLog.length > 5) this.eventLog.pop();
   }
 }
+

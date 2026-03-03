@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -21,6 +22,7 @@ import { PlaygroundEventLogComponent } from '../../../../shared/components/playg
   selector: 'app-set-avatar-group-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -54,9 +56,9 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'visuals', title: 'Visual Styles', icon: '🎨' },
-    { id: 'behavior', title: 'Interaction Behavior', icon: '⚙️' },
+    { id: 'layout', title: 'Layout Configuration', icon: '??' },
+    { id: 'visuals', title: 'Visual Styles', icon: '??' },
+    { id: 'behavior', title: 'Interaction Behavior', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['layout']);
@@ -135,3 +137,4 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
     this.updateConfig();
   }
 }
+

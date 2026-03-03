@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -16,7 +17,8 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-group-playground.component.html',
   styleUrl: './avatar-group-playground.component.scss',
@@ -31,8 +33,8 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'style', title: 'Visual Styles', icon: '🎨' },
+    { id: 'layout', title: 'Layout Configuration', icon: '??' },
+    { id: 'style', title: 'Visual Styles', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['layout']);
@@ -100,3 +102,4 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

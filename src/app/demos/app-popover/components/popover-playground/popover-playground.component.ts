@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground
   selector: 'app-popover-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -121,3 +123,4 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

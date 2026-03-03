@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -19,6 +20,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-carousel-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -53,10 +55,10 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'animation', title: 'Effects & Animation', icon: '🎬' },
-    { id: 'controls', title: 'Navigation Controls', icon: '🎮' },
-    { id: 'behavior', title: 'Carousel Behavior', icon: '⚙️' },
+    { id: 'layout', title: 'Layout Configuration', icon: '??' },
+    { id: 'animation', title: 'Effects & Animation', icon: '??' },
+    { id: 'controls', title: 'Navigation Controls', icon: '??' },
+    { id: 'behavior', title: 'Carousel Behavior', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['layout']);
@@ -140,3 +142,4 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
     this.updateConfig();
   }
 }
+

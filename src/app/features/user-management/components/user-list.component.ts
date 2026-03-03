@@ -1,13 +1,23 @@
+import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    AppCheckboxValueAccessorDirective,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppInputValueAccessorDirective,
+    UiDropdownValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
@@ -52,10 +62,23 @@ export class UserListComponent implements OnInit {
   departments = ['IT', 'HR', 'Sales', 'Marketing', 'Finance'];
 
   // Dropdown options
-  roleOptions = [{ label: 'All Roles', value: '' }, ...Object.values(UserRole).map(r => ({ label: r, value: r }))];
-  statusOptions = [{ label: 'All Statuses', value: '' }, ...Object.values(UserStatus).map(s => ({ label: s, value: s }))];
-  departmentOptions = [{ label: 'All Departments', value: '' }, { label: 'IT', value: 'IT' }, { label: 'HR', value: 'HR' }, { label: 'Sales', value: 'Sales' }, { label: 'Marketing', value: 'Marketing' }, { label: 'Finance', value: 'Finance' }];
-  
+  roleOptions = [
+    { label: 'All Roles', value: '' },
+    ...Object.values(UserRole).map((r) => ({ label: r, value: r })),
+  ];
+  statusOptions = [
+    { label: 'All Statuses', value: '' },
+    ...Object.values(UserStatus).map((s) => ({ label: s, value: s })),
+  ];
+  departmentOptions = [
+    { label: 'All Departments', value: '' },
+    { label: 'IT', value: 'IT' },
+    { label: 'HR', value: 'HR' },
+    { label: 'Sales', value: 'Sales' },
+    { label: 'Marketing', value: 'Marketing' },
+    { label: 'Finance', value: 'Finance' },
+  ];
+
   // Make Math available to template
   Math = Math;
 
@@ -69,7 +92,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-   // private fb: FormBuilder,
+    // private fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {
@@ -320,3 +343,4 @@ export class UserListComponent implements OnInit {
     return pages;
   }
 }
+

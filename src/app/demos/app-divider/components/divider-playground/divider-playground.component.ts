@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-divider-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -43,7 +45,7 @@ export class DividerPlaygroundComponent implements AfterViewInit {
     loading: false,
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
   accordionDefaultOpen = JSON.stringify(['config']);
 
   variantOptions = [
@@ -134,3 +136,4 @@ export class DividerPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
+

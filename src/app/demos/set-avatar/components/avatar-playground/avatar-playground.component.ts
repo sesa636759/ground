@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -15,6 +16,7 @@ import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbo
   selector: 'app-avatar-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -153,3 +155,4 @@ export class AvatarPlaygroundComponent implements OnInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
+

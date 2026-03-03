@@ -1,4 +1,5 @@
-﻿import {
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -19,6 +20,7 @@ import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbo
   selector: 'app-card-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -60,7 +62,7 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
     avatarIcon: '',
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
   accordionDefaultOpen = JSON.stringify(['config']);
 
   eventMessage = signal('Interact with the card...');
@@ -124,3 +126,4 @@ export class CardPlaygroundComponent implements OnInit, AfterViewInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
+

@@ -1,3 +1,4 @@
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -20,6 +21,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-button-playground',
   standalone: true,
   imports: [
+    AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -189,3 +191,4 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     if (this.eventLog.length > 5) this.eventLog.pop();
   }
 }
+

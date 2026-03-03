@@ -813,45 +813,52 @@ ui-navigation,
 .main-nav {
 
   // Force sub-menus and popovers to remain within viewport and scroll
-  // This prevents them from flipping to 'top' unexpectedly when too tall
-  // FORCE stability: No transitions or animations during hover opening
   ::part(popover-content),
   ::part(menu-list),
   ::part(submenu),
   ::part(dropdown) {
-    max-height: calc(100vh - 100px) !important; // Ensure it ends with space at top/bottom
+    max-height: calc(100vh - 80px) !important;
     overflow-y: auto !important;
-    padding: 12px 0 !important;
-    border-radius: var(--radius-xl) !important;
-    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 8px 0 !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-premium) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     z-index: 10000 !important;
     background: #0b140c !important;
+    pointer-events: auto !important; // Ensure items are clickable
 
-    // Stable layout for large lists
-    margin-top: auto !important;
-    margin-bottom: 20px !important;
-
-    // Smooth scroll for the sub-menu
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
-
-    // GPU Acceleration
+    // Isolation for performance
+    contain: paint !important;
     transform: translateZ(0);
-    will-change: transform;
+    backface-visibility: hidden;
+
+    // Minimal animation to prevent flicker
+    animation: premium-fade-in 0.1s ease-out forwards !important;
   }
 }
 
-// Force the popover container to align to bottom for bottom-heavy lists
+// Ensure the popover viewport doesn't interfere with layout but stays stable
 ui-navigation::part(popover-viewport) {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-end !important;
-  pointer-events: none !important; // Let clicks through to content
+  display: block !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  top: auto !important;
+  bottom: 100px !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+// Specifically for the Duplicate menu or bottom items
+// We want them to pin to bottom if they are tall
+.main-nav ::part(popover-content) {
+  margin: 0 !important;
+  top: auto !important;
+  bottom: 10px !important;
 }
 
 // Hide the arrow to avoid positioning calculation jitter
-ui-navigation ui-popover::part(arrow) {
+ui-navigation ::part(arrow) {
   display: none !important;
 }
 

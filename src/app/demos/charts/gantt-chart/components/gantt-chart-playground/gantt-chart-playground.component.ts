@@ -1,3 +1,4 @@
+import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +17,8 @@ interface GanttTask {
 @Component({
   selector: 'app-gantt-chart-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [
+    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './gantt-chart-playground.component.html',
 
@@ -107,3 +109,4 @@ export class GanttChartPlaygroundComponent {
     this.update();
   }
 }
+

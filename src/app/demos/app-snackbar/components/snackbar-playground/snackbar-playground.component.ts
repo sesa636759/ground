@@ -1,4 +1,5 @@
-﻿import {
+import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
@@ -18,6 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   selector: 'app-snackbar-playground',
   standalone: true,
   imports: [
+    UiDropdownValueAccessorDirective,
     CommonModule,
     FormsModule,
     AppCheckboxValueAccessorDirective,
@@ -48,8 +50,8 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '🌐' },
-    { id: 'notification', title: 'Notification Settings', icon: '🔔' },
+    { id: 'global', title: 'Global Configuration', icon: '??' },
+    { id: 'notification', title: 'Notification Settings', icon: '??' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['global']);
@@ -160,3 +162,4 @@ snackbar.add({
     this.updateConfig();
   }
 }
+
