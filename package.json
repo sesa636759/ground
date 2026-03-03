@@ -36,7 +36,7 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@quartzds/core-angular": "^1.0.0-beta.91",
-    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.1.21.tgz",
+    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.1.22.tgz",
     "chart-library": "file:../../stencil/chart-library/chart-library-0.0.1.tgz",
     "lucide-angular": "^0.575.0",
     "puppeteer": "^24.37.5",
