@@ -1,10 +1,9 @@
 <div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion [items]="items" [defaultOpen]="defaultOpen" multiple>
+    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple variant="card">
       <ng-content></ng-content>
     </ui-accordion>
-
     <div class="playground-controls-actions">
       <ui-button
         class="reset-btn"

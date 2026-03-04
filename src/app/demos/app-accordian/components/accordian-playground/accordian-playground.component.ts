@@ -35,7 +35,7 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
   @ViewChild('accordion') accordion!: ElementRef;
   pgConfig = {
     multiple: false,
-    variant: 'default',
+    variant: 'card',
     size: 'md',
     iconPosition: 'end',
     selectedHeaderColor: '#3b82f6',
@@ -63,8 +63,9 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
     { label: 'Splitted', value: 'splitted' },
     { label: 'Light', value: 'light' },
     { label: 'Shadow', value: 'shadow' },
+    { label: 'Card', value: 'card' },
+    { label: 'Card List', value: 'card-list' },
   ];
-
   sizeOptions = [
     { label: 'Small', value: 'sm' },
     { label: 'Medium', value: 'md' },
@@ -184,4 +185,3 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-

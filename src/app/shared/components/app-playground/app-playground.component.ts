@@ -23,9 +23,29 @@ export class AppPlaygroundComponent implements OnInit {
   @Input() layout: 'row' | 'column' = 'row';
   @Output() reset = new EventEmitter<void>();
 
-  ngOnInit() {
-    // console.log('AppPlayground initialized with items:', this.items);
+  get parsedItems(): any[] {
+    if (typeof this.items === 'string' && this.items.trim()) {
+      try {
+        return JSON.parse(this.items);
+      } catch (e) {
+        console.error('AppPlayground: Failed to parse items string:', this.items, e);
+        return [];
+      }
+    }
+    return Array.isArray(this.items) ? this.items : [];
   }
 
-  // ui-accordion handles both string and array inputs for items and defaultOpen
+  get parsedDefaultOpen(): string[] {
+    if (typeof this.defaultOpen === 'string' && this.defaultOpen.trim()) {
+      try {
+        return JSON.parse(this.defaultOpen);
+      } catch (e) {
+        console.error('AppPlayground: Failed to parse defaultOpen string:', this.defaultOpen, e);
+        return [];
+      }
+    }
+    return Array.isArray(this.defaultOpen) ? this.defaultOpen : [];
+  }
+
+  ngOnInit() {}
 }

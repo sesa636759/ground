@@ -18,6 +18,7 @@ import {
   ComponentDocumentation,
   ComponentProp,
 } from '../../services/component-docs.service';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-component-documentation',
@@ -37,7 +38,7 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   showScrollTop = signal<boolean>(false);
 
   sections = [
-    { id: 'overview', label: 'Overview', icon: 'fas fa-info-circle' },
+    { id: 'overview', label: 'Overview', icon: 'fa-info-circle', library: 'fontawesome' },
     { id: 'usage', label: 'Usage', icon: 'fas fa-code' },
     { id: 'properties', label: 'Properties', icon: 'fas fa-list-ul' },
     { id: 'events', label: 'Events', icon: 'fas fa-bolt' },
