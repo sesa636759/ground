@@ -1,7 +1,7 @@
 <div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion [items]="stringifiedItems" [defaultOpen]="stringifiedDefaultOpen" multiple>
+    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple>
       <ng-content></ng-content>
     </ui-accordion>
 
@@ -14,7 +14,7 @@
         variant="secondary"
         (click)="reset.emit()"
         label="Reset Configuration"
-        ></ui-button>
+      ></ui-button>
     </div>
   </div>
 

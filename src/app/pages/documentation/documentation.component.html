@@ -1,4 +1,4 @@
-<div class="docs-hub-wrapper animate-in">
+﻿<div class="docs-hub-wrapper animate-in">
   <!-- 🌟 Premium Search Hero (Only shown on the Hub) -->
   <section class="hub-hero" *ngIf="isHubArea()">
     <div class="hero-orb hero-orb-1"></div>
@@ -369,7 +369,7 @@
         <ui-accordion
           variant="card-list"
           selected-header-color="#10b981"
-          [items]="flatGuideAccordionItems()"
+          [items]="flatGuideitems()"
           (afterOpen)="selectGuide($any($event).detail.itemId || '')"
         >
           <!-- Slots for accordion items -->

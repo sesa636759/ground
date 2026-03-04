@@ -10,48 +10,37 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app-playground.component.scss',
 })
 export class AppPlaygroundComponent {
-  @Input() accordionItems: any[] | string = [];
+  @Input() items: any[] | string = [];
   @Input() defaultOpen: any[] | string = [];
   @Input() code: string = '';
   @Input() layout: 'row' | 'column' = 'row';
   @Output() reset = new EventEmitter<void>();
 
   get parsedItems(): any[] {
-    if (typeof this.accordionItems === 'string') {
-      try {
-        return JSON.parse(this.accordionItems);
-      } catch {
-        return [];
+    try {
+      if (Array.isArray(this.items)) {
+        return this.items;
       }
+      if (typeof this.items === 'string' && this.items.trim()) {
+        return JSON.parse(this.items);
+      }
+    } catch (e) {
+      console.error('AppPlayground: Error parsing items:', e, this.items);
     }
-    return this.accordionItems || [];
+    return [];
   }
 
   get parsedDefaultOpen(): string[] {
-    if (typeof this.defaultOpen === 'string') {
-      try {
-        return JSON.parse(this.defaultOpen);
-      } catch {
-        // If parsing fails, use the first item as default if available
-        const items = this.parsedItems;
-        return items.length > 0 ? [items[0].id] : [];
+    try {
+      if (Array.isArray(this.defaultOpen)) {
+        return this.defaultOpen;
       }
+      if (typeof this.defaultOpen === 'string' && this.defaultOpen.trim()) {
+        return JSON.parse(this.defaultOpen);
+      }
+    } catch (e) {
+      console.error('AppPlayground: Error parsing defaultOpen:', e, this.defaultOpen);
     }
-
-    // If it's an array but empty, and we have items, open the first one
-    const openArray = this.defaultOpen as string[];
-    if ((!openArray || openArray.length === 0) && this.parsedItems.length > 0) {
-      return [this.parsedItems[0].id];
-    }
-
-    return openArray || [];
-  }
-
-  get stringifiedItems(): string {
-    return JSON.stringify(this.parsedItems);
-  }
-
-  get stringifiedDefaultOpen(): string {
-    return JSON.stringify(this.parsedDefaultOpen);
+    return [];
   }
 }
