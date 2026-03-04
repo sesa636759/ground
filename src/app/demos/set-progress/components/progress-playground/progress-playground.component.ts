@@ -1,35 +1,17 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ViewEncapsulation,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-progress-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './progress-playground.component.html',
   styleUrl: './progress-playground.component.scss',
 })
-export class ProgressPlaygroundComponent implements OnInit {
+export class ProgressPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     percent: 50,
@@ -55,24 +37,12 @@ export class ProgressPlaygroundComponent implements OnInit {
     trailColor: '#f5f5f5',
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
+  ]);
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   updateConfig() {
     let code = `<app-progress\n`;
@@ -112,7 +82,25 @@ export class ProgressPlaygroundComponent implements OnInit {
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      percent: 50,
+      type: 'line',
+      status: 'normal',
+      strokeWidth: 6,
+      width: 120, // For circle/dashboard
+      strokeLinecap: 'round',
+      showInfo: true,
+      steps: 0,
+      gapDegree: 75,
+      gapPosition: 'bottom',
+      indeterminate: false,
+      liquid: false,
+      glass: false,
+      glow: false,
+      strokeColor: '#3DCD58',
+      trailColor: '#f5f5f5',
+    };
+    this.updateConfig();
   }
 }

@@ -1,42 +1,36 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ChangeDetectorRef,
+  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  signal,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tree-list-playground',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppPlaygroundComponent, AppCheckboxValueAccessorDirective],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-list-playground.component.html',
   styleUrl: './tree-list-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TreeListPlaygroundComponent implements AfterViewInit {
-  @ViewChild('treeElement') treeElement!: ElementRef;
-  generatedCodeSignal = signal<string>('');
+export class TreeListPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgConfig = {
-    selectable: true,
-    showIcons: true,
-    expandAll: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'features', title: 'Features', icon: '✨' },
     { id: 'behavior', title: 'Behavior', icon: '⚙️' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['features']);
+  defaultOpen = JSON.stringify(['features']);
 
   model = [
     {
@@ -71,48 +65,43 @@ export class TreeListPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.treeElement) return '';
-    let code = generatePlaygroundCode(this.treeElement.nativeElement as Element, 'ui-tree-list');
-    // Add model prop to code manually
-    code = code.replace('></ui-tree-list>', '\n  [model]="treeData"\n></ui-tree-list>');
-    return code;
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       selectable: true,
       showIcons: true,
       expandAll: false,
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-tree-list');
+      // Add model prop to code manually inside the bracket if needed, actually it should be captured by DOM if bound as attr, but it's bound as property.
+      code = code.replace('></ui-tree-list>', '\n  [model]="treeData"\n></ui-tree-list>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  onTreeSelection(event: any) {
+    this.logEvent(
+      `Tree selection changed. Selected item(s): ${event.detail?.length ? event.detail.length : 0}`,
+    );
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

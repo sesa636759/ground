@@ -1,29 +1,17 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-avatar-group-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-group-playground.component.html',
   styleUrl: './avatar-group-playground.component.scss',
 })
-export class AvatarGroupPlaygroundComponent implements AfterViewInit {
+export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
 
   pgConfig = {
@@ -33,8 +21,8 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '??' },
-    { id: 'style', title: 'Visual Styles', icon: '??' },
+    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
+    { id: 'style', title: 'Visual Styles', icon: '✨' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['layout']);
@@ -50,50 +38,25 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     { label: 'Square', value: 'square' },
   ];
 
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
+  updateConfig() {
     setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.avatarGroupElement) return '';
-    const innerContent = `
+      if (!this.avatarGroupElement) return;
+      const innerContent = `
   <ui-avatar label="JD"></ui-avatar>
   <ui-avatar label="AB"></ui-avatar>
   <ui-avatar label="CD"></ui-avatar>
   <ui-avatar label="EF"></ui-avatar>`;
-    return generatePlaygroundCode(
-      this.avatarGroupElement.nativeElement as Element,
-      'ui-avatar-group',
-      innerContent,
-    );
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
+      const code = generatePlaygroundCode(
+        this.avatarGroupElement.nativeElement as Element,
+        'ui-avatar-group',
+        innerContent,
+      );
+      this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       size: 'medium',
       max: 3,
@@ -102,4 +65,3 @@ export class AvatarGroupPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-

@@ -1,45 +1,37 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-chip-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './chip-playground.component.html',
-
   styleUrl: './chip-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ChipPlaygroundComponent {
-  pgConfig = {
-    label: 'Angular Developer',
-    icon: '??',
-    userAvatar: '',
-    counter: '',
-    badge: '',
-    variant: 'filled',
-    color: 'primary',
-    size: 'md',
-    shape: 'pill',
-    removable: true,
-    clickable: true,
-    selected: false,
-    loading: false,
-  };
+export class ChipPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'content', title: 'Content & Info', icon: '📝' },
+    { id: 'style', title: 'Visual Style', icon: '🎨' },
+    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
+  ]);
+
+  defaultOpen = JSON.stringify(['content']);
 
   variantOptions = [
     { label: 'Filled', value: 'filled' },
@@ -71,39 +63,18 @@ export class ChipPlaygroundComponent {
     { label: 'Circle', value: 'circle' },
   ];
 
-  generatedCodeSignal = signal('');
-  eventLog: { time: string; msg: string }[] = [];
-
   constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-chip\n';
-    code += `  label="${this.pgConfig.label}"\n`;
-    if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
-    if (this.pgConfig.userAvatar) code += `  user-avatar="${this.pgConfig.userAvatar}"\n`;
-    if (this.pgConfig.variant !== 'filled') code += `  variant="${this.pgConfig.variant}"\n`;
-    code += `  color="${this.pgConfig.color}"\n`;
-    if (this.pgConfig.size !== 'md') code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.shape !== 'pill') code += `  shape="${this.pgConfig.shape}"\n`;
-    if (this.pgConfig.removable) code += `  removable\n`;
-    if (this.pgConfig.clickable) code += `  clickable\n`;
-    if (this.pgConfig.selected) code += `  selected\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
-    code += '></ui-chip>';
-
-    this.generatedCodeSignal.set(code);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       label: 'Angular Developer',
-      icon: '??',
+      icon: '👤',
       userAvatar: '',
       counter: '',
       badge: '',
@@ -116,14 +87,18 @@ export class ChipPlaygroundComponent {
       selected: false,
       loading: false,
     };
-    this.updateConfig();
-    this.eventLog = [];
   }
 
-  onEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.unshift({ time, msg });
-    if (this.eventLog.length > 5) this.eventLog.pop();
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      this.updateConfigFromDom(this.demoElement, 'ui-chip');
+    }, 50);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

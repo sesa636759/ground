@@ -1,35 +1,27 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-timer-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timer-playground.component.html',
   styleUrl: './timer-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TimerPlaygroundComponent {
-  pgConfig = {
-    duration: 60,
-    mode: 'countdown',
-    format: 'mm:ss',
-    autoStart: false,
-  };
+export class TimerPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'config', title: 'Configuration', icon: '⚙️' },
+    { id: 'visuals', title: 'Visuals', icon: '🎨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['config', 'visuals']);
 
   modeOptions = [
     { label: 'Countdown', value: 'countdown' },
@@ -42,32 +34,36 @@ export class TimerPlaygroundComponent {
     { label: 'ss', value: 'ss' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
+  constructor() {
+    super();
+  }
 
-  constructor(private cd: ChangeDetectorRef) {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      duration: 60,
+      mode: 'countdown',
+      format: 'mm:ss',
+      autoStart: false,
+    };
   }
 
   timerStart(el: HTMLElement): void {
     (el as any).start?.();
+    this.logEvent('Timer Started');
   }
 
   timerPause(el: HTMLElement): void {
     (el as any).pause?.();
+    this.logEvent('Timer Paused');
   }
 
   timerReset(el: HTMLElement): void {
     (el as any).reset?.();
+    this.logEvent('Timer Reset');
   }
 
   updateConfig() {
@@ -80,22 +76,13 @@ export class TimerPlaygroundComponent {
     }
     code += '></ui-timer>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      duration: 60,
-      mode: 'countdown',
-      format: 'mm:ss',
-      autoStart: false,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

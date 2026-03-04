@@ -1,36 +1,27 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-stepper-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stepper-playground.component.html',
   styleUrl: './stepper-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class StepperPlaygroundComponent {
-  pgConfig = {
-    orientation: 'horizontal',
-    size: 'md',
-    variant: 'default',
-    activeStep: 1,
-    showNumbers: true,
-    showDescriptions: true,
-    progressDot: false,
-  };
+export class StepperPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'layout', title: 'Layout Properties', icon: '📏' },
+    { id: 'options', title: 'Options', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['layout', 'options']);
 
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -56,20 +47,25 @@ export class StepperPlaygroundComponent {
   ];
 
   stepsJson = JSON.stringify(this.steps);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      size: 'md',
+      variant: 'default',
+      activeStep: 0,
+      showNumbers: true,
+      showDescriptions: true,
+      progressDot: false,
+    };
   }
 
   updateConfig() {
@@ -84,30 +80,19 @@ export class StepperPlaygroundComponent {
     code += `  [steps]="steps"\n`;
     code += '></ui-stepper>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
   onStepChange(event: any) {
     this.pgConfig.activeStep = event.detail.index;
     this.updateConfig();
+    this.logEvent(`Active step changed to: ${this.pgConfig.activeStep}`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      orientation: 'horizontal',
-      size: 'md',
-      variant: 'default',
-      activeStep: 1,
-      showNumbers: true,
-      showDescriptions: true,
-      progressDot: false,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

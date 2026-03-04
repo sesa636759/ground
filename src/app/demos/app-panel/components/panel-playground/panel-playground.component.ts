@@ -1,30 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-panel-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './panel-playground.component.html',
-
   styleUrl: './panel-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PanelPlaygroundComponent {
+export class PanelPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     panelTitle: 'Interactive Panel',
     panelSubtitle: 'Customizable layout component',
@@ -43,6 +31,14 @@ export class PanelPlaygroundComponent {
     glass: false,
   };
 
+  pgAccordionItems = JSON.stringify([
+    { id: 'content', title: 'Content & Header', icon: '📝' },
+    { id: 'visual', title: 'Visual Styles', icon: '🎨' },
+    { id: 'behavior', title: 'Behavioral Settings', icon: '⚙️' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['content']);
+
   variantOptions = [
     { label: 'Elevated', value: 'elevated' },
     { label: 'Outlined', value: 'outlined' },
@@ -59,21 +55,9 @@ export class PanelPlaygroundComponent {
     { label: 'Info', value: 'info' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
-  eventLog: { time: string; msg: string }[] = [];
-
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -98,15 +82,15 @@ export class PanelPlaygroundComponent {
     code += '  <div slot="footer">Panel footer here...</div>\n';
     code += '</ui-panel>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
+  onPanelEvent(event: string) {
+    this.logEvent(`Panel event: ${event}`);
   }
 
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       panelTitle: 'Interactive Panel',
       panelSubtitle: 'Customizable layout component',
@@ -125,13 +109,6 @@ export class PanelPlaygroundComponent {
       glass: false,
     };
     this.updateConfig();
-    this.eventLog = [];
-  }
-
-  onEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.unshift({ time, msg: `Event: ${msg}` });
-    if (this.eventLog.length > 5) this.eventLog.pop();
+    this.eventLog.set([]);
   }
 }
-

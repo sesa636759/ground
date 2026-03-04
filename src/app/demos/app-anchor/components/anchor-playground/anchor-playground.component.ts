@@ -1,37 +1,16 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-anchor-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './anchor-playground.component.html',
-
   styleUrl: './anchor-playground.component.scss',
 })
-export class AnchorPlaygroundComponent implements AfterViewInit {
+export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('anchor') anchor!: ElementRef;
   pgConfig = {
     orientation: 'vertical',
@@ -52,7 +31,7 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
     { label: 'Dot', value: 'dot' },
   ];
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
+  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '⚙️' }]);
   defaultOpen = JSON.stringify(['config']);
 
   links = [
@@ -62,44 +41,12 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
   ];
 
   linksJson = JSON.stringify(this.links);
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.anchor) return '';
-    return generatePlaygroundCode(this.anchor.nativeElement as Element, 'ui-anchor');
-  }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.anchor, 'ui-anchor');
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       orientation: 'vertical',
       type: 'line',
@@ -111,4 +58,3 @@ export class AnchorPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-

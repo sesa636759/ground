@@ -1,30 +1,16 @@
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ChangeDetectorRef,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  signal,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-speedometer-playground',
   standalone: true,
-  imports: [
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './speedometer-playground.component.html',
   styleUrl: './speedometer-playground.component.scss',
 })
-export class SpeedometerPlaygroundComponent implements AfterViewInit {
+export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('speedometerElement') speedometerElement!: ElementRef;
 
   pgConfig = {
@@ -38,8 +24,8 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'metric', title: 'Metric Controls', icon: '??' },
-    { id: 'appearance', title: 'Appearance', icon: '??' },
+    { id: 'metric', title: 'Metric Controls', icon: '仪表' },
+    { id: 'appearance', title: 'Appearance', icon: '✨' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['metric']);
@@ -50,44 +36,11 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
     { label: 'Segments', value: 'segments' },
   ];
 
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.speedometerElement) return '';
-    return generatePlaygroundCode(
-      this.speedometerElement.nativeElement as Element,
-      'ui-speedometer',
-    );
-  }
-
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.speedometerElement, 'ui-speedometer');
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       value: 65,
       min: 0,
@@ -100,5 +53,3 @@ export class SpeedometerPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-
-

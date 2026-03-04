@@ -1,41 +1,29 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
+  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-button-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-playground.component.html',
   styleUrl: './button-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
+export class ButtonPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
-  showCode = true;
+
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'content', title: 'Content & Text', icon: '✍️' },
@@ -45,34 +33,6 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
   ]);
 
   defaultOpen = JSON.stringify(['content']);
-
-  pgConfig = {
-    label: 'Explore Components',
-    icon: '🚀',
-    iconLibrary: 'default',
-    iconPosition: 'left',
-    iconSize: '',
-    badge: '',
-    variant: 'primary',
-    size: 'medium',
-    elevation: 2,
-    iconOnly: false,
-    loading: false,
-    loadingPosition: 'left',
-    disabled: false,
-    pill: false,
-    rounded: false,
-    fullWidth: false,
-    width: '',
-    minWidth: '',
-    grow: false,
-    selected: false,
-    noRipple: false,
-    type: 'button',
-    href: '',
-    target: '',
-    rel: '',
-  };
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },
@@ -123,49 +83,16 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Reset', value: 'reset' },
   ];
 
-  generatedCodeSignal = signal('');
-  eventLog: { time: string; msg: string }[] = [];
-
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     this.updateConfig();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-button');
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       label: 'Explore Components',
       icon: '🚀',
       iconLibrary: 'default',
@@ -192,13 +119,21 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       target: '',
       rel: '',
     };
-    this.updateConfig();
-    this.eventLog = [];
   }
 
-  onEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.unshift({ time, msg });
-    if (this.eventLog.length > 5) this.eventLog.pop();
+  updateConfig() {
+    setTimeout(() => {
+      this.updateConfigFromDom(this.demoElement, 'ui-button');
+    }, 50);
+  }
+
+  onButtonClick(event: any) {
+    this.logEvent(`Button Clicked`);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }

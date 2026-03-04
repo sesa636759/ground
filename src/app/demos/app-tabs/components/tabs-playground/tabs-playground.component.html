@@ -1,73 +1,62 @@
-﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
-  [code]="generatedCodeSignal()"
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Orientation</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.orientation"
-            (ngModelChange)="updateConfig()"
-            [options]="orientationOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Alignment</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.align"
-            (ngModelChange)="updateConfig()"
-            [options]="alignOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Visuals</h3>
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="variantOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="scrollable"
-            [(ngModel)]="pgConfig.scrollable"
-            (ngModelChange)="updateConfig()"
-          />
-          <label for="scrollable">Scrollable</label>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="closable"
-            [(ngModel)]="pgConfig.closeable"
-            (ngModelChange)="updateConfig()"
-          />
-          <label for="closable">Closeable Tabs</label>
-        </div>
-      </div>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+        [options]="orientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Alignment</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.align"
+        (ngModelChange)="updateConfig()"
+        [options]="alignOptions"
+      ></ui-dropdown>
     </div>
   </div>
 
-  <div preview class="preview-stage h-scrollable" style="padding: 40px">
-    <div class="tabs-container">
+  <div slot="content-visual" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.scrollable" (ngModelChange)="updateConfig()" />
+        Scrollable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()" /> Closeable
+        Tabs
+      </label>
+    </div>
+  </div>
+
+  <div preview class="preview-stage h-scrollable">
+    <div class="tabs-container" style="width: 100%">
       <ui-tabs
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
         [attr.variant]="pgConfig.variant"
-        [attr.scrollable]="pgConfig.scrollable ? '' : null"
-        [attr.closeable]="pgConfig.closeable ? '' : null"
+        [attr.scrollable]="pgConfig.scrollable ? 'true' : null"
+        [attr.closeable]="pgConfig.closeable ? 'true' : null"
         [value]="currentTab"
         (valueChange)="onTabChange($event)"
       >
-        <ui-tab label="Overview" icon="🏠" value="overview">
+        <ui-tab label="Overview" icon="??" value="overview">
           <div style="padding: 24px">
             <h4>Overview Content</h4>
             <p>
@@ -76,13 +65,13 @@
             </p>
           </div>
         </ui-tab>
-        <ui-tab label="Settings" icon="⚙️" value="settings">
+        <ui-tab label="Settings" icon="??" value="settings">
           <div style="padding: 24px">
             <h4>Settings Content</h4>
             <p>Manage your account preferences, security settings, and notification frequency.</p>
           </div>
         </ui-tab>
-        <ui-tab label="Profile" icon="👤" value="profile">
+        <ui-tab label="Profile" icon="??" value="profile">
           <div style="padding: 24px">
             <h4>Profile Content</h4>
             <p>Update your personal information, bio, and social media links.</p>
@@ -91,4 +80,11 @@
       </ui-tabs>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>
+

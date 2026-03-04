@@ -1,27 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-theme-switcher-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './theme-switcher-playground.component.html',
   styleUrl: './theme-switcher-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ThemeSwitcherPlaygroundComponent implements OnInit {
+export class ThemeSwitcherPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     variant: 'default',
     size: 'medium',
@@ -32,10 +23,12 @@ export class ThemeSwitcherPlaygroundComponent implements OnInit {
     position: 'inline',
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  ngOnInit() {
+  accordionDefaultOpen = JSON.stringify(['global']);
+
+  constructor() {
+    super();
     this.updateConfig();
   }
 
@@ -54,6 +47,7 @@ export class ThemeSwitcherPlaygroundComponent implements OnInit {
     code += `></app-theme-switcher>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onThemeChange(event: any) {
@@ -61,13 +55,17 @@ export class ThemeSwitcherPlaygroundComponent implements OnInit {
     this.logEvent(`Theme changed to: ${theme}`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      variant: 'default',
+      size: 'medium',
+      showIcons: true,
+      showLabels: true,
+      enableAnimation: true,
+      animationDuration: 200,
+      position: 'inline',
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

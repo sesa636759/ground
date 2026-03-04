@@ -1,37 +1,25 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
 
 @Component({
   selector: 'app-stack-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stack-playground.component.html',
-
   styleUrl: './stack-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class StackPlaygroundComponent implements AfterViewInit {
+export class StackPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('stack') stack!: ElementRef;
   numBoxes = 5;
   get boxes() {
@@ -47,6 +35,14 @@ export class StackPlaygroundComponent implements AfterViewInit {
     overlap: false,
     showDividers: false,
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'layout', title: 'Layout Settings', icon: '📏' },
+    { id: 'behavior', title: 'Behavior', icon: '⚡' },
+    { id: 'content', title: 'Content', icon: '📦' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['layout']);
 
   directionOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -67,45 +63,30 @@ export class StackPlaygroundComponent implements AfterViewInit {
     { label: 'Space Between', value: 'space-between' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.stack) return '';
-    const items = Array.from(
-      { length: Math.min(this.numBoxes, 3) },
-      (_, i) => `  <div>Item ${i + 1}</div>`,
-    ).join('\n');
-    return generatePlaygroundCode(this.stack.nativeElement as Element, 'ui-stack', `${items}\n`);
+  constructor() {
+    super();
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
+      if (!this.stack) return;
+      const itemsContent = Array.from(
+        { length: Math.min(this.numBoxes, 3) },
+        (_, i) => `  <div>Item ${i + 1}</div>`,
+      ).join('\n');
+      const suffix = this.numBoxes > 3 ? `  <!-- ${this.numBoxes - 3} more items... -->\n` : '';
+
+      const code = generatePlaygroundCode(
+        this.stack.nativeElement as Element,
+        'ui-stack',
+        `${itemsContent}\n${suffix}`,
+      );
+      this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       direction: 'horizontal',
       spacing: '16px',
@@ -117,6 +98,6 @@ export class StackPlaygroundComponent implements AfterViewInit {
     };
     this.numBoxes = 5;
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

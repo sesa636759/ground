@@ -1,41 +1,23 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'ui-input-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './input-playground.component.html',
   styleUrl: './input-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class InputPlaygroundComponent implements OnInit {
+export class InputPlaygroundComponent extends BasePlaygroundComponent {
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   // Playground State
   pgConfig = {
@@ -99,15 +81,6 @@ export class InputPlaygroundComponent implements OnInit {
     prefixClickable: false,
     suffixClickable: false,
   };
-
-  eventMessage = signal('Interact with the input...');
-  generatedCode = signal('');
-
-  constructor() {}
-
-  ngOnInit() {
-    this.updateConfig();
-  }
 
   updateConfig() {
     let code = `<ui-input\n`;
@@ -209,25 +182,87 @@ export class InputPlaygroundComponent implements OnInit {
     }
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onInputChange(event: any) {
-    this.eventMessage.set(`Value changed to: "${event.target.value}"`);
+    this.logEvent(`Value changed to: "${event.target.value}"`);
   }
 
   onInputFocus() {
-    this.eventMessage.set(`Input focused`);
+    this.logEvent(`Input focused`);
   }
 
   onInputBlur() {
-    this.eventMessage.set(`Input blurred`);
+    this.logEvent(`Input blurred`);
   }
 
   onInputClear() {
-    this.eventMessage.set(`Input cleared`);
+    this.logEvent(`Input cleared`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      type: 'text',
+      label: 'Username',
+      placeholder: 'Enter your username',
+      value: '',
+      variant: 'outlined',
+      size: 'medium',
+      validationState: 'none',
+      fullWidth: true,
+      disabled: false,
+      readonly: false,
+      required: false,
+      showClear: false,
+      showPasswordToggle: false,
+      showSteppers: false,
+      autoSelect: false,
+      autoTrim: false,
+      multiline: false,
+      autoResize: false,
+      maxRows: 3,
+      rows: 3,
+      skeleton: false,
+      prefixText: '',
+      suffixText: '',
+      prefixIcon: '',
+      prefixIconLibrary: 'lucide',
+      suffixIcon: '',
+      suffixIconLibrary: 'lucide',
+      helperText: 'Choose a unique username',
+      errorText: 'This field is required',
+      successText: 'Looking good!',
+      warningText: 'Strong passwords are better',
+      infoText: 'Extra info here.',
+      maxLength: 0,
+      minLengthIndicator: 0,
+      maxLengthIndicator: 0,
+      showCharCount: false,
+      floatingLabel: false,
+      loading: false,
+      debounce: 0,
+      accept: '',
+      multiple: false,
+      showCopy: false,
+      mask: 'none',
+      pattern: '',
+      name: '',
+      inputId: '',
+      autofocus: false,
+      customTabIndex: 0,
+      tooltip: '',
+      suggestions: '',
+      inputmode: 'none',
+      clearIcon: 'x-circle',
+      rtl: false,
+      enterkeyhint: 'enter',
+      passwordIcon: 'eye',
+      passwordVisibleIcon: 'eye-off',
+      prefixClickable: false,
+      suffixClickable: false,
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }

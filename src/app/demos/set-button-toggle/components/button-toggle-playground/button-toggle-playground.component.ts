@@ -1,28 +1,17 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-button-toggle-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-toggle-playground.component.html',
   styleUrl: './button-toggle-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class ButtonTogglePlaygroundComponent {
+export class ButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     mode: 'segmented',
@@ -56,9 +45,9 @@ export class ButtonTogglePlaygroundComponent {
     advancedTheme: '',
   };
 
-  eventMessage = signal('Select a button...');
-  eventColor = signal('inherit');
-  generatedCode = signal('');
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   // Options Data (Core sets)
   playgroundOptions = [
@@ -69,6 +58,7 @@ export class ButtonTogglePlaygroundComponent {
   ];
 
   constructor() {
+    super();
     this.updateConfig();
   }
 
@@ -117,27 +107,51 @@ export class ButtonTogglePlaygroundComponent {
     }
     code += `</app-button-toggle-group>`;
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onPlaygroundChange(event: any) {
-    this.eventMessage.set(
-      `Selection changed to: "${event.detail.value}" at ${new Date().toLocaleTimeString()}`,
-    );
+    this.logEvent(`Selection changed to: ${event.detail.value}`);
     this.updateConfig();
   }
 
   onPlaygroundAction(event: any) {
-    this.eventMessage.set(
-      `Button action clicked! Current value: "${event.detail.value}" at ${new Date().toLocaleTimeString()}`,
-    );
-    this.eventColor.set('#059669');
-    setTimeout(() => this.eventColor.set('inherit'), 2000);
+    this.logEvent(`Button action clicked! Current value: "${event.detail.value}"`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      mode: 'segmented',
+      orientation: 'horizontal',
+      size: 'medium',
+      color: 'primary',
+      variant: 'soft',
+      shape: 'rectangle',
+      iconPosition: 'left',
+      displayMode: 'icon-label',
+      label: 'Select View Mode',
+      helperText: 'Choose how you want to view content',
+      errorMessage: '',
+      name: 'view-mode',
+      value: 'list',
+      fullWidth: false,
+      keepButtonLabel: false,
+      buttonActionLabel: 'Action',
+      customContent: false,
+      disabled: false,
+      readonly: false,
+      loading: false,
+      required: true,
+      invalid: false,
+      multiSelect: false,
+      batchActions: false,
+      searchEnabled: false,
+      exportEnabled: false,
+      importEnabled: false,
+      analyticsEnabled: false,
+      advancedTheme: '',
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
-
-  // Helper for JSON strings
-  jsonOptions = (opts: any) => JSON.stringify(opts);
 }

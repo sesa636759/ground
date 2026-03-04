@@ -1,6 +1,8 @@
 ﻿<app-playground
-  [items]='[{"id":"global","title":"Global Configuration","icon":"⚙️"}, {"id":"states","title":"Behavioral States","icon":"⚡"}]'
-  [defaultOpen]='["global"]'
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -251,19 +253,10 @@
       ></app-toggle-group>
     </div>
   </div>
+
   <app-playground-event-log
     events
     [logs]="eventLog()"
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>

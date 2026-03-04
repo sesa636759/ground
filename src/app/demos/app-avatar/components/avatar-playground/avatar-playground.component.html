@@ -1,97 +1,83 @@
 ﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
-  [code]="generatedCodeSignal()"
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <!-- Identity -->
-      <div class="control-section">
-        <h3>Identity</h3>
-        <div class="control-group">
-          <label>Name (Initials)</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.name"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Image Source</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.src"
-            (ngModelChange)="updateConfig()"
-            placeholder="URL"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Icon</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.icon"
-            (ngModelChange)="updateConfig()"
-            placeholder="emoji or icon"
-          ></ui-input>
-        </div>
-      </div>
-
-      <!-- Appearance -->
-      <div class="control-section">
-        <h3>Appearance</h3>
-        <div class="control-group">
-          <label>Shape</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.shape"
-            (ngModelChange)="updateConfig()"
-            [options]="shapeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Size (e.g. 64px)</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Status</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.status"
-            (ngModelChange)="updateConfig()"
-            [options]="statusOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
-
-      <!-- Decorations -->
-      <div class="control-section">
-        <h3>Decorations</h3>
-        <div class="control-group">
-          <label>Badge</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.badge"
-            (ngModelChange)="updateConfig()"
-            placeholder="'dot' or text"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Badge Color</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.badgeColor"
-            (ngModelChange)="updateConfig()"
-            placeholder="hex or color name"
-          ></ui-input>
-        </div>
-      </div>
+  <div slot="content-profile" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Name (Initials)</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Image Source</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.src"
+        (ngModelChange)="updateConfig()"
+        placeholder="URL"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Icon</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.icon"
+        (ngModelChange)="updateConfig()"
+        placeholder="emoji or icon"
+      ></ui-input>
     </div>
   </div>
 
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size (e.g. 64px)</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+  </div>
+
+  <div slot="content-status" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Status</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.status"
+        (ngModelChange)="updateConfig()"
+        [options]="statusOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Badge</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.badge"
+        (ngModelChange)="updateConfig()"
+        placeholder="'dot' or text"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Badge Color</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.badgeColor"
+        (ngModelChange)="updateConfig()"
+        placeholder="hex or color name"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div
+    preview
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <ui-avatar
       [attr.name]="pgConfig.name"
       [attr.src]="pgConfig.src"
@@ -101,6 +87,13 @@
       [attr.status]="pgConfig.status"
       [attr.badge]="pgConfig.badge"
       [attr.badge-color]="pgConfig.badgeColor"
+      (avatarClick)="logEvent('Avatar Clicked')"
     ></ui-avatar>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

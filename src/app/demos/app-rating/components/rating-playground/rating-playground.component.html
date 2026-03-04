@@ -1,7 +1,7 @@
 ﻿<app-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="defaultOpen"
-  [code]="generatedCodeSignal()"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-global" class="control-grid" style="padding: 16px">
@@ -47,7 +47,6 @@
     </div>
   </div>
 
-  <!-- Behavioral States -->
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
@@ -76,34 +75,33 @@
     </div>
   </div>
 
-  <div
-    preview
-    style="
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    "
-  >
-    <ui-rating
-      #ratingElement
-      [attr.type]="pgConfig.type"
-      [attr.value]="pgConfig.value"
-      [attr.max]="pgConfig.max"
-      [attr.size]="pgConfig.size"
-      [attr.color]="pgConfig.color"
-      [attr.readonly]="pgConfig.readonly ? '' : null"
-      [attr.disabled]="pgConfig.disabled ? '' : null"
-      [attr.allow-half]="pgConfig.allowHalf ? '' : null"
-      [attr.show-value]="pgConfig.showValue ? '' : null"
-      (ratingChange)="onRatingChange($event)"
-    ></ui-rating>
-    <div
-      class="rating-display"
-      style="margin-top: 24px; font-weight: 600; color: var(--text-primary)"
-    >
-      Current Value: {{ pgConfig.value }}
+  <div preview class="preview-stage">
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+      <ui-rating
+        #ratingElement
+        [attr.type]="pgConfig.type"
+        [attr.value]="pgConfig.value"
+        [attr.max]="pgConfig.max"
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.allow-half]="pgConfig.allowHalf ? '' : null"
+        [attr.show-value]="pgConfig.showValue ? '' : null"
+        (ratingChange)="onRatingChange($event)"
+      ></ui-rating>
+      <div
+        class="rating-display"
+        style="margin-top: 24px; font-weight: 600; color: var(--text-primary)"
+      >
+        Current Value: {{ pgConfig.value }}
+      </div>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

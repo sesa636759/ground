@@ -1,34 +1,17 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ViewEncapsulation,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-list-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './list-playground.component.html',
   styleUrl: './list-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class ListPlaygroundComponent {
+export class ListPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     variant: 'filled',
@@ -53,22 +36,12 @@ export class ListPlaygroundComponent {
     itemDisabled: false,
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'item', title: 'Item Template', icon: '📝' },
+  ]);
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   updateConfig() {
     let code = `<app-list\n`;
@@ -111,17 +84,33 @@ export class ListPlaygroundComponent {
   }
 
   onItemClick(_event: any) {
-    // const { item, index } = event.detail; // Adjust based on actual event structure if needed
     this.logEvent(`Item clicked`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      variant: 'filled',
+      color: 'primary',
+      size: 'medium',
+      dense: false,
+      dividers: true,
+      flush: false,
+      horizontal: false,
+      numbered: false,
+      grouped: false,
+      selectable: false,
+      rounded: true,
+      elevated: false,
+      itemLabel: 'List Item',
+      itemSublabel: 'Description text',
+      itemIcon: 'fas fa-check-circle',
+      itemActionIcon: 'fas fa-chevron-right',
+      itemBadge: 'New',
+      itemBadgeColor: 'success',
+      itemCounter: 5,
+      itemDisabled: false,
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

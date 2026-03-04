@@ -1,38 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-switch-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './switch-playground.component.html',
-
   styleUrl: './switch-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SwitchPlaygroundComponent implements OnInit {
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
-  ]);
-
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-
+export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     label: 'Enable Notifications',
     checked: false,
@@ -42,10 +22,17 @@ export class SwitchPlaygroundComponent implements OnInit {
     variant: 'primary',
     shape: 'default',
     labelPosition: 'right',
-    iconOn: '??',
-    iconOff: '??',
+    iconOn: '✔️',
+    iconOff: '❌',
     showDefaultIcons: false,
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },
@@ -76,12 +63,8 @@ export class SwitchPlaygroundComponent implements OnInit {
     { label: 'Right', value: 'right' },
   ];
 
-  generatedCodeSignal = signal('');
-  eventLog: { time: string; msg: string }[] = [];
-
-  constructor() {}
-
-  ngOnInit() {
+  constructor() {
+    super();
     this.updateConfig();
   }
 
@@ -101,14 +84,18 @@ export class SwitchPlaygroundComponent implements OnInit {
     if (this.pgConfig.showDefaultIcons) code += `  show-default-icons\n`;
     code += '></ui-switch>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
+  onSwitchChange(event: any) {
+    const isChecked = event.detail.checked;
+    this.pgConfig.checked = isChecked;
+    this.logEvent(`Switch changed to: ${isChecked}`);
+    this.updateConfig();
   }
 
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       label: 'Enable Notifications',
       checked: false,
@@ -118,22 +105,11 @@ export class SwitchPlaygroundComponent implements OnInit {
       variant: 'primary',
       shape: 'default',
       labelPosition: 'right',
-      iconOn: '??',
-      iconOff: '??',
+      iconOn: '✔️',
+      iconOff: '❌',
       showDefaultIcons: false,
     };
     this.updateConfig();
-    this.eventLog = [];
-  }
-
-  onSwitchChange(event: any) {
-    const isChecked = event.detail.checked;
-    this.pgConfig.checked = isChecked;
-    this.updateConfig();
-
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.unshift({ time, msg: `Switch value: ${isChecked}` });
-    if (this.eventLog.length > 5) this.eventLog.pop();
+    this.eventLog.set([]);
   }
 }
-

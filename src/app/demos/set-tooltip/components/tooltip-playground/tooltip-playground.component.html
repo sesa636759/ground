@@ -1,247 +1,244 @@
-﻿<app-playground
-  [code]="generatedCodeSignal()"
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Content</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
-      </div>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Content</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.content" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.position"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Top', value: 'top' },
-            { label: 'Top Left', value: 'top-left' },
-            { label: 'Top Right', value: 'top-right' },
-            { label: 'Bottom', value: 'bottom' },
-            { label: 'Bottom Left', value: 'bottom-left' },
-            { label: 'Bottom Right', value: 'bottom-right' },
-            { label: 'Left', value: 'left' },
-            { label: 'Right', value: 'right' },
-            { label: 'Auto', value: 'auto' },
-          ]"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Top', value: 'top' },
+          { label: 'Top Left', value: 'top-left' },
+          { label: 'Top Right', value: 'top-right' },
+          { label: 'Bottom', value: 'bottom' },
+          { label: 'Bottom Left', value: 'bottom-left' },
+          { label: 'Bottom Right', value: 'bottom-right' },
+          { label: 'Left', value: 'left' },
+          { label: 'Right', value: 'right' },
+          { label: 'Auto', value: 'auto' },
+        ]"
+      ></ui-dropdown>
+    </div>
 
-      <div class="control-group">
-        <label>Trigger</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.trigger"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Hover', value: 'hover' },
-            { label: 'Click', value: 'click' },
-            { label: 'Focus', value: 'focus' },
-          ]"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Trigger</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.trigger"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Hover', value: 'hover' },
+          { label: 'Click', value: 'click' },
+          { label: 'Focus', value: 'focus' },
+        ]"
+      ></ui-dropdown>
+    </div>
 
-      <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Dark', value: 'dark' },
-            { label: 'Light', value: 'light' },
-            { label: 'Primary', value: 'primary' },
-            { label: 'Info', value: 'info' },
-            { label: 'Success', value: 'success' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Error', value: 'error' },
-            { label: 'Glass', value: 'glass' },
-          ]"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Dark', value: 'dark' },
+          { label: 'Light', value: 'light' },
+          { label: 'Primary', value: 'primary' },
+          { label: 'Info', value: 'info' },
+          { label: 'Success', value: 'success' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Error', value: 'error' },
+          { label: 'Glass', value: 'glass' },
+        ]"
+      ></ui-dropdown>
+    </div>
 
-      <div class="control-group">
-        <label>Shape</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.shape"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Rounded', value: 'rounded' },
-            { label: 'Square', value: 'square' },
-            { label: 'Pill', value: 'pill' },
-          ]"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Rounded', value: 'rounded' },
+          { label: 'Square', value: 'square' },
+          { label: 'Pill', value: 'pill' },
+        ]"
+      ></ui-dropdown>
+    </div>
 
-      <div class="control-group">
-        <label>Animation</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.animation"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Fade', value: 'fade' },
-            { label: 'Slide', value: 'slide' },
-            { label: 'Scale', value: 'scale' },
-            { label: 'Bounce', value: 'bounce' },
-            { label: 'None', value: 'none' },
-          ]"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Animation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animation"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Fade', value: 'fade' },
+          { label: 'Slide', value: 'slide' },
+          { label: 'Scale', value: 'scale' },
+          { label: 'Bounce', value: 'bounce' },
+          { label: 'None', value: 'none' },
+        ]"
+      ></ui-dropdown>
+    </div>
 
-      <div class="control-group">
-        <label>Max Width (px)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Max Width (px)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.maxWidth" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Offset (px)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Offset (px)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.offset" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Elevation (0-5)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Elevation (0-5)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Arrow Size (px)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Arrow Size (px)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.arrowSize" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Show Delay (ms)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Show Delay (ms)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.showDelay" (ngModelChange)="updateConfig()" />
+    </div>
 
-      <div class="control-group">
-        <label>Hide Delay (ms)</label>
-        <ui-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
-      </div>
+    <div class="control-group">
+      <label>Hide Delay (ms)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.hideDelay" (ngModelChange)="updateConfig()" />
+    </div>
 
+    <div class="control-group">
+      <label>Transition Duration (ms)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.transitionDuration"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+
+    <div class="control-group">
+      <label>Transition Timing</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.transitionTiming"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Ease', value: 'ease' },
+          { label: 'Linear', value: 'linear' },
+          { label: 'Ease In', value: 'ease-in' },
+          { label: 'Ease Out', value: 'ease-out' },
+          { label: 'Ease In Out', value: 'ease-in-out' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Target Text</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
+    </div>
+
+    <div class="control-group">
+      <label>Target Icon Class</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
+    </div>
+
+    @if (pgConfig.useCustomColor) {
       <div class="control-group">
-        <label>Transition Duration (ms)</label>
+        <label>Custom BG Color</label>
         <ui-input
-          type="number"
-          [(ngModel)]="pgConfig.transitionDuration"
+          type="color"
+          [(ngModel)]="pgConfig.customColor"
           (ngModelChange)="updateConfig()"
-        />
+          style="height: 40px; width: 100%; cursor: pointer"
+        ></ui-input>
       </div>
-
       <div class="control-group">
-        <label>Transition Timing</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.transitionTiming"
+        <label>Custom Text Color</label>
+        <ui-input
+          type="color"
+          [(ngModel)]="pgConfig.textColor"
           (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Ease', value: 'ease' },
-            { label: 'Linear', value: 'linear' },
-            { label: 'Ease In', value: 'ease-in' },
-            { label: 'Ease Out', value: 'ease-out' },
-            { label: 'Ease In Out', value: 'ease-in-out' },
-          ]"
-        ></ui-dropdown>
+          style="height: 40px; width: 100%; cursor: pointer"
+        ></ui-input>
       </div>
+    }
+  </div>
 
-      <div class="control-group">
-        <label>Target Text</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.targetText" (ngModelChange)="updateConfig()" />
-      </div>
-
-      <div class="control-group">
-        <label>Target Icon Class</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.targetIcon" (ngModelChange)="updateConfig()" />
-      </div>
-
-      @if (pgConfig.useCustomColor) {
-        <div class="control-group">
-          <label>Custom BG Color</label>
-          <ui-input
-            type="color"
-            [(ngModel)]="pgConfig.customColor"
-            (ngModelChange)="updateConfig()"
-            style="height: 40px; width: 100%; cursor: pointer"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Custom Text Color</label>
-          <ui-input
-            type="color"
-            [(ngModel)]="pgConfig.textColor"
-            (ngModelChange)="updateConfig()"
-            style="height: 40px; width: 100%; cursor: pointer"
-          ></ui-input>
-        </div>
-      }
-    </div>
-
-    <div class="checkbox-grid">
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
-        Interactive
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
-        Follow Cursor
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track
-        Mouse
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
-        Open at Mouse
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
-        Custom Colors
-      </label>
-    </div>
+  <div slot="content-behavior" class="checkbox-grid" style="padding: 16px">
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.arrow" (ngModelChange)="updateConfig()" /> Show Arrow
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()" />
+      Interactive
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.followCursor" (ngModelChange)="updateConfig()" />
+      Follow Cursor
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.html" (ngModelChange)="updateConfig()" /> HTML Content
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.showGlow" (ngModelChange)="updateConfig()" /> Glow Effect
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.trackMouse" (ngModelChange)="updateConfig()" /> Track Mouse
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.openAtMousePosition" (ngModelChange)="updateConfig()" />
+      Open at Mouse
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.portal" (ngModelChange)="updateConfig()" /> Portal
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.useCustomColor" (ngModelChange)="updateConfig()" /> Use
+      Custom Colors
+    </label>
   </div>
 
   <div preview class="preview-stage">
     <div class="tooltip-target-wrapper">
       <app-tooltip
-        [content]="pgConfig.content"
-        [position]="pgConfig.position"
-        [trigger]="pgConfig.trigger"
-        [variant]="pgConfig.variant"
-        [shape]="pgConfig.shape"
-        [animation]="pgConfig.animation"
-        [arrow]="pgConfig.arrow"
-        [maxWidth]="pgConfig.maxWidth"
-        [showDelay]="pgConfig.showDelay"
-        [hideDelay]="pgConfig.hideDelay"
-        [interactive]="pgConfig.interactive"
-        [followCursor]="pgConfig.followCursor"
-        [html]="pgConfig.html"
-        [showGlow]="pgConfig.showGlow"
-        [customColor]="pgConfig.useCustomColor ? pgConfig.customColor : ''"
-        [textColor]="pgConfig.useCustomColor ? pgConfig.textColor : ''"
-        [elevation]="pgConfig.elevation"
-        [offset]="pgConfig.offset"
-        [transitionDuration]="pgConfig.transitionDuration"
-        [transitionTiming]="pgConfig.transitionTiming"
-        [arrowSize]="pgConfig.arrowSize"
-        [trackMouse]="pgConfig.trackMouse"
-        [openAtMousePosition]="pgConfig.openAtMousePosition"
-        [autoShift]="pgConfig.autoShift"
-        [portal]="pgConfig.portal"
+        [attr.content]="pgConfig.content"
+        [attr.position]="pgConfig.position"
+        [attr.trigger]="pgConfig.trigger"
+        [attr.variant]="pgConfig.variant"
+        [attr.shape]="pgConfig.shape"
+        [attr.animation]="pgConfig.animation"
+        [attr.arrow]="pgConfig.arrow ? '' : null"
+        [attr.max-width]="pgConfig.maxWidth"
+        [attr.show-delay]="pgConfig.showDelay"
+        [attr.hide-delay]="pgConfig.hideDelay"
+        [attr.interactive]="pgConfig.interactive ? '' : null"
+        [attr.follow-cursor]="pgConfig.followCursor ? '' : null"
+        [attr.html]="pgConfig.html ? '' : null"
+        [attr.show-glow]="pgConfig.showGlow ? '' : null"
+        [attr.custom-color]="pgConfig.useCustomColor ? pgConfig.customColor : null"
+        [attr.text-color]="pgConfig.useCustomColor ? pgConfig.textColor : null"
+        [attr.elevation]="pgConfig.elevation"
+        [attr.offset]="pgConfig.offset"
+        [attr.transition-duration]="pgConfig.transitionDuration"
+        [attr.transition-timing]="pgConfig.transitionTiming"
+        [attr.arrow-size]="pgConfig.arrowSize"
+        [attr.track-mouse]="pgConfig.trackMouse ? '' : null"
+        [attr.open-at-mouse-position]="pgConfig.openAtMousePosition ? '' : null"
+        [attr.auto-shift]="pgConfig.autoShift ? '' : null"
+        [attr.portal]="pgConfig.portal ? '' : null"
       >
         <ui-button slot="target" class="playground-target-btn">
           <i [class]="pgConfig.targetIcon"></i>
@@ -250,4 +247,11 @@
       </app-tooltip>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>
+

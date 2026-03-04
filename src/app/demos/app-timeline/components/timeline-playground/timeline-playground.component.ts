@@ -1,32 +1,40 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-timeline-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-playground.component.html',
-
   styleUrl: './timeline-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TimelinePlaygroundComponent {
-  pgConfig = {
-    orientation: 'vertical',
-    align: 'left',
-    showOpposite: true,
-    customMarker: false,
-  };
+export class TimelinePlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'layout', title: 'Layout Properties', icon: '📏' },
+    { id: 'content', title: 'Content Options', icon: '📦' },
+  ]);
+
+  defaultOpen = JSON.stringify(['layout', 'content']);
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  alignOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+    { label: 'Alternate', value: 'alternate' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+  ];
 
   events = [
     {
@@ -60,20 +68,22 @@ export class TimelinePlaygroundComponent {
   ];
 
   valueJson = JSON.stringify(this.events);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      orientation: 'vertical',
+      align: 'left',
+      showOpposite: true,
+      customMarker: false,
+    };
   }
 
   updateConfig() {
@@ -88,21 +98,13 @@ export class TimelinePlaygroundComponent {
     code += '  </ng-template>\n';
     code += '</ui-timeline>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      orientation: 'vertical',
-      align: 'left',
-      showOpposite: true,
-      customMarker: false,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

@@ -1,7 +1,7 @@
 ﻿<app-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-layout" class="control-grid" style="padding: 16px">
@@ -21,15 +21,6 @@
         max="10"
         [(ngModel)]="pgConfig.max"
         (ngModelChange)="updateConfig()"
-        style="
-          width: 100%;
-          height: 36px;
-          border-radius: 8px;
-          border: 1px solid var(--border-color);
-          background: var(--surface-1);
-          color: var(--text-primary);
-          padding: 0 12px;
-        "
       ></ui-input>
     </div>
   </div>
@@ -47,15 +38,8 @@
 
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      background: var(--bg-secondary);
-      border-radius: 12px;
-    "
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
   >
     <ui-avatar-group
       #avatarGroupElement
@@ -70,4 +54,10 @@
       <ui-avatar label="GH" [attr.size]="pgConfig.size" [attr.shape]="pgConfig.shape"></ui-avatar>
     </ui-avatar-group>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

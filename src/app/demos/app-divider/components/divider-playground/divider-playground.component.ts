@@ -1,52 +1,37 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
+  ViewEncapsulation,
   ViewChild,
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-divider-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './divider-playground.component.html',
-
   styleUrl: './divider-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class DividerPlaygroundComponent implements AfterViewInit {
-  @ViewChild('divider') divider!: ElementRef;
-  pgConfig = {
-    text: 'OR',
-    icon: '',
-    badge: '',
-    variant: 'solid',
-    size: 'md',
-    orientation: 'horizontal',
-    pattern: 'none',
-    shape: 'none',
-    loading: false,
-  };
+export class DividerPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
-  accordionDefaultOpen = JSON.stringify(['config']);
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'style', title: 'Visual Style', icon: '🎨' },
+    { id: 'special', title: 'Special Effects', icon: '✨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global']);
 
   variantOptions = [
     { label: 'Solid', value: 'solid' },
@@ -83,46 +68,16 @@ export class DividerPlaygroundComponent implements AfterViewInit {
     { label: 'Arrow', value: 'arrow' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.divider) return '';
-
-    return generatePlaygroundCode(this.divider.nativeElement as Element, 'ui-divider');
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       text: 'OR',
       icon: '',
       badge: '',
@@ -133,7 +88,18 @@ export class DividerPlaygroundComponent implements AfterViewInit {
       shape: 'none',
       loading: false,
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      this.updateConfigFromDom(this.demoElement, 'ui-divider');
+    }, 50);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

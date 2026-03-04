@@ -1,27 +1,16 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-timeline-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-playground.component.html',
   styleUrl: './timeline-playground.component.scss',
 })
-export class TimelinePlaygroundComponent implements OnInit {
+export class TimelinePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     orientation: 'vertical',
@@ -81,13 +70,6 @@ export class TimelinePlaygroundComponent implements OnInit {
     },
   ]);
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-
-  ngOnInit() {
-    this.updateConfig();
-  }
-
   updateConfig() {
     let code = `<app-timeline\n`;
     if (this.pgConfig.orientation !== 'vertical')
@@ -110,20 +92,10 @@ export class TimelinePlaygroundComponent implements OnInit {
     code += `></app-timeline>`;
 
     this.generatedCode.set(code);
-  }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
+    this.refreshCode();
   }
 
   onItemClick(event: any) {
     this.logEvent(`Item clicked: ${event.detail.title}`);
   }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  jsonOptions = (opts: any) => JSON.stringify(opts);
 }

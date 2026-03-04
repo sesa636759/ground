@@ -1,8 +1,10 @@
-﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
@@ -78,55 +80,49 @@
       </div>
     </div>
 
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.showTooltip"
           (ngModelChange)="updateConfig()"
-          label="Show Tooltip"
         ></ui-checkbox>
+        Show Tooltip
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.showIndicator"
           (ngModelChange)="updateConfig()"
-          label="Show Indicator"
         ></ui-checkbox>
+        Show Indicator
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.showProgress"
           (ngModelChange)="updateConfig()"
-          label="Show Progress"
         ></ui-checkbox>
+        Show Progress
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.showNumbers"
           (ngModelChange)="updateConfig()"
-          label="Show Numbers"
         ></ui-checkbox>
+        Show Numbers
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.sticky"
-          (ngModelChange)="updateConfig()"
-          label="Sticky"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Sticky
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           [(ngModel)]="pgConfig.smoothScroll"
           (ngModelChange)="updateConfig()"
-          label="Smooth Scroll"
         ></ui-checkbox>
+        Smooth Scroll
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.affix"
-          (ngModelChange)="updateConfig()"
-          label="Affix"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.affix" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Affix
       </label>
     </div>
   </div>
@@ -145,9 +141,9 @@
           [attr.alignment]="pgConfig.alignment"
           [attr.size]="pgConfig.size"
           [attr.theme]="pgConfig.theme"
-          [attr.show-tooltip]="pgConfig.showTooltip"
-          [attr.show-indicator]="pgConfig.showIndicator"
-          [attr.show-progress]="pgConfig.showProgress"
+          [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
+          [attr.show-indicator]="pgConfig.showIndicator ? '' : null"
+          [attr.show-progress]="pgConfig.showProgress ? '' : null"
           [attr.show-numbers]="pgConfig.showNumbers ? '' : null"
           [attr.number-style]="pgConfig.numberStyle"
           [attr.sticky]="pgConfig.sticky ? '' : null"
@@ -214,18 +210,10 @@
     </div>
   </div>
 
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      label="Generated Code"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
-
   <app-playground-event-log
+    events
     [logs]="eventLog()"
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
+

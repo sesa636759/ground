@@ -1,7 +1,7 @@
 ﻿<app-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCodeSignal()"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-layout" class="control-grid" style="padding: 16px">
@@ -64,7 +64,7 @@
       "
     >
       <ui-smart-stepper
-        #stepperElement
+        #demoElement
         [attr.orientation]="pgConfig.orientation"
         [attr.theme]="pgConfig.theme"
         [attr.show-icons]="pgConfig.showIcons ? '' : null"
@@ -112,4 +112,10 @@
       </ui-smart-stepper>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

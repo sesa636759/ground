@@ -1,37 +1,23 @@
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef,
-  AfterViewInit,
+  ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-snackbar-playground',
   standalone: true,
-  imports: [
-    UiDropdownValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './snackbar-playground.component.html',
-
   styleUrl: './snackbar-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SnackbarPlaygroundComponent implements AfterViewInit {
+export class SnackbarPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('snackbarElement') snackbarElement!: ElementRef;
 
   pgConfig = {
@@ -50,8 +36,8 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
   };
 
   pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'notification', title: 'Notification Settings', icon: '??' },
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'notification', title: 'Notification Settings', icon: '🔔' },
   ]);
 
   accordionDefaultOpen = JSON.stringify(['global']);
@@ -88,64 +74,38 @@ export class SnackbarPlaygroundComponent implements AfterViewInit {
     { label: 'Error', value: 'error' },
   ];
 
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.snackbarElement) return '';
-    let code = generatePlaygroundCode(this.snackbarElement.nativeElement as Element, 'ui-snackbar');
-    code += `\n\n/* Usage in TS */
-const snackbar = document.querySelector('ui-snackbar');
-snackbar.add({
-  type: '${this.notiConfig.type}',
-  title: '${this.notiConfig.title}',
-  message: '${this.notiConfig.message}',
-  duration: ${this.notiConfig.duration}
-});`;
-    return code;
+  constructor() {
+    super();
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
+      let code = this.getCleanFormattedDom(this.snackbarElement, 'ui-snackbar');
+      code += `\n/* Usage in TS */\nconst snackbar = document.querySelector('ui-snackbar');\nsnackbar.add({\n  type: '${this.notiConfig.type}',\n  title: '${this.notiConfig.title}',\n  message: '${this.notiConfig.message}',\n  duration: ${this.notiConfig.duration}\n});`;
+      this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
   async showSnackbar() {
-    const el = this.snackbarElement.nativeElement;
+    const el = this.snackbarElement?.nativeElement;
     if (el && typeof el.add === 'function') {
       await el.add({ ...this.notiConfig });
+      this.logEvent(`Showed ${this.notiConfig.type} snackbar`);
+    } else {
+      console.warn('Snackbar component not ready or add method missing');
     }
   }
 
   async clearAll() {
-    const el = this.snackbarElement.nativeElement;
+    const el = this.snackbarElement?.nativeElement;
     if (el && typeof el.closeAll === 'function') {
       await el.closeAll();
+      this.logEvent('Cleared all snackbars');
     }
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       position: 'top-right',
       maxVisible: 5,
@@ -160,6 +120,6 @@ snackbar.add({
       duration: 5000,
     };
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

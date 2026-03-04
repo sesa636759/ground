@@ -1,33 +1,17 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tooltip-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tooltip-playground.component.html',
   styleUrl: './tooltip-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TooltipPlaygroundComponent implements OnInit {
+export class TooltipPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     content: 'Tooltip Content',
@@ -60,23 +44,12 @@ export class TooltipPlaygroundComponent implements OnInit {
     useCustomColor: false,
   };
 
-  generatedCodeSignal = signal('');
-  showCode = true;
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'behavior', title: 'Behavioral States', icon: '⚡' },
+  ]);
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   updateConfig() {
     let code = `<app-tooltip\n`;
@@ -120,15 +93,11 @@ export class TooltipPlaygroundComponent implements OnInit {
     code += `  </ui-button>\n`;
     code += `</app-tooltip>`;
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       content: 'Tooltip Content',
       position: 'top',
@@ -160,5 +129,6 @@ export class TooltipPlaygroundComponent implements OnInit {
       useCustomColor: false,
     };
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

@@ -1,43 +1,36 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-range-slider-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './range-slider-playground.component.html',
   styleUrl: './range-slider-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class RangeSliderPlaygroundComponent implements OnInit {
+export class RangeSliderPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
 
   defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-
-  pgConfig = {
-    min: 0,
-    max: 100,
-    step: 1,
-    orientation: 'horizontal',
-    range: true,
-    showValue: true,
-  };
 
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -45,12 +38,24 @@ export class RangeSliderPlaygroundComponent implements OnInit {
   ];
 
   currentValue: any = [20, 80];
-  generatedCodeSignal = signal('');
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      min: 0,
+      max: 100,
+      step: 1,
+      orientation: 'horizontal',
+      range: true,
+      showValue: true,
+    };
   }
 
   updateConfig() {
@@ -63,28 +68,20 @@ export class RangeSliderPlaygroundComponent implements OnInit {
     code += `  [value]="${JSON.stringify(this.currentValue)}"\n`;
     code += '></ui-range-slider>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onValueChange(event: any) {
     this.currentValue = event.detail.value;
     this.updateConfig();
+    this.logEvent(`Value changed: ${JSON.stringify(this.currentValue)}`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      min: 0,
-      max: 100,
-      step: 1,
-      orientation: 'horizontal',
-      range: true,
-      showValue: true,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.currentValue = [20, 80];
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

@@ -1,33 +1,17 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-resizable-panel-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './resizable-panel-playground.component.html',
   styleUrl: './resizable-panel-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ResizablePanelPlaygroundComponent implements OnInit {
+export class ResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     direction: 'horizontal',
@@ -45,29 +29,19 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     collapsible3: true,
   };
 
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+
+  accordionDefaultOpen = JSON.stringify(['global']);
+
   panelsData = [
     { id: 'panel-1', size: 30, minSize: 15, maxSize: 50, collapsible: true },
     { id: 'panel-2', size: 40, minSize: 20 },
     { id: 'panel-3', size: 30, minSize: 15, maxSize: 50, collapsible: true },
   ];
 
-  eventLog = signal<string[]>([]);
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
+  constructor() {
+    super();
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -90,16 +64,10 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     code += `  <div slot="panel-3">Panel 3 Content</div>\n`;
     code += `</app-resizable-panel>`;
 
-    this.generatedCodeSignal.set(code);
-    // Trigger CDR/Re-render if needed (In Angular, inputs usually handle this)
-    // We recreate the array to trigger change detection for [panels]
+    this.generatedCode.set(code);
+    // Recreate array to trigger change detection
     this.panelsData = [...this.panelsData];
     this.refreshCode();
-  }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
   }
 
   onPanelResize(event: any) {
@@ -113,11 +81,7 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     );
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       direction: 'horizontal',
       theme: 'light',
@@ -137,4 +101,3 @@ export class ResizablePanelPlaygroundComponent implements OnInit {
     this.eventLog.set([]);
   }
 }
-

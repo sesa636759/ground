@@ -1,42 +1,34 @@
 ﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
-  [code]="generatedCodeSignal()"
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Structure</h3>
-        <div class="control-group">
-          <label>Logo Text</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.logoText"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="sticky"
-            [(ngModel)]="pgConfig.sticky"
-            (ngModelChange)="updateConfig()"
-            label="Sticky Position"
-          ></ui-checkbox>
-        </div>
-      </div>
+  <div slot="content-structure" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Logo Text</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.logoText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Sticky Position
+      </label>
+    </div>
+  </div>
 
-      <div class="control-section">
-        <h3>Visuals</h3>
-        <div class="control-group">
-          <label>Height (px)</label>
-          <ui-input
-            type="number"
-            [(ngModel)]="pgConfig.height"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-      </div>
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Height (px)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.height"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
@@ -52,19 +44,56 @@
       padding: 40px;
     "
   >
-    <div class="top-bar-container" style="width: 100%">
+    <div
+      class="top-bar-container"
+      style="
+        width: 100%;
+        max-width: 600px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--surface-1);
+      "
+    >
       <ui-top-bar [attr.sticky]="pgConfig.sticky ? '' : null" [style.height.px]="pgConfig.height">
-        <div slot="start" style="padding: 0 20px; font-weight: 700">
+        <div
+          slot="start"
+          style="
+            padding: 0 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          "
+        >
           {{ pgConfig.logoText }}
         </div>
-        <div slot="end" style="padding: 0 20px; display: flex; gap: 16px; align-items: center">
+        <div
+          slot="end"
+          style="padding: 0 20px; display: flex; gap: 16px; align-items: center; height: 100%"
+        >
           <span>Alerts</span>
           <span>Profile</span>
         </div>
       </ui-top-bar>
     </div>
-    <div class="content-placeholder">
+    <div
+      class="content-placeholder"
+      style="
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        color: var(--text-secondary);
+        padding: 24px;
+      "
+    >
       <p>Body content goes here. If sticky is enabled, the bar will stay at the top on scroll.</p>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

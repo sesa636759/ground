@@ -1,4 +1,9 @@
-﻿<app-playground [items]="pgAccordionItems" [defaultOpen]="defaultOpen">
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
   <!-- Accordion Slots -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -466,20 +471,9 @@
     </ui-input>
   </div>
 
-  <div events>
-    <div class="event-log" style="word-break: break-all; margin-top: 16px">
-      <strong>Event Out:</strong> {{ eventMessage() }}
-    </div>
-  </div>
-
-  <!-- Code -->
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

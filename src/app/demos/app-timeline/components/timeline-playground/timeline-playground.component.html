@@ -1,65 +1,68 @@
 ﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
-  [code]="generatedCodeSignal()"
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Orientation</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.orientation"
-            (ngModelChange)="updateConfig()"
-            [options]="[
-              { label: 'Horizontal', value: 'horizontal' },
-              { label: 'Vertical', value: 'vertical' },
-            ]"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Alignment</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.align"
-            (ngModelChange)="updateConfig()"
-            [options]="[
-              { label: 'Left', value: 'left' },
-              { label: 'Right', value: 'right' },
-              { label: 'Alternate', value: 'alternate' },
-            ]"
-          ></ui-dropdown>
-        </div>
-      </div>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+        [options]="orientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Alignment</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.align"
+        (ngModelChange)="updateConfig()"
+        [options]="alignOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
 
-      <div class="control-section">
-        <h3>Content</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="opposite"
-            [(ngModel)]="pgConfig.showOpposite"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="opposite">Show Opposite Side</label>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="customMarker"
-            [(ngModel)]="pgConfig.customMarker"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="customMarker">Custom Markers</label>
-        </div>
-      </div>
+  <div slot="content-content" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showOpposite"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Opposite Side
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.customMarker"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Custom Markers
+      </label>
     </div>
   </div>
 
   <div
     preview
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    "
   >
-    <div class="timeline-container">
+    <div
+      class="timeline-container"
+      style="
+        width: 100%;
+        max-width: 600px;
+        background: var(--surface-1);
+        padding: 24px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      "
+    >
       <ui-timeline
         [attr.orientation]="pgConfig.orientation"
         [attr.align]="pgConfig.align"
@@ -67,7 +70,7 @@
       >
         <ng-template let-item>
           <div style="font-weight: 600">{{ item.status }}</div>
-          <div style="font-size: 0.85rem; color: #64748b">{{ item.date }}</div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary)">{{ item.date }}</div>
           <div *ngIf="pgConfig.showOpposite" slot="opposite">{{ item.description }}</div>
           <div
             *ngIf="pgConfig.customMarker"
@@ -79,4 +82,10 @@
       </ui-timeline>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

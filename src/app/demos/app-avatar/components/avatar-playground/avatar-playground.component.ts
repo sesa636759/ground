@@ -1,21 +1,16 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-playground.component.html',
-
   styleUrl: './avatar-playground.component.scss',
 })
-export class AvatarPlaygroundComponent {
+export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
   pgConfig = {
     name: 'John Doe',
     src: 'https://i.pravatar.cc/150?u=playground',
@@ -26,6 +21,14 @@ export class AvatarPlaygroundComponent {
     badge: '',
     badgeColor: '',
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'profile', title: 'Profile Info', icon: '👤' },
+    { id: 'style', title: 'Visual Styles', icon: '🎨' },
+    { id: 'status', title: 'Status & Badges', icon: '🔔' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['profile']);
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },
@@ -42,12 +45,6 @@ export class AvatarPlaygroundComponent {
     { label: 'Offline', value: 'offline' },
   ];
 
-  generatedCodeSignal = signal('');
-
-  constructor() {
-    this.updateConfig();
-  }
-
   updateConfig() {
     let code = '<ui-avatar\n';
     if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
@@ -60,14 +57,11 @@ export class AvatarPlaygroundComponent {
     if (this.pgConfig.badgeColor) code += `  badge-color="${this.pgConfig.badgeColor}"\n`;
     code += '></ui-avatar>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       name: 'John Doe',
       src: 'https://i.pravatar.cc/150?u=playground',
@@ -79,6 +73,6 @@ export class AvatarPlaygroundComponent {
       badgeColor: '',
     };
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

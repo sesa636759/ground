@@ -1,7 +1,7 @@
 ﻿<app-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCodeSignal()"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-features" class="control-grid" style="padding: 16px">
@@ -56,11 +56,18 @@
       "
     >
       <ui-tree-list
-        #treeElement
+        #demoElement
         [attr.selectable]="pgConfig.selectable ? '' : null"
         [model]="modelJson"
+        (selectionChange)="onTreeSelection($event)"
       >
       </ui-tree-list>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

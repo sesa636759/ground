@@ -1,62 +1,36 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   ViewEncapsulation,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-card-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './card-playground.component.html',
-
   styleUrl: './card-playground.component.scss',
 })
-export class CardPlaygroundComponent implements AfterViewInit {
-  @ViewChild('cardElement') cardElement!: ElementRef;
+export class CardPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgConfig = {
-    variant: 'elevated',
-    hoverable: true,
-    flippable: false,
-    loading: false,
-    showMenu: true,
-    borderRadius: '16px',
-    width: '340px',
-    closable: false,
-    selectable: false,
-    collapsible: false,
-    glass: false,
-    layout: 'vertical',
-    size: 'medium',
-    type: 'default',
-    ribbon: '',
-    ribbonColor: 'blue',
-  };
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
-  accordionDefaultOpen = JSON.stringify(['config']);
+  pgAccordionItems = JSON.stringify([
+    { id: 'appearance', title: 'Appearance', icon: '🎨' },
+    { id: 'features', title: 'Features', icon: '✨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['appearance']);
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -73,42 +47,17 @@ export class CardPlaygroundComponent implements AfterViewInit {
   ];
 
   menuJson = JSON.stringify(this.menuItems);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.cardElement) return '';
-    return generatePlaygroundCode(this.cardElement.nativeElement as Element, 'ui-card');
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       variant: 'elevated',
       hoverable: true,
       flippable: false,
@@ -126,7 +75,21 @@ export class CardPlaygroundComponent implements AfterViewInit {
       ribbon: '',
       ribbonColor: 'blue',
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-card');
+      code = code.replace('></ui-card>', '\n  [menuItems]="menuItems"\n></ui-card>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

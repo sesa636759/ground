@@ -1,38 +1,37 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-line-chart-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    UiDropdownValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './line-chart-playground.component.html',
-
   styleUrl: './line-chart-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class LineChartPlaygroundComponent {
-  pgConfig = {
-    dataset: 'monthly',
-    strokeWidth: 2,
-    width: 600,
-    height: 300,
-    showLegend: true,
-    showGrid: true,
-    showMarkers: true,
-    enableAnimation: true,
-  };
+export class LineChartPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'data', title: 'Data', icon: '📐' },
+    { id: 'appearance', title: 'Appearance', icon: '🎨' },
+    { id: 'features', title: 'Features', icon: '✨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['data']);
 
   datasetOptions = [
     { label: 'Monthly Revenue', value: 'monthly' },
@@ -128,10 +127,26 @@ export class LineChartPlaygroundComponent {
   activeTitle = 'Monthly Revenue';
   activeXLabel = 'Month';
   activeYLabel = 'Revenue ($k)';
-  generatedCode = signal('');
 
   constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      dataset: 'monthly',
+      strokeWidth: 2,
+      width: 600,
+      height: 300,
+      showLegend: true,
+      showGrid: true,
+      showMarkers: true,
+      enableAnimation: true,
+    };
   }
 
   onDatasetChange() {
@@ -144,43 +159,34 @@ export class LineChartPlaygroundComponent {
   }
 
   updateConfig() {
-    const d = this.pgConfig;
-    const attrs: string[] = [
-      `chart-title="${this.activeTitle}"`,
-      `x-axis-label="${this.activeXLabel}"`,
-      `y-axis-label="${this.activeYLabel}"`,
-    ];
-    if (d.showLegend) attrs.push('show-legend');
-    if (d.showGrid) attrs.push('show-grid');
-    if (d.showMarkers) attrs.push('show-markers');
-    if (d.enableAnimation) attrs.push('enable-animation');
-    if (d.strokeWidth !== 2) attrs.push(`stroke-width="${d.strokeWidth}"`);
-    if (d.width !== 600) attrs.push(`width="${d.width}"`);
-    if (d.height !== 300) attrs.push(`height="${d.height}"`);
-    attrs.push('[data]="seriesData"');
+    setTimeout(() => {
+      const d = this.pgConfig;
+      const attrs: string[] = [
+        `chart-title="${this.activeTitle}"`,
+        `x-axis-label="${this.activeXLabel}"`,
+        `y-axis-label="${this.activeYLabel}"`,
+      ];
+      if (d.showLegend) attrs.push('show-legend');
+      if (d.showGrid) attrs.push('show-grid');
+      if (d.showMarkers) attrs.push('show-markers');
+      if (d.enableAnimation) attrs.push('enable-animation');
+      if (d.strokeWidth !== 2) attrs.push(`stroke-width="${d.strokeWidth}"`);
+      if (d.width !== 600) attrs.push(`width="${d.width}"`);
+      if (d.height !== 300) attrs.push(`height="${d.height}"`);
+      attrs.push('[data]="chartData"');
 
-    this.generatedCode.set('<chart-line\n  ' + attrs.join('\n  ') + '\n></chart-line>');
+      this.generatedCode.set('<chart-line\n  ' + attrs.join('\n  ') + '\n></chart-line>');
+      this.refreshCode();
+    }, 50);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      dataset: 'monthly',
-      strokeWidth: 2,
-      width: 600,
-      height: 300,
-      showLegend: true,
-      showGrid: true,
-      showMarkers: true,
-      enableAnimation: true,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.chartData = this.monthlyData;
     this.activeTitle = 'Monthly Revenue';
     this.activeXLabel = 'Month';
     this.activeYLabel = 'Revenue ($k)';
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

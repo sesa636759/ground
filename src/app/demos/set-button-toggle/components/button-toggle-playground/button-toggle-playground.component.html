@@ -1,8 +1,10 @@
-﻿<app-playground
-  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  [defaultOpen]='["config"]'
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Mode</label>
@@ -148,7 +150,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
       </label>
@@ -200,64 +202,54 @@
   </div>
 
   <div preview>
-    <div class="preview-stage">
+    <div class="preview-stage h-scrollable" style="padding: 24px">
       <app-button-toggle-group
         #pgGroup
-        [mode]="pgConfig.mode"
-        [orientation]="pgConfig.orientation"
-        [size]="pgConfig.size"
-        [color]="pgConfig.color"
-        [variant]="pgConfig.variant"
-        [shape]="pgConfig.shape"
-        [icon-position]="pgConfig.iconPosition"
-        [display-mode]="pgConfig.displayMode"
-        [label]="pgConfig.label"
-        [name]="pgConfig.name"
-        [value]="pgConfig.value"
-        [helper-text]="pgConfig.helperText"
-        [full-width]="pgConfig.fullWidth"
-        [keep-button-label]="pgConfig.keepButtonLabel"
-        [custom-content]="pgConfig.customContent"
-        [button-action-label]="pgConfig.buttonActionLabel"
-        [disabled]="pgConfig.disabled"
-        [readonly]="pgConfig.readonly"
-        [loading]="pgConfig.loading"
-        [required]="pgConfig.required"
-        [invalid]="pgConfig.invalid"
-        [error-message]="pgConfig.errorMessage"
+        [attr.mode]="pgConfig.mode"
+        [attr.orientation]="pgConfig.orientation"
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.variant]="pgConfig.variant"
+        [attr.shape]="pgConfig.shape"
+        [attr.icon-position]="pgConfig.iconPosition"
+        [attr.display-mode]="pgConfig.displayMode"
+        [attr.label]="pgConfig.label"
+        [attr.name]="pgConfig.name"
+        [attr.value]="pgConfig.value"
+        [attr.helper-text]="pgConfig.helperText"
+        [attr.full-width]="pgConfig.fullWidth ? '' : null"
+        [attr.keep-button-label]="pgConfig.keepButtonLabel ? '' : null"
+        [attr.custom-content]="pgConfig.customContent ? '' : null"
+        [attr.button-action-label]="pgConfig.buttonActionLabel"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.invalid]="pgConfig.invalid ? '' : null"
+        [attr.error-message]="pgConfig.errorMessage"
         [options]="jsonOptions(playgroundOptions)"
-        [multi-select]="pgConfig.multiSelect"
-        [batch-actions]="pgConfig.batchActions"
-        [search-enabled]="pgConfig.searchEnabled"
-        [export-enabled]="pgConfig.exportEnabled"
-        [import-enabled]="pgConfig.importEnabled"
-        [analytics-enabled]="pgConfig.analyticsEnabled"
-        [advanced-theme]="pgConfig.advancedTheme"
+        [attr.multi-select]="pgConfig.multiSelect ? '' : null"
+        [attr.batch-actions]="pgConfig.batchActions ? '' : null"
+        [attr.search-enabled]="pgConfig.searchEnabled ? '' : null"
+        [attr.export-enabled]="pgConfig.exportEnabled ? '' : null"
+        [attr.import-enabled]="pgConfig.importEnabled ? '' : null"
+        [attr.analytics-enabled]="pgConfig.analyticsEnabled ? '' : null"
+        [attr.advanced-theme]="pgConfig.advancedTheme"
         (buttonToggleGroupChange)="onPlaygroundChange($event)"
         (buttonToggleGroupAction)="onPlaygroundAction($event)"
       >
         <div *ngIf="pgConfig.customContent" slot="dropdown-content" class="custom-slot-content">
           <p>Custom Playground Content</p>
           <ui-input type="text" placeholder="Enter something..." />
-          <div class="slot-actions">
-            <ui-button class="btn-confirm" label="Confirm"></ui-button>
-            <ui-button class="btn-cancel" label="Cancel"></ui-button>
-          </div>
         </div>
       </app-button-toggle-group>
     </div>
   </div>
 
-  <div events class="event-log">
-    <strong>Event Log:</strong>
-    <span [style.color]="eventColor()">{{ eventMessage() }}</span>
-  </div>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    [label]="'Generated Code'"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>
+

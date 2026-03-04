@@ -1,7 +1,7 @@
 ﻿<app-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-layout" class="control-grid" style="padding: 16px">
@@ -60,6 +60,7 @@
 
   <div
     preview
+    class="preview-stage"
     style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
   >
     <div
@@ -79,4 +80,10 @@
       ></ui-meter-group>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

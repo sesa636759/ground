@@ -1,33 +1,16 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-chart-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './chart-playground.component.html',
-
   styleUrl: './chart-playground.component.scss',
 })
-export class ChartPlaygroundComponent implements AfterViewInit {
+export class ChartPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('chart') chart!: ElementRef;
   pgConfig = {
     type: 'line',
@@ -55,44 +38,12 @@ export class ChartPlaygroundComponent implements AfterViewInit {
   };
 
   chartDataJson = JSON.stringify(this.chartData);
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.chart) return '';
-    return generatePlaygroundCode(this.chart.nativeElement as Element, 'ui-chart');
-  }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.chart, 'ui-chart');
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = {
       type: 'line',
       showLegend: true,

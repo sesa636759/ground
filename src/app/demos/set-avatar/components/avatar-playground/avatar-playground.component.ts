@@ -1,34 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-playground.component.html',
   styleUrl: './avatar-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class AvatarPlaygroundComponent implements OnInit {
+export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     src: '',
     name: 'John Doe',
@@ -68,12 +52,13 @@ export class AvatarPlaygroundComponent implements OnInit {
     storySegments: '',
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'status', title: 'Status & Badges', icon: '⚡' },
+    { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
+  ]);
 
-  ngOnInit() {
-    this.updateConfig();
-  }
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   updateConfig() {
     let code = `<app-avatar\n`;
@@ -135,6 +120,7 @@ export class AvatarPlaygroundComponent implements OnInit {
     code += `></app-avatar>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onUpload(_event: any) {
@@ -142,17 +128,49 @@ export class AvatarPlaygroundComponent implements OnInit {
   }
 
   onAction(event: any) {
-    // Generic catch-all if other events exist
     this.logEvent(`Event: ${event.type}`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      src: '',
+      name: 'John Doe',
+      size: '64px',
+      shape: 'circle',
+      bgColor: '',
+      textColor: '',
+      icon: '',
+      tooltipText: '',
+      showStatus: false,
+      status: 'online',
+      statusPosition: 'bottom-right',
+      badge: '',
+      badgeColor: '',
+      badgePosition: 'top-right',
+      verified: false,
+      loading: false,
+      editable: false,
+      autoColor: false,
+      gradient: false,
+      gradientColors: '',
+      animation: 'none',
+      border: '',
+      ringColor: '',
+      fit: 'cover',
+      clickable: false,
+      lazyLoad: false,
+      storyRing: false,
+      storySeen: false,
+      activeSpeaker: false,
+      statusPulse: false,
+      smartInitials: false,
+      skeleton: false,
+      shimmer: false,
+      glassmorphism: false,
+      effect3d: false,
+      storySegments: '',
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

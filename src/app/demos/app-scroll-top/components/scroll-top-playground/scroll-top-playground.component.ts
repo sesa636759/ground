@@ -1,46 +1,57 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
+
 @Component({
   selector: 'app-scroll-top-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './scroll-top-playground.component.html',
-
   styleUrl: './scroll-top-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ScrollTopPlaygroundComponent {
-  pgConfig = {
-    threshold: 200,
-    icon: '??',
-    shape: 'circle',
-    speed: 400,
-  };
+export class ScrollTopPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
+    { id: 'visuals', title: 'Visuals', icon: '🎨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['behavior']);
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },
     { label: 'Square', value: 'square' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
+  constructor() {
+    super();
+  }
 
-  constructor(private cd: ChangeDetectorRef) {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      threshold: 200,
+      icon: '??',
+      shape: 'circle',
+      speed: 400,
+    };
   }
 
   updateConfig() {
@@ -51,22 +62,13 @@ export class ScrollTopPlaygroundComponent {
     code += `  shape="${this.pgConfig.shape}"\n`;
     code += '></ui-scroll-top>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      threshold: 200,
-      icon: '??',
-      shape: 'circle',
-      speed: 400,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

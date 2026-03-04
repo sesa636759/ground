@@ -1,39 +1,36 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-aside-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './aside-playground.component.html',
-
   styleUrl: './aside-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class AsidePlaygroundComponent {
-  pgConfig = {
-    open: false,
-    direction: 'right',
-    size: '400px',
-    variant: 'default',
-    closeable: true,
-    closeOnOverlayClick: true,
-    resizable: true,
-    backdropBlur: '0',
-    loading: false,
-  };
+export class AsidePlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
+    { id: 'states', title: 'Behavioral States', icon: '⚡' },
+  ]);
+
+  defaultOpen = JSON.stringify(['global', 'states']);
 
   directionOptions = [
     { label: 'Right', value: 'right' },
@@ -47,25 +44,31 @@ export class AsidePlaygroundComponent {
     { label: 'Glass', value: 'glass' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
+  constructor() {
+    super();
+  }
 
-  constructor(private cd: ChangeDetectorRef) {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      open: false,
+      direction: 'right',
+      size: '400px',
+      variant: 'default',
+      closeable: true,
+      closeOnOverlayClick: true,
+      resizable: true,
+      backdropBlur: '0',
+      loading: false,
+    };
   }
 
   updateConfig() {
-    let code = '<aside-panel\n';
-    code += `  [open]="isOpen"\n`;
+    let code = '<ui-aside\n';
+    code += `  [open]="${this.pgConfig.open}"\n`;
     code += `  direction="${this.pgConfig.direction}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
@@ -79,29 +82,21 @@ export class AsidePlaygroundComponent {
     code += '  <div slot="header"><h3>Header Content</h3></div>\n';
     code += '  <div slot="content">Main body content goes here...</div>\n';
     code += '  <div slot="footer">Footer actions</div>\n';
-    code += '</aside-panel>';
+    code += '</ui-aside>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      open: false,
-      direction: 'right',
-      size: '400px',
-      variant: 'default',
-      closeable: true,
-      closeOnOverlayClick: true,
-      resizable: true,
-      backdropBlur: '0',
-      loading: false,
-    };
+  onAsideChange(event: any) {
+    this.pgConfig.open = event.detail?.open || false;
+    this.logEvent(`Aside open state: ${this.pgConfig.open}`);
     this.updateConfig();
   }
-}
 
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
+    this.updateConfig();
+    this.eventLog.set([]);
+  }
+}

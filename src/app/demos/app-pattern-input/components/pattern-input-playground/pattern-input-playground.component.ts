@@ -1,40 +1,28 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-pattern-input-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pattern-input-playground.component.html',
   styleUrl: './pattern-input-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
+export class PatternInputPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
@@ -42,25 +30,7 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
     { id: 'labels', title: 'Labels & Text', icon: '🏷️' },
   ]);
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-
-  pgConfig = {
-    pattern: '(999) 999-9999',
-    placeholder: 'Enter phone number',
-    label: 'Phone Number',
-    size: 'md',
-    maskChar: '9',
-    maxLength: 0,
-    helperText: '',
-    errorMessage: '',
-    disabled: false,
-    readonly: false,
-    required: false,
-    showValidation: true,
-    autoFormat: true,
-    showCounter: false,
-  };
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   sizeOptions = [
     { label: 'Small', value: 'sm' },
@@ -75,48 +45,12 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Custom: AAA-999', value: 'AAA-999' },
   ];
 
-  generatedCodeSignal = signal('');
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-pattern-input');
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       pattern: '(999) 999-9999',
       placeholder: 'Enter phone number',
       label: 'Phone Number',
@@ -132,7 +66,15 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
       autoFormat: true,
       showCounter: false,
     };
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.demoElement, 'ui-pattern-input');
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

@@ -1,43 +1,31 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-dialog-box-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dialog-box-playground.component.html',
   styleUrl: './dialog-box-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class DialogBoxPlaygroundComponent implements AfterViewInit {
-  @ViewChild('dialogBoxElement') dialogBoxElement!: ElementRef;
+export class DialogBoxPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgConfig = this.getDefaultConfig();
 
   visible = false;
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
 
   pgAccordionItems = JSON.stringify([
     { id: 'appearance', title: 'Appearance & Styles', icon: '🎨' },
@@ -45,7 +33,7 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
     { id: 'visibility', title: 'Header & Footer Controls', icon: '👁️' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['appearance']);
+  defaultOpen = JSON.stringify(['appearance']);
 
   sizeOptions = [
     { label: 'XS (320px)', value: 'xs' },
@@ -91,9 +79,11 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
     { label: 'Close', id: 'close', icon: 'x', variant: 'danger' },
   ]);
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
@@ -119,43 +109,33 @@ export class DialogBoxPlaygroundComponent implements AfterViewInit {
 
   openDialog() {
     this.visible = true;
+    this.logEvent('Opened dialog');
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.dialogBoxElement) return '';
-    const innerContent = `
-  <div style="padding: 20px">
-    <p>This is the content of the dialog.</p>
-  </div>`;
-    return generatePlaygroundCode(
-      this.dialogBoxElement.nativeElement as Element,
-      'ui-dialog-box',
-      innerContent,
-    );
+  closeDialog() {
+    this.visible = false;
+    this.logEvent('Closed dialog');
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
+      if (!this.demoElement) return;
+      const innerContent = `
+  <div style="padding: 20px">
+    <p>This is the content of the dialog.</p>
+  </div>`;
+      const code = this.getCleanFormattedDom(this.demoElement, 'ui-dialog-box').replace(
+        '></ui-dialog-box>',
+        `>\n${innerContent}\n</ui-dialog-box>`,
+      );
+      this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
+  override resetConfig() {
     this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

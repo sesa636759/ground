@@ -1,38 +1,26 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  AfterViewInit,
+  ViewEncapsulation,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef,
+  AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-anchor-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './anchor-playground.component.html',
   styleUrl: './anchor-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class AnchorPlaygroundComponent implements OnInit, AfterViewInit {
+export class AnchorPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('anchor') anchor!: ElementRef;
+
   // Playground State
   pgConfig = {
     mode: 'vertical',
@@ -52,6 +40,10 @@ export class AnchorPlaygroundComponent implements OnInit, AfterViewInit {
     smoothScroll: true,
     targetType: 'container', // 'window' or 'container'
   };
+
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+
+  accordionDefaultOpen = JSON.stringify(['global']);
 
   modeOptions = [
     { label: 'Vertical', value: 'vertical' },
@@ -103,53 +95,38 @@ export class AnchorPlaygroundComponent implements OnInit, AfterViewInit {
     { id: 'section-5', label: 'Examples', icon: 'fas fa-book', tooltip: 'See more' },
   ]);
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.anchor) return '';
-    return generatePlaygroundCode(this.anchor.nativeElement as Element, 'ui-anchor');
+    this.updateConfig();
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
+    this.updateConfigFromDom(this.anchor, 'ui-anchor');
   }
 
   onAnchorSelect(event: any) {
     this.logEvent(`Selected: ${event.detail.id}`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      mode: 'vertical',
+      position: 'left',
+      alignment: 'left',
+      size: 'medium',
+      theme: 'light',
+      scrollOffset: 80,
+      showTooltip: true,
+      showIndicator: true,
+      showProgress: false,
+      showNumbers: false,
+      numberStyle: 'numeric',
+      sticky: true,
+      affix: false,
+      affixOffset: 50,
+      smoothScroll: true,
+      targetType: 'container',
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

@@ -1,49 +1,35 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-breadcrumb-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './breadcrumb-playground.component.html',
-
   styleUrl: './breadcrumb-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class BreadcrumbPlaygroundComponent implements AfterViewInit {
-  @ViewChild('breadcrumb') breadcrumb!: ElementRef;
+export class BreadcrumbPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgConfig = {
-    separator: '/',
-    maxItems: 0,
-    size: 'md',
-    variant: 'default',
-    showHome: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
-  accordionDefaultOpen = JSON.stringify(['config']);
+  pgAccordionItems = JSON.stringify([
+    { id: 'config', title: 'Configuration', icon: '⚙️' },
+    { id: 'appearance', title: 'Appearance', icon: '🎨' },
+  ]);
+
+  defaultOpen = JSON.stringify(['config']);
 
   sizeOptions = [
     { label: 'Small', value: 'sm' },
@@ -65,49 +51,42 @@ export class BreadcrumbPlaygroundComponent implements AfterViewInit {
   ];
 
   itemsJson = JSON.stringify(this.items);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.breadcrumb) return '';
-    return generatePlaygroundCode(this.breadcrumb.nativeElement as Element, 'ui-breadcrumb');
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       separator: '/',
       maxItems: 0,
       size: 'md',
       variant: 'default',
       showHome: true,
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-breadcrumb');
+      code = code.replace('></ui-breadcrumb>', '\n  [items]="items"\n></ui-breadcrumb>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  onBreadcrumbClick(event: any) {
+    this.logEvent(`Breadcrumb clicked: ${event.detail?.label || event.detail}`);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

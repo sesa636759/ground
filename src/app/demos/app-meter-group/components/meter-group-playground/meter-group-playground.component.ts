@@ -1,53 +1,36 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-meter-group-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './meter-group-playground.component.html',
   styleUrl: './meter-group-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class MeterGroupPlaygroundComponent implements AfterViewInit {
-  @ViewChild('meterElement') meterElement!: ElementRef;
+export class MeterGroupPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgConfig = {
-    orientation: 'horizontal',
-    labelOrientation: 'horizontal',
-    labelPosition: 'end',
-    meterHeight: '12px',
-    showLabels: true,
-    showMarkers: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'layout', title: 'Layout', icon: '📏' },
     { id: 'visuals', title: 'Visuals', icon: '🎨' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  defaultOpen = JSON.stringify(['layout']);
 
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -72,45 +55,17 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
   ];
 
   valuesJson = JSON.stringify(this.values);
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.meterElement) return '';
-    let code = generatePlaygroundCode(this.meterElement.nativeElement as Element, 'ui-meter-group');
-    // Add values prop to code manually
-    code = code.replace('></ui-meter-group>', '\n  [values]="meterValues"\n></ui-meter-group>');
-    return code;
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       orientation: 'horizontal',
       labelOrientation: 'horizontal',
       labelPosition: 'end',
@@ -118,6 +73,21 @@ export class MeterGroupPlaygroundComponent implements AfterViewInit {
       showLabels: true,
       showMarkers: true,
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-meter-group');
+      code = code.replace('></ui-meter-group>', '\n  [values]="meterValues"\n></ui-meter-group>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

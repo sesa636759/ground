@@ -1,4 +1,4 @@
-﻿<app-playground
+<app-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
@@ -45,7 +45,7 @@
       ></ui-dropdown>
     </div>
 
-    <div class="checkbox-group" style="padding-top: 24px">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.centerMode" (ngModelChange)="updateConfig()" />
         Center Mode
@@ -89,7 +89,7 @@
       />
     </div>
 
-    <div class="checkbox-group" style="padding-top: 24px">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.autoplay" (ngModelChange)="updateConfig()" />
         Autoplay
@@ -207,4 +207,11 @@
       </app-carousel>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>
+

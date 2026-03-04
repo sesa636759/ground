@@ -1,47 +1,37 @@
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   ViewChild,
   ElementRef,
-  ChangeDetectorRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-context-menu-playground',
   standalone: true,
-  imports: [
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-playground.component.html',
   styleUrl: './context-menu-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ContextMenuPlaygroundComponent implements AfterViewInit {
-  @ViewChild('contextMenuElement') contextMenuElement!: ElementRef;
+export class ContextMenuPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
   @ViewChild('targetElement') targetElement!: ElementRef;
 
-  pgConfig = {
-    breakpoint: 960,
-    autoZIndex: true,
-    baseZIndex: 0,
-    theme: 'light',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
-    { id: 'settings', title: 'Menu Configuration', icon: '??' },
-    { id: 'visuals', title: 'Visual Styles', icon: '??' },
+    { id: 'settings', title: 'Menu Configuration', icon: '⚙️' },
+    { id: 'visuals', title: 'Visual Styles', icon: '🎨' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['settings']);
+  defaultOpen = JSON.stringify(['settings']);
 
   themeOptions = [
     { label: 'Light', value: 'light' },
@@ -50,64 +40,53 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
   ];
 
   model = [
-    { label: 'View Details', icon: '???', command: () => this.logAction('View') },
-    { label: 'Edit Entry', icon: '??', command: () => this.logAction('Edit') },
+    { label: 'View Details', icon: 'eye', command: () => this.logAction('View') },
+    { label: 'Edit Entry', icon: 'pencil', command: () => this.logAction('Edit') },
     { separator: true },
-    { label: 'Delete', icon: '???', command: () => this.logAction('Delete') },
+    { label: 'Delete', icon: 'trash', command: () => this.logAction('Delete') },
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
   lastAction = '';
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.contextMenuElement) return '';
-    return generatePlaygroundCode(
-      this.contextMenuElement.nativeElement as Element,
-      'ui-context-menu',
-    );
+  getDefaultConfig() {
+    return {
+      breakpoint: 960,
+      autoZIndex: true,
+      baseZIndex: 0,
+      theme: 'light',
+    };
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-context-menu');
+      code = code.replace(
+        '></ui-context-menu>',
+        '\n  [items]="menuItems"\n  [target]="myTargetElement"\n></ui-context-menu>',
+      );
+      this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
   }
 
   logAction(action: string) {
     this.lastAction = action;
+    this.logEvent(`Menu action: ${action}`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      breakpoint: 960,
-      autoZIndex: true,
-      baseZIndex: 0,
-      theme: 'light',
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-
-

@@ -1,33 +1,17 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-splitter-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './splitter-playground.component.html',
   styleUrl: './splitter-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SplitterPlaygroundComponent implements OnInit {
+export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     direction: 'horizontal',
@@ -41,23 +25,13 @@ export class SplitterPlaygroundComponent implements OnInit {
     doubleClickCollapse: true,
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  constructor(private cd: ChangeDetectorRef) {}
+  accordionDefaultOpen = JSON.stringify(['global']);
 
-  ngOnInit() {
+  constructor() {
+    super();
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -81,11 +55,6 @@ export class SplitterPlaygroundComponent implements OnInit {
     this.refreshCode();
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
   onSizeChange(event: any) {
     const sizes = event.detail.sizes.map((s: any) => `${s.toFixed(1)}%`).join(', ');
     this.logEvent(`Sizes changed: [${sizes}]`);
@@ -105,8 +74,19 @@ export class SplitterPlaygroundComponent implements OnInit {
     this.logEvent(`Drag ended`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      direction: 'horizontal',
+      gutterSize: 8,
+      snapThreshold: 20,
+      theme: 'light',
+      animated: true,
+      rounded: false,
+      elevated: false,
+      showGutterIcon: true,
+      doubleClickCollapse: true,
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

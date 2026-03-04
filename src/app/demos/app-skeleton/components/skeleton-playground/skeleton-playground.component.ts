@@ -1,22 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+ï»¿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-skeleton-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './skeleton-playground.component.html',
-
   styleUrl: './skeleton-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SkeletonPlaygroundComponent {
-  generatedCodeSignal = signal<string>('');
+export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   cfg = {
     shape: 'rectangle',
     animationType: 'pulse',
@@ -26,6 +22,13 @@ export class SkeletonPlaygroundComponent {
     height: '80px',
     borderRadius: '',
   };
+
+  pgAccordionItems = JSON.stringify([
+    { id: 'appearance', title: 'Appearance', icon: 'ðŸŽ¨' },
+    { id: 'sizing', title: 'Sizing', icon: 'ðŸ“' },
+  ]);
+
+  accordionDefaultOpen = JSON.stringify(['appearance']);
 
   shapeOpts = [
     { label: 'rectangle', value: 'rectangle' },
@@ -43,46 +46,35 @@ export class SkeletonPlaygroundComponent {
     { label: 'image', value: 'image' },
   ];
 
-  allShapes = this.shapeOpts;
-
   animTypeOpts = [
     { label: 'pulse', value: 'pulse' },
     { label: 'wave', value: 'wave' },
   ];
 
   boolOpts = [
-    { label: 'true — animated', value: 'true' },
-    { label: 'false — static', value: 'false' },
+    { label: 'true â€” animated', value: 'true' },
+    { label: 'false â€” static', value: 'false' },
   ];
 
   sizeOpts = [
     { label: 'custom (use width/height)', value: 'custom' },
-    { label: 'xs — 16px', value: 'xs' },
-    { label: 'sm — 24px', value: 'sm' },
-    { label: 'md — 32px', value: 'md' },
-    { label: 'lg — 48px', value: 'lg' },
-    { label: 'xl — 64px', value: 'xl' },
-    { label: '2xl — 80px', value: '2xl' },
+    { label: 'xs â€” 16px', value: 'xs' },
+    { label: 'sm â€” 24px', value: 'sm' },
+    { label: 'md â€” 32px', value: 'md' },
+    { label: 'lg â€” 48px', value: 'lg' },
+    { label: 'xl â€” 64px', value: 'xl' },
+    { label: '2xl â€” 80px', value: '2xl' },
   ];
 
   recreate = true;
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.update();
+  constructor() {
+    super();
+    this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  update() {
-    this.recreate = !this.recreate; // force skeleton-loader element recreation
+  updateConfig() {
+    this.recreate = !this.recreate;
     const lines = ['<skeleton-loader'];
     lines.push(`  shape="${this.cfg.shape}"`);
     lines.push(`  animation-type="${this.cfg.animationType}"`);
@@ -95,15 +87,11 @@ export class SkeletonPlaygroundComponent {
     }
     if (this.cfg.borderRadius) lines.push(`  border-radius="${this.cfg.borderRadius}"`);
     lines.push('></skeleton-loader>');
-    this.generatedCodeSignal.set(lines.join('\n'));
+    this.generatedCode.set(lines.join('\n'));
     this.refreshCode();
   }
 
-  copy() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  reset() {
+  override resetConfig() {
     this.cfg = {
       shape: 'rectangle',
       animationType: 'pulse',
@@ -113,7 +101,7 @@ export class SkeletonPlaygroundComponent {
       height: '80px',
       borderRadius: '',
     };
-    this.update();
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-

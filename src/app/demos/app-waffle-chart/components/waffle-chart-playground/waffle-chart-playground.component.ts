@@ -1,36 +1,59 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-waffle-chart-playground',
   standalone: true,
-  imports: [FormsModule, CommonModule, AppPlaygroundComponent, AppInputValueAccessorDirective],
+  imports: [
+    FormsModule,
+    CommonModule,
+    AppPlaygroundComponent,
+    AppInputValueAccessorDirective,
+    AppCheckboxValueAccessorDirective,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './waffle-chart-playground.component.html',
-
   styleUrl: './waffle-chart-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class WaffleChartPlaygroundComponent {
-  pgConfig = {
-    value: 72,
-    total: 100,
-    chartTitle: 'Task Completion',
-    fillColor: '#6366f1',
-    emptyColor: '#e5e7eb',
-    rows: 10,
-    columns: 10,
-    cellSize: 20,
-    gap: 2,
-    showPercentage: true,
-  };
+export class WaffleChartPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
 
-  generatedCodeSignal = signal('');
+  pgAccordionItems = JSON.stringify([
+    { id: 'data', title: 'Data', icon: '📊' },
+    { id: 'colors', title: 'Colours', icon: '🎨' },
+    { id: 'grid', title: 'Grid', icon: '📐' },
+    { id: 'options', title: 'Options', icon: '⚙️' },
+  ]);
+
+  defaultOpen = JSON.stringify(['data', 'colors', 'grid']);
 
   constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      value: 72,
+      total: 100,
+      chartTitle: 'Task Completion',
+      fillColor: '#6366f1',
+      emptyColor: '#e5e7eb',
+      rows: 10,
+      columns: 10,
+      cellSize: 20,
+      gap: 2,
+      showPercentage: true,
+    };
   }
 
   updateConfig() {
@@ -47,26 +70,13 @@ export class WaffleChartPlaygroundComponent {
 
     const nl = attrs.length > 2 ? '\n  ' : ' ';
     const end = attrs.length > 2 ? '\n' : '';
-    this.generatedCodeSignal.set(`<chart-waffle${nl}${attrs.join(nl)}${end}></chart-waffle>`);
+    this.generatedCode.set(`<chart-waffle${nl}${attrs.join(nl)}${end}></chart-waffle>`);
+    this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      value: 72,
-      total: 100,
-      chartTitle: 'Task Completion',
-      fillColor: '#6366f1',
-      emptyColor: '#e5e7eb',
-      rows: 10,
-      columns: 10,
-      cellSize: 20,
-      gap: 2,
-      showPercentage: true,
-    };
+  override resetConfig() {
+    this.pgConfig = this.getDefaultConfig();
     this.updateConfig();
+    this.eventLog.set([]);
   }
 }

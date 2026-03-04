@@ -1,27 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tags-input-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tags-input-playground.component.html',
   styleUrl: './tags-input-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TagsInputPlaygroundComponent implements OnInit {
+export class TagsInputPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     label: 'Tags',
     placeholder: 'Add a tag...',
@@ -38,11 +29,14 @@ export class TagsInputPlaygroundComponent implements OnInit {
     caseSensitive: false,
   };
 
-  suggestions = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Ruby', 'Go', 'Rust'];
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  ngOnInit() {
+  accordionDefaultOpen = JSON.stringify(['global']);
+
+  suggestions = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Ruby', 'Go', 'Rust'];
+
+  constructor() {
+    super();
     this.updateConfig();
   }
 
@@ -66,6 +60,7 @@ export class TagsInputPlaygroundComponent implements OnInit {
     code += `></app-tags-input>`;
 
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onTagsChange(event: any) {
@@ -73,13 +68,23 @@ export class TagsInputPlaygroundComponent implements OnInit {
     this.logEvent(`Tags changed: ${tags.join(', ')}`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    this.pgConfig = {
+      label: 'Tags',
+      placeholder: 'Add a tag...',
+      size: 'medium',
+      color: 'primary',
+      variant: 'default',
+      maxTags: 10,
+      disabled: false,
+      readonly: false,
+      required: false,
+      invalid: false,
+      enableAutocomplete: false,
+      allowDuplicates: false,
+      caseSensitive: false,
+    };
+    this.updateConfig();
+    this.eventLog.set([]);
   }
 }
-
