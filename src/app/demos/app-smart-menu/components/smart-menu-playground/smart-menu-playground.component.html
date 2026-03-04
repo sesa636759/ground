@@ -1,6 +1,6 @@
 ﻿<app-playground
-  items='[{"id":"props","title":"Component Props","icon":"⚙️"},{"id":"fields","title":"MenuItem Fields","icon":"📋"}]'
-  defaultOpen='["props","fields"]'
+  [items]='[{"id":"props","title":"Component Props","icon":"⚙️"},{"id":"fields","title":"MenuItem Fields","icon":"📋"}]'
+  [defaultOpen]='["props","fields"]'
   [code]="generatedCodeSignal()"
   (reset)="reset()"
 >

@@ -1,6 +1,6 @@
 ﻿<app-playground
-  items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  [defaultOpen]='["config"]'
   [code]="generatedCodeSignal()"
   (reset)="resetConfig()"
   layout="column"

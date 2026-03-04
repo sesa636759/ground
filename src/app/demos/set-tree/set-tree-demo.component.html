@@ -1,4 +1,4 @@
-<div class="demo-container">
+﻿<div class="demo-container">
   <app-demo-header
     icon="🌲"
     title="Tree Component"
@@ -23,7 +23,7 @@
           <div class="demo-card">
             <h3>File System Tree</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="simpleTreeData" show-lines></app-tree>
+              <app-tree [nodes]="simpleTreeData" show-lines></app-tree>
             </div>
           </div>
         </section>
@@ -37,7 +37,7 @@
           <div class="demo-card">
             <h3>Project Structure</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines show-icons></app-tree>
+              <app-tree [nodes]="projectTreeData" show-lines show-icons></app-tree>
             </div>
           </div>
         </section>
@@ -51,7 +51,7 @@
           <div class="demo-card">
             <h3>Task Management</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="taskTreeData" show-lines show-icons></app-tree>
+              <app-tree [nodes]="taskTreeData" show-lines show-icons></app-tree>
             </div>
           </div>
         </section>
@@ -66,14 +66,14 @@
             <div class="demo-card">
               <h3>Single Select</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines selectable></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines selectable></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Multi Select</h3>
               <div class="tree-container">
                 <app-tree
-                  [attr.nodes]="simpleTreeData"
+                  [nodes]="simpleTreeData"
                   show-lines
                   selectable
                   multi-select
@@ -92,7 +92,7 @@
           <div class="demo-card">
             <h3>Checkbox Tree</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines checkboxes></app-tree>
+              <app-tree [nodes]="projectTreeData" show-lines checkboxes></app-tree>
             </div>
           </div>
         </section>
@@ -106,7 +106,7 @@
           <div class="demo-card">
             <h3>Search Enabled</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines searchable></app-tree>
+              <app-tree [nodes]="projectTreeData" show-lines searchable></app-tree>
             </div>
           </div>
         </section>
@@ -121,19 +121,19 @@
             <div class="demo-card">
               <h3>Small</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="small"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines size="small"></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Medium (Default)</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="medium"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines size="medium"></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Large</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines size="large"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines size="large"></app-tree>
               </div>
             </div>
           </div>
@@ -149,25 +149,25 @@
             <div class="demo-card">
               <h3>Default</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="default"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines variant="default"></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Bordered</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="bordered"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines variant="bordered"></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Rounded</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" show-lines variant="rounded"></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines variant="rounded"></app-tree>
               </div>
             </div>
             <div class="demo-card">
               <h3>Minimal</h3>
               <div class="tree-container">
-                <app-tree [attr.nodes]="simpleTreeData" variant="minimal"></app-tree>
+                <app-tree [nodes]="simpleTreeData" variant="minimal"></app-tree>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@
             <div class="tree-container chart-view">
               <app-tree
                 layout="org-chart"
-                [attr.nodes]="orgChartData"
+                [nodes]="orgChartData"
                 variant="rounded"
                 show-lines
               ></app-tree>
@@ -203,7 +203,7 @@
               <h3>Glassmorphism</h3>
               <div class="glass-bg">
                 <app-tree
-                  [attr.nodes]="projectTreeData"
+                  [nodes]="projectTreeData"
                   variant="glass"
                   theme="dark"
                   show-lines
@@ -214,7 +214,7 @@
               <h3>Glow Effect</h3>
               <div class="tree-container">
                 <app-tree
-                  [attr.nodes]="projectTreeData"
+                  [nodes]="projectTreeData"
                   variant="bordered"
                   show-lines
                   show-glow
@@ -233,7 +233,7 @@
           <div class="demo-card">
             <h3>Move Items</h3>
             <div class="tree-container">
-              <app-tree [attr.nodes]="projectTreeData" show-lines enable-drag></app-tree>
+              <app-tree [nodes]="projectTreeData" show-lines enable-drag></app-tree>
             </div>
           </div>
         </section>
@@ -250,7 +250,7 @@
               class="tree-container"
               style="background: #0f172a; padding: 2rem; border-radius: 8px"
             >
-              <app-tree [attr.nodes]="projectTreeData" show-lines theme="dark"></app-tree>
+              <app-tree [nodes]="projectTreeData" show-lines theme="dark"></app-tree>
             </div>
           </div>
         </section>

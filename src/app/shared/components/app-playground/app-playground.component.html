@@ -1,7 +1,7 @@
 <div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple>
+    <ui-accordion [items]="items" [defaultOpen]="defaultOpen" multiple>
       <ng-content></ng-content>
     </ui-accordion>
 

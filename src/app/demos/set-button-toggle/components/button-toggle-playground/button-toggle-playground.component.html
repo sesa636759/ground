@@ -1,6 +1,6 @@
 ﻿<app-playground
-  items='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+  [items]='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
+  [defaultOpen]='["config"]'
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -203,36 +203,36 @@
     <div class="preview-stage">
       <app-button-toggle-group
         #pgGroup
-        [attr.mode]="pgConfig.mode"
-        [attr.orientation]="pgConfig.orientation"
-        [attr.size]="pgConfig.size"
-        [attr.color]="pgConfig.color"
-        [attr.variant]="pgConfig.variant"
-        [attr.shape]="pgConfig.shape"
-        [attr.icon-position]="pgConfig.iconPosition"
-        [attr.display-mode]="pgConfig.displayMode"
-        [attr.label]="pgConfig.label"
-        [attr.name]="pgConfig.name"
-        [attr.value]="pgConfig.value"
-        [attr.helper-text]="pgConfig.helperText"
-        [attr.full-width]="pgConfig.fullWidth"
-        [attr.keep-button-label]="pgConfig.keepButtonLabel"
-        [attr.custom-content]="pgConfig.customContent"
-        [attr.button-action-label]="pgConfig.buttonActionLabel"
+        [mode]="pgConfig.mode"
+        [orientation]="pgConfig.orientation"
+        [size]="pgConfig.size"
+        [color]="pgConfig.color"
+        [variant]="pgConfig.variant"
+        [shape]="pgConfig.shape"
+        [icon-position]="pgConfig.iconPosition"
+        [display-mode]="pgConfig.displayMode"
+        [label]="pgConfig.label"
+        [name]="pgConfig.name"
+        [value]="pgConfig.value"
+        [helper-text]="pgConfig.helperText"
+        [full-width]="pgConfig.fullWidth"
+        [keep-button-label]="pgConfig.keepButtonLabel"
+        [custom-content]="pgConfig.customContent"
+        [button-action-label]="pgConfig.buttonActionLabel"
         [disabled]="pgConfig.disabled"
         [readonly]="pgConfig.readonly"
         [loading]="pgConfig.loading"
         [required]="pgConfig.required"
         [invalid]="pgConfig.invalid"
-        [attr.error-message]="pgConfig.errorMessage"
-        [attr.options]="jsonOptions(playgroundOptions)"
-        [attr.multi-select]="pgConfig.multiSelect"
-        [attr.batch-actions]="pgConfig.batchActions"
-        [attr.search-enabled]="pgConfig.searchEnabled"
-        [attr.export-enabled]="pgConfig.exportEnabled"
-        [attr.import-enabled]="pgConfig.importEnabled"
-        [attr.analytics-enabled]="pgConfig.analyticsEnabled"
-        [attr.advanced-theme]="pgConfig.advancedTheme"
+        [error-message]="pgConfig.errorMessage"
+        [options]="jsonOptions(playgroundOptions)"
+        [multi-select]="pgConfig.multiSelect"
+        [batch-actions]="pgConfig.batchActions"
+        [search-enabled]="pgConfig.searchEnabled"
+        [export-enabled]="pgConfig.exportEnabled"
+        [import-enabled]="pgConfig.importEnabled"
+        [analytics-enabled]="pgConfig.analyticsEnabled"
+        [advanced-theme]="pgConfig.advancedTheme"
         (buttonToggleGroupChange)="onPlaygroundChange($event)"
         (buttonToggleGroupAction)="onPlaygroundAction($event)"
       >
