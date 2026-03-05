@@ -25,11 +25,11 @@ export class ChipPlaygroundComponent extends BasePlaygroundComponent implements 
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content & Info', icon: '📝' },
-    { id: 'style', title: 'Visual Style', icon: '🎨' },
-    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Info', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['content']);
 

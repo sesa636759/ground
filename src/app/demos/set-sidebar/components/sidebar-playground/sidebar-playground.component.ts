@@ -23,7 +23,7 @@ export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
     overlay: false,
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
 
   menuItems = [
     { id: '1', label: 'Dashboard', icon: 'fas fa-home' },

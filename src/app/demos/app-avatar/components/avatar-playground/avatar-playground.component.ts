@@ -13,11 +13,11 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'profile', title: 'Profile Info', icon: '👤' },
-    { id: 'style', title: 'Visual Styles', icon: '🎨' },
-    { id: 'status', title: 'Status & Badges', icon: '🔔' },
-  ]);
+  pgAccordionItems = [
+    { id: 'profile', title: 'Profile Info', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Status & Badges', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['profile']);
 

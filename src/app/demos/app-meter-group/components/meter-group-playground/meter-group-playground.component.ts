@@ -25,10 +25,10 @@ export class MeterGroupPlaygroundComponent extends BasePlaygroundComponent imple
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout', icon: '📏' },
-    { id: 'visuals', title: 'Visuals', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

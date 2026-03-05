@@ -24,10 +24,10 @@ export class NavBarPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'visuals', title: 'Visuals', icon: '🎨' },
-    { id: 'structure', title: 'Structure', icon: '📏' },
-  ]);
+  pgAccordionItems = [
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'structure', title: 'Structure', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['visuals']);
 

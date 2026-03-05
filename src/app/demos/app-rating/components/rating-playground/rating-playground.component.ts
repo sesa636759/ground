@@ -22,10 +22,10 @@ export class RatingPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   typeOptions = [
     { label: 'Star', value: 'star' },

@@ -22,11 +22,11 @@ export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content Settings', icon: '📝' },
-    { id: 'behavior', title: 'Behavior Settings', icon: '⚡' },
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['content']);
 

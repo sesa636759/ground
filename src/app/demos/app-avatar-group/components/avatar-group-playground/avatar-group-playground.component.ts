@@ -16,10 +16,10 @@ export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'style', title: 'Visual Styles', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Styles', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

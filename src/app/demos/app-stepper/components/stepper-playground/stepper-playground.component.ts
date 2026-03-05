@@ -16,10 +16,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class StepperPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Properties', icon: '📏' },
-    { id: 'options', title: 'Options', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Properties', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'options', title: 'Options', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['layout', 'options']);
 

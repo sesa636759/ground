@@ -13,10 +13,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class CheckboxPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Group Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Group Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   // Playground State
   pgConfig = this.getDefaultConfig();

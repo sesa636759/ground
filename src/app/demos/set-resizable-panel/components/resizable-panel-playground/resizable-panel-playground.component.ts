@@ -29,7 +29,7 @@ export class ResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
     collapsible3: true,
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
 
   panelsData = [
     { id: 'panel-1', size: 30, minSize: 15, maxSize: 50, collapsible: true },

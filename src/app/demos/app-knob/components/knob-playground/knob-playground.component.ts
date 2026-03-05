@@ -25,10 +25,10 @@ export class KnobPlaygroundComponent extends BasePlaygroundComponent implements 
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'value', title: 'Value Control', icon: '🔢' },
-    { id: 'visuals', title: 'Visuals', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'value', title: 'Value Control', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['value']);
 

@@ -24,10 +24,10 @@ export class BreadcrumbPlaygroundComponent extends BasePlaygroundComponent imple
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'config', title: 'Configuration', icon: '⚙️' },
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['config']);
 

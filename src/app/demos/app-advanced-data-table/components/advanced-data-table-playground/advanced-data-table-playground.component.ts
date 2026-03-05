@@ -26,10 +26,10 @@ export class AdvancedDataTablePlaygroundComponent
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'features', title: 'Features', icon: '✨' },
-    { id: 'layout', title: 'Layout', icon: '📏' },
-  ]);
+  pgAccordionItems = [
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['features']);
 

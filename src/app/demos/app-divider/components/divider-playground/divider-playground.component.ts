@@ -25,11 +25,11 @@ export class DividerPlaygroundComponent extends BasePlaygroundComponent implemen
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'style', title: 'Visual Style', icon: '🎨' },
-    { id: 'special', title: 'Special Effects', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'special', title: 'Special Effects', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['global']);
 

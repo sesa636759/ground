@@ -27,11 +27,11 @@ export class SetAvatarGroupPlaygroundComponent
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '⚙️' },
-    { id: 'visuals', title: 'Visual Styles', icon: '✨' },
-    { id: 'behavior', title: 'Interaction Behavior', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Styles', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Interaction Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

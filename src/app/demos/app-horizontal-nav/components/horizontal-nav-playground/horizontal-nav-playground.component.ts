@@ -25,10 +25,10 @@ export class HorizontalNavPlaygroundComponent extends BasePlaygroundComponent im
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-    { id: 'layout', title: 'Layout', icon: '📏' },
-  ]);
+  pgAccordionItems = [
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['appearance']);
 

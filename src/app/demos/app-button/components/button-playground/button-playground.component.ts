@@ -25,12 +25,12 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content & Text', icon: '✍️' },
-    { id: 'appearance', title: 'Appearance & Size', icon: '🎨' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-    { id: 'link', title: 'Link & Type', icon: '🔗' },
-  ]);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Text', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Size', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'link', title: 'Link & Type', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['content']);
 

@@ -44,11 +44,11 @@ export class MasonryPlaygroundComponent extends BasePlaygroundComponent implemen
     breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
   };
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '⚙️' },
-    { id: 'filter', title: 'Filtering & Sorting', icon: '🔍' },
-    { id: 'features', title: 'Features', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'filter', title: 'Filtering & Sorting', icon: 'search', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

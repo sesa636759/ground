@@ -22,12 +22,12 @@ export class CarouselPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '⚙️' },
-    { id: 'animation', title: 'Effects & Animation', icon: '✨' },
-    { id: 'controls', title: 'Navigation Controls', icon: '🔘' },
-    { id: 'behavior', title: 'Carousel Behavior', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'animation', title: 'Effects & Animation', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'controls', title: 'Navigation Controls', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Carousel Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

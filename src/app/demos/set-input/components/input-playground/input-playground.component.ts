@@ -12,10 +12,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
   encapsulation: ViewEncapsulation.None,
 })
 export class InputPlaygroundComponent extends BasePlaygroundComponent {
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   // Playground State
   pgConfig = this.getDefaultConfig();

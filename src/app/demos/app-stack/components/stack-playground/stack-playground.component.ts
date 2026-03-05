@@ -27,11 +27,11 @@ export class StackPlaygroundComponent extends BasePlaygroundComponent implements
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Settings', icon: '📏' },
-    { id: 'behavior', title: 'Behavior', icon: '⚡' },
-    { id: 'content', title: 'Content', icon: '📦' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Settings', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'content', title: 'Content', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

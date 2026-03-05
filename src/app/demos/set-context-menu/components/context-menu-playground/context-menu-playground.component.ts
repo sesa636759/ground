@@ -54,11 +54,11 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     highlightSearch: true,
   };
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'core', title: 'Core Configuration', icon: '??' },
-    { id: 'visuals', title: 'Visual & Animation', icon: '??' },
-    { id: 'behavior', title: 'Advanced Behavior', icon: '?' },
-  ]);
+  pgAccordionItems = [
+    { id: 'core', title: 'Core Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual & Animation', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Advanced Behavior', icon: 'help-circle', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['core']);
 

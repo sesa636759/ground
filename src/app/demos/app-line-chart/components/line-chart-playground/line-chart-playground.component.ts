@@ -25,11 +25,11 @@ export class LineChartPlaygroundComponent extends BasePlaygroundComponent implem
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'data', title: 'Data', icon: '📐' },
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-    { id: 'features', title: 'Features', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'data', title: 'Data', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['data']);
 

@@ -16,10 +16,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class TopBarPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'structure', title: 'Structure Options', icon: '📐' },
-    { id: 'visuals', title: 'Visual Settings', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'structure', title: 'Structure Options', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Settings', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['structure', 'visuals']);
 

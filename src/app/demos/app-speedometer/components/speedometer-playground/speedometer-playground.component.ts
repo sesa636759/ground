@@ -15,10 +15,10 @@ export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'metric', title: 'Metric Controls', icon: '仪表' },
-    { id: 'appearance', title: 'Appearance', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'metric', title: 'Metric Controls', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['metric']);
 

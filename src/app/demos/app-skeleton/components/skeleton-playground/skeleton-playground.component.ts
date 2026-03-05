@@ -15,10 +15,10 @@ export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-    { id: 'sizing', title: 'Sizing', icon: '📏' },
-  ]);
+  pgAccordionItems = [
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizing', title: 'Sizing', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['appearance']);
 

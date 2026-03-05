@@ -25,10 +25,10 @@ export class SmartStepperPlaygroundComponent extends BasePlaygroundComponent imp
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'features', title: 'Behavior & Features', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Behavior & Features', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['layout']);
 

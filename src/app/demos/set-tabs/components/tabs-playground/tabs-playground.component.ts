@@ -22,10 +22,10 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
   ];
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'behavior', title: 'Behavioral States', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   constructor() {
     super();

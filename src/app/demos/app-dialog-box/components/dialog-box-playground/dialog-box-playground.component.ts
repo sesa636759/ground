@@ -25,11 +25,11 @@ export class DialogBoxPlaygroundComponent extends BasePlaygroundComponent implem
 
   visible = false;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'appearance', title: 'Appearance & Styles', icon: '🎨' },
-    { id: 'behavior', title: 'Behavior & Logic', icon: '⚡' },
-    { id: 'visibility', title: 'Header & Footer Controls', icon: '👁️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'appearance', title: 'Appearance & Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Logic', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visibility', title: 'Header & Footer Controls', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['appearance']);
 

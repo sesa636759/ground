@@ -25,10 +25,10 @@ export class DockPlaygroundComponent extends BasePlaygroundComponent implements 
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout', icon: '📏' },
-    { id: 'behavior', title: 'Behavior', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['layout']);
 

@@ -26,10 +26,10 @@ export class ContextMenuPlaygroundComponent extends BasePlaygroundComponent impl
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'settings', title: 'Menu Configuration', icon: '⚙️' },
-    { id: 'visuals', title: 'Visual Styles', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'settings', title: 'Menu Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['settings']);
 

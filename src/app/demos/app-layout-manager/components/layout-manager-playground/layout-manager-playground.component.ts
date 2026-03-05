@@ -24,10 +24,10 @@ export class LayoutManagerPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout', icon: '📏' },
-    { id: 'features', title: 'Features', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 

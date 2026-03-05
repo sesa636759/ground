@@ -25,10 +25,10 @@ export class DropdownPlaygroundComponent extends BasePlaygroundComponent impleme
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'config', title: 'Configuration', icon: '⚙️' },
-    { id: 'features', title: 'Features', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['config', 'features']);
 

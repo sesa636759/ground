@@ -25,10 +25,10 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'props', title: 'Component Props', icon: '⚙️' },
-    { id: 'fields', title: 'MenuItem Fields', icon: '📋' },
-  ]);
+  pgAccordionItems = [
+    { id: 'props', title: 'Component Props', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'fields', title: 'MenuItem Fields', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['props', 'fields']);
 

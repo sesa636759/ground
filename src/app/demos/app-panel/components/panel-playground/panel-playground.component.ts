@@ -15,11 +15,11 @@ export class PanelPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content & Header', icon: '📝' },
-    { id: 'visual', title: 'Visual Styles', icon: '🎨' },
-    { id: 'behavior', title: 'Behavioral Settings', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Header', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visual', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral Settings', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['content']);
 

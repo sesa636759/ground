@@ -37,10 +37,10 @@ export class ProgressPlaygroundComponent extends BasePlaygroundComponent {
     trailColor: '#f5f5f5',
   };
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visual', title: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   updateConfig() {
     let code = `<app-progress\n`;

@@ -21,10 +21,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class TogglePlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('toggleGroup') toggleGroup!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   layoutOptions = [
     { label: 'Horizontal', value: 'horizontal' },

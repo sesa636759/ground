@@ -22,12 +22,12 @@ export class EmptyStatePlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'general', title: 'General Configuration', icon: '⚙️' },
-    { id: 'content', title: 'Content & Texts', icon: '📝' },
-    { id: 'actions', title: 'Action Buttons', icon: '🔘' },
-    { id: 'visuals', title: 'Visual Enhancements', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'general', title: 'General Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'content', title: 'Content & Texts', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'actions', title: 'Action Buttons', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['general']);
 

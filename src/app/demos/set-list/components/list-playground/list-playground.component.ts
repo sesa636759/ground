@@ -36,10 +36,10 @@ export class ListPlaygroundComponent extends BasePlaygroundComponent {
     itemDisabled: false,
   };
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'item', title: 'Item Template', icon: '📝' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'item', title: 'Item Template', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   updateConfig() {
     let code = `<app-list\n`;

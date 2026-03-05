@@ -24,11 +24,11 @@ export class PatternInputPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-    { id: 'labels', title: 'Labels & Text', icon: '🏷️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'labels', title: 'Labels & Text', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   patternOptions = [
     { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },

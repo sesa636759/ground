@@ -57,7 +57,7 @@ console.log(user.greet());`,
 
   currentCode = this.initialCode.javascript;
 
-  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
 
   constructor() {
     super();

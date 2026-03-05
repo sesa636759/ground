@@ -23,11 +23,11 @@ export class PaginationPlaygroundComponent extends BasePlaygroundComponent {
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'settings', title: 'Basic Settings', icon: '⚙️' },
-    { id: 'appearance', title: 'Appearance', icon: '🎨' },
-    { id: 'features', title: 'Features', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'settings', title: 'Basic Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['settings']);
 

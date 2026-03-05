@@ -25,7 +25,7 @@ export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
     doubleClickCollapse: true,
   };
 
-  pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
+  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
 
   constructor() {
     super();

@@ -57,12 +57,12 @@ export class RadioPlaygroundComponent extends BasePlaygroundComponent {
     },
   ];
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Group Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-    { id: 'items', title: 'Manage Radio Options', icon: '🔘' },
-    { id: 'validation', title: 'Validation & Help', icon: '✅' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Group Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'items', title: 'Manage Radio Options', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'validation', title: 'Validation & Help', icon: 'check-circle', iconLibrary: 'lucide' },
+  ];
 
   constructor() {
     super();

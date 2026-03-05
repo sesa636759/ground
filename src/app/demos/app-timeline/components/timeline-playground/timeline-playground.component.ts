@@ -16,10 +16,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class TimelinePlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Properties', icon: '📏' },
-    { id: 'content', title: 'Content Options', icon: '📦' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Properties', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'content', title: 'Content Options', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['layout', 'content']);
 

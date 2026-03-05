@@ -13,11 +13,11 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class BadgePlaygroundComponent extends BasePlaygroundComponent {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content & Value', icon: '📝' },
-    { id: 'appearance', title: 'Appearance & Style', icon: '🎨' },
-    { id: 'behavior', title: 'Behavior & Animation', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Value', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Animation', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   accordionDefaultOpen = JSON.stringify(['content']);
 

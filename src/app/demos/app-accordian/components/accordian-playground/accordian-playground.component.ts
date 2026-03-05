@@ -23,11 +23,11 @@ export class AccordianPlaygroundComponent extends BasePlaygroundComponent implem
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'visual', title: 'Visual Styles', icon: '🎨' },
-    { id: 'behavior', title: 'Behavioral Settings', icon: '⚙️' },
-    { id: 'animation', title: 'Animation Details', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'visual', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'animation', title: 'Animation Details', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['visual']);
 

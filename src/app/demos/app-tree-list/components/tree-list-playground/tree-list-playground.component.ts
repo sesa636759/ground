@@ -25,10 +25,10 @@ export class TreeListPlaygroundComponent extends BasePlaygroundComponent impleme
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'features', title: 'Features', icon: '✨' },
-    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['features']);
 

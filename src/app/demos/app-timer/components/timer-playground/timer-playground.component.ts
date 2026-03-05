@@ -16,10 +16,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class TimerPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'config', title: 'Configuration', icon: '⚙️' },
-    { id: 'visuals', title: 'Visuals', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['config', 'visuals']);
 

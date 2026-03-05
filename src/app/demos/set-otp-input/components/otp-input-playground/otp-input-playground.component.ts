@@ -13,10 +13,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class OtpInputPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'help-circle', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['global']);
 

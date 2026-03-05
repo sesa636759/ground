@@ -16,10 +16,10 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class SpeedDialPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Settings', icon: '📏' },
-    { id: 'visuals', title: 'Visuals & Behavior', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Settings', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals & Behavior', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['layout', 'visuals']);
 

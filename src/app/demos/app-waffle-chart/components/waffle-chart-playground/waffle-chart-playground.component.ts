@@ -14,12 +14,12 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class WaffleChartPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'data', title: 'Data', icon: '📊' },
-    { id: 'colors', title: 'Colours', icon: '🎨' },
-    { id: 'grid', title: 'Grid', icon: '📐' },
-    { id: 'options', title: 'Options', icon: '⚙️' },
-  ]);
+  pgAccordionItems = [
+    { id: 'data', title: 'Data', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Colours', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'grid', title: 'Grid', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'options', title: 'Options', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['data', 'colors', 'grid']);
 

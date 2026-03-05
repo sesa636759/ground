@@ -25,10 +25,10 @@ export class ScrollTopPlaygroundComponent extends BasePlaygroundComponent implem
 
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'behavior', title: 'Behavior', icon: '⚙️' },
-    { id: 'visuals', title: 'Visuals', icon: '🎨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+  ];
 
   defaultOpen = JSON.stringify(['behavior']);
 

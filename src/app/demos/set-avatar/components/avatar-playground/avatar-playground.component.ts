@@ -15,11 +15,11 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'status', title: 'Status & Badges', icon: '⚡' },
-    { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
-  ]);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Status & Badges', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visual', title: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },
