@@ -21,7 +21,7 @@ export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'style', title: 'Visual Styles', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },

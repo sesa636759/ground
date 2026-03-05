@@ -31,7 +31,7 @@ export class AdvancedDataTablePlaygroundComponent
     { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['features']);
+  accordionDefaultOpen = ['features'];
 
   data = [
     { id: 1, name: 'John Doe', role: 'Admin', status: 'Active' },

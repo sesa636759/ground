@@ -30,7 +30,7 @@ export class HorizontalNavPlaygroundComponent extends BasePlaygroundComponent im
     { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['appearance']);
+  defaultOpen = ['appearance'];
 
   themeOptions = [
     { label: 'Light', value: 'light' },

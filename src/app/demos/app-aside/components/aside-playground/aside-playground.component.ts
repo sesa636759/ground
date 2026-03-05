@@ -28,7 +28,7 @@ export class AsidePlaygroundComponent extends BasePlaygroundComponent implements
     { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['global', 'states']);
+  defaultOpen = ['global', 'states'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },

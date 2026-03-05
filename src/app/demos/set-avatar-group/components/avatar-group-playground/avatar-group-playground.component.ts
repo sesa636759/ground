@@ -33,7 +33,7 @@ export class SetAvatarGroupPlaygroundComponent
     { id: 'behavior', title: 'Interaction Behavior', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   users = [
     { name: 'John Doe', image: 'https://i.pravatar.cc/150?img=1' },

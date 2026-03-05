@@ -25,7 +25,7 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   pgAccordionItems = [{ id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-  defaultOpen = JSON.stringify(['config']);
+  defaultOpen = ['config'];
 
   links = [
     { id: 'basics', label: 'Basics', target: 'basics-pg' },

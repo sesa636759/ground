@@ -31,7 +31,7 @@ export class ContextMenuPlaygroundComponent extends BasePlaygroundComponent impl
     { id: 'visuals', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['settings']);
+  defaultOpen = ['settings'];
 
   themeOptions = [
     { label: 'Light', value: 'light' },

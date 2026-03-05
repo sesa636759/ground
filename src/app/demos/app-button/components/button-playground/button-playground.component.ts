@@ -32,7 +32,7 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
     { id: 'link', title: 'Link & Type', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['content']);
+  defaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },

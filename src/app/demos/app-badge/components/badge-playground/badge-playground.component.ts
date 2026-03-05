@@ -19,7 +19,7 @@ export class BadgePlaygroundComponent extends BasePlaygroundComponent {
     { id: 'behavior', title: 'Behavior & Animation', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['content']);
+  accordionDefaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Standard', value: 'standard' },

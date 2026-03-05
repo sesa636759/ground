@@ -21,7 +21,7 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent implemen
     { id: 'options', title: 'Options', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['layout', 'options']);
+  defaultOpen = ['layout', 'options'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },

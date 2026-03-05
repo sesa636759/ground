@@ -30,7 +30,7 @@ export class CardPlaygroundComponent extends BasePlaygroundComponent implements 
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['appearance']);
+  defaultOpen = ['appearance'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },

@@ -21,7 +21,7 @@ export class TimerPlaygroundComponent extends BasePlaygroundComponent implements
     { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['config', 'visuals']);
+  defaultOpen = ['config', 'visuals'];
 
   modeOptions = [
     { label: 'Countdown', value: 'countdown' },

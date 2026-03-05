@@ -30,7 +30,7 @@ export class TreeListPlaygroundComponent extends BasePlaygroundComponent impleme
     { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['features']);
+  defaultOpen = ['features'];
 
   model = [
     {

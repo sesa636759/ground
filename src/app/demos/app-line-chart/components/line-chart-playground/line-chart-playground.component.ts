@@ -31,7 +31,7 @@ export class LineChartPlaygroundComponent extends BasePlaygroundComponent implem
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['data']);
+  defaultOpen = ['data'];
 
   datasetOptions = [
     { label: 'Monthly Revenue', value: 'monthly' },

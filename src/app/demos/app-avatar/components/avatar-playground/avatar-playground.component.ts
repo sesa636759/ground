@@ -19,7 +19,7 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'status', title: 'Status & Badges', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['profile']);
+  accordionDefaultOpen = ['profile'];
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },

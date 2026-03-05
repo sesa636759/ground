@@ -21,7 +21,7 @@ export class TransferListPlaygroundComponent extends BasePlaygroundComponent imp
     { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['global', 'states']);
+  defaultOpen = ['global', 'states'];
 
   source = [
     { label: 'Role: Admin', value: 'admin' },

@@ -30,7 +30,7 @@ export class DockPlaygroundComponent extends BasePlaygroundComponent implements 
     { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['layout']);
+  defaultOpen = ['layout'];
 
   positionOptions = [
     { label: 'Bottom', value: 'bottom' },

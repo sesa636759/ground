@@ -29,7 +29,7 @@ export class BreadcrumbPlaygroundComponent extends BasePlaygroundComponent imple
     { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['config']);
+  defaultOpen = ['config'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },

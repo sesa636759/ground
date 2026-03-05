@@ -30,7 +30,7 @@ export class ScrollTopPlaygroundComponent extends BasePlaygroundComponent implem
     { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['behavior']);
+  defaultOpen = ['behavior'];
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },

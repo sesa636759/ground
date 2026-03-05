@@ -31,7 +31,7 @@ export class ChipPlaygroundComponent extends BasePlaygroundComponent implements 
     { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['content']);
+  defaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Filled', value: 'filled' },

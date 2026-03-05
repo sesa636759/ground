@@ -29,7 +29,7 @@ export class NavBarPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'structure', title: 'Structure', icon: 'ruler', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['visuals']);
+  accordionDefaultOpen = ['visuals'];
 
   themeOptions = [
     { label: 'Light', value: 'light' },

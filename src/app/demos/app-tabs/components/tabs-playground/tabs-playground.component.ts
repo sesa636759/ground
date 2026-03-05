@@ -20,7 +20,7 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'visual', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   alignOptions = [
     { label: 'Start', value: 'start' },

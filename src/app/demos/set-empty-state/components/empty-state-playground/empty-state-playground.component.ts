@@ -29,7 +29,7 @@ export class EmptyStatePlaygroundComponent extends BasePlaygroundComponent {
     { id: 'visuals', title: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['general']);
+  defaultOpen = ['general'];
 
   constructor() {
     super();

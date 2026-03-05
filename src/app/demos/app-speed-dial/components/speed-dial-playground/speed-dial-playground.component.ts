@@ -21,7 +21,7 @@ export class SpeedDialPlaygroundComponent extends BasePlaygroundComponent implem
     { id: 'visuals', title: 'Visuals & Behavior', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['layout', 'visuals']);
+  defaultOpen = ['layout', 'visuals'];
 
   typeOptions = [
     { label: 'Linear', value: 'linear' },

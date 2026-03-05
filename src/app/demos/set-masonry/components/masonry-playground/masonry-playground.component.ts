@@ -50,7 +50,7 @@ export class MasonryPlaygroundComponent extends BasePlaygroundComponent implemen
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   layoutTypeOptions = [
     { label: 'Masonry', value: 'masonry' },

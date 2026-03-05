@@ -20,7 +20,7 @@ export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'appearance', title: 'Appearance', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['metric']);
+  accordionDefaultOpen = ['metric'];
 
   colorModeOptions = [
     { label: 'Solid', value: 'solid' },

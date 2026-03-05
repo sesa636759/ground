@@ -30,7 +30,7 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'fields', title: 'MenuItem Fields', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['props', 'fields']);
+  accordionDefaultOpen = ['props', 'fields'];
 
   triggerModeOptions = [
     { label: 'Right-click zone', value: 'zone' },

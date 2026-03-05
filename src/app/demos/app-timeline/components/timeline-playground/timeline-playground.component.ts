@@ -21,7 +21,7 @@ export class TimelinePlaygroundComponent extends BasePlaygroundComponent impleme
     { id: 'content', title: 'Content Options', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['layout', 'content']);
+  defaultOpen = ['layout', 'content'];
 
   alignOptions = [
     { label: 'Left', value: 'left' },

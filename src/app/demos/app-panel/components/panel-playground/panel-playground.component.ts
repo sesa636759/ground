@@ -21,7 +21,7 @@ export class PanelPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'behavior', title: 'Behavioral Settings', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['content']);
+  accordionDefaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Elevated', value: 'elevated' },

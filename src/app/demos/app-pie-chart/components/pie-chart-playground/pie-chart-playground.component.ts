@@ -30,7 +30,7 @@ export class PieChartPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['type']);
+  accordionDefaultOpen = ['type'];
 
   typeOptions = [
     { label: 'Pie', value: 'pie' },

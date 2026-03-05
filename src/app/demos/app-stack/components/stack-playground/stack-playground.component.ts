@@ -33,7 +33,7 @@ export class StackPlaygroundComponent extends BasePlaygroundComponent implements
     { id: 'content', title: 'Content', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   directionOptions = [
     { label: 'Horizontal', value: 'horizontal' },

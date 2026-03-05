@@ -28,7 +28,7 @@ export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['content']);
+  accordionDefaultOpen = ['content'];
 
   triggerOptions = [
     { label: 'Click', value: 'click' },

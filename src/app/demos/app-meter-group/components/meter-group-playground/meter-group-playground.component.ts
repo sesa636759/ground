@@ -30,7 +30,7 @@ export class MeterGroupPlaygroundComponent extends BasePlaygroundComponent imple
     { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   labelOrientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },

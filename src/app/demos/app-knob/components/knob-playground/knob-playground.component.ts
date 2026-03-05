@@ -30,7 +30,7 @@ export class KnobPlaygroundComponent extends BasePlaygroundComponent implements 
     { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['value']);
+  defaultOpen = ['value'];
 
   constructor() {
     super();

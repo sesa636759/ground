@@ -30,7 +30,7 @@ export class SmartStepperPlaygroundComponent extends BasePlaygroundComponent imp
     { id: 'features', title: 'Behavior & Features', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['layout']);
+  defaultOpen = ['layout'];
 
   themeOptions = [
     { label: 'Default', value: 'default' },

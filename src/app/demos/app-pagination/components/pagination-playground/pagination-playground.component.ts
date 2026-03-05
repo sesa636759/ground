@@ -29,7 +29,7 @@ export class PaginationPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['settings']);
+  accordionDefaultOpen = ['settings'];
 
   typeOptions = [
     { label: 'Basic', value: 'basic' },

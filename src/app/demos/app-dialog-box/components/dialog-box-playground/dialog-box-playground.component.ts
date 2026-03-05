@@ -31,7 +31,7 @@ export class DialogBoxPlaygroundComponent extends BasePlaygroundComponent implem
     { id: 'visibility', title: 'Header & Footer Controls', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['appearance']);
+  defaultOpen = ['appearance'];
 
   sizeOptions = [
     { label: 'XS (320px)', value: 'xs' },

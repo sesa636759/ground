@@ -30,7 +30,7 @@ export class DropdownPlaygroundComponent extends BasePlaygroundComponent impleme
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['config', 'features']);
+  defaultOpen = ['config', 'features'];
 
   appearanceOptions = [
     { label: 'Dropdown', value: 'dropdown' },

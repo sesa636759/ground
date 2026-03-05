@@ -60,7 +60,7 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     { id: 'behavior', title: 'Advanced Behavior', icon: 'help-circle', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['core']);
+  accordionDefaultOpen = ['core'];
 
   demoItems = [
     {

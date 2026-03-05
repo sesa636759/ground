@@ -29,7 +29,7 @@ export class AccordianPlaygroundComponent extends BasePlaygroundComponent implem
     { id: 'animation', title: 'Animation Details', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['visual']);
+  defaultOpen = ['visual'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },

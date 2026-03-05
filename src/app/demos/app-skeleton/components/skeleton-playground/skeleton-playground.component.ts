@@ -20,7 +20,7 @@ export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'sizing', title: 'Sizing', icon: 'ruler', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['appearance']);
+  accordionDefaultOpen = ['appearance'];
 
   shapeOpts = [
     { label: 'rectangle', value: 'rectangle' },

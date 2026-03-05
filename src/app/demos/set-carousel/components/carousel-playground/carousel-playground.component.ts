@@ -29,7 +29,7 @@ export class CarouselPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'behavior', title: 'Carousel Behavior', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   dummySlides = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,

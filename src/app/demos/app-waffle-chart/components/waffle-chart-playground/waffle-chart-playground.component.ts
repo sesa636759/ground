@@ -21,7 +21,7 @@ export class WaffleChartPlaygroundComponent extends BasePlaygroundComponent impl
     { id: 'options', title: 'Options', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['data', 'colors', 'grid']);
+  defaultOpen = ['data', 'colors', 'grid'];
 
   constructor() {
     super();

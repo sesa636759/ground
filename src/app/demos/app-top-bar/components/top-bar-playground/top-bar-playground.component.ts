@@ -21,7 +21,7 @@ export class TopBarPlaygroundComponent extends BasePlaygroundComponent implement
     { id: 'visuals', title: 'Visual Settings', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = JSON.stringify(['structure', 'visuals']);
+  defaultOpen = ['structure', 'visuals'];
 
   constructor() {
     super();

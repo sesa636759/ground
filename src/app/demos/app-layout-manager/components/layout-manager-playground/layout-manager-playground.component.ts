@@ -29,7 +29,7 @@ export class LayoutManagerPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   modeOptions = [
     { label: 'Docking', value: 'docking' },
