@@ -42,14 +42,7 @@ export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements On
     { id: 'combined', title: 'Combined', icon: '💎' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   get exampleVariants() {
     return this.variants;

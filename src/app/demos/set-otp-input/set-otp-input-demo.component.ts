@@ -93,14 +93,7 @@ export class SetOtpInputDemoComponent {
     { id: 'playground', title: 'Playground', icon: '🚀', category: 'Advanced', tab: 'advanced' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Signal-based code examples
   lengthVariantsCode = signal(

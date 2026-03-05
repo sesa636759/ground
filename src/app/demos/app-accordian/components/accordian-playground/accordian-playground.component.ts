@@ -93,8 +93,6 @@ export class AccordianPlaygroundComponent extends BasePlaygroundComponent implem
     },
   ];
 
-  itemsJson = JSON.stringify(this.playgroundItems);
-
   constructor() {
     super();
   }

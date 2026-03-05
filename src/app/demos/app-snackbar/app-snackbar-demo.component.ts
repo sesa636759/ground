@@ -38,14 +38,7 @@ export class AppSnackbarDemoComponent extends BaseDemoComponent {
     { id: 'card-stack', title: 'Card Stacking', icon: '📚' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   typesCode = `// Add different notification types
 snackbar.add({ type: 'success', title: 'Saved!', message: 'Project pushed to main.' });

@@ -38,14 +38,7 @@ export class AppDividerDemoComponent extends BaseDemoComponent implements OnInit
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   playgroundCode = `<ui-divider text="SECTION 1" variant="dashed" size="lg"></ui-divider>`;
 

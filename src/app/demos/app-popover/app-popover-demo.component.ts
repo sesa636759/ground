@@ -32,14 +32,7 @@ export class AppPopoverDemoComponent extends BaseDemoComponent {
     { id: 'rich-content', title: 'Rich Content', icon: '📝' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   triggersCode = `<!-- Click trigger (default) -->
 <ui-popover trigger="click" heading="Click Trigger" content="Stays open until clicked outside">

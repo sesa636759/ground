@@ -1,4 +1,3 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -8,65 +7,64 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 
 @Component({
   selector: 'app-dashboard-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dashboard-playground.component.html',
   styleUrl: './dashboard-playground.component.scss',
 })
-export class DashboardPlaygroundComponent implements OnInit, AfterViewInit {
+export class DashboardPlaygroundComponent
+  extends BasePlaygroundComponent
+  implements OnInit, AfterViewInit
+{
   @ViewChild('dashboard') dashboardRef!: ElementRef;
 
-  pgConfig = {
-    theme: 'light',
-    enableSearch: true,
-    enableMultiSelect: true,
-    enableKeyboard: true,
-    enableFullscreen: true,
-    showAddButton: true,
-    showGrid: false,
-    autoSave: false,
-    batchActions: false, // showBatchActions
-    loadingState: false, // loadingState
+  getDefaultConfig() {
+    return {
+      theme: 'light',
+      enableSearch: true,
+      enableMultiSelect: true,
+      enableKeyboard: true,
+      enableFullscreen: true,
+      showAddButton: true,
+      showGrid: false,
+      autoSave: false,
+      batchActions: false, // showBatchActions
+      loadingState: false, // loadingState
 
-    // Grid
-    columns: 12,
-    rowHeight: 100,
-    gap: 10,
+      // Grid
+      columns: 12,
+      rowHeight: 100,
+      gap: 10,
 
-    // Interaction
-    enableDrag: true,
-    enableResize: true,
-    compact: false,
+      // Interaction
+      enableDrag: true,
+      enableResize: true,
+      compact: false,
 
-    // Widget
-    widgetSelectionMode: 'single',
-    showWidgetHeader: true,
-    showWidgetFooter: false,
-    widgetDrag: true,
-    widgetResize: true,
-    widgetDeleteAction: true,
-    widgetRefreshAction: true,
-    widgetFullscreenAction: true,
+      // Widget
+      widgetSelectionMode: 'single',
+      showWidgetHeader: true,
+      showWidgetFooter: false,
+      widgetDrag: true,
+      widgetResize: true,
+      widgetDeleteAction: true,
+      widgetRefreshAction: true,
+      widgetFullscreenAction: true,
 
-    // Breakpoints
-    breakpoints: '{"0":1,"640":2,"768":3,"1024":4,"1280":12}',
-    minWidth: 2,
-    maxWidth: 6,
-  };
+      // Breakpoints
+      breakpoints: '{"0":1,"640":2,"768":3,"1024":4,"1280":12}',
+      minWidth: 2,
+      maxWidth: 6,
+    };
+  }
+
+  pgConfig = this.getDefaultConfig();
 
   initialWidgets = [
     {
@@ -119,14 +117,14 @@ export class DashboardPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   widgetsJson = JSON.stringify(this.initialWidgets);
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
     this.updateCode();
   }
 
-  ngAfterViewInit() {
+  override ngAfterViewInit() {
+    super.ngAfterViewInit();
     // Initial sync for properties that might not be attributes
     this.updateDashboardProps();
   }
@@ -269,13 +267,8 @@ export class DashboardPlaygroundComponent implements OnInit, AfterViewInit {
     this.generatedCode.set(code);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  updateConfig() {
+    this.updateDashboardProps();
   }
 
   // Method meant to be called from template for actions
@@ -305,4 +298,3 @@ export class DashboardPlaygroundComponent implements OnInit, AfterViewInit {
     }
   }
 }
-

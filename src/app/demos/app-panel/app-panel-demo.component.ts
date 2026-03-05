@@ -32,14 +32,7 @@ export class AppPanelDemoComponent extends BaseDemoComponent {
     { id: 'glassmorphism', title: 'Glassmorphism', icon: '🔮' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>

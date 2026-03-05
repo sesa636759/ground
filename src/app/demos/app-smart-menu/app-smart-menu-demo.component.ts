@@ -32,14 +32,7 @@ export class AppSmartMenuDemoComponent extends BaseDemoComponent {
     { id: 'disabled', title: 'Disabled Items', icon: '🚫' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   nestedCode = `<!-- Right-click on the target area to open the menu -->
 <div id="nested-target" style="padding:40px;border:2px dashed #ccc;text-align:center">

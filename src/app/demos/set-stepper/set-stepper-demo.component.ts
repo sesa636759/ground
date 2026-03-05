@@ -45,14 +45,7 @@ export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   currentStep25 = 12;
 

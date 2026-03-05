@@ -35,14 +35,7 @@ export class SetContextMenuDemoComponent {
     { id: 'advanced', title: 'Advanced Features', icon: '💎' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Basic menu items
   basicItems = [

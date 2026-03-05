@@ -29,9 +29,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 export class AppContextMenuDemoComponent extends BaseDemoComponent {
   exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
 
-  anchorLinks = JSON.stringify([
-    { id: 'targets', label: 'Multiple Targets', target: 'targets', icon: '🎯' },
-  ]);
+  
 
   fileItems = JSON.stringify([
     { label: 'Open', icon: '📂' },

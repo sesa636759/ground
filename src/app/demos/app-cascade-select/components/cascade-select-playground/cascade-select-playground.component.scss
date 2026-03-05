@@ -1,11 +1,2 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  min-height: 400px;
-  /* More space for expanding columns */
-  overflow: visible;
-  /* High importance for absolute popups */
-  background: white;
-  padding: 48px;
-  position: relative;
-}

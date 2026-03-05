@@ -30,14 +30,7 @@ export class SetTabStackDemoComponent implements OnInit {
     { id: 'premium', title: 'Premium Features', icon: '💎' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   tabs = [
     { id: 'tab1', label: 'Dashboard', icon: 'fas fa-home', content: 'Dashboard content' },

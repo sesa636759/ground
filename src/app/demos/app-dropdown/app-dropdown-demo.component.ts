@@ -34,14 +34,7 @@ export class AppDropdownDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'sizes', title: 'Size Scaling', icon: '📏' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   basicOptions = [
     { label: 'Option 1', value: '1' },

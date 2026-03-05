@@ -1,18 +1,2 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  .preview-stage {
-    height: 400px;
-    overflow: hidden;
-  }
-
-  .panel-content {
-    height: 100%;
-    padding: 24px;
-    overflow: auto;
-
-    &.highlight {
-      background: rgba(var(--primary-rgb), 0.05);
-    }
-  }
-}

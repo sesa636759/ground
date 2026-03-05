@@ -1,19 +1,5 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  .preview-stage {
-    height: 600px;
-
-    &.h-scrollable {
-      overflow: auto;
-    }
-
-    .timeline-container {
-      min-height: 100%;
-    }
-  }
-}
-
 .control-group {
   input[type="color"] {
     padding: 5px;

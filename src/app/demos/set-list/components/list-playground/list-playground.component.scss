@@ -1,17 +1,2 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  .preview-stage {
-    min-height: 400px;
-
-    &.h-scrollable {
-      overflow: auto;
-    }
-
-    .list-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-  }
-}

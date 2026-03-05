@@ -1,196 +1,112 @@
-// Premium Playground Component Styles - Refactored for standard usage
+// ─────────────────────────────────────────────────────────────────────────────
+// playground-base.scss
+// @use'd by every individual *-playground.component.scss
+// Contains ONLY inner control styles (forms, checkboxes, preview stage).
+// Layout classes (playground-layout, playground-controls, playground-preview)
+// are owned exclusively by app-playground.component.scss.
+// ─────────────────────────────────────────────────────────────────────────────
 
-.playground-layout {
-  display: flex;
-  gap: var(--space-2xl);
-  height: 100%;
-
-  @media (max-width: 1200px) {
-    flex-direction: column;
-  }
-
-  &.layout-col {
-    flex-direction: column;
-  }
+// ── Control grid (form fields inside accordion panels) ───────────────────────
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
-.playground-controls {
-  flex: 1;
-  background: var(--surface-elevated);
-  //border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  //padding: var(--space-xl);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-smooth);
-
-  &:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-strong);
-  }
-
-  .control-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
-  }
-
-  .control-group {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
-
-    label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      letter-spacing: -0.01em;
-    }
-
-    select,
-    input[type='text'],
-    input[type='number'],
-    ui-input,
-    ui-dropdown {
-      width: 100%;
-      display: block;
-    }
-
-    // Ensure ui-input Stencil element has visible dimensions
-    ui-input {
-      min-height: 40px;
-      box-sizing: border-box;
-    }
-
-    /* Native fallbacks */
-    select,
-    input[type='text'],
-    input[type='number'] {
-      padding: var(--space-sm) var(--space-md);
-      background: var(--surface-1);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-size: 0.875rem;
-      transition: all var(--transition-fast);
-
-      &:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px var(--primary-glow);
-      }
-    }
-  }
-
-  .checkbox-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--space-md);
-    // padding-top: var(--space-xl);
-    // border-top: 1px solid var(--border-color);
-    // margin-top: var(--space-xl);
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-size: 0.9rem;
-      cursor: pointer;
-      color: var(--text-primary);
-
-      ui-checkbox {
-        display: inline-flex;
-      }
-    }
-  }
-
-  /* Legacy checkbox group support */
-  .checkbox-group {
-    @extend .checkbox-grid;
-  }
-}
-
-.playground-preview {
-  flex: 1.5;
+.control-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
-  min-width: 0;
-  min-height: 300px;
+  gap: var(--space-xs);
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+  }
+
+  select,
+  input[type='text'],
+  input[type='number'],
+  ui-input,
+  ui-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  ui-input {
+    min-height: 40px;
+    box-sizing: border-box;
+  }
+
+  select,
+  input[type='text'],
+  input[type='number'] {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+  }
+}
+
+// ── Checkbox grid ─────────────────────────────────────────────────────────────
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-md);
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--text-primary);
+
+    ui-checkbox {
+      display: inline-flex;
+    }
+  }
+}
+
+// Legacy alias
+.checkbox-group {
+  @extend .checkbox-grid;
+}
+
+// ── Preview stage (the dashed demo box) ───────────────────────────────────────
+.preview-stage {
+  width: 100%;
   background: var(--surface-elevated);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  padding: var(--space-xl);
+  border-radius: var(--radius-2xl);
+  border: 2px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xl);
+  position: relative;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-smooth);
+  box-sizing: border-box;
 
-  .event-log,
-  .event-log-container {
-    background: var(--surface-2);
-    padding: var(--space-md) var(--space-lg);
-    border-radius: var(--radius-lg);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    border-left: 4px solid var(--primary);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-inner);
-    max-height: 150px;
-    overflow-y: auto;
-
-    strong {
-      display: block;
-      margin-bottom: var(--space-xs);
-      color: var(--text-secondary);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .log-items {
-      max-height: 100px;
-      overflow-y: auto;
-    }
-
-    .log-item {
-      padding: 0.25rem 0;
-      border-bottom: 1px solid var(--border-light);
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
-
-  .preview-stage {
-    min-height: 300px;
-    background: var(--surface-elevated);
-    border-radius: var(--radius-2xl);
-    border: 2px dashed var(--border-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--space-2xl);
-    position: relative;
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-smooth);
-
-    &:hover {
-      border-color: var(--border-strong);
-      box-shadow: var(--shadow-md);
-    }
-  }
-
-  /* Standardized Code Preview styling for Playgrounds */
-  ui-code-preview {
-    width: 100%;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    border: 1px solid var(--border-color);
+  &:hover {
+    border-color: var(--border-strong);
     box-shadow: var(--shadow-md);
   }
 }
 
-/* Common Slot Content Styles */
+// ── Common slot content (used in tooltip, popover, etc.) ──────────────────────
 .custom-slot-content {
   padding: var(--space-lg);
   display: flex;

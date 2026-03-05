@@ -61,14 +61,7 @@ export class SetModernSidebarDemoComponent extends BaseDemoComponent implements 
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   ngOnInit() {}
 

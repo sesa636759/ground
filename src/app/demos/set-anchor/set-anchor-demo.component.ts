@@ -69,14 +69,7 @@ export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit 
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Sample data for anchor items
   verticalLeftItems = JSON.stringify([

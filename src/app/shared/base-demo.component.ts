@@ -14,4 +14,15 @@ export abstract class BaseDemoComponent {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  get anchorLinks() {
+    return JSON.stringify(
+      this.exampleVariants.map((v) => ({
+        id: v.id,
+        label: v.title,
+        target: v.id,
+        icon: v.icon,
+      })),
+    );
+  }
 }

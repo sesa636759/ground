@@ -43,14 +43,7 @@ export class AppPaginationDemoComponent extends BaseDemoComponent {
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   basicCode = `<!-- Basic Pagination -->
 <ui-pagination total-items="100" items-per-page="10" current-page="1"></ui-pagination>

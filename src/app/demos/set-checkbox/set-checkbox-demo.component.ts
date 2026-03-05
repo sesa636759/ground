@@ -39,14 +39,7 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'form', title: 'Form Example', icon: '📋' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   get exampleVariants() {
     return this.variants;

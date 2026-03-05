@@ -37,14 +37,7 @@ export class AppTagDemoComponent extends BaseDemoComponent implements OnInit {
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   playgroundCode = `<ui-tag value="New" severity="info" rounded></ui-tag>`;
 

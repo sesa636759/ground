@@ -32,14 +32,7 @@ export class AppSkeletonDemoComponent extends BaseDemoComponent {
     { id: 'profile-layout', title: 'Profile Layout', icon: '👤' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   shapesCode = `<!-- Circle (avatar) -->
 <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>

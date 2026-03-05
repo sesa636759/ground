@@ -40,14 +40,7 @@ export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   get exampleVariants() {
     return this.variants;

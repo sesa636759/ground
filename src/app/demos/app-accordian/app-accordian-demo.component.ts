@@ -47,16 +47,9 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
-  basicAccordionItems = JSON.stringify([
+  basicAccordionItems = [
     {
       id: 'what-is',
       title: 'What is an Accordion?',
@@ -75,10 +68,10 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
       content:
         '<ul><li>Compact vertical layout</li><li>Single or multiple expansion</li><li>Keyboard accessible</li><li>Customizable styling</li></ul>',
     },
-  ]);
+  ];
   basicAccordionCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
-  subtitlesItems = JSON.stringify([
+  subtitlesItems = [
     {
       id: '1',
       title: 'Personal Information',
@@ -97,10 +90,10 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
       subtitle: 'Credit Cards, History',
       content: '<p>View and manage your billing information.</p>',
     },
-  ]);
+  ];
   subtitlesCode = `<ui-accordion [items]="items"></ui-accordion>`;
 
-  searchItems = JSON.stringify([
+  searchItems = [
     { id: 'react', title: 'React', content: 'A JavaScript library for building user interfaces' },
     {
       id: 'angular',
@@ -110,10 +103,10 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     { id: 'vue', title: 'Vue', content: 'The Progressive JavaScript Framework' },
     { id: 'svelte', title: 'Svelte', content: 'Cybernetically enhanced web apps' },
     { id: 'ember', title: 'Ember', content: 'A framework for ambitious web developers' },
-  ]);
+  ];
   searchCode = `<ui-accordion [items]="items" enable-search search-placeholder="Search frameworks..."></ui-accordion>`;
 
-  actionsItems = JSON.stringify([
+  actionsItems = [
     {
       id: 'file1',
       title: 'Document.pdf',
@@ -134,10 +127,10 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
         { id: 'share', label: '🔗', ariaLabel: 'Share' },
       ],
     },
-  ]);
+  ];
   actionsCode = `<ui-accordion [items]="items" (accordionAction)="handleAction($event)"></ui-accordion>`;
 
-  nestedItems = JSON.stringify([
+  nestedItems = [
     {
       id: 'frontend',
       title: 'Frontend Development',
@@ -161,60 +154,58 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
         { id: 'python', title: 'Python', content: 'Versatile language' },
       ],
     },
-  ]);
+  ];
   nestedCode = `<ui-accordion [items]="items" enable-nested></ui-accordion>`;
 
-  dragDropItems = JSON.stringify([
+  dragDropItems = [
     { id: 'todo', title: 'To Do', content: 'Tasks to be done' },
     { id: 'progres', title: 'In Progress', content: 'Tasks currently being worked on' },
     { id: 'done', title: 'Done', content: 'Completed tasks' },
     { id: 'archived', title: 'Archived', content: 'Old tasks' },
-  ]);
+  ];
   dragDropCode = `<ui-accordion [items]="items" enable-drag-drop (accordionReorder)="handleReorder($event)"></ui-accordion>`;
 
-  persistenceItems = JSON.stringify([
+  persistenceItems = [
     { id: 'pref1', title: 'Preference 1', content: 'Setting 1' },
     { id: 'pref2', title: 'Preference 2', content: 'Setting 2' },
     { id: 'pref3', title: 'Preference 3', content: 'Setting 3' },
-  ]);
+  ];
   persistenceCode = `<ui-accordion [items]="items" enable-persistence persistence-key="custom-key-v1"></ui-accordion>`;
 
   loadingCode = `<ui-accordion [items]="[]" loading></ui-accordion>`;
 
-  rtlItems = JSON.stringify([
+  rtlItems = [
     { id: '1', title: 'القسم الأول', content: 'محتوى القسم الأول' },
     { id: '2', title: 'القسم الثاني', content: 'محتوى القسم الثاني' },
-  ]);
+  ];
   rtlCode = `<ui-accordion [items]="items" rtl></ui-accordion>`;
 
-  denseItems = JSON.stringify(
-    Array.from({ length: 5 }, (_, i) => ({
-      id: `item-${i}`,
-      title: `Dense Item ${i + 1}`,
-      content: `Compact content for item ${i + 1}`,
-    })),
-  );
+  denseItems = Array.from({ length: 5 }, (_, i) => ({
+    id: `item-${i}`,
+    title: `Dense Item ${i + 1}`,
+    content: `Compact content for item ${i + 1}`,
+  }));
   denseCode = `<ui-accordion [items]="items" dense></ui-accordion>`;
 
-  eventsItems = JSON.stringify([
+  eventsItems = [
     { id: 'e1', title: 'Event Source 1', content: 'Interact with me' },
     { id: 'e2', title: 'Event Source 2', content: 'Interact with me too' },
-  ]);
+  ];
   eventsLog: string[] = [];
   eventsCode = `<ui-accordion [items]="items" (afterOpen)="log('After Open', $event)"></ui-accordion>`;
 
-  controlledItems = JSON.stringify([
+  controlledItems = [
     { id: 'c1', title: 'Panel 1', content: 'Controlled Panel 1' },
     { id: 'c2', title: 'Panel 2', content: 'Controlled Panel 2' },
     { id: 'c3', title: 'Panel 3', content: 'Controlled Panel 3' },
-  ]);
+  ];
   controlledExpanded: string[] = [];
   controlledCode = `<ui-accordion [items]="items" [expandedItems]="currentExpanded"></ui-accordion>`;
 
-  asyncLazyItems = JSON.stringify([
+  asyncLazyItems = [
     { id: 'l1', title: 'Lazy Content 1', content: 'This content was rendered only when opened.' },
     { id: 'l2', title: 'Lazy Content 2', content: 'Check the DOM, I was not there when closed.' },
-  ]);
+  ];
   asyncLazyCode = `<ui-accordion [items]="items" lazy></ui-accordion>`;
 
   handleAction(event: any) {

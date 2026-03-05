@@ -62,14 +62,7 @@ export class SetCarouselDemoComponent extends BaseDemoComponent implements OnIni
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Basic Layout Examples
   fadeSlides = JSON.stringify([

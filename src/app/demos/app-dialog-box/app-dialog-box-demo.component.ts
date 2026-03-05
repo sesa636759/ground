@@ -38,14 +38,7 @@ export class AppDialogBoxDemoComponent extends BaseDemoComponent {
     { id: 'premium', title: 'Premium Capabilities', icon: '💎' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   dialogVisible: { [key: string]: boolean } = {};
 

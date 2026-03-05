@@ -35,14 +35,7 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
     { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   playgroundCode = `<app-layout-manager
   [regions]="regions"

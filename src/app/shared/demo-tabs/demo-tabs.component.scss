@@ -62,22 +62,23 @@ app-tab {
 .pane-examples {
   overflow: hidden;
   padding: 0;
-  background: #ffffff;
+  background: #f0fdf4;
   height: 100%;
   box-sizing: border-box;
 }
 
 .pane-playground {
-  overflow-y: auto;
+  overflow: hidden;
   padding: 2rem;
-  background: #ffffff;
+  background: #f0fdf4;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .pane-docs {
   overflow: hidden;
   padding: 0;
-  background: #ffffff;
+  background: #f0fdf4;
   height: 100%;
   box-sizing: border-box;
 }

@@ -40,14 +40,7 @@ export class SetTreeDemoComponent implements OnInit {
     { id: 'dark-theme', title: 'Dark Theme', icon: '🌙' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Basic simple tree
   simpleTreeData = JSON.stringify([
