@@ -13,29 +13,23 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TagPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    value: 'New Update',
-    icon: '?',
-    severity: 'info',
-    rounded: true,
-    size: 'small',
-  };
-
-  severityOptions = [
-    { label: 'Info', value: 'info' },
-    { label: 'Success', value: 'success' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Danger', value: 'danger' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'small' },
-    { label: 'Large', value: 'large' },
-  ];
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      value: 'New Update',
+      icon: '?',
+      severity: 'info',
+      rounded: true,
+      size: 'small',
+    };
+  }
 
   updateConfig() {
     let code = '<ui-tag\n';
@@ -47,17 +41,5 @@ export class TagPlaygroundComponent extends BasePlaygroundComponent {
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      value: 'New Update',
-      icon: '?',
-      severity: 'info',
-      rounded: true,
-      size: 'small',
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

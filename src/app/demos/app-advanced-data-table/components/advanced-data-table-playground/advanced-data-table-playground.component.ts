@@ -4,22 +4,24 @@ import {
   ViewChild,
   ElementRef,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-advanced-data-table-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './advanced-data-table-playground.component.html',
   styleUrl: './advanced-data-table-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class AdvancedDataTablePlaygroundComponent extends BasePlaygroundComponent {
+export class AdvancedDataTablePlaygroundComponent
+  extends BasePlaygroundComponent
+  implements OnInit
+{
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgConfig = this.getDefaultConfig();
@@ -54,6 +56,10 @@ export class AdvancedDataTablePlaygroundComponent extends BasePlaygroundComponen
     super();
   }
 
+  ngOnInit() {
+    this.updateConfig();
+  }
+
   getDefaultConfig() {
     return {
       paginator: true,
@@ -75,11 +81,5 @@ export class AdvancedDataTablePlaygroundComponent extends BasePlaygroundComponen
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

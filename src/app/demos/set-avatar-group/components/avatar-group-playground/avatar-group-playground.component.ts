@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-set-avatar-group-playground',
@@ -26,22 +25,7 @@ export class SetAvatarGroupPlaygroundComponent
   @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    size: 'medium',
-    max: 4,
-    layout: 'stacked',
-    shape: 'circle',
-    showTooltips: true,
-    clickable: false,
-    spacing: 8,
-    borderWidth: 2,
-    borderColor: '#ffffff',
-    direction: 'horizontal',
-    showPopover: false,
-    animated: false,
-    hoverEffect: 'none',
-    columns: 3,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'layout', title: 'Layout Configuration', icon: '⚙️' },
@@ -62,30 +46,12 @@ export class SetAvatarGroupPlaygroundComponent
     { name: 'Frank Wilson', image: 'https://i.pravatar.cc/150?img=8' },
   ];
 
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  updateConfig() {
-    setTimeout(() => {
-      if (!this.avatarGroupElement) return;
-      let code = generatePlaygroundCode(
-        this.avatarGroupElement.nativeElement as Element,
-        'app-avatar-group',
-      );
-      // Add users prop to code manually
-      code = code.replace(
-        '></app-avatar-group>',
-        '\n  [users]="avatarUsers"\n></app-avatar-group>',
-      );
-
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       size: 'medium',
       max: 4,
       layout: 'stacked',
@@ -101,7 +67,24 @@ export class SetAvatarGroupPlaygroundComponent
       hoverEffect: 'none',
       columns: 3,
     };
+  }
+
+  ngAfterViewInit() {
     this.updateConfig();
-    this.eventLog.set([]);
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.avatarGroupElement) return;
+      let code = this.getCleanFormattedDom(this.avatarGroupElement, 'app-avatar-group');
+      // Add users prop to code manually
+      code = code.replace(
+        '></app-avatar-group>',
+        '\n  [users]="avatarUsers"\n></app-avatar-group>',
+      );
+
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
   }
 }

@@ -6,15 +6,13 @@ import {
   ElementRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-aside-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './aside-playground.component.html',
   styleUrl: './aside-playground.component.scss',
@@ -31,13 +29,6 @@ export class AsidePlaygroundComponent extends BasePlaygroundComponent implements
   ]);
 
   defaultOpen = JSON.stringify(['global', 'states']);
-
-  directionOptions = [
-    { label: 'Right', value: 'right' },
-    { label: 'Left', value: 'left' },
-    { label: 'Top', value: 'top' },
-    { label: 'Bottom', value: 'bottom' },
-  ];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -92,11 +83,5 @@ export class AsidePlaygroundComponent extends BasePlaygroundComponent implements
     this.pgConfig.open = event.detail?.open || false;
     this.logEvent(`Aside open state: ${this.pgConfig.open}`);
     this.updateConfig();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

@@ -7,7 +7,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-transfer-list-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './transfer-list-playground.component.html',
   styleUrl: './transfer-list-playground.component.scss',
@@ -65,11 +65,5 @@ export class TransferListPlaygroundComponent extends BasePlaygroundComponent imp
 
   onTransferChange(event: any) {
     this.logEvent(`Transfer list updated: ${event.detail?.items?.length} items transferred`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

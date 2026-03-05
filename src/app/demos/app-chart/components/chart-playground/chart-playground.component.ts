@@ -12,11 +12,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class ChartPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('chart') chart!: ElementRef;
-  pgConfig = {
-    type: 'line',
-    showLegend: true,
-    responsive: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
   typeOptions = [
     { label: 'Line', value: 'line' },
@@ -39,16 +35,15 @@ export class ChartPlaygroundComponent extends BasePlaygroundComponent {
 
   chartDataJson = JSON.stringify(this.chartData);
 
-  updateConfig() {
-    this.updateConfigFromDom(this.chart, 'ui-chart');
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       type: 'line',
       showLegend: true,
       responsive: true,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.chart, 'ui-chart');
   }
 }

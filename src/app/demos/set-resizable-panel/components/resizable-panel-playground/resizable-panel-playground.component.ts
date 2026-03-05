@@ -31,8 +31,6 @@ export class ResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   panelsData = [
     { id: 'panel-1', size: 30, minSize: 15, maxSize: 50, collapsible: true },
     { id: 'panel-2', size: 40, minSize: 20 },
@@ -81,8 +79,8 @@ export class ResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
     );
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       direction: 'horizontal',
       theme: 'light',
       handleSize: 8,
@@ -97,7 +95,5 @@ export class ResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
       collapsible2: false,
       collapsible3: true,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

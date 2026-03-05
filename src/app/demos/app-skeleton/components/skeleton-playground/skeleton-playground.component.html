@@ -8,7 +8,7 @@
     <div class="control-group">
       <label>Shape</label>
       <ui-dropdown
-        [(ngModel)]="cfg.shape"
+        [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
         [options]="shapeOpts"
       ></ui-dropdown>
@@ -17,7 +17,7 @@
     <div class="control-group">
       <label>Animation Type</label>
       <ui-dropdown
-        [(ngModel)]="cfg.animationType"
+        [(ngModel)]="pgConfig.animationType"
         (ngModelChange)="updateConfig()"
         [options]="animTypeOpts"
       ></ui-dropdown>
@@ -26,7 +26,7 @@
     <div class="control-group">
       <label>Animated</label>
       <ui-dropdown
-        [(ngModel)]="cfg.animated"
+        [(ngModel)]="pgConfig.animated"
         (ngModelChange)="updateConfig()"
         [options]="boolOpts"
       ></ui-dropdown>
@@ -37,7 +37,7 @@
     <div class="control-group">
       <label>Size (Predefined)</label>
       <ui-dropdown
-        [(ngModel)]="cfg.size"
+        [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOpts"
       ></ui-dropdown>
@@ -48,7 +48,7 @@
       <label>Width</label>
       <ui-input
         type="text"
-        [(ngModel)]="cfg.width"
+        [(ngModel)]="pgConfig.width"
         (ngModelChange)="updateConfig()"
         placeholder="100%"
       ></ui-input>
@@ -58,7 +58,7 @@
       <label>Height</label>
       <ui-input
         type="text"
-        [(ngModel)]="cfg.height"
+        [(ngModel)]="pgConfig.height"
         (ngModelChange)="updateConfig()"
         placeholder="20px"
       ></ui-input>
@@ -68,7 +68,7 @@
       <label>Border Radius</label>
       <ui-input
         type="text"
-        [(ngModel)]="cfg.borderRadius"
+        [(ngModel)]="pgConfig.borderRadius"
         (ngModelChange)="updateConfig()"
         placeholder="4px"
       ></ui-input>
@@ -83,26 +83,25 @@
     <div style="width: 100%; display: flex; justify-content: center">
       @if (recreate) {
         <skeleton-loader
-          [attr.shape]="cfg.shape"
-          [attr.animation-type]="cfg.animationType"
-          [attr.animated]="cfg.animated"
-          [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-          [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-          [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-          [attr.border-radius]="cfg.borderRadius || null"
+          [attr.shape]="pgConfig.shape"
+          [attr.animation-type]="pgConfig.animationType"
+          [attr.animated]="pgConfig.animated"
+          [attr.size]="pgConfig.size !== 'custom' ? pgConfig.size : null"
+          [attr.width]="pgConfig.size === 'custom' ? pgConfig.width : null"
+          [attr.height]="pgConfig.size === 'custom' ? pgConfig.height : null"
+          [attr.border-radius]="pgConfig.borderRadius || null"
         ></skeleton-loader>
       } @else {
         <skeleton-loader
-          [attr.shape]="cfg.shape"
-          [attr.animation-type]="cfg.animationType"
-          [attr.animated]="cfg.animated"
-          [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-          [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-          [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-          [attr.border-radius]="cfg.borderRadius || null"
+          [attr.shape]="pgConfig.shape"
+          [attr.animation-type]="pgConfig.animationType"
+          [attr.animated]="pgConfig.animated"
+          [attr.size]="pgConfig.size !== 'custom' ? pgConfig.size : null"
+          [attr.width]="pgConfig.size === 'custom' ? pgConfig.width : null"
+          [attr.height]="pgConfig.size === 'custom' ? pgConfig.height : null"
+          [attr.border-radius]="pgConfig.borderRadius || null"
         ></skeleton-loader>
       }
     </div>
   </div>
 </app-playground>
-

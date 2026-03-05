@@ -42,8 +42,6 @@ export class ProgressPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   updateConfig() {
     let code = `<app-progress\n`;
     code += `  [percent]="${this.pgConfig.percent}"\n`;
@@ -82,8 +80,8 @@ export class ProgressPlaygroundComponent extends BasePlaygroundComponent {
     this.refreshCode();
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       percent: 50,
       type: 'line',
       status: 'normal',
@@ -101,6 +99,5 @@ export class ProgressPlaygroundComponent extends BasePlaygroundComponent {
       strokeColor: '#3DCD58',
       trailColor: '#f5f5f5',
     };
-    this.updateConfig();
   }
 }

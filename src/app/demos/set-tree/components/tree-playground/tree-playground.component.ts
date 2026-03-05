@@ -21,27 +21,35 @@ export class TreePlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('treeElement') treeElement!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    layout: 'tree',
-    variant: 'default',
-    size: 'medium',
-    theme: 'light',
-    orientation: 'vertical',
-    indent: 24,
-    connectorWidth: 2,
-    connectorColor: '#3DCD58',
-    connectorOpacity: 1,
-    showLines: true,
-    showIcons: true,
-    expandable: true,
-    selectable: true,
-    multiSelect: false,
-    checkboxes: false,
-    searchable: true,
-    animated: true,
-    showGlow: false,
-    enableDrag: false,
-  };
+  pgConfig = this.getDefaultConfig();
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      layout: 'tree',
+      variant: 'default',
+      size: 'medium',
+      theme: 'light',
+      orientation: 'vertical',
+      indent: 24,
+      connectorWidth: 2,
+      connectorColor: '#3DCD58',
+      connectorOpacity: 1,
+      showLines: true,
+      showIcons: true,
+      expandable: true,
+      selectable: true,
+      multiSelect: false,
+      checkboxes: false,
+      searchable: true,
+      animated: true,
+      showGlow: false,
+      enableDrag: false,
+    };
+  }
 
   demoData = JSON.stringify([
     {

@@ -12,7 +12,7 @@
           name="mode"
           [(ngModel)]="pgConfig.mode"
           (ngModelChange)="updateConfig()"
-          [options]="modeOptions"
+          [options]="standardOrientationOptions"
         ></ui-dropdown>
       </div>
 
@@ -22,7 +22,7 @@
           name="position"
           [(ngModel)]="pgConfig.position"
           (ngModelChange)="updateConfig()"
-          [options]="positionOptions"
+          [options]="standardDirectionOptions"
         ></ui-dropdown>
       </div>
 
@@ -32,7 +32,7 @@
           name="alignment"
           [(ngModel)]="pgConfig.alignment"
           (ngModelChange)="updateConfig()"
-          [options]="alignmentOptions"
+          [options]="standardAlignmentOptions"
         ></ui-dropdown>
       </div>
 
@@ -42,7 +42,7 @@
           name="size"
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
-          [options]="sizeOptions"
+          [options]="fullSizeOptions"
         ></ui-dropdown>
       </div>
 
@@ -52,7 +52,7 @@
           name="theme"
           [(ngModel)]="pgConfig.theme"
           (ngModelChange)="updateConfig()"
-          [options]="themeOptions"
+          [options]="standardColorOptions"
         ></ui-dropdown>
       </div>
     </div>
@@ -216,4 +216,3 @@
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
-

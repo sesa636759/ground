@@ -35,7 +35,7 @@
         <ui-dropdown
           [(ngModel)]="pgConfig.size"
           (ngModelChange)="updateConfig()"
-          [options]="sizeOptions"
+          [options]="standardSizeOptions"
         ></ui-dropdown>
       </div>
     </div>
@@ -78,4 +78,3 @@
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
-

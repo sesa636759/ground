@@ -11,18 +11,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
   styleUrl: './badge-playground.component.scss',
 })
 export class BadgePlaygroundComponent extends BasePlaygroundComponent {
-  pgConfig = {
-    value: '5',
-    max: 99,
-    color: 'danger',
-    size: 'md',
-    variant: 'standard',
-    position: 'top-right',
-    animation: 'none',
-    dot: false,
-    glow: false,
-    icon: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'content', title: 'Content & Value', icon: '📝' },
@@ -31,21 +20,6 @@ export class BadgePlaygroundComponent extends BasePlaygroundComponent {
   ]);
 
   accordionDefaultOpen = JSON.stringify(['content']);
-
-  colorOptions = [
-    { label: 'Primary', value: 'primary' },
-    { label: 'Secondary', value: 'secondary' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Info', value: 'info' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   variantOptions = [
     { label: 'Standard', value: 'standard' },
@@ -68,6 +42,21 @@ export class BadgePlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Shake', value: 'shake' },
   ];
 
+  getDefaultConfig() {
+    return {
+      value: '5',
+      max: 99,
+      color: 'danger',
+      size: 'md',
+      variant: 'standard',
+      position: 'top-right',
+      animation: 'none',
+      dot: false,
+      glow: false,
+      icon: '',
+    };
+  }
+
   updateConfig() {
     let code = '<ui-badge\n';
     if (!this.pgConfig.dot) code += `  value="${this.pgConfig.value}"\n`;
@@ -86,21 +75,5 @@ export class BadgePlaygroundComponent extends BasePlaygroundComponent {
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      value: '5',
-      max: 99,
-      color: 'danger',
-      size: 'md',
-      variant: 'standard',
-      position: 'top-right',
-      animation: 'none',
-      dot: false,
-      glow: false,
-      icon: '',
-    };
-    this.updateConfig();
   }
 }

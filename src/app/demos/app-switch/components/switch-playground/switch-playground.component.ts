@@ -13,35 +13,12 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    label: 'Enable Notifications',
-    checked: false,
-    disabled: false,
-    loading: false,
-    size: 'md',
-    variant: 'primary',
-    shape: 'default',
-    labelPosition: 'right',
-    iconOn: '✔️',
-    iconOff: '❌',
-    showDefaultIcons: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
-
-  variantOptions = [
-    { label: 'Primary', value: 'primary' },
-    { label: 'Secondary', value: 'secondary' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Info', value: 'info' },
-  ];
 
   sizeOptions = [
     { label: 'Extra Small', value: 'xs' },
@@ -66,6 +43,22 @@ export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
   constructor() {
     super();
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      label: 'Enable Notifications',
+      checked: false,
+      disabled: false,
+      loading: false,
+      size: 'md',
+      variant: 'primary',
+      shape: 'default',
+      labelPosition: 'right',
+      iconOn: '✔️',
+      iconOff: '❌',
+      showDefaultIcons: false,
+    };
   }
 
   updateConfig() {
@@ -93,23 +86,5 @@ export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
     this.pgConfig.checked = isChecked;
     this.logEvent(`Switch changed to: ${isChecked}`);
     this.updateConfig();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      label: 'Enable Notifications',
-      checked: false,
-      disabled: false,
-      loading: false,
-      size: 'md',
-      variant: 'primary',
-      shape: 'default',
-      labelPosition: 'right',
-      iconOn: '✔️',
-      iconOff: '❌',
-      showDefaultIcons: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

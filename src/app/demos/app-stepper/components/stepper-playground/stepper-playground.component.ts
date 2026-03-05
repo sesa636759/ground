@@ -7,7 +7,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-stepper-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stepper-playground.component.html',
   styleUrl: './stepper-playground.component.scss',
@@ -22,17 +22,6 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent implemen
   ]);
 
   defaultOpen = JSON.stringify(['layout', 'options']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -88,11 +77,5 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent implemen
     this.pgConfig.activeStep = event.detail.index;
     this.updateConfig();
     this.logEvent(`Active step changed to: ${this.pgConfig.activeStep}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

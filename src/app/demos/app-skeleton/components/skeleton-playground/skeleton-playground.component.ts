@@ -13,15 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  cfg = {
-    shape: 'rectangle',
-    animationType: 'pulse',
-    animated: 'true',
-    size: 'custom',
-    width: '100%',
-    height: '80px',
-    borderRadius: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'appearance', title: 'Appearance', icon: '🎨' },
@@ -73,26 +65,8 @@ export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 
-  updateConfig() {
-    this.recreate = !this.recreate;
-    const lines = ['<skeleton-loader'];
-    lines.push(`  shape="${this.cfg.shape}"`);
-    lines.push(`  animation-type="${this.cfg.animationType}"`);
-    if (this.cfg.animated === 'false') lines.push(`  animated="false"`);
-    if (this.cfg.size !== 'custom') {
-      lines.push(`  size="${this.cfg.size}"`);
-    } else {
-      if (this.cfg.width) lines.push(`  width="${this.cfg.width}"`);
-      if (this.cfg.height) lines.push(`  height="${this.cfg.height}"`);
-    }
-    if (this.cfg.borderRadius) lines.push(`  border-radius="${this.cfg.borderRadius}"`);
-    lines.push('></skeleton-loader>');
-    this.generatedCode.set(lines.join('\n'));
-    this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.cfg = {
+  getDefaultConfig() {
+    return {
       shape: 'rectangle',
       animationType: 'pulse',
       animated: 'true',
@@ -101,7 +75,23 @@ export class SkeletonPlaygroundComponent extends BasePlaygroundComponent {
       height: '80px',
       borderRadius: '',
     };
-    this.updateConfig();
-    this.eventLog.set([]);
+  }
+
+  updateConfig() {
+    this.recreate = !this.recreate;
+    const lines = ['<skeleton-loader'];
+    lines.push(`  shape="${this.pgConfig.shape}"`);
+    lines.push(`  animation-type="${this.pgConfig.animationType}"`);
+    if (this.pgConfig.animated === 'false') lines.push(`  animated="false"`);
+    if (this.pgConfig.size !== 'custom') {
+      lines.push(`  size="${this.pgConfig.size}"`);
+    } else {
+      if (this.pgConfig.width) lines.push(`  width="${this.pgConfig.width}"`);
+      if (this.pgConfig.height) lines.push(`  height="${this.pgConfig.height}"`);
+    }
+    if (this.pgConfig.borderRadius) lines.push(`  border-radius="${this.pgConfig.borderRadius}"`);
+    lines.push('></skeleton-loader>');
+    this.generatedCode.set(lines.join('\n'));
+    this.refreshCode();
   }
 }

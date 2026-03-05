@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-card-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './card-playground.component.html',
@@ -85,11 +85,5 @@ export class CardPlaygroundComponent extends BasePlaygroundComponent implements 
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

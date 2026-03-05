@@ -7,7 +7,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-speed-dial-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './speed-dial-playground.component.html',
   styleUrl: './speed-dial-playground.component.scss',
@@ -22,13 +22,6 @@ export class SpeedDialPlaygroundComponent extends BasePlaygroundComponent implem
   ]);
 
   defaultOpen = JSON.stringify(['layout', 'visuals']);
-
-  directionOptions = [
-    { label: 'Up', value: 'up' },
-    { label: 'Down', value: 'down' },
-    { label: 'Left', value: 'left' },
-    { label: 'Right', value: 'right' },
-  ];
 
   typeOptions = [
     { label: 'Linear', value: 'linear' },
@@ -75,11 +68,5 @@ export class SpeedDialPlaygroundComponent extends BasePlaygroundComponent implem
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

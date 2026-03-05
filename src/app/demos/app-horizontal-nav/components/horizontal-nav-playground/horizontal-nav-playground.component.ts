@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-horizontal-nav-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './horizontal-nav-playground.component.html',
   styleUrl: './horizontal-nav-playground.component.scss',
@@ -74,11 +74,5 @@ export class HorizontalNavPlaygroundComponent extends BasePlaygroundComponent im
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

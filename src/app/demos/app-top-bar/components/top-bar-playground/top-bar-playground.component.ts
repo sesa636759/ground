@@ -7,7 +7,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-top-bar-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './top-bar-playground.component.html',
   styleUrl: './top-bar-playground.component.scss',
@@ -50,11 +50,5 @@ export class TopBarPlaygroundComponent extends BasePlaygroundComponent implement
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-dock-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dock-playground.component.html',
   styleUrl: './dock-playground.component.scss',
@@ -82,11 +82,5 @@ export class DockPlaygroundComponent extends BasePlaygroundComponent implements 
   logAction(action: string) {
     this.lastAction = action;
     this.logEvent(`Dock item clicked: ${action}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

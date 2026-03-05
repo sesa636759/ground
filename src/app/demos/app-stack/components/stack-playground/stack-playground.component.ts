@@ -4,37 +4,28 @@ import {
   ViewChild,
   ElementRef,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
 
 @Component({
   selector: 'app-stack-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stack-playground.component.html',
   styleUrl: './stack-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class StackPlaygroundComponent extends BasePlaygroundComponent {
+export class StackPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('stack') stack!: ElementRef;
   numBoxes = 5;
   get boxes() {
     return Array.from({ length: this.numBoxes }, (_, i) => i + 1);
   }
 
-  pgConfig = {
-    direction: 'horizontal',
-    spacing: '16px',
-    align: 'center',
-    justify: 'center',
-    max: 0,
-    overlap: false,
-    showDividers: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'layout', title: 'Layout Settings', icon: '📏' },
@@ -67,27 +58,12 @@ export class StackPlaygroundComponent extends BasePlaygroundComponent {
     super();
   }
 
-  updateConfig() {
-    setTimeout(() => {
-      if (!this.stack) return;
-      const itemsContent = Array.from(
-        { length: Math.min(this.numBoxes, 3) },
-        (_, i) => `  <div>Item ${i + 1}</div>`,
-      ).join('\n');
-      const suffix = this.numBoxes > 3 ? `  <!-- ${this.numBoxes - 3} more items... -->\n` : '';
-
-      const code = generatePlaygroundCode(
-        this.stack.nativeElement as Element,
-        'ui-stack',
-        `${itemsContent}\n${suffix}`,
-      );
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
+  ngOnInit() {
+    this.updateConfig();
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       direction: 'horizontal',
       spacing: '16px',
       align: 'center',
@@ -96,8 +72,26 @@ export class StackPlaygroundComponent extends BasePlaygroundComponent {
       overlap: false,
       showDividers: false,
     };
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.stack) return;
+      let code = this.getCleanFormattedDom(this.stack, 'ui-stack');
+      const itemsContent = Array.from(
+        { length: Math.min(this.numBoxes, 3) },
+        (_, i) => `  <div>Item ${i + 1}</div>`,
+      ).join('\n');
+      const suffix = this.numBoxes > 3 ? `  <!-- ${this.numBoxes - 3} more items... -->\n` : '';
+      code = code.replace('></ui-stack>', `>\n${itemsContent}\n${suffix}</ui-stack>`);
+
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  override resetConfig() {
+    super.resetConfig();
     this.numBoxes = 5;
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

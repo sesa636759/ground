@@ -10,7 +10,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
-        [options]="orientationOptions"
+        [options]="standardOrientationOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -87,4 +87,3 @@
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
-

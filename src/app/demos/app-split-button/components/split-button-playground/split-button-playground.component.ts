@@ -13,18 +13,9 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    label: 'Save Changes',
-    icon: '??',
-    variant: 'primary',
-    size: 'md',
-    disabled: false,
-    loading: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },
@@ -33,12 +24,6 @@ export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Danger', value: 'danger' },
     { label: 'Outline', value: 'outline' },
     { label: 'Ghost', value: 'ghost' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
   ];
 
   menuItems = [
@@ -51,6 +36,17 @@ export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   constructor() {
     super();
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      label: 'Save Changes',
+      icon: '??',
+      variant: 'primary',
+      size: 'md',
+      disabled: false,
+      loading: false,
+    };
   }
 
   updateConfig() {
@@ -73,18 +69,5 @@ export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
 
   onMenuClick(event: any) {
     this.logEvent('Menu item clicked: ' + event.detail?.label);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      label: 'Save Changes',
-      icon: '??',
-      variant: 'primary',
-      size: 'md',
-      disabled: false,
-      loading: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

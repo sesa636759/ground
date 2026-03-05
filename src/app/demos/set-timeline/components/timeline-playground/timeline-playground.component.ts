@@ -12,19 +12,27 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TimelinePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    orientation: 'vertical',
-    align: 'left',
-    iconPosition: 'center',
-    variant: 'default',
-    lineColor: '#667eea',
-    animateOnScroll: true,
-    compact: false,
-    clickable: true,
-    showLine: true,
-    wrap: false,
-    theme: 'light',
-  };
+  pgConfig = this.getDefaultConfig();
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      orientation: 'vertical',
+      align: 'left',
+      iconPosition: 'center',
+      variant: 'default',
+      lineColor: '#667eea',
+      animateOnScroll: true,
+      compact: false,
+      clickable: true,
+      showLine: true,
+      wrap: false,
+      theme: 'light',
+    };
+  }
 
   timelineItems = JSON.stringify([
     {

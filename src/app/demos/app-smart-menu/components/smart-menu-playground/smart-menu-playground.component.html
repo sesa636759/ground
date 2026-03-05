@@ -10,8 +10,8 @@
         <label>icon-library</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.iconLibrary"
-          (ngModelChange)="rebuild()"
-          [options]="iconLibraryOpts"
+          (ngModelChange)="updateConfig()"
+          [options]="iconLibraryOptions"
         ></ui-dropdown>
         <span class="control-hint">Changes how item icons are resolved</span>
       </div>
@@ -19,8 +19,8 @@
         <label>target / trigger mode</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.triggerMode"
-          (ngModelChange)="rebuild()"
-          [options]="triggerModeOpts"
+          (ngModelChange)="updateConfig()"
+          [options]="triggerModeOptions"
         ></ui-dropdown>
         <span class="control-hint">
           "right-click zone" binds target="#pg-zone"<br />
@@ -37,43 +37,52 @@
         <label>Preset</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.preset"
-          (ngModelChange)="rebuild()"
-          [options]="presetOpts"
+          (ngModelChange)="updateConfig()"
+          [options]="presetOptions"
         ></ui-dropdown>
       </div>
 
       <div class="checkbox-grid" style="margin-top: 16px">
         <label class="checkbox-item">
-          <ui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="rebuild()"></ui-checkbox>
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showIcons"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
           Show Icons
         </label>
         <label class="checkbox-item">
           <ui-checkbox
             [(ngModel)]="pgConfig.showDescriptions"
-            (ngModelChange)="rebuild()"
+            (ngModelChange)="updateConfig()"
           ></ui-checkbox>
           Show Descriptions
         </label>
         <label class="checkbox-item">
-          <ui-checkbox [(ngModel)]="pgConfig.showNested" (ngModelChange)="rebuild()"></ui-checkbox>
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showNested"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
           Show Nested
         </label>
         <label class="checkbox-item">
           <ui-checkbox
             [(ngModel)]="pgConfig.showDividers"
-            (ngModelChange)="rebuild()"
+            (ngModelChange)="updateConfig()"
           ></ui-checkbox>
           Show Dividers
         </label>
         <label class="checkbox-item">
           <ui-checkbox
             [(ngModel)]="pgConfig.showDisabled"
-            (ngModelChange)="rebuild()"
+            (ngModelChange)="updateConfig()"
           ></ui-checkbox>
           Show Disabled Option
         </label>
         <label class="checkbox-item">
-          <ui-checkbox [(ngModel)]="pgConfig.showAction" (ngModelChange)="rebuild()"></ui-checkbox>
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showAction"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
           Mock actions
         </label>
       </div>

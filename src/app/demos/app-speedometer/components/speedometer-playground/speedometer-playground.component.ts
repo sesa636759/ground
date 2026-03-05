@@ -13,15 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('speedometerElement') speedometerElement!: ElementRef;
 
-  pgConfig = {
-    value: 65,
-    min: 0,
-    max: 100,
-    label: 'km/h',
-    size: 250,
-    arcWidth: 20,
-    colorMode: 'gradient',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'metric', title: 'Metric Controls', icon: '仪表' },
@@ -36,12 +28,12 @@ export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Segments', value: 'segments' },
   ];
 
-  updateConfig() {
-    this.updateConfigFromDom(this.speedometerElement, 'ui-speedometer');
+  constructor() {
+    super();
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       value: 65,
       min: 0,
       max: 100,
@@ -50,6 +42,9 @@ export class SpeedometerPlaygroundComponent extends BasePlaygroundComponent {
       arcWidth: 20,
       colorMode: 'gradient',
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.speedometerElement, 'ui-speedometer');
   }
 }

@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-chip-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './chip-playground.component.html',
   styleUrl: './chip-playground.component.scss',
@@ -39,21 +39,6 @@ export class ChipPlaygroundComponent extends BasePlaygroundComponent implements 
     { label: 'Soft', value: 'soft' },
     { label: 'Text', value: 'text' },
     { label: 'Gradient', value: 'gradient' },
-  ];
-
-  colorOptions = [
-    { label: 'Primary', value: 'primary' },
-    { label: 'Secondary', value: 'secondary' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Info', value: 'info' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
   ];
 
   shapeOptions = [
@@ -94,11 +79,5 @@ export class ChipPlaygroundComponent extends BasePlaygroundComponent implements 
       if (!this.demoElement) return;
       this.updateConfigFromDom(this.demoElement, 'ui-chip');
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

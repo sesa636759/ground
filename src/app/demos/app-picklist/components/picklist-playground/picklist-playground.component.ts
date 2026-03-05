@@ -13,7 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-picklist-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './picklist-playground.component.html',
   styleUrl: './picklist-playground.component.scss',
@@ -28,8 +28,6 @@ export class PicklistPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
 
   source = [
     { name: 'Laptop', icon: '💻' },
@@ -73,11 +71,5 @@ export class PicklistPlaygroundComponent extends BasePlaygroundComponent {
     code += '</ui-picklist>';
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

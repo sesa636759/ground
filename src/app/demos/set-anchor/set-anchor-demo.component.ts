@@ -1,3 +1,4 @@
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,8 +18,8 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     AnchorPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
+    DemoHeaderComponent,
     DemoSidebarComponent,
-
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-anchor-demo.component.html',

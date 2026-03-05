@@ -12,14 +12,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('anchor') anchor!: ElementRef;
-  pgConfig = {
-    orientation: 'vertical',
-    type: 'line',
-    scrollOffset: 40,
-    showIndicator: true,
-    showProgress: true,
-    affix: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   orientationOptions = [
     { label: 'Vertical', value: 'vertical' },
@@ -42,12 +35,8 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
 
   linksJson = JSON.stringify(this.links);
 
-  updateConfig() {
-    this.updateConfigFromDom(this.anchor, 'ui-anchor');
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       orientation: 'vertical',
       type: 'line',
       scrollOffset: 40,
@@ -55,6 +44,9 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
       showProgress: true,
       affix: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.anchor, 'ui-anchor');
   }
 }

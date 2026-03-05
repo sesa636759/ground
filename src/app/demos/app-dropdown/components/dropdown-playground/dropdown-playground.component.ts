@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-dropdown-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dropdown-playground.component.html',
   styleUrl: './dropdown-playground.component.scss',
@@ -31,12 +31,6 @@ export class DropdownPlaygroundComponent extends BasePlaygroundComponent impleme
   ]);
 
   defaultOpen = JSON.stringify(['config', 'features']);
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   appearanceOptions = [
     { label: 'Dropdown', value: 'dropdown' },
@@ -120,11 +114,5 @@ export class DropdownPlaygroundComponent extends BasePlaygroundComponent impleme
   onValueChange(event: any) {
     this.currentValue = event.detail.value;
     this.logEvent(`Value changed: ${JSON.stringify(this.currentValue)}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

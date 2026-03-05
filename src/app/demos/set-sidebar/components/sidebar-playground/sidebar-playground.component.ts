@@ -25,8 +25,6 @@ export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   menuItems = [
     { id: '1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: '2', label: 'Analytics', icon: 'fas fa-chart-line' },
@@ -61,8 +59,8 @@ export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Sidebar toggled: ${event.detail.collapsed ? 'collapsed' : 'expanded'}`);
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       position: 'left',
       variant: 'default',
       width: '250px',
@@ -71,7 +69,5 @@ export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
       showBackdrop: false,
       overlay: false,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

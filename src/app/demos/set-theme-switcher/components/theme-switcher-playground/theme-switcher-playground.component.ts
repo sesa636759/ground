@@ -13,23 +13,24 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class ThemeSwitcherPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    variant: 'default',
-    size: 'medium',
-    showIcons: true,
-    showLabels: true,
-    enableAnimation: true,
-    animationDuration: 200,
-    position: 'inline',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   constructor() {
     super();
-    this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      variant: 'default',
+      size: 'medium',
+      showIcons: true,
+      showLabels: true,
+      enableAnimation: true,
+      animationDuration: 200,
+      position: 'inline',
+    };
   }
 
   updateConfig() {
@@ -53,19 +54,5 @@ export class ThemeSwitcherPlaygroundComponent extends BasePlaygroundComponent {
   onThemeChange(event: any) {
     const theme = event.detail.value;
     this.logEvent(`Theme changed to: ${theme}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      variant: 'default',
-      size: 'medium',
-      showIcons: true,
-      showLabels: true,
-      enableAnimation: true,
-      animationDuration: 200,
-      position: 'inline',
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

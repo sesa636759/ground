@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-range-slider-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './range-slider-playground.component.html',
   styleUrl: './range-slider-playground.component.scss',
@@ -31,11 +31,6 @@ export class RangeSliderPlaygroundComponent extends BasePlaygroundComponent impl
   ]);
 
   defaultOpen = JSON.stringify(['global']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
 
   currentValue: any = [20, 80];
 
@@ -79,9 +74,7 @@ export class RangeSliderPlaygroundComponent extends BasePlaygroundComponent impl
   }
 
   override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
+    super.resetConfig();
     this.currentValue = [20, 80];
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

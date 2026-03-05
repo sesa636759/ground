@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-smart-stepper-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './smart-stepper-playground.component.html',
   styleUrl: './smart-stepper-playground.component.scss',
@@ -31,11 +31,6 @@ export class SmartStepperPlaygroundComponent extends BasePlaygroundComponent imp
   ]);
 
   defaultOpen = JSON.stringify(['layout']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
 
   themeOptions = [
     { label: 'Default', value: 'default' },
@@ -74,9 +69,7 @@ export class SmartStepperPlaygroundComponent extends BasePlaygroundComponent imp
   }
 
   override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
+    super.resetConfig();
     this.currentStep = '1';
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

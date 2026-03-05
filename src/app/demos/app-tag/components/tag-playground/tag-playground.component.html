@@ -22,7 +22,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.severity"
         (ngModelChange)="updateConfig()"
-        [options]="severityOptions"
+        [options]="standardColorOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -30,7 +30,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-        [options]="sizeOptions"
+        [options]="fullSizeOptions"
       ></ui-dropdown>
     </div>
     <div class="checkbox-grid" style="margin-top: 16px">

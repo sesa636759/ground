@@ -13,16 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class CodeEditorPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    theme: 'vs-dark',
-    language: 'javascript',
-    height: '400px',
-    lineNumbers: true,
-    toolbar: true,
-    readonly: false,
-    labelDisplay: 'hover',
-    limitedGroups: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   initialCode = {
     javascript: `// Interactive Demo
@@ -68,11 +59,21 @@ console.log(user.greet());`,
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   constructor() {
     super();
-    this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      theme: 'vs-dark',
+      language: 'javascript',
+      height: '400px',
+      lineNumbers: true,
+      toolbar: true,
+      readonly: false,
+      labelDisplay: 'hover',
+      limitedGroups: false,
+    };
   }
 
   updateConfig() {
@@ -108,18 +109,7 @@ console.log(user.greet());`,
   }
 
   override resetConfig() {
-    this.pgConfig = {
-      theme: 'vs-dark',
-      language: 'javascript',
-      height: '400px',
-      lineNumbers: true,
-      toolbar: true,
-      readonly: false,
-      labelDisplay: 'hover',
-      limitedGroups: false,
-    };
+    super.resetConfig();
     this.currentCode = this.initialCode.javascript;
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

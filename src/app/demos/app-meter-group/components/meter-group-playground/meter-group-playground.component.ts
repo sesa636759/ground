@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-meter-group-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './meter-group-playground.component.html',
   styleUrl: './meter-group-playground.component.scss',
@@ -30,12 +30,7 @@ export class MeterGroupPlaygroundComponent extends BasePlaygroundComponent imple
     { id: 'visuals', title: 'Visuals', icon: '🎨' },
   ]);
 
-  defaultOpen = JSON.stringify(['layout']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
+  accordionDefaultOpen = JSON.stringify(['layout']);
 
   labelOrientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
@@ -83,11 +78,5 @@ export class MeterGroupPlaygroundComponent extends BasePlaygroundComponent imple
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

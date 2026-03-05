@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-line-chart-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './line-chart-playground.component.html',
   styleUrl: './line-chart-playground.component.scss',
@@ -181,12 +181,10 @@ export class LineChartPlaygroundComponent extends BasePlaygroundComponent implem
   }
 
   override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
+    super.resetConfig();
     this.chartData = this.monthlyData;
     this.activeTitle = 'Monthly Revenue';
     this.activeXLabel = 'Month';
     this.activeYLabel = 'Revenue ($k)';
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

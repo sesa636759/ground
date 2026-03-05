@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-knob-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './knob-playground.component.html',
   styleUrl: './knob-playground.component.scss',
@@ -65,11 +65,5 @@ export class KnobPlaygroundComponent extends BasePlaygroundComponent implements 
     this.pgConfig.value = event.detail.value;
     this.updateConfig();
     this.logEvent(`Knob Value Changed: ${this.pgConfig.value}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

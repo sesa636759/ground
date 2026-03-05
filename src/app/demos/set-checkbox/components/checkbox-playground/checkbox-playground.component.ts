@@ -18,27 +18,33 @@ export class CheckboxPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'states', title: 'Behavioral States', icon: '✨' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   // Playground State
-  pgConfig = {
-    size: 'medium',
-    color: 'primary',
-    variant: 'default',
-    labelPosition: 'right',
-    label: 'Accept terms and conditions',
-    helperText: 'You must agree to continue',
-    checked: false,
-    indeterminate: false,
-    disabled: false,
-    readonly: false,
-    required: true,
-    invalid: false,
-    errorMessage: 'This field has an error',
-    enableAnimation: true,
-    rippleEffect: true,
-    skeleton: false,
-  };
+  pgConfig = this.getDefaultConfig();
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      size: 'medium',
+      color: 'primary',
+      variant: 'default',
+      labelPosition: 'right',
+      label: 'Accept terms and conditions',
+      helperText: 'You must agree to continue',
+      checked: false,
+      indeterminate: false,
+      disabled: false,
+      readonly: false,
+      required: true,
+      invalid: false,
+      errorMessage: 'This field has an error',
+      enableAnimation: true,
+      rippleEffect: true,
+      skeleton: false,
+    };
+  }
 
   updateConfig() {
     this.updateConfigFromDom(this.demoElement, 'ui-checkbox');
@@ -58,28 +64,5 @@ export class CheckboxPlaygroundComponent extends BasePlaygroundComponent {
 
   onCheckboxBlur() {
     this.logEvent(`Blurred`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      size: 'medium',
-      color: 'primary',
-      variant: 'default',
-      labelPosition: 'right',
-      label: 'Accept terms and conditions',
-      helperText: 'You must agree to continue',
-      checked: false,
-      indeterminate: false,
-      disabled: false,
-      readonly: false,
-      required: true,
-      invalid: false,
-      errorMessage: 'This field has an error',
-      enableAnimation: true,
-      rippleEffect: true,
-      skeleton: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

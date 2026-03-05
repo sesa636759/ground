@@ -7,8 +7,6 @@
 } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-
 @Component({
   selector: 'app-radio-playground',
   standalone: true,
@@ -22,32 +20,7 @@ export class RadioPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('radioGroup') radioGroup!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    name: 'demo-group',
-    layout: 'vertical',
-    columns: 2,
-    size: 'medium',
-    color: 'primary',
-    labelPosition: 'right',
-    label: 'Select your preference',
-    helperText: 'Choose one option',
-    errorMessage: 'This field is required',
-    disabled: false,
-    readonly: false,
-    required: false,
-    invalid: false,
-    enableAnimation: true,
-    rippleEffect: true,
-    variant: 'default',
-    buttonGroup: false,
-    skeleton: false,
-    allowEmpty: false,
-    showDot: true,
-    fullWidth: false,
-    loading: false,
-    elevation: 0,
-    value: 'option1',
-  };
+  pgConfig = this.getDefaultConfig();
 
   radioOptions: any[] = [
     {
@@ -91,37 +64,57 @@ export class RadioPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'validation', title: 'Validation & Help', icon: '✅' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      name: 'demo-group',
+      layout: 'vertical',
+      columns: 2,
+      size: 'medium',
+      color: 'primary',
+      labelPosition: 'right',
+      label: 'Select your preference',
+      helperText: 'Choose one option',
+      errorMessage: 'This field is required',
+      disabled: false,
+      readonly: false,
+      required: false,
+      invalid: false,
+      enableAnimation: true,
+      rippleEffect: true,
+      variant: 'default',
+      buttonGroup: false,
+      skeleton: false,
+      allowEmpty: false,
+      showDot: true,
+      fullWidth: false,
+      loading: false,
+      elevation: 0,
+      value: 'option1',
+    };
+  }
 
   updateConfig() {
-    setTimeout(() => {
-      if (!this.radioGroup) return;
+    let innerContent = '';
+    this.radioOptions.forEach((opt) => {
+      innerContent += `  <app-radio\n`;
+      innerContent += `    value="${opt.value}"\n`;
+      innerContent += `    label="${opt.label}"\n`;
+      if (opt.description) innerContent += `    description="${opt.description}"\n`;
+      if (opt.badge) innerContent += `    badge="${opt.badge}"\n`;
+      if (opt.tooltip) innerContent += `    tooltip="${opt.tooltip}"\n`;
+      if (opt.icon) innerContent += `    icon="${opt.icon}"\n`;
+      if (opt.iconPosition) innerContent += `    icon-position="${opt.iconPosition}"\n`;
+      if (opt.color) innerContent += `    color="${opt.color}"\n`;
+      if (opt.size) innerContent += `    size="${opt.size}"\n`;
+      if (opt.disabled) innerContent += `    disabled\n`;
+      innerContent += `  ></app-radio>\n`;
+    });
 
-      let innerContent = '';
-      this.radioOptions.forEach((opt) => {
-        innerContent += `  <app-radio\n`;
-        innerContent += `    value="${opt.value}"\n`;
-        innerContent += `    label="${opt.label}"\n`;
-        if (opt.description) innerContent += `    description="${opt.description}"\n`;
-        if (opt.badge) innerContent += `    badge="${opt.badge}"\n`;
-        if (opt.tooltip) innerContent += `    tooltip="${opt.tooltip}"\n`;
-        if (opt.icon) innerContent += `    icon="${opt.icon}"\n`;
-        if (opt.iconPosition) innerContent += `    icon-position="${opt.iconPosition}"\n`;
-        if (opt.color) innerContent += `    color="${opt.color}"\n`;
-        if (opt.size) innerContent += `    size="${opt.size}"\n`;
-        if (opt.disabled) innerContent += `    disabled\n`;
-        innerContent += `  ></app-radio>\n`;
-      });
-
-      const code = generatePlaygroundCode(
-        this.radioGroup.nativeElement as Element,
-        'app-radio-group',
-        innerContent,
-      );
-
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.radioGroup, 'app-radio-group', innerContent);
   }
 
   trackByOption(_index: number, opt: any) {
@@ -158,32 +151,7 @@ export class RadioPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   override resetConfig() {
-    this.pgConfig = {
-      name: 'demo-group',
-      layout: 'vertical',
-      columns: 2,
-      size: 'medium',
-      color: 'primary',
-      labelPosition: 'right',
-      label: 'Select your preference',
-      helperText: 'Choose one option',
-      errorMessage: 'This field is required',
-      disabled: false,
-      readonly: false,
-      required: false,
-      invalid: false,
-      enableAnimation: true,
-      rippleEffect: true,
-      variant: 'default',
-      buttonGroup: false,
-      skeleton: false,
-      allowEmpty: false,
-      showDot: true,
-      fullWidth: false,
-      loading: false,
-      elevation: 0,
-      value: 'option1',
-    };
+    super.resetConfig();
     this.radioOptions = [
       {
         value: 'option1',
@@ -219,6 +187,5 @@ export class RadioPlaygroundComponent extends BasePlaygroundComponent {
       },
     ];
     this.updateConfig();
-    this.eventLog.set([]);
   }
 }

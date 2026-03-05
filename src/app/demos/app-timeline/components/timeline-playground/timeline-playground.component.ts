@@ -7,7 +7,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-timeline-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-playground.component.html',
   styleUrl: './timeline-playground.component.scss',
@@ -22,11 +22,6 @@ export class TimelinePlaygroundComponent extends BasePlaygroundComponent impleme
   ]);
 
   defaultOpen = JSON.stringify(['layout', 'content']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
 
   alignOptions = [
     { label: 'Left', value: 'left' },
@@ -100,11 +95,5 @@ export class TimelinePlaygroundComponent extends BasePlaygroundComponent impleme
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

@@ -25,8 +25,6 @@ export class TabStackPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   tabs = [
     { id: 'tab1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'tab2', label: 'Analytics', icon: 'fas fa-chart-line' },
@@ -49,8 +47,8 @@ export class TabStackPlaygroundComponent extends BasePlaygroundComponent {
     this.refreshCode();
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       orientation: 'horizontal',
       variant: 'default',
       size: 'medium',
@@ -59,7 +57,5 @@ export class TabStackPlaygroundComponent extends BasePlaygroundComponent {
       scrollable: false,
       grouped: false,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

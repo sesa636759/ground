@@ -1,3 +1,4 @@
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,7 +7,6 @@ import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-
 
 @Component({
   selector: 'app-app-anchor-demo',
@@ -17,9 +17,8 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     AnchorPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
-
+    DemoHeaderComponent,
     DemoSidebarComponent,
-
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-anchor-demo.component.html',

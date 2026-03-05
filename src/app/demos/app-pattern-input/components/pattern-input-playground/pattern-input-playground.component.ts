@@ -13,7 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-pattern-input-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pattern-input-playground.component.html',
   styleUrl: './pattern-input-playground.component.scss',
@@ -29,14 +29,6 @@ export class PatternInputPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
     { id: 'labels', title: 'Labels & Text', icon: '🏷️' },
   ]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   patternOptions = [
     { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },
@@ -70,11 +62,5 @@ export class PatternInputPlaygroundComponent extends BasePlaygroundComponent {
 
   updateConfig() {
     this.updateConfigFromDom(this.demoElement, 'ui-pattern-input');
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

@@ -13,43 +13,83 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TooltipPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    content: 'Tooltip Content',
-    position: 'top',
-    trigger: 'hover',
-    variant: 'dark',
-    shape: 'rounded',
-    animation: 'fade',
-    arrow: true,
-    showDelay: 0,
-    hideDelay: 0,
-    maxWidth: 250,
-    interactive: false,
-    followCursor: false,
-    html: false,
-    showGlow: false,
-    customColor: '#3DCD58',
-    textColor: '#ffffff',
-    transitionDuration: 200,
-    targetText: 'Hover Me',
-    targetIcon: 'fas fa-info-circle',
-    elevation: 0,
-    offset: 8,
-    transitionTiming: 'ease',
-    arrowSize: 8,
-    trackMouse: false,
-    openAtMousePosition: false,
-    autoShift: true,
-    portal: true,
-    useCustomColor: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'behavior', title: 'Behavioral States', icon: '⚡' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  variantOptions = [
+    { label: 'Dark', value: 'dark' },
+    { label: 'Light', value: 'light' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Info', value: 'info' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Error', value: 'error' },
+    { label: 'Glass', value: 'glass' },
+  ];
+
+  shapeOptions = [
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Square', value: 'square' },
+    { label: 'Pill', value: 'pill' },
+  ];
+
+  animationOptions = [
+    { label: 'Fade', value: 'fade' },
+    { label: 'Slide', value: 'slide' },
+    { label: 'Scale', value: 'scale' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'None', value: 'none' },
+  ];
+
+  timingOptions = [
+    { label: 'Ease', value: 'ease' },
+    { label: 'Linear', value: 'linear' },
+    { label: 'Ease In', value: 'ease-in' },
+    { label: 'Ease Out', value: 'ease-out' },
+    { label: 'Ease In Out', value: 'ease-in-out' },
+  ];
+
+  constructor() {
+    super();
+    this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      content: 'Tooltip Content',
+      position: 'top',
+      trigger: 'hover',
+      variant: 'dark',
+      shape: 'rounded',
+      animation: 'fade',
+      arrow: true,
+      showDelay: 0,
+      hideDelay: 0,
+      maxWidth: 250,
+      interactive: false,
+      followCursor: false,
+      html: false,
+      showGlow: false,
+      customColor: '#3DCD58',
+      textColor: '#ffffff',
+      transitionDuration: 200,
+      targetText: 'Hover Me',
+      targetIcon: 'fas fa-info-circle',
+      elevation: 0,
+      offset: 8,
+      transitionTiming: 'ease',
+      arrowSize: 8,
+      trackMouse: false,
+      openAtMousePosition: false,
+      autoShift: true,
+      portal: true,
+      useCustomColor: false,
+    };
+  }
 
   updateConfig() {
     let code = `<app-tooltip\n`;
@@ -95,40 +135,5 @@ export class TooltipPlaygroundComponent extends BasePlaygroundComponent {
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      content: 'Tooltip Content',
-      position: 'top',
-      trigger: 'hover',
-      variant: 'dark',
-      shape: 'rounded',
-      animation: 'fade',
-      arrow: true,
-      showDelay: 0,
-      hideDelay: 0,
-      maxWidth: 250,
-      interactive: false,
-      followCursor: false,
-      html: false,
-      showGlow: false,
-      customColor: '#3DCD58',
-      textColor: '#ffffff',
-      transitionDuration: 200,
-      targetText: 'Hover Me',
-      targetIcon: 'fas fa-info-circle',
-      elevation: 0,
-      offset: 8,
-      transitionTiming: 'ease',
-      arrowSize: 8,
-      trackMouse: false,
-      openAtMousePosition: false,
-      autoShift: true,
-      portal: true,
-      useCustomColor: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

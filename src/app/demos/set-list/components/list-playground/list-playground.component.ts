@@ -41,8 +41,6 @@ export class ListPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'item', title: 'Item Template', icon: '📝' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   updateConfig() {
     let code = `<app-list\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
@@ -87,8 +85,8 @@ export class ListPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Item clicked`);
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       variant: 'filled',
       color: 'primary',
       size: 'medium',
@@ -110,7 +108,5 @@ export class ListPlaygroundComponent extends BasePlaygroundComponent {
       itemCounter: 5,
       itemDisabled: false,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

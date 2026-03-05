@@ -1,44 +1,17 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-bar-chart-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './bar-chart-playground.component.html',
   styleUrl: './bar-chart-playground.component.scss',
 })
-export class BarChartPlaygroundComponent {
-  pgConfig = {
-    orientation: 'vertical',
-    mode: 'single',
-    barWidth: 60,
-    borderRadius: 6,
-    showLegend: true,
-    showGrid: true,
-    showValues: false,
-    stacked: false,
-    enableAnimation: true,
-    showTooltip: true,
-  };
-
-  orientationOptions = [
-    { label: 'Vertical', value: 'vertical' },
-    { label: 'Horizontal', value: 'horizontal' },
-  ];
+export class BarChartPlaygroundComponent extends BasePlaygroundComponent {
+  pgConfig = this.getDefaultConfig();
 
   modeOptions = [
     { label: 'Single Dataset', value: 'single' },
@@ -57,11 +30,25 @@ export class BarChartPlaygroundComponent {
 
   labelsJson = JSON.stringify(this.labels);
   datasetsJson = JSON.stringify(this.singleDatasets);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      orientation: 'vertical',
+      mode: 'single',
+      barWidth: 60,
+      borderRadius: 6,
+      showLegend: true,
+      showGrid: true,
+      showValues: false,
+      stacked: false,
+      enableAnimation: true,
+      showTooltip: true,
+    };
   }
 
   onModeChange() {
@@ -70,15 +57,6 @@ export class BarChartPlaygroundComponent {
         ? JSON.stringify(this.multiDatasets)
         : JSON.stringify(this.singleDatasets);
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -95,28 +73,7 @@ export class BarChartPlaygroundComponent {
     code += `  [labels]="labels"\n`;
     code += `  [datasets]="datasets"\n`;
     code += '></ui-bar-chart>';
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      orientation: 'vertical',
-      mode: 'single',
-      barWidth: 60,
-      borderRadius: 6,
-      showLegend: true,
-      showGrid: true,
-      showValues: false,
-      stacked: false,
-      enableAnimation: true,
-      showTooltip: true,
-    };
-    this.datasetsJson = JSON.stringify(this.singleDatasets);
-    this.updateConfig();
   }
 }

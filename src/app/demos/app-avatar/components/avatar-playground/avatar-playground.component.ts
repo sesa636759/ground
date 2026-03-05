@@ -11,16 +11,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
   styleUrl: './avatar-playground.component.scss',
 })
 export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
-  pgConfig = {
-    name: 'John Doe',
-    src: 'https://i.pravatar.cc/150?u=playground',
-    icon: '',
-    shape: 'circle',
-    size: '80px',
-    status: 'online',
-    badge: '',
-    badgeColor: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'profile', title: 'Profile Info', icon: '👤' },
@@ -45,6 +36,19 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Offline', value: 'offline' },
   ];
 
+  getDefaultConfig() {
+    return {
+      name: 'John Doe',
+      src: 'https://i.pravatar.cc/150?u=playground',
+      icon: '',
+      shape: 'circle',
+      size: '80px',
+      status: 'online',
+      badge: '',
+      badgeColor: '',
+    };
+  }
+
   updateConfig() {
     let code = '<ui-avatar\n';
     if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
@@ -59,20 +63,5 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      name: 'John Doe',
-      src: 'https://i.pravatar.cc/150?u=playground',
-      icon: '',
-      shape: 'circle',
-      size: '80px',
-      status: 'online',
-      badge: '',
-      badgeColor: '',
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

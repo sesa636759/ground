@@ -13,7 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-breadcrumb-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './breadcrumb-playground.component.html',
   styleUrl: './breadcrumb-playground.component.scss',
@@ -30,12 +30,6 @@ export class BreadcrumbPlaygroundComponent extends BasePlaygroundComponent imple
   ]);
 
   defaultOpen = JSON.stringify(['config']);
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -82,11 +76,5 @@ export class BreadcrumbPlaygroundComponent extends BasePlaygroundComponent imple
 
   onBreadcrumbClick(event: any) {
     this.logEvent(`Breadcrumb clicked: ${event.detail?.label || event.detail}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

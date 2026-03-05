@@ -27,8 +27,6 @@ export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   constructor() {
     super();
     this.updateConfig();
@@ -74,8 +72,8 @@ export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Drag ended`);
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       direction: 'horizontal',
       gutterSize: 8,
       snapThreshold: 20,
@@ -86,7 +84,5 @@ export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
       showGutterIcon: true,
       doubleClickCollapse: true,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

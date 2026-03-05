@@ -22,57 +22,9 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent implement
   @ViewChild('anchor') anchor!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    mode: 'vertical',
-    position: 'left',
-    alignment: 'left',
-    size: 'medium',
-    theme: 'light',
-    scrollOffset: 80,
-    showTooltip: true,
-    showIndicator: true,
-    showProgress: false,
-    showNumbers: false,
-    numberStyle: 'numeric',
-    sticky: true,
-    affix: false,
-    affixOffset: 50,
-    smoothScroll: true,
-    targetType: 'container', // 'window' or 'container'
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
-
-  modeOptions = [
-    { label: 'Vertical', value: 'vertical' },
-    { label: 'Horizontal', value: 'horizontal' },
-  ];
-
-  positionOptions = [
-    { label: 'Left', value: 'left' },
-    { label: 'Right', value: 'right' },
-    { label: 'Top', value: 'top' },
-    { label: 'Bottom', value: 'bottom' },
-  ];
-
-  alignmentOptions = [
-    { label: 'Left', value: 'left' },
-    { label: 'Center', value: 'center' },
-    { label: 'Right', value: 'right' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'small' },
-    { label: 'Medium', value: 'medium' },
-    { label: 'Large', value: 'large' },
-  ];
-
-  themeOptions = [
-    { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' },
-  ];
 
   numberStyleOptions = [
     { label: 'Numeric (1, 2)', value: 'numeric' },
@@ -95,20 +47,12 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent implement
     { id: 'section-5', label: 'Examples', icon: 'fas fa-book', tooltip: 'See more' },
   ]);
 
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  updateConfig() {
-    this.updateConfigFromDom(this.anchor, 'ui-anchor');
-  }
-
-  onAnchorSelect(event: any) {
-    this.logEvent(`Selected: ${event.detail.id}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       mode: 'vertical',
       position: 'left',
       alignment: 'left',
@@ -124,9 +68,19 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent implement
       affix: false,
       affixOffset: 50,
       smoothScroll: true,
-      targetType: 'container',
+      targetType: 'container', // 'window' or 'container'
     };
+  }
+
+  ngAfterViewInit() {
     this.updateConfig();
-    this.eventLog.set([]);
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.anchor, 'ui-anchor');
+  }
+
+  onAnchorSelect(event: any) {
+    this.logEvent(`Selected: ${event.detail.id}`);
   }
 }

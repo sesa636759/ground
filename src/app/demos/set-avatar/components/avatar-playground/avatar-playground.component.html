@@ -46,10 +46,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Circle', value: 'circle' },
-          { label: 'Square', value: 'square' },
-        ]"
+        [options]="shapeOptions"
       ></ui-dropdown>
     </div>
 
@@ -95,13 +92,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.status"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Online', value: 'online' },
-          { label: 'Offline', value: 'offline' },
-          { label: 'Away', value: 'away' },
-          { label: 'Busy', value: 'busy' },
-          { label: 'Do Not Disturb', value: 'dnd' },
-        ]"
+        [options]="statusOptions"
       ></ui-dropdown>
     </div>
 
@@ -110,12 +101,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.statusPosition"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Top Left', value: 'top-left' },
-          { label: 'Top Right', value: 'top-right' },
-          { label: 'Bottom Left', value: 'bottom-left' },
-          { label: 'Bottom Right', value: 'bottom-right' },
-        ]"
+        [options]="standardPlacementOptions"
       ></ui-dropdown>
     </div>
   </div>
@@ -126,12 +112,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.animation"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'None', value: 'none' },
-          { label: 'Pulse', value: 'pulse' },
-          { label: 'Bounce', value: 'bounce' },
-          { label: 'Shake', value: 'shake' },
-        ]"
+        [options]="animationOptions"
       ></ui-dropdown>
     </div>
 

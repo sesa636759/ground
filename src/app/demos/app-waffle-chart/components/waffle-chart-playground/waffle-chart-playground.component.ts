@@ -1,21 +1,11 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 
 @Component({
   selector: 'app-waffle-chart-playground',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    AppPlaygroundComponent,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './waffle-chart-playground.component.html',
   styleUrl: './waffle-chart-playground.component.scss',
@@ -72,11 +62,5 @@ export class WaffleChartPlaygroundComponent extends BasePlaygroundComponent impl
     const end = attrs.length > 2 ? '\n' : '';
     this.generatedCode.set(`<chart-waffle${nl}${attrs.join(nl)}${end}></chart-waffle>`);
     this.refreshCode();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

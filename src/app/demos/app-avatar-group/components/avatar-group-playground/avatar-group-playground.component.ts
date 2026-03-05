@@ -14,11 +14,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
 export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
 
-  pgConfig = {
-    size: 'medium',
-    max: 3,
-    shape: 'circle',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'layout', title: 'Layout Configuration', icon: '📏' },
@@ -27,16 +23,18 @@ export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
 
   accordionDefaultOpen = JSON.stringify(['layout']);
 
-  sizeOptions = [
-    { label: 'Small', value: 'small' },
-    { label: 'Medium', value: 'medium' },
-    { label: 'Large', value: 'large' },
-  ];
-
   shapeOptions = [
     { label: 'Circle', value: 'circle' },
     { label: 'Square', value: 'square' },
   ];
+
+  getDefaultConfig() {
+    return {
+      size: 'medium',
+      max: 3,
+      shape: 'circle',
+    };
+  }
 
   updateConfig() {
     setTimeout(() => {
@@ -54,14 +52,5 @@ export class AvatarGroupPlaygroundComponent extends BasePlaygroundComponent {
       this.generatedCode.set(code);
       this.refreshCode();
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      size: 'medium',
-      max: 3,
-      shape: 'circle',
-    };
-    this.updateConfig();
   }
 }

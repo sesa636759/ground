@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-cascade-select-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './cascade-select-playground.component.html',
   styleUrl: './cascade-select-playground.component.scss',
@@ -31,12 +31,6 @@ export class CascadeSelectPlaygroundComponent extends BasePlaygroundComponent im
   ]);
 
   defaultOpen = JSON.stringify(['global']);
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
 
   triggerOptions = [
     { label: 'Hover', value: 'hover' },
@@ -111,11 +105,5 @@ export class CascadeSelectPlaygroundComponent extends BasePlaygroundComponent im
   onValueChange(event: any) {
     this.currentValue = event.detail;
     this.logEvent(`Selected value: ${JSON.stringify(this.currentValue)}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

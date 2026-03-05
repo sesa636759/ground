@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-divider-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './divider-playground.component.html',
   styleUrl: './divider-playground.component.scss',
@@ -39,17 +39,6 @@ export class DividerPlaygroundComponent extends BasePlaygroundComponent implemen
     { label: 'Dotted', value: 'dotted' },
     { label: 'Double Solid', value: 'double-solid' },
     { label: 'Gradient', value: 'gradient' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
   ];
 
   patternOptions = [
@@ -95,11 +84,5 @@ export class DividerPlaygroundComponent extends BasePlaygroundComponent implemen
       if (!this.demoElement) return;
       this.updateConfigFromDom(this.demoElement, 'ui-divider');
     }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

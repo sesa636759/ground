@@ -20,17 +20,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('popover') popover!: ElementRef;
 
-  pgConfig = {
-    heading: 'Popover Title',
-    content: 'This is the <b>popover</b> content. You can use <i>HTML</i> here!',
-    trigger: 'click',
-    placement: 'top',
-    variant: 'light',
-    width: '280px',
-    showArrow: true,
-    showCloseButton: true,
-    backdrop: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'content', title: 'Content Settings', icon: '📝' },
@@ -66,17 +56,8 @@ export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
     super();
   }
 
-  updateConfig() {
-    setTimeout(() => {
-      if (!this.popover) return;
-      const code = this.getCleanFormattedDom(this.popover, 'ui-popover');
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       heading: 'Popover Title',
       content: 'This is the <b>popover</b> content. You can use <i>HTML</i> here!',
       trigger: 'click',
@@ -87,7 +68,14 @@ export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
       showCloseButton: true,
       backdrop: false,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.popover) return;
+      const code = this.getCleanFormattedDom(this.popover, 'ui-popover');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
   }
 }

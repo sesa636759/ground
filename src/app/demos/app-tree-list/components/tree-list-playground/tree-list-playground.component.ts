@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-tree-list-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-list-playground.component.html',
   styleUrl: './tree-list-playground.component.scss',
@@ -97,11 +97,5 @@ export class TreeListPlaygroundComponent extends BasePlaygroundComponent impleme
     this.logEvent(
       `Tree selection changed. Selected item(s): ${event.detail?.length ? event.detail.length : 0}`,
     );
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

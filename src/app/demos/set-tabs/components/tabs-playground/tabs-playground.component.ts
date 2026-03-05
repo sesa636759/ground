@@ -13,23 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    orientation: 'horizontal',
-    variant: 'default',
-    size: 'medium',
-    color: 'primary',
-    align: 'start',
-    indicatorPosition: 'bottom',
-    fullWidth: false,
-    scrollable: true,
-    showAddButton: true,
-    animated: true,
-    closable: false,
-    showCloseAllButton: false,
-    editableLabels: false,
-    dragEnabled: true,
-    showOverflowButton: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
   tabs = [
     { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
@@ -43,7 +27,29 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'behavior', title: 'Behavioral States', icon: '⚡' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      variant: 'default',
+      size: 'medium',
+      color: 'primary',
+      align: 'start',
+      indicatorPosition: 'bottom',
+      fullWidth: false,
+      scrollable: true,
+      showAddButton: true,
+      animated: true,
+      closable: false,
+      showCloseAllButton: false,
+      editableLabels: false,
+      dragEnabled: true,
+      showOverflowButton: true,
+    };
+  }
 
   updateConfig() {
     let code = `<app-tab-stack\n`;
@@ -99,23 +105,7 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   override resetConfig() {
-    this.pgConfig = {
-      orientation: 'horizontal',
-      variant: 'default',
-      size: 'medium',
-      color: 'primary',
-      align: 'start',
-      indicatorPosition: 'bottom',
-      fullWidth: false,
-      scrollable: true,
-      showAddButton: true,
-      animated: true,
-      closable: false,
-      showCloseAllButton: false,
-      editableLabels: false,
-      dragEnabled: true,
-      showOverflowButton: true,
-    };
+    super.resetConfig();
     this.tabs = [
       { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
       { label: 'Analytics', value: 'tab2', icon: 'fas fa-bolt', badge: '', badgeColor: 'primary' },
@@ -123,6 +113,5 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
       { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
     ];
     this.updateConfig();
-    this.eventLog.set([]);
   }
 }

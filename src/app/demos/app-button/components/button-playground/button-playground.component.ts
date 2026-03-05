@@ -14,7 +14,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-button-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-playground.component.html',
   styleUrl: './button-playground.component.scss',
@@ -57,17 +57,6 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
     { label: 'Extra Large', value: 'xl' },
     { label: 'XX Large', value: 'xxl' },
     { label: 'XXX Large', value: 'xxxl' },
-  ];
-
-  iconLibraryOptions = [
-    { label: 'Default', value: 'default' },
-    { label: 'Lucide', value: 'lucide' },
-    { label: 'FontAwesome', value: 'fontawesome' },
-    { label: 'Icons8', value: 'icons8' },
-    { label: 'Iconoir', value: 'iconoir' },
-    { label: 'Ionicons', value: 'ionicons' },
-    { label: 'Bootstrap', value: 'bootstrap' },
-    { label: 'QuartzDS (SE)', value: 'se' },
   ];
 
   positionOptions = [
@@ -129,11 +118,5 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
 
   onButtonClick(event: any) {
     this.logEvent(`Button Clicked`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

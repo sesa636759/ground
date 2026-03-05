@@ -20,24 +20,12 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class RatingPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('ratingElement') ratingElement!: ElementRef;
 
-  pgConfig = {
-    type: 'star',
-    value: 3,
-    max: 5,
-    size: 'md',
-    color: 'warning',
-    readonly: false,
-    disabled: false,
-    allowHalf: false,
-    showValue: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
 
   typeOptions = [
     { label: 'Star', value: 'star' },
@@ -45,36 +33,13 @@ export class RatingPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Thumb', value: 'thumb' },
   ];
 
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
-
-  colorOptions = [
-    { label: 'Primary', value: 'primary' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-  ];
-
   constructor() {
     super();
     this.updateConfig();
   }
 
-  updateConfig() {
-    this.updateConfigFromDom(this.ratingElement, 'ui-rating');
-  }
-
-  onRatingChange(event: any) {
-    this.pgConfig.value = event.detail?.value ?? event.detail;
-    this.logEvent(`Rating changed to: ${this.pgConfig.value}`);
-    this.updateConfig();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       type: 'star',
       value: 3,
       max: 5,
@@ -85,7 +50,15 @@ export class RatingPlaygroundComponent extends BasePlaygroundComponent {
       allowHalf: false,
       showValue: true,
     };
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.ratingElement, 'ui-rating');
+  }
+
+  onRatingChange(event: any) {
+    this.pgConfig.value = event.detail?.value ?? event.detail;
+    this.logEvent(`Rating changed to: ${this.pgConfig.value}`);
     this.updateConfig();
-    this.eventLog.set([]);
   }
 }

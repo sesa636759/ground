@@ -20,13 +20,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 export class SnackbarPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('snackbarElement') snackbarElement!: ElementRef;
 
-  pgConfig = {
-    position: 'top-right',
-    maxVisible: 5,
-    stackMode: 'stack',
-    openMode: 'slide-down',
-    cardStack: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   notiConfig = {
     type: 'success',
@@ -35,12 +29,10 @@ export class SnackbarPlaygroundComponent extends BasePlaygroundComponent {
     duration: 5000,
   };
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'notification', title: 'Notification Settings', icon: '🔔' },
-  ]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'house', iconLibrary: 'lucide' },
+    { id: 'notification', title: 'Notification Settings', icon: 'bell', iconLibrary: 'lucide' },
+  ];
 
   positionOptions = [
     { label: 'Top Right', value: 'top-right' },
@@ -78,6 +70,16 @@ export class SnackbarPlaygroundComponent extends BasePlaygroundComponent {
     super();
   }
 
+  getDefaultConfig() {
+    return {
+      position: 'top-right',
+      maxVisible: 5,
+      stackMode: 'stack',
+      openMode: 'slide-down',
+      cardStack: false,
+    };
+  }
+
   updateConfig() {
     setTimeout(() => {
       let code = this.getCleanFormattedDom(this.snackbarElement, 'ui-snackbar');
@@ -106,20 +108,12 @@ export class SnackbarPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   override resetConfig() {
-    this.pgConfig = {
-      position: 'top-right',
-      maxVisible: 5,
-      stackMode: 'stack',
-      openMode: 'slide-down',
-      cardStack: false,
-    };
+    super.resetConfig();
     this.notiConfig = {
       type: 'success',
       title: 'New Notification',
       message: 'This is a test notification message!',
       duration: 5000,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

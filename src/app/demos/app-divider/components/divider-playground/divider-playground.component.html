@@ -42,7 +42,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-        [options]="sizeOptions"
+        [options]="standardSizeOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -50,7 +50,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
-        [options]="orientationOptions"
+        [options]="standardOrientationOptions"
       ></ui-dropdown>
     </div>
   </div>

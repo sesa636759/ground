@@ -13,31 +13,32 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TagsInputPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    label: 'Tags',
-    placeholder: 'Add a tag...',
-    size: 'medium',
-    color: 'primary',
-    variant: 'default',
-    maxTags: 10,
-    disabled: false,
-    readonly: false,
-    required: false,
-    invalid: false,
-    enableAutocomplete: false,
-    allowDuplicates: false,
-    caseSensitive: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
 
   suggestions = ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Ruby', 'Go', 'Rust'];
 
   constructor() {
     super();
-    this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      label: 'Tags',
+      placeholder: 'Add a tag...',
+      size: 'medium',
+      color: 'primary',
+      variant: 'default',
+      maxTags: 10,
+      disabled: false,
+      readonly: false,
+      required: false,
+      invalid: false,
+      enableAutocomplete: false,
+      allowDuplicates: false,
+      caseSensitive: false,
+    };
   }
 
   updateConfig() {
@@ -66,25 +67,5 @@ export class TagsInputPlaygroundComponent extends BasePlaygroundComponent {
   onTagsChange(event: any) {
     const tags = event.detail.value;
     this.logEvent(`Tags changed: ${tags.join(', ')}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      label: 'Tags',
-      placeholder: 'Add a tag...',
-      size: 'medium',
-      color: 'primary',
-      variant: 'default',
-      maxTags: 10,
-      disabled: false,
-      readonly: false,
-      required: false,
-      invalid: false,
-      enableAutocomplete: false,
-      allowDuplicates: false,
-      caseSensitive: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

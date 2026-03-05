@@ -120,8 +120,8 @@ export class MasonryPlaygroundComponent extends BasePlaygroundComponent implemen
     this.logEvent(`Selection changed: ${selectedItems.length} item(s) selected`);
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       layoutType: 'masonry',
       columns: 3,
       gap: 16,
@@ -141,8 +141,11 @@ export class MasonryPlaygroundComponent extends BasePlaygroundComponent implemen
       itemMaxWidth: 400,
       breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
     };
+  }
+
+  override resetConfig() {
+    super.resetConfig();
     this.filterCategory = '';
     this.updateConfig();
-    this.eventLog.set([]);
   }
 }

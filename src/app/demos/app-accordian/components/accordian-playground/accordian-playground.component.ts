@@ -6,15 +6,13 @@ import {
   ViewEncapsulation,
   OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-accordion-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './accordian-playground.component.html',
   styleUrl: './accordian-playground.component.scss',
@@ -43,12 +41,6 @@ export class AccordianPlaygroundComponent extends BasePlaygroundComponent implem
     { label: 'Shadow', value: 'shadow' },
     { label: 'Card', value: 'card' },
     { label: 'Card List', value: 'card-list' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
   ];
 
   iconPositionOptions = [
@@ -147,11 +139,5 @@ export class AccordianPlaygroundComponent extends BasePlaygroundComponent implem
 
   onAccordionChange(event: any) {
     this.logEvent(`Accordion items changed/expanded`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

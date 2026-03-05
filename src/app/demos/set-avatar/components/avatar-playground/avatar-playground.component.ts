@@ -13,44 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    src: '',
-    name: 'John Doe',
-    size: '64px',
-    shape: 'circle',
-    bgColor: '',
-    textColor: '',
-    icon: '',
-    tooltipText: '',
-    showStatus: false,
-    status: 'online',
-    statusPosition: 'bottom-right',
-    badge: '',
-    badgeColor: '',
-    badgePosition: 'top-right',
-    verified: false,
-    loading: false,
-    editable: false,
-    autoColor: false,
-    gradient: false,
-    gradientColors: '',
-    animation: 'none',
-    border: '',
-    ringColor: '',
-    fit: 'cover',
-    clickable: false,
-    lazyLoad: false,
-    storyRing: false,
-    storySeen: false,
-    activeSpeaker: false,
-    statusPulse: false,
-    smartInitials: false,
-    skeleton: false,
-    shimmer: false,
-    glassmorphism: false,
-    effect3d: false,
-    storySegments: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'global', title: 'Global Configuration', icon: '⚙️' },
@@ -58,7 +21,83 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'visual', title: 'Visual Enhancements', icon: '✨' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  shapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Squircle', value: 'squircle' },
+  ];
+
+  statusOptions = [
+    { label: 'Online', value: 'online' },
+    { label: 'Offline', value: 'offline' },
+    { label: 'Away', value: 'away' },
+    { label: 'Busy', value: 'busy' },
+    { label: 'DND', value: 'dnd' },
+    { label: 'Streaming', value: 'streaming' },
+  ];
+
+  fitOptions = [
+    { label: 'Cover', value: 'cover' },
+    { label: 'Contain', value: 'contain' },
+    { label: 'Fill', value: 'fill' },
+    { label: 'None', value: 'none' },
+    { label: 'Scale Down', value: 'scale-down' },
+  ];
+
+  animationOptions = [
+    { label: 'None', value: 'none' },
+    { label: 'Pulse', value: 'pulse' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'Shake', value: 'shake' },
+    { label: 'Spin', value: 'spin' },
+    { label: 'Flip', value: 'flip' },
+  ];
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      src: '',
+      name: 'John Doe',
+      size: '64px',
+      shape: 'circle',
+      bgColor: '',
+      textColor: '',
+      icon: '',
+      tooltipText: '',
+      showStatus: false,
+      status: 'online',
+      statusPosition: 'bottom-right',
+      badge: '',
+      badgeColor: '',
+      badgePosition: 'top-right',
+      verified: false,
+      loading: false,
+      editable: false,
+      autoColor: false,
+      gradient: false,
+      gradientColors: '',
+      animation: 'none',
+      border: '',
+      ringColor: '',
+      fit: 'cover',
+      clickable: false,
+      lazyLoad: false,
+      storyRing: false,
+      storySeen: false,
+      activeSpeaker: false,
+      statusPulse: false,
+      smartInitials: false,
+      skeleton: false,
+      shimmer: false,
+      glassmorphism: false,
+      effect3d: false,
+      storySegments: '',
+    };
+  }
 
   updateConfig() {
     let code = `<app-avatar\n`;
@@ -129,48 +168,5 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
 
   onAction(event: any) {
     this.logEvent(`Event: ${event.type}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      src: '',
-      name: 'John Doe',
-      size: '64px',
-      shape: 'circle',
-      bgColor: '',
-      textColor: '',
-      icon: '',
-      tooltipText: '',
-      showStatus: false,
-      status: 'online',
-      statusPosition: 'bottom-right',
-      badge: '',
-      badgeColor: '',
-      badgePosition: 'top-right',
-      verified: false,
-      loading: false,
-      editable: false,
-      autoColor: false,
-      gradient: false,
-      gradientColors: '',
-      animation: 'none',
-      border: '',
-      ringColor: '',
-      fit: 'cover',
-      clickable: false,
-      lazyLoad: false,
-      storyRing: false,
-      storySeen: false,
-      activeSpeaker: false,
-      statusPulse: false,
-      smartInitials: false,
-      skeleton: false,
-      shimmer: false,
-      glassmorphism: false,
-      effect3d: false,
-      storySegments: '',
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

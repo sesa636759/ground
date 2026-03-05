@@ -15,17 +15,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.position"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Top', value: 'top' },
-          { label: 'Top Left', value: 'top-left' },
-          { label: 'Top Right', value: 'top-right' },
-          { label: 'Bottom', value: 'bottom' },
-          { label: 'Bottom Left', value: 'bottom-left' },
-          { label: 'Bottom Right', value: 'bottom-right' },
-          { label: 'Left', value: 'left' },
-          { label: 'Right', value: 'right' },
-          { label: 'Auto', value: 'auto' },
-        ]"
+        [options]="standardPlacementOptions"
       ></ui-dropdown>
     </div>
 
@@ -34,11 +24,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Hover', value: 'hover' },
-          { label: 'Click', value: 'click' },
-          { label: 'Focus', value: 'focus' },
-        ]"
+        [options]="standardTriggerOptions"
       ></ui-dropdown>
     </div>
 
@@ -47,16 +33,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Dark', value: 'dark' },
-          { label: 'Light', value: 'light' },
-          { label: 'Primary', value: 'primary' },
-          { label: 'Info', value: 'info' },
-          { label: 'Success', value: 'success' },
-          { label: 'Warning', value: 'warning' },
-          { label: 'Error', value: 'error' },
-          { label: 'Glass', value: 'glass' },
-        ]"
+        [options]="variantOptions"
       ></ui-dropdown>
     </div>
 
@@ -65,11 +42,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.shape"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Rounded', value: 'rounded' },
-          { label: 'Square', value: 'square' },
-          { label: 'Pill', value: 'pill' },
-        ]"
+        [options]="shapeOptions"
       ></ui-dropdown>
     </div>
 
@@ -78,13 +51,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.animation"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Fade', value: 'fade' },
-          { label: 'Slide', value: 'slide' },
-          { label: 'Scale', value: 'scale' },
-          { label: 'Bounce', value: 'bounce' },
-          { label: 'None', value: 'none' },
-        ]"
+        [options]="animationOptions"
       ></ui-dropdown>
     </div>
 
@@ -132,13 +99,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.transitionTiming"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Ease', value: 'ease' },
-          { label: 'Linear', value: 'linear' },
-          { label: 'Ease In', value: 'ease-in' },
-          { label: 'Ease Out', value: 'ease-out' },
-          { label: 'Ease In Out', value: 'ease-in-out' },
-        ]"
+        [options]="timingOptions"
       ></ui-dropdown>
     </div>
 
@@ -254,4 +215,3 @@
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
-

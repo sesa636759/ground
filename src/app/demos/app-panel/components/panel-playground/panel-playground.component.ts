@@ -13,23 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class PanelPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    panelTitle: 'Interactive Panel',
-    panelSubtitle: 'Customizable layout component',
-    badge: 'New',
-    variant: 'elevated',
-    theme: 'default',
-    showClose: true,
-    showSettings: true,
-    toggleable: true,
-    minimizable: true,
-    maximizable: true,
-    isDraggable: false,
-    resizable: true,
-    loading: false,
-    noPadding: false,
-    glass: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'content', title: 'Content & Header', icon: '📝' },
@@ -49,15 +33,36 @@ export class PanelPlaygroundComponent extends BasePlaygroundComponent {
   themeOptions = [
     { label: 'Default', value: 'default' },
     { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
     { label: 'Success', value: 'success' },
-    { label: 'Warning', value: 'warning' },
     { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
     { label: 'Info', value: 'info' },
   ];
 
   constructor() {
     super();
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      panelTitle: 'Interactive Panel',
+      panelSubtitle: 'Customizable layout component',
+      badge: 'New',
+      variant: 'elevated',
+      theme: 'default',
+      showClose: true,
+      showSettings: true,
+      toggleable: true,
+      minimizable: true,
+      maximizable: true,
+      isDraggable: false,
+      resizable: true,
+      loading: false,
+      noPadding: false,
+      glass: false,
+    };
   }
 
   updateConfig() {
@@ -88,27 +93,5 @@ export class PanelPlaygroundComponent extends BasePlaygroundComponent {
 
   onPanelEvent(event: string) {
     this.logEvent(`Panel event: ${event}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      panelTitle: 'Interactive Panel',
-      panelSubtitle: 'Customizable layout component',
-      badge: 'New',
-      variant: 'elevated',
-      theme: 'default',
-      showClose: true,
-      showSettings: true,
-      toggleable: true,
-      minimizable: true,
-      maximizable: true,
-      isDraggable: false,
-      resizable: true,
-      loading: false,
-      noPadding: false,
-      glass: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

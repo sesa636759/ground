@@ -13,13 +13,15 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-pie-chart-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pie-chart-playground.component.html',
   styleUrl: './pie-chart-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class PieChartPlaygroundComponent extends BasePlaygroundComponent {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
@@ -138,10 +140,8 @@ export class PieChartPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
+    super.resetConfig();
     this.activeChartData = { ...this.salesData };
     this.activeOptions = {};
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

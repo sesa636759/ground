@@ -12,7 +12,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-pagination-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pagination-playground.component.html',
   styleUrl: './pagination-playground.component.scss',
@@ -39,12 +39,6 @@ export class PaginationPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Dropdown', value: 'dropdown' },
     { label: 'Input', value: 'input' },
     { label: 'Indicator', value: 'indicator' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
   ];
 
   variantOptions = [
@@ -102,11 +96,5 @@ export class PaginationPlaygroundComponent extends BasePlaygroundComponent {
     this.pgConfig.currentPage = event.detail;
     this.logEvent(`Navigated to page: ${event.detail}`);
     this.updateConfig();
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

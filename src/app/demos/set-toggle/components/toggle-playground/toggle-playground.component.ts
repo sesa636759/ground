@@ -26,30 +26,36 @@ export class TogglePlaygroundComponent extends BasePlaygroundComponent implement
     { id: 'states', title: 'Behavioral States', icon: '⚡' },
   ]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  layoutOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Grid', value: 'grid' },
+  ];
+
+  selectionModeOptions = [
+    { label: 'Single', value: 'single' },
+    { label: 'Multiple', value: 'multiple' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Glass', value: 'glass' },
+  ];
+
+  thumbShapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
 
   // Playground State
-  pgConfig = {
-    layout: 'horizontal',
-    selectionMode: 'multiple',
-    size: 'medium',
-    color: 'primary',
-    variant: 'default',
-    elevation: 0,
-    thumbShape: 'circle',
-    skeleton: false,
-    labelPosition: 'right',
-    label: 'Feature Settings',
-    helperText: 'Select your preferences',
-    orientation: 'horizontal',
-    showIcons: false,
-    disabled: false,
-    readonly: false,
-    required: false,
-    invalid: false,
-    animation: true,
-    columns: 3,
-  };
+  pgConfig = this.getDefaultConfig();
 
   playgroundOptions = [
     { value: 'notifications', label: 'Notifications', icon: 'fas fa-bell' },
@@ -59,23 +65,12 @@ export class TogglePlaygroundComponent extends BasePlaygroundComponent implement
     { value: 'offline-mode', label: 'Offline Mode', icon: 'fas fa-wifi' },
   ];
 
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  updateConfig() {
-    this.updateConfigFromDom(this.toggleGroup, 'app-toggle-group');
-  }
-
-  onToggleChange(event: any) {
-    const value = event.detail.value;
-    const displayValue = Array.isArray(value) ? value.join(', ') : value;
-    this.logEvent(`Selection changed: ${displayValue}`);
-    this.updateConfig();
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       layout: 'horizontal',
       selectionMode: 'multiple',
       size: 'medium',
@@ -96,7 +91,20 @@ export class TogglePlaygroundComponent extends BasePlaygroundComponent implement
       animation: true,
       columns: 3,
     };
+  }
+
+  ngAfterViewInit() {
     this.updateConfig();
-    this.eventLog.set([]);
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.toggleGroup, 'app-toggle-group');
+  }
+
+  onToggleChange(event: any) {
+    const value = event.detail.value;
+    const displayValue = Array.isArray(value) ? value.join(', ') : value;
+    this.logEvent(`Selection changed: ${displayValue}`);
+    this.updateConfig();
   }
 }

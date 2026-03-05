@@ -25,8 +25,6 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
-
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
     { label: 'Vertical', value: 'vertical' },
@@ -79,8 +77,8 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 
-  override resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       orientation: 'horizontal',
       size: 'md',
       variant: 'default',
@@ -89,7 +87,5 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent {
       showDescriptions: true,
       progressDot: false,
     };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

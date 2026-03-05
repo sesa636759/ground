@@ -13,13 +13,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    orientation: 'horizontal',
-    align: 'start',
-    variant: 'default',
-    scrollable: false,
-    closeable: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([
     { id: 'layout', title: 'Layout Configuration', icon: '📏' },
@@ -27,11 +21,6 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   ]);
 
   accordionDefaultOpen = JSON.stringify(['layout']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
-  ];
 
   alignOptions = [
     { label: 'Start', value: 'start' },
@@ -54,6 +43,16 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      align: 'start',
+      variant: 'default',
+      scrollable: false,
+      closeable: false,
+    };
+  }
+
   updateConfig() {
     let code = '<ui-tabs\n';
     code += `  orientation="${this.pgConfig.orientation}"\n`;
@@ -73,17 +72,5 @@ export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   onTabChange(event: any) {
     this.currentTab = event.detail.value;
     this.logEvent(`Tab changed to: ${this.currentTab}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      orientation: 'horizontal',
-      align: 'start',
-      variant: 'default',
-      scrollable: false,
-      closeable: false,
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }

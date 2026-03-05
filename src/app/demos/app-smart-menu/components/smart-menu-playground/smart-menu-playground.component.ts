@@ -14,16 +14,13 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-smart-menu-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './smart-menu-playground.component.html',
   styleUrl: './smart-menu-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
-  updateConfig(): void {
-    throw new Error('Method not implemented.');
-  }
   @ViewChild('smartMenu') smartMenuEl!: ElementRef;
 
   pgConfig = this.getDefaultConfig();
@@ -35,24 +32,13 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
 
   accordionDefaultOpen = JSON.stringify(['props', 'fields']);
 
-  iconLibraryOpts = [
-    { label: 'lucide', value: 'lucide' },
-    { label: 'fontawesome', value: 'fontawesome' },
-    { label: 'bootstrap', value: 'bootstrap' },
-    { label: 'iconoir', value: 'iconoir' },
-    { label: 'icons8', value: 'icons8' },
-    { label: 'ionicons', value: 'ionicons' },
-    { label: 'se', value: 'se' },
-    { label: 'default', value: 'default' },
-  ];
-
-  triggerModeOpts = [
+  triggerModeOptions = [
     { label: 'Right-click zone', value: 'zone' },
     { label: 'Button click', value: 'button' },
     { label: 'Whole document', value: 'no-target' },
   ];
 
-  presetOpts = [
+  presetOptions = [
     { label: 'File / Edit / View', value: 'file' },
     { label: 'Dashboard Actions', value: 'dashboard' },
     { label: 'Cut / Copy / Paste', value: 'edit' },
@@ -130,7 +116,7 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
 
   constructor() {
     super();
-    this.rebuild();
+    this.updateConfig();
   }
 
   getDefaultConfig() {
@@ -147,7 +133,7 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 
-  rebuild() {
+  updateConfig() {
     const rows: any[] = JSON.parse(JSON.stringify(this.basePresets[this.pgConfig.preset] ?? []));
     const items: any[] = [];
 
@@ -205,11 +191,5 @@ export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
   onItemClick(event: any) {
     const label = event.detail?.label ?? event.detail?.item?.label ?? 'Unknown';
     this.logEvent(`Menu Item Clicked: ${label}`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
-    this.rebuild();
-    this.eventLog.set([]);
   }
 }

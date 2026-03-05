@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
@@ -13,41 +13,9 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 })
 export class ButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    mode: 'segmented',
-    orientation: 'horizontal',
-    size: 'medium',
-    color: 'primary',
-    variant: 'soft',
-    shape: 'rectangle',
-    iconPosition: 'left',
-    displayMode: 'icon-label',
-    label: 'Select View Mode',
-    helperText: 'Choose how you want to view content',
-    errorMessage: '',
-    name: 'view-mode',
-    value: 'list',
-    fullWidth: false,
-    keepButtonLabel: false,
-    buttonActionLabel: 'Action',
-    customContent: false,
-    disabled: false,
-    readonly: false,
-    loading: false,
-    required: true,
-    invalid: false,
-    multiSelect: false,
-    batchActions: false,
-    searchEnabled: false,
-    exportEnabled: false,
-    importEnabled: false,
-    analyticsEnabled: false,
-    advancedTheme: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = JSON.stringify([{ id: 'global', title: 'Global Configuration', icon: '⚙️' }]);
-
-  accordionDefaultOpen = JSON.stringify(['global']);
 
   // Options Data (Core sets)
   playgroundOptions = [
@@ -59,7 +27,40 @@ export class ButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
 
   constructor() {
     super();
-    this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      mode: 'segmented',
+      orientation: 'horizontal',
+      size: 'medium',
+      color: 'primary',
+      variant: 'soft',
+      shape: 'rectangle',
+      iconPosition: 'left',
+      displayMode: 'icon-label',
+      label: 'Select View Mode',
+      helperText: 'Choose how you want to view content',
+      errorMessage: '',
+      name: 'view-mode',
+      value: 'list',
+      fullWidth: false,
+      keepButtonLabel: false,
+      buttonActionLabel: 'Action',
+      customContent: false,
+      disabled: false,
+      readonly: false,
+      loading: false,
+      required: true,
+      invalid: false,
+      multiSelect: false,
+      batchActions: false,
+      searchEnabled: false,
+      exportEnabled: false,
+      importEnabled: false,
+      analyticsEnabled: false,
+      advancedTheme: '',
+    };
   }
 
   updateConfig() {
@@ -117,41 +118,5 @@ export class ButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
 
   onPlaygroundAction(event: any) {
     this.logEvent(`Button action clicked! Current value: "${event.detail.value}"`);
-  }
-
-  override resetConfig() {
-    this.pgConfig = {
-      mode: 'segmented',
-      orientation: 'horizontal',
-      size: 'medium',
-      color: 'primary',
-      variant: 'soft',
-      shape: 'rectangle',
-      iconPosition: 'left',
-      displayMode: 'icon-label',
-      label: 'Select View Mode',
-      helperText: 'Choose how you want to view content',
-      errorMessage: '',
-      name: 'view-mode',
-      value: 'list',
-      fullWidth: false,
-      keepButtonLabel: false,
-      buttonActionLabel: 'Action',
-      customContent: false,
-      disabled: false,
-      readonly: false,
-      loading: false,
-      required: true,
-      invalid: false,
-      multiSelect: false,
-      batchActions: false,
-      searchEnabled: false,
-      exportEnabled: false,
-      importEnabled: false,
-      analyticsEnabled: false,
-      advancedTheme: '',
-    };
-    this.updateConfig();
-    this.eventLog.set([]);
   }
 }
