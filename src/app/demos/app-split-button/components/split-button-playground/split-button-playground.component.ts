@@ -15,8 +15,6 @@ export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   variantOptions = [
     { label: 'Primary', value: 'primary' },
     { label: 'Secondary', value: 'secondary' },

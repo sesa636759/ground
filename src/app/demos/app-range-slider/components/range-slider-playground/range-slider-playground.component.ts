@@ -30,8 +30,6 @@ export class RangeSliderPlaygroundComponent extends BasePlaygroundComponent impl
     { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['global'];
-
   currentValue: any = [20, 80];
 
   constructor() {

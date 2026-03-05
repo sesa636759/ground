@@ -31,8 +31,6 @@ export class DividerPlaygroundComponent extends BasePlaygroundComponent implemen
     { id: 'special', title: 'Special Effects', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['global'];
-
   variantOptions = [
     { label: 'Solid', value: 'solid' },
     { label: 'Dashed', value: 'dashed' },

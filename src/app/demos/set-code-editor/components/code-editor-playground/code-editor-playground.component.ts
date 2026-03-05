@@ -57,8 +57,6 @@ console.log(user.greet());`,
 
   currentCode = this.initialCode.javascript;
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   constructor() {
     super();
   }

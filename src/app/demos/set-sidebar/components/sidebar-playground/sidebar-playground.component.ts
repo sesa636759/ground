@@ -23,8 +23,6 @@ export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
     overlay: false,
   };
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   menuItems = [
     { id: '1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: '2', label: 'Analytics', icon: 'fas fa-chart-line' },

@@ -25,8 +25,6 @@ export class SplitterPlaygroundComponent extends BasePlaygroundComponent {
     doubleClickCollapse: true,
   };
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   constructor() {
     super();
     this.updateConfig();

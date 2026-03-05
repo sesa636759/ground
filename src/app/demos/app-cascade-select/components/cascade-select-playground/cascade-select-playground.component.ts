@@ -30,8 +30,6 @@ export class CascadeSelectPlaygroundComponent extends BasePlaygroundComponent im
     { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['global'];
-
   triggerOptions = [
     { label: 'Hover', value: 'hover' },
     { label: 'Click', value: 'click' },

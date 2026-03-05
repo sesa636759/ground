@@ -23,8 +23,6 @@ export class StepperPlaygroundComponent extends BasePlaygroundComponent {
     progressDot: false,
   };
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   orientationOptions = [
     { label: 'Horizontal', value: 'horizontal' },
     { label: 'Vertical', value: 'vertical' },

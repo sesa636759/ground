@@ -15,8 +15,6 @@ export class ThemeSwitcherPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   constructor() {
     super();
   }

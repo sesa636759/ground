@@ -13,7 +13,11 @@ import { generatePlaygroundCode } from '../../utils/playground-utils';
 export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   protected cd = inject(ChangeDetectorRef);
 
-  accordionDefaultOpen = JSON.stringify(['global']);
+  accordionDefaultOpen = ['global'];
+  defaultOpen = ['global'];
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   // Playground State
   generatedCode = signal('');

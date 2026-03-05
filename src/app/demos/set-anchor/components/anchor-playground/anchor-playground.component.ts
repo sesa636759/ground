@@ -24,8 +24,6 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent implement
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   numberStyleOptions = [
     { label: 'Numeric (1, 2)', value: 'numeric' },
     { label: 'Decimal (01, 02)', value: 'decimal' },

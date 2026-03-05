@@ -18,8 +18,6 @@ export class OtpInputPlaygroundComponent extends BasePlaygroundComponent {
     { id: 'states', title: 'Behavioral States', icon: 'help-circle', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['global'];
-
   pgConfig = {
     length: 6,
     value: '',

@@ -15,8 +15,6 @@ export class ButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   // Options Data (Core sets)
   playgroundOptions = [
     { value: 'list', label: 'List View', icon: 'fas fa-list' },

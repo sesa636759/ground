@@ -23,8 +23,6 @@ export class TabStackPlaygroundComponent extends BasePlaygroundComponent {
     grouped: false,
   };
 
-  pgAccordionItems = [{ id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' }];
-
   tabs = [
     { id: 'tab1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'tab2', label: 'Analytics', icon: 'fas fa-chart-line' },
