@@ -19,26 +19,6 @@ export class SetCardExamplesComponent {
     { id: 'states-interaction', name: 'States & Interaction', icon: '🔄' },
   ];
 
-  // anchorLinks = JSON.stringify(
-  //   this.variants.map((v: any) => ({
-  //     id: v.id,
-  //     label: v.name,
-  //     target: v.id,
-  //     icon: v.icon,
-  //   })),
-  // );
-
-  get anchorLinks() {
-    return JSON.stringify(
-      this.variants.map((v: any) => ({
-        id: v.id,
-        label: v.name,
-        target: v.id,
-        icon: v.icon,
-      })),
-    );
-  }
-
   isLoading = false;
 
   toggleLoading() {

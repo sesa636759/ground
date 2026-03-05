@@ -8,6 +8,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { PlaygroundEventLogComponent } from '../../shared/components/playground-event-log/playground-event-log.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-app-accordian-demo',
@@ -21,6 +22,7 @@ import { PlaygroundEventLogComponent } from '../../shared/components/playground-
     ComponentDocumentationComponent,
     DemoSidebarComponent,
     PlaygroundEventLogComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-accordian-demo.component.html',
@@ -46,8 +48,6 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
   get exampleVariants() {
     return this.variants;
   }
-
-  
 
   basicAccordionItems = [
     {

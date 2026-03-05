@@ -42,8 +42,6 @@ export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements On
     { id: 'combined', title: 'Combined', icon: '💎' },
   ];
 
-  
-
   get exampleVariants() {
     return this.variants;
   }

@@ -334,6 +334,12 @@
 .header-text {
   flex: 1;
   min-width: 0;
+
+  ui-tooltip {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 /* Eyebrow pill */
@@ -390,6 +396,13 @@
   animation:
     titleIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both,
     gradientShift 7s ease infinite;
+
+  // Truncation if title is too long
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Description */
@@ -401,6 +414,7 @@
   font-weight: 400;
   animation: descIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
   // Single-line truncation
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

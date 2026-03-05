@@ -22,26 +22,6 @@ export class CardExamplesComponent {
     { id: 'advanced', name: 'Advanced Patterns', icon: '🚀' },
   ];
 
-  // anchorLinks = JSON.stringify(
-  //   this.variants.map((v: any) => ({
-  //     id: v.id,
-  //     label: v.name,
-  //     target: v.id,
-  //     icon: v.icon,
-  //   })),
-  // );
-
-  get anchorLinks() {
-    return JSON.stringify(
-      this.variants.map((v: any) => ({
-        id: v.id,
-        label: v.name,
-        target: v.id,
-        icon: v.icon,
-      })),
-    );
-  }
-
   premiumHeroCode = `<div class="card-grid">
   <!-- Dashboard Card -->
   <ui-card variant="elevated" hoverable width="380px" ribbon="NEW" ribbon-color="indigo">

@@ -13,4 +13,23 @@ export class DemoHeaderComponent {
   @Input() icon: string = '';
   @Input() title: string = '';
   @Input() description: string = '';
+
+  tooltipContent: string = '';
+  titleContent: string = '';
+
+  checkTruncation(element: HTMLElement) {
+    if (element.scrollWidth > element.clientWidth) {
+      this.tooltipContent = this.description;
+    } else {
+      this.tooltipContent = '';
+    }
+  }
+
+  checkTitleTruncation(element: HTMLElement) {
+    if (element.scrollWidth > element.clientWidth) {
+      this.titleContent = this.title;
+    } else {
+      this.titleContent = '';
+    }
+  }
 }
