@@ -1,66 +1,51 @@
 <app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-grid">
-      <div class="control-section">
-        <h3>Basic Config</h3>
-        <div class="control-group">
-          <label>Label</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.label"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Icon (Home/Save/etc)</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.icon"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="variantOptions"
-          ></ui-dropdown>
-        </div>
+      <div class="control-group">
+        <label>Label</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.label"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
       </div>
-
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="sizeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="disabled"
-            [(ngModel)]="pgConfig.disabled"
-            (ngModelChange)="updateConfig()"
-            label="Disabled"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="loading"
-            [(ngModel)]="pgConfig.loading"
-            (ngModelChange)="updateConfig()"
-            label="Loading"
-          ></ui-checkbox>
-        </div>
+      <div class="control-group">
+        <label>Icon (Home/Save/etc)</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.icon"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
       </div>
+      <div class="control-group">
+        <label>Variant</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (ngModelChange)="updateConfig()"
+          [options]="variantOptions"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Size</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (ngModelChange)="updateConfig()"
+          [options]="standardSizeOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+      </label>
     </div>
   </div>
 
@@ -82,15 +67,14 @@
       [attr.size]="pgConfig.size"
       [attr.disabled]="pgConfig.disabled ? '' : null"
       [attr.loading]="pgConfig.loading ? '' : null"
-      [model]="modelJson"
+      [model]="menuItems"
       (uiClick)="onPrimaryClick()"
     ></ui-split-button>
-
-    <div
-      *ngIf="lastAction"
-      style="margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem"
-    >
-      Last Action: <strong>{{ lastAction }}</strong>
-    </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

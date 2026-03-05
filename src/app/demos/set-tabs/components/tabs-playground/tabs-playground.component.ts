@@ -1,44 +1,19 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tabs-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tabs-playground.component.html',
   styleUrl: './tabs-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TabsPlaygroundComponent implements OnInit {
-  public eventLog: Array<any> = [];
+export class TabsPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    orientation: 'horizontal',
-    variant: 'default',
-    size: 'medium',
-    color: 'primary',
-    align: 'start',
-    indicatorPosition: 'bottom',
-    fullWidth: false,
-    scrollable: true,
-    showAddButton: true,
-    animated: true,
-    closable: false,
-    showCloseAllButton: false,
-    editableLabels: false,
-    dragEnabled: true,
-    showOverflowButton: true,
-  };
+  pgConfig = this.getDefaultConfig();
 
   tabs = [
     { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
@@ -47,11 +22,33 @@ export class TabsPlaygroundComponent implements OnInit {
     { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
   ];
 
-  eventMessage = signal('Switch tabs or adjust controls...');
-  generatedCode = signal('');
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  ngOnInit() {
-    this.updateConfig();
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      variant: 'default',
+      size: 'medium',
+      color: 'primary',
+      align: 'start',
+      indicatorPosition: 'bottom',
+      fullWidth: false,
+      scrollable: true,
+      showAddButton: true,
+      animated: true,
+      closable: false,
+      showCloseAllButton: false,
+      editableLabels: false,
+      dragEnabled: true,
+      showOverflowButton: true,
+    };
   }
 
   updateConfig() {
@@ -81,12 +78,11 @@ export class TabsPlaygroundComponent implements OnInit {
     });
     code += `</app-tab-stack>`;
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onTabChange(event: any) {
-    this.eventMessage.set(
-      `Active tab: "${event.detail.value}" at ${new Date().toLocaleTimeString()}`,
-    );
+    this.logEvent(`Active tab: "${event.detail.value}"`);
   }
 
   onTabAdd() {
@@ -108,11 +104,14 @@ export class TabsPlaygroundComponent implements OnInit {
     this.updateConfig();
   }
 
-  logEvent(msg: string) {
-    this.eventMessage.set(msg);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    super.resetConfig();
+    this.tabs = [
+      { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
+      { label: 'Analytics', value: 'tab2', icon: 'fas fa-bolt', badge: '', badgeColor: 'primary' },
+      { label: 'Config', value: 'tab3', icon: 'fas fa-star', badge: 'New', badgeColor: 'success' },
+      { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
+    ];
+    this.updateConfig();
   }
 }

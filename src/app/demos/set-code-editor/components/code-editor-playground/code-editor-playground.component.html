@@ -1,8 +1,10 @@
-﻿<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Theme</label>
@@ -21,7 +23,7 @@
         <label>Language</label>
         <ui-dropdown
           [(ngModel)]="pgConfig.language"
-          (change)="onLanguageChange()"
+          (ngModelChange)="onLanguageChange()"
           [options]="[
             { label: 'JavaScript', value: 'javascript' },
             { label: 'HTML', value: 'html' },
@@ -55,7 +57,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.toolbar" (ngModelChange)="updateConfig()" /> Show Toolbar
       </label>
@@ -75,9 +77,9 @@
         [attr.theme]="pgConfig.theme"
         [attr.language]="pgConfig.language"
         [attr.height]="pgConfig.height"
-        [attr.line-numbers]="pgConfig.lineNumbers"
-        [attr.toolbar]="pgConfig.toolbar"
-        [attr.readonly]="pgConfig.readonly"
+        [attr.line-numbers]="pgConfig.lineNumbers ? '' : null"
+        [attr.toolbar]="pgConfig.toolbar ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
         [attr.toolbar-label-display]="pgConfig.labelDisplay"
         [value]="currentCode"
         (valueChange)="onValueChange($event)"
@@ -87,15 +89,9 @@
   </div>
 
   <app-playground-event-log
+    events
     [logs]="eventLog()"
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    [label]="'Generated Code'"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>
+

@@ -18,6 +18,7 @@ import {
   ComponentDocumentation,
   ComponentProp,
 } from '../../services/component-docs.service';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-component-documentation',
@@ -28,7 +29,10 @@ import {
   styleUrl: './component-documentation.component.scss',
 })
 export class ComponentDocumentationComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() componentId: string | undefined;
+  componentId = signal<string | undefined>(undefined);
+  @Input('componentId') set _componentId(val: string | undefined) {
+    this.componentId.set(val);
+  }
   componentDoc: ComponentDocumentation | undefined;
   isEmbedded = false;
 
@@ -37,7 +41,7 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   showScrollTop = signal<boolean>(false);
 
   sections = [
-    { id: 'overview', label: 'Overview', icon: 'fas fa-info-circle' },
+    { id: 'overview', label: 'Overview', icon: 'fa-info-circle', library: 'fontawesome' },
     { id: 'usage', label: 'Usage', icon: 'fas fa-code' },
     { id: 'properties', label: 'Properties', icon: 'fas fa-list-ul' },
     { id: 'events', label: 'Events', icon: 'fas fa-bolt' },
@@ -58,13 +62,14 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
     );
   });
 
-  get sidebarSections() {
+  sidebarSections = computed(() => {
+    const cid = this.componentId();
     return this.sections.map((s) => ({
       ...s,
       // The anchor specifically needs to exact target HTML ID
-      id: this.getSectionId(s.id),
+      id: cid ? `${cid}-${s.id}` : s.id,
     }));
-  }
+  });
 
   private observer: IntersectionObserver | undefined;
 
@@ -112,14 +117,14 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   }
 
   loadComponentDoc() {
-    if (this.componentId) {
+    if (this.componentId()) {
       this.isEmbedded = true;
-      this.loadDocByLang(this.componentId);
+      this.loadDocByLang(this.componentId()!);
     } else {
       this.route.queryParams.subscribe((params) => {
         const id = params['component'];
         if (id) {
-          this.componentId = id; // Ensure consistent ID generation
+          this.componentId.set(id); // Ensure consistent ID generation
           this.loadDocByLang(id);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -196,8 +201,8 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
           // Extract the original ID if prefixed
           const id = entry.target.id;
           const originalId =
-            this.componentId && id.startsWith(this.componentId + '-')
-              ? id.substring(this.componentId.length + 1)
+            this.componentId() && id.startsWith(this.componentId() + '-')
+              ? id.substring(this.componentId()!.length + 1)
               : id;
           this.activeSection.set(originalId);
         }
@@ -212,7 +217,8 @@ export class ComponentDocumentationComponent implements OnInit, AfterViewInit, O
   }
 
   getSectionId(sectionId: string): string {
-    return this.componentId ? `${this.componentId}-${sectionId}` : sectionId;
+    const cid = this.componentId();
+    return cid ? `${cid}-${sectionId}` : sectionId;
   }
 
   scrollTo(sectionId: string) {

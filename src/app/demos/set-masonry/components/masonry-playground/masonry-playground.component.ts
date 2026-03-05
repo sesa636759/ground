@@ -1,40 +1,27 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
-  OnInit,
   ViewEncapsulation,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-masonry-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './masonry-playground.component.html',
   styleUrl: './masonry-playground.component.scss',
 })
-export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
+export class MasonryPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('masonryLayout') masonryLayout!: ElementRef;
+
   // Playground State
   pgConfig = {
     layoutType: 'masonry',
@@ -56,6 +43,14 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     itemMaxWidth: 400,
     breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
   };
+
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'filter', title: 'Filtering & Sorting', icon: 'search', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
+
+  defaultOpen = ['layout'];
 
   layoutTypeOptions = [
     { label: 'Masonry', value: 'masonry' },
@@ -85,24 +80,9 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     { key: 'technology', label: 'Technology' },
   ];
 
-  eventLog = signal<string[]>([]);
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
+  constructor() {
+    super();
     this.playgroundItems = JSON.stringify(this.generateItems(24));
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   ngAfterViewInit() {
@@ -125,18 +105,9 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     }));
   }
 
-  getCleanFormattedDom(): string {
-    if (!this.masonryLayout) return '';
-    return generatePlaygroundCode(this.masonryLayout.nativeElement as Element, 'app-masonry');
-  }
-
   updateConfig() {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
-
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.masonryLayout, 'app-masonry');
   }
 
   onItemClick(event: any) {
@@ -149,13 +120,8 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
     this.logEvent(`Selection changed: ${selectedItems.length} item(s) selected`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       layoutType: 'masonry',
       columns: 3,
       gap: 16,
@@ -175,9 +141,11 @@ export class MasonryPlaygroundComponent implements OnInit, AfterViewInit {
       itemMaxWidth: 400,
       breakpoints: { 640: 2, 768: 3, 1024: 4, 1280: 5 },
     };
+  }
+
+  override resetConfig() {
+    super.resetConfig();
     this.filterCategory = '';
-    this.eventLog.set([]);
     this.updateConfig();
   }
 }
-

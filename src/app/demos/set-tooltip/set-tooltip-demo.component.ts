@@ -42,14 +42,7 @@ export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'auto-shift', title: 'Auto-Shift', icon: '🔄' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   hoverCode = `<app-tooltip content="I appear on hover" position="top">
   <ui-button slot="target" label="Hover Me"></ui-button>

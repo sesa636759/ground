@@ -1,71 +1,61 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewEncapsulation,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-toggle-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './toggle-playground.component.html',
   styleUrl: './toggle-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
+export class TogglePlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('toggleGroup') toggleGroup!: ElementRef;
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-  ]);
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
+
+  layoutOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+    { label: 'Grid', value: 'grid' },
+  ];
+
+  selectionModeOptions = [
+    { label: 'Single', value: 'single' },
+    { label: 'Multiple', value: 'multiple' },
+  ];
+
+  variantOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Glass', value: 'glass' },
+  ];
+
+  thumbShapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+  ];
+
   // Playground State
-  pgConfig = {
-    layout: 'horizontal',
-    selectionMode: 'multiple',
-    size: 'medium',
-    color: 'primary',
-    variant: 'default',
-    elevation: 0,
-    thumbShape: 'circle',
-    skeleton: false,
-    labelPosition: 'right',
-    label: 'Feature Settings',
-    helperText: 'Select your preferences',
-    orientation: 'horizontal',
-    showIcons: false,
-    disabled: false,
-    readonly: false,
-    required: false,
-    invalid: false,
-    animation: true,
-    columns: 3,
-  };
+  pgConfig = this.getDefaultConfig();
 
   playgroundOptions = [
     { value: 'notifications', label: 'Notifications', icon: 'fas fa-bell' },
@@ -75,40 +65,40 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
     { value: 'offline-mode', label: 'Offline Mode', icon: 'fas fa-wifi' },
   ];
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
+  constructor() {
+    super();
+  }
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
+  getDefaultConfig() {
+    return {
+      layout: 'horizontal',
+      selectionMode: 'multiple',
+      size: 'medium',
+      color: 'primary',
+      variant: 'default',
+      elevation: 0,
+      thumbShape: 'circle',
+      skeleton: false,
+      labelPosition: 'right',
+      label: 'Feature Settings',
+      helperText: 'Select your preferences',
+      orientation: 'horizontal',
+      showIcons: false,
+      disabled: false,
+      readonly: false,
+      required: false,
+      invalid: false,
+      animation: true,
+      columns: 3,
+    };
+  }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.toggleGroup) return '';
-
-    return generatePlaygroundCode(this.toggleGroup.nativeElement as Element, 'app-toggle-group');
+    this.updateConfig();
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.toggleGroup, 'app-toggle-group');
   }
 
   onToggleChange(event: any) {
@@ -117,15 +107,4 @@ export class TogglePlaygroundComponent implements OnInit, AfterViewInit {
     this.logEvent(`Selection changed: ${displayValue}`);
     this.updateConfig();
   }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  jsonOptions = JSON.stringify(this.playgroundOptions);
 }

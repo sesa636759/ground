@@ -1,16 +1,5 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  .preview-stage {
-    height: 400px;
-
-    .progress-container {
-      width: 100%;
-      max-width: 600px;
-    }
-  }
-}
-
 .control-group {
   input[type="color"] {
     padding: 5px;

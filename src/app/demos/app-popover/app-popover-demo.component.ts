@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+  import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PopoverPlaygroundComponent } from './components/popover-playground/popover-playground.component';
@@ -32,14 +32,7 @@ export class AppPopoverDemoComponent extends BaseDemoComponent {
     { id: 'rich-content', title: 'Rich Content', icon: '📝' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   triggersCode = `<!-- Click trigger (default) -->
 <ui-popover trigger="click" heading="Click Trigger" content="Stays open until clicked outside">

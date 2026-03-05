@@ -92,14 +92,7 @@ export class SetAnimateOnScrollDemoComponent extends BaseDemoComponent {
     { id: 'combined-effects', title: 'Combined Effects', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Basic Animations
   fadeInBasicCode = signal(`<app-animate-on-scroll

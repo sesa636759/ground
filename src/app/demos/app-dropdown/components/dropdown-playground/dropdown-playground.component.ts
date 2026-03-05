@@ -1,62 +1,36 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-dropdown-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dropdown-playground.component.html',
-
   styleUrl: './dropdown-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
+export class DropdownPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'config', title: 'Configuration', icon: '??' },
-    { id: 'features', title: 'Features', icon: '?' },
-  ]);
+  pgConfig = this.getDefaultConfig();
 
-  defaultOpen = JSON.stringify(['config', 'features']);
-  showCode = true;
-
-  pgConfig = {
-    placeholder: 'Select technology...',
-    size: 'md',
-    appearance: 'dropdown',
-    multiSelect: false,
-    searchable: true,
-    clearable: true,
-    cascading: false,
-  };
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
+  pgAccordionItems = [
+    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
+
+  defaultOpen = ['config', 'features'];
 
   appearanceOptions = [
     { label: 'Dropdown', value: 'dropdown' },
@@ -64,12 +38,12 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   options = [
-    { label: 'Angular', value: 'ng', icon: '???' },
-    { label: 'React', value: 'react', icon: '??' },
-    { label: 'Vue.js', value: 'vue', icon: '??' },
-    { label: 'Svelte', value: 'svelte', icon: '??' },
-    { label: 'Stencil', value: 'stencil', icon: '?' },
-    { label: 'Solid', value: 'solid', icon: '??' },
+    { label: 'Angular', value: 'ng', icon: '🅰️' },
+    { label: 'React', value: 'react', icon: '⚛️' },
+    { label: 'Vue.js', value: 'vue', icon: '🖖' },
+    { label: 'Svelte', value: 'svelte', icon: '🔥' },
+    { label: 'Stencil', value: 'stencil', icon: '💎' },
+    { label: 'Solid', value: 'solid', icon: '🧊' },
   ];
 
   cascadingOptions = [
@@ -97,62 +71,17 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
   cascadingOptionsJson = JSON.stringify(this.cascadingOptions);
 
   currentValue = '';
-  generatedCodeSignal = signal('');
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     this.updateConfig();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    let code = '<ui-dropdown\n';
-    code += `  placeholder="${this.pgConfig.placeholder}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    if (this.pgConfig.appearance !== 'dropdown')
-      code += `  appearance="${this.pgConfig.appearance}"\n`;
-    if (this.pgConfig.multiSelect) code += `  multi-select\n`;
-    if (this.pgConfig.searchable) code += `  searchable\n`;
-    if (this.pgConfig.clearable) code += `  clearable\n`;
-    if (this.pgConfig.cascading) code += `  cascading\n`;
-    code += `  [options]="dropdownOptions"\n`;
-    code += '></ui-dropdown>';
-    return code;
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  onValueChange(event: any) {
-    this.currentValue = event.detail.value;
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       placeholder: 'Select technology...',
       size: 'md',
       appearance: 'dropdown',
@@ -161,7 +90,29 @@ export class DropdownPlaygroundComponent implements OnInit, AfterViewInit {
       clearable: true,
       cascading: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      let code = '<ui-dropdown\n';
+      code += `  placeholder="${this.pgConfig.placeholder}"\n`;
+      code += `  size="${this.pgConfig.size}"\n`;
+      if (this.pgConfig.appearance !== 'dropdown')
+        code += `  appearance="${this.pgConfig.appearance}"\n`;
+      if (this.pgConfig.multiSelect) code += `  multi-select\n`;
+      if (this.pgConfig.searchable) code += `  searchable\n`;
+      if (this.pgConfig.clearable) code += `  clearable\n`;
+      if (this.pgConfig.cascading) code += `  cascading\n`;
+      code += `  [options]="dropdownOptions"\n`;
+      code += '></ui-dropdown>';
+
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  onValueChange(event: any) {
+    this.currentValue = event.detail.value;
+    this.logEvent(`Value changed: ${JSON.stringify(this.currentValue)}`);
   }
 }
-

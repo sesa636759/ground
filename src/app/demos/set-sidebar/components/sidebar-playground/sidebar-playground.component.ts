@@ -1,33 +1,18 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-sidebar-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './sidebar-playground.component.html',
   styleUrl: './sidebar-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SidebarPlaygroundComponent implements OnInit {
+export class SidebarPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     position: 'left',
     variant: 'default',
@@ -45,27 +30,9 @@ export class SidebarPlaygroundComponent implements OnInit {
     { id: '4', label: 'Profile', icon: 'fas fa-user' },
   ];
 
-  get menuItemsJson() {
-    return JSON.stringify(this.menuItems);
-  }
-
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
+  constructor() {
+    super();
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -90,13 +57,15 @@ export class SidebarPlaygroundComponent implements OnInit {
     this.logEvent(`Sidebar toggled: ${event.detail.collapsed ? 'collapsed' : 'expanded'}`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  getDefaultConfig() {
+    return {
+      position: 'left',
+      variant: 'default',
+      width: '250px',
+      collapsible: true,
+      collapsed: false,
+      showBackdrop: false,
+      overlay: false,
+    };
   }
 }
-

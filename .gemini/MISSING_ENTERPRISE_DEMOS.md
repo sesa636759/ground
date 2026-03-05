@@ -27,7 +27,7 @@ From `c:\Praveen\Personal-repo\stencil\set-ui-lib\src\components`:
 21. app-list-item (sub-component)
 22. app-masonry ✅
 23. app-modern-sidebar ✅
-24. app-otp-input ✅
+24. ui-otp-input ✅
 25. app-progress ✅
 26. app-radio ✅
 27. app-radio-group (group component)

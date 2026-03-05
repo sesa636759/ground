@@ -14,9 +14,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-modern-sidebar-playground',
@@ -25,35 +23,26 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
     AppInputValueAccessorDirective,
     CommonModule,
     FormsModule,
-
     UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
-
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './modern-sidebar-playground.component.html',
   styleUrl: './modern-sidebar-playground.component.scss',
 })
-export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
+export class ModernSidebarPlaygroundComponent
+  extends BasePlaygroundComponent
+  implements OnInit, AfterViewInit
+{
   @ViewChild('sidebarElement') sidebarElement!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    brandName: 'Set UI Lib',
-    selectedId: 'dashboard',
-    accentColor: '#6366f1',
-    userName: 'John Doe',
-    userRole: 'Administrator',
-    userAvatar: 'https://i.pravatar.cc/100?img=11',
-    collapsed: false,
-    theme: 'light',
-  };
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = [
-    { id: 'brand', title: 'Brand & Identity', icon: '??' },
-    { id: 'user', title: 'User Profile', icon: '??' },
-    { id: 'style', title: 'Visual Style', icon: '??' },
+  override pgAccordionItems = [
+    { id: 'brand', title: 'Brand & Identity', icon: 'award', iconLibrary: 'lucide' },
+    { id: 'user', title: 'User Profile', icon: 'user', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Style', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
   themeOptions = [
@@ -112,52 +101,49 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
     { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' },
   ];
 
-  sidebarItemsJson = JSON.stringify(this.sidebarItems);
-  eventLog = signal<string[]>([]);
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor(private _cd: ChangeDetectorRef) {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  override ngOnInit() {
+    super.ngOnInit();
   }
 
-  getCleanFormattedDom(): string {
-    if (!this.sidebarElement) return '';
-    let code = generatePlaygroundCode(
-      this.sidebarElement.nativeElement as Element,
-      'app-modern-sidebar',
-    );
+  override ngAfterViewInit() {
+    super.ngAfterViewInit();
+  }
+
+  getDefaultConfig() {
+    return {
+      brandName: 'Set UI Lib',
+      selectedId: 'dashboard',
+      accentColor: '#6366f1',
+      userName: 'John Doe',
+      userRole: 'Administrator',
+      userAvatar: 'https://i.pravatar.cc/100?img=11',
+      collapsed: false,
+      theme: 'light',
+    };
+  }
+
+  updateConfig() {
+    this.updateConfigFromDom(this.sidebarElement, 'app-modern-sidebar');
+    // Note: Items property will be handled manually in the getCleanFormattedDom override if needed
+    // or we can just rely on the base class and add the items property to the generated string.
+  }
+
+  override getCleanFormattedDom(
+    element: ElementRef | undefined,
+    tagName: string,
+    innerContent: string = '',
+  ): string {
+    let code = super.getCleanFormattedDom(element, tagName, innerContent);
     // Add items prop to the string manually since it's not a DOM attribute
     code = code.replace(
       '></app-modern-sidebar>',
       '\n  [items]="sidebarItems"\n></app-modern-sidebar>',
     );
     return code;
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
   }
 
   onItemSelected(event: any) {
@@ -177,23 +163,5 @@ export class ModernSidebarPlaygroundComponent implements OnInit, AfterViewInit {
 
   onProfileClick() {
     this.logEvent(`Profile clicked`);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      brandName: 'Set UI Lib',
-      selectedId: 'dashboard',
-      accentColor: '#6366f1',
-      userName: 'John Doe',
-      userRole: 'Administrator',
-      userAvatar: 'https://i.pravatar.cc/100?img=11',
-      collapsed: false,
-      theme: 'light',
-    };
-    this.updateConfig();
   }
 }

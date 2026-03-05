@@ -1,16 +1,2 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  min-height: 250px;
-  background: white;
-  padding: 0;
-  position: relative;
-
-  .top-bar-container {
-    width: 100%;
-  }
-
-  .content-placeholder {
-    padding: 40px;
-  }
-}

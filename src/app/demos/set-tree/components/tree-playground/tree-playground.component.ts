@@ -1,61 +1,55 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewChild,
   ElementRef,
   ViewEncapsulation,
-  ChangeDetectorRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tree-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-playground.component.html',
   styleUrl: './tree-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class TreePlaygroundComponent implements OnInit {
+export class TreePlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('treeElement') treeElement!: ElementRef;
 
   // Playground State
-  pgConfig = {
-    layout: 'tree',
-    variant: 'default',
-    size: 'medium',
-    theme: 'light',
-    orientation: 'vertical',
-    indent: 24,
-    connectorWidth: 2,
-    connectorColor: '#3DCD58',
-    connectorOpacity: 1,
-    showLines: true,
-    showIcons: true,
-    expandable: true,
-    selectable: true,
-    multiSelect: false,
-    checkboxes: false,
-    searchable: true,
-    animated: true,
-    showGlow: false,
-    enableDrag: false,
-  };
+  pgConfig = this.getDefaultConfig();
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      layout: 'tree',
+      variant: 'default',
+      size: 'medium',
+      theme: 'light',
+      orientation: 'vertical',
+      indent: 24,
+      connectorWidth: 2,
+      connectorColor: '#3DCD58',
+      connectorOpacity: 1,
+      showLines: true,
+      showIcons: true,
+      expandable: true,
+      selectable: true,
+      multiSelect: false,
+      checkboxes: false,
+      searchable: true,
+      animated: true,
+      showGlow: false,
+      enableDrag: false,
+    };
+  }
 
   demoData = JSON.stringify([
     {
@@ -96,25 +90,6 @@ export class TreePlaygroundComponent implements OnInit {
     },
   ]);
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
   updateConfig() {
     let code = `<app-tree\n`;
     code += `  layout="${this.pgConfig.layout}"\n`;
@@ -144,11 +119,6 @@ export class TreePlaygroundComponent implements OnInit {
     this.refreshCode();
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
   onNodeToggle(event: any) {
     this.logEvent(`Node ${event.detail.id} ${event.detail.expanded ? 'expanded' : 'collapsed'}`);
   }
@@ -175,9 +145,5 @@ export class TreePlaygroundComponent implements OnInit {
       tree.collapseAll();
       this.logEvent('Collapsed all nodes');
     }
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
   }
 }

@@ -1,49 +1,34 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-popover-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './popover-playground.component.html',
-
   styleUrl: './popover-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PopoverPlaygroundComponent implements AfterViewInit {
+export class PopoverPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('popover') popover!: ElementRef;
-  pgConfig = {
-    heading: 'Popover Title',
-    content: 'This is the <b>popover</b> content. You can use <i>HTML</i> here!',
-    trigger: 'click',
-    placement: 'top',
-    variant: 'light',
-    width: '280px',
-    showArrow: true,
-    showCloseButton: true,
-    backdrop: false,
-  };
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'content', title: 'Content Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['content'];
 
   triggerOptions = [
     { label: 'Click', value: 'click' },
@@ -67,49 +52,12 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
     { label: 'Dark', value: 'dark' },
   ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.popover) return '';
-    return generatePlaygroundCode(
-      this.popover.nativeElement as Element,
-      'ui-popover',
-      '  <ui-button>Target Element</ui-button>\n',
-    );
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       heading: 'Popover Title',
       content: 'This is the <b>popover</b> content. You can use <i>HTML</i> here!',
       trigger: 'click',
@@ -120,7 +68,14 @@ export class PopoverPlaygroundComponent implements AfterViewInit {
       showCloseButton: true,
       backdrop: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.popover) return;
+      const code = this.getCleanFormattedDom(this.popover, 'ui-popover');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
   }
 }
-

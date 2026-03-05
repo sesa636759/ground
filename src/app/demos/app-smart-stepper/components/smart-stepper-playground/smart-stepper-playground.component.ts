@@ -1,54 +1,36 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
+  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-smart-stepper-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './smart-stepper-playground.component.html',
   styleUrl: './smart-stepper-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SmartStepperPlaygroundComponent implements AfterViewInit {
-  @ViewChild('stepperElement') stepperElement!: ElementRef;
+export class SmartStepperPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgConfig = {
-    orientation: 'horizontal',
-    theme: 'default',
-    showIcons: true,
-    allowBranching: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '📏' },
-    { id: 'features', title: 'Behavior & Features', icon: '⚙️' },
-  ]);
-
-  accordionDefaultOpen = JSON.stringify(['layout']);
-
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Behavior & Features', icon: 'settings', iconLibrary: 'lucide' },
   ];
+
+  defaultOpen = ['layout'];
 
   themeOptions = [
     { label: 'Default', value: 'default' },
@@ -56,61 +38,38 @@ export class SmartStepperPlaygroundComponent implements AfterViewInit {
   ];
 
   currentStep = '1';
-  generatedCodeSignal = signal<string>('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.stepperElement) return '';
-    const innerContent = `
-  <ui-smart-step label="Profile" icon="👤" value="1"> ... content ... </ui-smart-step>
-  <ui-smart-step label="Verify" icon="🛡️" value="2"> ... content ... </ui-smart-step>
-  <ui-smart-step label="Finish" icon="✅" value="3"> ... content ... </ui-smart-step>`;
-    return generatePlaygroundCode(
-      this.stepperElement.nativeElement as Element,
-      'ui-smart-stepper',
-      innerContent,
-    );
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      theme: 'default',
+      showIcons: true,
+      allowBranching: false,
+    };
   }
 
   updateConfig() {
     setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
+      this.updateConfigFromDom(this.demoElement, 'ui-smart-stepper');
     }, 50);
   }
 
   onStepChange(event: any) {
     this.currentStep = event.detail.value;
     this.updateConfig();
+    this.logEvent(`Step changed to: ${this.currentStep}`);
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      orientation: 'horizontal',
-      theme: 'default',
-      showIcons: true,
-      allowBranching: false,
-    };
+  override resetConfig() {
+    super.resetConfig();
     this.currentStep = '1';
-    this.updateConfig();
   }
 }

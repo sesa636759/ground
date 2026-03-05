@@ -35,14 +35,7 @@ export class SetResizablePanelDemoComponent extends BaseDemoComponent {
     { id: 'snap', title: 'Snap to Edge', icon: '📌' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   basicHPanels = [
     { id: 'p1', size: 30, minSize: 15 },

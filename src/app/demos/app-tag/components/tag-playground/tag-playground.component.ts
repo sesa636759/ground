@@ -1,61 +1,32 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tag-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tag-playground.component.html',
   styleUrl: './tag-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TagPlaygroundComponent {
-  pgConfig = {
-    value: 'New Update',
-    icon: '?',
-    severity: 'info',
-    rounded: true,
-    size: 'small',
-  };
+export class TagPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
-  severityOptions = [
-    { label: 'Info', value: 'info' },
-    { label: 'Success', value: 'success' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Danger', value: 'danger' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'small' },
-    { label: 'Large', value: 'large' },
-  ];
-
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      value: 'New Update',
+      icon: '?',
+      severity: 'info',
+      rounded: true,
+      size: 'small',
+    };
   }
 
   updateConfig() {
@@ -66,23 +37,7 @@ export class TagPlaygroundComponent {
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     code += '></ui-tag>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      value: 'New Update',
-      icon: '?',
-      severity: 'info',
-      rounded: true,
-      size: 'small',
-    };
-    this.updateConfig();
-  }
 }
-

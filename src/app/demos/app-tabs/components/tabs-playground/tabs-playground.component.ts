@@ -1,35 +1,26 @@
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tabs-playground',
   standalone: true,
-  imports: [
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tabs-playground.component.html',
-
   styleUrl: './tabs-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TabsPlaygroundComponent {
-  pgConfig = {
-    orientation: 'horizontal',
-    align: 'start',
-    variant: 'default',
-    scrollable: false,
-    closeable: false,
-  };
+export class TabsPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
-  orientationOptions = [
-    { label: 'Horizontal', value: 'horizontal' },
-    { label: 'Vertical', value: 'vertical' },
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'visual', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
   ];
+
+  accordionDefaultOpen = ['layout'];
 
   alignOptions = [
     { label: 'Start', value: 'start' },
@@ -46,42 +37,40 @@ export class TabsPlaygroundComponent {
   ];
 
   currentTab = 'overview';
-  generatedCodeSignal = signal('');
 
   constructor() {
+    super();
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-tabs\n';
-    code += `  orientation="${this.pgConfig.orientation}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    if (this.pgConfig.scrollable) code += `  scrollable\n`;
-    code += '>\n';
-    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui-tab>\n';
-    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
-    code += '</ui-tabs>';
-
-    this.generatedCodeSignal.set(code);
-  }
-
-  onTabChange(event: any) {
-    this.currentTab = event.detail.value;
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       orientation: 'horizontal',
       align: 'start',
       variant: 'default',
       scrollable: false,
       closeable: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    let code = '<ui-tabs\n';
+    code += `  orientation="${this.pgConfig.orientation}"\n`;
+    code += `  variant="${this.pgConfig.variant}"\n`;
+    code += `  align="${this.pgConfig.align}"\n`;
+    if (this.pgConfig.scrollable) code += `  scrollable="true"\n`;
+    if (this.pgConfig.closeable) code += `  closeable="true"\n`;
+    code += '>\n';
+    code += '  <ui-tab label="Overview" value="overview"> Content 1 </ui-tab>\n';
+    code += '  <ui-tab label="Settings" value="settings"> Content 2 </ui-tab>\n';
+    code += '</ui-tabs>';
+
+    this.generatedCode.set(code);
+    this.refreshCode();
+  }
+
+  onTabChange(event: any) {
+    this.currentTab = event.detail.value;
+    this.logEvent(`Tab changed to: ${this.currentTab}`);
   }
 }
-

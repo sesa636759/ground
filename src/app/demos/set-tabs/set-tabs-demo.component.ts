@@ -39,14 +39,7 @@ export class SetTabsDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'advanced-features', title: 'Advanced UX', icon: '🛡️' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   ngOnInit() {}
 

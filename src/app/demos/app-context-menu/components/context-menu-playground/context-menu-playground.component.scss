@@ -1,11 +1,5 @@
 @use '../../../../../styles/playground-base.scss';
 
-.playground-preview {
-  min-height: 250px;
-  background: white;
-  padding: 48px;
-}
-
 .context-target {
   padding: 40px;
   border: 2px dashed var(--border-color);

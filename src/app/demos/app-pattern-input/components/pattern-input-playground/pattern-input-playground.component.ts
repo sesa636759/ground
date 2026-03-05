@@ -1,55 +1,34 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-pattern-input-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pattern-input-playground.component.html',
   styleUrl: './pattern-input-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
+export class PatternInputPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
-  ]);
+  pgConfig = this.getDefaultConfig();
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-
-  pgConfig = {
-    pattern: '(999) 999-9999',
-    placeholder: 'Enter phone number',
-    disabled: false,
-    readonly: false,
-  };
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'labels', title: 'Labels & Text', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   patternOptions = [
     { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },
@@ -58,54 +37,30 @@ export class PatternInputPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Custom: AAA-999', value: 'AAA-999' },
   ];
 
-  generatedCodeSignal = signal('');
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-pattern-input');
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      pattern: '(999) 999-9999',
+      placeholder: 'Enter phone number',
+      label: 'Phone Number',
+      size: 'md',
+      maskChar: '9',
+      maxLength: 0,
+      helperText: '',
+      errorMessage: '',
+      disabled: false,
+      readonly: false,
+      required: false,
+      showValidation: true,
+      autoFormat: true,
+      showCounter: false,
+    };
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      pattern: '(999) 999-9999',
-      placeholder: 'Enter phone number',
-      disabled: false,
-      readonly: false,
-    };
-    this.updateConfig();
+    this.updateConfigFromDom(this.demoElement, 'ui-pattern-input');
   }
 }
-

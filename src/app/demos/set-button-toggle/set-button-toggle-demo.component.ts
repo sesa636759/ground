@@ -48,14 +48,7 @@ export class SetButtonToggleDemoComponent extends BaseDemoComponent {
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Code snippets
   segmentedCode = `<app-button-toggle-group

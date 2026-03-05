@@ -79,6 +79,7 @@
       position: relative;
 
       &::part(footer) {
+        background: transparent !important;
         overflow: visible !important;
         z-index: 50;
         position: relative;
@@ -86,6 +87,13 @@
       }
 
       &::part(bottom-items) {
+        background: transparent !important;
+        overflow: visible !important;
+        position: relative;
+      }
+
+      &::part(bottom-items-secondary) {
+        background: transparent !important;
         overflow: visible !important;
         position: relative;
       }
@@ -235,7 +243,7 @@
 .sidebar-user-profile {
   padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
-  background: var(--surface-1);
+  background: var(--surface-elevated);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
@@ -252,7 +260,7 @@
   display: block;
   padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
-  background: var(--surface-1);
+  background: var(--surface-elevated);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 50;

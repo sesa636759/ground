@@ -4,28 +4,6 @@
     max-width: 450px;
 }
 
-.playground-preview {
-    .preview-stage {
-        min-height: 500px;
-        background: #ffffff;
-
-        /* Grid background */
-        background-image:
-            radial-gradient(circle at 2px 2px, var(--bg-secondary) 1px, transparent 0);
-        background-size: 32px 32px;
-
-        .card-wrapper {
-            width: 100%;
-            max-width: 450px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-            &:hover {
-                transform: scale(1.02);
-            }
-        }
-    }
-}
-
 .action-buttons {
     display: flex;
     gap: 1rem;

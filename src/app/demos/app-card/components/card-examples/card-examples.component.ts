@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExampleSectionComponent } from '../../../../shared/components/example-section/example-section.component';
+import { BaseDemoComponent } from '../../../../shared/base-demo.component';
 
 @Component({
   selector: 'app-card-examples',
@@ -10,7 +11,7 @@ import { ExampleSectionComponent } from '../../../../shared/components/example-s
   templateUrl: './card-examples.component.html',
   styleUrl: './card-examples.component.scss',
 })
-export class CardExamplesComponent {
+export class CardExamplesComponent extends BaseDemoComponent {
   variants = [
     { id: 'playground-hero', name: 'Premium Showcase', icon: '✨' },
     { id: 'basic', name: 'Core Structure', icon: '📋' },
@@ -22,14 +23,13 @@ export class CardExamplesComponent {
     { id: 'advanced', name: 'Advanced Patterns', icon: '🚀' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v: any) => ({
+  get exampleVariants() {
+    return this.variants.map((v) => ({
       id: v.id,
-      label: v.name,
-      target: v.id,
+      title: v.name,
       icon: v.icon,
-    })),
-  );
+    }));
+  }
 
   premiumHeroCode = `<div class="card-grid">
   <!-- Dashboard Card -->

@@ -28,14 +28,7 @@ export class SetTimelineDemoComponent implements OnInit {
     { id: 'variants', title: 'Style Variants', icon: '🎨' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Static Data Examples
   roadmapItems = JSON.stringify([

@@ -1,41 +1,27 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-speed-dial-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './speed-dial-playground.component.html',
   styleUrl: './speed-dial-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SpeedDialPlaygroundComponent {
-  pgConfig = {
-    direction: 'up',
-    type: 'linear',
-    radius: 80,
-    ripple: true,
-    mask: false,
-  };
+export class SpeedDialPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
 
-  directionOptions = [
-    { label: 'Up', value: 'up' },
-    { label: 'Down', value: 'down' },
-    { label: 'Left', value: 'left' },
-    { label: 'Right', value: 'right' },
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Settings', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals & Behavior', icon: 'palette', iconLibrary: 'lucide' },
   ];
+
+  defaultOpen = ['layout', 'visuals'];
 
   typeOptions = [
     { label: 'Linear', value: 'linear' },
@@ -52,20 +38,23 @@ export class SpeedDialPlaygroundComponent {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      direction: 'up',
+      type: 'linear',
+      radius: 80,
+      ripple: true,
+      mask: false,
+    };
   }
 
   updateConfig() {
@@ -77,22 +66,7 @@ export class SpeedDialPlaygroundComponent {
     code += `  [model]="items"\n`;
     code += '></ui-speed-dial>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      direction: 'up',
-      type: 'linear',
-      radius: 80,
-      ripple: true,
-      mask: false,
-    };
-    this.updateConfig();
   }
 }

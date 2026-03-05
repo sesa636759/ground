@@ -1,129 +1,88 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
   ViewChild,
   ElementRef,
-  AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-card-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './card-playground.component.html',
   styleUrl: './card-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class CardPlaygroundComponent implements OnInit, AfterViewInit {
+export class CardPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('cardSet') cardSet!: ElementRef;
+
   // Playground State
-  pgConfig = {
-    title: 'Card Title',
-    extra: 'More',
-    cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
-    actions: 'Settings,Edit,More',
-    hoverable: true,
-    size: 'default',
-    bordered: true,
-    type: 'default',
-    loading: false,
-    flippable: false,
-    flipTrigger: 'click',
-    closable: false,
-    menuActions: '',
-    layout: 'vertical',
-    glass: false,
-    variant: 'default',
-    ribbon: '',
-    ribbonPosition: 'top-right',
-    ribbonColor: '#1890ff',
-    collapsible: false,
-    collapsed: false,
-    selectable: false,
-    selected: false,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
-    avatarIcon: '',
-  };
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([{ id: 'config', title: 'Configuration', icon: '??' }]);
-  accordionDefaultOpen = JSON.stringify(['config']);
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  eventMessage = signal('Interact with the card...');
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.cardSet) return '';
-
-    return generatePlaygroundCode(this.cardSet.nativeElement as Element, 'app-card');
+  getDefaultConfig() {
+    return {
+      title: 'Card Title',
+      extra: 'More',
+      cover: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop',
+      actions: 'Settings,Edit,More',
+      hoverable: true,
+      size: 'default',
+      bordered: true,
+      type: 'default',
+      loading: false,
+      flippable: false,
+      flipTrigger: 'click',
+      closable: false,
+      menuActions: '',
+      layout: 'vertical',
+      glass: false,
+      variant: 'default',
+      ribbon: '',
+      ribbonPosition: 'top-right',
+      ribbonColor: '#1890ff',
+      collapsible: false,
+      collapsed: false,
+      selectable: false,
+      selected: false,
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
+      avatarIcon: '',
+    };
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.cardSet, 'app-card');
   }
 
   onCardAction(event: any) {
-    this.eventMessage.set(`Action clicked: "${event.detail.action}"`);
+    this.logEvent(`Action clicked: "${event.detail.action}"`);
   }
 
   onCardClose() {
-    this.eventMessage.set(`Card closed`);
+    this.logEvent(`Card closed`);
   }
 
   onCardCollapse(event: any) {
-    this.eventMessage.set(`Card ${event.detail.collapsed ? 'collapsed' : 'expanded'}`);
+    this.logEvent(`Card ${event.detail.collapsed ? 'collapsed' : 'expanded'}`);
     this.pgConfig.collapsed = event.detail.collapsed;
     this.updateConfig();
   }
 
   onCardSelect(event: any) {
-    this.eventMessage.set(`Card ${event.detail.selected ? 'selected' : 'deselected'}`);
+    this.logEvent(`Card ${event.detail.selected ? 'selected' : 'deselected'}`);
     this.pgConfig.selected = event.detail.selected;
     this.updateConfig();
   }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
 }
-

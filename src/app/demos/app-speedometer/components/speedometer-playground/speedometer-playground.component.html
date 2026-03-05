@@ -1,7 +1,7 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
+﻿<app-playground
+  [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-metric" class="control-grid" style="padding: 16px">

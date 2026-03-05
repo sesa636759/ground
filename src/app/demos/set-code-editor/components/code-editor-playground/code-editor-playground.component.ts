@@ -1,37 +1,19 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-code-editor-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './code-editor-playground.component.html',
   styleUrl: './code-editor-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class CodeEditorPlaygroundComponent implements OnInit {
-  pgConfig = {
-    theme: 'vs-dark',
-    language: 'javascript',
-    height: '400px',
-    lineNumbers: true,
-    toolbar: true,
-    readonly: false,
-    labelDisplay: 'hover',
-    limitedGroups: false,
-  };
+export class CodeEditorPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
   initialCode = {
     javascript: `// Interactive Demo
@@ -74,11 +56,22 @@ console.log(user.greet());`,
   };
 
   currentCode = this.initialCode.javascript;
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
 
-  ngOnInit() {
-    this.updateConfig();
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      theme: 'vs-dark',
+      language: 'javascript',
+      height: '400px',
+      lineNumbers: true,
+      toolbar: true,
+      readonly: false,
+      labelDisplay: 'hover',
+      limitedGroups: false,
+    };
   }
 
   updateConfig() {
@@ -92,16 +85,11 @@ console.log(user.greet());`,
     if (this.pgConfig.labelDisplay !== 'hover')
       code += `  toolbar-label-display="${this.pgConfig.labelDisplay}"\n`;
 
-    // Note: complex objects like tabs or toolbarGroups might need to be set via props in real usage,
-    // but for generated HTML string representation we can just show the attributes.
-
     code += `  value="\$\{yourCodeString\}"\n`;
     code += `></app-code-editor>`;
 
     this.generatedCode.set(code);
-
-    // Update content when language changes
-    // In Angular bindings, we bind [value]="currentCode"
+    this.refreshCode();
   }
 
   onLanguageChange() {
@@ -118,13 +106,8 @@ console.log(user.greet());`,
     this.logEvent(`Run Code Triggered! Executing ${this.pgConfig.language}...`);
   }
 
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  override resetConfig() {
+    super.resetConfig();
+    this.currentCode = this.initialCode.javascript;
   }
 }
-

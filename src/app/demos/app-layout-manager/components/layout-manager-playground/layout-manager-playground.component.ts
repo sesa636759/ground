@@ -1,31 +1,35 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-layout-manager-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './layout-manager-playground.component.html',
-
   styleUrl: './layout-manager-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class LayoutManagerPlaygroundComponent {
-  pgConfig = {
-    mode: 'docking',
-    resizable: true,
-    closable: true,
-  };
+export class LayoutManagerPlaygroundComponent extends BasePlaygroundComponent {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['layout'];
 
   modeOptions = [
     { label: 'Docking', value: 'docking' },
@@ -33,20 +37,16 @@ export class LayoutManagerPlaygroundComponent {
     { label: 'Flex', value: 'flex' },
   ];
 
-  generatedCode = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      mode: 'docking',
+      resizable: true,
+      closable: true,
+    };
   }
 
   updateConfig() {
@@ -61,18 +61,5 @@ export class LayoutManagerPlaygroundComponent {
 
     this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      mode: 'docking',
-      resizable: true,
-      closable: true,
-    };
-    this.updateConfig();
   }
 }

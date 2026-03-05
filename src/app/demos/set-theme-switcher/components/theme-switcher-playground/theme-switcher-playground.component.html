@@ -1,8 +1,10 @@
-﻿<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Variant</label>
@@ -57,7 +59,7 @@
       </div>
     </div>
 
-    <div class="checkbox-grid">
+    <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()" /> Show Icons
       </label>
@@ -77,9 +79,9 @@
       [attr.variant]="pgConfig.variant"
       [attr.size]="pgConfig.size"
       [attr.position]="pgConfig.position"
-      [attr.show-icons]="pgConfig.showIcons"
-      [attr.show-labels]="pgConfig.showLabels"
-      [attr.enable-animation]="pgConfig.enableAnimation"
+      [attr.show-icons]="pgConfig.showIcons ? '' : null"
+      [attr.show-labels]="pgConfig.showLabels ? '' : null"
+      [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
       [attr.animation-duration]="pgConfig.animationDuration"
       (themeChange)="onThemeChange($event)"
     ></app-theme-switcher>
@@ -90,12 +92,5 @@
     [logs]="eventLog()"
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
-
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    [label]="'Generated Code'"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
 </app-playground>
+

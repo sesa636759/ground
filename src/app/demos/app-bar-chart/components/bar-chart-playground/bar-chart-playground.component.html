@@ -1,7 +1,7 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="[{ id: 'config', title: 'Configuration', icon: '⚙️' }]"
+  [defaultOpen]="['config']"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <div slot="content-config">
@@ -13,7 +13,7 @@
           <ui-dropdown
             [(ngModel)]="pgConfig.orientation"
             (ngModelChange)="updateConfig()"
-            [options]="orientationOptions"
+            [options]="standardOrientationOptions"
           ></ui-dropdown>
         </div>
         <div class="control-group">

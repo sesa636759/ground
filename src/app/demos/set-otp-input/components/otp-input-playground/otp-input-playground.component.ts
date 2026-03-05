@@ -1,49 +1,27 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
-  selector: 'app-otp-input-playground',
+  selector: 'ui-otp-input-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './otp-input-playground.component.html',
   styleUrl: './otp-input-playground.component.scss',
 })
-export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
+export class OtpInputPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
-  ]);
-
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'help-circle', iconLibrary: 'lucide' },
+  ];
 
   pgConfig = {
     length: 6,
+    value: '',
+    type: 'number', // 'text', 'number', 'password'
     size: 'medium',
     color: 'primary',
     variant: 'default',
@@ -51,46 +29,41 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
     secure: false,
     skeleton: false,
     invalid: false,
+    disabled: false,
+    readonly: false,
+    required: false,
+    autoFocus: true,
+    autoSubmit: false,
     label: 'Verification Code',
     helperText: 'We sent a code to your phone',
     errorText: 'Verification failed. Please try again.',
   };
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'app-otp-input');
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      length: 6,
+      value: '',
+      type: 'number', // 'text', 'number', 'password'
+      size: 'medium',
+      color: 'primary',
+      variant: 'default',
+      groupSize: 0,
+      secure: false,
+      skeleton: false,
+      invalid: false,
+      disabled: false,
+      readonly: false,
+      required: false,
+      autoFocus: true,
+      autoSubmit: false,
+      label: 'Verification Code',
+      helperText: 'We sent a code to your phone',
+      errorText: 'Verification failed. Please try again.',
+    };
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.demoElement, 'ui-otp-input');
   }
 
   onOtpChange(event: any) {
@@ -100,14 +73,4 @@ export class OtpInputPlaygroundComponent implements OnInit, AfterViewInit {
   onOtpComplete(event: any) {
     this.logEvent(`Completed: ${event.detail.value}`);
   }
-
-  logEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.update((log) => [`[${time}] ${msg}`, ...log.slice(0, 9)]);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
 }
-

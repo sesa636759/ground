@@ -1,50 +1,40 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="control-group">
-          <label>Threshold (px)</label>
-          <ui-input
-            type="number"
-            [(ngModel)]="pgConfig.threshold"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Scroll Speed (ms)</label>
-          <ui-input
-            type="number"
-            [(ngModel)]="pgConfig.speed"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-      </div>
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Threshold (px)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.threshold"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Scroll Speed (ms)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.speed"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
 
-      <div class="control-section">
-        <h3>Visuals</h3>
-        <div class="control-group">
-          <label>Icon</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="pgConfig.icon"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label>Shape</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.shape"
-            (ngModelChange)="updateConfig()"
-            [options]="shapeOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Icon</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOptions"
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -52,11 +42,28 @@
     preview
     style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
   >
-    <div class="scroll-content" id="pg-scroll-target">
+    <div
+      class="scroll-content"
+      id="pg-scroll-target"
+      style="
+        height: 300px;
+        overflow-y: auto;
+        width: 100%;
+        border: 1px solid var(--border-color);
+        padding: 16px;
+        border-radius: 8px;
+      "
+    >
       <h3>Scroll down to see the button!</h3>
-      <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">More content segment {{ i }}...</p>
+      <p
+        *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
+        style="margin-bottom: 24px"
+      >
+        More content segment {{ i }}...
+      </p>
 
       <ui-scroll-top
+        #demoElement
         target="#pg-scroll-target"
         [attr.threshold]="pgConfig.threshold"
         [attr.icon]="pgConfig.icon"
@@ -65,4 +72,10 @@
       ></ui-scroll-top>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

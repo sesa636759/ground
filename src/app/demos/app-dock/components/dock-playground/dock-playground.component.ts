@@ -1,45 +1,36 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-dock-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dock-playground.component.html',
   styleUrl: './dock-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class DockPlaygroundComponent implements AfterViewInit {
-  @ViewChild('dock') dock!: ElementRef;
-  pgConfig = {
-    position: 'bottom',
-    breakpoint: '960px',
-    autoZIndex: true,
-    magnify: true,
-    blurEffect: false,
-    showLabels: true,
-  };
+export class DockPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
+
+  defaultOpen = ['layout'];
 
   positionOptions = [
     { label: 'Bottom', value: 'bottom' },
@@ -57,51 +48,18 @@ export class DockPlaygroundComponent implements AfterViewInit {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCodeSignal = signal('');
   lastAction = '';
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  ngOnInit() {
+    this.updateConfig();
   }
 
-  getCleanFormattedDom(): string {
-    if (!this.dock) return '';
-
-    return generatePlaygroundCode(this.dock.nativeElement as Element, 'ui-dock');
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  logAction(action: string) {
-    this.lastAction = action;
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       position: 'bottom',
       breakpoint: '960px',
       autoZIndex: true,
@@ -109,7 +67,20 @@ export class DockPlaygroundComponent implements AfterViewInit {
       blurEffect: false,
       showLabels: true,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-dock');
+      code = code.replace('></ui-dock>', '\n  [items]="menuItems"\n></ui-dock>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  logAction(action: string) {
+    this.lastAction = action;
+    this.logEvent(`Dock item clicked: ${action}`);
   }
 }
-

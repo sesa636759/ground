@@ -2,7 +2,7 @@
   <div class="examples-split-layout" *ngIf="componentDoc">
     <!-- Sidebar Navigation -->
     <app-demo-sidebar
-      [variants]="sidebarSections"
+      [variants]="sidebarSections()"
       scrollContainer="#docs-scroll-area"
       [activeLink]="getSectionId(activeSection())"
     ></app-demo-sidebar>

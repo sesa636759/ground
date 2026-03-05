@@ -1,4 +1,9 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
   <!-- Group Config Slot -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
@@ -83,7 +88,11 @@
 
   <!-- Items Slot -->
   <div slot="content-items" style="padding: 16px">
-    <div *ngFor="let opt of radioOptions; let i = index" class="option-editor-item">
+    <div
+      *ngFor="let opt of radioOptions; let i = index"
+      class="option-editor-item"
+      style="margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px"
+    >
       <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px">
         <ui-input
           style="flex: 1"
@@ -174,27 +183,9 @@
     </div>
   </div>
 
-  <!-- Events -->
-  <div
+  <app-playground-event-log
     events
-    style="
-      margin-top: 16px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--primary);
-    "
-  >
-    {{ eventMessage() }}
-  </div>
-
-  <!-- Code -->
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

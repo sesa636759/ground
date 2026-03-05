@@ -2,70 +2,49 @@
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
-  signal,
   ViewChild,
   ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-smart-menu-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './smart-menu-playground.component.html',
   styleUrl: './smart-menu-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SmartMenuPlaygroundComponent {
+export class SmartMenuPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('smartMenu') smartMenuEl!: ElementRef;
 
-  cfg = {
-    iconLibrary: 'lucide',
-    preset: 'file',
-    triggerMode: 'zone',
-    showIcons: true,
-    showDescriptions: false,
-    showNested: true,
-    showDividers: true,
-    showDisabled: false,
-    showAction: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
-  iconLibraryOpts = [
-    { label: 'lucide', value: 'lucide' },
-    { label: 'fontawesome', value: 'fontawesome' },
-    { label: 'bootstrap', value: 'bootstrap' },
-    { label: 'iconoir', value: 'iconoir' },
-    { label: 'icons8', value: 'icons8' },
-    { label: 'ionicons', value: 'ionicons' },
-    { label: 'se', value: 'se' },
-    { label: 'default', value: 'default' },
+  pgAccordionItems = [
+    { id: 'props', title: 'Component Props', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'fields', title: 'MenuItem Fields', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  triggerModeOpts = [
-    { label: 'Right-click zone (target="#pg-zone")', value: 'zone' },
-    { label: 'Button → show(x, y)', value: 'button' },
-    { label: 'Whole document (no target)', value: 'no-target' },
+  accordionDefaultOpen = ['props', 'fields'];
+
+  triggerModeOptions = [
+    { label: 'Right-click zone', value: 'zone' },
+    { label: 'Button click', value: 'button' },
+    { label: 'Whole document', value: 'no-target' },
   ];
 
-  presetOpts = [
+  presetOptions = [
     { label: 'File / Edit / View', value: 'file' },
     { label: 'Dashboard Actions', value: 'dashboard' },
     { label: 'Cut / Copy / Paste', value: 'edit' },
     { label: 'Browser Context', value: 'browser' },
   ];
 
-  // Full item definitions with all supported fields
   basePresets: Record<string, any[]> = {
     file: [
       {
@@ -134,44 +113,47 @@ export class SmartMenuPlaygroundComponent {
   };
 
   menuJson = '';
-  generatedCodeSignal = signal('');
-  clickLog = signal<string[]>([]);
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.rebuild();
+  constructor() {
+    super();
+    this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      iconLibrary: 'lucide',
+      preset: 'file',
+      triggerMode: 'zone',
+      showIcons: true,
+      showDescriptions: false,
+      showNested: true,
+      showDividers: true,
+      showDisabled: false,
+      showAction: false,
+    };
   }
 
-  rebuild() {
-    const rows: any[] = JSON.parse(JSON.stringify(this.basePresets[this.cfg.preset] ?? []));
+  updateConfig() {
+    const rows: any[] = JSON.parse(JSON.stringify(this.basePresets[this.pgConfig.preset] ?? []));
     const items: any[] = [];
 
     rows.forEach((row, i) => {
       const item: any = { label: row.label };
-      if (this.cfg.showIcons) item.icon = row.icon;
-      if (this.cfg.showDescriptions) item.description = row.description;
-      if (this.cfg.showNested && row.submenu?.length) item.submenu = row.submenu;
-      if (this.cfg.showAction) item.action = `() => console.log('Clicked: ${row.label}')`;
+      if (this.pgConfig.showIcons) item.icon = row.icon;
+      if (this.pgConfig.showDescriptions) item.description = row.description;
+      if (this.pgConfig.showNested && row.submenu?.length) item.submenu = row.submenu;
+      if (this.pgConfig.showAction) item.action = `() => console.log('Clicked: ${row.label}')`;
       items.push(item);
 
-      if (this.cfg.showDividers && i === 1 && rows.length > 2) {
+      if (this.pgConfig.showDividers && i === 1 && rows.length > 2) {
         items.push({ divider: true });
       }
     });
 
-    if (this.cfg.showDisabled) {
+    if (this.pgConfig.showDisabled) {
       items.splice(2, 0, {
         label: 'Disabled Action',
-        icon: this.cfg.showIcons ? 'ban' : undefined,
+        icon: this.pgConfig.showIcons ? 'ban' : undefined,
         disabled: true,
       });
     }
@@ -179,35 +161,21 @@ export class SmartMenuPlaygroundComponent {
     this.menuJson = JSON.stringify(items);
 
     const targetAttr =
-      this.cfg.triggerMode === 'zone'
-        ? `  target="#pg-zone"   <!-- CSS selector for right-click target -->`
-        : this.cfg.triggerMode === 'no-target'
-          ? `  <!-- no target: right-click anywhere on page -->`
-          : `  <!-- show/hide programmatically via el.show(x,y) / el.hide() -->`;
+      this.pgConfig.triggerMode === 'zone'
+        ? `  target="#pg-zone"`
+        : this.pgConfig.triggerMode === 'no-target'
+          ? `  <!-- listens on whole document -->`
+          : `  <!-- programmatically opened -->`;
 
-    this.generatedCodeSignal.set(
-      [
-        `<!-- Trigger element (only needed for right-click mode) -->`,
-        `<div id="pg-zone">Right-click here</div>`,
-        ``,
-        `<!-- All component attributes: items, target, icon-library -->`,
-        `<ui-smart-context-menu`,
-        targetAttr,
-        `  icon-library="${this.cfg.iconLibrary}"`,
-        `  [items]="menuItems"`,
-        `  (menuItemClick)="onItemClick($event)"`,
-        `></ui-smart-context-menu>`,
-        ``,
-        `<!-- MenuItems shape (all supported fields): -->`,
-        `menuItems = [`,
-        `  { label: 'Open',  icon: 'folder',  description: 'Open a file',`,
-        `    submenu: [{ label: 'Recent', icon: 'clock' }] },`,
-        `  { divider: true },`,
-        `  { label: 'Save',  icon: 'save',    disabled: false },`,
-        `  { label: 'Close', icon: 'x',       disabled: true  },`,
-        `];`,
-      ].join('\n'),
-    );
+    const codeLines = [
+      `<ui-smart-context-menu`,
+      targetAttr,
+      `  icon-library="${this.pgConfig.iconLibrary}"`,
+      `  [items]="menuItems"`,
+      `></ui-smart-context-menu>`,
+    ];
+
+    this.generatedCode.set(codeLines.join('\n'));
     this.refreshCode();
   }
 
@@ -222,28 +190,6 @@ export class SmartMenuPlaygroundComponent {
 
   onItemClick(event: any) {
     const label = event.detail?.label ?? event.detail?.item?.label ?? 'Unknown';
-    this.clickLog.update((log) =>
-      [`${label} — ${new Date().toLocaleTimeString()}`, ...log].slice(0, 5),
-    );
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  reset() {
-    this.cfg = {
-      iconLibrary: 'lucide',
-      preset: 'file',
-      triggerMode: 'zone',
-      showIcons: true,
-      showDescriptions: false,
-      showNested: true,
-      showDividers: true,
-      showDisabled: false,
-      showAction: false,
-    };
-    this.clickLog.set([]);
-    this.rebuild();
+    this.logEvent(`Menu Item Clicked: ${label}`);
   }
 }

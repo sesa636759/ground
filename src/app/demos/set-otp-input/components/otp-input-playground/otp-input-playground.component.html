@@ -1,4 +1,4 @@
-<app-playground [accordionItems]="pgAccordionItems" [defaultOpen]="defaultOpen">
+﻿<app-playground [items]="pgAccordionItems" [defaultOpen]="defaultOpen">
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
@@ -22,6 +22,11 @@
     </div>
 
     <div class="control-group">
+      <label>Value</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+    </div>
+
+    <div class="control-group">
       <label>Size</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
@@ -30,6 +35,19 @@
           { label: 'Small', value: 'small' },
           { label: 'Medium', value: 'medium' },
           { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Text', value: 'text' },
+          { label: 'Number', value: 'number' },
+          { label: 'Password', value: 'password' },
         ]"
       ></ui-dropdown>
     </div>
@@ -97,14 +115,36 @@
         <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
         State
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" />
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" />
+        Readonly
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" />
+        Required
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoFocus" (ngModelChange)="updateConfig()" />
+        Auto Focus
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoSubmit" (ngModelChange)="updateConfig()" />
+        Auto Submit
+      </label>
     </div>
   </div>
 
   <div preview class="preview-stage h-scrollable">
     <div class="otp-container">
-      <app-otp-input
+      <ui-otp-input
         #demoElement
         [attr.length]="pgConfig.length"
+        [attr.value]="pgConfig.value"
+        [attr.type]="pgConfig.type"
         [attr.size]="pgConfig.size === 'medium' ? null : pgConfig.size"
         [attr.color]="pgConfig.color === 'primary' ? null : pgConfig.color"
         [attr.variant]="pgConfig.variant === 'default' ? null : pgConfig.variant"
@@ -115,9 +155,14 @@
         [attr.skeleton]="pgConfig.skeleton ? '' : null"
         [attr.invalid]="pgConfig.invalid ? '' : null"
         [attr.error-text]="pgConfig.invalid ? pgConfig.errorText : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.autofocus]="pgConfig.autoFocus ? '' : null"
+        [attr.auto-submit]="pgConfig.autoSubmit ? '' : null"
         (otpChange)="onOtpChange($event)"
         (otpComplete)="onOtpComplete($event)"
-      ></app-otp-input>
+      ></ui-otp-input>
     </div>
   </div>
   <app-playground-event-log

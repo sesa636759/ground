@@ -1,42 +1,35 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-pagination-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pagination-playground.component.html',
   styleUrl: './pagination-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PaginationPlaygroundComponent implements AfterViewInit {
+export class PaginationPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('pagination') pagination!: ElementRef;
 
   pgConfig = this.getDefaultConfig();
 
-  eventMessage = signal('Navigate to a page...');
-  generatedCodeSignal = signal('');
+  pgAccordionItems = [
+    { id: 'settings', title: 'Basic Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['settings'];
 
   typeOptions = [
     { label: 'Basic', value: 'basic' },
@@ -46,12 +39,6 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
     { label: 'Dropdown', value: 'dropdown' },
     { label: 'Input', value: 'input' },
     { label: 'Indicator', value: 'indicator' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
   ];
 
   variantOptions = [
@@ -75,15 +62,8 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
     { label: 'Pill', value: 'pill' },
   ];
 
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+  constructor() {
+    super();
   }
 
   getDefaultConfig() {
@@ -108,43 +88,13 @@ export class PaginationPlaygroundComponent implements AfterViewInit {
     };
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.pagination) return '';
-
-    return generatePlaygroundCode(this.pagination.nativeElement as Element, 'ui-pagination');
-  }
-
   updateConfig() {
-    // Wait for Angular and Stencil to finish DOM updates
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+    this.updateConfigFromDom(this.pagination, 'ui-pagination');
   }
 
   onPageChange(event: any) {
     this.pgConfig.currentPage = event.detail;
-    this.eventMessage.set(
-      `Navigated to page: ${event.detail} at ${new Date().toLocaleTimeString()}`,
-    );
-    this.updateConfig();
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = this.getDefaultConfig();
+    this.logEvent(`Navigated to page: ${event.detail}`);
     this.updateConfig();
   }
 }

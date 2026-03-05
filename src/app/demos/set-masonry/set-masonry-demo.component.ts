@@ -42,14 +42,7 @@ export class SetMasonryDemoComponent extends BaseDemoComponent implements OnInit
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   // Sample items for different layouts
   sampleItems = Array.from({ length: 12 }, (_, i) => ({

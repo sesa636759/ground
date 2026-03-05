@@ -37,14 +37,7 @@ export class AppBreadcrumbDemoComponent extends BaseDemoComponent implements OnI
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   items = [
     { label: 'Home', icon: '🏠', href: '/' },

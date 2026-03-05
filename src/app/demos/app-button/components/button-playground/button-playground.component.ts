@@ -1,75 +1,38 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
+  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  OnInit,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-button-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    PlaygroundEventLogComponent,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-playground.component.html',
   styleUrl: './button-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
+export class ButtonPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('demoElement') demoElement!: ElementRef;
-  showCode = true;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'content', title: 'Content & Text', icon: '✍️' },
-    { id: 'appearance', title: 'Appearance & Size', icon: '🎨' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-    { id: 'link', title: 'Link & Type', icon: '🔗' },
-  ]);
+  pgConfig = this.getDefaultConfig();
 
-  defaultOpen = JSON.stringify(['content']);
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Text', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Size', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'link', title: 'Link & Type', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  pgConfig = {
-    label: 'Explore Components',
-    icon: '🚀',
-    iconLibrary: 'default',
-    iconPosition: 'left',
-    iconSize: '',
-    badge: '',
-    variant: 'primary',
-    size: 'md',
-    elevation: 2,
-    iconOnly: false,
-    loading: false,
-    loadingPosition: 'left',
-    disabled: false,
-    pill: false,
-    rounded: false,
-    fullWidth: false,
-    selected: false,
-    noRipple: false,
-    type: 'button',
-    href: '',
-    target: '',
-    rel: '',
-  };
+  defaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },
@@ -81,25 +44,19 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Outline', value: 'outline' },
     { label: 'Ghost', value: 'ghost' },
     { label: 'Dark', value: 'dark' },
+    { label: 'Raised', value: 'raised' },
   ];
 
   sizeOptions = [
+    { label: 'XXX Small', value: 'xxxs' },
+    { label: 'XX Small', value: 'xxs' },
     { label: 'Extra Small', value: 'xs' },
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' },
     { label: 'Extra Large', value: 'xl' },
-  ];
-
-  iconLibraryOptions = [
-    { label: 'Default', value: 'default' },
-    { label: 'Lucide', value: 'lucide' },
-    { label: 'FontAwesome', value: 'fontawesome' },
-    { label: 'Icons8', value: 'icons8' },
-    { label: 'Iconoir', value: 'iconoir' },
-    { label: 'Ionicons', value: 'ionicons' },
-    { label: 'Bootstrap', value: 'bootstrap' },
-    { label: 'QuartzDS (SE)', value: 'se' },
+    { label: 'XX Large', value: 'xxl' },
+    { label: 'XXX Large', value: 'xxxl' },
   ];
 
   positionOptions = [
@@ -115,49 +72,16 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
     { label: 'Reset', value: 'reset' },
   ];
 
-  generatedCodeSignal = signal('');
-  eventLog: { time: string; msg: string }[] = [];
-
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     this.updateConfig();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.demoElement) return '';
-    return generatePlaygroundCode(this.demoElement.nativeElement as Element, 'ui-button');
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       label: 'Explore Components',
       icon: '🚀',
       iconLibrary: 'default',
@@ -165,7 +89,7 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       iconSize: '',
       badge: '',
       variant: 'primary',
-      size: 'md',
+      size: 'medium',
       elevation: 2,
       iconOnly: false,
       loading: false,
@@ -174,6 +98,9 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       pill: false,
       rounded: false,
       fullWidth: false,
+      width: '',
+      minWidth: '',
+      grow: false,
       selected: false,
       noRipple: false,
       type: 'button',
@@ -181,14 +108,15 @@ export class ButtonPlaygroundComponent implements OnInit, AfterViewInit {
       target: '',
       rel: '',
     };
-    this.updateConfig();
-    this.eventLog = [];
   }
 
-  onEvent(msg: string) {
-    const time = new Date().toLocaleTimeString();
-    this.eventLog.unshift({ time, msg });
-    if (this.eventLog.length > 5) this.eventLog.pop();
+  updateConfig() {
+    setTimeout(() => {
+      this.updateConfigFromDom(this.demoElement, 'ui-button');
+    }, 50);
+  }
+
+  onButtonClick(event: any) {
+    this.logEvent(`Button Clicked`);
   }
 }
-

@@ -1,40 +1,33 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-cascade-select-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './cascade-select-playground.component.html',
   styleUrl: './cascade-select-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class CascadeSelectPlaygroundComponent {
-  pgConfig = {
-    placeholder: 'Select Location...',
-    size: 'md',
-    expandTrigger: 'hover',
-    showFullPath: true,
-    separator: ' > ',
-    changeOnSelect: false,
-  };
+export class CascadeSelectPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
 
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
   triggerOptions = [
@@ -69,37 +62,18 @@ export class CascadeSelectPlaygroundComponent {
   ];
 
   optionsJson = JSON.stringify(this.options);
-  generatedCodeSignal = signal('');
   currentValue: any = null;
 
   constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-cascade-select\n';
-    code += `  placeholder="${this.pgConfig.placeholder}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  expand-trigger="${this.pgConfig.expandTrigger}"\n`;
-    if (!this.pgConfig.showFullPath) code += `  [show-full-path]="false"\n`;
-    code += `  separator="${this.pgConfig.separator}"\n`;
-    if (this.pgConfig.changeOnSelect) code += `  change-on-select\n`;
-    code += `  [options]="locations"\n`;
-    code += '></ui-cascade-select>';
-
-    this.generatedCodeSignal.set(code);
-  }
-
-  onValueChange(event: any) {
-    this.currentValue = event.detail;
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       placeholder: 'Select Location...',
       size: 'md',
       expandTrigger: 'hover',
@@ -107,7 +81,27 @@ export class CascadeSelectPlaygroundComponent {
       separator: ' > ',
       changeOnSelect: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      let code = '<ui-cascade-select\n';
+      code += `  placeholder="${this.pgConfig.placeholder}"\n`;
+      code += `  size="${this.pgConfig.size}"\n`;
+      code += `  expand-trigger="${this.pgConfig.expandTrigger}"\n`;
+      if (!this.pgConfig.showFullPath) code += `  [show-full-path]="false"\n`;
+      code += `  separator="${this.pgConfig.separator}"\n`;
+      if (this.pgConfig.changeOnSelect) code += `  change-on-select\n`;
+      code += `  [options]="locations"\n`;
+      code += '></ui-cascade-select>';
+
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  onValueChange(event: any) {
+    this.currentValue = event.detail;
+    this.logEvent(`Selected value: ${JSON.stringify(this.currentValue)}`);
   }
 }
-

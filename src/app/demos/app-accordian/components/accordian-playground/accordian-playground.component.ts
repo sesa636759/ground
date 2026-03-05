@@ -1,59 +1,35 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-accordion-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './accordian-playground.component.html',
-
   styleUrl: './accordian-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class AccordianPlaygroundComponent implements AfterViewInit {
-  @ViewChild('accordion') accordion!: ElementRef;
-  pgConfig = {
-    multiple: false,
-    variant: 'default',
-    size: 'md',
-    iconPosition: 'end',
-    selectedHeaderColor: '#3b82f6',
-    hideArrow: false,
-    showNumbers: false,
-    rtl: false,
-    dense: false,
-    disabled: false,
-    enableSearch: false,
-    enableExpandCollapseAll: false,
-    enableDragDrop: false,
-    enableNested: false,
-    loading: false,
-    animationDuration: 300,
-    animationTiming: 'ease',
-    lazy: false,
-    headerLevel: 3,
-  };
+export class AccordianPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'visual', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'animation', title: 'Animation Details', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
+
+  defaultOpen = ['visual'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -63,12 +39,8 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
     { label: 'Splitted', value: 'splitted' },
     { label: 'Light', value: 'light' },
     { label: 'Shadow', value: 'shadow' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
+    { label: 'Card', value: 'card' },
+    { label: 'Card List', value: 'card-list' },
   ];
 
   iconPositionOptions = [
@@ -89,7 +61,7 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
     { label: 'Ease In Out', value: 'ease-in-out' },
   ];
 
-  playgroundItems = JSON.stringify([
+  playgroundItems = [
     {
       id: 'p1',
       title: 'First Panel',
@@ -119,50 +91,20 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
       content:
         "<p>This is the third panel. Adjust the settings above to see how they affect the accordion's appearance and behavior.</p>",
     },
-  ]);
+  ];
 
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
-      this.refreshCode();
-    }, 50);
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  ngOnInit() {
+    this.updateConfig();
   }
 
-  getCleanFormatedDom(): string {
-    if (!this.accordion) return '';
-
-    return generatePlaygroundCode(this.accordion.nativeElement as Element, 'ui-accordion');
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCodeSignal.set(this.getCleanFormatedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       multiple: false,
-      variant: 'default',
+      variant: 'card',
       size: 'md',
       iconPosition: 'end',
       selectedHeaderColor: '#3b82f6',
@@ -181,7 +123,19 @@ export class AccordianPlaygroundComponent implements AfterViewInit {
       lazy: false,
       headerLevel: 3,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.demoElement) return;
+      let code = this.getCleanFormattedDom(this.demoElement, 'ui-accordion');
+      code = code.replace('></ui-accordion>', '\n  [items]="items"\n></ui-accordion>');
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+
+  onAccordionChange(event: any) {
+    this.logEvent(`Accordion items changed/expanded`);
   }
 }
-

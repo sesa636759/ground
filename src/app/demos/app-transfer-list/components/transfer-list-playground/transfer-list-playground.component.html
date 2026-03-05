@@ -1,7 +1,7 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
+﻿<app-playground
+  [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <!-- Global Configuration -->
@@ -35,17 +35,25 @@
 
   <div
     preview
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    style="width: 100%; display: flex; justify-content: center; align-items: stretch; padding: 40px"
   >
-    <div class="transfer-container">
+    <div class="transfer-container" style="width: 100%; max-width: 800px; display: flex">
       <ui-transfer-list
+        style="flex: 1"
         [attr.search-placeholder]="pgConfig.searchPlaceholder"
         [attr.disabled]="pgConfig.disabled ? '' : null"
         [attr.show-search]="pgConfig.showSearch ? '' : null"
         [source]="sourceJson"
         [target]="targetJson"
+        (transferChange)="onTransferChange($event)"
       >
       </ui-transfer-list>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

@@ -58,14 +58,7 @@ export class SetSplitterDemoComponent {
     { id: 'header-body-footer', title: 'Header-Body-Footer', icon: '📄' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.exampleVariants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   basicPanels = [
     { minSize: 20, maxSize: 80 },

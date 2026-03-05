@@ -1,67 +1,39 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewEncapsulation,
   ViewChild,
   ElementRef,
   AfterViewInit,
-  ChangeDetectorRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-import { PlaygroundEventLogComponent } from '../../../../shared/components/playground-event-log/playground-event-log.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-set-avatar-group-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-    PlaygroundEventLogComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './avatar-group-playground.component.html',
   styleUrl: './avatar-group-playground.component.scss',
 })
-export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit {
+export class SetAvatarGroupPlaygroundComponent
+  extends BasePlaygroundComponent
+  implements AfterViewInit
+{
   @ViewChild('avatarGroupElement') avatarGroupElement!: ElementRef;
 
-  pgConfig = {
-    size: 'medium',
-    max: 4,
-    layout: 'stacked',
-    shape: 'circle',
-    showTooltips: true,
-    clickable: false,
-    spacing: 8,
-    borderWidth: 2,
-    borderColor: '#ffffff',
-    direction: 'horizontal',
-    showPopover: false,
-    animated: false,
-    hoverEffect: 'none',
-    columns: 3,
-  };
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '??' },
-    { id: 'visuals', title: 'Visual Styles', icon: '??' },
-    { id: 'behavior', title: 'Interaction Behavior', icon: '??' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visual Styles', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Interaction Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   users = [
     { name: 'John Doe', image: 'https://i.pravatar.cc/150?img=1' },
@@ -74,51 +46,12 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
     { name: 'Frank Wilson', image: 'https://i.pravatar.cc/150?img=8' },
   ];
 
-  eventLog = signal<string[]>([]);
-  generatedCode = signal<string>('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.avatarGroupElement) return '';
-    let code = generatePlaygroundCode(
-      this.avatarGroupElement.nativeElement as Element,
-      'app-avatar-group',
-    );
-    // Add users prop to code manually
-    code = code.replace('></app-avatar-group>', '\n  [users]="avatarUsers"\n></app-avatar-group>');
-    return code;
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       size: 'medium',
       max: 4,
       layout: 'stacked',
@@ -134,7 +67,24 @@ export class SetAvatarGroupPlaygroundComponent implements OnInit, AfterViewInit 
       hoverEffect: 'none',
       columns: 3,
     };
+  }
+
+  ngAfterViewInit() {
     this.updateConfig();
   }
-}
 
+  updateConfig() {
+    setTimeout(() => {
+      if (!this.avatarGroupElement) return;
+      let code = this.getCleanFormattedDom(this.avatarGroupElement, 'app-avatar-group');
+      // Add users prop to code manually
+      code = code.replace(
+        '></app-avatar-group>',
+        '\n  [users]="avatarUsers"\n></app-avatar-group>',
+      );
+
+      this.generatedCode.set(code);
+      this.refreshCode();
+    }, 50);
+  }
+}

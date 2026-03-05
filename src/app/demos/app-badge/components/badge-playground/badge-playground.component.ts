@@ -1,55 +1,25 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-badge-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './badge-playground.component.html',
-
   styleUrl: './badge-playground.component.scss',
 })
-export class BadgePlaygroundComponent {
-  pgConfig = {
-    value: '5',
-    max: 99,
-    color: 'danger',
-    size: 'md',
-    variant: 'standard',
-    position: 'top-right',
-    animation: 'none',
-    dot: false,
-    glow: false,
-    icon: '',
-  };
+export class BadgePlaygroundComponent extends BasePlaygroundComponent {
+  pgConfig = this.getDefaultConfig();
 
-  colorOptions = [
-    { label: 'Primary', value: 'primary' },
-    { label: 'Secondary', value: 'secondary' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-    { label: 'Warning', value: 'warning' },
-    { label: 'Info', value: 'info' },
+  pgAccordionItems = [
+    { id: 'content', title: 'Content & Value', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Animation', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
+  accordionDefaultOpen = ['content'];
 
   variantOptions = [
     { label: 'Standard', value: 'standard' },
@@ -72,10 +42,19 @@ export class BadgePlaygroundComponent {
     { label: 'Shake', value: 'shake' },
   ];
 
-  generatedCodeSignal = signal('');
-
-  constructor() {
-    this.updateConfig();
+  getDefaultConfig() {
+    return {
+      value: '5',
+      max: 99,
+      color: 'danger',
+      size: 'md',
+      variant: 'standard',
+      position: 'top-right',
+      animation: 'none',
+      dot: false,
+      glow: false,
+      icon: '',
+    };
   }
 
   updateConfig() {
@@ -91,30 +70,10 @@ export class BadgePlaygroundComponent {
     if (this.pgConfig.glow) code += `  glow\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     code += '>\n';
-    code += '  <icon>??</icon>\n';
+    code += '  <icon>🔔</icon>\n';
     code += '</ui-badge>';
 
-    this.generatedCodeSignal.set(code);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      value: '5',
-      max: 99,
-      color: 'danger',
-      size: 'md',
-      variant: 'standard',
-      position: 'top-right',
-      animation: 'none',
-      dot: false,
-      glow: false,
-      icon: '',
-    };
-    this.updateConfig();
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 }
-

@@ -1,31 +1,35 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-nav-bar-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './nav-bar-playground.component.html',
-
   styleUrl: './nav-bar-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class NavBarPlaygroundComponent {
-  pgConfig = {
-    theme: 'light',
-    collapsed: false,
-    showFooter: true,
-  };
+export class NavBarPlaygroundComponent extends BasePlaygroundComponent {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'visuals', title: 'Visuals', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'structure', title: 'Structure', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['visuals'];
 
   themeOptions = [
     { label: 'Light', value: 'light' },
@@ -47,10 +51,17 @@ export class NavBarPlaygroundComponent {
   ];
 
   modelJson = JSON.stringify(this.model);
-  generatedCodeSignal = signal('');
 
   constructor() {
-    this.updateConfig();
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      theme: 'light',
+      collapsed: false,
+      showFooter: true,
+    };
   }
 
   updateConfig() {
@@ -62,19 +73,7 @@ export class NavBarPlaygroundComponent {
     code += '  <div slot="header"> Logo </div>\n';
     code += '</ui-nav-bar>';
 
-    this.generatedCodeSignal.set(code);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      theme: 'light',
-      collapsed: false,
-      showFooter: true,
-    };
-    this.updateConfig();
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 }

@@ -1,113 +1,104 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>📐 Type</h3>
-        <div class="control-group">
-          <label>Chart Type</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.chartType"
-            (ngModelChange)="updateConfig()"
-            [options]="typeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Dataset</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.dataset"
-            (ngModelChange)="onDatasetChange()"
-            [options]="datasetOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group" *ngIf="pgConfig.chartType === 'doughnut'">
-          <label>Cutout %</label>
-          <ui-input
-            type="range"
-            min="30"
-            max="80"
-            step="5"
-            [(ngModel)]="pgConfig.cutout"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
-            >{{ pgConfig.cutout }}%</span
-          >
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>🎨 Appearance</h3>
-        <div class="control-group">
-          <label>Legend Position</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.legendPosition"
-            (ngModelChange)="updateConfig()"
-            [options]="legendPositionOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Border Width</label>
-          <ui-input
-            type="range"
-            min="0"
-            max="6"
-            step="1"
-            [(ngModel)]="pgConfig.borderWidth"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
-            >{{ pgConfig.borderWidth }}px</span
-          >
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>✨ Features</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showLegend"
-            [(ngModel)]="pgConfig.showLegend"
-            (ngModelChange)="updateConfig()"
-            label="Show Legend"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="responsive"
-            [(ngModel)]="pgConfig.responsive"
-            (ngModelChange)="updateConfig()"
-            label="Responsive"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="enableAnimation"
-            [(ngModel)]="pgConfig.enableAnimation"
-            (ngModelChange)="updateConfig()"
-            label="Animate on Load"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showTooltip"
-            [(ngModel)]="pgConfig.showTooltip"
-            (ngModelChange)="updateConfig()"
-            label="Show Tooltip"
-          ></ui-checkbox>
-        </div>
-      </div>
+  <div slot="content-type" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Chart Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.chartType"
+        (ngModelChange)="updateConfig()"
+        [options]="typeOptions"
+      ></ui-dropdown>
     </div>
-    
+    <div class="control-group">
+      <label>Dataset</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.dataset"
+        (ngModelChange)="onDatasetChange()"
+        [options]="datasetOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.chartType === 'doughnut'">
+      <label>Cutout %</label>
+      <ui-input
+        type="range"
+        min="30"
+        max="80"
+        step="5"
+        [(ngModel)]="pgConfig.cutout"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+      <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ pgConfig.cutout }}%</span>
+    </div>
   </div>
+
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Legend Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.legendPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="legendPositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Border Width</label>
+      <ui-input
+        type="range"
+        min="0"
+        max="6"
+        step="1"
+        [(ngModel)]="pgConfig.borderWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+      <span style="font-size: 0.8rem; color: var(--text-secondary)"
+        >{{ pgConfig.borderWidth }}px</span
+      >
+    </div>
+  </div>
+
+  <div slot="content-features" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showLegend"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Legend
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.responsive"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Responsive
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableAnimation"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Animate on Load
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showTooltip"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Tooltip
+      </label>
+    </div>
+  </div>
+
   <div
     preview
     class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    style="width: 100%; display: flex; justify-content: center; padding: 40px"
   >
-    <div class="pie-preview-wrapper">
+    <div class="pie-preview-wrapper" style="width: 100%; max-width: 480px">
       <app-chart
         [chartType]="pgConfig.chartType"
         [showLegend]="pgConfig.showLegend"
@@ -115,18 +106,14 @@
         [responsive]="pgConfig.responsive"
         [data]="activeChartData"
         [options]="activeOptions"
-        style="width: 100%; max-width: 480px; height: 360px; margin: 0 auto; display: block"
+        style="width: 100%; height: 360px; margin: 0 auto; display: block"
       ></app-chart>
     </div>
   </div>
 
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

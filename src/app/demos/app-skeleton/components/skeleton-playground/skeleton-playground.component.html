@@ -1,90 +1,77 @@
 <app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
-  (reset)="reset()"
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <!-- Shape & Animation -->
-      <div class="control-section">
-        <h3>Appearance</h3>
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="shapeOpts"
+      ></ui-dropdown>
+    </div>
 
-        <div class="control-group">
-          <label>shape</label>
-          <ui-dropdown
-            [(ngModel)]="cfg.shape"
-            (change)="update()"
-            [options]="shapeOpts"
-          ></ui-dropdown>
-        </div>
+    <div class="control-group">
+      <label>Animation Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animationType"
+        (ngModelChange)="updateConfig()"
+        [options]="animTypeOpts"
+      ></ui-dropdown>
+    </div>
 
-        <div class="control-group">
-          <label>animation-type</label>
-          <ui-dropdown
-            [(ngModel)]="cfg.animationType"
-            (change)="update()"
-            [options]="animTypeOpts"
-          ></ui-dropdown>
-        </div>
+    <div class="control-group">
+      <label>Animated</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animated"
+        (ngModelChange)="updateConfig()"
+        [options]="boolOpts"
+      ></ui-dropdown>
+    </div>
+  </div>
 
-        <div class="control-group">
-          <label>animated</label>
-          <ui-dropdown
-            [(ngModel)]="cfg.animated"
-            (change)="update()"
-            [options]="boolOpts"
-          ></ui-dropdown>
-        </div>
-      </div>
+  <div slot="content-sizing" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size (Predefined)</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOpts"
+      ></ui-dropdown>
+      <span class="control-hint">Overrides width/height for most shapes</span>
+    </div>
 
-      <!-- Sizing -->
-      <div class="control-section">
-        <h3>Sizing</h3>
+    <div class="control-group">
+      <label>Width</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.width"
+        (ngModelChange)="updateConfig()"
+        placeholder="100%"
+      ></ui-input>
+    </div>
 
-        <div class="control-group">
-          <label>size <span style="font-weight: 400; font-size: 0.75rem">(predefined)</span></label>
-          <ui-dropdown
-            [(ngModel)]="cfg.size"
-            (change)="update()"
-            [options]="sizeOpts"
-          ></ui-dropdown>
-          <span class="control-hint">Overrides width/height for most shapes</span>
-        </div>
+    <div class="control-group">
+      <label>Height</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.height"
+        (ngModelChange)="updateConfig()"
+        placeholder="20px"
+      ></ui-input>
+    </div>
 
-        <div class="control-group">
-          <label>width</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="cfg.width"
-            (ngModelChange)="update()"
-            placeholder="100%"
-          ></ui-input>
-        </div>
-
-        <div class="control-group">
-          <label>height</label>
-          <ui-input
-            type="text"
-            [(ngModel)]="cfg.height"
-            (ngModelChange)="update()"
-            placeholder="20px"
-          ></ui-input>
-        </div>
-
-        <div class="control-group">
-          <label
-            >border-radius
-            <span style="font-weight: 400; font-size: 0.75rem">(rounded shapes)</span></label
-          >
-          <ui-input
-            type="text"
-            [(ngModel)]="cfg.borderRadius"
-            (ngModelChange)="update()"
-            placeholder="4px"
-          ></ui-input>
-        </div>
-      </div>
+    <div class="control-group">
+      <label>Border Radius</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.borderRadius"
+        (ngModelChange)="updateConfig()"
+        placeholder="4px"
+      ></ui-input>
     </div>
   </div>
 
@@ -93,26 +80,28 @@
     class="preview-stage h-scrollable"
     style="padding: 40px; display: flex; justify-content: center; align-items: center"
   >
-    @if (recreate) {
-      <skeleton-loader
-        [attr.shape]="cfg.shape"
-        [attr.animation-type]="cfg.animationType"
-        [attr.animated]="cfg.animated"
-        [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-        [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-        [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-        [attr.border-radius]="cfg.borderRadius || null"
-      ></skeleton-loader>
-    } @else {
-      <skeleton-loader
-        [attr.shape]="cfg.shape"
-        [attr.animation-type]="cfg.animationType"
-        [attr.animated]="cfg.animated"
-        [attr.size]="cfg.size !== 'custom' ? cfg.size : null"
-        [attr.width]="cfg.size === 'custom' ? cfg.width : null"
-        [attr.height]="cfg.size === 'custom' ? cfg.height : null"
-        [attr.border-radius]="cfg.borderRadius || null"
-      ></skeleton-loader>
-    }
+    <div style="width: 100%; display: flex; justify-content: center">
+      @if (recreate) {
+        <skeleton-loader
+          [attr.shape]="pgConfig.shape"
+          [attr.animation-type]="pgConfig.animationType"
+          [attr.animated]="pgConfig.animated"
+          [attr.size]="pgConfig.size !== 'custom' ? pgConfig.size : null"
+          [attr.width]="pgConfig.size === 'custom' ? pgConfig.width : null"
+          [attr.height]="pgConfig.size === 'custom' ? pgConfig.height : null"
+          [attr.border-radius]="pgConfig.borderRadius || null"
+        ></skeleton-loader>
+      } @else {
+        <skeleton-loader
+          [attr.shape]="pgConfig.shape"
+          [attr.animation-type]="pgConfig.animationType"
+          [attr.animated]="pgConfig.animated"
+          [attr.size]="pgConfig.size !== 'custom' ? pgConfig.size : null"
+          [attr.width]="pgConfig.size === 'custom' ? pgConfig.width : null"
+          [attr.height]="pgConfig.size === 'custom' ? pgConfig.height : null"
+          [attr.border-radius]="pgConfig.borderRadius || null"
+        ></skeleton-loader>
+      }
+    </div>
   </div>
 </app-playground>

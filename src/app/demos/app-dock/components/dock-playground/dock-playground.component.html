@@ -1,97 +1,105 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Position</label>
-          <ui-dropdown
-            name="position"
-            [(ngModel)]="pgConfig.position"
-            (ngModelChange)="updateConfig()"
-            [options]="positionOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Breakpoint</label>
-          <ui-input
-            name="breakpoint"
-            type="text"
-            [(ngModel)]="pgConfig.breakpoint"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Behavior</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="autoZIndex"
-            name="autoZIndex"
-            [(ngModel)]="pgConfig.autoZIndex"
-            (ngModelChange)="updateConfig()"
-            label="Auto Z-Index"
-          ></ui-checkbox>
-          <ui-checkbox
-            id="magnify"
-            name="magnify"
-            [(ngModel)]="pgConfig.magnify"
-            (ngModelChange)="updateConfig()"
-            label="Magnify"
-          ></ui-checkbox>
-          <ui-checkbox
-            id="blurEffect"
-            name="blurEffect"
-            [(ngModel)]="pgConfig.blurEffect"
-            (ngModelChange)="updateConfig()"
-            label="Blur Effect"
-          ></ui-checkbox>
-          <ui-checkbox
-            id="showLabels"
-            name="showLabels"
-            [(ngModel)]="pgConfig.showLabels"
-            (ngModelChange)="updateConfig()"
-            label="Show Labels"
-          ></ui-checkbox>
-        </div>
-      </div>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="positionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Breakpoint</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.breakpoint"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
-  <div
-    preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      height: 100%;
-    "
-  >
-    <ui-dock
-      #dock
-      [attr.position]="pgConfig.position"
-      [attr.breakpoint]="pgConfig.breakpoint"
-      [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
-      [attr.magnify]="pgConfig.magnify ? true : false"
-      [attr.blur-effect]="pgConfig.blurEffect ? true : false"
-      [attr.show-labels]="pgConfig.showLabels ? true : false"
-      icon-library="lucide"
-      [items]="modelJson"
-    ></ui-dock>
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoZIndex"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Auto Z-Index
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.magnify" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Magnify
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.blurEffect"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Blur Effect
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showLabels"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Labels
+      </label>
+    </div>
+  </div>
 
+  <div preview class="preview-stage">
     <div
-      *ngIf="lastAction"
-      style="position: absolute; top: 20px; font-size: 0.85rem; color: var(--text-secondary)"
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 400px;
+        background: var(--surface-2);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      "
     >
-      Last Action: <strong>{{ lastAction }}</strong>
+      <ui-dock
+        #demoElement
+        [attr.position]="pgConfig.position"
+        [attr.breakpoint]="pgConfig.breakpoint"
+        [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
+        [attr.magnify]="pgConfig.magnify ? true : false"
+        [attr.blur-effect]="pgConfig.blurEffect ? true : false"
+        [attr.show-labels]="pgConfig.showLabels ? true : false"
+        icon-library="lucide"
+        [items]="modelJson"
+      ></ui-dock>
+
+      <div
+        *ngIf="lastAction"
+        style="
+          position: absolute;
+          top: 20px;
+          padding: 8px 16px;
+          background: var(--surface-1);
+          border-radius: 20px;
+          font-size: 0.85rem;
+          color: var(--primary-color);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        "
+      >
+        Last Action: <strong>{{ lastAction }}</strong>
+      </div>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

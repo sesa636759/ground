@@ -43,14 +43,7 @@ export class SetEmptyStateDemoComponent extends BaseDemoComponent implements OnI
     return this.variants;
   }
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   typesCode =
     signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>

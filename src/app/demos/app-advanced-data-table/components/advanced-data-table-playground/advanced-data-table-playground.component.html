@@ -1,71 +1,72 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Features</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="paginator"
-            [(ngModel)]="pgConfig.paginator"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="paginator">Enable Paginator</label>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="sorting"
-            [(ngModel)]="pgConfig.sorting"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="sorting">Enable Sorting</label>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="filtering"
-            [(ngModel)]="pgConfig.filtering"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="filtering">Global Filtering</label>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Rows per page</label>
-          <ui-input
-            type="number"
-            [(ngModel)]="pgConfig.rows"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="responsive"
-            [(ngModel)]="pgConfig.responsive"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          <label for="responsive">Responsive Layout</label>
-        </div>
-      </div>
+  <div slot="content-features" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.paginator"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Paginator
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.sorting" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Sorting
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.filtering"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Global Filtering
+      </label>
     </div>
   </div>
 
-  <div preview class="preview-stage h-scrollable">
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Rows per page</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.rows"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.responsive"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Responsive Layout
+      </label>
+    </div>
+  </div>
+
+  <div
+    preview
+    class="preview-stage h-scrollable"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
     <div class="table-container" style="width: 100%">
       <ui-advanced-data-table
+        #demoElement
         [attr.paginator]="pgConfig.paginator ? '' : null"
-        [attr.rows]="pgConfig.rows"
+        [attr.rows]="pgConfig.rows || null"
         [attr.responsive]="pgConfig.responsive ? '' : null"
         [value]="dataJson"
         [columns]="columnsJson"
-      >
-      </ui-advanced-data-table>
+      ></ui-advanced-data-table>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

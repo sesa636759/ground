@@ -1,81 +1,94 @@
-﻿import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tooltip-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tooltip-playground.component.html',
   styleUrl: './tooltip-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TooltipPlaygroundComponent implements OnInit {
+export class TooltipPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
-  pgConfig = {
-    content: 'Tooltip Content',
-    position: 'top',
-    trigger: 'hover',
-    variant: 'dark',
-    shape: 'rounded',
-    animation: 'fade',
-    arrow: true,
-    showDelay: 0,
-    hideDelay: 0,
-    maxWidth: 250,
-    interactive: false,
-    followCursor: false,
-    html: false,
-    showGlow: false,
-    customColor: '#3DCD58',
-    textColor: '#ffffff',
-    transitionDuration: 200,
-    targetText: 'Hover Me',
-    targetIcon: 'fas fa-info-circle',
-    elevation: 0,
-    offset: 8,
-    transitionTiming: 'ease',
-    arrowSize: 8,
-    trackMouse: false,
-    openAtMousePosition: false,
-    autoShift: true,
-    portal: true,
-    useCustomColor: false,
-  };
+  pgConfig = this.getDefaultConfig();
 
-  generatedCodeSignal = signal('');
-  showCode = true;
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  constructor(private cd: ChangeDetectorRef) {}
+  variantOptions = [
+    { label: 'Dark', value: 'dark' },
+    { label: 'Light', value: 'light' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Info', value: 'info' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Error', value: 'error' },
+    { label: 'Glass', value: 'glass' },
+  ];
 
-  ngOnInit() {
+  shapeOptions = [
+    { label: 'Rounded', value: 'rounded' },
+    { label: 'Square', value: 'square' },
+    { label: 'Pill', value: 'pill' },
+  ];
+
+  animationOptions = [
+    { label: 'Fade', value: 'fade' },
+    { label: 'Slide', value: 'slide' },
+    { label: 'Scale', value: 'scale' },
+    { label: 'Bounce', value: 'bounce' },
+    { label: 'None', value: 'none' },
+  ];
+
+  timingOptions = [
+    { label: 'Ease', value: 'ease' },
+    { label: 'Linear', value: 'linear' },
+    { label: 'Ease In', value: 'ease-in' },
+    { label: 'Ease Out', value: 'ease-out' },
+    { label: 'Ease In Out', value: 'ease-in-out' },
+  ];
+
+  constructor() {
+    super();
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      content: 'Tooltip Content',
+      position: 'top',
+      trigger: 'hover',
+      variant: 'dark',
+      shape: 'rounded',
+      animation: 'fade',
+      arrow: true,
+      showDelay: 0,
+      hideDelay: 0,
+      maxWidth: 250,
+      interactive: false,
+      followCursor: false,
+      html: false,
+      showGlow: false,
+      customColor: '#3DCD58',
+      textColor: '#ffffff',
+      transitionDuration: 200,
+      targetText: 'Hover Me',
+      targetIcon: 'fas fa-info-circle',
+      elevation: 0,
+      offset: 8,
+      transitionTiming: 'ease',
+      arrowSize: 8,
+      trackMouse: false,
+      openAtMousePosition: false,
+      autoShift: true,
+      portal: true,
+      useCustomColor: false,
+    };
   }
 
   updateConfig() {
@@ -120,45 +133,7 @@ export class TooltipPlaygroundComponent implements OnInit {
     code += `  </ui-button>\n`;
     code += `</app-tooltip>`;
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      content: 'Tooltip Content',
-      position: 'top',
-      trigger: 'hover',
-      variant: 'dark',
-      shape: 'rounded',
-      animation: 'fade',
-      arrow: true,
-      showDelay: 0,
-      hideDelay: 0,
-      maxWidth: 250,
-      interactive: false,
-      followCursor: false,
-      html: false,
-      showGlow: false,
-      customColor: '#3DCD58',
-      textColor: '#ffffff',
-      transitionDuration: 200,
-      targetText: 'Hover Me',
-      targetIcon: 'fas fa-info-circle',
-      elevation: 0,
-      offset: 8,
-      transitionTiming: 'ease',
-      arrowSize: 8,
-      trackMouse: false,
-      openAtMousePosition: false,
-      autoShift: true,
-      portal: true,
-      useCustomColor: false,
-    };
-    this.updateConfig();
   }
 }

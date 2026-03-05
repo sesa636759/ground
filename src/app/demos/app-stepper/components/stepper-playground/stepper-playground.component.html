@@ -1,76 +1,69 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>Layout</h3>
-        <div class="control-group">
-          <label>Orientation</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.orientation"
-            (ngModelChange)="updateConfig()"
-            [options]="orientationOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Size</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.size"
-            (ngModelChange)="updateConfig()"
-            [options]="sizeOptions"
-          ></ui-dropdown>
-        </div>
-        <div class="control-group">
-          <label>Variant</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.variant"
-            (ngModelChange)="updateConfig()"
-            [options]="variantOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+        [options]="standardOrientationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="standardSizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
 
-      <div class="control-section">
-        <h3>Options</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showNumbers"
-            [(ngModel)]="pgConfig.showNumbers"
-            (ngModelChange)="updateConfig()"
-            label="Show Numbers"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showDesc"
-            [(ngModel)]="pgConfig.showDescriptions"
-            (ngModelChange)="updateConfig()"
-            label="Show Descriptions"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="dot"
-            [(ngModel)]="pgConfig.progressDot"
-            (ngModelChange)="updateConfig()"
-            label="Progress Dot"
-          ></ui-checkbox>
-        </div>
-        <div class="control-group">
-          <label>Active Step</label>
-          <ui-input
-            type="number"
-            min="0"
-            max="3"
-            [(ngModel)]="pgConfig.activeStep"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-      </div>
+  <div slot="content-options" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showNumbers"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Numbers
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showDescriptions"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Descriptions
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.progressDot"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Progress Dot
+      </label>
+    </div>
+    <div class="control-group" style="margin-top: 16px">
+      <label>Active Step (0-3)</label>
+      <ui-input
+        type="number"
+        min="0"
+        max="3"
+        [(ngModel)]="pgConfig.activeStep"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
@@ -97,9 +90,29 @@
       (stepperChange)="onStepChange($event)"
     ></ui-stepper>
 
-    <div class="step-content-preview">
-      <h3>{{ steps[pgConfig.activeStep].label }}</h3>
-      <p>{{ steps[pgConfig.activeStep].description }}</p>
+    <div
+      class="step-content-preview"
+      style="
+        margin-top: 32px;
+        padding: 24px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        background: var(--surface-1);
+      "
+    >
+      <h3 style="margin-top: 0; margin-bottom: 8px">{{ steps[pgConfig.activeStep]?.label }}</h3>
+      <p style="margin: 0; color: var(--text-secondary)">
+        {{ steps[pgConfig.activeStep]?.description }}
+      </p>
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

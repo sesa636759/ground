@@ -13,193 +13,107 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Default OTP -->
+        <!-- Length Variants -->
         <app-example-section
-          id="default"
-          title="Default OTP - 6 Digits"
-          description="Basic 6-digit OTP input with autofocus"
-          [code]="defaultCode()"
+          id="length-variants"
+          title="Length Variants"
+          description="Different lengths and types for the OTP input."
+          [code]="lengthVariantsCode()"
         >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" [autofocus]="true"></app-otp-input>
+          <div
+            class="states-grid"
+            style="display: flex; flex-direction: column; gap: 24px; width: 100%"
+          >
+            <ui-otp-input length="4" type="numeric" label="4-Digit PIN"></ui-otp-input>
+            <ui-otp-input
+              length="6"
+              type="numeric"
+              label="6-Digit Verification Code"
+            ></ui-otp-input>
+            <ui-otp-input length="8" type="alphanumeric" label="8-Digit Long Code"></ui-otp-input>
           </div>
         </app-example-section>
 
-        <!-- 4-Digit PIN -->
+        <!-- Variants & Styles -->
         <app-example-section
-          id="four-digit"
-          title="4-Digit PIN Code"
-          description="PIN input with numeric type"
-          [code]="fourDigitCode()"
+          id="variants"
+          title="Variants & Styles"
+          description="Different visual appearances for the OTP input."
+          [code]="variantsCode()"
         >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="4" type="numeric" label="Enter PIN"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- 6-Digit Verification -->
-        <app-example-section
-          id="six-digit"
-          title="6-Digit Verification Code"
-          description="Standard verification code input"
-          [code]="sixDigitCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" type="numeric" label="Verification Code"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Custom Length -->
-        <app-example-section
-          id="custom-length"
-          title="8-Character Custom Length"
-          description="Custom length with alphanumeric support"
-          [code]="customLengthCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="8" type="alphanumeric" label="Long Code"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Default Variant -->
-        <app-example-section
-          id="default-variant"
-          title="Default Style"
-          description="Standard appearance variant"
-          [code]="defaultVariantCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input variant="default" length="6" label="Default"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Underlined -->
-        <app-example-section
-          id="underlined"
-          title="Underlined Style"
-          description="Minimal design with bottom border"
-          [code]="underlinedCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input variant="underlined" length="6" label="Underlined"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Flushed -->
-        <app-example-section
-          id="flushed"
-          title="Flushed Style"
-          description="Clean appearance without background"
-          [code]="flushedCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input variant="flushed" length="6" label="Flushed"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Separated -->
-        <app-example-section
-          id="separated"
-          title="Separated Variant"
-          description="Individual boxes with spacing"
-          [code]="separatedCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input
+          <div
+            class="states-grid"
+            style="display: flex; flex-direction: column; gap: 24px; width: 100%"
+          >
+            <ui-otp-input variant="default" length="6" label="Default"></ui-otp-input>
+            <ui-otp-input variant="underlined" length="6" label="Underlined"></ui-otp-input>
+            <ui-otp-input variant="flushed" length="6" label="Flushed"></ui-otp-input>
+            <ui-otp-input
               variant="separated"
               length="6"
               label="Separated"
               [spacing]="8"
-            ></app-otp-input>
+            ></ui-otp-input>
           </div>
         </app-example-section>
 
-        <!-- Success Color -->
+        <!-- Validation States -->
         <app-example-section
-          id="success-color"
-          title="Success State"
-          description="Visual feedback for valid input"
-          [code]="successColorCode()"
+          id="validation-states"
+          title="Validation States"
+          description="Visual feedback for various validation states."
+          [code]="validationStatesCode()"
         >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" color="success" helper-text="Code accepted"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Error Color -->
-        <app-example-section
-          id="error-color"
-          title="Error State"
-          description="Visual feedback for invalid input"
-          [code]="errorColorCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input
+          <div
+            class="states-grid"
+            style="display: flex; flex-direction: column; gap: 24px; width: 100%"
+          >
+            <ui-otp-input
+              length="6"
+              color="success"
+              label="Success State"
+              helper-text="Code accepted"
+            ></ui-otp-input>
+            <ui-otp-input
               length="6"
               color="error"
               invalid="true"
               error-text="Invalid code"
-            ></app-otp-input>
+            ></ui-otp-input>
+            <ui-otp-input length="6" color="warning" label="Warning State"></ui-otp-input>
+            <ui-otp-input
+              length="6"
+              color="info"
+              label="Info Message"
+              helper-text="Check email"
+            ></ui-otp-input>
           </div>
         </app-example-section>
 
-        <!-- Warning Color -->
+        <!-- Grouping Variants -->
         <app-example-section
-          id="warning-color"
-          title="Warning State"
-          description="Visual feedback for cautionary state"
-          [code]="warningColorCode()"
+          id="grouping-variants"
+          title="Groupings"
+          description="Grouping input segments for readability."
+          [code]="groupingVariantsCode()"
         >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" color="warning" label="Warning"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Info Color -->
-        <app-example-section
-          id="info-color"
-          title="Info State"
-          description="Visual feedback for informational state"
-          [code]="infoColorCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" color="info" helper-text="Check email"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Grouping 3-3 -->
-        <app-example-section
-          id="grouping-3"
-          title="Grouped 3-3"
-          description="Grouping input into 3-3 format with divider"
-          [code]="grouping3Code()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" group-size="3" [show-group-divider]="true"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Grouping 2-2-2 -->
-        <app-example-section
-          id="grouping-222"
-          title="Grouped 2-2-2"
-          description="Grouping input into 2-2-2 format with dash"
-          [code]="grouping222Code()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="6" group-divider="-"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Grouping 4-4 -->
-        <app-example-section
-          id="grouping-44"
-          title="Grouped 4-4"
-          description="Grouping input into 4-4 format with divider"
-          [code]="grouping44Code()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input length="8" group-size="4" [show-group-divider]="true"></app-otp-input>
+          <div
+            class="states-grid"
+            style="display: flex; flex-direction: column; gap: 24px; width: 100%"
+          >
+            <ui-otp-input
+              length="6"
+              group-size="3"
+              [show-group-divider]="true"
+              label="Grouped 3-3"
+            ></ui-otp-input>
+            <ui-otp-input length="6" group-divider="-" label="Grouped 2-2-2"></ui-otp-input>
+            <ui-otp-input
+              length="8"
+              group-size="4"
+              [show-group-divider]="true"
+              label="Grouped 4-4"
+            ></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -211,43 +125,30 @@
           [code]="maskedCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [mask]="true" mask-char="*"></app-otp-input>
+            <ui-otp-input length="6" [mask]="true" mask-char="*"></ui-otp-input>
           </div>
         </app-example-section>
 
-        <!-- Small Size -->
+        <!-- Size Variants -->
         <app-example-section
-          id="small-size"
-          title="Small Size"
-          description="Compact input size variant"
-          [code]="smallCode()"
+          id="size-variants"
+          title="Size Variants"
+          description="Compact, Standard, and Expanded input sizes."
+          [code]="sizeVariantsCode()"
         >
-          <div class="otp-wrapper centered">
-            <app-otp-input size="small" length="4"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Medium Size -->
-        <app-example-section
-          id="medium-size"
-          title="Medium Size"
-          description="Standard input size variant"
-          [code]="mediumCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input size="medium" length="4"></app-otp-input>
-          </div>
-        </app-example-section>
-
-        <!-- Large Size -->
-        <app-example-section
-          id="large-size"
-          title="Large Size"
-          description="Expanded input size variant"
-          [code]="largeCode()"
-        >
-          <div class="otp-wrapper centered">
-            <app-otp-input size="large" length="4"></app-otp-input>
+          <div
+            class="states-grid"
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+              width: 100%;
+              align-items: flex-start;
+            "
+          >
+            <ui-otp-input size="small" length="4"></ui-otp-input>
+            <ui-otp-input size="medium" length="4"></ui-otp-input>
+            <ui-otp-input size="large" length="4"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -259,7 +160,7 @@
           [code]="secureCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="4" [secure]="true" label="Secure PIN"></app-otp-input>
+            <ui-otp-input length="4" [secure]="true" label="Secure PIN"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -271,7 +172,7 @@
           [code]="readonlyCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [readonly]="true" value="123456"></app-otp-input>
+            <ui-otp-input length="6" [readonly]="true" value="123456"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -283,7 +184,7 @@
           [code]="disabledCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [disabled]="true"></app-otp-input>
+            <ui-otp-input length="6" [disabled]="true"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -295,7 +196,7 @@
           [code]="validationCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [required]="true"></app-otp-input>
+            <ui-otp-input length="6" [required]="true"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -307,7 +208,7 @@
           [code]="autoFocusCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [autofocus]="true" auto-submit="true"></app-otp-input>
+            <ui-otp-input length="6" [autofocus]="true" auto-submit="true"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -319,7 +220,7 @@
           [code]="pasteableCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" [allow-paste]="true" [paste-separator]="true"></app-otp-input>
+            <ui-otp-input length="6" [allow-paste]="true" [paste-separator]="true"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -331,7 +232,7 @@
           [code]="numericOnlyCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="6" type="numeric" placeholder="0"></app-otp-input>
+            <ui-otp-input length="6" type="numeric" placeholder="0"></ui-otp-input>
           </div>
         </app-example-section>
 
@@ -343,7 +244,7 @@
           [code]="alphanumericCode()"
         >
           <div class="otp-wrapper centered">
-            <app-otp-input length="8" type="alphanumeric" placeholder="A"></app-otp-input>
+            <ui-otp-input length="8" type="alphanumeric" placeholder="A"></ui-otp-input>
           </div>
         </app-example-section>
       </div>
@@ -351,13 +252,12 @@
 
     <!-- Playground Slot -->
     <div slot="playground" class="pane-playground">
-      <app-otp-input-playground></app-otp-input-playground>
+      <ui-otp-input-playground></ui-otp-input-playground>
     </div>
 
     <!-- Documentation Slot -->
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="otp-input"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>

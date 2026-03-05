@@ -13,17 +13,3 @@
   }
 }
 
-.playground-preview {
-  .preview-stage {
-    min-height: 600px;
-
-    &.h-scrollable {
-      overflow: auto;
-    }
-
-    .masonry-container {
-      width: 100%;
-      min-height: 500px;
-    }
-  }
-}

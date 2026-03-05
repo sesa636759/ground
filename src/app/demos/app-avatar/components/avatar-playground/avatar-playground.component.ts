@@ -1,31 +1,25 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from 'src/app/shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, UiDropdownValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-playground.component.html',
-
   styleUrl: './avatar-playground.component.scss',
 })
-export class AvatarPlaygroundComponent {
-  pgConfig = {
-    name: 'John Doe',
-    src: 'https://i.pravatar.cc/150?u=playground',
-    icon: '',
-    shape: 'circle',
-    size: '80px',
-    status: 'online',
-    badge: '',
-    badgeColor: '',
-  };
+export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'profile', title: 'Profile Info', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Status & Badges', icon: 'settings', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['profile'];
 
   shapeOptions = [
     { label: 'Circle', value: 'circle' },
@@ -42,10 +36,17 @@ export class AvatarPlaygroundComponent {
     { label: 'Offline', value: 'offline' },
   ];
 
-  generatedCodeSignal = signal('');
-
-  constructor() {
-    this.updateConfig();
+  getDefaultConfig() {
+    return {
+      name: 'John Doe',
+      src: 'https://i.pravatar.cc/150?u=playground',
+      icon: '',
+      shape: 'circle',
+      size: '80px',
+      status: 'online',
+      badge: '',
+      badgeColor: '',
+    };
   }
 
   updateConfig() {
@@ -60,25 +61,7 @@ export class AvatarPlaygroundComponent {
     if (this.pgConfig.badgeColor) code += `  badge-color="${this.pgConfig.badgeColor}"\n`;
     code += '></ui-avatar>';
 
-    this.generatedCodeSignal.set(code);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      name: 'John Doe',
-      src: 'https://i.pravatar.cc/150?u=playground',
-      icon: '',
-      shape: 'circle',
-      size: '80px',
-      status: 'online',
-      badge: '',
-      badgeColor: '',
-    };
-    this.updateConfig();
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 }
-

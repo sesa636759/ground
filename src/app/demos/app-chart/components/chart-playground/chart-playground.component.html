@@ -1,8 +1,8 @@
-```html
-
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+﻿<app-playground
+  [items]="[{ id: 'config', title: 'Configuration', icon: '⚙️' }]"
+  [defaultOpen]="['config']"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
   <div slot="content-config">
     <div class="control-grid">
@@ -41,9 +41,8 @@
         </div>
       </div>
     </div>
-
-
   </div>
+
   <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
     <ui-chart
       #chart
@@ -55,16 +54,4 @@
     >
     </ui-chart>
   </div>
-
-  @if (showCode) {
-    <ui-code-preview
-      code
-      [htmlCode]="generatedCode()"
-      [label]="'Generated Code'"
-      activeLang="html"
-      expanded="true"
-    ></ui-code-preview>
-  }
 </app-playground>
-
-``

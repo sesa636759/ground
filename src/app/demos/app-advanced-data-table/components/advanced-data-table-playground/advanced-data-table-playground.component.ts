@@ -1,28 +1,37 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+  OnInit,
+} from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-advanced-data-table-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './advanced-data-table-playground.component.html',
-
   styleUrl: './advanced-data-table-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class AdvancedDataTablePlaygroundComponent {
-  pgConfig = {
-    paginator: true,
-    sorting: true,
-    filtering: true,
-    rows: 5,
-    responsive: true,
-  };
+export class AdvancedDataTablePlaygroundComponent
+  extends BasePlaygroundComponent
+  implements OnInit
+{
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout', icon: 'ruler', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['features'];
 
   data = [
     { id: 1, name: 'John Doe', role: 'Admin', status: 'Active' },
@@ -42,20 +51,23 @@ export class AdvancedDataTablePlaygroundComponent {
 
   dataJson = JSON.stringify(this.data);
   columnsJson = JSON.stringify(this.columns);
-  generatedCodeSignal = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      paginator: true,
+      sorting: true,
+      filtering: true,
+      rows: 5,
+      responsive: true,
+    };
   }
 
   updateConfig() {
@@ -64,25 +76,10 @@ export class AdvancedDataTablePlaygroundComponent {
     code += `  [columns]="cols"\n`;
     if (this.pgConfig.paginator) code += `  paginator\n`;
     if (this.pgConfig.rows) code += `  [rows]="${this.pgConfig.rows}"\n`;
+    if (this.pgConfig.responsive) code += `  responsive\n`;
     code += '></ui-advanced-data-table>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      paginator: true,
-      sorting: true,
-      filtering: true,
-      rows: 5,
-      responsive: true,
-    };
-    this.updateConfig();
-  }
 }
-

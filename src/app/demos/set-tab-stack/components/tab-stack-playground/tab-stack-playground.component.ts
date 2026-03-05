@@ -1,31 +1,18 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-tab-stack-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tab-stack-playground.component.html',
-
-  styles: [
-    `
-      @use '../../../../../styles/playground-base.scss';
-    `,
-  ],
+  styleUrl: './tab-stack-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TabStackPlaygroundComponent implements OnInit {
+export class TabStackPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
   pgConfig = {
     orientation: 'horizontal',
     variant: 'default',
@@ -35,15 +22,15 @@ export class TabStackPlaygroundComponent implements OnInit {
     scrollable: false,
     grouped: false,
   };
+
   tabs = [
     { id: 'tab1', label: 'Dashboard', icon: 'fas fa-home' },
     { id: 'tab2', label: 'Analytics', icon: 'fas fa-chart-line' },
     { id: 'tab3', label: 'Settings', icon: 'fas fa-cog' },
   ];
-  eventLog = signal<string[]>([]);
-  generatedCode = signal('');
 
-  ngOnInit() {
+  constructor() {
+    super();
     this.updateConfig();
   }
 
@@ -55,9 +42,18 @@ export class TabStackPlaygroundComponent implements OnInit {
     if (this.pgConfig.grouped) code += ` grouped="true"`;
     code += ` [tabs]="tabs"></app-tab-stack>`;
     this.generatedCode.set(code);
+    this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
+  getDefaultConfig() {
+    return {
+      orientation: 'horizontal',
+      variant: 'default',
+      size: 'medium',
+      closable: false,
+      draggable: false,
+      scrollable: false,
+      grouped: false,
+    };
   }
 }

@@ -1,10 +1,9 @@
 <div class="playground-layout" [class.layout-col]="layout === 'column'">
   <!-- Controls Side -->
   <div class="playground-controls">
-    <ui-accordion [items]="stringifiedItems" [defaultOpen]="stringifiedDefaultOpen" multiple>
+    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple variant="card">
       <ng-content></ng-content>
     </ui-accordion>
-
     <div class="playground-controls-actions">
       <ui-button
         class="reset-btn"
@@ -14,15 +13,13 @@
         variant="secondary"
         (click)="reset.emit()"
         label="Reset Configuration"
-        ></ui-button>
+      ></ui-button>
     </div>
   </div>
 
   <!-- Preview Side -->
   <div class="playground-preview">
-    <div class="preview-stage">
-      <ng-content select="[preview]"></ng-content>
-    </div>
+    <ng-content select="[preview]"></ng-content>
 
     <!-- Actions/Reset area -->
     <div class="preview-actions">

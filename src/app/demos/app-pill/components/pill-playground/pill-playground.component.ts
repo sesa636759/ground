@@ -1,37 +1,33 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-pill-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pill-playground.component.html',
   styleUrl: './pill-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PillPlaygroundComponent {
-  pgConfig = {
-    label: 'Status Active',
-    variant: 'soft',
-    color: 'primary',
-    size: 'md',
-    removable: true,
-    clickable: true,
-    loading: false,
-    counter: null,
-  };
+@Component({
+  selector: 'app-pill-playground',
+  standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './pill-playground.component.html',
+  styleUrl: './pill-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
+})
+export class PillPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   variantOptions = [
     { label: 'Filled', value: 'filled' },
@@ -41,35 +37,22 @@ export class PillPlaygroundComponent {
     { label: 'Gradient', value: 'gradient' },
   ];
 
-  colorOptions = [
-    { label: 'Default', value: 'default' },
-    { label: 'Primary', value: 'primary' },
-    { label: 'Secondary', value: 'secondary' },
-    { label: 'Success', value: 'success' },
-    { label: 'Danger', value: 'danger' },
-    { label: 'Warning', value: 'warning' },
-  ];
-
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
-
-  generatedCodeSignal = signal('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {
+  constructor() {
+    super();
     this.updateConfig();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
+  getDefaultConfig() {
+    return {
+      label: 'Status Active',
+      variant: 'soft',
+      color: 'primary',
+      size: 'md',
+      removable: true,
+      clickable: true,
+      loading: false,
+      counter: null as number | null,
+    };
   }
 
   updateConfig() {
@@ -84,26 +67,11 @@ export class PillPlaygroundComponent {
     if (this.pgConfig.counter !== null) code += `  counter="${this.pgConfig.counter}"\n`;
     code += '></ui-pill>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      label: 'Status Active',
-      variant: 'soft',
-      color: 'primary',
-      size: 'md',
-      removable: true,
-      clickable: true,
-      loading: false,
-      counter: null,
-    };
-    this.updateConfig();
+  onPillAction(event: string) {
+    this.logEvent(`Pill action: ${event}`);
   }
 }
-

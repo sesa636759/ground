@@ -1,53 +1,33 @@
 ﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
-  OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-picklist-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './picklist-playground.component.html',
-
   styleUrl: './picklist-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
+export class PicklistPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '⚙️' },
-    { id: 'states', title: 'Behavioral States', icon: '⚡' },
-  ]);
+  pgConfig = this.getDefaultConfig();
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-
-  pgConfig = {
-    sourceHeader: 'Available Products',
-    targetHeader: 'Selected Products',
-    showSourceControls: true,
-    showTargetControls: true,
-    filterPlaceholder: 'Search...',
-  };
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
   source = [
     { name: 'Laptop', icon: '💻' },
@@ -60,22 +40,22 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
 
   sourceJson = JSON.stringify(this.source);
   targetJson = JSON.stringify(this.target);
-  generatedCode = signal('');
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
+  getDefaultConfig() {
+    return {
+      sourceHeader: 'Available Products',
+      targetHeader: 'Selected Products',
+      showSourceControls: true,
+      showTargetControls: true,
+      filterPlaceholder: 'Search...',
+    };
   }
 
-  getCleanFormattedDom(): string {
+  updateConfig() {
     let code = '<ui-picklist\n';
     code += `  source-header="${this.pgConfig.sourceHeader}"\n`;
     code += `  target-header="${this.pgConfig.targetHeader}"\n`;
@@ -89,37 +69,7 @@ export class PicklistPlaygroundComponent implements OnInit, AfterViewInit {
     code += '     {{ item.name }}\n';
     code += '  </ng-template>\n';
     code += '</ui-picklist>';
-    return code;
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      sourceHeader: 'Available Products',
-      targetHeader: 'Selected Products',
-      showSourceControls: true,
-      showTargetControls: true,
-      filterPlaceholder: 'Search...',
-    };
-    this.updateConfig();
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 }

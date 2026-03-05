@@ -1,67 +1,35 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  OnInit,
+  ViewEncapsulation,
   ViewChild,
   ElementRef,
-  AfterViewInit,
-  ChangeDetectorRef,
-  signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-import { generatePlaygroundCode } from '../../../../shared/utils/playground-utils';
-
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 @Component({
   selector: 'app-carousel-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './carousel-playground.component.html',
   styleUrl: './carousel-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
+export class CarouselPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('carouselElement') carouselElement!: ElementRef;
 
-  pgConfig = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    vertical: false,
-    animationDuration: 500,
-    animationEasing: 'cubic-bezier(0.4,0,0.2,1)',
-    autoplayInterval: 3000,
-    autoplay: true,
-    arrows: true,
-    indicators: true,
-    infinite: true,
-    swipe: true,
-    keyboard: true,
-    pauseOnHover: true,
-    effect: 'slide',
-    centerMode: false,
-    showProgress: true,
-    draggable: true,
-  };
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
-  pgAccordionItems = JSON.stringify([
-    { id: 'layout', title: 'Layout Configuration', icon: '??' },
-    { id: 'animation', title: 'Effects & Animation', icon: '??' },
-    { id: 'controls', title: 'Navigation Controls', icon: '??' },
-    { id: 'behavior', title: 'Carousel Behavior', icon: '??' },
-  ]);
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'animation', title: 'Effects & Animation', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'controls', title: 'Navigation Controls', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Carousel Behavior', icon: 'settings', iconLibrary: 'lucide' },
+  ];
 
-  accordionDefaultOpen = JSON.stringify(['layout']);
+  accordionDefaultOpen = ['layout'];
 
   dummySlides = Array.from({ length: 8 }, (_, i) => ({
     id: i + 1,
@@ -70,57 +38,12 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
     desc: 'Interactive Slide Content',
   }));
 
-  generatedCode = signal<string>('');
-  showCode = true;
-
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    this.updateConfig();
+  constructor() {
+    super();
   }
 
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
-
-  getCleanFormattedDom(): string {
-    if (!this.carouselElement) return '';
-    const innerContent = `
-  <div class="slide">Slide 1</div>
-  <div class="slide">Slide 2</div>
-  <div class="slide">Slide 3</div>`;
-    return generatePlaygroundCode(
-      this.carouselElement.nativeElement as Element,
-      'app-carousel',
-      innerContent,
-    );
-  }
-
-  updateConfig() {
-    setTimeout(() => {
-      this.generatedCode.set(this.getCleanFormattedDom());
-      this.refreshCode();
-    }, 50);
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  getRandomColor() {
-    const hue = Math.floor(Math.random() * 360);
-    return `hsl(${hue}, 70%, 60%)`;
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       slidesToShow: 1,
       slidesToScroll: 1,
       vertical: false,
@@ -139,7 +62,18 @@ export class CarouselPlaygroundComponent implements OnInit, AfterViewInit {
       showProgress: true,
       draggable: true,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    const innerContent = `
+  <div class="slide">Slide 1</div>
+  <div class="slide">Slide 2</div>
+  <div class="slide">Slide 3</div>`;
+    this.updateConfigFromDom(this.carouselElement, 'app-carousel', innerContent);
+  }
+
+  getRandomColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 70%, 60%)`;
   }
 }
-

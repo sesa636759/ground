@@ -153,7 +153,6 @@ export class App implements OnInit {
 
   constructor(public router: Router) {}
 
-
   isAuthenticated() {
     return this.authService.isAuthenticated();
   }
@@ -167,6 +166,12 @@ export class App implements OnInit {
     registerIconLibrary('default', {
       resolver: function (name) {
         return `assets/quartzds/se-icons-general/${name}.svg`;
+      },
+    });
+    // Register Lucide if it's being used via the library prop
+    registerIconLibrary('lucide', {
+      resolver: function (name) {
+        return `https://cdn.jsdelivr.net/npm/lucide-static@0.400.0/icons/${name}.svg`;
       },
     });
     // Track route changes to update selected item

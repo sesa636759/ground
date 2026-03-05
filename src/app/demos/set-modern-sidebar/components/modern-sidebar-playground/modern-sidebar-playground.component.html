@@ -1,7 +1,7 @@
 ﻿<app-playground
-  [accordionItems]="pgAccordionItems"
+  [items]="pgAccordionItems"
   [defaultOpen]="['brand']"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <!-- Accordion Slots -->
@@ -67,7 +67,7 @@
       [attr.user-avatar]="pgConfig.userAvatar"
       [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
       [attr.theme]="pgConfig.theme"
-      [items]="sidebarItemsJson"
+      [items]="sidebarItems"
       (itemSelected)="onItemSelected($event)"
       (sidebarToggled)="onSidebarToggled($event)"
       (profileClicked)="onProfileClick()"

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardPlaygroundComponent } from './components/dashboard-playground/dashboard-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
   selector: 'app-set-dashboard-demo',
@@ -14,6 +15,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
     DashboardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-dashboard-demo.component.html',

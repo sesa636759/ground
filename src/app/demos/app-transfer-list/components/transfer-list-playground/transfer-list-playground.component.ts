@@ -1,33 +1,27 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-transfer-list-playground',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './transfer-list-playground.component.html',
   styleUrl: './transfer-list-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class TransferListPlaygroundComponent implements OnInit {
-  pgAccordionItems = JSON.stringify([
-    { id: 'global', title: 'Global Configuration', icon: '??' },
-    { id: 'states', title: 'Behavioral States', icon: '?' },
-  ]);
+export class TransferListPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
 
-  defaultOpen = JSON.stringify(['global']);
-  showCode = true;
-  pgConfig = {
-    searchPlaceholder: 'Search items...',
-    disabled: false,
-    showSearch: true,
-  };
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+  ];
+
+  defaultOpen = ['global', 'states'];
 
   source = [
     { label: 'Role: Admin', value: 'admin' },
@@ -40,12 +34,21 @@ export class TransferListPlaygroundComponent implements OnInit {
 
   sourceJson = JSON.stringify(this.source);
   targetJson = JSON.stringify(this.target);
-  generatedCodeSignal = signal('');
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
     this.updateConfig();
+  }
+
+  getDefaultConfig() {
+    return {
+      searchPlaceholder: 'Search items...',
+      disabled: false,
+      showSearch: true,
+    };
   }
 
   updateConfig() {
@@ -53,22 +56,14 @@ export class TransferListPlaygroundComponent implements OnInit {
     code += `  [source]="availableRoles"\n`;
     code += `  [target]="assignedRoles"\n`;
     if (this.pgConfig.showSearch) code += `  show-search\n`;
+    if (this.pgConfig.disabled) code += `  disabled\n`;
     code += '></ui-transfer-list>';
 
-    this.generatedCodeSignal.set(code);
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      searchPlaceholder: 'Search items...',
-      disabled: false,
-      showSearch: true,
-    };
-    this.updateConfig();
+  onTransferChange(event: any) {
+    this.logEvent(`Transfer list updated: ${event.detail?.items?.length} items transferred`);
   }
 }
-

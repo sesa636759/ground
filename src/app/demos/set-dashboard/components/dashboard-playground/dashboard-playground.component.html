@@ -1,8 +1,10 @@
 ﻿<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
+  <div slot="content-global">
     <div class="control-section">
       <h3>Visual Settings</h3>
       <div class="control-grid">

@@ -1,10 +1,9 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
+﻿<app-playground
+  [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <!-- Accordion Slots -->
   <div slot="content-content" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
@@ -117,6 +116,10 @@
         Full Width
       </label>
       <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.grow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Grow
+      </label>
+      <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.selected" (ngModelChange)="updateConfig()"></ui-checkbox>
         Selected
       </label>
@@ -126,6 +129,24 @@
       </label>
     </div>
     <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group">
+        <label>Width</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.width"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. 100%, 200px"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Min-Width</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.minWidth"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. 120px"
+        ></ui-input>
+      </div>
       <div class="control-group" *ngIf="pgConfig.loading">
         <label>Loading Pos</label>
         <ui-dropdown
@@ -175,38 +196,45 @@
     </div>
   </div>
 
-  <!-- Preview Area -->
-  <ui-button
+  <div
     preview
-    #demoElement
-    [attr.label]="pgConfig.label"
-    [attr.icon]="pgConfig.icon"
-    [attr.icon-library]="pgConfig.iconLibrary"
-    [attr.icon-position]="pgConfig.iconPosition"
-    [attr.icon-size]="pgConfig.iconSize"
-    [attr.badge]="pgConfig.badge"
-    [attr.variant]="pgConfig.variant"
-    [attr.size]="pgConfig.size"
-    [attr.elevation]="pgConfig.elevation"
-    [attr.icon-only]="pgConfig.iconOnly ? '' : null"
-    [attr.loading]="pgConfig.loading ? '' : null"
-    [attr.loading-position]="pgConfig.loadingPosition"
-    [attr.disabled]="pgConfig.disabled ? '' : null"
-    [attr.pill]="pgConfig.pill ? '' : null"
-    [attr.rounded]="pgConfig.rounded ? '' : null"
-    [attr.full-width]="pgConfig.fullWidth ? '' : null"
-    [attr.selected]="pgConfig.selected ? '' : null"
-    [attr.no-ripple]="pgConfig.noRipple ? '' : null"
-    [attr.type]="pgConfig.type"
-    [attr.href]="pgConfig.href"
-    [attr.target]="pgConfig.target"
-    [attr.rel]="pgConfig.rel"
-    (buttonClick)="onEvent('Button Clicked')"
-  ></ui-button>
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
+    <ui-button
+      #demoElement
+      [attr.label]="pgConfig.label"
+      [attr.icon]="pgConfig.icon"
+      [attr.icon-library]="pgConfig.iconLibrary"
+      [attr.icon-position]="pgConfig.iconPosition"
+      [attr.icon-size]="pgConfig.iconSize"
+      [attr.badge]="pgConfig.badge"
+      [attr.variant]="pgConfig.variant"
+      [attr.size]="pgConfig.size"
+      [attr.elevation]="pgConfig.elevation"
+      [attr.icon-only]="pgConfig.iconOnly ? '' : null"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.loading-position]="pgConfig.loadingPosition"
+      [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.pill]="pgConfig.pill ? '' : null"
+      [attr.rounded]="pgConfig.rounded ? '' : null"
+      [attr.full-width]="pgConfig.fullWidth ? '' : null"
+      [attr.width]="pgConfig.width"
+      [attr.min-width]="pgConfig.minWidth"
+      [attr.grow]="pgConfig.grow ? '' : null"
+      [attr.selected]="pgConfig.selected ? '' : null"
+      [attr.no-ripple]="pgConfig.noRipple ? '' : null"
+      [attr.type]="pgConfig.type"
+      [attr.href]="pgConfig.href"
+      [attr.target]="pgConfig.target"
+      [attr.rel]="pgConfig.rel"
+      (buttonClick)="onButtonClick($event)"
+    ></ui-button>
+  </div>
 
   <app-playground-event-log
     events
-    [logs]="eventLog"
-    (clear)="eventLog = []"
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>

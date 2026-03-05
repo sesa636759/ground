@@ -1,7 +1,7 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
+﻿<app-playground
+  [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
-  [code]="generatedCodeSignal()"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <!-- Global Configuration -->
@@ -35,7 +35,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.orientation"
         (ngModelChange)="updateConfig()"
-        [options]="orientationOptions"
+        [options]="standardOrientationOptions"
       ></ui-dropdown>
     </div>
   </div>
@@ -74,6 +74,7 @@
       [style.width]="'100%'"
     >
       <ui-range-slider
+        #demoElement
         [attr.min]="pgConfig.min"
         [attr.max]="pgConfig.max"
         [attr.step]="pgConfig.step"
@@ -88,4 +89,10 @@
       Current Value: {{ currentValue | json }}
     </div>
   </div>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

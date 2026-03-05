@@ -1,10 +1,9 @@
-<app-playground
-  [accordionItems]="pgAccordionItems"
-  [defaultOpen]="defaultOpen"
-  [code]="generatedCodeSignal()"
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <!-- Global Visuals -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
@@ -19,7 +18,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
-        [options]="variantOptions"
+        [options]="standardColorOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -64,36 +63,22 @@
     </div>
   </div>
 
-  <!-- Behavioral States -->
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
-          id="checked"
-          [(ngModel)]="pgConfig.checked"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
         Checked
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          id="disabled"
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          id="loading"
-          [(ngModel)]="pgConfig.loading"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
         Loading
       </label>
       <label class="checkbox-item">
         <ui-checkbox
-          id="showIcons"
           [(ngModel)]="pgConfig.showDefaultIcons"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
@@ -102,29 +87,29 @@
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage"
-    style="padding: 40px; display: flex; justify-content: center; align-items: center"
-  >
-    <ui-switch
-      #demoElement
-      [attr.label]="pgConfig.label"
-      [attr.checked]="pgConfig.checked ? '' : null"
-      [attr.disabled]="pgConfig.disabled ? '' : null"
-      [attr.loading]="pgConfig.loading ? '' : null"
-      [attr.size]="pgConfig.size"
-      [attr.variant]="pgConfig.variant"
-      [attr.shape]="pgConfig.shape"
-      [attr.label-position]="pgConfig.labelPosition"
-      [attr.icon-on]="pgConfig.iconOn || null"
-      [attr.icon-off]="pgConfig.iconOff || null"
-      [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
-      (switchChange)="onSwitchChange($event)"
-    ></ui-switch>
+  <div preview class="preview-stage">
+    <div style="width: 100%; display: flex; justify-content: center; align-items: center">
+      <ui-switch
+        #demoElement
+        [attr.label]="pgConfig.label"
+        [attr.checked]="pgConfig.checked ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.size]="pgConfig.size"
+        [attr.variant]="pgConfig.variant"
+        [attr.shape]="pgConfig.shape"
+        [attr.label-position]="pgConfig.labelPosition"
+        [attr.icon-on]="pgConfig.iconOn || null"
+        [attr.icon-off]="pgConfig.iconOff || null"
+        [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
+        (switchChange)="onSwitchChange($event)"
+      ></ui-switch>
+    </div>
   </div>
 
-  <div events>
-    <app-playground-event-log [logs]="eventLog" (clear)="eventLog = []"></app-playground-event-log>
-  </div>
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

@@ -1,11 +1,11 @@
-﻿<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
-  [code]="generatedCodeSignal()"
+<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <h4 class="section-title">Layout Configuration</h4>
+  <!-- Layout Section -->
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Layout Type</label>
@@ -65,8 +65,10 @@
         />
       </div>
     </div>
+  </div>
 
-    <h4 class="section-title">Filtering & Sorting</h4>
+  <!-- Filter Section -->
+  <div slot="content-filter" class="control-grid" style="padding: 16px">
     <div class="control-grid">
       <div class="control-group">
         <label>Sort By</label>
@@ -88,7 +90,7 @@
         ></ui-dropdown>
       </div>
 
-      <div class="control-group full-width">
+      <div class="control-group">
         <label>Filter Category</label>
         <ui-dropdown
           name="filterCategory"
@@ -104,80 +106,82 @@
         ></ui-dropdown>
       </div>
     </div>
+  </div>
 
-    <h4 class="section-title">Features</h4>
+  <!-- Features Section -->
+  <div slot="content-features" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
           name="enableAnimation"
           [(ngModel)]="pgConfig.enableAnimation"
           (ngModelChange)="updateConfig()"
-          label="Animations"
         />
+        Animations
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="showFilters"
           [(ngModel)]="pgConfig.showFilters"
           (ngModelChange)="updateConfig()"
-          label="Show Filters"
         />
+        Show Filters
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="selectable"
           [(ngModel)]="pgConfig.selectable"
           (ngModelChange)="updateConfig()"
-          label="Selectable"
         />
+        Selectable
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="multiSelect"
           [(ngModel)]="pgConfig.multiSelect"
           (ngModelChange)="updateConfig()"
-          label="Multi-Select"
         />
+        Multi-Select
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="showBatchActions"
           [(ngModel)]="pgConfig.showBatchActions"
           (ngModelChange)="updateConfig()"
-          label="Batch Actions"
         />
+        Batch Actions
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="lazyLoad"
           [(ngModel)]="pgConfig.lazyLoad"
           (ngModelChange)="updateConfig()"
-          label="Lazy Load"
         />
+        Lazy Load
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="infiniteScroll"
           [(ngModel)]="pgConfig.infiniteScroll"
           (ngModelChange)="updateConfig()"
-          label="Infinite Scroll"
         />
+        Infinite Scroll
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="lightbox"
           [(ngModel)]="pgConfig.lightbox"
           (ngModelChange)="updateConfig()"
-          label="Lightbox"
         />
+        Lightbox
       </label>
       <label class="checkbox-item">
         <ui-checkbox
           name="loadingState"
           [(ngModel)]="pgConfig.loadingState"
           (ngModelChange)="updateConfig()"
-          label="Loading State"
         />
+        Loading State
       </label>
     </div>
   </div>
@@ -208,9 +212,10 @@
     ></app-masonry>
   </div>
 
-  <div events class="event-log-container">
-    @for (log of eventLog(); track log) {
-      <div class="log-item">{{ log }}</div>
-    }
-  </div>
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>
+

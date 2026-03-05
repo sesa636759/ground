@@ -1,108 +1,99 @@
-<app-playground
-  accordionItems='[{"id":"config","title":"Configuration","icon":"⚙️"}]'
-  defaultOpen='["config"]'
+﻿<app-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
 >
-  <div slot="content-config">
-    <div class="control-grid">
-      <div class="control-section">
-        <h3>📐 Data</h3>
-        <div class="control-group">
-          <label>Dataset</label>
-          <ui-dropdown
-            [(ngModel)]="pgConfig.dataset"
-            (ngModelChange)="onDatasetChange()"
-            [options]="datasetOptions"
-          ></ui-dropdown>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>🎨 Appearance</h3>
-        <div class="control-group">
-          <label
-            >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
-          >
-          <ui-input
-            type="range"
-            min="1"
-            max="6"
-            step="1"
-            [(ngModel)]="pgConfig.strokeWidth"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label
-            >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
-          >
-          <ui-input
-            type="range"
-            min="300"
-            max="800"
-            step="50"
-            [(ngModel)]="pgConfig.width"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-        <div class="control-group">
-          <label
-            >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
-          >
-          <ui-input
-            type="range"
-            min="200"
-            max="500"
-            step="50"
-            [(ngModel)]="pgConfig.height"
-            (ngModelChange)="updateConfig()"
-          ></ui-input>
-        </div>
-      </div>
-
-      <div class="control-section">
-        <h3>✨ Features</h3>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showLegend"
-            [(ngModel)]="pgConfig.showLegend"
-            (ngModelChange)="updateConfig()"
-            label="Show Legend"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showGrid"
-            [(ngModel)]="pgConfig.showGrid"
-            (ngModelChange)="updateConfig()"
-            label="Show Grid"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="showMarkers"
-            [(ngModel)]="pgConfig.showMarkers"
-            (ngModelChange)="updateConfig()"
-            label="Show Markers"
-          ></ui-checkbox>
-        </div>
-        <div class="checkbox-group">
-          <ui-checkbox
-            id="enableAnimation"
-            [(ngModel)]="pgConfig.enableAnimation"
-            (ngModelChange)="updateConfig()"
-            label="Enable Animation"
-          ></ui-checkbox>
-        </div>
-      </div>
+  <div slot="content-data" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Dataset</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.dataset"
+        (ngModelChange)="onDatasetChange()"
+        [options]="datasetOptions"
+      ></ui-dropdown>
     </div>
-   
   </div>
+
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label
+        >Stroke Width <span class="range-val">{{ pgConfig.strokeWidth }}px</span></label
+      >
+      <ui-input
+        type="range"
+        min="1"
+        max="6"
+        step="1"
+        [(ngModel)]="pgConfig.strokeWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label
+        >Chart Width <span class="range-val">{{ pgConfig.width }}px</span></label
+      >
+      <ui-input
+        type="range"
+        min="300"
+        max="800"
+        step="50"
+        [(ngModel)]="pgConfig.width"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label
+        >Chart Height <span class="range-val">{{ pgConfig.height }}px</span></label
+      >
+      <ui-input
+        type="range"
+        min="200"
+        max="500"
+        step="50"
+        [(ngModel)]="pgConfig.height"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div slot="content-features" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showLegend"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Legend
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showGrid" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Grid
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showMarkers"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Markers
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableAnimation"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Enable Animation
+      </label>
+    </div>
+  </div>
+
   <div
     preview
     class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    style="width: 100%; display: flex; justify-content: center; padding: 40px"
   >
     <chart-line
+      #demoElement
       [attr.chart-title]="activeTitle"
       [attr.x-axis-label]="activeXLabel"
       [attr.y-axis-label]="activeYLabel"
@@ -116,11 +107,10 @@
       [data]="chartData"
     ></chart-line>
   </div>
-  <ui-code-preview
-    code
-    [htmlCode]="generatedCode()"
-    label="Generated Code"
-    activeLang="html"
-    expanded="true"
-  ></ui-code-preview>
+
+  <app-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></app-playground-event-log>
 </app-playground>

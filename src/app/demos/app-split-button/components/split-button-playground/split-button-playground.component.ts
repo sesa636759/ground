@@ -1,33 +1,19 @@
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
-
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-split-button-playground',
   standalone: true,
-  imports: [
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './split-button-playground.component.html',
-
   styleUrl: './split-button-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class SplitButtonPlaygroundComponent {
-  pgConfig = {
-    label: 'Save Changes',
-    icon: '??',
-    variant: 'primary',
-    size: 'md',
-    disabled: false,
-    loading: false,
-  };
+export class SplitButtonPlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
 
   variantOptions = [
     { label: 'Primary', value: 'primary' },
@@ -38,52 +24,20 @@ export class SplitButtonPlaygroundComponent {
     { label: 'Ghost', value: 'ghost' },
   ];
 
-  sizeOptions = [
-    { label: 'Small', value: 'sm' },
-    { label: 'Medium', value: 'md' },
-    { label: 'Large', value: 'lg' },
-  ];
-
-  model = [
-    { label: 'Save and Exit', icon: '??', command: () => this.logAction('Save and Exit') },
-    { label: 'Save as Draft', icon: '??', command: () => this.logAction('Save as Draft') },
+  menuItems = [
+    { label: 'Save and Exit', icon: '??' },
+    { label: 'Save as Draft', icon: '??' },
     { separator: true },
-    { label: 'Discard', icon: '???', command: () => this.logAction('Discard') },
+    { label: 'Discard', icon: '???' },
   ];
-
-  modelJson = JSON.stringify(this.model);
-  generatedCodeSignal = signal('');
-  lastAction = '';
 
   constructor() {
+    super();
     this.updateConfig();
   }
 
-  updateConfig() {
-    let code = '<ui-split-button\n';
-    code += `  label="${this.pgConfig.label}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  [model]="menuItems"\n`;
-    code += '></ui-split-button>';
-
-    this.generatedCodeSignal.set(code);
-  }
-
-  onPrimaryClick() {
-    this.logAction('Primary: ' + this.pgConfig.label);
-  }
-
-  logAction(action: string) {
-    this.lastAction = action;
-  }
-
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCodeSignal());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
+  getDefaultConfig() {
+    return {
       label: 'Save Changes',
       icon: '??',
       variant: 'primary',
@@ -91,8 +45,27 @@ export class SplitButtonPlaygroundComponent {
       disabled: false,
       loading: false,
     };
-    this.updateConfig();
+  }
+
+  updateConfig() {
+    let code = '<ui-split-button\n';
+    code += `  label="${this.pgConfig.label}"\n`;
+    code += `  variant="${this.pgConfig.variant}"\n`;
+    code += `  size="${this.pgConfig.size}"\n`;
+    if (this.pgConfig.disabled) code += `  disabled="true"\n`;
+    if (this.pgConfig.loading) code += `  loading="true"\n`;
+    code += `  [model]="menuItems"\n`;
+    code += '></ui-split-button>';
+
+    this.generatedCode.set(code);
+    this.refreshCode();
+  }
+
+  onPrimaryClick() {
+    this.logEvent('Primary button clicked: ' + this.pgConfig.label);
+  }
+
+  onMenuClick(event: any) {
+    this.logEvent('Menu item clicked: ' + event.detail?.label);
   }
 }
-
-

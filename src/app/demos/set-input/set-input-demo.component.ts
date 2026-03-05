@@ -36,17 +36,13 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'advanced', title: 'Advanced Features', icon: '🚀' },
     { id: 'floating-labels', title: 'Floating Labels', icon: '🏷️' },
     { id: 'multiline', title: 'Multiline Input', icon: '📝' },
+    { id: 'color-input', title: 'Color Input', icon: '🎨' },
+    { id: 'file-upload', title: 'File Upload', icon: '📁' },
+    { id: 'input-masking', title: 'Input Masking', icon: '🎭' },
     { id: 'input-states', title: 'Input States', icon: '🔄' },
   ];
 
-  anchorLinks = JSON.stringify(
-    this.variants.map((v) => ({
-      id: v.id,
-      label: v.title,
-      target: v.id,
-      icon: v.icon,
-    })),
-  );
+  
 
   get exampleVariants() {
     return this.variants;
@@ -84,6 +80,39 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
 
   inputStatesCode = `<ui-input label="Disabled" value="Locked" disabled full-width></ui-input>
 <ui-input label="Readonly" value="View only" readonly full-width></ui-input>`;
+
+  colorInputCode = `<!-- Basic color picker -->
+<ui-input type="color" label="Accent Color" full-width></ui-input>
+
+<!-- Color picker with default value -->
+<ui-input type="color" label="Brand Color" value="#6366f1" full-width></ui-input>
+
+<!-- Color picker with copy button -->
+<ui-input type="color" label="Background Color" show-copy full-width></ui-input>`;
+
+  fileUploadCode = `<!-- Single file -->
+<ui-input type="file" label="Upload Document" full-width></ui-input>
+
+<!-- Accept specific types -->
+<ui-input type="file" label="Upload Image" accept="image/*" full-width></ui-input>
+
+<!-- Accept PDF only -->
+<ui-input type="file" label="Upload PDF" accept=".pdf" full-width></ui-input>
+
+<!-- Multiple file selection -->
+<ui-input type="file" label="Upload Files" accept="image/*,.pdf,.docx" multiple full-width></ui-input>`;
+
+  inputMaskCode = `<!-- Phone Mask -->
+<ui-input label="Phone Number" mask="phone" placeholder="(555) 555-5555" full-width></ui-input>
+
+<!-- Credit Card Mask -->
+<ui-input label="Credit Card" mask="credit-card" placeholder="0000 0000 0000 0000" full-width></ui-input>
+
+<!-- Currency Mask -->
+<ui-input label="Currency" mask="currency" placeholder="$0.00" full-width></ui-input>
+
+<!-- Date Mask -->
+<ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>`;
 
   ngOnInit() {}
 

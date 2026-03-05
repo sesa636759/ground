@@ -1,39 +1,36 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  ViewChild,
+  ElementRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../../directives/ui-input-value-accessor.directive';
-import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-pie-chart-playground',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppCheckboxValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-    AppInputValueAccessorDirective,
-    AppPlaygroundComponent,
-  ],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './pie-chart-playground.component.html',
-
   styleUrl: './pie-chart-playground.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
-export class PieChartPlaygroundComponent {
-  pgConfig = {
-    chartType: 'pie',
-    dataset: 'sales',
-    cutout: 60,
-    legendPosition: 'right',
-    borderWidth: 2,
-    showLegend: true,
-    responsive: true,
-    enableAnimation: true,
-    showTooltip: true,
-  };
+export class PieChartPlaygroundComponent extends BasePlaygroundComponent {
+  @ViewChild('demoElement') demoElement!: ElementRef;
+
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'type', title: 'Chart Type', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['type'];
 
   typeOptions = [
     { label: 'Pie', value: 'pie' },
@@ -92,11 +89,23 @@ export class PieChartPlaygroundComponent {
 
   activeChartData: any = this.salesData;
   activeOptions: any = {};
-  generatedCode = signal('');
-  showCode = true;
 
-  constructor(private cd: ChangeDetectorRef) {
-    this.updateConfig();
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      chartType: 'pie',
+      dataset: 'sales',
+      cutout: 60,
+      legendPosition: 'right',
+      borderWidth: 2,
+      showLegend: true,
+      responsive: true,
+      enableAnimation: true,
+      showTooltip: true,
+    };
   }
 
   onDatasetChange() {
@@ -108,15 +117,6 @@ export class PieChartPlaygroundComponent {
       this.activeChartData = { ...this.salesData };
     }
     this.updateConfig();
-  }
-
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
   }
 
   updateConfig() {
@@ -139,24 +139,9 @@ export class PieChartPlaygroundComponent {
     this.refreshCode();
   }
 
-  copyCode() {
-    navigator.clipboard.writeText(this.generatedCode());
-  }
-
-  resetConfig() {
-    this.pgConfig = {
-      chartType: 'pie',
-      dataset: 'sales',
-      cutout: 60,
-      legendPosition: 'right',
-      borderWidth: 2,
-      showLegend: true,
-      responsive: true,
-      enableAnimation: true,
-      showTooltip: true,
-    };
+  override resetConfig() {
+    super.resetConfig();
     this.activeChartData = { ...this.salesData };
     this.activeOptions = {};
-    this.updateConfig();
   }
 }
