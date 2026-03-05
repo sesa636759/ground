@@ -10,139 +10,131 @@
       <app-smart-menu-playground></app-smart-menu-playground>
     </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
+    <div slot="examples">
+      <div class="demo-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <div class="examples-content scroll-spy-container">
+          <!-- Nested Menus -->
+          <app-example-section
+            id="nested"
+            title="Nested Menus"
+            description="Multi-level context menus — right-click the area below to open. Hover over items with arrows to reveal sub-menus."
+            [code]="nestedCode"
+            language="html"
+          >
+            <div
+              id="nested-target"
+              class="right-click-zone"
+              style="
+                padding: 48px 24px;
+                border: 2px dashed var(--color-border);
+                border-radius: 10px;
+                text-align: center;
+                cursor: context-menu;
+                user-select: none;
+                color: var(--color-text-secondary);
+              "
+            >
+              🖱️ <strong>Right-click here</strong> to open the nested File / Edit / View menu
+            </div>
+            <ui-smart-context-menu
+              target="#nested-target"
+              icon-library="lucide"
+              [items]="nestedItems"
+            ></ui-smart-context-menu>
+          </app-example-section>
+
+          <!-- With Icons -->
+          <app-example-section
+            id="icons"
+            title="With Icons"
+            description="Lucide icons next to each menu item for quick visual scanning"
+            [code]="iconsCode"
+            language="html"
+          >
+            <div
+              id="icons-target"
+              class="right-click-zone"
+              style="
+                padding: 48px 24px;
+                border: 2px dashed var(--color-border);
+                border-radius: 10px;
+                text-align: center;
+                cursor: context-menu;
+                user-select: none;
+                color: var(--color-text-secondary);
+              "
+            >
+              🖱️ <strong>Right-click here</strong> to open the icon menu
+            </div>
+            <ui-smart-context-menu
+              target="#icons-target"
+              icon-library="lucide"
+              [items]="iconItems"
+            ></ui-smart-context-menu>
+          </app-example-section>
+
+          <!-- Separators -->
+          <app-example-section
+            id="separators"
+            title="Separators"
+            description="Use divider items to group related actions into visual sections"
+            [code]="separatorsCode"
+            language="html"
+          >
+            <div
+              id="sep-target"
+              class="right-click-zone"
+              style="
+                padding: 48px 24px;
+                border: 2px dashed var(--color-border);
+                border-radius: 10px;
+                text-align: center;
+                cursor: context-menu;
+                user-select: none;
+                color: var(--color-text-secondary);
+              "
+            >
+              🖱️ <strong>Right-click here</strong> to open the Cut / Copy / Paste menu with dividers
+            </div>
+            <ui-smart-context-menu
+              target="#sep-target"
+              icon-library="lucide"
+              [items]="separatorItems"
+            ></ui-smart-context-menu>
+          </app-example-section>
+
+          <!-- Disabled Items -->
+          <app-example-section
+            id="disabled"
+            title="Disabled Items"
+            description="Mark specific items as non-interactive — they appear faded and cannot be clicked"
+            [code]="disabledCode"
+            language="html"
+          >
+            <div
+              id="disabled-target"
+              class="right-click-zone"
+              style="
+                padding: 48px 24px;
+                border: 2px dashed var(--color-border);
+                border-radius: 10px;
+                text-align: center;
+                cursor: context-menu;
+                user-select: none;
+                color: var(--color-text-secondary);
+              "
+            >
+              🖱️ <strong>Right-click here</strong> — one action is disabled
+            </div>
+            <ui-smart-context-menu
+              target="#disabled-target"
+              icon-library="lucide"
+              [items]="disabledItems"
+            ></ui-smart-context-menu>
+          </app-example-section>
         </div>
-      </aside>
-
-      <div class="examples-content">
-        <!-- Nested Menus -->
-        <app-example-section
-          id="nested"
-          title="Nested Menus"
-          description="Multi-level context menus — right-click the area below to open. Hover over items with arrows to reveal sub-menus."
-          [code]="nestedCode"
-          language="html"
-        >
-          <div
-            id="nested-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the nested File / Edit / View menu
-          </div>
-          <ui-smart-context-menu
-            target="#nested-target"
-            icon-library="lucide"
-            [items]="nestedItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- With Icons -->
-        <app-example-section
-          id="icons"
-          title="With Icons"
-          description="Lucide icons next to each menu item for quick visual scanning"
-          [code]="iconsCode"
-          language="html"
-        >
-          <div
-            id="icons-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the icon menu
-          </div>
-          <ui-smart-context-menu
-            target="#icons-target"
-            icon-library="lucide"
-            [items]="iconItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- Separators -->
-        <app-example-section
-          id="separators"
-          title="Separators"
-          description="Use divider items to group related actions into visual sections"
-          [code]="separatorsCode"
-          language="html"
-        >
-          <div
-            id="sep-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> to open the Cut / Copy / Paste menu with dividers
-          </div>
-          <ui-smart-context-menu
-            target="#sep-target"
-            icon-library="lucide"
-            [items]="separatorItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
-
-        <!-- Disabled Items -->
-        <app-example-section
-          id="disabled"
-          title="Disabled Items"
-          description="Mark specific items as non-interactive — they appear faded and cannot be clicked"
-          [code]="disabledCode"
-          language="html"
-        >
-          <div
-            id="disabled-target"
-            class="right-click-zone"
-            style="
-              padding: 48px 24px;
-              border: 2px dashed var(--color-border);
-              border-radius: 10px;
-              text-align: center;
-              cursor: context-menu;
-              user-select: none;
-              color: var(--color-text-secondary);
-            "
-          >
-            🖱️ <strong>Right-click here</strong> — one action is disabled
-          </div>
-          <ui-smart-context-menu
-            target="#disabled-target"
-            icon-library="lucide"
-            [items]="disabledItems"
-          ></ui-smart-context-menu>
-        </app-example-section>
       </div>
     </div>
 

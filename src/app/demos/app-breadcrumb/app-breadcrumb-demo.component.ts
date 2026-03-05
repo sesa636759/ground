@@ -26,18 +26,12 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-breadcrumb-demo.component.html',
   styleUrl: './app-breadcrumb-demo.component.scss',
 })
-export class AppBreadcrumbDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class AppBreadcrumbDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
     { id: 'separators', title: 'Separators', icon: '➖' },
     { id: 'collapsing', title: 'Collapsing', icon: '📉' },
     { id: 'visuals', title: 'Visual Variants', icon: '🎨' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
 
   items = [
     { label: 'Home', icon: '🏠', href: '/' },
@@ -59,6 +53,4 @@ export class AppBreadcrumbDemoComponent extends BaseDemoComponent implements OnI
   collapsingCode = `<ui-breadcrumb [items]="collapsibleItems" [max-items]="4" show-home></ui-breadcrumb>`;
   visualsCode = `<ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
 <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>`;
-
-  ngOnInit() {}
 }

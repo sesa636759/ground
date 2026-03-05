@@ -26,7 +26,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-tooltip-demo.component.html',
   styleUrl: './set-tooltip-demo.component.scss',
 })
-export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit {
+export class SetTooltipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'triggers', title: 'Triggers', icon: '⚡' },
     { id: 'positioning', title: 'Positioning', icon: '📍' },
@@ -41,8 +41,6 @@ export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'mouse-tracking', title: 'Mouse Tracking', icon: '🖱️' },
     { id: 'auto-shift', title: 'Auto-Shift', icon: '🔄' },
   ];
-
-  
 
   hoverCode = `<app-tooltip content="I appear on hover" position="top">
   <ui-button slot="target" label="Hover Me"></ui-button>
@@ -240,6 +238,4 @@ export class SetTooltipDemoComponent extends BaseDemoComponent implements OnInit
 >
   <ui-button label="Hover me"></ui-button>
 </app-tooltip>`;
-
-  ngOnInit() {}
 }

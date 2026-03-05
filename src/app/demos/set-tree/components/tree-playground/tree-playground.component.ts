@@ -51,7 +51,7 @@ export class TreePlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 
-  demoData = JSON.stringify([
+  demoData = [
     {
       id: 'root',
       label: 'Ground Project',
@@ -88,7 +88,7 @@ export class TreePlaygroundComponent extends BasePlaygroundComponent {
         },
       ],
     },
-  ]);
+  ];
 
   updateConfig() {
     let code = `<app-tree\n`;

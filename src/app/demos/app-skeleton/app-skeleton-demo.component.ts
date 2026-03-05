@@ -8,6 +8,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+
 @Component({
   selector: 'app-app-skeleton-demo',
   standalone: true,
@@ -19,6 +21,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-skeleton-demo.component.html',
@@ -31,8 +34,6 @@ export class AppSkeletonDemoComponent extends BaseDemoComponent {
     { id: 'list-layout', title: 'List Layout', icon: '📋' },
     { id: 'profile-layout', title: 'Profile Layout', icon: '👤' },
   ];
-
-  
 
   shapesCode = `<!-- Circle (avatar) -->
 <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>

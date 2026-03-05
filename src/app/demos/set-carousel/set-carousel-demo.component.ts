@@ -27,7 +27,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   styleUrl: './set-carousel-demo.component.scss',
 })
 export class SetCarouselDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+  exampleVariants = [
     // Transition Effects
     { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀', color: '#8b5cf6' },
     { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️', color: '#3b82f6' },
@@ -58,134 +58,128 @@ export class SetCarouselDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮', color: '#ef4444' },
   ];
 
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
   // Basic Layout Examples
-  fadeSlides = JSON.stringify([
+  fadeSlides = [
     { id: 1, title: 'Nature', description: 'Breathtaking landscapes', bg: '#1e293b' },
     { id: 2, title: 'Forest', description: 'Into the wild', bg: '#0f172a' },
     { id: 3, title: 'Mountains', description: 'Peak experience', bg: '#334155' },
-  ]);
+  ];
 
-  slideShowData = JSON.stringify([
+  slideShowData = [
     { id: 1, title: 'Slide 1', content: 'Beautiful auto-playing carousel' },
     { id: 2, title: 'Slide 2', content: 'With smooth transitions' },
     { id: 3, title: 'Slide 3', content: 'And responsive design' },
     { id: 4, title: 'Slide 4', content: 'Easy to customize' },
-  ]);
+  ];
 
-  centerModeItems = JSON.stringify([
+  centerModeItems = [
     { id: 1, label: 'Item 1', color: '#e11d48' },
     { id: 2, label: 'Item 2', color: '#db2777' },
     { id: 3, label: 'Item 3', color: '#c026d3' },
     { id: 4, label: 'Item 4', color: '#9333ea' },
     { id: 5, label: 'Item 5', color: '#7c3aed' },
-  ]);
+  ];
 
-  multipleSlideItems = JSON.stringify([
+  multipleSlideItems = [
     { id: 1, name: 'Item 1', number: '01' },
     { id: 2, name: 'Item 2', number: '02' },
     { id: 3, name: 'Item 3', number: '03' },
     { id: 4, name: 'Item 4', number: '04' },
     { id: 5, name: 'Item 5', number: '05' },
     { id: 6, name: 'Item 6', number: '06' },
-  ]);
+  ];
 
-  verticalCarouselItems = JSON.stringify([
+  verticalCarouselItems = [
     { id: 1, text: 'Vertical Slide 1' },
     { id: 2, text: 'Vertical Slide 2' },
     { id: 3, text: 'Vertical Slide 3' },
-  ]);
+  ];
 
-  infiniteItems = JSON.stringify([
+  infiniteItems = [
     { id: 1, label: 'Loop 1' },
     { id: 2, label: 'Loop 2' },
     { id: 3, label: 'Loop 3' },
-  ]);
+  ];
 
   // Size variant data
-  smallSlides = JSON.stringify([
+  smallSlides = [
     { id: 1, size: 'Small' },
     { id: 2, size: 'Compact' },
     { id: 3, size: 'Tiny' },
-  ]);
-  mediumSlides = JSON.stringify([
+  ];
+  mediumSlides = [
     { id: 1, size: 'Medium' },
     { id: 2, size: 'Standard' },
     { id: 3, size: 'Normal' },
-  ]);
-  largeSlides = JSON.stringify([
+  ];
+  largeSlides = [
     { id: 1, size: 'Large' },
     { id: 2, size: 'Big' },
     { id: 3, size: 'Extra' },
-  ]);
+  ];
 
   // Speed/timing variants
-  fastSlides = JSON.stringify([
+  fastSlides = [
     { id: 1, text: 'Fast' },
     { id: 2, text: 'Quick' },
     { id: 3, text: 'Speed' },
-  ]);
-  normalSlides = JSON.stringify([
+  ];
+  normalSlides = [
     { id: 1, text: 'Normal' },
     { id: 2, text: 'Standard' },
     { id: 3, text: 'Regular' },
-  ]);
-  slowSlides = JSON.stringify([
+  ];
+  slowSlides = [
     { id: 1, text: 'Slow' },
     { id: 2, text: 'Relaxed' },
     { id: 3, text: 'Smooth' },
-  ]);
+  ];
 
   // Pagination variants
-  dotsItems = JSON.stringify([
+  dotsItems = [
     { id: 1, indicator: 'Dots' },
     { id: 2, indicator: 'Visible' },
     { id: 3, indicator: 'Bottom' },
-  ]);
-  numbersItems = JSON.stringify([
+  ];
+  numbersItems = [
     { id: 1, number: '1' },
     { id: 2, number: '2' },
     { id: 3, number: '3' },
-  ]);
-  progressItems = JSON.stringify([
+  ];
+  progressItems = [
     { id: 1, label: 'Progress' },
     { id: 2, label: 'Tracking' },
     { id: 3, label: 'Complete' },
-  ]);
+  ];
 
   // Animation easing variations
-  easeLinearSlides = JSON.stringify([
+  easeLinearSlides = [
     { id: 1, text: 'Linear' },
     { id: 2, text: 'Smooth' },
     { id: 3, text: 'Even' },
-  ]);
-  easeEaseInOutSlides = JSON.stringify([
+  ];
+  easeEaseInOutSlides = [
     { id: 1, text: 'EaseInOut' },
     { id: 2, text: 'Decelerate' },
     { id: 3, text: 'Natural' },
-  ]);
+  ];
 
   // Responsive layout items
-  responsiveSmallSlides = JSON.stringify([
+  responsiveSmallSlides = [
     { id: 1, text: 'Mobile' },
     { id: 2, text: '1 Slide' },
     { id: 3, text: 'Small' },
-  ]);
-  responsiveTabletSlides = JSON.stringify([
+  ];
+  responsiveTabletSlides = [
     { id: 1, text: 'Tablet' },
     { id: 2, text: '2 Slides' },
     { id: 3, text: 'Medium' },
-  ]);
-  responsiveDesktopSlides = JSON.stringify([
+  ];
+  responsiveDesktopSlides = [
     { id: 1, text: 'Desktop' },
     { id: 2, text: '3+ Slides' },
     { id: 3, text: 'Large' },
-  ]);
+  ];
 
   // Code examples
   fadeTransitionCode = `<app-carousel

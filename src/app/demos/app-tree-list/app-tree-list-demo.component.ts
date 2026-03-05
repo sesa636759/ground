@@ -7,6 +7,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-tree-list-demo',
   standalone: true,
@@ -23,17 +25,13 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-tree-list-demo.component.html',
   styleUrl: './app-tree-list-demo.component.scss',
 })
-export class AppTreeListDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'examples', name: 'Examples', icon: '📂', color: '#3b82f6' },
+export class AppTreeListDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'examples', title: 'Examples', icon: '📂', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  treeData = JSON.stringify([
+  treeData = [
     {
       label: 'Root',
       children: [
@@ -41,7 +39,7 @@ export class AppTreeListDemoComponent {
         { label: 'Child 2', children: [] },
       ],
     },
-  ]);
+  ];
 
   playgroundCode = `<ui-tree-list [model]="data" selectable></ui-tree-list>`;
 
@@ -57,11 +55,4 @@ export class AppTreeListDemoComponent {
     ]
   }
 ];`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

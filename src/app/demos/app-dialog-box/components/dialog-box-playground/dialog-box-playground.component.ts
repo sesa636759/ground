@@ -28,7 +28,12 @@ export class DialogBoxPlaygroundComponent extends BasePlaygroundComponent implem
   pgAccordionItems = [
     { id: 'appearance', title: 'Appearance & Styles', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'behavior', title: 'Behavior & Logic', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'visibility', title: 'Header & Footer Controls', icon: 'settings', iconLibrary: 'lucide' },
+    {
+      id: 'visibility',
+      title: 'Header & Footer Controls',
+      icon: 'settings',
+      iconLibrary: 'lucide',
+    },
   ];
 
   defaultOpen = ['appearance'];
@@ -70,12 +75,12 @@ export class DialogBoxPlaygroundComponent extends BasePlaygroundComponent implem
     { label: 'Top Right', value: 'top-right' },
   ];
 
-  menuItems = JSON.stringify([
+  menuItems = [
     { label: 'Action 1', id: 'act1', icon: 'zap' },
     { label: 'Action 2', id: 'act2', icon: 'flag' },
     { type: 'separator' },
     { label: 'Close', id: 'close', icon: 'x', variant: 'danger' },
-  ]);
+  ];
 
   constructor() {
     super();

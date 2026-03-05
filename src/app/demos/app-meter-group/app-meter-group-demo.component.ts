@@ -8,6 +8,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-meter-group-demo',
   standalone: true,
@@ -24,22 +26,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-meter-group-demo.component.html',
   styleUrl: './app-meter-group-demo.component.scss',
 })
-export class AppMeterGroupDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'displays', name: 'Display Types', icon: '📊', color: '#3b82f6' },
-    { id: 'layouts', name: 'Advanced Layouts', icon: '📐', color: '#10b981' },
+export class AppMeterGroupDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'displays', title: 'Display Types', icon: '📊', color: '#3b82f6' },
+    { id: 'layouts', title: 'Advanced Layouts', icon: '📐', color: '#10b981' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  storageValues = JSON.stringify([
+  storageValues = [
     { label: 'Apps', value: 35, color: '#3b82f6' },
     { label: 'Photos', value: 20, color: '#ec4899' },
     { label: 'System', value: 15, color: '#94a3b8' },
-  ]);
+  ];
 
   playgroundCode = `<ui-meter-group [values]="values"></ui-meter-group>`;
 
@@ -54,11 +52,4 @@ export class AppMeterGroupDemoComponent {
 
 <!-- Legend at Start -->
 <ui-meter-group label-position="start" [values]="values"></ui-meter-group>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

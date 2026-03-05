@@ -26,15 +26,13 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-dropdown-demo.component.html',
   styleUrl: './app-dropdown-demo.component.scss',
 })
-export class AppDropdownDemoComponent extends BaseDemoComponent implements OnInit {
+export class AppDropdownDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'basic', title: 'Basic Dropdown', icon: '📝' },
     { id: 'multi-select', title: 'Multi Selection', icon: '✅' },
     { id: 'cascading', title: 'Hierarchical', icon: '🌳' },
     { id: 'sizes', title: 'Size Scaling', icon: '📏' },
   ];
-
-  
 
   basicOptions = [
     { label: 'Option 1', value: '1' },
@@ -72,6 +70,4 @@ export class AppDropdownDemoComponent extends BaseDemoComponent implements OnIni
   sizesCode = `<ui-dropdown size="sm"></ui-dropdown>
 <ui-dropdown size="md"></ui-dropdown>
 <ui-dropdown size="lg"></ui-dropdown>`;
-
-  ngOnInit() {}
 }

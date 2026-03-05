@@ -6,23 +6,29 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-candlestick-chart-demo',
   standalone: true,
-  imports: [CommonModule, CandlestickChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    CandlestickChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './candlestick-chart-demo.component.html',
   styleUrl: './candlestick-chart-demo.component.scss',
 })
-export class CandlestickChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',  icon: '🎮', color: '#8b5cf6' },
-    { id: 'daily',      name: 'Daily',       icon: '📈', color: '#6366f1' },
-    { id: 'weekly',     name: 'Weekly',      icon: '📅', color: '#10b981' },
-    { id: 'hollow',     name: 'Hollow Body', icon: '🕯️', color: '#f59e0b' },
+export class CandlestickChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'daily', title: 'Daily Candles', icon: '📈', color: '#6366f1' },
+    { id: 'hollow', title: 'Hollow Body', icon: '🕯️', color: '#f59e0b' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   dailyCandles = [
     { date: 'Jan 2', open: 150, high: 165, low: 145, close: 162 },

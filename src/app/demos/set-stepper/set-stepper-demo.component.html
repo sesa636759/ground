@@ -32,7 +32,7 @@
               <app-stepper-container
                 mode="horizontal"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -41,7 +41,7 @@
                 mode="horizontal"
                 label-position="bottom"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -50,7 +50,7 @@
                 mode="horizontal"
                 label-position="top"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
           </div>
@@ -71,7 +71,7 @@
                   mode="vertical"
                   description-position="right"
                   active-step="2"
-                  [attr.steps]="verticalSteps"
+                  [steps]="verticalSteps"
                 ></app-stepper-container>
               </div>
             </div>
@@ -82,7 +82,7 @@
                   mode="vertical"
                   description-position="left"
                   active-step="2"
-                  [attr.steps]="verticalSteps"
+                  [steps]="verticalSteps"
                 ></app-stepper-container>
               </div>
             </div>
@@ -102,7 +102,7 @@
               mode="horizontal"
               label-position="alternate"
               active-step="1"
-              [attr.steps]="horizontalSteps"
+              [steps]="horizontalSteps"
             ></app-stepper-container>
           </div>
         </app-example-section>
@@ -121,7 +121,7 @@
                 mode="vertical"
                 description-position="alternate"
                 active-step="2"
-                [attr.steps]="verticalSteps"
+                [steps]="verticalSteps"
               ></app-stepper-container>
             </div>
           </div>
@@ -140,7 +140,7 @@
               show-content-area="true"
               show-navigation="true"
               active-step="0"
-              [attr.steps]="threeSteps"
+              [steps]="threeSteps"
             >
               <div slot="step-0" class="step-content-box">
                 <h4>Step 1: Account Setup</h4>
@@ -171,7 +171,7 @@
               <app-stepper-container
                 mode="horizontal"
                 active-step="1"
-                [attr.steps]="threeSteps"
+                [steps]="threeSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -179,7 +179,7 @@
               <app-stepper-container
                 mode="horizontal"
                 active-step="2"
-                [attr.steps]="fiveSteps"
+                [steps]="fiveSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -187,7 +187,7 @@
               <app-stepper-container
                 mode="horizontal"
                 active-step="3"
-                [attr.steps]="sevenSteps"
+                [steps]="sevenSteps"
               ></app-stepper-container>
             </div>
           </div>
@@ -203,11 +203,7 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h3>Wide Flex Connector</h3>
-              <app-stepper-container
-                mode="horizontal"
-                active-step="1"
-                [attr.steps]="horizontalSteps"
-              >
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
                 <app-step-connector
                   slot="connector-0-1"
                   mode="horizontal"
@@ -217,11 +213,7 @@
             </div>
             <div class="demo-card">
               <h3>Fixed Width Connector</h3>
-              <app-stepper-container
-                mode="horizontal"
-                active-step="1"
-                [attr.steps]="horizontalSteps"
-              >
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
                 <app-step-connector
                   slot="connector-0-1"
                   mode="horizontal"
@@ -231,11 +223,7 @@
             </div>
             <div class="demo-card">
               <h3>Thick Accent Connector</h3>
-              <app-stepper-container
-                mode="horizontal"
-                active-step="1"
-                [attr.steps]="horizontalSteps"
-              >
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
                 <app-step-connector
                   slot="connector-0-1"
                   mode="horizontal"
@@ -260,7 +248,7 @@
               <app-stepper-container
                 variant="snack"
                 active-step="2"
-                [attr.steps]="fiveSteps"
+                [steps]="fiveSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -268,7 +256,7 @@
               <app-stepper-container
                 variant="compact"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -276,7 +264,7 @@
               <app-stepper-container
                 variant="outlined"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -284,7 +272,7 @@
               <app-stepper-container
                 variant="filled"
                 active-step="1"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
           </div>
@@ -303,7 +291,7 @@
               <app-stepper-container
                 color-scheme="success"
                 active-step="2"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -311,7 +299,7 @@
               <app-stepper-container
                 color-scheme="warning"
                 active-step="2"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
             <div class="demo-card">
@@ -319,7 +307,7 @@
               <app-stepper-container
                 color-scheme="danger"
                 active-step="2"
-                [attr.steps]="horizontalSteps"
+                [steps]="horizontalSteps"
               ></app-stepper-container>
             </div>
           </div>
@@ -338,7 +326,7 @@
               variant="compact"
               scrollable="true"
               active-step="8"
-              [attr.steps]="twentySteps"
+              [steps]="twentySteps"
             ></app-stepper-container>
           </div>
         </app-example-section>
@@ -355,8 +343,8 @@
               variant="snack"
               clickable="true"
               show-progress="true"
-              [attr.active-step]="currentStep25"
-              [attr.steps]="stringifySteps(generate25Steps())"
+              [active-step]="currentStep25"
+              [steps]="generate25Steps()"
             ></app-stepper-container>
 
             <div
@@ -384,10 +372,9 @@
     </div>
 
     <!-- Docs Slot -->
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="stepper"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>
 

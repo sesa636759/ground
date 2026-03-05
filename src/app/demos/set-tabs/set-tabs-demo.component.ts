@@ -8,8 +8,6 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
-
-
 @Component({
   selector: 'app-set-tabs-demo',
   standalone: true,
@@ -27,7 +25,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   templateUrl: './set-tabs-demo.component.html',
   styleUrl: './set-tabs-demo.component.scss',
 })
-export class SetTabsDemoComponent extends BaseDemoComponent implements OnInit {
+export class SetTabsDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'orientation', title: 'Orientation', icon: '↔️' },
     { id: 'variants', title: 'Visual Variants', icon: '🎨' },
@@ -38,10 +36,6 @@ export class SetTabsDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'layout-features', title: 'Layout & Features', icon: '📦' },
     { id: 'advanced-features', title: 'Advanced UX', icon: '🛡️' },
   ];
-
-  
-
-  ngOnInit() {}
 
   horizontalBasicCode = `<app-tab-stack orientation="horizontal" active-tab="t1">
     <app-tab label="Overview" value="t1">Overview Content</app-tab>

@@ -26,8 +26,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-stepper-demo.component.html',
   styleUrl: './set-stepper-demo.component.scss',
 })
-export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetStepperDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
     { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️', color: '#3b82f6' },
     { id: 'vertical', title: 'Vertical Modes', icon: '⬇️', color: '#10b981' },
     { id: 'labels', title: 'Label Placement', icon: '🏷️', color: '#f59e0b' },
@@ -41,15 +41,7 @@ export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'interactive', title: 'Interactive Demo', icon: '🎯', color: '#f59e0b' },
   ];
 
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
   currentStep25 = 12;
-
-  ngOnInit() {}
 
   previousStep25() {
     this.currentStep25 = Math.max(0, this.currentStep25 - 1);
@@ -70,70 +62,66 @@ export class SetStepperDemoComponent extends BaseDemoComponent implements OnInit
     }));
   }
 
-  stringifySteps(steps: any[]) {
-    return JSON.stringify(steps);
-  }
+  horizontalSteps = [
+    { label: 'Account', description: 'Create account', status: 'success' },
+    { label: 'Profile', description: 'Personal info', status: 'success' },
+    { label: 'Verify', description: 'Confirm email', status: 'waiting' },
+    { label: 'Done', description: 'All set', status: 'waiting' },
+  ];
 
-  horizontalSteps = `[
-    {"label": "Account", "description": "Create account", "status": "success"},
-    {"label": "Profile", "description": "Personal info", "status": "success"},
-    {"label": "Verify", "description": "Confirm email", "status": "waiting"},
-    {"label": "Done", "description": "All set", "status": "waiting"}
-  ]`;
+  verticalSteps = [
+    { label: 'Order Placed', description: 'Received', status: 'success' },
+    { label: 'Processing', description: 'Preparing', status: 'success' },
+    { label: 'Shipped', description: 'In transit', status: 'info' },
+    { label: 'Delivered', description: 'At doorstep', status: 'waiting' },
+  ];
 
-  verticalSteps = `[
-    {"label": "Order Placed", "description": "Received", "status": "success"},
-    {"label": "Processing", "description": "Preparing", "status": "success"},
-    {"label": "Shipped", "description": "In transit", "status": "info"},
-    {"label": "Delivered", "description": "At doorstep", "status": "waiting"}
-  ]`;
+  threeSteps = [
+    { label: 'Start', description: 'Begin process', status: 'success' },
+    { label: 'Process', description: 'In progress', status: 'info' },
+    { label: 'Complete', description: 'Finished', status: 'waiting' },
+  ];
 
-  threeSteps = `[
-    {"label": "Start", "description": "Begin process", "status": "success"},
-    {"label": "Process", "description": "In progress", "status": "info"},
-    {"label": "Complete", "description": "Finished", "status": "waiting"}
-  ]`;
+  fiveSteps = [
+    { label: 'Setup', description: 'Initial setup', status: 'success' },
+    { label: 'Configure', description: 'Settings', status: 'success' },
+    { label: 'Process', description: 'Processing', status: 'info' },
+    { label: 'Verify', description: 'Verification', status: 'waiting' },
+    { label: 'Complete', description: 'Finished', status: 'waiting' },
+  ];
 
-  fiveSteps = `[
-    {"label": "Setup", "description": "Initial setup", "status": "success"},
-    {"label": "Configure", "description": "Settings", "status": "success"},
-    {"label": "Process", "description": "Processing", "status": "info"},
-    {"label": "Verify", "description": "Verification", "status": "waiting"},
-    {"label": "Complete", "description": "Finished", "status": "waiting"}
-  ]`;
+  sevenSteps = [
+    { label: 'Step 1', description: 'First', status: 'success' },
+    { label: 'Step 2', description: 'Second', status: 'success' },
+    { label: 'Step 3', description: 'Third', status: 'success' },
+    { label: 'Step 4', description: 'Fourth', status: 'info' },
+    { label: 'Step 5', description: 'Fifth', status: 'waiting' },
+    { label: 'Step 6', description: 'Sixth', status: 'waiting' },
+    { label: 'Step 7', description: 'Seventh', status: 'waiting' },
+  ];
 
-  sevenSteps = `[
-    {"label": "Step 1", "description": "First", "status": "success"},
-    {"label": "Step 2", "description": "Second", "status": "success"},
-    {"label": "Step 3", "description": "Third", "status": "success"},
-    {"label": "Step 4", "description": "Fourth", "status": "info"},
-    {"label": "Step 5", "description": "Fifth", "status": "waiting"},
-    {"label": "Step 6", "description": "Sixth", "status": "waiting"},
-    {"label": "Step 7", "description": "Seventh", "status": "waiting"}
-  ]`;
-
-  twentySteps = `[
-    {"label": "Step 1", "description": "First step"},
-    {"label": "Step 2", "description": "Second step"},
-    {"label": "Step 3", "description": "Third step"},
-    {"label": "Step 4", "description": "Fourth step"},
-    {"label": "Step 5", "description": "Fifth step"},
-    {"label": "Step 6", "description": "Sixth step"},
-    {"label": "Step 7", "description": "Seventh step"},
-    {"label": "Step 8", "description": "Eighth step"},
-    {"label": "Step 9", "description": "Ninth step"},
-    {"label": "Step 10", "description": "Tenth step"},
-    {"label": "Step 11", "description": "Eleventh step"},
-    {"label": "Step 12", "description": "Twelfth step"},
-    {"label": "Step 13", "description": "Thirteenth step"},
-    {"label": "Step 14", "description": "Fourteenth step"},
-    {"label": "Step 15", "description": "Fifteenth step"},
-    {"label": "Step 16", "description": "Sixteenth step"},
-    {"label": "Step 17", "description": "Seventeenth step"},
-    {"label": "Step 18", "description": "Eighteenth step"},
-    {"label": "Step 19", "description": "Nineteenth step"},
-    {"label": "Step 20", "description": "Twentieth step"}
-  ]`;
+  twentySteps = [
+    { label: 'Step 1', description: 'First step' },
+    { label: 'Step 2', description: 'Second step' },
+    { label: 'Step 3', description: 'Third step' },
+    { label: 'Step 4', description: 'Fourth step' },
+    { label: 'Step 5', description: 'Fifth step' },
+    { label: 'Step 6', description: 'Sixth step' },
+    { label: 'Step 7', description: 'Seventh step' },
+    { label: 'Step 8', description: 'Eighth step' },
+    { label: 'Step 9', description: 'Ninth step' },
+    { label: 'Step 10', description: 'Tenth step' },
+    { label: 'Step 11', description: 'Eleventh step' },
+    { label: 'Step 12', description: 'Twelfth step' },
+    { label: 'Step 13', description: 'Thirteenth step' },
+    { label: 'Step 14', description: 'Fourteenth step' },
+    { label: 'Step 15', description: 'Fifteenth step' },
+    { label: 'Step 16', description: 'Sixteenth step' },
+    { label: 'Step 17', description: 'Seventeenth step' },
+    { label: 'Step 18', description: 'Eighteenth step' },
+    { label: 'Step 19', description: 'Nineteenth step' },
+    { label: 'Step 20', description: 'Twentieth step' },
+  ];
 
   horizontalBasicCode = `<app-stepper-container
   mode="horizontal"

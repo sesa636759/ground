@@ -8,6 +8,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-picklist-demo',
   standalone: true,
@@ -24,23 +26,19 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-picklist-demo.component.html',
   styleUrl: './app-picklist-demo.component.scss',
 })
-export class AppPicklistDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'features', name: 'UI Controls', icon: '⚙️', color: '#3b82f6' },
+export class AppPicklistDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'features', title: 'UI Controls', icon: '⚙️', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  sourceItems = JSON.stringify([
+  sourceItems = [
     { name: 'Red', code: 'rd' },
     { name: 'Blue', code: 'bl' },
     { name: 'Green', code: 'gr' },
-  ]);
+  ];
 
-  targetItems = JSON.stringify([{ name: 'Yellow', code: 'yl' }]);
+  targetItems = [{ name: 'Yellow', code: 'yl' }];
 
   playgroundCode = `<ui-picklist [source]="available" [target]="selected" source-header="Source" target-header="Target">
   <ng-template let-item>{{ item.name }}</ng-template>
@@ -51,11 +49,4 @@ export class AppPicklistDemoComponent {
 
 <!-- Custom Header Text -->
 <ui-picklist source-header="Backlog" target-header="Sprint Items" ...></ui-picklist>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

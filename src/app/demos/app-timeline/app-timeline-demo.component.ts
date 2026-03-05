@@ -8,6 +8,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-timeline-demo',
   standalone: true,
@@ -24,22 +26,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-timeline-demo.component.html',
   styleUrl: './app-timeline-demo.component.scss',
 })
-export class AppTimelineDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'alignments', name: 'Alignments', icon: '📏', color: '#3b82f6' },
-    { id: 'orientations', name: 'Orientations', icon: '📐', color: '#10b981' },
+export class AppTimelineDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'alignments', title: 'Alignments', icon: '📏', color: '#3b82f6' },
+    { id: 'orientations', title: 'Orientations', icon: '📐', color: '#10b981' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  events = JSON.stringify([
+  events = [
     { status: 'Draft', date: 'Oct 1st', color: '#94a3b8' },
     { status: 'Submitted', date: 'Oct 3rd', color: '#3b82f6' },
     { status: 'Approved', date: 'Oct 5th', color: '#10b981' },
-  ]);
+  ];
 
   playgroundCode = `<ui-timeline [value]="events" align="left">
   <ng-template let-item>
@@ -56,11 +54,4 @@ export class AppTimelineDemoComponent {
 
   orientationsCode = `<!-- Horizontal Flow -->
 <ui-timeline orientation="horizontal" [value]="events"></ui-timeline>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

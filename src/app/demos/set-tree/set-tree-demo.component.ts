@@ -2,11 +2,11 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
-
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-tree-demo',
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
-export class SetTreeDemoComponent implements OnInit {
+export class SetTreeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'basic-tree', title: 'Basic Tree', icon: '🌲' },
     { id: 'icons-colors', title: 'Icons & Colors', icon: '🎨' },
@@ -40,10 +40,8 @@ export class SetTreeDemoComponent implements OnInit {
     { id: 'dark-theme', title: 'Dark Theme', icon: '🌙' },
   ];
 
-  
-
   // Basic simple tree
-  simpleTreeData = JSON.stringify([
+  simpleTreeData = [
     {
       id: '1',
       label: 'Root Folder',
@@ -55,10 +53,10 @@ export class SetTreeDemoComponent implements OnInit {
         { id: '4', label: 'Music', icon: 'fas fa-folder' },
       ],
     },
-  ]);
+  ];
 
   // Project structure with colors
-  projectTreeData = JSON.stringify([
+  projectTreeData = [
     {
       id: 'proj',
       label: 'My Project',
@@ -82,10 +80,10 @@ export class SetTreeDemoComponent implements OnInit {
         { id: 'readme', label: 'README.md', icon: 'fas fa-file-alt', color: '#6b7280' },
       ],
     },
-  ]);
+  ];
 
   // Tree with badges and counters
-  taskTreeData = JSON.stringify([
+  taskTreeData = [
     {
       id: 'projects',
       label: 'Projects',
@@ -113,10 +111,10 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ]);
+  ];
 
   // Org chart data
-  orgChartData = JSON.stringify([
+  orgChartData = [
     {
       id: 'board',
       label: 'Board of Directors',
@@ -163,7 +161,7 @@ export class SetTreeDemoComponent implements OnInit {
         },
       ],
     },
-  ]);
+  ];
 
   playgroundCode = `<app-tree
   [data]="treeData"
@@ -183,13 +181,4 @@ export class SetTreeDemoComponent implements OnInit {
   [icons]="true"
   layout="horizontal"
 ></app-tree>`;
-
-  ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

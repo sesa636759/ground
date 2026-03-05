@@ -9,6 +9,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-cascade-select-demo',
   standalone: true,
@@ -25,18 +27,14 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-cascade-select-demo.component.html',
   styleUrl: './app-cascade-select-demo.component.scss',
 })
-export class AppCascadeSelectDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'triggers', name: 'Triggers & Display', icon: '⚡', color: '#3b82f6' },
-    { id: 'selection', name: 'Selection Logic', icon: '🎯', color: '#10b981' },
+export class AppCascadeSelectDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'triggers', title: 'Triggers & Display', icon: '⚡', color: '#3b82f6' },
+    { id: 'selection', title: 'Selection Logic', icon: '🎯', color: '#10b981' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  fileSystemOptions = JSON.stringify([
+  fileSystemOptions = [
     {
       label: 'Documents',
       value: 'docs',
@@ -46,7 +44,7 @@ export class AppCascadeSelectDemoComponent {
       ],
     },
     { label: 'Images', value: 'img', children: [{ label: 'Nature.jpg', value: 'nature' }] },
-  ]);
+  ];
 
   playgroundCode = `<ui-cascade-select [options]="options" placeholder="Select item"></ui-cascade-select>`;
 
@@ -58,11 +56,4 @@ export class AppCascadeSelectDemoComponent {
 
   selectionCode = `<!-- Select path at any level -->
 <ui-cascade-select change-on-select [options]="options"></ui-cascade-select>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

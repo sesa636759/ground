@@ -8,6 +8,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-speed-dial-demo',
   standalone: true,
@@ -24,23 +26,19 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-speed-dial-demo.component.html',
   styleUrl: './app-speed-dial-demo.component.scss',
 })
-export class AppSpeedDialDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'directions', name: 'Opening Directions', icon: '↔️', color: '#3b82f6' },
-    { id: 'types', name: 'Motion Patterns', icon: '🌀', color: '#10b981' },
+export class AppSpeedDialDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'directions', title: 'Opening Directions', icon: '↔️', color: '#3b82f6' },
+    { id: 'types', title: 'Motion Patterns', icon: '🌀', color: '#10b981' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  items = JSON.stringify([
+  items = [
     { label: 'Add', icon: '➕' },
     { label: 'Update', icon: '🔄' },
     { label: 'Delete', icon: '🗑️' },
     { label: 'Home', icon: '🏠' },
-  ]);
+  ];
 
   playgroundCode = `<ui-speed-dial [model]="items" direction="up"></ui-speed-dial>`;
 
@@ -55,11 +53,4 @@ export class AppSpeedDialDemoComponent {
 
 <!-- Half Circle -->
 <ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

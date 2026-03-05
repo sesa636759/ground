@@ -6,34 +6,69 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-step-line-chart-demo',
   standalone: true,
-  imports: [CommonModule, StepLineChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    StepLineChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './step-line-chart-demo.component.html',
   styleUrl: './step-line-chart-demo.component.scss',
 })
-export class StepLineChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',  icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic',      name: 'Basic Step',  icon: '🪜', color: '#6366f1' },
-    { id: 'filled',     name: 'Filled Area', icon: '🏔️', color: '#10b981' },
-    { id: 'multi',      name: 'Multi-Series', icon: '📈', color: '#f59e0b' },
+export class StepLineChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'price', title: 'Price Steps', icon: '🪜', color: '#6366f1' },
+    { id: 'status', title: 'System Status', icon: '📈', color: '#10b981' },
   ];
 
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
-
   basicData = [
-    { name: 'Server Load', color: '#6366f1', points: [
-      { x: 1, y: 20 }, { x: 2, y: 45 }, { x: 3, y: 45 },
-      { x: 4, y: 72 }, { x: 5, y: 60 }, { x: 6, y: 60 }, { x: 7, y: 88 },
-    ]},
+    {
+      name: 'Server Load',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 20 },
+        { x: 2, y: 45 },
+        { x: 3, y: 45 },
+        { x: 4, y: 72 },
+        { x: 5, y: 60 },
+        { x: 6, y: 60 },
+        { x: 7, y: 88 },
+      ],
+    },
   ];
 
   multiData = [
-    { name: 'CPU %',  color: '#6366f1', points: [{ x: 1, y: 20 }, { x: 2, y: 45 }, { x: 3, y: 72 }, { x: 4, y: 60 }, { x: 5, y: 88 }] },
-    { name: 'RAM %',  color: '#10b981', points: [{ x: 1, y: 35 }, { x: 2, y: 35 }, { x: 3, y: 58 }, { x: 4, y: 58 }, { x: 5, y: 74 }] },
+    {
+      name: 'CPU %',
+      color: '#6366f1',
+      points: [
+        { x: 1, y: 20 },
+        { x: 2, y: 45 },
+        { x: 3, y: 72 },
+        { x: 4, y: 60 },
+        { x: 5, y: 88 },
+      ],
+    },
+    {
+      name: 'RAM %',
+      color: '#10b981',
+      points: [
+        { x: 1, y: 35 },
+        { x: 2, y: 35 },
+        { x: 3, y: 58 },
+        { x: 4, y: 58 },
+        { x: 5, y: 74 },
+      ],
+    },
   ];
 
   basicCode = `<!-- Step Line Chart (SVG polyline with stepped path) -->

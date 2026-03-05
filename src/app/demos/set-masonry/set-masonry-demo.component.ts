@@ -17,7 +17,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     MasonryPlaygroundComponent,
     DemoTabsComponent,
-    
+
     ExampleSectionComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -26,8 +26,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-masonry-demo.component.html',
   styleUrl: './set-masonry-demo.component.scss',
 })
-export class SetMasonryDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetMasonryDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
     { id: 'masonry', title: 'Masonry Layout', icon: '🧱', color: '#8b5cf6' },
     { id: 'grid', title: 'Grid Layout', icon: '📦', color: '#3b82f6' },
     { id: 'columns', title: 'Columns Layout', icon: '📰', color: '#10b981' },
@@ -37,12 +37,6 @@ export class SetMasonryDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'lightbox', title: 'Lightbox Gallery', icon: '📸', color: '#06b6d4' },
     { id: 'skeleton', title: 'Skeleton Loading', icon: '💀', color: '#64748b' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
 
   // Sample items for different layouts
   sampleItems = Array.from({ length: 12 }, (_, i) => ({
@@ -136,6 +130,4 @@ export class SetMasonryDemoComponent extends BaseDemoComponent implements OnInit
   [breakpoints]="breakpoints"
   (itemClick)="onItemClick($event)"
 ></app-masonry>`);
-
-  ngOnInit() {}
 }

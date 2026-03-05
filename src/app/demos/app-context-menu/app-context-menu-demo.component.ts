@@ -29,15 +29,13 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 export class AppContextMenuDemoComponent extends BaseDemoComponent {
   exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
 
-  
-
-  fileItems = JSON.stringify([
+  fileItems = [
     { label: 'Open', icon: '📂' },
     { label: 'Download', icon: '⬇️' },
     { separator: true },
     { label: 'Rename', icon: '📝' },
     { label: 'Delete', icon: '🗑️' },
-  ]);
+  ];
 
   playgroundCode = `<div #trigger> Right Click Me </div>
 <ui-context-menu [model]="items" [target]="trigger"></ui-context-menu>`;

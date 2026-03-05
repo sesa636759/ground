@@ -7,6 +7,8 @@ import { NavBarPlaygroundComponent } from './components/nav-bar-playground/nav-b
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-nav-bar-demo',
   standalone: true,
@@ -22,21 +24,17 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-nav-bar-demo.component.html',
   styleUrl: './app-nav-bar-demo.component.scss',
 })
-export class AppNavBarDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'themes', name: 'Themes', icon: '🌗', color: '#3b82f6' },
+export class AppNavBarDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'themes', title: 'Themes', icon: '🌗', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  navItems = JSON.stringify([
+  navItems = [
     { label: 'Overview', icon: '🏠' },
     { label: 'Admin', icon: '🔑' },
     { label: 'Logs', icon: '📜' },
-  ]);
+  ];
 
   playgroundCode = `<ui-nav-bar [model]="items">
   <div slot="header">MyApp</div>
@@ -47,11 +45,4 @@ export class AppNavBarDemoComponent {
 
 <!-- Collapsed mode -->
 <ui-nav-bar collapsed [model]="items"></ui-nav-bar>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

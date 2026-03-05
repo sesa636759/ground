@@ -8,6 +8,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+
 @Component({
   selector: 'app-app-smart-menu-demo',
   standalone: true,
@@ -19,6 +21,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-smart-menu-demo.component.html',
@@ -31,8 +34,6 @@ export class AppSmartMenuDemoComponent extends BaseDemoComponent {
     { id: 'separators', title: 'Separators', icon: '➖' },
     { id: 'disabled', title: 'Disabled Items', icon: '🚫' },
   ];
-
-  
 
   nestedCode = `<!-- Right-click on the target area to open the menu -->
 <div id="nested-target" style="padding:40px;border:2px dashed #ccc;text-align:center">
@@ -50,7 +51,7 @@ export class AppSmartMenuDemoComponent extends BaseDemoComponent {
 
   disabledCode = `<ui-smart-context-menu target="#disabled-target" icon-library="lucide" [items]="disabledItems"></ui-smart-context-menu>`;
 
-  nestedItems = JSON.stringify([
+  nestedItems = [
     {
       label: 'File',
       icon: 'folder',
@@ -85,27 +86,27 @@ export class AppSmartMenuDemoComponent extends BaseDemoComponent {
         { label: 'Zoom Out', icon: 'zoom-out' },
       ],
     },
-  ]);
+  ];
 
-  iconItems = JSON.stringify([
+  iconItems = [
     { label: 'Dashboard', icon: 'layout-dashboard' },
     { label: 'Settings', icon: 'settings' },
     { label: 'Profile', icon: 'user' },
     { label: 'Logout', icon: 'log-out' },
-  ]);
+  ];
 
-  separatorItems = JSON.stringify([
+  separatorItems = [
     { label: 'Cut', icon: 'scissors' },
     { label: 'Copy', icon: 'copy' },
     { divider: true },
     { label: 'Paste', icon: 'clipboard' },
     { divider: true },
     { label: 'Select All', icon: 'check-square' },
-  ]);
+  ];
 
-  disabledItems = JSON.stringify([
+  disabledItems = [
     { label: 'Active Action', icon: 'check' },
     { label: 'Disabled Action', icon: 'ban', disabled: true },
     { label: 'Another Active', icon: 'star' },
-  ]);
+  ];
 }

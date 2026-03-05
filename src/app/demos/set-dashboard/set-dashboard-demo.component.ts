@@ -1,10 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DashboardPlaygroundComponent } from './components/dashboard-playground/dashboard-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-dashboard-demo',
@@ -21,7 +22,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-dashboard-demo.component.html',
   styleUrl: './set-dashboard-demo.component.scss',
 })
-export class SetDashboardDemoComponent implements OnInit {
+export class SetDashboardDemoComponent extends BaseDemoComponent {
   exampleVariants = [{ id: 'features', title: 'Key Features', icon: '🚀' }];
 
   // Code examples
@@ -42,13 +43,4 @@ export class SetDashboardDemoComponent implements OnInit {
 ✓ Responsive: Custom breakpoints for different screens
 ✓ State Management: Save, load, undo, and redo
 -->`;
-
-  ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

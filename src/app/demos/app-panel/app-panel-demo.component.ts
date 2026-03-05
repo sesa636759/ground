@@ -8,6 +8,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+
 @Component({
   selector: 'app-app-panel-demo',
   standalone: true,
@@ -19,6 +21,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-panel-demo.component.html',
@@ -31,8 +34,6 @@ export class AppPanelDemoComponent extends BaseDemoComponent {
     { id: 'interactivity', title: 'Interactive', icon: '🕹️' },
     { id: 'glassmorphism', title: 'Glassmorphism', icon: '🔮' },
   ];
-
-  
 
   playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">
   <div slot="content">Default card-like panel with shadow.</div>

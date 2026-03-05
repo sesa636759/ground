@@ -25,8 +25,8 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   templateUrl: './set-anchor-demo.component.html',
   styleUrl: './set-anchor-demo.component.scss',
 })
-export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetAnchorDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
     // Basic Layouts
     { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '◀️', color: '#3b82f6' },
     { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: '▶️', color: '#3b82f6' },
@@ -65,113 +65,107 @@ export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '🌲', color: '#06b6d4' },
   ];
 
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
   // Sample data for anchor items
-  verticalLeftItems = JSON.stringify([
+  verticalLeftItems = [
     { id: 'intro', label: 'Introduction' },
     { id: 'features', label: 'Features' },
     { id: 'api', label: 'API Reference' },
-  ]);
+  ];
 
-  verticalRightItems = JSON.stringify([
+  verticalRightItems = [
     { id: 'r-intro', label: 'Introduction' },
     { id: 'r-features', label: 'Features' },
     { id: 'r-api', label: 'API Reference' },
-  ]);
+  ];
 
-  horizontalTopItems = JSON.stringify([
+  horizontalTopItems = [
     { id: 't-home', label: 'Home' },
     { id: 't-about', label: 'About' },
     { id: 't-contact', label: 'Contact' },
-  ]);
+  ];
 
-  horizontalBottomItems = JSON.stringify([
+  horizontalBottomItems = [
     { id: 'b-home', label: 'Home' },
     { id: 'b-about', label: 'About' },
     { id: 'b-contact', label: 'Contact' },
-  ]);
+  ];
 
-  badgeItems = JSON.stringify([
+  badgeItems = [
     { id: 'intro-badge', label: 'Introduction', badge: '' },
     { id: 'content-badge', label: 'Main Content', badge: '5' },
     { id: 'conclusion-badge', label: 'Conclusion', badge: '' },
-  ]);
+  ];
 
-  smallItems = JSON.stringify([
+  smallItems = [
     { id: 's-1', label: 'Section 1' },
     { id: 's-2', label: 'Section 2' },
     { id: 's-3', label: 'Section 3' },
-  ]);
+  ];
 
-  mediumItems = JSON.stringify([
+  mediumItems = [
     { id: 'm-1', label: 'Section 1' },
     { id: 'm-2', label: 'Section 2' },
     { id: 'm-3', label: 'Section 3' },
-  ]);
+  ];
 
-  largeItems = JSON.stringify([
+  largeItems = [
     { id: 'l-1', label: 'Section 1' },
     { id: 'l-2', label: 'Section 2' },
     { id: 'l-3', label: 'Section 3' },
-  ]);
+  ];
 
-  numericItems = JSON.stringify([
+  numericItems = [
     { id: 'num-1', label: 'Introduction' },
     { id: 'num-2', label: 'Features' },
     { id: 'num-3', label: 'Installation' },
-  ]);
+  ];
 
-  decimalItems = JSON.stringify([
+  decimalItems = [
     { id: 'dec-1', label: 'Introduction' },
     { id: 'dec-2', label: 'Features' },
     { id: 'dec-3', label: 'Installation' },
-  ]);
+  ];
 
-  alphaItems = JSON.stringify([
+  alphaItems = [
     { id: 'alpha-1', label: 'Introduction' },
     { id: 'alpha-2', label: 'Features' },
     { id: 'alpha-3', label: 'Installation' },
-  ]);
+  ];
 
-  romanItems = JSON.stringify([
+  romanItems = [
     { id: 'roman-1', label: 'Introduction' },
     { id: 'roman-2', label: 'Features' },
     { id: 'roman-3', label: 'Installation' },
-  ]);
+  ];
 
-  affixItems = JSON.stringify([
+  affixItems = [
     { id: 'aff-1', label: 'Section 1' },
     { id: 'aff-2', label: 'Section 2' },
     { id: 'aff-3', label: 'Section 3' },
     { id: 'aff-4', label: 'Section 4' },
-  ]);
+  ];
 
-  progressItems = JSON.stringify([
+  progressItems = [
     { id: 'ch-1', label: 'Chapter 1' },
     { id: 'ch-2', label: 'Chapter 2' },
     { id: 'ch-3', label: 'Chapter 3' },
-  ]);
+  ];
 
-  hashItems = JSON.stringify([
+  hashItems = [
     { id: 'hash-intro', label: '01. Introduction' },
     { id: 'hash-features', label: '02. Features' },
     { id: 'hash-examples', label: '03. Examples' },
     { id: 'hash-api', label: '04. API Reference' },
-  ]);
+  ];
 
-  keyboardItems = JSON.stringify([
+  keyboardItems = [
     { id: 'kb-1', label: '1. Setup' },
     { id: 'kb-2', label: '2. Configure' },
     { id: 'kb-3', label: '3. Build' },
     { id: 'kb-4', label: '4. Deploy' },
-  ]);
+  ];
 
-  nestedItems = JSON.stringify([
+  nestedItems = [
     {
       id: 'n-1',
       label: '1. Getting Started',
@@ -196,7 +190,7 @@ export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit 
       ],
     },
     { id: 'n-3', label: '3. Conclusion' },
-  ]);
+  ];
 
   // Code examples
   verticalLeftCode = signal(`<ui-anchor
@@ -371,6 +365,4 @@ export class SetAnchorDemoComponent extends BaseDemoComponent implements OnInit 
   [show-numbers]="showNumbers"
   [links]="items"
 ></ui-anchor>`);
-
-  ngOnInit() {}
 }

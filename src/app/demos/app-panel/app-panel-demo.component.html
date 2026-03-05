@@ -10,95 +10,87 @@
       <app-panel-playground></app-panel-playground>
     </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
+    <div slot="examples">
+      <div class="demo-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
 
-      <div class="examples-content">
-        <!-- Visual Styles -->
-        <app-example-section
-          id="visual-styles"
-          title="Visual Styles"
-          description="Elevated, outlined, filled, and flat variants"
-          [code]="stylesCode"
-        >
-          <div class="demo-grid col-2">
-            @for (v of ['elevated', 'outlined', 'filled', 'flat']; track v) {
-              <ui-panel [attr.variant]="v" [attr.panel-title]="v | titlecase">
-                <div slot="content" style="padding: 16px">{{ v | titlecase }} panel style.</div>
-              </ui-panel>
-            }
-          </div>
-        </app-example-section>
-
-        <!-- Themes -->
-        <app-example-section
-          id="themes"
-          title="Themes"
-          description="Color-coded themed panels for status, branding, and semantic meaning"
-          [code]="themesCode"
-        >
-          <div class="demo-grid col-2">
-            @for (t of ['primary', 'success', 'warning', 'danger']; track t) {
-              <ui-panel [attr.theme]="t" [attr.panel-title]="t | titlecase">
-                <div slot="content" style="padding: 16px">{{ t | titlecase }} theme panel.</div>
-              </ui-panel>
-            }
-          </div>
-        </app-example-section>
-
-        <!-- Interactive -->
-        <app-example-section
-          id="interactivity"
-          title="Interactive"
-          description="Toggle, minimize, maximize, drag, and resize capabilities"
-          [code]="interactiveCode"
-        >
-          <ui-panel
-            toggleable
-            minimizable
-            maximizable
-            resizable
-            is-draggable
-            panel-title="Full Interactive Panel"
+        <div class="examples-content scroll-spy-container">
+          <!-- Visual Styles -->
+          <app-example-section
+            id="visual-styles"
+            title="Visual Styles"
+            description="Elevated, outlined, filled, and flat variants"
+            [code]="stylesCode"
           >
-            <div slot="content" style="padding: 16px">
-              Drag, resize, minimize, maximize or toggle me!
+            <div class="demo-grid col-2">
+              @for (v of ['elevated', 'outlined', 'filled', 'flat']; track v) {
+                <ui-panel [attr.variant]="v" [attr.panel-title]="v | titlecase">
+                  <div slot="content" style="padding: 16px">{{ v | titlecase }} panel style.</div>
+                </ui-panel>
+              }
             </div>
-          </ui-panel>
-        </app-example-section>
+          </app-example-section>
 
-        <!-- Glassmorphism -->
-        <app-example-section
-          id="glassmorphism"
-          title="Glassmorphism"
-          description="Translucent glass effect for premium depth — wrap in a gradient background"
-          [code]="glassCode"
-        >
-          <div
-            style="
-              background: linear-gradient(135deg, #667eea, #764ba2);
-              padding: 32px;
-              border-radius: 12px;
-              width: 100%;
-            "
+          <!-- Themes -->
+          <app-example-section
+            id="themes"
+            title="Themes"
+            description="Color-coded themed panels for status, branding, and semantic meaning"
+            [code]="themesCode"
           >
-            <ui-panel glass panel-title="Glass Panel">
-              <div slot="content" style="padding: 16px; color: white">
-                Translucent backdrop blur effect.
+            <div class="demo-grid col-2">
+              @for (t of ['primary', 'success', 'warning', 'danger']; track t) {
+                <ui-panel [attr.theme]="t" [attr.panel-title]="t | titlecase">
+                  <div slot="content" style="padding: 16px">{{ t | titlecase }} theme panel.</div>
+                </ui-panel>
+              }
+            </div>
+          </app-example-section>
+
+          <!-- Interactive -->
+          <app-example-section
+            id="interactivity"
+            title="Interactive"
+            description="Toggle, minimize, maximize, drag, and resize capabilities"
+            [code]="interactiveCode"
+          >
+            <ui-panel
+              toggleable
+              minimizable
+              maximizable
+              resizable
+              is-draggable
+              panel-title="Full Interactive Panel"
+            >
+              <div slot="content" style="padding: 16px">
+                Drag, resize, minimize, maximize or toggle me!
               </div>
             </ui-panel>
-          </div>
-        </app-example-section>
+          </app-example-section>
+
+          <!-- Glassmorphism -->
+          <app-example-section
+            id="glassmorphism"
+            title="Glassmorphism"
+            description="Translucent glass effect for premium depth — wrap in a gradient background"
+            [code]="glassCode"
+          >
+            <div
+              style="
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                padding: 32px;
+                border-radius: 12px;
+                width: 100%;
+              "
+            >
+              <ui-panel glass panel-title="Glass Panel">
+                <div slot="content" style="padding: 16px; color: white">
+                  Translucent backdrop blur effect.
+                </div>
+              </ui-panel>
+            </div>
+          </app-example-section>
+        </div>
       </div>
     </div>
 

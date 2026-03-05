@@ -7,6 +7,7 @@ import { AdvancedDataTablePlaygroundComponent } from './components/advanced-data
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
   selector: 'app-app-advanced-data-table-demo',
@@ -24,27 +25,23 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-advanced-data-table-demo.component.html',
   styleUrl: './app-advanced-data-table-demo.component.scss',
 })
-export class AppAdvancedDataTableDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'features', name: 'Key Features', icon: '💎', color: '#3b82f6' },
+export class AppAdvancedDataTableDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'features', title: 'Key Features', icon: '💎', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  sampleData = JSON.stringify([
+  sampleData = [
     { id: 1, name: 'Service A', load: '45%', uptime: '99.9%' },
     { id: 2, name: 'Service B', load: '12%', uptime: '100%' },
     { id: 3, name: 'Service C', load: '89%', uptime: '94.2%' },
-  ]);
+  ];
 
-  sampleCols = JSON.stringify([
+  sampleCols = [
     { field: 'name', header: 'Service Name' },
     { field: 'load', header: 'Server Load' },
     { field: 'uptime', header: 'Availability' },
-  ]);
+  ];
 
   playgroundCode = `<ui-advanced-data-table [value]="data" [columns]="cols" paginator [rows]="10"></ui-advanced-data-table>`;
 
@@ -58,11 +55,4 @@ export class AppAdvancedDataTableDemoComponent {
       }
     </ng-template>
   </ui-advanced-data-table>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

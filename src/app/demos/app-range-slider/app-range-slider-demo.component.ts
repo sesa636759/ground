@@ -9,6 +9,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-range-slider-demo',
   standalone: true,
@@ -25,16 +27,12 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-range-slider-demo.component.html',
   styleUrl: './app-range-slider-demo.component.scss',
 })
-export class AppRangeSliderDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'modes', name: 'Slider Modes', icon: '↔️', color: '#3b82f6' },
-    { id: 'layouts', name: 'Layouts', icon: '📐', color: '#10b981' },
+export class AppRangeSliderDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', title: 'Slider Modes', icon: '↔️', color: '#3b82f6' },
+    { id: 'layouts', title: 'Layouts', icon: '📐', color: '#10b981' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-range-slider [min]="0" [max]="100" [value]="[20, 80]" range></ui-range-slider>`;
 
@@ -49,11 +47,4 @@ export class AppRangeSliderDemoComponent {
 
 <!-- With Step Increments -->
 <ui-range-slider [step]="10" [min]="0" [max]="100"></ui-range-slider>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

@@ -1,4 +1,4 @@
-  import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PopoverPlaygroundComponent } from './components/popover-playground/popover-playground.component';
@@ -7,6 +7,8 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
+
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 
 @Component({
   selector: 'app-app-popover-demo',
@@ -19,6 +21,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-popover-demo.component.html',
@@ -31,8 +34,6 @@ export class AppPopoverDemoComponent extends BaseDemoComponent {
     { id: 'styles', title: 'Styles & Themes', icon: '🎨' },
     { id: 'rich-content', title: 'Rich Content', icon: '📝' },
   ];
-
-  
 
   triggersCode = `<!-- Click trigger (default) -->
 <ui-popover trigger="click" heading="Click Trigger" content="Stays open until clicked outside">

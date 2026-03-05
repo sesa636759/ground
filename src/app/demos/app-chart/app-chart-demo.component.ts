@@ -9,6 +9,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-chart-demo',
   standalone: true,
@@ -25,20 +27,16 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-chart-demo.component.html',
   styleUrl: './app-chart-demo.component.scss',
 })
-export class AppChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', name: 'Chart Types', icon: '📈', color: '#3b82f6' },
+export class AppChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'types', title: 'Chart Types', icon: '📈', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  chartData = JSON.stringify({
+  chartData = {
     labels: ['A', 'B', 'C', 'D'],
     datasets: [{ label: 'Data', data: [10, 20, 30, 40] }],
-  });
+  };
 
   playgroundCode = `<ui-chart-line [data]="data" responsive></ui-chart-line>`;
 
@@ -50,11 +48,4 @@ export class AppChartDemoComponent {
 
 <!-- Pie Chart -->
 <ui-chart type="pie" [data]="data"></ui-chart>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

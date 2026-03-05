@@ -10,93 +10,85 @@
       <app-snackbar-playground></app-snackbar-playground>
     </div>
 
-    <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
+    <div slot="examples">
+      <div class="demo-split-layout">
+        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+
+        <div class="examples-content scroll-spy-container">
+          <!-- Types -->
+          <app-example-section
+            id="types"
+            title="Types"
+            description="Built-in notification types: success, error, warning, and info"
+            [code]="typesCode"
+            language="javascript"
+          >
+            <div class="demo-flex-wrap">
+              <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
+              <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
+              <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
+              <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
+            </div>
+          </app-example-section>
+
+          <!-- Positions -->
+          <app-example-section
+            id="positions"
+            title="Positions"
+            description="Six positions — top/bottom × left/center/right. Each button fires a notification at its labelled position."
+            [code]="positionsCode"
+          >
+            <div class="demo-grid col-3" style="gap: 12px">
+              <ui-button
+                variant="secondary"
+                label="Top Left"
+                (click)="notifyAt('info', 'top-left')"
+              ></ui-button>
+              <ui-button
+                variant="secondary"
+                label="Top Center"
+                (click)="notifyAt('success', 'top-center')"
+              ></ui-button>
+              <ui-button
+                variant="secondary"
+                label="Top Right"
+                (click)="notifyAt('success', 'top-right')"
+              ></ui-button>
+              <ui-button
+                variant="secondary"
+                label="Bottom Left"
+                (click)="notifyAt('warning', 'bottom-left')"
+              ></ui-button>
+              <ui-button
+                variant="secondary"
+                label="Bottom Center"
+                (click)="notifyAt('error', 'bottom-center')"
+              ></ui-button>
+              <ui-button
+                variant="secondary"
+                label="Bottom Right"
+                (click)="notifyAt('info', 'bottom-right')"
+              ></ui-button>
+            </div>
+          </app-example-section>
+
+          <!-- Card Stack -->
+          <app-example-section
+            id="card-stack"
+            title="Card Stacking"
+            description="Stack multiple notifications visually to reduce screen clutter"
+            [code]="cardStackCode"
+          >
+            <div class="demo-flex-wrap">
+              <ui-button
+                variant="primary"
+                label="Stack Notifications"
+                (click)="notify('success')"
+              ></ui-button>
+              <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
+            </div>
+          </app-example-section>
         </div>
-      </aside>
-
-      <div class="examples-content">
-        <!-- Types -->
-        <app-example-section
-          id="types"
-          title="Types"
-          description="Built-in notification types: success, error, warning, and info"
-          [code]="typesCode"
-          language="javascript"
-        >
-          <div class="demo-flex-wrap">
-            <ui-button variant="success" label="Success" (click)="notify('success')"></ui-button>
-            <ui-button variant="danger" label="Error" (click)="notify('error')"></ui-button>
-            <ui-button variant="warning" label="Warning" (click)="notify('warning')"></ui-button>
-            <ui-button variant="secondary" label="Info" (click)="notify('info')"></ui-button>
-          </div>
-        </app-example-section>
-
-        <!-- Positions -->
-        <app-example-section
-          id="positions"
-          title="Positions"
-          description="Six positions — top/bottom × left/center/right. Each button fires a notification at its labelled position."
-          [code]="positionsCode"
-        >
-          <div class="demo-grid col-3" style="gap: 12px">
-            <ui-button
-              variant="secondary"
-              label="Top Left"
-              (click)="notifyAt('info', 'top-left')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Top Center"
-              (click)="notifyAt('success', 'top-center')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Top Right"
-              (click)="notifyAt('success', 'top-right')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Left"
-              (click)="notifyAt('warning', 'bottom-left')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Center"
-              (click)="notifyAt('error', 'bottom-center')"
-            ></ui-button>
-            <ui-button
-              variant="secondary"
-              label="Bottom Right"
-              (click)="notifyAt('info', 'bottom-right')"
-            ></ui-button>
-          </div>
-        </app-example-section>
-
-        <!-- Card Stack -->
-        <app-example-section
-          id="card-stack"
-          title="Card Stacking"
-          description="Stack multiple notifications visually to reduce screen clutter"
-          [code]="cardStackCode"
-        >
-          <div class="demo-flex-wrap">
-            <ui-button
-              variant="primary"
-              label="Stack Notifications"
-              (click)="notify('success')"
-            ></ui-button>
-            <ui-button variant="primary" label="Add Another" (click)="notify('info')"></ui-button>
-          </div>
-        </app-example-section>
       </div>
     </div>
 

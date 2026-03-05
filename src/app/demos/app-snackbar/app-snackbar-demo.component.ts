@@ -8,6 +8,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+
 @Component({
   selector: 'app-app-snackbar-demo',
   standalone: true,
@@ -19,6 +21,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ExampleSectionComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-snackbar-demo.component.html',
@@ -37,8 +40,6 @@ export class AppSnackbarDemoComponent extends BaseDemoComponent {
     { id: 'positions', title: 'Positions', icon: '📍' },
     { id: 'card-stack', title: 'Card Stacking', icon: '📚' },
   ];
-
-  
 
   typesCode = `// Add different notification types
 snackbar.add({ type: 'success', title: 'Saved!', message: 'Project pushed to main.' });

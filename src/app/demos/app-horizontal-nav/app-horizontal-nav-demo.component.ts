@@ -7,6 +7,8 @@ import { HorizontalNavPlaygroundComponent } from './components/horizontal-nav-pl
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-horizontal-nav-demo',
   standalone: true,
@@ -22,22 +24,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-horizontal-nav-demo.component.html',
   styleUrl: './app-horizontal-nav-demo.component.scss',
 })
-export class AppHorizontalNavDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'themes', name: 'Themes', icon: '🎨', color: '#3b82f6' },
+export class AppHorizontalNavDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'themes', title: 'Themes', icon: '🎨', color: '#3b82f6' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  navItems = JSON.stringify([
+  navItems = [
     { label: 'Dashboard', icon: '📊' },
     { label: 'Analytics', icon: '📈' },
     { label: 'Reports', icon: '📄' },
     { label: 'Settings', icon: '⚙️' },
-  ]);
+  ];
 
   playgroundCode = `<ui-horizontal-nav [model]="items" sticky></ui-horizontal-nav>`;
 
@@ -46,11 +44,4 @@ export class AppHorizontalNavDemoComponent {
 
 <!-- Light Theme with Sticky -->
 <ui-horizontal-nav theme="light" sticky [model]="items"></ui-horizontal-nav>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

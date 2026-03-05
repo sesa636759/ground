@@ -34,7 +34,7 @@ export class TimelinePlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 
-  timelineItems = JSON.stringify([
+  timelineItems = [
     {
       id: '1',
       title: 'Project Started',
@@ -76,7 +76,7 @@ export class TimelinePlaygroundComponent extends BasePlaygroundComponent {
       iconBackground: '#ef4444',
       dotColor: '#ef4444',
     },
-  ]);
+  ];
 
   updateConfig() {
     let code = `<app-timeline\n`;

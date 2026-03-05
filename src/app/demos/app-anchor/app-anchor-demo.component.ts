@@ -25,29 +25,22 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   styleUrl: './app-anchor-demo.component.scss',
 })
 export class AppAnchorDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+  exampleVariants = [
     { id: 'types', title: 'Marker Styles', icon: '📝', color: '#3b82f6' },
     { id: 'orientation', title: 'Orientation', icon: '↔️', color: '#10b981' },
     { id: 'auto-gen', title: 'Headings Auto-Detection', icon: '⚙️', color: '#f59e0b' },
   ];
 
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
-  links = JSON.stringify([
+  links = [
     { id: 'intro', label: 'Introduction', target: 'intro-section' },
     { id: 'usage', label: 'Quick Usage', target: 'usage-section' },
     { id: 'props', label: 'Properties', target: 'props-section' },
-  ]);
+  ];
 
   playgroundCode = `<ui-anchor
   orientation="vertical"
   type="line"
   [links]="linksJson"
-  scroll-container="#my-scroll-area"
 ></ui-anchor>`;
 
   typesCode = `<ui-anchor type="line" [links]="links"></ui-anchor>

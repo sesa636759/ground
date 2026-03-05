@@ -6,34 +6,40 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-radial-bar-demo',
   standalone: true,
-  imports: [CommonModule, RadialBarPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    RadialBarPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './radial-bar-demo.component.html',
   styleUrl: './radial-bar-demo.component.scss',
 })
-export class RadialBarDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',  icon: '🎮', color: '#8b5cf6' },
-    { id: 'kpi-ring',   name: 'KPI Rings',   icon: '🎯', color: '#6366f1' },
-    { id: 'single',     name: 'Single Ring', icon: '⭕', color: '#10b981' },
-    { id: 'gauge',      name: 'Gauge',       icon: '⏱️', color: '#f59e0b' },
+export class RadialBarDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'kpi', title: 'KPI Rings', icon: '🎯', color: '#6366f1' },
+    { id: 'skills', title: 'Skills Radar', icon: '💼', color: '#10b981' },
   ];
 
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
-
   kpiBars = [
-    { label: 'Revenue',    value: 88, color: '#6366f1' },
-    { label: 'Users',      value: 72, color: '#10b981' },
+    { label: 'Revenue', value: 88, color: '#6366f1' },
+    { label: 'Users', value: 72, color: '#10b981' },
     { label: 'Conversion', value: 61, color: '#f59e0b' },
-    { label: 'Retention',  value: 45, color: '#0ea5e9' },
-    { label: 'NPS',        value: 93, color: '#f43f5e' },
+    { label: 'Retention', value: 45, color: '#0ea5e9' },
+    { label: 'NPS', value: 93, color: '#f43f5e' },
   ];
 
   getR(i: number, size = 280, tw = 18, gap = 8): number {
-    return (size / 2) - (tw / 2) - 4 - i * (tw + gap);
+    return size / 2 - tw / 2 - 4 - i * (tw + gap);
   }
 
   getDash(v: number, r: number): string {

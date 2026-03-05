@@ -8,6 +8,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-stepper-demo',
   standalone: true,
@@ -24,24 +26,20 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-stepper-demo.component.html',
   styleUrl: './app-stepper-demo.component.scss',
 })
-export class AppStepperDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'orientation', name: 'Orientation', icon: '📐', color: '#3b82f6' },
-    { id: 'visuals', name: 'Visual Types', icon: '🎨', color: '#10b981' },
-    { id: 'validation', name: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
+export class AppStepperDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'orientation', title: 'Orientation', icon: '📐', color: '#3b82f6' },
+    { id: 'visuals', title: 'Visual Types', icon: '🎨', color: '#10b981' },
+    { id: 'validation', title: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
   ];
 
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  steps = JSON.stringify([
+  steps = [
     { id: '1', label: 'Start', status: 'completed' },
     { id: '2', label: 'Processing', status: 'active' },
     { id: '3', label: 'Verification' },
     { id: '4', label: 'Done' },
-  ]);
+  ];
 
   playgroundCode = `<ui-stepper 
   [steps]="steps" 
@@ -66,11 +64,4 @@ export class AppStepperDemoComponent {
 
 <!-- Linear: strict sequential completion -->
 <ui-stepper flow="linear"></ui-stepper>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

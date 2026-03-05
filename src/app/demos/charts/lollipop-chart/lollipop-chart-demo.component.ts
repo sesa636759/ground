@@ -6,23 +6,30 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-lollipop-chart-demo',
   standalone: true,
-  imports: [CommonModule, LollipopChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    LollipopChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './lollipop-chart-demo.component.html',
   styleUrl: './lollipop-chart-demo.component.scss',
 })
-export class LollipopChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',    icon: '🎮', color: '#8b5cf6' },
-    { id: 'vertical',   name: 'Vertical',       icon: '🍭', color: '#6366f1' },
-    { id: 'horizontal', name: 'Horizontal',     icon: '↔️',  color: '#10b981' },
-    { id: 'gradient',   name: 'Multi-color',    icon: '🌈', color: '#f59e0b' },
+export class LollipopChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'vertical', title: 'Vertical', icon: '🍭', color: '#6366f1' },
+    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#10b981' },
+    { id: 'gradient', title: 'Multi-color', icon: '🌈', color: '#f59e0b' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   verticalCode = `<!-- Vertical Lollipop Chart (SVG) -->
 <svg width="560" height="300">
