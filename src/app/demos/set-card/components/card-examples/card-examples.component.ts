@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExampleSectionComponent } from '../../../../shared/components/example-section/example-section.component';
+import { BaseDemoComponent } from '../../../../shared/base-demo.component';
 
 @Component({
   selector: 'app-set-card-examples',
@@ -10,7 +11,7 @@ import { ExampleSectionComponent } from '../../../../shared/components/example-s
   templateUrl: './card-examples.component.html',
   styleUrl: './card-examples.component.scss',
 })
-export class SetCardExamplesComponent {
+export class SetCardExamplesComponent extends BaseDemoComponent {
   variants = [
     { id: 'basic-cards', name: 'Basic Cards', icon: '📋' },
     { id: 'media-covers', name: 'Media & Covers', icon: '🖼️' },
@@ -18,6 +19,14 @@ export class SetCardExamplesComponent {
     { id: 'premium-features', name: 'Premium Layouts', icon: '🏆' },
     { id: 'states-interaction', name: 'States & Interaction', icon: '🔄' },
   ];
+
+  get exampleVariants() {
+    return this.variants.map((v) => ({
+      id: v.id,
+      title: v.name,
+      icon: v.icon,
+    }));
+  }
 
   isLoading = false;
 
