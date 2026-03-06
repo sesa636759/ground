@@ -144,7 +144,7 @@ ui-button.reset-btn {
     .playground-preview {
         position: sticky;
         // top: 1rem;
-        max-height: calc(100vh - 8rem);
+        max-height: calc(100vh - 25rem);
         overflow-y: auto;
         outline: 2px solid var(--border-color);
         outline-offset: -2px;

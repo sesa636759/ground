@@ -16,30 +16,22 @@
       </div>
     }
 
-    <!-- Text -->
     <div class="header-text">
       <div class="eyebrow">
         <span class="eyebrow-pip"></span>
         <span class="eyebrow-label">Component</span>
       </div>
 
-      <ui-tooltip [content]="titleContent" position="bottom" variant="dark">
-        <h2
-          class="header-title"
-          slot="target"
-          #titleEl
-          (mouseenter)="checkTitleTruncation(titleEl)"
-        >
-          {{ title }}
-        </h2>
-      </ui-tooltip>
+      <h2 class="header-title" #titleEl (mouseenter)="checkTitleTruncation(titleEl)">
+        {{ title | titlecase }}
+      </h2>
 
       @if (description) {
-        <ui-tooltip [content]="tooltipContent" position="bottom" variant="dark" max-width="400">
-          <p class="header-desc" slot="target" #descEl (mouseenter)="checkTruncation(descEl)">
+        <div class="header-description">
+          <p class="header-desc">
             {{ description }}
           </p>
-        </ui-tooltip>
+        </div>
       }
     </div>
 

@@ -6,8 +6,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
-import { BaseDemoComponent } from '../../shared/base-demo.component';
-
+import { BaseDemoComponent, DemoVariant } from '../../shared/base-demo.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 
 @Component({
@@ -28,12 +27,12 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   styleUrl: './app-smart-menu-demo.component.scss',
 })
 export class AppSmartMenuDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'nested', title: 'Nested Menus', icon: '🗂️' },
-    { id: 'icons', title: 'With Icons', icon: '🎯' },
-    { id: 'separators', title: 'Separators', icon: '➖' },
-    { id: 'disabled', title: 'Disabled Items', icon: '🚫' },
+  override exampleVariants: DemoVariant[] = [
+    { id: 'playground', title: 'Playground', icon: '🎮', iconLibrary: 'emoji' },
+    { id: 'nested', title: 'Nested Menus', icon: '🗂️', iconLibrary: 'emoji' },
+    { id: 'icons', title: 'With Icons', icon: '🎯', iconLibrary: 'emoji' },
+    { id: 'separators', title: 'Separators', icon: '➖', iconLibrary: 'emoji' },
+    { id: 'disabled', title: 'Disabled Items', icon: '🚫', iconLibrary: 'emoji' },
   ];
 
   nestedCode = `<!-- Right-click on the target area to open the menu -->

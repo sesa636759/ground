@@ -406,20 +406,26 @@
 }
 
 /* Description */
+.header-description {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .header-desc {
   margin: 0;
   font-size: 0.875rem;
-  color: var(--text-secondary, #475569);
+  color: #22c55e; // Green
   line-height: 1.5;
-  font-weight: 400;
-  animation: descIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
-  // Single-line truncation
+  font-weight: 500;
+  animation: descIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  // Multi-line support
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   max-width: 100%;
   cursor: default;
+  word-break: break-word;
 }
 
 /* ── Spinning decorative rings ──────────────────────── */
@@ -444,8 +450,8 @@
   width: 22px;
   height: 22px;
   border-width: 2.5px;
-  border-top-color: rgba(79, 70, 229, 0.7);
-  border-right-color: rgba(79, 70, 229, 0.2);
+  border-top-color: rgba(19, 233, 11, 0.7);
+  border-right-color: rgba(6, 250, 47, 0.2);
   animation: rotateCW 3s linear infinite;
 }
 
@@ -453,7 +459,7 @@
   width: 46px;
   height: 46px;
   border-width: 2px;
-  border-top-color: rgba(139, 92, 246, 0.45);
+  border-top-color: rgba(29, 207, 38, 0.45);
   border-left-color: rgba(139, 92, 246, 0.15);
   animation: rotateCCW 7s linear infinite;
 }
@@ -462,7 +468,7 @@
   width: 74px;
   height: 74px;
   border-width: 1.5px;
-  border-top-color: rgba(99, 102, 241, 0.28);
+  border-top-color: rgba(27, 197, 35, 0.28);
   border-right-color: rgba(99, 102, 241, 0.08);
   animation: rotateCW 14s linear infinite;
 }
@@ -471,8 +477,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary, #4f46e5), #7c3aed);
-  box-shadow: 0 0 10px var(--primary-glow, rgba(79, 70, 229, 0.65));
+  background: linear-gradient(135deg, var(--primary, #16d410), #46ee04);
+  box-shadow: 0 0 10px var(--primary-glow, rgba(43, 219, 8, 0.65));
   animation: dotPulse 2.2s ease-in-out infinite;
 }
 

@@ -4,7 +4,7 @@
     <li *ngFor="let variant of variants">
       <a (click)="onLinkClick(variant.id, $event)" [class.active]="activeId === variant.id">
         <span class="nav-icon" *ngIf="variant.icon || variant.emoji">
-          <ui-icon [name]="variant.icon" [library]="variant.library"></ui-icon>
+          <ui-icon [name]="variant.icon" [library]="variant.iconLibrary"></ui-icon>
         </span>
         {{ variant.label || variant.title || variant.name || variant.id }}
       </a>
