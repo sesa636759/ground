@@ -1,5 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
@@ -18,24 +19,20 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     RatingPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-rating-demo.component.html',
   styleUrl: './app-rating-demo.component.scss',
 })
-export class AppRatingDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', name: 'Rating Types', icon: '✨', color: '#3b82f6' },
-    { id: 'colors', name: 'Colors & sizes', icon: '🌈', color: '#10b981' },
-    { id: 'custom', name: 'Custom Labels', icon: '📝', color: '#f59e0b' },
+export class AppRatingDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'types', title: 'Rating Types', icon: '✨', color: '#3b82f6' },
+    { id: 'colors', title: 'Colors & sizes', icon: '🌈', color: '#10b981' },
+    { id: 'custom', title: 'Custom Labels', icon: '📝', color: '#f59e0b' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-rating type="star" [value]="3" max="5"></ui-rating>`;
 
@@ -58,11 +55,4 @@ export class AppRatingDemoComponent {
   labels='["Terrible", "Bad", "OK", "Good", "Excellent"]'
   show-value
 ></ui-rating>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

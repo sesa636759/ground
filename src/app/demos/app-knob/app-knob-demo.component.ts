@@ -1,5 +1,5 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
@@ -8,6 +8,7 @@ import { KnobPlaygroundComponent } from './components/knob-playground/knob-playg
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 
 @Component({
   selector: 'app-app-knob-demo',
@@ -25,16 +26,12 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-knob-demo.component.html',
   styleUrl: './app-knob-demo.component.scss',
 })
-export class AppKnobDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'styles', name: 'Visual Styles', icon: '🎨', color: '#3b82f6' },
-    { id: 'readonly', name: 'States', icon: '🔒', color: '#10b981' },
+export class AppKnobDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'styles', title: 'Visual Styles', icon: '🎨', color: '#3b82f6' },
+    { id: 'readonly', title: 'States', icon: '🔒', color: '#10b981' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-knob [value]="50" [size]="150" value-color="#3b82f6"></ui-knob>`;
 
@@ -46,11 +43,4 @@ export class AppKnobDemoComponent {
 
   readonlyCode = `<!-- Readonly Display -->
 <ui-knob [value]="75" readonly></ui-knob>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

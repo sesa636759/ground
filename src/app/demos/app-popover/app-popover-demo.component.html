@@ -10,115 +10,112 @@
       <app-popover-playground></app-popover-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
-        <div class="examples-content scroll-spy-container">
-          <!-- Triggers -->
-          <app-example-section
-            id="triggers"
-            title="Triggers"
-            description="Click, hover, or focus — different ways to open the popover"
-            [code]="triggersCode"
-          >
-            <div class="demo-flex-wrap">
-              <ui-popover
-                trigger="click"
-                heading="Click Trigger"
-                content="Stays open until clicked outside."
-              >
-                <ui-button label="Click Me" variant="primary"></ui-button>
-              </ui-popover>
-              <ui-popover trigger="hover" heading="Hover Trigger" content="Visible while hovering.">
-                <ui-button label="Hover Me" variant="secondary"></ui-button>
-              </ui-popover>
-              <ui-popover
-                trigger="focus"
-                heading="Focus Trigger"
-                content="Visible while this input is focused."
-              >
-                <ui-input
-                  type="text"
-                  placeholder="Focus Me"
-                  style="padding: 8px; border: 1px solid var(--color-border); border-radius: 6px"
-                ></ui-input>
-              </ui-popover>
-            </div>
-          </app-example-section>
-
-          <!-- Placements -->
-          <app-example-section
-            id="placements"
-            title="Placements"
-            description="Position the popover on any of the four sides"
-            [code]="placementsCode"
-          >
-            <div class="demo-flex-wrap">
-              <ui-popover placement="top" content="Top Popover">
-                <ui-button label="Top" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover placement="bottom" content="Bottom Popover">
-                <ui-button label="Bottom" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover placement="left" content="Left Popover">
-                <ui-button label="Left" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover placement="right" content="Right Popover">
-                <ui-button label="Right" variant="secondary"></ui-button
-              ></ui-popover>
-            </div>
-          </app-example-section>
-
-          <!-- Styles -->
-          <app-example-section
-            id="styles"
-            title="Styles & Themes"
-            description="Light, dark, with backdrop, or with a close button"
-            [code]="stylesCode"
-          >
-            <div class="demo-flex-wrap">
-              <ui-popover variant="light" heading="Light" content="Clean light style.">
-                <ui-button label="Light" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover variant="dark" heading="Dark" content="Rich dark style.">
-                <ui-button label="Dark" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover backdrop heading="Backdrop" content="Dims background.">
-                <ui-button label="Backdrop" variant="secondary"></ui-button
-              ></ui-popover>
-              <ui-popover show-close-button heading="Close Button" content="Has dismiss X.">
-                <ui-button label="Close Btn" variant="secondary"></ui-button
-              ></ui-popover>
-            </div>
-          </app-example-section>
-
-          <!-- Rich Content -->
-          <app-example-section
-            id="rich-content"
-            title="Rich Content"
-            description="Use the default slot to project any HTML into the popover body"
-            [code]="richContentCode"
-          >
-            <ui-popover heading="User Profile" interactive>
-              <ui-button label="View Profile" variant="primary"></ui-button>
-              <div
-                slot="content"
-                style="display: flex; gap: 12px; align-items: center; padding: 4px"
-              >
-                <img
-                  src="https://ui-avatars.com/api/?name=PK&background=6366f1&color=fff"
-                  style="width: 40px; height: 40px; border-radius: 50%"
-                  alt="Avatar"
-                />
-                <div>
-                  <strong style="display: block">Praveen Kumar</strong>
-                  <span style="font-size: 12px; color: #6b7280">Lead Architect</span>
-                </div>
-              </div>
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Triggers -->
+        <app-example-section
+          id="triggers"
+          title="Triggers"
+          description="Click, hover, or focus — different ways to open the popover"
+          [code]="triggersCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-popover
+              trigger="click"
+              heading="Click Trigger"
+              content="Stays open until clicked outside."
+            >
+              <ui-button label="Click Me" variant="primary"></ui-button>
             </ui-popover>
-          </app-example-section>
-        </div>
+            <ui-popover trigger="hover" heading="Hover Trigger" content="Visible while hovering.">
+              <ui-button label="Hover Me" variant="secondary"></ui-button>
+            </ui-popover>
+            <ui-popover
+              trigger="focus"
+              heading="Focus Trigger"
+              content="Visible while this input is focused."
+            >
+              <ui-input
+                type="text"
+                placeholder="Focus Me"
+                style="padding: 8px; border: 1px solid var(--color-border); border-radius: 6px"
+              ></ui-input>
+            </ui-popover>
+          </div>
+        </app-example-section>
+
+        <!-- Placements -->
+        <app-example-section
+          id="placements"
+          title="Placements"
+          description="Position the popover on any of the four sides"
+          [code]="placementsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-popover placement="top" content="Top Popover">
+              <ui-button label="Top" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover placement="bottom" content="Bottom Popover">
+              <ui-button label="Bottom" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover placement="left" content="Left Popover">
+              <ui-button label="Left" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover placement="right" content="Right Popover">
+              <ui-button label="Right" variant="secondary"></ui-button
+            ></ui-popover>
+          </div>
+        </app-example-section>
+
+        <!-- Styles -->
+        <app-example-section
+          id="styles"
+          title="Styles & Themes"
+          description="Light, dark, with backdrop, or with a close button"
+          [code]="stylesCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-popover variant="light" heading="Light" content="Clean light style.">
+              <ui-button label="Light" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover variant="dark" heading="Dark" content="Rich dark style.">
+              <ui-button label="Dark" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover backdrop heading="Backdrop" content="Dims background.">
+              <ui-button label="Backdrop" variant="secondary"></ui-button
+            ></ui-popover>
+            <ui-popover show-close-button heading="Close Button" content="Has dismiss X.">
+              <ui-button label="Close Btn" variant="secondary"></ui-button
+            ></ui-popover>
+          </div>
+        </app-example-section>
+
+        <!-- Rich Content -->
+        <app-example-section
+          id="rich-content"
+          title="Rich Content"
+          description="Use the default slot to project any HTML into the popover body"
+          [code]="richContentCode"
+        >
+          <ui-popover heading="User Profile" interactive>
+            <ui-button label="View Profile" variant="primary"></ui-button>
+            <div slot="content" style="display: flex; gap: 12px; align-items: center; padding: 4px">
+              <img
+                src="https://ui-avatars.com/api/?name=PK&background=6366f1&color=fff"
+                style="width: 40px; height: 40px; border-radius: 50%"
+                alt="Avatar"
+              />
+              <div>
+                <strong style="display: block">Praveen Kumar</strong>
+                <span style="font-size: 12px; color: #6b7280">Lead Architect</span>
+              </div>
+            </div>
+          </ui-popover>
+        </app-example-section>
       </div>
     </div>
 

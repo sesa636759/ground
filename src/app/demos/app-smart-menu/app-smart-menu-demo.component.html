@@ -10,11 +10,12 @@
       <app-smart-menu-playground></app-smart-menu-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
-        <div class="examples-content scroll-spy-container">
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
           <!-- Nested Menus -->
           <app-example-section
             id="nested"

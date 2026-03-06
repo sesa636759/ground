@@ -29,6 +29,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 })
 export class AppPopoverDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'triggers', title: 'Triggers', icon: '⚡' },
     { id: 'placements', title: 'Placements', icon: '📍' },
     { id: 'styles', title: 'Styles & Themes', icon: '🎨' },

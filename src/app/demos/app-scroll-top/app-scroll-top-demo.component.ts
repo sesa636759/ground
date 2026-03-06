@@ -1,11 +1,12 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollTopPlaygroundComponent } from './components/scroll-top-playground/scroll-top-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 
 @Component({
   selector: 'app-app-scroll-top-demo',
@@ -16,22 +17,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ScrollTopPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-scroll-top-demo.component.html',
   styleUrl: './app-scroll-top-demo.component.scss',
 })
-export class AppScrollTopDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'shapes', name: 'Shapes & Icons', icon: '💎', color: '#3b82f6' },
+export class AppScrollTopDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'shapes', title: 'Shapes & Icons', icon: '💎', color: '#3b82f6' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-scroll-top threshold="400" icon="↑"></ui-scroll-top>`;
 
@@ -40,11 +37,4 @@ export class AppScrollTopDemoComponent {
 
 <!-- Circle with Custom Icon -->
 <ui-scroll-top shape="circle" icon="🚀"></ui-scroll-top>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

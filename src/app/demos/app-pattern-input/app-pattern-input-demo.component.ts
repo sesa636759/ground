@@ -1,5 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,22 +18,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     PatternInputPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pattern-input-demo.component.html',
   styleUrl: './app-pattern-input-demo.component.scss',
 })
-export class AppPatternInputDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'patterns', name: 'Common Patterns', icon: '🎭', color: '#3b82f6' },
+export class AppPatternInputDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'patterns', title: 'Common Patterns', icon: '🎭', color: '#3b82f6' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-pattern-input mask="(999) 999-9999" placeholder="Phone"></ui-pattern-input>`;
 
@@ -44,11 +41,4 @@ export class AppPatternInputDemoComponent {
 
 <!-- SSN -->
 <ui-pattern-input mask="999-99-9999"></ui-pattern-input>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

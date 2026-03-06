@@ -29,6 +29,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 })
 export class AppPanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
     { id: 'themes', title: 'Themes', icon: '🌈' },
     { id: 'interactivity', title: 'Interactive', icon: '🕹️' },

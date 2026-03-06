@@ -29,6 +29,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 })
 export class AppSmartMenuDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'nested', title: 'Nested Menus', icon: '🗂️' },
     { id: 'icons', title: 'With Icons', icon: '🎯' },
     { id: 'separators', title: 'Separators', icon: '➖' },

@@ -29,6 +29,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 })
 export class AppSkeletonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'shapes', title: 'Shapes & Animations', icon: '🌀' },
     { id: 'card-layout', title: 'Card Layout', icon: '🃏' },
     { id: 'list-layout', title: 'List Layout', icon: '📋' },

@@ -1,5 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,22 +18,18 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     LayoutManagerPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-layout-manager-demo.component.html',
   styleUrl: './app-layout-manager-demo.component.scss',
 })
-export class AppLayoutManagerDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'modes', name: 'Layout Modes', icon: '🗂️', color: '#3b82f6' },
+export class AppLayoutManagerDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-layout-manager mode="docking" resizable closable>
   <div slot="panel-1">Main Content</div>
@@ -48,11 +45,4 @@ export class AppLayoutManagerDemoComponent {
 <ui-layout-manager mode="grid">
   <!-- Panels arranged in a grid -->
 </ui-layout-manager>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

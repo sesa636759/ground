@@ -1,5 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -17,23 +18,19 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     PillPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
-    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-pill-demo.component.html',
   styleUrl: './app-pill-demo.component.scss',
 })
-export class AppPillDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'styling', name: 'Styling Variants', icon: '🎨', color: '#3b82f6' },
-    { id: 'features', name: 'Special Features', icon: '🚀', color: '#10b981' },
+export class AppPillDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'styling', title: 'Styling Variants', icon: '🎨', color: '#3b82f6' },
+    { id: 'features', title: 'Special Features', icon: '🚀', color: '#10b981' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-pill label="New Tag" variant="soft" color="primary"></ui-pill>`;
 
@@ -54,11 +51,4 @@ export class AppPillDemoComponent {
 
 <!-- Loading State -->
 <ui-pill loading label="Saving..."></ui-pill>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

@@ -10,138 +10,130 @@
       <app-skeleton-playground></app-skeleton-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
-        <div class="examples-content scroll-spy-container">
-          <!-- Shapes & Animations -->
-          <app-example-section
-            id="shapes"
-            title="Shapes & Animations"
-            description="All shape variants — circle, text, rectangle, avatar, card, list-item, button, image — with pulse and wave animations"
-            [code]="shapesCode"
-          >
-            <div style="display: flex; flex-direction: column; gap: 20px; width: 100%">
-              <!-- Avatar + text row -->
-              <div style="display: flex; align-items: center; gap: 12px">
-                <skeleton-loader shape="avatar" size="lg"></skeleton-loader>
-                <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
-                  <skeleton-loader
-                    shape="text"
-                    width="60%"
-                    animation-type="pulse"
-                  ></skeleton-loader>
-                  <skeleton-loader
-                    shape="text"
-                    width="40%"
-                    animation-type="pulse"
-                  ></skeleton-loader>
-                </div>
-              </div>
-              <!-- Rectangle wave -->
-              <skeleton-loader
-                shape="rectangle"
-                width="100%"
-                height="120px"
-                animation-type="wave"
-              ></skeleton-loader>
-              <!-- Button, circle, square row -->
-              <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
-                <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>
-                <skeleton-loader shape="square" width="48px" height="48px"></skeleton-loader>
-                <skeleton-loader shape="button" width="100px" size="md"></skeleton-loader>
-                <skeleton-loader shape="rounded" width="120px" height="20px"></skeleton-loader>
-              </div>
-              <!-- Card shape -->
-              <skeleton-loader shape="card" width="100%"></skeleton-loader>
-              <!-- List-item shape x3 -->
-              @for (i of [1, 2, 3]; track i) {
-                <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
-              }
-            </div>
-          </app-example-section>
-
-          <!-- Card Layout -->
-          <app-example-section
-            id="card-layout"
-            title="Card Layout"
-            description="Skeleton placeholder composing a media card with thumbnail and text lines"
-            [code]="cardLayoutCode"
-          >
-            <div
-              style="
-                display: flex;
-                gap: 12px;
-                padding: 16px;
-                border: 1px solid var(--color-border);
-                border-radius: 8px;
-                width: 100%;
-                box-sizing: border-box;
-              "
-            >
-              <skeleton-loader
-                shape="rectangle"
-                width="80px"
-                height="80px"
-                style="flex-shrink: 0"
-              ></skeleton-loader>
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Shapes & Animations -->
+        <app-example-section
+          id="shapes"
+          title="Shapes & Animations"
+          description="All shape variants — circle, text, rectangle, avatar, card, list-item, button, image — with pulse and wave animations"
+          [code]="shapesCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 20px; width: 100%">
+            <!-- Avatar + text row -->
+            <div style="display: flex; align-items: center; gap: 12px">
+              <skeleton-loader shape="avatar" size="lg"></skeleton-loader>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
-                <skeleton-loader shape="text" width="70%" height="18px"></skeleton-loader>
-                <skeleton-loader shape="text" width="40%" height="14px"></skeleton-loader>
-                <skeleton-loader shape="text" width="55%" height="14px"></skeleton-loader>
+                <skeleton-loader shape="text" width="60%" animation-type="pulse"></skeleton-loader>
+                <skeleton-loader shape="text" width="40%" animation-type="pulse"></skeleton-loader>
               </div>
             </div>
-          </app-example-section>
-
-          <!-- List Layout -->
-          <app-example-section
-            id="list-layout"
-            title="List Layout"
-            description="Row-by-row skeleton for list or feed views using the built-in list-item shape"
-            [code]="listLayoutCode"
-          >
-            <div style="display: flex; flex-direction: column; gap: 10px; width: 100%">
-              @for (item of [1, 2, 3, 4]; track item) {
-                <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
-              }
+            <!-- Rectangle wave -->
+            <skeleton-loader
+              shape="rectangle"
+              width="100%"
+              height="120px"
+              animation-type="wave"
+            ></skeleton-loader>
+            <!-- Button, circle, square row -->
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+              <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>
+              <skeleton-loader shape="square" width="48px" height="48px"></skeleton-loader>
+              <skeleton-loader shape="button" width="100px" size="md"></skeleton-loader>
+              <skeleton-loader shape="rounded" width="120px" height="20px"></skeleton-loader>
             </div>
-          </app-example-section>
+            <!-- Card shape -->
+            <skeleton-loader shape="card" width="100%"></skeleton-loader>
+            <!-- List-item shape x3 -->
+            @for (i of [1, 2, 3]; track i) {
+              <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
+            }
+          </div>
+        </app-example-section>
 
-          <!-- Profile Layout -->
-          <app-example-section
-            id="profile-layout"
-            title="Profile Layout"
-            description="Centered skeleton for user profile pages"
-            [code]="profileLayoutCode"
+        <!-- Card Layout -->
+        <app-example-section
+          id="card-layout"
+          title="Card Layout"
+          description="Skeleton placeholder composing a media card with thumbnail and text lines"
+          [code]="cardLayoutCode"
+        >
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              padding: 16px;
+              border: 1px solid var(--color-border);
+              border-radius: 8px;
+              width: 100%;
+              box-sizing: border-box;
+            "
           >
-            <div style="text-align: center; padding: 24px; width: 100%">
-              <skeleton-loader
-                shape="avatar"
-                size="2xl"
-                style="margin: 0 auto; display: block"
-              ></skeleton-loader>
-              <skeleton-loader
-                shape="text"
-                width="120px"
-                height="20px"
-                style="margin: 12px auto 0; display: block"
-              ></skeleton-loader>
-              <skeleton-loader
-                shape="text"
-                width="80px"
-                height="14px"
-                style="margin: 8px auto 0; display: block"
-              ></skeleton-loader>
-              <skeleton-loader
-                shape="button"
-                width="160px"
-                size="lg"
-                style="margin: 16px auto 0; display: block"
-              ></skeleton-loader>
+            <skeleton-loader
+              shape="rectangle"
+              width="80px"
+              height="80px"
+              style="flex-shrink: 0"
+            ></skeleton-loader>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
+              <skeleton-loader shape="text" width="70%" height="18px"></skeleton-loader>
+              <skeleton-loader shape="text" width="40%" height="14px"></skeleton-loader>
+              <skeleton-loader shape="text" width="55%" height="14px"></skeleton-loader>
             </div>
-          </app-example-section>
-        </div>
+          </div>
+        </app-example-section>
+
+        <!-- List Layout -->
+        <app-example-section
+          id="list-layout"
+          title="List Layout"
+          description="Row-by-row skeleton for list or feed views using the built-in list-item shape"
+          [code]="listLayoutCode"
+        >
+          <div style="display: flex; flex-direction: column; gap: 10px; width: 100%">
+            @for (item of [1, 2, 3, 4]; track item) {
+              <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
+            }
+          </div>
+        </app-example-section>
+
+        <!-- Profile Layout -->
+        <app-example-section
+          id="profile-layout"
+          title="Profile Layout"
+          description="Centered skeleton for user profile pages"
+          [code]="profileLayoutCode"
+        >
+          <div style="text-align: center; padding: 24px; width: 100%">
+            <skeleton-loader
+              shape="avatar"
+              size="2xl"
+              style="margin: 0 auto; display: block"
+            ></skeleton-loader>
+            <skeleton-loader
+              shape="text"
+              width="120px"
+              height="20px"
+              style="margin: 12px auto 0; display: block"
+            ></skeleton-loader>
+            <skeleton-loader
+              shape="text"
+              width="80px"
+              height="14px"
+              style="margin: 8px auto 0; display: block"
+            ></skeleton-loader>
+            <skeleton-loader
+              shape="button"
+              width="160px"
+              size="lg"
+              style="margin: 16px auto 0; display: block"
+            ></skeleton-loader>
+          </div>
+        </app-example-section>
       </div>
     </div>
 

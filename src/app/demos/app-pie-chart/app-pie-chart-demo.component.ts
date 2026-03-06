@@ -1,5 +1,6 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PieChartPlaygroundComponent } from './components/pie-chart-playground/pie-chart-playground.component';
@@ -23,39 +24,39 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-pie-chart-demo.component.html',
   styleUrl: './app-pie-chart-demo.component.scss',
 })
-export class AppPieChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'pie', name: 'Pie Chart', icon: '🥧', color: '#6366f1' },
-    { id: 'doughnut', name: 'Doughnut', icon: '🍩', color: '#f59e0b' },
-    { id: 'polar-area', name: 'Polar Area', icon: '🌐', color: '#10b981' },
-    { id: 'multi-ring', name: 'Multi Ring', icon: '🎯', color: '#0ea5e9' },
+export class AppPieChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'pie', title: 'Pie Chart', icon: '🥧', color: '#6366f1' },
+    { id: 'doughnut', title: 'Doughnut', icon: '🍩', color: '#f59e0b' },
+    { id: 'polar-area', title: 'Polar Area', icon: '🌐', color: '#10b981' },
+    { id: 'multi-ring', title: 'Multi Ring', icon: '🎯', color: '#0ea5e9' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   // ── Pie: Sales by region ──
   pieData = {
     labels: ['North', 'South', 'East', 'West', 'Central'],
-    datasets: [{
-      data: [35, 20, 18, 15, 12],
-      backgroundColor: ['#6366f1', '#f59e0b', '#10b981', '#0ea5e9', '#f43f5e'],
-      borderWidth: 2,
-      borderColor: '#ffffff',
-    }],
+    datasets: [
+      {
+        data: [35, 20, 18, 15, 12],
+        backgroundColor: ['#6366f1', '#f59e0b', '#10b981', '#0ea5e9', '#f43f5e'],
+        borderWidth: 2,
+        borderColor: '#ffffff',
+      },
+    ],
   };
 
   // ── Doughnut: Budget allocation ──
   doughnutData = {
     labels: ['Engineering', 'Marketing', 'Operations', 'HR', 'R&D'],
-    datasets: [{
-      data: [40, 15, 20, 10, 15],
-      backgroundColor: ['#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#ddd6fe'],
-      borderWidth: 2,
-      borderColor: '#ffffff',
-    }],
+    datasets: [
+      {
+        data: [40, 15, 20, 10, 15],
+        backgroundColor: ['#6366f1', '#8b5cf6', '#a78bfa', '#c4b5fd', '#ddd6fe'],
+        borderWidth: 2,
+        borderColor: '#ffffff',
+      },
+    ],
   };
 
   doughnutOptions = { cutout: '60%' };
@@ -63,17 +64,19 @@ export class AppPieChartDemoComponent {
   // ── Polar Area: Performance scores ──
   polarData = {
     labels: ['Speed', 'Reliability', 'Security', 'UX', 'Scalability'],
-    datasets: [{
-      data: [85, 92, 78, 95, 88],
-      backgroundColor: [
-        'rgba(99,102,241,0.7)',
-        'rgba(245,158,11,0.7)',
-        'rgba(16,185,129,0.7)',
-        'rgba(14,165,233,0.7)',
-        'rgba(244,63,94,0.7)',
-      ],
-      borderWidth: 1,
-    }],
+    datasets: [
+      {
+        data: [85, 92, 78, 95, 88],
+        backgroundColor: [
+          'rgba(99,102,241,0.7)',
+          'rgba(245,158,11,0.7)',
+          'rgba(16,185,129,0.7)',
+          'rgba(14,165,233,0.7)',
+          'rgba(244,63,94,0.7)',
+        ],
+        borderWidth: 1,
+      },
+    ],
   };
 
   // ── Multi-ring / Doughnut ──
