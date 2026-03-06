@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreeDiagramPlaygroundComponent } from './components/tree-diagram-playground/tree-diagram-playground.component';
+import { DmTreeDiagramPlaygroundComponent } from '../../../playground/charts/tree-diagram-playground/tree-diagram-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    TreeDiagramPlaygroundComponent,
+    DmTreeDiagramPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -51,5 +51,6 @@ export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   <path d="M320,56 C320,80 160,80 160,100" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
 </svg>`;
 }
+
 
 

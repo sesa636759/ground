@@ -1,9 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
-import { PatternInputPlaygroundComponent } from './components/pattern-input-playground/pattern-input-playground.component';
+import { DmPatternInputPlaygroundComponent } from '../../playground/common/pattern-input-playground/pattern-input-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    PatternInputPlaygroundComponent,
+    DmPatternInputPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -40,4 +40,3 @@ export class DmPatternInputDemoComponent extends BaseDemoComponent {
 <!-- SSN -->
 <ui-pattern-input mask="999-99-9999"></ui-pattern-input>`;
 }
-

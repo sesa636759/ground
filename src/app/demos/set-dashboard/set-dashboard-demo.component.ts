@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { DashboardPlaygroundComponent } from './components/dashboard-playground/dashboard-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmDashboardPlaygroundComponent } from '../../playground/sets/set-dashboard-dashboard-playground/set-dashboard-dashboard-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -11,7 +11,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DashboardPlaygroundComponent,
+    DmDashboardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
@@ -42,5 +42,3 @@ export class DmSetDashboardDemoComponent extends BaseDemoComponent {
 âœ“ State Management: Save, load, undo, and redo
 -->`;
 }
-
-

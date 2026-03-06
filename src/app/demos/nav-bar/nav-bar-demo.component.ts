@@ -1,8 +1,8 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
-import { NavBarPlaygroundComponent } from './components/nav-bar-playground/nav-bar-playground.component';
+import { DmNavBarPlaygroundComponent } from '../../playground/common/nav-bar-playground/nav-bar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    NavBarPlaygroundComponent,
+    DmNavBarPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -44,4 +44,3 @@ export class DmNavBarDemoComponent extends BaseDemoComponent {
 <!-- Collapsed mode -->
 <ui-nav-bar collapsed [model]="items"></ui-nav-bar>`;
 }
-

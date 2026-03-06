@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { TogglePlaygroundComponent } from './components/toggle-playground/toggle-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmTogglePlaygroundComponent } from '../../playground/sets/set-toggle-toggle-playground/set-toggle-toggle-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    TogglePlaygroundComponent,
+    DmTogglePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -89,5 +89,3 @@ export class DmSetToggleDemoComponent extends BaseDemoComponent implements OnIni
 <app-toggle label-position="left" ...></app-toggle>
 <app-toggle-group selection-mode="multiple" ...></app-toggle-group>`;
 }
-
-

@@ -1,8 +1,8 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { TagsInputPlaygroundComponent } from './components/tags-input-playground/tags-input-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmTagsInputPlaygroundComponent } from '../../playground/sets/set-tags-input-tags-input-playground/set-tags-input-tags-input-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -12,7 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    TagsInputPlaygroundComponent,
+    DmTagsInputPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
@@ -42,5 +42,3 @@ export class DmSetTagsInputDemoComponent extends BaseDemoComponent {
   [max]="10"
 ></app-tags-input>`;
 }
-
-

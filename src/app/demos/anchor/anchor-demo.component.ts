@@ -1,8 +1,8 @@
 ﻿import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmAnchorPlaygroundComponent } from '../../playground/common/anchor-playground/anchor-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -12,7 +12,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    AnchorPlaygroundComponent,
+    DmAnchorPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -50,4 +50,3 @@ export class DmAnchorDemoComponent extends BaseDemoComponent {
 
   autoGenCode = `<ui-anchor auto-gen-container="#auto-gen-box" show-progress></ui-anchor>`;
 }
-

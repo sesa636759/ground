@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ScrollTopPlaygroundComponent } from './components/scroll-top-playground/scroll-top-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmScrollTopPlaygroundComponent } from '../../playground/common/scroll-top-playground/scroll-top-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -12,7 +12,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ScrollTopPlaygroundComponent,
+    DmScrollTopPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -36,4 +36,3 @@ export class DmScrollTopDemoComponent extends BaseDemoComponent {
 <!-- Circle with Custom Icon -->
 <ui-scroll-top shape="circle" icon="ðŸš€"></ui-scroll-top>`;
 }
-

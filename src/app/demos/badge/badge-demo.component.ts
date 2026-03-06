@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { BadgePlaygroundComponent } from './components/badge-playground/badge-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmBadgePlaygroundComponent } from '../../playground/common/badge-playground/badge-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    BadgePlaygroundComponent,
+    DmBadgePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -57,4 +57,3 @@ export class DmBadgeDemoComponent extends BaseDemoComponent {
 <ui-badge glow animation="pulse" value="!"></ui-badge>
 <ui-badge icon="â­" value="PRO"></ui-badge>`;
 }
-

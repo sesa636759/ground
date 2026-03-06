@@ -2,7 +2,7 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
-import { LineChartPlaygroundComponent } from './components/line-chart-playground/line-chart-playground.component';
+import { DmLineChartPlaygroundComponent } from '../../playground/common/line-chart-playground/line-chart-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -12,7 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     CommonModule,
-    LineChartPlaygroundComponent,
+    DmLineChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -161,4 +161,5 @@ seriesData = [
   [data]="seriesData"
 ></chart-line>`;
 }
+
 

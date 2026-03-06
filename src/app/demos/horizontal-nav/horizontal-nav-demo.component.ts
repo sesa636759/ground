@@ -1,8 +1,8 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
-import { HorizontalNavPlaygroundComponent } from './components/horizontal-nav-playground/horizontal-nav-playground.component';
+import { DmHorizontalNavPlaygroundComponent } from '../../playground/common/horizontal-nav-playground/horizontal-nav-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    HorizontalNavPlaygroundComponent,
+    DmHorizontalNavPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -43,4 +43,3 @@ export class DmHorizontalNavDemoComponent extends BaseDemoComponent {
 <!-- Light Theme with Sticky -->
 <ui-horizontal-nav theme="light" sticky [model]="items"></ui-horizontal-nav>`;
 }
-

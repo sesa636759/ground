@@ -1,6 +1,6 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
+import { DmAccordianPlaygroundComponent } from '../../playground/common/accordian-playground/accordian-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -12,7 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'dm-accordian-demo',
   standalone: true,
   imports: [
-    AccordianPlaygroundComponent,
+    DmAccordianPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
@@ -217,4 +217,5 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     this.controlledExpanded = [...ids];
   }
 }
+
 

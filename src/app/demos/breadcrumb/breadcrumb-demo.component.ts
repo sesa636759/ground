@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { BreadcrumbPlaygroundComponent } from './components/breadcrumb-playground/breadcrumb-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmBreadcrumbPlaygroundComponent } from '../../playground/common/breadcrumb-playground/breadcrumb-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    BreadcrumbPlaygroundComponent,
+    DmBreadcrumbPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -53,4 +53,3 @@ export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
   visualsCode = `<ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
 <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>`;
 }
-

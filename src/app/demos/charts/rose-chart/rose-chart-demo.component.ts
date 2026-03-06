@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoseChartPlaygroundComponent } from './components/rose-chart-playground/rose-chart-playground.component';
+import { DmRoseChartPlaygroundComponent } from '../../../playground/charts/rose-chart-playground/rose-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    RoseChartPlaygroundComponent,
+    DmRoseChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -103,5 +103,6 @@ roseData = {
   datasets: [{ data: [42, 55, 48, ...], backgroundColor: ['#6366f1', ...] }]
 };`;
 }
+
 
 

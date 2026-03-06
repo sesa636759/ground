@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { DividerPlaygroundComponent } from './components/divider-playground/divider-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmDividerPlaygroundComponent } from '../../playground/common/divider-playground/divider-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DividerPlaygroundComponent,
+    DmDividerPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
@@ -56,4 +56,3 @@ export class DmDividerDemoComponent extends BaseDemoComponent {
   shapesCode = `<ui-divider shape="wave" shape-color="#f3f4f6"></ui-divider>
 <ui-divider shape="tilt" shape-color="#fef2f2" style="height: 50px"></ui-divider>`;
 }
-

@@ -6,7 +6,7 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';

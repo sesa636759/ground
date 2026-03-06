@@ -1,9 +1,9 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
-import { CascadeSelectPlaygroundComponent } from './components/cascade-select-playground/cascade-select-playground.component';
+import { DmCascadeSelectPlaygroundComponent } from '../../playground/common/cascade-select-playground/cascade-select-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -15,7 +15,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    CascadeSelectPlaygroundComponent,
+    DmCascadeSelectPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -55,4 +55,3 @@ export class DmCascadeSelectDemoComponent extends BaseDemoComponent {
   selectionCode = `<!-- Select path at any level -->
 <ui-cascade-select change-on-select [options]="options"></ui-cascade-select>`;
 }
-

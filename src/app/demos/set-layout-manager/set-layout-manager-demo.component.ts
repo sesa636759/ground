@@ -5,7 +5,7 @@
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -160,5 +160,3 @@ export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implement
 
   handlePanelRemoved() {}
 }
-
-

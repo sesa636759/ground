@@ -3,7 +3,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
-import { WaffleChartPlaygroundComponent } from './components/waffle-chart-playground/waffle-chart-playground.component';
+import { DmWaffleChartPlaygroundComponent } from '../../playground/common/waffle-chart-playground/waffle-chart-playground.component';
 
 @Component({
   selector: 'app-waffle-chart-demo',
@@ -13,7 +13,7 @@ import { WaffleChartPlaygroundComponent } from './components/waffle-chart-playgr
     DemoSidebarComponent,
     DemoHeaderComponent,
     ComponentDocumentationComponent,
-    WaffleChartPlaygroundComponent,
+    DmWaffleChartPlaygroundComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './waffle-chart-demo.component.html',
@@ -61,4 +61,5 @@ export class DmWaffleChartDemoComponent {
 <chart-waffle value="65" total="100" rows="5" columns="20" cell-size="18"
   chart-title="Wide (5x20)"></chart-waffle>`;
 }
+
 

@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { SnackbarPlaygroundComponent } from './components/snackbar-playground/snackbar-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmSnackbarPlaygroundComponent } from '../../playground/common/snackbar-playground/snackbar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -14,7 +14,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    SnackbarPlaygroundComponent,
+    DmSnackbarPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -87,4 +87,3 @@ snackbar.add({ type: 'info',    title: 'Info', message: 'You have a new invite.'
     }
   }
 }
-

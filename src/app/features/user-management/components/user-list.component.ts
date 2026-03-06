@@ -4,18 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
 import { AppInputValueAccessorDirective } from '../../../directives/ui-input-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../directives/ui-dropdown-value-accessor.directive';
+import {} from '../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppInputValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, UiDropdownValueAccessorDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',

@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CandlestickChartPlaygroundComponent } from './components/candlestick-chart-playground/candlestick-chart-playground.component';
+import { DmCandlestickChartPlaygroundComponent } from '../../../playground/charts/candlestick-chart-playground/candlestick-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    CandlestickChartPlaygroundComponent,
+    DmCandlestickChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -59,5 +59,6 @@ export class DmCandlestickChartDemoComponent extends BaseDemoComponent {
   <rect x="132" y="110" width="24" height="60" fill="#f43f5e" rx="2"/>
 </svg>`;
 }
+
 
 

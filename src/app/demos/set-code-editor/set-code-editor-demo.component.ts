@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { CodeEditorPlaygroundComponent } from './components/code-editor-playground/code-editor-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmCodeEditorPlaygroundComponent } from '../../playground/sets/set-code-editor-code-editor-playground/set-code-editor-code-editor-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    CodeEditorPlaygroundComponent,
+    DmCodeEditorPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -43,5 +43,3 @@ export class DmSetCodeEditorDemoComponent extends BaseDemoComponent implements O
 
   ngOnInit() {}
 }
-
-

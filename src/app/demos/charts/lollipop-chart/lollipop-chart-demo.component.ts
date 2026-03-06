@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LollipopChartPlaygroundComponent } from './components/lollipop-chart-playground/lollipop-chart-playground.component';
+import { DmLollipopChartPlaygroundComponent } from '../../../playground/charts/lollipop-chart-playground/lollipop-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    LollipopChartPlaygroundComponent,
+    DmLollipopChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -54,5 +54,6 @@ export class DmLollipopChartDemoComponent extends BaseDemoComponent {
   <text x="110" y="44" text-anchor="end" font-size="11" fill="#6b7280">Category A</text>
 </svg>`;
 }
+
 
 

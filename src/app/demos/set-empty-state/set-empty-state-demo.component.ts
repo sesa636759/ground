@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmEmptyStatePlaygroundComponent } from '../../playground/sets/set-empty-state-empty-state-playground/set-empty-state-empty-state-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    EmptyStatePlaygroundComponent,
+    DmEmptyStatePlaygroundComponent,
     DemoTabsComponent,
 
     ExampleSectionComponent,
@@ -152,5 +152,3 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
 
   ngOnInit() {}
 }
-
-

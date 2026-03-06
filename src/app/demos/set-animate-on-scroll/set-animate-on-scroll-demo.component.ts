@@ -3,8 +3,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmAnimateOnScrollPlaygroundComponent } from '../../playground/sets/set-animate-on-scroll-animate-on-scroll-playground/set-animate-on-scroll-animate-on-scroll-playground.component';
 
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -14,7 +14,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    AnimateOnScrollPlaygroundComponent,
+    DmAnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -452,5 +452,3 @@ export class DmSetAnimateOnScrollDemoComponent extends BaseDemoComponent {
   </div>
 </app-animate-on-scroll>`);
 }
-
-

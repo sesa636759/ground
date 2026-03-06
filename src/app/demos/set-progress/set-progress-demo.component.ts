@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ProgressPlaygroundComponent } from './components/progress-playground/progress-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmProgressPlaygroundComponent } from '../../playground/sets/set-progress-progress-playground/set-progress-progress-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ProgressPlaygroundComponent,
+    DmProgressPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,
@@ -114,5 +114,3 @@ export class DmSetProgressDemoComponent extends BaseDemoComponent {
     this.progressValue = Math.min(100, this.progressValue + 10);
   }
 }
-
-

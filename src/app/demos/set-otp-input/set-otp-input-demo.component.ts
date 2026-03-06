@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { OtpInputPlaygroundComponent } from './components/otp-input-playground/otp-input-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmOtpInputPlaygroundComponent } from '../../playground/sets/set-otp-input-otp-input-playground/set-otp-input-otp-input-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    OtpInputPlaygroundComponent,
+    DmOtpInputPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -65,8 +65,20 @@ export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
     // Advanced (12)
     { id: 'size-variants', title: 'Sizes', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
     { id: 'secure-pin', title: 'Secure PIN', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
-    { id: 'readonly', title: 'Read-only State', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
-    { id: 'disabled', title: 'Disabled State', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    {
+      id: 'readonly',
+      title: 'Read-only State',
+      icon: 'ðŸš€',
+      category: 'Advanced',
+      tab: 'advanced',
+    },
+    {
+      id: 'disabled',
+      title: 'Disabled State',
+      icon: 'ðŸš€',
+      category: 'Advanced',
+      tab: 'advanced',
+    },
     {
       id: 'validation',
       title: 'With Validation',
@@ -75,7 +87,13 @@ export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
       tab: 'advanced',
     },
     { id: 'autofocus', title: 'Auto Focus', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
-    { id: 'pasteable', title: 'Paste Support', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    {
+      id: 'pasteable',
+      title: 'Paste Support',
+      icon: 'ðŸš€',
+      category: 'Advanced',
+      tab: 'advanced',
+    },
     {
       id: 'numeric-only',
       title: 'Numeric Only',
@@ -306,5 +324,3 @@ export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
 ></ui-otp-input>`,
   );
 }
-
-

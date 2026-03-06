@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmModernSidebarPlaygroundComponent } from '../../playground/sets/set-modern-sidebar-modern-sidebar-playground/set-modern-sidebar-modern-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -11,7 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ModernSidebarPlaygroundComponent,
+    DmModernSidebarPlaygroundComponent,
     DemoTabsComponent,
 
     DemoSidebarComponent,
@@ -482,5 +482,3 @@ export class DmSetModernSidebarDemoComponent extends BaseDemoComponent {
   ]'>
 </app-modern-sidebar>`);
 }
-
-

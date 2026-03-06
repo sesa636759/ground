@@ -1,5 +1,5 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'app-security-settings-section',

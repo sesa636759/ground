@@ -1,8 +1,8 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
-import { PicklistPlaygroundComponent } from './components/picklist-playground/picklist-playground.component';
+import { DmPicklistPlaygroundComponent } from '../../playground/common/picklist-playground/picklist-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -14,7 +14,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    PicklistPlaygroundComponent,
+    DmPicklistPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -48,4 +48,3 @@ export class DmPicklistDemoComponent extends BaseDemoComponent {
 <!-- Custom Header Text -->
 <ui-picklist source-header="Backlog" target-header="Sprint Items" ...></ui-picklist>`;
 }
-

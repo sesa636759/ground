@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from './components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from './components/demo-playground/playground.constants';
 
 export interface PlaygroundControl {
   name: string;

@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { SkeletonPlaygroundComponent } from './components/skeleton-playground/skeleton-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmSkeletonPlaygroundComponent } from '../../playground/common/skeleton-playground/skeleton-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -14,7 +14,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    SkeletonPlaygroundComponent,
+    DmSkeletonPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -77,4 +77,3 @@ export class DmSkeletonDemoComponent extends BaseDemoComponent {
   <skeleton-loader shape="button" width="160px" size="lg" style="margin:16px auto 0;display:block"></skeleton-loader>
 </div>`;
 }
-

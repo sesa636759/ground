@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FunnelChartPlaygroundComponent } from './components/funnel-chart-playground/funnel-chart-playground.component';
+import { DmFunnelChartPlaygroundComponent } from '../../../playground/charts/funnel-chart-playground/funnel-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    FunnelChartPlaygroundComponent,
+    DmFunnelChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -55,5 +55,6 @@ export class DmFunnelChartDemoComponent extends BaseDemoComponent {
   <!-- Awareness â†’ Interest â†’ Consideration â†’ Intent â†’ Purchase -->
 </svg>`;
 }
+
 
 

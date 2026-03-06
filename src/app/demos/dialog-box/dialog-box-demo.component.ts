@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { DialogBoxPlaygroundComponent } from './components/dialog-box-playground/dialog-box-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmDialogBoxPlaygroundComponent } from '../../playground/common/dialog-box-playground/dialog-box-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DialogBoxPlaygroundComponent,
+    DmDialogBoxPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -150,4 +150,3 @@ export class DmDialogBoxDemoComponent extends BaseDemoComponent {
    </div>
 </ui-dialog-box>`;
 }
-

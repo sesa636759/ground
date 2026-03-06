@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OhlcChartPlaygroundComponent } from './components/ohlc-chart-playground/ohlc-chart-playground.component';
+import { DmOhlcChartPlaygroundComponent } from '../../../playground/charts/ohlc-chart-playground/ohlc-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    OhlcChartPlaygroundComponent,
+    DmOhlcChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -56,5 +56,6 @@ export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   <text x="580" y="150" fill="#f59e0b" font-size="10">MA(10)</text>
 </svg>`;
 }
+
 
 

@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { SidebarPlaygroundComponent } from './components/sidebar-playground/sidebar-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmSidebarPlaygroundComponent } from '../../playground/sets/set-sidebar-sidebar-playground/set-sidebar-sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -9,7 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    SidebarPlaygroundComponent,
+    DmSidebarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],
@@ -47,5 +47,3 @@ export class DmSetSidebarDemoComponent implements OnInit {
     }
   }
 }
-
-

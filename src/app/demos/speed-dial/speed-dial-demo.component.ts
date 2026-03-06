@@ -1,8 +1,8 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
-import { SpeedDialPlaygroundComponent } from './components/speed-dial-playground/speed-dial-playground.component';
+import { DmSpeedDialPlaygroundComponent } from '../../playground/common/speed-dial-playground/speed-dial-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -14,7 +14,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    SpeedDialPlaygroundComponent,
+    DmSpeedDialPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -52,4 +52,3 @@ export class DmSpeedDialDemoComponent extends BaseDemoComponent {
 <!-- Half Circle -->
 <ui-speed-dial type="half-circle" direction="up" [model]="items"></ui-speed-dial>`;
 }
-

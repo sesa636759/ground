@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RadialBarPlaygroundComponent } from './components/radial-bar-playground/radial-bar-playground.component';
+import { DmRadialBarPlaygroundComponent } from '../../../playground/charts/radial-bar-playground/radial-bar-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    RadialBarPlaygroundComponent,
+    DmRadialBarPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -64,5 +64,6 @@ export class DmRadialBarDemoComponent extends BaseDemoComponent {
   <text x="100" y="108" text-anchor="middle" font-size="28" font-weight="700" fill="#374151">88%</text>
 </svg>`;
 }
+
 
 

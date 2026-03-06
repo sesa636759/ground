@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ScrollTopPlaygroundComponent } from './components/scroll-top-playground/scroll-top-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmScrollTopPlaygroundComponent } from '../../playground/sets/set-scroll-top-scroll-top-playground/set-scroll-top-scroll-top-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -9,7 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ScrollTopPlaygroundComponent,
+    DmScrollTopPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],
@@ -37,5 +37,3 @@ export class DmSetScrollTopDemoComponent implements OnInit {
     }
   }
 }
-
-

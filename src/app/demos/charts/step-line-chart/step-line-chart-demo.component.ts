@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StepLineChartPlaygroundComponent } from './components/step-line-chart-playground/step-line-chart-playground.component';
+import { DmStepLineChartPlaygroundComponent } from '../../../playground/charts/step-line-chart-playground/step-line-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    StepLineChartPlaygroundComponent,
+    DmStepLineChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -88,5 +88,6 @@ export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   <polyline points="40,250 100,250 100,178 ..." fill="none" stroke="#10b981" stroke-width="2.5"/>
 </svg>`;
 }
+
 
 

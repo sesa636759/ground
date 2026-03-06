@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { SplitterPlaygroundComponent } from './components/splitter-playground/splitter-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmSplitterPlaygroundComponent } from '../../playground/sets/set-splitter-splitter-playground/set-splitter-splitter-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -12,7 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    SplitterPlaygroundComponent,
+    DmSplitterPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -290,5 +290,3 @@ export class DmSetSplitterDemoComponent {
   <div slot="panel-2">Footer (10%)</div>
 </app-splitter>`);
 }
-
-

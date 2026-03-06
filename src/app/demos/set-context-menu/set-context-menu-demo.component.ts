@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmContextMenuPlaygroundComponent } from '../../playground/sets/set-context-menu-context-menu-playground/set-context-menu-context-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -11,7 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ContextMenuPlaygroundComponent,
+    DmContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
@@ -94,9 +94,21 @@ export class DmSetContextMenuDemoComponent {
 
   // Avatar items
   teamItems = [
-    { id: 'alice', label: 'Alice Johnson', avatar: 'ðŸ‘©', description: 'Product Lead', badge: 'ðŸŸ¢' },
+    {
+      id: 'alice',
+      label: 'Alice Johnson',
+      avatar: 'ðŸ‘©',
+      description: 'Product Lead',
+      badge: 'ðŸŸ¢',
+    },
     { id: 'bob', label: 'Bob Smith', avatar: 'ðŸ‘¨', description: 'Developer', badge: 'ðŸŸ¢' },
-    { id: 'charlie', label: 'Charlie Brown', avatar: 'ðŸ‘¨', description: 'Designer', badge: 'ðŸ”´' },
+    {
+      id: 'charlie',
+      label: 'Charlie Brown',
+      avatar: 'ðŸ‘¨',
+      description: 'Designer',
+      badge: 'ðŸ”´',
+    },
   ];
 
   // Grouped items
@@ -263,5 +275,3 @@ export class DmSetContextMenuDemoComponent {
     }
   }
 }
-
-

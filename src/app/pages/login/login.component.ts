@@ -1,5 +1,5 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
@@ -9,12 +9,7 @@ import { ASSETS } from '../../shared/constants/assets.constants';
 @Component({
   selector: 'pg-login',
   standalone: true,
-  imports: [
-    ...PLAYGROUND_IMPORTS,
-    RouterLink,
-    AppInputValueAccessorDirective,
-    AppCheckboxValueAccessorDirective,
-  ],
+  imports: [...PLAYGROUND_IMPORTS, RouterLink, AppCheckboxValueAccessorDirective],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',

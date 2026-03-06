@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService, RegisterData } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { ASSETS } from '../../shared/constants/assets.constants';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'pg-register',

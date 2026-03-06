@@ -1,18 +1,18 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
+import { DmTreePlaygroundComponent } from '../../playground/sets/set-tree-tree-playground/set-tree-tree-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'dm-set-tree-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    TreePlaygroundComponent,
+    DmTreePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
@@ -180,5 +180,3 @@ export class DmSetTreeDemoComponent extends BaseDemoComponent {
   layout="horizontal"
 ></app-tree>`;
 }
-
-

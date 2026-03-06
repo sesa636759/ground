@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmAvatarPlaygroundComponent } from '../../playground/common/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    AvatarPlaygroundComponent,
+    DmAvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
@@ -80,4 +80,3 @@ export class DmAvatarDemoComponent extends BaseDemoComponent {
   <ui-avatar src="https://i.pravatar.cc/150?u=e" name="Member E"></ui-avatar>
 </ui-avatar-group>`;
 }
-

@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SparklinePlaygroundComponent } from './components/sparkline-playground/sparkline-playground.component';
+import { DmSparklinePlaygroundComponent } from '../../../playground/charts/sparkline-playground/sparkline-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    SparklinePlaygroundComponent,
+    DmSparklinePlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -54,5 +54,6 @@ export class DmSparklineDemoComponent extends BaseDemoComponent {
   <polyline points="..." fill="none" stroke="#10b981" stroke-width="1.5"/>
 </svg>`;
 }
+
 
 

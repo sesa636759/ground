@@ -1,0 +1,108 @@
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
+import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
+
+@Component({
+  selector: 'dm-timeline-playground',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './timeline-playground.component.html',
+  styleUrl: './timeline-playground.component.scss',
+})
+export class DmTimelinePlaygroundComponent extends BasePlaygroundComponent {
+  // Playground State
+  pgConfig = this.getDefaultConfig();
+
+  constructor() {
+    super();
+  }
+
+  getDefaultConfig() {
+    return {
+      orientation: 'vertical',
+      align: 'left',
+      iconPosition: 'center',
+      variant: 'default',
+      lineColor: '#667eea',
+      animateOnScroll: true,
+      compact: false,
+      clickable: true,
+      showLine: true,
+      wrap: false,
+      theme: 'light',
+    };
+  }
+
+  timelineItems = [
+    {
+      id: '1',
+      title: 'Project Started',
+      description: 'Initial planning and requirements gathering phase.',
+      date: 'Jan 2024',
+      icon: 'fas fa-flag',
+      iconColor: '#ffffff',
+      iconBackground: '#667eea',
+      dotColor: '#667eea',
+    },
+    {
+      id: '2',
+      title: 'Design Phase',
+      description: 'UI/UX design and prototyping.',
+      date: 'Feb 2024',
+      icon: 'fas fa-pencil-ruler',
+      iconColor: '#ffffff',
+      iconBackground: '#8b5cf6',
+      dotColor: '#8b5cf6',
+      badge: 'Design',
+    },
+    {
+      id: '3',
+      title: 'Development',
+      description: 'Core implementation and feature development.',
+      date: 'Mar 2024',
+      icon: 'fas fa-code',
+      iconColor: '#ffffff',
+      iconBackground: '#10b981',
+      dotColor: '#10b981',
+    },
+    {
+      id: '4',
+      title: 'Launch',
+      description: 'Product launch and deployment.',
+      date: 'May 2024',
+      icon: 'fas fa-rocket',
+      iconColor: '#ffffff',
+      iconBackground: '#ef4444',
+      dotColor: '#ef4444',
+    },
+  ];
+
+  updateConfig() {
+    let code = `<app-timeline\n`;
+    if (this.pgConfig.orientation !== 'vertical')
+      code += `  orientation="${this.pgConfig.orientation}"\n`;
+    if (this.pgConfig.align !== 'left') code += `  align="${this.pgConfig.align}"\n`;
+    if (this.pgConfig.iconPosition !== 'center')
+      code += `  icon-position="${this.pgConfig.iconPosition}"\n`;
+    if (this.pgConfig.variant !== 'default') code += `  variant="${this.pgConfig.variant}"\n`;
+    if (this.pgConfig.lineColor !== '#667eea')
+      code += `  line-color="${this.pgConfig.lineColor}"\n`;
+
+    if (this.pgConfig.animateOnScroll) code += `  animate-on-scroll="true"\n`;
+    if (this.pgConfig.compact) code += `  compact="true"\n`;
+    if (this.pgConfig.clickable) code += `  clickable="true"\n`;
+    if (!this.pgConfig.showLine) code += `  show-line="false"\n`;
+    if (this.pgConfig.wrap) code += `  wrap="true"\n`;
+    if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
+
+    code += `  [items]="timelineItems"\n`;
+    code += `></app-timeline>`;
+
+    this.generatedCode.set(code);
+    this.refreshCode();
+  }
+
+  onItemClick(event: any) {
+    this.logEvent(`Item clicked: ${event.detail.title}`);
+  }
+}

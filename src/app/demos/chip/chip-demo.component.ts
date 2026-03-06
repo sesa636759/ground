@@ -1,8 +1,8 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmChipPlaygroundComponent } from '../../playground/common/chip-playground/chip-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ChipPlaygroundComponent,
+    DmChipPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
@@ -61,4 +61,3 @@ export class DmChipDemoComponent extends BaseDemoComponent {
 <ui-chip label="Loading" loading></ui-chip>
 <ui-chip label="Disabled" disabled></ui-chip>`;
 }
-

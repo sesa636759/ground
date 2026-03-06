@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { DockOverlayPlaygroundComponent } from './components/dock-overlay-playground/dock-overlay-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmDockOverlayPlaygroundComponent } from '../../playground/sets/set-dock-overlay-dock-overlay-playground/set-dock-overlay-dock-overlay-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
@@ -9,7 +9,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DockOverlayPlaygroundComponent,
+    DmDockOverlayPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],
@@ -39,5 +39,3 @@ export class DmSetDockOverlayDemoComponent implements OnInit {
     }
   }
 }
-
-

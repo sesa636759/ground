@@ -1,9 +1,9 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
-import { KnobPlaygroundComponent } from './components/knob-playground/knob-playground.component';
+import { DmKnobPlaygroundComponent } from '../../playground/common/knob-playground/knob-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -14,7 +14,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    KnobPlaygroundComponent,
+    DmKnobPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -42,4 +42,3 @@ export class DmKnobDemoComponent extends BaseDemoComponent {
   readonlyCode = `<!-- Readonly Display -->
 <ui-knob [value]="75" readonly></ui-knob>`;
 }
-

@@ -1,6 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ButtonPlaygroundComponent } from './components/button-playground/button-playground.component';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmButtonPlaygroundComponent } from '../../playground/common/button-playground/button-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -13,7 +13,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ButtonPlaygroundComponent,
+    DmButtonPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -26,12 +26,12 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 })
 export class DmButtonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
-    { id: 'icon-libraries', title: 'Icon Libraries', icon: '🎨' },
-    { id: 'states', title: 'States', icon: '⚙️' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: 'ðŸŽ¨' },
+    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
+    { id: 'icons-badges', title: 'Icons & Badges', icon: 'ðŸ·ï¸' },
+    { id: 'icon-libraries', title: 'Icon Libraries', icon: 'ðŸŽ¨' },
+    { id: 'states', title: 'States', icon: 'âš™ï¸' },
   ];
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;
@@ -53,10 +53,10 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button label="Large" size="lg"></ui-button>
 <ui-button label="Extra Large" size="xl"></ui-button>`;
 
-  iconsBadgesCode = `<ui-button label="Settings" icon="⚙️"></ui-button>
-<ui-button label="Cart" icon="🛒" badge="5" variant="success"></ui-button>
-<ui-button icon="🔍" icon-only pill></ui-button>
-<ui-button label="Profile" icon="👤" icon-position="right"></ui-button>`;
+  iconsBadgesCode = `<ui-button label="Settings" icon="âš™ï¸"></ui-button>
+<ui-button label="Cart" icon="ðŸ›’" badge="5" variant="success"></ui-button>
+<ui-button icon="ðŸ”" icon-only pill></ui-button>
+<ui-button label="Profile" icon="ðŸ‘¤" icon-position="right"></ui-button>`;
 
   iconLibrariesCode = `<!-- SVG Path -->
 <ui-button label="SVG Path" icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" icon-library="default" variant="primary"></ui-button>
@@ -74,7 +74,7 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button label="Bootstrap" icon="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" variant="warning"></ui-button>
 
 <!-- Emoji -->
-<ui-button label="Emoji" icon="🚀" variant="info"></ui-button>`;
+<ui-button label="Emoji" icon="ðŸš€" variant="info"></ui-button>`;
 
   statesCode = `<ui-button label="Normal"></ui-button>
 <ui-button label="Disabled" disabled></ui-button>

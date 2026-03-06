@@ -1,7 +1,7 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
-import { SetCardExamplesComponent } from './components/card-examples/card-examples.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmCardPlaygroundComponent } from '../../playground/sets/set-card-card-playground/set-card-card-playground.component';
+import { SetCardExamplesComponent } from '../../playground/sets/set-card-card-playground/set-card-card-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -11,7 +11,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    CardPlaygroundComponent,
+    DmCardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     SetCardExamplesComponent,
@@ -32,5 +32,3 @@ export class DmSetCardDemoComponent {
 
   ngOnInit() {}
 }
-
-

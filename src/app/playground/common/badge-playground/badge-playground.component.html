@@ -1,0 +1,132 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-content" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Value</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.value"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Max Value</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Icon</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.icon"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. ⭐"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="standardColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="standardSizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+        [options]="positionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Animation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animation"
+        (ngModelChange)="updateConfig()"
+        [options]="animationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.dot" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Dot Mode
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glow" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glow Effect
+      </label>
+    </div>
+  </div>
+
+  <div
+    preview
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
+    <ui-badge
+      [attr.value]="pgConfig.value"
+      [attr.max]="pgConfig.max"
+      [attr.color]="pgConfig.color"
+      [attr.size]="pgConfig.size"
+      [attr.variant]="pgConfig.variant"
+      [attr.position]="pgConfig.position"
+      [attr.animation]="pgConfig.animation"
+      [attr.dot]="pgConfig.dot ? '' : null"
+      [attr.glow]="pgConfig.glow ? '' : null"
+      [attr.icon]="pgConfig.icon"
+    >
+      <div
+        class="badge-target"
+        style="
+          padding: 12px;
+          border-radius: 8px;
+          background: var(--surface-1);
+          box-shadow: var(--shadow-sm);
+        "
+      >
+        @if (!pgConfig.icon) {
+          <span style="font-size: 24px">✉️</span>
+        }
+        @if (pgConfig.icon) {
+          <span style="font-size: 24px">{{ pgConfig.icon }}</span>
+        }
+      </div>
+    </ui-badge>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

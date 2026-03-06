@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmContextMenuPlaygroundComponent } from '../../playground/common/context-menu-playground/context-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ContextMenuPlaygroundComponent,
+    DmContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
@@ -48,4 +48,3 @@ export class DmContextMenuDemoComponent extends BaseDemoComponent {
 <img #img src="..." />
 <ui-context-menu [model]="imgItems" [target]="img"></ui-context-menu>`;
 }
-

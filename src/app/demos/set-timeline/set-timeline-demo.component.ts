@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmTimelinePlaygroundComponent } from '../../playground/sets/set-timeline-timeline-playground/set-timeline-timeline-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -12,7 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    TimelinePlaygroundComponent,
+    DmTimelinePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
@@ -83,5 +83,3 @@ export class DmSetTimelineDemoComponent extends BaseDemoComponent {
   layout="vertical"
 ></app-timeline>`;
 }
-
-

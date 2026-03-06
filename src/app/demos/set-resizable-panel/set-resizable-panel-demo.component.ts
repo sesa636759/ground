@@ -1,6 +1,6 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { ResizablePanelPlaygroundComponent } from './components/resizable-panel-playground/resizable-panel-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmResizablePanelPlaygroundComponent } from '../../playground/sets/set-resizable-panel-resizable-panel-playground/set-resizable-panel-resizable-panel-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    ResizablePanelPlaygroundComponent,
+    DmResizablePanelPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -143,5 +143,3 @@ export class DmSetResizablePanelDemoComponent extends BaseDemoComponent {
   [snapThreshold]="snapThreshold"
 ></app-resizable-panel>`);
 }
-
-

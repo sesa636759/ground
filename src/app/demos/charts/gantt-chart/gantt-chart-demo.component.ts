@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GanttChartPlaygroundComponent } from './components/gantt-chart-playground/gantt-chart-playground.component';
+import { DmGanttChartPlaygroundComponent } from '../../../playground/charts/gantt-chart-playground/gantt-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   standalone: true,
   imports: [
     CommonModule,
-    GanttChartPlaygroundComponent,
+    DmGanttChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -63,5 +63,6 @@ export class DmGanttChartDemoComponent extends BaseDemoComponent {
   <rect x="420" y="116"width="140" height="28" rx="4" fill="#f59e0b"/><!-- Sprint 3 -->
 </svg>`;
 }
+
 
 

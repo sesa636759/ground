@@ -2,7 +2,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AvatarGroupPlaygroundComponent } from './components/avatar-group-playground/avatar-group-playground.component';
+import { DmAvatarGroupPlaygroundComponent } from '../../playground/common/avatar-group-playground/avatar-group-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -15,7 +15,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   imports: [
     CommonModule,
     FormsModule,
-    AvatarGroupPlaygroundComponent,
+    DmAvatarGroupPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -84,4 +84,5 @@ export class DmAvatarGroupDemoComponent extends BaseDemoComponent {
   <ui-avatar label="IJ"></ui-avatar>
 </ui-avatar-group>`;
 }
+
 

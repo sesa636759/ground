@@ -1,7 +1,7 @@
 ﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
-import { TabsPlaygroundComponent } from './components/tabs-playground/tabs-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
+import { DmTabsPlaygroundComponent } from '../../playground/sets/set-tabs-tabs-playground/set-tabs-tabs-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,7 +13,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    TabsPlaygroundComponent,
+    DmTabsPlaygroundComponent,
     DemoTabsComponent,
 
     ExampleSectionComponent,
@@ -100,5 +100,3 @@ export class DmSetTabsDemoComponent extends BaseDemoComponent {
     <app-tab label="Tab 2" value="t2">C2</app-tab>
   </app-tab-stack>`;
 }
-
-
