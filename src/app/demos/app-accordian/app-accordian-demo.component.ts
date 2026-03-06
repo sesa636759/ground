@@ -46,6 +46,7 @@ export class SetAccordianDemoComponent extends BaseDemoComponent {
     { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
 
+
   basicAccordionItems = [
     {
       id: 'what-is',
