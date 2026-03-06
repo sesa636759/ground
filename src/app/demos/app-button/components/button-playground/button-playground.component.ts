@@ -7,8 +7,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 
 @Component({
   selector: 'app-button-playground',
@@ -17,6 +17,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
   templateUrl: './button-playground.component.html',
   styleUrl: './button-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
+  imports: [...PLAYGROUND_IMPORTS],
 })
 export class ButtonPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('demoElement') demoElement!: ElementRef;

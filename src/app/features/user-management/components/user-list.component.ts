@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../directives/ui-input-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-user-list',

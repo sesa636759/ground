@@ -1,6 +1,6 @@
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { AppCheckboxValueAccessorDirective } from '../../../directives/ui-checkbox-value-accessor.directive';
+import { UiDropdownValueAccessorDirective } from '../../../directives/ui-dropdown-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../../directives/ui-input-value-accessor.directive';
 import { AppPlaygroundComponent } from './app-playground.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

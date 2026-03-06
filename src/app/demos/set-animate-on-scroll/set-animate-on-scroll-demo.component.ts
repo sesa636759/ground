@@ -7,7 +7,7 @@ import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playg
 import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
 
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
-import { DemoTabsComponent } from 'src/app/shared/demo-tabs/demo-tabs.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
   selector: 'app-set-animate-on-scroll-demo',

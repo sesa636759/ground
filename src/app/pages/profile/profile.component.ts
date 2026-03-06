@@ -1,4 +1,4 @@
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
+import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
