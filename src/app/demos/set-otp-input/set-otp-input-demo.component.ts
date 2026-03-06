@@ -6,6 +6,7 @@ import { OtpInputPlaygroundComponent } from './components/otp-input-playground/o
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -25,8 +26,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-otp-input-demo.component.html',
   styleUrl: './set-otp-input-demo.component.scss',
 })
-export class SetOtpInputDemoComponent {
+export class SetOtpInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', category: 'General' },
     // Basic Layouts (1)
     {
       id: 'length-variants',
@@ -90,10 +92,7 @@ export class SetOtpInputDemoComponent {
       category: 'Advanced',
       tab: 'advanced',
     },
-    { id: 'playground', title: 'Playground', icon: '🚀', category: 'Advanced', tab: 'advanced' },
   ];
-
-  
 
   // Signal-based code examples
   lengthVariantsCode = signal(
@@ -308,11 +307,4 @@ export class SetOtpInputDemoComponent {
   (complete)="onOtpComplete($event)"
 ></ui-otp-input>`,
   );
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

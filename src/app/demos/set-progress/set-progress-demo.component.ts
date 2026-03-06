@@ -27,7 +27,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   styleUrls: ['./set-progress-demo.component.scss'],
 })
 export class SetProgressDemoComponent extends BaseDemoComponent {
-  variants = [
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'line', title: 'Line Progress', icon: '📏' },
     { id: 'circle', title: 'Circle Progress', icon: '⚪' },
     { id: 'dashboard', title: 'Dashboard Progress', icon: '📊' },
@@ -41,12 +42,6 @@ export class SetProgressDemoComponent extends BaseDemoComponent {
     { id: 'hide-info', title: 'Hide Info Text', icon: '🙈' },
     { id: 'premium', title: 'Premium Styles', icon: '💎' },
   ];
-
-  
-
-  get exampleVariants() {
-    return this.variants;
-  }
 
   progressValue = 50;
 
@@ -112,8 +107,6 @@ export class SetProgressDemoComponent extends BaseDemoComponent {
 <app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
 <app-progress percent="50" glass="true" stroke-color="#fff"></app-progress>
 <app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>`;
-
-  ngOnInit() {}
 
   decreaseProgress() {
     this.progressValue = Math.max(0, this.progressValue - 10);

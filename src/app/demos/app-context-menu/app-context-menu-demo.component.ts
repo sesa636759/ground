@@ -27,7 +27,10 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   styleUrl: './app-context-menu-demo.component.scss',
 })
 export class AppContextMenuDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'targets', title: 'Multiple Targets', icon: '🎯' },
+  ];
 
   fileItems = [
     { label: 'Open', icon: '📂' },

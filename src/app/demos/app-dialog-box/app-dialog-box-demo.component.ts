@@ -28,6 +28,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 })
 export class AppDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dialog', icon: '📝' },
     { id: 'slots', title: 'Custom Slots', icon: '🧩' },
     { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
@@ -37,8 +38,6 @@ export class AppDialogBoxDemoComponent extends BaseDemoComponent {
     { id: 'advanced', title: 'Advanced Behaviors', icon: '🛠️' },
     { id: 'premium', title: 'Premium Capabilities', icon: '💎' },
   ];
-
-  
 
   dialogVisible: { [key: string]: boolean } = {};
 

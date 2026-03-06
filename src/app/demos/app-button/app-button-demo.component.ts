@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonPlaygroundComponent } from './components/button-playground/button-playground.component';
@@ -26,8 +26,9 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   templateUrl: './app-button-demo.component.html',
   styleUrl: './app-button-demo.component.scss',
 })
-export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit {
+export class AppButtonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
@@ -81,6 +82,4 @@ export class AppButtonDemoComponent extends BaseDemoComponent implements OnInit 
 <ui-button label="Disabled" disabled></ui-button>
 <ui-button label="Loading" loading></ui-button>
 <ui-button label="Full Width" full-width></ui-button>`;
-
-  ngOnInit() {}
 }

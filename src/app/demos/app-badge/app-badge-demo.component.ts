@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BadgePlaygroundComponent } from './components/badge-playground/badge-playground.component';
@@ -26,21 +26,14 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-badge-demo.component.html',
   styleUrl: './app-badge-demo.component.scss',
 })
-export class AppBadgeDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class AppBadgeDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'colors', title: 'Colors', icon: '🌈', color: '#3b82f6' },
     { id: 'styles', title: 'Styles', icon: '🎨', color: '#10b981' },
     { id: 'positions', title: 'Positions', icon: '📍', color: '#f59e0b' },
     { id: 'special', title: 'Special Features', icon: '✨', color: '#ef4444' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
-  ngOnInit() {}
 
   playgroundCode = `<ui-badge value="5" color="danger">
   <div class="target">Icon</div>

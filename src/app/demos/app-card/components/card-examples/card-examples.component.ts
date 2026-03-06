@@ -12,24 +12,16 @@ import { BaseDemoComponent } from '../../../../shared/base-demo.component';
   styleUrl: './card-examples.component.scss',
 })
 export class CardExamplesComponent extends BaseDemoComponent {
-  variants = [
-    { id: 'playground-hero', name: 'Premium Showcase', icon: '✨' },
-    { id: 'basic', name: 'Core Structure', icon: '📋' },
-    { id: 'media', name: 'Media Enhancements', icon: '🖼️' },
-    { id: 'interactions', name: 'Rich Interactions', icon: '⚡' },
-    { id: 'variants-showcase', name: 'Design Variants', icon: '🎨' },
-    { id: 'responsive', name: 'Adaptive Layouts', icon: '📱' },
-    { id: 'states', name: 'Functional States', icon: '⏳' },
-    { id: 'advanced', name: 'Advanced Patterns', icon: '🚀' },
+  exampleVariants = [
+    { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
+    { id: 'basic', title: 'Core Structure', icon: '📋' },
+    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
+    { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
+    { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
+    { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
+    { id: 'states', title: 'Functional States', icon: '⏳' },
+    { id: 'advanced', title: 'Advanced Patterns', icon: '🚀' },
   ];
-
-  get exampleVariants() {
-    return this.variants.map((v) => ({
-      id: v.id,
-      title: v.name,
-      icon: v.icon,
-    }));
-  }
 
   premiumHeroCode = `<div class="card-grid">
   <!-- Dashboard Card -->

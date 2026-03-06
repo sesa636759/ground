@@ -8,6 +8,9 @@
     <!-- Examples Slot -->
     <div slot="examples">
       <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+
         <div class="examples-content">
           <!-- Playground -->
           <section class="demo-section" id="playground">
@@ -637,100 +640,6 @@
         </div>
       </div>
     </div>
-    <div slot="examples">
-      <!-- Variants -->
-      <section class="demo-section" id="variants">
-        <div class="section-header">
-          <h2>🎭 Variants</h2>
-          <p>Different visual styles for lists</p>
-        </div>
-        <div class="demo-grid col-2">
-          <div class="demo-card">
-            <h3>Filled</h3>
-            <app-list variant="filled" color="primary">
-              <app-list-item
-                label="Inbox"
-                icon="fas fa-inbox"
-                badge="3"
-                badge-color="danger"
-              ></app-list-item>
-              <app-list-item label="Sent" icon="fas fa-paper-plane"></app-list-item>
-              <app-list-item label="Drafts" icon="fas fa-pencil-alt"></app-list-item>
-            </app-list>
-          </div>
-
-          <div class="demo-card">
-            <h3>Outlined</h3>
-            <app-list variant="outlined" color="success">
-              <app-list-item label="Active" icon="fas fa-check-circle"></app-list-item>
-              <app-list-item
-                label="Pending"
-                icon="fas fa-clock"
-                sublabel="Waiting for approval"
-              ></app-list-item>
-              <app-list-item label="Completed" icon="fas fa-check-double"></app-list-item>
-            </app-list>
-          </div>
-        </div>
-      </section>
-
-      <!-- Nested Lists -->
-      <section class="demo-section" id="nested">
-        <div class="section-header">
-          <h2>🌳 Nested Lists</h2>
-          <p>Expandable tree-like structures</p>
-        </div>
-        <div class="demo-card">
-          <app-list variant="soft">
-            <app-list-item label="Documents" icon="fas fa-folder" collapsible expanded>
-              <div slot="children">
-                <app-list-item label="Work" icon="fas fa-briefcase" level="1"></app-list-item>
-                <app-list-item label="Personal" icon="fas fa-user" level="1" collapsible>
-                  <div slot="children">
-                    <app-list-item label="Photos" icon="fas fa-images" level="2"></app-list-item>
-                    <app-list-item
-                      label="Receipts"
-                      icon="fas fa-file-invoice"
-                      level="2"
-                    ></app-list-item>
-                  </div>
-                </app-list-item>
-              </div>
-            </app-list-item>
-            <app-list-item label="System" icon="fas fa-cog"></app-list-item>
-          </app-list>
-        </div>
-      </section>
-
-      <!-- Premium Features -->
-      <section class="demo-section" id="premium">
-        <div class="section-header">
-          <h2>💎 Premium Features</h2>
-          <p>Auto-grouped lists, Skeleton loading, and Horizontal layout</p>
-        </div>
-        <div class="demo-grid col-2">
-          <div class="demo-card">
-            <h3>Grouped List</h3>
-            <app-list grouped variant="filled" color="info">
-              <app-list-item label="Apple" icon="fas fa-apple-alt" group="Fruits"></app-list-item>
-              <app-list-item label="Banana" icon="fas fa-carrot" group="Fruits"></app-list-item>
-              <app-list-item label="Carrot" icon="fas fa-carrot" group="Vegetables"></app-list-item>
-              <app-list-item label="Broccoli" icon="fas fa-tree" group="Vegetables"></app-list-item>
-            </app-list>
-          </div>
-
-          <div class="demo-card">
-            <h3>Skeleton Loading</h3>
-            <app-list-group label="Loading Data" expanded skeleton>
-              <app-list-item label="Hidden 1"></app-list-item>
-              <app-list-item label="Hidden 2"></app-list-item>
-              <app-list-item label="Hidden 3"></app-list-item>
-            </app-list-group>
-          </div>
-        </div>
-      </section>
-    </div>
-
     <!-- Playground Slot -->
     <div slot="playground">
       <app-list-playground></app-list-playground>

@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModernSidebarPlaygroundComponent } from './components/modern-sidebar-playground/modern-sidebar-playground.component';
@@ -15,7 +15,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     ModernSidebarPlaygroundComponent,
     DemoTabsComponent,
-    
+
     DemoSidebarComponent,
     DemoHeaderComponent,
   ],
@@ -23,8 +23,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-modern-sidebar-demo.component.html',
   styleUrl: './set-modern-sidebar-demo.component.scss',
 })
-export class SetModernSidebarDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetModernSidebarDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic-default', title: 'Basic Default', icon: '📋' },
     { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
     { id: 'collapsed-compact', title: 'Collapsed/Compact', icon: '◀️' },
@@ -56,14 +57,6 @@ export class SetModernSidebarDemoComponent extends BaseDemoComponent implements 
     { id: 'analytics-dashboard', title: 'Analytics Dashboard', icon: '📈' },
     { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
-  ngOnInit() {}
 
   basicDefaultCode = signal(`<app-modern-sidebar
   brand-name="My App"

@@ -29,7 +29,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   styleUrl: './set-checkbox-demo.component.scss',
 })
 export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
     { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
     { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
@@ -38,12 +39,6 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
     { id: 'form', title: 'Form Example', icon: '📋' },
   ];
-
-  
-
-  get exampleVariants() {
-    return this.variants;
-  }
 
   // Select All Group State
   masterChecked = false;

@@ -1,6 +1,6 @@
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';
@@ -24,8 +24,9 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   templateUrl: './app-anchor-demo.component.html',
   styleUrl: './app-anchor-demo.component.scss',
 })
-export class AppAnchorDemoComponent extends BaseDemoComponent implements OnInit {
+export class AppAnchorDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'types', title: 'Marker Styles', icon: '📝', color: '#3b82f6' },
     { id: 'orientation', title: 'Orientation', icon: '↔️', color: '#10b981' },
     { id: 'auto-gen', title: 'Headings Auto-Detection', icon: '⚙️', color: '#f59e0b' },
@@ -50,6 +51,4 @@ export class AppAnchorDemoComponent extends BaseDemoComponent implements OnInit 
 <ui-anchor orientation="vertical" [links]="links"></ui-anchor>`;
 
   autoGenCode = `<ui-anchor auto-gen-container="#auto-gen-box" show-progress></ui-anchor>`;
-
-  ngOnInit() {}
 }

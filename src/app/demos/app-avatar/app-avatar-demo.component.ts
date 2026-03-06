@@ -7,6 +7,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-avatar-demo',
   standalone: true,
@@ -23,12 +25,8 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './app-avatar-demo.component.html',
   styleUrl: './app-avatar-demo.component.scss',
 })
-export class AppAvatarDemoComponent {
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  variants = [
+export class AppAvatarDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
     { id: 'playground', title: 'Interactive Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'shapes', title: 'Shapes', icon: '📐', color: '#3b82f6' },
     { id: 'types', title: 'Types', icon: '👤', color: '#10b981' },
@@ -68,15 +66,4 @@ export class AppAvatarDemoComponent {
   <ui-avatar src="https://i.pravatar.cc/150?u=d" name="Member D"></ui-avatar>
   <ui-avatar src="https://i.pravatar.cc/150?u=e" name="Member E"></ui-avatar>
 </ui-avatar-group>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    const container = document.querySelector('.pane-examples');
-    if (element && container) {
-      container.scrollTo({
-        top: (element as HTMLElement).offsetTop - 20,
-        behavior: 'smooth',
-      });
-    }
-  }
 }

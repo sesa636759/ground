@@ -6,23 +6,29 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-tree-diagram-demo',
   standalone: true,
-  imports: [CommonModule, TreeDiagramPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    TreeDiagramPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tree-diagram-demo.component.html',
   styleUrl: './tree-diagram-demo.component.scss',
 })
-export class TreeDiagramDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',  icon: '🎮', color: '#8b5cf6' },
-    { id: 'org',        name: 'Org Chart',   icon: '🏢', color: '#6366f1' },
-    { id: 'filesystem', name: 'File System', icon: '📁', color: '#10b981' },
-    { id: 'tech',       name: 'Tech Stack',  icon: '🛠️', color: '#f59e0b' },
+export class TreeDiagramDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'org', title: 'Org Chart', icon: '🏢', color: '#6366f1' },
+    { id: 'filesystem', title: 'File System', icon: '📁', color: '#10b981' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   orgCode = `<!-- Org Chart Tree (SVG + layout algorithm) -->
 <svg width="640" height="420">

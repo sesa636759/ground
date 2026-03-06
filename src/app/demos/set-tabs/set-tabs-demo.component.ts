@@ -1,10 +1,11 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TabsPlaygroundComponent } from './components/tabs-playground/tabs-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
@@ -20,6 +21,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
     ExampleSectionComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
+    DemoHeaderComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-tabs-demo.component.html',
@@ -27,6 +29,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 })
 export class SetTabsDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'orientation', title: 'Orientation', icon: '↔️' },
     { id: 'variants', title: 'Visual Variants', icon: '🎨' },
     { id: 'sizes', title: 'Sizes', icon: '📐' },

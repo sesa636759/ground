@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
@@ -28,8 +28,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-accordian-demo.component.html',
   styleUrl: './app-accordian-demo.component.scss',
 })
-export class SetAccordianDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetAccordianDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
     { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
     { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
@@ -44,10 +45,6 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
     { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
 
   basicAccordionItems = [
     {
@@ -223,6 +220,4 @@ export class SetAccordianDemoComponent extends BaseDemoComponent implements OnIn
   setControlledExpanded(ids: string[]) {
     this.controlledExpanded = [...ids];
   }
-
-  ngOnInit() {}
 }

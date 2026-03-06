@@ -1,12 +1,12 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -18,29 +18,22 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ChipPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-chip-demo.component.html',
   styleUrl: './app-chip-demo.component.scss',
 })
-export class AppChipDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class AppChipDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Variants', icon: '🎨', color: '#8b5cf6' },
     { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏', color: '#3b82f6' },
     { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤', color: '#10b981' },
     { id: 'actions', title: 'Actions', icon: '⚡', color: '#f59e0b' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
-
-  ngOnInit() {}
 
   playgroundCode = `<ui-chip label="Web Development" color="primary" removable></ui-chip>`;
 

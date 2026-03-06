@@ -7,23 +7,30 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
   selector: 'app-timeline-range-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TimelineRangePlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TimelineRangePlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-range-demo.component.html',
   styleUrl: './timeline-range-demo.component.scss',
 })
-export class TimelineRangeDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'project',    name: 'Project',    icon: '📋', color: '#6366f1' },
-    { id: 'team',       name: 'Team',       icon: '👥', color: '#10b981' },
-    { id: 'events',     name: 'Events',     icon: '📅', color: '#f59e0b' },
+export class TimelineRangeDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'project', title: 'Project Schedule', icon: '📋', color: '#6366f1' },
+    { id: 'team', title: 'Team Schedule', icon: '👥', color: '#10b981' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   projectCode = `<!-- Timeline Range – Project Phases (SVG) -->
 <svg width="700" height="210">

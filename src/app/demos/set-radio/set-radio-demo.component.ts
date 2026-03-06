@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
@@ -22,14 +22,15 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ExampleSectionComponent,
     AppRadioGroupValueAccessorDirective,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-radio-demo.component.html',
   styleUrl: './set-radio-demo.component.scss',
 })
-export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetRadioDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
     { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
     { id: 'loading-skeleton', title: 'Loading Skeleton', icon: '⏳' },
@@ -39,12 +40,6 @@ export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'states', title: 'States', icon: '🔄' },
     { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
-
-  
-
-  get exampleVariants() {
-    return this.variants;
-  }
 
   basicOptions = [
     { value: 'option1', label: 'Option 1' },
@@ -110,8 +105,6 @@ export class SetRadioDemoComponent extends BaseDemoComponent implements OnInit {
   required
   [options]="deliveryOptions"
 ></app-radio-group>`;
-
-  ngOnInit() {}
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {

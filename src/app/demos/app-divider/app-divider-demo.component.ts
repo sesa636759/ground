@@ -1,5 +1,5 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DividerPlaygroundComponent } from './components/divider-playground/divider-playground.component';
@@ -26,19 +26,14 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-divider-demo.component.html',
   styleUrl: './app-divider-demo.component.scss',
 })
-export class AppDividerDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class AppDividerDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Line Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'text-content', title: 'Text & Content', icon: '📝', color: '#10b981' },
     { id: 'vertical', title: 'Vertical Orientation', icon: '↕️', color: '#f59e0b' },
     { id: 'shapes', title: 'Decorative Shapes', icon: '📐', color: '#ef4444' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
 
   playgroundCode = `<ui-divider text="SECTION 1" variant="dashed" size="lg"></ui-divider>`;
 
@@ -62,6 +57,4 @@ export class AppDividerDemoComponent extends BaseDemoComponent implements OnInit
 
   shapesCode = `<ui-divider shape="wave" shape-color="#f3f4f6"></ui-divider>
 <ui-divider shape="tilt" shape-color="#fef2f2" style="height: 50px"></ui-divider>`;
-
-  ngOnInit() {}
 }

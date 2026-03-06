@@ -6,6 +6,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
@@ -19,6 +20,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-resizable-panel-demo.component.html',
@@ -26,6 +28,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 })
 export class SetResizablePanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'horizontal', title: 'Basic Horizontal Split', icon: '📋' },
     { id: 'vertical', title: 'Basic Vertical Split', icon: '↕️' },
     { id: 'triple', title: 'Triple Split Panel', icon: '🥈' },
@@ -34,8 +37,6 @@ export class SetResizablePanelDemoComponent extends BaseDemoComponent {
     { id: 'themes', title: 'Dark Theme', icon: '🌙' },
     { id: 'snap', title: 'Snap to Edge', icon: '📌' },
   ];
-
-  
 
   basicHPanels = [
     { id: 'p1', size: 30, minSize: 15 },

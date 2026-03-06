@@ -7,17 +7,8 @@
   <demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
-      <aside class="examples-sidebar">
-        <div class="sidebar-title">Sections</div>
-        <div class="sidebar-nav">
-          <ui-anchor
-            [links]="anchorLinks"
-            scroll-container=".examples-content"
-            type="line"
-            show-progress
-          ></ui-anchor>
-        </div>
-      </aside>
+      <!-- Sidebar Navigation -->
+      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
       <div class="examples-content">
         <app-example-section
           id="horizontal"

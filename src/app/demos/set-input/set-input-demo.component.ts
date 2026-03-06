@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputPlaygroundComponent } from './components/input-playground/input-playground.component';
@@ -26,8 +26,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-input-demo.component.html',
   styleUrl: './set-input-demo.component.scss',
 })
-export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
-  variants = [
+export class SetInputDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic-types', title: 'Basic Input Types', icon: '📋' },
     { id: 'variants', title: 'Input Variants', icon: '🎭' },
     { id: 'sizes', title: 'Input Sizes', icon: '📏' },
@@ -41,12 +42,6 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
     { id: 'input-masking', title: 'Input Masking', icon: '🎭' },
     { id: 'input-states', title: 'Input States', icon: '🔄' },
   ];
-
-  
-
-  get exampleVariants() {
-    return this.variants;
-  }
 
   skeletonState = false;
 
@@ -113,8 +108,6 @@ export class SetInputDemoComponent extends BaseDemoComponent implements OnInit {
 
 <!-- Date Mask -->
 <ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>`;
-
-  ngOnInit() {}
 
   toggleSkeleton() {
     this.skeletonState = !this.skeletonState;

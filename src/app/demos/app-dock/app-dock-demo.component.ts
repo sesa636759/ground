@@ -1,5 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DockPlaygroundComponent } from './components/dock-playground/dock-playground.component';
@@ -28,6 +28,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 })
 export class AppDockDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic', icon: '🟦', color: '#3b82f6' },
     { id: 'positions', title: 'Positions', icon: '📍', color: '#10b981' },
     { id: 'sizes', title: 'Sizes', icon: '📏', color: '#f59e0b' },

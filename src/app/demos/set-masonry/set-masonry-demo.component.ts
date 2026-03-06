@@ -28,6 +28,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 })
 export class SetMasonryDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'masonry', title: 'Masonry Layout', icon: '🧱', color: '#8b5cf6' },
     { id: 'grid', title: 'Grid Layout', icon: '📦', color: '#3b82f6' },
     { id: 'columns', title: 'Columns Layout', icon: '📰', color: '#10b981' },

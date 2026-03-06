@@ -9,6 +9,8 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-app-avatar-group-demo',
   standalone: true,
@@ -25,15 +27,11 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './app-avatar-group-demo.component.html',
   styleUrl: './app-avatar-group-demo.component.scss',
 })
-export class AppAvatarGroupDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#3b82f6' },
+export class AppAvatarGroupDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'sizes', title: 'Sizes', icon: '📏', color: '#3b82f6' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-avatar-group [max]="3">
   <ui-avatar label="JD"></ui-avatar>
@@ -53,11 +51,4 @@ export class AppAvatarGroupDemoComponent {
   <ui-avatar label="X"></ui-avatar>
   <ui-avatar label="Y"></ui-avatar>
 </ui-avatar-group>`;
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

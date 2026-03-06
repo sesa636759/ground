@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeSwitcherPlaygroundComponent } from './components/theme-switcher-playground/theme-switcher-playground.component';
@@ -16,13 +18,15 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-theme-switcher-demo.component.html',
   styleUrl: './set-theme-switcher-demo.component.scss',
 })
-export class SetThemeSwitcherDemoComponent implements OnInit {
+export class SetThemeSwitcherDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Visual Variants', icon: '🎭' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
     { id: 'icons', title: 'Icon Options', icon: '🎯' },
@@ -39,13 +43,4 @@ export class SetThemeSwitcherDemoComponent implements OnInit {
   [themes]="themes"
   [(ngModel)]="currentTheme"
 ></app-theme-switcher>`;
-
-  ngOnInit() {}
-
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }

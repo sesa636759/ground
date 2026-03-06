@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ListPlaygroundComponent } from './components/list-playground/list-playground.component';
@@ -6,19 +7,27 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
 @Component({
   selector: 'app-set-list-demo',
   standalone: true,
   imports: [
-    CommonModule, FormsModule, ListPlaygroundComponent, DemoTabsComponent, ComponentDocumentationComponent,
+    CommonModule,
+    FormsModule,
+    ListPlaygroundComponent,
+    DemoTabsComponent,
+    ComponentDocumentationComponent,
     DemoHeaderComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-list-demo.component.html',
   styleUrl: './set-list-demo.component.scss',
 })
-export class SetListDemoComponent {
-  variants = [
+export class SetListDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Lists', icon: '📝' },
     { id: 'colors', title: 'Color Variants', icon: '🎨' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
@@ -32,17 +41,6 @@ export class SetListDemoComponent {
     { id: 'tags', title: 'Tags & Pills', icon: '🏷️' },
     { id: 'config', title: 'Configuration Demo', icon: '⚙️' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
-
-  scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 
   // Code examples for each section
   basicCode = signal(`<app-list>

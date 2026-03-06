@@ -27,18 +27,13 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   styleUrl: './app-aside-demo.component.scss',
 })
 export class AppAsideDemoComponent extends BaseDemoComponent {
-  variants = [
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'directions', title: 'Directions', icon: '🧭' },
     { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
     { id: 'resizable', title: 'Resizable', icon: '↔️' },
     { id: 'close-behavior', title: 'Close Behavior', icon: '🚪' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
 
   sidebars = {
     left: false,

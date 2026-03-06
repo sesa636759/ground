@@ -27,7 +27,8 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   styleUrl: './app-pagination-demo.component.scss',
 })
 export class AppPaginationDemoComponent extends BaseDemoComponent {
-  variants = [
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic & Compact', icon: '📄' },
     { id: 'detailed', title: 'Detailed', icon: '📋' },
     { id: 'minimal', title: 'Minimal', icon: '➖' },
@@ -38,12 +39,6 @@ export class AppPaginationDemoComponent extends BaseDemoComponent {
     { id: 'sizes', title: 'Sizes & Variations', icon: '📏' },
     { id: 'features', title: 'Advanced & Smart', icon: '🧠' },
   ];
-
-  get exampleVariants() {
-    return this.variants;
-  }
-
-  
 
   basicCode = `<!-- Basic Pagination -->
 <ui-pagination total-items="100" items-per-page="10" current-page="1"></ui-pagination>
