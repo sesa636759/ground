@@ -12,7 +12,7 @@ import {
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-demo-sidebar',
+  selector: 'pg-demo-sidebar',
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

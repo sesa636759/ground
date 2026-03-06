@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💊"
     title="Pill / Tag"
     description="Compact elements used for attributes, status indicators, and category tagging. Highly customizable with icons, avatars, and interactive states."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-pill-playground></app-pill-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -69,7 +69,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="pill"></app-component-documentation>
+      <pg-component-documentation componentId="pill"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

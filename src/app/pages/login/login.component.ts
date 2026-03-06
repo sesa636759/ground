@@ -7,7 +7,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-
 import { ASSETS } from '../../shared/constants/assets.constants';
 
 @Component({
-  selector: 'app-login',
+  selector: 'pg-login',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,

@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🍿"
     title="Chip Component"
     description="Compact elements that represent an input, attribute, or action. Perfect for tags, filters, or entity representation."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-chip-playground></app-chip-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Variants -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Variants"
           description="Different visual styles for various contexts."
@@ -42,10 +42,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Shapes & Sizes -->
-        <app-example-section
+        <pg-example-section
           id="shapes-sizes"
           title="Shapes & Sizes"
           description="Control the appearance and scale of chips."
@@ -69,10 +69,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Avatars & Icons -->
-        <app-example-section
+        <pg-example-section
           id="avatars-icons"
           title="Avatars & Icons"
           description="Enhance chips with media and interactive elements."
@@ -94,10 +94,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Actions -->
-        <app-example-section
+        <pg-example-section
           id="actions"
           title="Actions"
           description="Interactive behaviors for chips."
@@ -120,13 +120,13 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="chip"></app-component-documentation>
+      <pg-component-documentation componentId="chip"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

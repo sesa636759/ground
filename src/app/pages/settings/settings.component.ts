@@ -7,7 +7,7 @@ import { SecuritySettingsSectionComponent } from './sections/security-settings.c
 import { PreferencesSettingsSectionComponent } from './sections/preferences-settings.component';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'pg-settings',
   standalone: true,
   imports: [
     CommonModule,

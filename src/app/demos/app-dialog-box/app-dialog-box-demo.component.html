@@ -1,23 +1,23 @@
 ﻿<div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔳"
     title="Dialog Box"
     description="A flexible overlay component that centers itself on screen. Supports modal behavior, dragging, resizing, and custom headers/footers."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-dialog-box-playground></app-dialog-box-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content">
         <!-- Basic Dialog -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic Dialog"
           description="Standard dialogs with headers, content, and footers."
@@ -51,10 +51,10 @@
               </div>
             </dialog-box>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Custom Slots -->
-        <app-example-section
+        <pg-example-section
           id="slots"
           title="Custom Slots"
           description="Fully customizable header, content, and footer slots."
@@ -127,10 +127,10 @@
               </div>
             </dialog-box>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Predefined Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Predefined Sizes"
           description="Consistent sizing using design tokens: xs, sm, md, lg, xl, fill."
@@ -193,10 +193,10 @@
               ><div>Content</div></dialog-box
             >
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Variants & Status -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Variants & Status"
           description="Contextual dialog styles based on operation state."
@@ -242,10 +242,10 @@
               ><div><p>Error content</p></div></dialog-box
             >
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Positions -->
-        <app-example-section
+        <pg-example-section
           id="positions"
           title="Positions"
           description="Control where the dialog is mounted on the screen."
@@ -301,10 +301,10 @@
               ><div>Content</div></dialog-box
             >
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Scroll Behaviors -->
-        <app-example-section
+        <pg-example-section
           id="scroll"
           title="Scroll Behaviors"
           description="Choose whether the dialog body scrolls internally (paper) or the window body scrolls with it."
@@ -355,10 +355,10 @@
               </div>
             </dialog-box>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Advanced Behaviors -->
-        <app-example-section
+        <pg-example-section
           id="advanced"
           title="Advanced Behaviors"
           description="Tweak backdrops, draggability bounds, and resizing constraints."
@@ -430,10 +430,10 @@
               <div><p>I can be moved around completely AND resized all you want.</p></div>
             </dialog-box>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Premium Capabilities -->
-        <app-example-section
+        <pg-example-section
           id="premium"
           title="Premium Capabilities"
           description="High-fidelity features including custom CSS animations and persistent state widgets."
@@ -527,12 +527,12 @@
               </div>
             </ui-dialog-box>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="dialog-box"></app-component-documentation>
+      <pg-component-documentation componentId="dialog-box"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

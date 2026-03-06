@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💧"
     title="Dropdown Component"
     description="A robust and interactive selection component. Supports single/multi-selection, search filtering, hierarchical cascading data, and screen-reader optimizations."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-dropdown-playground></app-dropdown-playground>
@@ -14,22 +14,22 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic Dropdown"
           description="Standard single-selection dropdown"
           [code]="basicCode"
         >
           <ui-dropdown [options]="basicOptions" placeholder="Select an option"></ui-dropdown>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Multi Selection -->
-        <app-example-section
+        <pg-example-section
           id="multi-select"
           title="Multi-Select Mode"
           description="Allow users to select multiple options with an intuitive interface"
@@ -40,10 +40,10 @@
             [options]="basicOptions"
             placeholder="Select multiple items"
           ></ui-dropdown>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Cascading -->
-        <app-example-section
+        <pg-example-section
           id="cascading"
           title="Hierarchical / Cascading"
           description="Organize complex data structures into expandable parent-child groups"
@@ -54,10 +54,10 @@
             [options]="cascadingOptions"
             placeholder="Explore categories"
           ></ui-dropdown>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Size Scaling"
           description="Adapt the dropdown footprint to your UI density requirements"
@@ -68,12 +68,12 @@
             <ui-dropdown size="md" [options]="basicOptions" placeholder="Medium"></ui-dropdown>
             <ui-dropdown size="lg" [options]="basicOptions" placeholder="Large"></ui-dropdown>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="dropdown"></app-component-documentation>
+      <pg-component-documentation componentId="dropdown"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

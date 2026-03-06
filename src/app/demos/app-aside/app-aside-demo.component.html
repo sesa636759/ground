@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📱"
     title="Aside Panel"
     description="A versatile slide-out container that anchors to any edge of the screen. Perfect for settings, navigation menus, detail views, or task-based workflows."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-aside-playground></app-aside-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content">
         <!-- Directions -->
-        <app-example-section
+        <pg-example-section
           id="directions"
           title="Directions"
           description="Anchor the panel to any of the four screen edges: left, right, top, or bottom"
@@ -47,10 +47,10 @@
               (click)="sidebars.bottom = true"
             ></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Visual Styles -->
-        <app-example-section
+        <pg-example-section
           id="visual-styles"
           title="Visual Styles"
           description="Choose between a clean solid panel or a glassmorphism effect for premium depth"
@@ -68,10 +68,10 @@
               (click)="sidebars.glass = true"
             ></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Resizable -->
-        <app-example-section
+        <pg-example-section
           id="resizable"
           title="Resizable"
           description="Let users drag the panel edge to their preferred width or height"
@@ -82,10 +82,10 @@
             label="Open Resizable Panel"
             (click)="sidebars.resizable = true"
           ></ui-button>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Close Behavior -->
-        <app-example-section
+        <pg-example-section
           id="close-behavior"
           title="Close Behavior"
           description="Control how the panel is dismissed — via the X button, Escape key, or overlay click"
@@ -103,7 +103,7 @@
               (click)="sidebars.overlayClose = true"
             ></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
       <!-- /examples-content -->
     </div>
@@ -111,9 +111,9 @@
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="aside-panel"></app-component-documentation>
+      <pg-component-documentation componentId="aside-panel"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>
 
 <!-- ===================== Panels ===================== -->

@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="⏳"
     title="Timeline"
     description="Visualize a series of events chronologically. Highly flexible component supporting vertical/horizontal orientations, alternating alignments, and custom templates for markers and content."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-timeline-playground></app-timeline-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -73,7 +73,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="timeline"></app-component-documentation>
+      <pg-component-documentation componentId="timeline"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

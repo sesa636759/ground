@@ -1,19 +1,19 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="👥"
     title="Avatar Group Component"
     description="Display multiple avatars in a group with customizable layouts, sizes, shapes, and interactive features."
-  ></app-demo-header>
-  <demo-tabs>
+  ></pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic Group -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic Group"
           description="Simple avatar group with multiple users"
@@ -29,10 +29,10 @@
               ></app-avatar>
             </app-avatar-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Sizes"
           description="Available in small, medium, and large."
@@ -70,10 +70,10 @@
               </app-avatar-group>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Max Display -->
-        <app-example-section
+        <pg-example-section
           id="max-display"
           title="Max Display"
           description="Limit number of visible avatars"
@@ -91,10 +91,10 @@
               </app-avatar-group>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Layouts -->
-        <app-example-section
+        <pg-example-section
           id="layouts"
           title="Layouts"
           description="Stacked or spaced layouts"
@@ -122,10 +122,10 @@
               </app-avatar-group>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Shapes -->
-        <app-example-section
+        <pg-example-section
           id="shapes"
           title="Shapes"
           description="Circle, square, or rounded"
@@ -153,10 +153,10 @@
               </app-avatar-group>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Status -->
-        <app-example-section
+        <pg-example-section
           id="status"
           title="Status"
           description="Display status indicators"
@@ -181,10 +181,10 @@
               ></app-avatar>
             </app-avatar-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Advanced Features -->
-        <app-example-section
+        <pg-example-section
           id="combined"
           title="Combined Features"
           description="Multiple features in one group"
@@ -210,7 +210,7 @@
               ></app-avatar>
             </app-avatar-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -221,7 +221,7 @@
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="avatar-group"></app-component-documentation>
+      <pg-component-documentation componentId="avatar-group"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

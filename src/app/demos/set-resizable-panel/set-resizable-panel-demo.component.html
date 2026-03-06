@@ -1,16 +1,16 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="↔️"
     title="Resizable Panel"
     description="Flexible layout system with draggable dividers for horizontal and vertical resizing. Perfect for dashboards, IDEs, and complex UIs."
-  ></app-demo-header>
-  <demo-tabs>
+  ></pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
       <div class="examples-content">
-        <app-example-section
+        <pg-example-section
           id="horizontal"
           title="Basic Horizontal Split"
           description="Two panels with horizontal resizing"
@@ -35,9 +35,9 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="vertical"
           title="Basic Vertical Split"
           description="Two panels with vertical resizing"
@@ -58,9 +58,9 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="triple"
           title="Triple Split Panel"
           description="Three panels with independent resizing"
@@ -85,9 +85,9 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="nested"
           title="Nested Resizable Panels"
           description="Combine horizontal and vertical panels for complex IDE-like layouts"
@@ -121,9 +121,9 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="collapsible"
           title="Collapsible Panels"
           description="Panels can be collapsed and expanded for better space management"
@@ -150,9 +150,9 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="themes"
           title="Dark Theme"
           description="Built-in dark theme support for modern UIs"
@@ -190,9 +190,9 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="snap"
           title="Snap to Edge"
           description="Panels snap closed when dragged near the edge"
@@ -219,7 +219,7 @@
               </app-resizable-panel>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
       <!-- /examples-content -->
     </div>
@@ -232,7 +232,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="resizable-panel"></app-component-documentation>
+      <pg-component-documentation componentId="resizable-panel"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

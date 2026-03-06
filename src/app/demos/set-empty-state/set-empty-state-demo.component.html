@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎯"
     title="Empty State Component"
     description="Communicate empty states, errors, and feedback with illustration and action support."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-empty-state-playground></app-empty-state-playground>
@@ -15,12 +15,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Standard Types -->
-        <app-example-section
+        <pg-example-section
           id="types"
           title="Standard Types"
           description="Pre-configured empty states for common scenarios"
@@ -89,10 +89,10 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Visual Variants -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Visual Variants"
           description="Different styling options for empty states"
@@ -136,10 +136,10 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Size Options -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Size Options"
           description="Small, medium, and large empty state sizes"
@@ -174,10 +174,10 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Alignment Options -->
-        <app-example-section
+        <pg-example-section
           id="alignment"
           title="Alignment Options"
           description="Left, center, and right text alignment"
@@ -212,10 +212,10 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Custom Images -->
-        <app-example-section
+        <pg-example-section
           id="images"
           title="Custom Images"
           description="Using custom images instead of default illustrations"
@@ -241,10 +241,10 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Suggestion Items -->
-        <app-example-section
+        <pg-example-section
           id="suggestions"
           title="Suggestion Items"
           description="Empty state with actionable suggestion items"
@@ -259,10 +259,10 @@
               primary-action="Clear Filters"
             ></app-empty-state>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Multiple Actions -->
-        <app-example-section
+        <pg-example-section
           id="actions"
           title="Multiple Actions"
           description="Empty state with primary and secondary action buttons"
@@ -279,10 +279,10 @@
               secondary-action-icon="fas fa-file-import"
             ></app-empty-state>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Special Features -->
-        <app-example-section
+        <pg-example-section
           id="features"
           title="Special Features"
           description="Rounded corners, elevated shadows, and back button"
@@ -326,10 +326,10 @@
               <app-empty-state label="Custom Empty State" custom-content></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Premium Features -->
-        <app-example-section
+        <pg-example-section
           id="premium"
           title="Premium Features"
           description="Advanced effects like glassmorphism and celebration states"
@@ -377,7 +377,7 @@
               ></app-empty-state>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -385,7 +385,7 @@
     <div slot="docs">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -411,5 +411,5 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

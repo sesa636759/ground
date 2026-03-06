@@ -203,10 +203,10 @@
   </div>
 
   <div events>
-    <app-playground-event-log
+    <pg-playground-event-log
       [logs]="eventLog()"
       (clear)="eventLog.set([])"
-    ></app-playground-event-log>
+    ></pg-playground-event-log>
   </div>
 
   @if (showCode) {

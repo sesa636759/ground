@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📋"
     title="Picklist"
     description="Move items between two lists with ease. Features multi-selection, drag-and-drop support, reordering within lists, and dedicated filtering for both source and target."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-picklist-playground></app-picklist-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -47,7 +47,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="picklist"></app-component-documentation>
+      <pg-component-documentation componentId="picklist"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,20 +1,20 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔢"
     title="OTP Input Component"
     description="Flexible one-time password input component with support for various lengths, styles, validation, masking, and advanced features like grouping and auto-submission."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Length Variants -->
-        <app-example-section
+        <pg-example-section
           id="length-variants"
           title="Length Variants"
           description="Different lengths and types for the OTP input."
@@ -32,10 +32,10 @@
             ></ui-otp-input>
             <ui-otp-input length="8" type="alphanumeric" label="8-Digit Long Code"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Variants & Styles -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Variants & Styles"
           description="Different visual appearances for the OTP input."
@@ -55,10 +55,10 @@
               [spacing]="8"
             ></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Validation States -->
-        <app-example-section
+        <pg-example-section
           id="validation-states"
           title="Validation States"
           description="Visual feedback for various validation states."
@@ -88,10 +88,10 @@
               helper-text="Check email"
             ></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Grouping Variants -->
-        <app-example-section
+        <pg-example-section
           id="grouping-variants"
           title="Groupings"
           description="Grouping input segments for readability."
@@ -115,10 +115,10 @@
               label="Grouped 4-4"
             ></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Masking -->
-        <app-example-section
+        <pg-example-section
           id="masking"
           title="Masked Input"
           description="Hide characters with custom mask symbol"
@@ -127,10 +127,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [mask]="true" mask-char="*"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Size Variants -->
-        <app-example-section
+        <pg-example-section
           id="size-variants"
           title="Size Variants"
           description="Compact, Standard, and Expanded input sizes."
@@ -150,10 +150,10 @@
             <ui-otp-input size="medium" length="4"></ui-otp-input>
             <ui-otp-input size="large" length="4"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Secure PIN -->
-        <app-example-section
+        <pg-example-section
           id="secure-pin"
           title="Secure PIN"
           description="Masked input for sensitive data"
@@ -162,10 +162,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="4" [secure]="true" label="Secure PIN"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Readonly -->
-        <app-example-section
+        <pg-example-section
           id="readonly"
           title="Read-only State"
           description="Input cannot be modified by user"
@@ -174,10 +174,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [readonly]="true" value="123456"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Disabled -->
-        <app-example-section
+        <pg-example-section
           id="disabled"
           title="Disabled State"
           description="Input is disabled and non-interactive"
@@ -186,10 +186,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [disabled]="true"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Validation -->
-        <app-example-section
+        <pg-example-section
           id="validation"
           title="With Validation"
           description="Custom validation with required fields"
@@ -198,10 +198,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [required]="true"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Auto Focus -->
-        <app-example-section
+        <pg-example-section
           id="autofocus"
           title="Auto Focus"
           description="Automatically focus with auto-submit on complete"
@@ -210,10 +210,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [autofocus]="true" auto-submit="true"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Paste Support -->
-        <app-example-section
+        <pg-example-section
           id="pasteable"
           title="Paste Support"
           description="Allow pasting codes with automatic parsing"
@@ -222,10 +222,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" [allow-paste]="true" [paste-separator]="true"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Numeric Only -->
-        <app-example-section
+        <pg-example-section
           id="numeric-only"
           title="Numeric Only"
           description="Accept only numeric input"
@@ -234,10 +234,10 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="6" type="numeric" placeholder="0"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Alphanumeric -->
-        <app-example-section
+        <pg-example-section
           id="alphanumeric"
           title="Alphanumeric"
           description="Accept letters and numbers"
@@ -246,7 +246,7 @@
           <div class="otp-wrapper centered">
             <ui-otp-input length="8" type="alphanumeric" placeholder="A"></ui-otp-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -257,7 +257,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="otp-input"></app-component-documentation>
+      <pg-component-documentation componentId="otp-input"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

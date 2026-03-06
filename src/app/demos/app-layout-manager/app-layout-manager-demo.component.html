@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🗂️"
     title="Layout Manager"
     description="A powerful layout management system for creating complex, resizable panel layouts. Supports docking, grid, and flex modes with drag-and-drop panel rearrangement, resizing, and state persistence."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-layout-manager-playground></app-layout-manager-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -44,7 +44,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="layout-manager"></app-component-documentation>
+      <pg-component-documentation componentId="layout-manager"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

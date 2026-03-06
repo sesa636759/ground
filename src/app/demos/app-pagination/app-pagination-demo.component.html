@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📄"
     title="Pagination"
     description="Navigate through large data sets by breaking them into manageable pages. Provides flexible controls for page switching, jumping to ends, and rows-per-page selection."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-pagination-playground></app-pagination-playground>
     </div>
@@ -13,12 +13,12 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Basic & Compact -->
-          <app-example-section
+          <pg-example-section
             id="basic"
             title="Basic & Compact Pagination"
             description="Standard navigation with page numbers and a compact mode for smaller spaces."
@@ -73,10 +73,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Detailed Pagination -->
-          <app-example-section
+          <pg-example-section
             id="detailed"
             title="Detailed Pagination"
             description="Full-featured pagination with page size selector, total count, and jump to page."
@@ -157,10 +157,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Minimal Pagination -->
-          <app-example-section
+          <pg-example-section
             id="minimal"
             title="Minimal Pagination"
             description="Compact input-based navigation with prev/next buttons."
@@ -236,10 +236,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Dropdown Pagination -->
-          <app-example-section
+          <pg-example-section
             id="dropdown"
             title="Dropdown Pagination"
             description="Select page from dropdown menu with Previous/Next navigation."
@@ -335,10 +335,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Input Pagination -->
-          <app-example-section
+          <pg-example-section
             id="input"
             title="Input Pagination"
             description="Type page number directly or use navigation buttons."
@@ -434,10 +434,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Indicator Pagination -->
-          <app-example-section
+          <pg-example-section
             id="indicator"
             title="Indicator Pagination"
             description="Dot-based navigation perfect for carousels and slideshows."
@@ -527,10 +527,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Themes & Shapes -->
-          <app-example-section
+          <pg-example-section
             id="themes"
             title="Themes & Shapes"
             description="Choose from various color themes and button shape styles."
@@ -644,10 +644,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Sizes & Variations -->
-          <app-example-section
+          <pg-example-section
             id="sizes"
             title="Sizes & Variations"
             description="Different size options, outlined variants, and icon-only modes."
@@ -730,10 +730,10 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Advanced Layouts & Smart Features -->
-          <app-example-section
+          <pg-example-section
             id="features"
             title="Advanced & Smart Features"
             description="Keyboard navigation, Responsive mode, Quick Jump, Progress markers, Sticky positions, and state persistence."
@@ -988,13 +988,13 @@
                 </div>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
         </div>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="pagination"></app-component-documentation>
+      <pg-component-documentation componentId="pagination"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

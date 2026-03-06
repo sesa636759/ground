@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎠"
     title="Carousel Component"
     description="Flexible and responsive carousel/slideshow component with multiple transition effects, autoplay, responsive layouts, and extensive customization options."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-carousel-playground></app-carousel-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Fade Transition -->
-        <app-example-section
+        <pg-example-section
           id="fade-transition"
           title="Fade Transition Effect"
           description="Premium cross-fade effect for smooth presentation"
@@ -49,10 +49,10 @@
               <p>Peak experience</p>
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Slide Transition -->
-        <app-example-section
+        <pg-example-section
           id="slide-transition"
           title="Slide Transition Effect"
           description="Classic sliding animation with smooth transitions"
@@ -114,10 +114,10 @@
               <p>Easy to customize</p>
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Center Mode -->
-        <app-example-section
+        <pg-example-section
           id="center-mode"
           title="Center Mode"
           description="Highlight the active slide with partial side visibility"
@@ -190,10 +190,10 @@
               Item 5
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Multiple Slides -->
-        <app-example-section
+        <pg-example-section
           id="multiple-slides"
           title="Multiple Slides Display"
           description="Show multiple slides at once"
@@ -285,10 +285,10 @@
               <h4>Slide 6</h4>
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Vertical Carousel -->
-        <app-example-section
+        <pg-example-section
           id="vertical-carousel"
           title="Vertical Carousel"
           description="Slides move vertically instead of horizontally"
@@ -336,10 +336,10 @@
               </div>
             </app-carousel>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Infinite Loop -->
-        <app-example-section
+        <pg-example-section
           id="infinite-loop"
           title="Infinite Loop"
           description="Seamless continuous looping carousel"
@@ -365,10 +365,10 @@
               Loop Item 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Swipe & Drag -->
-        <app-example-section
+        <pg-example-section
           id="swipe-drag"
           title="Touch Swipe & Mouse Drag"
           description="Full touch and mouse interaction support"
@@ -415,10 +415,10 @@
               Swipe/Drag 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Autoplay Control -->
-        <app-example-section
+        <pg-example-section
           id="autoplay-control"
           title="Autoplay with Pause Control"
           description="Automatic playback with hover and focus pause"
@@ -449,10 +449,10 @@
               Auto resume
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Drag Threshold -->
-        <app-example-section
+        <pg-example-section
           id="drag-threshold"
           title="Customizable Drag Threshold"
           description="Fine-tune swipe sensitivity and drag distance"
@@ -478,10 +478,10 @@
               Threshold 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Animation Easing -->
-        <app-example-section
+        <pg-example-section
           id="animation-easing"
           title="Animation Easing Effects"
           description="Control animation timing with CSS easing functions"
@@ -507,10 +507,10 @@
               EaseInOut 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Dots Indicators -->
-        <app-example-section
+        <pg-example-section
           id="dots-indicators"
           title="Dots Indicators"
           description="Classic dot pagination for slide navigation"
@@ -541,10 +541,10 @@
               Slide 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Number Indicators -->
-        <app-example-section
+        <pg-example-section
           id="number-indicators"
           title="Number Indicators"
           description="Numeric pagination showing slide numbers"
@@ -570,10 +570,10 @@
               Slide 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Progress Bar -->
-        <app-example-section
+        <pg-example-section
           id="progress-bar"
           title="Progress Bar Indicator"
           description="Visual progress bar showing autoplay timing"
@@ -599,10 +599,10 @@
               Progress 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Size Small -->
-        <app-example-section
+        <pg-example-section
           id="size-small"
           title="Small Size"
           description="Compact carousel with reduced height"
@@ -628,10 +628,10 @@
               Small 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Size Medium -->
-        <app-example-section
+        <pg-example-section
           id="size-medium"
           title="Medium Size"
           description="Standard carousel height for most use cases"
@@ -657,10 +657,10 @@
               Medium 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Size Large -->
-        <app-example-section
+        <pg-example-section
           id="size-large"
           title="Large Size"
           description="Full-height carousel for hero sections"
@@ -686,10 +686,10 @@
               Large 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Speed Fast -->
-        <app-example-section
+        <pg-example-section
           id="speed-fast"
           title="Fast Animation"
           description="Quick transitions and short autoplay interval"
@@ -715,10 +715,10 @@
               Fast 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Speed Normal -->
-        <app-example-section
+        <pg-example-section
           id="speed-normal"
           title="Normal Speed"
           description="Balanced timing for comfortable viewing"
@@ -744,10 +744,10 @@
               Normal 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Speed Slow -->
-        <app-example-section
+        <pg-example-section
           id="speed-slow"
           title="Slow Animation"
           description="Relaxed transitions for detailed content"
@@ -773,10 +773,10 @@
               Slow 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Responsive Breakpoints -->
-        <app-example-section
+        <pg-example-section
           id="responsive-layout"
           title="Responsive Breakpoints"
           description="Adapts slide count based on screen width"
@@ -823,10 +823,10 @@
               Responsive 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Custom Controls -->
-        <app-example-section
+        <pg-example-section
           id="custom-controls"
           title="Custom Navigation Controls"
           description="Extensive control over navigation appearance and behavior"
@@ -858,13 +858,13 @@
               Slide 3
             </div>
           </app-carousel>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="carousel"></app-component-documentation>
+      <pg-component-documentation componentId="carousel"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

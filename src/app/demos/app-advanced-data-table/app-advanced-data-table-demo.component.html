@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📊"
     title="Advanced Data Table"
     description="A high-performance grid component designed for rendering large datasets. It includes out-of-the-box support for pagination, sorting, global/individual column filtering, cell selection, and custom row templates."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-advanced-data-table-playground></app-advanced-data-table-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -43,7 +43,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="advanced-data-table"></app-component-documentation>
+      <pg-component-documentation componentId="advanced-data-table"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🍭"
     title="Lollipop Chart"
     description="A clean alternative to bar charts with a circle connected by a thin stick. Reduces visual clutter while maintaining clarity, ideal for ranking, comparison, and minimalist dashboards."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-lollipop-chart-playground></app-lollipop-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="vertical" style="margin-top: 0">
             <div class="section-header">
@@ -123,7 +123,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="lollipop-chart"></app-component-documentation>
+      <pg-component-documentation componentId="lollipop-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

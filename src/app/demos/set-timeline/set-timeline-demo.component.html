@@ -1,16 +1,16 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📅"
     title="Timeline Component"
     description="An interactive timeline component supporting vertical, horizontal, and snake layouts with extensive customization options."
   >
-  </app-demo-header>
+  </pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
@@ -137,7 +137,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="timeline"></app-component-documentation>
+      <pg-component-documentation componentId="timeline"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

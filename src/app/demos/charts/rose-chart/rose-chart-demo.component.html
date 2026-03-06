@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🌹"
     title="Rose Chart (Nightingale)"
     description="A polar area chart where each segment has equal angular width but varying radius. Named after Florence Nightingale, it excels at comparing cyclical categorical data like monthly or directional distributions."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-rose-chart-playground></app-rose-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="monthly" style="margin-top: 0">
             <div class="section-header">
@@ -90,7 +90,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="rose-chart"></app-component-documentation>
+      <pg-component-documentation componentId="rose-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

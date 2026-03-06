@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎭"
     title="Pattern Input"
     description="An input field with built-in masking capabilities for structured data entry. Automatically formats user input according to predefined patterns like phone numbers, dates, credit cards, and more."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-pattern-input-playground></app-pattern-input-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -63,7 +63,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="pattern-input"></app-component-documentation>
+      <pg-component-documentation componentId="pattern-input"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

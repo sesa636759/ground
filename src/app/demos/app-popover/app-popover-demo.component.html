@@ -1,23 +1,23 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💬"
     title="Popover"
     description="A floating content container triggered by click, hover, or focus — supports rich HTML, multiple placements, and interactive content."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-popover-playground></app-popover-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Triggers -->
-        <app-example-section
+        <pg-example-section
           id="triggers"
           title="Triggers"
           description="Click, hover, or focus — different ways to open the popover"
@@ -46,10 +46,10 @@
               ></ui-input>
             </ui-popover>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Placements -->
-        <app-example-section
+        <pg-example-section
           id="placements"
           title="Placements"
           description="Position the popover on any of the four sides"
@@ -69,10 +69,10 @@
               <ui-button label="Right" variant="secondary"></ui-button
             ></ui-popover>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Styles -->
-        <app-example-section
+        <pg-example-section
           id="styles"
           title="Styles & Themes"
           description="Light, dark, with backdrop, or with a close button"
@@ -92,10 +92,10 @@
               <ui-button label="Close Btn" variant="secondary"></ui-button
             ></ui-popover>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Rich Content -->
-        <app-example-section
+        <pg-example-section
           id="rich-content"
           title="Rich Content"
           description="Use the default slot to project any HTML into the popover body"
@@ -115,12 +115,12 @@
               </div>
             </div>
           </ui-popover>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="popover"></app-component-documentation>
+      <pg-component-documentation componentId="popover"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,23 +1,23 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📋"
     title="Smart Menu"
     description="A context-aware right-click menu with nested sub-menus, icons, dividers, and disabled items. Right-click any trigger area below to open the menu."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-smart-menu-playground></app-smart-menu-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Nested Menus -->
-        <app-example-section
+        <pg-example-section
           id="nested"
           title="Nested Menus"
           description="Multi-level context menus — right-click the area below to open. Hover over items with arrows to reveal sub-menus."
@@ -44,10 +44,10 @@
             icon-library="lucide"
             [items]="nestedItems"
           ></ui-smart-context-menu>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- With Icons -->
-        <app-example-section
+        <pg-example-section
           id="icons"
           title="With Icons"
           description="Lucide icons next to each menu item for quick visual scanning"
@@ -74,10 +74,10 @@
             icon-library="lucide"
             [items]="iconItems"
           ></ui-smart-context-menu>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Separators -->
-        <app-example-section
+        <pg-example-section
           id="separators"
           title="Separators"
           description="Use divider items to group related actions into visual sections"
@@ -104,10 +104,10 @@
             icon-library="lucide"
             [items]="separatorItems"
           ></ui-smart-context-menu>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Disabled Items -->
-        <app-example-section
+        <pg-example-section
           id="disabled"
           title="Disabled Items"
           description="Mark specific items as non-interactive — they appear faded and cannot be clicked"
@@ -134,12 +134,12 @@
             icon-library="lucide"
             [items]="disabledItems"
           ></ui-smart-context-menu>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="smart-menu"></app-component-documentation>
+      <pg-component-documentation componentId="smart-menu"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

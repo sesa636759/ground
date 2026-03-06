@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💧"
     title="Waterfall Chart"
     description="Visualize cumulative effects of sequential positive and negative values. Perfect for financial analysis, cash flow statements, P&L breakdowns, and budget variance tracking."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-waterfall-chart-playground></app-waterfall-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="revenue" style="margin-top: 0">
             <div class="section-header">
@@ -212,7 +212,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="waterfall-chart"></app-component-documentation>
+      <pg-component-documentation componentId="waterfall-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,15 +1,15 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎨"
     title="Theme Switcher Component"
     description="A component used to switch themes, including light and dark mode toggling."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
@@ -137,7 +137,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="theme-switcher"></app-component-documentation>
+      <pg-component-documentation componentId="theme-switcher"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

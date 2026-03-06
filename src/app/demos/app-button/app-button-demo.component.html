@@ -1,20 +1,20 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔘"
     title="Button Component"
     description="An interactive component used to trigger actions or navigate through the application, featuring multiple styles, sizes, and states."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Visual Variants -->
-        <app-example-section
+        <pg-example-section
           id="visual-variants"
           title="Visual Variants"
           description="Different styles for different visual hierarchies"
@@ -30,10 +30,10 @@
             <ui-button label="Warning" variant="warning"></ui-button>
             <ui-button label="Info" variant="info"></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Sizes"
           description="Scalable sizes from extra small to extra large"
@@ -46,10 +46,10 @@
             <ui-button label="Large" size="lg"></ui-button>
             <ui-button label="Extra Large" size="xl"></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Icons & Badges -->
-        <app-example-section
+        <pg-example-section
           id="icons-badges"
           title="Icons & Badges"
           description="Enhance buttons with visual cues and status indicators"
@@ -63,10 +63,10 @@
             <ui-button icon="🔍" icon-only pill variant="primary"></ui-button>
             <ui-button icon="➕" icon-only rounded variant="outline"></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Icon Libraries -->
-        <app-example-section
+        <pg-example-section
           id="icon-libraries"
           title="Icon Libraries"
           description="Support for various popular icon libraries and custom SVGs"
@@ -99,10 +99,10 @@
             <ui-button label="Emoji" icon="🚀" variant="info"></ui-button>
             <ui-button label="Custom Size" icon="🎨" icon-size="28" variant="secondary"></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- States -->
-        <app-example-section
+        <pg-example-section
           id="states"
           title="Functional States"
           description="Communicate interaction availability and background processes"
@@ -115,7 +115,7 @@
             <ui-button label="Pill Style" pill variant="outline"></ui-button>
             <ui-button label="Full Width Action" full-width variant="secondary"></ui-button>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -128,5 +128,5 @@
     <div slot="docs">
       <app-component-documentation componentId="button"></app-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

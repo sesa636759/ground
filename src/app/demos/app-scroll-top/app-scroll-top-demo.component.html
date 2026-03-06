@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🚀"
     title="Scroll Top"
     description="A helpful utility component that allows users to quickly return to the top of a page or a scrollable container. It appears automatically after a specified scroll threshold."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-scroll-top-playground></app-scroll-top-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -61,7 +61,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="scroll-top"></app-component-documentation>
+      <pg-component-documentation componentId="scroll-top"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

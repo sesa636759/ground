@@ -1,20 +1,20 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="✅"
     title="Checkbox Component"
     description="Versatile checkbox component with support for multiple visual variants, states, groups, and seamless form integration."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Color Variants -->
-        <app-example-section
+        <pg-example-section
           id="color-variants"
           title="Color Variants"
           description="A wide range of built-in colors to match your application's brand"
@@ -31,10 +31,10 @@
             <ui-checkbox label="Purple" color="purple" checked></ui-checkbox>
             <ui-checkbox label="Pink" color="pink" checked></ui-checkbox>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Premium Variants -->
-        <app-example-section
+        <pg-example-section
           id="premium-variants"
           title="Premium Variants"
           description="Visual styles including button, chip, and soft variants"
@@ -50,10 +50,10 @@
             <ui-checkbox label="Chip Variant" variant="chip" color="info" checked></ui-checkbox>
             <ui-checkbox label="Soft Variant" variant="soft" color="success" checked></ui-checkbox>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Skeleton State -->
-        <app-example-section
+        <pg-example-section
           id="skeleton"
           title="Skeleton State"
           description="Loading states for better perceived performance"
@@ -64,10 +64,10 @@
             <ui-checkbox skeleton size="medium"></ui-checkbox>
             <ui-checkbox skeleton size="large"></ui-checkbox>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes & Variants -->
-        <app-example-section
+        <pg-example-section
           id="sizes-variants"
           title="Sizes & Shapes"
           description="Multiple sizes and shape variations including rounded and pill"
@@ -91,10 +91,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- States -->
-        <app-example-section
+        <pg-example-section
           id="states"
           title="Component States"
           description="Interactive and informative states like indeterminate and readonly"
@@ -125,10 +125,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Checkbox Groups -->
-        <app-example-section
+        <pg-example-section
           id="groups"
           title="Checkbox Groups"
           description="Selection logic with a master checkbox and indeterminate state"
@@ -160,10 +160,10 @@
               </ui-checkbox>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Form Example -->
-        <app-example-section
+        <pg-example-section
           id="form"
           title="Form Integration"
           description="Real-world account creation form with validation logic"
@@ -200,7 +200,7 @@
               </p>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -211,7 +211,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="checkbox"></app-component-documentation>
+      <pg-component-documentation componentId="checkbox"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

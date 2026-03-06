@@ -1,12 +1,12 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="👤"
     title="Avatar Component Demo"
     description="A comprehensive avatar component supporting images, icons, initials, status indicators, and group layouts."
   >
-  </app-demo-header>
+  </pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-avatar-playground></app-avatar-playground>
@@ -15,7 +15,7 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
@@ -858,7 +858,7 @@
     </div>
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="avatar"></app-component-documentation>
+      <pg-component-documentation componentId="avatar"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

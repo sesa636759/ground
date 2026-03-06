@@ -1,17 +1,17 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="👤"
     title="Avatar Component"
     description="A versatile component for presenting user profiles, entities, or icons in various shapes and sizes, complete with status and notification indicators."
   >
-  </app-demo-header>
+  </pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -170,7 +170,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="avatar"></app-component-documentation>
+      <pg-component-documentation componentId="avatar"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

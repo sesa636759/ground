@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔺"
     title="Funnel Chart"
     description="Visualize sequential stages of a process showing how quantities reduce at each step. Ideal for sales funnels, conversion rates, marketing pipelines, and process analysis."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-funnel-chart-playground></app-funnel-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="sales" style="margin-top: 0">
             <div class="section-header">
@@ -223,7 +223,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="funnel-chart"></app-component-documentation>
+      <pg-component-documentation componentId="funnel-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

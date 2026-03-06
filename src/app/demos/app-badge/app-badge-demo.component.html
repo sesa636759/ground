@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🏅"
     title="Badge Component"
     description="A small visual indicator for status, counts, or categories."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-badge-playground></app-badge-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Colors -->
-        <app-example-section
+        <pg-example-section
           id="colors"
           title="Colors"
           description="Semantic colors for different states."
@@ -33,10 +33,10 @@
             <ui-badge value="4" color="danger">Danger</ui-badge>
             <ui-badge value="5" color="info">Info</ui-badge>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Styles -->
-        <app-example-section
+        <pg-example-section
           id="styles"
           title="Styles"
           description="Standard, soft, and outlined variants."
@@ -60,10 +60,10 @@
               <ui-badge dot color="success">Online</ui-badge>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Positions -->
-        <app-example-section
+        <pg-example-section
           id="positions"
           title="Positions"
           description="Place badges in any corner of a target element."
@@ -91,10 +91,10 @@
               </ui-badge>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Special Features -->
-        <app-example-section
+        <pg-example-section
           id="special"
           title="Special Features"
           description="Advanced features like max values, animations, and icons."
@@ -114,13 +114,13 @@
               <ui-badge icon="⭐" value="PRO" color="warning"></ui-badge>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="badge"></app-component-documentation>
+      <pg-component-documentation componentId="badge"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

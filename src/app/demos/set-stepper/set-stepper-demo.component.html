@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🪜"
     title="Stepper Component"
     description="A versatile stepper component for multi-step workflows with horizontal and vertical orientations, customizable connectors, and rich theming options."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-stepper-playground></app-stepper-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Horizontal -->
-        <app-example-section
+        <pg-example-section
           id="horizontal"
           title="Horizontal Modes"
           description="Basic horizontal stepper with various label positions"
@@ -54,10 +54,10 @@
               ></app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Vertical -->
-        <app-example-section
+        <pg-example-section
           id="vertical"
           title="Vertical Modes"
           description="Basic vertical stepper with different description placements"
@@ -87,10 +87,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Labels -->
-        <app-example-section
+        <pg-example-section
           id="labels"
           title="Label Placement"
           description="Advanced label positioning including alternating modes"
@@ -105,10 +105,10 @@
               [steps]="horizontalSteps"
             ></app-stepper-container>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Descriptions -->
-        <app-example-section
+        <pg-example-section
           id="descriptions"
           title="Description Placement"
           description="Configuring how step descriptions are displayed"
@@ -125,10 +125,10 @@
               ></app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Content & Navigation -->
-        <app-example-section
+        <pg-example-section
           id="content"
           title="Content & Navigation"
           description="Stepper with integrated content areas and navigation controls"
@@ -156,10 +156,10 @@
               </div>
             </app-stepper-container>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Step Counts -->
-        <app-example-section
+        <pg-example-section
           id="steps-count"
           title="Sizing & Counts"
           description="Demonstrating different numbers of steps"
@@ -191,10 +191,10 @@
               ></app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Connectors -->
-        <app-example-section
+        <pg-example-section
           id="connectors"
           title="Custom Connectors"
           description="Fine-grained control over the lines between steps"
@@ -233,10 +233,10 @@
               </app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Variants -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Visual Variants"
           description="Different visual representations of the steps"
@@ -276,10 +276,10 @@
               ></app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Colors -->
-        <app-example-section
+        <pg-example-section
           id="colors"
           title="Color Schemes"
           description="Built-in semantic color schemes"
@@ -311,10 +311,10 @@
               ></app-stepper-container>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Large Scale -->
-        <app-example-section
+        <pg-example-section
           id="scrolling"
           title="Large Scale Scrolling"
           description="Handling many steps with scrollable containers"
@@ -329,10 +329,10 @@
               [steps]="twentySteps"
             ></app-stepper-container>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Interactive Demo -->
-        <app-example-section
+        <pg-example-section
           id="interactive"
           title="Interactive Large Scale"
           description="A real-world scenario with 25 clickable steps"
@@ -367,15 +367,15 @@
               Step {{ currentStep25 + 1 }} of 25
             </p>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="stepper"></app-component-documentation>
+      <pg-component-documentation componentId="stepper"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>
 
 <style>

@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core'
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'demo-tabs',
+  selector: 'pg-demo-tabs',
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

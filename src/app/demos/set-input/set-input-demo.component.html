@@ -1,20 +1,20 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📋"
     title="Input Component"
     description="Comprehensive input component with support for labels, validation states, prefixes, suffixes, multiline text, and floating animations."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic Input Types -->
-        <app-example-section
+        <pg-example-section
           id="basic-types"
           title="Basic Input Types"
           description="Standard input types with various configurations"
@@ -52,10 +52,10 @@
             ></ui-input>
             <ui-input type="date" label="Birth Date" full-width></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Variants -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Input Variants"
           description="Visual styles: Outlined, Filled, Underlined, Soft, and Ghost"
@@ -68,10 +68,10 @@
             <ui-input label="Soft" variant="soft" full-width></ui-input>
             <ui-input label="Ghost" variant="ghost" full-width></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Input Sizes"
           description="Standard small, medium, and large size options"
@@ -82,10 +82,10 @@
             <ui-input label="Medium" size="medium" full-width></ui-input>
             <ui-input label="Large" size="large" full-width></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Validation States -->
-        <app-example-section
+        <pg-example-section
           id="validation"
           title="Validation States"
           description="Visual feedback for error, success, and informative states"
@@ -121,10 +121,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Prefix & Suffix -->
-        <app-example-section
+        <pg-example-section
           id="prefix-suffix"
           title="Prefix & Suffix"
           description="In-line text or icons before and after the input value"
@@ -158,10 +158,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Advanced Features -->
-        <app-example-section
+        <pg-example-section
           id="advanced"
           title="Advanced Interaction"
           description="Number steppers, auto-resize textareas, and skeleton states"
@@ -199,10 +199,10 @@
               ></ui-button>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Floating Labels -->
-        <app-example-section
+        <pg-example-section
           id="floating-labels"
           title="Floating Labels"
           description="Modern labels that float above the field on interaction"
@@ -218,10 +218,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Multiline Input -->
-        <app-example-section
+        <pg-example-section
           id="multiline"
           title="Multiline (Textarea)"
           description="Dedicated textarea support with character counts and rows"
@@ -238,10 +238,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Color Input -->
-        <app-example-section
+        <pg-example-section
           id="color-input"
           title="Color Input"
           description="Native color picker wrapped in the ui-input component. Use show-copy to let users copy the hex value."
@@ -258,10 +258,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- File Upload -->
-        <app-example-section
+        <pg-example-section
           id="file-upload"
           title="File Upload"
           description="File input with accept filters and multiple-file support."
@@ -279,10 +279,10 @@
               full-width
             ></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Input Masking -->
-        <app-example-section
+        <pg-example-section
           id="input-masking"
           title="Input Masking"
           description="Built-in formatting masks for various data types"
@@ -304,8 +304,8 @@
             <ui-input label="Currency" mask="currency" placeholder="$0.00" full-width></ui-input>
             <ui-input label="Date" mask="date" placeholder="MM/DD/YYYY" full-width></ui-input>
           </div>
-        </app-example-section>
-        <app-example-section
+        </pg-example-section>
+        <pg-example-section
           id="input-states"
           title="Input States"
           description="Disabled, readonly, and required state variations"
@@ -327,7 +327,7 @@
             ></ui-input>
             <ui-input label="Loading" value="Fetching..." loading full-width></ui-input>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -338,7 +338,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="input"></app-component-documentation>
+      <pg-component-documentation componentId="input"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

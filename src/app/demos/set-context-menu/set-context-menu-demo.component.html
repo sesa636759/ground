@@ -1,14 +1,14 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📋"
     title="Context Menu Component"
     description="Flexible multilevel context menus with nested submenus, interactive triggers, and rich customization options."
-  ></app-demo-header>
-  <demo-tabs>
+  ></pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content">
@@ -336,7 +336,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="context-menu"></app-component-documentation>
+      <pg-component-documentation componentId="context-menu"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

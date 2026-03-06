@@ -2,7 +2,7 @@ import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@an
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-example-section',
+  selector: 'pg-example-section',
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

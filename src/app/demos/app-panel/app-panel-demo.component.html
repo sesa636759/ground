@@ -1,23 +1,23 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🪟"
     title="Panel"
     description="A versatile content container with multiple visual styles, color themes, and interactive features like toggle, minimize, maximize, drag, and resize."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-panel-playground></app-panel-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Visual Styles -->
-        <app-example-section
+        <pg-example-section
           id="visual-styles"
           title="Visual Styles"
           description="Elevated, outlined, filled, and flat variants"
@@ -30,10 +30,10 @@
               </ui-panel>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Themes -->
-        <app-example-section
+        <pg-example-section
           id="themes"
           title="Themes"
           description="Color-coded themed panels for status, branding, and semantic meaning"
@@ -46,10 +46,10 @@
               </ui-panel>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Interactive -->
-        <app-example-section
+        <pg-example-section
           id="interactivity"
           title="Interactive"
           description="Toggle, minimize, maximize, drag, and resize capabilities"
@@ -67,10 +67,10 @@
               Drag, resize, minimize, maximize or toggle me!
             </div>
           </ui-panel>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Glassmorphism -->
-        <app-example-section
+        <pg-example-section
           id="glassmorphism"
           title="Glassmorphism"
           description="Translucent glass effect for premium depth — wrap in a gradient background"
@@ -90,12 +90,12 @@
               </div>
             </ui-panel>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="panel"></app-component-documentation>
+      <pg-component-documentation componentId="panel"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -14,7 +14,7 @@ interface ActivityItem {
 }
 
 @Component({
-  selector: 'app-profile',
+  selector: 'pg-profile',
   standalone: true,
   imports: [AppInputValueAccessorDirective, ...PLAYGROUND_IMPORTS, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

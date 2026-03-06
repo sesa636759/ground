@@ -1,18 +1,18 @@
 ﻿<div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🧇"
     title="Waffle Chart"
     description="An SVG-based chart where a grid of cells visualises a value against a total. Supports custom grid dimensions, fill/empty colours, percentage display, and descriptive titles."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-waffle-chart-playground></app-waffle-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content">
           <!-- Basic -->
@@ -126,7 +126,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="waffle-chart"></app-component-documentation>
+      <pg-component-documentation componentId="waffle-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎯"
     title="Radial Bar Chart"
     description="Circular progress bars arranged in concentric rings. Great for comparing categorical performance metrics, KPIs, and multi-dimensional data in a compact radial layout."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-radial-bar-playground></app-radial-bar-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="kpi" style="margin-top: 0">
             <div class="section-header">
@@ -161,7 +161,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="radial-bar"></app-component-documentation>
+      <pg-component-documentation componentId="radial-bar"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

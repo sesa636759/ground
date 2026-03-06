@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🌲"
     title="Cascade Select"
     description="A hierarchical selector for nested data structures. Perfect for locations, categories, and file systems where users need to navigate through multiple levels of options."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-cascade-select-playground></app-cascade-select-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -77,7 +77,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="cascade-select"></app-component-documentation>
+      <pg-component-documentation componentId="cascade-select"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

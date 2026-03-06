@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🧱"
     title="Masonry Layout Component"
     description="Flexible masonry, grid, and column layouts with responsive design, filtering, selection, lazy loading, and lightbox gallery."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-masonry-playground></app-masonry-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Masonry Layout -->
-        <app-example-section
+        <pg-example-section
           id="masonry"
           title="Masonry Layout"
           description="Traditional waterfall layout that fills vertical space efficiently"
@@ -89,10 +89,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Grid Layout -->
-        <app-example-section
+        <pg-example-section
           id="grid"
           title="Grid Layout"
           description="Equal-height grid perfect for product listings and galleries"
@@ -153,10 +153,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Columns Layout -->
-        <app-example-section
+        <pg-example-section
           id="columns"
           title="Columns Layout"
           description="Newspaper-style columns for blog posts and articles"
@@ -184,10 +184,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Responsive Design -->
-        <app-example-section
+        <pg-example-section
           id="responsive"
           title="Responsive Design"
           description="Automatic column adjustment based on screen size"
@@ -284,10 +284,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Filtering & Sorting -->
-        <app-example-section
+        <pg-example-section
           id="filtering"
           title="Filtering & Sorting"
           description="Filter by category and sort items dynamically"
@@ -343,10 +343,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Multi-Select -->
-        <app-example-section
+        <pg-example-section
           id="selection"
           title="Multi-Select Mode"
           description="Select multiple items with batch actions"
@@ -379,10 +379,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Lightbox Gallery -->
-        <app-example-section
+        <pg-example-section
           id="lightbox"
           title="Lightbox Gallery"
           description="Immersive lightbox view with smooth animations"
@@ -411,10 +411,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Skeleton Loading -->
-        <app-example-section
+        <pg-example-section
           id="skeleton"
           title="Skeleton Loading State"
           description="Realistic placeholder animation during content load"
@@ -439,7 +439,7 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -447,7 +447,7 @@
     <div slot="docs">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -473,5 +473,5 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🌐"
     title="Polar Area Chart"
     description="A circular chart where each segment spans an equal angle but varies in radius based on value. Powered by Chart.js, it supports legend, animation, and rich color customization for multi-category comparison."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-polar-area-chart-playground></app-polar-area-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="skills" style="margin-top: 0">
             <div class="section-header">
@@ -64,7 +64,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="polar-area-chart"></app-component-documentation>
+      <pg-component-documentation componentId="polar-area-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="⚓"
     title="Dock Component"
     description="A navigation component that typically sits at the edge of the screen, providing quick access to frequently used applications or actions with a magnification effect."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-dock-playground></app-dock-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic"
           description="Bottom Dock (Default). Hover over icons to see magnification effect."
@@ -37,10 +37,10 @@
           >
             <ui-dock [items]="basicItems" icon-library="lucide"></ui-dock>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Positions -->
-        <app-example-section
+        <pg-example-section
           id="positions"
           title="Positions"
           description="Dock can be placed on any side of its container."
@@ -122,10 +122,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Sizes"
           description="Different size options available for the dock."
@@ -186,10 +186,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- With Badges -->
-        <app-example-section
+        <pg-example-section
           id="badges"
           title="With Badges"
           description="Icons can display notification badges."
@@ -206,10 +206,10 @@
           >
             <ui-dock [items]="badgeItems" icon-library="lucide"></ui-dock>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- OS Experience -->
-        <app-example-section
+        <pg-example-section
           id="os"
           title="OS Experience"
           description="Demonstrating Active Indicators, Separators, and Bounce Animations."
@@ -253,13 +253,13 @@
               </ui-dock>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="dock"></app-component-documentation>
+      <pg-component-documentation componentId="dock"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

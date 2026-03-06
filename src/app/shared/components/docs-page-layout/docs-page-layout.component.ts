@@ -14,7 +14,7 @@ export interface PageNav {
 }
 
 @Component({
-  selector: 'app-docs-page-layout',
+  selector: 'pg-docs-page-layout',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './docs-page-layout.component.html',

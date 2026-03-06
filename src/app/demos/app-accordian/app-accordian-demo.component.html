@@ -1,40 +1,40 @@
 ﻿<div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🎯"
     title="Accordion Component"
     description="Collapsible content panels for organizing and presenting information in a compact, scannable format."
   >
-  </app-demo-header>
+  </pg-demo-header>
 
   <demo-tabs>
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Basic -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic"
           description="Simple expandable content panels"
           [code]="basicAccordionCode"
         >
           <ui-accordion [items]="basicAccordionItems"></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Subtitles -->
-        <app-example-section
+        <pg-example-section
           id="subtitles"
           title="Subtitles"
           description="Items with additional descriptive text"
           [code]="subtitlesCode"
         >
           <ui-accordion [items]="subtitlesItems"></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Search -->
-        <app-example-section
+        <pg-example-section
           id="search"
           title="Search"
           description="Filter items with built-in search functionality"
@@ -45,10 +45,10 @@
             enable-search
             search-placeholder="Search frameworks..."
           ></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Actions -->
-        <app-example-section
+        <pg-example-section
           id="actions"
           title="Actions"
           description="Action buttons within the accordion header"
@@ -58,20 +58,20 @@
             [items]="actionsItems"
             (accordionAction)="handleAction($event)"
           ></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Nested -->
-        <app-example-section
+        <pg-example-section
           id="nested"
           title="Nested"
           description="Recursive accordion structure for hierarchical data"
           [code]="nestedCode"
         >
           <ui-accordion [items]="nestedItems" enable-nested></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Drag & Drop -->
-        <app-example-section
+        <pg-example-section
           id="drag-drop"
           title="Drag & Drop"
           description="Reorder items using drag and drop"
@@ -82,10 +82,10 @@
             enable-drag-drop
             (accordionReorder)="handleReorder($event)"
           ></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Persistence -->
-        <app-example-section
+        <pg-example-section
           id="persistence"
           title="Persistence"
           description="State is preserved in localStorage (refresh page to test)"
@@ -96,40 +96,40 @@
             enable-persistence
             persistence-key="demo-persist-v1"
           ></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Loading -->
-        <app-example-section
+        <pg-example-section
           id="loading"
           title="Loading"
           description="Skeleton loading state"
           [code]="loadingCode"
         >
           <ui-accordion loading></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- RTL -->
-        <app-example-section
+        <pg-example-section
           id="rtl"
           title="RTL"
           description="Right-to-Left layout support"
           [code]="rtlCode"
         >
           <ui-accordion [items]="rtlItems" rtl></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Dense -->
-        <app-example-section
+        <pg-example-section
           id="dense"
           title="Dense"
           description="Payload is concentrated for high-density information"
           [code]="denseCode"
         >
           <ui-accordion [items]="denseItems" dense></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Events -->
-        <app-example-section
+        <pg-example-section
           id="events"
           title="Events"
           description="Lifecycle events and interaction logging"
@@ -142,14 +142,14 @@
             (beforeClose)="logEvent('Before Close', $event)"
             (afterClose)="logEvent('After Close', $event)"
           ></ui-accordion>
-          <app-playground-event-log
+          <pg-playground-event-log
             [logs]="eventsLog"
             (clear)="eventsLog = []"
-          ></app-playground-event-log>
-        </app-example-section>
+          ></pg-playground-event-log>
+        </pg-example-section>
 
         <!-- Controlled -->
-        <app-example-section
+        <pg-example-section
           id="controlled"
           title="Controlled"
           description="Control expansion state programmatically"
@@ -186,17 +186,17 @@
             [expandedItems]="controlledExpanded"
             multiple
           ></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Async & Lazy -->
-        <app-example-section
+        <pg-example-section
           id="async-lazy"
           title="Async & Lazy"
           description="Lazy loading content (content is not in DOM until opened)"
           [code]="asyncLazyCode"
         >
           <ui-accordion [items]="asyncLazyItems" lazy></ui-accordion>
-        </app-example-section>
+        </pg-example-section>
       </div>
       <!-- /examples-content -->
     </div>
@@ -206,7 +206,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="accordion"></app-component-documentation>
+      <pg-component-documentation componentId="accordion"></pg-component-documentation>
     </div>
   </demo-tabs>
 </div>

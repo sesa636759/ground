@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🏷️"
     title="Tag Component"
     description="A small component used to categorize or label content, with support for icons, counters, and various severity levels."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-tag-playground></app-tag-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Severities -->
-        <app-example-section
+        <pg-example-section
           id="severities"
           title="Severities"
           description="Different color schemes based on importance or status."
@@ -33,10 +33,10 @@
             <ui-tag severity="warning" value="Warning"></ui-tag>
             <ui-tag severity="danger" value="Danger"></ui-tag>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Styles & Sizes -->
-        <app-example-section
+        <pg-example-section
           id="styles"
           title="Styles & Sizes"
           description="Configurations for shape and scale."
@@ -59,10 +59,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Visual Enhancements -->
-        <app-example-section
+        <pg-example-section
           id="visuals"
           title="Visual Enhancements"
           description="Add context with icons, counters, and interative elements."
@@ -82,13 +82,13 @@
               <ui-tag value="Javascript" removable severity="primary"></ui-tag>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="tag"></app-component-documentation>
+      <pg-component-documentation componentId="tag"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

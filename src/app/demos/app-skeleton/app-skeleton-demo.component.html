@@ -1,23 +1,23 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💀"
     title="Skeleton Loader"
     description="Animated placeholder loaders that mimic content layout while data is being fetched — reducing perceived load time."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-skeleton-playground></app-skeleton-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Shapes & Animations -->
-        <app-example-section
+        <pg-example-section
           id="shapes"
           title="Shapes & Animations"
           description="All shape variants — circle, text, rectangle, avatar, card, list-item, button, image — with pulse and wave animations"
@@ -53,10 +53,10 @@
               <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Card Layout -->
-        <app-example-section
+        <pg-example-section
           id="card-layout"
           title="Card Layout"
           description="Skeleton placeholder composing a media card with thumbnail and text lines"
@@ -85,10 +85,10 @@
               <skeleton-loader shape="text" width="55%" height="14px"></skeleton-loader>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- List Layout -->
-        <app-example-section
+        <pg-example-section
           id="list-layout"
           title="List Layout"
           description="Row-by-row skeleton for list or feed views using the built-in list-item shape"
@@ -99,10 +99,10 @@
               <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Profile Layout -->
-        <app-example-section
+        <pg-example-section
           id="profile-layout"
           title="Profile Layout"
           description="Centered skeleton for user profile pages"
@@ -133,12 +133,12 @@
               style="margin: 16px auto 0; display: block"
             ></skeleton-loader>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="skeleton"></app-component-documentation>
+      <pg-component-documentation componentId="skeleton"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

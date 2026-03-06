@@ -1,23 +1,23 @@
 <!-- Auto-wrapped by scripts/wrap-demos.js -->
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💬"
     title="Tooltip"
     description="A rich, customizable tooltip with multiple triggers, positions, animations, and premium styling."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-tooltip-playground></app-tooltip-playground>
     </div>
 
     <div slot="examples">
       <div class="demo-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants"></pg-demo-sidebar>
 
         <div class="examples-content scroll-spy-container">
           <!-- Triggers -->
-          <app-example-section
+          <pg-example-section
             id="triggers"
             title="Triggers"
             description="Different ways to trigger the tooltip"
@@ -45,10 +45,10 @@
                 </app-tooltip>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
           <!-- Positioning -->
-          <app-example-section
+          <pg-example-section
             id="positioning"
             title="Positioning"
             description="Tooltips can be positioned in 8 different directions"
@@ -71,9 +71,9 @@
                 </app-tooltip>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
 
-          <app-example-section
+          <pg-example-section
             id="variants"
             title="Variants & Themes"
             description="Built-in color schemes for different contexts"
@@ -114,12 +114,12 @@
                 </app-tooltip>
               </div>
             </div>
-          </app-example-section>
+          </pg-example-section>
         </div>
       </div>
     </div>
     <div slot="docs">
-      <app-component-documentation componentId="tooltip"></app-component-documentation>
+      <pg-component-documentation componentId="tooltip"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

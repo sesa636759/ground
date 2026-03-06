@@ -1,19 +1,19 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📑"
     title="Tab Stack Component"
     description="A flexible tabbed navigation component supporting multiple orientations, variants, and interactive features."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content">
-        <app-example-section
+        <pg-example-section
           id="orientation"
           title="Orientation"
           description="Horizontal and vertical orientations."
@@ -35,9 +35,9 @@
               </app-tab-stack>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Visual Variants"
           description="Different styling options."
@@ -66,9 +66,9 @@
               </app-tab-stack>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Sizes"
           description="Small, medium, and large."
@@ -78,9 +78,9 @@
             <app-tab label="Small 1" value="t1">Content 1</app-tab>
             <app-tab label="Small 2" value="t2">Content 2</app-tab>
           </app-tab-stack>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="colors"
           title="Colors"
           description="Semantic color schemes."
@@ -90,9 +90,9 @@
             <app-tab label="Tab 1" value="t1">Content 1</app-tab>
             <app-tab label="Tab 2" value="t2">Content 2</app-tab>
           </app-tab-stack>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="alignment"
           title="Alignment"
           description="Start, center, and end alignment."
@@ -102,9 +102,9 @@
             <app-tab label="Tab 1" value="t1">Content 1</app-tab>
             <app-tab label="Tab 2" value="t2">Content 2</app-tab>
           </app-tab-stack>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="indicator"
           title="Indicator Position"
           description="Placement of the active indicator."
@@ -114,9 +114,9 @@
             <app-tab label="Tab 1" value="t1">Content 1</app-tab>
             <app-tab label="Tab 2" value="t2">Content 2</app-tab>
           </app-tab-stack>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="layout-features"
           title="Layout & Features"
           description="Icons, badges, and full-width."
@@ -140,9 +140,9 @@
               </app-tab-stack>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="advanced-features"
           title="Advanced UX"
           description="Closable, animated, and lazy loading."
@@ -152,7 +152,7 @@
             <app-tab label="Tab 1" value="t1">C1</app-tab>
             <app-tab label="Tab 2" value="t2">C2</app-tab>
           </app-tab-stack>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -163,7 +163,7 @@
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="tabs"></app-component-documentation>
+      <pg-component-documentation componentId="tabs"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

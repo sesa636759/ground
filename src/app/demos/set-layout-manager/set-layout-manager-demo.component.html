@@ -1,10 +1,10 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🏗️"
     title="Layout Manager"
     description="A powerful panel docking and layout management system with resizable regions, drag-and-drop panels, state persistence, and pop-out windows."
-  ></app-demo-header>
-  <demo-tabs>
+  ></pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <aside class="examples-sidebar">
@@ -20,7 +20,7 @@
       </aside>
       <div class="examples-content">
         <!-- Basic Three-Column Layout -->
-        <app-example-section
+        <pg-example-section
           id="basic"
           title="Basic Three-Column Layout"
           description="Classic sidebar-content-sidebar pattern"
@@ -36,10 +36,10 @@
               style="height: 400px; display: block"
             ></app-layout-manager>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- IDE-Style Layout -->
-        <app-example-section
+        <pg-example-section
           id="ide"
           title="IDE-Style Layout"
           description="Code editor with explorer and terminal panels"
@@ -55,10 +55,10 @@
               style="height: 500px; display: block"
             ></app-layout-manager>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Dashboard Layout -->
-        <app-example-section
+        <pg-example-section
           id="dashboard"
           title="Dashboard Layout"
           description="Navigation, main content, and widgets"
@@ -74,7 +74,7 @@
               style="height: 450px; display: block"
             ></app-layout-manager>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Features Overview -->
         <section class="demo-section" id="features">
@@ -189,7 +189,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="layout-manager"></app-component-documentation>
+      <pg-component-documentation componentId="layout-manager"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -1,20 +1,20 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔘"
     title="Button Toggle Group"
     description="Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support."
   >
-  </app-demo-header>
-  <demo-tabs>
+  </pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Segmented Controls -->
-        <app-example-section
+        <pg-example-section
           id="segmented"
           title="Segmented Controls"
           description="Multiple buttons with single selection and gliding animation"
@@ -27,10 +27,10 @@
             color="primary"
             [options]="viewOptions"
           ></app-button-toggle-group>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Gliding Animation -->
-        <app-example-section
+        <pg-example-section
           id="gliding"
           title="Gliding Pill Animation"
           description="Premium smooth animation for pill-style toggles"
@@ -43,10 +43,10 @@
             variant="soft"
             [options]="timeOptions"
           ></app-button-toggle-group>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Color Variants -->
-        <app-example-section
+        <pg-example-section
           id="colors"
           title="Color Variants"
           description="Six built-in color themes to match your application's brand"
@@ -67,10 +67,10 @@
               </div>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Style Variants -->
-        <app-example-section
+        <pg-example-section
           id="styles"
           title="Style Variants"
           description="Multiple button styles: Filled, Outlined, Text, Soft, Classic, Solid, Surface"
@@ -92,10 +92,10 @@
               </div>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Sizes -->
-        <app-example-section
+        <pg-example-section
           id="sizes"
           title="Sizes"
           description="Three size options: Small, Medium, and Large"
@@ -113,10 +113,10 @@
               </div>
             }
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- With Icons -->
-        <app-example-section
+        <pg-example-section
           id="icons"
           title="With Icons"
           description="Icon support for segmented controls and dropdowns"
@@ -136,10 +136,10 @@
               [options]="alignOptions"
             ></app-button-toggle-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Icon Only -->
-        <app-example-section
+        <pg-example-section
           id="icon-only"
           title="Icon Only"
           description="Compact toggle buttons with icons and no label text — ideal for toolbars"
@@ -167,9 +167,9 @@
               ></app-button-toggle-group>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="dropdown"
           title="Dropdown Mode"
           description="Single button with a dropdown menu for selection"
@@ -181,10 +181,10 @@
             value="pdf"
             [options]="exportOptions"
           ></app-button-toggle-group>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Split Button -->
-        <app-example-section
+        <pg-example-section
           id="split-button"
           title="Split Button"
           description="Action button with a separate dropdown for additional options"
@@ -206,10 +206,10 @@
               [options]="actionsMenuOptions"
             ></app-button-toggle-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Display Modes -->
-        <app-example-section
+        <pg-example-section
           id="display-modes"
           title="Display Modes"
           description="Choose between Label Only, Icon Only, or both"
@@ -229,10 +229,10 @@
               [options]="iconOnlyOptions"
             ></app-button-toggle-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Orientations -->
-        <app-example-section
+        <pg-example-section
           id="orientations"
           title="Orientations"
           description="Horizontal and vertical layout support"
@@ -250,10 +250,10 @@
               [options]="basicOptions"
             ></app-button-toggle-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Custom Content Slots -->
-        <app-example-section
+        <pg-example-section
           id="custom-slots"
           title="Custom Content Slots"
           description="Render any custom HTML content inside the dropdown"
@@ -268,10 +268,10 @@
               </div>
             </div>
           </app-button-toggle-group>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Loading States -->
-        <app-example-section
+        <pg-example-section
           id="loading"
           title="Loading States"
           description="Built-in loading indicator for asynchronous actions"
@@ -284,10 +284,10 @@
             [attr.loading]="true"
             [options]="saveOptions"
           ></app-button-toggle-group>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- States -->
-        <app-example-section
+        <pg-example-section
           id="states"
           title="States"
           description="Default and disabled interaction states"
@@ -306,7 +306,7 @@
               [options]="basicOptions"
             ></app-button-toggle-group>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -317,7 +317,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="button-toggle"></app-component-documentation>
+      <pg-component-documentation componentId="button-toggle"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

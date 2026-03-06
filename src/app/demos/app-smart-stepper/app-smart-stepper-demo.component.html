@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🪜"
     title="Smart Stepper"
     description="A guided workflow component that breaks down complex processes into manageable steps. Supports custom icons, themes, and dynamic content injection per step."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-smart-stepper-playground></app-smart-stepper-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -56,7 +56,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="smart-stepper"></app-component-documentation>
+      <pg-component-documentation componentId="smart-stepper"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

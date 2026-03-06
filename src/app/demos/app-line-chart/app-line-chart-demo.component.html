@@ -1,18 +1,18 @@
 ﻿<div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💹"
     title="Line Chart"
     description="An SVG-based line chart for visualising trends over time. Supports single and multi-series data, custom colours, grid, legend, markers, and animation."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-line-chart-playground></app-line-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content">
           <!-- Basic -->
@@ -100,7 +100,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="line-chart"></app-component-documentation>
+      <pg-component-documentation componentId="line-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

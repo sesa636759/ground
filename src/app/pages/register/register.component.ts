@@ -7,7 +7,7 @@ import { ASSETS } from '../../shared/constants/assets.constants';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 @Component({
-  selector: 'app-register',
+  selector: 'pg-register',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS, RouterLink, AppInputValueAccessorDirective],
 

@@ -1,18 +1,18 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📉"
     title="Sparkline Chart"
     description="Compact inline charts for displaying trends in a small space. Perfect for dashboard metrics, table cells, and quick at-a-glance data visualization."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-sparkline-playground></app-sparkline-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
           <section class="demo-section" id="inline" style="margin-top: 0">
             <div class="section-header">
@@ -162,7 +162,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="sparkline"></app-component-documentation>
+      <pg-component-documentation componentId="sparkline"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

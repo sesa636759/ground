@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="👥"
     title="Avatar Group"
     description="Display multiple avatars in a compact, overlapping layout. Perfect for showing team members, collaborators, or participants with automatic overflow handling."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-avatar-group-playground></app-avatar-group-playground>
     </div>
@@ -13,7 +13,7 @@
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -141,7 +141,7 @@
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="avatar-group"></app-component-documentation>
+      <pg-component-documentation componentId="avatar-group"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

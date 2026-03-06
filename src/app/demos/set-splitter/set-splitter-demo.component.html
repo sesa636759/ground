@@ -1,22 +1,22 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="🔀"
     title="Splitter Component"
     description="Resizable split panels with support for horizontal/vertical layouts, nested splitters, collapsible panels, and state persistence."
   >
-  </app-demo-header>
+  </pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
-      <app-demo-sidebar
+      <pg-demo-sidebar
         [variants]="exampleVariants"
         scrollContainer="#examples-scroll-area"
-      ></app-demo-sidebar>
+      ></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <app-example-section
+        <pg-example-section
           id="horizontal-basic"
           title="Horizontal Basic"
           description="Default horizontal split with resizable panels."
@@ -34,9 +34,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="vertical-basic"
           title="Vertical Basic"
           description="Vertical split layout for stacking content."
@@ -54,9 +54,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="two-panels"
           title="Two Panels"
           description="Standard two-panel layout with constraints."
@@ -74,9 +74,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="three-panels"
           title="Three Panels"
           description="Three-column layout with multiple gutters."
@@ -89,9 +89,9 @@
               <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="four-panels"
           title="Four Panels"
           description="Four-column layout for complex interfaces."
@@ -105,9 +105,9 @@
               <div slot="panel-3" class="p-content"><strong>Panel 4</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="custom-sizes"
           title="Custom Panel Sizes"
           description="Panels with predefined initial sizes (30% / 70%)."
@@ -125,9 +125,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="equal-sizes"
           title="Equal Panel Sizes"
           description="Three panels with equal distribution (33.33% each)."
@@ -140,9 +140,9 @@
               <div slot="panel-2" class="p-content"><strong>33.34%</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="min-max-constraints"
           title="Min/Max Constraints"
           description="Panel constrained between 20% and 40% width."
@@ -160,9 +160,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="collapsible-panels"
           title="Collapsible Panels"
           description="Panel that can collapse to minimum size."
@@ -180,9 +180,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="double-click-collapse"
           title="Double-Click Collapse"
           description="Double-click the gutter to collapse/expand."
@@ -197,9 +197,9 @@
               <div slot="panel-1" class="p-content"><strong>Main Content</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="snap-threshold"
           title="Snap to Threshold"
           description="Panels snap to min/max values when close (20px threshold)."
@@ -214,9 +214,9 @@
               <div slot="panel-1" class="p-content"><strong>Content Panel</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="persist-state"
           title="Persistent State"
           description="Panel sizes saved to localStorage and restored on refresh."
@@ -234,9 +234,9 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="gutter-small"
           title="Small Gutter (4px)"
           description="Minimal gutter size for compact layouts."
@@ -248,9 +248,9 @@
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="custom-gutter-color"
           title="Custom Gutter Color"
           description="Customize gutter appearance with custom color."
@@ -265,9 +265,9 @@
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="no-gutter-icon"
           title="No Gutter Icon"
           description="Clean look without drag handle icon."
@@ -279,9 +279,9 @@
               <div slot="panel-1" class="p-content"><strong>Minimalist Panel</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="animated"
           title="Animated Transitions"
           description="Smooth animations during resize and collapse."
@@ -293,9 +293,9 @@
               <div slot="panel-1" class="p-content"><strong>Animated resize</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="rounded-elevated"
           title="Rounded & Elevated"
           description="Combined rounded corners and elevation for premium look."
@@ -307,9 +307,9 @@
               <div slot="panel-1" class="p-content"><strong>Beautiful design</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="theme-dark"
           title="Dark Theme"
           description="Dark theme with inverted colors."
@@ -321,9 +321,9 @@
               <div slot="panel-1" class="p-content dark-p"><strong>Dark panel 2</strong></div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
-        <app-example-section
+        <pg-example-section
           id="nested-ide-layout"
           title="IDE-Style Layout"
           description="Complex IDE-style layout with four quadrants."
@@ -361,7 +361,7 @@
               </div>
             </app-splitter>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -373,10 +373,10 @@
     <!-- Docs Slot -->
     <div slot="docs">
       <div class="examples-split-layout">
-        <app-demo-sidebar
+        <pg-demo-sidebar
           [variants]="exampleVariants"
           scrollContainer="#docs-scroll-area"
-        ></app-demo-sidebar>
+        ></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content" id="docs-scroll-area">
@@ -402,5 +402,5 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

@@ -17,7 +17,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
-  selector: 'app-home',
+  selector: 'pg-home',
   standalone: true,
   imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

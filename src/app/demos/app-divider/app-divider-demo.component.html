@@ -1,23 +1,23 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="➖"
     title="Divider Component"
     description="A visual separator between content sections with support for text, icons, vertical orientation, and decorative shapes."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
       <app-divider-playground></app-divider-playground>
     </div>
 
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Line Variants -->
-        <app-example-section
+        <pg-example-section
           id="variants"
           title="Line Variants"
           description="Visual styles for various levels of separation"
@@ -47,10 +47,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Text & Content -->
-        <app-example-section
+        <pg-example-section
           id="text-content"
           title="Text & Content"
           description="Add labels, icons, or badges to your separators"
@@ -64,10 +64,10 @@
               <ui-divider badge="NEW" color="primary"></ui-divider>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Vertical Orientation -->
-        <app-example-section
+        <pg-example-section
           id="vertical"
           title="Vertical Orientation"
           description="Separate content horizontally"
@@ -90,10 +90,10 @@
               <span>Right Panel</span>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Decorative Shapes -->
-        <app-example-section
+        <pg-example-section
           id="shapes"
           title="Decorative Shapes"
           description="Use SVG shapes for unique section transitions"
@@ -111,12 +111,12 @@
               <div style="height: 100px; padding: 20px">Section B</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="divider"></app-component-documentation>
+      <pg-component-documentation componentId="divider"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

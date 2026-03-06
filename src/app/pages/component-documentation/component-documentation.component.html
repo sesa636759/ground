@@ -1,11 +1,11 @@
 <div class="docs-wrapper animate-in" [class.embedded]="isEmbedded">
   <div class="examples-split-layout" *ngIf="componentDoc">
     <!-- Sidebar Navigation -->
-    <app-demo-sidebar
+    <pg-demo-sidebar
       [variants]="sidebarSections()"
       scrollContainer="#docs-scroll-area"
       [activeLink]="getSectionId(activeSection())"
-    ></app-demo-sidebar>
+    ></pg-demo-sidebar>
 
     <!-- Main Content Area -->
     <div class="examples-content" id="docs-scroll-area">

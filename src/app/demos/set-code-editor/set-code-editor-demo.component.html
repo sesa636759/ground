@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="💻"
     title="Code Editor Component"
     description="A powered code editor with syntax highlighting, multiple language support, and rich features."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-code-editor-playground></app-code-editor-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Language Support -->
-        <app-example-section
+        <pg-example-section
           id="language-support"
           title="Language Support"
           description="Supports various languages with syntax highlighting"
@@ -78,10 +78,10 @@
               ></app-code-editor>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Features -->
-        <app-example-section
+        <pg-example-section
           id="features"
           title="Features"
           description="Advanced features like read-only mode and toolbar controls"
@@ -111,13 +111,13 @@
               ></app-code-editor>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
     <!-- Docs Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="code-editor"></app-component-documentation>
+      <pg-component-documentation componentId="code-editor"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

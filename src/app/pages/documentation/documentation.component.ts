@@ -11,7 +11,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
-  selector: 'app-documentation',
+  selector: 'pg-documentation',
   standalone: true,
   imports: [CommonModule, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

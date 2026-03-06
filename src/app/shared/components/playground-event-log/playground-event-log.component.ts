@@ -7,7 +7,7 @@ export interface LogEntry {
 }
 
 @Component({
-  selector: 'app-playground-event-log',
+  selector: 'pg-playground-event-log',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './playground-event-log.component.html',

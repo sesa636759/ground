@@ -1,15 +1,15 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="📋"
     title="List Component"
     description="Versatile list component with support for variants, colors, sizes, nesting, grouping, selection, context menus, badges, and more."
-  ></app-demo-header>
-  <demo-tabs>
+  ></pg-demo-header>
+  <pg-demo-tabs>
     <!-- Examples Slot -->
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content">
           <!-- Playground -->
@@ -647,7 +647,7 @@
 
     <!-- Documentation Slot -->
     <div slot="docs">
-      <app-component-documentation componentId="list"></app-component-documentation>
+      <pg-component-documentation componentId="list"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

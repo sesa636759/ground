@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="⚓"
     title="Anchor Navigation"
     description="A streamlined navigation component that tracks the current scroll position within a container or the entire page. Perfect for long-form content, documentation, or landing pages."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-anchor-playground></app-anchor-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Marker Styles -->
-        <app-example-section
+        <pg-example-section
           id="types"
           title="Marker Styles"
           description="Choose between traditional text links or minimalistic dots"
@@ -50,10 +50,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Orientation -->
-        <app-example-section
+        <pg-example-section
           id="orientation"
           title="Orientation"
           description="Deploy anchor navigation horizontally for header-based sub-menus"
@@ -74,10 +74,10 @@
               Horizontal anchor is perfect for top navigation bars or sub-task headers.
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Auto Generation -->
-        <app-example-section
+        <pg-example-section
           id="auto-gen"
           title="Headings Auto-Detection"
           description="Simplify your workflow by letting the component scan a container for headers"
@@ -102,7 +102,7 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -110,7 +110,7 @@
     <div slot="docs">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -136,5 +136,5 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>

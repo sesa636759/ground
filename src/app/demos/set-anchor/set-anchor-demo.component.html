@@ -1,11 +1,11 @@
 <div class="demo-container">
-  <app-demo-header
+  <pg-demo-header
     icon="⚓"
     title="Anchor Navigation"
     description="Smooth scrolling navigation with automatic section detection, scroll spy, sticky positioning, and advanced features like keyboard navigation and hash synchronization."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <!-- Playground Slot -->
     <div slot="playground">
       <app-anchor-playground></app-anchor-playground>
@@ -14,12 +14,12 @@
     <!-- Examples Slot -->
     <div slot="examples" class="examples-split-layout">
       <!-- Sidebar Navigation -->
-      <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
         <!-- Vertical Left -->
-        <app-example-section
+        <pg-example-section
           id="vertical-left"
           title="Vertical Navigation (Left)"
           description="Perfect for documentation sites and long articles"
@@ -57,10 +57,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Vertical Right -->
-        <app-example-section
+        <pg-example-section
           id="vertical-right"
           title="Vertical Navigation (Right)"
           description="Alternative placement for right-to-left layouts"
@@ -88,10 +88,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Horizontal Top -->
-        <app-example-section
+        <pg-example-section
           id="horizontal-top"
           title="Horizontal Navigation (Top)"
           description="Great for landing pages and marketing sites"
@@ -119,10 +119,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Horizontal Bottom -->
-        <app-example-section
+        <pg-example-section
           id="horizontal-bottom"
           title="Horizontal Navigation (Bottom)"
           description="Useful for footer navigation or persistent bottom bars"
@@ -150,10 +150,10 @@
               scroll-container="#h-bottom-scroll"
             ></ui-anchor>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Badges -->
-        <app-example-section
+        <pg-example-section
           id="with-badges"
           title="Anchor with Badges"
           description="Navigation with notification badges"
@@ -185,10 +185,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Events -->
-        <app-example-section
+        <pg-example-section
           id="with-events"
           title="Horizontal with Events"
           description="Navigation with event handling and keyboard support"
@@ -218,10 +218,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Small Size -->
-        <app-example-section
+        <pg-example-section
           id="size-small"
           title="Small Size"
           description="Compact size for sidebars and narrow spaces"
@@ -249,10 +249,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Medium Size -->
-        <app-example-section
+        <pg-example-section
           id="size-medium"
           title="Medium Size (Default)"
           description="Standard size for most uses"
@@ -280,10 +280,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Large Size -->
-        <app-example-section
+        <pg-example-section
           id="size-large"
           title="Large Size"
           description="Larger size for better visibility"
@@ -311,10 +311,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Light Theme -->
-        <app-example-section
+        <pg-example-section
           id="theme-light"
           title="Light Theme"
           description="Default light theme appearance"
@@ -333,10 +333,10 @@
               <div id="s-3" class="content-block">Clean and professional look</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Dark Theme -->
-        <app-example-section
+        <pg-example-section
           id="theme-dark"
           title="Dark Theme"
           description="Dark theme for low-light environments"
@@ -355,10 +355,10 @@
               <div id="m-3" class="content-block">Modern aesthetic</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Custom Theme -->
-        <app-example-section
+        <pg-example-section
           id="theme-custom"
           title="Custom Theme"
           description="Custom themed anchor with brand colors"
@@ -377,10 +377,10 @@
               <div id="l-3" class="content-block">Unlimited styling options</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Numeric Style -->
-        <app-example-section
+        <pg-example-section
           id="number-numeric"
           title="Numeric Style (1, 2, 3)"
           description="Standard numeric numbering"
@@ -409,10 +409,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Decimal Style -->
-        <app-example-section
+        <pg-example-section
           id="number-decimal"
           title="Decimal Style (01, 02, 03)"
           description="Zero-padded decimal numbering"
@@ -441,10 +441,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Alphabetic Style -->
-        <app-example-section
+        <pg-example-section
           id="number-alpha"
           title="Alphabetic Style (a, b, c)"
           description="Lowercase alphabetic numbering"
@@ -473,10 +473,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Roman Style -->
-        <app-example-section
+        <pg-example-section
           id="number-roman"
           title="Roman Style (i, ii, iii)"
           description="Lowercase Roman numeral numbering"
@@ -505,10 +505,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Align Left -->
-        <app-example-section
+        <pg-example-section
           id="align-left"
           title="Horizontal Left Aligned"
           description="Left alignment for horizontal anchor"
@@ -527,10 +527,10 @@
               <div id="t-contact" class="content-block">Great for LTR layouts</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Align Center -->
-        <app-example-section
+        <pg-example-section
           id="align-center"
           title="Horizontal Center Aligned"
           description="Center alignment for horizontal anchor"
@@ -549,10 +549,10 @@
               <div id="t-contact" class="content-block">Balanced appearance</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Align Right -->
-        <app-example-section
+        <pg-example-section
           id="align-right"
           title="Horizontal Right Aligned"
           description="Right alignment for horizontal anchor"
@@ -571,10 +571,10 @@
               <div id="t-contact" class="content-block">Great for RTL layouts</div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Affix Behavior -->
-        <app-example-section
+        <pg-example-section
           id="affix-behavior"
           title="Affix Behavior"
           description="Anchor becomes fixed when scrolling past offset"
@@ -619,10 +619,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Progress Indicator -->
-        <app-example-section
+        <pg-example-section
           id="progress-indicator"
           title="Progress Indicator"
           description="Track reading progress with visual progress bar"
@@ -659,10 +659,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Hash/URL Synchronization -->
-        <app-example-section
+        <pg-example-section
           id="hash-sync"
           title="Hash/URL Synchronization"
           description="Enable URL hash updates when navigating between sections"
@@ -709,10 +709,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Keyboard Navigation -->
-        <app-example-section
+        <pg-example-section
           id="keyboard-nav"
           title="Keyboard Navigation"
           description="Navigate through sections using arrow keys"
@@ -757,10 +757,10 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
 
         <!-- Nested Items -->
-        <app-example-section
+        <pg-example-section
           id="nested-items"
           title="Nested & Collapsible Items"
           description="Support for recursive nested items with collapsible capabilities"
@@ -812,7 +812,7 @@
               </div>
             </div>
           </div>
-        </app-example-section>
+        </pg-example-section>
       </div>
     </div>
 
@@ -820,7 +820,7 @@
     <div slot="docs">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <!-- Main Content Area -->
         <div class="examples-content">
@@ -846,5 +846,5 @@
         </div>
       </div>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>
