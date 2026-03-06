@@ -1,5 +1,5 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DropdownPlaygroundComponent } from './components/dropdown-playground/dropdown-playground.component';
@@ -18,9 +18,9 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DropdownPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
-    ExampleSectionComponent,
-    DemoHeaderComponent,
     DemoSidebarComponent,
+    DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app-dropdown-demo.component.html',
@@ -28,6 +28,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 })
 export class AppDropdownDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dropdown', icon: '📝' },
     { id: 'multi-select', title: 'Multi Selection', icon: '✅' },
     { id: 'cascading', title: 'Hierarchical', icon: '🌳' },
