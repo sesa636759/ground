@@ -158,6 +158,7 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
+    console.log('topItems', topNavItems);
     registerIconLibrary('core', {
       resolver: function (name) {
         return `assets/quartzds/se-icons-core/${name}.svg`;
@@ -173,6 +174,17 @@ export class App implements OnInit {
       resolver: function (name) {
         return `https://cdn.jsdelivr.net/npm/lucide-static@0.400.0/icons/${name}.svg`;
       },
+    });
+
+    // Schneider Electric Libraries
+    registerIconLibrary('se', {
+      resolver: (name) => `assets/quartzds/se-icons-general/${name}.svg`,
+    });
+    registerIconLibrary('qds', {
+      resolver: (name) => `assets/quartzds/se-icons-core/${name}.svg`,
+    });
+    registerIconLibrary('quartz', {
+      resolver: (name) => `assets/quartzds/se-icons-general/${name}.svg`,
     });
     // Track route changes to update selected item
     this.router.events

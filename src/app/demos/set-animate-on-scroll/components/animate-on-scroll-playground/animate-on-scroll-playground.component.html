@@ -1,5 +1,13 @@
 ﻿<app-playground
-  [items]="[{ id: 'config', title: 'Configuration', icon: '⚙️' }]"
+  [items]="[
+    {
+      id: 'config',
+      title: 'Configuration',
+      icon: 'settings',
+      library: 'lucide',
+      iconLibrary: 'lucide',
+    },
+  ]"
   [defaultOpen]="['config']"
 >
   <div slot="content-config">

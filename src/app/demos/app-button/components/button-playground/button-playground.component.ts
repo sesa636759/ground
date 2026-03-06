@@ -25,10 +25,34 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'content', title: 'Content & Text', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'appearance', title: 'Appearance & Size', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'link', title: 'Link & Type', icon: 'settings', iconLibrary: 'lucide' },
+    {
+      id: 'content',
+      title: 'Content & Text',
+      icon: 'settings',
+      library: 'lucide',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'appearance',
+      title: 'Appearance & Size',
+      icon: 'palette',
+      library: 'lucide',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'states',
+      title: 'Behavioral States',
+      icon: 'settings',
+      library: 'lucide',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'link',
+      title: 'Link & Type',
+      icon: 'settings',
+      library: 'lucide',
+      iconLibrary: 'lucide',
+    },
   ];
 
   defaultOpen = ['content'];
@@ -56,6 +80,15 @@ export class ButtonPlaygroundComponent extends BasePlaygroundComponent implement
     { label: 'Extra Large', value: 'xl' },
     { label: 'XX Large', value: 'xxl' },
     { label: 'XXX Large', value: 'xxxl' },
+  ];
+
+  iconLibraryOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Lucide', value: 'lucide' },
+    { label: 'Se (Quartz)', value: 'se' },
+    { label: 'FontAwesome', value: 'fontawesome' },
+    { label: 'Bootstrap', value: 'bootstrap' },
+    { label: 'Ionicons', value: 'ionicons' },
   ];
 
   positionOptions = [
