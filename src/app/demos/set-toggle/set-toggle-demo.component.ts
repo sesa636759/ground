@@ -37,8 +37,6 @@ export class SetToggleDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'advanced', title: 'Advanced UX', icon: '⚙️' },
   ];
 
-  
-
   notificationOptions = [
     { value: 'email', label: 'Email' },
     { value: 'sms', label: 'SMS' },

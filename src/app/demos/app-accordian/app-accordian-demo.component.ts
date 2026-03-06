@@ -1,7 +1,5 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AccordianPlaygroundComponent } from './components/accordian-playground/accordian-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -14,8 +12,6 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'app-app-accordian-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
     AccordianPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
@@ -45,7 +41,6 @@ export class SetAccordianDemoComponent extends BaseDemoComponent {
     { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
-
 
   basicAccordionItems = [
     {

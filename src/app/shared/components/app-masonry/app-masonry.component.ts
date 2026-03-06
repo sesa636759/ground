@@ -43,17 +43,20 @@ import {
 })
 export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() columns = 4;
-  @Input() gap     = '1.5rem';
-  @Input() rowGap  = 20;
+  @Input() gap = '1.5rem';
+  @Input() rowGap = 20;
   @Input() breakpoints: Record<number, number> = {};
 
   private host!: HTMLElement;
   private prevW = 0;
   private ro!: ResizeObserver;
 
-  constructor(private el: ElementRef<HTMLElement>, private zone: NgZone) {}
+  constructor(
+    private el: ElementRef<HTMLElement>,
+    private zone: NgZone,
+  ) {}
 
-  ngOnChanges(_changes: SimpleChanges): void {
+  ngOnChanges(): void {
     if (!this.host) return;
     this.applyCssVars();
     this.applyCols();
@@ -81,7 +84,7 @@ export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy 
   }
 
   private applyCssVars(): void {
-    this.host.style.setProperty('--am-gap',     this.gap);
+    this.host.style.setProperty('--am-gap', this.gap);
     this.host.style.setProperty('--am-row-gap', `${this.rowGap}px`);
   }
 
@@ -91,13 +94,15 @@ export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy 
       this.host.style.setProperty('--am-cols', String(this.columns));
       return;
     }
-    const w      = window.innerWidth;
+    const w = window.innerWidth;
     const sorted = bpKeys.sort((a, b) => b - a);
-    let   cols   = this.columns;
+    let cols = this.columns;
     for (const min of sorted) {
-      if (w >= min) { cols = this.breakpoints[min]; break; }
+      if (w >= min) {
+        cols = this.breakpoints[min];
+        break;
+      }
     }
     this.host.style.setProperty('--am-cols', String(cols));
   }
 }
-

@@ -15,7 +15,6 @@
         <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
         <div class="examples-content">
-
           <!-- Pie -->
           <section class="demo-section" id="pie" style="margin-top: 0">
             <div class="section-header">
@@ -23,14 +22,14 @@
               <p>Classic pie chart showing proportional distribution of categorical values.</p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center;">
+              <div style="height: 340px; display: flex; justify-content: center">
                 <app-chart
                   chartType="pie"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="pieData"
-                  style="width: 100%; max-width: 520px;"
+                  style="width: 100%; max-width: 520px"
                 ></app-chart>
               </div>
             </div>
@@ -46,10 +45,12 @@
           <section class="demo-section" id="doughnut">
             <div class="section-header">
               <h2>🍩 Doughnut Chart</h2>
-              <p>A hollow pie chart — the centre cutout makes it easy to display a summary value.</p>
+              <p>
+                A hollow pie chart — the centre cutout makes it easy to display a summary value.
+              </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center;">
+              <div style="height: 340px; display: flex; justify-content: center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -57,7 +58,7 @@
                   [responsive]="true"
                   [data]="doughnutData"
                   [options]="doughnutOptions"
-                  style="width: 100%; max-width: 520px;"
+                  style="width: 100%; max-width: 520px"
                 ></app-chart>
               </div>
             </div>
@@ -73,17 +74,20 @@
           <section class="demo-section" id="polar-area">
             <div class="section-header">
               <h2>🌐 Polar Area Chart</h2>
-              <p>Like a pie chart but each segment extends outward proportionally — useful for ranking.</p>
+              <p>
+                Like a pie chart but each segment extends outward proportionally — useful for
+                ranking.
+              </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center;">
+              <div style="height: 340px; display: flex; justify-content: center">
                 <app-chart
                   chartType="polarArea"
                   [showLegend]="true"
                   legendPosition="right"
                   [responsive]="true"
                   [data]="polarData"
-                  style="width: 100%; max-width: 520px;"
+                  style="width: 100%; max-width: 520px"
                 ></app-chart>
               </div>
             </div>
@@ -99,10 +103,12 @@
           <section class="demo-section" id="multi-ring">
             <div class="section-header">
               <h2>🎯 Multi-Ring Doughnut</h2>
-              <p>Nest multiple datasets to show hierarchical or quarterly breakdowns at a glance.</p>
+              <p>
+                Nest multiple datasets to show hierarchical or quarterly breakdowns at a glance.
+              </p>
             </div>
             <div class="demo-card">
-              <div style="height: 340px; display: flex; justify-content: center;">
+              <div style="height: 340px; display: flex; justify-content: center">
                 <app-chart
                   chartType="doughnut"
                   [showLegend]="true"
@@ -110,7 +116,7 @@
                   [responsive]="true"
                   [data]="multiRingData"
                   [options]="multiRingOptions"
-                  style="width: 100%; max-width: 520px;"
+                  style="width: 100%; max-width: 520px"
                 ></app-chart>
               </div>
             </div>
@@ -121,7 +127,6 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>

@@ -36,8 +36,6 @@ export class SetCodeEditorDemoComponent extends BaseDemoComponent implements OnI
     return this.variants;
   }
 
-  
-
   playgroundCode = `<app-code-editor
   language="typescript"
   theme="vs-dark"

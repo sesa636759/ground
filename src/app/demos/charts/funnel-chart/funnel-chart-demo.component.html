@@ -14,40 +14,129 @@
       <div class="examples-split-layout">
         <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
         <div class="examples-content">
-
           <section class="demo-section" id="sales" style="margin-top: 0">
             <div class="section-header">
               <h2>🔽 Sales Funnel</h2>
               <p>Track acquisition from visitors to paying customers through each stage.</p>
             </div>
-            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
-              <svg width="400" height="360" style="display:block">
+            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+              <svg width="400" height="360" style="display: block">
                 <defs>
                   <linearGradient id="fn-g1" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.9"/>
+                    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.9" />
                   </linearGradient>
                 </defs>
                 <!-- Visitors 100% -->
-                <polygon points="20,0 380,0 360,64 40,64" fill="url(#fn-g1)"/>
-                <text x="200" y="37" text-anchor="middle" fill="white" font-size="13" font-weight="700">Visitors — 10,000</text>
-                <text x="200" y="52" text-anchor="middle" fill="white" font-size="11" opacity="0.85">100%</text>
+                <polygon points="20,0 380,0 360,64 40,64" fill="url(#fn-g1)" />
+                <text
+                  x="200"
+                  y="37"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="13"
+                  font-weight="700"
+                >
+                  Visitors — 10,000
+                </text>
+                <text
+                  x="200"
+                  y="52"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  opacity="0.85"
+                >
+                  100%
+                </text>
                 <!-- Leads 65% -->
-                <polygon points="40,68 360,68 336,132 64,132" fill="#7c3aed" opacity="0.85"/>
-                <text x="200" y="105" text-anchor="middle" fill="white" font-size="13" font-weight="700">Leads — 6,500</text>
-                <text x="200" y="120" text-anchor="middle" fill="white" font-size="11" opacity="0.85">65%</text>
+                <polygon points="40,68 360,68 336,132 64,132" fill="#7c3aed" opacity="0.85" />
+                <text
+                  x="200"
+                  y="105"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="13"
+                  font-weight="700"
+                >
+                  Leads — 6,500
+                </text>
+                <text
+                  x="200"
+                  y="120"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  opacity="0.85"
+                >
+                  65%
+                </text>
                 <!-- Prospects 38% -->
-                <polygon points="64,136 336,136 306,200 94,200" fill="#0ea5e9" opacity="0.85"/>
-                <text x="200" y="173" text-anchor="middle" fill="white" font-size="13" font-weight="700">Prospects — 3,800</text>
-                <text x="200" y="188" text-anchor="middle" fill="white" font-size="11" opacity="0.85">38%</text>
+                <polygon points="64,136 336,136 306,200 94,200" fill="#0ea5e9" opacity="0.85" />
+                <text
+                  x="200"
+                  y="173"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="13"
+                  font-weight="700"
+                >
+                  Prospects — 3,800
+                </text>
+                <text
+                  x="200"
+                  y="188"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  opacity="0.85"
+                >
+                  38%
+                </text>
                 <!-- Qualified 19% -->
-                <polygon points="94,204 306,204 276,268 124,268" fill="#10b981" opacity="0.85"/>
-                <text x="200" y="241" text-anchor="middle" fill="white" font-size="13" font-weight="700">Qualified — 1,900</text>
-                <text x="200" y="256" text-anchor="middle" fill="white" font-size="11" opacity="0.85">19%</text>
+                <polygon points="94,204 306,204 276,268 124,268" fill="#10b981" opacity="0.85" />
+                <text
+                  x="200"
+                  y="241"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="13"
+                  font-weight="700"
+                >
+                  Qualified — 1,900
+                </text>
+                <text
+                  x="200"
+                  y="256"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  opacity="0.85"
+                >
+                  19%
+                </text>
                 <!-- Customers 8% -->
-                <polygon points="124,272 276,272 256,336 144,336" fill="#f59e0b" opacity="0.85"/>
-                <text x="200" y="309" text-anchor="middle" fill="white" font-size="13" font-weight="700">Customers — 750</text>
-                <text x="200" y="324" text-anchor="middle" fill="white" font-size="11" opacity="0.85">7.5%</text>
+                <polygon points="124,272 276,272 256,336 144,336" fill="#f59e0b" opacity="0.85" />
+                <text
+                  x="200"
+                  y="309"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="13"
+                  font-weight="700"
+                >
+                  Customers — 750
+                </text>
+                <text
+                  x="200"
+                  y="324"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  opacity="0.85"
+                >
+                  7.5%
+                </text>
               </svg>
             </div>
             <ui-code-preview
@@ -63,18 +152,63 @@
               <h2>📣 Marketing Funnel</h2>
               <p>Awareness → Interest → Consideration → Intent → Purchase.</p>
             </div>
-            <div class="demo-card" style="display:flex;justify-content:center;padding:24px">
-              <svg width="400" height="360" style="display:block">
-                <polygon points="20,0 380,0 356,68 44,68"   fill="#6366f1" opacity="0.85"/>
-                <text x="200" y="38" text-anchor="middle" fill="white" font-size="12" font-weight="700">Awareness — 50,000</text>
-                <polygon points="44,72 356,72 328,140 72,140" fill="#7c3aed" opacity="0.85"/>
-                <text x="200" y="110" text-anchor="middle" fill="white" font-size="12" font-weight="700">Interest — 22,000</text>
-                <polygon points="72,144 328,144 292,212 108,212" fill="#0ea5e9" opacity="0.85"/>
-                <text x="200" y="182" text-anchor="middle" fill="white" font-size="12" font-weight="700">Consideration — 9,500</text>
-                <polygon points="108,216 292,216 264,284 136,284" fill="#10b981" opacity="0.85"/>
-                <text x="200" y="254" text-anchor="middle" fill="white" font-size="12" font-weight="700">Intent — 3,800</text>
-                <polygon points="136,288 264,288 242,356 158,356" fill="#f43f5e" opacity="0.85"/>
-                <text x="200" y="326" text-anchor="middle" fill="white" font-size="12" font-weight="700">Purchase — 1,200</text>
+            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+              <svg width="400" height="360" style="display: block">
+                <polygon points="20,0 380,0 356,68 44,68" fill="#6366f1" opacity="0.85" />
+                <text
+                  x="200"
+                  y="38"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="12"
+                  font-weight="700"
+                >
+                  Awareness — 50,000
+                </text>
+                <polygon points="44,72 356,72 328,140 72,140" fill="#7c3aed" opacity="0.85" />
+                <text
+                  x="200"
+                  y="110"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="12"
+                  font-weight="700"
+                >
+                  Interest — 22,000
+                </text>
+                <polygon points="72,144 328,144 292,212 108,212" fill="#0ea5e9" opacity="0.85" />
+                <text
+                  x="200"
+                  y="182"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="12"
+                  font-weight="700"
+                >
+                  Consideration — 9,500
+                </text>
+                <polygon points="108,216 292,216 264,284 136,284" fill="#10b981" opacity="0.85" />
+                <text
+                  x="200"
+                  y="254"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="12"
+                  font-weight="700"
+                >
+                  Intent — 3,800
+                </text>
+                <polygon points="136,288 264,288 242,356 158,356" fill="#f43f5e" opacity="0.85" />
+                <text
+                  x="200"
+                  y="326"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="12"
+                  font-weight="700"
+                >
+                  Purchase — 1,200
+                </text>
               </svg>
             </div>
             <ui-code-preview
@@ -84,7 +218,6 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>

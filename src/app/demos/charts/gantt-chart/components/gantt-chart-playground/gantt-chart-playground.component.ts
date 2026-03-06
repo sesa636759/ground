@@ -18,7 +18,12 @@ interface GanttTask {
   selector: 'app-gantt-chart-playground',
   standalone: true,
   imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, AppCheckboxValueAccessorDirective, AppPlaygroundComponent],
+    AppInputValueAccessorDirective,
+    CommonModule,
+    FormsModule,
+    AppCheckboxValueAccessorDirective,
+    AppPlaygroundComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './gantt-chart-playground.component.html',
 
@@ -109,4 +114,3 @@ export class GanttChartPlaygroundComponent {
     this.update();
   }
 }
-

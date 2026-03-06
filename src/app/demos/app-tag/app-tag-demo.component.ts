@@ -37,8 +37,6 @@ export class AppTagDemoComponent extends BaseDemoComponent implements OnInit {
     return this.variants;
   }
 
-  
-
   playgroundCode = `<ui-tag value="New" severity="info" rounded></ui-tag>`;
 
   severitiesCode = `<ui-tag severity="primary" value="Primary"></ui-tag>

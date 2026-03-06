@@ -343,4 +343,3 @@ export class UserListComponent implements OnInit {
     return pages;
   }
 }
-

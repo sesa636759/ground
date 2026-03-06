@@ -1,7 +1,6 @@
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   OnInit,
   ViewChild,
   ElementRef,
@@ -232,7 +231,9 @@ export class DashboardPlaygroundComponent
       case 'breakpoints':
         try {
           el.breakpoints = JSON.parse(value);
-        } catch (e) {}
+        } catch (e) {
+          // Ignore invalid JSON
+        }
         break;
     }
     this.updateCode();

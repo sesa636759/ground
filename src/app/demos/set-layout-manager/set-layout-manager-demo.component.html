@@ -32,7 +32,7 @@
               direction="horizontal"
               save-state
               state-key="basic-layout"
-              (layoutChange)="handleLayoutChange($event)"
+              (layoutChange)="handleLayoutChange()"
               style="height: 400px; display: block"
             ></app-layout-manager>
           </div>
@@ -51,7 +51,7 @@
               direction="horizontal"
               save-state
               state-key="ide-layout"
-              (layoutChange)="handleLayoutChange($event)"
+              (layoutChange)="handleLayoutChange()"
               style="height: 500px; display: block"
             ></app-layout-manager>
           </div>
@@ -70,7 +70,7 @@
               direction="horizontal"
               save-state
               state-key="dashboard-layout"
-              (layoutChange)="handleLayoutChange($event)"
+              (layoutChange)="handleLayoutChange()"
               style="height: 450px; display: block"
             ></app-layout-manager>
           </div>
@@ -180,9 +180,9 @@
         direction="horizontal"
         save-state
         state-key="custom-layout"
-        (layoutChange)="handleLayoutChange($event)"
-        (panelAdded)="handlePanelAdded($event)"
-        (panelRemoved)="handlePanelRemoved($event)"
+        (layoutChange)="handleLayoutChange()"
+        (panelAdded)="handlePanelAdded()"
+        (panelRemoved)="handlePanelRemoved()"
         style="height: 500px; display: block"
       ></app-layout-manager>
     </div>

@@ -85,7 +85,7 @@ console.log(user.greet());`,
     if (this.pgConfig.labelDisplay !== 'hover')
       code += `  toolbar-label-display="${this.pgConfig.labelDisplay}"\n`;
 
-    code += `  value="\$\{yourCodeString\}"\n`;
+    code += '  value="${yourCodeString}"\n';
     code += `></app-code-editor>`;
 
     this.generatedCode.set(code);
@@ -93,16 +93,16 @@ console.log(user.greet());`,
   }
 
   onLanguageChange() {
-    // @ts-ignore
-    this.currentCode = this.initialCode[this.pgConfig.language] || '// Code here';
+    const lang = this.pgConfig.language as keyof typeof this.initialCode;
+    this.currentCode = this.initialCode[lang] || '// Code here';
     this.updateConfig();
   }
 
-  onValueChange(_event: any) {
+  onValueChange() {
     // this.logEvent(`Value changed. Length: ${event.detail?.length || 0}`);
   }
 
-  onRunCode(_event: any) {
+  onRunCode() {
     this.logEvent(`Run Code Triggered! Executing ${this.pgConfig.language}...`);
   }
 

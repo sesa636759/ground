@@ -2,10 +2,8 @@ import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-valu
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  signal,
   OnInit,
   ViewEncapsulation,
-  ChangeDetectorRef,
   ViewChild,
   ElementRef,
   AfterViewInit,
@@ -101,7 +99,7 @@ export class ModernSidebarPlaygroundComponent
     { id: 'help', label: 'Help & Support', icon: 'fas fa-question-circle' },
   ];
 
-  constructor(private _cd: ChangeDetectorRef) {
+  constructor() {
     super();
   }
 

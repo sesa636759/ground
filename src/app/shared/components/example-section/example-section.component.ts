@@ -19,5 +19,5 @@ export class ExampleSectionComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(_changes: any): void {}
+  ngOnChanges(): void {}
 }

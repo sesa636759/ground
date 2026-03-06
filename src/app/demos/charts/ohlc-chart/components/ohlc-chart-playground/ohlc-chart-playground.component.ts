@@ -151,4 +151,3 @@ export class OhlcChartPlaygroundComponent {
     this.update();
   }
 }
-

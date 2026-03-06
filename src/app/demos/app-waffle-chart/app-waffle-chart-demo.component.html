@@ -15,7 +15,6 @@
         <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
 
         <div class="examples-content">
-
           <!-- Basic -->
           <section class="demo-section" id="basic" style="margin-top: 0">
             <div class="section-header">
@@ -44,11 +43,34 @@
               <h2>🎨 Color Variants</h2>
               <p>Use fill-color to match your brand palette or semantic status colours.</p>
             </div>
-            <div class="demo-card" style="display: flex; gap: 32px; flex-wrap: wrap; justify-content: center">
-              <chart-waffle value="72" total="100" fill-color="#6366f1" chart-title="Engineering"></chart-waffle>
-              <chart-waffle value="55" total="100" fill-color="#f59e0b" chart-title="Marketing"></chart-waffle>
-              <chart-waffle value="88" total="100" fill-color="#10b981" chart-title="Operations"></chart-waffle>
-              <chart-waffle value="40" total="100" fill-color="#f43f5e" chart-title="HR"></chart-waffle>
+            <div
+              class="demo-card"
+              style="display: flex; gap: 32px; flex-wrap: wrap; justify-content: center"
+            >
+              <chart-waffle
+                value="72"
+                total="100"
+                fill-color="#6366f1"
+                chart-title="Engineering"
+              ></chart-waffle>
+              <chart-waffle
+                value="55"
+                total="100"
+                fill-color="#f59e0b"
+                chart-title="Marketing"
+              ></chart-waffle>
+              <chart-waffle
+                value="88"
+                total="100"
+                fill-color="#10b981"
+                chart-title="Operations"
+              ></chart-waffle>
+              <chart-waffle
+                value="40"
+                total="100"
+                fill-color="#f43f5e"
+                chart-title="HR"
+              ></chart-waffle>
             </div>
             <ui-code-preview
               [htmlCode]="colorsCode"
@@ -64,10 +86,33 @@
               <h2>📐 Grid Sizes</h2>
               <p>Override rows and columns to create square, compact, or wide waffle layouts.</p>
             </div>
-            <div class="demo-card" style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; justify-content: center">
+            <div
+              class="demo-card"
+              style="
+                display: flex;
+                gap: 32px;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: center;
+              "
+            >
               <chart-waffle value="65" total="100" chart-title="Default (10×10)"></chart-waffle>
-              <chart-waffle value="65" total="100" rows="5" columns="10" cell-size="22" chart-title="Compact (5×10)"></chart-waffle>
-              <chart-waffle value="65" total="100" rows="5" columns="20" cell-size="18" chart-title="Wide (5×20)"></chart-waffle>
+              <chart-waffle
+                value="65"
+                total="100"
+                rows="5"
+                columns="10"
+                cell-size="22"
+                chart-title="Compact (5×10)"
+              ></chart-waffle>
+              <chart-waffle
+                value="65"
+                total="100"
+                rows="5"
+                columns="20"
+                cell-size="18"
+                chart-title="Wide (5×20)"
+              ></chart-waffle>
             </div>
             <ui-code-preview
               [htmlCode]="gridCode"
@@ -76,7 +121,6 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>

@@ -180,4 +180,3 @@ export class WaterfallChartPlaygroundComponent {
     this.update();
   }
 }
-

@@ -20,7 +20,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     ComponentDocumentationComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-button-toggle-demo.component.html',
@@ -47,8 +47,6 @@ export class SetButtonToggleDemoComponent extends BaseDemoComponent {
   get exampleVariants() {
     return this.variants;
   }
-
-  
 
   // Code snippets
   segmentedCode = `<app-button-toggle-group

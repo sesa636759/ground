@@ -92,8 +92,6 @@ export class SetAnimateOnScrollDemoComponent extends BaseDemoComponent {
     { id: 'combined-effects', title: 'Combined Effects', icon: 'palette', iconLibrary: 'lucide' },
   ];
 
-  
-
   // Basic Animations
   fadeInBasicCode = signal(`<app-animate-on-scroll
   animation="fade-in"

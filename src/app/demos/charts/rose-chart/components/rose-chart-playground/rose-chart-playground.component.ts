@@ -170,4 +170,3 @@ roseData = ${JSON.stringify(this.activeData, null, 2)};`;
     this.update();
   }
 }
-

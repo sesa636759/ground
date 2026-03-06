@@ -17,7 +17,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     FormsModule,
     EmptyStatePlaygroundComponent,
     DemoTabsComponent,
-    
+
     ExampleSectionComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -42,8 +42,6 @@ export class SetEmptyStateDemoComponent extends BaseDemoComponent implements OnI
   get exampleVariants() {
     return this.variants;
   }
-
-  
 
   typesCode =
     signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>

@@ -14,7 +14,6 @@ import {
   Permission,
 } from '../models/user.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,9 +25,8 @@ export class UserService {
   // Mock data for demonstration
   private mockUsers: User[] = [];
 
-  constructor(
+  constructor() {
     //private _http: HttpClient
-    ) {
     this.initializeMockData();
   }
 

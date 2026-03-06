@@ -2,14 +2,13 @@
 
 // Force accordion examples to be full width in the preview area
 :host {
+  ui-accordion,
+  app-playground-event-log {
+    width: 100%;
+  }
 
-    ui-accordion,
-    app-playground-event-log {
-        width: 100%;
-    }
-
-    // Override the centered flex layout in ExampleSectionComponent preview-content
-    .preview-content {
-        align-items: stretch !important;
-    }
+  // Override the centered flex layout in ExampleSectionComponent preview-content
+  .preview-content {
+    align-items: stretch !important;
+  }
 }

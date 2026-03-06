@@ -26,7 +26,9 @@ button.btn-premium::before {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  transition:
+    width 0.6s,
+    height 0.6s;
 }
 
 button.btn-premium:hover {
@@ -123,7 +125,7 @@ button.btn-ghost:hover {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   transition: all var(--transition-smooth);
-  
+
   &:hover {
     box-shadow: var(--shadow-xl);
     transform: translateY(-2px);
@@ -137,7 +139,7 @@ button.btn-ghost:hover {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-smooth);
-  
+
   &:hover {
     box-shadow: var(--shadow-lg);
     border-color: var(--border-strong);
@@ -149,7 +151,7 @@ button.btn-ghost:hover {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-color) 50%, transparent);
   margin: var(--space-xl) 0;
-  
+
   &.divider-strong {
     background: linear-gradient(90deg, transparent, var(--border-strong) 50%, transparent);
   }
@@ -159,7 +161,7 @@ button.btn-ghost:hover {
   width: 1px;
   background: linear-gradient(180deg, transparent, var(--border-color) 50%, transparent);
   margin: 0 var(--space-lg);
-  
+
   &.divider-strong {
     background: linear-gradient(180deg, transparent, var(--border-strong) 50%, transparent);
   }
@@ -179,8 +181,12 @@ button.btn-ghost:hover {
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .spinner {
@@ -193,59 +199,131 @@ button.btn-ghost:hover {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Text Utilities */
-.text-primary { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
-.text-tertiary { color: var(--text-tertiary); }
-.text-muted { color: var(--text-muted); }
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+.text-muted {
+  color: var(--text-muted);
+}
 
-.text-success { color: var(--success); }
-.text-warning { color: var(--warning); }
-.text-danger { color: var(--danger); }
-.text-info { color: var(--info); }
+.text-success {
+  color: var(--success);
+}
+.text-warning {
+  color: var(--warning);
+}
+.text-danger {
+  color: var(--danger);
+}
+.text-info {
+  color: var(--info);
+}
 
-.font-bold { font-weight: 700; }
-.font-semibold { font-weight: 600; }
-.font-medium { font-weight: 500; }
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-medium {
+  font-weight: 500;
+}
 
 /* Spacing Utilities */
-.p-xs { padding: var(--space-xs); }
-.p-sm { padding: var(--space-sm); }
-.p-md { padding: var(--space-md); }
-.p-lg { padding: var(--space-lg); }
-.p-xl { padding: var(--space-xl); }
-.p-2xl { padding: var(--space-2xl); }
+.p-xs {
+  padding: var(--space-xs);
+}
+.p-sm {
+  padding: var(--space-sm);
+}
+.p-md {
+  padding: var(--space-md);
+}
+.p-lg {
+  padding: var(--space-lg);
+}
+.p-xl {
+  padding: var(--space-xl);
+}
+.p-2xl {
+  padding: var(--space-2xl);
+}
 
-.m-xs { margin: var(--space-xs); }
-.m-sm { margin: var(--space-sm); }
-.m-md { margin: var(--space-md); }
-.m-lg { margin: var(--space-lg); }
-.m-xl { margin: var(--space-xl); }
-.m-2xl { margin: var(--space-2xl); }
+.m-xs {
+  margin: var(--space-xs);
+}
+.m-sm {
+  margin: var(--space-sm);
+}
+.m-md {
+  margin: var(--space-md);
+}
+.m-lg {
+  margin: var(--space-lg);
+}
+.m-xl {
+  margin: var(--space-xl);
+}
+.m-2xl {
+  margin: var(--space-2xl);
+}
 
 /* Shadow Utilities */
-.shadow-sm { box-shadow: var(--shadow-sm); }
-.shadow-md { box-shadow: var(--shadow-md); }
-.shadow-lg { box-shadow: var(--shadow-lg); }
-.shadow-xl { box-shadow: var(--shadow-xl); }
-.shadow-premium { box-shadow: var(--shadow-premium); }
-.shadow-glow { box-shadow: var(--shadow-glow); }
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
 
 /* Border Radius Utilities */
-.rounded-sm { border-radius: var(--radius-sm); }
-.rounded-md { border-radius: var(--radius-md); }
-.rounded-lg { border-radius: var(--radius-lg); }
-.rounded-xl { border-radius: var(--radius-xl); }
-.rounded-2xl { border-radius: var(--radius-2xl); }
-.rounded-full { border-radius: var(--radius-full); }
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+.rounded-xl {
+  border-radius: var(--radius-xl);
+}
+.rounded-2xl {
+  border-radius: var(--radius-2xl);
+}
+.rounded-full {
+  border-radius: var(--radius-full);
+}
 
 /* Hover Effects */
 .hover-lift {
   transition: transform var(--transition-fast);
-  
+
   &:hover {
     transform: translateY(-4px);
   }
@@ -253,7 +331,7 @@ button.btn-ghost:hover {
 
 .hover-glow {
   transition: box-shadow var(--transition-smooth);
-  
+
   &:hover {
     box-shadow: var(--shadow-glow);
   }
@@ -261,7 +339,7 @@ button.btn-ghost:hover {
 
 .hover-scale {
   transition: transform var(--transition-fast);
-  
+
   &:hover {
     transform: scale(1.05);
   }

@@ -188,4 +188,3 @@ export class ContextMenuPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-

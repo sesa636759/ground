@@ -1,6 +1,6 @@
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnchorPlaygroundComponent } from './components/anchor-playground/anchor-playground.component';

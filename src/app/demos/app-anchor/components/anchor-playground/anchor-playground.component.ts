@@ -24,7 +24,9 @@ export class AnchorPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Dot', value: 'dot' },
   ];
 
-  pgAccordionItems = [{ id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' }];
+  pgAccordionItems = [
+    { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
+  ];
   defaultOpen = ['config'];
 
   links = [

@@ -36,7 +36,9 @@
 .masonry-item {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 
   &:hover {
@@ -72,7 +74,9 @@
 .grid-item {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 
   &:hover {
@@ -103,7 +107,11 @@
 }
 
 .column-item {
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1), rgba(var(--primary-rgb), 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb), 0.1),
+    rgba(var(--primary-rgb), 0.05)
+  );
   border-radius: 8px;
   border: 1px solid var(--border-color);
 }
@@ -234,7 +242,11 @@
 .selection-item {
   border: 2px solid var(--border-color);
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.02));
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb), 0.08),
+    rgba(var(--primary-rgb), 0.02)
+  );
   padding: 16px;
   display: flex;
   align-items: center;
@@ -244,7 +256,11 @@
 
   &:hover {
     border-color: var(--primary-color);
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--primary-rgb), 0.08));
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.15),
+      rgba(var(--primary-rgb), 0.08)
+    );
   }
 
   &.selected {
@@ -331,7 +347,12 @@
 
 .skeleton-item {
   border-radius: 8px;
-  background: linear-gradient(90deg, var(--bg-secondary) 0%, rgba(var(--bg-secondary-rgb), 0.5) 50%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    rgba(var(--bg-secondary-rgb), 0.5) 50%,
+    var(--bg-secondary) 100%
+  );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
 }

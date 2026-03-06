@@ -14,65 +14,99 @@
       <div class="examples-split-layout">
         <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
         <div class="examples-content">
-
           <section class="demo-section" id="project" style="margin-top: 0">
             <div class="section-header">
               <h2>📋 Project Timeline</h2>
               <p>Multi-phase project with task dependencies and milestone markers.</p>
             </div>
-            <div class="demo-card" style="overflow-x:auto">
-              <svg width="660" height="320" style="display:block;min-width:600px">
+            <div class="demo-card" style="overflow-x: auto">
+              <svg width="660" height="320" style="display: block; min-width: 600px">
                 <!-- Header row -->
-                <rect x="0" y="0" width="660" height="30" fill="#f9fafb"/>
+                <rect x="0" y="0" width="660" height="30" fill="#f9fafb" />
                 <text x="8" y="20" font-size="11" font-weight="600" fill="#374151">Task</text>
-                <line x1="130" y1="0" x2="130" y2="320" stroke="#e5e7eb"/>
+                <line x1="130" y1="0" x2="130" y2="320" stroke="#e5e7eb" />
                 <text x="200" y="20" font-size="10" fill="#9ca3af">Week 1</text>
                 <text x="320" y="20" font-size="10" fill="#9ca3af">Week 3</text>
                 <text x="440" y="20" font-size="10" fill="#9ca3af">Week 5</text>
                 <text x="560" y="20" font-size="10" fill="#9ca3af">Week 7</text>
                 <!-- Grid lines -->
-                <line x1="130" y1="30" x2="130" y2="320" stroke="#f3f4f6"/>
-                <line x1="250" y1="30" x2="250" y2="320" stroke="#f3f4f6"/>
-                <line x1="370" y1="30" x2="370" y2="320" stroke="#f3f4f6"/>
-                <line x1="490" y1="30" x2="490" y2="320" stroke="#f3f4f6"/>
-                <line x1="610" y1="30" x2="610" y2="320" stroke="#f3f4f6"/>
+                <line x1="130" y1="30" x2="130" y2="320" stroke="#f3f4f6" />
+                <line x1="250" y1="30" x2="250" y2="320" stroke="#f3f4f6" />
+                <line x1="370" y1="30" x2="370" y2="320" stroke="#f3f4f6" />
+                <line x1="490" y1="30" x2="490" y2="320" stroke="#f3f4f6" />
+                <line x1="610" y1="30" x2="610" y2="320" stroke="#f3f4f6" />
                 <!-- Row zebra -->
-                <rect x="0" y="30"  width="660" height="36" fill="#f9fafb"/>
-                <rect x="0" y="102" width="660" height="36" fill="#f9fafb"/>
-                <rect x="0" y="174" width="660" height="36" fill="#f9fafb"/>
-                <rect x="0" y="246" width="660" height="36" fill="#f9fafb"/>
+                <rect x="0" y="30" width="660" height="36" fill="#f9fafb" />
+                <rect x="0" y="102" width="660" height="36" fill="#f9fafb" />
+                <rect x="0" y="174" width="660" height="36" fill="#f9fafb" />
+                <rect x="0" y="246" width="660" height="36" fill="#f9fafb" />
                 <!-- Tasks -->
                 <text x="8" y="53" font-size="11" fill="#374151">Requirements</text>
-                <rect x="136" y="36" width="120" height="24" rx="5" fill="#6366f1"/>
-                <text x="196" y="52" text-anchor="middle" font-size="10" fill="white">Requirements</text>
+                <rect x="136" y="36" width="120" height="24" rx="5" fill="#6366f1" />
+                <text x="196" y="52" text-anchor="middle" font-size="10" fill="white">
+                  Requirements
+                </text>
 
                 <text x="8" y="89" font-size="11" fill="#374151">Architecture</text>
-                <rect x="196" y="72" width="100" height="24" rx="5" fill="#8b5cf6"/>
-                <text x="246" y="88" text-anchor="middle" font-size="10" fill="white">Architecture</text>
+                <rect x="196" y="72" width="100" height="24" rx="5" fill="#8b5cf6" />
+                <text x="246" y="88" text-anchor="middle" font-size="10" fill="white">
+                  Architecture
+                </text>
 
                 <text x="8" y="125" font-size="11" fill="#374151">Development</text>
-                <rect x="256" y="108" width="200" height="24" rx="5" fill="#0ea5e9"/>
-                <text x="356" y="124" text-anchor="middle" font-size="10" fill="white">Development</text>
+                <rect x="256" y="108" width="200" height="24" rx="5" fill="#0ea5e9" />
+                <text x="356" y="124" text-anchor="middle" font-size="10" fill="white">
+                  Development
+                </text>
 
                 <text x="8" y="161" font-size="11" fill="#374151">Testing</text>
-                <rect x="416" y="144" width="120" height="24" rx="5" fill="#f59e0b"/>
-                <text x="476" y="160" text-anchor="middle" font-size="10" fill="white">Testing</text>
+                <rect x="416" y="144" width="120" height="24" rx="5" fill="#f59e0b" />
+                <text x="476" y="160" text-anchor="middle" font-size="10" fill="white">
+                  Testing
+                </text>
 
                 <text x="8" y="197" font-size="11" fill="#374151">Deployment</text>
-                <rect x="496" y="180" width="80" height="24" rx="5" fill="#10b981"/>
+                <rect x="496" y="180" width="80" height="24" rx="5" fill="#10b981" />
                 <text x="536" y="196" text-anchor="middle" font-size="10" fill="white">Deploy</text>
 
                 <text x="8" y="233" font-size="11" fill="#374151">Docs</text>
-                <rect x="256" y="216" width="220" height="24" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="1"/>
-                <text x="366" y="232" text-anchor="middle" font-size="10" fill="#4338ca">Documentation</text>
+                <rect
+                  x="256"
+                  y="216"
+                  width="220"
+                  height="24"
+                  rx="5"
+                  fill="#e0e7ff"
+                  stroke="#6366f1"
+                  stroke-width="1"
+                />
+                <text x="366" y="232" text-anchor="middle" font-size="10" fill="#4338ca">
+                  Documentation
+                </text>
 
                 <text x="8" y="269" font-size="11" fill="#374151">Review</text>
-                <rect x="576" y="252" width="60" height="24" rx="5" fill="#f43f5e"/>
+                <rect x="576" y="252" width="60" height="24" rx="5" fill="#f43f5e" />
                 <text x="606" y="268" text-anchor="middle" font-size="10" fill="white">Review</text>
 
                 <!-- Dependency arrows -->
-                <line x1="256" y1="48" x2="196" y2="72" stroke="#9ca3af" stroke-dasharray="3,2" stroke-width="1"/>
-                <line x1="296" y1="84" x2="256" y2="108" stroke="#9ca3af" stroke-dasharray="3,2" stroke-width="1"/>
+                <line
+                  x1="256"
+                  y1="48"
+                  x2="196"
+                  y2="72"
+                  stroke="#9ca3af"
+                  stroke-dasharray="3,2"
+                  stroke-width="1"
+                />
+                <line
+                  x1="296"
+                  y1="84"
+                  x2="256"
+                  y2="108"
+                  stroke="#9ca3af"
+                  stroke-dasharray="3,2"
+                  stroke-width="1"
+                />
               </svg>
             </div>
             <ui-code-preview
@@ -82,7 +116,6 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>

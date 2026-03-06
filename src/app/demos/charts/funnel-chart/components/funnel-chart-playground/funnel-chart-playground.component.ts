@@ -116,4 +116,3 @@ export class FunnelChartPlaygroundComponent {
     this.update();
   }
 }
-

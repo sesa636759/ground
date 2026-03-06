@@ -1,14 +1,4 @@
-import {
-  Component,
-  Input,
-  signal,
-  AfterViewInit,
-  OnDestroy,
-  ElementRef,
-  ViewChildren,
-  QueryList,
-  ContentChildren,
-} from '@angular/core';
+import { Component, Input, signal, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 

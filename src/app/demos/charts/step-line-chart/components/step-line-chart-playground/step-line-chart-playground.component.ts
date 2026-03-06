@@ -149,4 +149,3 @@ export class StepLineChartPlaygroundComponent {
     this.update();
   }
 }
-

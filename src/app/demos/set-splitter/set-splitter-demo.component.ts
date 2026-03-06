@@ -18,7 +18,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,
-    DemoSidebarComponent
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-splitter-demo.component.html',
@@ -57,8 +57,6 @@ export class SetSplitterDemoComponent {
     { id: 'sidebar-content', title: 'Sidebar + Content', icon: '📂' },
     { id: 'header-body-footer', title: 'Header-Body-Footer', icon: '📄' },
   ];
-
-  
 
   basicPanels = [
     { minSize: 20, maxSize: 80 },

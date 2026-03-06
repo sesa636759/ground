@@ -56,8 +56,6 @@ export class SetAvatarDemoComponent extends BaseDemoComponent implements OnInit 
     { id: 'animated-groups', title: 'Animated Groups', icon: '🎬' },
   ];
 
-  
-
   get exampleVariants() {
     return this.variants.filter((v) => v.id !== 'playground');
   }

@@ -1,7 +1,6 @@
 @use '../../../styles/demo-base.scss';
 
 @media (max-width: 1024px) {
-
   .demo-grid.col-3,
   .demo-grid.col-2 {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

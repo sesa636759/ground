@@ -17,8 +17,7 @@ interface ActivityItem {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [
-    AppInputValueAccessorDirective,CommonModule, FormsModule, RouterLink],
+  imports: [AppInputValueAccessorDirective, CommonModule, FormsModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
@@ -216,4 +215,3 @@ export class ProfileComponent implements OnInit {
     }
   }
 }
-

@@ -70,7 +70,8 @@
       border-right: 1px solid var(--border-color);
       box-shadow: var(--shadow-lg);
       z-index: 100;
-      transition: width var(--transition-smooth),
+      transition:
+        width var(--transition-smooth),
         flex-basis var(--transition-smooth),
         background var(--transition-smooth);
       backdrop-filter: none;
@@ -112,7 +113,8 @@
       border-bottom: 1px solid var(--border-color);
       box-shadow: var(--shadow-md);
       z-index: 100;
-      transition: height var(--transition-smooth),
+      transition:
+        height var(--transition-smooth),
         background var(--transition-smooth);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
@@ -190,7 +192,7 @@
       overflow: hidden;
     }
 
-    >* {
+    > * {
       display: block;
       animation: fadeInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -773,7 +775,9 @@
     flex-shrink: 0;
     border-radius: 8px;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
 
     &:hover {
       transform: scale(1.1);
@@ -786,7 +790,7 @@
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
-    background: var(--gradient-primary, linear-gradient(135deg, #3DCD58, #008a16));
+    background: var(--gradient-primary, linear-gradient(135deg, #3dcd58, #008a16));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -812,14 +816,12 @@
   }
 }
 
-
 /* ============================================================
    ?? ui-navigation Popover Alignment & Scroll Fix
    Fixes: Navigation sub-menus jumping to top and lack of scroll
    ============================================================ */
 ui-navigation,
 .main-nav {
-
   // Force sub-menus and popovers to remain within viewport and scroll
   ::part(popover-content),
   ::part(menu-list),
@@ -934,15 +936,18 @@ ui-navigation ::part(arrow) {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 24px var(--primary-glow),
+  box-shadow:
+    0 8px 24px var(--primary-glow),
     0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.3s ease;
   animation: fabPulse 2.5s ease-in-out infinite;
 
   &:hover {
     transform: scale(1.12);
-    box-shadow: 0 12px 32px var(--primary-glow),
+    box-shadow:
+      0 12px 32px var(--primary-glow),
       0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
@@ -994,7 +999,10 @@ ui-navigation ::part(arrow) {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(12px) saturate(180%);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.2s ease;
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px) scale(0.9);
@@ -1030,7 +1038,8 @@ ui-navigation ::part(arrow) {
 
   &.active {
     border-color: var(--primary);
-    box-shadow: 0 4px 16px var(--primary-glow),
+    box-shadow:
+      0 4px 16px var(--primary-glow),
       0 2px 8px rgba(0, 0, 0, 0.15);
 
     .theme-fab-option__label {

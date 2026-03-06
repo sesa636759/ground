@@ -14,7 +14,11 @@
 }
 
 .api-card {
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb), 0.1) 0%,
+    rgba(var(--primary-rgb), 0.05) 100%
+  );
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.25rem;
@@ -103,7 +107,11 @@ app-layout-manager {
       .stat {
         flex: 1;
         padding: 1rem;
-        background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0.05) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(var(--primary-rgb), 0.1) 0%,
+          rgba(var(--primary-rgb), 0.05) 100%
+        );
         border-radius: 8px;
         font-size: 1.1rem;
         font-weight: 600;

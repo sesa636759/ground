@@ -81,4 +81,3 @@ export class ChipPlaygroundComponent extends BasePlaygroundComponent implements 
     }, 50);
   }
 }
-

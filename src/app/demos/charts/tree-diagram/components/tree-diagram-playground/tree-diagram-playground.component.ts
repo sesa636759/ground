@@ -256,4 +256,3 @@ export class TreeDiagramPlaygroundComponent {
     this.update();
   }
 }
-

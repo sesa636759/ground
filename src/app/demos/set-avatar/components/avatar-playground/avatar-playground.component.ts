@@ -162,7 +162,7 @@ export class AvatarPlaygroundComponent extends BasePlaygroundComponent {
     this.refreshCode();
   }
 
-  onUpload(_event: any) {
+  onUpload() {
     this.logEvent('Upload triggered');
   }
 

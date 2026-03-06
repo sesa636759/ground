@@ -1,12 +1,13 @@
 /* Global Design System & Variables - Enterprise Edition */
 :root {
   /* Premium Font Stack */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
   --font-display: 'Inter', system-ui, sans-serif;
 
   /* Enterprise Color Palette */
-  --primary: #3DCD58;
+  --primary: #3dcd58;
   --primary-hover: #32b34a;
   --primary-light: #5edb72;
   --primary-lighter: #86e898;
@@ -42,10 +43,15 @@
   /* Premium Gradients */
   --gradient-premium: linear-gradient(135deg, #0a1a0e 0%, #0d2a1a 50%, #1a3321 100%);
   --gradient-hero: linear-gradient(135deg, #0a1a0e 0%, #0d2a1a 100%);
-  --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+  --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
   --gradient-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
-  --gradient-mesh: radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.08) 0px, transparent 50%),
+  --gradient-glass: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+  --gradient-mesh:
+    radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.08) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(5, 150, 105, 0.08) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(52, 211, 153, 0.06) 0px, transparent 50%);
 
@@ -99,7 +105,7 @@
 }
 
 /* Dark Theme - Premium Deep Slate */
-[data-theme="dark"],
+[data-theme='dark'],
 :root.dark {
   --bg-primary: #050a05;
   --bg-secondary: #0a1a0e;
@@ -126,14 +132,15 @@
   --border-strong: rgba(61, 205, 88, 0.2);
   --overlay: rgba(0, 0, 0, 0.75);
 
-  --primary: #3DCD58;
+  --primary: #3dcd58;
   --primary-hover: #32b34a;
   --primary-light: #5edb72;
   --gradient-premium: linear-gradient(135deg, #0a1a0e 0%, #0d2a1a 50%, #1a3321 100%);
   --gradient-hero: linear-gradient(135deg, #050a05 0%, #0d2a1a 100%);
-  --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+  --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
   --gradient-glass: linear-gradient(135deg, rgba(13, 42, 26, 0.95) 0%, rgba(10, 26, 14, 0.85) 100%);
-  --gradient-mesh: radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.12) 0px, transparent 50%),
+  --gradient-mesh:
+    radial-gradient(at 40% 20%, rgba(61, 205, 88, 0.12) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(5, 150, 105, 0.12) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(52, 211, 153, 0.08) 0px, transparent 50%);
   --shadow-premium: 0 24px 48px -12px rgba(0, 0, 0, 0.6), 0 12px 24px -8px rgba(61, 205, 88, 0.2);
@@ -141,7 +148,7 @@
 }
 
 /* Schneider Green - Enterprise Premium */
-[data-theme="schneider-green"] {
+[data-theme='schneider-green'] {
   --bg-primary: #f8faf9;
   --bg-secondary: #ffffff;
   --bg-tertiary: #ecfdf5;
@@ -153,18 +160,18 @@
   --border-color: #d1fae5;
   --border-strong: #34d399;
 
-  --primary: #3DCD58;
+  --primary: #3dcd58;
   --primary-light: #5edb72;
   --primary-lighter: #86e898;
   --primary-glow: rgba(61, 205, 88, 0.4);
-  --gradient-premium: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
-  --gradient-primary: linear-gradient(135deg, #3DCD58 0%, #059669 100%);
+  --gradient-premium: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
+  --gradient-primary: linear-gradient(135deg, #3dcd58 0%, #059669 100%);
   --gradient-hero: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
   --gradient-main: var(--gradient-premium);
 }
 
 /* Schneider Blue - Enterprise Premium */
-[data-theme="schneider-blue"] {
+[data-theme='schneider-blue'] {
   --bg-primary: #f0f9ff;
   --bg-secondary: #ffffff;
   --bg-tertiary: #e0f2fe;
@@ -187,7 +194,7 @@
 }
 
 /* High Contrast - Accessibility Theme */
-[data-theme="high-contrast"] {
+[data-theme='high-contrast'] {
   --bg-primary: #000000;
   --bg-secondary: #171717;
   --bg-tertiary: #262626;
@@ -217,12 +224,12 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="schneider-green"] .glass {
+[data-theme='schneider-green'] .glass {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(61, 205, 88, 0.1);
 }
 
-[data-theme="schneider-blue"] .glass {
+[data-theme='schneider-blue'] .glass {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(2, 132, 199, 0.1);
 }
@@ -250,7 +257,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  transition: background-color var(--transition-base), color var(--transition-base);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
   overflow-x: hidden;
 }
 

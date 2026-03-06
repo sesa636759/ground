@@ -126,7 +126,7 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     this.generatedCode.set(code);
   }
 
-  onAnimate(_event: any) {
+  onAnimate() {
     this.logEvent(`Animation triggered: ${this.pgConfig.animation}`);
   }
 
@@ -139,4 +139,3 @@ export class AnimateOnScrollPlaygroundComponent implements OnInit {
     navigator.clipboard.writeText(this.generatedCode());
   }
 }
-

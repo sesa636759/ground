@@ -1,13 +1,13 @@
 @use '../../../../../styles/playground-base.scss';
 
 .nav-container {
-    width: 280px;
-    height: 100%;
-    border-right: 1px solid var(--border-color);
+  width: 280px;
+  height: 100%;
+  border-right: 1px solid var(--border-color);
 }
 
 .content-area {
-    flex: 1;
-    padding: 40px;
-    background: #f8fafc;
+  flex: 1;
+  padding: 40px;
+  background: #f8fafc;
 }

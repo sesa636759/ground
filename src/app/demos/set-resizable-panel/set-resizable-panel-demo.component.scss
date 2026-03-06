@@ -2,7 +2,11 @@
 
 .demo-card {
   &.h-gradient {
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.02));
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.08),
+      rgba(var(--primary-rgb), 0.02)
+    );
   }
 }
 

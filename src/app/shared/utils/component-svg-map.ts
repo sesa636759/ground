@@ -5,7 +5,6 @@
  * ViewBox: 200 × 90  (landscape 2.2:1)
  */
 export const COMPONENT_SVG_MAP: Record<string, string> = {
-
   /* ── A ── */
   accordion: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="10" y="5"  width="180" height="22" rx="6" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.5"/>
@@ -648,14 +647,14 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
 };
 
 /** Aliases so set-* route IDs resolve correctly */
-COMPONENT_SVG_MAP['set-carousel']      = COMPONENT_SVG_MAP['carousel'];
-COMPONENT_SVG_MAP['set-code-editor']   = COMPONENT_SVG_MAP['code-editor'];
-COMPONENT_SVG_MAP['set-dashboard']     = COMPONENT_SVG_MAP['dashboard'];
+COMPONENT_SVG_MAP['set-carousel'] = COMPONENT_SVG_MAP['carousel'];
+COMPONENT_SVG_MAP['set-code-editor'] = COMPONENT_SVG_MAP['code-editor'];
+COMPONENT_SVG_MAP['set-dashboard'] = COMPONENT_SVG_MAP['dashboard'];
 COMPONENT_SVG_MAP['set-button-toggle'] = COMPONENT_SVG_MAP['button-toggle'];
-COMPONENT_SVG_MAP['set-checkbox']      = COMPONENT_SVG_MAP['checkbox'];
-COMPONENT_SVG_MAP['set-card']          = COMPONENT_SVG_MAP['card'];
-COMPONENT_SVG_MAP['set-avatar']        = COMPONENT_SVG_MAP['avatar'];
-COMPONENT_SVG_MAP['set-avatar-group']  = COMPONENT_SVG_MAP['avatar-group'];
-COMPONENT_SVG_MAP['set-context-menu']  = COMPONENT_SVG_MAP['context-menu'];
-COMPONENT_SVG_MAP['set-anchor']        = COMPONENT_SVG_MAP['anchor'];
+COMPONENT_SVG_MAP['set-checkbox'] = COMPONENT_SVG_MAP['checkbox'];
+COMPONENT_SVG_MAP['set-card'] = COMPONENT_SVG_MAP['card'];
+COMPONENT_SVG_MAP['set-avatar'] = COMPONENT_SVG_MAP['avatar'];
+COMPONENT_SVG_MAP['set-avatar-group'] = COMPONENT_SVG_MAP['avatar-group'];
+COMPONENT_SVG_MAP['set-context-menu'] = COMPONENT_SVG_MAP['context-menu'];
+COMPONENT_SVG_MAP['set-anchor'] = COMPONENT_SVG_MAP['anchor'];
 COMPONENT_SVG_MAP['set-animate-on-scroll'] = COMPONENT_SVG_MAP['animate-on-scroll'];

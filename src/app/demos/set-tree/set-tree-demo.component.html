@@ -72,12 +72,7 @@
             <div class="demo-card">
               <h3>Multi Select</h3>
               <div class="tree-container">
-                <app-tree
-                  [nodes]="simpleTreeData"
-                  show-lines
-                  selectable
-                  multi-select
-                ></app-tree>
+                <app-tree [nodes]="simpleTreeData" show-lines selectable multi-select></app-tree>
               </div>
             </div>
           </div>
@@ -263,9 +258,8 @@
     </div>
 
     <!-- Documentation Slot -->
-        <div slot="docs">
+    <div slot="docs">
       <app-component-documentation componentId="tree"></app-component-documentation>
     </div>
-
   </demo-tabs>
 </div>

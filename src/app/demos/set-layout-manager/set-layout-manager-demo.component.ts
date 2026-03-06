@@ -35,8 +35,6 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
     { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
   ];
 
-  
-
   playgroundCode = `<app-layout-manager
   [regions]="regions"
   (layoutChange)="onLayoutChange($event)"
@@ -158,9 +156,9 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
     });
   }
 
-  handleLayoutChange(_event: CustomEvent) {}
+  handleLayoutChange() {}
 
-  handlePanelAdded(_event: CustomEvent) {}
+  handlePanelAdded() {}
 
-  handlePanelRemoved(_event: CustomEvent) {}
+  handlePanelRemoved() {}
 }

@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   imports: [
     CommonModule,
     FormsModule,
-    
+    ContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
@@ -34,8 +34,6 @@ export class SetContextMenuDemoComponent {
     { id: 'themes', title: 'Themes & Effects', icon: '🌙' },
     { id: 'advanced', title: 'Advanced Features', icon: '💎' },
   ];
-
-  
 
   // Basic menu items
   basicItems = [

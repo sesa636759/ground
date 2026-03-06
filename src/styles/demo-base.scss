@@ -163,9 +163,8 @@
 // Pattern 2: pane -> [slot div] -> <app-xyz> host -> split-layout -> > * > * covers host
 .pane-examples,
 .pane-docs {
-
-  >*,
-  >*>* {
+  > *,
+  > * > * {
     height: 100%;
     min-height: 0;
     box-sizing: border-box;

@@ -15,7 +15,8 @@ import { CommonModule } from '@angular/common';
           (click)="copyCode()"
           [variant]="copied ? 'success' : 'secondary'"
           [label]="copied ? '✓ Copied!' : '📋 Copy'"
-         label=""></ui-button>
+          label=""
+        ></ui-button>
       </div>
       <pre><code [innerHTML]="highlightedCode"></code></pre>
     </div>

@@ -82,8 +82,8 @@
         [attr.readonly]="pgConfig.readonly ? '' : null"
         [attr.toolbar-label-display]="pgConfig.labelDisplay"
         [value]="currentCode"
-        (valueChange)="onValueChange($event)"
-        (runCode)="onRunCode($event)"
+        (valueChange)="onValueChange()"
+        (runCode)="onRunCode()"
       ></app-code-editor>
     </div>
   </div>
@@ -94,4 +94,3 @@
     (clear)="eventLog.set([])"
   ></app-playground-event-log>
 </app-playground>
-

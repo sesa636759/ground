@@ -28,7 +28,6 @@
       margin: 0 auto;
       z-index: 1;
 
-
       .title-section {
         display: flex;
         align-items: center;
@@ -53,7 +52,6 @@
           text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
       }
-
     }
   }
 
@@ -259,7 +257,7 @@
           position: relative;
 
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             inset: 0;
             background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
@@ -402,7 +400,6 @@
 
 :host-context(.dark-theme) {
   .docs-premium-page {
-
     .premium-tabs,
     .demo-dashboard,
     .api-card {

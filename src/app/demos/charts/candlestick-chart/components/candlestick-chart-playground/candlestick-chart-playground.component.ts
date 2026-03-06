@@ -142,4 +142,3 @@ export class CandlestickChartPlaygroundComponent {
     this.update();
   }
 }
-
