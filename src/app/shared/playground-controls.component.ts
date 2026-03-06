@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from './components/app-playground/playground.constants';
 
 export interface PlaygroundControl {
   name: string;
@@ -22,7 +21,7 @@ export interface PlaygroundConfig {
 @Component({
   selector: 'app-playground-controls',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="playground-controls">

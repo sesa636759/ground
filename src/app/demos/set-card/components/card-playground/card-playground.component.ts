@@ -11,7 +11,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-card-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './card-playground.component.html',
   styleUrl: './card-playground.component.scss',

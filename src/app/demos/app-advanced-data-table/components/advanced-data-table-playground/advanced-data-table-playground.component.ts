@@ -6,8 +6,9 @@ import {
   ViewEncapsulation,
   OnInit,
 } from '@angular/core';
-import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
+
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 
 @Component({
   selector: 'app-advanced-data-table-playground',

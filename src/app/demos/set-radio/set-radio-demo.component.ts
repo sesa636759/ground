@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { RadioPlaygroundComponent } from './components/radio-playground/radio-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -14,8 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'app-set-radio-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     RadioPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

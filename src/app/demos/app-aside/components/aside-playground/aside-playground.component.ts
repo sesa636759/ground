@@ -12,7 +12,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-aside-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './aside-playground.component.html',
   styleUrl: './aside-playground.component.scss',

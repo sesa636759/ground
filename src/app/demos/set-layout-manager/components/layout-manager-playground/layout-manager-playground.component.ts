@@ -8,8 +8,7 @@ import {
   ElementRef,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
@@ -17,8 +16,7 @@ import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-drop
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

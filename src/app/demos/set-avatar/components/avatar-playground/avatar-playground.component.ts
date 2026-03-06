@@ -5,7 +5,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-avatar-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './avatar-playground.component.html',
   styleUrl: './avatar-playground.component.scss',

@@ -107,8 +107,7 @@ Here's a complete example showing how to integrate into a demo:
 
 ```typescript
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { CodeBlockComponent } from '../../../shared/components/code-block/code-block.component';
 
 @Component({

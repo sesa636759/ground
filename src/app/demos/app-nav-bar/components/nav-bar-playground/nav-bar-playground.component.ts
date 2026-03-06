@@ -5,15 +5,12 @@
   ElementRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-nav-bar-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './nav-bar-playground.component.html',
   styleUrl: './nav-bar-playground.component.scss',

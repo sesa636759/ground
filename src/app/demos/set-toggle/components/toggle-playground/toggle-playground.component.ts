@@ -12,7 +12,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-toggle-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './toggle-playground.component.html',
   styleUrl: './toggle-playground.component.scss',

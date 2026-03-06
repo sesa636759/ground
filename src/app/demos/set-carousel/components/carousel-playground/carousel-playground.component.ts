@@ -10,7 +10,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-carousel-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './carousel-playground.component.html',
   styleUrl: './carousel-playground.component.scss',

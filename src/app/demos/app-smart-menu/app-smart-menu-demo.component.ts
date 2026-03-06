@@ -1,6 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { SmartMenuPlaygroundComponent } from './components/smart-menu-playground/smart-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -13,8 +12,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   selector: 'app-app-smart-menu-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     SmartMenuPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,

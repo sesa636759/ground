@@ -184,8 +184,7 @@ basicExample = `<app-component></app-component>`;
 
 ```typescript
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { InputPlaygroundComponent } from './components/input-playground/input-playground.component';
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 

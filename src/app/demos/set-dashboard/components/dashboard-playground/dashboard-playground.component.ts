@@ -12,7 +12,6 @@ import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground
 @Component({
   selector: 'app-dashboard-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dashboard-playground.component.html',
   styleUrl: './dashboard-playground.component.scss',

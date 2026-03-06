@@ -58,6 +58,84 @@
               expanded="true"
             ></ui-code-preview>
           </section>
+
+          <!-- Layout & Spacing -->
+          <section class="demo-section" id="layout">
+            <div class="section-header">
+              <h2>📊 Layout & Spacing</h2>
+              <p>Control how avatars are positioned and their spacing/overlap.</p>
+            </div>
+            <div class="demo-card">
+              <div style="display: flex; flex-direction: column; gap: 32px">
+                <div>
+                  <span style="display: block; margin-bottom: 12px; font-weight: 600"
+                    >Stack (Default)</span
+                  >
+                  <ui-avatar-group layout="stack" overlap="-8">
+                    <ui-avatar src="https://i.pravatar.cc/150?u=a" label="JD"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=b" label="AB"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=c" label="CD"></ui-avatar>
+                  </ui-avatar-group>
+                </div>
+                <div>
+                  <span style="display: block; margin-bottom: 12px; font-weight: 600">Grid</span>
+                  <ui-avatar-group layout="grid" spacing="12">
+                    <ui-avatar src="https://i.pravatar.cc/150?u=x" label="JD"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=y" label="AB"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=z" label="CD"></ui-avatar>
+                  </ui-avatar-group>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="layoutCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Interactive -->
+          <section class="demo-section" id="interactive">
+            <div class="section-header">
+              <h2>✨ Interactive (Animation & Popover)</h2>
+              <p>Add hover animations and overflow popovers.</p>
+            </div>
+            <div class="demo-card">
+              <div style="display: flex; flex-direction: column; gap: 32px">
+                <div>
+                  <span style="display: block; margin-bottom: 12px; font-weight: 600"
+                    >Enable Popover on Hover (+2)</span
+                  >
+                  <ui-avatar-group enable-popover="true" max="3">
+                    <ui-avatar src="https://i.pravatar.cc/150?u=1"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=2"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=3"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=4"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=5"></ui-avatar>
+                  </ui-avatar-group>
+                </div>
+                <div>
+                  <span style="display: block; margin-bottom: 12px; font-weight: 600"
+                    >Animated Expansion</span
+                  >
+                  <ui-avatar-group animated="true" max="3">
+                    <ui-avatar src="https://i.pravatar.cc/150?u=1"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=2"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=3"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=4"></ui-avatar>
+                    <ui-avatar src="https://i.pravatar.cc/150?u=5"></ui-avatar>
+                  </ui-avatar-group>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="interactiveCode"
+              [label]="'Interactive Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
         </div>
       </div>
     </div>

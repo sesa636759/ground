@@ -1,7 +1,6 @@
 import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../../shared/components/app-playground/playground.constants';
 import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../../shared/components/app-playground/app-playground.component';
@@ -11,8 +10,7 @@ import { AppPlaygroundComponent } from '../../../../../shared/components/app-pla
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppPlaygroundComponent,

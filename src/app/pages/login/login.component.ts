@@ -1,6 +1,5 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
@@ -11,8 +10,7 @@ import { ASSETS } from '../../shared/constants/assets.constants';
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     RouterLink,
     AppInputValueAccessorDirective,
     AppCheckboxValueAccessorDirective,

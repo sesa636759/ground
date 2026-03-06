@@ -1,7 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { KnobPlaygroundComponent } from './components/knob-playground/knob-playground.component';
@@ -14,8 +13,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   selector: 'app-app-knob-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     KnobPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

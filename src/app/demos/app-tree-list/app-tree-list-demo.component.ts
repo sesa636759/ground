@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { TreeListPlaygroundComponent } from './components/tree-list-playground/tree-list-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -13,8 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   selector: 'app-app-tree-list-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     TreeListPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

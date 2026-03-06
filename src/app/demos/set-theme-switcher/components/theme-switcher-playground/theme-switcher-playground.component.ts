@@ -5,7 +5,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-theme-switcher-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './theme-switcher-playground.component.html',
   styleUrl: './theme-switcher-playground.component.scss',

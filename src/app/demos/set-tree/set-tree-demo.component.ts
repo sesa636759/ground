@@ -3,17 +3,15 @@ import { TreePlaygroundComponent } from './components/tree-playground/tree-playg
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
-import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 @Component({
   selector: 'app-set-tree-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     TreePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -13,8 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   selector: 'app-app-context-menu-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     ContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,

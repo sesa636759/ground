@@ -6,8 +6,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 
@@ -16,8 +15,7 @@ import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbo
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
   ],

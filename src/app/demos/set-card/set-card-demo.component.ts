@@ -1,6 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
 import { SetCardExamplesComponent } from './components/card-examples/card-examples.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -11,8 +10,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'app-set-card-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     CardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

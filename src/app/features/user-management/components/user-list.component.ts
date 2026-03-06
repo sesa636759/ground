@@ -1,4 +1,3 @@
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +10,6 @@ import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown
   selector: 'app-user-list',
   standalone: true,
   imports: [
-    AppCheckboxValueAccessorDirective,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

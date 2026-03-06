@@ -1,8 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
 
@@ -15,8 +14,7 @@ import { CardExamplesComponent } from './components/card-examples/card-examples.
   selector: 'app-app-card-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     CardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

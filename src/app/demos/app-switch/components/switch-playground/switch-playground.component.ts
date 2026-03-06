@@ -5,7 +5,6 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
 @Component({
   selector: 'app-switch-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './switch-playground.component.html',
   styleUrl: './switch-playground.component.scss',
@@ -58,8 +57,28 @@ export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
       iconOn: '✔️',
       iconOff: '❌',
       showDefaultIcons: false,
+      thumbShape: 'circle',
+      orientation: 'horizontal',
+      helperText: '',
+      errorMessage: '',
+      checkedText: '',
+      uncheckedText: '',
+      showTrackText: false,
+      indeterminate: false,
+      gradient: false,
+      required: false,
     };
   }
+
+  thumbShapeOptions = [
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
 
   updateConfig() {
     let code = '<ui-switch\n';
@@ -68,13 +87,28 @@ export class SwitchPlaygroundComponent extends BasePlaygroundComponent {
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  shape="${this.pgConfig.shape}"\n`;
+    code += `  thumb-shape="${this.pgConfig.thumbShape}"\n`;
     if (this.pgConfig.disabled) code += `  disabled\n`;
     if (this.pgConfig.loading) code += `  loading\n`;
+    if (this.pgConfig.indeterminate) code += `  indeterminate\n`;
+    if (this.pgConfig.gradient) code += `  gradient\n`;
+    if (this.pgConfig.required) code += `  required\n`;
     if (this.pgConfig.labelPosition !== 'right')
       code += `  label-position="${this.pgConfig.labelPosition}"\n`;
+    if (this.pgConfig.orientation !== 'horizontal')
+      code += `  orientation="${this.pgConfig.orientation}"\n`;
     if (this.pgConfig.iconOn) code += `  icon-on="${this.pgConfig.iconOn}"\n`;
     if (this.pgConfig.iconOff) code += `  icon-off="${this.pgConfig.iconOff}"\n`;
     if (this.pgConfig.showDefaultIcons) code += `  show-default-icons\n`;
+    if (this.pgConfig.showTrackText) {
+      code += `  show-track-text\n`;
+      if (this.pgConfig.checkedText) code += `  checked-text="${this.pgConfig.checkedText}"\n`;
+      if (this.pgConfig.uncheckedText)
+        code += `  unchecked-text="${this.pgConfig.uncheckedText}"\n`;
+    }
+    if (this.pgConfig.helperText && !this.pgConfig.errorMessage)
+      code += `  helper-text="${this.pgConfig.helperText}"\n`;
+    if (this.pgConfig.errorMessage) code += `  error-message="${this.pgConfig.errorMessage}"\n`;
     code += '></ui-switch>';
 
     this.generatedCode.set(code);

@@ -8,8 +8,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
@@ -19,8 +18,7 @@ import { BasePlaygroundComponent } from '../../../../shared/components/app-playg
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     UiDropdownValueAccessorDirective,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { AvatarPlaygroundComponent } from './components/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
@@ -13,8 +12,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   selector: 'app-app-avatar-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     AvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
@@ -31,6 +29,7 @@ export class AppAvatarDemoComponent extends BaseDemoComponent {
     { id: 'shapes', title: 'Shapes', icon: '📐', color: '#3b82f6' },
     { id: 'types', title: 'Types', icon: '👤', color: '#10b981' },
     { id: 'status', title: 'Status & Badges', icon: '📍', color: '#f59e0b' },
+    { id: 'animations', title: 'Animations & Stories', icon: '✨', color: '#14b8a6' },
     { id: 'avatar-group', title: 'Groups', icon: '👥', color: '#ec4899' },
   ];
 
@@ -50,14 +49,28 @@ export class AppAvatarDemoComponent extends BaseDemoComponent {
 <ui-avatar icon="fa fa-user"></ui-avatar>`;
 
   statusCode = `<!-- Status Indicators -->
-<ui-avatar name="Online" status="online"></ui-avatar>
+<ui-avatar name="Online" status="online" status-pulse="true"></ui-avatar>
 <ui-avatar name="Away" status="away"></ui-avatar>
 <ui-avatar name="Busy" status="busy"></ui-avatar>
 <ui-avatar name="Offline" status="offline"></ui-avatar>
 
 <!-- Badges -->
-<ui-avatar name="Notifications" badge="5" badge-color="danger"></ui-avatar>
-<ui-avatar name="Verified" badge="dot" badge-color="#3b82f6"></ui-avatar>`;
+<ui-avatar name="Notifications" badge="5" badge-color="danger" badge-position="top-right"></ui-avatar>
+<ui-avatar name="Verified" badge="dot" badge-color="#3b82f6" badge-position="bottom-left"></ui-avatar>
+
+<ui-avatar name="Verified User" verified="true"></ui-avatar>`;
+
+  animationsCode = `<!-- Story Rings -->
+<ui-avatar name="New Story" story="true"></ui-avatar>
+<ui-avatar name="Seen Story" story="true" story-seen="true"></ui-avatar>
+
+<!-- Animations -->
+<ui-avatar name="Pulse" animation="pulse"></ui-avatar>
+<ui-avatar name="Ring" animation="ring"></ui-avatar>
+<ui-avatar name="Glow" animation="glow"></ui-avatar>
+
+<!-- Active Speaker -->
+<ui-avatar name="Speaker" active-speaker="true"></ui-avatar>`;
 
   groupCode = `<ui-avatar-group max="4">
   <ui-avatar src="https://i.pravatar.cc/150?u=a" name="Member A"></ui-avatar>

@@ -1,6 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { SnackbarPlaygroundComponent } from './components/snackbar-playground/snackbar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
@@ -14,8 +13,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
   selector: 'app-app-snackbar-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     SnackbarPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,

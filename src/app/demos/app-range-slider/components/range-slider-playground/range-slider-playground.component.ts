@@ -6,8 +6,6 @@
   ElementRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 

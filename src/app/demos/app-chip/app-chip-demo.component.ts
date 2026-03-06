@@ -1,8 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ChipPlaygroundComponent } from './components/chip-playground/chip-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -13,8 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'app-app-chip-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     ChipPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,

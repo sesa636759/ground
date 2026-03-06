@@ -8,8 +8,7 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { AppCheckboxValueAccessorDirective } from '../../../../directives/ui-checkbox-value-accessor.directive';
 import { UiDropdownValueAccessorDirective } from '../../../../directives/ui-dropdown-value-accessor.directive';
 import { AppPlaygroundComponent } from '../../../../shared/components/app-playground/app-playground.component';
@@ -20,8 +19,7 @@ import { generatePlaygroundCode } from '../../../../shared/utils/playground-util
   standalone: true,
   imports: [
     AppInputValueAccessorDirective,
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     AppCheckboxValueAccessorDirective,
     UiDropdownValueAccessorDirective,
     AppPlaygroundComponent,

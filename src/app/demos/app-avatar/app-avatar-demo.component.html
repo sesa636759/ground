@@ -72,23 +72,63 @@
             </div>
             <div class="demo-card">
               <div class="preview-box">
-                <ui-avatar name="Available" status="online" size="64px"></ui-avatar>
+                <ui-avatar
+                  name="Available"
+                  status="online"
+                  status-pulse="true"
+                  size="64px"
+                ></ui-avatar>
                 <ui-avatar name="Away" status="away" size="64px"></ui-avatar>
                 <ui-avatar name="Busy" status="busy" size="64px"></ui-avatar>
                 <ui-avatar name="Invisible" status="offline" size="64px"></ui-avatar>
                 <ui-divider vertical></ui-divider>
-                <ui-avatar name="Unread" badge="5" size="64px" badge-color="#ef4444"></ui-avatar>
+                <ui-avatar
+                  name="Unread"
+                  badge="5"
+                  size="64px"
+                  badge-color="#ef4444"
+                  badge-position="top-right"
+                ></ui-avatar>
                 <ui-avatar
                   name="Verified"
                   badge="dot"
                   size="64px"
                   badge-color="#3b82f6"
+                  badge-position="bottom-left"
                 ></ui-avatar>
+                <ui-divider vertical></ui-divider>
+                <ui-avatar name="Verified User" verified="true" size="64px"></ui-avatar>
               </div>
             </div>
             <ui-code-preview
               [htmlCode]="statusCode"
               label="Status Example"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Animations & Stories -->
+          <section class="demo-section" id="animations">
+            <div class="section-header">
+              <h2>✨ Animations & Stories</h2>
+              <p>Engaging interactions for active users and social features</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <ui-avatar name="New Story" story="true" size="64px"></ui-avatar>
+                <ui-avatar name="Seen Story" story="true" story-seen="true" size="64px"></ui-avatar>
+                <ui-divider vertical></ui-divider>
+                <ui-avatar name="Pulse" animation="pulse" size="64px"></ui-avatar>
+                <ui-avatar name="Ring" animation="ring" size="64px"></ui-avatar>
+                <ui-avatar name="Glow" animation="glow" size="64px"></ui-avatar>
+                <ui-divider vertical></ui-divider>
+                <ui-avatar name="Speaker" active-speaker="true" size="64px"></ui-avatar>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="animationsCode"
+              label="Animations Example"
               activeLang="html"
               expanded="true"
             ></ui-code-preview>

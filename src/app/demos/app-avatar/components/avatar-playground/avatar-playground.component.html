@@ -42,6 +42,61 @@
       <label>Size (e.g. 64px)</label>
       <ui-input type="text" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-input>
     </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Animation</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.animation"
+        (ngModelChange)="updateConfig()"
+        [options]="animationOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-grid" style="grid-column: 1 / -1; margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glass
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Skeleton
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Gradient
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoColor"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Auto Color
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.story" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Story Ring
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.storySeen"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Story Seen
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.activeSpeaker"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Active Speaker
+      </label>
+    </div>
   </div>
 
   <div slot="content-status" class="control-grid" style="padding: 16px">
@@ -71,6 +126,31 @@
         placeholder="hex or color name"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Badge Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.badgePosition"
+        (ngModelChange)="updateConfig()"
+        [options]="badgePositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-grid" style="grid-column: 1 / -1; margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.statusPulse"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Status Pulse
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.verified" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Verified
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.editable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Editable
+      </label>
+    </div>
   </div>
 
   <div
@@ -87,6 +167,19 @@
       [attr.status]="pgConfig.status"
       [attr.badge]="pgConfig.badge"
       [attr.badge-color]="pgConfig.badgeColor"
+      [attr.badge-position]="pgConfig.badgePosition"
+      [attr.variant]="pgConfig.variant"
+      [attr.animation]="pgConfig.animation !== 'none' ? pgConfig.animation : null"
+      [attr.status-pulse]="pgConfig.statusPulse ? '' : null"
+      [attr.story]="pgConfig.story ? '' : null"
+      [attr.story-seen]="pgConfig.storySeen ? '' : null"
+      [attr.active-speaker]="pgConfig.activeSpeaker ? '' : null"
+      [attr.verified]="pgConfig.verified ? '' : null"
+      [attr.editable]="pgConfig.editable ? '' : null"
+      [attr.glass]="pgConfig.glass ? '' : null"
+      [attr.skeleton]="pgConfig.skeleton ? '' : null"
+      [attr.gradient]="pgConfig.gradient ? '' : null"
+      [attr.auto-color]="pgConfig.autoColor ? '' : null"
       (avatarClick)="logEvent('Avatar Clicked')"
     ></ui-avatar>
   </div>

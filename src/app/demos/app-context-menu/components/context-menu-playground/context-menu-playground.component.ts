@@ -6,15 +6,12 @@ import {
   ViewEncapsulation,
   OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-context-menu-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-playground.component.html',
   styleUrl: './context-menu-playground.component.scss',

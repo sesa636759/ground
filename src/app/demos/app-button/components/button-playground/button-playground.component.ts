@@ -6,15 +6,13 @@ import {
   ElementRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-button-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button-playground.component.html',
   styleUrl: './button-playground.component.scss',

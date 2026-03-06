@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
@@ -13,8 +12,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   selector: 'app-set-empty-state-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     EmptyStatePlaygroundComponent,
     DemoTabsComponent,
 

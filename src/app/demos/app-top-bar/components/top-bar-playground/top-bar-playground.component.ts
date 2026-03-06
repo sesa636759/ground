@@ -1,13 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { PLAYGROUND_IMPORTS } from '../../../../shared/components/app-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../../shared/components/app-playground/base-playground.component';
 
 @Component({
   selector: 'app-top-bar-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './top-bar-playground.component.html',
   styleUrl: './top-bar-playground.component.scss',

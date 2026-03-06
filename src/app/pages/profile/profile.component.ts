@@ -1,7 +1,6 @@
 import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
 import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 
@@ -17,7 +16,7 @@ interface ActivityItem {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [AppInputValueAccessorDirective, CommonModule, FormsModule, RouterLink],
+  imports: [AppInputValueAccessorDirective, ...PLAYGROUND_IMPORTS, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],

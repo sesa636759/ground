@@ -1,7 +1,6 @@
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -14,8 +13,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   selector: 'app-app-timeline-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     TimelinePlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

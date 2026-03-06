@@ -3,8 +3,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { AnimateOnScrollPlaygroundComponent } from './components/animate-on-scroll-playground/animate-on-scroll-playground.component';
 
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -14,8 +13,7 @@ import { DemoTabsComponent } from 'src/app/shared/demo-tabs/demo-tabs.component'
   selector: 'app-set-animate-on-scroll-demo',
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
+    ...PLAYGROUND_IMPORTS,
     AnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,

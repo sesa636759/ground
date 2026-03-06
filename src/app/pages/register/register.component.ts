@@ -1,15 +1,15 @@
 import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, RegisterData } from '../../services/auth.service';
 import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
 import { ASSETS } from '../../shared/constants/assets.constants';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, AppInputValueAccessorDirective],
+  imports: [...PLAYGROUND_IMPORTS, RouterLink, AppInputValueAccessorDirective],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './register.component.html',
