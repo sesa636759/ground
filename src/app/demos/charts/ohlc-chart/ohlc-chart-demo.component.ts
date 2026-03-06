@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OhlcChartPlaygroundComponent } from './components/ohlc-chart-playground/ohlc-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-ohlc-chart-demo',
+  selector: 'dm-ohlc-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,15 +23,15 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './ohlc-chart-demo.component.html',
   styleUrl: './ohlc-chart-demo.component.scss',
 })
-export class OhlcChartDemoComponent extends BaseDemoComponent {
+export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
-    { id: 'withma', title: 'With MA', icon: '📉', color: '#0ea5e9' },
-    { id: 'weekly', title: 'Weekly', icon: '📅', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic OHLC', icon: 'ðŸ“Š', color: '#6366f1' },
+    { id: 'withma', title: 'With MA', icon: 'ðŸ“‰', color: '#0ea5e9' },
+    { id: 'weekly', title: 'Weekly', icon: 'ðŸ“…', color: '#10b981' },
   ];
 
-  basicCode = `<!-- OHLC Chart (SVG) — Open/High/Low/Close bars -->
+  basicCode = `<!-- OHLC Chart (SVG) â€” Open/High/Low/Close bars -->
 <svg width="620" height="340">
   <!-- Vertical range line (high to low) -->
   <line x1="72" y1="60" x2="72" y2="200" stroke="#374151" stroke-width="1.5"/>
@@ -56,3 +56,5 @@ export class OhlcChartDemoComponent extends BaseDemoComponent {
   <text x="580" y="150" fill="#f59e0b" font-size="10">MA(10)</text>
 </svg>`;
 }
+
+

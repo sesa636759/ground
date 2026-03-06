@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { DashboardPlaygroundComponent } from './components/dashboard-playground/dashboard-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -7,7 +7,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-set-dashboard-demo',
+  selector: 'dm-set-dashboard-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -20,8 +20,8 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   templateUrl: './set-dashboard-demo.component.html',
   styleUrl: './set-dashboard-demo.component.scss',
 })
-export class SetDashboardDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'features', title: 'Key Features', icon: '🚀' }];
+export class DmSetDashboardDemoComponent extends BaseDemoComponent {
+  exampleVariants = [{ id: 'features', title: 'Key Features', icon: 'ðŸš€' }];
 
   // Code examples
   playgroundCode = `<app-dashboard
@@ -36,9 +36,11 @@ export class SetDashboardDemoComponent extends BaseDemoComponent {
 
   featuresCode = `<!-- Dashboard Key Features:
 
-✓ Drag & Drop: Intuitive drag and drop interface
-✓ Resizable: Resize widgets from any corner
-✓ Responsive: Custom breakpoints for different screens
-✓ State Management: Save, load, undo, and redo
+âœ“ Drag & Drop: Intuitive drag and drop interface
+âœ“ Resizable: Resize widgets from any corner
+âœ“ Responsive: Custom breakpoints for different screens
+âœ“ State Management: Save, load, undo, and redo
 -->`;
 }
+
+

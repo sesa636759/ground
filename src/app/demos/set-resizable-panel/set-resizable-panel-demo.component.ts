@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ResizablePanelPlaygroundComponent } from './components/resizable-panel-playground/resizable-panel-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
@@ -9,7 +9,7 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-set-resizable-panel-demo',
+  selector: 'dm-set-resizable-panel-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,16 +24,16 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   templateUrl: './set-resizable-panel-demo.component.html',
   styleUrl: './set-resizable-panel-demo.component.scss',
 })
-export class SetResizablePanelDemoComponent extends BaseDemoComponent {
+export class DmSetResizablePanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'horizontal', title: 'Basic Horizontal Split', icon: '📋' },
-    { id: 'vertical', title: 'Basic Vertical Split', icon: '↕️' },
-    { id: 'triple', title: 'Triple Split Panel', icon: '🥈' },
-    { id: 'nested', title: 'Nested Resizable Panels', icon: '🔲' },
-    { id: 'collapsible', title: 'Collapsible Panels', icon: '📂' },
-    { id: 'themes', title: 'Dark Theme', icon: '🌙' },
-    { id: 'snap', title: 'Snap to Edge', icon: '📌' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'horizontal', title: 'Basic Horizontal Split', icon: 'ðŸ“‹' },
+    { id: 'vertical', title: 'Basic Vertical Split', icon: 'â†•ï¸' },
+    { id: 'triple', title: 'Triple Split Panel', icon: 'ðŸ¥ˆ' },
+    { id: 'nested', title: 'Nested Resizable Panels', icon: 'ðŸ”²' },
+    { id: 'collapsible', title: 'Collapsible Panels', icon: 'ðŸ“‚' },
+    { id: 'themes', title: 'Dark Theme', icon: 'ðŸŒ™' },
+    { id: 'snap', title: 'Snap to Edge', icon: 'ðŸ“Œ' },
   ];
 
   basicHPanels = [
@@ -143,3 +143,5 @@ export class SetResizablePanelDemoComponent extends BaseDemoComponent {
   [snapThreshold]="snapThreshold"
 ></app-resizable-panel>`);
 }
+
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RadialBarPlaygroundComponent } from './components/radial-bar-playground/radial-bar-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-radial-bar-demo',
+  selector: 'dm-radial-bar-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,11 +23,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './radial-bar-demo.component.html',
   styleUrl: './radial-bar-demo.component.scss',
 })
-export class RadialBarDemoComponent extends BaseDemoComponent {
+export class DmRadialBarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'kpi', title: 'KPI Rings', icon: '🎯', color: '#6366f1' },
-    { id: 'skills', title: 'Skills Radar', icon: '💼', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'kpi', title: 'KPI Rings', icon: 'ðŸŽ¯', color: '#6366f1' },
+    { id: 'skills', title: 'Skills Radar', icon: 'ðŸ’¼', color: '#10b981' },
   ];
 
   kpiBars = [
@@ -64,3 +64,5 @@ export class RadialBarDemoComponent extends BaseDemoComponent {
   <text x="100" y="108" text-anchor="middle" font-size="28" font-weight="700" fill="#374151">88%</text>
 </svg>`;
 }
+
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { InputPlaygroundComponent } from './components/input-playground/input-playground.component';
@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-input-demo',
+  selector: 'dm-set-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,21 +24,21 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-input-demo.component.html',
   styleUrl: './set-input-demo.component.scss',
 })
-export class SetInputDemoComponent extends BaseDemoComponent {
+export class DmSetInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'basic-types', title: 'Basic Input Types', icon: '📋' },
-    { id: 'variants', title: 'Input Variants', icon: '🎭' },
-    { id: 'sizes', title: 'Input Sizes', icon: '📏' },
-    { id: 'validation', title: 'Validation States', icon: '✅' },
-    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: '🎯' },
-    { id: 'advanced', title: 'Advanced Features', icon: '🚀' },
-    { id: 'floating-labels', title: 'Floating Labels', icon: '🏷️' },
-    { id: 'multiline', title: 'Multiline Input', icon: '📝' },
-    { id: 'color-input', title: 'Color Input', icon: '🎨' },
-    { id: 'file-upload', title: 'File Upload', icon: '📁' },
-    { id: 'input-masking', title: 'Input Masking', icon: '🎭' },
-    { id: 'input-states', title: 'Input States', icon: '🔄' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'basic-types', title: 'Basic Input Types', icon: 'ðŸ“‹' },
+    { id: 'variants', title: 'Input Variants', icon: 'ðŸŽ­' },
+    { id: 'sizes', title: 'Input Sizes', icon: 'ðŸ“' },
+    { id: 'validation', title: 'Validation States', icon: 'âœ…' },
+    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: 'ðŸŽ¯' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'ðŸš€' },
+    { id: 'floating-labels', title: 'Floating Labels', icon: 'ðŸ·ï¸' },
+    { id: 'multiline', title: 'Multiline Input', icon: 'ðŸ“' },
+    { id: 'color-input', title: 'Color Input', icon: 'ðŸŽ¨' },
+    { id: 'file-upload', title: 'File Upload', icon: 'ðŸ“' },
+    { id: 'input-masking', title: 'Input Masking', icon: 'ðŸŽ­' },
+    { id: 'input-states', title: 'Input States', icon: 'ðŸ”„' },
   ];
 
   skeletonState = false;
@@ -111,3 +111,5 @@ export class SetInputDemoComponent extends BaseDemoComponent {
     this.skeletonState = !this.skeletonState;
   }
 }
+
+

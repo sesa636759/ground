@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StepLineChartPlaygroundComponent } from './components/step-line-chart-playground/step-line-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-step-line-chart-demo',
+  selector: 'dm-step-line-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,11 +23,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './step-line-chart-demo.component.html',
   styleUrl: './step-line-chart-demo.component.scss',
 })
-export class StepLineChartDemoComponent extends BaseDemoComponent {
+export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'price', title: 'Price Steps', icon: '🪜', color: '#6366f1' },
-    { id: 'status', title: 'System Status', icon: '📈', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'price', title: 'Price Steps', icon: 'ðŸªœ', color: '#6366f1' },
+    { id: 'status', title: 'System Status', icon: 'ðŸ“ˆ', color: '#10b981' },
   ];
 
   basicData = [
@@ -88,3 +88,5 @@ export class StepLineChartDemoComponent extends BaseDemoComponent {
   <polyline points="40,250 100,250 100,178 ..." fill="none" stroke="#10b981" stroke-width="2.5"/>
 </svg>`;
 }
+
+

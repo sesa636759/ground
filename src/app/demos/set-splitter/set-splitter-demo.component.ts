@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { SplitterPlaygroundComponent } from './components/splitter-playground/splitter-playground.component';
@@ -8,7 +8,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-splitter-demo',
+  selector: 'dm-set-splitter-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,38 +22,38 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-splitter-demo.component.html',
   styleUrl: './set-splitter-demo.component.scss',
 })
-export class SetSplitterDemoComponent {
+export class DmSetSplitterDemoComponent {
   exampleVariants = [
-    { id: 'horizontal-basic', title: 'Horizontal Basic', icon: '↔️' },
-    { id: 'vertical-basic', title: 'Vertical Basic', icon: '↕️' },
-    { id: 'two-panels', title: 'Two Panels', icon: '▯' },
-    { id: 'three-panels', title: 'Three Panels', icon: '▮' },
-    { id: 'four-panels', title: 'Four Panels', icon: '▭' },
-    { id: 'custom-sizes', title: 'Custom Panel Sizes', icon: '📏' },
-    { id: 'equal-sizes', title: 'Equal Panel Sizes', icon: '⚖️' },
-    { id: 'min-max-constraints', title: 'Min/Max Constraints', icon: '📐' },
-    { id: 'collapsible-panels', title: 'Collapsible Panels', icon: '🔄' },
-    { id: 'double-click-collapse', title: 'Double-Click Collapse', icon: '👆' },
-    { id: 'snap-threshold', title: 'Snap to Threshold', icon: '🧲' },
-    { id: 'persist-state', title: 'Persistent State', icon: '💾' },
-    { id: 'gutter-small', title: 'Small Gutter (4px)', icon: '🔸' },
-    { id: 'gutter-medium', title: 'Medium Gutter (8px)', icon: '🔹' },
-    { id: 'gutter-large', title: 'Large Gutter (12px)', icon: '🔶' },
-    { id: 'custom-gutter-color', title: 'Custom Gutter Color', icon: '🎨' },
-    { id: 'no-gutter-icon', title: 'No Gutter Icon', icon: '⚪' },
-    { id: 'animated', title: 'Animated Transitions', icon: '✨' },
-    { id: 'not-animated', title: 'No Animation', icon: '⏸️' },
-    { id: 'rounded', title: 'Rounded Corners', icon: '🔘' },
-    { id: 'elevated', title: 'Elevated Style', icon: '⬆️' },
-    { id: 'rounded-elevated', title: 'Rounded & Elevated', icon: '💎' },
-    { id: 'theme-light', title: 'Light Theme', icon: '☀️' },
-    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙' },
-    { id: 'nested-horizontal-vertical', title: 'Nested H+V', icon: '🎯' },
-    { id: 'nested-ide-layout', title: 'IDE-Style Layout', icon: '💻' },
-    { id: 'nested-triple', title: 'Triple Nested', icon: '🏗️' },
-    { id: 'responsive-vertical', title: 'Responsive Vertical', icon: '📱' },
-    { id: 'sidebar-content', title: 'Sidebar + Content', icon: '📂' },
-    { id: 'header-body-footer', title: 'Header-Body-Footer', icon: '📄' },
+    { id: 'horizontal-basic', title: 'Horizontal Basic', icon: 'â†”ï¸' },
+    { id: 'vertical-basic', title: 'Vertical Basic', icon: 'â†•ï¸' },
+    { id: 'two-panels', title: 'Two Panels', icon: 'â–¯' },
+    { id: 'three-panels', title: 'Three Panels', icon: 'â–®' },
+    { id: 'four-panels', title: 'Four Panels', icon: 'â–­' },
+    { id: 'custom-sizes', title: 'Custom Panel Sizes', icon: 'ðŸ“' },
+    { id: 'equal-sizes', title: 'Equal Panel Sizes', icon: 'âš–ï¸' },
+    { id: 'min-max-constraints', title: 'Min/Max Constraints', icon: 'ðŸ“' },
+    { id: 'collapsible-panels', title: 'Collapsible Panels', icon: 'ðŸ”„' },
+    { id: 'double-click-collapse', title: 'Double-Click Collapse', icon: 'ðŸ‘†' },
+    { id: 'snap-threshold', title: 'Snap to Threshold', icon: 'ðŸ§²' },
+    { id: 'persist-state', title: 'Persistent State', icon: 'ðŸ’¾' },
+    { id: 'gutter-small', title: 'Small Gutter (4px)', icon: 'ðŸ”¸' },
+    { id: 'gutter-medium', title: 'Medium Gutter (8px)', icon: 'ðŸ”¹' },
+    { id: 'gutter-large', title: 'Large Gutter (12px)', icon: 'ðŸ”¶' },
+    { id: 'custom-gutter-color', title: 'Custom Gutter Color', icon: 'ðŸŽ¨' },
+    { id: 'no-gutter-icon', title: 'No Gutter Icon', icon: 'âšª' },
+    { id: 'animated', title: 'Animated Transitions', icon: 'âœ¨' },
+    { id: 'not-animated', title: 'No Animation', icon: 'â¸ï¸' },
+    { id: 'rounded', title: 'Rounded Corners', icon: 'ðŸ”˜' },
+    { id: 'elevated', title: 'Elevated Style', icon: 'â¬†ï¸' },
+    { id: 'rounded-elevated', title: 'Rounded & Elevated', icon: 'ðŸ’Ž' },
+    { id: 'theme-light', title: 'Light Theme', icon: 'â˜€ï¸' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: 'ðŸŒ™' },
+    { id: 'nested-horizontal-vertical', title: 'Nested H+V', icon: 'ðŸŽ¯' },
+    { id: 'nested-ide-layout', title: 'IDE-Style Layout', icon: 'ðŸ’»' },
+    { id: 'nested-triple', title: 'Triple Nested', icon: 'ðŸ—ï¸' },
+    { id: 'responsive-vertical', title: 'Responsive Vertical', icon: 'ðŸ“±' },
+    { id: 'sidebar-content', title: 'Sidebar + Content', icon: 'ðŸ“‚' },
+    { id: 'header-body-footer', title: 'Header-Body-Footer', icon: 'ðŸ“„' },
   ];
 
   basicPanels = [
@@ -290,3 +290,5 @@ export class SetSplitterDemoComponent {
   <div slot="panel-2">Footer (10%)</div>
 </app-splitter>`);
 }
+
+

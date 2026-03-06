@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { CardPlaygroundComponent } from './components/card-playground/card-playground.component';
 import { SetCardExamplesComponent } from './components/card-examples/card-examples.component';
@@ -7,7 +7,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-card-demo',
+  selector: 'dm-set-card-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -21,7 +21,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-card-demo.component.html',
   styleUrl: './set-card-demo.component.scss',
 })
-export class SetCardDemoComponent {
+export class DmSetCardDemoComponent {
   playgroundCode = `<app-card
   variant="elevated"
   [hoverable]="true"
@@ -32,3 +32,5 @@ export class SetCardDemoComponent {
 
   ngOnInit() {}
 }
+
+

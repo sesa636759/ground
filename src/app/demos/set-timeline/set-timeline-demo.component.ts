@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
@@ -8,7 +8,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-set-timeline-demo',
+  selector: 'dm-set-timeline-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,11 +22,11 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   templateUrl: './set-timeline-demo.component.html',
   styleUrl: './set-timeline-demo.component.scss',
 })
-export class SetTimelineDemoComponent extends BaseDemoComponent {
+export class DmSetTimelineDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'layouts', title: 'Versatile Layouts', icon: '📐' },
-    { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
-    { id: 'variants', title: 'Style Variants', icon: '🎨' },
+    { id: 'layouts', title: 'Versatile Layouts', icon: 'ðŸ“' },
+    { id: 'snake-layout', title: 'Snake Layout', icon: 'ðŸ' },
+    { id: 'variants', title: 'Style Variants', icon: 'ðŸŽ¨' },
   ];
 
   // Static Data Examples
@@ -83,3 +83,5 @@ export class SetTimelineDemoComponent extends BaseDemoComponent {
   layout="vertical"
 ></app-timeline>`;
 }
+
+

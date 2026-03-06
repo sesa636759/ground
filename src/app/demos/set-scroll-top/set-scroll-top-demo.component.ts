@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ScrollTopPlaygroundComponent } from './components/scroll-top-playground/scroll-top-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
-  selector: 'app-set-scroll-top-demo',
+  selector: 'dm-set-scroll-top-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -17,10 +17,10 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-scroll-top-demo.component.html',
   styleUrl: './set-scroll-top-demo.component.scss',
 })
-export class SetScrollTopDemoComponent implements OnInit {
+export class DmSetScrollTopDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'variants', title: 'Style Variants', icon: '🎭' },
-    { id: 'features', title: 'Premium Features', icon: '💎' },
+    { id: 'variants', title: 'Style Variants', icon: 'ðŸŽ­' },
+    { id: 'features', title: 'Premium Features', icon: 'ðŸ’Ž' },
   ];
 
   playgroundCode = `<app-scroll-top
@@ -37,3 +37,5 @@ export class SetScrollTopDemoComponent implements OnInit {
     }
   }
 }
+
+

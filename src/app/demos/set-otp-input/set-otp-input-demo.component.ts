@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { OtpInputPlaygroundComponent } from './components/otp-input-playground/otp-input-playground.component';
@@ -9,7 +9,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-otp-input-demo',
+  selector: 'dm-set-otp-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,14 +24,14 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-otp-input-demo.component.html',
   styleUrl: './set-otp-input-demo.component.scss',
 })
-export class SetOtpInputDemoComponent extends BaseDemoComponent {
+export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', category: 'General' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', category: 'General' },
     // Basic Layouts (1)
     {
       id: 'length-variants',
       title: 'Length Variants',
-      icon: '📐',
+      icon: 'ðŸ“',
       category: 'Basic Layouts',
       tab: 'basic',
     },
@@ -40,7 +40,7 @@ export class SetOtpInputDemoComponent extends BaseDemoComponent {
     {
       id: 'variants',
       title: 'Variants & Styles',
-      icon: '✨',
+      icon: 'âœ¨',
       category: 'Variants & Styles',
       tab: 'variants',
     },
@@ -49,44 +49,44 @@ export class SetOtpInputDemoComponent extends BaseDemoComponent {
     {
       id: 'validation-states',
       title: 'Validation States',
-      icon: '✅',
+      icon: 'âœ…',
       category: 'Validation',
       tab: 'validation',
     },
     {
       id: 'grouping-variants',
       title: 'Groupings',
-      icon: '⚙️',
+      icon: 'âš™ï¸',
       category: 'Features',
       tab: 'features',
     },
-    { id: 'masking', title: 'Masked Input', icon: '⚙️', category: 'Features', tab: 'features' },
+    { id: 'masking', title: 'Masked Input', icon: 'âš™ï¸', category: 'Features', tab: 'features' },
 
     // Advanced (12)
-    { id: 'size-variants', title: 'Sizes', icon: '🚀', category: 'Advanced', tab: 'advanced' },
-    { id: 'secure-pin', title: 'Secure PIN', icon: '🚀', category: 'Advanced', tab: 'advanced' },
-    { id: 'readonly', title: 'Read-only State', icon: '🚀', category: 'Advanced', tab: 'advanced' },
-    { id: 'disabled', title: 'Disabled State', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'size-variants', title: 'Sizes', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'secure-pin', title: 'Secure PIN', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'readonly', title: 'Read-only State', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'disabled', title: 'Disabled State', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
     {
       id: 'validation',
       title: 'With Validation',
-      icon: '🚀',
+      icon: 'ðŸš€',
       category: 'Advanced',
       tab: 'advanced',
     },
-    { id: 'autofocus', title: 'Auto Focus', icon: '🚀', category: 'Advanced', tab: 'advanced' },
-    { id: 'pasteable', title: 'Paste Support', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'autofocus', title: 'Auto Focus', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'pasteable', title: 'Paste Support', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
     {
       id: 'numeric-only',
       title: 'Numeric Only',
-      icon: '🚀',
+      icon: 'ðŸš€',
       category: 'Advanced',
       tab: 'advanced',
     },
     {
       id: 'alphanumeric',
       title: 'Alphanumeric',
-      icon: '🚀',
+      icon: 'ðŸš€',
       category: 'Advanced',
       tab: 'advanced',
     },
@@ -306,3 +306,5 @@ export class SetOtpInputDemoComponent extends BaseDemoComponent {
 ></ui-otp-input>`,
   );
 }
+
+

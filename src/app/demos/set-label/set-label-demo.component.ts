@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   DocsPageLayoutComponent,
@@ -6,14 +6,14 @@ import {
 } from '../../shared/components/docs-page-layout/docs-page-layout.component';
 
 @Component({
-  selector: 'app-set-label-demo',
+  selector: 'dm-set-label-demo',
   standalone: true,
   imports: [CommonModule, DocsPageLayoutComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './set-label-demo.component.html',
   styleUrl: './set-label-demo.component.scss',
 })
-export class SetLabelDemoComponent {
+export class DmSetLabelDemoComponent {
   pageSections: PageSection[] = [
     { id: 'setup', label: 'Setup' },
     { id: 'configuration', label: 'Configuration' },
@@ -57,3 +57,5 @@ test("renders secondary label", async () => {
   expect(getByText("Optional")).toHaveClass("label-secondary");
 });`;
 }
+
+

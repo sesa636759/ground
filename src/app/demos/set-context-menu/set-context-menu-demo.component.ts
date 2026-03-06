@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ContextMenuPlaygroundComponent } from './components/context-menu-playground/context-menu-playground.component';
@@ -7,7 +7,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-context-menu-demo',
+  selector: 'dm-set-context-menu-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -21,16 +21,16 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-context-menu-demo.component.html',
   styleUrl: './set-context-menu-demo.component.scss',
 })
-export class SetContextMenuDemoComponent {
+export class DmSetContextMenuDemoComponent {
   exampleVariants = [
-    { id: 'right-click', title: 'Right Click Trigger', icon: '🖱️' },
-    { id: 'click-trigger', title: 'Click Trigger', icon: '👆' },
-    { id: 'nested-menus', title: 'Nested Menus', icon: '🌳' },
-    { id: 'list-context', title: 'List Item Context', icon: '📝' },
-    { id: 'command-palette', title: 'Command Palette', icon: '⚡' },
-    { id: 'menu-items', title: 'Menu Item Types', icon: '✅' },
-    { id: 'themes', title: 'Themes & Effects', icon: '🌙' },
-    { id: 'advanced', title: 'Advanced Features', icon: '💎' },
+    { id: 'right-click', title: 'Right Click Trigger', icon: 'ðŸ–±ï¸' },
+    { id: 'click-trigger', title: 'Click Trigger', icon: 'ðŸ‘†' },
+    { id: 'nested-menus', title: 'Nested Menus', icon: 'ðŸŒ³' },
+    { id: 'list-context', title: 'List Item Context', icon: 'ðŸ“' },
+    { id: 'command-palette', title: 'Command Palette', icon: 'âš¡' },
+    { id: 'menu-items', title: 'Menu Item Types', icon: 'âœ…' },
+    { id: 'themes', title: 'Themes & Effects', icon: 'ðŸŒ™' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'ðŸ’Ž' },
   ];
 
   // Basic menu items
@@ -94,9 +94,9 @@ export class SetContextMenuDemoComponent {
 
   // Avatar items
   teamItems = [
-    { id: 'alice', label: 'Alice Johnson', avatar: '👩', description: 'Product Lead', badge: '🟢' },
-    { id: 'bob', label: 'Bob Smith', avatar: '👨', description: 'Developer', badge: '🟢' },
-    { id: 'charlie', label: 'Charlie Brown', avatar: '👨', description: 'Designer', badge: '🔴' },
+    { id: 'alice', label: 'Alice Johnson', avatar: 'ðŸ‘©', description: 'Product Lead', badge: 'ðŸŸ¢' },
+    { id: 'bob', label: 'Bob Smith', avatar: 'ðŸ‘¨', description: 'Developer', badge: 'ðŸŸ¢' },
+    { id: 'charlie', label: 'Charlie Brown', avatar: 'ðŸ‘¨', description: 'Designer', badge: 'ðŸ”´' },
   ];
 
   // Grouped items
@@ -263,3 +263,5 @@ export class SetContextMenuDemoComponent {
     }
   }
 }
+
+

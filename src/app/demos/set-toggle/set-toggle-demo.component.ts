@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { TogglePlaygroundComponent } from './components/toggle-playground/toggle-playground.component';
@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-toggle-demo',
+  selector: 'dm-set-toggle-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,15 +24,15 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-toggle-demo.component.html',
   styleUrl: './set-toggle-demo.component.scss',
 })
-export class SetToggleDemoComponent extends BaseDemoComponent implements OnInit {
+export class DmSetToggleDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'layouts', title: 'Layouts', icon: '📐' },
-    { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'colors', title: 'Colors', icon: '🌈' },
-    { id: 'icons', title: 'Icons Support', icon: '✨' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'advanced', title: 'Advanced UX', icon: '⚙️' },
+    { id: 'layouts', title: 'Layouts', icon: 'ðŸ“' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: 'ðŸŽ¨' },
+    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
+    { id: 'colors', title: 'Colors', icon: 'ðŸŒˆ' },
+    { id: 'icons', title: 'Icons Support', icon: 'âœ¨' },
+    { id: 'states', title: 'States', icon: 'ðŸ”„' },
+    { id: 'advanced', title: 'Advanced UX', icon: 'âš™ï¸' },
   ];
 
   notificationOptions = [
@@ -89,3 +89,5 @@ export class SetToggleDemoComponent extends BaseDemoComponent implements OnInit 
 <app-toggle label-position="left" ...></app-toggle>
 <app-toggle-group selection-mode="multiple" ...></app-toggle-group>`;
 }
+
+

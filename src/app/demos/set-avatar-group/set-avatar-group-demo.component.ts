@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-avatar-group-demo',
+  selector: 'dm-set-avatar-group-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,21 +25,21 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-avatar-group-demo.component.html',
   styleUrl: './set-avatar-group-demo.component.scss',
 })
-export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements OnInit {
+export class DmSetAvatarGroupDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'basic', title: 'Basic Group', icon: '👥' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'max-display', title: 'Max Display', icon: '🔢' },
-    { id: 'layouts', title: 'Layouts', icon: '📐' },
-    { id: 'shapes', title: 'Shapes', icon: '⬜' },
-    { id: 'spacing', title: 'Spacing', icon: '📏' },
-    { id: 'borders', title: 'Borders', icon: '🎨' },
-    { id: 'tooltips', title: 'Tooltips', icon: '💬' },
-    { id: 'status', title: 'Status', icon: '🟢' },
-    { id: 'interaction', title: 'Interaction', icon: '🖱️' },
-    { id: 'grid', title: 'Grid Layout', icon: '⊞' },
-    { id: 'overflow', title: 'Overflow', icon: '🔢' },
-    { id: 'combined', title: 'Combined', icon: '💎' },
+    { id: 'basic', title: 'Basic Group', icon: 'ðŸ‘¥' },
+    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
+    { id: 'max-display', title: 'Max Display', icon: 'ðŸ”¢' },
+    { id: 'layouts', title: 'Layouts', icon: 'ðŸ“' },
+    { id: 'shapes', title: 'Shapes', icon: 'â¬œ' },
+    { id: 'spacing', title: 'Spacing', icon: 'ðŸ“' },
+    { id: 'borders', title: 'Borders', icon: 'ðŸŽ¨' },
+    { id: 'tooltips', title: 'Tooltips', icon: 'ðŸ’¬' },
+    { id: 'status', title: 'Status', icon: 'ðŸŸ¢' },
+    { id: 'interaction', title: 'Interaction', icon: 'ðŸ–±ï¸' },
+    { id: 'grid', title: 'Grid Layout', icon: 'âŠž' },
+    { id: 'overflow', title: 'Overflow', icon: 'ðŸ”¢' },
+    { id: 'combined', title: 'Combined', icon: 'ðŸ’Ž' },
   ];
 
   get exampleVariants() {
@@ -129,3 +129,5 @@ export class SetAvatarGroupDemoComponent extends BaseDemoComponent implements On
 
   ngOnInit() {}
 }
+
+

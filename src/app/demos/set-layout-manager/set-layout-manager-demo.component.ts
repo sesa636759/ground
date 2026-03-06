@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-set-layout-manager-demo',
+  selector: 'dm-set-layout-manager-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -26,11 +26,11 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
   templateUrl: './set-layout-manager-demo.component.html',
   styleUrl: './set-layout-manager-demo.component.scss',
 })
-export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements AfterViewInit {
+export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implements AfterViewInit {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Three-Column Layout', icon: '📏' },
-    { id: 'ide', title: 'IDE-Style Layout', icon: '💻' },
-    { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
+    { id: 'basic', title: 'Basic Three-Column Layout', icon: 'ðŸ“' },
+    { id: 'ide', title: 'IDE-Style Layout', icon: 'ðŸ’»' },
+    { id: 'dashboard', title: 'Dashboard Layout', icon: 'ðŸ“Š' },
   ];
 
   playgroundCode = `<app-layout-manager
@@ -77,7 +77,7 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
       regionId: 'left',
       title: 'File Explorer',
       icon: 'fas fa-folder-tree',
-      html: '<div class="panel-content"><h3>📁 Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
+      html: '<div class="panel-content"><h3>ðŸ“ Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
     });
 
     await layout.addPanel({
@@ -91,7 +91,7 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
       regionId: 'right',
       title: 'Properties',
       icon: 'fas fa-sliders',
-      html: '<div class="panel-content"><h3>⚙️ Properties</h3><p>Configure your settings here.</p></div>',
+      html: '<div class="panel-content"><h3>âš™ï¸ Properties</h3><p>Configure your settings here.</p></div>',
     });
   }
 
@@ -136,7 +136,7 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
       regionId: 'nav',
       title: 'Menu',
       icon: 'fas fa-bars',
-      html: '<div class="panel-content"><nav><ul><li>📊 Dashboard</li><li>📈 Analytics</li><li>⚙️ Settings</li></ul></nav></div>',
+      html: '<div class="panel-content"><nav><ul><li>ðŸ“Š Dashboard</li><li>ðŸ“ˆ Analytics</li><li>âš™ï¸ Settings</li></ul></nav></div>',
     });
 
     await layout.addPanel({
@@ -160,3 +160,5 @@ export class SetLayoutManagerDemoComponent extends BaseDemoComponent implements 
 
   handlePanelRemoved() {}
 }
+
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WaterfallChartPlaygroundComponent } from './components/waterfall-chart-playground/waterfall-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-waterfall-chart-demo',
+  selector: 'dm-waterfall-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,11 +23,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './waterfall-chart-demo.component.html',
   styleUrl: './waterfall-chart-demo.component.scss',
 })
-export class WaterfallChartDemoComponent extends BaseDemoComponent {
+export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'revenue', title: 'Revenue', icon: '💰', color: '#10b981' },
-    { id: 'pl', title: 'P&L Statement', icon: '📊', color: '#6366f1' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'revenue', title: 'Revenue', icon: 'ðŸ’°', color: '#10b981' },
+    { id: 'pl', title: 'P&L Statement', icon: 'ðŸ“Š', color: '#6366f1' },
   ];
 
   revenueCode = `<!-- Waterfall Chart (floating SVG bars) -->
@@ -44,6 +44,8 @@ export class WaterfallChartDemoComponent extends BaseDemoComponent {
 
   plCode = `<!-- P&L Waterfall -->
 <svg width="620" height="340">
-  <!-- Gross Revenue → COGS → Gross Profit → OPEX → EBITDA → D&A → Net Profit -->
+  <!-- Gross Revenue â†’ COGS â†’ Gross Profit â†’ OPEX â†’ EBITDA â†’ D&A â†’ Net Profit -->
 </svg>`;
 }
+
+

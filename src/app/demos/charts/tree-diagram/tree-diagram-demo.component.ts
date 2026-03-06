@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TreeDiagramPlaygroundComponent } from './components/tree-diagram-playground/tree-diagram-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-tree-diagram-demo',
+  selector: 'dm-tree-diagram-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,11 +23,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './tree-diagram-demo.component.html',
   styleUrl: './tree-diagram-demo.component.scss',
 })
-export class TreeDiagramDemoComponent extends BaseDemoComponent {
+export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'org', title: 'Org Chart', icon: '🏢', color: '#6366f1' },
-    { id: 'filesystem', title: 'File System', icon: '📁', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'org', title: 'Org Chart', icon: 'ðŸ¢', color: '#6366f1' },
+    { id: 'filesystem', title: 'File System', icon: 'ðŸ“', color: '#10b981' },
   ];
 
   orgCode = `<!-- Org Chart Tree (SVG + layout algorithm) -->
@@ -51,3 +51,5 @@ export class TreeDiagramDemoComponent extends BaseDemoComponent {
   <path d="M320,56 C320,80 160,80 160,100" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
 </svg>`;
 }
+
+

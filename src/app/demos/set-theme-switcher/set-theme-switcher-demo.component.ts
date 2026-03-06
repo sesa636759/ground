@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
@@ -8,7 +8,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-theme-switcher-demo',
+  selector: 'dm-set-theme-switcher-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,13 +22,13 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-theme-switcher-demo.component.html',
   styleUrl: './set-theme-switcher-demo.component.scss',
 })
-export class SetThemeSwitcherDemoComponent extends BaseDemoComponent {
+export class DmSetThemeSwitcherDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎭' },
-    { id: 'sizes', title: 'Size Variants', icon: '📏' },
-    { id: 'icons', title: 'Icon Options', icon: '🎯' },
-    { id: 'premium', title: 'Premium Features', icon: '💎' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ­' },
+    { id: 'sizes', title: 'Size Variants', icon: 'ðŸ“' },
+    { id: 'icons', title: 'Icon Options', icon: 'ðŸŽ¯' },
+    { id: 'premium', title: 'Premium Features', icon: 'ðŸ’Ž' },
   ];
 
   themes = [
@@ -42,3 +42,5 @@ export class SetThemeSwitcherDemoComponent extends BaseDemoComponent {
   [(ngModel)]="currentTheme"
 ></app-theme-switcher>`;
 }
+
+

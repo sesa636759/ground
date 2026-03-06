@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { ProgressPlaygroundComponent } from './components/progress-playground/progress-playground.component';
@@ -9,7 +9,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-progress-demo',
+  selector: 'dm-set-progress-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,21 +24,21 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-progress-demo.component.html',
   styleUrls: ['./set-progress-demo.component.scss'],
 })
-export class SetProgressDemoComponent extends BaseDemoComponent {
+export class DmSetProgressDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'line', title: 'Line Progress', icon: '📏' },
-    { id: 'circle', title: 'Circle Progress', icon: '⚪' },
-    { id: 'dashboard', title: 'Dashboard Progress', icon: '📊' },
-    { id: 'status', title: 'Progress Status', icon: '✅' },
-    { id: 'indeterminate', title: 'Indeterminate State', icon: '♾️' },
-    { id: 'colors', title: 'Custom Colors', icon: '🎨' },
-    { id: 'gradient', title: 'Gradient Progress', icon: '🌈' },
-    { id: 'steps', title: 'Steps Progress', icon: '👣' },
-    { id: 'stroke', title: 'Stroke Width', icon: '📐' },
-    { id: 'linecap', title: 'Stroke Linecap', icon: '🔘' },
-    { id: 'hide-info', title: 'Hide Info Text', icon: '🙈' },
-    { id: 'premium', title: 'Premium Styles', icon: '💎' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'line', title: 'Line Progress', icon: 'ðŸ“' },
+    { id: 'circle', title: 'Circle Progress', icon: 'âšª' },
+    { id: 'dashboard', title: 'Dashboard Progress', icon: 'ðŸ“Š' },
+    { id: 'status', title: 'Progress Status', icon: 'âœ…' },
+    { id: 'indeterminate', title: 'Indeterminate State', icon: 'â™¾ï¸' },
+    { id: 'colors', title: 'Custom Colors', icon: 'ðŸŽ¨' },
+    { id: 'gradient', title: 'Gradient Progress', icon: 'ðŸŒˆ' },
+    { id: 'steps', title: 'Steps Progress', icon: 'ðŸ‘£' },
+    { id: 'stroke', title: 'Stroke Width', icon: 'ðŸ“' },
+    { id: 'linecap', title: 'Stroke Linecap', icon: 'ðŸ”˜' },
+    { id: 'hide-info', title: 'Hide Info Text', icon: 'ðŸ™ˆ' },
+    { id: 'premium', title: 'Premium Styles', icon: 'ðŸ’Ž' },
   ];
 
   progressValue = 50;
@@ -114,3 +114,5 @@ export class SetProgressDemoComponent extends BaseDemoComponent {
     this.progressValue = Math.min(100, this.progressValue + 10);
   }
 }
+
+

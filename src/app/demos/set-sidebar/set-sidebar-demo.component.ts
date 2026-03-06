@@ -1,11 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { SidebarPlaygroundComponent } from './components/sidebar-playground/sidebar-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
 
 @Component({
-  selector: 'app-set-sidebar-demo',
+  selector: 'dm-set-sidebar-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -17,12 +17,12 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
   templateUrl: './set-sidebar-demo.component.html',
   styleUrl: './set-sidebar-demo.component.scss',
 })
-export class SetSidebarDemoComponent implements OnInit {
+export class DmSetSidebarDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'positions', title: 'Position Variants', icon: '📍' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎭' },
-    { id: 'collapsible', title: 'Collapsible States', icon: '🔄' },
-    { id: 'premium', title: 'Premium Features', icon: '💎' },
+    { id: 'positions', title: 'Position Variants', icon: 'ðŸ“' },
+    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ­' },
+    { id: 'collapsible', title: 'Collapsible States', icon: 'ðŸ”„' },
+    { id: 'premium', title: 'Premium Features', icon: 'ðŸ’Ž' },
   ];
 
   menuItems = [
@@ -47,3 +47,5 @@ export class SetSidebarDemoComponent implements OnInit {
     }
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GanttChartPlaygroundComponent } from './components/gantt-chart-playground/gantt-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-gantt-chart-demo',
+  selector: 'dm-gantt-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,10 +23,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './gantt-chart-demo.component.html',
   styleUrl: './gantt-chart-demo.component.scss',
 })
-export class GanttChartDemoComponent extends BaseDemoComponent {
+export class DmGanttChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'project', title: 'Project Plan', icon: 'ðŸ“‹', color: '#6366f1' },
   ];
 
   tasks = [
@@ -63,3 +63,5 @@ export class GanttChartDemoComponent extends BaseDemoComponent {
   <rect x="420" y="116"width="140" height="28" rx="4" fill="#f59e0b"/><!-- Sprint 3 -->
 </svg>`;
 }
+
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/app-playground/playground.constants';
 import { TimelineRangePlaygroundComponent } from './components/timeline-range-playground/timeline-range-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-timeline-range-demo',
+  selector: 'dm-timeline-range-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -23,14 +23,14 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './timeline-range-demo.component.html',
   styleUrl: './timeline-range-demo.component.scss',
 })
-export class TimelineRangeDemoComponent extends BaseDemoComponent {
+export class DmTimelineRangeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'project', title: 'Project Schedule', icon: '📋', color: '#6366f1' },
-    { id: 'team', title: 'Team Schedule', icon: '👥', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'project', title: 'Project Schedule', icon: 'ðŸ“‹', color: '#6366f1' },
+    { id: 'team', title: 'Team Schedule', icon: 'ðŸ‘¥', color: '#10b981' },
   ];
 
-  projectCode = `<!-- Timeline Range – Project Phases (SVG) -->
+  projectCode = `<!-- Timeline Range â€“ Project Phases (SVG) -->
 <svg width="700" height="210">
   <g><!-- Planning bar: x1=0 x2=100 --></g>
   <g><!-- Design bar: x1=80 x2=220 --></g>
@@ -39,7 +39,7 @@ export class TimelineRangeDemoComponent extends BaseDemoComponent {
   <g><!-- Deployment bar: x1=490 x2=575 --></g>
 </svg>`;
 
-  teamCode = `<!-- Timeline Range – Team Schedule (SVG) -->
+  teamCode = `<!-- Timeline Range â€“ Team Schedule (SVG) -->
 <svg width="700" height="170">
   <!-- Alice: Task A (0-200), Task B (230-420) -->
   <!-- Bob:  Task C (50-280), Task D (310-575) -->
@@ -47,9 +47,11 @@ export class TimelineRangeDemoComponent extends BaseDemoComponent {
   <!-- Dave: Task F (200-490) -->
 </svg>`;
 
-  eventCode = `<!-- Timeline Range – Events (SVG) -->
+  eventCode = `<!-- Timeline Range â€“ Events (SVG) -->
 <svg width="700" height="130">
-  <!-- Sprint 1: 0–140 | Sprint 2: 140–285 -->
-  <!-- Sprint 3: 285–420 | Sprint 4: 420–575 -->
+  <!-- Sprint 1: 0â€“140 | Sprint 2: 140â€“285 -->
+  <!-- Sprint 3: 285â€“420 | Sprint 4: 420â€“575 -->
 </svg>`;
 }
+
+

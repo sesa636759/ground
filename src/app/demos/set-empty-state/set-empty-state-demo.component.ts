@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { EmptyStatePlaygroundComponent } from './components/empty-state-playground/empty-state-playground.component';
@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-empty-state-demo',
+  selector: 'dm-set-empty-state-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,17 +24,17 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-empty-state-demo.component.html',
   styleUrl: './set-empty-state-demo.component.scss',
 })
-export class SetEmptyStateDemoComponent extends BaseDemoComponent implements OnInit {
+export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'types', title: 'Standard Types', icon: '📋', color: '#3b82f6' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#10b981' },
-    { id: 'sizes', title: 'Size Options', icon: '📏', color: '#f59e0b' },
-    { id: 'alignment', title: 'Alignment Options', icon: '↔️', color: '#ef4444' },
-    { id: 'images', title: 'Custom Images', icon: '🖼️', color: '#8b5cf6' },
-    { id: 'suggestions', title: 'Suggestion Items', icon: '📝', color: '#ec4899' },
-    { id: 'actions', title: 'Multiple Actions', icon: '🎯', color: '#06b6d4' },
-    { id: 'features', title: 'Special Features', icon: '✨', color: '#64748b' },
-    { id: 'premium', title: 'Premium Features', icon: '💎', color: '#3b82f6' },
+    { id: 'types', title: 'Standard Types', icon: 'ðŸ“‹', color: '#3b82f6' },
+    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ¨', color: '#10b981' },
+    { id: 'sizes', title: 'Size Options', icon: 'ðŸ“', color: '#f59e0b' },
+    { id: 'alignment', title: 'Alignment Options', icon: 'â†”ï¸', color: '#ef4444' },
+    { id: 'images', title: 'Custom Images', icon: 'ðŸ–¼ï¸', color: '#8b5cf6' },
+    { id: 'suggestions', title: 'Suggestion Items', icon: 'ðŸ“', color: '#ec4899' },
+    { id: 'actions', title: 'Multiple Actions', icon: 'ðŸŽ¯', color: '#06b6d4' },
+    { id: 'features', title: 'Special Features', icon: 'âœ¨', color: '#64748b' },
+    { id: 'premium', title: 'Premium Features', icon: 'ðŸ’Ž', color: '#3b82f6' },
   ];
 
   get exampleVariants() {
@@ -152,3 +152,5 @@ export class SetEmptyStateDemoComponent extends BaseDemoComponent implements OnI
 
   ngOnInit() {}
 }
+
+

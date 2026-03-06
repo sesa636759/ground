@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LollipopChartPlaygroundComponent } from './components/lollipop-chart-playground/lollipop-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-lollipop-chart-demo',
+  selector: 'dm-lollipop-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,12 +23,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './lollipop-chart-demo.component.html',
   styleUrl: './lollipop-chart-demo.component.scss',
 })
-export class LollipopChartDemoComponent extends BaseDemoComponent {
+export class DmLollipopChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'vertical', title: 'Vertical', icon: '🍭', color: '#6366f1' },
-    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#10b981' },
-    { id: 'gradient', title: 'Multi-color', icon: '🌈', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'vertical', title: 'Vertical', icon: 'ðŸ­', color: '#6366f1' },
+    { id: 'horizontal', title: 'Horizontal', icon: 'â†”ï¸', color: '#10b981' },
+    { id: 'gradient', title: 'Multi-color', icon: 'ðŸŒˆ', color: '#f59e0b' },
   ];
 
   verticalCode = `<!-- Vertical Lollipop Chart (SVG) -->
@@ -54,3 +54,5 @@ export class LollipopChartDemoComponent extends BaseDemoComponent {
   <text x="110" y="44" text-anchor="end" font-size="11" fill="#6b7280">Category A</text>
 </svg>`;
 }
+
+

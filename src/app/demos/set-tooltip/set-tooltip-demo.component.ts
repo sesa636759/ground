@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { TooltipPlaygroundComponent } from './components/tooltip-playground/tooltip-playground.component';
@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-tooltip-demo',
+  selector: 'dm-set-tooltip-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,20 +24,20 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-tooltip-demo.component.html',
   styleUrl: './set-tooltip-demo.component.scss',
 })
-export class SetTooltipDemoComponent extends BaseDemoComponent {
+export class DmSetTooltipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'triggers', title: 'Triggers', icon: '⚡' },
-    { id: 'positioning', title: 'Positioning', icon: '📍' },
-    { id: 'variants', title: 'Variants & Themes', icon: '🎨' },
-    { id: 'shapes-animations', title: 'Shapes & Animations', icon: '✨' },
-    { id: 'advanced-features', title: 'Advanced Features', icon: '⚙️' },
-    { id: 'rich-content', title: 'Rich HTML Content', icon: '📝' },
-    { id: 'use-cases', title: 'Practical Use Cases', icon: '💼' },
-    { id: 'custom-content', title: 'Custom Content & Slots', icon: '🧩' },
-    { id: 'custom-colors', title: 'Custom Colors', icon: '🌈' },
-    { id: 'arrow-customization', title: 'Arrow Customization', icon: '⬆️' },
-    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: '🖱️' },
-    { id: 'auto-shift', title: 'Auto-Shift', icon: '🔄' },
+    { id: 'triggers', title: 'Triggers', icon: 'âš¡' },
+    { id: 'positioning', title: 'Positioning', icon: 'ðŸ“' },
+    { id: 'variants', title: 'Variants & Themes', icon: 'ðŸŽ¨' },
+    { id: 'shapes-animations', title: 'Shapes & Animations', icon: 'âœ¨' },
+    { id: 'advanced-features', title: 'Advanced Features', icon: 'âš™ï¸' },
+    { id: 'rich-content', title: 'Rich HTML Content', icon: 'ðŸ“' },
+    { id: 'use-cases', title: 'Practical Use Cases', icon: 'ðŸ’¼' },
+    { id: 'custom-content', title: 'Custom Content & Slots', icon: 'ðŸ§©' },
+    { id: 'custom-colors', title: 'Custom Colors', icon: 'ðŸŒˆ' },
+    { id: 'arrow-customization', title: 'Arrow Customization', icon: 'â¬†ï¸' },
+    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: 'ðŸ–±ï¸' },
+    { id: 'auto-shift', title: 'Auto-Shift', icon: 'ðŸ”„' },
   ];
 
   hoverCode = `<app-tooltip content="I appear on hover" position="top">
@@ -237,3 +237,5 @@ export class SetTooltipDemoComponent extends BaseDemoComponent {
   <ui-button label="Hover me"></ui-button>
 </app-tooltip>`;
 }
+
+

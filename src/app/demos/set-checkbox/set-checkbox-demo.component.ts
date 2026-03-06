@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { CheckboxPlaygroundComponent } from './components/checkbox-playground/checkbox-playground.component';
@@ -10,7 +10,7 @@ import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-checkbox-demo',
+  selector: 'dm-set-checkbox-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -26,16 +26,16 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-checkbox-demo.component.html',
   styleUrl: './set-checkbox-demo.component.scss',
 })
-export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
+export class DmSetCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
-    { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
-    { id: 'sizes-variants', title: 'Sizes & Variants', icon: '📏' },
-    { id: 'states', title: 'States', icon: '🔄' },
-    { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
-    { id: 'form', title: 'Form Example', icon: '📋' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'color-variants', title: 'Color Variants', icon: 'ðŸŽ¨' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: 'âœ¨' },
+    { id: 'skeleton', title: 'Skeleton State', icon: 'â³' },
+    { id: 'sizes-variants', title: 'Sizes & Variants', icon: 'ðŸ“' },
+    { id: 'states', title: 'States', icon: 'ðŸ”„' },
+    { id: 'groups', title: 'Checkbox Groups', icon: 'ðŸ“' },
+    { id: 'form', title: 'Form Example', icon: 'ðŸ“‹' },
   ];
 
   // Select All Group State
@@ -122,15 +122,17 @@ export class SetCheckboxDemoComponent extends BaseDemoComponent implements OnIni
 
   onSubmit() {
     if (!this.formTerms || !this.formPrivacy) {
-      this.formMessage = '⚠️ Please accept the required terms to continue';
+      this.formMessage = 'âš ï¸ Please accept the required terms to continue';
       this.formMessageColor = '#dc2626';
       this.termsInvalid = !this.formTerms;
       this.privacyInvalid = !this.formPrivacy;
     } else {
-      this.formMessage = '✅ Account created successfully!';
+      this.formMessage = 'âœ… Account created successfully!';
       this.formMessageColor = '#16a34a';
       this.termsInvalid = false;
       this.privacyInvalid = false;
     }
   }
 }
+
+

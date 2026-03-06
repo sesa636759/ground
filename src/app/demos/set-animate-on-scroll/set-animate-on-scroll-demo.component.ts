@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
@@ -10,7 +10,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
-  selector: 'app-set-animate-on-scroll-demo',
+  selector: 'dm-set-animate-on-scroll-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -25,7 +25,7 @@ import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
   templateUrl: './set-animate-on-scroll-demo.component.html',
   styleUrl: './set-animate-on-scroll-demo.component.scss',
 })
-export class SetAnimateOnScrollDemoComponent extends BaseDemoComponent {
+export class DmSetAnimateOnScrollDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     // Basic Animations
     { id: 'fade-in-basic', title: 'Fade In', icon: 'sunrise', iconLibrary: 'lucide' },
@@ -452,3 +452,5 @@ export class SetAnimateOnScrollDemoComponent extends BaseDemoComponent {
   </div>
 </app-animate-on-scroll>`);
 }
+
+

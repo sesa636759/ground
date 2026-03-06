@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
@@ -8,7 +8,7 @@ import { ComponentDocumentationComponent } from '../../pages/component-documenta
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-tags-input-demo',
+  selector: 'dm-set-tags-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,14 +22,14 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-tags-input-demo.component.html',
   styleUrl: './set-tags-input-demo.component.scss',
 })
-export class SetTagsInputDemoComponent extends BaseDemoComponent {
+export class DmSetTagsInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'basic', title: 'Basic Usage', icon: '📝' },
-    { id: 'colors', title: 'Color Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Size Variants', icon: '📏' },
-    { id: 'premium', title: 'Premium Features', icon: '💎' },
-    { id: 'states', title: 'Component States', icon: '🔄' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'basic', title: 'Basic Usage', icon: 'ðŸ“' },
+    { id: 'colors', title: 'Color Variants', icon: 'ðŸŽ¨' },
+    { id: 'sizes', title: 'Size Variants', icon: 'ðŸ“' },
+    { id: 'premium', title: 'Premium Features', icon: 'ðŸ’Ž' },
+    { id: 'states', title: 'Component States', icon: 'ðŸ”„' },
   ];
 
   defaultTags = ['Angular', 'TypeScript', 'Stencil'];
@@ -42,3 +42,5 @@ export class SetTagsInputDemoComponent extends BaseDemoComponent {
   [max]="10"
 ></app-tags-input>`;
 }
+
+

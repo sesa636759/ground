@@ -1,0 +1,56 @@
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
+
+import { TimelinePlaygroundComponent } from './components/timeline-playground/timeline-playground.component';
+import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
+import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
+import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
+
+import { BaseDemoComponent } from '../../shared/base-demo.component';
+
+@Component({
+  selector: 'dm-timeline-demo',
+  standalone: true,
+  imports: [
+    ...PLAYGROUND_IMPORTS,
+    TimelinePlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './timeline-demo.component.html',
+  styleUrl: './timeline-demo.component.scss',
+})
+export class DmTimelineDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'alignments', title: 'Alignments', icon: 'ðŸ“', color: '#3b82f6' },
+    { id: 'orientations', title: 'Orientations', icon: 'ðŸ“', color: '#10b981' },
+  ];
+
+  events = [
+    { status: 'Draft', date: 'Oct 1st', color: '#94a3b8' },
+    { status: 'Submitted', date: 'Oct 3rd', color: '#3b82f6' },
+    { status: 'Approved', date: 'Oct 5th', color: '#10b981' },
+  ];
+
+  playgroundCode = `<ui-timeline [value]="events" align="left">
+  <ng-template let-item>
+    <strong>{{ item.status }}</strong>
+    <span>{{ item.date }}</span>
+  </ng-template>
+</ui-timeline>`;
+
+  alignmentsCode = `<!-- Alternating Sides -->
+<ui-timeline align="alternate" [value]="events"></ui-timeline>
+
+<!-- Right Aligned -->
+<ui-timeline align="right" [value]="events"></ui-timeline>`;
+
+  orientationsCode = `<!-- Horizontal Flow -->
+<ui-timeline orientation="horizontal" [value]="events"></ui-timeline>`;
+}
+

@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { CodeEditorPlaygroundComponent } from './components/code-editor-playground/code-editor-playground.component';
@@ -9,7 +9,7 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
 import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'app-set-code-editor-demo',
+  selector: 'dm-set-code-editor-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -24,10 +24,10 @@ import { DemoHeaderComponent } from '../../shared/components/demo-header/demo-he
   templateUrl: './set-code-editor-demo.component.html',
   styleUrl: './set-code-editor-demo.component.scss',
 })
-export class SetCodeEditorDemoComponent extends BaseDemoComponent implements OnInit {
+export class DmSetCodeEditorDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'language-support', title: 'Language Support', icon: '✨', color: '#3b82f6' },
-    { id: 'features', title: 'Features', icon: '🛠', color: '#10b981' },
+    { id: 'language-support', title: 'Language Support', icon: 'âœ¨', color: '#3b82f6' },
+    { id: 'features', title: 'Features', icon: 'ðŸ› ', color: '#10b981' },
   ];
 
   get exampleVariants() {
@@ -43,3 +43,5 @@ export class SetCodeEditorDemoComponent extends BaseDemoComponent implements OnI
 
   ngOnInit() {}
 }
+
+

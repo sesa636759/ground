@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PolarAreaChartPlaygroundComponent } from './components/polar-area-chart-playground/polar-area-chart-playground.component';
@@ -9,7 +9,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-polar-area-chart-demo',
+  selector: 'dm-polar-area-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,12 +23,12 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './polar-area-chart-demo.component.html',
   styleUrl: './polar-area-chart-demo.component.scss',
 })
-export class PolarAreaChartDemoComponent extends BaseDemoComponent {
+export class DmPolarAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'skills', title: 'Skills Radar', icon: '🌐', color: '#6366f1' },
-    { id: 'sales', title: 'Sales Regions', icon: '🗺️', color: '#10b981' },
-    { id: 'multi', title: 'Multi-Dataset', icon: '📊', color: '#0ea5e9' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'skills', title: 'Skills Radar', icon: 'ðŸŒ', color: '#6366f1' },
+    { id: 'sales', title: 'Sales Regions', icon: 'ðŸ—ºï¸', color: '#10b981' },
+    { id: 'multi', title: 'Multi-Dataset', icon: 'ðŸ“Š', color: '#0ea5e9' },
   ];
 
   // Sample items for different layouts
@@ -90,3 +90,5 @@ skillsData = {
   style="width: 500px; height: 380px;"
 ></app-chart>`;
 }
+
+

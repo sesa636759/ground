@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { TreePlaygroundComponent } from './components/tree-playground/tree-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -8,7 +8,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 
 @Component({
-  selector: 'app-set-tree-demo',
+  selector: 'dm-set-tree-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,20 +22,20 @@ import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playg
   templateUrl: './set-tree-demo.component.html',
   styleUrl: './set-tree-demo.component.scss',
 })
-export class SetTreeDemoComponent extends BaseDemoComponent {
+export class DmSetTreeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic-tree', title: 'Basic Tree', icon: '🌲' },
-    { id: 'icons-colors', title: 'Icons & Colors', icon: '🎨' },
-    { id: 'badges-counters', title: 'Badges & Counters', icon: '🔢' },
-    { id: 'selectable', title: 'Selectable Tree', icon: '✅' },
-    { id: 'checkboxes', title: 'With Checkboxes', icon: '☑️' },
-    { id: 'searchable', title: 'Searchable Tree', icon: '🔍' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'variants', title: 'Variants', icon: '🎭' },
-    { id: 'org-chart', title: 'Org Chart', icon: '📊' },
-    { id: 'premium', title: 'Premium Aesthetics', icon: '💎' },
-    { id: 'drag-drop', title: 'Drag & Drop', icon: '🔄' },
-    { id: 'dark-theme', title: 'Dark Theme', icon: '🌙' },
+    { id: 'basic-tree', title: 'Basic Tree', icon: 'ðŸŒ²' },
+    { id: 'icons-colors', title: 'Icons & Colors', icon: 'ðŸŽ¨' },
+    { id: 'badges-counters', title: 'Badges & Counters', icon: 'ðŸ”¢' },
+    { id: 'selectable', title: 'Selectable Tree', icon: 'âœ…' },
+    { id: 'checkboxes', title: 'With Checkboxes', icon: 'â˜‘ï¸' },
+    { id: 'searchable', title: 'Searchable Tree', icon: 'ðŸ”' },
+    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
+    { id: 'variants', title: 'Variants', icon: 'ðŸŽ­' },
+    { id: 'org-chart', title: 'Org Chart', icon: 'ðŸ“Š' },
+    { id: 'premium', title: 'Premium Aesthetics', icon: 'ðŸ’Ž' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: 'ðŸ”„' },
+    { id: 'dark-theme', title: 'Dark Theme', icon: 'ðŸŒ™' },
   ];
 
   // Basic simple tree
@@ -180,3 +180,5 @@ export class SetTreeDemoComponent extends BaseDemoComponent {
   layout="horizontal"
 ></app-tree>`;
 }
+
+

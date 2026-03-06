@@ -1,4 +1,4 @@
-import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/app-playground/playground.constants';
 import { TabsPlaygroundComponent } from './components/tabs-playground/tabs-playground.component';
@@ -9,7 +9,7 @@ import { BaseDemoComponent } from '../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../shared/components/example-section/example-section.component';
 
 @Component({
-  selector: 'app-set-tabs-demo',
+  selector: 'dm-set-tabs-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -25,17 +25,17 @@ import { ExampleSectionComponent } from '../../shared/components/example-section
   templateUrl: './set-tabs-demo.component.html',
   styleUrl: './set-tabs-demo.component.scss',
 })
-export class SetTabsDemoComponent extends BaseDemoComponent {
+export class DmSetTabsDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'orientation', title: 'Orientation', icon: '↔️' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Sizes', icon: '📐' },
-    { id: 'colors', title: 'Color Schemes', icon: '🌈' },
-    { id: 'alignment', title: 'Alignment', icon: '⬛' },
-    { id: 'indicator', title: 'Indicator Position', icon: '📍' },
-    { id: 'layout-features', title: 'Layout & Features', icon: '📦' },
-    { id: 'advanced-features', title: 'Advanced UX', icon: '🛡️' },
+    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'orientation', title: 'Orientation', icon: 'â†”ï¸' },
+    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ¨' },
+    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
+    { id: 'colors', title: 'Color Schemes', icon: 'ðŸŒˆ' },
+    { id: 'alignment', title: 'Alignment', icon: 'â¬›' },
+    { id: 'indicator', title: 'Indicator Position', icon: 'ðŸ“' },
+    { id: 'layout-features', title: 'Layout & Features', icon: 'ðŸ“¦' },
+    { id: 'advanced-features', title: 'Advanced UX', icon: 'ðŸ›¡ï¸' },
   ];
 
   horizontalBasicCode = `<app-tab-stack orientation="horizontal" active-tab="t1">
@@ -100,3 +100,5 @@ export class SetTabsDemoComponent extends BaseDemoComponent {
     <app-tab label="Tab 2" value="t2">C2</app-tab>
   </app-tab-stack>`;
 }
+
+
