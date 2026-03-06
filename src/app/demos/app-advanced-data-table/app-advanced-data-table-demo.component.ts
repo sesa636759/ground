@@ -2,7 +2,6 @@ import { DemoSidebarComponent } from '../../shared/components/demo-sidebar/demo-
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
 import { AdvancedDataTablePlaygroundComponent } from './components/advanced-data-table-playground/advanced-data-table-playground.component';
 import { DemoTabsComponent } from '../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../pages/component-documentation/component-documentation.component';
@@ -43,7 +42,14 @@ export class AppAdvancedDataTableDemoComponent extends BaseDemoComponent {
     { field: 'uptime', header: 'Availability' },
   ];
 
-  playgroundCode = `<ui-advanced-data-table [value]="data" [columns]="cols" paginator [rows]="10"></ui-advanced-data-table>`;
+  playgroundCode = `<ui-advanced-data-table
+  [data]="data"
+  [columns]="cols"
+  pagination
+  [pageSize]="10"
+  searchable
+  sortable
+></ui-advanced-data-table>`;
 
   featuresCode = `<!-- Custom Templates -->
   <ui-advanced-data-table ...>
