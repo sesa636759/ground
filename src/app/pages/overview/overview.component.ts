@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/play
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';
-import { AppMasonryComponent } from '../../shared/components/ui-masonry/ui-masonry.component';
+import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
 import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
