@@ -1,35 +1,41 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FunnelChartPlaygroundComponent } from './components/funnel-chart-playground/funnel-chart-playground.component';
+import { DmFunnelChartPlaygroundComponent } from '../../../playground/charts/funnel-chart-playground/funnel-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
-  selector: 'app-funnel-chart-demo',
+  selector: 'dm-funnel-chart-demo',
   standalone: true,
-  imports: [CommonModule, FunnelChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    DmFunnelChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './funnel-chart-demo.component.html',
   styleUrl: './funnel-chart-demo.component.scss',
 })
-export class FunnelChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground',  icon: '🎮', color: '#8b5cf6' },
-    { id: 'sales',      name: 'Sales Funnel', icon: '🔽', color: '#6366f1' },
-    { id: 'marketing',  name: 'Marketing',    icon: '📣', color: '#10b981' },
-    { id: 'conversion', name: 'Conversion',   icon: '🎯', color: '#f59e0b' },
+export class DmFunnelChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'sales', title: 'Sales Funnel', icon: '🔽', color: '#6366f1' },
+    { id: 'marketing', title: 'Marketing', icon: '📣', color: '#10b981' },
   ];
 
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
-
   salesSegments = [
-    { label: 'Visitors',   value: 10000, pct: 100 },
-    { label: 'Leads',      value:  6500, pct:  65 },
-    { label: 'Prospects',  value:  3800, pct:  38 },
-    { label: 'Qualified',  value:  1900, pct:  19 },
-    { label: 'Customers',  value:   750, pct:   8 },
+    { label: 'Visitors', value: 10000, pct: 100 },
+    { label: 'Leads', value: 6500, pct: 65 },
+    { label: 'Prospects', value: 3800, pct: 38 },
+    { label: 'Qualified', value: 1900, pct: 19 },
+    { label: 'Customers', value: 750, pct: 8 },
   ];
 
   salesCode = `<!-- Sales Funnel (SVG trapezoids) -->

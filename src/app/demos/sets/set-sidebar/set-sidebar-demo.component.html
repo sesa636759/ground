@@ -1,0 +1,125 @@
+﻿<div class="demo-container">
+  <h1>📋 Sidebar Component</h1>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Positions -->
+      <section class="demo-section" id="positions">
+        <div class="section-header">
+          <h2>📍 Position Variants</h2>
+          <p>Different sidebar positions</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Left Sidebar</h3>
+            <div class="preview-box sidebar-demo">
+              <app-sidebar position="left" [items]="menuItems"></app-sidebar>
+              <div class="content-area">Main Content</div>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Right Sidebar</h3>
+            <div class="preview-box sidebar-demo">
+              <div class="content-area">Main Content</div>
+              <app-sidebar position="right" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>🎭 Visual Variants</h2>
+          <p>Different styles for sidebars</p>
+        </div>
+        <div class="demo-grid col-3">
+          <div class="demo-card">
+            <h3>Default</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar variant="default" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Floating</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar variant="floating" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Minimal</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar variant="minimal" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Collapsible -->
+      <section class="demo-section" id="collapsible">
+        <div class="section-header">
+          <h2>🔄 Collapsible States</h2>
+          <p>Expandable and collapsible sidebars</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div class="demo-card">
+            <h3>Expanded</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar collapsible="true" collapsed="false" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Collapsed</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar collapsible="true" collapsed="true" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Premium Features -->
+      <section class="demo-section" id="premium">
+        <div class="section-header">
+          <h2>💎 Premium Features</h2>
+          <p>Advanced styling and functionality</p>
+        </div>
+        <div class="demo-grid col-2">
+          <div
+            class="demo-card"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+          >
+            <h3 style="color: white">Glassmorphism</h3>
+            <div
+              class="preview-box sidebar-demo-compact"
+              style="background: rgba(255, 255, 255, 0.1); border: none"
+            >
+              <app-sidebar variant="glass" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>With Backdrop</h3>
+            <div class="preview-box sidebar-demo-compact">
+              <app-sidebar show-backdrop="true" [items]="menuItems"></app-sidebar>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-sidebar-playground></dm-sidebar-playground>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="sidebar"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

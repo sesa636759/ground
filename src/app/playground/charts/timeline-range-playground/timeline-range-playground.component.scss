@@ -1,0 +1,9 @@
+@use '../../../../styles/playground-base.scss';
+
+.chart-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}

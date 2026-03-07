@@ -1,0 +1,33 @@
+@use '../../../../styles/demo-base.scss';
+
+.demo-card {
+  &.glass-wrapper {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+
+    h3 {
+      color: white;
+      opacity: 0.8;
+    }
+  }
+}
+
+.tree-container {
+  min-height: 200px;
+  background: rgba(var(--bg-secondary-rgb), 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  overflow: auto;
+
+  &.chart-view {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.glass-bg {
+  padding: 20px;
+  border-radius: 12px;
+}

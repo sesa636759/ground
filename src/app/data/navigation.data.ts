@@ -1,4 +1,4 @@
-export interface NavItem {
+﻿export interface NavItem {
   id: string;
   label: string;
   icon?: string;
@@ -528,3 +528,6 @@ export function getAllNavItems(): NavItem[] {
 
   return allItems;
 }
+
+
+

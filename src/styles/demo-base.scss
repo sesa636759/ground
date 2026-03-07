@@ -6,9 +6,9 @@
   flex-direction: column;
   overflow: hidden;
   box-sizing: border-box;
-  max-width: 90%;
-  margin: 0 auto;
-  padding: var(--space-2xl) var(--space-xl);
+  //max-width: 90%;
+  //margin: 0 auto;
+  padding: var(--space-2xl);
   animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -163,9 +163,8 @@
 // Pattern 2: pane -> [slot div] -> <app-xyz> host -> split-layout -> > * > * covers host
 .pane-examples,
 .pane-docs {
-
-  >*,
-  >*>* {
+  > *,
+  > * > * {
     height: 100%;
     min-height: 0;
     box-sizing: border-box;

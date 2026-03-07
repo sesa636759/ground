@@ -1,0 +1,88 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="['brand']"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <!-- Accordion Slots -->
+  <div slot="content-brand" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Brand Name</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.brandName" (ngModelChange)="updateConfig()" />
+    </div>
+  </div>
+
+  <div slot="content-user" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>User Name</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.userName" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>User Role</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.userRole" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>User Avatar URL</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.userAvatar" (ngModelChange)="updateConfig()" />
+    </div>
+  </div>
+
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Theme</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.theme"
+        (ngModelChange)="updateConfig()"
+        [options]="themeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Accent Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.accentColor"
+        (ngModelChange)="updateConfig()"
+        [options]="accentColorOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-group" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.collapsed"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Collapsed
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div class="sidebar-wrapper" preview>
+    <app-modern-sidebar
+      #sidebarElement
+      [attr.brand-name]="pgConfig.brandName"
+      [attr.selected-id]="pgConfig.selectedId"
+      [attr.accent-color]="pgConfig.accentColor"
+      [attr.user-name]="pgConfig.userName"
+      [attr.user-role]="pgConfig.userRole"
+      [attr.user-avatar]="pgConfig.userAvatar"
+      [attr.collapsed]="pgConfig.collapsed ? 'true' : null"
+      [attr.theme]="pgConfig.theme"
+      [items]="sidebarItems"
+      (itemSelected)="onItemSelected($event)"
+      (sidebarToggled)="onSidebarToggled($event)"
+      (profileClicked)="onProfileClick()"
+      style="display: block; height: 100%"
+    ></app-modern-sidebar>
+  </div>
+
+  <div class="content-area-preview" preview>
+    <div class="content-header-sim">
+      <h3>Main Content Area</h3>
+      <p>Interact with the sidebar to see events logged in the Events tab.</p>
+    </div>
+    <div class="content-cards">
+      <div class="sim-card"></div>
+      <div class="sim-card"></div>
+    </div>
+  </div>
+</pg-playground>

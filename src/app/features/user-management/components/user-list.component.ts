@@ -1,23 +1,13 @@
-import { AppCheckboxValueAccessorDirective } from 'src/app/directives/ui-checkbox-value-accessor.directive';
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
-import { AppInputValueAccessorDirective } from 'src/app/directives/ui-input-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from 'src/app/directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [
-    AppCheckboxValueAccessorDirective,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppInputValueAccessorDirective,
-    UiDropdownValueAccessorDirective,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
@@ -110,7 +100,7 @@ export class UserListComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        console.error('Error loading users:', error);
+        console.error('Error loading users: ', error);
         this.loading = false;
       },
     });
@@ -343,4 +333,3 @@ export class UserListComponent implements OnInit {
     return pages;
   }
 }
-

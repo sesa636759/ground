@@ -1,4 +1,4 @@
-import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, computed, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -11,7 +11,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
-  selector: 'app-documentation',
+  selector: 'pg-documentation',
   standalone: true,
   imports: [CommonModule, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

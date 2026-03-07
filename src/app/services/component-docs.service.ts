@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 
 export interface ComponentProp {
   name: string;
@@ -364,7 +364,7 @@ export class ComponentDocsService {
             name: 'label',
             type: 'string',
             description: 'Optional text label for the entire group',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'color',
@@ -798,7 +798,7 @@ export class ComponentDocsService {
             name: 'name',
             type: 'string',
             description: 'Form name for the radio group',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'value',
@@ -852,13 +852,13 @@ export class ComponentDocsService {
             name: 'label',
             type: 'string',
             description: 'Top label text for the radio group layout',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'helper-text',
             type: 'string',
             description: 'Help text displayed below the group label',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'label-position',
@@ -894,7 +894,7 @@ export class ComponentDocsService {
             name: 'error-message',
             type: 'string',
             description: 'Error message to display when invalid',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'allow-empty',
@@ -1735,7 +1735,7 @@ export class ComponentDocsService {
             name: 'percentageColor',
             type: 'string',
             description: 'Custom color for percentage text',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'labelPosition',
@@ -2974,7 +2974,7 @@ export class ComponentDocsService {
             name: 'chartTitle',
             type: 'string',
             description: 'Chart title text',
-            defaultValue: "''",
+            defaultValue: "'",
           },
         ],
         events: [
@@ -3043,7 +3043,7 @@ export class ComponentDocsService {
             name: 'chartTitle',
             type: 'string',
             description: 'Optional title above the chart',
-            defaultValue: "''",
+            defaultValue: "'",
           },
         ],
         events: [
@@ -3111,7 +3111,7 @@ export class ComponentDocsService {
             name: 'title',
             type: 'string',
             description: 'Optional label below the legend',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           { name: 'rows', type: 'number', description: 'Grid row count', defaultValue: '10' },
           { name: 'cols', type: 'number', description: 'Grid column count', defaultValue: '10' },
@@ -3217,7 +3217,7 @@ export class ComponentDocsService {
             name: 'ranges',
             type: 'string',
             description: 'JSON array of color zones [{min, max, color}]',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'interactive',
@@ -3526,7 +3526,7 @@ export class ComponentDocsService {
             name: 'placeholder',
             type: 'string',
             description: 'Placeholder text',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'showFullPath',
@@ -3783,7 +3783,7 @@ export class ComponentDocsService {
             defaultValue: 'false',
             required: true,
           },
-          { name: 'dialogTitle', type: 'string', description: 'Header text', defaultValue: "''" },
+          { name: 'dialogTitle', type: 'string', description: 'Header text', defaultValue: "'" },
           {
             name: 'size',
             type: 'string',
@@ -4041,8 +4041,8 @@ export class ComponentDocsService {
           'Interactive component with a dominant main button and a secondary chevron for alternate actions. Ideal for "Save" vs "Save and Close" operations.',
         usage: `<ui-split-button label="Save" [options]="moreOptions"></ui-split-button>`,
         props: [
-          { name: 'label', type: 'string', description: 'Main button text', defaultValue: "''" },
-          { name: 'icon', type: 'string', description: 'Main button icon', defaultValue: "''" },
+          { name: 'label', type: 'string', description: 'Main button text', defaultValue: "'" },
+          { name: 'icon', type: 'string', description: 'Main button icon', defaultValue: "'" },
           {
             name: 'options',
             type: 'any[]',
@@ -4088,7 +4088,7 @@ export class ComponentDocsService {
             name: 'pattern',
             type: 'string',
             description: 'Visual mask using placeholder characters',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'maskChar',
@@ -4250,7 +4250,7 @@ export class ComponentDocsService {
             name: 'persistKey',
             type: 'string',
             description: 'localStorage key for saving state/size',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'variant',
@@ -4310,7 +4310,7 @@ export class ComponentDocsService {
             name: 'target',
             type: 'string',
             description: 'CSS selector for the trigger element',
-            defaultValue: "''",
+            defaultValue: "'",
           },
         ],
         events: [
@@ -4441,7 +4441,7 @@ export class ComponentDocsService {
             name: 'label',
             type: 'string',
             description: 'Pill text content',
-            defaultValue: "''",
+            defaultValue: "'",
             required: true,
           },
           {
@@ -4472,7 +4472,7 @@ export class ComponentDocsService {
             name: 'avatar',
             type: 'string',
             description: 'Optional image URL for the pill start',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'loading',
@@ -4893,13 +4893,13 @@ export class ComponentDocsService {
             name: 'heading',
             type: 'string',
             description: 'Optional header text',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'content',
             type: 'string',
             description: 'Main body (HTML supported)',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'trigger',
@@ -4963,7 +4963,7 @@ export class ComponentDocsService {
             name: 'separator',
             type: 'string',
             description: 'CSV of indices to show gap (e.g. "3")',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'autoFocus',
@@ -5275,7 +5275,7 @@ export class ComponentDocsService {
             name: 'counter',
             type: 'string | number',
             description: 'Circular numeric count at the end',
-            defaultValue: "''",
+            defaultValue: "'",
           },
         ],
         events: [
@@ -5305,7 +5305,7 @@ export class ComponentDocsService {
           'Multi-functional separator for visual grouping. Supports text/icon centers, vertical orientation, gradient lines, animated entrances, and unique shape bridges (wave, zigzag, curve).',
         usage: `<ui-divider text="OR" textAlign="center" variant="dashed"></ui-divider>`,
         props: [
-          { name: 'text', type: 'string', description: 'Segment label text', defaultValue: "''" },
+          { name: 'text', type: 'string', description: 'Segment label text', defaultValue: "'" },
           {
             name: 'orientation',
             type: "'horizontal' | 'vertical'",
@@ -5353,7 +5353,7 @@ export class ComponentDocsService {
             name: 'panelTitle',
             type: 'string',
             description: 'Heading text for the panel',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'toggleable',
@@ -5383,7 +5383,7 @@ export class ComponentDocsService {
             name: 'persistKey',
             type: 'string',
             description: 'Key for saving size/state in localStorage',
-            defaultValue: "''",
+            defaultValue: "'",
           },
         ],
         events: [
@@ -5427,13 +5427,13 @@ export class ComponentDocsService {
             name: 'iconOn',
             type: 'string',
             description: 'Indicator icon for checked state',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'iconOff',
             type: 'string',
             description: 'Indicator icon for unchecked state',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'loading',
@@ -5607,7 +5607,7 @@ export class ComponentDocsService {
             name: 'ranges',
             type: 'string',
             description: 'Color zones (JSON): [{min, max, color}]',
-            defaultValue: "''",
+            defaultValue: "'",
           },
           {
             name: 'needleShape',
@@ -5819,3 +5819,6 @@ export class ComponentDocsService {
     }));
   }
 }
+
+
+

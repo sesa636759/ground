@@ -1,0 +1,76 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="💊"
+    title="Pill / Tag"
+    description="Compact elements used for attributes, status indicators, and category tagging. Highly customizable with icons, avatars, and interactive states."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-pill-playground></dm-pill-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Styling Variants -->
+          <section class="demo-section" id="styling" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🎨 Styling Variants</h2>
+              <p>Explore different visual styles and density options.</p>
+            </div>
+            <div class="demo-card">
+              <ui-pill label="Default" color="default"></ui-pill>
+              <ui-pill label="Primary" color="primary"></ui-pill>
+              <ui-pill label="Success" color="success" variant="soft"></ui-pill>
+              <ui-pill label="Danger" color="danger" variant="outlined"></ui-pill>
+              <ui-pill label="Warning" color="warning" variant="bordered"></ui-pill>
+              <ui-pill label="Gradient" variant="gradient" gradient="purple-blue"></ui-pill>
+            </div>
+            <ui-code-preview
+              [htmlCode]="stylingCode"
+              [label]="'Style Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Special Features -->
+          <section class="demo-section" id="features">
+            <div class="section-header">
+              <h2>🚀 Special Features</h2>
+              <p>Advanced capabilities like counters, remove buttons, and loading states.</p>
+            </div>
+            <div class="demo-card">
+              <ui-pill label="Notifications" counter="9" color="primary"></ui-pill>
+              <ui-pill
+                label="User Profile"
+                avatar="https://i.pravatar.cc/150?u=1"
+                clickable
+              ></ui-pill>
+              <ui-pill label="Removable" removable color="secondary"></ui-pill>
+              <ui-pill label="Loading State" loading></ui-pill>
+              <ui-pill label="Horizontal" orientation="horizontal" icon="⭐"></ui-pill>
+              <ui-pill label="Vertical" orientation="vertical" icon="⚓"></ui-pill>
+            </div>
+            <ui-code-preview
+              [htmlCode]="featuresCode"
+              [label]="'Feature Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="pill"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

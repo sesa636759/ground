@@ -1,0 +1,254 @@
+<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Mode</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.mode"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Segmented', value: 'segmented' },
+            { label: 'Dropdown', value: 'dropdown' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Orientation</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.orientation"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Horizontal', value: 'horizontal' },
+            { label: 'Vertical', value: 'vertical' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Size</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.size"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Small', value: 'small' },
+            { label: 'Medium', value: 'medium' },
+            { label: 'Large', value: 'large' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Color</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.color"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Primary', value: 'primary' },
+            { label: 'Secondary', value: 'secondary' },
+            { label: 'Success', value: 'success' },
+            { label: 'Danger', value: 'danger' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Info', value: 'info' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Variant</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Filled', value: 'filled' },
+            { label: 'Outlined', value: 'outlined' },
+            { label: 'Text', value: 'text' },
+            { label: 'Soft', value: 'soft' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Solid', value: 'solid' },
+            { label: 'Surface', value: 'surface' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Shape</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.shape"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Rectangle', value: 'rectangle' },
+            { label: 'Round', value: 'round' },
+            { label: 'Pill', value: 'pill' },
+            { label: 'Circle', value: 'circle' },
+            { label: 'Square', value: 'square' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Icon Position</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.iconPosition"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+            { label: 'Top', value: 'top' },
+            { label: 'Both', value: 'both' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Display Mode</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.displayMode"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Icon + Label', value: 'icon-label' },
+            { label: 'Label Only', value: 'label-only' },
+            { label: 'Icon Only', value: 'icon-only' },
+            { label: 'Both Sides', value: 'both-sides' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Group Label</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+      </div>
+      <div class="control-group">
+        <label>Name</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+      </div>
+      <div class="control-group">
+        <label>Helper Text</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+      </div>
+      <div class="control-group">
+        <label>Error Message</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.errorMessage"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+      <div class="control-group">
+        <label>Action Label</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.buttonActionLabel"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+      <div class="control-group">
+        <label>Advanced Theme</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.advancedTheme"
+          (ngModelChange)="updateConfig()"
+        />
+      </div>
+    </div>
+
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" />
+        Keep Label
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" />
+        Custom Content
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()" /> Multi
+        Select
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.batchActions" (ngModelChange)="updateConfig()" /> Batch
+        Actions
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.searchEnabled" (ngModelChange)="updateConfig()" /> Search
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.exportEnabled" (ngModelChange)="updateConfig()" /> Export
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.importEnabled" (ngModelChange)="updateConfig()" /> Import
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.analyticsEnabled" (ngModelChange)="updateConfig()" />
+        Analytics
+      </label>
+    </div>
+  </div>
+
+  <div preview>
+    <div class="preview-stage h-scrollable" style="padding: 24px">
+      <app-button-toggle-group
+        #pgGroup
+        [attr.mode]="pgConfig.mode"
+        [attr.orientation]="pgConfig.orientation"
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.variant]="pgConfig.variant"
+        [attr.shape]="pgConfig.shape"
+        [attr.icon-position]="pgConfig.iconPosition"
+        [attr.display-mode]="pgConfig.displayMode"
+        [attr.label]="pgConfig.label"
+        [attr.name]="pgConfig.name"
+        [attr.value]="pgConfig.value"
+        [attr.helper-text]="pgConfig.helperText"
+        [attr.full-width]="pgConfig.fullWidth ? '' : null"
+        [attr.keep-button-label]="pgConfig.keepButtonLabel ? '' : null"
+        [attr.custom-content]="pgConfig.customContent ? '' : null"
+        [attr.button-action-label]="pgConfig.buttonActionLabel"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.invalid]="pgConfig.invalid ? '' : null"
+        [attr.error-message]="pgConfig.errorMessage"
+        [options]="jsonOptions(playgroundOptions)"
+        [attr.multi-select]="pgConfig.multiSelect ? '' : null"
+        [attr.batch-actions]="pgConfig.batchActions ? '' : null"
+        [attr.search-enabled]="pgConfig.searchEnabled ? '' : null"
+        [attr.export-enabled]="pgConfig.exportEnabled ? '' : null"
+        [attr.import-enabled]="pgConfig.importEnabled ? '' : null"
+        [attr.analytics-enabled]="pgConfig.analyticsEnabled ? '' : null"
+        [attr.advanced-theme]="pgConfig.advancedTheme"
+        (buttonToggleGroupChange)="onPlaygroundChange($event)"
+        (buttonToggleGroupAction)="onPlaygroundAction($event)"
+      >
+        <div *ngIf="pgConfig.customContent" slot="dropdown-content" class="custom-slot-content">
+          <p>Custom Playground Content</p>
+          <ui-input type="text" placeholder="Enter something..." />
+        </div>
+      </app-button-toggle-group>
+    </div>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

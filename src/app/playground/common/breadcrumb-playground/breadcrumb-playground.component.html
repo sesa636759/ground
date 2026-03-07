@@ -1,0 +1,82 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-config" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Separator</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.separator"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Max Items (Collapse)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.maxItems"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="standardSizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showHome" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Home
+      </label>
+    </div>
+  </div>
+
+  <div
+    preview
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+  >
+    <div
+      style="
+        background: var(--surface-1);
+        padding: 16px 24px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      "
+    >
+      <ui-breadcrumb
+        #demoElement
+        [attr.separator]="pgConfig.separator"
+        [attr.max-items]="pgConfig.maxItems"
+        [attr.size]="pgConfig.size"
+        [attr.variant]="pgConfig.variant"
+        [attr.show-home]="pgConfig.showHome ? '' : null"
+        [items]="itemsJson"
+        (breadcrumbClick)="onBreadcrumbClick($event)"
+      ></ui-breadcrumb>
+    </div>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

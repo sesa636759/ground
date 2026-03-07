@@ -1,0 +1,98 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🏎️"
+    title="Speedometer / Gauge"
+    description="A visually rich gauge component for representing numerical data on an arc. Highly effective for KPIs, speed indicators, and capacity monitoring."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-speedometer-playground></dm-speedometer-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Color Modes -->
+          <section class="demo-section" id="modes" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🌈 Color Modes</h2>
+              <p>Standardize visual feedback using solid, gradient, or segmented arcs.</p>
+            </div>
+            <div class="demo-card">
+              <div style="text-align: center">
+                <ui-speedometer
+                  [value]="30"
+                  color-mode="solid"
+                  [size]="180"
+                  label="Solid"
+                ></ui-speedometer>
+              </div>
+              <div style="text-align: center">
+                <ui-speedometer
+                  [value]="60"
+                  color-mode="gradient"
+                  [size]="180"
+                  label="Gradient"
+                ></ui-speedometer>
+              </div>
+              <div style="text-align: center">
+                <ui-speedometer
+                  [value]="90"
+                  color-mode="segments"
+                  [size]="180"
+                  label="Segments"
+                ></ui-speedometer>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="modesCode"
+              [label]="'Color Configuration'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Scaling -->
+          <section class="demo-section" id="sizes">
+            <div class="section-header">
+              <h2>📐 Scaling</h2>
+              <p>
+                Adapt the gauge size to different container widths while maintaining proportions.
+              </p>
+            </div>
+            <div class="demo-card">
+              <ui-speedometer
+                [size]="120"
+                [arc-width]="8"
+                [value]="50"
+                label="Tiny"
+              ></ui-speedometer>
+              <ui-speedometer
+                [size]="300"
+                [arc-width]="30"
+                [value]="75"
+                label="Hero"
+              ></ui-speedometer>
+            </div>
+            <ui-code-preview
+              [htmlCode]="sizesCode"
+              [label]="'Sizing Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="speedometer"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

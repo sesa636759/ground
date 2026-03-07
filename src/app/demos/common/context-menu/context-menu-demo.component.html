@@ -1,0 +1,49 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🖱️"
+    title="Context Menu"
+    description="A context-sensitive menu that appears upon right-click. Can be attached to specific elements or defined as a global menu for the entire page."
+  >
+  </pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-context-menu-playground></dm-context-menu-playground>
+    </div>
+
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content">
+        <!-- Multiple Targets -->
+        <pg-example-section
+          id="targets"
+          title="Multiple Targets"
+          description="Menus can be bound to different elements like images, cards, or lists."
+          [code]="targetsCode"
+        >
+          <div class="demo-card">
+            <div class="image-target" #imgTarget>Image Target</div>
+            <ui-context-menu [model]="fileItems" [target]="imgTarget"></ui-context-menu>
+
+            <div
+              class="image-target"
+              #cardTarget
+              style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+            >
+              Card Target
+            </div>
+            <ui-context-menu [model]="fileItems" [target]="cardTarget"></ui-context-menu>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="context-menu"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

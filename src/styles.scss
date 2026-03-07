@@ -13,14 +13,22 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, rgba(61, 205, 88, 0.04) 0%, rgba(61, 205, 88, 0.12) 100%), var(--bg-primary);
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background:
+    linear-gradient(135deg, rgba(61, 205, 88, 0.04) 0%, rgba(61, 205, 88, 0.12) 100%),
+    var(--bg-primary);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* Material Icons Support */
@@ -49,8 +57,8 @@ body {
 .lar,
 .icons8,
 .line-awesome,
-[class^="la-"],
-[class*=" la-"] {
+[class^='la-'],
+[class*=' la-'] {
   font-family: 'Line Awesome Free', 'Line Awesome Brands', 'Line Awesome' !important;
   font-weight: 900;
   font-style: normal;
@@ -68,8 +76,8 @@ body {
 
 .ri,
 .remixicon,
-[class^="ri-"],
-[class*=" ri-"] {
+[class^='ri-'],
+[class*=' ri-'] {
   font-family: 'remixicon' !important;
   font-style: normal;
   display: inline-block;

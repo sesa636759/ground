@@ -1,4 +1,4 @@
-// User model with all possible fields
+﻿// User model with all possible fields
 export interface User {
   id: string;
   username: string;
@@ -156,3 +156,6 @@ export interface BulkUserOperation {
   operation: 'activate' | 'deactivate' | 'delete' | 'assign_role' | 'lock' | 'unlock';
   data?: any;
 }
+
+
+

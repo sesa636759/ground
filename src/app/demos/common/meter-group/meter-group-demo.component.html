@@ -1,0 +1,80 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="📊"
+    title="Meter Group"
+    description="Display a group of values as parts of a single whole. Ideal for storage usage breakdown, budget allocation, and resource monitoring."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-meter-group-playground></dm-meter-group-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Display Styles -->
+          <section class="demo-section" id="displays" style="margin-top: 0">
+            <div class="section-header">
+              <h2>📊 Display Styles</h2>
+              <p>Configure how individual segments and markers are presented.</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-item">
+                <span>Standard with Labels:</span>
+                <ui-meter-group [values]="storageValues" show-labels></ui-meter-group>
+              </div>
+              <div class="preview-item">
+                <span>Thick Meter with Markers:</span>
+                <ui-meter-group
+                  [values]="storageValues"
+                  meter-height="24px"
+                  show-markers
+                ></ui-meter-group>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="displaysCode"
+              [label]="'Visual Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Advanced Layouts -->
+          <section class="demo-section" id="layouts">
+            <div class="section-header">
+              <h2>📐 Advanced Layouts</h2>
+              <p>Switch orientations and label positioning for different UI contexts.</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-item">
+                <span>Legend at Start:</span>
+                <ui-meter-group [values]="storageValues" label-position="start"></ui-meter-group>
+              </div>
+              <div class="preview-item" style="height: 300px">
+                <span>Vertical Orientation:</span>
+                <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="layoutsCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="meter-group"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

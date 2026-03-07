@@ -1,8 +1,8 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'demo-tabs',
+  selector: 'pg-demo-tabs',
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -29,7 +29,7 @@ export class DemoTabsComponent {
     if (typeof newValue === 'string' && newValue) {
       this.active.set(newValue);
     } else {
-      console.warn('Invalid tab value received:', newValue);
+      console.warn('Invalid tab value received: ', newValue);
     }
   }
 }

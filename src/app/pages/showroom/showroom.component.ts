@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -7,7 +7,7 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
-  selector: 'app-showroom',
+  selector: 'pg-showroom',
   standalone: true,
   imports: [CommonModule, RouterModule, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

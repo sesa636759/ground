@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   signal,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -88,7 +88,12 @@ export class App implements OnInit {
       emoji: '💙',
       gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
     },
-    { id: 'dark', label: 'Dark', emoji: '🌙', gradient: 'linear-gradient(135deg,#0f172a,#1e293b)' },
+    {
+      id: 'dark',
+      label: 'Dark',
+      emoji: '🌙',
+      gradient: 'linear-gradient(135deg,#0f172a,#1e293b)',
+    },
     {
       id: 'light',
       label: 'Light',
@@ -101,13 +106,20 @@ export class App implements OnInit {
       emoji: '👁️',
       gradient: 'linear-gradient(135deg,#000,#facc15)',
     },
-    { id: 'auto', label: 'Auto', emoji: '🔄', gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)' },
+    {
+      id: 'auto',
+      label: 'Auto',
+      emoji: '🔄',
+      gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+    },
   ];
 
   currentTheme = this.themeService.currentTheme;
 
   currentThemeIcon = computed(() => {
-    return this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? '🎨';
+    return (
+      this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? '🎨'
+    );
   });
 
   toggleThemeMenu() {
@@ -147,7 +159,7 @@ export class App implements OnInit {
       role: 'Visitor',
       avatar: 'https://i.pravatar.cc/150?img=12',
       isOnline: false,
-      email: '',
+      email: 'praveen.rajkumar@se.com',
     };
   });
 
@@ -158,6 +170,7 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
+    console.log('topItems', topNavItems);
     registerIconLibrary('core', {
       resolver: function (name) {
         return `assets/quartzds/se-icons-core/${name}.svg`;
@@ -173,6 +186,17 @@ export class App implements OnInit {
       resolver: function (name) {
         return `https://cdn.jsdelivr.net/npm/lucide-static@0.400.0/icons/${name}.svg`;
       },
+    });
+
+    // Schneider Electric Libraries
+    registerIconLibrary('se', {
+      resolver: (name) => `assets/quartzds/se-icons-general/${name}.svg`,
+    });
+    registerIconLibrary('qds', {
+      resolver: (name) => `assets/quartzds/se-icons-core/${name}.svg`,
+    });
+    registerIconLibrary('quartz', {
+      resolver: (name) => `assets/quartzds/se-icons-general/${name}.svg`,
     });
     // Track route changes to update selected item
     this.router.events
@@ -306,3 +330,4 @@ export class App implements OnInit {
     this.authService.logout();
   }
 }
+

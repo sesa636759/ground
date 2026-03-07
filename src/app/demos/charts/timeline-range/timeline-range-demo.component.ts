@@ -1,29 +1,34 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { TimelineRangePlaygroundComponent } from './components/timeline-range-playground/timeline-range-playground.component';
+import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
+import { DmTimelineRangePlaygroundComponent } from '../../../playground/charts/timeline-range-playground/timeline-range-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
-  selector: 'app-timeline-range-demo',
+  selector: 'dm-timeline-range-demo',
   standalone: true,
-  imports: [CommonModule, FormsModule, TimelineRangePlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    ...PLAYGROUND_IMPORTS,
+    DmTimelineRangePlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-range-demo.component.html',
   styleUrl: './timeline-range-demo.component.scss',
 })
-export class TimelineRangeDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'project',    name: 'Project',    icon: '📋', color: '#6366f1' },
-    { id: 'team',       name: 'Team',       icon: '👥', color: '#10b981' },
-    { id: 'events',     name: 'Events',     icon: '📅', color: '#f59e0b' },
+export class DmTimelineRangeDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'project', title: 'Project Schedule', icon: '📋', color: '#6366f1' },
+    { id: 'team', title: 'Team Schedule', icon: '👥', color: '#10b981' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   projectCode = `<!-- Timeline Range – Project Phases (SVG) -->
 <svg width="700" height="210">

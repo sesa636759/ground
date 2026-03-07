@@ -1,0 +1,10 @@
+@use '../../../../styles/playground-base.scss';
+
+.control-group {
+  input[type='color'] {
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+  }
+}

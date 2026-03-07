@@ -1,0 +1,80 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="⏲️"
+    title="Timer / Stopwatch"
+    description="A versatile time-tracking component for countdowns, stopwatches, and duration displays. Supports various time formats and offers programmatic control for starting, pausing, and resetting."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-timer-playground></dm-timer-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Timer Modes -->
+          <section class="demo-section" id="modes" style="margin-top: 0">
+            <div class="section-header">
+              <h2>⏲️ Timer Modes</h2>
+              <p>Choose between decreasing time (countdown) or increasing time (stopwatch).</p>
+            </div>
+            <div class="demo-card">
+              <div class="timer-box">
+                <span>Countdown (1 min):</span>
+                <ui-timer mode="countdown" [duration]="60" auto-start></ui-timer>
+              </div>
+              <div class="timer-box">
+                <span>Stopwatch:</span>
+                <ui-timer mode="stopwatch" auto-start></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="modesCode"
+              [label]="'Mode Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Display Formats -->
+          <section class="demo-section" id="formats">
+            <div class="section-header">
+              <h2>🕰️ Display Formats</h2>
+              <p>Adapt the display level of detail based on your application's needs.</p>
+            </div>
+            <div class="demo-card">
+              <div class="timer-box">
+                <span>Compact (ss):</span>
+                <ui-timer format="ss" [duration]="45" auto-start></ui-timer>
+              </div>
+              <div class="timer-box">
+                <span>Standard (mm:ss):</span>
+                <ui-timer format="mm:ss" [duration]="125" auto-start></ui-timer>
+              </div>
+              <div class="timer-box">
+                <span>Detailed (HH:mm:ss):</span>
+                <ui-timer format="HH:mm:ss" [duration]="3665" auto-start></ui-timer>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="formatsCode"
+              [label]="'Format Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="timer"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

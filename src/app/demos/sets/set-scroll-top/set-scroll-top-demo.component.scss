@@ -1,0 +1,38 @@
+@use '../../../../styles/demo-base.scss';
+
+.demo-card {
+  &.h-gradient {
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), transparent);
+  }
+}
+
+.preview-box {
+  height: 120px;
+  position: relative;
+
+  &.corner-preview {
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+  }
+
+  .box-note {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+  }
+}
+
+.scroll-test-area {
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px dashed var(--border-color);
+
+  p {
+    margin: 40px 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+}

@@ -1,14 +1,4 @@
-import {
-  Component,
-  Input,
-  signal,
-  AfterViewInit,
-  OnDestroy,
-  ElementRef,
-  ViewChildren,
-  QueryList,
-  ContentChildren,
-} from '@angular/core';
+﻿import { Component, Input, signal, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -24,7 +14,7 @@ export interface PageNav {
 }
 
 @Component({
-  selector: 'app-docs-page-layout',
+  selector: 'pg-docs-page-layout',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './docs-page-layout.component.html',

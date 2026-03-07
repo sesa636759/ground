@@ -1,0 +1,102 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🪟"
+    title="Panel"
+    description="A versatile content container with multiple visual styles, color themes, and interactive features like toggle, minimize, maximize, drag, and resize."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-panel-playground></dm-panel-playground>
+    </div>
+
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Visual Styles -->
+        <pg-example-section
+          id="visual-styles"
+          title="Visual Styles"
+          description="Elevated, outlined, filled, and flat variants"
+          [code]="stylesCode"
+        >
+          <div class="demo-grid col-2">
+            @for (v of ['elevated', 'outlined', 'filled', 'flat']; track v) {
+              <ui-panel [attr.variant]="v" [attr.panel-title]="v | titlecase">
+                <div slot="content" style="padding: 16px">{{ v | titlecase }} panel style.</div>
+              </ui-panel>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- Themes -->
+        <pg-example-section
+          id="themes"
+          title="Themes"
+          description="Color-coded themed panels for status, branding, and semantic meaning"
+          [code]="themesCode"
+        >
+          <div class="demo-grid col-2">
+            @for (t of ['primary', 'success', 'warning', 'danger']; track t) {
+              <ui-panel [attr.theme]="t" [attr.panel-title]="t | titlecase">
+                <div slot="content" style="padding: 16px">{{ t | titlecase }} theme panel.</div>
+              </ui-panel>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- Interactive -->
+        <pg-example-section
+          id="interactivity"
+          title="Interactive"
+          description="Toggle, minimize, maximize, drag, and resize capabilities"
+          [code]="interactiveCode"
+        >
+          <ui-panel
+            toggleable
+            minimizable
+            maximizable
+            resizable
+            is-draggable
+            panel-title="Full Interactive Panel"
+          >
+            <div slot="content" style="padding: 16px">
+              Drag, resize, minimize, maximize or toggle me!
+            </div>
+          </ui-panel>
+        </pg-example-section>
+
+        <!-- Glassmorphism -->
+        <pg-example-section
+          id="glassmorphism"
+          title="Glassmorphism"
+          description="Translucent glass effect for premium depth — wrap in a gradient background"
+          [code]="glassCode"
+        >
+          <div
+            style="
+              background: linear-gradient(135deg, #667eea, #764ba2);
+              padding: 32px;
+              border-radius: 12px;
+              width: 100%;
+            "
+          >
+            <ui-panel glass panel-title="Glass Panel">
+              <div slot="content" style="padding: 16px; color: white">
+                Translucent backdrop blur effect.
+              </div>
+            </ui-panel>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="panel"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

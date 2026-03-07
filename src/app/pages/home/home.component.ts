@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { categoryNavItems } from '../../data/navigation.data';
@@ -17,7 +17,7 @@ import { AnimateOnScrollComponent } from '../../directives/animate-on-scroll.com
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll.directive';
 
 @Component({
-  selector: 'app-home',
+  selector: 'pg-home',
   standalone: true,
   imports: [CommonModule, FontAwesomeModule, AnimateOnScrollComponent, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -319,3 +319,6 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
+
+
+

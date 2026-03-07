@@ -1,28 +1,34 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WaterfallChartPlaygroundComponent } from './components/waterfall-chart-playground/waterfall-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/waterfall-chart-playground/waterfall-chart-playground.component';
+
 @Component({
-  selector: 'app-waterfall-chart-demo',
+  selector: 'dm-waterfall-chart-demo',
   standalone: true,
-  imports: [CommonModule, WaterfallChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    DmWaterfallChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './waterfall-chart-demo.component.html',
   styleUrl: './waterfall-chart-demo.component.scss',
 })
-export class WaterfallChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'revenue',    name: 'Revenue',    icon: '💰', color: '#10b981' },
-    { id: 'pl',         name: 'P&L',        icon: '📊', color: '#6366f1' },
-    { id: 'budget',     name: 'Budget',     icon: '💼', color: '#f59e0b' },
+export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'revenue', title: 'Revenue', icon: '💰', color: '#10b981' },
+    { id: 'pl', title: 'P&L Statement', icon: '📊', color: '#6366f1' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   revenueCode = `<!-- Waterfall Chart (floating SVG bars) -->
 <svg width="620" height="340">

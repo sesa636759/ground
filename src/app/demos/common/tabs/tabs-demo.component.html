@@ -1,0 +1,131 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="📑"
+    title="Tabs"
+    description="Organize content into multiple panels, where only one panel is visible at a time. Supports multiple visual variants, orientations, and responsive scrollable headers."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-tabs-playground></dm-tabs-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Visual Variants -->
+          <section class="demo-section" id="styles" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🎨 Visual Variants</h2>
+              <p>Choose the presentation style that matches your application's design system.</p>
+            </div>
+            <div class="demo-card">
+              <div class="tab-preview-box">
+                <span>Pills Variant:</span>
+                <ui-tabs variant="pills">
+                  <ui-tab label="Analytics" icon="📈"></ui-tab>
+                  <ui-tab label="Reports" icon="📑"></ui-tab>
+                  <ui-tab label="Logs" icon="📜"></ui-tab>
+                </ui-tabs>
+              </div>
+              <div class="tab-preview-box">
+                <span>Underline Variant:</span>
+                <ui-tabs variant="underline">
+                  <ui-tab label="Overview"></ui-tab>
+                  <ui-tab label="Advanced"></ui-tab>
+                  <ui-tab label="Dev Tools"></ui-tab>
+                </ui-tabs>
+              </div>
+              <div class="tab-preview-box">
+                <span>Enclosed Variant:</span>
+                <ui-tabs variant="enclosed">
+                  <ui-tab label="Code"></ui-tab>
+                  <ui-tab label="Preview"></ui-tab>
+                </ui-tabs>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="stylesCode"
+              [label]="'Design Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Orientations & Layouts -->
+          <section class="demo-section" id="layouts">
+            <div class="section-header">
+              <h2>📐 Orientations & Layouts</h2>
+              <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
+            </div>
+            <div class="demo-card">
+              <div class="tab-preview-box" style="display: flex; flex-direction: column; gap: 20px">
+                <span>Vertical Orientation:</span>
+                <ui-tabs orientation="vertical">
+                  <ui-tab label="Inbox" icon="📥"></ui-tab>
+                  <ui-tab label="Sent" icon="📤"></ui-tab>
+                  <ui-tab label="Spam" icon="🚫"></ui-tab>
+                </ui-tabs>
+              </div>
+              <div class="tab-preview-box">
+                <span>Center Alignment:</span>
+                <ui-tabs align="center">
+                  <ui-tab label="Feed"></ui-tab>
+                  <ui-tab label="Groups"></ui-tab>
+                  <ui-tab label="Events"></ui-tab>
+                </ui-tabs>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="layoutsCode"
+              [label]="'Layout Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Tab Stack -->
+          <section class="demo-section" id="tab-stack">
+            <div class="section-header">
+              <h2>📚 Advanced Tab Stack</h2>
+              <p>
+                Enhanced tabs with closable, draggable, and dynamic features for advanced use cases.
+              </p>
+            </div>
+            <div class="demo-card">
+              <div class="tab-preview-box">
+                <span>Tab Stack with Multiple Features:</span>
+                <app-tab-stack active-tab="t1" variant="pills">
+                  <app-tab label="Dashboard" value="t1" icon="fas fa-home">
+                    <div style="padding: 20px">Dashboard content</div>
+                  </app-tab>
+                  <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
+                    <div style="padding: 20px">Analytics content</div>
+                  </app-tab>
+                  <app-tab label="Settings" value="t3" icon="fas fa-cog">
+                    <div style="padding: 20px">Settings content</div>
+                  </app-tab>
+                </app-tab-stack>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="tabStackCode"
+              [label]="'Tab Stack Example'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="tabs"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

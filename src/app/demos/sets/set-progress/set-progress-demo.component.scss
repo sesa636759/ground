@@ -1,0 +1,19 @@
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.interactive-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-bg-tertiary);
+  padding: 12px 20px;
+  border-radius: 8px;
+
+  label {
+    font-weight: 600;
+    min-width: 120px;
+  }
+}

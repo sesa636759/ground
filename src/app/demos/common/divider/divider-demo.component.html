@@ -1,0 +1,123 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="➖"
+    title="Divider Component"
+    description="A visual separator between content sections with support for text, icons, vertical orientation, and decorative shapes."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-divider-playground></dm-divider-playground>
+    </div>
+
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Line Variants -->
+        <pg-example-section
+          id="variants"
+          title="Line Variants"
+          description="Visual styles for various levels of separation"
+          [code]="variantsCode"
+          style="margin-top: 0"
+        >
+          <div class="demo-card">
+            <div class="preview-box">
+              <div class="text-group">
+                <span>Solid (Default)</span>
+                <ui-divider variant="solid"></ui-divider>
+              </div>
+              <div class="text-group">
+                <span>Dashed</span>
+                <ui-divider variant="dashed"></ui-divider>
+              </div>
+              <div class="text-group">
+                <span>Dotted</span>
+                <ui-divider variant="dotted"></ui-divider>
+              </div>
+              <div class="text-group">
+                <span>Gradient</span>
+                <ui-divider
+                  variant="gradient"
+                  color="linear-gradient(to right, #8b5cf6, #ec4899)"
+                ></ui-divider>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Text & Content -->
+        <pg-example-section
+          id="text-content"
+          title="Text & Content"
+          description="Add labels, icons, or badges to your separators"
+          [code]="textContentCode"
+        >
+          <div class="demo-card">
+            <div class="preview-box">
+              <ui-divider text="OR"></ui-divider>
+              <ui-divider text="SEE MORE" text-align="left" text-transform="uppercase"></ui-divider>
+              <ui-divider icon="⭐" variant="dashed" size="lg"></ui-divider>
+              <ui-divider badge="NEW" color="primary"></ui-divider>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Vertical Orientation -->
+        <pg-example-section
+          id="vertical"
+          title="Vertical Orientation"
+          description="Separate content horizontally"
+          [code]="verticalCode"
+        >
+          <div class="demo-card">
+            <div
+              class="preview-box"
+              style="
+                flex-direction: row;
+                height: 100px;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <span>Left Panel</span>
+              <ui-divider orientation="vertical" gap="2rem"></ui-divider>
+              <span>Middle Panel</span>
+              <ui-divider orientation="vertical" variant="dashed" gap="2rem"></ui-divider>
+              <span>Right Panel</span>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Decorative Shapes -->
+        <pg-example-section
+          id="shapes"
+          title="Decorative Shapes"
+          description="Use SVG shapes for unique section transitions"
+          [code]="shapesCode"
+        >
+          <div class="demo-card">
+            <div class="preview-box" style="background: #f3f4f6; padding: 0">
+              <div style="height: 100px; background: white; padding: 20px">Top Section</div>
+              <ui-divider shape="wave" shape-color="#f3f4f6"></ui-divider>
+              <div style="height: 100px; padding: 20px">Bottom Section (Grey)</div>
+            </div>
+            <div class="preview-box" style="background: #fef2f2; padding: 0; margin-top: 2rem">
+              <div style="height: 100px; background: #fee2e2; padding: 20px">Section A</div>
+              <ui-divider shape="tilt" shape-color="#fef2f2" style="height: 50px"></ui-divider>
+              <div style="height: 100px; padding: 20px">Section B</div>
+            </div>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="divider"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

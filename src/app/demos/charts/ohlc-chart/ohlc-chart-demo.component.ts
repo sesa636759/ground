@@ -1,28 +1,35 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OhlcChartPlaygroundComponent } from './components/ohlc-chart-playground/ohlc-chart-playground.component';
+import { DmOhlcChartPlaygroundComponent } from '../../../playground/charts/ohlc-chart-playground/ohlc-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
+
 @Component({
-  selector: 'app-ohlc-chart-demo',
+  selector: 'dm-ohlc-chart-demo',
   standalone: true,
-  imports: [CommonModule, OhlcChartPlaygroundComponent, DemoTabsComponent, DemoSidebarComponent, ComponentDocumentationComponent, DemoHeaderComponent],
+  imports: [
+    CommonModule,
+    DmOhlcChartPlaygroundComponent,
+    DemoTabsComponent,
+    DemoSidebarComponent,
+    ComponentDocumentationComponent,
+    DemoHeaderComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './ohlc-chart-demo.component.html',
   styleUrl: './ohlc-chart-demo.component.scss',
 })
-export class OhlcChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic',      name: 'Basic OHLC', icon: '📊', color: '#6366f1' },
-    { id: 'withma',     name: 'With MA',    icon: '📉', color: '#0ea5e9' },
-    { id: 'weekly',     name: 'Weekly',     icon: '📅', color: '#10b981' },
+export class DmOhlcChartDemoComponent extends BaseDemoComponent {
+  exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
+    { id: 'withma', title: 'With MA', icon: '📉', color: '#0ea5e9' },
+    { id: 'weekly', title: 'Weekly', icon: '📅', color: '#10b981' },
   ];
-
-  get exampleVariants() { return this.variants.filter(v => v.id !== 'playground'); }
 
   basicCode = `<!-- OHLC Chart (SVG) — Open/High/Low/Close bars -->
 <svg width="620" height="340">

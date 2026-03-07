@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeSettingsSectionComponent } from './sections/theme-settings.component';
 import { ProfileSettingsSectionComponent } from './sections/profile-settings.component';
@@ -7,7 +7,7 @@ import { SecuritySettingsSectionComponent } from './sections/security-settings.c
 import { PreferencesSettingsSectionComponent } from './sections/preferences-settings.component';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'pg-settings',
   standalone: true,
   imports: [
     CommonModule,
@@ -42,3 +42,6 @@ export class SettingsComponent {
     },
   ];
 }
+
+
+

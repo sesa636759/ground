@@ -1,0 +1,15 @@
+@use '../../../../styles/playground-base.scss';
+
+.playground-controls {
+  max-width: 450px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  ui-button {
+    flex: 1;
+  }
+}

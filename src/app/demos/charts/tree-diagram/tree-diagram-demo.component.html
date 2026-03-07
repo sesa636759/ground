@@ -1,86 +1,229 @@
-<div class="demo-container">
-  <app-demo-header
+﻿<div class="demo-container">
+  <pg-demo-header
     icon="🌳"
     title="Tree Diagram"
     description="Hierarchical node-link diagram for visualizing tree structures such as org charts, file systems, decision trees, and taxonomy hierarchies with customizable orientations and layouts."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
-      <app-tree-diagram-playground></app-tree-diagram-playground>
+      <dm-tree-diagram-playground></dm-tree-diagram-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-
           <section class="demo-section" id="org" style="margin-top: 0">
             <div class="section-header">
               <h2>🏢 Org Chart</h2>
               <p>Organizational hierarchy showing reporting structure from CEO to team members.</p>
             </div>
-            <div class="demo-card" style="overflow-x:auto;padding:16px">
-              <svg width="620" height="400" style="display:block;min-width:580px;margin:0 auto">
+            <div class="demo-card" style="overflow-x: auto; padding: 16px">
+              <svg
+                width="620"
+                height="400"
+                style="display: block; min-width: 580px; margin: 0 auto"
+              >
                 <!-- Edges -->
-                <path d="M310,60 C310,90 180,90 180,120" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
-                <path d="M310,60 C310,90 310,90 310,120" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
-                <path d="M310,60 C310,90 440,90 440,120" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
-                <path d="M180,152 C180,185 110,185 110,215" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M180,152 C180,185 250,185 250,215" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M440,152 C440,185 380,185 380,215" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M440,152 C440,185 500,185 500,215" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M310,152 C310,185 310,185 310,215" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
+                <path
+                  d="M310,60 C310,90 180,90 180,120"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M310,60 C310,90 310,90 310,120"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M310,60 C310,90 440,90 440,120"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M180,152 C180,185 110,185 110,215"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M180,152 C180,185 250,185 250,215"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M440,152 C440,185 380,185 380,215"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M440,152 C440,185 500,185 500,215"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M310,152 C310,185 310,185 310,215"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
 
                 <!-- Leaf edges -->
-                <path d="M110,247 C110,280 70,280 70,310" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
-                <path d="M110,247 C110,280 150,280 150,310" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
-                <path d="M250,247 C250,280 210,280 210,310" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
-                <path d="M250,247 C250,280 290,280 290,310" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
+                <path
+                  d="M110,247 C110,280 70,280 70,310"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M110,247 C110,280 150,280 150,310"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M250,247 C250,280 210,280 210,310"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M250,247 C250,280 290,280 290,310"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
 
                 <!-- CEO -->
-                <circle cx="310" cy="36" r="28" fill="#6366f1"/>
-                <text x="310" y="31" text-anchor="middle" fill="white" font-size="10" font-weight="700">CEO</text>
-                <text x="310" y="44" text-anchor="middle" fill="#c7d2fe" font-size="9">Sarah K.</text>
+                <circle cx="310" cy="36" r="28" fill="#6366f1" />
+                <text
+                  x="310"
+                  y="31"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="10"
+                  font-weight="700"
+                >
+                  CEO
+                </text>
+                <text x="310" y="44" text-anchor="middle" fill="#c7d2fe" font-size="9">
+                  Sarah K.
+                </text>
 
                 <!-- Level 2 -->
-                <circle cx="180" cy="136" r="24" fill="#0ea5e9"/>
-                <text x="180" y="131" text-anchor="middle" fill="white" font-size="10" font-weight="700">CTO</text>
-                <text x="180" y="143" text-anchor="middle" fill="#bae6fd" font-size="9">Mike R.</text>
+                <circle cx="180" cy="136" r="24" fill="#0ea5e9" />
+                <text
+                  x="180"
+                  y="131"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="10"
+                  font-weight="700"
+                >
+                  CTO
+                </text>
+                <text x="180" y="143" text-anchor="middle" fill="#bae6fd" font-size="9">
+                  Mike R.
+                </text>
 
-                <circle cx="310" cy="136" r="24" fill="#10b981"/>
-                <text x="310" y="131" text-anchor="middle" fill="white" font-size="10" font-weight="700">CFO</text>
-                <text x="310" y="143" text-anchor="middle" fill="#a7f3d0" font-size="9">Lisa M.</text>
+                <circle cx="310" cy="136" r="24" fill="#10b981" />
+                <text
+                  x="310"
+                  y="131"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="10"
+                  font-weight="700"
+                >
+                  CFO
+                </text>
+                <text x="310" y="143" text-anchor="middle" fill="#a7f3d0" font-size="9">
+                  Lisa M.
+                </text>
 
-                <circle cx="440" cy="136" r="24" fill="#8b5cf6"/>
-                <text x="440" y="131" text-anchor="middle" fill="white" font-size="10" font-weight="700">CPO</text>
-                <text x="440" y="143" text-anchor="middle" fill="#ddd6fe" font-size="9">Tom W.</text>
+                <circle cx="440" cy="136" r="24" fill="#8b5cf6" />
+                <text
+                  x="440"
+                  y="131"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="10"
+                  font-weight="700"
+                >
+                  CPO
+                </text>
+                <text x="440" y="143" text-anchor="middle" fill="#ddd6fe" font-size="9">
+                  Tom W.
+                </text>
 
                 <!-- Level 3 -->
-                <circle cx="110" cy="231" r="20" fill="#0ea5e9" opacity="0.8"/>
-                <text x="110" y="228" text-anchor="middle" fill="white" font-size="9" font-weight="600">Eng Lead</text>
+                <circle cx="110" cy="231" r="20" fill="#0ea5e9" opacity="0.8" />
+                <text
+                  x="110"
+                  y="228"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  Eng Lead
+                </text>
                 <text x="110" y="239" text-anchor="middle" fill="white" font-size="8">Alex</text>
 
-                <circle cx="250" cy="231" r="20" fill="#0ea5e9" opacity="0.8"/>
-                <text x="250" y="228" text-anchor="middle" fill="white" font-size="9" font-weight="600">DevOps</text>
+                <circle cx="250" cy="231" r="20" fill="#0ea5e9" opacity="0.8" />
+                <text
+                  x="250"
+                  y="228"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  DevOps
+                </text>
                 <text x="250" y="239" text-anchor="middle" fill="white" font-size="8">Sam</text>
 
-                <circle cx="380" cy="231" r="20" fill="#8b5cf6" opacity="0.8"/>
-                <text x="380" y="228" text-anchor="middle" fill="white" font-size="9" font-weight="600">Design</text>
+                <circle cx="380" cy="231" r="20" fill="#8b5cf6" opacity="0.8" />
+                <text
+                  x="380"
+                  y="228"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  Design
+                </text>
                 <text x="380" y="239" text-anchor="middle" fill="white" font-size="8">Nina</text>
 
-                <circle cx="500" cy="231" r="20" fill="#8b5cf6" opacity="0.8"/>
-                <text x="500" y="228" text-anchor="middle" fill="white" font-size="9" font-weight="600">PM</text>
+                <circle cx="500" cy="231" r="20" fill="#8b5cf6" opacity="0.8" />
+                <text
+                  x="500"
+                  y="228"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="9"
+                  font-weight="600"
+                >
+                  PM
+                </text>
                 <text x="500" y="239" text-anchor="middle" fill="white" font-size="8">Chris</text>
 
                 <!-- Level 4 (leaves) -->
-                <circle cx="70"  cy="325" r="16" fill="#e0e7ff"/>
-                <text x="70"  y="329" text-anchor="middle" font-size="9" fill="#4338ca">Dev 1</text>
-                <circle cx="150" cy="325" r="16" fill="#e0e7ff"/>
+                <circle cx="70" cy="325" r="16" fill="#e0e7ff" />
+                <text x="70" y="329" text-anchor="middle" font-size="9" fill="#4338ca">Dev 1</text>
+                <circle cx="150" cy="325" r="16" fill="#e0e7ff" />
                 <text x="150" y="329" text-anchor="middle" font-size="9" fill="#4338ca">Dev 2</text>
-                <circle cx="210" cy="325" r="16" fill="#e0f2fe"/>
+                <circle cx="210" cy="325" r="16" fill="#e0f2fe" />
                 <text x="210" y="329" text-anchor="middle" font-size="9" fill="#0369a1">Infra</text>
-                <circle cx="290" cy="325" r="16" fill="#e0f2fe"/>
+                <circle cx="290" cy="325" r="16" fill="#e0f2fe" />
                 <text x="290" y="329" text-anchor="middle" font-size="9" fill="#0369a1">Cloud</text>
               </svg>
             </div>
@@ -97,48 +240,124 @@
               <h2>📁 File System Tree</h2>
               <p>Represent directory and file hierarchies in a top-down tree layout.</p>
             </div>
-            <div class="demo-card" style="overflow-x:auto;padding:16px">
-              <svg width="620" height="360" style="display:block;min-width:580px;margin:0 auto">
+            <div class="demo-card" style="overflow-x: auto; padding: 16px">
+              <svg
+                width="620"
+                height="360"
+                style="display: block; min-width: 580px; margin: 0 auto"
+              >
                 <!-- Root edges -->
-                <path d="M310,48 C310,80 180,80 180,100" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
-                <path d="M310,48 C310,80 310,80 310,100" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
-                <path d="M310,48 C310,80 440,80 440,100" fill="none" stroke="#c7d2fe" stroke-width="1.5"/>
+                <path
+                  d="M310,48 C310,80 180,80 180,100"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M310,48 C310,80 310,80 310,100"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M310,48 C310,80 440,80 440,100"
+                  fill="none"
+                  stroke="#c7d2fe"
+                  stroke-width="1.5"
+                />
                 <!-- Sub edges -->
-                <path d="M180,128 C180,160 130,160 130,180" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M180,128 C180,160 230,160 230,180" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M440,128 C440,160 390,160 390,180" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
-                <path d="M440,128 C440,160 490,160 490,180" fill="none" stroke="#bfdbfe" stroke-width="1.5"/>
+                <path
+                  d="M180,128 C180,160 130,160 130,180"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M180,128 C180,160 230,160 230,180"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M440,128 C440,160 390,160 390,180"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M440,128 C440,160 490,160 490,180"
+                  fill="none"
+                  stroke="#bfdbfe"
+                  stroke-width="1.5"
+                />
                 <!-- Leaf edges -->
-                <path d="M130,208 C130,240 100,240 100,260" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
-                <path d="M130,208 C130,240 160,240 160,260" fill="none" stroke="#ddd6fe" stroke-width="1.5"/>
+                <path
+                  d="M130,208 C130,240 100,240 100,260"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M130,208 C130,240 160,240 160,260"
+                  fill="none"
+                  stroke="#ddd6fe"
+                  stroke-width="1.5"
+                />
 
                 <!-- Root -->
-                <rect x="276" y="16" width="68" height="32" rx="8" fill="#6366f1"/>
-                <text x="310" y="36" text-anchor="middle" fill="white" font-size="11" font-weight="700">📁 src/</text>
+                <rect x="276" y="16" width="68" height="32" rx="8" fill="#6366f1" />
+                <text
+                  x="310"
+                  y="36"
+                  text-anchor="middle"
+                  fill="white"
+                  font-size="11"
+                  font-weight="700"
+                >
+                  📁 src/
+                </text>
 
                 <!-- L2 -->
-                <rect x="146" y="100" width="68" height="28" rx="6" fill="#0ea5e9"/>
-                <text x="180" y="118" text-anchor="middle" fill="white" font-size="11">📁 app/</text>
-                <rect x="276" y="100" width="68" height="28" rx="6" fill="#10b981"/>
-                <text x="310" y="118" text-anchor="middle" fill="white" font-size="11">📁 assets/</text>
-                <rect x="406" y="100" width="68" height="28" rx="6" fill="#8b5cf6"/>
-                <text x="440" y="118" text-anchor="middle" fill="white" font-size="11">📁 styles/</text>
+                <rect x="146" y="100" width="68" height="28" rx="6" fill="#0ea5e9" />
+                <text x="180" y="118" text-anchor="middle" fill="white" font-size="11">
+                  📁 app/
+                </text>
+                <rect x="276" y="100" width="68" height="28" rx="6" fill="#10b981" />
+                <text x="310" y="118" text-anchor="middle" fill="white" font-size="11">
+                  📁 assets/
+                </text>
+                <rect x="406" y="100" width="68" height="28" rx="6" fill="#8b5cf6" />
+                <text x="440" y="118" text-anchor="middle" fill="white" font-size="11">
+                  📁 styles/
+                </text>
 
                 <!-- L3 -->
-                <rect x="96" y="180" width="68" height="28" rx="6" fill="#0ea5e9" opacity="0.8"/>
-                <text x="130" y="198" text-anchor="middle" fill="white" font-size="10">📁 demos/</text>
-                <rect x="196" y="180" width="68" height="28" rx="6" fill="#0ea5e9" opacity="0.8"/>
-                <text x="230" y="198" text-anchor="middle" fill="white" font-size="10">📁 shared/</text>
-                <rect x="356" y="180" width="68" height="28" rx="6" fill="#8b5cf6" opacity="0.8"/>
-                <text x="390" y="198" text-anchor="middle" fill="white" font-size="10">📄 app.ts</text>
-                <rect x="456" y="180" width="68" height="28" rx="6" fill="#8b5cf6" opacity="0.8"/>
-                <text x="490" y="198" text-anchor="middle" fill="white" font-size="10">📄 *.scss</text>
+                <rect x="96" y="180" width="68" height="28" rx="6" fill="#0ea5e9" opacity="0.8" />
+                <text x="130" y="198" text-anchor="middle" fill="white" font-size="10">
+                  📁 demos/
+                </text>
+                <rect x="196" y="180" width="68" height="28" rx="6" fill="#0ea5e9" opacity="0.8" />
+                <text x="230" y="198" text-anchor="middle" fill="white" font-size="10">
+                  📁 shared/
+                </text>
+                <rect x="356" y="180" width="68" height="28" rx="6" fill="#8b5cf6" opacity="0.8" />
+                <text x="390" y="198" text-anchor="middle" fill="white" font-size="10">
+                  📄 app.ts
+                </text>
+                <rect x="456" y="180" width="68" height="28" rx="6" fill="#8b5cf6" opacity="0.8" />
+                <text x="490" y="198" text-anchor="middle" fill="white" font-size="10">
+                  📄 *.scss
+                </text>
 
                 <!-- L4 leaves -->
-                <rect x="66"  y="260" width="68" height="28" rx="5" fill="#e0e7ff"/>
-                <text x="100" y="278" text-anchor="middle" font-size="10" fill="#4338ca">📁 charts/</text>
-                <rect x="126" y="260" width="68" height="28" rx="5" fill="#e0e7ff"/>
-                <text x="160" y="278" text-anchor="middle" font-size="10" fill="#4338ca">📁 forms/</text>
+                <rect x="66" y="260" width="68" height="28" rx="5" fill="#e0e7ff" />
+                <text x="100" y="278" text-anchor="middle" font-size="10" fill="#4338ca">
+                  📁 charts/
+                </text>
+                <rect x="126" y="260" width="68" height="28" rx="5" fill="#e0e7ff" />
+                <text x="160" y="278" text-anchor="middle" font-size="10" fill="#4338ca">
+                  📁 forms/
+                </text>
               </svg>
             </div>
             <ui-code-preview
@@ -148,13 +367,13 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="tree-diagram"></app-component-documentation>
+      <pg-component-documentation componentId="tree-diagram"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>
+

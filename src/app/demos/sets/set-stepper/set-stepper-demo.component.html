@@ -1,0 +1,389 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🪜"
+    title="Stepper Component"
+    description="A versatile stepper component for multi-step workflows with horizontal and vertical orientations, customizable connectors, and rich theming options."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-stepper-playground></dm-stepper-playground>
+    </div>
+
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Horizontal -->
+        <pg-example-section
+          id="horizontal"
+          title="Horizontal Modes"
+          description="Basic horizontal stepper with various label positions"
+          [code]="horizontalBasicCode"
+          style="margin-top: 0"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Standard Labels</h3>
+              <app-stepper-container
+                mode="horizontal"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Bottom Labels</h3>
+              <app-stepper-container
+                mode="horizontal"
+                label-position="bottom"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Top Labels</h3>
+              <app-stepper-container
+                mode="horizontal"
+                label-position="top"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Vertical -->
+        <pg-example-section
+          id="vertical"
+          title="Vertical Modes"
+          description="Basic vertical stepper with different description placements"
+          [code]="verticalBasicCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Right Descriptions</h3>
+              <div style="min-height: 250px">
+                <app-stepper-container
+                  mode="vertical"
+                  description-position="right"
+                  active-step="2"
+                  [steps]="verticalSteps"
+                ></app-stepper-container>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h3>Left Descriptions</h3>
+              <div style="min-height: 250px">
+                <app-stepper-container
+                  mode="vertical"
+                  description-position="left"
+                  active-step="2"
+                  [steps]="verticalSteps"
+                ></app-stepper-container>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Labels -->
+        <pg-example-section
+          id="labels"
+          title="Label Placement"
+          description="Advanced label positioning including alternating modes"
+          [code]="labelPlacementCode"
+        >
+          <div class="demo-card">
+            <h3>Alternating Labels</h3>
+            <app-stepper-container
+              mode="horizontal"
+              label-position="alternate"
+              active-step="1"
+              [steps]="horizontalSteps"
+            ></app-stepper-container>
+          </div>
+        </pg-example-section>
+
+        <!-- Descriptions -->
+        <pg-example-section
+          id="descriptions"
+          title="Description Placement"
+          description="Configuring how step descriptions are displayed"
+          [code]="descriptionPlacementCode"
+        >
+          <div class="demo-card">
+            <h3>Alternating Descriptions (Vertical)</h3>
+            <div style="min-height: 250px">
+              <app-stepper-container
+                mode="vertical"
+                description-position="alternate"
+                active-step="2"
+                [steps]="verticalSteps"
+              ></app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Content & Navigation -->
+        <pg-example-section
+          id="content"
+          title="Content & Navigation"
+          description="Stepper with integrated content areas and navigation controls"
+          [code]="contentNavigationCode"
+        >
+          <div class="demo-card">
+            <app-stepper-container
+              mode="horizontal"
+              show-content-area="true"
+              show-navigation="true"
+              active-step="0"
+              [steps]="threeSteps"
+            >
+              <div slot="step-0" class="step-content-box">
+                <h4>Step 1: Account Setup</h4>
+                <p>Configure your basic account information.</p>
+              </div>
+              <div slot="step-1" class="step-content-box">
+                <h4>Step 2: Profile Details</h4>
+                <p>Add personal information and preferences.</p>
+              </div>
+              <div slot="step-2" class="step-content-box">
+                <h4>Step 3: Verification</h4>
+                <p>Review and submit your application.</p>
+              </div>
+            </app-stepper-container>
+          </div>
+        </pg-example-section>
+
+        <!-- Step Counts -->
+        <pg-example-section
+          id="steps-count"
+          title="Sizing & Counts"
+          description="Demonstrating different numbers of steps"
+          [code]="stepsCountCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>3 Steps</h3>
+              <app-stepper-container
+                mode="horizontal"
+                active-step="1"
+                [steps]="threeSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>5 Steps</h3>
+              <app-stepper-container
+                mode="horizontal"
+                active-step="2"
+                [steps]="fiveSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>7 Steps</h3>
+              <app-stepper-container
+                mode="horizontal"
+                active-step="3"
+                [steps]="sevenSteps"
+              ></app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Connectors -->
+        <pg-example-section
+          id="connectors"
+          title="Custom Connectors"
+          description="Fine-grained control over the lines between steps"
+          [code]="connectorCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Wide Flex Connector</h3>
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
+                <app-step-connector
+                  slot="connector-0-1"
+                  mode="horizontal"
+                  flex="2"
+                ></app-step-connector>
+              </app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Fixed Width Connector</h3>
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
+                <app-step-connector
+                  slot="connector-0-1"
+                  mode="horizontal"
+                  width="150px"
+                ></app-step-connector>
+              </app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Thick Accent Connector</h3>
+              <app-stepper-container mode="horizontal" active-step="1" [steps]="horizontalSteps">
+                <app-step-connector
+                  slot="connector-0-1"
+                  mode="horizontal"
+                  height="6px"
+                  min-width="100px"
+                ></app-step-connector>
+              </app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Variants -->
+        <pg-example-section
+          id="variants"
+          title="Visual Variants"
+          description="Different visual representations of the steps"
+          [code]="variantCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Snack Variant</h3>
+              <app-stepper-container
+                variant="snack"
+                active-step="2"
+                [steps]="fiveSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Compact Variant</h3>
+              <app-stepper-container
+                variant="compact"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Outlined Style</h3>
+              <app-stepper-container
+                variant="outlined"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Filled Style</h3>
+              <app-stepper-container
+                variant="filled"
+                active-step="1"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Colors -->
+        <pg-example-section
+          id="colors"
+          title="Color Schemes"
+          description="Built-in semantic color schemes"
+          [code]="colorSchemeCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Success Scheme</h3>
+              <app-stepper-container
+                color-scheme="success"
+                active-step="2"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Warning Scheme</h3>
+              <app-stepper-container
+                color-scheme="warning"
+                active-step="2"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+            <div class="demo-card">
+              <h3>Danger Scheme</h3>
+              <app-stepper-container
+                color-scheme="danger"
+                active-step="2"
+                [steps]="horizontalSteps"
+              ></app-stepper-container>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Large Scale -->
+        <pg-example-section
+          id="scrolling"
+          title="Large Scale Scrolling"
+          description="Handling many steps with scrollable containers"
+          [code]="scrollableCode"
+        >
+          <div class="demo-card">
+            <h3>20 Steps Scrollable</h3>
+            <app-stepper-container
+              variant="compact"
+              scrollable="true"
+              active-step="8"
+              [steps]="twentySteps"
+            ></app-stepper-container>
+          </div>
+        </pg-example-section>
+
+        <!-- Interactive Demo -->
+        <pg-example-section
+          id="interactive"
+          title="Interactive Large Scale"
+          description="A real-world scenario with 25 clickable steps"
+          [code]="interactiveCode"
+        >
+          <div class="demo-card">
+            <app-stepper-container
+              variant="snack"
+              clickable="true"
+              show-progress="true"
+              [active-step]="currentStep25"
+              [steps]="generate25Steps()"
+            ></app-stepper-container>
+
+            <div
+              class="interactive-controls"
+              style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: center"
+            >
+              <ui-button
+                (click)="previousStep25()"
+                [disabled]="currentStep25 === 0"
+                label="← Previous"
+              ></ui-button>
+              <ui-button
+                (click)="nextStep25()"
+                [disabled]="currentStep25 === 24"
+                label="Next →"
+              ></ui-button>
+              <ui-button (click)="jumpToEnd25()" variant="outline" label="Jump to End"></ui-button>
+            </div>
+            <p style="margin-top: 1rem; text-align: center; color: var(--text-secondary)">
+              Step {{ currentStep25 + 1 }} of 25
+            </p>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <!-- Docs Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="stepper"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+
+<style>
+  .step-content-box {
+    padding: 1.5rem;
+    background: var(--surface-variant);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+  }
+</style>
+

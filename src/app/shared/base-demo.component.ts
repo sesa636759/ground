@@ -1,8 +1,9 @@
-export interface DemoVariant {
+﻿export interface DemoVariant {
   id: string;
   title: string;
   icon?: string;
   description?: string;
+  iconLibrary?: string;
 }
 
 export abstract class BaseDemoComponent {
@@ -22,7 +23,11 @@ export abstract class BaseDemoComponent {
         label: v.title,
         target: v.id,
         icon: v.icon,
+        iconLibrary: v.iconLibrary,
       })),
     );
   }
 }
+
+
+

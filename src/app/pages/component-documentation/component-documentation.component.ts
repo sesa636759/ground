@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   OnInit,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -21,7 +21,7 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  selector: 'app-component-documentation',
+  selector: 'pg-component-documentation',
   standalone: true,
   imports: [CommonModule, DemoSidebarComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,0 +1,407 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🔀"
+    title="Splitter Component"
+    description="Resizable split panels with support for horizontal/vertical layouts, nested splitters, collapsible panels, and state persistence."
+  >
+  </pg-demo-header>
+
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar
+        [variants]="exampleVariants"
+        scrollContainer="#examples-scroll-area"
+      ></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <pg-example-section
+          id="horizontal-basic"
+          title="Horizontal Basic"
+          description="Default horizontal split with resizable panels."
+          [code]="horizontalBasicCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal">
+              <div slot="panel-0" class="p-content">
+                <strong>Left Panel</strong>
+                <p>Drag the gutter to resize.</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Right Panel</strong>
+                <p>Adjusts automatically.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="vertical-basic"
+          title="Vertical Basic"
+          description="Vertical split layout for stacking content."
+          [code]="verticalBasicCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="vertical">
+              <div slot="panel-0" class="p-content">
+                <strong>Top Panel</strong>
+                <p>Drag vertically to resize.</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Bottom Panel</strong>
+                <p>Bottom content area.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="two-panels"
+          title="Two Panels"
+          description="Standard two-panel layout with constraints."
+          [code]="twoPanelsCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="basicPanels">
+              <div slot="panel-0" class="p-content">
+                <strong>Panel 1</strong>
+                <p>Min: 20%, Max: 80%</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Panel 2</strong>
+                <p>Min: 20%, Max: 80%</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="three-panels"
+          title="Three Panels"
+          description="Three-column layout with multiple gutters."
+          [code]="threePanelsCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="threePanels">
+              <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="four-panels"
+          title="Four Panels"
+          description="Four-column layout for complex interfaces."
+          [code]="fourPanelsCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="fourPanels">
+              <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+              <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
+              <div slot="panel-3" class="p-content"><strong>Panel 4</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="custom-sizes"
+          title="Custom Panel Sizes"
+          description="Panels with predefined initial sizes (30% / 70%)."
+          [code]="customSizesCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="customSizePanels">
+              <div slot="panel-0" class="p-content">
+                <strong>30% Panel</strong>
+                <p>Starts at 30% width.</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>70% Panel</strong>
+                <p>Starts at 70% width.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="equal-sizes"
+          title="Equal Panel Sizes"
+          description="Three panels with equal distribution (33.33% each)."
+          [code]="equalSizeCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="equalSizePanels">
+              <div slot="panel-0" class="p-content"><strong>33.33%</strong></div>
+              <div slot="panel-1" class="p-content"><strong>33.33%</strong></div>
+              <div slot="panel-2" class="p-content"><strong>33.34%</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="min-max-constraints"
+          title="Min/Max Constraints"
+          description="Panel constrained between 20% and 40% width."
+          [code]="minMaxConstraintsCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="constraintsPanels">
+              <div slot="panel-0" class="p-content">
+                <strong>Min: 20%, Max: 40%</strong>
+                <p>Cannot resize beyond these limits.</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Flexible Panel</strong>
+                <p>Fills remaining space.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="collapsible-panels"
+          title="Collapsible Panels"
+          description="Panel that can collapse to minimum size."
+          [code]="collapsiblePanelsCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="collapsiblePanels">
+              <div slot="panel-0" class="p-content">
+                <strong>Collapsible Sidebar</strong>
+                <p>Click collapse button to hide.</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Main Content</strong>
+                <p>Expands when sidebar collapses.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="double-click-collapse"
+          title="Double-Click Collapse"
+          description="Double-click the gutter to collapse/expand."
+          [code]="doubleClickCollapseCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
+              <div slot="panel-0" class="p-content">
+                <strong>Double-click gutter</strong>
+                <p>Quick collapse/expand.</p>
+              </div>
+              <div slot="panel-1" class="p-content"><strong>Main Content</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="snap-threshold"
+          title="Snap to Threshold"
+          description="Panels snap to min/max values when close (20px threshold)."
+          [code]="snapThresholdCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
+              <div slot="panel-0" class="p-content">
+                <strong>Snap Enabled</strong>
+                <p>Try resizing near boundaries.</p>
+              </div>
+              <div slot="panel-1" class="p-content"><strong>Content Panel</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="persist-state"
+          title="Persistent State"
+          description="Panel sizes saved to localStorage and restored on refresh."
+          [code]="persistStateCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
+              <div slot="panel-0" class="p-content">
+                <strong>Persistent Layout</strong>
+                <p>Resize and refresh the page!</p>
+              </div>
+              <div slot="panel-1" class="p-content">
+                <strong>Content Area</strong>
+                <p>Your layout is saved automatically.</p>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="gutter-small"
+          title="Small Gutter (4px)"
+          description="Minimal gutter size for compact layouts."
+          [code]="gutterSmallCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" gutter-size="4">
+              <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="custom-gutter-color"
+          title="Custom Gutter Color"
+          description="Customize gutter appearance with custom color."
+          [code]="customGutterColorCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
+              <div slot="panel-0" class="p-content">
+                <strong>Custom Green Gutter</strong>
+                <p>Hover to see the effect.</p>
+              </div>
+              <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="no-gutter-icon"
+          title="No Gutter Icon"
+          description="Clean look without drag handle icon."
+          [code]="noGutterIconCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" show-gutter-icon="false">
+              <div slot="panel-0" class="p-content"><strong>Clean Look</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Minimalist Panel</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="animated"
+          title="Animated Transitions"
+          description="Smooth animations during resize and collapse."
+          [code]="animatedCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" animated>
+              <div slot="panel-0" class="p-content"><strong>Smooth transitions</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Animated resize</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="rounded-elevated"
+          title="Rounded & Elevated"
+          description="Combined rounded corners and elevation for premium look."
+          [code]="roundedElevatedCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" rounded elevated>
+              <div slot="panel-0" class="p-content"><strong>Premium look</strong></div>
+              <div slot="panel-1" class="p-content"><strong>Beautiful design</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="theme-dark"
+          title="Dark Theme"
+          description="Dark theme with inverted colors."
+          [code]="themeDarkCode()"
+        >
+          <div class="panel-box">
+            <app-splitter direction="horizontal" theme="dark">
+              <div slot="panel-0" class="p-content dark-p"><strong>Dark panel 1</strong></div>
+              <div slot="panel-1" class="p-content dark-p"><strong>Dark panel 2</strong></div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="nested-ide-layout"
+          title="IDE-Style Layout"
+          description="Complex IDE-style layout with four quadrants."
+          [code]="nestedIdeLayoutCode()"
+        >
+          <div class="large-box panel-box">
+            <app-splitter direction="horizontal">
+              <div slot="panel-0" style="height: 100%">
+                <app-splitter direction="vertical" style="height: 100%">
+                  <div slot="panel-0" class="p-content">
+                    <strong>📁 File Explorer</strong>
+                    <p>src/<br />📄 index.ts<br />📄 app.ts</p>
+                  </div>
+                  <div slot="panel-1" class="p-content">
+                    <strong>Outline</strong>
+                    <p>Functions, Classes...</p>
+                  </div>
+                </app-splitter>
+              </div>
+              <div slot="panel-1" style="height: 100%">
+                <app-splitter direction="vertical" style="height: 100%">
+                  <div slot="panel-0" class="p-content">
+                    <strong>Editor</strong>
+                    <div class="code-example">
+                      function hello() {{ '{' }}<br />&nbsp;&nbsp;console.log("Hello");<br />{{
+                        '}'
+                      }}
+                    </div>
+                  </div>
+                  <div slot="panel-1" class="p-content dark-p">
+                    <strong>Terminal</strong>
+                    <p>$ npm run dev</p>
+                  </div>
+                </app-splitter>
+              </div>
+            </app-splitter>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-splitter-playground />
+    </div>
+
+    <!-- Docs Slot -->
+    <div slot="docs">
+      <div class="examples-split-layout">
+        <pg-demo-sidebar
+          [variants]="exampleVariants"
+          scrollContainer="#docs-scroll-area"
+        ></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content" id="docs-scroll-area">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility
+                  guidelines, and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pg-demo-tabs>
+</div>
+

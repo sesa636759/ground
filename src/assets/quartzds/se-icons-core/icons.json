@@ -1,11 +1,11 @@
 {
-    "checked": 61697,
-    "dropdown": 61698,
-    "external-link": 61699,
-    "indeterminate": 61700,
-    "next": 61701,
-    "status-error": 61702,
-    "status-info": 61703,
-    "status-success": 61704,
-    "status-warning": 61705
+  "checked": 61697,
+  "dropdown": 61698,
+  "external-link": 61699,
+  "indeterminate": 61700,
+  "next": 61701,
+  "status-error": 61702,
+  "status-info": 61703,
+  "status-success": 61704,
+  "status-warning": 61705
 }
