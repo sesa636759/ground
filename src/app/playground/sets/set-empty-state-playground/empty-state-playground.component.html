@@ -178,7 +178,7 @@
       border-radius: 12px;
     "
   >
-    <app-empty-state
+    <ui-empty-state
       #emptyStateElement
       [attr.type]="pgConfig.type"
       [attr.variant]="pgConfig.variant"
@@ -199,7 +199,7 @@
       [attr.loading-action]="pgConfig.loadingAction ? 'primary' : null"
       (actionClick)="onActionClick($event)"
       (backClick)="onBackClick($event)"
-    ></app-empty-state>
+    ></ui-empty-state>
   </div>
 
   <div events>

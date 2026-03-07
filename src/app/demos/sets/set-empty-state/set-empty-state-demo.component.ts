@@ -42,66 +42,66 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
   }
 
   typesCode =
-    signal(`<app-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></app-empty-state>
+    signal(`<ui-empty-state type="no-data" title="No Data Available" message="There is no data to display at the moment." primary-action="Add Data"></ui-empty-state>
 
-<app-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters"></app-empty-state>
+<ui-empty-state type="no-results" title="No Results Found" message="We couldn't find any results matching your search." primary-action="Clear Filters"></ui-empty-state>
 
-<app-empty-state type="error" title="Something Went Wrong" message="An error occurred while loading the data." primary-action="Try Again"></app-empty-state>
+<ui-empty-state type="error" title="Something Went Wrong" message="An error occurred while loading the data." primary-action="Try Again"></ui-empty-state>
 
-<app-empty-state type="404" title="Page Not Found" message="The page you are looking for doesn't exist." primary-action="Go Home" show-back-button></app-empty-state>
+<ui-empty-state type="404" title="Page Not Found" message="The page you are looking for doesn't exist." primary-action="Go Home" show-back-button></ui-empty-state>
 
-<app-empty-state type="coming-soon" title="Coming Soon" message="This feature is under development." secondary-action="Notify Me"></app-empty-state>`);
+<ui-empty-state type="coming-soon" title="Coming Soon" message="This feature is under development." secondary-action="Notify Me"></ui-empty-state>`);
 
-  variantsCode = signal(`<app-empty-state variant="default">
+  variantsCode = signal(`<ui-empty-state variant="default">
   <h3>No Data Available</h3>
-</app-empty-state>
+</ui-empty-state>
 
-<app-empty-state variant="outlined">
+<ui-empty-state variant="outlined">
   <h3>No Data Available</h3>
-</app-empty-state>
+</ui-empty-state>
 
-<app-empty-state variant="filled">
+<ui-empty-state variant="filled">
   <h3>No Data Available</h3>
-</app-empty-state>
+</ui-empty-state>
 
-<app-empty-state variant="minimal">
+<ui-empty-state variant="minimal">
   <h3>No Data Available</h3>
-</app-empty-state>`);
+</ui-empty-state>`);
 
   sizesCode =
-    signal(`<app-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
+    signal(`<ui-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></ui-empty-state>
 
-<app-empty-state size="medium" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
+<ui-empty-state size="medium" title="Nothing Here Yet" message="Get started by adding your first item."></ui-empty-state>
 
-<app-empty-state size="large" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>`);
+<ui-empty-state size="large" title="Nothing Here Yet" message="Get started by adding your first item."></ui-empty-state>`);
 
-  alignmentCode = signal(`<app-empty-state align="left" title="Left Aligned"></app-empty-state>
+  alignmentCode = signal(`<ui-empty-state align="left" title="Left Aligned"></ui-empty-state>
 
-<app-empty-state align="center" title="Center Aligned"></app-empty-state>
+<ui-empty-state align="center" title="Center Aligned"></ui-empty-state>
 
-<app-empty-state align="right" title="Right Aligned"></app-empty-state>`);
+<ui-empty-state align="right" title="Right Aligned"></ui-empty-state>`);
 
-  imagesCode = signal(`<app-empty-state 
+  imagesCode = signal(`<ui-empty-state 
   title="Under Construction" 
   message="We're working hard to bring you this feature."
   image-src="/assets/illustrations/coming-soon.png"
   primary-action="Subscribe to Updates"
-></app-empty-state>
+></ui-empty-state>
 
-<app-empty-state 
+<ui-empty-state 
   title="Data Syncing" 
   message="Please wait while we sync your assets across all devices."
   image-src="/assets/illustrations/syncing.png"
   animated
-></app-empty-state>`);
+></ui-empty-state>`);
 
-  suggestionsCode = signal(`<app-empty-state 
+  suggestionsCode = signal(`<ui-empty-state 
   type="no-results" 
   title="No Results Found" 
   message="We couldn't find any results matching your search."
-></app-empty-state>`);
+></ui-empty-state>`);
 
-  actionsCode = signal(`<app-empty-state 
+  actionsCode = signal(`<ui-empty-state 
   type="no-projects" 
   title="No Projects Found" 
   message="You don't have any projects yet."
@@ -109,46 +109,46 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
   primary-action-icon="fas fa-plus"
   secondary-action="Import Project"
   secondary-action-icon="fas fa-file-import"
-></app-empty-state>`);
+></ui-empty-state>`);
 
-  featuresCode = signal(`<app-empty-state 
+  featuresCode = signal(`<ui-empty-state 
   title="Page Not Found"
   rounded
   elevated
   show-back-button
-></app-empty-state>
+></ui-empty-state>
 
-<app-empty-state 
+<ui-empty-state 
   title="No Activity"
   message="New activities will appear here."
   compact
   primary-action="Refresh"
-></app-empty-state>
+></ui-empty-state>
 
-<app-empty-state 
+<ui-empty-state 
   title="Custom Empty State"
   custom-content
 >
   <div slot="custom">
     <p>You can add any custom HTML content here!</p>
   </div>
-</app-empty-state>`);
+</ui-empty-state>`);
 
-  premiumCode = signal(`<app-empty-state 
+  premiumCode = signal(`<ui-empty-state 
   title="Beta Access"
   message="Join the waitlist for exclusive features."
   animated
   glass-morphism
   primary-action="Join Waitlist"
-></app-empty-state>
+></ui-empty-state>
 
-<app-empty-state 
+<ui-empty-state 
   type="celebration" 
   title="Success!"
   message="Your action was completed successfully."
   animated
   primary-action="Continue"
-></app-empty-state>`);
+></ui-empty-state>`);
 
   ngOnInit() {}
 }
