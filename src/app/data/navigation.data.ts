@@ -214,7 +214,7 @@ export const categoryNavItems: NavItem[] = [
       // { id: 'waffle-chart', label: 'Waffle Chart', icon: 'grid-2x2', iconLibrary: 'lucide' },
       // { id: 'chart', label: 'Charts', icon: 'bar-chart-4', iconLibrary: 'lucide' },
       { id: 'knob', label: 'Knob', icon: 'gauge', iconLibrary: 'lucide' },
-      { id: 'list-set', label: 'List Set', icon: 'list', iconLibrary: 'lucide' },
+      { id: 'list-set', label: 'List', icon: 'list', iconLibrary: 'lucide' },
       { id: 'meter-group', label: 'Meter Group', icon: 'thermometer', iconLibrary: 'lucide' },
       { id: 'progress-set', label: 'Progress', icon: 'loader', iconLibrary: 'lucide' },
       { id: 'speedometer', label: 'Speedometer', icon: 'gauge-circle', iconLibrary: 'lucide' },
