@@ -52,21 +52,18 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
 
 <ui-empty-state type="coming-soon" title="Coming Soon" message="This feature is under development." secondary-action="Notify Me"></ui-empty-state>`);
 
-  variantsCode = signal(`<ui-empty-state variant="default">
-  <h3>No Data Available</h3>
-</ui-empty-state>
+  variantsCode =
+    signal(`<ui-empty-state variant="default" label="No Data Available" message="There is no data to display."></ui-empty-state>
 
-<ui-empty-state variant="outlined">
-  <h3>No Data Available</h3>
-</ui-empty-state>
+<ui-empty-state variant="outlined" label="No Data Available" message="There is no data to display."></ui-empty-state>
 
-<ui-empty-state variant="filled">
-  <h3>No Data Available</h3>
-</ui-empty-state>
+<ui-empty-state variant="filled" label="No Data Available" message="There is no data to display."></ui-empty-state>
 
-<ui-empty-state variant="minimal">
-  <h3>No Data Available</h3>
-</ui-empty-state>`);
+<ui-empty-state variant="minimal" label="No Data Available" message="There is no data to display."></ui-empty-state>
+
+<ui-empty-state variant="glass" label="No Data Available" message="There is no data to display."></ui-empty-state>
+
+<ui-empty-state variant="minimalistic" label="No Data Available" message="There is no data to display."></ui-empty-state>`);
 
   sizesCode =
     signal(`<ui-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></ui-empty-state>
@@ -138,7 +135,7 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
   title="Beta Access"
   message="Join the waitlist for exclusive features."
   animated
-  glass-morphism
+  variant="glass"
   primary-action="Join Waitlist"
 ></ui-empty-state>
 

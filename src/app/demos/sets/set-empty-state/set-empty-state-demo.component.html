@@ -49,6 +49,26 @@
               ></ui-empty-state>
             </div>
             <div class="demo-card">
+              <h4>No Projects</h4>
+              <ui-empty-state
+                type="no-projects"
+                label="No Projects Found"
+                message="You don't have any projects yet."
+                primary-action="Create Project"
+                primary-action-icon="fas fa-folder-plus"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <h4>Empty Cart</h4>
+              <ui-empty-state
+                type="empty-cart"
+                label="Your Cart is Empty"
+                message="Looks like you haven't added anything to your cart yet."
+                primary-action="Start Shopping"
+                primary-action-icon="fas fa-shopping-bag"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
               <h4>Error</h4>
               <ui-empty-state
                 type="error"
@@ -98,7 +118,7 @@
           description="Different styling options for empty states"
           [code]="variantsCode()"
         >
-          <div class="demo-grid col-4">
+          <div class="demo-grid col-3">
             <div class="demo-card">
               <h4>Default</h4>
               <ui-empty-state
@@ -130,6 +150,25 @@
               <h4>Minimal</h4>
               <ui-empty-state
                 variant="minimal"
+                label="No Data Available"
+                message="There is no data to display."
+                primary-action="Add Data"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <h4>Glass</h4>
+              <ui-empty-state
+                variant="glass"
+                label="No Data Available"
+                message="There is no data to display."
+                primary-action="Add Data"
+                animated
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <h4>Minimalistic</h4>
+              <ui-empty-state
+                variant="minimalistic"
                 label="No Data Available"
                 message="There is no data to display."
                 primary-action="Add Data"
@@ -337,13 +376,13 @@
         >
           <div class="demo-grid col-2">
             <div class="demo-card">
-              <h4>Glassmorphism Effect</h4>
+              <h4>Glass Variant</h4>
               <ui-empty-state
                 label="Beta Access"
                 message="Join the waitlist for exclusive features."
                 primary-action="Join Waitlist"
                 primary-action-icon="fas fa-star"
-                glass-morphism
+                variant="glass"
                 animated
               ></ui-empty-state>
             </div>
