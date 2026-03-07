@@ -3386,7 +3386,7 @@ export class ComponentDocsService {
         shortDescription: 'Advanced code editor with syntax highlighting and multi-file tabs',
         detailedDescription:
           'Feature-rich code editor supporting JS, HTML, CSS, JSON, Python, and more. Includes multi-tab file management, syntax highlighting, line numbers, code folding, minimap, integrated terminal/output panels, and ribbon-style toolbars.',
-        usage: `<app-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></app-code-editor>`,
+        usage: `<ui-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></ui-code-editor>`,
         props: [
           {
             name: 'files',
@@ -3442,8 +3442,8 @@ export class ComponentDocsService {
           'Minimap requires accurate character measurement for sync',
         ],
         examples: [
-          '<app-code-editor [files]="myScript" theme="vs-dark" showSidebar></app-code-editor>',
-          '<app-code-editor language="json" [value]="configJson" [toolbar]="false"></app-code-editor>',
+          '<ui-code-editor [files]="myScript" theme="vs-dark" showSidebar></ui-code-editor>',
+          '<ui-code-editor language="json" [value]="configJson" [toolbar]="false"></ui-code-editor>',
         ],
       },
     ],

@@ -822,7 +822,7 @@ Enterprise-grade window and region management system for IDE-like layouts.
 
 ---
 
-## 💻 Smart Code Editor `app-code-editor`
+## 💻 Smart Code Editor `ui-code-editor`
 
 Full-featured text editor with syntax highlighting and multi-file support.
 
@@ -846,7 +846,7 @@ Full-featured text editor with syntax highlighting and multi-file support.
 ### Usage
 
 ```html
-<app-code-editor [files]="codeSnippet" language="python" theme="vs-dark"> </app-code-editor>
+<ui-code-editor [files]="codeSnippet" language="python" theme="vs-dark"> </ui-code-editor>
 ```
 
 ---

@@ -291,7 +291,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'badge', label: 'Badge', icon: 'badge', iconLibrary: 'lucide' },
       { id: 'carousel-set', label: 'Carousel Set', icon: 'image-play', iconLibrary: 'lucide' },
       { id: 'chip', label: 'Chip', icon: 'tag', iconLibrary: 'lucide' },
-      { id: 'code-editor-set', label: 'Code Editor Set', icon: 'code-2', iconLibrary: 'lucide' },
+      { id: 'code-editor-set', label: 'Code Editor', icon: 'code-2', iconLibrary: 'lucide' },
       {
         id: 'dashboard-set',
         label: 'Dashboard Set',
@@ -332,14 +332,14 @@ export const categoryNavItems: NavItem[] = [
       { id: 'popover', label: 'Popover', icon: 'message-circle', iconLibrary: 'lucide' },
       {
         id: 'resizable-panel-set',
-        label: 'Resizable Panel Set',
+        label: 'Resizable Panel',
         icon: 'move-horizontal',
         iconLibrary: 'lucide',
       },
       { id: 'skeleton', label: 'Skeleton', icon: 'loader-circle', iconLibrary: 'lucide' },
       { id: 'smart-menu', label: 'Smart Menu', icon: 'lightbulb', iconLibrary: 'lucide' },
       { id: 'snackbar', label: 'Snackbar', icon: 'bell', iconLibrary: 'lucide' },
-      { id: 'tooltip-set', label: 'Tooltip Set', icon: 'help-circle', iconLibrary: 'lucide' },
+      { id: 'tooltip-set', label: 'Tooltip', icon: 'help-circle', iconLibrary: 'lucide' },
     ],
   },
   {
@@ -528,6 +528,3 @@ export function getAllNavItems(): NavItem[] {
 
   return allItems;
 }
-
-
-
