@@ -27,7 +27,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 export class DmDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'basic', title: 'Basic Dialog', icon: 'ðŸ“' },
+    { id: 'basic', title: 'Basic Dialog', icon: '📝' },
     { id: 'slots', title: 'Custom Slots', icon: '🧩' },
     { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
     { id: 'variants', title: 'Variants & Status', icon: '🎨' },
@@ -144,7 +144,7 @@ export class DmDialogBoxDemoComponent extends BaseDemoComponent {
 </ui-dialog-box>
 
 <!-- Widget Dialog (Persistent Notepad) -->
-<ui-dialog-box [open]="dialogVisible['wNote']" dialog-title="ðŸ“ Sticky Notes" backdrop="none" is-draggable resizable keep-mounted width="300px" height="300px">
+<ui-dialog-box [open]="dialogVisible['wNote']" dialog-title="📝 Sticky Notes" backdrop="none" is-draggable resizable keep-mounted width="300px" height="300px">
    <div style="height: 100%; display: flex; flex-direction: column;">
       <textarea placeholder="Type your notes here... I won't lose them if you close me!" style="flex: 1; border: none; outline: none; resize: none; width: 100%; padding: 4px;"></textarea>
    </div>

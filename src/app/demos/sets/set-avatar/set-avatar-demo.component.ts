@@ -40,7 +40,7 @@ export class DmSetAvatarDemoComponent extends BaseDemoComponent implements OnIni
     { id: 'icons', title: 'Different Icons', icon: '⭐' },
     { id: 'badge-overlay', title: 'Badge Overlay', icon: '✨' },
     { id: 'verified', title: 'Verified Badge', icon: '✅' },
-    { id: 'editable', title: 'Editable/Upload', icon: 'ðŸ“' },
+    { id: 'editable', title: 'Editable/Upload', icon: '📝' },
     { id: 'loading', title: 'Loading State', icon: '⏳' },
     { id: 'image-fit', title: 'Image Fit Options', icon: '🖼️' },
     { id: 'auto-color', title: 'Auto Color from Name', icon: '🎨' },

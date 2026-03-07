@@ -34,7 +34,7 @@ export class DmContextMenuDemoComponent extends BaseDemoComponent {
     { label: 'Open', icon: '📁' },
     { label: 'Download', icon: '⬇️' },
     { separator: true },
-    { label: 'Rename', icon: 'ðŸ“' },
+    { label: 'Rename', icon: '📝' },
     { label: 'Delete', icon: '🗑️' },
   ];
 

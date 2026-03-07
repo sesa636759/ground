@@ -32,7 +32,7 @@ export class DmSetTooltipDemoComponent extends BaseDemoComponent {
     { id: 'variants', title: 'Variants & Themes', icon: '🎨' },
     { id: 'shapes-animations', title: 'Shapes & Animations', icon: '✨' },
     { id: 'advanced-features', title: 'Advanced Features', icon: '⚙️' },
-    { id: 'rich-content', title: 'Rich HTML Content', icon: 'ðŸ“' },
+    { id: 'rich-content', title: 'Rich HTML Content', icon: '📝' },
     { id: 'use-cases', title: 'Practical Use Cases', icon: '💼' },
     { id: 'custom-content', title: 'Custom Content & Slots', icon: '🧩' },
     { id: 'custom-colors', title: 'Custom Colors', icon: '🌈' },

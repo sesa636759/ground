@@ -416,7 +416,7 @@ export const bottomNavItems: NavItem[] = [
   // {
   //   id: 'support',
   //   label: 'Support',
-  //   icon: 'â“',
+  //   icon: '❓',
   // },
 ];
 
@@ -442,7 +442,7 @@ export const bottomNavItems: NavItem[] = [
 //       { id: 'radio-set', label: 'Radio Set', icon: '🔘' },
 //       { id: 'button-toggle-set', label: 'Button Toggle Set', icon: '🔲' },
 //       { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
-//       { id: 'list-set', label: 'List Set', icon: 'ðŸ“' },
+//       { id: 'list-set', label: 'List Set', icon: '📝' },
 //       { id: 'timeline-set', label: 'Timeline Set', icon: '📅' },
 //       { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
 //        { id: 'carousel-set', label: 'Carousel Set', icon: '🎠' },

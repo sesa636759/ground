@@ -29,7 +29,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
-    { id: 'subtitles', title: 'Subtitles', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
     { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
     { id: 'actions', title: 'Actions', icon: '⚡', color: '#ef4444' },
     { id: 'nested', title: 'Nested', icon: '🌳', color: '#6366f1' },

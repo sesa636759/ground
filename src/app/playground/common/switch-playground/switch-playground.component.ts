@@ -55,7 +55,7 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
       shape: 'default',
       labelPosition: 'right',
       iconOn: '✔️',
-      iconOff: 'âŒ',
+      iconOff: '❌',
       showDefaultIcons: false,
       thumbShape: 'circle',
       orientation: 'horizontal',

@@ -34,7 +34,7 @@ export class DmSetInputDemoComponent extends BaseDemoComponent {
     { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: '🎯' },
     { id: 'advanced', title: 'Advanced Features', icon: '🚀' },
     { id: 'floating-labels', title: 'Floating Labels', icon: '🏷️' },
-    { id: 'multiline', title: 'Multiline Input', icon: 'ðŸ“' },
+    { id: 'multiline', title: 'Multiline Input', icon: '📝' },
     { id: 'color-input', title: 'Color Input', icon: '🎨' },
     { id: 'file-upload', title: 'File Upload', icon: '📁' },
     { id: 'input-masking', title: 'Input Masking', icon: '🎭' },

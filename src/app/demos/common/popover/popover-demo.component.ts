@@ -31,7 +31,7 @@ export class DmPopoverDemoComponent extends BaseDemoComponent {
     { id: 'triggers', title: 'Triggers', icon: '⚡' },
     { id: 'placements', title: 'Placements', icon: '📍' },
     { id: 'styles', title: 'Styles & Themes', icon: '🎨' },
-    { id: 'rich-content', title: 'Rich Content', icon: 'ðŸ“' },
+    { id: 'rich-content', title: 'Rich Content', icon: '📝' },
   ];
 
   triggersCode = `<!-- Click trigger (default) -->

@@ -31,7 +31,7 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
     { id: 'sizes', title: 'Size Options', icon: '📏', color: '#f59e0b' },
     { id: 'alignment', title: 'Alignment Options', icon: '↔️', color: '#ef4444' },
     { id: 'images', title: 'Custom Images', icon: '🖼️', color: '#8b5cf6' },
-    { id: 'suggestions', title: 'Suggestion Items', icon: 'ðŸ“', color: '#ec4899' },
+    { id: 'suggestions', title: 'Suggestion Items', icon: '📝', color: '#ec4899' },
     { id: 'actions', title: 'Multiple Actions', icon: '🎯', color: '#06b6d4' },
     { id: 'features', title: 'Special Features', icon: '✨', color: '#64748b' },
     { id: 'premium', title: 'Premium Features', icon: '💎', color: '#3b82f6' },

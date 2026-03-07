@@ -29,7 +29,7 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
     { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️', color: '#3b82f6' },
     { id: 'vertical', title: 'Vertical Modes', icon: '⬇️', color: '#10b981' },
     { id: 'labels', title: 'Label Placement', icon: '🏷️', color: '#f59e0b' },
-    { id: 'descriptions', title: 'Descriptions', icon: 'ðŸ“', color: '#ef4444' },
+    { id: 'descriptions', title: 'Descriptions', icon: '📝', color: '#ef4444' },
     { id: 'content', title: 'Content & Navigation', icon: '📦', color: '#8b5cf6' },
     { id: 'steps-count', title: 'Step Counts', icon: '🔢', color: '#ec4899' },
     { id: 'connectors', title: 'Custom Connectors', icon: '🔗', color: '#06b6d4' },

@@ -25,7 +25,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmSetTagsInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'basic', title: 'Basic Usage', icon: 'ðŸ“' },
+    { id: 'basic', title: 'Basic Usage', icon: '📝' },
     { id: 'colors', title: 'Color Variants', icon: '🎨' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
     { id: 'premium', title: 'Premium Features', icon: '💎' },

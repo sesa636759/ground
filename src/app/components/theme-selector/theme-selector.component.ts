@@ -154,7 +154,7 @@ import { ThemeService } from '../../services/theme.service';
               </div>
             </div>
             <div class="layout-info">
-              <span class="layout-icon">ðŸ”</span>
+              <span class="layout-icon">🔝</span>
               <span class="layout-name">Top Bar</span>
               <span class="layout-desc">Horizontal top navigation</span>
             </div>

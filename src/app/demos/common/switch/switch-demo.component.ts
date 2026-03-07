@@ -29,7 +29,7 @@ export class DmSwitchDemoComponent {
     { id: 'colors', name: 'Colors', icon: '🌈', color: '#3b82f6' },
     { id: 'sizes', name: 'Sizes', icon: '📏', color: '#10b981' },
     { id: 'icons', name: 'Icons', icon: '🎨', color: '#f59e0b' },
-    { id: 'labels', name: 'Labels', icon: 'ðŸ“', color: '#ec4899' },
+    { id: 'labels', name: 'Labels', icon: '📝', color: '#ec4899' },
   ];
 
   get exampleVariants() {

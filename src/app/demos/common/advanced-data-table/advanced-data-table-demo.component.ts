@@ -54,7 +54,7 @@ export class DmAdvancedDataTableDemoComponent extends BaseDemoComponent {
     <ng-template let-row let-col="column">
       @if (col.field === 'status') {
         <span>
-          {{ row.status === 'Active' ? '✅' : 'âŒ' }}
+          {{ row.status === 'Active' ? '✅' : '❌' }}
         </span>
       }
     </ng-template>

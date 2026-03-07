@@ -26,7 +26,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 export class DmSetListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
-    { id: 'basic', title: 'Basic Lists', icon: 'ðŸ“' },
+    { id: 'basic', title: 'Basic Lists', icon: '📝' },
     { id: 'colors', title: 'Color Variants', icon: '🎨' },
     { id: 'sizes', title: 'Size Variants', icon: '📏' },
     { id: 'nested', title: 'Nested Lists', icon: '🌳' },

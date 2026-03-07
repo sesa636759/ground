@@ -26,7 +26,7 @@ export class DmSetContextMenuDemoComponent {
     { id: 'right-click', title: 'Right Click Trigger', icon: '🖱️' },
     { id: 'click-trigger', title: 'Click Trigger', icon: '👆' },
     { id: 'nested-menus', title: 'Nested Menus', icon: '🌳' },
-    { id: 'list-context', title: 'List Item Context', icon: 'ðŸ“' },
+    { id: 'list-context', title: 'List Item Context', icon: '📝' },
     { id: 'command-palette', title: 'Command Palette', icon: '⚡' },
     { id: 'menu-items', title: 'Menu Item Types', icon: '✅' },
     { id: 'themes', title: 'Themes & Effects', icon: '🌙' },

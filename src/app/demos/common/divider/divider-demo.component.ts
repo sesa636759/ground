@@ -28,7 +28,7 @@ export class DmDividerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Line Variants', icon: '🎨', color: '#3b82f6' },
-    { id: 'text-content', title: 'Text & Content', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'text-content', title: 'Text & Content', icon: '📝', color: '#10b981' },
     { id: 'vertical', title: 'Vertical Orientation', icon: '↕️', color: '#f59e0b' },
     { id: 'shapes', title: 'Decorative Shapes', icon: '📐', color: '#ef4444' },
   ];
