@@ -30,7 +30,7 @@
               (click)="toggle('basic')"
             ></ui-button>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['basic']"
               (dialogClosed)="toggle('basic', false)"
               icon-library="lucide"
@@ -49,7 +49,7 @@
                   (click)="toggle('basic', false)"
                 ></ui-button>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -66,7 +66,7 @@
               variant="success"
               (click)="toggle('slots')"
             ></ui-button>
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['slots']"
               (dialogClosed)="toggle('slots', false)"
               width="500px"
@@ -125,7 +125,7 @@
                   ></ui-button>
                 </div>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -150,47 +150,47 @@
               ></ui-button>
             </div>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sXS']"
               (dialogClosed)="toggle('sXS', false)"
               size="xs"
               dialog-title="Size XS (320px)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sSM']"
               (dialogClosed)="toggle('sSM', false)"
               size="sm"
               dialog-title="Size SM (480px)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sMD']"
               (dialogClosed)="toggle('sMD', false)"
               size="md"
               dialog-title="Size MD (768px)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sLG']"
               (dialogClosed)="toggle('sLG', false)"
               size="lg"
               dialog-title="Size LG (1024px)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sXL']"
               (dialogClosed)="toggle('sXL', false)"
               size="xl"
               dialog-title="Size XL (1280px)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sFill']"
               (dialogClosed)="toggle('sFill', false)"
               size="fill"
               dialog-title="Fill (90% viewport)"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -209,37 +209,37 @@
               <ui-button label="Warning" variant="warning" (click)="toggle('vWarning')"></ui-button>
               <ui-button label="Error" variant="danger" (click)="toggle('vError')"></ui-button>
             </div>
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['vInfo']"
               (dialogClosed)="toggle('vInfo', false)"
               variant="filled"
               status="info"
               dialog-title="Info"
-              ><div><p>Info content</p></div></dialog-box
+              ><div><p>Info content</p></div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['vSuccess']"
               (dialogClosed)="toggle('vSuccess', false)"
               variant="filled"
               status="success"
               dialog-title="Success"
-              ><div><p>Success content</p></div></dialog-box
+              ><div><p>Success content</p></div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['vWarning']"
               (dialogClosed)="toggle('vWarning', false)"
               variant="filled"
               status="warning"
               dialog-title="Warning"
-              ><div><p>Warning content</p></div></dialog-box
+              ><div><p>Warning content</p></div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['vError']"
               (dialogClosed)="toggle('vError', false)"
               variant="filled"
               status="error"
               dialog-title="Error"
-              ><div><p>Error content</p></div></dialog-box
+              ><div><p>Error content</p></div></ui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -259,46 +259,46 @@
               <ui-button label="Right" variant="secondary" (click)="toggle('pRight')"></ui-button>
               <ui-button label="Top Right" variant="secondary" (click)="toggle('pTR')"></ui-button>
             </div>
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['pCenter']"
               (dialogClosed)="toggle('pCenter', false)"
               position="center"
               dialog-title="Center"
               width="400px"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['pTop']"
               (dialogClosed)="toggle('pTop', false)"
               position="top"
               dialog-title="Top"
               width="400px"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['pBottom']"
               (dialogClosed)="toggle('pBottom', false)"
               position="bottom"
               dialog-title="Bottom"
               width="400px"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['pRight']"
               (dialogClosed)="toggle('pRight', false)"
               position="right"
               dialog-title="Right Side"
               width="400px"
               height="100vh"
-              ><div>Side Panel Style</div></dialog-box
+              ><div>Side Panel Style</div></ui-dialog-box
             >
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['pTR']"
               (dialogClosed)="toggle('pTR', false)"
               position="top-right"
               dialog-title="Top Right"
               width="400px"
-              ><div>Content</div></dialog-box
+              ><div>Content</div></ui-dialog-box
             >
           </div>
         </pg-example-section>
@@ -324,7 +324,7 @@
               ></ui-button>
             </div>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sPaper']"
               (dialogClosed)="toggle('sPaper', false)"
               scroll-behavior="paper"
@@ -338,9 +338,9 @@
                   the footer sticky.
                 </p>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['sWindow']"
               (dialogClosed)="toggle('sWindow', false)"
               scroll-behavior="body"
@@ -353,7 +353,7 @@
                   dictates page flow length.
                 </p>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -388,7 +388,7 @@
               ></ui-button>
             </div>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['aStatic']"
               (dialogClosed)="toggle('aStatic', false)"
               backdrop="static"
@@ -398,18 +398,18 @@
               <div slot="footer">
                 <ui-button label="Understood" (click)="toggle('aStatic', false)"></ui-button>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['aDrag']"
               (dialogClosed)="toggle('aDrag', false)"
               is-draggable
               dialog-title="Draggable Dialog"
             >
               <div><p>Grab my header to drag me inside the viewport bounds!</p></div>
-            </dialog-box>
+            </ui-dialog-box>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['aResize']"
               (dialogClosed)="toggle('aResize', false)"
               resizable
@@ -418,9 +418,9 @@
               <div>
                 <p>Use the bottom edge container bracket to resize the width/height manually.</p>
               </div>
-            </dialog-box>
+            </ui-dialog-box>
 
-            <dialog-box
+            <ui-dialog-box
               [open]="dialogVisible['aCombo']"
               (dialogClosed)="toggle('aCombo', false)"
               is-draggable
@@ -428,7 +428,7 @@
               dialog-title="Power User Dialog"
             >
               <div><p>I can be moved around completely AND resized all you want.</p></div>
-            </dialog-box>
+            </ui-dialog-box>
           </div>
         </pg-example-section>
 
@@ -536,4 +536,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

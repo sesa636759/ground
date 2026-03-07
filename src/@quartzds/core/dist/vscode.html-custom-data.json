@@ -1,0 +1,2470 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "qds-badge-counter",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-badge-counter>` element is a small, rounded UI element used to\ndisplay numerical values or counts. It is designed to draw the user's eye to\nimportant or dynamic content by providing a visual cue that a countable\nevent or item has occurred or is waiting to be addressed."
+      },
+      "attributes": [
+        {
+          "name": "description",
+          "description": "Adds accessible text to the qds-badge-counter that will be used by screen\nreaders."
+        },
+        {
+          "name": "importance",
+          "description": "The badge counter's importance.",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            },
+            {
+              "name": "subdued-destructive"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "The badge counter's size.",
+          "values": [
+            {
+              "name": "hero"
+            },
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "stroke-ring",
+          "description": "Shows a stroke ring around the component for better visibility"
+        },
+        {
+          "name": "value",
+          "description": "The badge-counter's value."
+        }
+      ]
+    },
+    {
+      "name": "qds-badge-indicator",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-badge-indicator>` element is a small, rounded UI element used to\ndisplay status indicators. It is designed to draw the user's eye to\nimportant or dynamic content by providing a visual cue that an event has\noccurred or is waiting to be addressed."
+      },
+      "attributes": [
+        {
+          "name": "description",
+          "description": "Adds accessible text to the qds-badge-indicator that will be used by\nscreen readers."
+        },
+        {
+          "name": "size",
+          "description": "The badge indicator's size.",
+          "values": [
+            {
+              "name": "hero"
+            },
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "The badge indicator's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "neutral"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "stroke-ring",
+          "description": "Shows a stroke ring around the badge indicator for better visibility."
+        }
+      ]
+    },
+    {
+      "name": "qds-breadcrumb-item",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-breadcrumb-item>` element is used as a navigational aid that is\ntypically placed between a site's header and the main content, displaying\neither a hierarchy of the current page in relation to the site's structure,\nfrom top level to current page, or a list of the links the user followed to\nget to the current page, in the order visited."
+      },
+      "attributes": [
+        {
+          "name": "href",
+          "description": "The URL that the inline link points to. Inline links are not restricted to\nHTTP-based URLs — they can use any URL scheme supported by browsers:\n\n- Sections of a page with document fragments\n- While web browsers may not support other URL schemes, websites can with\n[`registerProtocolHandler()`](https://developer.mozilla.org/docs/Web/API/Navigator/registerProtocolHandler)"
+        },
+        {
+          "name": "hreflang",
+          "description": "Hints at the human language of the linked URL. No built-in functionality.\nAllowed values are the same as\n[the global `lang` attribute](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang)."
+        },
+        {
+          "name": "referrerpolicy",
+          "description": "How much of the\n[referrer](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nto send when following the inline link.\n\n- `no-referrer`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent.\n- `no-referrer-when-downgrade`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent to\n[origin](https://developer.mozilla.org/docs/Glossary/Origin)s\nwithout [TLS](https://developer.mozilla.org/docs/Glossary/TLS)\n([HTTPS](https://developer.mozilla.org/docs/Glossary/HTTPS)).\n- `origin`: The sent referrer will be limited to the origin of the\nreferring page: its\n[scheme](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL),\n[host](https://developer.mozilla.org/docs/Glossary/Host), and\n[port](https://developer.mozilla.org/docs/Glossary/Port).\n- `origin-when-cross-origin`: The referrer sent to other origins will be\nlimited to the scheme, the host, and the port. Navigations on the same\norigin will still include the path.\n- `same-origin`: A referrer will be sent for\n[same origin](https://developer.mozilla.org/docs/Glossary/Same-origin_policy),\nbut cross-origin requests will contain no referrer information.\n- `strict-origin`: Only send the origin of the document as the referrer\nwhen the protocol security level stays the same (HTTPS→HTTPS), but don't\nsend it to a less secure destination (HTTPS→HTTP).\n- `strict-origin-when-cross-origin` (default): Send a full URL when\nperforming a same-origin request, only send the origin when the protocol\nsecurity level stays the same (HTTPS→HTTPS), and send no header to a less\nsecure destination (HTTPS→HTTP).\n- `unsafe-url`: The referrer will include the origin and the path (but not the\n[fragment](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash),\n[password](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password),\nor [username](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)).\n**This value is unsafe** because it leaks origins and paths from\nTLS-protected resources to insecure origins.",
+          "values": [
+            {
+              "name": "no-referrer"
+            },
+            {
+              "name": "no-referrer-when-downgrade"
+            },
+            {
+              "name": "origin"
+            },
+            {
+              "name": "origin-when-cross-origin"
+            },
+            {
+              "name": "same-origin"
+            },
+            {
+              "name": "strict-origin"
+            },
+            {
+              "name": "strict-origin-when-cross-origin"
+            },
+            {
+              "name": "unsafe-url"
+            }
+          ]
+        },
+        {
+          "name": "rel",
+          "description": "The relationship of the linked URL as space-separated\n[link types](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel).\n\nThe following list includes some of the most important existing keywords.\nEvery keyword within a space-separated value should be unique within that\nvalue.\n\n- [`alternate`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-alternate):\nAlternate representations of the current document.\n- [`author`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-author):\nAuthor of the current document or article.\n- [`bookmark`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-bookmark):\nPermalink for the nearest ancestor section.\n- [`external`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-external):\nThe referenced document is not part of the same site as the current\ndocument. An icon will be rendered next to the text if this value is\nspecified.\n- [`help`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-help):\nLink to context-sensitive help.\n- [`license`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-license):\nIndicates that the main content of the current document is covered by the\ncopyright license described by the referenced document.\n- [`me`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/me):\nIndicates that the current document represents the person who owns the\nlinked content.\n- [`next`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-next):\nIndicates that the current document is a part of a series and that the\nnext document in the series is the referenced document.\n- [`nofollow`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-nofollow):\nIndicates that the current document's original author or publisher does\nnot endorse the referenced document.\n- [`noopener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/noopener):\nCreates a top-level browsing context that is not an auxiliary browsing\ncontext if the hyperlink would create either of those, to begin with (i.e.,\nhas an appropriate `target` attribute value).\n- [`noreferrer`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-noreferrer):\nNo `Referer` header will be included. Additionally, has the same effect as\n`noopener`.\n- [`opener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-opener):\nCreates an auxiliary browsing context if the hyperlink would otherwise\ncreate a top-level browsing context that is not an auxiliary browsing\ncontext (i.e., has \"`_blank`\" as `target` attribute value).\n- [`prev`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-prev):\nIndicates that the current document is a part of a series and that the\nprevious document in the series is the referenced document.\n- [`search`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-search):\nGives a link to a resource that can be used to search through the current\ndocument and its related pages.\n- [`tag`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-tag):\nGives a tag (identified by the given address) that applies to the current\ndocument."
+        },
+        {
+          "name": "target",
+          "description": "Where to display the linked URL, as the name for a browsing context (a\ntab, window, or\n[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe).\nThe following keywords have special meanings for where to load the URL:\n\n- `_blank`: usually a new tab, but users can configure browsers to open a new\n  window instead.\n- `_parent`: the parent browsing context of the current one. If no parent,\n  behaves as `_self`.\n- `_self`: the current browsing context.\n- `_top`: the topmost browsing context (the \"highest\" context that's an\n  ancestor of the current one). If no ancestors, behaves as `_self`.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The breadcrumb item's text."
+        }
+      ]
+    },
+    {
+      "name": "qds-button",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-button>` element is an interactive element activated by a user\nwith a mouse, keyboard, finger, voice command, or other assistive technology.\nOnce activated, it then performs a programmable action, such as submitting a\n[form](https://developer.mozilla.org/docs/Learn/Forms)\nor opening a dialog."
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": "The name of the action icon to render.",
+          "values": [
+            {
+              "name": "dropdown"
+            },
+            {
+              "name": "dropdown-close"
+            },
+            {
+              "name": "next"
+            }
+          ]
+        },
+        {
+          "name": "badge",
+          "description": "Displays an indicator if `true` or the empty string. Otherwise, displays a\ncounter badge if a number or string representing a number is used."
+        },
+        {
+          "name": "badge-description",
+          "description": "The indicator or counter badge's accessible text that will be used by\nscreen readers."
+        },
+        {
+          "name": "badge-indicator-status",
+          "description": "The indicator's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "neutral"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the button from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file as this filename. Only used\nwhen `href` is set."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`][] element to associate the button with (its form owner).\n\nThe value of this attribute must be the id of a `<form>` in the same\ndocument. If this attribute is not set, the `<qds-button>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis attribute lets you associate `<qds-button>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element.\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form"
+        },
+        {
+          "name": "formaction",
+          "description": "The URL that processes the information submitted by the button. Overrides\nthe [`action`](https://developer.mozilla.org/docs/Web/HTML/Element/button#attr-formaction)\nattribute of the button's form owner. Does nothing if there is no form owner."
+        },
+        {
+          "name": "formmethod",
+          "description": "If the button is a submit button (it's inside/associated with a `<form>`\nand doesn't have `type=\"button\"`), this attribute specifies the\n[HTTP method][] used to submit the form, or `dialog` which won't submit\nthe form. Possible values:\n\n- `get`: The form data are appended to the form's action URL, with a ? as\na separator, and the resulting URL is sent to the server. Use this method\nwhen the form has no side effects, like search forms.\n- `post`: The data from the form are included in the body of the HTTP\nrequest when sent to the server. Use when the form contains information\nthat shouldn't be public, like login credentials.\n- `dialog`: Close the dialog box in which the button finds itself, if any,\nand do not submit the button's form owner.\n\nIf specified, this attribute overrides the `method` attribute of the\nbutton's form owner.\n\n[HTTP method]: https://developer.mozilla.org/docs/Web/HTTP/Methods",
+          "values": [
+            {
+              "name": "dialog"
+            },
+            {
+              "name": "get"
+            },
+            {
+              "name": "post"
+            }
+          ]
+        },
+        {
+          "name": "formnovalidate",
+          "description": "If the button is a submit button, this attribute specifies that the form\nis not to be\n[validated](https://developer.mozilla.org/docs/Learn/Forms/Form_validation)\nwhen it is submitted. If this attribute is specified, it overrides the\n[`novalidate`](https://developer.mozilla.org/docs/Web/HTML/Element/form#attr-novalidate)\nattribute of the button's form owner."
+        },
+        {
+          "name": "formtarget",
+          "description": "If the button is a submit button, this attribute is an author-defined name\nor standardized, underscore-prefixed keyword indicating where to display\nthe response from submitting the form. This is the `name` of, or keyword\nfor, a browsing context (a tab, window, or\n[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe)).\nIf this attribute is specified, it overrides the\n[`target`](https://developer.mozilla.org/docs/Web/HTML/Element/form#attr-target)\nattribute of the button's form owner. The following keywords have special\nmeanings:\n\n- `_blank`: Load the response into a new unnamed browsing context — usually\na new tab or window, depending on the user's browser settings.\n- `_parent`: Load the response into the parent browsing context of the\ncurrent one. If there is no parent, this option behaves the same way as\n`_self`.\n- `_self`: Load the response into the same browsing context as the current\none.\n- `_top`: Load the response into the top-level browsing context (that is,\nthe browsing context that is an ancestor of the current one, and has no\nparent). If there is no parent, this option behaves the same way as\n`_self`.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "href",
+          "description": "When set, the underlying button will be rendered as an `<a>` with this\n`href` instead of a `<button>`."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "icon-only",
+          "description": "Sets if button is icon only."
+        },
+        {
+          "name": "importance",
+          "description": "The button's importance.",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            },
+            {
+              "name": "subdued-destructive"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "The name of the button, submitted as a pair with the button's `value` as\npart of the form data, when that button is used to submit the form.\nIgnored when `href` is set."
+        },
+        {
+          "name": "rel",
+          "description": "When href is define and the button act as a link (`<a>`), the `rel` will be added to the element."
+        },
+        {
+          "name": "size",
+          "description": "The button's size.",
+          "values": [
+            {
+              "name": "hero"
+            },
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Where to display the linked URL, as the name for a browsing context (a\ntab, window, or\n[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe).\nThe following keywords have special meanings for where to load the URL:\n\n- `_blank`: usually a new tab, but users can configure browsers to open a new\n  window instead.\n- `_parent`: the parent browsing context of the current one. If no parent,\n  behaves as `_self`.\n- `_self`: the current browsing context.\n- `_top`: the topmost browsing context (the \"highest\" context that's an\n  ancestor of the current one). If no ancestors, behaves as `_self`.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The button's text."
+        },
+        {
+          "name": "type",
+          "description": "The type of button.\n\n`button`: The button has no default behavior, and does nothing when\npressed by default. It can have client-side scripts listen to the\nelement's events, which are triggered when the events occur.\n\n`submit`: The button submits the form data to the server. This is the\ndefault if the attribute is not specified for buttons associated with a\n`<form>`, or if the attribute is an empty or invalid value.\n\n`reset`: The button resets all the controls to their initial values.",
+          "values": [
+            {
+              "name": "button"
+            },
+            {
+              "name": "reset"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-button>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "Defines the value associated with the button's `name` when it's submitted\nwith the form data. This value is passed to the server in params when the\nform is submitted using this button. Ignored when `href` is set."
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-button>` will be validated when the form is submitted; false\notherwise."
+        }
+      ]
+    },
+    {
+      "name": "qds-checkbox",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-checkbox>` elements are rendered as boxes that are checked (ticked)\nwhen activated, like you might see in an official government paper form. A\ncheckbox allows you to select single values for submission in a form (or not)."
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Sets the checkbox's state."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the checkbox from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`][] element to associate the checkbox with (its form owner).\n\nThe value of this attribute must be the id of a `<form>` in the same\ndocument. If this attribute is not set, the `<qds-checkbox>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis attribute lets you associate `<qds-checkbox>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element.\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form"
+        },
+        {
+          "name": "indeterminate",
+          "description": "Sets the checkbox to an indeterminate state. This is usually applied to\ncheckboxes that represent a \"select all/none\" behavior when associated\ncheckboxes have a mix of checked and unchecked states."
+        },
+        {
+          "name": "inline",
+          "description": "Adds vertical margin to the checkbox for alignment.\n\nThis is useful when creating inline layouts so that the first lines have\nthe correct vertical centering."
+        },
+        {
+          "name": "name",
+          "description": "The name of the checkbox, which is submitted with the form data."
+        },
+        {
+          "name": "required",
+          "description": "A value must be specified for the checkbox before the owning form can be\nsubmitted.\n\nSee\n[Client-side validation](https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation)\nand the\n[HTML attribute: `required`](https://developer.mozilla.org/docs/Web/HTML/Attributes/required)\nfor more information."
+        },
+        {
+          "name": "size",
+          "description": "The checkbox's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The checkbox's text."
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-checkbox>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "The value of the checkbox, submitted as a name/value pair with form data."
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-checkbox>` will be validated when the form is submitted;\nfalse otherwise."
+        }
+      ]
+    },
+    {
+      "name": "qds-chip",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-chip>` elements are interactive elements that represent selections.\nChips allow users to make a selection from a list of options or display\nitems like filters or tags."
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Sets the selectable chip's state."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the chip from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`](https://developer.mozilla.org/docs/Web/HTML/Element/form)\nelement to associate the chip with (its form owner).\n\nThe value of this property must be the id of a `<form>` in the same\ndocument. If this property is not set, the `<qds-chip>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis property lets you associate `<qds-chip>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "name",
+          "description": "The name of the chip, which is submitted with the form data."
+        },
+        {
+          "name": "size",
+          "description": "The chip's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The chip's text."
+        },
+        {
+          "name": "type",
+          "description": "The chip's type.",
+          "values": [
+            {
+              "name": "closable"
+            },
+            {
+              "name": "selectable"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "The value of the chip, submitted as a name/value pair with form data."
+        }
+      ]
+    },
+    {
+      "name": "qds-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-dialog>` element represent a dialog box or other interactive\ncomponent, such as a dismissible alert, inspector, or subwindow."
+      },
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Indicates whether or not the dialog is open. You can toggle this attribute\nto show and hide the dialog, or you can use the `show()` and `close()`\nmethods and this attribute will reflect the dialog’s open state."
+        }
+      ]
+    },
+    {
+      "name": "qds-divider",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-divider>` element a thematic break between paragraph-level\nelements: for example, a change of scene in a story, or a shift of topic\nwithin a section.\n\nDividers can also be used to group menu items in `<qds-dropdown>` elements."
+      },
+      "attributes": [
+        {
+          "name": "importance",
+          "description": "The divider's importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "vertical",
+          "description": "Display the divider in vertical orientation."
+        }
+      ]
+    },
+    {
+      "name": "qds-dropdown",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Prevents the dropdown from being shown by user interaction. The dropdown\ncan still be displayed by calling the `show()` method."
+        },
+        {
+          "name": "no-flip",
+          "description": "Disable Floating UI's\n[`flip` middleware](https://floating-ui.com/docs/flip)."
+        },
+        {
+          "name": "no-shift",
+          "description": "Disable Floating UI's\n[`shift` middleware](https://floating-ui.com/docs/shift)."
+        },
+        {
+          "name": "placement",
+          "description": "Where to place the dropdown relative to the `target`.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "strategy",
+          "description": "The CSS position strategy to use.",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "The trigger element that will trigger the dropdown. The target specified\ncan be any of the following:\n\n- A CSS selector string\n- A reference to an [`Element`][] or [Virtual Element][]\n- A function returning a reference to an [`Element`][],\n[Virtual Element][], or a CSS selector string\n\n[`Element`]: https://developer.mozilla.org/docs/Web/API/Element\n[Virtual Element]: https://floating-ui.com/docs/virtual-elements"
+        }
+      ]
+    },
+    {
+      "name": "qds-form-message",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-form-message>` elements represent messages for a form field in a user\ninterface."
+      },
+      "attributes": [
+        {
+          "name": "inline",
+          "description": "Adds vertical margin to the form message for alignment.\n\nThis is useful when creating inline layouts so that the first lines have\nthe correct vertical centering."
+        },
+        {
+          "name": "size",
+          "description": "The form message's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "The form message's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "status-description",
+          "description": "Adds accessible text to the icon's form message that will be used by screen readers."
+        },
+        {
+          "name": "text",
+          "description": "The form message's text."
+        }
+      ]
+    },
+    {
+      "name": "qds-icon",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        }
+      ]
+    },
+    {
+      "name": "qds-inline-link",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-inline-link>` elements, with their `href` property, create a hyperlink\nto web pages, files, email addresses, locations in the same page, or\nanything else a URL can address.\n\nContent within each `<qds-inline-link>` *should* indicate the inline link's\ndestination. If the `href` property is present, pressing the enter key while\nfocused on the `<qds-inline-link>` element will activate it."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Prevents the inline link from being interacted with: it cannot be pressed\nor focused."
+        },
+        {
+          "name": "download",
+          "description": "Causes the browser to treat the linked URL as a download. Can be used with\nor without a `filename` value:\n\n- Without a value, the browser will suggest a filename/extension,\ngenerated from various sources:\n\n  - The\n  [`Content-Disposition`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Disposition)\n  HTTP header\n  - The final segment in the URL\n  [path](https://developer.mozilla.org/docs/Web/API/URL/pathname)\n  - The\n  [media type](https://developer.mozilla.org/docs/Glossary/MIME_type)\n  (from the\n  [`Content-Type`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Type)\n  header, the start of a\n  [`data:` URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URLs),\n  or\n  [`Blob.type`](https://developer.mozilla.org/docs/Web/API/Blob/type)\n  for a\n  [`blob:` URL](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL))\n- `filename`: defining a value suggests it as the filename. `/` and `\\`\ncharacters are converted to underscores (`_`). Filesystems may forbid\nother characters in filenames, so browsers will adjust the suggested name\nif necessary."
+        },
+        {
+          "name": "href",
+          "description": "The URL that the inline link points to. Inline links are not restricted to\nHTTP-based URLs — they can use any URL scheme supported by browsers:\n\n- Sections of a page with document fragments\n- Specific text portions with\n[text fragments](https://developer.mozilla.org/docs/Web/Text_fragments)\n- Pieces of media files with media fragments\n- Telephone numbers with `tel:` URLs\n- Email addresses with `mailto:` URLs\n- While web browsers may not support other URL schemes, websites can with\n[`registerProtocolHandler()`](https://developer.mozilla.org/docs/Web/API/Navigator/registerProtocolHandler)"
+        },
+        {
+          "name": "hreflang",
+          "description": "Hints at the human language of the linked URL. No built-in functionality.\nAllowed values are the same as\n[the global `lang` attribute](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang)."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "importance",
+          "description": "The inline link's importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "referrerpolicy",
+          "description": "How much of the\n[referrer](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nto send when following the inline link.\n\n- `no-referrer`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent.\n- `no-referrer-when-downgrade`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent to\n[origin](https://developer.mozilla.org/docs/Glossary/Origin)s\nwithout [TLS](https://developer.mozilla.org/docs/Glossary/TLS)\n([HTTPS](https://developer.mozilla.org/docs/Glossary/HTTPS)).\n- `origin`: The sent referrer will be limited to the origin of the\nreferring page: its\n[scheme](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL),\n[host](https://developer.mozilla.org/docs/Glossary/Host), and\n[port](https://developer.mozilla.org/docs/Glossary/Port).\n- `origin-when-cross-origin`: The referrer sent to other origins will be\nlimited to the scheme, the host, and the port. Navigations on the same\norigin will still include the path.\n- `same-origin`: A referrer will be sent for\n[same origin](https://developer.mozilla.org/docs/Glossary/Same-origin_policy),\nbut cross-origin requests will contain no referrer information.\n- `strict-origin`: Only send the origin of the document as the referrer\nwhen the protocol security level stays the same (HTTPS→HTTPS), but don't\nsend it to a less secure destination (HTTPS→HTTP).\n- `strict-origin-when-cross-origin` (default): Send a full URL when\nperforming a same-origin request, only send the origin when the protocol\nsecurity level stays the same (HTTPS→HTTPS), and send no header to a less\nsecure destination (HTTPS→HTTP).\n- `unsafe-url`: The referrer will include the origin and the path (but not the\n[fragment](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash),\n[password](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password),\nor [username](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)).\n**This value is unsafe** because it leaks origins and paths from\nTLS-protected resources to insecure origins.",
+          "values": [
+            {
+              "name": "no-referrer"
+            },
+            {
+              "name": "no-referrer-when-downgrade"
+            },
+            {
+              "name": "origin"
+            },
+            {
+              "name": "origin-when-cross-origin"
+            },
+            {
+              "name": "same-origin"
+            },
+            {
+              "name": "strict-origin"
+            },
+            {
+              "name": "strict-origin-when-cross-origin"
+            },
+            {
+              "name": "unsafe-url"
+            }
+          ]
+        },
+        {
+          "name": "rel",
+          "description": "The relationship of the linked URL as space-separated\n[link types](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel).\n\nThe following list includes some of the most important existing keywords.\nEvery keyword within a space-separated value should be unique within that\nvalue.\n\n- [`alternate`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-alternate):\nAlternate representations of the current document.\n- [`author`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-author):\nAuthor of the current document or article.\n- [`bookmark`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-bookmark):\nPermalink for the nearest ancestor section.\n- [`external`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-external):\nThe referenced document is not part of the same site as the current\ndocument. An icon will be rendered next to the text if this value is\nspecified.\n- [`help`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-help):\nLink to context-sensitive help.\n- [`license`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-license):\nIndicates that the main content of the current document is covered by the\ncopyright license described by the referenced document.\n- [`me`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/me):\nIndicates that the current document represents the person who owns the\nlinked content.\n- [`next`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-next):\nIndicates that the current document is a part of a series and that the\nnext document in the series is the referenced document.\n- [`nofollow`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-nofollow):\nIndicates that the current document's original author or publisher does\nnot endorse the referenced document.\n- [`noopener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/noopener):\nCreates a top-level browsing context that is not an auxiliary browsing\ncontext if the hyperlink would create either of those, to begin with (i.e.,\nhas an appropriate `target` attribute value).\n- [`noreferrer`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-noreferrer):\nNo `Referer` header will be included. Additionally, has the same effect as\n`noopener`.\n- [`opener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-opener):\nCreates an auxiliary browsing context if the hyperlink would otherwise\ncreate a top-level browsing context that is not an auxiliary browsing\ncontext (i.e., has \"`_blank`\" as `target` attribute value).\n- [`prev`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-prev):\nIndicates that the current document is a part of a series and that the\nprevious document in the series is the referenced document.\n- [`search`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-search):\nGives a link to a resource that can be used to search through the current\ndocument and its related pages.\n- [`tag`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-tag):\nGives a tag (identified by the given address) that applies to the current\ndocument."
+        },
+        {
+          "name": "target",
+          "description": "Where to display the linked URL, as the name for a browsing context (a\ntab, window, or\n[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe).\nThe following keywords have special meanings for where to load the URL:\n\n- `_blank`: usually a new tab, but users can configure browsers to open a new\n  window instead.\n- `_parent`: the parent browsing context of the current one. If no parent,\n  behaves as `_self`.\n- `_self`: the current browsing context.\n- `_top`: the topmost browsing context (the \"highest\" context that's an\n  ancestor of the current one). If no ancestors, behaves as `_self`.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qds-input",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-input>` element is used to create interactive controls for\nweb-based forms in order to accept data from the user; a wide variety of\ntypes of input data and control widgets are available, depending on the\ndevice and\n[user agent](https://developer.mozilla.org/docs/Glossary/User_agent)."
+      },
+      "attributes": [
+        {
+          "name": "accept",
+          "description": "Defines the file types the `file` type input should accept. This is a\ncomma-separated list of [unique file type specifiers][]. Because a given\nfile type may be identified in more than one manner, it's useful to\nprovide a thorough set of type specifiers when you files of a given format\nare needed.\n\nFor instance, there are a number of ways Microsoft Word files can be\nidentified, so a site that accepts Word files might use a `<qds-input>`\nlike this:"
+        },
+        {
+          "name": "autocomplete",
+          "description": "Provides a hint for a [user agent's][] autocomplete feature. See\n[the HTML `autocomplete` attribute][autocomplete] for a complete list of\nvalues and details on how to use `autoComplete`.\n\n[user agent's]: https://developer.mozilla.org/docs/Glossary/User_agent\n[autocomplete]: https://developer.mozilla.org/docs/Web/HTML/Attributes/autocomplete"
+        },
+        {
+          "name": "capture",
+          "description": "Specifies that a new file should be captured and which device should be\nused to capture that new media of the type defined by `accept`.\n\nValues include `user`, `environment`, and `''`:\n\n- `user`: The user-facing camera and/or microphone should be used.\n- `environment`: The outward-facing camera and/or microphone should be\nused.\n- `''`: The implementation-specific capture state.",
+          "values": [
+            {
+              "name": "environment"
+            },
+            {
+              "name": "user"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the input from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "enterkeyhint",
+          "description": "What action label (or icon) to present for the enter key on virtual\nkeyboards. Possible values:\n\n- `\"done\"`: Typically meaning there is nothing more to input and the input\nmethod editor (IME) will be closed.\n- `\"enter\"`:\tTypically inserting a new line.\n- `\"go\"`: \tTypically meaning to take the user to the target of the text\nthey typed.\n- `\"next\"`: \tTypically taking the user to the next field that will accept\ntext.\n- `\"previous\"`: Typically taking the user to the previous field that will\naccept text.\n- `\"search\"`: Typically taking the user to the results of searching for\nthe text they have typed.\n- `\"send\"`: Typically delivering the text to its target.",
+          "values": [
+            {
+              "name": "done"
+            },
+            {
+              "name": "enter"
+            },
+            {
+              "name": "go"
+            },
+            {
+              "name": "next"
+            },
+            {
+              "name": "previous"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "send"
+            }
+          ]
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`][] element to associate the input with (its form owner).\n\nThe value of this attribute must be the id of a `<form>` in the same\ndocument. If this attribute is not set, the `<qds-input>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis attribute lets you associate `<qds-input>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element.\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form"
+        },
+        {
+          "name": "inputmode",
+          "description": "Provide a hint to browsers as to the type of virtual keyboard\nconfiguration to use when editing this element or its contents.",
+          "values": [
+            {
+              "name": "decimal"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "numeric"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "tel"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "url"
+            }
+          ]
+        },
+        {
+          "name": "max",
+          "description": "Defines the greatest value in the range of permitted values. If the\n`value` entered into the input exceeds this, the input fails\n[constraint validation][]. Only valid for `date`, `datetime-local`,\n`month`, `time`, and `week` inputs.\n\nIf this value isn't a valid number, then the input has no maximum value.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation"
+        },
+        {
+          "name": "maxlength",
+          "description": "The maximum number of characters (as UTF-16 code units) the user can enter\ninto the input. This must be an non-negative integer value. If no\n`maxlength` is specified, or an invalid value is specified, the input has\nno maximum length. Only valid for `email`, `password`, `search`, `tel`,\n`text`, and `url` inputs.\n\nThe input will fail [constraint validation][] if the length of the text\nentered into the field is greater than `maxlength` UTF-16 code units long.\nBy default, browsers prevent users from entering more characters than\nallowed by the `maxlength` attribute. See [Client-side validation][] for\nmore information.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation"
+        },
+        {
+          "name": "min",
+          "description": "Defines the most negative value in the range of permitted values. If the\n`value` entered into the input is less than this, the input fails\n[constraint validation][]. Only valid for `date`, `datetime-local`,\n`month`, `time`, and `week` inputs.\n\nThis value must be less than or equal to the value of the `max` attribute.\nIf this value isn't a valid number, then the input has no minimum value.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation"
+        },
+        {
+          "name": "minlength",
+          "description": "The minimum number of characters (as UTF-16 code units) the user can enter\ninto the input. This must be an non-negative integer value smaller than or\nequal to the value specified by `maxlength`. If no `minlength` is\nspecified, or an invalid value is specified, the input has no minimum\nlength. Only valid for `email`, `password`, `search`, `tel`, `text`, and\n`url` inputs.\n\nThe input will fail [constraint validation][] if the length of the text\nentered into the field is fewer than `minlength` UTF-16 code units long,\npreventing form submission. See [Client-side validation][] for more\ninformation.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation"
+        },
+        {
+          "name": "multiple",
+          "description": "For `email` inputs, specifies if multiple comma-separated email addresses\ncan be entered. For `file` inputs, specifies if the user is allowed to\nselect more than one file.\n\nOnly valid for `email` or `file` inputs."
+        },
+        {
+          "name": "name",
+          "description": "The name of the input, which is submitted with the form data."
+        },
+        {
+          "name": "no-icon",
+          "description": "Hide the input type's icon.\n\n> **_NOTE:_** Due to browser limitations, the icon may not be hidden in\nall browsers."
+        },
+        {
+          "name": "pattern",
+          "description": "Defines a regular expression that the input's `value` must match in order\nfor the value to pass [constraint validation][]. It must be a valid\nJavaScript regular expression, as used by the [`RegExp`][] type, and as\ndocumented in MDN's [guide on regular expressions][]; the `'u'` flag is\nspecified when compiling the regular expression, so that the pattern is\ntreated as a sequence of Unicode code points, instead of as ASCII. No\nforward slashes should be specified around the pattern text. Only valid\nfor `email`, `password`, `search`, `tel`, `text`, and `url` inputs.\n\nIf the `pattern` is invalid, no regular expression is applied and this\nproperty is ignored. If the pattern is valid and a non-empty value does\nnot match the pattern, constraint validation will prevent form submission.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation\n[`RegExp`]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp\n[guide on regular expressions]: https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions"
+        },
+        {
+          "name": "placeholder",
+          "description": "Text that appears in the input when it has no value set. Only valid for\n`email`, `number`, `password`, `search`, `tel`, `text`, and `url` inputs."
+        },
+        {
+          "name": "required",
+          "description": "A value must be specified for the input before the owning form can be\nsubmitted. Not valid for `color` inputs.\n\nSee [Client-side validation][] and the\n[HTML attribute: `required`][required] for more information.\n\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation\n[required]: https://developer.mozilla.org/docs/Web/HTML/Attributes/required"
+        },
+        {
+          "name": "selection-direction",
+          "description": "Get or set the selection direction of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute.",
+          "values": [
+            {
+              "name": "backward"
+            },
+            {
+              "name": "forward"
+            },
+            {
+              "name": "none"
+            }
+          ]
+        },
+        {
+          "name": "selection-end",
+          "description": "Get or set the ending position or offset of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute."
+        },
+        {
+          "name": "selection-start",
+          "description": "Get or set the starting position or offset of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute."
+        },
+        {
+          "name": "size",
+          "description": "The input's size.\n\n> **_NOTE:_** The native [`size` HTML attribute][size] is not supported.\nCSS `width` should be used instead if this functionality is needed.\n\n[size]: https://developer.mozilla.org/docs/Web/HTML/Attributes/size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "step",
+          "description": "Specifies the granularity that the `value` must adhere to. Only valid for\n`date`, `datetime-local`, `month`, `number`, `time`, and `week` inputs.\n\nThe value must be a positive number—integer or float—or the special value\n`any`, which means no stepping is implied, and any value is allowed\n(barring other constraints, such as `min` and `max`).\n\nIf `any` is not explicitly set, valid values for the `number` are the\nbasis for stepping — the `min` value and increments of the step value, up\nto the `max` value, if specified.",
+          "values": [
+            {
+              "name": "any"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "The type of input to render:\n\n- `\"date\"`: An input for entering a date (year, month, and day, with no\ntime). Opens a date picker or numeric wheels for year, month, day when\nactive in supporting browsers.\n- `\"datetime-local\"`: An input for entering a date and time, with no time\nzone. Opens a date picker or numeric wheels for date and time components\nwhen active in supporting browsers.\n- `\"email\"`: An input for editing an email address. Looks like a `\"text\"`\ninput, but has validation parameters and relevant keyboard in supporting\nbrowsers and devices with dynamic keyboards.\n- `\"month\"`: An input for entering a month and year, with no time zone.\n- `\"number\"`: An input for entering a number. Displays a spinner and adds\ndefault validation when supported. Displays a numeric keypad in some\ndevices with dynamic keypads.\n- `\"password\"`: A single-line text input whose value is obscured. Will\nalert user if site is not secure.\n- `\"search\"`: A single-line text input for entering search strings.\nLine-breaks are automatically removed from the input value. May include a\ndelete icon in supporting browsers that can be used to clear the input.\nDisplays a search icon instead of enter key on some devices with dynamic\nkeypads.\n- `\"tel\"`: An input for entering a telephone number. Displays a telephone\nkeypad in some devices with dynamic keypads.\n- `\"text\"`: A single-line text input. Line-breaks are automatically\nremoved from the input value.\n- `\"time\"`: An input for entering a time value with no time zone.\n- `\"url\"`: An input for entering a URL. Looks like a `\"text\"` input, but\nhas validation parameters and relevant keyboard in supporting browsers and\ndevices with dynamic keyboards.\n- `\"week\"`: An input for entering a date consisting of a week-year number\nand a week number with no time zone.",
+          "values": [
+            {
+              "name": "color"
+            },
+            {
+              "name": "date"
+            },
+            {
+              "name": "datetime-local"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "file"
+            },
+            {
+              "name": "month"
+            },
+            {
+              "name": "number"
+            },
+            {
+              "name": "password"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "tel"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "time"
+            },
+            {
+              "name": "url"
+            },
+            {
+              "name": "week"
+            }
+          ]
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-input>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "The value of the input."
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-input>` will be validated when the form is submitted; false\notherwise."
+        }
+      ]
+    },
+    {
+      "name": "qds-label",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-label>` elements represent a caption for an item in a user interface."
+      },
+      "attributes": [
+        {
+          "name": "inline",
+          "description": "Adds vertical margin to the label for alignment.\n\nThis is useful when creating inline layouts so that the first lines have\nthe correct vertical centering."
+        },
+        {
+          "name": "required",
+          "description": "Specify the labelled item as required by appending a red asterisk (*)."
+        },
+        {
+          "name": "size",
+          "description": "The label's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The label's text."
+        }
+      ]
+    },
+    {
+      "name": "qds-list-item",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Whether or not the list item is checked when `list-action=\"multiselect\"`"
+        },
+        {
+          "name": "destination",
+          "description": "The destination action that the list item denotes through its rightmost icon.",
+          "values": [
+            {
+              "name": "navigation"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the list item from being interacted with: it cannot be selected\nor focused."
+        },
+        {
+          "name": "divider",
+          "description": "Control how to display the bottom divider line.\n\nBy default, the divider is visible and uses the full width of the list item.\n\nUse the `hide` value to hide the divider completely (useful with multiselect).\n\nUse the `indent` value to align the left end of the divider to the icon/text (useful on mobile).\n\n**Note**: the divider is automatically hidden on the last list item in the parent container.",
+          "values": [
+            {
+              "name": "hide"
+            },
+            {
+              "name": "indent"
+            }
+          ]
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "indeterminate",
+          "description": "Sets the list item to an indeterminate state, only when `list-action=\"indeterminate\"`.\nThis is usually applied to items that represent a \"select all/none\" behavior when associated\nitems have a mix of selected and unselected states."
+        },
+        {
+          "name": "kicker",
+          "description": "Text to display for the kicker."
+        },
+        {
+          "name": "list-action",
+          "description": "The type of list-level action that the list item supports",
+          "values": [
+            {
+              "name": "multiselect"
+            },
+            {
+              "name": "reorder"
+            }
+          ]
+        },
+        {
+          "name": "selected",
+          "description": "Whether or not the list item is selected."
+        },
+        {
+          "name": "size",
+          "description": "The list items's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "subtitle",
+          "description": "Text to display below the primary text."
+        },
+        {
+          "name": "text",
+          "description": "The primary text of the list item."
+        }
+      ]
+    },
+    {
+      "name": "qds-loader",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-loader>` element displays an indicator showing that content is\nbeing loaded or processed."
+      },
+      "attributes": [
+        {
+          "name": "size",
+          "description": "The loader's size.",
+          "values": [
+            {
+              "name": "jumbo"
+            },
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "The loader's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qds-nav-list-item",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "collapsed",
+          "description": "Displays the navigation list item in a collapsed state without its text.\nThe text will be displayed in a tooltip instead.\n\nThis property has no effect if the navigation list item does not have an\nicon set."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the navigation list item from being interacted with: it cannot be\nselected or focused."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "selected",
+          "description": "Whether or not the navigation list item is selected."
+        },
+        {
+          "name": "size",
+          "description": "The navigation list items's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "subtext",
+          "description": "Text to display for the subtext."
+        },
+        {
+          "name": "text",
+          "description": "Primary text to display."
+        }
+      ]
+    },
+    {
+      "name": "qds-progress-bar",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-progress-bar>` element displays an indicator showing the\ncompletion progress of a task."
+      },
+      "attributes": [
+        {
+          "name": "max",
+          "description": "Specifies how much work the task indicated by the progress bar requires.\n`max` must have a value greater than 0 and be a valid floating point\nnumber."
+        },
+        {
+          "name": "position",
+          "description": "Returns the result of dividing the current value (`value`) by the maximum\nvalue (`max`); if the progress bar is an indeterminate progress bar, it\nreturns `-1`."
+        },
+        {
+          "name": "size",
+          "description": "The progress bar's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "Specifies how much of the task has been completed. It must be a valid\nfloating point number between `0` and `max`, or between `0` and `1` if\n`max` is omitted. If this attribute is not specified, the progress bar is\nindeterminate; this indicates that an activity is ongoing with no\nindication of how long it is expected to take."
+        }
+      ]
+    },
+    {
+      "name": "qds-radio",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-radio>` elements are rendered as circles that are filled when\nselected. They are generally used in **radio groups** — collections of radio\nbuttons describing a set of related options.\n\nOnly one radio button in a given radio group can be selected at the same\ntime."
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Sets the radio button's state."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the radio button from being interacted with: it cannot be pressed\nor focused."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`](https://developer.mozilla.org/docs/Web/HTML/Element/form)\nelement to associate the radio button with (its form owner).\n\nThe value of this property must be the id of a `<form>` in the same\ndocument. If this property is not set, the `<qds-radio>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis property lets you associate `<qds-radio>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element."
+        },
+        {
+          "name": "inline",
+          "description": "Adds vertical margin to the radio for alignment.\n\nThis is useful when creating inline layouts so that the first lines have\nthe correct vertical centering."
+        },
+        {
+          "name": "name",
+          "description": "Specify the radio group this radio button belongs to.\n\nOnce a radio group is established, selecting any radio button in that\ngroup automatically deselects any currently-selected radio button in the\nsame group."
+        },
+        {
+          "name": "required",
+          "description": "Specify the group the radio button belongs to as required.\n\nIf any radio button in a same-named group of radio buttons has the\n`required` attribute, a radio button in that group must be checked,\nalthough it doesn't have to be the one with the attribute applied."
+        },
+        {
+          "name": "size",
+          "description": "The radio button's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The radio button's text."
+        },
+        {
+          "name": "value",
+          "description": "The value of the radio button, submitted as a name/value pair with form\ndata."
+        }
+      ]
+    },
+    {
+      "name": "qds-select",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-select>` element represents a control that provides a menu of\noptions."
+      },
+      "attributes": [
+        {
+          "name": "autocomplete",
+          "description": "Provides a hint for a [user agent's][] autocomplete feature. See\n[the HTML `autocomplete` attribute][] for a complete list of values and\ndetails on how to use `autoComplete`.\n\n[user agent's]: https://developer.mozilla.org/docs/Glossary/User_agent\n[the HTML `autocomplete` attribute]: https://developer.mozilla.org/docs/Web/HTML/Attributes/autocomplete"
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the select from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`][] element to associate the select with (its form owner).\n\nThe value of this attribute must be the id of a `<form>` in the same\ndocument. If this attribute is not set, the `<qds-select>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis attribute lets you associate `<qds-select>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element.\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form"
+        },
+        {
+          "name": "length",
+          "description": "Returns the number of elements in the [`<option>`s collection][].\n\n[`<option>`s collection]: https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection"
+        },
+        {
+          "name": "multiple",
+          "description": "Indicates that multiple options can be selected in the list. If it is not\nspecified, then only one option can be selected at a time. When `multiple`\nis specified, most browsers will show a scrolling list box instead of a\nsingle line dropdown."
+        },
+        {
+          "name": "name",
+          "description": "The name of the select, which is submitted with the form data."
+        },
+        {
+          "name": "required",
+          "description": "An `<option>` with a non-empty string value must be selected before this\nselect can be submitted.\n\nSee [Client-side validation] and the [HTML attribute: `required`] for more\ninformation.\n\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation\n[HTML attribute: `required`]: https://developer.mozilla.org/docs/Web/HTML/Attributes/required"
+        },
+        {
+          "name": "selected-index",
+          "description": "The index of the first or last selected [`<option>`][] element, depending\non the value of `multiple`. The value `-1` indicates that no element is\nselected.\n\n[`<option>`]: https://developer.mozilla.org/docs/Web/HTML/Element/option"
+        },
+        {
+          "name": "size",
+          "description": "The select's size.\n\n> ***NOTE:*** The native [`size` HTML attribute] is not supported. CSS\n`height` should be used instead if this functionality is needed.\n\n[`size` HTML attribute]: https://developer.mozilla.org/docs/Web/HTML/Attributes/size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "Returns `select-multiple` if the `multiple` attribute is true;\n`select-one` otherwise.",
+          "values": [
+            {
+              "name": "select-multiple"
+            },
+            {
+              "name": "select-one"
+            }
+          ]
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-select>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "The `value` property of the first selected [`<option>`][] element, or the\nempty string if no options are selected.\n\n[`<option>`]: https://developer.mozilla.org/docs/Web/HTML/Element/option"
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-select>` will be validated when the form is submitted;\nfalse otherwise."
+        }
+      ]
+    },
+    {
+      "name": "qds-standalone-link",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-standalone-link>` elements, with their `href` property, create a hyperlink\nto web pages, files, email addresses, locations in the same page, or\nanything else a URL can address.\n\nContent within each `<qds-standalone-link>` *should* indicate the standalone link's\ndestination. If the `href` property is present, pressing the enter key while\nfocused on the `<qds-standalone-link>` element will activate it."
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Prevents the standalone link from being interacted with: it cannot be pressed\nor focused."
+        },
+        {
+          "name": "download",
+          "description": "Causes the browser to treat the linked URL as a download. Can be used with\nor without a `filename` value:\n\n- Without a value, the browser will suggest a filename/extension,\ngenerated from various sources:\n\n  - The\n  [`Content-Disposition`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Disposition)\n  HTTP header\n  - The final segment in the URL\n  [path](https://developer.mozilla.org/docs/Web/API/URL/pathname)\n  - The\n  [media type](https://developer.mozilla.org/docs/Glossary/MIME_type)\n  (from the\n  [`Content-Type`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Type)\n  header, the start of a\n  [`data:` URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URLs),\n  or\n  [`Blob.type`](https://developer.mozilla.org/docs/Web/API/Blob/type)\n  for a\n  [`blob:` URL](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL))\n- `filename`: defining a value suggests it as the filename. `/` and `\\`\ncharacters are converted to underscores (`_`). Filesystems may forbid\nother characters in filenames, so browsers will adjust the suggested name\nif necessary."
+        },
+        {
+          "name": "href",
+          "description": "The URL that the standalone link points to. Standalone links are not restricted to\nHTTP-based URLs — they can use any URL scheme supported by browsers:\n\n- Sections of a page with document fragments\n- Specific text portions with\n[text fragments](https://developer.mozilla.org/docs/Web/Text_fragments)\n- Pieces of media files with media fragments\n- Telephone numbers with `tel:` URLs\n- Email addresses with `mailto:` URLs\n- While web browsers may not support other URL schemes, websites can with\n[`registerProtocolHandler()`](https://developer.mozilla.org/docs/Web/API/Navigator/registerProtocolHandler)"
+        },
+        {
+          "name": "hreflang",
+          "description": "Hints at the human language of the linked URL. No built-in functionality.\nAllowed values are the same as\n[the global `lang` attribute](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/lang)."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "importance",
+          "description": "The standalone link's importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "referrerpolicy",
+          "description": "How much of the\n[referrer](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nto send when following the standalone link.\n\n- `no-referrer`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent.\n- `no-referrer-when-downgrade`: The\n[`Referer`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referer)\nheader will not be sent to\n[origin](https://developer.mozilla.org/docs/Glossary/Origin)s\nwithout [TLS](https://developer.mozilla.org/docs/Glossary/TLS)\n([HTTPS](https://developer.mozilla.org/docs/Glossary/HTTPS)).\n- `origin`: The sent referrer will be limited to the origin of the\nreferring page: its\n[scheme](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL),\n[host](https://developer.mozilla.org/docs/Glossary/Host), and\n[port](https://developer.mozilla.org/docs/Glossary/Port).\n- `origin-when-cross-origin`: The referrer sent to other origins will be\nlimited to the scheme, the host, and the port. Navigations on the same\norigin will still include the path.\n- `same-origin`: A referrer will be sent for\n[same origin](https://developer.mozilla.org/docs/Glossary/Same-origin_policy),\nbut cross-origin requests will contain no referrer information.\n- `strict-origin`: Only send the origin of the document as the referrer\nwhen the protocol security level stays the same (HTTPS→HTTPS), but don't\nsend it to a less secure destination (HTTPS→HTTP).\n- `strict-origin-when-cross-origin` (default): Send a full URL when\nperforming a same-origin request, only send the origin when the protocol\nsecurity level stays the same (HTTPS→HTTPS), and send no header to a less\nsecure destination (HTTPS→HTTP).\n- `unsafe-url`: The referrer will include the origin and the path (but not the\n[fragment](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash),\n[password](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password),\nor [username](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)).\n**This value is unsafe** because it leaks origins and paths from\nTLS-protected resources to insecure origins.",
+          "values": [
+            {
+              "name": "no-referrer"
+            },
+            {
+              "name": "no-referrer-when-downgrade"
+            },
+            {
+              "name": "origin"
+            },
+            {
+              "name": "origin-when-cross-origin"
+            },
+            {
+              "name": "same-origin"
+            },
+            {
+              "name": "strict-origin"
+            },
+            {
+              "name": "strict-origin-when-cross-origin"
+            },
+            {
+              "name": "unsafe-url"
+            }
+          ]
+        },
+        {
+          "name": "rel",
+          "description": "The relationship of the linked URL as space-separated\n[link types](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel).\n\nThe following list includes some of the most important existing keywords.\nEvery keyword within a space-separated value should be unique within that\nvalue.\n\n- [`alternate`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-alternate):\nAlternate representations of the current document.\n- [`author`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-author):\nAuthor of the current document or article.\n- [`bookmark`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-bookmark):\nPermalink for the nearest ancestor section.\n- [`external`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-external):\nThe referenced document is not part of the same site as the current\ndocument. An icon will be rendered next to the text if this value is\nspecified.\n- [`help`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-help):\nLink to context-sensitive help.\n- [`license`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-license):\nIndicates that the main content of the current document is covered by the\ncopyright license described by the referenced document.\n- [`me`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/me):\nIndicates that the current document represents the person who owns the\nlinked content.\n- [`next`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-next):\nIndicates that the current document is a part of a series and that the\nnext document in the series is the referenced document.\n- [`nofollow`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-nofollow):\nIndicates that the current document's original author or publisher does\nnot endorse the referenced document.\n- [`noopener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/noopener):\nCreates a top-level browsing context that is not an auxiliary browsing\ncontext if the hyperlink would create either of those, to begin with (i.e.,\nhas an appropriate `target` attribute value).\n- [`noreferrer`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-noreferrer):\nNo `Referer` header will be included. Additionally, has the same effect as\n`noopener`.\n- [`opener`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-opener):\nCreates an auxiliary browsing context if the hyperlink would otherwise\ncreate a top-level browsing context that is not an auxiliary browsing\ncontext (i.e., has \"`_blank`\" as `target` attribute value).\n- [`prev`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-prev):\nIndicates that the current document is a part of a series and that the\nprevious document in the series is the referenced document.\n- [`search`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-search):\nGives a link to a resource that can be used to search through the current\ndocument and its related pages.\n- [`tag`](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-tag):\nGives a tag (identified by the given address) that applies to the current\ndocument."
+        },
+        {
+          "name": "size",
+          "description": "The standalone link's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "Where to display the linked URL, as the name for a browsing context (a\ntab, window, or\n[`<iframe>`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe).\nThe following keywords have special meanings for where to load the URL:\n\n- `_blank`: usually a new tab, but users can configure browsers to open a new\n  window instead.\n- `_parent`: the parent browsing context of the current one. If no parent,\n  behaves as `_self`.\n- `_self`: the current browsing context.\n- `_top`: the topmost browsing context (the \"highest\" context that's an\n  ancestor of the current one). If no ancestors, behaves as `_self`.",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            }
+          ]
+        },
+        {
+          "name": "visitable",
+          "description": "Defines if the standalone link will display the visited state."
+        }
+      ]
+    },
+    {
+      "name": "qds-switch",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "Sets the switch's state."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the switch from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`](https://developer.mozilla.org/docs/Web/HTML/Element/form)\nelement to associate the switch with (its form owner).\n\nThe value of this property must be the id of a `<form>` in the same\ndocument. If this property is not set, the `<qds-switch>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis property lets you associate `<qds-switch>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element."
+        },
+        {
+          "name": "inline",
+          "description": "Adds vertical margin to the switch for alignment.\n\nThis is useful when creating inline layouts so that the first lines have\nthe correct vertical centering."
+        },
+        {
+          "name": "name",
+          "description": "The name of the switch, which is submitted with the form data."
+        },
+        {
+          "name": "size",
+          "description": "The switches's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-switch>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "The value of the switch, submitted as a name/value pair with form data."
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-switch>` will be validated when the form is submitted;\nfalse otherwise."
+        }
+      ]
+    },
+    {
+      "name": "qds-tab",
+      "description": {
+        "kind": "markdown",
+        "value": "<qds-tab> is a navigational element that is used in different horizontal or vertical navigation bars\n(Main Navigation, secondary navigation, Tab bar, etc.)\nas trigger points for opening a menu list or switching content in Tab bar."
+      },
+      "attributes": [
+        {
+          "name": "action",
+          "description": "The name of the action icon to render.",
+          "values": [
+            {
+              "name": "closable"
+            },
+            {
+              "name": "expandable"
+            }
+          ]
+        },
+        {
+          "name": "badge",
+          "description": "Displays an indicator if `true` or the empty string. Otherwise, displays a\ncounter badge if a number or string representing a number is used."
+        },
+        {
+          "name": "badge-counter-importance",
+          "description": "The tab's counter importance.",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            },
+            {
+              "name": "subdued-destructive"
+            }
+          ]
+        },
+        {
+          "name": "badge-description",
+          "description": "The indicator or counter badge's accessible text that will be used by\nscreen readers."
+        },
+        {
+          "name": "badge-indicator-status",
+          "description": "The indicator's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "neutral"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the tab from being interacted with: it cannot be\nselected or focused."
+        },
+        {
+          "name": "href",
+          "description": "When set, the underlying tab will be rendered as an `<a>` with this\n`href` instead of a `<button>`.\n\nThis property has no effect if the tab has an `action`."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "icon-only",
+          "description": "Displays the tab in a collapsed state without its text. The text will be\ndisplayed in a tooltip instead.\n\nThis property has no effect if the tab does not have an icon set."
+        },
+        {
+          "name": "importance",
+          "description": "The tab's importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "indicator-position",
+          "description": "The tab's indicator position.",
+          "values": [
+            {
+              "name": "block-end"
+            },
+            {
+              "name": "block-start"
+            },
+            {
+              "name": "inline-end"
+            },
+            {
+              "name": "inline-start"
+            }
+          ]
+        },
+        {
+          "name": "panel",
+          "description": "The tab panel element associated with this tab. The `panel` specified\ncan be any of the following:\n\n- A CSS selector string\n- A reference to an [`Element`][]\n- A function returning a reference to an [`Element`][] or a CSS selector\nstring\n\n[`Element`]: https://developer.mozilla.org/docs/Web/API/Element"
+        },
+        {
+          "name": "selected",
+          "description": "Whether or not the tab is selected."
+        },
+        {
+          "name": "size",
+          "description": "The tab's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "subtitle",
+          "description": "Text to display for the subtitle."
+        },
+        {
+          "name": "tag-icon-description",
+          "description": "The tag icon's accessible text that will be used by\nscreen readers."
+        },
+        {
+          "name": "tag-icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "tag-icon-name",
+          "description": "The name of the tab's tag icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "tag-importance",
+          "description": "The tab's tag importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "tag-size",
+          "description": "The tab's tag size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "tag-status",
+          "description": "The tab's tag status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "tag-text",
+          "description": "The tab's tag text."
+        },
+        {
+          "name": "text",
+          "description": "Primary text to display."
+        }
+      ]
+    },
+    {
+      "name": "qds-tabbar",
+      "description": {
+        "kind": "markdown",
+        "value": "`<qds-tabbar>` is the component that facilitates navigation between the groups\nof related content within the page.\nIt allows users to switch between groups by clicking on Tabs without going to another page."
+      },
+      "attributes": [
+        {
+          "name": "layer",
+          "description": "The tabbar's layer.",
+          "values": [
+            {
+              "name": "accessory"
+            },
+            {
+              "name": "main"
+            },
+            {
+              "name": "panel"
+            },
+            {
+              "name": "popup"
+            }
+          ]
+        },
+        {
+          "name": "level",
+          "description": "The tabbar's level.",
+          "values": [
+            {
+              "name": "root"
+            },
+            {
+              "name": "section"
+            },
+            {
+              "name": "subsection"
+            }
+          ]
+        },
+        {
+          "name": "orientation",
+          "description": "The tabbar's orientation.",
+          "values": [
+            {
+              "name": "horizontal"
+            },
+            {
+              "name": "vertical"
+            }
+          ]
+        },
+        {
+          "name": "tablist-description",
+          "description": "the tablist Description"
+        }
+      ]
+    },
+    {
+      "name": "qds-table",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table>` element represents tabular data — that is, information\npresented in a two-dimensional table comprised of rows and columns of cells\ncontaining data."
+      },
+      "attributes": []
+    },
+    {
+      "name": "qds-table-body",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table-body>` element encapsulates a set of rows (`<qds-table-row>`\nelements) indicating that they comprise the body of the table\n(`<qds-table>`)."
+      },
+      "attributes": []
+    },
+    {
+      "name": "qds-table-cell",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table-cell>` element defines a cell of a table that contains data.\nIt participates in the *table model*."
+      },
+      "attributes": [
+        {
+          "name": "colspan",
+          "description": "Non-negative integer value that indicates for how many columns the cell\nextends. Its default value is `1`. Values higher than 1000 will be\nconsidered as incorrect and will be set to the default value (1)."
+        },
+        {
+          "name": "rowspan",
+          "description": "Non-negative integer value that indicates for how many rows the cell\nextends. Its default value is `1`; if its value is set to `0`, it extends\nuntil the end of the table section (`<qds-table-head>` or\n`<qds-table-body>`, even if implicitly defined), that the cell belongs to.\nValues higher than 65534 are clipped down to 65534."
+        }
+      ]
+    },
+    {
+      "name": "qds-table-head",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table-head>` element encapsulates a set of rows (`<qds-table-row>`\nelements) indicating that they comprise the head of the table\n(`<qds-table>`)."
+      },
+      "attributes": []
+    },
+    {
+      "name": "qds-table-head-cell",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table-head-cell>` element defines a cell as the header of a group\nof table cells. The exact nature of this group is defined by the `scope`\nattribute."
+      },
+      "attributes": [
+        {
+          "name": "abbr",
+          "description": "A short abbreviated description of the cell's content. Some user-agents,\nsuch as speech readers, may present this description before the content\nitself."
+        },
+        {
+          "name": "colspan",
+          "description": "Non-negative integer value that indicates for how many columns the cell\nextends. Its default value is `1`. Values higher than 1000 will be\nconsidered as incorrect and will be set to the default value (1)."
+        },
+        {
+          "name": "rowspan",
+          "description": "Non-negative integer value that indicates for how many rows the cell\nextends. Its default value is `1`; if its value is set to `0`, it extends\nuntil the end of the table section (`<qds-table-head>` or\n`<qds-table-body>`, even if implicitly defined), that the cell belongs to.\nValues higher than 65534 are clipped down to 65534."
+        },
+        {
+          "name": "scope",
+          "description": "Defines the cells that the header element relates to. It may have the\nfollowing values:\n\n- `row`: The header relates to all cells of the row it belongs to.\n- `col`: The header relates to all cells of the column it belongs to.\n\nIf the `scope` attribute is not specified, or its value is not `row` or\n`col`, then browsers automatically select the set of cells to which the\nheader cell applies.",
+          "values": [
+            {
+              "name": "col"
+            },
+            {
+              "name": "row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qds-table-row",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-table-row>` element defines a row of cells in a table. The row's\ncells can then be established using a mix of `<qds-table-cell>` (data cell)\nand `<qds-table-head-cell>` (header cell) elements."
+      },
+      "attributes": []
+    },
+    {
+      "name": "qds-tag",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-tag>` element is a static descriptor used for items that need to\nbe labeled, categorized, or organized using keywords that describe them."
+      },
+      "attributes": [
+        {
+          "name": "badge",
+          "description": "Displays an indicator if `true`."
+        },
+        {
+          "name": "badge-description",
+          "description": "The indicator badge's accessible text that will be used by\nscreen readers."
+        },
+        {
+          "name": "icon-description",
+          "description": "Provides a text description of the icon for screen readers."
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "importance",
+          "description": "The tag's importance.",
+          "values": [
+            {
+              "name": "emphasized"
+            },
+            {
+              "name": "standard"
+            },
+            {
+              "name": "subdued"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "The tag's size.",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "description": "The tag's status.",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "neutral"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "The tag's text."
+        }
+      ]
+    },
+    {
+      "name": "qds-textarea",
+      "description": {
+        "kind": "markdown",
+        "value": "The `<qds-textarea>` element represents a multi-line plain-text editing\ncontrol, useful when you want to allow users to enter a sizeable amount of\nfree-form text, for example a comment on a review or feedback form."
+      },
+      "attributes": [
+        {
+          "name": "autocomplete",
+          "description": "Indicates whether the value of the textarea can be automatically completed\nby the browser. Possible values:\n\n`off`: The user must explicitly enter a value into this field for every\nuse, or the document provides its own auto-completion method; the browser\ndoes not automatically complete the entry.\n`on`: The browser can automatically complete the value based on values\nthat the user has entered during previous uses.\n\nIf the `autocomplete` attribute is not specified on a `<qds-textarea>`\nelement, then the browser uses the `autocomplete` attribute value of the\n`<qds-textarea>` element's form owner. The form owner is either the\n[`<form>`][] element that this `<qds-textarea>` element is a descendant of\nor the form element whose `id` is specified by the `form` attribute of the\n`qds-textarea` element. For more information, see the [`autocomplete`]\nattribute in [`<form>`][].\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form\n[`autocomplete`]: https://developer.mozilla.org/docs/Web/HTML/Element/form#autocomplete",
+          "values": [
+            {
+              "name": "off"
+            },
+            {
+              "name": "on"
+            }
+          ]
+        },
+        {
+          "name": "cols",
+          "description": "The visible width of the text control, in average character widths. If it\nis specified, it must be a positive integer. If it is not specified, the\ndefault value is `20`."
+        },
+        {
+          "name": "disabled",
+          "description": "Prevents the textarea from being interacted with: it cannot be pressed or\nfocused."
+        },
+        {
+          "name": "enterkeyhint",
+          "description": "What action label (or icon) to present for the enter key on virtual\nkeyboards. Possible values:\n\n- `\"done\"`: Typically meaning there is nothing more to input and the input\nmethod editor (IME) will be closed.\n- `\"enter\"`:\tTypically inserting a new line.\n- `\"go\"`: \tTypically meaning to take the user to the target of the text\nthey typed.\n- `\"next\"`: \tTypically taking the user to the next field that will accept\ntext.\n- `\"previous\"`: Typically taking the user to the previous field that will\naccept text.\n- `\"search\"`: Typically taking the user to the results of searching for\nthe text they have typed.\n- `\"send\"`: Typically delivering the text to its target.",
+          "values": [
+            {
+              "name": "done"
+            },
+            {
+              "name": "enter"
+            },
+            {
+              "name": "go"
+            },
+            {
+              "name": "next"
+            },
+            {
+              "name": "previous"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "send"
+            }
+          ]
+        },
+        {
+          "name": "form",
+          "description": "The [`<form>`][] element to associate the input with (its form owner).\n\nThe value of this attribute must be the id of a `<form>` in the same\ndocument. If this attribute is not set, the `<qds-textarea>` is associated\nwith its ancestor `<form>` element, if any.\n\nThis attribute lets you associate `<qds-textarea>` elements to `<form>`s\nanywhere in the document, not just inside a `<form>`. It can also override\nan ancestor `<form>` element.\n\n[`<form>`]: https://developer.mozilla.org/docs/Web/HTML/Element/form"
+        },
+        {
+          "name": "inputmode",
+          "description": "Provide a hint to browsers as to the type of virtual keyboard\nconfiguration to use when editing this element or its contents.",
+          "values": [
+            {
+              "name": "decimal"
+            },
+            {
+              "name": "email"
+            },
+            {
+              "name": "none"
+            },
+            {
+              "name": "numeric"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "tel"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "url"
+            }
+          ]
+        },
+        {
+          "name": "maxlength",
+          "description": "The maximum number of characters (as UTF-16 code units) the user can enter\ninto the textarea. This must be an non-negative integer value. If no\n`maxlength` is specified, or an invalid value is specified, the textarea\nhas no maximum length.\n\nThe textarea will fail [constraint validation][] if the length of the text\nentered into the field is greater than `maxlength` UTF-16 code units long.\nBy default, browsers prevent users from entering more characters than\nallowed by the `maxlength` attribute. See [Client-side validation][] for\nmore information.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation"
+        },
+        {
+          "name": "minlength",
+          "description": "The minimum number of characters (as UTF-16 code units) the user can enter\ninto the textarea. This must be an non-negative integer value smaller than\nor equal to the value specified by `maxlength`. If no `minlength` is\nspecified, or an invalid value is specified, the textarea has no minimum\nlength.\n\nThe textarea will fail [constraint validation][] if the length of the text\nentered into the field is fewer than `minlength` UTF-16 code units long,\npreventing form submission. See [Client-side validation][] for more\ninformation.\n\n[constraint validation]: https://developer.mozilla.org/docs/Web/Guide/HTML/Constraint_validation\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation"
+        },
+        {
+          "name": "name",
+          "description": "The name of the textarea, which is submitted with the form data."
+        },
+        {
+          "name": "placeholder",
+          "description": "Text that appears in the textarea when it has no value set."
+        },
+        {
+          "name": "required",
+          "description": "A value must be specified for the textarea before the owning form can be\nsubmitted.\n\nSee [Client-side validation][] and the [HTML attribute: `required`][] for\nmore information.\n\n[Client-side validation]: https://developer.mozilla.org/docs/Web/HTML/Element/input#client-side_validation\n[HTML attribute: `required`]: https://developer.mozilla.org/docs/Web/HTML/Attributes/required"
+        },
+        {
+          "name": "rows",
+          "description": "The number of visible text lines for the control. If it is specified, it\nmust be a positive integer. If it is not specified, the default value is\n`2`."
+        },
+        {
+          "name": "selection-direction",
+          "description": "Get or set the selection direction of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute.",
+          "values": [
+            {
+              "name": "backward"
+            },
+            {
+              "name": "forward"
+            },
+            {
+              "name": "none"
+            }
+          ]
+        },
+        {
+          "name": "selection-end",
+          "description": "Get or set the ending position or offset of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute."
+        },
+        {
+          "name": "selection-start",
+          "description": "Get or set the starting position or offset of a text selection.\n\n> **_NOTE:_** This property has no effect when used as an attribute."
+        },
+        {
+          "name": "size",
+          "description": "The textarea's size.\n\n> **_NOTE:_** The native [`size` HTML attribute][] is not supported. CSS\n`width` should be used instead if this functionality is needed.\n\n[`size` HTML attribute]: https://developer.mozilla.org/docs/Web/HTML/Attributes/size",
+          "values": [
+            {
+              "name": "large"
+            },
+            {
+              "name": "small"
+            },
+            {
+              "name": "standard"
+            }
+          ]
+        },
+        {
+          "name": "validation-message",
+          "description": "The error message that would be shown to the user if the `<qds-select>`\nwas to be checked for validity."
+        },
+        {
+          "name": "value",
+          "description": "The value of the textarea."
+        },
+        {
+          "name": "will-validate",
+          "description": "True if `<qds-textarea>` will be validated when the form is submitted;\nfalse otherwise."
+        },
+        {
+          "name": "wrap",
+          "description": "Indicates how the control should wrap the value for form submission.\nPossible values are:\n\n- `hard`: The browser automatically inserts line breaks (`CR+LF`) so that\neach line is no longer than the width of the control; the `cols` attribute\nmust be specified for this to take effect\n- `soft`: The browser ensures that all line breaks in the entered value\nare a `CR+LF` pair, but no additional line breaks are added to the value.\n- `off`: Like `soft` but changes appearance to `white-space: pre` so line\nsegments exceeding `cols` are not wrapped and the `<qds-textarea>` becomes\nhorizontally scrollable.\n\nIf this attribute is not specified, `soft` is its default value.",
+          "values": [
+            {
+              "name": "off"
+            },
+            {
+              "name": "soft"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qds-title",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "alignment",
+          "description": "The alignment of the title.",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "start"
+            }
+          ]
+        },
+        {
+          "name": "icon-library",
+          "description": "The name of a registered icon library."
+        },
+        {
+          "name": "icon-name",
+          "description": "The name of the icon to render.\n\nAvailable names depend on the icon library being used."
+        },
+        {
+          "name": "kicker",
+          "description": "Text to display for the kicker."
+        },
+        {
+          "name": "layer",
+          "description": "",
+          "values": [
+            {
+              "name": "accessory"
+            },
+            {
+              "name": "main"
+            },
+            {
+              "name": "navigation"
+            },
+            {
+              "name": "panel"
+            },
+            {
+              "name": "popup"
+            }
+          ]
+        },
+        {
+          "name": "level",
+          "description": "",
+          "values": [
+            {
+              "name": "root"
+            },
+            {
+              "name": "section"
+            },
+            {
+              "name": "subsection"
+            }
+          ]
+        },
+        {
+          "name": "subtitle",
+          "description": "Text to display for the subtitle."
+        },
+        {
+          "name": "tag",
+          "description": "HTML tag to use to render the title.",
+          "values": [
+            {
+              "name": "h1"
+            },
+            {
+              "name": "h2"
+            },
+            {
+              "name": "h3"
+            },
+            {
+              "name": "h4"
+            },
+            {
+              "name": "h5"
+            },
+            {
+              "name": "h6"
+            }
+          ]
+        },
+        {
+          "name": "variant",
+          "description": "The title's variant.",
+          "values": [
+            {
+              "name": "web-main-section-display"
+            },
+            {
+              "name": "web-main-section-hero"
+            },
+            {
+              "name": "web-main-section-promo"
+            },
+            {
+              "name": "web-main-subsection-card"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qds-tooltip",
+      "description": {
+        "kind": "markdown",
+        "value": "<!--\nSPDX-FileCopyrightText: © 2024 Schneider Electric\n\nSPDX-License-Identifier: Apache-2.0\n-->"
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Prevents the tooltip from being shown by user interaction. The tooltip can\nstill be displayed by calling the `show()` method."
+        },
+        {
+          "name": "no-flip",
+          "description": "Disable Floating UI's\n[`flip` middleware](https://floating-ui.com/docs/flip)."
+        },
+        {
+          "name": "no-shift",
+          "description": "Disable Floating UI's\n[`shift` middleware](https://floating-ui.com/docs/shift)."
+        },
+        {
+          "name": "placement",
+          "description": "Where to place the tooltip relative to the `target`.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
+            },
+            {
+              "name": "bottom-start"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-start"
+            }
+          ]
+        },
+        {
+          "name": "strategy",
+          "description": "The CSS position strategy to use.",
+          "values": [
+            {
+              "name": "absolute"
+            },
+            {
+              "name": "fixed"
+            }
+          ]
+        },
+        {
+          "name": "target",
+          "description": "The trigger element that will trigger the tooltip. The target specified\ncan be any of the following:\n\n- A CSS selector string\n- A reference to an [`Element`][] or [Virtual Element][]\n- A function returning a reference to an [`Element`][],\n[Virtual Element][], or a CSS selector string\n\n[`Element`]: https://developer.mozilla.org/docs/Web/API/Element\n[Virtual Element]: https://floating-ui.com/docs/virtual-elements"
+        },
+        {
+          "name": "trigger",
+          "description": "Determines the events that cause the tooltip to show. Multiple event names\nare separated by spaces."
+        }
+      ]
+    }
+  ]
+}

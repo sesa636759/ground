@@ -1,0 +1,194 @@
+{
+  "name": "@quartzds/core",
+  "version": "1.0.0-beta.90",
+  "description": "Quartz design system web components",
+  "homepage": "https://github.com/quartzds/core-foundations/tree/main/packages/core",
+  "bugs": {
+    "url": "https://github.com/quartzds/core-foundations/issues"
+  },
+  "repository": "https://github.com/quartzds/core-foundations",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./components/index.d.ts",
+      "default": "./components/index.js"
+    },
+    "./components": {
+      "types": "./components/index.d.ts",
+      "default": "./components/index.js"
+    },
+    "./components/*": "./components/*",
+    "./components/p-*": null,
+    "./docs.json": {
+      "types": "./dist/docs.d.ts",
+      "default": "./dist/docs.json"
+    },
+    "./hydrate": {
+      "types": "./hydrate/index.d.ts",
+      "default": "./hydrate/index.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.es2017.js",
+      "require": "./loader/index.cjs.js"
+    },
+    "./package.json": "./package.json",
+    "./styles/*": "./styles/*",
+    "./CHANGELOG.md": "./CHANGELOG.md"
+  },
+  "module": "./components/index.js",
+  "types": "./components/index.d.ts",
+  "files": [
+    "components/**",
+    "dist/cjs/**",
+    "dist/esm/**",
+    "dist/types/**",
+    "dist/custom-elements.json",
+    "dist/docs.d.ts",
+    "dist/docs.json",
+    "dist/vscode.html-custom-data.json",
+    "hydrate/**",
+    "loader/**",
+    "styles/**"
+  ],
+  "scripts": {
+    "build": "run-p -s \"build:*\"",
+    "build:stencil": "stencil build --docs",
+    "build:cem": "cem analyze",
+    "clean": "rimraf .turbo/ .stencil/ components/ dist/ hydrate/ loader/ node_modules/ playwright-report/ styles/ test-results/ www/",
+    "dev": "run-p -s \"dev:*\"",
+    "dev:stencil": "stencil build --docs --watch",
+    "dev:cem": "cem analyze --watch",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install --with-deps chromium firefox"
+  },
+  "browserslist": "extends @quartzds/browserslist-config",
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": "src/components/*/*.tsx",
+        "rules": {
+          "class-methods-use-this": [
+            "error",
+            {
+              "exceptMethods": [
+                "componentDidLoad",
+                "componentDidRender",
+                "componentDidUpdate",
+                "componentShouldUpdate",
+                "componentWillLoad",
+                "componentWillRender",
+                "componentWillUpdate",
+                "connectedCallback",
+                "disconnectedCallback",
+                "render"
+              ]
+            }
+          ],
+          "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+              "allowedNames": [
+                "render"
+              ]
+            }
+          ],
+          "@typescript-eslint/explicit-module-boundary-types": [
+            "error",
+            {
+              "allowedNames": [
+                "render"
+              ]
+            }
+          ],
+          "import/prefer-default-export": "off"
+        }
+      },
+      {
+        "files": "*.tsx",
+        "rules": {
+          "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+              "varsIgnorePattern": "h|Fragment"
+            }
+          ],
+          "react/no-unknown-property": [
+            "error",
+            {
+              "ignore": [
+                "class",
+                "indeterminate",
+                "innerHTML",
+                "onSlotchange",
+                "spellcheck"
+              ]
+            }
+          ],
+          "unicorn/filename-case": [
+            "error",
+            {
+              "cases": {
+                "kebabCase": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "files": "*.e2e.ts",
+        "rules": {
+          "import/no-extraneous-dependencies": [
+            "error",
+            {
+              "devDependencies": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.0.0",
+    "@stencil/core": "^4.27.0",
+    "@types/node": "*",
+    "type-fest": "^4.0.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.3",
+    "@jest/globals": "29.7.0",
+    "@playwright/test": "1.48.0",
+    "@quartzds/browserslist-config": "2.0.0-beta.3",
+    "@quartzds/generic-icons-core": "1.0.0-beta.12",
+    "@quartzds/generic-tokens": "1.0.0-beta.8",
+    "@stencil-community/postcss": "2.2.0",
+    "@stencil/angular-output-target": "0.10.2",
+    "@stencil/playwright": "0.2.1",
+    "@stencil/react-output-target": "0.7.4",
+    "@stencil/vue-output-target": "0.8.9",
+    "@types/postcss-import": "14.0.3",
+    "cssnano": "7.0.6",
+    "cssnano-preset-advanced": "7.0.6",
+    "npm-run-all2": "6.2.3",
+    "postcss": "8.4.47",
+    "postcss-import": "16.1.0",
+    "postcss-preset-env": "9.6.0",
+    "rimraf": "5.0.10",
+    "typescript": "5.6.3"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.1"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "customElements": "./dist/custom-elements.json",
+  "storybook": {
+    "url": "https://main--6361be96430f623570308ec6.chromatic.com/"
+  }
+}
