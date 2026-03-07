@@ -26,17 +26,17 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetStepperDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'horizontal', title: 'Horizontal Modes', icon: 'âž¡ï¸', color: '#3b82f6' },
-    { id: 'vertical', title: 'Vertical Modes', icon: 'â¬‡ï¸', color: '#10b981' },
-    { id: 'labels', title: 'Label Placement', icon: 'ðŸ·ï¸', color: '#f59e0b' },
+    { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️', color: '#3b82f6' },
+    { id: 'vertical', title: 'Vertical Modes', icon: '⬇️', color: '#10b981' },
+    { id: 'labels', title: 'Label Placement', icon: '🏷️', color: '#f59e0b' },
     { id: 'descriptions', title: 'Descriptions', icon: 'ðŸ“', color: '#ef4444' },
-    { id: 'content', title: 'Content & Navigation', icon: 'ðŸ“¦', color: '#8b5cf6' },
-    { id: 'steps-count', title: 'Step Counts', icon: 'ðŸ”¢', color: '#ec4899' },
-    { id: 'connectors', title: 'Custom Connectors', icon: 'ðŸ”—', color: '#06b6d4' },
-    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ¨', color: '#64748b' },
-    { id: 'colors', title: 'Color Schemes', icon: 'ðŸŒˆ', color: '#3b82f6' },
-    { id: 'scrolling', title: 'Large Scale', icon: 'ðŸ“œ', color: '#10b981' },
-    { id: 'interactive', title: 'Interactive Demo', icon: 'ðŸŽ¯', color: '#f59e0b' },
+    { id: 'content', title: 'Content & Navigation', icon: '📦', color: '#8b5cf6' },
+    { id: 'steps-count', title: 'Step Counts', icon: '🔢', color: '#ec4899' },
+    { id: 'connectors', title: 'Custom Connectors', icon: '🔗', color: '#06b6d4' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#64748b' },
+    { id: 'colors', title: 'Color Schemes', icon: '🌈', color: '#3b82f6' },
+    { id: 'scrolling', title: 'Large Scale', icon: '📜', color: '#10b981' },
+    { id: 'interactive', title: 'Interactive Demo', icon: '🎯', color: '#f59e0b' },
   ];
 
   currentStep25 = 12;

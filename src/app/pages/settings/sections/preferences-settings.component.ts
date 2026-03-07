@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">âš™ï¸</span>
+          <span class="section-icon">⚙️</span>
           <h2>Preferences</h2>
         </div>
         <p>Tailor your workspace and viewing experience to your liking</p>

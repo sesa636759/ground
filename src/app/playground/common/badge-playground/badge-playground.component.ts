@@ -69,7 +69,7 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.glow) code += `  glow\n`;
     if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
     code += '>\n';
-    code += '  <icon>ðŸ””</icon>\n';
+    code += '  <icon>🔔</icon>\n';
     code += '</ui-badge>';
 
     this.generatedCode.set(code);

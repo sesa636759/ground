@@ -26,14 +26,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'separators', title: 'Separators', icon: 'âž–' },
-    { id: 'collapsing', title: 'Collapsing', icon: 'ðŸ“‰' },
-    { id: 'visuals', title: 'Visual Variants', icon: 'ðŸŽ¨' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'separators', title: 'Separators', icon: '➖' },
+    { id: 'collapsing', title: 'Collapsing', icon: '📉' },
+    { id: 'visuals', title: 'Visual Variants', icon: '🎨' },
   ];
 
   items = [
-    { label: 'Home', icon: 'ðŸ ', href: '/' },
+    { label: 'Home', icon: '🏠', href: '/' },
     { label: 'Settings', href: '/settings' },
     { label: 'Profile', active: true },
   ];
@@ -48,7 +48,7 @@ export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
 
   playgroundCode = `<ui-breadcrumb [items]="breadcrumbItems" show-home></ui-breadcrumb>`;
   separatorsCode = `<ui-breadcrumb [items]="items" separator=">" show-home></ui-breadcrumb>
-<ui-breadcrumb [items]="items" separator-icon="â†’" show-home></ui-breadcrumb>`;
+<ui-breadcrumb [items]="items" separator-icon="→" show-home></ui-breadcrumb>`;
   collapsingCode = `<ui-breadcrumb [items]="collapsibleItems" [max-items]="4" show-home></ui-breadcrumb>`;
   visualsCode = `<ui-breadcrumb [items]="items" variant="pills" show-home></ui-breadcrumb>
 <ui-breadcrumb [items]="items" variant="glass" show-home></ui-breadcrumb>`;

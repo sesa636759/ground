@@ -1,6 +1,6 @@
 ﻿<div class="demo-container">
   <pg-demo-header
-    icon="â†”ï¸"
+    icon="↔️"
     title="Resizable Panel"
     description="Flexible layout system with draggable dividers for horizontal and vertical resizing. Perfect for dashboards, IDEs, and complex UIs."
   ></pg-demo-header>
@@ -24,7 +24,7 @@
                   <strong>Left Panel</strong>
                   <p>Drag the handle to resize this panel horizontally.</p>
                   <p>
-                    âœ“ Horizontal resizing<br />âœ“ Touch support<br />âœ“ Min/max constraints<br />âœ“
+                    ✓ Horizontal resizing<br />✓ Touch support<br />✓ Min/max constraints<br />✓
                     Smooth transitions
                   </p>
                 </div>
@@ -99,7 +99,7 @@
               <app-resizable-panel [panels]="nestedOuter" direction="horizontal">
                 <div slot="sidebar" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Sidebar</strong>
-                  <p>âœ“ Navigation<br />âœ“ Tree View<br />âœ“ File Explorer<br />âœ“ Settings</p>
+                  <p>✓ Navigation<br />✓ Tree View<br />✓ File Explorer<br />✓ Settings</p>
                 </div>
                 <div slot="main" style="height: 100%; overflow: hidden">
                   <app-resizable-panel [panels]="nestedInner" direction="vertical">
@@ -114,7 +114,7 @@
                     </div>
                     <div slot="terminal" class="p-content" style="background: #1a1a1a; color: #0f0">
                       <strong>Build Output / Terminal</strong>
-                      <p>$ npm run build<br />âœ“ Build complete in 2.3s</p>
+                      <p>$ npm run build<br />✓ Build complete in 2.3s</p>
                     </div>
                   </app-resizable-panel>
                 </div>

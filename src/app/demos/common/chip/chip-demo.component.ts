@@ -26,11 +26,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmChipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'variants', title: 'Variants', icon: 'ðŸŽ¨', color: '#8b5cf6' },
-    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: 'ðŸ“', color: '#3b82f6' },
-    { id: 'avatars-icons', title: 'Avatars & Icons', icon: 'ðŸ‘¤', color: '#10b981' },
-    { id: 'actions', title: 'Actions', icon: 'âš¡', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'variants', title: 'Variants', icon: '🎨', color: '#8b5cf6' },
+    { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏', color: '#3b82f6' },
+    { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤', color: '#10b981' },
+    { id: 'actions', title: 'Actions', icon: '⚡', color: '#f59e0b' },
   ];
 
   playgroundCode = `<ui-chip label="Web Development" color="primary" removable></ui-chip>`;
@@ -44,13 +44,13 @@ export class DmChipDemoComponent extends BaseDemoComponent {
   shapesSizesCode = `<ui-chip label="Pill" shape="pill"></ui-chip>
 <ui-chip label="Rounded" shape="rounded"></ui-chip>
 <ui-chip label="Square" shape="square"></ui-chip>
-<ui-chip label="Circle" shape="circle" icon="ðŸš€"></ui-chip>`;
+<ui-chip label="Circle" shape="circle" icon="🚀"></ui-chip>`;
 
   sizeCode = `<ui-chip label="Small" size="sm"></ui-chip>
 <ui-chip label="Medium" size="md"></ui-chip>
 <ui-chip label="Large" size="lg"></ui-chip>`;
 
-  avatarsIconsCode = `<ui-chip label="React" icon="âš›ï¸"></ui-chip>
+  avatarsIconsCode = `<ui-chip label="React" icon="⚛️"></ui-chip>
 <ui-chip label="John Doe" user-avatar="https://i.pravatar.cc/150?u=john"></ui-chip>
 <ui-chip label="Status" badge="99" color="danger"></ui-chip>
 <ui-chip label="In Progress" counter="5" color="warning"></ui-chip>`;

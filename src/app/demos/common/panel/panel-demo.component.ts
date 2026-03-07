@@ -27,11 +27,11 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmPanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'visual-styles', title: 'Visual Styles', icon: 'ðŸŽ¨' },
-    { id: 'themes', title: 'Themes', icon: 'ðŸŒˆ' },
-    { id: 'interactivity', title: 'Interactive', icon: 'ðŸ•¹ï¸' },
-    { id: 'glassmorphism', title: 'Glassmorphism', icon: 'ðŸ”®' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
+    { id: 'themes', title: 'Themes', icon: '🌈' },
+    { id: 'interactivity', title: 'Interactive', icon: '🕹️' },
+    { id: 'glassmorphism', title: 'Glassmorphism', icon: '🔮' },
   ];
 
   playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">

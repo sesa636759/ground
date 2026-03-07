@@ -26,11 +26,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmAsideDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'directions', title: 'Directions', icon: 'ðŸ§­' },
-    { id: 'visual-styles', title: 'Visual Styles', icon: 'ðŸŽ¨' },
-    { id: 'resizable', title: 'Resizable', icon: 'â†”ï¸' },
-    { id: 'close-behavior', title: 'Close Behavior', icon: 'ðŸšª' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'directions', title: 'Directions', icon: '🧭' },
+    { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
+    { id: 'resizable', title: 'Resizable', icon: '↔️' },
+    { id: 'close-behavior', title: 'Close Behavior', icon: '🚪' },
   ];
 
   sidebars = {

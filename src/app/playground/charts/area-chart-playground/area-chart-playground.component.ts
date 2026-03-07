@@ -84,7 +84,7 @@ export class DmAreaChartPlaygroundComponent {
 
   tempData = [
     {
-      name: 'Max Â°C',
+      name: 'Max °C',
       color: '#f43f5e',
       points: [
         { x: 1, y: 18 },
@@ -96,7 +96,7 @@ export class DmAreaChartPlaygroundComponent {
       ],
     },
     {
-      name: 'Min Â°C',
+      name: 'Min °C',
       color: '#6366f1',
       points: [
         { x: 1, y: 8 },

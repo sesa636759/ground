@@ -27,11 +27,11 @@ import { BaseDemoComponent, DemoVariant } from '../../../shared/base-demo.compon
 })
 export class DmSmartMenuDemoComponent extends BaseDemoComponent {
   override exampleVariants: DemoVariant[] = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', iconLibrary: 'emoji' },
-    { id: 'nested', title: 'Nested Menus', icon: 'ðŸ—‚ï¸', iconLibrary: 'emoji' },
-    { id: 'icons', title: 'With Icons', icon: 'ðŸŽ¯', iconLibrary: 'emoji' },
-    { id: 'separators', title: 'Separators', icon: 'âž–', iconLibrary: 'emoji' },
-    { id: 'disabled', title: 'Disabled Items', icon: 'ðŸš«', iconLibrary: 'emoji' },
+    { id: 'playground', title: 'Playground', icon: '🎮', iconLibrary: 'emoji' },
+    { id: 'nested', title: 'Nested Menus', icon: '🗂️', iconLibrary: 'emoji' },
+    { id: 'icons', title: 'With Icons', icon: '🎯', iconLibrary: 'emoji' },
+    { id: 'separators', title: 'Separators', icon: '➖', iconLibrary: 'emoji' },
+    { id: 'disabled', title: 'Disabled Items', icon: '🚫', iconLibrary: 'emoji' },
   ];
 
   nestedCode = `<!-- Right-click on the target area to open the menu -->

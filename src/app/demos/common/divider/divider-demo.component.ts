@@ -26,11 +26,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDividerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'variants', title: 'Line Variants', icon: 'ðŸŽ¨', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'variants', title: 'Line Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'text-content', title: 'Text & Content', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'vertical', title: 'Vertical Orientation', icon: 'â†•ï¸', color: '#f59e0b' },
-    { id: 'shapes', title: 'Decorative Shapes', icon: 'ðŸ“', color: '#ef4444' },
+    { id: 'vertical', title: 'Vertical Orientation', icon: '↕️', color: '#f59e0b' },
+    { id: 'shapes', title: 'Decorative Shapes', icon: '📐', color: '#ef4444' },
   ];
 
   playgroundCode = `<ui-divider text="SECTION 1" variant="dashed" size="lg"></ui-divider>`;
@@ -42,7 +42,7 @@ export class DmDividerDemoComponent extends BaseDemoComponent {
 
   textContentCode = `<ui-divider text="Centered Text"></ui-divider>
 <ui-divider text="Left Text" text-align="left"></ui-divider>
-<ui-divider icon="â­" variant="dashed" size="lg"></ui-divider>
+<ui-divider icon="⭐" variant="dashed" size="lg"></ui-divider>
 <ui-divider badge="NEW" color="primary"></ui-divider>`;
 
   verticalCode = `<div style="display: flex; height: 100px; align-items: center; justify-content: center;">

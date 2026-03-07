@@ -25,10 +25,10 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSwitchDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'colors', name: 'Colors', icon: 'ðŸŒˆ', color: '#3b82f6' },
-    { id: 'sizes', name: 'Sizes', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'icons', name: 'Icons', icon: 'ðŸŽ¨', color: '#f59e0b' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'colors', name: 'Colors', icon: '🌈', color: '#3b82f6' },
+    { id: 'sizes', name: 'Sizes', icon: '📏', color: '#10b981' },
+    { id: 'icons', name: 'Icons', icon: '🎨', color: '#f59e0b' },
     { id: 'labels', name: 'Labels', icon: 'ðŸ“', color: '#ec4899' },
   ];
 
@@ -50,10 +50,10 @@ export class DmSwitchDemoComponent {
 <ui-switch label="Large" size="lg"></ui-switch>
 <ui-switch label="Extra Large" size="xl"></ui-switch>`;
 
-  iconsCode = `<ui-switch icon-on="ðŸŒ™" icon-off="â˜€ï¸" checked></ui-switch>
-<ui-switch icon-on="ðŸ”Š" icon-off="ðŸ”‡" checked></ui-switch>
+  iconsCode = `<ui-switch icon-on="🌙" icon-off="☀️" checked></ui-switch>
+<ui-switch icon-on="🔊" icon-off="🔇" checked></ui-switch>
 <ui-switch show-default-icons checked></ui-switch>
-<ui-switch label="Bluetooth" icon-on="ðŸ”µ" icon-off="âšª"></ui-switch>`;
+<ui-switch label="Bluetooth" icon-on="🔵" icon-off="⚪"></ui-switch>`;
 
   labelsCode = `<ui-switch label="Label Right (Default)"></ui-switch>
 <ui-switch label="Label Left" label-position="left"></ui-switch>

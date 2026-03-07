@@ -35,12 +35,12 @@ export class DmDropdownPlaygroundComponent extends BasePlaygroundComponent imple
   ];
 
   options = [
-    { label: 'Angular', value: 'ng', icon: 'ðŸ…°ï¸' },
-    { label: 'React', value: 'react', icon: 'âš›ï¸' },
-    { label: 'Vue.js', value: 'vue', icon: 'ðŸ––' },
-    { label: 'Svelte', value: 'svelte', icon: 'ðŸ”¥' },
-    { label: 'Stencil', value: 'stencil', icon: 'ðŸ’Ž' },
-    { label: 'Solid', value: 'solid', icon: 'ðŸ§Š' },
+    { label: 'Angular', value: 'ng', icon: '🅰️' },
+    { label: 'React', value: 'react', icon: '⚛️' },
+    { label: 'Vue.js', value: 'vue', icon: '🖖' },
+    { label: 'Svelte', value: 'svelte', icon: '🔥' },
+    { label: 'Stencil', value: 'stencil', icon: '💎' },
+    { label: 'Solid', value: 'solid', icon: '🧱' },
   ];
 
   cascadingOptions = [

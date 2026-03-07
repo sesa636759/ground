@@ -23,9 +23,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmTimerDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'modes', name: 'Timer Modes', icon: 'â²ï¸', color: '#3b82f6' },
-    { id: 'formats', name: 'Display Formats', icon: 'ðŸ•°ï¸', color: '#10b981' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', name: 'Timer Modes', icon: '⏲️', color: '#3b82f6' },
+    { id: 'formats', name: 'Display Formats', icon: '🕰️', color: '#10b981' },
   ];
 
   get exampleVariants() {

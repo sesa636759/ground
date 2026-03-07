@@ -79,37 +79,37 @@ export class App implements OnInit {
     {
       id: 'schneider-green',
       label: 'SE Green',
-      emoji: 'ðŸŒ¿',
+      emoji: '🌿',
       gradient: 'linear-gradient(135deg,#3DCD58,#059669)',
     },
     {
       id: 'schneider-blue',
       label: 'SE Blue',
-      emoji: 'ðŸ’™',
+      emoji: '💙',
       gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
     },
     {
       id: 'dark',
       label: 'Dark',
-      emoji: 'ðŸŒ™',
+      emoji: '🌙',
       gradient: 'linear-gradient(135deg,#0f172a,#1e293b)',
     },
     {
       id: 'light',
       label: 'Light',
-      emoji: 'â˜€ï¸',
+      emoji: '☀️',
       gradient: 'linear-gradient(135deg,#f8faf9,#e2e8f0)',
     },
     {
       id: 'high-contrast',
       label: 'Contrast',
-      emoji: 'ðŸ‘ï¸',
+      emoji: '👁️',
       gradient: 'linear-gradient(135deg,#000,#facc15)',
     },
     {
       id: 'auto',
       label: 'Auto',
-      emoji: 'ðŸ”„',
+      emoji: '🔄',
       gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
     },
   ];
@@ -118,7 +118,7 @@ export class App implements OnInit {
 
   currentThemeIcon = computed(() => {
     return (
-      this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? 'ðŸŽ¨'
+      this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? '🎨'
     );
   });
 

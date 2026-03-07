@@ -25,9 +25,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSpeedometerDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'modes', name: 'Color Modes', icon: 'ðŸŒˆ', color: '#3b82f6' },
-    { id: 'sizes', name: 'Scaling', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', name: 'Color Modes', icon: '🌈', color: '#3b82f6' },
+    { id: 'sizes', name: 'Scaling', icon: '📐', color: '#10b981' },
   ];
 
   get exampleVariants() {

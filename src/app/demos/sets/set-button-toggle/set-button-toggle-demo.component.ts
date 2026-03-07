@@ -26,20 +26,20 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetButtonToggleDemoComponent extends BaseDemoComponent {
   variants = [
-    { id: 'segmented', title: 'Segmented Controls', icon: 'ðŸ”˜' },
-    { id: 'gliding', title: 'Gliding Pill Animation', icon: 'ðŸ„' },
-    { id: 'colors', title: 'Color Variants', icon: 'ðŸŽ¨' },
-    { id: 'styles', title: 'Style Variants', icon: 'ðŸŽ­' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'icons', title: 'With Icons', icon: 'ðŸŽ¯' },
-    { id: 'icon-only', title: 'Icon Only', icon: 'ðŸ”²' },
-    { id: 'dropdown', title: 'Dropdown Mode', icon: 'ðŸ“‹' },
-    { id: 'split-button', title: 'Split Button', icon: 'ðŸ”€' },
-    { id: 'display-modes', title: 'Display Modes', icon: 'ðŸŽ­' },
-    { id: 'orientations', title: 'Orientations', icon: 'ðŸ“' },
-    { id: 'custom-slots', title: 'Custom Content Slots', icon: 'âš¡' },
-    { id: 'loading', title: 'Loading States', icon: 'âŒ›' },
-    { id: 'states', title: 'States', icon: 'ðŸ”„' },
+    { id: 'segmented', title: 'Segmented Controls', icon: '🔘' },
+    { id: 'gliding', title: 'Gliding Pill Animation', icon: '🏄' },
+    { id: 'colors', title: 'Color Variants', icon: '🎨' },
+    { id: 'styles', title: 'Style Variants', icon: '🎭' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'icons', title: 'With Icons', icon: '🎯' },
+    { id: 'icon-only', title: 'Icon Only', icon: '🔲' },
+    { id: 'dropdown', title: 'Dropdown Mode', icon: '📋' },
+    { id: 'split-button', title: 'Split Button', icon: '🔀' },
+    { id: 'display-modes', title: 'Display Modes', icon: '🎭' },
+    { id: 'orientations', title: 'Orientations', icon: '📐' },
+    { id: 'custom-slots', title: 'Custom Content Slots', icon: '⚡' },
+    { id: 'loading', title: 'Loading States', icon: '⌛' },
+    { id: 'states', title: 'States', icon: '🔄' },
   ];
 
   get exampleVariants() {

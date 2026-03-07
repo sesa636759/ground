@@ -26,12 +26,12 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', category: 'General' },
+    { id: 'playground', title: 'Playground', icon: '🎮', category: 'General' },
     // Basic Layouts (1)
     {
       id: 'length-variants',
       title: 'Length Variants',
-      icon: 'ðŸ“',
+      icon: '📐',
       category: 'Basic Layouts',
       tab: 'basic',
     },
@@ -40,7 +40,7 @@ export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
     {
       id: 'variants',
       title: 'Variants & Styles',
-      icon: 'âœ¨',
+      icon: '✨',
       category: 'Variants & Styles',
       tab: 'variants',
     },
@@ -49,62 +49,62 @@ export class DmSetOtpInputDemoComponent extends BaseDemoComponent {
     {
       id: 'validation-states',
       title: 'Validation States',
-      icon: 'âœ…',
+      icon: '✅',
       category: 'Validation',
       tab: 'validation',
     },
     {
       id: 'grouping-variants',
       title: 'Groupings',
-      icon: 'âš™ï¸',
+      icon: '⚙️',
       category: 'Features',
       tab: 'features',
     },
-    { id: 'masking', title: 'Masked Input', icon: 'âš™ï¸', category: 'Features', tab: 'features' },
+    { id: 'masking', title: 'Masked Input', icon: '⚙️', category: 'Features', tab: 'features' },
 
     // Advanced (12)
-    { id: 'size-variants', title: 'Sizes', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
-    { id: 'secure-pin', title: 'Secure PIN', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'size-variants', title: 'Sizes', icon: '🚀', category: 'Advanced', tab: 'advanced' },
+    { id: 'secure-pin', title: 'Secure PIN', icon: '🚀', category: 'Advanced', tab: 'advanced' },
     {
       id: 'readonly',
       title: 'Read-only State',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },
     {
       id: 'disabled',
       title: 'Disabled State',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },
     {
       id: 'validation',
       title: 'With Validation',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },
-    { id: 'autofocus', title: 'Auto Focus', icon: 'ðŸš€', category: 'Advanced', tab: 'advanced' },
+    { id: 'autofocus', title: 'Auto Focus', icon: '🚀', category: 'Advanced', tab: 'advanced' },
     {
       id: 'pasteable',
       title: 'Paste Support',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },
     {
       id: 'numeric-only',
       title: 'Numeric Only',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },
     {
       id: 'alphanumeric',
       title: 'Alphanumeric',
-      icon: 'ðŸš€',
+      icon: '🚀',
       category: 'Advanced',
       tab: 'advanced',
     },

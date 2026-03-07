@@ -27,10 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmStepperDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'orientation', title: 'Orientation', icon: 'ðŸ“', color: '#3b82f6' },
-    { id: 'visuals', title: 'Visual Types', icon: 'ðŸŽ¨', color: '#10b981' },
-    { id: 'validation', title: 'Logic & Flow', icon: 'âš¡', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'orientation', title: 'Orientation', icon: '📐', color: '#3b82f6' },
+    { id: 'visuals', title: 'Visual Types', icon: '🎨', color: '#10b981' },
+    { id: 'validation', title: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
   ];
 
   steps = [

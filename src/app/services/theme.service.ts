@@ -123,18 +123,18 @@ export class ThemeService {
     const theme = this.currentTheme();
     switch (theme) {
       case 'light':
-        return 'â˜€ï¸';
+        return '☀️';
       case 'dark':
-        return 'ðŸŒ™';
+        return '🌙';
       case 'schneider-green':
-        return 'ðŸŒ¿';
+        return '🌿';
       case 'schneider-blue':
-        return 'ðŸ’™';
+        return '💙';
       case 'high-contrast':
-        return 'ðŸ‘ï¸';
+        return '👁️';
       case 'auto':
       default:
-        return 'ðŸ”„';
+        return '🔄';
     }
   }
 

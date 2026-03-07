@@ -21,7 +21,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './set-dashboard-demo.component.scss',
 })
 export class DmSetDashboardDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'features', title: 'Key Features', icon: 'ðŸš€' }];
+  exampleVariants = [{ id: 'features', title: 'Key Features', icon: '🚀' }];
 
   // Code examples
   playgroundCode = `<app-dashboard
@@ -36,9 +36,9 @@ export class DmSetDashboardDemoComponent extends BaseDemoComponent {
 
   featuresCode = `<!-- Dashboard Key Features:
 
-âœ“ Drag & Drop: Intuitive drag and drop interface
-âœ“ Resizable: Resize widgets from any corner
-âœ“ Responsive: Custom breakpoints for different screens
-âœ“ State Management: Save, load, undo, and redo
+✓ Drag & Drop: Intuitive drag and drop interface
+✓ Resizable: Resize widgets from any corner
+✓ Responsive: Custom breakpoints for different screens
+✓ State Management: Save, load, undo, and redo
 -->`;
 }

@@ -14,14 +14,14 @@ import { ExampleSectionComponent } from 'src/app/shared/components/example-secti
 })
 export class CardExamplesComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground-hero', title: 'Premium Showcase', icon: 'âœ¨' },
-    { id: 'basic', title: 'Core Structure', icon: 'ðŸ“‹' },
-    { id: 'media', title: 'Media Enhancements', icon: 'ðŸ–¼ï¸' },
-    { id: 'interactions', title: 'Rich Interactions', icon: 'âš¡' },
-    { id: 'variants-showcase', title: 'Design Variants', icon: 'ðŸŽ¨' },
-    { id: 'responsive', title: 'Adaptive Layouts', icon: 'ðŸ“±' },
-    { id: 'states', title: 'Functional States', icon: 'â³' },
-    { id: 'advanced', title: 'Advanced Patterns', icon: 'ðŸš€' },
+    { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
+    { id: 'basic', title: 'Core Structure', icon: '📋' },
+    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
+    { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
+    { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
+    { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
+    { id: 'states', title: 'Functional States', icon: '⏳' },
+    { id: 'advanced', title: 'Advanced Patterns', icon: '🚀' },
   ];
 
   premiumHeroCode = `<div class="card-grid">

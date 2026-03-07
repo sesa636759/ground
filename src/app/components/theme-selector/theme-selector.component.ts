@@ -24,7 +24,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">â˜€ï¸</span>
+            <span class="theme-icon">☀️</span>
             <span class="theme-name">Light</span>
           </div>
         </div>
@@ -40,7 +40,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">ðŸŒ™</span>
+            <span class="theme-icon">🌙</span>
             <span class="theme-name">Dark</span>
           </div>
         </div>
@@ -56,7 +56,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">ðŸŒ¿</span>
+            <span class="theme-icon">🌿</span>
             <span class="theme-name">Schneider Green</span>
           </div>
         </div>
@@ -72,7 +72,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">ðŸ’™</span>
+            <span class="theme-icon">💙</span>
             <span class="theme-name">Schneider Blue</span>
           </div>
         </div>
@@ -88,7 +88,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">ðŸ‘ï¸</span>
+            <span class="theme-icon">👁️</span>
             <span class="theme-name">High Contrast</span>
           </div>
         </div>
@@ -104,7 +104,7 @@ import { ThemeService } from '../../services/theme.service';
             <div class="preview-content"></div>
           </div>
           <div class="theme-info">
-            <span class="theme-icon">ðŸ”„</span>
+            <span class="theme-icon">🔄</span>
             <span class="theme-name">Auto</span>
           </div>
         </div>
@@ -136,7 +136,7 @@ import { ThemeService } from '../../services/theme.service';
               </div>
             </div>
             <div class="layout-info">
-              <span class="layout-icon">ðŸ“±</span>
+              <span class="layout-icon">📱</span>
               <span class="layout-name">Sidebar</span>
               <span class="layout-desc">Classic sidebar navigation</span>
             </div>

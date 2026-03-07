@@ -25,13 +25,13 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'basic', title: 'Basic OHLC', icon: 'ðŸ“Š', color: '#6366f1' },
-    { id: 'withma', title: 'With MA', icon: 'ðŸ“‰', color: '#0ea5e9' },
-    { id: 'weekly', title: 'Weekly', icon: 'ðŸ“…', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
+    { id: 'withma', title: 'With MA', icon: '📉', color: '#0ea5e9' },
+    { id: 'weekly', title: 'Weekly', icon: '📅', color: '#10b981' },
   ];
 
-  basicCode = `<!-- OHLC Chart (SVG) â€” Open/High/Low/Close bars -->
+  basicCode = `<!-- OHLC Chart (SVG) — Open/High/Low/Close bars -->
 <svg width="620" height="340">
   <!-- Vertical range line (high to low) -->
   <line x1="72" y1="60" x2="72" y2="200" stroke="#374151" stroke-width="1.5"/>

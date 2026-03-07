@@ -27,38 +27,38 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     // Transition Effects
-    { id: 'fade-transition', title: 'Fade Transition Effect', icon: 'ðŸŒ€', color: '#8b5cf6' },
-    { id: 'slide-transition', title: 'Slide Transition Effect', icon: 'âž¡ï¸', color: '#3b82f6' },
+    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '🌀', color: '#8b5cf6' },
+    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '➡️', color: '#3b82f6' },
     // Layout Modes
-    { id: 'center-mode', title: 'Center Mode', icon: 'ðŸŽ¯', color: '#10b981' },
-    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: 'ðŸ“‹', color: '#f59e0b' },
-    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: 'â†•ï¸', color: '#ef4444' },
-    { id: 'infinite-loop', title: 'Infinite Loop', icon: 'â™¾ï¸', color: '#ec4899' },
+    { id: 'center-mode', title: 'Center Mode', icon: '🎯', color: '#10b981' },
+    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '📋', color: '#f59e0b' },
+    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '↕️', color: '#ef4444' },
+    { id: 'infinite-loop', title: 'Infinite Loop', icon: '♾️', color: '#ec4899' },
     // Interaction & Controls
-    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: 'ðŸ‘†', color: '#06b6d4' },
+    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '👆', color: '#06b6d4' },
     {
       id: 'autoplay-control',
       title: 'Autoplay with Pause Control',
-      icon: 'â¯ï¸',
+      icon: '⏯️',
       color: '#64748b',
     },
-    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: 'ðŸŽ¯', color: '#8b5cf6' },
-    { id: 'animation-easing', title: 'Animation Easing Effects', icon: 'ðŸŽ¨', color: '#3b82f6' },
+    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '🎯', color: '#8b5cf6' },
+    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '🎨', color: '#3b82f6' },
     // Indicators & Navigation
-    { id: 'dots-indicators', title: 'Dots Indicators', icon: 'â€¢', color: '#10b981' },
-    { id: 'number-indicators', title: 'Number Indicators', icon: 'ðŸ”¢', color: '#f59e0b' },
-    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: 'ðŸ“Š', color: '#ef4444' },
+    { id: 'dots-indicators', title: 'Dots Indicators', icon: '•', color: '#10b981' },
+    { id: 'number-indicators', title: 'Number Indicators', icon: '🔢', color: '#f59e0b' },
+    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '📊', color: '#ef4444' },
     // Size Variants
-    { id: 'size-small', title: 'Small Size', icon: 'ðŸ”¸', color: '#ec4899' },
-    { id: 'size-medium', title: 'Medium Size', icon: 'ðŸ”¶', color: '#06b6d4' },
-    { id: 'size-large', title: 'Large Size', icon: 'ðŸŸ ', color: '#64748b' },
+    { id: 'size-small', title: 'Small Size', icon: '🔸', color: '#ec4899' },
+    { id: 'size-medium', title: 'Medium Size', icon: '🔶', color: '#06b6d4' },
+    { id: 'size-large', title: 'Large Size', icon: '🟠', color: '#64748b' },
     // Speed Variants
-    { id: 'speed-fast', title: 'Fast Animation', icon: 'âš¡', color: '#8b5cf6' },
-    { id: 'speed-normal', title: 'Normal Speed', icon: 'ðŸ‘Œ', color: '#3b82f6' },
-    { id: 'speed-slow', title: 'Slow Animation', icon: 'ðŸ¢', color: '#10b981' },
+    { id: 'speed-fast', title: 'Fast Animation', icon: '⚡', color: '#8b5cf6' },
+    { id: 'speed-normal', title: 'Normal Speed', icon: '👌', color: '#3b82f6' },
+    { id: 'speed-slow', title: 'Slow Animation', icon: '🐢', color: '#10b981' },
     // Advanced Features
-    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: 'ðŸ“±', color: '#f59e0b' },
-    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: 'ðŸŽ®', color: '#ef4444' },
+    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '📱', color: '#f59e0b' },
+    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '🎮', color: '#ef4444' },
   ];
 
   // Basic Layout Examples

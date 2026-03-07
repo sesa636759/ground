@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">ðŸ””</span>
+          <span class="section-icon">🔔</span>
           <h2>Notification Settings</h2>
         </div>
         <p>Manage how you want to be notified about activity on your account</p>

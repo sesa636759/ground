@@ -25,9 +25,9 @@ import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/
 })
 export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'revenue', title: 'Revenue', icon: 'ðŸ’°', color: '#10b981' },
-    { id: 'pl', title: 'P&L Statement', icon: 'ðŸ“Š', color: '#6366f1' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'revenue', title: 'Revenue', icon: '💰', color: '#10b981' },
+    { id: 'pl', title: 'P&L Statement', icon: '📊', color: '#6366f1' },
   ];
 
   revenueCode = `<!-- Waterfall Chart (floating SVG bars) -->
@@ -44,6 +44,6 @@ export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
 
   plCode = `<!-- P&L Waterfall -->
 <svg width="620" height="340">
-  <!-- Gross Revenue â†’ COGS â†’ Gross Profit â†’ OPEX â†’ EBITDA â†’ D&A â†’ Net Profit -->
+  <!-- Gross Revenue → COGS → Gross Profit → OPEX → EBITDA → D&A → Net Profit -->
 </svg>`;
 }

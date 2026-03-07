@@ -318,8 +318,8 @@ export class ComponentDocsService {
         examples: [
           '<ui-button label="Primary" variant="primary"></ui-button>',
           '<ui-button label="Loading" loading variant="secondary"></ui-button>',
-          '<ui-button icon="âš™ï¸" label="Settings" icon-position="right"></ui-button>',
-          '<ui-button label="Notifications" icon="ðŸ””" badge="9" variant="warning"></ui-button>',
+          '<ui-button icon="⚙️" label="Settings" icon-position="right"></ui-button>',
+          '<ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>',
         ],
       },
     ],
@@ -1160,7 +1160,7 @@ export class ComponentDocsService {
         examples: [
           '<ui-avatar src="https://i.pravatar.cc/150" name="User" size="64px"></ui-avatar>',
           '<ui-avatar name="John Doe" status="online" size="64px"></ui-avatar>',
-          '<ui-avatar icon="â­" shape="hexagon" size="64px"></ui-avatar>',
+          '<ui-avatar icon="⭐" shape="hexagon" size="64px"></ui-avatar>',
         ],
       },
     ],
@@ -1237,9 +1237,9 @@ export class ComponentDocsService {
           'Dot variant ignores value prop',
         ],
         examples: [
-          '<ui-badge value="1" color="primary"><div class="icon">ðŸ‘¤</div></ui-badge>',
-          '<ui-badge value="999" max="99" color="danger"><div class="icon">ðŸ“§</div></ui-badge>',
-          '<ui-badge dot color="success"><div class="icon">ðŸŸ¢</div></ui-badge>',
+          '<ui-badge value="1" color="primary"><div class="icon">👤</div></ui-badge>',
+          '<ui-badge value="999" max="99" color="danger"><div class="icon">📧</div></ui-badge>',
+          '<ui-badge dot color="success"><div class="icon">🟢</div></ui-badge>',
         ],
       },
     ],
@@ -1344,7 +1344,7 @@ export class ComponentDocsService {
         ],
         examples: [
           '<ui-chip label="Filled" variant="filled" color="primary"></ui-chip>',
-          '<ui-chip label="Vue.js" icon="ðŸŸ¢" color="success"></ui-chip>',
+          '<ui-chip label="Vue.js" icon="🟢" color="success"></ui-chip>',
           '<ui-chip label="Removable" removable variant="soft" color="danger"></ui-chip>',
         ],
       },
@@ -2286,8 +2286,8 @@ export class ComponentDocsService {
         ],
         examples: [
           '<ui-switch label="Primary" variant="primary" checked></ui-switch>',
-          '<ui-switch label="Dark Mode" icon-on="ðŸŒ™" icon-off="â˜€ï¸" checked></ui-switch>',
-          '<ui-switch label="Sound" icon-on="ðŸ”Š" icon-off="ðŸ”‡" checked variant="info"></ui-switch>',
+          '<ui-switch label="Dark Mode" icon-on="🌙" icon-off="☀️" checked></ui-switch>',
+          '<ui-switch label="Sound" icon-on="🔊" icon-off="🔇" checked variant="info"></ui-switch>',
         ],
       },
     ],
@@ -2350,7 +2350,7 @@ export class ComponentDocsService {
           '<ui-tag severity="info" value="Information"></ui-tag>',
           '<ui-tag severity="success" value="Completed"></ui-tag>',
           '<ui-tag severity="warning" value="Pending"></ui-tag>',
-          '<ui-tag severity="danger" value="Error" icon="âš "></ui-tag>',
+          '<ui-tag severity="danger" value="Error" icon="⚠"></ui-tag>',
         ],
       },
     ],
@@ -2996,7 +2996,7 @@ export class ComponentDocsService {
       {
         id: 'pie-chart',
         name: 'Pie Chart',
-        shortDescription: 'Circular charts for proportional data â€” pie, doughnut and polar area',
+        shortDescription: 'Circular charts for proportional data — pie, doughnut and polar area',
         detailedDescription:
           'Powered by Chart.js, the Pie Chart component renders pie, doughnut, and polar area variants from a single API. Ideal for showing part-to-whole relationships with up to 6 segments.',
         usage: `<ui-app-chart chartType="pie" showLegend="true" [data]="chartData"></ui-app-chart>`,
@@ -3012,7 +3012,7 @@ export class ComponentDocsService {
             name: 'data',
             type: 'ChartData | string',
             description: 'Chart.js data object with labels and datasets',
-            defaultValue: 'â€”',
+            defaultValue: '—',
             required: true,
           },
           {
@@ -3067,7 +3067,7 @@ export class ComponentDocsService {
         name: 'Waffle Chart',
         shortDescription: 'Grid-based chart showing part-to-whole percentages',
         detailedDescription:
-          'A 10Ã—10 CSS grid where each cell represents 1% of the total. Segments are colour-coded and normalised automatically. Supports rounded cells, legend, gap control, hover tooltips, and side-by-side comparison.',
+          'A 10×10 CSS grid where each cell represents 1% of the total. Segments are colour-coded and normalised automatically. Supports rounded cells, legend, gap control, hover tooltips, and side-by-side comparison.',
         usage: `<app-waffle-chart [segments]="segments" [showLegend]="true"></app-waffle-chart>`,
         props: [
           {
@@ -3118,8 +3118,8 @@ export class ComponentDocsService {
         ],
         events: [],
         limitations: [
-          'Keep segments â‰¤ 5 to avoid visual clutter',
-          'Values are normalised â€” they do not need to sum to 100',
+          'Keep segments ≤ 5 to avoid visual clutter',
+          'Values are normalised — they do not need to sum to 100',
         ],
         examples: [
           "<app-waffle-chart [segments]=\"[{label:'Done',value:72,color:'#6366f1'},{label:'Left',value:28,color:'#e5e7eb'}]\" [showLegend]=\"true\"></app-waffle-chart>",
@@ -3306,7 +3306,7 @@ export class ComponentDocsService {
         limitations: ['Touch rotation requires accurate pointer calculation'],
         examples: [
           '<app-knob [value]="15" [min]="0" [max]="30" step="1" showTicks></app-knob>',
-          '<app-knob [value]="45" color="#ef4444" [size]="100" valueSuffix="Â°C"></app-knob>',
+          '<app-knob [value]="45" color="#ef4444" [size]="100" valueSuffix="°C"></app-knob>',
         ],
       },
     ],
@@ -4589,7 +4589,7 @@ export class ComponentDocsService {
             name: 'icon',
             type: 'string',
             description: 'Icon content (Emoji or HTML)',
-            defaultValue: "'â†‘'",
+            defaultValue: "'↑'",
           },
           {
             name: 'showProgress',
@@ -5334,7 +5334,7 @@ export class ComponentDocsService {
         events: [],
         limitations: ['Vertical dividers require the parent layout to use Flexbox or Grid'],
         examples: [
-          '<ui-divider icon="â­" textAlign="left" color="info"></ui-divider>',
+          '<ui-divider icon="⭐" textAlign="left" color="info"></ui-divider>',
           '<ui-divider shape="wave" variant="gradient"></ui-divider>',
         ],
       },
@@ -5451,7 +5451,7 @@ export class ComponentDocsService {
         ],
         limitations: ['Requires specific label placement padding in absolute-labeled layouts'],
         examples: [
-          '<ui-switch [checked]="true" color="success" iconOn="âœ”"></ui-switch>',
+          '<ui-switch [checked]="true" color="success" iconOn="✔"></ui-switch>',
           '<ui-switch loading variant="info" size="xl"></ui-switch>',
         ],
       },
@@ -5588,7 +5588,7 @@ export class ComponentDocsService {
         name: 'High-Performance Gauge',
         shortDescription: 'Industrial-grade speedometer for real-time telemetry display',
         detailedDescription:
-          'Advanced data visualization gauge. Features dual-needle Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶ÐºÐ¾Ð¹ (comparison), customizable color zones, interactive needle dragging, image exporting (PNG/SVG), and animated value transitions.',
+          'Advanced data visualization gauge. Features dual-needle поддержкой (comparison), customizable color zones, interactive needle dragging, image exporting (PNG/SVG), and animated value transitions.',
         usage: `<ui-speedometer [value]="80" [minValue]="0" [maxValue]="240" unit="km/h"></ui-speedometer>`,
         props: [
           {
@@ -5670,7 +5670,7 @@ export class ComponentDocsService {
             name: 'direction',
             type: "'horizontal' | 'vertical'",
             description:
-              'Split axis â€” horizontal places panels side by side; vertical stacks them top to bottom.',
+              'Split axis — horizontal places panels side by side; vertical stacks them top to bottom.',
             defaultValue: "'horizontal'",
           },
           {
@@ -5756,10 +5756,10 @@ export class ComponentDocsService {
           },
         ],
         limitations: [
-          'Panel sizes must sum to 100% â€” any remainder is distributed to the last panel automatically.',
+          'Panel sizes must sum to 100% — any remainder is distributed to the last panel automatically.',
           'Nested panels require the outer slot element to have height:100% so inner panels fill the space.',
           'snap-to-edge only works reliably when the container has a fixed or known pixel height/width.',
-          'Touch drag is supported but may conflict with native scroll on mobile â€” use direction="vertical" with caution on touch devices.',
+          'Touch drag is supported but may conflict with native scroll on mobile — use direction="vertical" with caution on touch devices.',
           'Maximum recommended nesting depth is 2 levels for performance.',
         ],
         examples: [

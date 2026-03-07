@@ -25,9 +25,9 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmKnobDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'styles', title: 'Visual Styles', icon: 'ðŸŽ¨', color: '#3b82f6' },
-    { id: 'readonly', title: 'States', icon: 'ðŸ”’', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'styles', title: 'Visual Styles', icon: '🎨', color: '#3b82f6' },
+    { id: 'readonly', title: 'States', icon: '🔒', color: '#10b981' },
   ];
 
   playgroundCode = `<ui-knob [value]="50" [size]="150" value-color="#3b82f6"></ui-knob>`;

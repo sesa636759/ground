@@ -25,9 +25,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmRatingDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'types', title: 'Rating Types', icon: 'âœ¨', color: '#3b82f6' },
-    { id: 'colors', title: 'Colors & sizes', icon: 'ðŸŒˆ', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'types', title: 'Rating Types', icon: '✨', color: '#3b82f6' },
+    { id: 'colors', title: 'Colors & sizes', icon: '🌈', color: '#10b981' },
     { id: 'custom', title: 'Custom Labels', icon: 'ðŸ“', color: '#f59e0b' },
   ];
 

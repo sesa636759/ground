@@ -25,10 +25,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRoseChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'monthly', title: 'Monthly Revenue', icon: 'ðŸŒ¹', color: '#6366f1' },
-    { id: 'performance', title: 'Performance', icon: 'ðŸ“Š', color: '#10b981' },
-    { id: 'wind', title: 'Wind Direction', icon: 'ðŸ’¨', color: '#0ea5e9' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'monthly', title: 'Monthly Revenue', icon: '🌹', color: '#6366f1' },
+    { id: 'performance', title: 'Performance', icon: '📊', color: '#10b981' },
+    { id: 'wind', title: 'Wind Direction', icon: '💨', color: '#0ea5e9' },
   ];
 
   // Sample items for different layouts

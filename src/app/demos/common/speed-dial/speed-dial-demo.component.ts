@@ -26,16 +26,16 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSpeedDialDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'directions', title: 'Opening Directions', icon: 'â†”ï¸', color: '#3b82f6' },
-    { id: 'types', title: 'Motion Patterns', icon: 'ðŸŒ€', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'directions', title: 'Opening Directions', icon: '↔️', color: '#3b82f6' },
+    { id: 'types', title: 'Motion Patterns', icon: '🌀', color: '#10b981' },
   ];
 
   items = [
-    { label: 'Add', icon: 'âž•' },
-    { label: 'Update', icon: 'ðŸ”„' },
-    { label: 'Delete', icon: 'ðŸ—‘ï¸' },
-    { label: 'Home', icon: 'ðŸ ' },
+    { label: 'Add', icon: '➕' },
+    { label: 'Update', icon: '🔄' },
+    { label: 'Delete', icon: '🗑️' },
+    { label: 'Home', icon: '🏠' },
   ];
 
   playgroundCode = `<ui-speed-dial [model]="items" direction="up"></ui-speed-dial>`;

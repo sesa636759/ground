@@ -10,11 +10,11 @@
 } from '@angular/core';
 
 /**
- * AppMasonryComponent â€” CSS columns masonry container.
+ * AppMasonryComponent — CSS columns masonry container.
  *
  * This component ONLY provides the multi-column layout context via :host.
  * Card-level styles (break-inside:avoid, margin-bottom) are the
- * responsibility of the PARENT component that owns the cards â€” Angular's
+ * responsibility of the PARENT component that owns the cards — Angular's
  * emulated encapsulation makes it impossible for this component to reliably
  * style projected content without ViewEncapsulation.None side-effects.
  *

@@ -27,15 +27,15 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 })
 export class DmSetTabsDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'orientation', title: 'Orientation', icon: 'â†”ï¸' },
-    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ¨' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'colors', title: 'Color Schemes', icon: 'ðŸŒˆ' },
-    { id: 'alignment', title: 'Alignment', icon: 'â¬›' },
-    { id: 'indicator', title: 'Indicator Position', icon: 'ðŸ“' },
-    { id: 'layout-features', title: 'Layout & Features', icon: 'ðŸ“¦' },
-    { id: 'advanced-features', title: 'Advanced UX', icon: 'ðŸ›¡ï¸' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'orientation', title: 'Orientation', icon: '↔️' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎨' },
+    { id: 'sizes', title: 'Sizes', icon: '📐' },
+    { id: 'colors', title: 'Color Schemes', icon: '🌈' },
+    { id: 'alignment', title: 'Alignment', icon: '⬛' },
+    { id: 'indicator', title: 'Indicator Position', icon: '📍' },
+    { id: 'layout-features', title: 'Layout & Features', icon: '📦' },
+    { id: 'advanced-features', title: 'Advanced UX', icon: '🛡️' },
   ];
 
   horizontalBasicCode = `<app-tab-stack orientation="horizontal" active-tab="t1">

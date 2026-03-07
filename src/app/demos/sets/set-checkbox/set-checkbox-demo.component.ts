@@ -27,14 +27,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'color-variants', title: 'Color Variants', icon: 'ðŸŽ¨' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: 'âœ¨' },
-    { id: 'skeleton', title: 'Skeleton State', icon: 'â³' },
-    { id: 'sizes-variants', title: 'Sizes & Variants', icon: 'ðŸ“' },
-    { id: 'states', title: 'States', icon: 'ðŸ”„' },
-    { id: 'groups', title: 'Checkbox Groups', icon: 'ðŸ“' },
-    { id: 'form', title: 'Form Example', icon: 'ðŸ“‹' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
+    { id: 'skeleton', title: 'Skeleton State', icon: '⏳' },
+    { id: 'sizes-variants', title: 'Sizes & Variants', icon: '📏' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'groups', title: 'Checkbox Groups', icon: '📁' },
+    { id: 'form', title: 'Form Example', icon: '📋' },
   ];
 
   // Select All Group State
@@ -121,12 +121,12 @@ export class DmSetCheckboxDemoComponent extends BaseDemoComponent implements OnI
 
   onSubmit() {
     if (!this.formTerms || !this.formPrivacy) {
-      this.formMessage = 'âš ï¸ Please accept the required terms to continue';
+      this.formMessage = '⚠️ Please accept the required terms to continue';
       this.formMessageColor = '#dc2626';
       this.termsInvalid = !this.formTerms;
       this.privacyInvalid = !this.formPrivacy;
     } else {
-      this.formMessage = 'âœ… Account created successfully!';
+      this.formMessage = '✅ Account created successfully!';
       this.formMessageColor = '#16a34a';
       this.termsInvalid = false;
       this.privacyInvalid = false;

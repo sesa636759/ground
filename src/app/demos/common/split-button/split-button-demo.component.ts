@@ -27,16 +27,16 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSplitButtonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'colors', title: 'Color Themes', icon: 'ðŸŽ¨', color: '#3b82f6' },
-    { id: 'states', title: 'Visual States', icon: 'âš¡', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'colors', title: 'Color Themes', icon: '🎨', color: '#3b82f6' },
+    { id: 'states', title: 'Visual States', icon: '⚡', color: '#10b981' },
   ];
 
   menuItems = [
-    { label: 'Update', icon: 'ðŸ”„' },
-    { label: 'Delete', icon: 'ðŸ—‘ï¸' },
+    { label: 'Update', icon: '🔄' },
+    { label: 'Delete', icon: '🗑️' },
     { separator: true },
-    { label: 'Home', icon: 'ðŸ ' },
+    { label: 'Home', icon: '🏠' },
   ];
 
   playgroundCode = `<ui-split-button label="Save" [model]="items"></ui-split-button>`;

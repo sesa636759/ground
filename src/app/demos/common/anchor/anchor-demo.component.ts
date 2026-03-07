@@ -24,10 +24,10 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 })
 export class DmAnchorDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'types', title: 'Marker Styles', icon: 'ðŸ“', color: '#3b82f6' },
-    { id: 'orientation', title: 'Orientation', icon: 'â†”ï¸', color: '#10b981' },
-    { id: 'auto-gen', title: 'Headings Auto-Detection', icon: 'âš™ï¸', color: '#f59e0b' },
+    { id: 'orientation', title: 'Orientation', icon: '↔️', color: '#10b981' },
+    { id: 'auto-gen', title: 'Headings Auto-Detection', icon: '⚙️', color: '#f59e0b' },
   ];
 
   links = [

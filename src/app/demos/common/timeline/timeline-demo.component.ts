@@ -26,9 +26,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmTimelineDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'alignments', title: 'Alignments', icon: 'ðŸ“', color: '#3b82f6' },
-    { id: 'orientations', title: 'Orientations', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'alignments', title: 'Alignments', icon: '📏', color: '#3b82f6' },
+    { id: 'orientations', title: 'Orientations', icon: '📐', color: '#10b981' },
   ];
 
   events = [

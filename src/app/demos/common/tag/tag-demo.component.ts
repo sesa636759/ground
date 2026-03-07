@@ -26,9 +26,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmTagDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'severities', title: 'Severities', icon: 'ðŸš¨', color: '#3b82f6' },
-    { id: 'styles', title: 'Styles & Sizes', icon: 'ðŸŽ¨', color: '#10b981' },
-    { id: 'visuals', title: 'Visual Enhancements', icon: 'âœ¨', color: '#f59e0b' },
+    { id: 'severities', title: 'Severities', icon: '🚨', color: '#3b82f6' },
+    { id: 'styles', title: 'Styles & Sizes', icon: '🎨', color: '#10b981' },
+    { id: 'visuals', title: 'Visual Enhancements', icon: '✨', color: '#f59e0b' },
   ];
 
   get exampleVariants() {
@@ -48,7 +48,7 @@ export class DmTagDemoComponent extends BaseDemoComponent implements OnInit {
 <ui-tag value="Small" size="small"></ui-tag>
 <ui-tag value="Large" size="large"></ui-tag>`;
 
-  visualsCode = `<ui-tag icon="â­" value="Starred"></ui-tag>
+  visualsCode = `<ui-tag icon="⭐" value="Starred"></ui-tag>
 <ui-tag value="Tag with Counter" counter="5"></ui-tag>
 <ui-tag value="Removable" removable></ui-tag>`;
 

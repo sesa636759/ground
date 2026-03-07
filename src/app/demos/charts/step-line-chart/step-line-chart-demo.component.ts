@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'price', title: 'Price Steps', icon: 'ðŸªœ', color: '#6366f1' },
-    { id: 'status', title: 'System Status', icon: 'ðŸ“ˆ', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'price', title: 'Price Steps', icon: '🪜', color: '#6366f1' },
+    { id: 'status', title: 'System Status', icon: '📈', color: '#10b981' },
   ];
 
   basicData = [

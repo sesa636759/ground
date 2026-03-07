@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
   activities = signal<ActivityItem[]>([
     {
       id: '1',
-      icon: 'ðŸ”‘',
+      icon: '🔑',
       title: 'Successful Login',
       description: 'Logged in from Chrome on Windows',
       timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '2',
-      icon: 'âœï¸',
+      icon: '✏️',
       title: 'Profile Updated',
       description: 'Updated bio and contact information',
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '3',
-      icon: 'ðŸ”’',
+      icon: '🔒',
       title: 'Password Changed',
       description: 'Password was successfully updated',
       timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '4',
-      icon: 'ðŸ”‘',
+      icon: '🔑',
       title: 'Successful Login',
       description: 'Logged in from Firefox on MacOS',
       timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),

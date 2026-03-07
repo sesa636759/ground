@@ -26,13 +26,13 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetToggleDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'layouts', title: 'Layouts', icon: 'ðŸ“' },
-    { id: 'visual-variants', title: 'Visual Variants', icon: 'ðŸŽ¨' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'colors', title: 'Colors', icon: 'ðŸŒˆ' },
-    { id: 'icons', title: 'Icons Support', icon: 'âœ¨' },
-    { id: 'states', title: 'States', icon: 'ðŸ”„' },
-    { id: 'advanced', title: 'Advanced UX', icon: 'âš™ï¸' },
+    { id: 'layouts', title: 'Layouts', icon: '📐' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'colors', title: 'Colors', icon: '🌈' },
+    { id: 'icons', title: 'Icons Support', icon: '✨' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'advanced', title: 'Advanced UX', icon: '⚙️' },
   ];
 
   notificationOptions = [

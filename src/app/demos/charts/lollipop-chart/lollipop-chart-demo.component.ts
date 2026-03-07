@@ -25,10 +25,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmLollipopChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'vertical', title: 'Vertical', icon: 'ðŸ­', color: '#6366f1' },
-    { id: 'horizontal', title: 'Horizontal', icon: 'â†”ï¸', color: '#10b981' },
-    { id: 'gradient', title: 'Multi-color', icon: 'ðŸŒˆ', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'vertical', title: 'Vertical', icon: '🍭', color: '#6366f1' },
+    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#10b981' },
+    { id: 'gradient', title: 'Multi-color', icon: '🌈', color: '#f59e0b' },
   ];
 
   verticalCode = `<!-- Vertical Lollipop Chart (SVG) -->

@@ -25,8 +25,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmGanttChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'project', title: 'Project Plan', icon: 'ðŸ“‹', color: '#6366f1' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' },
   ];
 
   tasks = [

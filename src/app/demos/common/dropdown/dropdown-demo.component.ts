@@ -26,11 +26,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDropdownDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dropdown', icon: 'ðŸ“' },
-    { id: 'multi-select', title: 'Multi Selection', icon: 'âœ…' },
-    { id: 'cascading', title: 'Hierarchical', icon: 'ðŸŒ³' },
-    { id: 'sizes', title: 'Size Scaling', icon: 'ðŸ“' },
+    { id: 'multi-select', title: 'Multi Selection', icon: '✅' },
+    { id: 'cascading', title: 'Hierarchical', icon: '🌳' },
+    { id: 'sizes', title: 'Size Scaling', icon: '📏' },
   ];
 
   basicOptions = [

@@ -27,10 +27,10 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmPopoverDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'triggers', title: 'Triggers', icon: 'âš¡' },
-    { id: 'placements', title: 'Placements', icon: 'ðŸ“' },
-    { id: 'styles', title: 'Styles & Themes', icon: 'ðŸŽ¨' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'triggers', title: 'Triggers', icon: '⚡' },
+    { id: 'placements', title: 'Placements', icon: '📍' },
+    { id: 'styles', title: 'Styles & Themes', icon: '🎨' },
     { id: 'rich-content', title: 'Rich Content', icon: 'ðŸ“' },
   ];
 

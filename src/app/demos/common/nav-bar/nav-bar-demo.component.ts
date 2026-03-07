@@ -24,14 +24,14 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmNavBarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'themes', title: 'Themes', icon: 'ðŸŒ—', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'themes', title: 'Themes', icon: '🌗', color: '#3b82f6' },
   ];
 
   navItems = [
-    { label: 'Overview', icon: 'ðŸ ' },
-    { label: 'Admin', icon: 'ðŸ”‘' },
-    { label: 'Logs', icon: 'ðŸ“œ' },
+    { label: 'Overview', icon: '🏠' },
+    { label: 'Admin', icon: '🔑' },
+    { label: 'Logs', icon: '📜' },
   ];
 
   playgroundCode = `<ui-nav-bar [model]="items">

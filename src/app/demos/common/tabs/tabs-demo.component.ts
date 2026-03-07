@@ -25,10 +25,10 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmTabsDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'styles', name: 'Visual Variants', icon: 'ðŸŽ¨', color: '#3b82f6' },
-    { id: 'layouts', name: 'Orientations', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'tab-stack', name: 'Tab Stack', icon: 'ðŸ“š', color: '#f59e0b' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'styles', name: 'Visual Variants', icon: '🎨', color: '#3b82f6' },
+    { id: 'layouts', name: 'Orientations', icon: '📐', color: '#10b981' },
+    { id: 'tab-stack', name: 'Tab Stack', icon: '📚', color: '#f59e0b' },
   ];
 
   get exampleVariants() {

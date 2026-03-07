@@ -25,8 +25,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmLayoutManagerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'modes', title: 'Layout Modes', icon: 'ðŸ—‚ï¸', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' },
   ];
 
   playgroundCode = `<ui-layout-manager mode="docking" resizable closable>

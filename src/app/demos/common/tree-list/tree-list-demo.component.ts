@@ -26,8 +26,8 @@ import { DmTreeListPlaygroundComponent } from '../../../playground/common/tree-l
 })
 export class DmTreeListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'examples', title: 'Examples', icon: 'ðŸ“‚', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'examples', title: 'Examples', icon: '📁', color: '#3b82f6' },
   ];
 
   treeData = [
@@ -45,12 +45,12 @@ export class DmTreeListDemoComponent extends BaseDemoComponent {
   examplesCode = `const fileSystem = [
   {
     label: 'src',
-    icon: 'ðŸ“',
+    icon: '📁',
     children: [
-      { label: 'app', icon: 'ðŸ“', children: [
-        { label: 'app.component.ts', icon: 'ðŸ“„' }
+      { label: 'app', icon: '📁', children: [
+        { label: 'app.component.ts', icon: '📄' }
       ]},
-      { label: 'assets', icon: 'ðŸ“', children: [] }
+      { label: 'assets', icon: '📁', children: [] }
     ]
   }
 ];`;

@@ -115,7 +115,7 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
   getDefaultConfig() {
     return {
       label: 'Explore Components',
-      icon: 'ðŸš€',
+      icon: '🚀',
       iconLibrary: 'default',
       iconPosition: 'left',
       iconSize: '',

@@ -25,8 +25,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPatternInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'patterns', title: 'Common Patterns', icon: 'ðŸŽ­', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'patterns', title: 'Common Patterns', icon: '🎭', color: '#3b82f6' },
   ];
 
   playgroundCode = `<ui-pattern-input mask="(999) 999-9999" placeholder="Phone"></ui-pattern-input>`;

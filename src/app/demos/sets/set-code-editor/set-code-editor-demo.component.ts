@@ -26,8 +26,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetCodeEditorDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'language-support', title: 'Language Support', icon: 'âœ¨', color: '#3b82f6' },
-    { id: 'features', title: 'Features', icon: 'ðŸ› ', color: '#10b981' },
+    { id: 'language-support', title: 'Language Support', icon: '✨', color: '#3b82f6' },
+    { id: 'features', title: 'Features', icon: '🛠', color: '#10b981' },
   ];
 
   get exampleVariants() {

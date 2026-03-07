@@ -25,8 +25,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSparklineDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'inline', title: 'Inline Metrics', icon: 'ðŸ“ˆ', color: '#6366f1' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'inline', title: 'Inline Metrics', icon: '📈', color: '#6366f1' },
   ];
 
   inlineKpiSparklines = [

@@ -25,9 +25,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPillDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'styling', title: 'Styling Variants', icon: 'ðŸŽ¨', color: '#3b82f6' },
-    { id: 'features', title: 'Special Features', icon: 'ðŸš€', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'styling', title: 'Styling Variants', icon: '🎨', color: '#3b82f6' },
+    { id: 'features', title: 'Special Features', icon: '🚀', color: '#10b981' },
   ];
 
   playgroundCode = `<ui-pill label="New Tag" variant="soft" color="primary"></ui-pill>`;

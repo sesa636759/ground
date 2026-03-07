@@ -26,15 +26,15 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dialog', icon: 'ðŸ“' },
-    { id: 'slots', title: 'Custom Slots', icon: 'ðŸ§©' },
-    { id: 'sizes', title: 'Predefined Sizes', icon: 'ðŸ“' },
-    { id: 'variants', title: 'Variants & Status', icon: 'ðŸŽ¨' },
-    { id: 'positions', title: 'Positions', icon: 'ðŸ“' },
-    { id: 'scroll', title: 'Scroll Behaviors', icon: 'ðŸ“œ' },
-    { id: 'advanced', title: 'Advanced Behaviors', icon: 'ðŸ› ï¸' },
-    { id: 'premium', title: 'Premium Capabilities', icon: 'ðŸ’Ž' },
+    { id: 'slots', title: 'Custom Slots', icon: '🧩' },
+    { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
+    { id: 'variants', title: 'Variants & Status', icon: '🎨' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'scroll', title: 'Scroll Behaviors', icon: '📜' },
+    { id: 'advanced', title: 'Advanced Behaviors', icon: '🛠️' },
+    { id: 'premium', title: 'Premium Capabilities', icon: '💎' },
   ];
 
   dialogVisible: { [key: string]: boolean } = {};

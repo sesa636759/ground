@@ -34,9 +34,9 @@ export class DmSnackbarDemoComponent extends BaseDemoComponent {
   @ViewChild('snackbarBottomRight') snackbarBottomRight!: ElementRef;
 
   exampleVariants = [
-    { id: 'types', title: 'Types', icon: 'ðŸ“Š' },
-    { id: 'positions', title: 'Positions', icon: 'ðŸ“' },
-    { id: 'card-stack', title: 'Card Stacking', icon: 'ðŸ“š' },
+    { id: 'types', title: 'Types', icon: '📊' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'card-stack', title: 'Card Stacking', icon: '📚' },
   ];
 
   typesCode = `// Add different notification types

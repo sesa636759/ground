@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">ðŸ›¡ï¸</span>
+          <span class="section-icon">🛡️</span>
           <h2>Security Settings</h2>
         </div>
         <p>Take control of your account security and monitor active sessions</p>
@@ -32,7 +32,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   type="password"
                   id="currentPassword"
                   [(ngModel)]="currentPassword"
-                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  placeholder="••••••••"
                 ></ui-input>
               </div>
             </div>
@@ -174,7 +174,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   </div>
                   <div class="session-meta">
                     <span class="location">{{ session.location }}</span>
-                    <span class="dot">â€¢</span>
+                    <span class="dot">•</span>
                     <span class="time">{{ session.lastActive }}</span>
                   </div>
                 </div>

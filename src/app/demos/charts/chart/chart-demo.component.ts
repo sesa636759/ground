@@ -25,8 +25,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'types', title: 'Chart Types', icon: 'ðŸ“ˆ', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'types', title: 'Chart Types', icon: '📈', color: '#3b82f6' },
   ];
 
   chartData = {

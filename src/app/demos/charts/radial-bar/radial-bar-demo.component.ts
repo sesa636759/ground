@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRadialBarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'kpi', title: 'KPI Rings', icon: 'ðŸŽ¯', color: '#6366f1' },
-    { id: 'skills', title: 'Skills Radar', icon: 'ðŸ’¼', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'kpi', title: 'KPI Rings', icon: '🎯', color: '#6366f1' },
+    { id: 'skills', title: 'Skills Radar', icon: '💼', color: '#10b981' },
   ];
 
   kpiBars = [

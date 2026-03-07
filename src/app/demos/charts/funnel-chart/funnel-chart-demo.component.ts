@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmFunnelChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'sales', title: 'Sales Funnel', icon: 'ðŸ”½', color: '#6366f1' },
-    { id: 'marketing', title: 'Marketing', icon: 'ðŸ“£', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'sales', title: 'Sales Funnel', icon: '🔽', color: '#6366f1' },
+    { id: 'marketing', title: 'Marketing', icon: '📣', color: '#10b981' },
   ];
 
   salesSegments = [
@@ -43,7 +43,7 @@ export class DmFunnelChartDemoComponent extends BaseDemoComponent {
   <!-- Visitors: 400px wide -->
   <polygon points="10,0 410,0 390,72 30,72" fill="#6366f1" opacity="0.85"/>
   <text x="210" y="42" text-anchor="middle" fill="white" font-size="13" font-weight="700">
-    Visitors â€” 10,000 (100%)
+    Visitors — 10,000 (100%)
   </text>
   <!-- Leads: narrower -->
   <polygon points="30,76 390,76 367,148 53,148" fill="#8b5cf6" opacity="0.8"/>
@@ -52,6 +52,6 @@ export class DmFunnelChartDemoComponent extends BaseDemoComponent {
 
   marketingCode = `<!-- Marketing Funnel -->
 <svg width="420" height="380">
-  <!-- Awareness â†’ Interest â†’ Consideration â†’ Intent â†’ Purchase -->
+  <!-- Awareness → Interest → Consideration → Intent → Purchase -->
 </svg>`;
 }

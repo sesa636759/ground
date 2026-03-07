@@ -26,12 +26,12 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDockDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'basic', title: 'Basic', icon: 'ðŸŸ¦', color: '#3b82f6' },
-    { id: 'positions', title: 'Positions', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“', color: '#f59e0b' },
-    { id: 'badges', title: 'With Badges', icon: 'ðŸ””', color: '#ef4444' },
-    { id: 'os', title: 'OS Experience', icon: 'âœ¨', color: '#ec4899' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'basic', title: 'Basic', icon: '🟦', color: '#3b82f6' },
+    { id: 'positions', title: 'Positions', icon: '📍', color: '#10b981' },
+    { id: 'sizes', title: 'Sizes', icon: '📏', color: '#f59e0b' },
+    { id: 'badges', title: 'With Badges', icon: '🔔', color: '#ef4444' },
+    { id: 'os', title: 'OS Experience', icon: '✨', color: '#ec4899' },
   ];
 
   basicItems = [

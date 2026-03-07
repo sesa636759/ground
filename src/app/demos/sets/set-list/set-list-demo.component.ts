@@ -25,19 +25,19 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSetListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: 'ðŸŽ®' },
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Lists', icon: 'ðŸ“' },
-    { id: 'colors', title: 'Color Variants', icon: 'ðŸŽ¨' },
-    { id: 'sizes', title: 'Size Variants', icon: 'ðŸ“' },
-    { id: 'nested', title: 'Nested Lists', icon: 'ðŸŒ³' },
-    { id: 'features', title: 'Special Features', icon: 'âœ¨' },
-    { id: 'context-menu', title: 'Context Menu', icon: 'ðŸ“‹' },
-    { id: 'advanced-menu', title: 'Advanced Menu', icon: 'ðŸŽ¯' },
-    { id: 'grouping', title: 'Grouping & Multiselect', icon: 'ðŸ“‚' },
-    { id: 'selection', title: 'Interactive Selection', icon: 'ðŸŽ®' },
-    { id: 'checkboxes', title: 'Checkboxes & Badges', icon: 'â˜‘ï¸' },
-    { id: 'tags', title: 'Tags & Pills', icon: 'ðŸ·ï¸' },
-    { id: 'config', title: 'Configuration Demo', icon: 'âš™ï¸' },
+    { id: 'colors', title: 'Color Variants', icon: '🎨' },
+    { id: 'sizes', title: 'Size Variants', icon: '📏' },
+    { id: 'nested', title: 'Nested Lists', icon: '🌳' },
+    { id: 'features', title: 'Special Features', icon: '✨' },
+    { id: 'context-menu', title: 'Context Menu', icon: '📋' },
+    { id: 'advanced-menu', title: 'Advanced Menu', icon: '🎯' },
+    { id: 'grouping', title: 'Grouping & Multiselect', icon: '📁' },
+    { id: 'selection', title: 'Interactive Selection', icon: '🎮' },
+    { id: 'checkboxes', title: 'Checkboxes & Badges', icon: '☑️' },
+    { id: 'tags', title: 'Tags & Pills', icon: '🏷️' },
+    { id: 'config', title: 'Configuration Demo', icon: '⚙️' },
   ];
 
   // Code examples for each section

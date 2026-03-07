@@ -26,16 +26,16 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPaginationDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'basic', title: 'Basic & Compact', icon: 'ðŸ“„' },
-    { id: 'detailed', title: 'Detailed', icon: 'ðŸ“‹' },
-    { id: 'minimal', title: 'Minimal', icon: 'âž–' },
-    { id: 'dropdown', title: 'Dropdown', icon: 'â¬‡ï¸' },
-    { id: 'input', title: 'Input', icon: 'âœï¸' },
-    { id: 'indicator', title: 'Indicator', icon: 'ðŸ”µ' },
-    { id: 'themes', title: 'Themes & Shapes', icon: 'ðŸŽ¨' },
-    { id: 'sizes', title: 'Sizes & Variations', icon: 'ðŸ“' },
-    { id: 'features', title: 'Advanced & Smart', icon: 'ðŸ§ ' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'basic', title: 'Basic & Compact', icon: '📄' },
+    { id: 'detailed', title: 'Detailed', icon: '📋' },
+    { id: 'minimal', title: 'Minimal', icon: '➖' },
+    { id: 'dropdown', title: 'Dropdown', icon: '⬇️' },
+    { id: 'input', title: 'Input', icon: '✍️' },
+    { id: 'indicator', title: 'Indicator', icon: '🔵' },
+    { id: 'themes', title: 'Themes & Shapes', icon: '🎨' },
+    { id: 'sizes', title: 'Sizes & Variations', icon: '📏' },
+    { id: 'features', title: 'Advanced & Smart', icon: '🧠' },
   ];
 
   basicCode = `<!-- Basic Pagination -->

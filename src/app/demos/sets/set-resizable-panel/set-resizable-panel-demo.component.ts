@@ -26,14 +26,14 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSetResizablePanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'horizontal', title: 'Basic Horizontal Split', icon: 'ðŸ“‹' },
-    { id: 'vertical', title: 'Basic Vertical Split', icon: 'â†•ï¸' },
-    { id: 'triple', title: 'Triple Split Panel', icon: 'ðŸ¥ˆ' },
-    { id: 'nested', title: 'Nested Resizable Panels', icon: 'ðŸ”²' },
-    { id: 'collapsible', title: 'Collapsible Panels', icon: 'ðŸ“‚' },
-    { id: 'themes', title: 'Dark Theme', icon: 'ðŸŒ™' },
-    { id: 'snap', title: 'Snap to Edge', icon: 'ðŸ“Œ' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'horizontal', title: 'Basic Horizontal Split', icon: '📋' },
+    { id: 'vertical', title: 'Basic Vertical Split', icon: '↕️' },
+    { id: 'triple', title: 'Triple Split Panel', icon: '🥈' },
+    { id: 'nested', title: 'Nested Resizable Panels', icon: '🔲' },
+    { id: 'collapsible', title: 'Collapsible Panels', icon: '📁' },
+    { id: 'themes', title: 'Dark Theme', icon: '🌙' },
+    { id: 'snap', title: 'Snap to Edge', icon: '📌' },
   ];
 
   basicHPanels = [

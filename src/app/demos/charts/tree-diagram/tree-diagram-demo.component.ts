@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'org', title: 'Org Chart', icon: 'ðŸ¢', color: '#6366f1' },
-    { id: 'filesystem', title: 'File System', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'org', title: 'Org Chart', icon: '🏢', color: '#6366f1' },
+    { id: 'filesystem', title: 'File System', icon: '📁', color: '#10b981' },
   ];
 
   orgCode = `<!-- Org Chart Tree (SVG + layout algorithm) -->

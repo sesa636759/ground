@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmCascadeSelectDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'triggers', title: 'Triggers & Display', icon: 'âš¡', color: '#3b82f6' },
-    { id: 'selection', title: 'Selection Logic', icon: 'ðŸŽ¯', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'triggers', title: 'Triggers & Display', icon: '⚡', color: '#3b82f6' },
+    { id: 'selection', title: 'Selection Logic', icon: '🎯', color: '#10b981' },
   ];
 
   fileSystemOptions = [

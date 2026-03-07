@@ -19,8 +19,8 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmSetScrollTopDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'variants', title: 'Style Variants', icon: 'ðŸŽ­' },
-    { id: 'features', title: 'Premium Features', icon: 'ðŸ’Ž' },
+    { id: 'variants', title: 'Style Variants', icon: '🎭' },
+    { id: 'features', title: 'Premium Features', icon: '💎' },
   ];
 
   playgroundCode = `<app-scroll-top

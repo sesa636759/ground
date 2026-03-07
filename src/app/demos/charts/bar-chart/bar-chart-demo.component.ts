@@ -26,18 +26,18 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmBarChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'basic', title: 'Basic', icon: 'ðŸ“Š', color: '#3b82f6' },
-    { id: 'multi-dataset', title: 'Multi Dataset', icon: 'ðŸ—‚ï¸', color: '#10b981' },
-    { id: 'stacked', title: 'Stacked', icon: 'ðŸ“¦', color: '#f59e0b' },
-    { id: 'horizontal', title: 'Horizontal', icon: 'â†”ï¸', color: '#8b5cf6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic', icon: '📊', color: '#3b82f6' },
+    { id: 'multi-dataset', title: 'Multi Dataset', icon: '🗂️', color: '#10b981' },
+    { id: 'stacked', title: 'Stacked', icon: '📦', color: '#f59e0b' },
+    { id: 'horizontal', title: 'Horizontal', icon: '↔️', color: '#8b5cf6' },
   ];
 
-  /* â”€â”€ Basic single-series â”€â”€ */
+  /* ── Basic single-series ── */
   basicLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
   basicDatasets = [{ label: 'Revenue ($k)', data: [42, 58, 75, 63, 89, 104], color: '#6366f1' }];
 
-  /* â”€â”€ Multi-series â”€â”€ */
+  /* ── Multi-series ── */
   multiLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
   multiDatasets = [
     { label: 'Revenue', data: [120, 150, 180, 210], color: '#6366f1' },
@@ -45,7 +45,7 @@ export class DmBarChartDemoComponent extends BaseDemoComponent {
     { label: 'Profit', data: [40, 55, 70, 80], color: '#10b981' },
   ];
 
-  /* â”€â”€ Stacked â”€â”€ */
+  /* ── Stacked ── */
   stackedLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
   stackedDatasets = [
     { label: 'Direct Sales', data: [30, 45, 55, 40, 65], color: '#6366f1' },
@@ -53,11 +53,11 @@ export class DmBarChartDemoComponent extends BaseDemoComponent {
     { label: 'Referral', data: [10, 15, 20, 12, 18], color: '#a78bfa' },
   ];
 
-  /* â”€â”€ Horizontal â”€â”€ */
+  /* ── Horizontal ── */
   hLabels = ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'];
   hDatasets = [{ label: 'Units Sold', data: [320, 240, 180, 490, 155], color: '#0ea5e9' }];
 
-  /* â”€â”€ Code examples â”€â”€ */
+  /* ── Code examples ── */
   basicCode = `<!-- Basic Bar Chart -->
 <ui-bar-chart
   show-legend

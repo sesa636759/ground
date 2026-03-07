@@ -56,7 +56,7 @@ export class DmChipPlaygroundComponent extends BasePlaygroundComponent implement
   getDefaultConfig() {
     return {
       label: 'Angular Developer',
-      icon: 'ðŸ‘¤',
+      icon: '👤',
       userAvatar: '',
       counter: '',
       badge: '',

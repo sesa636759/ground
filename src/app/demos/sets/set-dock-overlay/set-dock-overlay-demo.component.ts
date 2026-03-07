@@ -19,10 +19,10 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmSetDockOverlayDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'positions', title: 'Dock Positions', icon: 'ðŸ“' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'variants', title: 'Variants', icon: 'ðŸŽ­' },
-    { id: 'features', title: 'Features', icon: 'âœ¨' },
+    { id: 'positions', title: 'Dock Positions', icon: '📍' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'variants', title: 'Variants', icon: '🎭' },
+    { id: 'features', title: 'Features', icon: '✨' },
   ];
 
   playgroundCode = `<app-dock-overlay

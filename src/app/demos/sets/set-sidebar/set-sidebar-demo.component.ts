@@ -19,10 +19,10 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmSetSidebarDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'positions', title: 'Position Variants', icon: 'ðŸ“' },
-    { id: 'variants', title: 'Visual Variants', icon: 'ðŸŽ­' },
-    { id: 'collapsible', title: 'Collapsible States', icon: 'ðŸ”„' },
-    { id: 'premium', title: 'Premium Features', icon: 'ðŸ’Ž' },
+    { id: 'positions', title: 'Position Variants', icon: '📍' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎭' },
+    { id: 'collapsible', title: 'Collapsible States', icon: '🔄' },
+    { id: 'premium', title: 'Premium Features', icon: '💎' },
   ];
 
   menuItems = [

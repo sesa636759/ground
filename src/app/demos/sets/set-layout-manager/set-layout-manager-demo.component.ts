@@ -28,9 +28,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implements AfterViewInit {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Three-Column Layout', icon: 'ðŸ“' },
-    { id: 'ide', title: 'IDE-Style Layout', icon: 'ðŸ’»' },
-    { id: 'dashboard', title: 'Dashboard Layout', icon: 'ðŸ“Š' },
+    { id: 'basic', title: 'Basic Three-Column Layout', icon: '📏' },
+    { id: 'ide', title: 'IDE-Style Layout', icon: '💻' },
+    { id: 'dashboard', title: 'Dashboard Layout', icon: '📊' },
   ];
 
   playgroundCode = `<app-layout-manager
@@ -77,7 +77,7 @@ export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implement
       regionId: 'left',
       title: 'File Explorer',
       icon: 'fas fa-folder-tree',
-      html: '<div class="panel-content"><h3>ðŸ“ Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
+      html: '<div class="panel-content"><h3>📁 Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
     });
 
     await layout.addPanel({
@@ -91,7 +91,7 @@ export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implement
       regionId: 'right',
       title: 'Properties',
       icon: 'fas fa-sliders',
-      html: '<div class="panel-content"><h3>âš™ï¸ Properties</h3><p>Configure your settings here.</p></div>',
+      html: '<div class="panel-content"><h3>⚙️ Properties</h3><p>Configure your settings here.</p></div>',
     });
   }
 
@@ -136,7 +136,7 @@ export class DmSetLayoutManagerDemoComponent extends BaseDemoComponent implement
       regionId: 'nav',
       title: 'Menu',
       icon: 'fas fa-bars',
-      html: '<div class="panel-content"><nav><ul><li>ðŸ“Š Dashboard</li><li>ðŸ“ˆ Analytics</li><li>âš™ï¸ Settings</li></ul></nav></div>',
+      html: '<div class="panel-content"><nav><ul><li>📊 Dashboard</li><li>📈 Analytics</li><li>⚙️ Settings</li></ul></nav></div>',
     });
 
     await layout.addPanel({

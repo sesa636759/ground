@@ -26,10 +26,10 @@ import { DmAreaChartPlaygroundComponent } from '../../../playground/charts/area-
 })
 export class DmAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'basic', title: 'Basic Area', icon: 'ðŸ”ï¸', color: '#6366f1' },
-    { id: 'stacked', title: 'Stacked', icon: 'ðŸ“š', color: '#10b981' },
-    { id: 'gradient', title: 'Gradient', icon: 'ðŸŒˆ', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic Area', icon: '🏔️', color: '#6366f1' },
+    { id: 'stacked', title: 'Stacked', icon: '📚', color: '#10b981' },
+    { id: 'gradient', title: 'Gradient', icon: '🌈', color: '#f59e0b' },
   ];
 
   basicData = [

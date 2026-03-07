@@ -28,15 +28,15 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetRadioDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: 'âœ¨' },
-    { id: 'button-groups', title: 'Button Groups', icon: 'ðŸ”²' },
-    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: 'â³' },
-    { id: 'color-variants', title: 'Color Variants', icon: 'ðŸŽ¨' },
-    { id: 'layouts', title: 'Layouts', icon: 'ðŸ“' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'states', title: 'States', icon: 'ðŸ”„' },
-    { id: 'form-example', title: 'Form Example', icon: 'ðŸ“‹' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: '✨' },
+    { id: 'button-groups', title: 'Button Groups', icon: '🔲' },
+    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: '⏳' },
+    { id: 'color-variants', title: 'Color Variants', icon: '🎨' },
+    { id: 'layouts', title: 'Layouts', icon: '📐' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
 
   basicOptions = [
@@ -106,12 +106,12 @@ export class DmSetRadioDemoComponent extends BaseDemoComponent {
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {
-      this.formMessage = 'âš ï¸ Please select both shipping and payment methods';
+      this.formMessage = '⚠️ Please select both shipping and payment methods';
       this.formMessageColor = '#dc2626';
       this.shippingInvalid = !this.formShipping;
       this.paymentInvalid = !this.formPayment;
     } else {
-      this.formMessage = 'âœ… Order placed successfully!';
+      this.formMessage = '✅ Order placed successfully!';
       this.formMessageColor = '#16a34a';
       this.shippingInvalid = false;
       this.paymentInvalid = false;

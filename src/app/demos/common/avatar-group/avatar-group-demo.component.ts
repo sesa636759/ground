@@ -27,10 +27,10 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmAvatarGroupDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'layout', title: 'Layouts', icon: 'ðŸ“Š', color: '#10b981' },
-    { id: 'interactive', title: 'Interactive', icon: 'âœ¨', color: '#f59e0b' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'layout', title: 'Layouts', icon: '📊', color: '#10b981' },
+    { id: 'interactive', title: 'Interactive', icon: '✨', color: '#f59e0b' },
+    { id: 'sizes', title: 'Sizes', icon: '📏', color: '#3b82f6' },
   ];
 
   playgroundCode = `<ui-avatar-group [max]="3">

@@ -1,11 +1,11 @@
 ﻿/**
  * Inline SVG preview illustrations for every component card.
  * All SVGs use `currentColor` so they inherit the primary colour from the
- * `.card-preview` container â€“ zero images, zero external dependencies.
- * ViewBox: 200 Ã— 90  (landscape 2.2:1)
+ * `.card-preview` container – zero images, zero external dependencies.
+ * ViewBox: 200 × 90  (landscape 2.2:1)
  */
 export const COMPONENT_SVG_MAP: Record<string, string> = {
-  /* â”€â”€ A â”€â”€ */
+  /* ── A ── */
   accordion: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="10" y="5"  width="180" height="22" rx="6" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.5"/>
     <line x1="22" y1="16" x2="120" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".7"/>
@@ -64,7 +64,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="152" y1="38" x2="152" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
   </svg>`,
 
-  /* â”€â”€ B â”€â”€ */
+  /* ── B ── */
   badge: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="28" y="18" width="52" height="52" rx="12" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.5"/>
     <circle cx="80" cy="18" r="13" fill="currentColor"/>
@@ -101,7 +101,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="125" y1="45" x2="170" y2="45" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
   </svg>`,
 
-  /* â”€â”€ C â”€â”€ */
+  /* ── C ── */
   card: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="10" y="6"  width="180" height="78" rx="12" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-width="1.5"/>
     <rect x="10" y="6"  width="180" height="30" rx="12" fill="currentColor" fill-opacity=".14"/>
@@ -167,7 +167,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="62" y1="74" x2="138" y2="74" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
   </svg>`,
 
-  /* â”€â”€ D â”€â”€ */
+  /* ── D ── */
   'dialog-box': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="5"  y="5"  width="190" height="80" rx="8" fill="currentColor" fill-opacity=".04" stroke="currentColor" stroke-width=".6" opacity=".4"/>
     <rect x="20" y="10" width="160" height="70" rx="10" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.5"/>
@@ -210,7 +210,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="42" y1="76" x2="105" y2="76" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
   </svg>`,
 
-  /* â”€â”€ H â”€â”€ */
+  /* ── H ── */
   'horizontal-nav': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="10" y="10" width="180" height="34" rx="10" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.5"/>
     <rect x="18" y="18" width="28"  height="18" rx="5" fill="currentColor" fill-opacity=".3"/>
@@ -222,7 +222,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="10" y1="82" x2="100" y2="82" stroke="currentColor" stroke-width="1"   stroke-linecap="round" opacity=".1"/>
   </svg>`,
 
-  /* â”€â”€ K â”€â”€ */
+  /* ── K ── */
   knob: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="45" r="36" fill="currentColor" fill-opacity=".1"  stroke="currentColor" stroke-width="2"/>
     <circle cx="100" cy="45" r="24" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.5"/>
@@ -231,7 +231,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="100" y1="35" x2="114" y2="27" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
   </svg>`,
 
-  /* â”€â”€ L â”€â”€ */
+  /* ── L ── */
   'layout-manager': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="10"  y="8"  width="85" height="74" rx="8" fill="currentColor" fill-opacity=".1"  stroke="currentColor" stroke-width="1.5"/>
     <rect x="105" y="8"  width="85" height="34" rx="8" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.5"/>
@@ -242,7 +242,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="117" y1="65" x2="178" y2="65" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
   </svg>`,
 
-  /* â”€â”€ M â”€â”€ */
+  /* ── M ── */
   'meter-group': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="15" y="10"  width="170" height="14" rx="7" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1"/>
     <rect x="15" y="10"  width="120" height="14" rx="7" fill="currentColor" fill-opacity=".7"/>
@@ -254,7 +254,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <rect x="15" y="76"  width="55"  height="8"  rx="4" fill="currentColor" fill-opacity=".4"/>
   </svg>`,
 
-  /* â”€â”€ N â”€â”€ */
+  /* ── N ── */
   'nav-bar': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="5"  y="5"  width="190" height="30" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="1.2"/>
     <rect x="12" y="11" width="28"  height="18" rx="4" fill="currentColor" fill-opacity=".4"/>
@@ -266,7 +266,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="12" y1="62" x2="100" y2="62" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".15"/>
   </svg>`,
 
-  /* â”€â”€ P â”€â”€ */
+  /* ── P ── */
   pagination: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="8"  y="33" width="24" height="24" rx="7" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".4"/>
     <path d="M22 42 L18 45 L22 48" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
@@ -339,7 +339,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <circle cx="100" cy="83" r="6" fill="currentColor" fill-opacity=".5" stroke="currentColor" stroke-width="1.5"/>
   </svg>`,
 
-  /* â”€â”€ R â”€â”€ */
+  /* ── R ── */
   'range-slider': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <line x1="38"  y1="25" x2="38"  y2="35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
     <line x1="80"  y1="25" x2="80"  y2="35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
@@ -362,7 +362,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="32" y1="76" x2="112" y2="76" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".15"/>
   </svg>`,
 
-  /* â”€â”€ S â”€â”€ */
+  /* ── S ── */
   'scroll-top': `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <line x1="15" y1="18" x2="185" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".25"/>
     <circle cx="100" cy="57" r="26" fill="currentColor" fill-opacity=".15" stroke="currentColor" stroke-width="2"/>
@@ -471,7 +471,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <line x1="28"  y1="78" x2="78" y2="78" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".2"/>
   </svg>`,
 
-  /* â”€â”€ T â”€â”€ */
+  /* ── T ── */
   tabs: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="8"   y="10" width="46" height="26" rx="8" fill="currentColor"/>
     <line x1="17" y1="23" x2="45"  y2="23" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -553,7 +553,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <rect x="70" y="66" width="58"  height="12" rx="4" stroke="currentColor" stroke-width="1.2" opacity=".4"/>
   </svg>`,
 
-  /* â”€â”€ Set-* pages (demo wrappers) â”€â”€ */
+  /* ── Set-* pages (demo wrappers) ── */
   carousel: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="30" y="10" width="140" height="62" rx="10" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.5"/>
     <path d="M18 36 L9 45 L18 54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -633,7 +633,7 @@ export const COMPONENT_SVG_MAP: Record<string, string> = {
     <path d="M88 8 L100 3 L112 8 L100 18 Z" fill="currentColor" fill-opacity=".3"/>
   </svg>`,
 
-  /* â”€â”€ Fallback â”€â”€ */
+  /* ── Fallback ── */
   default: `<svg viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="20" y="10" width="160" height="70" rx="12" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.5"/>
     <rect x="20" y="10" width="160" height="26" rx="12" fill="currentColor" fill-opacity=".18"/>

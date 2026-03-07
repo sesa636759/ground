@@ -27,18 +27,18 @@ import { DmTooltipPlaygroundComponent } from '../../../playground/sets/set-toolt
 })
 export class DmSetTooltipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'triggers', title: 'Triggers', icon: 'âš¡' },
-    { id: 'positioning', title: 'Positioning', icon: 'ðŸ“' },
-    { id: 'variants', title: 'Variants & Themes', icon: 'ðŸŽ¨' },
-    { id: 'shapes-animations', title: 'Shapes & Animations', icon: 'âœ¨' },
-    { id: 'advanced-features', title: 'Advanced Features', icon: 'âš™ï¸' },
+    { id: 'triggers', title: 'Triggers', icon: '⚡' },
+    { id: 'positioning', title: 'Positioning', icon: '📍' },
+    { id: 'variants', title: 'Variants & Themes', icon: '🎨' },
+    { id: 'shapes-animations', title: 'Shapes & Animations', icon: '✨' },
+    { id: 'advanced-features', title: 'Advanced Features', icon: '⚙️' },
     { id: 'rich-content', title: 'Rich HTML Content', icon: 'ðŸ“' },
-    { id: 'use-cases', title: 'Practical Use Cases', icon: 'ðŸ’¼' },
-    { id: 'custom-content', title: 'Custom Content & Slots', icon: 'ðŸ§©' },
-    { id: 'custom-colors', title: 'Custom Colors', icon: 'ðŸŒˆ' },
-    { id: 'arrow-customization', title: 'Arrow Customization', icon: 'â¬†ï¸' },
-    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: 'ðŸ–±ï¸' },
-    { id: 'auto-shift', title: 'Auto-Shift', icon: 'ðŸ”„' },
+    { id: 'use-cases', title: 'Practical Use Cases', icon: '💼' },
+    { id: 'custom-content', title: 'Custom Content & Slots', icon: '🧩' },
+    { id: 'custom-colors', title: 'Custom Colors', icon: '🌈' },
+    { id: 'arrow-customization', title: 'Arrow Customization', icon: '⬆️' },
+    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: '🖱️' },
+    { id: 'auto-shift', title: 'Auto-Shift', icon: '🔄' },
   ];
 
   hoverCode = `<app-tooltip content="I appear on hover" position="top">

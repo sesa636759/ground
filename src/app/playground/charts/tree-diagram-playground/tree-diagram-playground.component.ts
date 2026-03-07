@@ -33,8 +33,8 @@ export class DmTreeDiagramPlaygroundComponent {
   };
 
   orientOpts = [
-    { label: 'Top â†’ Down', value: 'horizontal' },
-    { label: 'Left â†’ Right', value: 'vertical' },
+    { label: 'Top → Down', value: 'horizontal' },
+    { label: 'Left → Right', value: 'vertical' },
   ];
 
   datasetOpts = [
@@ -46,36 +46,36 @@ export class DmTreeDiagramPlaygroundComponent {
   orgTree: TreeNode = {
     id: 'ceo',
     label: 'CEO',
-    icon: 'ðŸ‘”',
+    icon: '👔',
     color: '#6366f1',
     children: [
       {
         id: 'cto',
         label: 'CTO',
-        icon: 'ðŸ’»',
+        icon: '💻',
         color: '#0ea5e9',
         children: [
-          { id: 'fe', label: 'Frontend', icon: 'ðŸŽ¨', color: '#8b5cf6' },
-          { id: 'be', label: 'Backend', icon: 'âš™ï¸', color: '#10b981' },
-          { id: 'qa', label: 'QA', icon: 'ðŸ§ª', color: '#f59e0b' },
+          { id: 'fe', label: 'Frontend', icon: '🎨', color: '#8b5cf6' },
+          { id: 'be', label: 'Backend', icon: '⚙️', color: '#10b981' },
+          { id: 'qa', label: 'QA', icon: '🧪', color: '#f59e0b' },
         ],
       },
       {
         id: 'cmo',
         label: 'CMO',
-        icon: 'ðŸ“£',
+        icon: '📣',
         color: '#0ea5e9',
         children: [
-          { id: 'seo', label: 'SEO', icon: 'ðŸ”', color: '#f43f5e' },
-          { id: 'ads', label: 'Ads', icon: 'ðŸ“¢', color: '#fb923c' },
+          { id: 'seo', label: 'SEO', icon: '🔍', color: '#f43f5e' },
+          { id: 'ads', label: 'Ads', icon: '📢', color: '#fb923c' },
         ],
       },
       {
         id: 'cfo',
         label: 'CFO',
-        icon: 'ðŸ’°',
+        icon: '💰',
         color: '#0ea5e9',
-        children: [{ id: 'acc', label: 'Accounting', icon: 'ðŸ“Š', color: '#6366f1' }],
+        children: [{ id: 'acc', label: 'Accounting', icon: '📊', color: '#6366f1' }],
       },
     ],
   };
@@ -83,32 +83,32 @@ export class DmTreeDiagramPlaygroundComponent {
   fsTree: TreeNode = {
     id: 'root',
     label: '/',
-    icon: 'ðŸ“',
+    icon: '📁',
     color: '#6366f1',
     children: [
       {
         id: 'src',
         label: 'src',
-        icon: 'ðŸ“‚',
+        icon: '📁',
         color: '#0ea5e9',
         children: [
-          { id: 'app', label: 'app', icon: 'ðŸ“„', color: '#10b981' },
-          { id: 'styles', label: 'styles', icon: 'ðŸŽ¨', color: '#f59e0b' },
+          { id: 'app', label: 'app', icon: '📄', color: '#10b981' },
+          { id: 'styles', label: 'styles', icon: '🎨', color: '#f59e0b' },
         ],
       },
       {
         id: 'public',
         label: 'public',
-        icon: 'ðŸŒ',
+        icon: '🌐',
         color: '#0ea5e9',
-        children: [{ id: 'assets', label: 'assets', icon: 'ðŸ–¼ï¸', color: '#f43f5e' }],
+        children: [{ id: 'assets', label: 'assets', icon: '🖼️', color: '#f43f5e' }],
       },
       {
         id: 'config',
         label: 'config',
-        icon: 'âš™ï¸',
+        icon: '⚙️',
         color: '#0ea5e9',
-        children: [{ id: 'pkg', label: 'package.json', icon: 'ðŸ“¦', color: '#8b5cf6' }],
+        children: [{ id: 'pkg', label: 'package.json', icon: '📦', color: '#8b5cf6' }],
       },
     ],
   };
@@ -116,27 +116,27 @@ export class DmTreeDiagramPlaygroundComponent {
   techTree: TreeNode = {
     id: 'app',
     label: 'App',
-    icon: 'ðŸš€',
+    icon: '🚀',
     color: '#6366f1',
     children: [
       {
         id: 'fe',
         label: 'Frontend',
-        icon: 'ðŸŽ¨',
+        icon: '🎨',
         color: '#0ea5e9',
         children: [
-          { id: 'ng', label: 'Angular', icon: 'ðŸ…°ï¸', color: '#f43f5e' },
-          { id: 'scss', label: 'SCSS', icon: 'ðŸ’…', color: '#8b5cf6' },
+          { id: 'ng', label: 'Angular', icon: '🅰️', color: '#f43f5e' },
+          { id: 'scss', label: 'SCSS', icon: '💅', color: '#8b5cf6' },
         ],
       },
       {
         id: 'be',
         label: 'Backend',
-        icon: 'âš™ï¸',
+        icon: '⚙️',
         color: '#0ea5e9',
         children: [
-          { id: 'node', label: 'Node.js', icon: 'ðŸŸ¢', color: '#10b981' },
-          { id: 'db', label: 'PostgreSQL', icon: 'ðŸ˜', color: '#0ea5e9' },
+          { id: 'node', label: 'Node.js', icon: '🟢', color: '#10b981' },
+          { id: 'db', label: 'PostgreSQL', icon: '🐘', color: '#0ea5e9' },
         ],
       },
     ],

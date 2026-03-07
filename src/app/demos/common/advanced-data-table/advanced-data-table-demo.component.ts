@@ -24,8 +24,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmAdvancedDataTableDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'features', title: 'Key Features', icon: 'ðŸ’Ž', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'features', title: 'Key Features', icon: '💎', color: '#3b82f6' },
   ];
 
   sampleData = [
@@ -54,7 +54,7 @@ export class DmAdvancedDataTableDemoComponent extends BaseDemoComponent {
     <ng-template let-row let-col="column">
       @if (col.field === 'status') {
         <span>
-          {{ row.status === 'Active' ? 'âœ…' : 'âŒ' }}
+          {{ row.status === 'Active' ? '✅' : 'âŒ' }}
         </span>
       }
     </ng-template>

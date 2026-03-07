@@ -26,8 +26,8 @@ import { DmTransferListPlaygroundComponent } from '../../../playground/common/tr
 })
 export class DmTransferListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'features', title: 'UI Controls', icon: 'âš™ï¸', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'features', title: 'UI Controls', icon: '⚙️', color: '#3b82f6' },
   ];
 
   sourceItems = [

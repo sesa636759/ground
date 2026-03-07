@@ -23,11 +23,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmStackDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'direction', name: 'Direction', icon: 'â†”ï¸', color: '#3b82f6' },
-    { id: 'spacing', name: 'Spacing', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'overlap', name: 'Overlap', icon: 'å ', color: '#f59e0b' },
-    { id: 'dividers', name: 'Dividers', icon: 'âž–', color: '#ef4444' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'direction', name: 'Direction', icon: '↔️', color: '#3b82f6' },
+    { id: 'spacing', name: 'Spacing', icon: '📏', color: '#10b981' },
+    { id: 'overlap', name: 'Overlap', icon: '叠', color: '#f59e0b' },
+    { id: 'dividers', name: 'Dividers', icon: '➖', color: '#ef4444' },
   ];
 
   get exampleVariants() {

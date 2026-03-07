@@ -26,9 +26,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmMeterGroupDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'displays', title: 'Display Types', icon: 'ðŸ“Š', color: '#3b82f6' },
-    { id: 'layouts', title: 'Advanced Layouts', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'displays', title: 'Display Types', icon: '📊', color: '#3b82f6' },
+    { id: 'layouts', title: 'Advanced Layouts', icon: '📐', color: '#10b981' },
   ];
 
   storageValues = [

@@ -26,32 +26,32 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetAvatarDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'basic', title: 'Basic Shapes & Sizes', icon: 'ðŸ“' },
-    { id: 'types', title: 'Avatar Types', icon: 'ðŸŽ­' },
-    { id: 'sizes', title: 'Sizes', icon: 'ðŸ“' },
-    { id: 'auto-scale', title: 'Auto-scale Font', icon: 'ðŸ”¡' },
-    { id: 'badge', title: 'With Badge', icon: 'ðŸ””' },
-    { id: 'avatar-group', title: 'Avatar Groups', icon: 'ðŸ‘¥' },
-    { id: 'custom-colors', title: 'Custom Colors', icon: 'ðŸŽ¨' },
-    { id: 'responsive', title: 'Responsive Size', icon: 'ðŸ“±' },
-    { id: 'status', title: 'Status Indicators', icon: 'ðŸŸ¢' },
-    { id: 'borders', title: 'Custom Borders', icon: 'â­•' },
-    { id: 'tooltips', title: 'Tooltips & Popovers', icon: 'ðŸ’¬' },
-    { id: 'icons', title: 'Different Icons', icon: 'â­' },
-    { id: 'badge-overlay', title: 'Badge Overlay', icon: 'âœ¨' },
-    { id: 'verified', title: 'Verified Badge', icon: 'âœ…' },
+    { id: 'basic', title: 'Basic Shapes & Sizes', icon: '📐' },
+    { id: 'types', title: 'Avatar Types', icon: '🎭' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'auto-scale', title: 'Auto-scale Font', icon: '🔡' },
+    { id: 'badge', title: 'With Badge', icon: '🔔' },
+    { id: 'avatar-group', title: 'Avatar Groups', icon: '👥' },
+    { id: 'custom-colors', title: 'Custom Colors', icon: '🎨' },
+    { id: 'responsive', title: 'Responsive Size', icon: '📱' },
+    { id: 'status', title: 'Status Indicators', icon: '🟢' },
+    { id: 'borders', title: 'Custom Borders', icon: '⭕' },
+    { id: 'tooltips', title: 'Tooltips & Popovers', icon: '💬' },
+    { id: 'icons', title: 'Different Icons', icon: '⭐' },
+    { id: 'badge-overlay', title: 'Badge Overlay', icon: '✨' },
+    { id: 'verified', title: 'Verified Badge', icon: '✅' },
     { id: 'editable', title: 'Editable/Upload', icon: 'ðŸ“' },
-    { id: 'loading', title: 'Loading State', icon: 'â³' },
-    { id: 'image-fit', title: 'Image Fit Options', icon: 'ðŸ–¼ï¸' },
-    { id: 'auto-color', title: 'Auto Color from Name', icon: 'ðŸŽ¨' },
-    { id: 'gradients', title: 'Gradient Backgrounds', icon: 'ðŸŒˆ' },
-    { id: 'animations', title: 'Animations', icon: 'âœ¨' },
-    { id: 'clickable', title: 'Clickable Avatars', icon: 'ðŸ–±ï¸' },
-    { id: 'ring-color', title: 'Ring Color', icon: 'ðŸ’' },
-    { id: 'lazy-loading', title: 'Lazy Loading', icon: 'âš¡' },
-    { id: 'premium', title: 'Premium Features', icon: 'ðŸŒŸ' },
-    { id: 'premium-showcase', title: 'Premium Showcase', icon: 'ðŸ’Ž' },
-    { id: 'animated-groups', title: 'Animated Groups', icon: 'ðŸŽ¬' },
+    { id: 'loading', title: 'Loading State', icon: '⏳' },
+    { id: 'image-fit', title: 'Image Fit Options', icon: '🖼️' },
+    { id: 'auto-color', title: 'Auto Color from Name', icon: '🎨' },
+    { id: 'gradients', title: 'Gradient Backgrounds', icon: '🌈' },
+    { id: 'animations', title: 'Animations', icon: '✨' },
+    { id: 'clickable', title: 'Clickable Avatars', icon: '🖱️' },
+    { id: 'ring-color', title: 'Ring Color', icon: '💍' },
+    { id: 'lazy-loading', title: 'Lazy Loading', icon: '⚡' },
+    { id: 'premium', title: 'Premium Features', icon: '🌟' },
+    { id: 'premium-showcase', title: 'Premium Showcase', icon: '💎' },
+    { id: 'animated-groups', title: 'Animated Groups', icon: '🎬' },
   ];
 
   get exampleVariants() {
@@ -132,7 +132,7 @@ export class DmSetAvatarDemoComponent extends BaseDemoComponent implements OnIni
 <app-avatar icon="fa fa-user"></app-avatar>
 <app-avatar icon="fa fa-star"></app-avatar>
 <app-avatar icon="fa fa-heart"></app-avatar>
-<app-avatar icon="ðŸ‘¤"></app-avatar>`;
+<app-avatar icon="👤"></app-avatar>`;
 
   badgeOverlayCode = `<!-- Badge with custom positions -->
 <app-avatar name="User" badge="3" badge-position="top-right"></app-avatar>

@@ -25,9 +25,9 @@ import { DmTimelinePlaygroundComponent } from '../../../playground/sets//set-tim
 })
 export class DmSetTimelineDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'layouts', title: 'Versatile Layouts', icon: 'ðŸ“' },
-    { id: 'snake-layout', title: 'Snake Layout', icon: 'ðŸ' },
-    { id: 'variants', title: 'Style Variants', icon: 'ðŸŽ¨' },
+    { id: 'layouts', title: 'Versatile Layouts', icon: '📐' },
+    { id: 'snake-layout', title: 'Snake Layout', icon: '🐍' },
+    { id: 'variants', title: 'Style Variants', icon: '🎨' },
   ];
 
   // Static Data Examples

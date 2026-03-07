@@ -26,16 +26,16 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmContextMenuDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'targets', title: 'Multiple Targets', icon: 'ðŸŽ¯' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'targets', title: 'Multiple Targets', icon: '🎯' },
   ];
 
   fileItems = [
-    { label: 'Open', icon: 'ðŸ“‚' },
-    { label: 'Download', icon: 'â¬‡ï¸' },
+    { label: 'Open', icon: '📁' },
+    { label: 'Download', icon: '⬇️' },
     { separator: true },
     { label: 'Rename', icon: 'ðŸ“' },
-    { label: 'Delete', icon: 'ðŸ—‘ï¸' },
+    { label: 'Delete', icon: '🗑️' },
   ];
 
   playgroundCode = `<div #trigger> Right Click Me </div>

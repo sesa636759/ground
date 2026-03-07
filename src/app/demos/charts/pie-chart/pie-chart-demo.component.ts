@@ -25,14 +25,14 @@ import { DmPieChartPlaygroundComponent } from '../../../playground/charts/pie-ch
 })
 export class DmPieChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'pie', title: 'Pie Chart', icon: 'ðŸ¥§', color: '#6366f1' },
-    { id: 'doughnut', title: 'Doughnut', icon: 'ðŸ©', color: '#f59e0b' },
-    { id: 'polar-area', title: 'Polar Area', icon: 'ðŸŒ', color: '#10b981' },
-    { id: 'multi-ring', title: 'Multi Ring', icon: 'ðŸŽ¯', color: '#0ea5e9' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'pie', title: 'Pie Chart', icon: '🥧', color: '#6366f1' },
+    { id: 'doughnut', title: 'Doughnut', icon: '🍩', color: '#f59e0b' },
+    { id: 'polar-area', title: 'Polar Area', icon: '🌐', color: '#10b981' },
+    { id: 'multi-ring', title: 'Multi Ring', icon: '🎯', color: '#0ea5e9' },
   ];
 
-  // â”€â”€ Pie: Sales by region â”€â”€
+  // ── Pie: Sales by region ──
   pieData = {
     labels: ['North', 'South', 'East', 'West', 'Central'],
     datasets: [
@@ -45,7 +45,7 @@ export class DmPieChartDemoComponent extends BaseDemoComponent {
     ],
   };
 
-  // â”€â”€ Doughnut: Budget allocation â”€â”€
+  // ── Doughnut: Budget allocation ──
   doughnutData = {
     labels: ['Engineering', 'Marketing', 'Operations', 'HR', 'R&D'],
     datasets: [
@@ -60,7 +60,7 @@ export class DmPieChartDemoComponent extends BaseDemoComponent {
 
   doughnutOptions = { cutout: '60%' };
 
-  // â”€â”€ Polar Area: Performance scores â”€â”€
+  // ── Polar Area: Performance scores ──
   polarData = {
     labels: ['Speed', 'Reliability', 'Security', 'UX', 'Scalability'],
     datasets: [
@@ -78,7 +78,7 @@ export class DmPieChartDemoComponent extends BaseDemoComponent {
     ],
   };
 
-  // â”€â”€ Multi-ring / Doughnut â”€â”€
+  // ── Multi-ring / Doughnut ──
   multiRingData = {
     labels: ['Q1', 'Q2', 'Q3', 'Q4'],
     datasets: [
@@ -93,7 +93,7 @@ export class DmPieChartDemoComponent extends BaseDemoComponent {
   };
   multiRingOptions = { cutout: '55%' };
 
-  // â”€â”€ Code examples â”€â”€
+  // ── Code examples ──
   pieCode = `<!-- Basic Pie Chart -->
 <app-chart
   chartType="pie"

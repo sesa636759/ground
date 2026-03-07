@@ -24,8 +24,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSmartStepperDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'themes', name: 'Themes', icon: 'ðŸŽ¨', color: '#3b82f6' },
+    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'themes', name: 'Themes', icon: '🎨', color: '#3b82f6' },
   ];
 
   get exampleVariants() {

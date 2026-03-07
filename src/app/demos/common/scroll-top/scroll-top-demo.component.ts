@@ -24,15 +24,15 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmScrollTopDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'shapes', title: 'Shapes & Icons', icon: 'ðŸ’Ž', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'shapes', title: 'Shapes & Icons', icon: '💎', color: '#3b82f6' },
   ];
 
-  playgroundCode = `<ui-scroll-top threshold="400" icon="â†‘"></ui-scroll-top>`;
+  playgroundCode = `<ui-scroll-top threshold="400" icon="↑"></ui-scroll-top>`;
 
   shapesCode = `<!-- Square Shape -->
 <ui-scroll-top shape="square" icon="TOP"></ui-scroll-top>
 
 <!-- Circle with Custom Icon -->
-<ui-scroll-top shape="circle" icon="ðŸš€"></ui-scroll-top>`;
+<ui-scroll-top shape="circle" icon="🚀"></ui-scroll-top>`;
 }

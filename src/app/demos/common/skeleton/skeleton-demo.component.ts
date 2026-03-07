@@ -27,11 +27,11 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmSkeletonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®' },
-    { id: 'shapes', title: 'Shapes & Animations', icon: 'ðŸŒ€' },
-    { id: 'card-layout', title: 'Card Layout', icon: 'ðŸƒ' },
-    { id: 'list-layout', title: 'List Layout', icon: 'ðŸ“‹' },
-    { id: 'profile-layout', title: 'Profile Layout', icon: 'ðŸ‘¤' },
+    { id: 'playground', title: 'Playground', icon: '🎮' },
+    { id: 'shapes', title: 'Shapes & Animations', icon: '🌀' },
+    { id: 'card-layout', title: 'Card Layout', icon: '🃏' },
+    { id: 'list-layout', title: 'List Layout', icon: '📋' },
+    { id: 'profile-layout', title: 'Profile Layout', icon: '👤' },
   ];
 
   shapesCode = `<!-- Circle (avatar) -->

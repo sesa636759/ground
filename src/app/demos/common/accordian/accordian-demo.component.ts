@@ -27,20 +27,20 @@ import { PlaygroundEventLogComponent } from '../../../shared/components/playgrou
 })
 export class DmAccordianDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'basic', title: 'Basic', icon: 'ðŸ“', color: '#3b82f6' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
     { id: 'subtitles', title: 'Subtitles', icon: 'ðŸ“', color: '#10b981' },
-    { id: 'search', title: 'Search', icon: 'ðŸ”', color: '#f59e0b' },
-    { id: 'actions', title: 'Actions', icon: 'âš¡', color: '#ef4444' },
-    { id: 'nested', title: 'Nested', icon: 'ðŸŒ³', color: '#6366f1' },
-    { id: 'drag-drop', title: 'Drag & Drop', icon: 'âœ‹', color: '#ec4899' },
-    { id: 'persistence', title: 'Persistence', icon: 'ðŸ’¾', color: '#14b8a6' },
-    { id: 'loading', title: 'Loading', icon: 'â³', color: '#a855f7' },
-    { id: 'rtl', title: 'RTL', icon: 'ðŸŒ', color: '#06b6d4' },
-    { id: 'dense', title: 'Dense', icon: 'ðŸ“¦', color: '#84cc16' },
-    { id: 'events', title: 'Events', icon: 'ðŸ“£', color: '#f97316' },
-    { id: 'controlled', title: 'Controlled', icon: 'ðŸŽ®', color: '#2563eb' },
-    { id: 'async-lazy', title: 'Async & Lazy', icon: 'âš¡', color: '#7c3aed' },
+    { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
+    { id: 'actions', title: 'Actions', icon: '⚡', color: '#ef4444' },
+    { id: 'nested', title: 'Nested', icon: '🌳', color: '#6366f1' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: '✋', color: '#ec4899' },
+    { id: 'persistence', title: 'Persistence', icon: '💾', color: '#14b8a6' },
+    { id: 'loading', title: 'Loading', icon: '⏳', color: '#a855f7' },
+    { id: 'rtl', title: 'RTL', icon: '🌍', color: '#06b6d4' },
+    { id: 'dense', title: 'Dense', icon: '📦', color: '#84cc16' },
+    { id: 'events', title: 'Events', icon: '📣', color: '#f97316' },
+    { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
+    { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
   ];
 
   basicAccordionItems = [
@@ -107,8 +107,8 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       subtitle: '2.4 MB',
       content: '<p>Preview of Document.pdf</p>',
       actions: [
-        { id: 'download', label: 'â¬‡ï¸', ariaLabel: 'Download' },
-        { id: 'delete', label: 'ðŸ—‘ï¸', ariaLabel: 'Delete' },
+        { id: 'download', label: '⬇️', ariaLabel: 'Download' },
+        { id: 'delete', label: '🗑️', ariaLabel: 'Delete' },
       ],
     },
     {
@@ -117,8 +117,8 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       subtitle: '1.2 MB',
       content: '<p>Preview of Image.png</p>',
       actions: [
-        { id: 'download', label: 'â¬‡ï¸', ariaLabel: 'Download' },
-        { id: 'share', label: 'ðŸ”—', ariaLabel: 'Share' },
+        { id: 'download', label: '⬇️', ariaLabel: 'Download' },
+        { id: 'share', label: '🔗', ariaLabel: 'Share' },
       ],
     },
   ];
@@ -169,8 +169,8 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
   loadingCode = `<ui-accordion [items]="[]" loading></ui-accordion>`;
 
   rtlItems = [
-    { id: '1', title: 'Ø§Ù„Ù‚Ø³Ù… Ø§Ù„Ø£ÙˆÙ„', content: 'Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ù‚Ø³Ù… Ø§Ù„Ø£ÙˆÙ„' },
-    { id: '2', title: 'Ø§Ù„Ù‚Ø³Ù… Ø§Ù„Ø«Ø§Ù†ÙŠ', content: 'Ù…Ø­ØªÙˆÙ‰ Ø§Ù„Ù‚Ø³Ù… Ø§Ù„Ø«Ø§Ù†ÙŠ' },
+    { id: '1', title: 'القسم الأول', content: 'محتوى القسم الأول' },
+    { id: '2', title: 'القسم الثاني', content: 'محتوى القسم الثاني' },
   ];
   rtlCode = `<ui-accordion [items]="items" rtl></ui-accordion>`;
 

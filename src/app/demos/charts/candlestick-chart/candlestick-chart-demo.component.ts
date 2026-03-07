@@ -25,9 +25,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmCandlestickChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'daily', title: 'Daily Candles', icon: 'ðŸ“ˆ', color: '#6366f1' },
-    { id: 'hollow', title: 'Hollow Body', icon: 'ðŸ•¯ï¸', color: '#f59e0b' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'daily', title: 'Daily Candles', icon: '📈', color: '#6366f1' },
+    { id: 'hollow', title: 'Hollow Body', icon: '🕯️', color: '#f59e0b' },
   ];
 
   dailyCandles = [
@@ -50,7 +50,7 @@ export class DmCandlestickChartDemoComponent extends BaseDemoComponent {
   <text x="72" y="320" text-anchor="middle" font-size="10" fill="#6b7280">Jan 2</text>
 </svg>`;
 
-  hollowCode = `<!-- Hollow Candlestick â€” outline only for bullish candles -->
+  hollowCode = `<!-- Hollow Candlestick — outline only for bullish candles -->
 <svg width="620" height="340">
   <!-- Bullish hollow: outlined rect -->
   <rect x="60" y="90" width="24" height="80"

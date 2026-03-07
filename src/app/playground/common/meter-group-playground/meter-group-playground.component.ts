@@ -40,10 +40,10 @@ export class DmMeterGroupPlaygroundComponent extends BasePlaygroundComponent imp
   ];
 
   values = [
-    { label: 'Apps', value: 40, color: '#3b82f6', icon: 'ðŸ“±' },
-    { label: 'System', value: 25, color: '#ef4444', icon: 'âš™ï¸' },
-    { label: 'Media', value: 15, color: '#10b981', icon: 'ðŸŽ¬' },
-    { label: 'Free', value: 20, color: '#e2e8f0', icon: 'â˜ï¸' },
+    { label: 'Apps', value: 40, color: '#3b82f6', icon: '📱' },
+    { label: 'System', value: 25, color: '#ef4444', icon: '⚙️' },
+    { label: 'Media', value: 15, color: '#10b981', icon: '🎬' },
+    { label: 'Free', value: 20, color: '#e2e8f0', icon: '☁️' },
   ];
 
   valuesJson = JSON.stringify(this.values);

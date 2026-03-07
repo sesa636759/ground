@@ -23,37 +23,37 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetModernSidebarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'basic-default', title: 'Basic Default', icon: 'ðŸ“‹' },
-    { id: 'minimal-items', title: 'Minimal Items', icon: 'âš¡' },
-    { id: 'collapsed-compact', title: 'Collapsed/Compact', icon: 'â—€ï¸' },
-    { id: 'expanded-full', title: 'Expanded Full', icon: 'â–¶ï¸' },
-    { id: 'nested-navigation', title: 'Nested Navigation', icon: 'ðŸ”€' },
-    { id: 'nested-deep', title: 'Deep Nesting (3 Levels)', icon: 'ðŸ—ï¸' },
-    { id: 'with-badges', title: 'With Badges', icon: 'ðŸ””' },
-    { id: 'badges-mixed', title: 'Mixed Badge Types', icon: 'ðŸ”¢' },
-    { id: 'user-profile', title: 'User Profile', icon: 'ðŸ‘¤' },
-    { id: 'user-with-avatar', title: 'User with Avatar', icon: 'ðŸ–¼ï¸' },
-    { id: 'no-user-profile', title: 'No User Profile', icon: 'â­•' },
-    { id: 'theme-light', title: 'Light Theme', icon: 'â˜€ï¸' },
-    { id: 'theme-dark', title: 'Dark Theme', icon: 'ðŸŒ™' },
-    { id: 'accent-indigo', title: 'Accent: Indigo', icon: 'ðŸ”µ' },
-    { id: 'accent-green', title: 'Accent: Green', icon: 'ðŸŸ¢' },
-    { id: 'accent-purple', title: 'Accent: Purple', icon: 'ðŸŸ£' },
-    { id: 'accent-orange', title: 'Accent: Orange', icon: 'ðŸŸ ' },
-    { id: 'accent-pink', title: 'Accent: Pink', icon: 'ðŸ©·' },
-    { id: 'brand-custom', title: 'Custom Branding', icon: 'ðŸ·ï¸' },
-    { id: 'brand-icon', title: 'Brand with Icon', icon: 'ðŸŽ¨' },
-    { id: 'icons-fontawesome', title: 'FontAwesome Icons', icon: 'ðŸŽ¯' },
-    { id: 'icons-custom', title: 'Custom Icons', icon: 'âœ¨' },
-    { id: 'full-featured', title: 'Full Featured', icon: 'ðŸ’Ž' },
-    { id: 'dashboard-layout', title: 'Dashboard Layout', icon: 'ðŸ“Š' },
-    { id: 'admin-panel', title: 'Admin Panel', icon: 'âš™ï¸' },
-    { id: 'project-management', title: 'Project Management', icon: 'ðŸ“' },
-    { id: 'messaging-app', title: 'Messaging App', icon: 'ðŸ’¬' },
-    { id: 'ecommerce', title: 'E-commerce Admin', icon: 'ðŸ›’' },
-    { id: 'analytics-dashboard', title: 'Analytics Dashboard', icon: 'ðŸ“ˆ' },
-    { id: 'settings-menu', title: 'Settings Menu', icon: 'ðŸ”§' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'basic-default', title: 'Basic Default', icon: '📋' },
+    { id: 'minimal-items', title: 'Minimal Items', icon: '⚡' },
+    { id: 'collapsed-compact', title: 'Collapsed/Compact', icon: '◀️' },
+    { id: 'expanded-full', title: 'Expanded Full', icon: '▶️' },
+    { id: 'nested-navigation', title: 'Nested Navigation', icon: '🔀' },
+    { id: 'nested-deep', title: 'Deep Nesting (3 Levels)', icon: '🏗️' },
+    { id: 'with-badges', title: 'With Badges', icon: '🔔' },
+    { id: 'badges-mixed', title: 'Mixed Badge Types', icon: '🔢' },
+    { id: 'user-profile', title: 'User Profile', icon: '👤' },
+    { id: 'user-with-avatar', title: 'User with Avatar', icon: '🖼️' },
+    { id: 'no-user-profile', title: 'No User Profile', icon: '⭕' },
+    { id: 'theme-light', title: 'Light Theme', icon: '☀️' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: '🌙' },
+    { id: 'accent-indigo', title: 'Accent: Indigo', icon: '🔵' },
+    { id: 'accent-green', title: 'Accent: Green', icon: '🟢' },
+    { id: 'accent-purple', title: 'Accent: Purple', icon: '🟣' },
+    { id: 'accent-orange', title: 'Accent: Orange', icon: '🟠' },
+    { id: 'accent-pink', title: 'Accent: Pink', icon: '🩷' },
+    { id: 'brand-custom', title: 'Custom Branding', icon: '🏷️' },
+    { id: 'brand-icon', title: 'Brand with Icon', icon: '🎨' },
+    { id: 'icons-fontawesome', title: 'FontAwesome Icons', icon: '🎯' },
+    { id: 'icons-custom', title: 'Custom Icons', icon: '✨' },
+    { id: 'full-featured', title: 'Full Featured', icon: '💎' },
+    { id: 'dashboard-layout', title: 'Dashboard Layout', icon: '📊' },
+    { id: 'admin-panel', title: 'Admin Panel', icon: '⚙️' },
+    { id: 'project-management', title: 'Project Management', icon: '📁' },
+    { id: 'messaging-app', title: 'Messaging App', icon: '💬' },
+    { id: 'ecommerce', title: 'E-commerce Admin', icon: '🛒' },
+    { id: 'analytics-dashboard', title: 'Analytics Dashboard', icon: '📈' },
+    { id: 'settings-menu', title: 'Settings Menu', icon: '🔧' },
   ];
 
   basicDefaultCode = signal(`<app-modern-sidebar
@@ -287,7 +287,7 @@ export class DmSetModernSidebarDemoComponent extends BaseDemoComponent {
 </app-modern-sidebar>`);
 
   brandCustomCode = signal(`<app-modern-sidebar
-  brand-name="ðŸš€ Rocket Dashboard"
+  brand-name="🚀 Rocket Dashboard"
   selected-id="dashboard"
   accent-color="#6366f1"
   [items]='[
@@ -297,7 +297,7 @@ export class DmSetModernSidebarDemoComponent extends BaseDemoComponent {
 </app-modern-sidebar>`);
 
   brandIconCode = signal(`<app-modern-sidebar
-  brand-name="âš¡ FastApp"
+  brand-name="⚡ FastApp"
   selected-id="dashboard"
   accent-color="#14b8a6"
   [items]='[

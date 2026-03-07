@@ -26,9 +26,9 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRangeSliderDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: 'ðŸŽ®', color: '#8b5cf6' },
-    { id: 'modes', title: 'Slider Modes', icon: 'â†”ï¸', color: '#3b82f6' },
-    { id: 'layouts', title: 'Layouts', icon: 'ðŸ“', color: '#10b981' },
+    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
+    { id: 'modes', title: 'Slider Modes', icon: '↔️', color: '#3b82f6' },
+    { id: 'layouts', title: 'Layouts', icon: '📐', color: '#10b981' },
   ];
 
   playgroundCode = `<ui-range-slider [min]="0" [max]="100" [value]="[20, 80]" range></ui-range-slider>`;

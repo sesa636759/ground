@@ -23,14 +23,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetContextMenuDemoComponent {
   exampleVariants = [
-    { id: 'right-click', title: 'Right Click Trigger', icon: 'ðŸ–±ï¸' },
-    { id: 'click-trigger', title: 'Click Trigger', icon: 'ðŸ‘†' },
-    { id: 'nested-menus', title: 'Nested Menus', icon: 'ðŸŒ³' },
+    { id: 'right-click', title: 'Right Click Trigger', icon: '🖱️' },
+    { id: 'click-trigger', title: 'Click Trigger', icon: '👆' },
+    { id: 'nested-menus', title: 'Nested Menus', icon: '🌳' },
     { id: 'list-context', title: 'List Item Context', icon: 'ðŸ“' },
-    { id: 'command-palette', title: 'Command Palette', icon: 'âš¡' },
-    { id: 'menu-items', title: 'Menu Item Types', icon: 'âœ…' },
-    { id: 'themes', title: 'Themes & Effects', icon: 'ðŸŒ™' },
-    { id: 'advanced', title: 'Advanced Features', icon: 'ðŸ’Ž' },
+    { id: 'command-palette', title: 'Command Palette', icon: '⚡' },
+    { id: 'menu-items', title: 'Menu Item Types', icon: '✅' },
+    { id: 'themes', title: 'Themes & Effects', icon: '🌙' },
+    { id: 'advanced', title: 'Advanced Features', icon: '💎' },
   ];
 
   // Basic menu items
@@ -97,17 +97,17 @@ export class DmSetContextMenuDemoComponent {
     {
       id: 'alice',
       label: 'Alice Johnson',
-      avatar: 'ðŸ‘©',
+      avatar: '👩',
       description: 'Product Lead',
-      badge: 'ðŸŸ¢',
+      badge: '🟢',
     },
-    { id: 'bob', label: 'Bob Smith', avatar: 'ðŸ‘¨', description: 'Developer', badge: 'ðŸŸ¢' },
+    { id: 'bob', label: 'Bob Smith', avatar: '👨', description: 'Developer', badge: '🟢' },
     {
       id: 'charlie',
       label: 'Charlie Brown',
-      avatar: 'ðŸ‘¨',
+      avatar: '👨',
       description: 'Designer',
-      badge: 'ðŸ”´',
+      badge: '🔴',
     },
   ];
 
