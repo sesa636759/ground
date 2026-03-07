@@ -1,28 +1,20 @@
 <div class="demo-page-container">
   <div class="demo-master-container">
-    <app-tab-stack [attr.active-tab]="active()" (tabChange)="onTabChange($event)">
-      <app-tab label="Playground" value="playground" icon="fas fa-gamepad"></app-tab>
-      <app-tab label="Examples" value="examples" icon="fas fa-layer-group"></app-tab>
-      <app-tab label="Documentation" value="docs" icon="fas fa-book-open"></app-tab>
-    </app-tab-stack>
-
-    <!-- Tab panels managed by Angular, not by app-tab's slot system -->
-    <div class="tab-panels-host">
-      <div
-        class="viewport-pane pane-examples animate-in"
-        [class.pane-hidden]="active() !== 'examples'"
-      >
-        <ng-content select="[slot=examples]"></ng-content>
-      </div>
-      <div
-        class="viewport-pane pane-playground animate-in"
-        [class.pane-hidden]="active() !== 'playground'"
-      >
-        <ng-content select="[slot=playground]"></ng-content>
-      </div>
-      <div class="viewport-pane pane-docs animate-in" [class.pane-hidden]="active() !== 'docs'">
-        <ng-content select="[slot=docs]"></ng-content>
-      </div>
-    </div>
+    <ui-tabs
+      [items]="tabItems"
+      [defaultActive]="active()"
+      (tabChange)="onTabChange($event)"
+      (tabEdit)="handleTabEdit($event)"
+      (tabOpenPanel)="handleTabOpenPanel($event)"
+      (tabDelete)="handleTabDelete($event)"
+      variant="line"
+      orientation="horizontal"
+      icon-library="lucide"
+      show-tab-list="true"
+    >
+      <ng-content select="[slot=playground]"></ng-content>
+      <ng-content select="[slot=examples]"></ng-content>
+      <ng-content select="[slot=docs]"></ng-content>
+    </ui-tabs>
   </div>
 </div>

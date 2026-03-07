@@ -70,39 +70,39 @@ export class DmSetRadioDemoComponent extends BaseDemoComponent {
   paymentInvalid = false;
 
   // Code snippets
-  premiumVariantsCode = `<app-radio-group
+  premiumVariantsCode = `<ui-radio-group
   variant="card"
   layout="grid"
   columns="2"
   [options]="planOptions"
-></app-radio-group>`;
+></ui-radio-group>`;
 
-  buttonGroupsCode = `<app-radio-group
+  buttonGroupsCode = `<ui-radio-group
   button-group="true"
   layout="horizontal"
   [options]="basicOptions"
-></app-radio-group>`;
+></ui-radio-group>`;
 
-  layoutsCode = `<app-radio-group layout="vertical" [options]="basicOptions"></app-radio-group>
-<app-radio-group layout="horizontal" [options]="basicOptions"></app-radio-group>`;
+  layoutsCode = `<ui-radio-group layout="vertical" [options]="basicOptions"></ui-radio-group>
+<ui-radio-group layout="horizontal" [options]="basicOptions"></ui-radio-group>`;
 
-  loadingSkeletonCode = `<app-radio-group skeleton [options]="basicOptions"></app-radio-group>`;
+  loadingSkeletonCode = `<ui-radio-group skeleton [options]="basicOptions"></ui-radio-group>`;
 
-  colorVariantsCode = `<app-radio-group color="primary" [options]="basicOptions"></app-radio-group>
-<app-radio-group color="success" [options]="basicOptions"></app-radio-group>`;
+  colorVariantsCode = `<ui-radio-group color="primary" [options]="basicOptions"></ui-radio-group>
+<ui-radio-group color="success" [options]="basicOptions"></ui-radio-group>`;
 
-  sizesCode = `<app-radio-group size="small" [options]="basicOptions"></app-radio-group>
-<app-radio-group size="large" [options]="basicOptions"></app-radio-group>`;
+  sizesCode = `<ui-radio-group size="small" [options]="basicOptions"></ui-radio-group>
+<ui-radio-group size="large" [options]="basicOptions"></ui-radio-group>`;
 
-  statesCode = `<app-radio-group disabled [options]="basicOptions"></app-radio-group>
-<app-radio-group invalid error-message="Selection required" [options]="basicOptions"></app-radio-group>`;
+  statesCode = `<ui-radio-group disabled [options]="basicOptions"></ui-radio-group>
+<ui-radio-group invalid error-message="Selection required" [options]="basicOptions"></ui-radio-group>`;
 
-  formExampleCode = `<app-radio-group
+  formExampleCode = `<ui-radio-group
   [(ngModel)]="shipping"
   name="shipping"
   required
   [options]="deliveryOptions"
-></app-radio-group>`;
+></ui-radio-group>`;
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {

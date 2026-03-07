@@ -47,90 +47,90 @@ export class DmSetButtonToggleDemoComponent extends BaseDemoComponent {
   }
 
   // Code snippets
-  segmentedCode = `<app-button-toggle-group
+  segmentedCode = `<ui-button-toggle-group
   mode="segmented"
   label="Select View Mode"
   value="list"
   color="primary"
   [options]="viewOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  glidingCode = `<app-button-toggle-group
+  glidingCode = `<ui-button-toggle-group
   mode="segmented"
   value="day"
   color="info"
   variant="soft"
   [options]="timeOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
   colorCode = `@for (color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info']; track color) {
-  <app-button-toggle-group
+  <ui-button-toggle-group
     value="option2"
     [color]="color"
     [options]="basicOptions"
-  ></app-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
   styleCode = `@for (style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface']; track style) {
-  <app-button-toggle-group
+  <ui-button-toggle-group
     value="option2"
     color="primary"
     [variant]="style"
     [options]="basicOptions"
-  ></app-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
   sizeCode = `@for (size of ['small', 'medium', 'large']; track size) {
-  <app-button-toggle-group
+  <ui-button-toggle-group
     [size]="size"
     value="option2"
     [options]="basicOptions"
-  ></app-button-toggle-group>
+  ></ui-button-toggle-group>
 }`;
 
-  iconCode = `<app-button-toggle-group
+  iconCode = `<ui-button-toggle-group
   label="Alignment"
   value="center"
   color="secondary"
   [options]="alignOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  iconOnlyCode = `<app-button-toggle-group
+  iconOnlyCode = `<ui-button-toggle-group
   label="View"
   value="grid"
   color="primary"
   display-mode="icon-only"
   [options]="iconOnlyOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  dropdownCode = `<app-button-toggle-group
+  dropdownCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Export Options"
   value="pdf"
   [options]="exportOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  splitButtonCode = `<app-button-toggle-group
+  splitButtonCode = `<ui-button-toggle-group
   mode="dropdown"
   keep-button-label="true"
   label="File Operations"
   value="file"
   [options]="actionsMenuOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  displayCode = `<app-button-toggle-group
+  displayCode = `<ui-button-toggle-group
   display-mode="icon-only"
   value="grid"
   [options]="iconOnlyOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  orientationCode = `<app-button-toggle-group
+  orientationCode = `<ui-button-toggle-group
   orientation="vertical"
   value="option2"
   [options]="basicOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  customSlotCode = `<app-button-toggle-group
+  customSlotCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Advanced Filters"
   custom-content="true"
@@ -140,21 +140,21 @@ export class DmSetButtonToggleDemoComponent extends BaseDemoComponent {
       <!-- Your custom HTML here -->
     </div>
   </div>
-</app-button-toggle-group>`;
+</ui-button-toggle-group>`;
 
-  loadingCode = `<app-button-toggle-group
+  loadingCode = `<ui-button-toggle-group
   mode="dropdown"
   label="Save Document"
   value="cloud"
   [loading]="true"
   [options]="saveOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
-  stateCode = `<app-button-toggle-group
+  stateCode = `<ui-button-toggle-group
   value="option2"
   [disabled]="true"
   [options]="basicOptions"
-></app-button-toggle-group>`;
+></ui-button-toggle-group>`;
 
   // Options Data
   basicOptions = [

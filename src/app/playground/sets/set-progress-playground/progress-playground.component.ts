@@ -43,7 +43,7 @@ export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<app-progress\n`;
+    let code = `<ui-progress\n`;
     code += `  [percent]="${this.pgConfig.percent}"\n`;
     if (this.pgConfig.type !== 'line') code += `  type="${this.pgConfig.type}"\n`;
     if (this.pgConfig.status !== 'normal') code += `  status="${this.pgConfig.status}"\n`;
@@ -74,7 +74,7 @@ export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.trailColor !== '#f5f5f5')
       code += `  trail-color="${this.pgConfig.trailColor}"\n`;
 
-    code += `></app-progress>`;
+    code += `></ui-progress>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -101,6 +101,3 @@ export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 }
-
-
-

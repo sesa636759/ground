@@ -45,66 +45,66 @@ export class DmSetProgressDemoComponent extends BaseDemoComponent {
 
   // Grouped Code snippets
   lineCode = `<!-- Line Progress Variants -->
-<app-progress percent="30"></app-progress>
-<app-progress percent="50"></app-progress>
-<app-progress percent="70"></app-progress>
-<app-progress percent="100" status="success"></app-progress>`;
+<ui-progress percent="30"></ui-progress>
+<ui-progress percent="50"></ui-progress>
+<ui-progress percent="70"></ui-progress>
+<ui-progress percent="100" status="success"></ui-progress>`;
 
   circleCode = `<!-- Circle Progress Variants -->
-<app-progress type="circle" percent="60"></app-progress>
-<app-progress type="circle" percent="75"></app-progress>
-<app-progress type="circle" percent="100" status="success"></app-progress>
-<app-progress type="circle" percent="50" width="80"></app-progress>
-<app-progress type="circle" percent="85" width="150"></app-progress>`;
+<ui-progress type="circle" percent="60"></ui-progress>
+<ui-progress type="circle" percent="75"></ui-progress>
+<ui-progress type="circle" percent="100" status="success"></ui-progress>
+<ui-progress type="circle" percent="50" width="80"></ui-progress>
+<ui-progress type="circle" percent="85" width="150"></ui-progress>`;
 
   dashboardCode = `<!-- Dashboard Progress Variants -->
-<app-progress type="dashboard" percent="75"></app-progress>
-<app-progress type="dashboard" percent="75" gap-position="top"></app-progress>
-<app-progress type="dashboard" percent="75" gap-position="bottom"></app-progress>
-<app-progress type="dashboard" percent="50" gap-degree="120"></app-progress>`;
+<ui-progress type="dashboard" percent="75"></ui-progress>
+<ui-progress type="dashboard" percent="75" gap-position="top"></ui-progress>
+<ui-progress type="dashboard" percent="75" gap-position="bottom"></ui-progress>
+<ui-progress type="dashboard" percent="50" gap-degree="120"></ui-progress>`;
 
   statusCode = `<!-- Progress Status Types -->
-<app-progress percent="60" status="active"></app-progress>
-<app-progress percent="100" status="success"></app-progress>
-<app-progress percent="50" status="exception"></app-progress>`;
+<ui-progress percent="60" status="active"></ui-progress>
+<ui-progress percent="100" status="success"></ui-progress>
+<ui-progress percent="50" status="exception"></ui-progress>`;
 
   indeterminateCode = `<!-- Indeterminate States -->
-<app-progress indeterminate="true"></app-progress>
-<app-progress type="circle" indeterminate="true"></app-progress>
-<app-progress type="dashboard" indeterminate="true"></app-progress>`;
+<ui-progress indeterminate="true"></ui-progress>
+<ui-progress type="circle" indeterminate="true"></ui-progress>
+<ui-progress type="dashboard" indeterminate="true"></ui-progress>`;
 
   colorsCode = `<!-- Custom Color Variants -->
-<app-progress percent="60" stroke-color="#9b59b6"></app-progress>
-<app-progress percent="75" stroke-color="#ff9800"></app-progress>
-<app-progress percent="85" stroke-color="#e91e63"></app-progress>`;
+<ui-progress percent="60" stroke-color="#9b59b6"></ui-progress>
+<ui-progress percent="75" stroke-color="#ff9800"></ui-progress>
+<ui-progress percent="85" stroke-color="#e91e63"></ui-progress>`;
 
   gradientCode = `<!-- Gradient Progress Bars -->
-<app-progress percent="80" stroke-color="linear-gradient(to right, #667eea, #06b6d4)"></app-progress>
-<app-progress percent="90" stroke-color="linear-gradient(to right, #a855f7, #ec4899)"></app-progress>
-<app-progress percent="70" stroke-color="linear-gradient(to right, #f97316, #ef4444)"></app-progress>`;
+<ui-progress percent="80" stroke-color="linear-gradient(to right, #667eea, #06b6d4)"></ui-progress>
+<ui-progress percent="90" stroke-color="linear-gradient(to right, #a855f7, #ec4899)"></ui-progress>
+<ui-progress percent="70" stroke-color="linear-gradient(to right, #f97316, #ef4444)"></ui-progress>`;
 
   stepsCode = `<!-- Discrete Steps Progress -->
-<app-progress percent="60" steps="5"></app-progress>
-<app-progress percent="80" steps="10"></app-progress>
-<app-progress percent="100" steps="8" status="success"></app-progress>`;
+<ui-progress percent="60" steps="5"></ui-progress>
+<ui-progress percent="80" steps="10"></ui-progress>
+<ui-progress percent="100" steps="8" status="success"></ui-progress>`;
 
   strokeCode = `<!-- Custom Stroke Widths -->
-<app-progress percent="60" stroke-width="4"></app-progress>
-<app-progress percent="60" stroke-width="10"></app-progress>
-<app-progress percent="60" stroke-width="20"></app-progress>`;
+<ui-progress percent="60" stroke-width="4"></ui-progress>
+<ui-progress percent="60" stroke-width="10"></ui-progress>
+<ui-progress percent="60" stroke-width="20"></ui-progress>`;
 
   linecapCode = `<!-- Stroke Linecap Options -->
-<app-progress percent="75" stroke-linecap="round"></app-progress>
-<app-progress percent="75" stroke-linecap="square"></app-progress>`;
+<ui-progress percent="75" stroke-linecap="round"></ui-progress>
+<ui-progress percent="75" stroke-linecap="square"></ui-progress>`;
 
   hideInfoCode = `<!-- Progress without Info Text -->
-<app-progress percent="60" show-info="false"></app-progress>
-<app-progress type="circle" percent="75" show-info="false"></app-progress>`;
+<ui-progress percent="60" show-info="false"></ui-progress>
+<ui-progress type="circle" percent="75" show-info="false"></ui-progress>`;
 
   premiumCode = `<!-- Premium Animation Styles -->
-<app-progress percent="65" liquid="true" stroke-color="#3DCD58"></app-progress>
-<app-progress percent="50" glass="true" stroke-color="#fff"></app-progress>
-<app-progress percent="80" glow="true" stroke-color="#ff4d4f"></app-progress>`;
+<ui-progress percent="65" liquid="true" stroke-color="#3DCD58"></ui-progress>
+<ui-progress percent="50" glass="true" stroke-color="#fff"></ui-progress>
+<ui-progress percent="80" glow="true" stroke-color="#ff4d4f"></ui-progress>`;
 
   decreaseProgress() {
     this.progressValue = Math.max(0, this.progressValue - 10);

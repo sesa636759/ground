@@ -77,6 +77,3 @@ export class DmCarouselPlaygroundComponent extends BasePlaygroundComponent {
     return `hsl(${hue}, 70%, 60%)`;
   }
 }
-
-
-
