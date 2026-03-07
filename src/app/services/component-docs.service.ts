@@ -5648,7 +5648,7 @@ export class ComponentDocsService {
         detailedDescription:
           'The Resizable Panel component provides a powerful split-pane layout system with draggable dividers. It supports horizontal and vertical splits, triple or nested panes, collapsible panels, snap-to-edge behaviour, min/max size constraints on each panel, and dark/light themes. Content is projected via named slots matching the panel id defined in the panels array.',
         usage: `<!-- Horizontal two-panel split -->
-<app-resizable-panel
+<ui-eesizable-panel
   [panels]="[
     { id: 'p1', size: 30, minSize: 15 },
     { id: 'p2', size: 70 }
@@ -5657,7 +5657,7 @@ export class ComponentDocsService {
 >
   <div slot="p1">Left Panel</div>
   <div slot="p2">Right Panel</div>
-</app-resizable-panel>`,
+</ui-eesizable-panel>`,
         props: [
           {
             name: 'panels',
@@ -5764,12 +5764,12 @@ export class ComponentDocsService {
         ],
         examples: [
           `<!-- Vertical split -->
-<app-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
+<ui-eesizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
   <div slot="t1">Top Panel</div>
   <div slot="t2">Bottom Panel</div>
-</app-resizable-panel>`,
+</ui-eesizable-panel>`,
           `<!-- Triple horizontal split -->
-<app-resizable-panel [panels]="[
+<ui-eesizable-panel [panels]="[
   {id:'p1',size:30,minSize:20},
   {id:'p2',size:40,minSize:20},
   {id:'p3',size:30,minSize:20}
@@ -5777,19 +5777,19 @@ export class ComponentDocsService {
   <div slot="p1">Left</div>
   <div slot="p2">Centre</div>
   <div slot="p3">Right</div>
-</app-resizable-panel>`,
+</ui-eesizable-panel>`,
           `<!-- Nested panels (IDE layout) -->
-<app-resizable-panel [panels]="nestedOuter" direction="horizontal">
+<ui-eesizable-panel [panels]="nestedOuter" direction="horizontal">
   <div slot="sidebar">Sidebar</div>
   <div slot="main" style="height:100%">
-    <app-resizable-panel [panels]="nestedInner" direction="vertical">
+    <ui-eesizable-panel [panels]="nestedInner" direction="vertical">
       <div slot="editor">Editor</div>
       <div slot="terminal">Terminal</div>
-    </app-resizable-panel>
+    </ui-eesizable-panel>
   </div>
-</app-resizable-panel>`,
+</ui-eesizable-panel>`,
           `<!-- Collapsible + snap -->
-<app-resizable-panel
+<ui-eesizable-panel
   [panels]="[{id:'left',size:30,collapsible:true,collapseDirection:'left'},{id:'main',size:70}]"
   direction="horizontal"
   snap-to-edge="true"
@@ -5798,7 +5798,7 @@ export class ComponentDocsService {
 >
   <div slot="left">Collapsible Sidebar</div>
   <div slot="main">Main Content</div>
-</app-resizable-panel>`,
+</ui-eesizable-panel>`,
         ],
       },
     ],

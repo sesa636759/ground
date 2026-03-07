@@ -68,10 +68,10 @@ playgroundCode = `<app-splitter
 ```typescript
 import { CodeBlockComponent } from '../../shared/components/code-block/code-block.component';
 imports: [..., CodeBlockComponent],
-playgroundCode = `<app-resizable-panel
+playgroundCode = `<ui-eesizable-panel
   [minSize]="200"
   [maxSize]="800"
-></app-resizable-panel>`;
+></ui-eesizable-panel>`;
 ```
 
 ### set-timeline

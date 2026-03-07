@@ -31,7 +31,7 @@ From `c:\Praveen\Personal-repo\stencil\set-ui-lib\src\components`:
 25. app-progress ✅
 26. app-radio ✅
 27. app-radio-group (group component)
-28. app-resizable-panel ✅
+28. ui-eesizable-panel ✅
 29. app-scroll-top ✅
 30. app-sidebar ✅
 31. app-splitter ✅
