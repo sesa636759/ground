@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
   selector:
-    'dm-input[ngModel], dm-input[formControl], dm-input[formControlName], app-input[ngModel], app-input[formControl], app-input[formControlName]',
+    'dm-input[ngModel], dm-input[formControl], dm-input[formControlName], ui-input[ngModel], ui-input[formControl], ui-input[formControlName]',
   standalone: true,
   providers: [
     {

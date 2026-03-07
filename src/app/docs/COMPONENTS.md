@@ -518,7 +518,7 @@ Visual separator for content blocks.
 
 ---
 
-## 📊 Dashboard `app-dashboard`
+## 📊 Dashboard `ui-dashboard`
 
 Grid-based layout for hosting resizable and draggable widgets.
 
@@ -545,13 +545,13 @@ Grid-based layout for hosting resizable and draggable widgets.
 ### Usage
 
 ```html
-<app-dashboard
+<ui-dashboard
   [widgets]="myWidgets"
   [columns]="12"
   [autoSave]="true"
   (layoutChanged)="onLayoutSave($event)"
 >
-</app-dashboard>
+</ui-dashboard>
 ```
 
 ---
@@ -851,7 +851,7 @@ Full-featured text editor with syntax highlighting and multi-file support.
 
 ---
 
-## 📋 Interactive Dashboard `app-dashboard`
+## 📋 Interactive Dashboard `ui-dashboard`
 
 Dynamic grid container for cards, charts, and administrative widgets.
 
@@ -867,8 +867,8 @@ Dynamic grid container for cards, charts, and administrative widgets.
 ### Usage
 
 ```html
-<app-dashboard [widgets]="myWidgets" [columns]="12" [isEditable]="true" theme="glass">
-</app-dashboard>
+<ui-dashboard [widgets]="myWidgets" [columns]="12" [isEditable]="true" theme="glass">
+</ui-dashboard>
 ```
 
 ---

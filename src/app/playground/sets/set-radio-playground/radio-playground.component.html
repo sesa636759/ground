@@ -137,7 +137,7 @@
   <!-- Preview Area -->
   <div preview>
     <div class="radio-demo-container" [style.width]="pgConfig.fullWidth ? '100%' : 'auto'">
-      <app-radio-group
+      <ui-radio-group
         #radioGroup
         [attr.name]="pgConfig.name"
         [attr.label]="pgConfig.label"
@@ -157,7 +157,7 @@
         [(ngModel)]="pgConfig.value"
         (appChange)="onRadioGroupChange($any($event).target.value)"
       >
-        <app-radio
+        <ui-radio
           *ngFor="let opt of radioOptions; trackBy: trackByOption"
           [attr.value]="opt.value"
           [attr.label]="opt.label"
@@ -165,8 +165,8 @@
           [attr.badge]="opt.badge"
           [attr.icon]="opt.icon"
           [attr.disabled]="opt.disabled ? 'true' : null"
-        ></app-radio>
-      </app-radio-group>
+        ></ui-radio>
+      </ui-radio-group>
     </div>
 
     <div

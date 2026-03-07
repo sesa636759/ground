@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/play
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';
-import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
+import { AppMasonryComponent } from '../../shared/components/ui-masonry/ui-masonry.component';
 import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
@@ -35,7 +35,7 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   private scrollContainer: Element | null = null;
   private boundScrollHandler = this._onContainerScroll.bind(this);
 
-  /** Masonry responsive breakpoints — passed to <app-masonry> */
+  /** Masonry responsive breakpoints — passed to <ui-masonry> */
   masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 1, 0: 1 };
   listBp: Record<number, number> = { 0: 1 };
 

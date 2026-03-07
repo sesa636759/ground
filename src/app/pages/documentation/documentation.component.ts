@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { AppMasonryComponent } from '../../shared/components/app-masonry/app-masonry.component';
+import { AppMasonryComponent } from '../../shared/components/ui-masonry/ui-masonry.component';
 import {
   ComponentDocsService,
   ComponentDocumentation,

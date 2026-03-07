@@ -173,7 +173,7 @@
     </div>
 
     <div class="preview-stage" [class.dark-theme]="pgConfig.theme === 'dark'">
-      <app-dashboard
+      <ui-dashboard
         #dashboard
         id="dashboard"
         enable-search="true"
@@ -183,7 +183,7 @@
         [attr.show-add-button]="pgConfig.showAddButton"
         [attr.breakpoints]="pgConfig.breakpoints"
         [attr.theme]="pgConfig.theme"
-      ></app-dashboard>
+      ></ui-dashboard>
     </div>
 
     <div class="event-log-container" *ngIf="eventLog().length > 0">

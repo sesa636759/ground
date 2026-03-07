@@ -24,7 +24,7 @@ export class DmSetDashboardDemoComponent extends BaseDemoComponent {
   exampleVariants = [{ id: 'features', title: 'Key Features', icon: '🚀' }];
 
   // Code examples
-  playgroundCode = `<app-dashboard
+  playgroundCode = `<ui-dashboard
   [cols]="12"
   [rowHeight]="60"
   [draggable]="true"
@@ -32,7 +32,7 @@ export class DmSetDashboardDemoComponent extends BaseDemoComponent {
   [compactType]="'vertical'"
 >
   <!-- Add your dashboard widgets here -->
-</app-dashboard>`;
+</ui-dashboard>`;
 
   featuresCode = `<!-- Dashboard Key Features:
 

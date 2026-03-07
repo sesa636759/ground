@@ -37,7 +37,7 @@ Some components have additional custom styles beyond the base:
 - **app-dock-demo.component.scss**
   - Custom `.demo-card` gap and min-height
 
-- **app-splitter-demo.component.scss**
+- **ui-splitter-demo.component.scss**
   - Custom `.horizontal-preview` for split panel display
 
 - **app-nav-bar-demo.component.scss**

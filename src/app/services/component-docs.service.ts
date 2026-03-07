@@ -2521,10 +2521,10 @@ export class ComponentDocsService {
         shortDescription: 'Interactive slideshow for cycling through content',
         detailedDescription:
           'Versatile carousel component for displaying images, cards, or custom content. Features multiple transition effects (slide, fade), center mode with partial visibility, responsive multi-slide display, infinite loop, autoplay with configurable intervals, navigation arrows, indicators (dots), and touch/swipe support.',
-        usage: `<app-carousel autoplay="true" show-progress="true">
+        usage: `<ui-carousel autoplay="true" show-progress="true">
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
-</app-carousel>`,
+</ui-carousel>`,
         props: [
           {
             name: 'effect',
@@ -2609,8 +2609,8 @@ export class ComponentDocsService {
           'Autoplay pauses on user interaction',
         ],
         examples: [
-          '<app-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></app-carousel>',
-          '<app-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></app-carousel>',
+          '<ui-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></ui-carousel>',
+          '<ui-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></ui-carousel>',
         ],
       },
     ],
@@ -3455,7 +3455,7 @@ export class ComponentDocsService {
         shortDescription: 'Drag-and-drop grid system for interactive widget boards',
         detailedDescription:
           'Premium grid container for arranging widgets and cards. Supports interactive dragging/resizing, configurable columns, theme variations (glassmorphism, vibrant), and responsive layout adaptation.',
-        usage: `<app-dashboard [columns]="12" [widgets]="widgetList"></app-dashboard>`,
+        usage: `<ui-dashboard [columns]="12" [widgets]="widgetList"></ui-dashboard>`,
         props: [
           { name: 'columns', type: 'number', description: 'Grid column count', defaultValue: '12' },
           {
@@ -3494,8 +3494,8 @@ export class ComponentDocsService {
           'Glass theme requires high-contrast background for readability',
         ],
         examples: [
-          '<app-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></app-dashboard>',
-          '<app-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></app-dashboard>',
+          '<ui-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></ui-dashboard>',
+          '<ui-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></ui-dashboard>',
         ],
       },
     ],

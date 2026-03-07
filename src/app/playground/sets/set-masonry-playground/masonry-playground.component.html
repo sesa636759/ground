@@ -187,7 +187,7 @@
   </div>
 
   <div preview style="width: 100%">
-    <app-masonry
+    <ui-masonry
       #masonryLayout
       [attr.layout-type]="pgConfig.layoutType"
       [attr.columns]="pgConfig.columns"
@@ -209,7 +209,7 @@
       [items]="playgroundItems"
       (item-click)="onItemClick($event)"
       (selection-change)="onSelectionChange($event)"
-    ></app-masonry>
+    ></ui-masonry>
   </div>
 
   <pg-playground-event-log

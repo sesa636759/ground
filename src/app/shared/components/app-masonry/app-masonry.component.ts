@@ -19,10 +19,10 @@
  * style projected content without ViewEncapsulation.None side-effects.
  *
  * Usage:
- *   <app-masonry [columns]="4" gap="1.5rem" [rowGap]="20"
+ *   <ui-masonry [columns]="4" gap="1.5rem" [rowGap]="20"
  *                [breakpoints]="{ 1400:4, 1000:3, 600:2, 0:1 }">
  *     <div class="card" *ngFor="let item of items">...</div>
- *   </app-masonry>
+ *   </ui-masonry>
  *
  *   The parent SCSS must add to cards:
  *     .card { break-inside: avoid; margin-bottom: 1.5rem; }
@@ -106,6 +106,3 @@ export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.host.style.setProperty('--am-cols', String(cols));
   }
 }
-
-
-

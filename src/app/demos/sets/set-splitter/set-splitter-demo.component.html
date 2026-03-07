@@ -23,7 +23,7 @@
           [code]="horizontalBasicCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal">
+            <ui-splitter direction="horizontal">
               <div slot="panel-0" class="p-content">
                 <strong>Left Panel</strong>
                 <p>Drag the gutter to resize.</p>
@@ -32,7 +32,7 @@
                 <strong>Right Panel</strong>
                 <p>Adjusts automatically.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -43,7 +43,7 @@
           [code]="verticalBasicCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="vertical">
+            <ui-splitter direction="vertical">
               <div slot="panel-0" class="p-content">
                 <strong>Top Panel</strong>
                 <p>Drag vertically to resize.</p>
@@ -52,7 +52,7 @@
                 <strong>Bottom Panel</strong>
                 <p>Bottom content area.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -63,7 +63,7 @@
           [code]="twoPanelsCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="basicPanels">
+            <ui-splitter direction="horizontal" [panels]="basicPanels">
               <div slot="panel-0" class="p-content">
                 <strong>Panel 1</strong>
                 <p>Min: 20%, Max: 80%</p>
@@ -72,7 +72,7 @@
                 <strong>Panel 2</strong>
                 <p>Min: 20%, Max: 80%</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -83,11 +83,11 @@
           [code]="threePanelsCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="threePanels">
+            <ui-splitter direction="horizontal" [panels]="threePanels">
               <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
               <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -98,12 +98,12 @@
           [code]="fourPanelsCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="fourPanels">
+            <ui-splitter direction="horizontal" [panels]="fourPanels">
               <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
               <div slot="panel-2" class="p-content"><strong>Panel 3</strong></div>
               <div slot="panel-3" class="p-content"><strong>Panel 4</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -114,7 +114,7 @@
           [code]="customSizesCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="customSizePanels">
+            <ui-splitter direction="horizontal" [panels]="customSizePanels">
               <div slot="panel-0" class="p-content">
                 <strong>30% Panel</strong>
                 <p>Starts at 30% width.</p>
@@ -123,7 +123,7 @@
                 <strong>70% Panel</strong>
                 <p>Starts at 70% width.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -134,11 +134,11 @@
           [code]="equalSizeCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="equalSizePanels">
+            <ui-splitter direction="horizontal" [panels]="equalSizePanels">
               <div slot="panel-0" class="p-content"><strong>33.33%</strong></div>
               <div slot="panel-1" class="p-content"><strong>33.33%</strong></div>
               <div slot="panel-2" class="p-content"><strong>33.34%</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -149,7 +149,7 @@
           [code]="minMaxConstraintsCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="constraintsPanels">
+            <ui-splitter direction="horizontal" [panels]="constraintsPanels">
               <div slot="panel-0" class="p-content">
                 <strong>Min: 20%, Max: 40%</strong>
                 <p>Cannot resize beyond these limits.</p>
@@ -158,7 +158,7 @@
                 <strong>Flexible Panel</strong>
                 <p>Fills remaining space.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -169,7 +169,7 @@
           [code]="collapsiblePanelsCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="collapsiblePanels">
+            <ui-splitter direction="horizontal" [panels]="collapsiblePanels">
               <div slot="panel-0" class="p-content">
                 <strong>Collapsible Sidebar</strong>
                 <p>Click collapse button to hide.</p>
@@ -178,7 +178,7 @@
                 <strong>Main Content</strong>
                 <p>Expands when sidebar collapses.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -189,13 +189,13 @@
           [code]="doubleClickCollapseCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
+            <ui-splitter direction="horizontal" [panels]="collapsiblePanels" double-click-collapse>
               <div slot="panel-0" class="p-content">
                 <strong>Double-click gutter</strong>
                 <p>Quick collapse/expand.</p>
               </div>
               <div slot="panel-1" class="p-content"><strong>Main Content</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -206,13 +206,13 @@
           [code]="snapThresholdCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
+            <ui-splitter direction="horizontal" [panels]="snapPanels" snap-threshold="20">
               <div slot="panel-0" class="p-content">
                 <strong>Snap Enabled</strong>
                 <p>Try resizing near boundaries.</p>
               </div>
               <div slot="panel-1" class="p-content"><strong>Content Panel</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -223,7 +223,7 @@
           [code]="persistStateCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
+            <ui-splitter direction="horizontal" [panels]="basicPanels" persist-state="true">
               <div slot="panel-0" class="p-content">
                 <strong>Persistent Layout</strong>
                 <p>Resize and refresh the page!</p>
@@ -232,7 +232,7 @@
                 <strong>Content Area</strong>
                 <p>Your layout is saved automatically.</p>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -243,10 +243,10 @@
           [code]="gutterSmallCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" gutter-size="4">
+            <ui-splitter direction="horizontal" gutter-size="4">
               <div slot="panel-0" class="p-content"><strong>Panel 1</strong></div>
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -257,13 +257,13 @@
           [code]="customGutterColorCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
+            <ui-splitter direction="horizontal" gutter-size="12" gutter-color="#22c55e">
               <div slot="panel-0" class="p-content">
                 <strong>Custom Green Gutter</strong>
                 <p>Hover to see the effect.</p>
               </div>
               <div slot="panel-1" class="p-content"><strong>Panel 2</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -274,10 +274,10 @@
           [code]="noGutterIconCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" show-gutter-icon="false">
+            <ui-splitter direction="horizontal" show-gutter-icon="false">
               <div slot="panel-0" class="p-content"><strong>Clean Look</strong></div>
               <div slot="panel-1" class="p-content"><strong>Minimalist Panel</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -288,10 +288,10 @@
           [code]="animatedCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" animated>
+            <ui-splitter direction="horizontal" animated>
               <div slot="panel-0" class="p-content"><strong>Smooth transitions</strong></div>
               <div slot="panel-1" class="p-content"><strong>Animated resize</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -302,10 +302,10 @@
           [code]="roundedElevatedCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" rounded elevated>
+            <ui-splitter direction="horizontal" rounded elevated>
               <div slot="panel-0" class="p-content"><strong>Premium look</strong></div>
               <div slot="panel-1" class="p-content"><strong>Beautiful design</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -316,10 +316,10 @@
           [code]="themeDarkCode()"
         >
           <div class="panel-box">
-            <app-splitter direction="horizontal" theme="dark">
+            <ui-splitter direction="horizontal" theme="dark">
               <div slot="panel-0" class="p-content dark-p"><strong>Dark panel 1</strong></div>
               <div slot="panel-1" class="p-content dark-p"><strong>Dark panel 2</strong></div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
 
@@ -330,9 +330,9 @@
           [code]="nestedIdeLayoutCode()"
         >
           <div class="large-box panel-box">
-            <app-splitter direction="horizontal">
+            <ui-splitter direction="horizontal">
               <div slot="panel-0" style="height: 100%">
-                <app-splitter direction="vertical" style="height: 100%">
+                <ui-splitter direction="vertical" style="height: 100%">
                   <div slot="panel-0" class="p-content">
                     <strong>📁 File Explorer</strong>
                     <p>src/<br />📄 index.ts<br />📄 app.ts</p>
@@ -341,10 +341,10 @@
                     <strong>Outline</strong>
                     <p>Functions, Classes...</p>
                   </div>
-                </app-splitter>
+                </ui-splitter>
               </div>
               <div slot="panel-1" style="height: 100%">
-                <app-splitter direction="vertical" style="height: 100%">
+                <ui-splitter direction="vertical" style="height: 100%">
                   <div slot="panel-0" class="p-content">
                     <strong>Editor</strong>
                     <div class="code-example">
@@ -357,9 +357,9 @@
                     <strong>Terminal</strong>
                     <p>$ npm run dev</p>
                   </div>
-                </app-splitter>
+                </ui-splitter>
               </div>
-            </app-splitter>
+            </ui-splitter>
           </div>
         </pg-example-section>
       </div>
@@ -404,4 +404,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

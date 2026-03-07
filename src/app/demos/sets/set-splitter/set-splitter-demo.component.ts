@@ -84,209 +84,209 @@ export class DmSetSplitterDemoComponent {
     }
   }
 
-  horizontalBasicCode = signal(`<app-splitter direction="horizontal">
+  horizontalBasicCode = signal(`<ui-splitter direction="horizontal">
   <div slot="panel-0">Left Panel Content</div>
   <div slot="panel-1">Right Panel Content</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  verticalBasicCode = signal(`<app-splitter direction="vertical">
+  verticalBasicCode = signal(`<ui-splitter direction="vertical">
   <div slot="panel-0">Top Panel Content</div>
   <div slot="panel-1">Bottom Panel Content</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  twoPanelsCode = signal(`<app-splitter direction="horizontal" [panels]="basicPanels">
+  twoPanelsCode = signal(`<ui-splitter direction="horizontal" [panels]="basicPanels">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  threePanelsCode = signal(`<app-splitter direction="horizontal" [panels]="threePanels">
+  threePanelsCode = signal(`<ui-splitter direction="horizontal" [panels]="threePanels">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
   <div slot="panel-2">Panel 3</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  fourPanelsCode = signal(`<app-splitter direction="horizontal" [panels]="fourPanels">
+  fourPanelsCode = signal(`<ui-splitter direction="horizontal" [panels]="fourPanels">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
   <div slot="panel-2">Panel 3</div>
   <div slot="panel-3">Panel 4</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  customSizesCode = signal(`<app-splitter direction="horizontal" [panels]="customSizePanels">
+  customSizesCode = signal(`<ui-splitter direction="horizontal" [panels]="customSizePanels">
   <div slot="panel-0">30% Panel</div>
   <div slot="panel-1">70% Panel</div>
-</app-splitter>
+</ui-splitter>
 
 // Component: customSizePanels = [{ size: 30 }, { size: 70 }];`);
 
-  equalSizeCode = signal(`<app-splitter direction="horizontal" [panels]="equalSizePanels">
+  equalSizeCode = signal(`<ui-splitter direction="horizontal" [panels]="equalSizePanels">
   <div slot="panel-0">33.33%</div>
   <div slot="panel-1">33.33%</div>
   <div slot="panel-2">33.34%</div>
-</app-splitter>
+</ui-splitter>
 
 // Component: equalSizePanels = [{ size: 33.33 }, { size: 33.33 }, { size: 33.34 }];`);
 
-  minMaxConstraintsCode = signal(`<app-splitter direction="horizontal" [panels]="constraintsPanels">
+  minMaxConstraintsCode = signal(`<ui-splitter direction="horizontal" [panels]="constraintsPanels">
   <div slot="panel-0">Min: 20%, Max: 40%</div>
   <div slot="panel-1">Flexible Panel</div>
-</app-splitter>
+</ui-splitter>
 
 // Component: constraintsPanels = [{ minSize: 20, maxSize: 40 }, { minSize: 20, maxSize: 80 }];`);
 
-  collapsiblePanelsCode = signal(`<app-splitter direction="horizontal" [panels]="collapsiblePanels">
+  collapsiblePanelsCode = signal(`<ui-splitter direction="horizontal" [panels]="collapsiblePanels">
   <div slot="panel-0">Collapsible Sidebar</div>
   <div slot="panel-1">Main Content</div>
-</app-splitter>
+</ui-splitter>
 
 // Component: collapsiblePanels = [{ collapsible: true, minSize: 10 }, { minSize: 20 }];`);
 
-  doubleClickCollapseCode = signal(`<app-splitter
+  doubleClickCollapseCode = signal(`<ui-splitter
   direction="horizontal"
   [panels]="collapsiblePanels"
   double-click-collapse
 >
   <div slot="panel-0">Double-click gutter to collapse</div>
   <div slot="panel-1">Main Content</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  snapThresholdCode = signal(`<app-splitter
+  snapThresholdCode = signal(`<ui-splitter
   direction="horizontal"
   [panels]="snapPanels"
   snap-threshold="20"
 >
   <div slot="panel-0">Snap Enabled Panel</div>
   <div slot="panel-1">Content Panel</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  persistStateCode = signal(`<app-splitter
+  persistStateCode = signal(`<ui-splitter
   direction="horizontal"
   [panels]="basicPanels"
   persist-state="true"
 >
   <div slot="panel-0">Persistent Layout</div>
   <div slot="panel-1">State saved to localStorage</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  gutterSmallCode = signal(`<app-splitter direction="horizontal" gutter-size="4">
+  gutterSmallCode = signal(`<ui-splitter direction="horizontal" gutter-size="4">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  gutterMediumCode = signal(`<app-splitter direction="horizontal" gutter-size="8">
+  gutterMediumCode = signal(`<ui-splitter direction="horizontal" gutter-size="8">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  gutterLargeCode = signal(`<app-splitter direction="horizontal" gutter-size="12">
+  gutterLargeCode = signal(`<ui-splitter direction="horizontal" gutter-size="12">
   <div slot="panel-0">Panel 1</div>
   <div slot="panel-1">Panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  customGutterColorCode = signal(`<app-splitter
+  customGutterColorCode = signal(`<ui-splitter
   direction="horizontal"
   gutter-size="12"
   gutter-color="#22c55e"
 >
   <div slot="panel-0">Custom Green Gutter</div>
   <div slot="panel-1">Panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  noGutterIconCode = signal(`<app-splitter direction="horizontal" show-gutter-icon="false">
+  noGutterIconCode = signal(`<ui-splitter direction="horizontal" show-gutter-icon="false">
   <div slot="panel-0">Clean Look</div>
   <div slot="panel-1">Minimalist Panel</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  animatedCode = signal(`<app-splitter direction="horizontal" animated>
+  animatedCode = signal(`<ui-splitter direction="horizontal" animated>
   <div slot="panel-0">Smooth transitions</div>
   <div slot="panel-1">Animated resize</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  notAnimatedCode = signal(`<app-splitter direction="horizontal" [animated]="false">
+  notAnimatedCode = signal(`<ui-splitter direction="horizontal" [animated]="false">
   <div slot="panel-0">Instant resize</div>
   <div slot="panel-1">No animation</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  roundedCode = signal(`<app-splitter direction="horizontal" rounded>
+  roundedCode = signal(`<ui-splitter direction="horizontal" rounded>
   <div slot="panel-0">Rounded corners</div>
   <div slot="panel-1">Modern style</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  elevatedCode = signal(`<app-splitter direction="horizontal" elevated>
+  elevatedCode = signal(`<ui-splitter direction="horizontal" elevated>
   <div slot="panel-0">Elevated shadow</div>
   <div slot="panel-1">Material design</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  roundedElevatedCode = signal(`<app-splitter direction="horizontal" rounded elevated>
+  roundedElevatedCode = signal(`<ui-splitter direction="horizontal" rounded elevated>
   <div slot="panel-0">Premium look</div>
   <div slot="panel-1">Beautiful design</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  themeLightCode = signal(`<app-splitter direction="horizontal" theme="light">
+  themeLightCode = signal(`<ui-splitter direction="horizontal" theme="light">
   <div slot="panel-0">Light theme</div>
   <div slot="panel-1">Default styling</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  themeDarkCode = signal(`<app-splitter direction="horizontal" theme="dark">
+  themeDarkCode = signal(`<ui-splitter direction="horizontal" theme="dark">
   <div slot="panel-0">Dark panel 1</div>
   <div slot="panel-1">Dark panel 2</div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  nestedHorizontalVerticalCode = signal(`<app-splitter direction="horizontal">
+  nestedHorizontalVerticalCode = signal(`<ui-splitter direction="horizontal">
   <div slot="panel-0">Left Sidebar</div>
   <div slot="panel-1" style="height: 100%">
-    <app-splitter direction="vertical" style="height: 100%">
+    <ui-splitter direction="vertical" style="height: 100%">
       <div slot="panel-0">Top Content</div>
       <div slot="panel-1">Bottom Content</div>
-    </app-splitter>
+    </ui-splitter>
   </div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  nestedIdeLayoutCode = signal(`<app-splitter direction="horizontal">
+  nestedIdeLayoutCode = signal(`<ui-splitter direction="horizontal">
   <div slot="panel-0" style="height: 100%">
-    <app-splitter direction="vertical" style="height: 100%">
+    <ui-splitter direction="vertical" style="height: 100%">
       <div slot="panel-0">File Explorer</div>
       <div slot="panel-1">Outline</div>
-    </app-splitter>
+    </ui-splitter>
   </div>
   <div slot="panel-1" style="height: 100%">
-    <app-splitter direction="vertical" style="height: 100%">
+    <ui-splitter direction="vertical" style="height: 100%">
       <div slot="panel-0">Editor</div>
       <div slot="panel-1">Terminal</div>
-    </app-splitter>
+    </ui-splitter>
   </div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  nestedTripleCode = signal(`<app-splitter direction="horizontal">
+  nestedTripleCode = signal(`<ui-splitter direction="horizontal">
   <div slot="panel-0">Sidebar</div>
   <div slot="panel-1" style="height: 100%">
-    <app-splitter direction="vertical" style="height: 100%">
+    <ui-splitter direction="vertical" style="height: 100%">
       <div slot="panel-0">Header</div>
       <div slot="panel-1" style="height: 100%">
-        <app-splitter direction="horizontal" style="height: 100%">
+        <ui-splitter direction="horizontal" style="height: 100%">
           <div slot="panel-0">Content</div>
           <div slot="panel-1">Inspector</div>
-        </app-splitter>
+        </ui-splitter>
       </div>
-    </app-splitter>
+    </ui-splitter>
   </div>
-</app-splitter>`);
+</ui-splitter>`);
 
-  responsiveVerticalCode = signal(`<app-splitter direction="vertical">
+  responsiveVerticalCode = signal(`<ui-splitter direction="vertical">
   <div slot="panel-0">Mobile-friendly vertical split</div>
   <div slot="panel-1">Stacks well on small screens</div>
-</app-splitter>`);
+</ui-splitter>`);
 
   sidebarContentCode =
-    signal(`<app-splitter direction="horizontal" [panels]="[{ size: 25 }, { size: 75 }]">
+    signal(`<ui-splitter direction="horizontal" [panels]="[{ size: 25 }, { size: 75 }]">
   <div slot="panel-0">Navigation Sidebar (25%)</div>
   <div slot="panel-1">Main Content Area (75%)</div>
-</app-splitter>`);
+</ui-splitter>`);
 
   headerBodyFooterCode =
-    signal(`<app-splitter direction="vertical" [panels]="[{ size: 10 }, { size: 80 }, { size: 10 }]">
+    signal(`<ui-splitter direction="vertical" [panels]="[{ size: 10 }, { size: 80 }, { size: 10 }]">
   <div slot="panel-0">Header (10%)</div>
   <div slot="panel-1">Body Content (80%)</div>
   <div slot="panel-2">Footer (10%)</div>
-</app-splitter>`);
+</ui-splitter>`);
 }

@@ -185,7 +185,7 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   ];
 
   // Code examples
-  fadeTransitionCode = `<app-carousel
+  fadeTransitionCode = `<ui-carousel
   effect="fade"
   autoplay="true"
   autoplay-interval="3000"
@@ -203,9 +203,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
     <h3>Mountains</h3>
     <p>Peak experience</p>
   </div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  slideTransitionCode = `<app-carousel
+  slideTransitionCode = `<ui-carousel
   effect="slide"
   autoplay="true"
   autoplay-interval="3000"
@@ -216,9 +216,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
   <div class="slide">Slide 4</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  centerModeCode = `<app-carousel
+  centerModeCode = `<ui-carousel
   center-mode="true"
   slides-to-show="1"
   center-padding="20%"
@@ -230,9 +230,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Item 3</div>
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  multipleItemsCode = `<app-carousel
+  multipleItemsCode = `<ui-carousel
   slides-to-show="3"
   slides-to-scroll="1"
   infinite="true"
@@ -245,9 +245,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Item 4</div>
   <div class="slide">Item 5</div>
   <div class="slide">Item 6</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  verticalCode = `<app-carousel
+  verticalCode = `<ui-carousel
   direction="vertical"
   slides-to-show="1"
   autoplay="true"
@@ -256,9 +256,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  infiniteLoopCode = `<app-carousel
+  infiniteLoopCode = `<ui-carousel
   infinite="true"
   loop="true"
   autoplay="true"
@@ -267,9 +267,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Repeating Item 1</div>
   <div class="slide">Repeating Item 2</div>
   <div class="slide">Repeating Item 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  swipeGestureCode = `<app-carousel
+  swipeGestureCode = `<ui-carousel
   swipe="true"
   drag="true"
   mouse-drag="true"
@@ -279,9 +279,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Swipeable 1</div>
   <div class="slide">Swipeable 2</div>
   <div class="slide">Swipeable 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  scrollAutoplayCode = `<app-carousel
+  scrollAutoplayCode = `<ui-carousel
   autoplay="true"
   autoplay-interval="3000"
   pause-on-hover="true"
@@ -290,9 +290,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Auto Slide 1</div>
   <div class="slide">Auto Slide 2</div>
   <div class="slide">Auto Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  dotsIndicatorsCode = `<app-carousel
+  dotsIndicatorsCode = `<ui-carousel
   indicators="true"
   indicator-type="dots"
   indicator-position="bottom"
@@ -301,9 +301,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  numberIndicatorsCode = `<app-carousel
+  numberIndicatorsCode = `<ui-carousel
   indicators="true"
   indicator-type="numbers"
   indicator-position="bottom"
@@ -311,9 +311,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  progressBarCode = `<app-carousel
+  progressBarCode = `<ui-carousel
   show-progress="true"
   autoplay="true"
   autoplay-interval="3000"
@@ -321,9 +321,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Progress 1</div>
   <div class="slide">Progress 2</div>
   <div class="slide">Progress 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  thresholdCode = `<app-carousel
+  thresholdCode = `<ui-carousel
   drag="true"
   swipe="true"
   drag-threshold="10"
@@ -332,9 +332,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Drag Me 1</div>
   <div class="slide">Drag Me 2</div>
   <div class="slide">Drag Me 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  easingCode = `<app-carousel
+  easingCode = `<ui-carousel
   animation-duration="800"
   animation-easing="ease-in-out"
   autoplay="true"
@@ -342,36 +342,36 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Eased 1</div>
   <div class="slide">Eased 2</div>
   <div class="slide">Eased 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  sizeSmallCode = `<app-carousel
+  sizeSmallCode = `<ui-carousel
   height="200px"
   slides-to-show="1"
 >
   <div class="slide">Small 1</div>
   <div class="slide">Small 2</div>
   <div class="slide">Small 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  sizeMediumCode = `<app-carousel
+  sizeMediumCode = `<ui-carousel
   height="400px"
   slides-to-show="2"
 >
   <div class="slide">Medium 1</div>
   <div class="slide">Medium 2</div>
   <div class="slide">Medium 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  sizeLargeCode = `<app-carousel
+  sizeLargeCode = `<ui-carousel
   height="600px"
   slides-to-show="3"
 >
   <div class="slide">Large 1</div>
   <div class="slide">Large 2</div>
   <div class="slide">Large 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  speedFastCode = `<app-carousel
+  speedFastCode = `<ui-carousel
   animation-duration="300"
   autoplay-interval="2000"
   autoplay="true"
@@ -379,9 +379,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Fast 1</div>
   <div class="slide">Fast 2</div>
   <div class="slide">Fast 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  speedNormalCode = `<app-carousel
+  speedNormalCode = `<ui-carousel
   animation-duration="500"
   autoplay-interval="3000"
   autoplay="true"
@@ -389,9 +389,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Normal 1</div>
   <div class="slide">Normal 2</div>
   <div class="slide">Normal 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  speedSlowCode = `<app-carousel
+  speedSlowCode = `<ui-carousel
   animation-duration="1000"
   autoplay-interval="5000"
   autoplay="true"
@@ -399,9 +399,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slow 1</div>
   <div class="slide">Slow 2</div>
   <div class="slide">Slow 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  responsiveCode = `<app-carousel
+  responsiveCode = `<ui-carousel
   slides-to-show="3"
   responsive=[
     { breakpoint: 1024, settings: { slides-to-show: 2 } },
@@ -411,9 +411,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Responsive 1</div>
   <div class="slide">Responsive 2</div>
   <div class="slide">Responsive 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  customControlsCode = `<app-carousel
+  customControlsCode = `<ui-carousel
   arrows="true"
   indicators="true"
   show-progress="true"
@@ -423,9 +423,9 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
-  playgroundCode = `<app-carousel
+  playgroundCode = `<ui-carousel
   autoplay="true"
   autoplay-interval="3000"
   slides-to-show="1"
@@ -435,7 +435,7 @@ export class DmSetCarouselDemoComponent extends BaseDemoComponent implements OnI
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</app-carousel>`;
+</ui-carousel>`;
 
   ngOnInit() {}
 }
