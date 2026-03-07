@@ -1,4 +1,4 @@
-# set-ui-eesizable-panel
+# set-ui-resizable-panel
 
 ## Properties
 
@@ -33,9 +33,9 @@ No events found.
 ## Usage Example
 
 ```html
-<set-ui-eesizable-panel
+<set-ui-resizable-panel
   [direction]="value"
   panels="value"
   [handleSize]="value"
-></set-ui-eesizable-panel>
+></set-ui-resizable-panel>
 ```

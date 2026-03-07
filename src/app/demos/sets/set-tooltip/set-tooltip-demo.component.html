@@ -25,24 +25,24 @@
           >
             <div class="demo-grid col-3">
               <div class="preview-box">
-                <app-tooltip content="I appear on hover" position="top">
+                <ui-tooltip content="I appear on hover" position="top">
                   <ui-button slot="target" label="Hover Me"></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div class="preview-box">
-                <app-tooltip content="I appear on click" position="top" trigger="click">
+                <ui-tooltip content="I appear on click" position="top" trigger="click">
                   <ui-button slot="target" label="Click Me"></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div class="preview-box">
-                <app-tooltip content="I appear on focus" position="top" trigger="focus">
+                <ui-tooltip content="I appear on focus" position="top" trigger="focus">
                   <ui-input
                     type="text"
                     placeholder="Focus me"
                     slot="target"
                     style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
                   ></ui-input>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
             </div>
           </pg-example-section>
@@ -56,19 +56,19 @@
           >
             <div class="position-grid">
               <div class="pos-cell top-left">
-                <app-tooltip content="Top Left" position="top-left">
+                <ui-tooltip content="Top Left" position="top-left">
                   <ui-button slot="target" label="Top Left"></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div class="pos-cell top">
-                <app-tooltip content="Top Center" position="top">
+                <ui-tooltip content="Top Center" position="top">
                   <ui-button slot="target" label="Top"></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div class="pos-cell top-right">
-                <app-tooltip content="Top Right" position="top-right">
+                <ui-tooltip content="Top Right" position="top-right">
                   <ui-button slot="target" label="Top Right"></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
             </div>
           </pg-example-section>
@@ -81,37 +81,37 @@
           >
             <div class="demo-grid col-3">
               <div class="preview-box">
-                <app-tooltip content="Dark Theme" variant="dark">
+                <ui-tooltip content="Dark Theme" variant="dark">
                   <ui-button
                     slot="target"
                     class="demo-btn dark"
                     variant="dark"
                     label="Dark"
                   ></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div class="preview-box">
-                <app-tooltip content="Light Theme" variant="light">
+                <ui-tooltip content="Light Theme" variant="light">
                   <ui-button
                     slot="target"
                     class="demo-btn light"
                     variant="light"
                     label="Light"
                   ></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
               <div
                 class="preview-box glass-bg"
                 style="background: linear-gradient(135deg, #667eea, #764ba2)"
               >
-                <app-tooltip content="Glass Effect" variant="glass">
+                <ui-tooltip content="Glass Effect" variant="glass">
                   <ui-button
                     slot="target"
                     class="demo-btn glass"
                     variant="ghost"
                     label="Glass"
                   ></ui-button>
-                </app-tooltip>
+                </ui-tooltip>
               </div>
             </div>
           </pg-example-section>
@@ -123,4 +123,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

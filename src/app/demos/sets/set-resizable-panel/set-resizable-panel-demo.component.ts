@@ -75,23 +75,23 @@ export class DmSetResizablePanelDemoComponent extends BaseDemoComponent {
   ];
 
   // Code examples
-  horizontalCode = signal(`<ui-eesizable-panel [panels]="[
+  horizontalCode = signal(`<ui-resizable-panel [panels]="[
   { id: 'p1', size: 30, minSize: 15 },
   { id: 'p2', size: 70 }
 ]" direction="horizontal">
   <div slot="p1">Left Panel</div>
   <div slot="p2">Right Panel</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  verticalCode = signal(`<ui-eesizable-panel [panels]="[
+  verticalCode = signal(`<ui-resizable-panel [panels]="[
   { id: 't1', size: 50 },
   { id: 't2', size: 50 }
 ]" direction="vertical">
   <div slot="t1">Top Panel</div>
   <div slot="t2">Bottom Panel</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  tripleCode = signal(`<ui-eesizable-panel [panels]="[
+  tripleCode = signal(`<ui-resizable-panel [panels]="[
   { id: 'p1', size: 30, minSize: 20 },
   { id: 'p2', size: 40, minSize: 20 },
   { id: 'p3', size: 30, minSize: 20 }
@@ -99,46 +99,46 @@ export class DmSetResizablePanelDemoComponent extends BaseDemoComponent {
   <div slot="p1">Panel 1 (30%)</div>
   <div slot="p2">Panel 2 (40%)</div>
   <div slot="p3">Panel 3 (30%)</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  nestedCode = signal(`<ui-eesizable-panel [panels]="nestedOuter" direction="horizontal">
+  nestedCode = signal(`<ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
   <div slot="sidebar">Sidebar / Explorer</div>
   <div slot="main" style="height: 100%">
-    <ui-eesizable-panel [panels]="nestedInner" direction="vertical">
+    <ui-resizable-panel [panels]="nestedInner" direction="vertical">
       <div slot="editor">Main Code Editor</div>
       <div slot="terminal">Build Output / Terminal</div>
-    </ui-eesizable-panel>
+    </ui-resizable-panel>
   </div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  collapsibleCode = signal(`<ui-eesizable-panel [panels]="[
+  collapsibleCode = signal(`<ui-resizable-panel [panels]="[
   { id: 'left', size: 30, collapsible: true, collapseDirection: 'left' },
   { id: 'main', size: 70 }
 ]" direction="horizontal">
   <div slot="left">Collapsible Panel</div>
   <div slot="main">Main Content</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  darkThemeCode = signal(`<ui-eesizable-panel [panels]="panels" direction="horizontal" theme="dark">
+  darkThemeCode = signal(`<ui-resizable-panel [panels]="panels" direction="horizontal" theme="dark">
   <div slot="p1">Dark Sidebar</div>
   <div slot="p2">Dark Main</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  snapToEdgeCode = signal(`<ui-eesizable-panel 
+  snapToEdgeCode = signal(`<ui-resizable-panel 
   [panels]="panels" 
   direction="horizontal"
   snap-to-edge="true"
   [snapThreshold]="50">
   <div slot="p1">Snap Left/Right</div>
   <div slot="p2">Main Area</div>
-</ui-eesizable-panel>`);
+</ui-resizable-panel>`);
 
-  playgroundCode = signal(`<ui-eesizable-panel
+  playgroundCode = signal(`<ui-resizable-panel
   [panels]="panels"
   [direction]="direction"
   [theme]="theme"
   [animated]="animated"
   [snapToEdge]="snapToEdge"
   [snapThreshold]="snapThreshold"
-></ui-eesizable-panel>`);
+></ui-resizable-panel>`);
 }

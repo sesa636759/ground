@@ -284,7 +284,7 @@ Selection control for binary choices.
 
 ---
 
-## 💬 Tooltip `app-tooltip`
+## 💬 Tooltip `ui-tooltip`
 
 Information overlay triggered by hover or focus.
 
@@ -301,9 +301,9 @@ Information overlay triggered by hover or focus.
 ### Usage
 
 ```html
-<app-tooltip content="Useful tip here" position="top">
+<ui-tooltip content="Useful tip here" position="top">
   <button slot="target">Hover Me</button>
-</app-tooltip>
+</ui-tooltip>
 ```
 
 ---
