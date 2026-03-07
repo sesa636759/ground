@@ -59,6 +59,3 @@ export class DmCandlestickChartDemoComponent extends BaseDemoComponent {
   <rect x="132" y="110" width="24" height="60" fill="#f43f5e" rx="2"/>
 </svg>`;
 }
-
-
-

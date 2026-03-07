@@ -103,6 +103,3 @@ roseData = {
   datasets: [{ data: [42, 55, 48, ...], backgroundColor: ['#6366f1', ...] }]
 };`;
 }
-
-
-

@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   Input,
   Output,
@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './app-playground.component.html',
-  styleUrl: './app-playground.component.scss',
+  templateUrl: './demo-playground.component.html',
+  styleUrl: './demo-playground.component.scss',
 })
 export class DemoPlaygroundComponent implements OnInit {
   @Input() items: any[] | string = [];
@@ -28,7 +28,7 @@ export class DemoPlaygroundComponent implements OnInit {
       try {
         return JSON.parse(this.items);
       } catch (e) {
-        console.error('AppPlayground: Failed to parse items string:', this.items, e);
+        console.error('AppPlayground: Failed to parse items string: ', this.items, e);
         return [];
       }
     }
@@ -40,7 +40,7 @@ export class DemoPlaygroundComponent implements OnInit {
       try {
         return JSON.parse(this.defaultOpen);
       } catch (e) {
-        console.error('AppPlayground: Failed to parse defaultOpen string:', this.defaultOpen, e);
+        console.error('AppPlayground: Failed to parse defaultOpen string: ', this.defaultOpen, e);
         return [];
       }
     }

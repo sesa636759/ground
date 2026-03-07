@@ -64,3 +64,6 @@ export class DmTransferListPlaygroundComponent extends BasePlaygroundComponent i
     this.logEvent(`Transfer list updated: ${event.detail?.items?.length} items transferred`);
   }
 }
+
+
+

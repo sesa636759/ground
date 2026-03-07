@@ -1,12 +1,12 @@
 ﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/waterfall-chart-playground/waterfall-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/waterfall-chart-playground/waterfall-chart-playground.component';
 
 @Component({
   selector: 'dm-waterfall-chart-demo',
@@ -47,6 +47,3 @@ export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
   <!-- Gross Revenue â†’ COGS â†’ Gross Profit â†’ OPEX â†’ EBITDA â†’ D&A â†’ Net Profit -->
 </svg>`;
 }
-
-
-

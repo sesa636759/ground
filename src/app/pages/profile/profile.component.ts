@@ -1,5 +1,4 @@
-import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
-import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, OnInit, signal, computed, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
@@ -16,7 +15,7 @@ interface ActivityItem {
 @Component({
   selector: 'pg-profile',
   standalone: true,
-  imports: [AppInputValueAccessorDirective, ...PLAYGROUND_IMPORTS, RouterLink],
+  imports: [...PLAYGROUND_IMPORTS, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
@@ -48,7 +47,7 @@ export class ProfileComponent implements OnInit {
   activities = signal<ActivityItem[]>([
     {
       id: '1',
-      icon: '🔑',
+      icon: 'ðŸ”‘',
       title: 'Successful Login',
       description: 'Logged in from Chrome on Windows',
       timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
@@ -56,7 +55,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '2',
-      icon: '✏️',
+      icon: 'âœï¸',
       title: 'Profile Updated',
       description: 'Updated bio and contact information',
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
@@ -64,7 +63,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '3',
-      icon: '🔒',
+      icon: 'ðŸ”’',
       title: 'Password Changed',
       description: 'Password was successfully updated',
       timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
@@ -72,7 +71,7 @@ export class ProfileComponent implements OnInit {
     },
     {
       id: '4',
-      icon: '🔑',
+      icon: 'ðŸ”‘',
       title: 'Successful Login',
       description: 'Logged in from Firefox on MacOS',
       timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),

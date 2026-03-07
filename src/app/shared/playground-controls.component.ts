@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from './components/demo-playground/playground.constants';
 
 export interface PlaygroundControl {
@@ -19,12 +19,13 @@ export interface PlaygroundConfig {
 }
 
 @Component({
-  selector: 'app-playground-controls',
-  standalone: true,
+  selector: 'pg-playground-controls',
+
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './playground-controls.component.html',
   styleUrl: './playground-controls.component.scss',
+  standalone: true,
 })
 export class PlaygroundControlsComponent {
   @Input() config!: PlaygroundConfig;

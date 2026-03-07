@@ -1,7 +1,5 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
-import {} from '../../../../shared/components/app-playground/app-playground.component';
 
 interface GanttTask {
   id: string;

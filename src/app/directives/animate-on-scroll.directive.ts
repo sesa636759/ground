@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+﻿import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 
 export type AnimationType =
   | 'fade-in'
@@ -117,3 +117,7 @@ export class AnimateOnScrollDirective implements OnInit, OnDestroy {
     this.hasAnimated = false;
   }
 }
+
+
+
+

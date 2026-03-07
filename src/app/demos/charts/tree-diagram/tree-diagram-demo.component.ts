@@ -51,6 +51,3 @@ export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   <path d="M320,56 C320,80 160,80 160,100" fill="none" stroke="#9ca3af" stroke-width="1.5"/>
 </svg>`;
 }
-
-
-

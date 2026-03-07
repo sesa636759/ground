@@ -1,15 +1,15 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, RegisterData } from '../../services/auth.service';
-import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
+
 import { ASSETS } from '../../shared/constants/assets.constants';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'pg-register',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, RouterLink, AppInputValueAccessorDirective],
+  imports: [...PLAYGROUND_IMPORTS, RouterLink],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './register.component.html',
@@ -41,7 +41,7 @@ export class RegisterComponent {
 
   onPasswordChange(): void {
     const password = this.formData.password;
-    console.log('Register Password changed:', password);
+    console.log('Register Password changed: ', password);
     if (!password) {
       this.passwordStrength.set('weak');
       return;

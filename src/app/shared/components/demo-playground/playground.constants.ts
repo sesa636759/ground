@@ -1,18 +1,18 @@
-import { AppCheckboxValueAccessorDirective } from '../../../directives/ui-checkbox-value-accessor.directive';
-import { UiDropdownValueAccessorDirective } from '../../../directives/ui-dropdown-value-accessor.directive';
-import { AppInputValueAccessorDirective } from '../../../directives/ui-input-value-accessor.directive';
-import { DemoPlaygroundComponent } from './demo-playground.component';
+﻿import { DemoPlaygroundComponent } from './demo-playground.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DmCheckboxValueAccessorDirective } from '../../../directives/dm-checkbox-value-accessor.directive';
+import { DmDropdownValueAccessorDirective } from '../../../directives/dm-dropdown-value-accessor.directive';
+import { DmInputValueAccessorDirective } from '../../../directives/dm-input-value-accessor.directive';
 
 export const PLAYGROUND_IMPORTS = [
   CommonModule,
   FormsModule,
 
-  AppCheckboxValueAccessorDirective,
-  UiDropdownValueAccessorDirective,
+  DmCheckboxValueAccessorDirective,
+  DmDropdownValueAccessorDirective,
 
   DemoPlaygroundComponent,
-  AppInputValueAccessorDirective,
-  AppCheckboxValueAccessorDirective,
-] as const;
+  DmInputValueAccessorDirective,
+  DmCheckboxValueAccessorDirective,
+];

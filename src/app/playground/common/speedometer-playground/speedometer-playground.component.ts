@@ -47,3 +47,6 @@ export class DmSpeedometerPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfigFromDom(this.speedometerElement, 'ui-speedometer');
   }
 }
+
+
+

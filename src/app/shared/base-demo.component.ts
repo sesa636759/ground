@@ -1,4 +1,4 @@
-export interface DemoVariant {
+﻿export interface DemoVariant {
   id: string;
   title: string;
   icon?: string;
@@ -28,3 +28,6 @@ export abstract class BaseDemoComponent {
     );
   }
 }
+
+
+

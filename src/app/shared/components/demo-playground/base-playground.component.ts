@@ -1,4 +1,4 @@
-import {
+﻿import {
   signal,
   ChangeDetectorRef,
   OnInit,
@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { generatePlaygroundCode } from '../../utils/playground-utils';
 
-@Component({ template: '' })
+@Component({ template: '', standalone: true })
 export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   protected cd = inject(ChangeDetectorRef);
 

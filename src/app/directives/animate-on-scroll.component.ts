@@ -1,4 +1,4 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+﻿import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimateOnScrollDirective, AnimationType } from './animate-on-scroll.directive';
 
@@ -50,3 +50,7 @@ export class AnimateOnScrollComponent implements OnInit {
     this.onceValue = typeof this.once === 'string' ? this.once === 'true' : this.once;
   }
 }
+
+
+
+

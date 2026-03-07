@@ -4,7 +4,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 @Component({
   selector: 'dm-rose-chart-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, ,],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './rose-chart-playground.component.html',
 

@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">⚙️</span>
+          <span class="section-icon">âš™ï¸</span>
           <h2>Preferences</h2>
         </div>
         <p>Tailor your workspace and viewing experience to your liking</p>
@@ -428,3 +428,6 @@ export class PreferencesSettingsSectionComponent {
     this.confirmDelete.set(true);
   }
 }
+
+
+

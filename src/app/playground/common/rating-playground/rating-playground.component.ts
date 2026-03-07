@@ -61,3 +61,6 @@ export class DmRatingPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 }
+
+
+

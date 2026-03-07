@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   Input,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -42,7 +42,7 @@ export class DemoSidebarComponent implements AfterViewInit, OnDestroy, OnChanges
       this.activeId = this.activeLink;
     }
     if (changes['variants']?.currentValue?.length && !this.activeId) {
-      this.activeId = this.variants[0]?.id || '';
+      this.activeId = this.variants[0]?.id;
     }
   }
 
@@ -114,7 +114,7 @@ export class DemoSidebarComponent implements AfterViewInit, OnDestroy, OnChanges
     if (!container || !this.variants.length) return;
 
     const threshold = container.scrollTop + 100;
-    let newActive = this.variants[0]?.id || '';
+    let newActive = this.variants[0]?.id;
 
     for (const v of this.variants) {
       const el = document.getElementById(v.id);

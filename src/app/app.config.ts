@@ -1,4 +1,4 @@
-import {
+﻿import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
@@ -21,3 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => chartLibrary(window)),
   ],
 };
+
+
+

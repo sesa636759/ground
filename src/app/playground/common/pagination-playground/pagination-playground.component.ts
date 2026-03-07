@@ -97,3 +97,6 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 }
+
+
+

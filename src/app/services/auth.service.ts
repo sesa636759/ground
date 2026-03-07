@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+﻿import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 export interface User {
@@ -75,7 +75,7 @@ export class AuthService {
         this.currentUserSignal.set(user);
         this.isAuthenticatedSignal.set(true);
       } catch (error) {
-        console.error('Failed to parse stored user:', error);
+        console.error('Failed to parse stored user: ', error);
         sessionStorage.removeItem('currentUser');
       }
     }

@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   signal,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -79,35 +79,47 @@ export class App implements OnInit {
     {
       id: 'schneider-green',
       label: 'SE Green',
-      emoji: '🌿',
+      emoji: 'ðŸŒ¿',
       gradient: 'linear-gradient(135deg,#3DCD58,#059669)',
     },
     {
       id: 'schneider-blue',
       label: 'SE Blue',
-      emoji: '💙',
+      emoji: 'ðŸ’™',
       gradient: 'linear-gradient(135deg,#0ea5e9,#0284c7)',
     },
-    { id: 'dark', label: 'Dark', emoji: '🌙', gradient: 'linear-gradient(135deg,#0f172a,#1e293b)' },
+    {
+      id: 'dark',
+      label: 'Dark',
+      emoji: 'ðŸŒ™',
+      gradient: 'linear-gradient(135deg,#0f172a,#1e293b)',
+    },
     {
       id: 'light',
       label: 'Light',
-      emoji: '☀️',
+      emoji: 'â˜€ï¸',
       gradient: 'linear-gradient(135deg,#f8faf9,#e2e8f0)',
     },
     {
       id: 'high-contrast',
       label: 'Contrast',
-      emoji: '👁️',
+      emoji: 'ðŸ‘ï¸',
       gradient: 'linear-gradient(135deg,#000,#facc15)',
     },
-    { id: 'auto', label: 'Auto', emoji: '🔄', gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)' },
+    {
+      id: 'auto',
+      label: 'Auto',
+      emoji: 'ðŸ”„',
+      gradient: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
+    },
   ];
 
   currentTheme = this.themeService.currentTheme;
 
   currentThemeIcon = computed(() => {
-    return this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? '🎨';
+    return (
+      this.themeOptions.find((t) => t.id === this.themeService.currentTheme())?.emoji ?? 'ðŸŽ¨'
+    );
   });
 
   toggleThemeMenu() {
@@ -147,7 +159,7 @@ export class App implements OnInit {
       role: 'Visitor',
       avatar: 'https://i.pravatar.cc/150?img=12',
       isOnline: false,
-      email: '',
+      email: 'praveen.rajkumar@se.com',
     };
   });
 
@@ -318,3 +330,4 @@ export class App implements OnInit {
     this.authService.logout();
   }
 }
+

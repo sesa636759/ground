@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">🛡️</span>
+          <span class="section-icon">ðŸ›¡ï¸</span>
           <h2>Security Settings</h2>
         </div>
         <p>Take control of your account security and monitor active sessions</p>
@@ -32,7 +32,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   type="password"
                   id="currentPassword"
                   [(ngModel)]="currentPassword"
-                  placeholder="••••••••"
+                  placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                 ></ui-input>
               </div>
             </div>
@@ -174,7 +174,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
                   </div>
                   <div class="session-meta">
                     <span class="location">{{ session.location }}</span>
-                    <span class="dot">•</span>
+                    <span class="dot">â€¢</span>
                     <span class="time">{{ session.lastActive }}</span>
                   </div>
                 </div>

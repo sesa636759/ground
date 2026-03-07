@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   Input,
   ElementRef,
@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 
 /**
- * AppMasonryComponent — CSS columns masonry container.
+ * AppMasonryComponent â€” CSS columns masonry container.
  *
  * This component ONLY provides the multi-column layout context via :host.
  * Card-level styles (break-inside:avoid, margin-bottom) are the
- * responsibility of the PARENT component that owns the cards — Angular's
+ * responsibility of the PARENT component that owns the cards â€” Angular's
  * emulated encapsulation makes it impossible for this component to reliably
  * style projected content without ViewEncapsulation.None side-effects.
  *
@@ -106,3 +106,6 @@ export class AppMasonryComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.host.style.setProperty('--am-cols', String(cols));
   }
 }
+
+
+

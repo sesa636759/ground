@@ -62,3 +62,6 @@ export class DmPatternInputPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfigFromDom(this.demoElement, 'ui-pattern-input');
   }
 }
+
+
+

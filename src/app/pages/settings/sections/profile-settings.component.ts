@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">👤</span>
+          <span class="section-icon">ðŸ‘¤</span>
           <h2>Profile Settings</h2>
         </div>
         <p>Update your personal information and how it appears to others</p>
@@ -80,11 +80,11 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
             <div class="form-group">
               <label for="language">Language</label>
               <select id="language" [(ngModel)]="language">
-                <option value="en">🇺🇸 English</option>
-                <option value="es">🇪🇸 Spanish</option>
-                <option value="fr">🇫🇷 French</option>
-                <option value="de">🇩🇪 German</option>
-                <option value="ja">🇯🇵 Japanese</option>
+                <option value="en">ðŸ‡ºðŸ‡¸ English</option>
+                <option value="es">ðŸ‡ªðŸ‡¸ Spanish</option>
+                <option value="fr">ðŸ‡«ðŸ‡· French</option>
+                <option value="de">ðŸ‡©ðŸ‡ª German</option>
+                <option value="ja">ðŸ‡¯ðŸ‡µ Japanese</option>
               </select>
             </div>
 
@@ -323,3 +323,6 @@ export class ProfileSettingsSectionComponent {
   save(): void {}
   cancel(): void {}
 }
+
+
+

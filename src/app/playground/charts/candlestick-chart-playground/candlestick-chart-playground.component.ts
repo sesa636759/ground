@@ -1,9 +1,5 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
-import {} from '../../../../../directives/ui-dropdown-value-accessor.directive';
-
-import {} from '../../../../shared/components/app-playground/app-playground.component';
 
 interface Candle {
   date: string;
@@ -16,7 +12,7 @@ interface Candle {
 @Component({
   selector: 'dm-candlestick-chart-playground',
   standalone: true,
-  imports: [AppInputValueAccessorDirective, ...PLAYGROUND_IMPORTS, , AppPlaygroundComponent],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './candlestick-chart-playground.component.html',
 

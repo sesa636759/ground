@@ -55,6 +55,3 @@ export class DmFunnelChartDemoComponent extends BaseDemoComponent {
   <!-- Awareness â†’ Interest â†’ Consideration â†’ Intent â†’ Purchase -->
 </svg>`;
 }
-
-
-

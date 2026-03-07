@@ -1,4 +1,4 @@
-export function generatePlaygroundCode(
+﻿export function generatePlaygroundCode(
   el: Element,
   tagName?: string,
   innerContent: string = '',

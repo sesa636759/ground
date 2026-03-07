@@ -1,8 +1,5 @@
 ﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, ChangeDetectorRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { AppCheckboxValueAccessorDirective } from '../../../../../directives/ui-checkbox-value-accessor.directive';
-import {} from '../../../../../directives/ui-dropdown-value-accessor.directive';
-import {} from '../../../../shared/components/app-playground/app-playground.component';
 
 interface OhlcBar {
   date: string;
@@ -15,7 +12,7 @@ interface OhlcBar {
 @Component({
   selector: 'dm-ohlc-chart-playground',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, ,],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './ohlc-chart-playground.component.html',
 

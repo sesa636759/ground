@@ -74,3 +74,6 @@ export class DmRangeSliderPlaygroundComponent extends BasePlaygroundComponent im
     this.currentValue = [20, 80];
   }
 }
+
+
+

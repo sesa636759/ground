@@ -1,4 +1,4 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
+﻿import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -21,3 +21,6 @@ export class ExampleSectionComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {}
 }
+
+
+

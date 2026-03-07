@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -29,7 +29,7 @@ export class DemoTabsComponent {
     if (typeof newValue === 'string' && newValue) {
       this.active.set(newValue);
     } else {
-      console.warn('Invalid tab value received:', newValue);
+      console.warn('Invalid tab value received: ', newValue);
     }
   }
 }

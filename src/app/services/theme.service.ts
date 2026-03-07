@@ -1,4 +1,4 @@
-import { Injectable, signal, effect } from '@angular/core';
+﻿import { Injectable, signal, effect } from '@angular/core';
 
 export type Theme =
   | 'light'
@@ -123,18 +123,18 @@ export class ThemeService {
     const theme = this.currentTheme();
     switch (theme) {
       case 'light':
-        return '☀️';
+        return 'â˜€ï¸';
       case 'dark':
-        return '🌙';
+        return 'ðŸŒ™';
       case 'schneider-green':
-        return '🌿';
+        return 'ðŸŒ¿';
       case 'schneider-blue':
-        return '💙';
+        return 'ðŸ’™';
       case 'high-contrast':
-        return '👁️';
+        return 'ðŸ‘ï¸';
       case 'auto':
       default:
-        return '🔄';
+        return 'ðŸ”„';
     }
   }
 
@@ -157,3 +157,6 @@ export class ThemeService {
     }
   }
 }
+
+
+

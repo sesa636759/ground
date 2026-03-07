@@ -54,6 +54,3 @@ export class DmSparklineDemoComponent extends BaseDemoComponent {
   <polyline points="..." fill="none" stroke="#10b981" stroke-width="1.5"/>
 </svg>`;
 }
-
-
-

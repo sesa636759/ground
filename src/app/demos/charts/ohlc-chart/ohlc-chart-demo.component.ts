@@ -56,6 +56,3 @@ export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   <text x="580" y="150" fill="#f59e0b" font-size="10">MA(10)</text>
 </svg>`;
 }
-
-
-

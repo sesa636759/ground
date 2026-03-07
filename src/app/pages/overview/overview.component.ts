@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   signal,
   computed,
@@ -35,7 +35,7 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   private scrollContainer: Element | null = null;
   private boundScrollHandler = this._onContainerScroll.bind(this);
 
-  /** Masonry responsive breakpoints — passed to <app-masonry> */
+  /** Masonry responsive breakpoints â€” passed to <app-masonry> */
   masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 1, 0: 1 };
   listBp: Record<number, number> = { 0: 1 };
 

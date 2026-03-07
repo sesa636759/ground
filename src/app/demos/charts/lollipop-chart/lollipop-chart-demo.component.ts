@@ -54,6 +54,3 @@ export class DmLollipopChartDemoComponent extends BaseDemoComponent {
   <text x="110" y="44" text-anchor="end" font-size="11" fill="#6b7280">Category A</text>
 </svg>`;
 }
-
-
-

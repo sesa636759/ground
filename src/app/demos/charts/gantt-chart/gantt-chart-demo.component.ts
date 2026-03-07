@@ -63,6 +63,3 @@ export class DmGanttChartDemoComponent extends BaseDemoComponent {
   <rect x="420" y="116"width="140" height="28" rx="4" fill="#f59e0b"/><!-- Sprint 3 -->
 </svg>`;
 }
-
-
-

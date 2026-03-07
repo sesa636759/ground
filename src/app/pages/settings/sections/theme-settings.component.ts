@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeSelectorComponent } from '../../../components/theme-selector/theme-selector.component';
 
@@ -11,7 +11,7 @@ import { ThemeSelectorComponent } from '../../../components/theme-selector/theme
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">🎨</span>
+          <span class="section-icon">ðŸŽ¨</span>
           <h2>Theme Settings</h2>
         </div>
         <p>Personalize your workspace with a theme that matches your style</p>
@@ -123,3 +123,6 @@ import { ThemeSelectorComponent } from '../../../components/theme-selector/theme
   ],
 })
 export class ThemeSettingsSectionComponent {}
+
+
+

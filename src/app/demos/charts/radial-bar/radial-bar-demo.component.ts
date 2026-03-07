@@ -64,6 +64,3 @@ export class DmRadialBarDemoComponent extends BaseDemoComponent {
   <text x="100" y="108" text-anchor="middle" font-size="28" font-weight="700" fill="#374151">88%</text>
 </svg>`;
 }
-
-
-

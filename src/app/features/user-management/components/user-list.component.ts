@@ -1,15 +1,13 @@
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User, UserRole, UserStatus, UserFilters, BulkUserOperation } from '../models/user.model';
-import { AppInputValueAccessorDirective } from '../../../directives/ui-input-value-accessor.directive';
-import {} from '../../../directives/ui-dropdown-value-accessor.directive';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, UiDropdownValueAccessorDirective],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
@@ -102,7 +100,7 @@ export class UserListComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        console.error('Error loading users:', error);
+        console.error('Error loading users: ', error);
         this.loading = false;
       },
     });

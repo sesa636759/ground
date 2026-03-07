@@ -90,6 +90,3 @@ skillsData = {
   style="width: 500px; height: 380px;"
 ></app-chart>`;
 }
-
-
-

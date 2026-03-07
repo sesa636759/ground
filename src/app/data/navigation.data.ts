@@ -1,4 +1,4 @@
-export interface NavItem {
+﻿export interface NavItem {
   id: string;
   label: string;
   icon?: string;
@@ -158,7 +158,7 @@ export const categoryNavItems: NavItem[] = [
       {
         id: 'layout-manager',
         label: 'Layout Manager',
-        badge: '✨',
+        badge: 'âœ¨',
         icon: 'layout-panel-top',
         iconLibrary: 'lucide',
       },
@@ -416,7 +416,7 @@ export const bottomNavItems: NavItem[] = [
   // {
   //   id: 'support',
   //   label: 'Support',
-  //   icon: '❓',
+  //   icon: 'â“',
   // },
 ];
 
@@ -424,7 +424,7 @@ export const bottomNavItems: NavItem[] = [
 //   {
 //     id: 'about',
 //     label: 'About',
-//     icon: 'ℹ️',
+//     icon: 'â„¹ï¸',
 //   },
 // ];
 
@@ -432,36 +432,36 @@ export const bottomNavItems: NavItem[] = [
 //   {
 //     id: 'Working',
 //     label: 'Foundation & Layout',
-//     icon: '🏗️',
+//     icon: 'ðŸ—ï¸',
 //     children: [
-//       { id: 'tree-set', label: 'Tree Set', icon: '🌳' },
-//       { id: 'avatar-set', label: 'Avatar Set', icon: '👤' },
-//       { id: 'empty-state-set', label: 'Empty State Set', icon: '📭' },
-//       { id: 'checkbox-set', label: 'Checkbox Set', icon: '☑️' },
-//       { id: 'input-set', label: 'Input Set', icon: '⌨️' },
-//       { id: 'radio-set', label: 'Radio Set', icon: '🔘' },
-//       { id: 'button-toggle-set', label: 'Button Toggle Set', icon: '🔲' },
-//       { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
-//       { id: 'list-set', label: 'List Set', icon: '📝' },
-//       { id: 'timeline-set', label: 'Timeline Set', icon: '📅' },
-//       { id: 'anchor-set', label: 'Anchor Set', icon: '⚓' },
-//        { id: 'carousel-set', label: 'Carousel Set', icon: '🎠' },
-//        { id: 'tags-input-set', label: 'Tags Input Set', icon: '🏷️' },
-//           { id: 'avatar-group-set', label: 'Avatar Group Set', icon: '👥' },
+//       { id: 'tree-set', label: 'Tree Set', icon: 'ðŸŒ³' },
+//       { id: 'avatar-set', label: 'Avatar Set', icon: 'ðŸ‘¤' },
+//       { id: 'empty-state-set', label: 'Empty State Set', icon: 'ðŸ“­' },
+//       { id: 'checkbox-set', label: 'Checkbox Set', icon: 'â˜‘ï¸' },
+//       { id: 'input-set', label: 'Input Set', icon: 'âŒ¨ï¸' },
+//       { id: 'radio-set', label: 'Radio Set', icon: 'ðŸ”˜' },
+//       { id: 'button-toggle-set', label: 'Button Toggle Set', icon: 'ðŸ”²' },
+//       { id: 'tooltip-set', label: 'Tooltip Set', icon: 'ðŸ’¬' },
+//       { id: 'list-set', label: 'List Set', icon: 'ðŸ“' },
+//       { id: 'timeline-set', label: 'Timeline Set', icon: 'ðŸ“…' },
+//       { id: 'anchor-set', label: 'Anchor Set', icon: 'âš“' },
+//        { id: 'carousel-set', label: 'Carousel Set', icon: 'ðŸŽ ' },
+//        { id: 'tags-input-set', label: 'Tags Input Set', icon: 'ðŸ·ï¸' },
+//           { id: 'avatar-group-set', label: 'Avatar Group Set', icon: 'ðŸ‘¥' },
 //     ],
 //   },
 
 //   {
 //     id: 'layout',
 //     label: 'Foundation & Layout',
-//     icon: '🏗️',
+//     icon: 'ðŸ—ï¸',
 //     children: [
-//       { id: 'card-set', label: 'Card Set', icon: '🃏' },
-//       { id: 'layout-manager-set', label: 'Layout Manager Set', icon: '📐' },
-//       { id: 'masonry-set', label: 'Masonry Set', icon: '🧱' },
-//       { id: 'splitter-set', label: 'Splitter Set', icon: '✂️' },
-//       { id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: '📱' },
-//       { id: 'scroll-top-set', label: 'Scroll Top Set', icon: '⬆️' },
+//       { id: 'card-set', label: 'Card Set', icon: 'ðŸƒ' },
+//       { id: 'layout-manager-set', label: 'Layout Manager Set', icon: 'ðŸ“' },
+//       { id: 'masonry-set', label: 'Masonry Set', icon: 'ðŸ§±' },
+//       { id: 'splitter-set', label: 'Splitter Set', icon: 'âœ‚ï¸' },
+//       { id: 'modern-sidebar-set', label: 'Modern Sidebar Set', icon: 'ðŸ“±' },
+//       { id: 'scroll-top-set', label: 'Scroll Top Set', icon: 'â¬†ï¸' },
 
 //     ],
 //   },
@@ -469,40 +469,40 @@ export const bottomNavItems: NavItem[] = [
 //   {
 //     id: 'inputs',
 //     label: 'Inputs & Forms',
-//     icon: '⌨️',
+//     icon: 'âŒ¨ï¸',
 //     children: [
-//       { id: 'otp-input-set', label: 'OTP Input Set', icon: '🔢' },
-//          { id: 'toggle-set', label: 'Toggle Set', icon: '🔘' },
+//       { id: 'otp-input-set', label: 'OTP Input Set', icon: 'ðŸ”¢' },
+//          { id: 'toggle-set', label: 'Toggle Set', icon: 'ðŸ”˜' },
 //     ],
 //   },
 //   {
 //     id: 'data',
 //     label: 'Data Visualization',
-//     icon: '📊',
-//     children: [{ id: 'progress-set', label: 'Progress Set', icon: '⏳' }],
+//     icon: 'ðŸ“Š',
+//     children: [{ id: 'progress-set', label: 'Progress Set', icon: 'â³' }],
 //   },
 //   {
 //     id: 'display',
 //     label: 'Display & Presentation',
-//     icon: '🎨',
+//     icon: 'ðŸŽ¨',
 //     children: [
-//       { id: 'animate-on-scroll-set', label: 'Animate on Scroll Set', icon: '📜' },
-//       { id: 'code-editor-set', label: 'Code Editor Set', icon: '💻' },
-//       { id: 'dashboard-set', label: 'Dashboard Set', icon: '📊' },
-//           { id: 'theme-switcher-set', label: 'Theme Switcher Set', icon: '🌓' },
+//       { id: 'animate-on-scroll-set', label: 'Animate on Scroll Set', icon: 'ðŸ“œ' },
+//       { id: 'code-editor-set', label: 'Code Editor Set', icon: 'ðŸ’»' },
+//       { id: 'dashboard-set', label: 'Dashboard Set', icon: 'ðŸ“Š' },
+//           { id: 'theme-switcher-set', label: 'Theme Switcher Set', icon: 'ðŸŒ“' },
 //     ],
 //   },
 //   {
 //     id: 'overlays',
 //     label: 'Feedback & Overlays',
-//     icon: '💬',
+//     icon: 'ðŸ’¬',
 //     children: [
 
-//        { id: 'stepper-set', label: 'Stepper Set', icon: '🪜' },
-//       { id: 'context-menu-set', label: 'Context Menu Set', icon: '📋' },
-//       { id: 'resizable-panel-set', label: 'Resizable Panel Set', icon: '📐' },
-//       { id: 'tooltip-set', label: 'Tooltip Set', icon: '💬' },
-//         { id: 'tabs-set', label: 'Tabs Set', icon: '📑' },
+//        { id: 'stepper-set', label: 'Stepper Set', icon: 'ðŸªœ' },
+//       { id: 'context-menu-set', label: 'Context Menu Set', icon: 'ðŸ“‹' },
+//       { id: 'resizable-panel-set', label: 'Resizable Panel Set', icon: 'ðŸ“' },
+//       { id: 'tooltip-set', label: 'Tooltip Set', icon: 'ðŸ’¬' },
+//         { id: 'tabs-set', label: 'Tabs Set', icon: 'ðŸ“‘' },
 //     ],
 //   },
 // ];
@@ -528,3 +528,6 @@ export function getAllNavItems(): NavItem[] {
 
   return allItems;
 }
+
+
+

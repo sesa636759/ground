@@ -88,6 +88,3 @@ export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   <polyline points="40,250 100,250 100,178 ..." fill="none" stroke="#10b981" stroke-width="2.5"/>
 </svg>`;
 }
-
-
-

@@ -81,3 +81,6 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
     this.logEvent(`Dock item clicked: ${action}`);
   }
 }
+
+
+

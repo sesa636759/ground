@@ -28,7 +28,7 @@ export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   statusOptions = [
-    { label: 'None', value: '' },
+    { label: 'None', value: ''},
     { label: 'Online', value: 'online' },
     { label: 'Away', value: 'away' },
     { label: 'Busy', value: 'busy' },
@@ -121,3 +121,6 @@ export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
     this.refreshCode();
   }
 }
+
+
+

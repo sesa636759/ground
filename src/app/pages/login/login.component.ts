@@ -1,15 +1,14 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
-import { AppInputValueAccessorDirective } from '../../directives/ui-input-value-accessor.directive';
-import { AppCheckboxValueAccessorDirective } from '../../directives/ui-checkbox-value-accessor.directive';
+
 import { ASSETS } from '../../shared/constants/assets.constants';
 
 @Component({
   selector: 'pg-login',
   standalone: true,
-  imports: [...PLAYGROUND_IMPORTS, RouterLink, AppCheckboxValueAccessorDirective],
+  imports: [...PLAYGROUND_IMPORTS, RouterLink],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './login.component.html',
@@ -30,7 +29,7 @@ export class LoginComponent {
 
   onPasswordChange(): void {
     const password = this.credentials.password;
-    console.log('Password changed:', password);
+    console.log('Password changed: ', password);
     if (!password) {
       this.passwordStrength.set('weak');
       return;

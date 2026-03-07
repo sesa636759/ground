@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
     <div class="settings-section">
       <div class="section-header">
         <div class="title-row">
-          <span class="section-icon">🔔</span>
+          <span class="section-icon">ðŸ””</span>
           <h2>Notification Settings</h2>
         </div>
         <p>Manage how you want to be notified about activity on your account</p>
@@ -276,3 +276,6 @@ export class NotificationSettingsSectionComponent {
   inAppActivity = signal(true);
   inAppSystem = signal(true);
 }
+
+
+

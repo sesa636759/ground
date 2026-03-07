@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { categoryNavItems } from '../../data/navigation.data';
@@ -252,13 +252,13 @@ export class HomeComponent {
       description: 'Standard system emojis that work everywhere without any dependencies.',
       count: '3,500+',
       library: 'emoji',
-      sampleIcons: ['🚀', '✨', '💎', '🔥', '⚡', '🌈'],
+      sampleIcons: ['ðŸš€', 'âœ¨', 'ðŸ’Ž', 'ðŸ”¥', 'âš¡', 'ðŸŒˆ'],
       color: 'yellow-glow',
     },
     {
       name: 'SVG Path',
       description: 'Support for direct SVG paths and custom vector definitions.',
-      count: '∞',
+      count: 'âˆž',
       library: 'default',
       sampleIcons: ['M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'],
       color: 'cyan-glow',
@@ -319,3 +319,6 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
+
+
+
