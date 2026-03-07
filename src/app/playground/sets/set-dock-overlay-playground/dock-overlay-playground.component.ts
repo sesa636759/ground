@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 
   styles: [
     `
-      @use '../../../../../styles/playground-base.scss';
+      @use '../../../../styles/playground-base.scss';
     `,
   ],
 })
