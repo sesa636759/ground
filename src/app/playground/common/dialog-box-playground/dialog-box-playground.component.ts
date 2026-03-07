@@ -12,6 +12,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-dialog-box-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dialog-box-playground.component.html',
   styleUrl: './dialog-box-playground.component.scss',

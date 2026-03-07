@@ -11,6 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-rating-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './rating-playground.component.html',
   styleUrl: './rating-playground.component.scss',

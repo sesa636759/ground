@@ -5,6 +5,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-resizable-panel-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './resizable-panel-playground.component.html',
   styleUrl: './resizable-panel-playground.component.scss',

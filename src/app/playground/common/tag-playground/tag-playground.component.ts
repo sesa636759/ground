@@ -5,6 +5,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-tag-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './tag-playground.component.html',
   styleUrl: './tag-playground.component.scss',

@@ -5,6 +5,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-panel-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './panel-playground.component.html',
   styleUrl: './panel-playground.component.scss',

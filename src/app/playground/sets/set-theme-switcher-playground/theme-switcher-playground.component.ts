@@ -5,6 +5,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-theme-switcher-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './theme-switcher-playground.component.html',
   styleUrl: './theme-switcher-playground.component.scss',

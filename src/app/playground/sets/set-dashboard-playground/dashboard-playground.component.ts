@@ -12,6 +12,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 @Component({
   selector: 'dm-dashboard-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dashboard-playground.component.html',
   styleUrl: './dashboard-playground.component.scss',

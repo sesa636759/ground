@@ -13,6 +13,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 @Component({
   selector: 'dm-breadcrumb-playground',
   standalone: true,
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './breadcrumb-playground.component.html',
   styleUrl: './breadcrumb-playground.component.scss',
