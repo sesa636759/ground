@@ -24,7 +24,7 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.trigger"
         (ngModelChange)="updateConfig()"
-        [options]="standardTriggerOptions"
+        [options]="customTriggerOptions"
       ></ui-dropdown>
     </div>
 
@@ -161,6 +161,12 @@
       Open at Mouse
     </label>
     <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.visible" (ngModelChange)="updateConfig()" /> Force Show
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()" /> Closable
+    </label>
+    <label class="checkbox-item">
       <ui-checkbox [(ngModel)]="pgConfig.autoShift" (ngModelChange)="updateConfig()" /> Auto Shift
     </label>
     <label class="checkbox-item">
@@ -173,6 +179,16 @@
   </div>
 
   <div preview class="preview-stage">
+    <div class="playground-actions">
+      <ui-button
+        variant="ghost"
+        size="sm"
+        [label]="pgConfig.visible ? 'Hide Tooltip' : 'Show Tooltip'"
+        icon="lucide/eye"
+        (click)="pgConfig.visible = !pgConfig.visible; updateConfig()"
+      ></ui-button>
+    </div>
+
     <div class="tooltip-target-wrapper">
       <ui-tooltip
         [attr.content]="pgConfig.content"
@@ -200,8 +216,10 @@
         [attr.open-at-mouse-position]="pgConfig.openAtMousePosition ? '' : null"
         [attr.auto-shift]="pgConfig.autoShift ? '' : null"
         [attr.portal]="pgConfig.portal ? '' : null"
+        [attr.visible]="pgConfig.visible ? '' : null"
+        [attr.closable]="pgConfig.closable ? '' : null"
       >
-        <ui-button slot="target" class="playground-target-btn">
+        <ui-button slot="target" class="playground-target-btn" variant="primary">
           <i [class]="pgConfig.targetIcon"></i>
           {{ pgConfig.targetText }}
         </ui-button>
