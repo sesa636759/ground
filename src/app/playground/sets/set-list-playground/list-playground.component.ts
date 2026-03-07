@@ -42,7 +42,7 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent {
   ];
 
   updateConfig() {
-    let code = `<app-list\n`;
+    let code = `<ui-list\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
     code += `  color="${this.pgConfig.color}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
@@ -61,7 +61,7 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent {
 
     // Sample items
     for (let i = 1; i <= 3; i++) {
-      code += `  <app-list-item\n`;
+      code += `  <ui-list-item\n`;
       code += `    label="${this.pgConfig.itemLabel} ${i}"\n`;
       if (this.pgConfig.itemSublabel) code += `    sublabel="${this.pgConfig.itemSublabel}"\n`;
       if (this.pgConfig.itemIcon) code += `    icon="${this.pgConfig.itemIcon}"\n`;
@@ -72,10 +72,10 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent {
       if (i === 2 && this.pgConfig.itemCounter > 0)
         code += `    counter="${this.pgConfig.itemCounter}"\n`;
       if (i === 3 && this.pgConfig.itemDisabled) code += `    disabled="true"\n`;
-      code += `  ></app-list-item>\n`;
+      code += `  ></ui-list-item>\n`;
     }
 
-    code += `</app-list>`;
+    code += `</ui-list>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -110,6 +110,3 @@ export class DmListPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 }
-
-
-

@@ -126,7 +126,7 @@
   <div preview>
     <div class="preview-stage h-scrollable">
       <div class="list-container">
-        <app-list
+        <ui-list
           [attr.variant]="pgConfig.variant"
           [attr.color]="pgConfig.color"
           [attr.size]="pgConfig.size"
@@ -140,7 +140,7 @@
           [attr.rounded]="pgConfig.rounded ? '' : null"
           [attr.elevated]="pgConfig.elevated ? '' : null"
         >
-          <app-list-item
+          <ui-list-item
             [attr.label]="pgConfig.itemLabel + ' 1'"
             [attr.sublabel]="pgConfig.itemSublabel"
             [attr.icon]="pgConfig.itemIcon"
@@ -148,26 +148,26 @@
             [attr.badge]="pgConfig.itemBadge"
             [attr.badge-color]="pgConfig.itemBadgeColor"
             (click)="onItemClick($event)"
-          ></app-list-item>
+          ></ui-list-item>
 
-          <app-list-item
+          <ui-list-item
             [attr.label]="pgConfig.itemLabel + ' 2'"
             [attr.sublabel]="pgConfig.itemSublabel"
             [attr.icon]="pgConfig.itemIcon"
             [attr.action-icon]="pgConfig.itemActionIcon"
             [attr.counter]="pgConfig.itemCounter"
             (click)="onItemClick($event)"
-          ></app-list-item>
+          ></ui-list-item>
 
-          <app-list-item
+          <ui-list-item
             [attr.label]="pgConfig.itemLabel + ' 3'"
             [attr.sublabel]="pgConfig.itemSublabel"
             [attr.icon]="pgConfig.itemIcon"
             [attr.action-icon]="pgConfig.itemActionIcon"
             [attr.disabled]="pgConfig.itemDisabled ? '' : null"
             (click)="onItemClick($event)"
-          ></app-list-item>
-        </app-list>
+          ></ui-list-item>
+        </ui-list>
       </div>
     </div>
   </div>

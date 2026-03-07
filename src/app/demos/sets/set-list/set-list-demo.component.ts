@@ -41,89 +41,89 @@ export class DmSetListDemoComponent extends BaseDemoComponent {
   ];
 
   // Code examples for each section
-  basicCode = signal(`<app-list>
-  <app-list-item label="Home" icon="fas fa-home"></app-list-item>
-  <app-list-item label="Dashboard" icon="fas fa-chart-bar"></app-list-item>
-  <app-list-item label="Settings" icon="fas fa-cog"></app-list-item>
-</app-list>`);
+  basicCode = signal(`<ui-list>
+  <ui-list-item label="Home" icon="fas fa-home"></ui-list-item>
+  <ui-list-item label="Dashboard" icon="fas fa-chart-bar"></ui-list-item>
+  <ui-list-item label="Settings" icon="fas fa-cog"></ui-list-item>
+</ui-list>`);
 
-  colorCode = signal(`<app-list color="primary">
-  <app-list-item label="Item 1"></app-list-item>
-  <app-list-item label="Item 2"></app-list-item>
-</app-list>
+  colorCode = signal(`<ui-list color="primary">
+  <ui-list-item label="Item 1"></ui-list-item>
+  <ui-list-item label="Item 2"></ui-list-item>
+</ui-list>
 
-<app-list color="success">
-  <app-list-item label="Completed"></app-list-item>
-</app-list>
+<ui-list color="success">
+  <ui-list-item label="Completed"></ui-list-item>
+</ui-list>
 
-<app-list color="danger">
-  <app-list-item label="Critical"></app-list-item>
-</app-list>`);
+<ui-list color="danger">
+  <ui-list-item label="Critical"></ui-list-item>
+</ui-list>`);
 
-  sizeCode = signal(`<app-list size="small">
-  <app-list-item label="Small Item"></app-list-item>
-</app-list>
+  sizeCode = signal(`<ui-list size="small">
+  <ui-list-item label="Small Item"></ui-list-item>
+</ui-list>
 
-<app-list size="medium">
-  <app-list-item label="Medium Item"></app-list-item>
-</app-list>
+<ui-list size="medium">
+  <ui-list-item label="Medium Item"></ui-list-item>
+</ui-list>
 
-<app-list size="large">
-  <app-list-item label="Large Item"></app-list-item>
-</app-list>`);
+<ui-list size="large">
+  <ui-list-item label="Large Item"></ui-list-item>
+</ui-list>`);
 
-  variantCode = signal(`<app-list variant="filled">
-  <app-list-item label="Text"></app-list-item>
-</app-list>
+  variantCode = signal(`<ui-list variant="filled">
+  <ui-list-item label="Text"></ui-list-item>
+</ui-list>
 
-<app-list variant="outlined">
-  <app-list-item label="Outlined"></app-list-item>
-</app-list>
+<ui-list variant="outlined">
+  <ui-list-item label="Outlined"></ui-list-item>
+</ui-list>
 
-<app-list variant="soft">
-  <app-list-item label="Soft"></app-list-item>
-</app-list>`);
+<ui-list variant="soft">
+  <ui-list-item label="Soft"></ui-list-item>
+</ui-list>`);
 
-  nestedCode = signal(`<app-list>
-  <app-list-item label="Documents" collapsible expanded>
+  nestedCode = signal(`<ui-list>
+  <ui-list-item label="Documents" collapsible expanded>
     <div slot="children">
-      <app-list-item label="Work" level="1"></app-list-item>
-      <app-list-item label="Personal" level="1" collapsible>
+      <ui-list-item label="Work" level="1"></ui-list-item>
+      <ui-list-item label="Personal" level="1" collapsible>
         <div slot="children">
-          <app-list-item label="Photos" level="2"></app-list-item>
-          <app-list-item label="Documents" level="2"></app-list-item>
+          <ui-list-item label="Photos" level="2"></ui-list-item>
+          <ui-list-item label="Documents" level="2"></ui-list-item>
         </div>
-      </app-list-item>
+      </ui-list-item>
     </div>
-  </app-list-item>
-</app-list>`);
+  </ui-list-item>
+</ui-list>`);
 
-  featureCode = signal(`<app-list>
-  <app-list-item label="Item 1" divider></app-list-item>
-  <app-list-item label="Item 2"></app-list-item>
-</app-list>
+  featureCode = signal(`<ui-list>
+  <ui-list-item label="Item 1" divider></ui-list-item>
+  <ui-list-item label="Item 2"></ui-list-item>
+</ui-list>
 
-<app-list dense>
-  <app-list-item label="Compact 1"></app-list-item>
-  <app-list-item label="Compact 2"></app-list-item>
-</app-list>
+<ui-list dense>
+  <ui-list-item label="Compact 1"></ui-list-item>
+  <ui-list-item label="Compact 2"></ui-list-item>
+</ui-list>
 
-<app-list rounded elevated>
-  <app-list-item label="Styled Item"></app-list-item>
-</app-list>`);
+<ui-list rounded elevated>
+  <ui-list-item label="Styled Item"></ui-list-item>
+</ui-list>`);
 
-  contextMenuCode = signal(`<app-list>
-  <app-list-item label="File" context-menu>
+  contextMenuCode = signal(`<ui-list>
+  <ui-list-item label="File" context-menu>
     <app-context-menu slot="context">
       <app-context-menu-item label="New"></app-context-menu-item>
       <app-context-menu-item label="Open"></app-context-menu-item>
       <app-context-menu-item label="Close"></app-context-menu-item>
     </app-context-menu>
-  </app-list-item>
-</app-list>`);
+  </ui-list-item>
+</ui-list>`);
 
-  advancedMenuCode = signal(`<app-list>
-  <app-list-item label="Documents">
+  advancedMenuCode = signal(`<ui-list>
+  <ui-list-item label="Documents">
     <app-context-menu slot="context">
       <app-context-menu-item label="View">
         <app-context-menu-item label="As List"></app-context-menu-item>
@@ -134,64 +134,64 @@ export class DmSetListDemoComponent extends BaseDemoComponent {
         <app-context-menu-item label="Link"></app-context-menu-item>
       </app-context-menu-item>
     </app-context-menu>
-  </app-list-item>
-</app-list>`);
+  </ui-list-item>
+</ui-list>`);
 
-  groupingCode = signal(`<app-list grouped>
-  <app-list-group label="RECENT FILES">
-    <app-list-item label="Document.pdf"></app-list-item>
-    <app-list-item label="Presentation.pptx"></app-list-item>
-  </app-list-group>
-  <app-list-group label="ARCHIVED">
-    <app-list-item label="Report.xlsx"></app-list-item>
-  </app-list-group>
-</app-list>
+  groupingCode = signal(`<ui-list grouped>
+  <ui-list-group label="RECENT FILES">
+    <ui-list-item label="Document.pdf"></ui-list-item>
+    <ui-list-item label="Presentation.pptx"></ui-list-item>
+  </ui-list-group>
+  <ui-list-group label="ARCHIVED">
+    <ui-list-item label="Report.xlsx"></ui-list-item>
+  </ui-list-group>
+</ui-list>
 
-<app-list multiselectable>
-  <app-list-item label="Item 1"></app-list-item>
-  <app-list-item label="Item 2"></app-list-item>
-</app-list>`);
+<ui-list multiselectable>
+  <ui-list-item label="Item 1"></ui-list-item>
+  <ui-list-item label="Item 2"></ui-list-item>
+</ui-list>`);
 
-  selectionCode = signal(`<app-list selectable>
-  <app-list-item label="Option 1"></app-list-item>
-  <app-list-item label="Option 2"></app-list-item>
-  <app-list-item label="Option 3"></app-list-item>
-</app-list>
+  selectionCode = signal(`<ui-list selectable>
+  <ui-list-item label="Option 1"></ui-list-item>
+  <ui-list-item label="Option 2"></ui-list-item>
+  <ui-list-item label="Option 3"></ui-list-item>
+</ui-list>
 
-<app-list selectable multiselectable>
-  <app-list-item label="Task 1"></app-list-item>
-  <app-list-item label="Task 2"></app-list-item>
-</app-list>`);
+<ui-list selectable multiselectable>
+  <ui-list-item label="Task 1"></ui-list-item>
+  <ui-list-item label="Task 2"></ui-list-item>
+</ui-list>`);
 
-  checkboxCode = signal(`<app-list selectable>
-  <app-list-item label="Task 1" show-checkbox></app-list-item>
-  <app-list-item label="Task 2" show-checkbox></app-list-item>
-</app-list>
+  checkboxCode = signal(`<ui-list selectable>
+  <ui-list-item label="Task 1" show-checkbox></ui-list-item>
+  <ui-list-item label="Task 2" show-checkbox></ui-list-item>
+</ui-list>
 
-<app-list>
-  <app-list-item label="Inbox" badge="24" badge-color="danger"></app-list-item>
-  <app-list-item label="Important" badge="5" badge-color="warning"></app-list-item>
-</app-list>`);
+<ui-list>
+  <ui-list-item label="Inbox" badge="24" badge-color="danger"></ui-list-item>
+  <ui-list-item label="Important" badge="5" badge-color="warning"></ui-list-item>
+</ui-list>`);
 
-  tagsCode = signal(`<app-list>
-  <app-list-item label="Frontend Project">
+  tagsCode = signal(`<ui-list>
+  <ui-list-item label="Frontend Project">
     <div slot="tags">
       <app-tag>React</app-tag>
       <app-tag>TypeScript</app-tag>
     </div>
-  </app-list-item>
-</app-list>
+  </ui-list-item>
+</ui-list>
 
-<app-list>
-  <app-list-item label="Item with Pills">
+<ui-list>
+  <ui-list-item label="Item with Pills">
     <div slot="pills">
       <app-pill>Pending</app-pill>
       <app-pill>Review</app-pill>
     </div>
-  </app-list-item>
-</app-list>`);
+  </ui-list-item>
+</ui-list>`);
 
-  configCode = signal(`<app-list-item
+  configCode = signal(`<ui-list-item
   label="Project Alpha"
   sublabel="Due in 3 days"
   icon="fas fa-folder"
@@ -204,5 +204,5 @@ export class DmSetListDemoComponent extends BaseDemoComponent {
   color="primary"
   multiline
   value="item-1"
-></app-list-item>`);
+></ui-list-item>`);
 }
