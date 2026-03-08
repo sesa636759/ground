@@ -2,7 +2,7 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'ui-checkbox[ngModel], ui-checkbox[formControl], ui-checkbox[formControlName]',
+  selector: 'dm-checkbox[ngModel], dm-checkbox[formControl], dm-checkbox[formControlName]',
   standalone: true,
   providers: [
     {
@@ -47,3 +47,7 @@ export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
+
+
+
+

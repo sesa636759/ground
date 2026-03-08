@@ -319,3 +319,6 @@ export class HomeComponent {
     return descriptions[id] || 'Explore components in this category';
   }
 }
+
+
+

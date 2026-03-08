@@ -2,7 +2,7 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'ui-switch[ngModel], ui-switch[formControl], ui-switch[formControlName]',
+  selector: 'dm-switch[ngModel], dm-switch[formControl], dm-switch[formControlName]',
   standalone: true,
   providers: [
     {
@@ -50,3 +50,7 @@ export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
+
+
+
+
