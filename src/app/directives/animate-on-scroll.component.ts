@@ -9,7 +9,7 @@ import { AnimateOnScrollDirective, AnimationType } from './animate-on-scroll.dir
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div
-      appAnimateOnScroll
+      uiAnimateOnScroll
       [animation]="animationType"
       [delay]="delayValue"
       [duration]="durationValue"

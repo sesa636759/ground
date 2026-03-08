@@ -6,7 +6,7 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
-import { DmRadioGroupValueAccessorDirective } from '../../../directives/dm-radio-group-value-accessor.directive';
+import { DmRadioGroupValueAccessorDirective } from '../../../directives/radio-group-value-accessor.directive';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
@@ -36,6 +36,7 @@ export class DmSetRadioDemoComponent extends BaseDemoComponent {
     { id: 'layouts', title: 'Layouts', icon: '📐' },
     { id: 'sizes', title: 'Sizes', icon: '📏' },
     { id: 'states', title: 'States', icon: '🔄' },
+    { id: 'slotted-clearable', title: 'Slotted & Clearable', icon: '🧩' },
     { id: 'form-example', title: 'Form Example', icon: '📋' },
   ];
 
@@ -59,6 +60,11 @@ export class DmSetRadioDemoComponent extends BaseDemoComponent {
   paymentOptions = [
     { value: 'card', label: 'Credit Card', description: 'Visa, MasterCard' },
     { value: 'paypal', label: 'PayPal', description: 'Pay with PayPal' },
+  ];
+
+  clearableOptions = [
+    { value: 'active', label: 'Active Only' },
+    { value: 'archived', label: 'Archived Only' },
   ];
 
   // Form State
@@ -102,6 +108,16 @@ export class DmSetRadioDemoComponent extends BaseDemoComponent {
   name="shipping"
   required
   [options]="deliveryOptions"
+></ui-radio-group>`;
+
+  slottedClearableCode = `<ui-radio-group name="slots" label="Manual Composition">
+  <ui-radio value="1" label="Option 1"></ui-radio>
+  <ui-radio value="2" label="Option 2"></ui-radio>
+</ui-radio-group>
+
+<ui-radio-group 
+  allow-empty="true" 
+  [options]="clearableOptions"
 ></ui-radio-group>`;
 
   onSubmit() {

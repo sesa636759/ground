@@ -263,10 +263,10 @@ export const categoryNavItems: NavItem[] = [
         icon: 'layout-dashboard',
         iconLibrary: 'lucide',
       },
-      { id: 'empty-state-set', label: 'Empty State Set', icon: 'inbox', iconLibrary: 'lucide' },
+      { id: 'empty-state-set', label: 'Empty State', icon: 'inbox', iconLibrary: 'lucide' },
       { id: 'pill', label: 'Pill', icon: 'pill', iconLibrary: 'lucide' },
-      { id: 'smart-stepper', label: 'Smart Stepper', icon: 'trending-up', iconLibrary: 'lucide' },
-      { id: 'stepper', label: 'Stepper', icon: 'footprints', iconLibrary: 'lucide' },
+      // { id: 'smart-stepper', label: 'Smart Stepper', icon: 'trending-up', iconLibrary: 'lucide' },
+      // { id: 'stepper', label: 'Stepper', icon: 'footprints', iconLibrary: 'lucide' },
       { id: 'stepper-set', label: 'Stepper Set', icon: 'list-ordered', iconLibrary: 'lucide' },
       { id: 'tags-input-set', label: 'Tags Input Set', icon: 'tags', iconLibrary: 'lucide' },
       {

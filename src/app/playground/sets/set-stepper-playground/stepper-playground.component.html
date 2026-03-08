@@ -31,21 +31,79 @@
           [options]="variantOptions"
         ></ui-dropdown>
       </div>
+      <div class="control-group">
+        <label>Color Scheme</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.colorScheme"
+          (ngModelChange)="updateConfig()"
+          [options]="colorOptions"
+        ></ui-dropdown>
+      </div>
     </div>
 
     <div class="control-section">
-      <h3>Options</h3>
+      <h3>Positioning</h3>
       <div class="control-group">
-        <label>Active Step</label>
+        <label>Label Position</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.labelPosition"
+          (ngModelChange)="updateConfig()"
+          [options]="labelPositionOptions"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Flow Type</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.flow"
+          (ngModelChange)="updateConfig()"
+          [options]="flowOptions"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Icon Library</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.iconLibrary"
+          (ngModelChange)="updateConfig()"
+          [options]="iconLibraryOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Limits</h3>
+      <div class="control-group">
+        <label>Active Step (0-based)</label>
         <ui-input
           type="number"
           min="0"
-          max="3"
+          [max]="steps.length - 1"
           [(ngModel)]="pgConfig.activeStep"
           (ngModelChange)="updateConfig()"
         ></ui-input>
       </div>
-      <div class="checkbox-grid" style="margin-top: 16px">
+      <div class="control-group">
+        <label>Steps Per Page (0=all)</label>
+        <ui-input
+          type="number"
+          min="0"
+          [(ngModel)]="pgConfig.stepsPerPage"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Max Visible Steps</label>
+        <ui-input
+          type="number"
+          min="1"
+          [(ngModel)]="pgConfig.maxVisibleSteps"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Toggles</h3>
+      <div class="checkbox-grid">
         <label class="checkbox-item">
           <ui-checkbox
             [(ngModel)]="pgConfig.showNumbers"
@@ -67,6 +125,48 @@
           ></ui-checkbox>
           Progress Dot
         </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showControls"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Show Controls
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.animated"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Animated
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showProgress"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Show Progress
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.compact"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Compact
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.scrollable"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Scrollable
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.clickable"
+            (ngModelChange)="updateConfig()"
+          ></ui-checkbox>
+          Clickable
+        </label>
       </div>
     </div>
   </div>
@@ -79,23 +179,40 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding: 2rem;
     "
   >
     <ui-stepper
       [attr.orientation]="pgConfig.orientation"
       [attr.size]="pgConfig.size"
       [attr.variant]="pgConfig.variant"
+      [attr.color-scheme]="pgConfig.colorScheme"
       [attr.active-step]="pgConfig.activeStep"
+      [attr.label-position]="pgConfig.labelPosition"
+      [attr.flow]="pgConfig.flow"
       [attr.show-numbers]="pgConfig.showNumbers ? '' : null"
       [attr.show-descriptions]="pgConfig.showDescriptions ? '' : null"
+      [attr.show-controls]="pgConfig.showControls ? '' : null"
       [attr.progress-dot]="pgConfig.progressDot ? '' : null"
+      [attr.animated]="pgConfig.animated ? '' : null"
+      [attr.show-progress]="pgConfig.showProgress ? '' : null"
+      [attr.compact]="pgConfig.compact ? '' : null"
+      [attr.scrollable]="pgConfig.scrollable ? '' : null"
+      [attr.clickable]="pgConfig.clickable ? '' : null"
+      [attr.steps-per-page]="pgConfig.stepsPerPage"
+      [attr.max-visible-steps]="pgConfig.maxVisibleSteps"
+      [attr.icon-library]="pgConfig.iconLibrary"
       [steps]="stepsJson"
       (stepperChange)="onStepChange($event)"
+      (stepperPrevious)="onEvent($event, 'stepperPrevious')"
+      (stepperNext)="onEvent($event, 'stepperNext')"
+      (stepperFinish)="onEvent($event, 'stepperFinish')"
+      (stepperFail)="onEvent($event, 'stepperFail')"
     ></ui-stepper>
 
-    <div class="step-content-preview">
-      <h3>{{ steps[pgConfig.activeStep].label }}</h3>
-      <p>{{ steps[pgConfig.activeStep].description }}</p>
+    <div class="step-content-preview" style="margin-top: 2rem; text-align: center">
+      <h3>{{ steps[pgConfig.activeStep]?.label }}</h3>
+      <p>{{ steps[pgConfig.activeStep]?.description }}</p>
     </div>
   </div>
 

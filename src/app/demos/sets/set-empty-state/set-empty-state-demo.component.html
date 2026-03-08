@@ -19,73 +19,77 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Standard Types -->
+        <!-- All Types -->
         <pg-example-section
-          id="types"
-          title="Standard Types"
-          description="Pre-configured empty states for common scenarios"
+          id="all-types"
+          title="📋 All Types"
+          description="Pre-configured types with default content and icons"
           [code]="typesCode()"
           style="margin-top: 0"
         >
           <div class="demo-grid col-3">
             <div class="demo-card">
-              <h4>No Data</h4>
               <ui-empty-state
                 type="no-data"
-                label="No Data Available"
-                message="There is no data to display."
+                variant="outlined"
                 primary-action="Add Data"
                 primary-action-icon="fas fa-plus"
+                size="small"
               ></ui-empty-state>
             </div>
             <div class="demo-card">
-              <h4>No Results</h4>
               <ui-empty-state
                 type="no-results"
-                label="No Results Found"
-                message="We couldn't find any results matching your search."
+                variant="outlined"
                 primary-action="Clear Filters"
                 primary-action-icon="fas fa-times"
+                size="small"
               ></ui-empty-state>
             </div>
             <div class="demo-card">
-              <h4>Error</h4>
               <ui-empty-state
                 type="error"
-                label="Something Went Wrong"
-                message="An error occurred while loading the data."
+                variant="outlined"
                 primary-action="Try Again"
                 primary-action-icon="fas fa-redo"
+                size="small"
               ></ui-empty-state>
             </div>
             <div class="demo-card">
-              <h4>404 Page Not Found</h4>
               <ui-empty-state
                 type="404"
-                label="Page Not Found"
-                message="The page you are looking for doesn't exist."
+                variant="outlined"
                 primary-action="Go Home"
                 primary-action-icon="fas fa-home"
+                show-back-button
+                size="small"
               ></ui-empty-state>
             </div>
             <div class="demo-card">
-              <h4>Coming Soon</h4>
-              <ui-empty-state
-                type="coming-soon"
-                label="Coming Soon"
-                message="This feature is under development."
-                secondary-action="Notify Me"
-                secondary-action-icon="fas fa-bell"
-              ></ui-empty-state>
-            </div>
-            <div class="demo-card">
-              <h4>Empty List</h4>
               <ui-empty-state
                 type="empty"
-                label="Nothing Here Yet"
-                message="Get started by adding your first item."
-                primary-action="Create"
-                primary-action-icon="fas fa-star"
+                variant="outlined"
+                primary-action="Create First Item"
+                primary-action-icon="fas fa-plus-circle"
+                size="small"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <ui-empty-state
+                type="coming-soon"
+                variant="outlined"
+                secondary-action="Notify Me"
+                secondary-action-icon="fas fa-bell"
+                size="small"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <ui-empty-state
+                type="maintenance"
+                variant="outlined"
+                primary-action="Refresh"
+                primary-action-icon="fas fa-sync"
+                size="small"
               ></ui-empty-state>
             </div>
           </div>
@@ -98,7 +102,7 @@
           description="Different styling options for empty states"
           [code]="variantsCode()"
         >
-          <div class="demo-grid col-4">
+          <div class="demo-grid col-3">
             <div class="demo-card">
               <h4>Default</h4>
               <ui-empty-state
@@ -130,6 +134,25 @@
               <h4>Minimal</h4>
               <ui-empty-state
                 variant="minimal"
+                label="No Data Available"
+                message="There is no data to display."
+                primary-action="Add Data"
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <h4>Glass</h4>
+              <ui-empty-state
+                variant="glass"
+                label="No Data Available"
+                message="There is no data to display."
+                primary-action="Add Data"
+                animated
+              ></ui-empty-state>
+            </div>
+            <div class="demo-card">
+              <h4>Minimalistic</h4>
+              <ui-empty-state
+                variant="minimalistic"
                 label="No Data Available"
                 message="There is no data to display."
                 primary-action="Add Data"
@@ -214,6 +237,117 @@
           </div>
         </pg-example-section>
 
+        <!-- Premium Showcase -->
+        <pg-example-section
+          id="showcase"
+          title="✨ Premium Showcase"
+          description="Highly interactive and specialized empty state patterns"
+          [code]="showcaseCode()"
+        >
+          <div class="demo-grid col-2">
+            <!-- Glassmorphism -->
+            <div
+              class="demo-card preview-box glass-bg"
+              style="
+                min-height: 400px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border-radius: 16px;
+              "
+            >
+              <ui-empty-state
+                variant="glass"
+                label="Glassmorphism"
+                message="Premium frosted glass effect with illustration support."
+                illustration="glass-demo"
+                primary-action="Explore"
+                secondary-action="Dismiss"
+              ></ui-empty-state>
+            </div>
+
+            <!-- Compact Sidebar Mode -->
+            <div
+              class="demo-card"
+              style="
+                max-width: 320px;
+                margin: 0 auto;
+                background: var(--surface-color);
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                height: 100%;
+              "
+            >
+              <h4>📱 Compact Sidebar Mode</h4>
+              <ui-empty-state
+                type="no-data"
+                compact
+                label="No Activity"
+                message="New activities will appear here in real-time."
+                primary-action="Refresh"
+                size="small"
+                variant="minimal"
+              ></ui-empty-state>
+            </div>
+
+            <!-- Custom Illustration (URL) -->
+            <div class="demo-card" style="display: flex; flex-direction: column; height: 100%">
+              <h4>🖼️ Custom SVG Illustration</h4>
+              <ui-empty-state
+                label="Data Syncing"
+                message="Please wait while we sync your assets across all devices."
+                illustration="https://img.icons8.com/illustrations/100/000000/cloud-sync.png"
+                size="medium"
+                variant="filled"
+                rounded
+              ></ui-empty-state>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Suggestion Items -->
+        <pg-example-section
+          id="suggestions"
+          title="Suggestion Items"
+          description="Empty state with actionable suggestion items"
+          [code]="suggestionsCode()"
+        >
+          <div class="demo-card">
+            <h4>Search Results with Suggestions</h4>
+            <ui-empty-state
+              type="no-results"
+              label="No Results Found"
+              message="We couldn't find any results matching your search."
+              primary-action="Clear Filters"
+              items-title="Try these suggestions:"
+              [items]="suggestionItems"
+              (itemClick)="onItemClick($event)"
+            ></ui-empty-state>
+          </div>
+        </pg-example-section>
+
+        <!-- Multiple Actions -->
+        <pg-example-section
+          id="actions"
+          title="Multiple Actions"
+          description="Empty state with primary and secondary action buttons"
+          [code]="actionsCode()"
+        >
+          <div class="demo-card">
+            <h4>No Projects Found</h4>
+            <ui-empty-state
+              label="No Projects Found"
+              message="You don't have any projects yet. Create your first project or import an existing one."
+              primary-action-icon="fas fa-plus"
+              [actions]="customActions"
+              (actionClick)="handleAction($event)"
+              variant="outlined"
+              rounded
+            ></ui-empty-state>
+          </div>
+        </pg-example-section>
+
         <!-- Custom Images -->
         <pg-example-section
           id="images"
@@ -240,44 +374,6 @@
                 animated
               ></ui-empty-state>
             </div>
-          </div>
-        </pg-example-section>
-
-        <!-- Suggestion Items -->
-        <pg-example-section
-          id="suggestions"
-          title="Suggestion Items"
-          description="Empty state with actionable suggestion items"
-          [code]="suggestionsCode()"
-        >
-          <div class="demo-card">
-            <h4>Search Results with Suggestions</h4>
-            <ui-empty-state
-              type="no-results"
-              label="No Results Found"
-              message="We couldn't find any results matching your search."
-              primary-action="Clear Filters"
-            ></ui-empty-state>
-          </div>
-        </pg-example-section>
-
-        <!-- Multiple Actions -->
-        <pg-example-section
-          id="actions"
-          title="Multiple Actions"
-          description="Empty state with primary and secondary action buttons"
-          [code]="actionsCode()"
-        >
-          <div class="demo-card">
-            <h4>No Projects Found</h4>
-            <ui-empty-state
-              label="No Projects Found"
-              message="You don't have any projects yet."
-              primary-action="Create New Project"
-              primary-action-icon="fas fa-plus"
-              secondary-action="Import Project"
-              secondary-action-icon="fas fa-file-import"
-            ></ui-empty-state>
           </div>
         </pg-example-section>
 
@@ -336,14 +432,41 @@
           [code]="premiumCode()"
         >
           <div class="demo-grid col-2">
+            <div class="demo-card" style="grid-column: 1 / -1; text-align: center">
+              <h4>⚡ Action Loading & Celebration</h4>
+              <p style="font-size: 0.85rem; color: #666; margin-bottom: 16px">
+                Click the button to trigger a loading state followed by a celebration effect.
+              </p>
+              <div
+                [style.background]="celebrationActive ? 'rgba(16, 185, 129, 0.1)' : 'transparent'"
+                style="
+                  border-radius: 12px;
+                  transition: all 0.3s ease;
+                  padding: 20px;
+                  border: 1px dashed #e2e8f0;
+                "
+              >
+                <ui-empty-state
+                  type="coming-soon"
+                  label="Beta Access"
+                  message="Join the waitlist for exclusive features."
+                  primary-action="Join Waitlist"
+                  primary-action-icon="fas fa-paper-plane"
+                  [loading]="isJoining"
+                  [confetti]="celebrationActive"
+                  (actionClick)="onJoinWaitlist()"
+                  rounded
+                ></ui-empty-state>
+              </div>
+            </div>
             <div class="demo-card">
-              <h4>Glassmorphism Effect</h4>
+              <h4>Glass Variant</h4>
               <ui-empty-state
                 label="Beta Access"
                 message="Join the waitlist for exclusive features."
                 primary-action="Join Waitlist"
                 primary-action-icon="fas fa-star"
-                glass-morphism
+                variant="glass"
                 animated
               ></ui-empty-state>
             </div>
@@ -364,6 +487,7 @@
                 primary-action="Continue"
                 primary-action-icon="fas fa-check"
                 animated
+                confetti
               ></ui-empty-state>
             </div>
             <div class="demo-card">

@@ -17,10 +17,24 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent {
     orientation: 'horizontal',
     size: 'md',
     variant: 'default',
-    activeStep: 1,
+    colorScheme: 'primary',
+    activeStep: 0,
     showNumbers: true,
     showDescriptions: true,
+    showControls: false,
     progressDot: false,
+    flow: 'linear',
+    labelPosition: 'right',
+    animated: true,
+    showProgress: false,
+    compact: false,
+    scrollable: true,
+    clickable: true,
+    stepsPerPage: 0,
+    maxVisibleSteps: 5,
+    iconLibrary: 'default',
+    keyboardNavigation: true,
+    responsive: true,
   };
 
   orientationOptions = [
@@ -36,7 +50,40 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent {
 
   variantOptions = [
     { label: 'Default', value: 'default' },
-    { label: 'Modern', value: 'modern' },
+    { label: 'Navigation', value: 'navigation' },
+    { label: 'Panel', value: 'panel' },
+    { label: 'Inline', value: 'inline' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Filled', value: 'filled' },
+    { label: 'Minimal', value: 'minimal' },
+    { label: 'Snack', value: 'snack' },
+  ];
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Danger', value: 'danger' },
+  ];
+
+  labelPositionOptions = [
+    { label: 'Right', value: 'right' },
+    { label: 'Left', value: 'left' },
+    { label: 'Top', value: 'top' },
+    { label: 'Bottom', value: 'bottom' },
+  ];
+
+  flowOptions = [
+    { label: 'Linear', value: 'linear' },
+    { label: 'Non-Linear', value: 'non-linear' },
+  ];
+
+  iconLibraryOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Schneider', value: 'se' },
+    { label: 'FontAwesome', value: 'fontawesome' },
+    { label: 'Lucide', value: 'lucide' },
+    { label: 'Bootstrap', value: 'bootstrap' },
   ];
 
   steps = [
@@ -54,16 +101,33 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = '<ui-stepper\n';
+    let code = '<app-stepper-container\n';
     code += `  orientation="${this.pgConfig.orientation}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
+    code += `  color-scheme="${this.pgConfig.colorScheme}"\n`;
     code += `  [active-step]="${this.pgConfig.activeStep}"\n`;
+    code += `  label-position="${this.pgConfig.labelPosition}"\n`;
+    code += `  flow="${this.pgConfig.flow}"\n`;
+
     if (!this.pgConfig.showNumbers) code += `  [show-numbers]="false"\n`;
     if (this.pgConfig.showDescriptions) code += `  show-descriptions\n`;
+    if (this.pgConfig.showControls) code += `  show-controls\n`;
     if (this.pgConfig.progressDot) code += `  progress-dot\n`;
+    if (!this.pgConfig.animated) code += `  [animated]="false"\n`;
+    if (this.pgConfig.showProgress) code += `  show-progress\n`;
+    if (this.pgConfig.compact) code += `  compact\n`;
+    if (!this.pgConfig.scrollable) code += `  [scrollable]="false"\n`;
+    if (this.pgConfig.clickable) code += `  clickable\n`;
+
+    if (this.pgConfig.stepsPerPage > 0)
+      code += `  [steps-per-page]="${this.pgConfig.stepsPerPage}"\n`;
+    if (this.pgConfig.maxVisibleSteps !== 5)
+      code += `  [max-visible-steps]="${this.pgConfig.maxVisibleSteps}"\n`;
+
+    code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
     code += `  [steps]="steps"\n`;
-    code += '></ui-stepper>';
+    code += '></app-stepper-container>';
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -75,18 +139,33 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 
+  onEvent(event: any, name: string) {
+    this.logEvent(`Event: ${name} - Detail: ${JSON.stringify(event.detail || {})}`);
+  }
+
   getDefaultConfig() {
     return {
       orientation: 'horizontal',
       size: 'md',
       variant: 'default',
-      activeStep: 1,
+      colorScheme: 'primary',
+      activeStep: 0,
       showNumbers: true,
       showDescriptions: true,
+      showControls: false,
       progressDot: false,
+      flow: 'linear',
+      labelPosition: 'right',
+      animated: true,
+      showProgress: false,
+      compact: false,
+      scrollable: true,
+      clickable: true,
+      stepsPerPage: 0,
+      maxVisibleSteps: 5,
+      iconLibrary: 'default',
+      keyboardNavigation: true,
+      responsive: true,
     };
   }
 }
-
-
-
