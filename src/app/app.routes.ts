@@ -36,11 +36,23 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/showroom/showroom.component').then((m) => m.ShowroomComponent),
   },
+  {
+    path: 'installation',
+    loadComponent: () =>
+      import('./pages/installation/installation.component').then((m) => m.InstallationComponent),
+  },
 
   {
     path: 'documentation',
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
+  },
+  {
+    path: 'components-guide',
+    loadComponent: () =>
+      import('./pages/components-guide/components-guide.component').then(
+        (m) => m.ComponentsGuideComponent,
+      ),
   },
   {
     path: 'documentation/:section',
@@ -333,177 +345,6 @@ export const routes: Routes = [
       },
 
       {
-        path: 'button-toggle-set',
-        loadComponent: () =>
-          import('./demos/sets/set-button-toggle/set-button-toggle-demo.component').then(
-            (m) => m.DmSetButtonToggleDemoComponent,
-          ),
-      },
-      {
-        path: 'checkbox-set',
-        loadComponent: () =>
-          import('./demos/sets/set-checkbox/set-checkbox-demo.component').then(
-            (m) => m.DmSetCheckboxDemoComponent,
-          ),
-      },
-      {
-        path: 'input-set',
-        loadComponent: () =>
-          import('./demos/sets/set-input/set-input-demo.component').then(
-            (m) => m.DmSetInputDemoComponent,
-          ),
-      },
-      {
-        path: 'radio',
-        loadComponent: () =>
-          import('./demos/sets/set-radio/set-radio-demo.component').then(
-            (m) => m.DmSetRadioDemoComponent,
-          ),
-      },
-      {
-        path: 'card-set',
-        loadComponent: () =>
-          import('./demos/sets/set-card/set-card-demo.component').then(
-            (m) => m.DmSetCardDemoComponent,
-          ),
-      },
-      {
-        path: 'context-menu-set',
-        loadComponent: () =>
-          import('./demos/sets/set-context-menu/set-context-menu-demo.component').then(
-            (m) => m.DmSetContextMenuDemoComponent,
-          ),
-      },
-      {
-        path: 'tree-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tree/set-tree-demo.component').then(
-            (m) => m.DmSetTreeDemoComponent,
-          ),
-      },
-      {
-        path: 'tabs-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tabs/set-tabs-demo.component').then(
-            (m) => m.DmSetTabsDemoComponent,
-          ),
-      },
-      {
-        path: 'resizable-panel-set',
-        loadComponent: () =>
-          import('./demos/sets/set-resizable-panel/set-resizable-panel-demo.component').then(
-            (m) => m.DmSetResizablePanelDemoComponent,
-          ),
-      },
-      {
-        path: 'splitter-set',
-        loadComponent: () =>
-          import('./demos/sets/set-splitter/set-splitter-demo.component').then(
-            (m) => m.DmSetSplitterDemoComponent,
-          ),
-      },
-      {
-        path: 'scroll-top-set',
-        loadComponent: () =>
-          import('./demos/sets/set-scroll-top/set-scroll-top-demo.component').then(
-            (m) => m.DmSetScrollTopDemoComponent,
-          ),
-      },
-      {
-        path: 'modern-sidebar-set',
-        loadComponent: () =>
-          import('./demos/sets/set-modern-sidebar/set-modern-sidebar-demo.component').then(
-            (m) => m.DmSetModernSidebarDemoComponent,
-          ),
-      },
-      {
-        path: 'anchor-set',
-        loadComponent: () =>
-          import('./demos/sets/set-anchor/set-anchor-demo.component').then(
-            (m) => m.DmSetAnchorDemoComponent,
-          ),
-      },
-      {
-        path: 'tooltip-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tooltip/set-tooltip-demo.component').then(
-            (m) => m.DmSetTooltipDemoComponent,
-          ),
-      },
-      {
-        path: 'timeline-set',
-        loadComponent: () =>
-          import('./demos/sets/set-timeline/set-timeline-demo.component').then(
-            (m) => m.DmSetTimelineDemoComponent,
-          ),
-      },
-      {
-        path: 'progress-set',
-        loadComponent: () =>
-          import('./demos/sets/set-progress/set-progress-demo.component').then(
-            (m) => m.DmSetProgressDemoComponent,
-          ),
-      },
-      {
-        path: 'toggle-set',
-        loadComponent: () =>
-          import('./demos/sets/set-toggle/set-toggle-demo.component').then(
-            (m) => m.DmSetToggleDemoComponent,
-          ),
-      },
-
-      {
-        path: 'list-set',
-        loadComponent: () =>
-          import('./demos/sets/set-list/set-list-demo.component').then(
-            (m) => m.DmSetListDemoComponent,
-          ),
-      },
-      {
-        path: 'empty-state-set',
-        loadComponent: () =>
-          import('./demos/sets/set-empty-state/set-empty-state-demo.component').then(
-            (m) => m.DmSetEmptyStateDemoComponent,
-          ),
-      },
-      {
-        path: 'avatar-set',
-        loadComponent: () =>
-          import('./demos/sets/set-avatar/set-avatar-demo.component').then(
-            (m) => m.DmSetAvatarDemoComponent,
-          ),
-      },
-      {
-        path: 'carousel-set',
-        loadComponent: () =>
-          import('./demos/sets/set-carousel/set-carousel-demo.component').then(
-            (m) => m.DmSetCarouselDemoComponent,
-          ),
-      },
-      {
-        path: 'stepper-set',
-        loadComponent: () =>
-          import('./demos/sets/set-stepper/set-stepper-demo.component').then(
-            (m) => m.DmSetStepperDemoComponent,
-          ),
-      },
-      {
-        path: 'otp-input-set',
-        loadComponent: () =>
-          import('./demos/sets/set-otp-input/set-otp-input-demo.component').then(
-            (m) => m.DmSetOtpInputDemoComponent,
-          ),
-      },
-
-      {
-        path: 'dashboard-set',
-        loadComponent: () =>
-          import('./demos/sets/set-dashboard/set-dashboard-demo.component').then(
-            (m) => m.DmSetDashboardDemoComponent,
-          ),
-      },
-
-      {
         path: 'tabs',
         loadComponent: () =>
           import('./demos/common/tabs/tabs-demo.component').then((m) => m.DmTabsDemoComponent),
@@ -608,13 +449,13 @@ export const routes: Routes = [
             (m) => m.DmDropdownDemoComponent,
           ),
       },
-      {
-        path: 'stepper',
-        loadComponent: () =>
-          import('./demos/common/stepper/stepper-demo.component').then(
-            (m) => m.DmStepperDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'stepper',
+      //   loadComponent: () =>
+      //     import('./demos/common/stepper/stepper-demo.component').then(
+      //       (m) => m.DmStepperDemoComponent,
+      //     ),
+      // },
 
       {
         path: 'pill',
@@ -739,13 +580,13 @@ export const routes: Routes = [
           import('./demos/common/timer/timer-demo.component').then((m) => m.DmTimerDemoComponent),
       },
 
-      {
-        path: 'smart-stepper',
-        loadComponent: () =>
-          import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
-            (m) => m.DmSmartStepperDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'smart-stepper',
+      //   loadComponent: () =>
+      //     import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
+      //       (m) => m.DmSmartStepperDemoComponent,
+      //     ),
+      // },
       {
         path: 'scroll-top',
         loadComponent: () =>

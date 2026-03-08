@@ -48,37 +48,37 @@ export class DmSetMasonryDemoComponent extends BaseDemoComponent {
   }));
 
   // Code examples
-  masonryCode = signal(`<app-masonry
+  masonryCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="4"
   gap="16"
   [items]="items"
-></app-masonry>`);
+></ui-masonry>`);
 
-  gridCode = signal(`<app-masonry
+  gridCode = signal(`<ui-masonry
   layout-type="grid"
   columns="4"
   gap="16"
   [items]="productItems"
-></app-masonry>`);
+></ui-masonry>`);
 
-  columnsCode = signal(`<app-masonry
+  columnsCode = signal(`<ui-masonry
   layout-type="columns"
   columns="3"
   gap="20"
   [items]="newsItems"
-></app-masonry>`);
+></ui-masonry>`);
 
-  responsiveCode = signal(`<app-masonry
+  responsiveCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="3"
   gap="16"
   responsive="true"
   [breakpoints]="{ 640: 2, 768: 3, 1024: 4, 1280: 5 }"
   [items]="items"
-></app-masonry>`);
+></ui-masonry>`);
 
-  filteringCode = signal(`<app-masonry
+  filteringCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="3"
   gap="16"
@@ -86,9 +86,9 @@ export class DmSetMasonryDemoComponent extends BaseDemoComponent {
   [filterOptions]="filterOptions"
   [items]="items"
   (filterChange)="onFilterChange($event)"
-></app-masonry>`);
+></ui-masonry>`);
 
-  selectionCode = signal(`<app-masonry
+  selectionCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="3"
   gap="16"
@@ -97,9 +97,9 @@ export class DmSetMasonryDemoComponent extends BaseDemoComponent {
   show-batch-actions="true"
   [items]="items"
   (selectionChange)="onSelectionChange($event)"
-></app-masonry>`);
+></ui-masonry>`);
 
-  lightboxCode = signal(`<app-masonry
+  lightboxCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="4"
   gap="12"
@@ -107,17 +107,17 @@ export class DmSetMasonryDemoComponent extends BaseDemoComponent {
   lightbox-animation="zoom"
   [items]="galleryItems"
   (itemClick)="onItemClick($event)"
-></app-masonry>`);
+></ui-masonry>`);
 
-  skeletonCode = signal(`<app-masonry
+  skeletonCode = signal(`<ui-masonry
   layout-type="masonry"
   columns="3"
   gap="16"
   [loading]="isLoading"
   [skeletonCount]="12"
-></app-masonry>`);
+></ui-masonry>`);
 
-  playgroundCode = signal(`<app-masonry
+  playgroundCode = signal(`<ui-masonry
   layout-type="masonry"
   [columns]="columns"
   [gap]="gap"
@@ -128,5 +128,5 @@ export class DmSetMasonryDemoComponent extends BaseDemoComponent {
   [items]="items"
   [breakpoints]="breakpoints"
   (itemClick)="onItemClick($event)"
-></app-masonry>`);
+></ui-masonry>`);
 }

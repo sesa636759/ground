@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AnimateOnScrollDirective, AnimationType } from './animate-on-scroll.directive';
 
 @Component({
-  selector: 'app-animate-on-scroll',
+  selector: 'ui-animate-on-scroll',
   standalone: true,
   imports: [CommonModule, AnimateOnScrollDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div
-      appAnimateOnScroll
+      uiAnimateOnScroll
       [animation]="animationType"
       [delay]="delayValue"
       [duration]="durationValue"
@@ -50,7 +50,3 @@ export class AnimateOnScrollComponent implements OnInit {
     this.onceValue = typeof this.once === 'string' ? this.once === 'true' : this.once;
   }
 }
-
-
-
-

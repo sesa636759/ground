@@ -30,31 +30,31 @@
             <div class="demo-grid-3">
               <div class="demo-card">
                 <h4>Text Variant (Default)</h4>
-                <app-list variant="text">
-                  <app-list-item label="Home" icon="fas fa-home"></app-list-item>
-                  <app-list-item label="Dashboard" icon="fas fa-chart-bar"></app-list-item>
-                  <app-list-item label="Settings" icon="fas fa-cog"></app-list-item>
-                  <app-list-item label="Profile" icon="fas fa-user"></app-list-item>
-                </app-list>
+                <ui-list variant="text">
+                  <ui-list-item label="Home" icon="fas fa-home"></ui-list-item>
+                  <ui-list-item label="Dashboard" icon="fas fa-chart-bar"></ui-list-item>
+                  <ui-list-item label="Settings" icon="fas fa-cog"></ui-list-item>
+                  <ui-list-item label="Profile" icon="fas fa-user"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Filled Variant</h4>
-                <app-list variant="filled" color="primary">
-                  <app-list-item label="Inbox" icon="fas fa-inbox"></app-list-item>
-                  <app-list-item label="Sent" icon="fas fa-paper-plane"></app-list-item>
-                  <app-list-item label="Drafts" icon="fas fa-pencil-alt"></app-list-item>
-                  <app-list-item label="Trash" icon="fas fa-trash"></app-list-item>
-                </app-list>
+                <ui-list variant="filled" color="primary">
+                  <ui-list-item label="Inbox" icon="fas fa-inbox"></ui-list-item>
+                  <ui-list-item label="Sent" icon="fas fa-paper-plane"></ui-list-item>
+                  <ui-list-item label="Drafts" icon="fas fa-pencil-alt"></ui-list-item>
+                  <ui-list-item label="Trash" icon="fas fa-trash"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Outlined Variant</h4>
-                <app-list variant="outlined" color="success">
-                  <app-list-item label="Active Projects" icon="fas fa-folder"></app-list-item>
-                  <app-list-item label="Completed" icon="fas fa-check-circle"></app-list-item>
-                  <app-list-item label="Archived" icon="fas fa-archive"></app-list-item>
-                </app-list>
+                <ui-list variant="outlined" color="success">
+                  <ui-list-item label="Active Projects" icon="fas fa-folder"></ui-list-item>
+                  <ui-list-item label="Completed" icon="fas fa-check-circle"></ui-list-item>
+                  <ui-list-item label="Archived" icon="fas fa-archive"></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -74,11 +74,11 @@
               ) {
                 <div class="demo-card">
                   <h4>{{ color | titlecase }}</h4>
-                  <app-list [attr.color]="color" variant="filled">
-                    <app-list-item label="Item 1"></app-list-item>
-                    <app-list-item label="Item 2"></app-list-item>
-                    <app-list-item label="Item 3"></app-list-item>
-                  </app-list>
+                  <ui-list [attr.color]="color" variant="filled">
+                    <ui-list-item label="Item 1"></ui-list-item>
+                    <ui-list-item label="Item 2"></ui-list-item>
+                    <ui-list-item label="Item 3"></ui-list-item>
+                  </ui-list>
                 </div>
               }
             </div>
@@ -96,11 +96,11 @@
               @for (size of ['small', 'medium', 'large']; track size) {
                 <div class="demo-card">
                   <h4>{{ size | titlecase }} Size</h4>
-                  <app-list [attr.size]="size" variant="filled" color="primary">
-                    <app-list-item label="Item 1"></app-list-item>
-                    <app-list-item label="Item 2"></app-list-item>
-                    <app-list-item label="Item 3"></app-list-item>
-                  </app-list>
+                  <ui-list [attr.size]="size" variant="filled" color="primary">
+                    <ui-list-item label="Item 1"></ui-list-item>
+                    <ui-list-item label="Item 2"></ui-list-item>
+                    <ui-list-item label="Item 3"></ui-list-item>
+                  </ui-list>
                 </div>
               }
             </div>
@@ -117,11 +117,11 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>File System Structure</h4>
-                <app-list variant="soft">
-                  <app-list-item label="Documents" icon="fas fa-folder" collapsible expanded>
+                <ui-list variant="soft">
+                  <ui-list-item label="Documents" icon="fas fa-folder" collapsible expanded>
                     <div slot="children">
-                      <app-list-item label="Work" icon="fas fa-briefcase" level="1"></app-list-item>
-                      <app-list-item
+                      <ui-list-item label="Work" icon="fas fa-briefcase" level="1"></ui-list-item>
+                      <ui-list-item
                         label="Personal"
                         icon="fas fa-user"
                         level="1"
@@ -129,51 +129,47 @@
                         expanded
                       >
                         <div slot="children">
-                          <app-list-item
+                          <ui-list-item
                             label="Photos"
                             icon="fas fa-images"
                             level="2"
-                          ></app-list-item>
-                          <app-list-item
+                          ></ui-list-item>
+                          <ui-list-item
                             label="Receipts"
                             icon="fas fa-file-invoice"
                             level="2"
-                          ></app-list-item>
+                          ></ui-list-item>
                         </div>
-                      </app-list-item>
+                      </ui-list-item>
                     </div>
-                  </app-list-item>
-                  <app-list-item label="Downloads" icon="fas fa-download"></app-list-item>
-                  <app-list-item label="Settings" icon="fas fa-cog"></app-list-item>
-                </app-list>
+                  </ui-list-item>
+                  <ui-list-item label="Downloads" icon="fas fa-download"></ui-list-item>
+                  <ui-list-item label="Settings" icon="fas fa-cog"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Navigation Menu</h4>
-                <app-list variant="soft">
-                  <app-list-item label="Dashboard" icon="fas fa-home"></app-list-item>
-                  <app-list-item label="Products" icon="fas fa-box" collapsible expanded>
+                <ui-list variant="soft">
+                  <ui-list-item label="Dashboard" icon="fas fa-home"></ui-list-item>
+                  <ui-list-item label="Products" icon="fas fa-box" collapsible expanded>
                     <div slot="children">
-                      <app-list-item
+                      <ui-list-item
                         label="All Products"
                         icon="fas fa-list"
                         level="1"
-                      ></app-list-item>
-                      <app-list-item
-                        label="Categories"
-                        icon="fas fa-tags"
-                        level="1"
-                      ></app-list-item>
-                      <app-list-item
+                      ></ui-list-item>
+                      <ui-list-item label="Categories" icon="fas fa-tags" level="1"></ui-list-item>
+                      <ui-list-item
                         label="Add Product"
                         icon="fas fa-plus"
                         level="1"
                         color="success"
-                      ></app-list-item>
+                      ></ui-list-item>
                     </div>
-                  </app-list-item>
-                  <app-list-item label="Users" icon="fas fa-users"></app-list-item>
-                </app-list>
+                  </ui-list-item>
+                  <ui-list-item label="Users" icon="fas fa-users"></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -189,42 +185,42 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>With Dividers</h4>
-                <app-list variant="text">
-                  <app-list-item label="Item 1"></app-list-item>
-                  <app-list-item label="Item 2" divider></app-list-item>
-                  <app-list-item label="Item 3"></app-list-item>
-                  <app-list-item label="Item 4" divider></app-list-item>
-                </app-list>
+                <ui-list variant="text">
+                  <ui-list-item label="Item 1"></ui-list-item>
+                  <ui-list-item label="Item 2" divider></ui-list-item>
+                  <ui-list-item label="Item 3"></ui-list-item>
+                  <ui-list-item label="Item 4" divider></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Dense Mode</h4>
-                <app-list variant="filled" color="secondary" dense>
-                  <app-list-item label="Compact 1"></app-list-item>
-                  <app-list-item label="Compact 2"></app-list-item>
-                  <app-list-item label="Compact 3"></app-list-item>
-                  <app-list-item label="Compact 4"></app-list-item>
-                  <app-list-item label="Compact 5"></app-list-item>
-                </app-list>
+                <ui-list variant="filled" color="secondary" dense>
+                  <ui-list-item label="Compact 1"></ui-list-item>
+                  <ui-list-item label="Compact 2"></ui-list-item>
+                  <ui-list-item label="Compact 3"></ui-list-item>
+                  <ui-list-item label="Compact 4"></ui-list-item>
+                  <ui-list-item label="Compact 5"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Disabled Items</h4>
-                <app-list variant="soft" color="warning">
-                  <app-list-item label="Active Item"></app-list-item>
-                  <app-list-item label="Disabled Item" disabled></app-list-item>
-                  <app-list-item label="Active Item"></app-list-item>
-                  <app-list-item label="Readonly Item" readonly></app-list-item>
-                </app-list>
+                <ui-list variant="soft" color="warning">
+                  <ui-list-item label="Active Item"></ui-list-item>
+                  <ui-list-item label="Disabled Item" disabled></ui-list-item>
+                  <ui-list-item label="Active Item"></ui-list-item>
+                  <ui-list-item label="Readonly Item" readonly></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Elevated with Rounded</h4>
-                <app-list variant="filled" color="info" elevated rounded>
-                  <app-list-item label="Item 1" icon="fas fa-star"></app-list-item>
-                  <app-list-item label="Item 2" icon="fas fa-heart"></app-list-item>
-                  <app-list-item label="Item 3" icon="fas fa-check"></app-list-item>
-                </app-list>
+                <ui-list variant="filled" color="info" elevated rounded>
+                  <ui-list-item label="Item 1" icon="fas fa-star"></ui-list-item>
+                  <ui-list-item label="Item 2" icon="fas fa-heart"></ui-list-item>
+                  <ui-list-item label="Item 3" icon="fas fa-check"></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -243,28 +239,28 @@
                 <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px">
                   Click items for context menu
                 </p>
-                <app-list variant="soft">
-                  <app-list-item label="File" context-menu>
+                <ui-list variant="soft">
+                  <ui-list-item label="File" context-menu>
                     <app-context-menu slot="context">
                       <app-context-menu-item label="New"></app-context-menu-item>
                       <app-context-menu-item label="Open"></app-context-menu-item>
                       <app-context-menu-item label="Close"></app-context-menu-item>
                     </app-context-menu>
-                  </app-list-item>
-                  <app-list-item label="Edit" context-menu>
+                  </ui-list-item>
+                  <ui-list-item label="Edit" context-menu>
                     <app-context-menu slot="context">
                       <app-context-menu-item label="Cut"></app-context-menu-item>
                       <app-context-menu-item label="Copy"></app-context-menu-item>
                       <app-context-menu-item label="Paste"></app-context-menu-item>
                     </app-context-menu>
-                  </app-list-item>
-                  <app-list-item label="View" context-menu>
+                  </ui-list-item>
+                  <ui-list-item label="View" context-menu>
                     <app-context-menu slot="context">
                       <app-context-menu-item label="Zoom In"></app-context-menu-item>
                       <app-context-menu-item label="Zoom Out"></app-context-menu-item>
                     </app-context-menu>
-                  </app-list-item>
-                </app-list>
+                  </ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
@@ -272,11 +268,11 @@
                 <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px">
                   Right-click items to show menu
                 </p>
-                <app-list variant="soft">
-                  <app-list-item label="Document.pdf" icon="fas fa-file-pdf"></app-list-item>
-                  <app-list-item label="Image.png" icon="fas fa-image"></app-list-item>
-                  <app-list-item label="Folder" icon="fas fa-folder"></app-list-item>
-                </app-list>
+                <ui-list variant="soft">
+                  <ui-list-item label="Document.pdf" icon="fas fa-file-pdf"></ui-list-item>
+                  <ui-list-item label="Image.png" icon="fas fa-image"></ui-list-item>
+                  <ui-list-item label="Folder" icon="fas fa-folder"></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -294,34 +290,34 @@
               <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px">
                 Right-click any item to see multi-level menu
               </p>
-              <app-list variant="soft">
-                <app-list-item label="Documents" icon="fas fa-folder" context-menu>
+              <ui-list variant="soft">
+                <ui-list-item label="Documents" icon="fas fa-folder" context-menu>
                   <app-context-menu slot="context">
                     <app-context-menu-item label="Open"></app-context-menu-item>
                     <app-context-menu-item label="Copy"></app-context-menu-item>
                     <app-context-menu-item label="Delete"></app-context-menu-item>
                   </app-context-menu>
-                </app-list-item>
-                <app-list-item label="Images" icon="fas fa-images" context-menu>
+                </ui-list-item>
+                <ui-list-item label="Images" icon="fas fa-images" context-menu>
                   <app-context-menu slot="context">
                     <app-context-menu-item label="Preview"></app-context-menu-item>
                     <app-context-menu-item label="Edit"></app-context-menu-item>
                     <app-context-menu-item label="Share"></app-context-menu-item>
                   </app-context-menu>
-                </app-list-item>
-                <app-list-item label="Videos" icon="fas fa-video" context-menu>
+                </ui-list-item>
+                <ui-list-item label="Videos" icon="fas fa-video" context-menu>
                   <app-context-menu slot="context">
                     <app-context-menu-item label="Play"></app-context-menu-item>
                     <app-context-menu-item label="Download"></app-context-menu-item>
                   </app-context-menu>
-                </app-list-item>
-                <app-list-item label="Archive" icon="fas fa-archive" context-menu>
+                </ui-list-item>
+                <ui-list-item label="Archive" icon="fas fa-archive" context-menu>
                   <app-context-menu slot="context">
                     <app-context-menu-item label="Extract"></app-context-menu-item>
                     <app-context-menu-item label="Delete"></app-context-menu-item>
                   </app-context-menu>
-                </app-list-item>
-              </app-list>
+                </ui-list-item>
+              </ui-list>
             </div>
 
             <ui-code-preview [htmlCode]="advancedMenuCode()" activeLang="html"></ui-code-preview>
@@ -336,60 +332,57 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>Grouped Lists</h4>
-                <app-list variant="filled" grouped>
-                  <app-list-group label="RECENT FILES">
-                    <app-list-item label="Document.pdf" icon="fas fa-file-pdf"></app-list-item>
-                    <app-list-item
+                <ui-list variant="filled" grouped>
+                  <ui-list-group label="RECENT FILES">
+                    <ui-list-item label="Document.pdf" icon="fas fa-file-pdf"></ui-list-item>
+                    <ui-list-item
                       label="Presentation.pptx"
                       icon="fas fa-file-powerpoint"
-                    ></app-list-item>
-                  </app-list-group>
-                  <app-list-group label="ARCHIVED">
-                    <app-list-item
-                      label="Report_2024.xlsx"
-                      icon="fas fa-file-excel"
-                    ></app-list-item>
-                    <app-list-item label="Notes.txt" icon="fas fa-file-alt"></app-list-item>
-                  </app-list-group>
-                </app-list>
+                    ></ui-list-item>
+                  </ui-list-group>
+                  <ui-list-group label="ARCHIVED">
+                    <ui-list-item label="Report_2024.xlsx" icon="fas fa-file-excel"></ui-list-item>
+                    <ui-list-item label="Notes.txt" icon="fas fa-file-alt"></ui-list-item>
+                  </ui-list-group>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Collapsible Groups</h4>
-                <app-list variant="soft" grouped collapsible>
-                  <app-list-group label="ACTIVE PROJECTS" expanded>
-                    <app-list-item label="Website Redesign"></app-list-item>
-                    <app-list-item label="Mobile App"></app-list-item>
-                  </app-list-group>
-                  <app-list-group label="COMPLETED">
-                    <app-list-item label="Logo Design"></app-list-item>
-                    <app-list-item label="Branding Guide"></app-list-item>
-                  </app-list-group>
-                </app-list>
+                <ui-list variant="soft" grouped collapsible>
+                  <ui-list-group label="ACTIVE PROJECTS" expanded>
+                    <ui-list-item label="Website Redesign"></ui-list-item>
+                    <ui-list-item label="Mobile App"></ui-list-item>
+                  </ui-list-group>
+                  <ui-list-group label="COMPLETED">
+                    <ui-list-item label="Logo Design"></ui-list-item>
+                    <ui-list-item label="Branding Guide"></ui-list-item>
+                  </ui-list-group>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Multi-Select with Groups</h4>
-                <app-list variant="text" grouped multiselectable show-checkboxes>
-                  <app-list-group label="TEAM MEMBERS">
-                    <app-list-item label="John Doe"></app-list-item>
-                    <app-list-item label="Jane Smith"></app-list-item>
-                    <app-list-item label="Bob Wilson"></app-list-item>
-                  </app-list-group>
-                  <app-list-group label="EXTERNAL">
-                    <app-list-item label="Alice Brown"></app-list-item>
-                  </app-list-group>
-                </app-list>
+                <ui-list variant="text" grouped multiselectable show-checkboxes>
+                  <ui-list-group label="TEAM MEMBERS">
+                    <ui-list-item label="John Doe"></ui-list-item>
+                    <ui-list-item label="Jane Smith"></ui-list-item>
+                    <ui-list-item label="Bob Wilson"></ui-list-item>
+                  </ui-list-group>
+                  <ui-list-group label="EXTERNAL">
+                    <ui-list-item label="Alice Brown"></ui-list-item>
+                  </ui-list-group>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Disabled Items</h4>
-                <app-list variant="soft">
-                  <app-list-item label="Available Item"></app-list-item>
-                  <app-list-item label="Disabled Item" disabled></app-list-item>
-                  <app-list-item label="Another Available"></app-list-item>
-                  <app-list-item label="Locked Item" disabled></app-list-item>
-                </app-list>
+                <ui-list variant="soft">
+                  <ui-list-item label="Available Item"></ui-list-item>
+                  <ui-list-item label="Disabled Item" disabled></ui-list-item>
+                  <ui-list-item label="Another Available"></ui-list-item>
+                  <ui-list-item label="Locked Item" disabled></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -405,63 +398,63 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>Single Selection</h4>
-                <app-list variant="filled" color="primary" selectable>
-                  <app-list-item label="Option 1"></app-list-item>
-                  <app-list-item label="Option 2"></app-list-item>
-                  <app-list-item label="Option 3"></app-list-item>
-                  <app-list-item label="Option 4"></app-list-item>
-                </app-list>
+                <ui-list variant="filled" color="primary" selectable>
+                  <ui-list-item label="Option 1"></ui-list-item>
+                  <ui-list-item label="Option 2"></ui-list-item>
+                  <ui-list-item label="Option 3"></ui-list-item>
+                  <ui-list-item label="Option 4"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Multi Selection</h4>
-                <app-list variant="soft" color="secondary" multiselectable show-checkboxes>
-                  <app-list-item label="Task 1"></app-list-item>
-                  <app-list-item label="Task 2"></app-list-item>
-                  <app-list-item label="Task 3"></app-list-item>
-                  <app-list-item label="Task 4"></app-list-item>
-                </app-list>
+                <ui-list variant="soft" color="secondary" multiselectable show-checkboxes>
+                  <ui-list-item label="Task 1"></ui-list-item>
+                  <ui-list-item label="Task 2"></ui-list-item>
+                  <ui-list-item label="Task 3"></ui-list-item>
+                  <ui-list-item label="Task 4"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>With Action Icons</h4>
-                <app-list variant="outlined" color="info">
-                  <app-list-item
+                <ui-list variant="outlined" color="info">
+                  <ui-list-item
                     label="Document.pdf"
                     icon="fas fa-file"
                     action-icon="fas fa-download"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Image.png"
                     icon="fas fa-image"
                     action-icon="fas fa-eye"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Video.mp4"
                     icon="fas fa-video"
                     action-icon="fas fa-play"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Audio.mp3"
                     icon="fas fa-music"
                     action-icon="fas fa-volume"
-                  ></app-list-item>
-                </app-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Scrollable List</h4>
                 <div style="height: 200px; overflow-y: auto">
-                  <app-list variant="text">
-                    <app-list-item label="Item 1"></app-list-item>
-                    <app-list-item label="Item 2"></app-list-item>
-                    <app-list-item label="Item 3"></app-list-item>
-                    <app-list-item label="Item 4"></app-list-item>
-                    <app-list-item label="Item 5"></app-list-item>
-                    <app-list-item label="Item 6"></app-list-item>
-                    <app-list-item label="Item 7"></app-list-item>
-                    <app-list-item label="Item 8"></app-list-item>
-                  </app-list>
+                  <ui-list variant="text">
+                    <ui-list-item label="Item 1"></ui-list-item>
+                    <ui-list-item label="Item 2"></ui-list-item>
+                    <ui-list-item label="Item 3"></ui-list-item>
+                    <ui-list-item label="Item 4"></ui-list-item>
+                    <ui-list-item label="Item 5"></ui-list-item>
+                    <ui-list-item label="Item 6"></ui-list-item>
+                    <ui-list-item label="Item 7"></ui-list-item>
+                    <ui-list-item label="Item 8"></ui-list-item>
+                  </ui-list>
                 </div>
               </div>
             </div>
@@ -478,78 +471,78 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>With Checkboxes</h4>
-                <app-list variant="soft" show-checkboxes multiselectable>
-                  <app-list-item label="Task 1" icon="fas fa-tasks"></app-list-item>
-                  <app-list-item label="Task 2" icon="fas fa-tasks"></app-list-item>
-                  <app-list-item label="Task 3" icon="fas fa-tasks"></app-list-item>
-                </app-list>
+                <ui-list variant="soft" show-checkboxes multiselectable>
+                  <ui-list-item label="Task 1" icon="fas fa-tasks"></ui-list-item>
+                  <ui-list-item label="Task 2" icon="fas fa-tasks"></ui-list-item>
+                  <ui-list-item label="Task 3" icon="fas fa-tasks"></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Badges & Counters</h4>
-                <app-list variant="filled" color="primary">
-                  <app-list-item
+                <ui-list variant="filled" color="primary">
+                  <ui-list-item
                     label="Inbox"
                     badge="24"
                     badge-color="danger"
                     icon="fas fa-inbox"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Urgent"
                     badge="5"
                     badge-color="warning"
                     icon="fas fa-exclamation"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Completed"
                     badge="Done"
                     badge-color="success"
                     icon="fas fa-check"
-                  ></app-list-item>
-                </app-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>With Sublabels</h4>
-                <app-list variant="text">
-                  <app-list-item
+                <ui-list variant="text">
+                  <ui-list-item
                     label="John Doe"
                     sublabel="Software Engineer • Online"
                     icon="fas fa-user"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Jane Smith"
                     sublabel="Product Manager • Away"
                     icon="fas fa-user"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Bob Johnson"
                     sublabel="Designer • Offline"
                     icon="fas fa-user"
-                  ></app-list-item>
-                </app-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>Combined Features</h4>
-                <app-list variant="soft" color="info" selectable show-checkboxes>
-                  <app-list-item
+                <ui-list variant="soft" color="info" selectable show-checkboxes>
+                  <ui-list-item
                     label="Project Alpha"
                     badge="Active"
                     badge-color="success"
                     sublabel="Due in 3 days • High priority"
                     icon="fas fa-folder"
                     counter="12"
-                  ></app-list-item>
-                  <app-list-item
+                  ></ui-list-item>
+                  <ui-list-item
                     label="Project Beta"
                     badge="Pending"
                     badge-color="warning"
                     sublabel="Due next week • Medium priority"
                     icon="fas fa-folder"
                     counter="7"
-                  ></app-list-item>
-                </app-list>
+                  ></ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -565,43 +558,43 @@
             <div class="demo-grid-2">
               <div class="demo-card">
                 <h4>With Pills</h4>
-                <app-list variant="soft" multiline>
-                  <app-list-item label="Frontend Project" icon="fas fa-code">
+                <ui-list variant="soft" multiline>
+                  <ui-list-item label="Frontend Project" icon="fas fa-code">
                     <div slot="pills" style="display: flex; gap: 8px; flex-wrap: wrap">
                       <app-pill>React</app-pill>
                       <app-pill>TypeScript</app-pill>
                       <app-pill>Vite</app-pill>
                     </div>
-                  </app-list-item>
-                  <app-list-item label="Backend API" icon="fas fa-server">
+                  </ui-list-item>
+                  <ui-list-item label="Backend API" icon="fas fa-server">
                     <div slot="pills" style="display: flex; gap: 8px; flex-wrap: wrap">
                       <app-pill>Node.js</app-pill>
                       <app-pill>Express</app-pill>
                       <app-pill>MongoDB</app-pill>
                     </div>
-                  </app-list-item>
-                </app-list>
+                  </ui-list-item>
+                </ui-list>
               </div>
 
               <div class="demo-card">
                 <h4>With Tags</h4>
-                <app-list variant="outlined" color="info" multiline>
-                  <app-list-item label="JavaScript Tutorial" icon="fas fa-book">
+                <ui-list variant="outlined" color="info" multiline>
+                  <ui-list-item label="JavaScript Tutorial" icon="fas fa-book">
                     <div slot="tags" style="display: flex; gap: 8px; flex-wrap: wrap">
                       <app-tag>JavaScript</app-tag>
                       <app-tag>ES6</app-tag>
                       <app-tag>Beginner</app-tag>
                     </div>
-                  </app-list-item>
-                  <app-list-item label="React Documentation" icon="fas fa-book">
+                  </ui-list-item>
+                  <ui-list-item label="React Documentation" icon="fas fa-book">
                     <div slot="tags" style="display: flex; gap: 8px; flex-wrap: wrap">
                       <app-tag>React</app-tag>
                       <app-tag>Components</app-tag>
                       <app-tag>Hooks</app-tag>
                       <app-tag>Advanced</app-tag>
                     </div>
-                  </app-list-item>
-                </app-list>
+                  </ui-list-item>
+                </ui-list>
               </div>
             </div>
 
@@ -616,8 +609,8 @@
             </div>
             <div class="demo-card">
               <h4>Fully Configured List Item</h4>
-              <app-list variant="filled" color="primary">
-                <app-list-item
+              <ui-list variant="filled" color="primary">
+                <ui-list-item
                   label="Project Alpha"
                   sublabel="Due in 3 days"
                   icon="fas fa-folder"
@@ -627,8 +620,8 @@
                   counter="7"
                   size="medium"
                   multiline
-                ></app-list-item>
-              </app-list>
+                ></ui-list-item>
+              </ui-list>
               <p style="margin-top: 16px; font-size: 12px; color: var(--text-secondary)">
                 This example demonstrates combining multiple properties: label, sublabel, icon,
                 action icon, badge with color, counter, size, and multiline support.
@@ -651,4 +644,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

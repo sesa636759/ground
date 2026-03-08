@@ -331,8 +331,8 @@ export class ComponentDocsService {
         shortDescription:
           'Configurable interactive button groups for single and multiple selections',
         detailedDescription:
-          'The Button Toggle component (app-button-toggle-group) handles mutually exclusive (or multiple) choices through an intuitive row of buttons. It supports segmented controls, animated gliding indicators, split buttons, comprehensive custom styling, dropdown modes, and custom slots.',
-        usage: `<app-button-toggle-group
+          'The Button Toggle component (ui-button-toggle-group) handles mutually exclusive (or multiple) choices through an intuitive row of buttons. It supports segmented controls, animated gliding indicators, split buttons, comprehensive custom styling, dropdown modes, and custom slots.',
+        usage: `<ui-button-toggle-group
   mode="segmented"
   value="list"
   color="primary"
@@ -340,7 +340,7 @@ export class ComponentDocsService {
     { value: 'list', label: 'List', icon: 'fas fa-list' },
     { value: 'grid', label: 'Grid', icon: 'fas fa-th' }
   ]"
-></app-button-toggle-group>`,
+></ui-button-toggle-group>`,
         props: [
           {
             name: 'value',
@@ -434,8 +434,8 @@ export class ComponentDocsService {
           'Responsive collapsing into dropdowns must be handled manually or by using mode="dropdown".',
         ],
         examples: [
-          `<app-button-toggle-group mode="segmented" value="list" color="primary" [options]="viewOptions"></app-button-toggle-group>`,
-          `<app-button-toggle-group value="option2" color="success" variant="soft" [options]="basicOptions"></app-button-toggle-group>`,
+          `<ui-button-toggle-group mode="segmented" value="list" color="primary" [options]="viewOptions"></ui-button-toggle-group>`,
+          `<ui-button-toggle-group value="option2" color="success" variant="soft" [options]="basicOptions"></ui-button-toggle-group>`,
         ],
       },
     ],
@@ -782,7 +782,7 @@ export class ComponentDocsService {
           'Flexible radio group component for selecting a single option from a list',
         detailedDescription:
           'A robust radio group and radio component implementation supporting multiple visual styles (default, bordered, underlined, card), layouts (vertical, horizontal, grid), button group modes, color variations, validation states, and detailed option configuration (icons, badges, descriptions).',
-        usage: `<app-radio-group
+        usage: `<ui-radio-group
   name="payment-method"
   [(ngModel)]="payment"
   variant="card"
@@ -792,7 +792,7 @@ export class ComponentDocsService {
     { value: 'card', label: 'Credit Card', icon: 'fas fa-credit-card' },
     { value: 'paypal', label: 'PayPal', icon: 'fab fa-paypal' }
   ]"
-></app-radio-group>`,
+></ui-radio-group>`,
         props: [
           {
             name: 'name',
@@ -954,13 +954,13 @@ export class ComponentDocsService {
           },
         ],
         limitations: [
-          'If you use [options] property instead of slotting child <app-radio> tags, custom HTML projections inside items are not directly supported.',
+          'If you use [options] property instead of slotting child <ui-radio> tags, custom HTML projections inside items are not directly supported.',
           'Button Group layout relies on HTML flexbox behaviors, and may not play nice with external grid systems if not wrapped correctly.',
         ],
         examples: [
-          `<app-radio-group layout="horizontal" [options]="basicOptions"></app-radio-group>`,
-          `<app-radio-group variant="card" layout="grid" columns="2" [options]="planOptions"></app-radio-group>`,
-          `<app-radio-group button-group="true" color="danger">\n  <app-radio value="yes" label="Yes"></app-radio>\n  <app-radio value="no" label="No"></app-radio>\n</app-radio-group>`,
+          `<ui-radio-group layout="horizontal" [options]="basicOptions"></ui-radio-group>`,
+          `<ui-radio-group variant="card" layout="grid" columns="2" [options]="planOptions"></ui-radio-group>`,
+          `<ui-radio-group button-group="true" color="danger">\n  <ui-radio value="yes" label="Yes"></ui-radio>\n  <ui-radio value="no" label="No"></ui-radio>\n</ui-radio-group>`,
         ],
       },
     ],
@@ -1442,9 +1442,9 @@ export class ComponentDocsService {
         shortDescription: 'Contextual information overlay on hover or focus',
         detailedDescription:
           'Rich tooltip component with 8 positioning options (top, bottom, left, right, and corners), multiple variants (dark, light, glass, success, warning, error), shape options (default, pill), animations (fade, bounce, scale), and trigger customization. Perfect for providing contextual help and additional information.',
-        usage: `<app-tooltip content="Helpful text" position="top">
+        usage: `<ui-tooltip content="Helpful text" position="top">
   <ui-button slot="target" label="Hover Me"></ui-button>
-</app-tooltip>`,
+</ui-tooltip>`,
         props: [
           {
             name: 'content',
@@ -1508,9 +1508,9 @@ export class ComponentDocsService {
           'Glass variant needs background context',
         ],
         examples: [
-          '<app-tooltip content="Dark Theme" variant="dark"><ui-button label="Dark"></ui-button></app-tooltip>',
-          '<app-tooltip content="Light Theme" variant="light"><ui-button label="Light"></ui-button></app-tooltip>',
-          '<app-tooltip content="Glass Effect" variant="glass"><ui-button label="Glass"></ui-button></app-tooltip>',
+          '<ui-tooltip content="Dark Theme" variant="dark"><ui-button label="Dark"></ui-button></ui-tooltip>',
+          '<ui-tooltip content="Light Theme" variant="light"><ui-button label="Light"></ui-button></ui-tooltip>',
+          '<ui-tooltip content="Glass Effect" variant="glass"><ui-button label="Glass"></ui-button></ui-tooltip>',
         ],
       },
     ],
@@ -1607,7 +1607,7 @@ export class ComponentDocsService {
         shortDescription: 'Visual indicator for task completion or loading',
         detailedDescription:
           'Comprehensive progress component supporting line, circle, and dashboard types. Features status states (active, success, exception), buffer support, multiple stacked bars, time estimation, milestone markers, and premium visual effects.',
-        usage: `<app-progress [percent]="70" status="active"></app-progress>`,
+        usage: `<ui-progress [percent]="70" status="active"></ui-progress>`,
         props: [
           {
             name: 'percent',
@@ -1781,10 +1781,10 @@ export class ComponentDocsService {
           'MultiProgress overrides the primary percent property',
         ],
         examples: [
-          '<app-progress [percent]="30"></app-progress>',
-          '<app-progress type="circle" [percent]="75" size="small"></app-progress>',
-          '<app-progress [multiProgress]="[{percent: 20, color: \'#f50\'}, {percent: 30}]"></app-progress>',
-          '<app-progress [percent]="50" [buffer]="80" [showBuffer]="true"></app-progress>',
+          '<ui-progress [percent]="30"></ui-progress>',
+          '<ui-progress type="circle" [percent]="75" size="small"></ui-progress>',
+          '<ui-progress [multiProgress]="[{percent: 20, color: \'#f50\'}, {percent: 30}]"></ui-progress>',
+          '<ui-progress [percent]="50" [buffer]="80" [showBuffer]="true"></ui-progress>',
         ],
       },
     ],
@@ -1797,7 +1797,7 @@ export class ComponentDocsService {
         shortDescription: 'Segmented control with gliding indicator animation',
         detailedDescription:
           'Premium toggle button group with smooth gliding pill indicator, avatar support, status indicators, multiple color variants, style variants (filled, outlined, text, soft, classic, solid, surface), and support for both horizontal and vertical orientations. Perfect for modern segmented controls.',
-        usage: `<app-button-toggle-group value="option1" color="primary" [attr.options]="jsonOptions(options)"></app-button-toggle-group>`,
+        usage: `<ui-button-toggle-group value="option1" color="primary" [attr.options]="jsonOptions(options)"></ui-button-toggle-group>`,
         props: [
           {
             name: 'value',
@@ -1855,9 +1855,9 @@ export class ComponentDocsService {
           'Avatar options require avatar URLs in data',
         ],
         examples: [
-          '<app-button-toggle-group value="day" color="info" variant="soft" [attr.options]="timeOptions"></app-button-toggle-group>',
-          '<app-button-toggle-group value="user1" color="primary" [attr.options]="avatarOptions"></app-button-toggle-group>',
-          '<app-button-toggle-group value="high" color="danger" orientation="vertical" [attr.options]="priorityOptions"></app-button-toggle-group>',
+          '<ui-button-toggle-group value="day" color="info" variant="soft" [attr.options]="timeOptions"></ui-button-toggle-group>',
+          '<ui-button-toggle-group value="user1" color="primary" [attr.options]="avatarOptions"></ui-button-toggle-group>',
+          '<ui-button-toggle-group value="high" color="danger" orientation="vertical" [attr.options]="priorityOptions"></ui-button-toggle-group>',
         ],
       },
     ],
@@ -2521,10 +2521,10 @@ export class ComponentDocsService {
         shortDescription: 'Interactive slideshow for cycling through content',
         detailedDescription:
           'Versatile carousel component for displaying images, cards, or custom content. Features multiple transition effects (slide, fade), center mode with partial visibility, responsive multi-slide display, infinite loop, autoplay with configurable intervals, navigation arrows, indicators (dots), and touch/swipe support.',
-        usage: `<app-carousel autoplay="true" show-progress="true">
+        usage: `<ui-carousel autoplay="true" show-progress="true">
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
-</app-carousel>`,
+</ui-carousel>`,
         props: [
           {
             name: 'effect',
@@ -2609,8 +2609,8 @@ export class ComponentDocsService {
           'Autoplay pauses on user interaction',
         ],
         examples: [
-          '<app-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></app-carousel>',
-          '<app-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></app-carousel>',
+          '<ui-carousel effect="fade" autoplay="true" autoplay-interval="4000"><div class="slide">1</div></ui-carousel>',
+          '<ui-carousel center-mode="true" slides-to-show="1" center-padding="20%"><div class="slide">1</div></ui-carousel>',
         ],
       },
     ],
@@ -2622,7 +2622,7 @@ export class ComponentDocsService {
         shortDescription: 'Single selection from a group of options',
         detailedDescription:
           'Flexible radio button component with premium variants (card, bordered, underlined), button group styling, multiple layouts (vertical, horizontal, grid), color themes, size options, state management (disabled, readonly, error), helper text, skeleton loading, and both options array or slotted children support.',
-        usage: `<app-radio-group name="choice" [options]="options" value="option1"></app-radio-group>`,
+        usage: `<ui-radio-group name="choice" [options]="options" value="option1"></ui-radio-group>`,
         props: [
           {
             name: 'name',
@@ -2702,9 +2702,9 @@ export class ComponentDocsService {
           'Button group requires layout horizontal or vertical',
         ],
         examples: [
-          '<app-radio-group name="size" value="medium" [options]="sizeOptions"></app-radio-group>',
-          '<app-radio-group name="plan" variant="card" layout="grid" columns="2" [options]="planOptions"></app-radio-group>',
-          '<app-radio-group name="priority" button-group layout="horizontal" value="medium" [options]="priorityOptions"></app-radio-group>',
+          '<ui-radio-group name="size" value="medium" [options]="sizeOptions"></ui-radio-group>',
+          '<ui-radio-group name="plan" variant="card" layout="grid" columns="2" [options]="planOptions"></ui-radio-group>',
+          '<ui-radio-group name="priority" button-group layout="horizontal" value="medium" [options]="priorityOptions"></ui-radio-group>',
         ],
       },
     ],
@@ -3386,7 +3386,7 @@ export class ComponentDocsService {
         shortDescription: 'Advanced code editor with syntax highlighting and multi-file tabs',
         detailedDescription:
           'Feature-rich code editor supporting JS, HTML, CSS, JSON, Python, and more. Includes multi-tab file management, syntax highlighting, line numbers, code folding, minimap, integrated terminal/output panels, and ribbon-style toolbars.',
-        usage: `<app-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></app-code-editor>`,
+        usage: `<ui-code-editor [files]="projectFiles" language="javascript" theme="vs-dark"></ui-code-editor>`,
         props: [
           {
             name: 'files',
@@ -3442,8 +3442,8 @@ export class ComponentDocsService {
           'Minimap requires accurate character measurement for sync',
         ],
         examples: [
-          '<app-code-editor [files]="myScript" theme="vs-dark" showSidebar></app-code-editor>',
-          '<app-code-editor language="json" [value]="configJson" [toolbar]="false"></app-code-editor>',
+          '<ui-code-editor [files]="myScript" theme="vs-dark" showSidebar></ui-code-editor>',
+          '<ui-code-editor language="json" [value]="configJson" [toolbar]="false"></ui-code-editor>',
         ],
       },
     ],
@@ -3455,7 +3455,7 @@ export class ComponentDocsService {
         shortDescription: 'Drag-and-drop grid system for interactive widget boards',
         detailedDescription:
           'Premium grid container for arranging widgets and cards. Supports interactive dragging/resizing, configurable columns, theme variations (glassmorphism, vibrant), and responsive layout adaptation.',
-        usage: `<app-dashboard [columns]="12" [widgets]="widgetList"></app-dashboard>`,
+        usage: `<ui-dashboard [columns]="12" [widgets]="widgetList"></ui-dashboard>`,
         props: [
           { name: 'columns', type: 'number', description: 'Grid column count', defaultValue: '12' },
           {
@@ -3494,8 +3494,8 @@ export class ComponentDocsService {
           'Glass theme requires high-contrast background for readability',
         ],
         examples: [
-          '<app-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></app-dashboard>',
-          '<app-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></app-dashboard>',
+          '<ui-dashboard [widgets]="myStats" [isEditable]="true" theme="glass"></ui-dashboard>',
+          '<ui-dashboard [columns]="4" [widgets]="miniCards" theme="dark"></ui-dashboard>',
         ],
       },
     ],
@@ -5648,7 +5648,7 @@ export class ComponentDocsService {
         detailedDescription:
           'The Resizable Panel component provides a powerful split-pane layout system with draggable dividers. It supports horizontal and vertical splits, triple or nested panes, collapsible panels, snap-to-edge behaviour, min/max size constraints on each panel, and dark/light themes. Content is projected via named slots matching the panel id defined in the panels array.',
         usage: `<!-- Horizontal two-panel split -->
-<app-resizable-panel
+<ui-resizable-panel
   [panels]="[
     { id: 'p1', size: 30, minSize: 15 },
     { id: 'p2', size: 70 }
@@ -5657,7 +5657,7 @@ export class ComponentDocsService {
 >
   <div slot="p1">Left Panel</div>
   <div slot="p2">Right Panel</div>
-</app-resizable-panel>`,
+</ui-resizable-panel>`,
         props: [
           {
             name: 'panels',
@@ -5764,12 +5764,12 @@ export class ComponentDocsService {
         ],
         examples: [
           `<!-- Vertical split -->
-<app-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
+<ui-resizable-panel [panels]="[{id:'t1',size:50},{id:'t2',size:50}]" direction="vertical">
   <div slot="t1">Top Panel</div>
   <div slot="t2">Bottom Panel</div>
-</app-resizable-panel>`,
+</ui-resizable-panel>`,
           `<!-- Triple horizontal split -->
-<app-resizable-panel [panels]="[
+<ui-resizable-panel [panels]="[
   {id:'p1',size:30,minSize:20},
   {id:'p2',size:40,minSize:20},
   {id:'p3',size:30,minSize:20}
@@ -5777,19 +5777,19 @@ export class ComponentDocsService {
   <div slot="p1">Left</div>
   <div slot="p2">Centre</div>
   <div slot="p3">Right</div>
-</app-resizable-panel>`,
+</ui-resizable-panel>`,
           `<!-- Nested panels (IDE layout) -->
-<app-resizable-panel [panels]="nestedOuter" direction="horizontal">
+<ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
   <div slot="sidebar">Sidebar</div>
   <div slot="main" style="height:100%">
-    <app-resizable-panel [panels]="nestedInner" direction="vertical">
+    <ui-resizable-panel [panels]="nestedInner" direction="vertical">
       <div slot="editor">Editor</div>
       <div slot="terminal">Terminal</div>
-    </app-resizable-panel>
+    </ui-resizable-panel>
   </div>
-</app-resizable-panel>`,
+</ui-resizable-panel>`,
           `<!-- Collapsible + snap -->
-<app-resizable-panel
+<ui-resizable-panel
   [panels]="[{id:'left',size:30,collapsible:true,collapseDirection:'left'},{id:'main',size:70}]"
   direction="horizontal"
   snap-to-edge="true"
@@ -5798,7 +5798,7 @@ export class ComponentDocsService {
 >
   <div slot="left">Collapsible Sidebar</div>
   <div slot="main">Main Content</div>
-</app-resizable-panel>`,
+</ui-resizable-panel>`,
         ],
       },
     ],

@@ -2,18 +2,18 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector:
-    'app-radio-group[ngModel], app-radio-group[formControl], app-radio-group[formControlName]',
+  // Since selector is a list, and it seems to be app-tags-input component based on previous investigation
+  selector: 'ui-tags-input[ngModel], ui-tags-input[formControl], ui-tags-input[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmRadioGroupValueAccessorDirective),
+      useExisting: forwardRef(() => DmTagsInputValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmRadioGroupValueAccessorDirective implements ControlValueAccessor {
+export class DmTagsInputValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -22,11 +22,11 @@ export class DmRadioGroupValueAccessorDirective implements ControlValueAccessor 
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('radioGroupChange', ['$event'])
+  @HostListener('tagsChange', ['$event'])
   _handleInput(event: Event): void {
-    // radioGroupChange emits { value: string }
+    // tagsChange emits { tags: string[] }
     const detail = (event as CustomEvent).detail;
-    this.onChange(detail?.value);
+    this.onChange(detail?.tags);
   }
 
   @HostListener('blur')
@@ -35,8 +35,8 @@ export class DmRadioGroupValueAccessorDirective implements ControlValueAccessor 
   }
 
   writeValue(value: any): void {
-    const normalizedValue = value == null ? '' : value;
-    this.renderer.setProperty(this.el.nativeElement, 'value', normalizedValue);
+    const normalizedValue = value == null ? [] : value;
+    this.renderer.setProperty(this.el.nativeElement, 'tags', normalizedValue);
   }
 
   registerOnChange(fn: any): void {
@@ -51,3 +51,7 @@ export class DmRadioGroupValueAccessorDirective implements ControlValueAccessor 
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
+
+
+
+

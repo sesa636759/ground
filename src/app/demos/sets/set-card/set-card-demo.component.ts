@@ -21,13 +21,13 @@ import { SetCardExamplesComponent } from './components/card-examples/card-exampl
   styleUrl: './set-card-demo.component.scss',
 })
 export class DmSetCardDemoComponent {
-  playgroundCode = `<app-card
+  playgroundCode = `<ui-card
   variant="elevated"
   [hoverable]="true"
 >
   <h3>Card Title</h3>
   <p>Card content goes here</p>
-</app-card>`;
+</ui-card>`;
 
   ngOnInit() {}
 }

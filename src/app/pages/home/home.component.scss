@@ -845,7 +845,7 @@
   margin: 0 auto;
   align-items: stretch; // Ensure all items in a row have same height
 
-  app-animate-on-scroll {
+  ui-animate-on-scroll {
     height: 100%;
     display: flex;
   }

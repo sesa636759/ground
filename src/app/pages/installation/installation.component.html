@@ -1,0 +1,207 @@
+<div class="installation-container">
+  <!-- Decorative Background Glow -->
+  <div class="glow-bg top-left"></div>
+  <div class="glow-bg bottom-right"></div>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="hero-badge">
+      <lucide-icon [img]="LucideIcons.Zap" [size]="14"></lucide-icon>
+      <span>v1.0.0 Now Available</span>
+    </div>
+    <h1 class="title">
+      Get Started with <span class="gradient-text">Ground UI</span>
+    </h1>
+    <p class="subtitle">
+      Install the most powerful and beautiful Angular UI component library. Build stunning applications faster with our highly customizable design system.
+    </p>
+  </header>
+
+  <!-- Installation Steps -->
+  <main class="content-section">
+    <div class="steps-grid">
+      
+      <!-- Step 1 -->
+      <div class="step-card fade-in-up delay-1">
+        <div class="step-header">
+          <div class="step-number">1</div>
+          <div class="step-title-group">
+            <h3>Prerequisites</h3>
+            <p>Ensure you have Node.js and Angular CLI installed</p>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="req-chips">
+            <span class="chip">Node.js 18.x +</span>
+            <span class="chip">Angular 17+</span>
+            <span class="chip">NPM or Yarn</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card fade-in-up delay-2">
+        <div class="step-header">
+          <div class="step-number">2</div>
+          <div class="step-title-group">
+            <h3>Install Package</h3>
+            <p>Add the library to your Angular project</p>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="lang-label">bash</span>
+            </div>
+            <div class="code-body">
+              <span class="prompt">$</span>
+              <code class="command">npm install ng-ground-ui</code>
+              <button 
+                class="copy-btn" 
+                (click)="copyCode('npm install ng-ground-ui')" 
+                [class.copied]="copiedCommand === 'npm install ng-ground-ui'"
+                aria-label="Copy code">
+                <lucide-icon *ngIf="copiedCommand !== 'npm install ng-ground-ui'" [img]="LucideIcons.Copy" [size]="16"></lucide-icon>
+                <lucide-icon *ngIf="copiedCommand === 'npm install ng-ground-ui'" [img]="LucideIcons.Check" [size]="16" class="check-icon"></lucide-icon>
+              </button>
+            </div>
+          </div>
+          <div class="code-block alt-mt">
+            <div class="code-body">
+              <span class="prompt">$</span>
+              <code class="command">yarn add ng-ground-ui</code>
+              <button 
+                class="copy-btn" 
+                (click)="copyCode('yarn add ng-ground-ui')" 
+                [class.copied]="copiedCommand === 'yarn add ng-ground-ui'"
+                aria-label="Copy code">
+                <lucide-icon *ngIf="copiedCommand !== 'yarn add ng-ground-ui'" [img]="LucideIcons.Copy" [size]="16"></lucide-icon>
+                <lucide-icon *ngIf="copiedCommand === 'yarn add ng-ground-ui'" [img]="LucideIcons.Check" [size]="16" class="check-icon"></lucide-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card fade-in-up delay-3">
+        <div class="step-header">
+          <div class="step-number">3</div>
+          <div class="step-title-group">
+            <h3>Import Styles</h3>
+            <p>Add the global theming SCSS to your angular.json or main styles.scss</p>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="lang-label">scss</span>
+            </div>
+            <div class="code-body multiline">
+              <code><span class="comment">// In your global styles.scss</span>
+<!-- -->
+<span class="keyword">@import</span> <span class="string">'ng-ground-ui/styles/themes/light.scss'</span>;
+<span class="keyword">@import</span> <span class="string">'ng-ground-ui/styles/core.scss'</span>;</code>
+              <button 
+                class="copy-btn" 
+                (click)="copyCode('@import \'ng-ground-ui/styles/themes/light.scss\';\n@import \'ng-ground-ui/styles/core.scss\';')" 
+                [class.copied]="copiedCommand === '@import \'ng-ground-ui/styles/themes/light.scss\';\n@import \'ng-ground-ui/styles/core.scss\';'"
+                aria-label="Copy code">
+                <lucide-icon *ngIf="copiedCommand !== '@import \'ng-ground-ui/styles/themes/light.scss\';\n@import \'ng-ground-ui/styles/core.scss\';'" [img]="LucideIcons.Copy" [size]="16"></lucide-icon>
+                <lucide-icon *ngIf="copiedCommand === '@import \'ng-ground-ui/styles/themes/light.scss\';\n@import \'ng-ground-ui/styles/core.scss\';'" [img]="LucideIcons.Check" [size]="16" class="check-icon"></lucide-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card fade-in-up delay-4">
+        <div class="step-header">
+          <div class="step-number">4</div>
+          <div class="step-title-group">
+            <h3>Usage</h3>
+            <p>Start using components right away</p>
+          </div>
+        </div>
+        <div class="step-content">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="lang-label">typescript</span>
+            </div>
+            <div class="code-body multiline">
+              <code><span class="keyword">import</span> &#123; <span class="string">Component</span> &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+<span class="keyword">import</span> &#123; <span class="string">PgButtonModule</span> &#125; <span class="keyword">from</span> <span class="string">'ng-ground-ui'</span>;
+
+<span class="keyword">@Component</span>(&#123;
+  <span class="property">selector</span>: <span class="string">'app-root'</span>,
+  <span class="property">standalone</span>: <span class="keyword">true</span>,
+  <span class="property">imports</span>: [PgButtonModule],
+  <span class="property">template</span>: <span class="string">`&lt;pg-button variant="primary"&gt;Click Me&lt;/pg-button&gt;`</span>
+&#125;)
+<span class="keyword">export class</span> <span class="string">AppComponent</span> &#123;&#125;</code>
+              <button 
+                class="copy-btn" 
+                (click)="copyCode('import { PgButtonModule } from \'ng-ground-ui\';')" 
+                [class.copied]="copiedCommand === 'import { PgButtonModule } from \'ng-ground-ui\';'"
+                aria-label="Copy code">
+                <lucide-icon *ngIf="copiedCommand !== 'import { PgButtonModule } from \'ng-ground-ui\';'" [img]="LucideIcons.Copy" [size]="16"></lucide-icon>
+                <lucide-icon *ngIf="copiedCommand === 'import { PgButtonModule } from \'ng-ground-ui\';'" [img]="LucideIcons.Check" [size]="16" class="check-icon"></lucide-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Next Steps Cards -->
+  <section class="next-steps-section fade-in-up delay-5">
+    <h2>Next Steps</h2>
+    <div class="cards-grid">
+      <a routerLink="/components" class="action-card">
+        <div class="icon-wrapper blue">
+          <lucide-icon [img]="LucideIcons.Layers"></lucide-icon>
+        </div>
+        <div class="card-text">
+          <h3>Browse Components</h3>
+          <p>Explore our vast library of accessible UI elements.</p>
+        </div>
+        <lucide-icon [img]="LucideIcons.ChevronRight" class="arrow"></lucide-icon>
+      </a>
+
+      <a routerLink="/documentation" class="action-card">
+        <div class="icon-wrapper purple">
+          <lucide-icon [img]="LucideIcons.Palette"></lucide-icon>
+        </div>
+        <div class="card-text">
+          <h3>Theming Details</h3>
+          <p>Learn how to customize Ground UI to match your brand.</p>
+        </div>
+        <lucide-icon [img]="LucideIcons.ChevronRight" class="arrow"></lucide-icon>
+      </a>
+
+      <a routerLink="/showcase" class="action-card">
+        <div class="icon-wrapper green">
+          <lucide-icon [img]="LucideIcons.Terminal"></lucide-icon>
+        </div>
+        <div class="card-text">
+          <h3>Showcase</h3>
+          <p>See real-world examples built with Ground UI.</p>
+        </div>
+        <lucide-icon [img]="LucideIcons.ChevronRight" class="arrow"></lucide-icon>
+      </a>
+    </div>
+  </section>
+</div>
+

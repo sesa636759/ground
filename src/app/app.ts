@@ -67,7 +67,27 @@ export class App implements OnInit {
   faChevronUp = faChevronUp;
 
   // Expose navigation data for template
-  topItems = topNavItems;
+  topItems = this.getProcessedTopItems();
+
+  private getProcessedTopItems() {
+    const maxVisible = 4;
+    if (topNavItems.length > maxVisible) {
+      const visible = topNavItems.slice(0, maxVisible);
+      const overflow = topNavItems.slice(maxVisible);
+      return [
+        ...visible,
+        {
+          id: 'more-menu',
+          label: 'More',
+          icon: 'more-horizontal',
+          iconLibrary: 'lucide',
+          children: overflow,
+        },
+      ];
+    }
+    return topNavItems;
+  }
+
   categoryItems = categoryNavItems;
   bottomItems = bottomNavItems;
   userProfileItems = userProfileNavItems;
@@ -219,8 +239,12 @@ export class App implements OnInit {
       this.currentRoute.set('overview');
     } else if (url.startsWith('/showroom')) {
       this.currentRoute.set('showroom');
+    } else if (url.startsWith('/installation')) {
+      this.currentRoute.set('installation');
     } else if (url.startsWith('/documentation')) {
       this.currentRoute.set('documentation');
+    } else if (url.startsWith('/components-guide')) {
+      this.currentRoute.set('components-guide');
     } else if (url.startsWith('/playground/')) {
       const componentId = url.split('/')[2]?.split('?')[0];
       this.currentRoute.set(componentId);
@@ -265,13 +289,19 @@ export class App implements OnInit {
         return;
       }
 
+      if (itemId === 'more-menu') {
+        return;
+      }
+
       // Top-level routes
       if (
         [
           'home',
           'overview',
           'showroom',
+          'installation',
           'documentation',
+          'components-guide',
           'settings',
           'playground',
           'user-management',

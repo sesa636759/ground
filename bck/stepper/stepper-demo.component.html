@@ -1,0 +1,233 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🚶"
+    title="Stepper Workflow"
+    description="Guide users through multi-step processes with clarity. Supports linear and non-linear flows, orientation switching, validation states, and custom status indicators."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-stepper-playground></dm-stepper-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Orientation -->
+          <section class="demo-section" id="orientation" style="margin-top: 0">
+            <div class="section-header">
+              <h2>📐 Layout Orientation</h2>
+              <p>Switch between horizontal progress and vertical checklists</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <div style="width: 100%">
+                  <span>Horizontal:</span>
+                  <ui-stepper orientation="horizontal" [steps]="steps" active-step="1"></ui-stepper>
+                </div>
+                <div style="width: 100%; min-height: 250px">
+                  <span>Vertical:</span>
+                  <ui-stepper
+                    orientation="vertical"
+                    [steps]="steps"
+                    active-step="1"
+                    show-descriptions
+                  ></ui-stepper>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="orientationCode"
+              [label]="'Orientation Toggle'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Visual Types -->
+          <section class="demo-section" id="visuals">
+            <div class="section-header">
+              <h2>🎨 Visual Indicator Types</h2>
+              <p>Choose between explicit numbering or minimal progress dots</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <div style="width: 100%">
+                  <span>Classic Numbers:</span>
+                  <ui-stepper [steps]="steps" active-step="1"></ui-stepper>
+                </div>
+                <div style="width: 100%">
+                  <span>Progress Dots:</span>
+                  <ui-stepper
+                    progress-dot
+                    [steps]="steps"
+                    active-step="1"
+                    show-descriptions
+                  ></ui-stepper>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="visualsCode"
+              [label]="'Progress Markers'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Flow Logic -->
+          <section class="demo-section" id="validation">
+            <div class="section-header">
+              <h2>⚡ Workflow Logic</h2>
+              <p>Control how users navigate through the sequence</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box">
+                <div style="width: 100%">
+                  <span>Non-linear (Free Jump):</span>
+                  <ui-stepper flow="non-linear" [steps]="steps" active-step="2"></ui-stepper>
+                </div>
+                <div style="width: 100%">
+                  <span>Validation Warning State:</span>
+                  <ui-stepper
+                    [steps]="steps"
+                    active-step="1"
+                    show-controls
+                    label-fail="Simulate Error"
+                  ></ui-stepper>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="flowCode"
+              [label]="'Flow Control'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- API Controls -->
+          <section class="demo-section" id="api">
+            <div class="section-header">
+              <h2>🔧 Programmatic Control</h2>
+              <p>Navigate between steps using external method calls</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box" style="flex-direction: column; gap: 20px">
+                <ui-stepper [steps]="steps" [activeStep]="currentStep"></ui-stepper>
+                <div style="display: flex; gap: 10px; justify-content: center">
+                  <ui-button
+                    (click)="onPrevious()"
+                    [disabled]="currentStep === 0"
+                    variant="secondary"
+                    >Prev</ui-button
+                  >
+                  <ui-button
+                    (click)="onNext()"
+                    [disabled]="currentStep === steps.length - 1"
+                    variant="primary"
+                    >Next</ui-button
+                  >
+                  <ui-button (click)="onGoTo(0)" variant="outline">Reset</ui-button>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="apiCode"
+              [label]="'External Methods'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Sizes -->
+          <section class="demo-section" id="sizes">
+            <div class="section-header">
+              <h2>📏 Size Variations</h2>
+              <p>Scaling the stepper for different UI contexts</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box" style="flex-direction: column; gap: 40px; width: 100%">
+                <div style="width: 100%">
+                  <span>Small (sm):</span>
+                  <ui-stepper size="sm" [steps]="steps" active-step="1"></ui-stepper>
+                </div>
+                <div style="width: 100%">
+                  <span>Medium (md):</span>
+                  <ui-stepper size="md" [steps]="steps" active-step="1"></ui-stepper>
+                </div>
+                <div style="width: 100%">
+                  <span>Large (lg):</span>
+                  <ui-stepper size="lg" [steps]="steps" active-step="1"></ui-stepper>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="sizesCode"
+              [label]="'Size Options'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Visual Options -->
+          <section class="demo-section" id="visual-options">
+            <div class="section-header">
+              <h2>🎚️ Visual Options</h2>
+              <p>Toggle display of step numbers and descriptions</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box" style="flex-direction: column; gap: 40px; width: 100%">
+                <div style="width: 100%">
+                  <span>Only Labels:</span>
+                  <ui-stepper [steps]="steps" active-step="1" [show-numbers]="false"></ui-stepper>
+                </div>
+                <div style="width: 100%">
+                  <span>With Descriptions:</span>
+                  <ui-stepper
+                    [steps]="steps"
+                    active-step="1"
+                    [show-descriptions]="true"
+                  ></ui-stepper>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="visualOptionsCode"
+              [label]="'Visual Toggles'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Responsive -->
+          <section class="demo-section" id="responsive">
+            <div class="section-header">
+              <h2>📱 Responsive & Collapsing</h2>
+              <p>Handling many steps with automatic collapsing via max-visible-steps</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box" style="flex-direction: column; width: 100%">
+                <ui-stepper [steps]="steps" active-step="2" [max-visible-steps]="3"></ui-stepper>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="responsiveCode"
+              [label]="'Max Visible Limit'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="stepper"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>

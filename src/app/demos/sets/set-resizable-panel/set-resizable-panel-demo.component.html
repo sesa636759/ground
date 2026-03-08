@@ -19,7 +19,7 @@
           <div class="demo-card">
             <h3>Left Panel - Right Panel Layout</h3>
             <div class="panel-box">
-              <app-resizable-panel [panels]="basicHPanels">
+              <ui-resizable-panel [panels]="basicHPanels">
                 <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Left Panel</strong>
                   <p>Drag the handle to resize this panel horizontally.</p>
@@ -32,7 +32,7 @@
                   <strong>Right Panel</strong>
                   <p>This panel automatically adjusts as you resize the left panel.</p>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -46,7 +46,7 @@
           <div class="demo-card">
             <h3>Top Panel - Bottom Panel Layout</h3>
             <div class="panel-box">
-              <app-resizable-panel [panels]="basicVPanels" direction="vertical">
+              <ui-resizable-panel [panels]="basicVPanels" direction="vertical">
                 <div slot="t1" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Top Panel</strong>
                   <p>Drag the handle below to resize this panel vertically.</p>
@@ -55,7 +55,7 @@
                   <strong>Bottom Panel</strong>
                   <p>Vertical resizing works just like horizontal, but in a different direction.</p>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -69,7 +69,7 @@
           <div class="demo-card full-width">
             <h3>Three Independent Panels</h3>
             <div class="panel-box large-box">
-              <app-resizable-panel [panels]="triplePanels" direction="horizontal">
+              <ui-resizable-panel [panels]="triplePanels" direction="horizontal">
                 <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Panel 1</strong>
                   <p>First panel with 30% initial width</p>
@@ -82,7 +82,7 @@
                   <strong>Panel 3</strong>
                   <p>Last panel with 30% initial width</p>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -96,13 +96,13 @@
           <div class="demo-card full-width">
             <h3>IDE Layout (Sidebar + Editor + Terminal)</h3>
             <div class="panel-box large-box">
-              <app-resizable-panel [panels]="nestedOuter" direction="horizontal">
+              <ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
                 <div slot="sidebar" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Sidebar</strong>
                   <p>✓ Navigation<br />✓ Tree View<br />✓ File Explorer<br />✓ Settings</p>
                 </div>
                 <div slot="main" style="height: 100%; overflow: hidden">
-                  <app-resizable-panel [panels]="nestedInner" direction="vertical">
+                  <ui-resizable-panel [panels]="nestedInner" direction="vertical">
                     <div slot="editor" class="p-content" style="background: var(--bg-tertiary)">
                       <strong>Main Code Editor</strong>
                       <p>
@@ -116,9 +116,9 @@
                       <strong>Build Output / Terminal</strong>
                       <p>$ npm run build<br />✓ Build complete in 2.3s</p>
                     </div>
-                  </app-resizable-panel>
+                  </ui-resizable-panel>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -132,7 +132,7 @@
           <div class="demo-card full-width">
             <h3>Collapsible Left Panel</h3>
             <div class="panel-box large-box">
-              <app-resizable-panel [panels]="collapsiblePanels" direction="horizontal">
+              <ui-resizable-panel [panels]="collapsiblePanels" direction="horizontal">
                 <div slot="left" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Collapsible Left Panel</strong>
                   <p>Click the collapse button on the resize handle to hide/show this panel.</p>
@@ -147,7 +147,7 @@
                   <strong>Main Content Area</strong>
                   <p>This area expands when the left panel is collapsed.</p>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -162,7 +162,7 @@
             <div class="demo-card">
               <h3>Dark Theme</h3>
               <div class="panel-box">
-                <app-resizable-panel [panels]="basicHPanels" theme="dark">
+                <ui-resizable-panel [panels]="basicHPanels" theme="dark">
                   <div slot="p1" class="p-content" style="background: #2a2a2a; color: #fff">
                     <strong>Dark Sidebar</strong>
                     <p>Perfect for applications that support dark mode.</p>
@@ -171,13 +171,13 @@
                     <strong>Dark Main</strong>
                     <p>Scrollbars, handles, and content automatically adapt to the theme.</p>
                   </div>
-                </app-resizable-panel>
+                </ui-resizable-panel>
               </div>
             </div>
             <div class="demo-card">
               <h3>Light Theme (Default)</h3>
               <div class="panel-box">
-                <app-resizable-panel [panels]="basicHPanels" theme="light">
+                <ui-resizable-panel [panels]="basicHPanels" theme="light">
                   <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
                     <strong>Light Sidebar</strong>
                     <p>Clean and minimal design</p>
@@ -186,7 +186,7 @@
                     <strong>Light Main</strong>
                     <p>Works with any color scheme</p>
                   </div>
-                </app-resizable-panel>
+                </ui-resizable-panel>
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@
           <div class="demo-card full-width">
             <h3>Snap to Edge Demo</h3>
             <div class="panel-box large-box">
-              <app-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
+              <ui-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
                 <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
                   <strong>Snap Demo</strong>
                   <p>Drag the handle close to the left edge and it will snap closed.</p>
@@ -216,7 +216,7 @@
                   <strong>Main Panel</strong>
                   <p>Try dragging the handle to the left or right edge to see the snap effect.</p>
                 </div>
-              </app-resizable-panel>
+              </ui-resizable-panel>
             </div>
           </div>
         </pg-example-section>
@@ -236,4 +236,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

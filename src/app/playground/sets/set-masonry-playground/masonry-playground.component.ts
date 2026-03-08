@@ -59,7 +59,7 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
   ];
 
   sortByOptions = [
-    { label: 'None', value: ''},
+    { label: 'None', value: '' },
     { label: 'Title', value: 'title' },
     { label: 'Date', value: 'date' },
     { label: 'Category', value: 'category' },
@@ -107,7 +107,7 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
 
   updateConfig() {
     this.pgConfig.filterBy = this.filterCategory ? `category:${this.filterCategory}` : '';
-    this.updateConfigFromDom(this.masonryLayout, 'app-masonry');
+    this.updateConfigFromDom(this.masonryLayout, 'ui-masonry');
   }
 
   onItemClick(event: any) {
@@ -149,6 +149,3 @@ export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implem
     this.updateConfig();
   }
 }
-
-
-

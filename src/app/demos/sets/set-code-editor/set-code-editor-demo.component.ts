@@ -34,12 +34,12 @@ export class DmSetCodeEditorDemoComponent extends BaseDemoComponent implements O
     return this.variants;
   }
 
-  playgroundCode = `<app-code-editor
+  playgroundCode = `<ui-code-editor
   language="typescript"
   theme="vs-dark"
   [value]="code"
   [options]="editorOptions"
-></app-code-editor>`;
+></ui-code-editor>`;
 
   ngOnInit() {}
 }

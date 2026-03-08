@@ -11,116 +11,375 @@
       <dm-tooltip-playground></dm-tooltip-playground>
     </div>
 
-    <div slot="examples">
-      <div class="demo-split-layout">
-        <pg-demo-sidebar [variants]="exampleVariants"></pg-demo-sidebar>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <div class="examples-content scroll-spy-container">
-          <!-- Triggers -->
-          <pg-example-section
-            id="triggers"
-            title="Triggers"
-            description="Different ways to trigger the tooltip"
-            [code]="hoverCode"
-          >
-            <div class="demo-grid col-3">
-              <div class="preview-box">
-                <app-tooltip content="I appear on hover" position="top">
-                  <ui-button slot="target" label="Hover Me"></ui-button>
-                </app-tooltip>
-              </div>
-              <div class="preview-box">
-                <app-tooltip content="I appear on click" position="top" trigger="click">
-                  <ui-button slot="target" label="Click Me"></ui-button>
-                </app-tooltip>
-              </div>
-              <div class="preview-box">
-                <app-tooltip content="I appear on focus" position="top" trigger="focus">
-                  <ui-input
-                    type="text"
-                    placeholder="Focus me"
-                    slot="target"
-                    style="padding: 8px; border: 1px solid var(--border-color); border-radius: 6px"
-                  ></ui-input>
-                </app-tooltip>
-              </div>
+      <div class="examples-content scroll-spy-container" id="examples-scroll-area">
+        <!-- Triggers -->
+        <pg-example-section
+          id="triggers"
+          title="Triggers"
+          description="Different ways to trigger the tooltip: hover (default), click, or focus."
+          [code]="hoverCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <ui-tooltip content="I appear on hover" position="top">
+                <ui-button slot="target" label="Hover Me" variant="outline"></ui-button>
+              </ui-tooltip>
+              <span class="preview-label">Hover (Default)</span>
             </div>
-          </pg-example-section>
-
-          <!-- Positioning -->
-          <pg-example-section
-            id="positioning"
-            title="Positioning"
-            description="Tooltips can be positioned in 8 different directions"
-            [code]="positionCode"
-          >
-            <div class="position-grid">
-              <div class="pos-cell top-left">
-                <app-tooltip content="Top Left" position="top-left">
-                  <ui-button slot="target" label="Top Left"></ui-button>
-                </app-tooltip>
-              </div>
-              <div class="pos-cell top">
-                <app-tooltip content="Top Center" position="top">
-                  <ui-button slot="target" label="Top"></ui-button>
-                </app-tooltip>
-              </div>
-              <div class="pos-cell top-right">
-                <app-tooltip content="Top Right" position="top-right">
-                  <ui-button slot="target" label="Top Right"></ui-button>
-                </app-tooltip>
-              </div>
+            <div class="preview-box">
+              <ui-tooltip content="I appear on click" position="top" trigger="click">
+                <ui-button slot="target" label="Click Me" variant="outline"></ui-button>
+              </ui-tooltip>
+              <span class="preview-label">Click</span>
             </div>
-          </pg-example-section>
+            <div class="preview-box">
+              <ui-tooltip content="I appear on focus" position="top" trigger="focus">
+                <ui-input placeholder="Focus me..." slot="target" max-width="120"></ui-input>
+              </ui-tooltip>
+              <span class="preview-label">Focus</span>
+            </div>
+          </div>
+        </pg-example-section>
 
-          <pg-example-section
-            id="variants"
-            title="Variants & Themes"
-            description="Built-in color schemes for different contexts"
-            [code]="darkVariantCode"
-          >
-            <div class="demo-grid col-3">
-              <div class="preview-box">
-                <app-tooltip content="Dark Theme" variant="dark">
-                  <ui-button
-                    slot="target"
-                    class="demo-btn dark"
-                    variant="dark"
-                    label="Dark"
-                  ></ui-button>
-                </app-tooltip>
-              </div>
-              <div class="preview-box">
-                <app-tooltip content="Light Theme" variant="light">
-                  <ui-button
-                    slot="target"
-                    class="demo-btn light"
-                    variant="light"
-                    label="Light"
-                  ></ui-button>
-                </app-tooltip>
-              </div>
-              <div
-                class="preview-box glass-bg"
-                style="background: linear-gradient(135deg, #667eea, #764ba2)"
+        <!-- Positioning -->
+        <pg-example-section
+          id="positioning"
+          title="Positioning"
+          description="Tooltips can be positioned in 8 different directions, or set to 'auto' to find the best fit."
+          [code]="positionCode"
+        >
+          <div class="position-demo-grid">
+            <div class="pos-cell tl">
+              <ui-tooltip content="Top Left" position="top-left">
+                <div slot="target" class="pos-target">TL</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell t">
+              <ui-tooltip content="Top Center" position="top">
+                <div slot="target" class="pos-target">T</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell tr">
+              <ui-tooltip content="Top Right" position="top-right">
+                <div slot="target" class="pos-target">TR</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell l">
+              <ui-tooltip content="Left" position="left">
+                <div slot="target" class="pos-target">L</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell center">
+              <ui-tooltip content="Auto Position" position="auto">
+                <ui-button slot="target" label="AUTO" variant="primary" size="sm"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell r">
+              <ui-tooltip content="Right" position="right">
+                <div slot="target" class="pos-target">R</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell bl">
+              <ui-tooltip content="Bottom Left" position="bottom-left">
+                <div slot="target" class="pos-target">BL</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell b">
+              <ui-tooltip content="Bottom Center" position="bottom">
+                <div slot="target" class="pos-target">B</div>
+              </ui-tooltip>
+            </div>
+            <div class="pos-cell br">
+              <ui-tooltip content="Bottom Right" position="bottom-right">
+                <div slot="target" class="pos-target">BR</div>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Variants -->
+        <pg-example-section
+          id="variants"
+          title="Variants & Themes"
+          description="Built-in color schemes and premium effects for different contexts."
+          [code]="darkVariantCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <ui-tooltip content="Standard Dark Theme" variant="dark">
+                <ui-button slot="target" variant="dark" label="Dark"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Clean Light Theme" variant="light">
+                <ui-button slot="target" variant="outline" label="Light"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box glass-accent">
+              <ui-tooltip content="Modern Glassmorphism" variant="glass" elevation="3">
+                <ui-button slot="target" variant="ghost" label="Glass"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Success State" variant="success">
+                <ui-button slot="target" variant="success" label="Success"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Warning Message" variant="warning">
+                <ui-button slot="target" variant="warning" label="Warning"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Critical Error" variant="error">
+                <ui-button slot="target" variant="danger" label="Error"></ui-button>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Shapes & Animations -->
+        <pg-example-section
+          id="shapes-animations"
+          title="Shapes & Animations"
+          description="Customize the tooltip's shape and its entry/exit animations."
+          [code]="bounceAnimationCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <ui-tooltip content="Playful Bounce!" animation="bounce" position="top">
+                <ui-button slot="target" label="Bounce" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Smooth Scaling" animation="scale" position="top">
+                <ui-button slot="target" label="Scale" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Minimalist Slide" animation="slide" position="top">
+                <ui-button slot="target" label="Slide" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Classic Fade" animation="fade" position="top">
+                <ui-button slot="target" label="Fade" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Pill Shaped Tooltip" shape="pill" position="top">
+                <ui-button slot="target" label="Pill Shape" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="Square Corners" shape="square" position="top">
+                <ui-button slot="target" label="Square" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Advanced Features -->
+        <pg-example-section
+          id="advanced-features"
+          title="Advanced Features"
+          description="Control delays, visibility, and interactivity."
+          [code]="showDelayCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="preview-box">
+              <ui-tooltip content="I waited 600ms to show" show-delay="600" position="top">
+                <ui-button slot="target" label="Show Delay" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="I stay for 1s after you leave" hide-delay="1000" position="top">
+                <ui-button slot="target" label="Hide Delay" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip content="No arrow pointer" arrow="false" position="top">
+                <ui-button slot="target" label="No Arrow" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip
+                content="High Elevation Shadow"
+                elevation="5"
+                position="top"
+                variant="light"
               >
-                <app-tooltip content="Glass Effect" variant="glass">
-                  <ui-button
-                    slot="target"
-                    class="demo-btn glass"
-                    variant="ghost"
-                    label="Glass"
-                  ></ui-button>
-                </app-tooltip>
-              </div>
+                <ui-button slot="target" label="Elevation 5" variant="outline"></ui-button>
+              </ui-tooltip>
             </div>
-          </pg-example-section>
-        </div>
+            <div class="preview-box">
+              <ui-tooltip
+                content="Premium Glow Effect"
+                show-glow="true"
+                variant="primary"
+                position="top"
+              >
+                <ui-button slot="target" label="Glow Effect"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip interactive="true" variant="light" position="top">
+                <ui-button slot="target" label="Interactive" variant="outline"></ui-button>
+                <div class="p-3">
+                  <p class="m-0 mb-2">You can hover/click inside!</p>
+                  <ui-button label="Action inside" size="sm"></ui-button>
+                </div>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Rich HTML Content -->
+        <pg-example-section
+          id="rich-content"
+          title="Rich HTML Content"
+          description="Support for HTML strings and complex formatting."
+          [code]="htmlContentCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <ui-tooltip
+                content="<strong>Rich Text</strong><br/><em>Support for line breaks</em><br/><code>and code snippets</code>"
+                html="true"
+                variant="light"
+                position="top"
+              >
+                <ui-button slot="target" label="Formatted HTML" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip
+                content="<ul style='padding-left: 20px; margin: 0'><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>"
+                html="true"
+                variant="light"
+                position="top"
+              >
+                <ui-button slot="target" label="HTML Lists" variant="outline"></ui-button>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Custom Content & Slots -->
+        <pg-example-section
+          id="custom-content"
+          title="Custom Content & Slots"
+          description="Use default slot for rich, dynamic content beyond simple strings."
+          [code]="customSlotCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box no-padding">
+              <ui-tooltip position="top" variant="glass" interactive="true" max-width="320">
+                <ui-button slot="target" label="User Profile" variant="outline"></ui-button>
+                <div class="profile-tooltip">
+                  <div class="profile-header">
+                    <div class="avatar">PK</div>
+                    <div class="info">
+                      <strong>Praveen Kumar</strong>
+                      <span>Lead Architect</span>
+                    </div>
+                  </div>
+                  <div class="profile-stats">
+                    <div class="stat"><span>42</span> repos</div>
+                    <div class="stat"><span>1.2k</span> stars</div>
+                  </div>
+                </div>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box no-padding">
+              <ui-tooltip position="top" variant="light" interactive="true">
+                <ui-button slot="target" label="Quick Settings" variant="outline"></ui-button>
+                <div class="p-3" style="min-width: 180px">
+                  <strong class="d-block mb-2">Toggle Options</strong>
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span>Notifications</span>
+                    <ui-switch size="sm" checked></ui-switch>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <span>Dark Mode</span>
+                    <ui-switch size="sm"></ui-switch>
+                  </div>
+                </div>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Custom Colors -->
+        <pg-example-section
+          id="custom-colors"
+          title="Custom Colors"
+          description="Override theme colors with any CSS value."
+          [code]="customPurpleCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box">
+              <ui-tooltip
+                content="Deep Purple Background"
+                custom-color="#6d28d9"
+                text-color="#ffffff"
+                position="top"
+              >
+                <ui-button slot="target" label="Solid Color" icon="lucide/palette"></ui-button>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box">
+              <ui-tooltip
+                content="Vibrant Gradient"
+                custom-color="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+                text-color="#ffffff"
+                position="top"
+              >
+                <ui-button slot="target" label="Gradient Color" icon="lucide/zap"></ui-button>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Mouse Tracking -->
+        <pg-example-section
+          id="mouse-tracking"
+          title="Mouse Tracking"
+          description="Sophisticated tracking options for dynamic feedback."
+          [code]="followCursorCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="preview-box track-area">
+              <ui-tooltip
+                content="I follow you everywhere"
+                follow-cursor="true"
+                variant="primary"
+                position="top"
+              >
+                <div slot="target" class="tracking-surface">Follow Cursor</div>
+              </ui-tooltip>
+            </div>
+            <div class="preview-box track-area">
+              <ui-tooltip
+                content="Opened right here"
+                open-at-mouse-position="true"
+                trigger="click"
+                variant="info"
+                position="top"
+              >
+                <div slot="target" class="tracking-surface">Click Position</div>
+              </ui-tooltip>
+            </div>
+          </div>
+        </pg-example-section>
       </div>
     </div>
+
     <div slot="docs">
       <pg-component-documentation componentId="tooltip"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
-

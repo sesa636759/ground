@@ -26,7 +26,7 @@
           [code]="fadeTransitionCode"
           style="margin-top: 0"
         >
-          <app-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
+          <ui-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
             <div
               class="slide"
               style="background: #1e293b; padding: 60px; color: white; text-align: center"
@@ -48,7 +48,7 @@
               <h3>Mountains</h3>
               <p>Peak experience</p>
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Slide Transition -->
@@ -58,7 +58,7 @@
           description="Classic sliding animation with smooth transitions"
           [code]="slideTransitionCode"
         >
-          <app-carousel
+          <ui-carousel
             effect="slide"
             autoplay="true"
             autoplay-interval="3000"
@@ -113,7 +113,7 @@
               <h3>Slide 4</h3>
               <p>Easy to customize</p>
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Center Mode -->
@@ -123,7 +123,7 @@
           description="Highlight the active slide with partial side visibility"
           [code]="centerModeCode"
         >
-          <app-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
+          <ui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
             <div
               class="slide"
               style="
@@ -189,7 +189,7 @@
             >
               Item 5
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Multiple Slides -->
@@ -199,7 +199,7 @@
           description="Show multiple slides at once"
           [code]="multipleItemsCode"
         >
-          <app-carousel
+          <ui-carousel
             slides-to-show="3"
             slides-to-scroll="1"
             infinite="true"
@@ -284,7 +284,7 @@
             >
               <h4>Slide 6</h4>
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Vertical Carousel -->
@@ -295,7 +295,7 @@
           [code]="verticalCode"
         >
           <div style="height: 400px; width: 100%">
-            <app-carousel
+            <ui-carousel
               direction="vertical"
               slides-to-show="1"
               autoplay="true"
@@ -334,7 +334,7 @@
               >
                 Vertical Slide 3
               </div>
-            </app-carousel>
+            </ui-carousel>
           </div>
         </pg-example-section>
 
@@ -345,7 +345,7 @@
           description="Seamless continuous looping carousel"
           [code]="infiniteLoopCode"
         >
-          <app-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
+          <ui-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
             <div
               class="slide"
               style="background: #ff6b6b; padding: 60px; color: white; text-align: center"
@@ -364,7 +364,7 @@
             >
               Loop Item 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Swipe & Drag -->
@@ -374,7 +374,7 @@
           description="Full touch and mouse interaction support"
           [code]="swipeGestureCode"
         >
-          <app-carousel
+          <ui-carousel
             swipe="true"
             drag="true"
             mouse-drag="true"
@@ -414,7 +414,7 @@
             >
               Swipe/Drag 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Autoplay Control -->
@@ -424,7 +424,7 @@
           description="Automatic playback with hover and focus pause"
           [code]="scrollAutoplayCode"
         >
-          <app-carousel
+          <ui-carousel
             autoplay="true"
             autoplay-interval="3000"
             pause-on-hover="true"
@@ -448,7 +448,7 @@
             >
               Auto resume
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Drag Threshold -->
@@ -458,7 +458,7 @@
           description="Fine-tune swipe sensitivity and drag distance"
           [code]="thresholdCode"
         >
-          <app-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
+          <ui-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
             <div
               class="slide"
               style="background: #10b981; padding: 60px; color: white; text-align: center"
@@ -477,7 +477,7 @@
             >
               Threshold 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Animation Easing -->
@@ -487,7 +487,7 @@
           description="Control animation timing with CSS easing functions"
           [code]="easingCode"
         >
-          <app-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
+          <ui-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
             <div
               class="slide"
               style="background: #a78bfa; padding: 60px; color: white; text-align: center"
@@ -506,7 +506,7 @@
             >
               EaseInOut 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Dots Indicators -->
@@ -516,7 +516,7 @@
           description="Classic dot pagination for slide navigation"
           [code]="dotsIndicatorsCode"
         >
-          <app-carousel
+          <ui-carousel
             indicators="true"
             indicator-type="dots"
             indicator-position="bottom"
@@ -540,7 +540,7 @@
             >
               Slide 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Number Indicators -->
@@ -550,7 +550,7 @@
           description="Numeric pagination showing slide numbers"
           [code]="numberIndicatorsCode"
         >
-          <app-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
+          <ui-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
             <div
               class="slide"
               style="background: #06b6d4; padding: 60px; color: white; text-align: center"
@@ -569,7 +569,7 @@
             >
               Slide 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Progress Bar -->
@@ -579,7 +579,7 @@
           description="Visual progress bar showing autoplay timing"
           [code]="progressBarCode"
         >
-          <app-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
+          <ui-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
             <div
               class="slide"
               style="background: #10b981; padding: 60px; color: white; text-align: center"
@@ -598,7 +598,7 @@
             >
               Progress 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Small -->
@@ -608,7 +608,7 @@
           description="Compact carousel with reduced height"
           [code]="sizeSmallCode"
         >
-          <app-carousel height="200px" slides-to-show="1">
+          <ui-carousel height="200px" slides-to-show="1">
             <div
               class="slide"
               style="background: #fbbf24; padding: 40px; color: white; text-align: center"
@@ -627,7 +627,7 @@
             >
               Small 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Medium -->
@@ -637,7 +637,7 @@
           description="Standard carousel height for most use cases"
           [code]="sizeMediumCode"
         >
-          <app-carousel height="400px" slides-to-show="2">
+          <ui-carousel height="400px" slides-to-show="2">
             <div
               class="slide"
               style="background: #5c7caf; padding: 60px; color: white; text-align: center"
@@ -656,7 +656,7 @@
             >
               Medium 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Size Large -->
@@ -666,7 +666,7 @@
           description="Full-height carousel for hero sections"
           [code]="sizeLargeCode"
         >
-          <app-carousel height="600px" slides-to-show="3">
+          <ui-carousel height="600px" slides-to-show="3">
             <div
               class="slide"
               style="background: #667eea; padding: 80px; color: white; text-align: center"
@@ -685,7 +685,7 @@
             >
               Large 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Fast -->
@@ -695,7 +695,7 @@
           description="Quick transitions and short autoplay interval"
           [code]="speedFastCode"
         >
-          <app-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
+          <ui-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
             <div
               class="slide"
               style="background: #ff6b6b; padding: 60px; color: white; text-align: center"
@@ -714,7 +714,7 @@
             >
               Fast 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Normal -->
@@ -724,7 +724,7 @@
           description="Balanced timing for comfortable viewing"
           [code]="speedNormalCode"
         >
-          <app-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
+          <ui-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
             <div
               class="slide"
               style="background: #5c7caf; padding: 60px; color: white; text-align: center"
@@ -743,7 +743,7 @@
             >
               Normal 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Speed Slow -->
@@ -753,7 +753,7 @@
           description="Relaxed transitions for detailed content"
           [code]="speedSlowCode"
         >
-          <app-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
+          <ui-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
             <div
               class="slide"
               style="background: #667eea; padding: 60px; color: white; text-align: center"
@@ -772,7 +772,7 @@
             >
               Slow 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Responsive Breakpoints -->
@@ -782,7 +782,7 @@
           description="Adapts slide count based on screen width"
           [code]="responsiveCode"
         >
-          <app-carousel
+          <ui-carousel
             slides-to-show="3"
             responsive="[{breakpoint: 1024, settings: {slidesToShow: 2}}, {breakpoint: 640, settings: {slidesToShow: 1}}]"
           >
@@ -822,7 +822,7 @@
             >
               Responsive 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
 
         <!-- Custom Controls -->
@@ -832,7 +832,7 @@
           description="Extensive control over navigation appearance and behavior"
           [code]="customControlsCode"
         >
-          <app-carousel
+          <ui-carousel
             arrows="true"
             indicators="true"
             show-progress="true"
@@ -857,7 +857,7 @@
             >
               Slide 3
             </div>
-          </app-carousel>
+          </ui-carousel>
         </pg-example-section>
       </div>
     </div>
@@ -868,4 +868,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

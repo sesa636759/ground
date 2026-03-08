@@ -23,31 +23,31 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Card Variant (Grid Layout)</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="plans"
                 variant="card"
                 layout="grid"
                 columns="2"
                 [options]="planOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
             <div class="demo-grid col-2">
               <div class="demo-card">
                 <h4 class="demo-sub-title">Bordered Variant</h4>
-                <app-radio-group
+                <ui-radio-group
                   name="bord"
                   variant="bordered"
                   [options]="basicOptions"
-                ></app-radio-group>
+                ></ui-radio-group>
               </div>
               <div class="demo-card">
                 <h4 class="demo-sub-title">Underlined Variant</h4>
-                <app-radio-group
+                <ui-radio-group
                   name="und"
                   variant="underlined"
                   color="success"
                   [options]="basicOptions"
-                ></app-radio-group>
+                ></ui-radio-group>
               </div>
             </div>
           </div>
@@ -63,22 +63,22 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Horizontal Button Group</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="btn-h"
                 button-group="true"
                 layout="horizontal"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Vertical Button Group</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="btn-v"
                 button-group="true"
                 layout="vertical"
                 color="danger"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -91,7 +91,7 @@
           [code]="loadingSkeletonCode"
         >
           <div class="demo-card">
-            <app-radio-group name="load" skeleton [options]="basicOptions"></app-radio-group>
+            <ui-radio-group name="load" skeleton [options]="basicOptions"></ui-radio-group>
           </div>
         </pg-example-section>
 
@@ -105,19 +105,19 @@
           <div class="demo-grid col-2">
             <div class="demo-card">
               <h4 class="demo-sub-title">Primary</h4>
-              <app-radio-group name="c1" color="primary" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="c1" color="primary" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Success</h4>
-              <app-radio-group name="c2" color="success" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="c2" color="success" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Warning</h4>
-              <app-radio-group name="c3" color="warning" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="c3" color="warning" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Indigo</h4>
-              <app-radio-group name="c4" color="indigo" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="c4" color="indigo" [options]="basicOptions"></ui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -132,28 +132,24 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h4 class="demo-sub-title">Vertical (Default)</h4>
-              <app-radio-group
-                name="l1"
-                layout="vertical"
-                [options]="basicOptions"
-              ></app-radio-group>
+              <ui-radio-group name="l1" layout="vertical" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Horizontal</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="l2"
                 layout="horizontal"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Grid (2 Columns)</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="l3"
                 layout="grid"
                 columns="2"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -168,15 +164,15 @@
           <div class="demo-grid col-3">
             <div class="demo-card">
               <h4 class="demo-sub-title">Small</h4>
-              <app-radio-group name="s1" size="small" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="s1" size="small" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Medium</h4>
-              <app-radio-group name="s2" size="medium" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="s2" size="medium" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Large</h4>
-              <app-radio-group name="s3" size="large" [options]="basicOptions"></app-radio-group>
+              <ui-radio-group name="s3" size="large" [options]="basicOptions"></ui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -191,29 +187,56 @@
           <div class="demo-grid col-2">
             <div class="demo-card">
               <h4 class="demo-sub-title">Disabled</h4>
-              <app-radio-group
-                name="st1"
-                disabled="true"
-                [options]="basicOptions"
-              ></app-radio-group>
+              <ui-radio-group name="st1" disabled="true" [options]="basicOptions"></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Readonly</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="st2"
                 readonly="true"
                 value="option1"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Error State</h4>
-              <app-radio-group
+              <ui-radio-group
                 name="st3"
                 invalid="true"
                 error-message="Selection is required"
                 [options]="basicOptions"
-              ></app-radio-group>
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Slotted & Clearable -->
+        <pg-example-section
+          id="slotted-clearable"
+          title="Slotted & Clearable"
+          description="Declarative radio options and clearable selection support"
+          [code]="slottedClearableCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Declarative (Slotted)</h4>
+              <ui-radio-group name="slots" label="Manual Composition">
+                <ui-radio value="1" label="Option 1"></ui-radio>
+                <ui-radio value="2" label="Option 2"></ui-radio>
+                <ui-radio value="3" label="Option 3"></ui-radio>
+              </ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Clearable Selection</h4>
+              <p style="font-size: 12px; color: #666; margin-bottom: 12px">
+                Click selected item to deselect
+              </p>
+              <ui-radio-group
+                name="clearable"
+                label="Filter Status"
+                allow-empty="true"
+                [options]="clearableOptions"
+              ></ui-radio-group>
             </div>
           </div>
         </pg-example-section>
@@ -229,17 +252,17 @@
             <div style="display: grid; gap: 24px">
               <div>
                 <h4 class="demo-sub-title" style="margin-bottom: 12px">Shipping Method</h4>
-                <app-radio-group
+                <ui-radio-group
                   [(ngModel)]="formShipping"
                   name="ship"
                   required
                   [invalid]="shippingInvalid"
                   [options]="deliveryOptions"
-                ></app-radio-group>
+                ></ui-radio-group>
               </div>
               <div>
                 <h4 class="demo-sub-title" style="margin-bottom: 12px">Payment Method</h4>
-                <app-radio-group
+                <ui-radio-group
                   [(ngModel)]="formPayment"
                   name="pay"
                   variant="card"
@@ -247,7 +270,7 @@
                   columns="2"
                   [invalid]="paymentInvalid"
                   [options]="paymentOptions"
-                ></app-radio-group>
+                ></ui-radio-group>
               </div>
             </div>
             <div style="margin-top: 32px">
@@ -272,4 +295,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

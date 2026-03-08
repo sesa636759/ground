@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmEmptyStatePlaygroundComponent } from '../../../playground/sets/set-empty-state-playground/empty-state-playground.component';
@@ -26,15 +26,16 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'types', title: 'Standard Types', icon: '📋', color: '#3b82f6' },
-    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#10b981' },
-    { id: 'sizes', title: 'Size Options', icon: '📏', color: '#f59e0b' },
-    { id: 'alignment', title: 'Alignment Options', icon: '↔️', color: '#ef4444' },
-    { id: 'images', title: 'Custom Images', icon: '🖼️', color: '#8b5cf6' },
-    { id: 'suggestions', title: 'Suggestion Items', icon: '📝', color: '#ec4899' },
-    { id: 'actions', title: 'Multiple Actions', icon: '🎯', color: '#06b6d4' },
-    { id: 'features', title: 'Special Features', icon: '✨', color: '#64748b' },
-    { id: 'premium', title: 'Premium Features', icon: '💎', color: '#3b82f6' },
+    { id: 'all-types', title: 'All Types', icon: '??', color: '#3b82f6' },
+    { id: 'variants', title: 'Visual Variants', icon: '??', color: '#10b981' },
+    { id: 'sizes', title: 'Size Options', icon: '??', color: '#f59e0b' },
+    { id: 'alignment', title: 'Alignment Options', icon: '??', color: '#ef4444' },
+    { id: 'showcase', title: 'Premium Showcase', icon: '?', color: '#3b82f6' },
+    { id: 'suggestions', title: 'Suggestion Items', icon: '??', color: '#ec4899' },
+    { id: 'actions', title: 'Multiple Actions', icon: '??', color: '#06b6d4' },
+    { id: 'images', title: 'Custom Images', icon: '???', color: '#8b5cf6' },
+    { id: 'features', title: 'Special Features', icon: '?', color: '#64748b' },
+    { id: 'premium', title: 'Premium Features', icon: '??', color: '#3b82f6' },
   ];
 
   get exampleVariants() {
@@ -52,21 +53,18 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
 
 <app-empty-state type="coming-soon" title="Coming Soon" message="This feature is under development." secondary-action="Notify Me"></app-empty-state>`);
 
-  variantsCode = signal(`<app-empty-state variant="default">
-  <h3>No Data Available</h3>
-</app-empty-state>
+  variantsCode =
+    signal(`<app-empty-state variant="default" label="No Data Available" message="There is no data to display."></app-empty-state>
 
-<app-empty-state variant="outlined">
-  <h3>No Data Available</h3>
-</app-empty-state>
+<app-empty-state variant="outlined" label="No Data Available" message="There is no data to display."></app-empty-state>
 
-<app-empty-state variant="filled">
-  <h3>No Data Available</h3>
-</app-empty-state>
+<app-empty-state variant="filled" label="No Data Available" message="There is no data to display."></app-empty-state>
 
-<app-empty-state variant="minimal">
-  <h3>No Data Available</h3>
-</app-empty-state>`);
+<app-empty-state variant="minimal" label="No Data Available" message="There is no data to display."></app-empty-state>
+
+<app-empty-state variant="glass" label="No Data Available" message="There is no data to display."></app-empty-state>
+
+<app-empty-state variant="minimalistic" label="No Data Available" message="There is no data to display."></app-empty-state>`);
 
   sizesCode =
     signal(`<app-empty-state size="small" title="Nothing Here Yet" message="Get started by adding your first item."></app-empty-state>
@@ -135,20 +133,68 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
 </app-empty-state>`);
 
   premiumCode = signal(`<app-empty-state 
-  title="Beta Access"
+  label="Beta Access"
   message="Join the waitlist for exclusive features."
   animated
-  glass-morphism
+  variant="glass"
   primary-action="Join Waitlist"
 ></app-empty-state>
 
 <app-empty-state 
-  type="celebration" 
-  title="Success!"
+  label="Success!"
   message="Your action was completed successfully."
   animated
   primary-action="Continue"
+  confetti
 ></app-empty-state>`);
 
-  ngOnInit() {}
+  showcaseCode = signal(`<!-- Glassmorphism -->
+<div class="glass-container">
+  <app-empty-state variant="glass" heading="Glassmorphism" ...></app-empty-state>
+</div>
+
+<!-- Compact Mode -->
+<app-empty-state compact size="small" variant="minimal" ...></app-empty-state>`);
+
+  suggestionItems = [
+    { icon: 'fas fa-search', label: 'Check your spelling', value: 'spelling' },
+    { icon: 'fas fa-filter', label: 'Try different filters', value: 'filters' },
+    { icon: 'fas fa-sync', label: 'Refresh the page', value: 'refresh' },
+    { icon: 'fas fa-question-circle', label: 'Contact support', value: 'support' },
+  ];
+
+  customActions = [
+    { label: 'Create New Project', value: 'create', variant: 'primary', icon: 'fas fa-plus' },
+    { label: 'Import Project', value: 'import', variant: 'secondary', icon: 'fas fa-file-import' },
+    { label: 'Browse Templates', value: 'templates', variant: 'text', icon: 'fas fa-th' },
+  ];
+
+  isJoining = false;
+  celebrationActive = false;
+
+  onJoinWaitlist() {
+    if (this.isJoining) return;
+    this.isJoining = true;
+    setTimeout(() => {
+      this.isJoining = false;
+      this.celebrationActive = true;
+      setTimeout(() => {
+        this.celebrationActive = false;
+      }, 3000);
+    }, 2000);
+  }
+
+  onItemClick(event: any) {
+    console.log('Item clicked:', event.detail.item);
+    alert(`Item clicked: ${event.detail.item.label}`);
+  }
+
+  handleAction(event: any) {
+    console.log('Action triggered:', event.detail.action);
+    alert(`Action: ${event.detail.action.label}`);
+  }
+
+  ngOnInit() {
+    console.log('set-empty-state-demo.component.ts');
+  }
 }

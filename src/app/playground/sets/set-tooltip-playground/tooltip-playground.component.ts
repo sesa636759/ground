@@ -53,6 +53,14 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Ease In Out', value: 'ease-in-out' },
   ];
 
+  standardTriggerOptions = [
+    { label: 'Hover', value: 'hover' },
+    { label: 'Click', value: 'click' },
+    { label: 'Focus', value: 'focus' },
+  ];
+
+  customTriggerOptions = [...this.standardTriggerOptions, { label: 'Manual', value: 'manual' }];
+
   constructor() {
     super();
     this.updateConfig();
@@ -88,11 +96,13 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
       autoShift: true,
       portal: true,
       useCustomColor: false,
+      visible: false,
+      closable: false,
     };
   }
 
   updateConfig() {
-    let code = `<app-tooltip\n`;
+    let code = `<ui-tooltip\n`;
     code += `  content="${this.pgConfig.content}"\n`;
     if (this.pgConfig.position !== 'top') code += `  position="${this.pgConfig.position}"\n`;
     if (this.pgConfig.trigger !== 'hover') code += `  trigger="${this.pgConfig.trigger}"\n`;
@@ -113,6 +123,8 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
     if (this.pgConfig.showGlow) code += `  [showGlow]="true"\n`;
     if (this.pgConfig.trackMouse) code += `  [trackMouse]="true"\n`;
     if (this.pgConfig.openAtMousePosition) code += `  [openAtMousePosition]="true"\n`;
+    if (this.pgConfig.visible) code += `  [visible]="true"\n`;
+    if (this.pgConfig.closable) code += `  [closable]="true"\n`;
     if (!this.pgConfig.autoShift) code += `  [autoShift]="false"\n`;
     if (!this.pgConfig.portal) code += `  [portal]="false"\n`;
 
@@ -131,11 +143,9 @@ export class DmTooltipPlaygroundComponent extends BasePlaygroundComponent {
     code += `  <ui-button slot="target" class="btn-target">\n`;
     code += `    <i class="${this.pgConfig.targetIcon}"></i> ${this.pgConfig.targetText}\n`;
     code += `  </ui-button>\n`;
-    code += `</app-tooltip>`;
+    code += `</ui-tooltip>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
 }
-
-

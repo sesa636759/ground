@@ -25,66 +25,15 @@
   border-radius: 20px;
 }
 
-app-tab-stack {
+ui-tabs {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
-  --tab-header-bg: #ffffff;
-  --tab-active-color: var(--primary);
-  --tab-border-color: var(--border-color);
-  --tab-header-padding: 0 4rem;
-}
-
-/* Collapse the Stencil-managed tab-panels area; we render our own below */
-app-tab-stack::part(tab-panels) {
-  display: none;
-}
-
-/* app-tab elements are empty (no content), so hide them entirely */
-app-tab {
-  display: none !important;
-}
-
-/* Angular-managed tab panels */
-.tab-panels-host {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
-}
-
-.viewport-pane {
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.pane-examples {
-  overflow: hidden;
-  padding: 0;
-  background: #f0fdf4;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.pane-playground {
-  overflow: hidden;
-  padding: 2rem;
-  background: #f0fdf4;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.pane-docs {
-  overflow: hidden;
-  padding: 0;
-  background: #f0fdf4;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.pane-hidden {
-  display: none !important;
+  --tab-active-color: var(--primary);
+  --border-color: var(--border-color);
+  --header-bg: #ffffff;
+  --content-bg: #f0fdf4;
 }
 
 @keyframes fadeIn {

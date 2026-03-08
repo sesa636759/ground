@@ -58,7 +58,7 @@ export class DmEmptyStatePlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    this.updateConfigFromDom(this.emptyStateElement, 'app-empty-state');
+    this.updateConfigFromDom(this.emptyStateElement, 'ui-empty-state');
   }
 
   onActionClick(event: any) {
@@ -69,6 +69,3 @@ export class DmEmptyStatePlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent('Back button clicked');
   }
 }
-
-
-

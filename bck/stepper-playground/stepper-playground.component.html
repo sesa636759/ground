@@ -29,6 +29,14 @@
         [options]="variantOptions"
       ></ui-dropdown>
     </div>
+    <div class="control-group">
+      <label>Flow</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.flow"
+        (ngModelChange)="updateConfig()"
+        [options]="flowOptions"
+      ></ui-dropdown>
+    </div>
   </div>
 
   <div slot="content-options" class="control-grid" style="padding: 16px">
@@ -53,6 +61,13 @@
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
         Progress Dot
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showControls"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Controls
       </label>
     </div>
     <div class="control-group" style="margin-top: 16px">
@@ -82,9 +97,11 @@
       [attr.orientation]="pgConfig.orientation"
       [attr.size]="pgConfig.size"
       [attr.variant]="pgConfig.variant"
+      [attr.flow]="pgConfig.flow"
       [attr.active-step]="pgConfig.activeStep"
       [attr.show-numbers]="pgConfig.showNumbers ? '' : null"
       [attr.show-descriptions]="pgConfig.showDescriptions ? '' : null"
+      [attr.show-controls]="pgConfig.showControls ? '' : null"
       [attr.progress-dot]="pgConfig.progressDot ? '' : null"
       [steps]="stepsJson"
       (stepperChange)="onStepChange($event)"

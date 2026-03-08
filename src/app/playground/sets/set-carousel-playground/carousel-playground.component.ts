@@ -69,7 +69,7 @@ export class DmCarouselPlaygroundComponent extends BasePlaygroundComponent {
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>`;
-    this.updateConfigFromDom(this.carouselElement, 'app-carousel', innerContent);
+    this.updateConfigFromDom(this.carouselElement, 'ui-carousel', innerContent);
   }
 
   getRandomColor() {
@@ -77,6 +77,3 @@ export class DmCarouselPlaygroundComponent extends BasePlaygroundComponent {
     return `hsl(${hue}, 70%, 60%)`;
   }
 }
-
-
-

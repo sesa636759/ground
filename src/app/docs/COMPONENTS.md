@@ -284,7 +284,7 @@ Selection control for binary choices.
 
 ---
 
-## 💬 Tooltip `app-tooltip`
+## 💬 Tooltip `ui-tooltip`
 
 Information overlay triggered by hover or focus.
 
@@ -301,9 +301,9 @@ Information overlay triggered by hover or focus.
 ### Usage
 
 ```html
-<app-tooltip content="Useful tip here" position="top">
+<ui-tooltip content="Useful tip here" position="top">
   <button slot="target">Hover Me</button>
-</app-tooltip>
+</ui-tooltip>
 ```
 
 ---
@@ -518,7 +518,7 @@ Visual separator for content blocks.
 
 ---
 
-## 📊 Dashboard `app-dashboard`
+## 📊 Dashboard `ui-dashboard`
 
 Grid-based layout for hosting resizable and draggable widgets.
 
@@ -545,13 +545,13 @@ Grid-based layout for hosting resizable and draggable widgets.
 ### Usage
 
 ```html
-<app-dashboard
+<ui-dashboard
   [widgets]="myWidgets"
   [columns]="12"
   [autoSave]="true"
   (layoutChanged)="onLayoutSave($event)"
 >
-</app-dashboard>
+</ui-dashboard>
 ```
 
 ---
@@ -822,7 +822,7 @@ Enterprise-grade window and region management system for IDE-like layouts.
 
 ---
 
-## 💻 Smart Code Editor `app-code-editor`
+## 💻 Smart Code Editor `ui-code-editor`
 
 Full-featured text editor with syntax highlighting and multi-file support.
 
@@ -846,12 +846,12 @@ Full-featured text editor with syntax highlighting and multi-file support.
 ### Usage
 
 ```html
-<app-code-editor [files]="codeSnippet" language="python" theme="vs-dark"> </app-code-editor>
+<ui-code-editor [files]="codeSnippet" language="python" theme="vs-dark"> </ui-code-editor>
 ```
 
 ---
 
-## 📋 Interactive Dashboard `app-dashboard`
+## 📋 Interactive Dashboard `ui-dashboard`
 
 Dynamic grid container for cards, charts, and administrative widgets.
 
@@ -867,8 +867,8 @@ Dynamic grid container for cards, charts, and administrative widgets.
 ### Usage
 
 ```html
-<app-dashboard [widgets]="myWidgets" [columns]="12" [isEditable]="true" theme="glass">
-</app-dashboard>
+<ui-dashboard [widgets]="myWidgets" [columns]="12" [isEditable]="true" theme="glass">
+</ui-dashboard>
 ```
 
 ---

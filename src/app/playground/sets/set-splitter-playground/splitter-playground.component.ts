@@ -31,7 +31,7 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent {
   }
 
   updateConfig() {
-    let code = `<app-splitter\n`;
+    let code = `<ui-splitter\n`;
     code += `  direction="${this.pgConfig.direction}"\n`;
     if (this.pgConfig.gutterSize !== 8) code += `  [gutterSize]="${this.pgConfig.gutterSize}"\n`;
     if (this.pgConfig.snapThreshold !== 20)
@@ -45,7 +45,7 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent {
     code += `>\n`;
     code += `  <div slot="panel-0">Panel 1 Content</div>\n`;
     code += `  <div slot="panel-1">Panel 2 Content</div>\n`;
-    code += `</app-splitter>`;
+    code += `</ui-splitter>`;
 
     this.generatedCode.set(code);
     this.refreshCode();
@@ -84,6 +84,3 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 }
-
-
-
