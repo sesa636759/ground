@@ -26,6 +26,11 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent implem
     { label: 'Modern', value: 'modern' },
   ];
 
+  flowOptions = [
+    { label: 'Linear', value: 'linear' },
+    { label: 'Non-Linear', value: 'non-linear' },
+  ];
+
   steps = [
     { id: '1', label: 'Identity', description: 'Verify your personal details' },
     { id: '2', label: 'Security', description: 'Setup 2FA and passwords' },
@@ -51,7 +56,9 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent implem
       activeStep: 0,
       showNumbers: true,
       showDescriptions: true,
+      showControls: false,
       progressDot: false,
+      flow: 'linear',
     };
   }
 
@@ -60,9 +67,11 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent implem
     code += `  orientation="${this.pgConfig.orientation}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
+    code += `  flow="${this.pgConfig.flow}"\n`;
     code += `  [active-step]="${this.pgConfig.activeStep}"\n`;
     if (!this.pgConfig.showNumbers) code += `  [show-numbers]="false"\n`;
     if (this.pgConfig.showDescriptions) code += `  show-descriptions\n`;
+    if (this.pgConfig.showControls) code += `  show-controls\n`;
     if (this.pgConfig.progressDot) code += `  progress-dot\n`;
     code += `  [steps]="steps"\n`;
     code += '></ui-stepper>';
@@ -77,6 +86,3 @@ export class DmStepperPlaygroundComponent extends BasePlaygroundComponent implem
     this.logEvent(`Active step changed to: ${this.pgConfig.activeStep}`);
   }
 }
-
-
-

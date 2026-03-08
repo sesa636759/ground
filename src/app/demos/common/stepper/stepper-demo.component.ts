@@ -31,6 +31,8 @@ export class DmStepperDemoComponent extends BaseDemoComponent {
     { id: 'orientation', title: 'Orientation', icon: '📐', color: '#3b82f6' },
     { id: 'visuals', title: 'Visual Types', icon: '🎨', color: '#10b981' },
     { id: 'validation', title: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
+    { id: 'api', title: 'Programmatic API', icon: '🔧', color: '#3b82f6' },
+    { id: 'sizes', title: 'Size Variations', icon: '📏', color: '#10b981' },
   ];
 
   steps = [
@@ -63,4 +65,48 @@ export class DmStepperDemoComponent extends BaseDemoComponent {
 
 <!-- Linear: strict sequential completion -->
 <ui-stepper flow="linear"></ui-stepper>`;
+
+  apiCode = `<!-- Programmatic controls using refs or bindings -->
+<div class="controls">
+  <button (click)="stepper.prev()">Prev</button>
+  <button (click)="stepper.next()">Next</button>
+</div>
+<ui-stepper #stepper [steps]="steps" [activeStep]="currentStep"></ui-stepper>`;
+
+  sizesCode = `<ui-stepper size="sm"></ui-stepper>
+<ui-stepper size="md"></ui-stepper>
+<ui-stepper size="lg"></ui-stepper>`;
+
+  visualOptionsCode = `<ui-stepper [show-numbers]="true" [show-descriptions]="true"></ui-stepper>
+<ui-stepper [show-numbers]="false" [show-descriptions]="true"></ui-stepper>`;
+
+  responsiveCode = `<ui-stepper [max-visible-steps]="3"></ui-stepper>`;
+
+  dynamicStepsCode = `<ui-stepper [steps]="steps"></ui-stepper>
+<button (click)="changeSteps()">Change Steps</button>`;
+
+  changeSteps() {
+    this.steps = [
+      { id: 'a', label: 'Step A', status: 'completed' },
+      { id: 'b', label: 'Step B', status: 'active' },
+    ];
+  }
+
+  showStatus() {
+    alert(`Current Step Index: ${this.currentStep}`);
+  }
+
+  currentStep = 1;
+
+  onPrevious() {
+    this.currentStep = Math.max(0, this.currentStep - 1);
+  }
+
+  onNext() {
+    this.currentStep = Math.min(this.steps.length - 1, this.currentStep + 1);
+  }
+
+  onGoTo(index: number) {
+    this.currentStep = index;
+  }
 }

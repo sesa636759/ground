@@ -739,13 +739,13 @@ export const routes: Routes = [
           import('./demos/common/timer/timer-demo.component').then((m) => m.DmTimerDemoComponent),
       },
 
-      {
-        path: 'smart-stepper',
-        loadComponent: () =>
-          import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
-            (m) => m.DmSmartStepperDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'smart-stepper',
+      //   loadComponent: () =>
+      //     import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
+      //       (m) => m.DmSmartStepperDemoComponent,
+      //     ),
+      // },
       {
         path: 'scroll-top',
         loadComponent: () =>
