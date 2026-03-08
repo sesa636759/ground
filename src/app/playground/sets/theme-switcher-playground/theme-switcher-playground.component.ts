@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-theme-switcher-set-playground',
+  selector: 'ds-theme-switcher-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './theme-switcher-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmThemeSwitcherSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmThemeSwitcherPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
@@ -54,6 +54,3 @@ export class DmThemeSwitcherSetPlaygroundComponent extends BasePlaygroundCompone
     this.logEvent(`Theme changed to: ${theme}`);
   }
 }
-
-
-

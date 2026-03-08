@@ -11,14 +11,14 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { generatePlaygroundCode } from 'src/app/shared/utils/playground-utils';
 
 @Component({
-  selector: 'dm-context-menu-set-playground',
+  selector: 'ds-context-menu-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './context-menu-playground.component.html',
   styleUrl: './context-menu-playground.component.scss',
 })
-export class DmContextMenuSetPlaygroundComponent implements AfterViewInit {
+export class DmContextMenuPlaygroundComponent implements AfterViewInit {
   @ViewChild('contextMenuElement') contextMenuElement!: ElementRef;
 
   // Playground State
@@ -176,4 +176,3 @@ export class DmContextMenuSetPlaygroundComponent implements AfterViewInit {
     this.updateConfig();
   }
 }
-

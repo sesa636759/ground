@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-resizable-panel-set-playground',
+  selector: 'ds-resizable-panel-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './resizable-panel-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmResizablePanelSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmResizablePanelPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     direction: 'horizontal',

@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmListSetPlaygroundComponent } from '../../../playground/sets/list-playground/list-playground.component';
+import { DmListPlaygroundComponent } from '../../../playground/sets/list-playground/list-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'dm-list-set-demo',
+  selector: 'dm-list-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmListSetPlaygroundComponent,
+    DmListPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,

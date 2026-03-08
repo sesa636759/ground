@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-stepper-set-playground',
+  selector: 'ds-stepper-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './stepper-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmStepperSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmStepperPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     orientation: 'horizontal',

@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
-import { DmTreeSetPlaygroundComponent } from '../../../playground/sets/tree-playground/tree-playground.component';
+import { DmTreePlaygroundComponent } from '../../../playground/sets/tree-playground/tree-playground.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -8,11 +8,11 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
-  selector: 'dm-tree-set-demo',
+  selector: 'ds-tree-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmTreeSetPlaygroundComponent,
+    DmTreePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,

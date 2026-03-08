@@ -1,15 +1,15 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmSidebarSetPlaygroundComponent } from '../../../playground/sets/sidebar-playground/sidebar-playground.component';
+import { DmSidebarPlaygroundComponent } from '../../../playground/sets/sidebar-playground/sidebar-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 
 @Component({
-  selector: 'dm-sidebar-set-demo',
+  selector: 'ds-sidebar-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmSidebarSetPlaygroundComponent,
+    DmSidebarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
   ],

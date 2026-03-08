@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-tab-stack-set-playground',
+  selector: 'ds-tab-stack-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './tab-stack-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmTabStackSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmTabStackPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     orientation: 'horizontal',
@@ -57,6 +57,3 @@ export class DmTabStackSetPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 }
-
-
-

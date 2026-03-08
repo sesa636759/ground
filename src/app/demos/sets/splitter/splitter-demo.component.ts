@@ -1,18 +1,18 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmSplitterSetPlaygroundComponent } from '../../../playground/sets/splitter-playground/splitter-playground.component';
+import { DmSplitterPlaygroundComponent } from '../../../playground/sets/splitter-playground/splitter-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-splitter-set-demo',
+  selector: 'dm-splitter-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmSplitterSetPlaygroundComponent,
+    DmSplitterPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,

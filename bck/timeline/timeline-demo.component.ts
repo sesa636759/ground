@@ -6,14 +6,14 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { DmTimelineSetPlaygroundComponent } from '../../../playground/sets/timeline-playground/timeline-playground.component';
+import { DmTimelinePlaygroundComponent } from '../../../playground/sets/timeline-playground/timeline-playground.component';
 
 @Component({
-  selector: 'dm-timeline-set-demo',
+  selector: 'ds-timeline-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmTimelineSetPlaygroundComponent,
+    DmTimelinePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,

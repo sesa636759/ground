@@ -7,14 +7,14 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
-import { DmTooltipSetPlaygroundComponent } from '../../../playground/sets/tooltip-playground/tooltip-playground.component';
+import { DmTooltipPlaygroundComponent } from '../../../playground/sets/tooltip-playground/tooltip-playground.component';
 
 @Component({
-  selector: 'dm-tooltip-set-demo',
+  selector: 'dm-tooltip-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmTooltipSetPlaygroundComponent,
+    DmTooltipPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'ui-input-playground',
+  selector: 'ds-input-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './input-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmInputSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmInputPlaygroundComponent extends BasePlaygroundComponent {
   pgAccordionItems = [
     { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
     { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
@@ -207,6 +207,3 @@ export class DmInputSetPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Input cleared`);
   }
 }
-
-
-

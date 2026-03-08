@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-tabs-set-playground',
+  selector: 'ds-tabs-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './tabs-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmTabsSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
@@ -115,6 +115,3 @@ export class DmTabsSetPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 }
-
-
-

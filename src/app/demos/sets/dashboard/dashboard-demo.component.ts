@@ -1,17 +1,17 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmDashboardSetPlaygroundComponent } from '../../../playground/sets/dashboard-playground/dashboard-playground.component';
+import { DmDashboardPlaygroundComponent } from '../../../playground/sets/dashboard-playground/dashboard-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'dm-dashboard-set-demo',
+  selector: 'dm-dashboard-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmDashboardSetPlaygroundComponent,
+    DmDashboardPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,

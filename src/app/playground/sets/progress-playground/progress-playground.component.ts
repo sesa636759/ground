@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-progress-set-playground',
+  selector: 'ds-progress-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   templateUrl: './progress-playground.component.html',
   styleUrl: './progress-playground.component.scss',
 })
-export class DmProgressSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmProgressPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     percent: 50,

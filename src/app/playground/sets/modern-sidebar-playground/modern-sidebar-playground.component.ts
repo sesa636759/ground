@@ -12,7 +12,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-modern-sidebar-set-playground',
+  selector: 'ds-modern-sidebar-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -20,7 +20,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   templateUrl: './modern-sidebar-playground.component.html',
   styleUrl: './modern-sidebar-playground.component.scss',
 })
-export class DmModernSidebarSetPlaygroundComponent
+export class DmModernSidebarPlaygroundComponent
   extends BasePlaygroundComponent
   implements OnInit, AfterViewInit
 {

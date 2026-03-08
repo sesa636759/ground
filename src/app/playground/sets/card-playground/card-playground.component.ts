@@ -9,7 +9,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-card-set-playground',
+  selector: 'ds-card-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +17,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './card-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmCardSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('cardSet') cardSet!: ElementRef;
 
   // Playground State
@@ -86,6 +86,3 @@ export class DmCardSetPlaygroundComponent extends BasePlaygroundComponent {
     this.updateConfig();
   }
 }
-
-
-

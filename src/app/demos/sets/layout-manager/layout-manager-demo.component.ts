@@ -13,7 +13,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'dm-layout-manager-set-demo',
+  selector: 'dm-layout-manager-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,

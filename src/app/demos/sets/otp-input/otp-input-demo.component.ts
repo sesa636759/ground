@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmOtpInputSetPlaygroundComponent } from '../../../playground/sets/otp-input-playground/otp-input-playground.component';
+import { DmOtpInputPlaygroundComponent } from '../../../playground/sets/otp-input-playground/otp-input-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
@@ -9,11 +9,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-otp-input-set-demo',
+  selector: 'ds-otp-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmOtpInputSetPlaygroundComponent,
+    DmOtpInputPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

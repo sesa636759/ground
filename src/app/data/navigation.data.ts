@@ -133,9 +133,9 @@ export const categoryNavItems: NavItem[] = [
         icon: 'layout-dashboard',
         iconLibrary: 'lucide',
       },
-      { id: 'masonry-set', label: 'Masonry', icon: 'wall', iconLibrary: 'lucide' },
+      { id: 'masonry', label: 'Masonry', icon: 'wall', iconLibrary: 'lucide' },
       {
-        id: 'splitter-set',
+        id: 'splitter',
         label: 'Splitter',
         icon: 'split-square-horizontal',
         iconLibrary: 'lucide',
@@ -159,13 +159,13 @@ export const categoryNavItems: NavItem[] = [
         iconLibrary: 'lucide',
       },
       {
-        id: 'modern-sidebar-set',
-        label: 'Modern Sidebar Set',
+        id: 'modern-sidebar',
+        label: 'Modern Sidebar',
         icon: 'panel-left',
         iconLibrary: 'lucide',
       },
       { id: 'scroll-top', label: 'Scroll Top', icon: 'arrow-up-circle', iconLibrary: 'lucide' },
-      { id: 'sidebar-set', label: 'Sidebar Set', icon: 'panel-right', iconLibrary: 'lucide' },
+      { id: 'sidebar', label: 'Sidebar', icon: 'panel-right', iconLibrary: 'lucide' },
       { id: 'speed-dial', label: 'Speed Dial', icon: 'zap', iconLibrary: 'lucide' },
       { id: 'tabs', label: 'Tabs', icon: 'folder', iconLibrary: 'lucide' },
       { id: 'tabs-set', label: 'Tabs Set', icon: 'folder-open', iconLibrary: 'lucide' },
@@ -181,20 +181,20 @@ export const categoryNavItems: NavItem[] = [
       { id: 'button', label: 'Button', icon: 'square', iconLibrary: 'lucide' },
       // { id: 'button-group', label: 'Button Group' },
       {
-        id: 'button-toggle-set',
-        label: 'Button Toggle Set',
+        id: 'button-toggle',
+        label: 'Button Toggle',
         icon: 'toggle-left',
         iconLibrary: 'lucide',
       },
       { id: 'cascade-select', label: 'Cascade Select', icon: 'target', iconLibrary: 'lucide' },
-      { id: 'checkbox-set', label: 'Checkbox', icon: 'check-square', iconLibrary: 'lucide' },
+      { id: 'checkbox', label: 'Checkbox', icon: 'check-square', iconLibrary: 'lucide' },
       { id: 'dropdown', label: 'Dropdown', icon: 'chevron-down-square', iconLibrary: 'lucide' },
-      { id: 'input-set', label: 'Input', icon: 'pencil', iconLibrary: 'lucide' },
-      { id: 'label-set', label: 'Label Set', icon: 'tag', iconLibrary: 'lucide' },
-      { id: 'otp-input-set', label: 'OTP Input Set', icon: 'hash', iconLibrary: 'lucide' },
+      { id: 'input', label: 'Input', icon: 'pencil', iconLibrary: 'lucide' },
+      { id: 'label', label: 'Label', icon: 'tag', iconLibrary: 'lucide' },
+      { id: 'otp-input', label: 'OTP Input', icon: 'hash', iconLibrary: 'lucide' },
       { id: 'pattern-input', label: 'Pattern Input', icon: 'regex', iconLibrary: 'lucide' },
       { id: 'picklist', label: 'Picklist', icon: 'list-checks', iconLibrary: 'lucide' },
-      { id: 'radio-set', label: 'Radio', icon: 'radio', iconLibrary: 'lucide' },
+      { id: 'radio', label: 'Radio', icon: 'radio', iconLibrary: 'lucide' },
       { id: 'range-slider', label: 'Range Slider', icon: 'sliders', iconLibrary: 'lucide' },
       { id: 'rating', label: 'Rating', icon: 'star', iconLibrary: 'lucide' },
       { id: 'switch', label: 'Switch', icon: 'toggle-right', iconLibrary: 'lucide' },
@@ -204,7 +204,7 @@ export const categoryNavItems: NavItem[] = [
         icon: 'arrow-left-right',
         iconLibrary: 'lucide',
       },
-      { id: 'toggle-set', label: 'Toggle Set', icon: 'toggle-left', iconLibrary: 'lucide' },
+      { id: 'toggle', label: 'Toggle', icon: 'toggle-left', iconLibrary: 'lucide' },
     ],
   },
   {
@@ -540,6 +540,3 @@ export function getAllNavItems(): NavItem[] {
 
   return allItems;
 }
-
-
-

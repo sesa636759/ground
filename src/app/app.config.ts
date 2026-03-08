@@ -5,7 +5,6 @@
   provideAppInitializer,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { defineCustomElements as setUiLoader } from 'set-ui-lib/loader';
 import { defineCustomElements as appUiLibrary } from 'app-ui-library/loader';
 import { defineCustomElements as chartLibrary } from 'chart-library/loader';
 
@@ -17,10 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAppInitializer(() => appUiLibrary(window)),
-    provideAppInitializer(() => setUiLoader(window)),
     provideAppInitializer(() => chartLibrary(window)),
   ],
 };
-
-
-

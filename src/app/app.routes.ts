@@ -1,4 +1,4 @@
-﻿import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
@@ -84,79 +84,79 @@ export const routes: Routes = [
     path: 'demos',
     children: [
       {
-        path: 'button-toggle-set',
+        path: 'button-toggle',
         loadComponent: () =>
           import('./demos/sets/button-toggle/button-toggle-demo.component').then(
             (m) => m.DmButtonToggleDemoComponent,
           ),
       },
       {
-        path: 'checkbox-set',
+        path: 'checkbox',
         loadComponent: () =>
           import('./demos/sets/checkbox/checkbox-demo.component').then(
             (m) => m.DmCheckboxDemoComponent,
           ),
       },
       {
-        path: 'input-set',
+        path: 'input',
         loadComponent: () =>
           import('./demos/sets/input/input-demo.component').then((m) => m.DmInputDemoComponent),
       },
       {
-        path: 'radio-set',
+        path: 'radio',
         loadComponent: () =>
           import('./demos/sets/radio/radio-demo.component').then((m) => m.DmRadioDemoComponent),
       },
       {
-        path: 'card-set',
+        path: 'card',
         loadComponent: () =>
           import('./demos/sets/card/card-demo.component').then((m) => m.DmCardDemoComponent),
       },
       {
-        path: 'context-menu-set',
+        path: 'context-menu',
         loadComponent: () =>
           import('./demos/sets/context-menu/context-menu-demo.component').then(
             (m) => m.DmContextMenuDemoComponent,
           ),
       },
       {
-        path: 'tree-set',
+        path: 'tree',
         loadComponent: () =>
           import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
       },
+      // {
+      //   path: 'tabs',
+      //   loadComponent: () =>
+      //     import('./demos/sets/tabs/tabs-demo.component').then((m) => m.DmTabsDemoComponent),
+      // },
       {
-        path: 'tabs-set',
-        loadComponent: () =>
-          import('./demos/sets/tabs/tabs-demo.component').then((m) => m.DmTabsDemoComponent),
-      },
-      {
-        path: 'resizable-panel-set',
+        path: 'resizable-panel',
         loadComponent: () =>
           import('./demos/sets/resizable-panel/resizable-panel-demo.component').then(
             (m) => m.DmResizablePanelDemoComponent,
           ),
       },
       {
-        path: 'splitter-set',
+        path: 'splitter',
         loadComponent: () =>
           import('./demos/sets/splitter/splitter-demo.component').then(
             (m) => m.DmSplitterDemoComponent,
           ),
       },
       {
-        path: 'scroll-top-set',
+        path: 'scroll-top',
         loadComponent: () =>
           import('./demos/sets/scroll-top/scroll-top-demo.component').then(
             (m) => m.DmScrollTopDemoComponent,
           ),
       },
-      {
-        path: 'modern-sidebar-set',
-        loadComponent: () =>
-          import('./demos/sets/modern-sidebar/modern-sidebar-demo.component').then(
-            (m) => m.DmModernSidebarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'modern-sidebar',
+      //   loadComponent: () =>
+      //     import('./demos/sets/modern-sidebar/modern-sidebar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'accordian',
         loadComponent: () =>
@@ -165,157 +165,157 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'anchor-set',
+        path: 'anchor',
         loadComponent: () =>
           import('./demos/sets/anchor/anchor-demo.component').then((m) => m.DmAnchorDemoComponent),
       },
       {
-        path: 'tooltip-set',
+        path: 'tooltip',
         loadComponent: () =>
           import('./demos/sets/tooltip/tooltip-demo.component').then(
             (m) => m.DmTooltipDemoComponent,
           ),
       },
       {
-        path: 'tree-set',
+        path: 'tree',
         loadComponent: () =>
           import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
       },
+      // {
+      //   path: 'timeline',
+      //   loadComponent: () =>
+      //     import('./demos/sets/timeline/timeline-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
-        path: 'timeline-set',
-        loadComponent: () =>
-          import('./demos/sets/timeline/timeline-demo.component').then(
-            (m) => m.DmTimelineDemoComponent,
-          ),
-      },
-      {
-        path: 'progress-set',
+        path: 'progress',
         loadComponent: () =>
           import('./demos/sets/progress/progress-demo.component').then(
             (m) => m.DmProgressDemoComponent,
           ),
       },
       {
-        path: 'toggle-set',
+        path: 'toggle',
         loadComponent: () =>
           import('./demos/sets/toggle/toggle-demo.component').then((m) => m.DmToggleDemoComponent),
       },
 
       {
-        path: 'list-set',
+        path: 'list',
         loadComponent: () =>
           import('./demos/sets/list/list-demo.component').then((m) => m.DmListDemoComponent),
       },
       {
-        path: 'masonry-set',
+        path: 'masonry',
         loadComponent: () =>
           import('./demos/sets/masonry/masonry-demo.component').then(
             (m) => m.DmMasonryDemoComponent,
           ),
       },
       {
-        path: 'empty-state-set',
+        path: 'empty-state',
         loadComponent: () =>
           import('./demos/sets/empty-state/empty-state-demo.component').then(
             (m) => m.DmEmptyStateDemoComponent,
           ),
       },
       {
-        path: 'avatar-set',
+        path: 'avatar',
         loadComponent: () =>
           import('./demos/sets/avatar/avatar-demo.component').then((m) => m.DmAvatarDemoComponent),
       },
       {
-        path: 'carousel-set',
+        path: 'carousel',
         loadComponent: () =>
           import('./demos/sets/carousel/carousel-demo.component').then(
             (m) => m.DmCarouselDemoComponent,
           ),
       },
+      // {
+      //   path: 'stepper',
+      //   loadComponent: () =>
+      //     import('./demos/sets/stepper/stepper-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
-        path: 'stepper-set',
-        loadComponent: () =>
-          import('./demos/sets/stepper/stepper-demo.component').then(
-            (m) => m.DmStepperDemoComponent,
-          ),
-      },
-      {
-        path: 'otp-input-set',
+        path: 'otp-input',
         loadComponent: () =>
           import('./demos/sets/otp-input/otp-input-demo.component').then(
             (m) => m.DmOtpInputDemoComponent,
           ),
       },
       {
-        path: 'code-editor-set',
+        path: 'code-editor',
         loadComponent: () =>
           import('./demos/sets/code-editor/code-editor-demo.component').then(
             (m) => m.DmCodeEditorDemoComponent,
           ),
       },
       {
-        path: 'dashboard-set',
+        path: 'dashboard',
         loadComponent: () =>
           import('./demos/sets/dashboard/dashboard-demo.component').then(
             (m) => m.DmDashboardDemoComponent,
           ),
       },
       {
-        path: 'tags-input-set',
+        path: 'tags-input',
         loadComponent: () =>
           import('./demos/sets/tags-input/tags-input-demo.component').then(
             (m) => m.DmTagsInputDemoComponent,
           ),
       },
       {
-        path: 'theme-switcher-set',
+        path: 'theme-switcher',
         loadComponent: () =>
           import('./demos/sets/theme-switcher/theme-switcher-demo.component').then(
             (m) => m.DmThemeSwitcherDemoComponent,
           ),
       },
+      // {
+      //   path: 'sidebar',
+      //   loadComponent: () =>
+      //     import('./demos/sets/sidebar/sidebar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
-        path: 'sidebar-set',
-        loadComponent: () =>
-          import('./demos/sets/sidebar/sidebar-demo.component').then(
-            (m) => m.DmSidebarDemoComponent,
-          ),
-      },
-      {
-        path: 'animate-on-scroll-set',
+        path: 'animate-on-scroll',
         loadComponent: () =>
           import('./demos/sets/animate-on-scroll/animate-on-scroll-demo.component').then(
             (m) => m.DmAnimateOnScrollDemoComponent,
           ),
       },
       {
-        path: 'dock-overlay-set',
+        path: 'dock-overlay',
         loadComponent: () =>
           import('./demos/sets/dock-overlay/dock-overlay-demo.component').then(
             (m) => m.DmDockOverlayDemoComponent,
           ),
       },
       {
-        path: 'label-set',
+        path: 'label',
         loadComponent: () =>
           import('./demos/sets/label/label-demo.component').then((m) => m.DmLabelDemoComponent),
       },
       {
-        path: 'avatar-group-set',
+        path: 'avatar-group',
         loadComponent: () =>
           import('./demos/sets/avatar-group/avatar-group-demo.component').then(
             (m) => m.DmAvatarGroupDemoComponent,
           ),
       },
       {
-        path: 'tab-stack-set',
+        path: 'tab-stack',
         loadComponent: () =>
           import('./demos/sets/tab-stack/tab-stack-demo.component').then(
             (m) => m.DmTabStackDemoComponent,
           ),
       },
       {
-        path: 'layout-manager-set',
+        path: 'layout-manager',
         loadComponent: () =>
           import('./demos/sets/layout-manager/layout-manager-demo.component').then(
             (m) => m.DmLayoutManagerDemoComponent,
@@ -368,13 +368,13 @@ export const routes: Routes = [
             (m) => m.DmSwitchDemoComponent,
           ),
       },
-      {
-        path: 'avatar',
-        loadComponent: () =>
-          import('./demos/common/avatar/avatar-demo.component').then(
-            (m) => m.DmAvatarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'avatar',
+      //   loadComponent: () =>
+      //     import('./demos/common/avatar/avatar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'popover',
         loadComponent: () =>
@@ -401,13 +401,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demos/common/aside/aside-demo.component').then((m) => m.DmAsideDemoComponent),
       },
-      {
-        path: 'anchor',
-        loadComponent: () =>
-          import('./demos/common/anchor/anchor-demo.component').then(
-            (m) => m.DmAnchorDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'anchor',
+      //   loadComponent: () =>
+      //     import('./demos/common/anchor/anchor-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'breadcrumb',
         loadComponent: () =>
@@ -431,7 +431,7 @@ export const routes: Routes = [
       //   path: 'stepper',
       //   loadComponent: () =>
       //     import('./demos/common/stepper/stepper-demo.component').then(
-      //       (m) => m.DmStepperDemoComponent,
+      //       (m) => m.Dm,
       //     ),
       // },
 
@@ -562,7 +562,7 @@ export const routes: Routes = [
       //   path: 'smart-stepper',
       //   loadComponent: () =>
       //     import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
-      //       (m) => m.DmSmartStepperDemoComponent,
+      //       (m) => m.Dm,
       //     ),
       // },
       {
@@ -579,20 +579,20 @@ export const routes: Routes = [
             (m) => m.DmAdvancedDataTableDemoComponent,
           ),
       },
-      {
-        path: 'nav-bar',
-        loadComponent: () =>
-          import('./demos/common/nav-bar/nav-bar-demo.component').then(
-            (m) => m.DmNavBarDemoComponent,
-          ),
-      },
-      {
-        path: 'top-bar',
-        loadComponent: () =>
-          import('./demos/common/top-bar/top-bar-demo.component').then(
-            (m) => m.DmTopBarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'nav-bar',
+      //   loadComponent: () =>
+      //     import('./demos/common/nav-bar/nav-bar-demo.component').then(
+      //       (m) => m.DmNavBarDemoComponent,
+      //     ),
+      // },
+      // {
+      //   path: 'top-bar',
+      //   loadComponent: () =>
+      //     import('./demos/common/top-bar/top-bar-demo.component').then(
+      //       (m) => m.DmTopBarDemoComponent,
+      //     ),
+      // },
       {
         path: 'pattern-input',
         loadComponent: () =>
@@ -600,27 +600,27 @@ export const routes: Routes = [
             (m) => m.DmPatternInputDemoComponent,
           ),
       },
-      {
-        path: 'avatar-group',
-        loadComponent: () =>
-          import('./demos/common/avatar-group/avatar-group-demo.component').then(
-            (m) => m.DmAvatarGroupDemoComponent,
-          ),
-      },
-      {
-        path: 'horizontal-nav',
-        loadComponent: () =>
-          import('./demos/common/horizontal-nav/horizontal-nav-demo.component').then(
-            (m) => m.DmHorizontalNavDemoComponent,
-          ),
-      },
-      {
-        path: 'smart-menu',
-        loadComponent: () =>
-          import('./demos/common/smart-menu/smart-menu-demo.component').then(
-            (m) => m.DmSmartMenuDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'avatar-group',
+      //   loadComponent: () =>
+      //     import('./demos/common/avatar-group/avatar-group-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      // {
+      //   path: 'horizontal-nav',
+      //   loadComponent: () =>
+      //     import('./demos/common/horizontal-nav/horizontal-nav-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      // {
+      //   path: 'smart-menu',
+      //   loadComponent: () =>
+      //     import('./demos/common/smart-menu/smart-menu-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'tree-list',
         loadComponent: () =>

@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmEmptyStateSetPlaygroundComponent } from '../../../playground/sets/empty-state-playground/empty-state-playground.component';
+import { DmEmptyStatePlaygroundComponent } from '../../../playground/sets/empty-state-playground/empty-state-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -9,11 +9,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-empty-state-set-demo',
+  selector: 'dm-empty-state-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmEmptyStateSetPlaygroundComponent,
+    DmEmptyStatePlaygroundComponent,
     DemoTabsComponent,
 
     ExampleSectionComponent,

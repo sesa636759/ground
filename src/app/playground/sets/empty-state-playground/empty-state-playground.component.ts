@@ -9,7 +9,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-empty-state-set-playground',
+  selector: 'ds-empty-state-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +17,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
   styleUrl: './empty-state-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmEmptyStateSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmEmptyStatePlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('emptyStateElement') emptyStateElement!: ElementRef;
 
   pgConfig = this.getDefaultConfig();

@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-avatar-group-set-playground',
+  selector: 'ds-avatar-group-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,7 +18,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   templateUrl: './avatar-group-playground.component.html',
   styleUrl: './avatar-group-playground.component.scss',
 })
-export class DmAvatarGroupSetPlaygroundComponent
+export class DmAvatarGroupPlaygroundComponent
   extends BasePlaygroundComponent
   implements AfterViewInit
 {
@@ -88,7 +88,3 @@ export class DmAvatarGroupSetPlaygroundComponent
     }, 50);
   }
 }
-
-
-
-

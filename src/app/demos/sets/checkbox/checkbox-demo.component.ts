@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmCheckboxSetPlaygroundComponent } from '../../../playground/sets/checkbox-playground/checkbox-playground.component';
+import { DmCheckboxPlaygroundComponent } from '../../../playground/sets/checkbox-playground/checkbox-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -10,11 +10,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-checkbox-set-demo',
+  selector: 'ds-checkbox-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmCheckboxSetPlaygroundComponent,
+    DmCheckboxPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

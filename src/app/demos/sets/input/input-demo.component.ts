@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmInputSetPlaygroundComponent } from '../../../playground/sets/input-playground/input-playground.component';
+import { DmInputPlaygroundComponent } from '../../../playground/sets/input-playground/input-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -9,11 +9,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-input-set-demo',
+  selector: 'ds-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmInputSetPlaygroundComponent,
+    DmInputPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

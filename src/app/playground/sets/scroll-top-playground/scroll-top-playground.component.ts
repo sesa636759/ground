@@ -2,14 +2,14 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-scroll-top-set-playground',
+  selector: 'ds-scroll-top-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './scroll-top-playground.component.html',
   styleUrl: './scroll-top-playground.component.scss',
 })
-export class DmScrollTopSetPlaygroundComponent implements OnInit {
+export class DmScrollTopPlaygroundComponent implements OnInit {
   // Playground State
   pgConfig = {
     variant: 'filled',

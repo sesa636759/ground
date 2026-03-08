@@ -2,17 +2,17 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmTagsInputSetPlaygroundComponent } from '../../../playground/sets/tags-input-playground/tags-input-playground.component';
+import { DmTagsInputPlaygroundComponent } from '../../../playground/sets/tags-input-playground/tags-input-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-tags-input-set-demo',
+  selector: 'dm-tags-input-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmTagsInputSetPlaygroundComponent,
+    DmTagsInputPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,

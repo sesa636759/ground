@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmMasonrySetPlaygroundComponent } from '../../../playground/sets/masonry-playground/masonry-playground.component';
+import { DmMasonryPlaygroundComponent } from '../../../playground/sets/masonry-playground/masonry-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -9,11 +9,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-masonry-set-demo',
+  selector: 'dm-masonry-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmMasonrySetPlaygroundComponent,
+    DmMasonryPlaygroundComponent,
     DemoTabsComponent,
 
     ExampleSectionComponent,

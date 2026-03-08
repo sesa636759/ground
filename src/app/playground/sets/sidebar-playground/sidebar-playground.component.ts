@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-sidebar-set-playground',
+  selector: 'ds-sidebar-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './sidebar-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmSidebarSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmSidebarPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = {
     position: 'left',
@@ -69,6 +69,3 @@ export class DmSidebarSetPlaygroundComponent extends BasePlaygroundComponent {
     };
   }
 }
-
-
-

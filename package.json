@@ -41,7 +41,6 @@
     "lucide-angular": "^0.575.0",
     "puppeteer": "^24.37.5",
     "rxjs": "~7.8.0",
-    "set-ui-lib": "file:../../stencil/set-ui-lib/set-ui-lib-0.0.10.tgz",
     "tslib": "^2.8.1",
     "zone.js": "~0.16.0"
   },

@@ -10,7 +10,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   templateUrl: './otp-input-playground.component.html',
   styleUrl: './otp-input-playground.component.scss',
 })
-export class DmOtpInputSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmOtpInputPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = [
@@ -74,6 +74,3 @@ export class DmOtpInputSetPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Completed: ${event.detail.value}`);
   }
 }
-
-
-

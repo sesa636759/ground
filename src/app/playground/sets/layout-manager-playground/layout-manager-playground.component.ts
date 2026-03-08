@@ -10,14 +10,14 @@ import {
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-layout-manager-set-playground',
+  selector: 'ds-layout-manager-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './layout-manager-playground.component.html',
   styleUrl: './layout-manager-playground.component.scss',
 })
-export class DmLayoutManagerSetPlaygroundComponent implements OnInit, AfterViewInit {
+export class DmLayoutManagerPlaygroundComponent implements OnInit, AfterViewInit {
   @ViewChild('lm') lmRef!: ElementRef;
 
   status = signal<string>('Loading...');

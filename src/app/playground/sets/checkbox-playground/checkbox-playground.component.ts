@@ -3,14 +3,14 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'ui-checkbox-playground',
+  selector: 'ds-checkbox-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './checkbox-playground.component.html',
   styleUrl: './checkbox-playground.component.scss',
 })
-export class DmCheckboxSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmCheckboxPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('demoElement') demoElement!: ElementRef;
 
   pgAccordionItems = [
@@ -66,6 +66,3 @@ export class DmCheckboxSetPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Blurred`);
   }
 }
-
-
-

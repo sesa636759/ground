@@ -10,14 +10,14 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-dashboard-set-playground',
+  selector: 'ds-dashboard-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dashboard-playground.component.html',
   styleUrl: './dashboard-playground.component.scss',
 })
-export class DmDashboardSetPlaygroundComponent
+export class DmDashboardPlaygroundComponent
   extends BasePlaygroundComponent
   implements OnInit, AfterViewInit
 {

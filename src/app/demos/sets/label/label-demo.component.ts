@@ -6,7 +6,7 @@ import {
 } from '../../../shared/components/docs-page-layout/docs-page-layout.component';
 
 @Component({
-  selector: 'dm-label-set-demo',
+  selector: 'dm-label-demo',
   standalone: true,
   imports: [CommonModule, DocsPageLayoutComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

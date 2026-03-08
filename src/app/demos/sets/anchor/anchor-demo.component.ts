@@ -7,14 +7,14 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
-import { DmAnchorSetPlaygroundComponent } from '../../../playground/sets/anchor-playground/anchor-playground.component';
+import { DmAnchorPlaygroundComponent } from '../../../playground/sets/anchor-playground/anchor-playground.component';
 
 @Component({
-  selector: 'dm-anchor-set-demo',
+  selector: 'dm-anchor-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmAnchorSetPlaygroundComponent,
+    DmAnchorPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     DemoHeaderComponent,

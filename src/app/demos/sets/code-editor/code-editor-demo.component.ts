@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmCodeEditorSetPlaygroundComponent } from '../../../playground/sets/code-editor-playground/code-editor-playground.component';
+import { DmCodeEditorPlaygroundComponent } from '../../../playground/sets/code-editor-playground/code-editor-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -9,11 +9,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-code-editor-set-demo',
+  selector: 'dm-code-editor-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmCodeEditorSetPlaygroundComponent,
+    DmCodeEditorPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

@@ -6,14 +6,14 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { DmTabStackSetPlaygroundComponent } from '../../../playground/sets/tab-stack-playground/tab-stack-playground.component';
+import { DmTabStackPlaygroundComponent } from '../../../playground/sets/tab-stack-playground/tab-stack-playground.component';
 
 @Component({
-  selector: 'dm-tab-stack-set-demo',
+  selector: 'ds-tab-stack-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmTabStackSetPlaygroundComponent,
+    DmTabStackPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,

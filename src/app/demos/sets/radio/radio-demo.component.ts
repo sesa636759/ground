@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmRadioSetPlaygroundComponent } from '../../../playground/sets/radio-playground/radio-playground.component';
+import { DmRadioPlaygroundComponent } from '../../../playground/sets/radio-playground/radio-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -10,11 +10,11 @@ import { RadioGroupValueAccessorDirective } from '../../../directives/radio-grou
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-radio-set-demo',
+  selector: 'ds-radio-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmRadioSetPlaygroundComponent,
+    DmRadioPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

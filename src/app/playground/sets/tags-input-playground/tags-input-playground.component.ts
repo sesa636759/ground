@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-tags-input-set-playground',
+  selector: 'ds-tags-input-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -11,7 +11,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './tags-input-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmTagsInputSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmTagsInputPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
@@ -67,6 +67,3 @@ export class DmTagsInputSetPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Tags changed: ${tags.join(', ')}`);
   }
 }
-
-
-

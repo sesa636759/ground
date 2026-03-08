@@ -4,17 +4,17 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmAnimateOnScrollSetPlaygroundComponent } from '../../../playground/sets/animate-on-scroll-playground/animate-on-scroll-playground.component';
+import { DmAnimateOnScrollPlaygroundComponent } from '../../../playground/sets/animate-on-scroll-playground/animate-on-scroll-playground.component';
 
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
 @Component({
-  selector: 'dm-animate-on-scroll-set-demo',
+  selector: 'dm-animate-on-scroll-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmAnimateOnScrollSetPlaygroundComponent,
+    DmAnimateOnScrollPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,

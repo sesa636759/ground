@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal, OnInit } from '@angular/core
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-dock-overlay-set-playground',
+  selector: 'ds-dock-overlay-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -14,7 +14,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
     `,
   ],
 })
-export class DmDockOverlaySetPlaygroundComponent implements OnInit {
+export class DmDockOverlayPlaygroundComponent implements OnInit {
   pgConfig = {
     position: 'left',
     mode: 'docked',

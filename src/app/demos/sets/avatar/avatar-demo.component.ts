@@ -2,7 +2,7 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
-import { DmAvatarSetPlaygroundComponent } from '../../../playground/sets/avatar-playground/avatar-playground.component';
+import { DmAvatarPlaygroundComponent } from '../../../playground/sets/avatar-playground/avatar-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -10,11 +10,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-avatar-set-demo',
+  selector: 'dm-avatar-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmAvatarSetPlaygroundComponent,
+    DmAvatarPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,

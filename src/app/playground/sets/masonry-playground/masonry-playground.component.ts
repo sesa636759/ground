@@ -11,7 +11,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-masonry-set-playground',
+  selector: 'ds-masonry-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -19,7 +19,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   templateUrl: './masonry-playground.component.html',
   styleUrl: './masonry-playground.component.scss',
 })
-export class DmMasonrySetPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
+export class DmMasonryPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('masonryLayout') masonryLayout!: ElementRef;
 
   // Playground State

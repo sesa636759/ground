@@ -7,7 +7,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { CardExamplesComponent } from './components/card-examples/card-examples.component';
 
 @Component({
-  selector: 'dm-card-set-demo',
+  selector: 'dm-card-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,

@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmResizablePanelSetPlaygroundComponent } from '../../../playground/sets/resizable-panel-playground/resizable-panel-playground.component';
+import { DmResizablePanelPlaygroundComponent } from '../../../playground/sets/resizable-panel-playground/resizable-panel-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
@@ -9,11 +9,11 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'dm-resizable-panel-set-demo',
+  selector: 'dm-resizable-panel-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmResizablePanelSetPlaygroundComponent,
+    DmResizablePanelPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

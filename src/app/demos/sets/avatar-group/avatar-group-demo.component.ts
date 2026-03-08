@@ -2,7 +2,7 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DmAvatarGroupSetPlaygroundComponent } from '../../../playground/sets/avatar-group-playground/avatar-group-playground.component';
+import { DmAvatarGroupPlaygroundComponent } from '../../../playground/sets/avatar-group-playground/avatar-group-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -10,11 +10,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-avatar-group-set-demo',
+  selector: 'dm-avatar-group-demo',
   standalone: true,
   imports: [
     CommonModule,
-    DmAvatarGroupSetPlaygroundComponent,
+    DmAvatarGroupPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

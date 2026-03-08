@@ -1,17 +1,17 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmContextMenuSetPlaygroundComponent } from '../../../playground/sets/context-menu-playground/context-menu-playground.component';
+import { DmContextMenuPlaygroundComponent } from '../../../playground/sets/context-menu-playground/context-menu-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-context-menu-set-demo',
+  selector: 'ds-context-menu-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmContextMenuSetPlaygroundComponent,
+    DmContextMenuPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,

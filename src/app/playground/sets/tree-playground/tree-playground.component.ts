@@ -9,7 +9,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-tree-set-playground',
+  selector: 'ds-tree-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +17,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './tree-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmTreeSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmTreePlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('treeElement') treeElement!: ElementRef;
 
   // Playground State
@@ -147,6 +147,3 @@ export class DmTreeSetPlaygroundComponent extends BasePlaygroundComponent {
     }
   }
 }
-
-
-

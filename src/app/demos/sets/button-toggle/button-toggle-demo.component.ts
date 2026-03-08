@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmButtonToggleSetPlaygroundComponent } from '../../../playground/sets/button-toggle-playground/button-toggle-playground.component';
+import { DmButtonTogglePlaygroundComponent } from '../../../playground/sets/button-toggle-playground/button-toggle-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -9,11 +9,11 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-button-toggle-set-demo',
+  selector: 'dm-button-toggle-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmButtonToggleSetPlaygroundComponent,
+    DmButtonTogglePlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,

@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-toggle-set-playground',
+  selector: 'ds-toggle-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,7 +18,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './toggle-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmToggleSetPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
+export class DmTogglePlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('toggleGroup') toggleGroup!: ElementRef;
 
   pgAccordionItems = [
@@ -108,6 +108,3 @@ export class DmToggleSetPlaygroundComponent extends BasePlaygroundComponent impl
     this.updateConfig();
   }
 }
-
-
-

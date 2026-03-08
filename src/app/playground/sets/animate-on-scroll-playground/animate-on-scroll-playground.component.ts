@@ -8,7 +8,7 @@ import {
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
-  selector: 'dm-animate-on-scroll-set-playground',
+  selector: 'ds-animate-on-scroll-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -16,7 +16,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
   templateUrl: './animate-on-scroll-playground.component.html',
   styleUrl: './animate-on-scroll-playground.component.scss',
 })
-export class DmAnimateOnScrollSetPlaygroundComponent implements OnInit {
+export class DmAnimateOnScrollPlaygroundComponent implements OnInit {
   pgConfig = {
     animation: 'fade-in',
     direction: 'up',

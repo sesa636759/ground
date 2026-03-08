@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-avatar-set-playground',
+  selector: 'ds-avatar-playground',
   imports: [...PLAYGROUND_IMPORTS],
   standalone: true,
 
@@ -12,7 +12,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './avatar-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmAvatarSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmAvatarPlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 

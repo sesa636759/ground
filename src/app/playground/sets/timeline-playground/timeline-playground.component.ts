@@ -3,14 +3,14 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-timeline-set-playground',
+  selector: 'ds-timeline-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './timeline-playground.component.html',
   styleUrl: './timeline-playground.component.scss',
 })
-export class DmTimelineSetPlaygroundComponent extends BasePlaygroundComponent {
+export class DmTimelinePlaygroundComponent extends BasePlaygroundComponent {
   // Playground State
   pgConfig = this.getDefaultConfig();
 
@@ -107,6 +107,3 @@ export class DmTimelineSetPlaygroundComponent extends BasePlaygroundComponent {
     this.logEvent(`Item clicked: ${event.detail.title}`);
   }
 }
-
-
-

@@ -1,7 +1,7 @@
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmProgressSetPlaygroundComponent } from '../../../playground/sets/progress-playground/progress-playground.component';
+import { DmProgressPlaygroundComponent } from '../../../playground/sets/progress-playground/progress-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
@@ -9,11 +9,11 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 @Component({
-  selector: 'dm-progress-set-demo',
+  selector: 'dm-progress-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmProgressSetPlaygroundComponent,
+    DmProgressPlaygroundComponent,
     DemoTabsComponent,
     ExampleSectionComponent,
     ComponentDocumentationComponent,

@@ -10,7 +10,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'dm-anchor-set-playground',
+  selector: 'ds-anchor-playground',
   imports: [...PLAYGROUND_IMPORTS],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,7 +18,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './anchor-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmAnchorSetPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
+export class DmAnchorPlaygroundComponent extends BasePlaygroundComponent implements AfterViewInit {
   @ViewChild('anchor') anchor!: ElementRef;
 
   // Playground State
@@ -82,6 +82,3 @@ export class DmAnchorSetPlaygroundComponent extends BasePlaygroundComponent impl
     this.logEvent(`Selected: ${event.detail.id}`);
   }
 }
-
-
-
