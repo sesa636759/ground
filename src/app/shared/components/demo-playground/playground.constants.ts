@@ -8,8 +8,8 @@ import { InputValueAccessorDirective } from '../../../directives/input-value-acc
 export const PLAYGROUND_IMPORTS = [
   CommonModule,
   FormsModule,
-  DmCheckboxValueAccessorDirective,
-  DmDropdownValueAccessorDirective,
+  CheckboxValueAccessorDirective,
+  DropdownValueAccessorDirective,
   DemoPlaygroundComponent,
   InputValueAccessorDirective,
   CheckboxValueAccessorDirective,

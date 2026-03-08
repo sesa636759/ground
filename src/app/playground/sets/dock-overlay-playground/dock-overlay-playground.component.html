@@ -1,0 +1,93 @@
+<pg-playground
+  [items]="[{ id: 'config', title: 'Configuration', icon: '??' }]"
+  [defaultOpen]="['config']"
+>
+  <div slot="content-config">
+    <div class="control-grid">
+      <div class="control-group">
+        <label>Position</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.position"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Top', value: 'top' },
+            { label: 'Bottom', value: 'bottom' },
+            { label: 'Left', value: 'left' },
+            { label: 'Right', value: 'right' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Mode</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.mode"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Docked', value: 'docked' },
+            { label: 'Floating', value: 'floating' },
+            { label: 'Modal', value: 'modal' },
+          ]"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Variant</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.variant"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Glass', value: 'glass' },
+          ]"
+        ></ui-dropdown>
+      </div>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.resizable" (ngModelChange)="updateConfig()" />
+        Resizable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.draggable" (ngModelChange)="updateConfig()" />
+        Draggable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()" />
+        Collapsible
+      </label>
+    </div>
+  </div>
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div class="event-log-container">
+      <strong>Event Log</strong>
+      <div class="log-items">
+        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+      </div>
+    </div>
+    <div class="preview-stage">
+      <app-dock-overlay
+        [attr.position]="pgConfig.position"
+        [attr.mode]="pgConfig.mode"
+        [attr.variant]="pgConfig.variant"
+        [attr.resizable]="pgConfig.resizable"
+        [attr.draggable]="pgConfig.draggable"
+        [attr.collapsible]="pgConfig.collapsible"
+        title="Dock Panel"
+      >
+        <div style="padding: 20px">Panel Content</div>
+      </app-dock-overlay>
+    </div>
+    <div class="code-block">
+      <div class="code-header">
+        <span>Generated Code</span>
+        <ui-button
+          class="copy-btn"
+          variant="secondary"
+          size="sm"
+          (click)="copyCode()"
+          label="Copy"
+        ></ui-button>
+      </div>
+      <pre><code>{{ generatedCode() }}</code></pre>
+    </div>
+  </div>
+</pg-playground>

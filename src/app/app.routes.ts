@@ -86,85 +86,75 @@ export const routes: Routes = [
       {
         path: 'button-toggle-set',
         loadComponent: () =>
-          import('./demos/sets/set-button-toggle/set-button-toggle-demo.component').then(
-            (m) => m.DmSetButtonToggleDemoComponent,
+          import('./demos/sets/button-toggle/button-toggle-demo.component').then(
+            (m) => m.DmButtonToggleDemoComponent,
           ),
       },
       {
         path: 'checkbox-set',
         loadComponent: () =>
-          import('./demos/sets/set-checkbox/set-checkbox-demo.component').then(
-            (m) => m.DmSetCheckboxDemoComponent,
+          import('./demos/sets/checkbox/checkbox-demo.component').then(
+            (m) => m.DmCheckboxDemoComponent,
           ),
       },
       {
         path: 'input-set',
         loadComponent: () =>
-          import('./demos/sets/set-input/set-input-demo.component').then(
-            (m) => m.DmSetInputDemoComponent,
-          ),
+          import('./demos/sets/input/input-demo.component').then((m) => m.DmInputDemoComponent),
       },
       {
         path: 'radio-set',
         loadComponent: () =>
-          import('./demos/sets/set-radio/set-radio-demo.component').then(
-            (m) => m.DmSetRadioDemoComponent,
-          ),
+          import('./demos/sets/radio/radio-demo.component').then((m) => m.DmRadioDemoComponent),
       },
       {
         path: 'card-set',
         loadComponent: () =>
-          import('./demos/sets/set-card/set-card-demo.component').then(
-            (m) => m.DmSetCardDemoComponent,
-          ),
+          import('./demos/sets/card/card-demo.component').then((m) => m.DmCardDemoComponent),
       },
       {
         path: 'context-menu-set',
         loadComponent: () =>
-          import('./demos/sets/set-context-menu/set-context-menu-demo.component').then(
-            (m) => m.DmSetContextMenuDemoComponent,
+          import('./demos/sets/context-menu/context-menu-demo.component').then(
+            (m) => m.DmContextMenuDemoComponent,
           ),
       },
       {
         path: 'tree-set',
         loadComponent: () =>
-          import('./demos/sets/set-tree/set-tree-demo.component').then(
-            (m) => m.DmSetTreeDemoComponent,
-          ),
+          import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
       },
       {
         path: 'tabs-set',
         loadComponent: () =>
-          import('./demos/sets/set-tabs/set-tabs-demo.component').then(
-            (m) => m.DmSetTabsDemoComponent,
-          ),
+          import('./demos/sets/tabs/tabs-demo.component').then((m) => m.DmTabsDemoComponent),
       },
       {
         path: 'resizable-panel-set',
         loadComponent: () =>
-          import('./demos/sets/set-resizable-panel/set-resizable-panel-demo.component').then(
-            (m) => m.DmSetResizablePanelDemoComponent,
+          import('./demos/sets/resizable-panel/resizable-panel-demo.component').then(
+            (m) => m.DmResizablePanelDemoComponent,
           ),
       },
       {
         path: 'splitter-set',
         loadComponent: () =>
-          import('./demos/sets/set-splitter/set-splitter-demo.component').then(
-            (m) => m.DmSetSplitterDemoComponent,
+          import('./demos/sets/splitter/splitter-demo.component').then(
+            (m) => m.DmSplitterDemoComponent,
           ),
       },
       {
         path: 'scroll-top-set',
         loadComponent: () =>
-          import('./demos/sets/set-scroll-top/set-scroll-top-demo.component').then(
-            (m) => m.DmSetScrollTopDemoComponent,
+          import('./demos/sets/scroll-top/scroll-top-demo.component').then(
+            (m) => m.DmScrollTopDemoComponent,
           ),
       },
       {
         path: 'modern-sidebar-set',
         loadComponent: () =>
-          import('./demos/sets/set-modern-sidebar/set-modern-sidebar-demo.component').then(
-            (m) => m.DmSetModernSidebarDemoComponent,
+          import('./demos/sets/modern-sidebar/modern-sidebar-demo.component').then(
+            (m) => m.DmModernSidebarDemoComponent,
           ),
       },
       {
@@ -177,170 +167,158 @@ export const routes: Routes = [
       {
         path: 'anchor-set',
         loadComponent: () =>
-          import('./demos/sets/set-anchor/set-anchor-demo.component').then(
-            (m) => m.DmSetAnchorDemoComponent,
-          ),
+          import('./demos/sets/anchor/anchor-demo.component').then((m) => m.DmAnchorDemoComponent),
       },
       {
         path: 'tooltip-set',
         loadComponent: () =>
-          import('./demos/sets/set-tooltip/set-tooltip-demo.component').then(
-            (m) => m.DmSetTooltipDemoComponent,
+          import('./demos/sets/tooltip/tooltip-demo.component').then(
+            (m) => m.DmTooltipDemoComponent,
           ),
       },
       {
         path: 'tree-set',
         loadComponent: () =>
-          import('./demos/sets/set-tree/set-tree-demo.component').then(
-            (m) => m.DmSetTreeDemoComponent,
-          ),
+          import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
       },
       {
         path: 'timeline-set',
         loadComponent: () =>
-          import('./demos/sets/set-timeline/set-timeline-demo.component').then(
-            (m) => m.DmSetTimelineDemoComponent,
+          import('./demos/sets/timeline/timeline-demo.component').then(
+            (m) => m.DmTimelineDemoComponent,
           ),
       },
       {
         path: 'progress-set',
         loadComponent: () =>
-          import('./demos/sets/set-progress/set-progress-demo.component').then(
-            (m) => m.DmSetProgressDemoComponent,
+          import('./demos/sets/progress/progress-demo.component').then(
+            (m) => m.DmProgressDemoComponent,
           ),
       },
       {
         path: 'toggle-set',
         loadComponent: () =>
-          import('./demos/sets/set-toggle/set-toggle-demo.component').then(
-            (m) => m.DmSetToggleDemoComponent,
-          ),
+          import('./demos/sets/toggle/toggle-demo.component').then((m) => m.DmToggleDemoComponent),
       },
 
       {
         path: 'list-set',
         loadComponent: () =>
-          import('./demos/sets/set-list/set-list-demo.component').then(
-            (m) => m.DmSetListDemoComponent,
-          ),
+          import('./demos/sets/list/list-demo.component').then((m) => m.DmListDemoComponent),
       },
       {
         path: 'masonry-set',
         loadComponent: () =>
-          import('./demos/sets/set-masonry/set-masonry-demo.component').then(
-            (m) => m.DmSetMasonryDemoComponent,
+          import('./demos/sets/masonry/masonry-demo.component').then(
+            (m) => m.DmMasonryDemoComponent,
           ),
       },
       {
         path: 'empty-state-set',
         loadComponent: () =>
-          import('./demos/sets/set-empty-state/set-empty-state-demo.component').then(
-            (m) => m.DmSetEmptyStateDemoComponent,
+          import('./demos/sets/empty-state/empty-state-demo.component').then(
+            (m) => m.DmEmptyStateDemoComponent,
           ),
       },
       {
         path: 'avatar-set',
         loadComponent: () =>
-          import('./demos/sets/set-avatar/set-avatar-demo.component').then(
-            (m) => m.DmSetAvatarDemoComponent,
-          ),
+          import('./demos/sets/avatar/avatar-demo.component').then((m) => m.DmAvatarDemoComponent),
       },
       {
         path: 'carousel-set',
         loadComponent: () =>
-          import('./demos/sets/set-carousel/set-carousel-demo.component').then(
-            (m) => m.DmSetCarouselDemoComponent,
+          import('./demos/sets/carousel/carousel-demo.component').then(
+            (m) => m.DmCarouselDemoComponent,
           ),
       },
       {
         path: 'stepper-set',
         loadComponent: () =>
-          import('./demos/sets/set-stepper/set-stepper-demo.component').then(
-            (m) => m.DmSetStepperDemoComponent,
+          import('./demos/sets/stepper/stepper-demo.component').then(
+            (m) => m.DmStepperDemoComponent,
           ),
       },
       {
         path: 'otp-input-set',
         loadComponent: () =>
-          import('./demos/sets/set-otp-input/set-otp-input-demo.component').then(
-            (m) => m.DmSetOtpInputDemoComponent,
+          import('./demos/sets/otp-input/otp-input-demo.component').then(
+            (m) => m.DmOtpInputDemoComponent,
           ),
       },
       {
         path: 'code-editor-set',
         loadComponent: () =>
-          import('./demos/sets/set-code-editor/set-code-editor-demo.component').then(
-            (m) => m.DmSetCodeEditorDemoComponent,
+          import('./demos/sets/code-editor/code-editor-demo.component').then(
+            (m) => m.DmCodeEditorDemoComponent,
           ),
       },
       {
         path: 'dashboard-set',
         loadComponent: () =>
-          import('./demos/sets/set-dashboard/set-dashboard-demo.component').then(
-            (m) => m.DmSetDashboardDemoComponent,
+          import('./demos/sets/dashboard/dashboard-demo.component').then(
+            (m) => m.DmDashboardDemoComponent,
           ),
       },
       {
         path: 'tags-input-set',
         loadComponent: () =>
-          import('./demos/sets/set-tags-input/set-tags-input-demo.component').then(
-            (m) => m.DmSetTagsInputDemoComponent,
+          import('./demos/sets/tags-input/tags-input-demo.component').then(
+            (m) => m.DmTagsInputDemoComponent,
           ),
       },
       {
         path: 'theme-switcher-set',
         loadComponent: () =>
-          import('./demos/sets/set-theme-switcher/set-theme-switcher-demo.component').then(
-            (m) => m.DmSetThemeSwitcherDemoComponent,
+          import('./demos/sets/theme-switcher/theme-switcher-demo.component').then(
+            (m) => m.DmThemeSwitcherDemoComponent,
           ),
       },
       {
         path: 'sidebar-set',
         loadComponent: () =>
-          import('./demos/sets/set-sidebar/set-sidebar-demo.component').then(
-            (m) => m.DmSetSidebarDemoComponent,
+          import('./demos/sets/sidebar/sidebar-demo.component').then(
+            (m) => m.DmSidebarDemoComponent,
           ),
       },
       {
         path: 'animate-on-scroll-set',
         loadComponent: () =>
-          import('./demos/sets/set-animate-on-scroll/set-animate-on-scroll-demo.component').then(
-            (m) => m.DmSetAnimateOnScrollDemoComponent,
+          import('./demos/sets/animate-on-scroll/animate-on-scroll-demo.component').then(
+            (m) => m.DmAnimateOnScrollDemoComponent,
           ),
       },
       {
         path: 'dock-overlay-set',
         loadComponent: () =>
-          import('./demos/sets/set-dock-overlay/set-dock-overlay-demo.component').then(
-            (m) => m.DmSetDockOverlayDemoComponent,
+          import('./demos/sets/dock-overlay/dock-overlay-demo.component').then(
+            (m) => m.DmDockOverlayDemoComponent,
           ),
       },
       {
         path: 'label-set',
         loadComponent: () =>
-          import('./demos/sets/set-label/set-label-demo.component').then(
-            (m) => m.DmSetLabelDemoComponent,
-          ),
+          import('./demos/sets/label/label-demo.component').then((m) => m.DmLabelDemoComponent),
       },
       {
         path: 'avatar-group-set',
         loadComponent: () =>
-          import('./demos/sets/set-avatar-group/set-avatar-group-demo.component').then(
-            (m) => m.DmSetAvatarGroupDemoComponent,
+          import('./demos/sets/avatar-group/avatar-group-demo.component').then(
+            (m) => m.DmAvatarGroupDemoComponent,
           ),
       },
       {
         path: 'tab-stack-set',
         loadComponent: () =>
-          import('./demos/sets/set-tab-stack/set-tab-stack-demo.component').then(
-            (m) => m.DmSetTabStackDemoComponent,
+          import('./demos/sets/tab-stack/tab-stack-demo.component').then(
+            (m) => m.DmTabStackDemoComponent,
           ),
       },
       {
         path: 'layout-manager-set',
         loadComponent: () =>
-          import('./demos/sets/set-layout-manager/set-layout-manager-demo.component').then(
-            (m) => m.DmSetLayoutManagerDemoComponent,
+          import('./demos/sets/layout-manager/layout-manager-demo.component').then(
+            (m) => m.DmLayoutManagerDemoComponent,
           ),
       },
 

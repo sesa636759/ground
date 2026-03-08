@@ -1,0 +1,148 @@
+<div class="demo-container">
+  <h1>?? Scroll Top Component Demo</h1>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Style Variants -->
+      <section class="demo-section" id="variants">
+        <div class="section-header">
+          <h2>?? Style Variants</h2>
+          <p>Different visual styles and shapes for the scroll button</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Filled (Default)</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="filled"
+                always-visible
+                position="bottom-right"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Outlined</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="outlined"
+                always-visible
+                position="bottom-right"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Circular</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="circular"
+                always-visible
+                position="bottom-right"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Rounded</h3>
+            <div class="preview-box corner-preview">
+              <app-scroll-top
+                variant="rounded"
+                always-visible
+                position="bottom-right"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Special Features -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>?? Premium Features</h2>
+          <p>Progress rings, pulse animations, and text labels</p>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card h-gradient">
+            <h3>Scroll Progress Ring</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                show-progress
+                always-visible
+                color="#3DCD58"
+                position="bottom-center"
+                offset="0"
+              ></app-scroll-top>
+              <p class="box-note">Progress ring fills as you scroll</p>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Pulse Attention</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                pulse
+                always-visible
+                color="#ef4444"
+                position="bottom-center"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Text Label</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                show-text
+                text="TOP"
+                always-visible
+                position="bottom-center"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+          <div class="demo-card">
+            <h3>Custom Icon</h3>
+            <div class="preview-box">
+              <app-scroll-top
+                icon="fa-solid fa-chevron-up"
+                always-visible
+                variant="minimal"
+                position="bottom-center"
+                offset="0"
+              ></app-scroll-top>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-scroll-top-set-playground></dm-scroll-top-set-playground>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="scroll-top"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+
+  <!-- Long content to test actual window scrolling -->
+  <div class="scroll-test-area">
+    <p>This is a testing area for page scrolling...</p>
+    <p *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]">
+      Scroll down to see the main page button appear!
+    </p>
+  </div>
+
+  <!-- Global page button for this demo -->
+  <app-scroll-top
+    variant="circular"
+    show-progress
+    pulse
+    color="#3DCD58"
+    tooltip="Back to Top"
+  ></app-scroll-top>
+</div>
+
