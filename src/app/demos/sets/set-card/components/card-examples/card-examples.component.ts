@@ -138,4 +138,12 @@ export class SetCardExamplesComponent extends BaseDemoComponent {
 <app-card card-title="Plan Choice" selectable="true" bordered="true" hoverable="true">
   <p>Click this card to select this option.</p>
 </app-card>`;
+
+  playgroundCode = `<app-card
+  variant="elevated"
+  [hoverable]="true"
+>
+  <h3>Card Title</h3>
+  <p>Card content goes here</p>
+</app-card>`;
 }
