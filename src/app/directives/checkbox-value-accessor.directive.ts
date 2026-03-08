@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-checkbox[ngModel], dm-checkbox[formControl], dm-checkbox[formControlName]',
+  selector: 'ui-checkbox[ngModel], ui-checkbox[formControl], ui-checkbox[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmCheckboxValueAccessorDirective),
+      useExisting: forwardRef(() => CheckboxValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
+export class CheckboxValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 

@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-switch[ngModel], dm-switch[formControl], dm-switch[formControlName]',
+  selector: 'ui-switch[ngModel], ui-switch[formControl], ui-switch[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmSwitchValueAccessorDirective),
+      useExisting: forwardRef(() => SwitchValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
+export class SwitchValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -50,7 +50,3 @@ export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
-
-
-
-

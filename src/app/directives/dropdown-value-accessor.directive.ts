@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-dropdown[ngModel], dm-dropdown[formControl], dm-dropdown[formControlName]',
+  selector: 'ui-dropdown[ngModel], ui-dropdown[formControl], ui-dropdown[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmDropdownValueAccessorDirective),
+      useExisting: forwardRef(() => DropdownValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmDropdownValueAccessorDirective implements ControlValueAccessor {
+export class DropdownValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
