@@ -1,0 +1,149 @@
+﻿<pg-playground
+  [items]="[{ id: 'cfg', title: 'Configuration', icon: '⚙️' }]"
+  [defaultOpen]="['cfg']"
+>
+  <div slot="content-cfg">
+    <div class="control-grid">
+      <div class="control-section">
+        <h3>📐 Size</h3>
+        <div class="control-group">
+          <label>Width</label>
+          <ui-input
+            type="range"
+            min="80"
+            max="240"
+            step="10"
+            [(ngModel)]="cfg.width"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.width }}px</span>
+        </div>
+        <div class="control-group">
+          <label>Height</label>
+          <ui-input
+            type="range"
+            min="30"
+            max="100"
+            step="5"
+            [(ngModel)]="cfg.height"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.height }}px</span>
+        </div>
+        <div class="control-group">
+          <label>Stroke Width</label>
+          <ui-input
+            type="range"
+            min="1"
+            max="4"
+            step="0.5"
+            [(ngModel)]="cfg.strokeWidth"
+            (ngModelChange)="update()"
+          ></ui-input>
+          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.strokeWidth }}</span>
+        </div>
+      </div>
+      <div class="control-section">
+        <h3>🎨 Style</h3>
+        <div class="control-group">
+          <label>Color</label>
+          <ui-dropdown
+            [(ngModel)]="cfg.color"
+            (ngModelChange)="update()"
+            [options]="colorOpts"
+          ></ui-dropdown>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="fill"
+            [(ngModel)]="cfg.fill"
+            (ngModelChange)="update()"
+            label="Fill Area"
+          ></ui-checkbox>
+        </div>
+        <div class="checkbox-group">
+          <ui-checkbox
+            id="showDot"
+            [(ngModel)]="cfg.showDot"
+            (ngModelChange)="update()"
+            label="Show Last Point"
+          ></ui-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
+    </div>
+  </div>
+  <div
+    preview
+    class="chart-preview-wrapper"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div class="chart-preview-wrapper">
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 32px;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          *ngFor="let s of sparklines"
+          style="display: flex; flex-direction: column; align-items: center; gap: 8px"
+        >
+          <svg
+            [attr.width]="cfg.width"
+            [attr.height]="cfg.height"
+            style="display: block; overflow: visible"
+          >
+            <defs>
+              <linearGradient [attr.id]="'sg' + s.id" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" [attr.stop-color]="s.color" stop-opacity="0.35" />
+                <stop offset="100%" [attr.stop-color]="s.color" stop-opacity="0.02" />
+              </linearGradient>
+            </defs>
+            <path
+              *ngIf="cfg.fill"
+              [attr.d]="getAreaPath(s.points, cfg.width, cfg.height)"
+              [attr.fill]="'url(#sg' + s.id + ')'"
+            />
+            <polyline
+              [attr.points]="getPolyline(s.points, cfg.width, cfg.height)"
+              fill="none"
+              [attr.stroke]="s.color"
+              [attr.stroke-width]="cfg.strokeWidth"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle
+              *ngIf="cfg.showDot"
+              [attr.cx]="getLastPoint(s.points, cfg.width).x"
+              [attr.cy]="getLastPoint(s.points, cfg.width, cfg.height).y"
+              r="4"
+              [attr.fill]="s.color"
+            />
+          </svg>
+          <span style="font-size: 11px; color: #6b7280; font-weight: 500">{{ s.label }}</span>
+          <span
+            style="font-size: 14px; font-weight: 700"
+            [style.color]="s.trend >= 0 ? '#10b981' : '#f43f5e'"
+          >
+            {{ s.trend >= 0 ? '+' : '' }}{{ s.trend }}%
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (showCode) {
+    <ui-code-preview
+      code
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  }
+</pg-playground>

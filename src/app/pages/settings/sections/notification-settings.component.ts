@@ -1,4 +1,4 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -276,3 +276,6 @@ export class NotificationSettingsSectionComponent {
   inAppActivity = signal(true);
   inAppSystem = signal(true);
 }
+
+
+

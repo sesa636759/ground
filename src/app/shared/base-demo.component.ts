@@ -1,4 +1,4 @@
-export interface DemoVariant {
+﻿export interface DemoVariant {
   id: string;
   title: string;
   icon?: string;
@@ -17,14 +17,12 @@ export abstract class BaseDemoComponent {
   }
 
   get anchorLinks() {
-    return JSON.stringify(
-      this.exampleVariants.map((v) => ({
-        id: v.id,
-        label: v.title,
-        target: v.id,
-        icon: v.icon,
-        iconLibrary: v.iconLibrary,
-      })),
-    );
+    return this.exampleVariants.map((v) => ({
+      id: v.id,
+      label: v.title,
+      target: v.id,
+      icon: v.icon,
+      iconLibrary: v.iconLibrary,
+    }));
   }
 }

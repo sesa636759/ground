@@ -1,0 +1,10 @@
+@use '../../../../styles/demo-base.scss';
+
+.preview-box {
+  min-height: 150px;
+
+  &.center-content {
+    align-items: center;
+    justify-content: center;
+  }
+}

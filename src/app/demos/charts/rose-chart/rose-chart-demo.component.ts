@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoseChartPlaygroundComponent } from './components/rose-chart-playground/rose-chart-playground.component';
+import { DmRoseChartPlaygroundComponent } from '../../../playground/charts/rose-chart-playground/rose-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-rose-chart-demo',
+  selector: 'dm-rose-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    RoseChartPlaygroundComponent,
+    DmRoseChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './rose-chart-demo.component.html',
   styleUrl: './rose-chart-demo.component.scss',
 })
-export class RoseChartDemoComponent extends BaseDemoComponent {
+export class DmRoseChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'monthly', title: 'Monthly Revenue', icon: '🌹', color: '#6366f1' },

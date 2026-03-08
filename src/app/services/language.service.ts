@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -14,3 +14,6 @@ export class LanguageService {
     return this.languageSubject.value;
   }
 }
+
+
+

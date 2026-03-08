@@ -1,0 +1,114 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <!-- Accordion Slots -->
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Label</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Helper Text</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Switch', value: 'switch' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Primary', value: 'primary' },
+          { label: 'Success', value: 'success' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Danger', value: 'danger' },
+        ]"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <div slot="content-states" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Checked
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.indeterminate"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Indeterminate
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Required
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Invalid
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Skeleton
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div preview>
+    <ui-checkbox
+      #demoElement
+      [attr.label]="pgConfig.label"
+      [attr.helper-text]="pgConfig.helperText"
+      [attr.size]="pgConfig.size"
+      [attr.color]="pgConfig.color"
+      [attr.variant]="pgConfig.variant"
+      [attr.checked]="pgConfig.checked ? '' : null"
+      [attr.indeterminate]="pgConfig.indeterminate ? '' : null"
+      [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.required]="pgConfig.required ? '' : null"
+      [attr.invalid]="pgConfig.invalid ? '' : null"
+      [attr.skeleton]="pgConfig.skeleton ? '' : null"
+      (checkboxChange)="onCheckboxChange($event)"
+      (checkboxFocus)="onCheckboxFocus()"
+      (checkboxBlur)="onCheckboxBlur()"
+    ></ui-checkbox>
+  </div>
+
+  <!-- Events -->
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

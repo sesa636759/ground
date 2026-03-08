@@ -89,7 +89,11 @@
 .badge-wrapper {
   margin-bottom: 24px;
   padding: 1px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 40%, transparent), color-mix(in srgb, var(--accent-tertiary) 10%, transparent));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 40%, transparent),
+    color-mix(in srgb, var(--accent-tertiary) 10%, transparent)
+  );
   border-radius: 100px;
 }
 
@@ -133,7 +137,6 @@
 }
 
 @keyframes gradientShift {
-
   0%,
   100% {
     background-position: 0% 50%;

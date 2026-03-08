@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface LogEntry {
@@ -7,7 +7,7 @@ export interface LogEntry {
 }
 
 @Component({
-  selector: 'app-playground-event-log',
+  selector: 'pg-playground-event-log',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './playground-event-log.component.html',
@@ -32,3 +32,6 @@ export class PlaygroundEventLogComponent {
     });
   }
 }
+
+
+

@@ -1,0 +1,180 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Text', value: 'text' },
+          { label: 'Filled', value: 'filled' },
+          { label: 'Outlined', value: 'outlined' },
+          { label: 'Soft', value: 'soft' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Color</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Primary', value: 'primary' },
+          { label: 'Secondary', value: 'secondary' },
+          { label: 'Success', value: 'success' },
+          { label: 'Danger', value: 'danger' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Info', value: 'info' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.dense" (ngModelChange)="updateConfig()" /> Dense
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.dividers" (ngModelChange)="updateConfig()" /> Dividers
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.flush" (ngModelChange)="updateConfig()" /> Flush
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.horizontal" (ngModelChange)="updateConfig()" />
+        Horizontal
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.numbered" (ngModelChange)="updateConfig()" /> Numbered
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()" /> Grouped
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()" />
+        Selectable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" /> Elevated
+      </label>
+    </div>
+  </div>
+
+  <div slot="content-item" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Item Label</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.itemLabel" (ngModelChange)="updateConfig()" />
+    </div>
+
+    <div class="control-group">
+      <label>Sublabel</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.itemSublabel" (ngModelChange)="updateConfig()" />
+    </div>
+
+    <div class="control-group">
+      <label>Icon (FA Class)</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.itemIcon" (ngModelChange)="updateConfig()" />
+    </div>
+
+    <div class="control-group">
+      <label>Action Icon</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.itemActionIcon"
+        (ngModelChange)="updateConfig()"
+      />
+    </div>
+
+    <div class="control-group">
+      <label>Badge Text</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.itemBadge" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Counter Value</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.itemCounter" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="checkbox-group">
+      <ui-checkbox
+        [(ngModel)]="pgConfig.itemDisabled"
+        (ngModelChange)="updateConfig()"
+        label="Disable Item 3"
+      ></ui-checkbox>
+    </div>
+  </div>
+
+  <div preview>
+    <div class="preview-stage h-scrollable">
+      <div class="list-container">
+        <ui-list
+          [attr.variant]="pgConfig.variant"
+          [attr.color]="pgConfig.color"
+          [attr.size]="pgConfig.size"
+          [attr.dense]="pgConfig.dense ? '' : null"
+          [attr.dividers]="pgConfig.dividers ? '' : null"
+          [attr.flush]="pgConfig.flush ? '' : null"
+          [attr.horizontal]="pgConfig.horizontal ? '' : null"
+          [attr.numbered]="pgConfig.numbered ? '' : null"
+          [attr.grouped]="pgConfig.grouped ? '' : null"
+          [attr.selectable]="pgConfig.selectable ? '' : null"
+          [attr.rounded]="pgConfig.rounded ? '' : null"
+          [attr.elevated]="pgConfig.elevated ? '' : null"
+        >
+          <ui-list-item
+            [attr.label]="pgConfig.itemLabel + ' 1'"
+            [attr.sublabel]="pgConfig.itemSublabel"
+            [attr.icon]="pgConfig.itemIcon"
+            [attr.action-icon]="pgConfig.itemActionIcon"
+            [attr.badge]="pgConfig.itemBadge"
+            [attr.badge-color]="pgConfig.itemBadgeColor"
+            (click)="onItemClick($event)"
+          ></ui-list-item>
+
+          <ui-list-item
+            [attr.label]="pgConfig.itemLabel + ' 2'"
+            [attr.sublabel]="pgConfig.itemSublabel"
+            [attr.icon]="pgConfig.itemIcon"
+            [attr.action-icon]="pgConfig.itemActionIcon"
+            [attr.counter]="pgConfig.itemCounter"
+            (click)="onItemClick($event)"
+          ></ui-list-item>
+
+          <ui-list-item
+            [attr.label]="pgConfig.itemLabel + ' 3'"
+            [attr.sublabel]="pgConfig.itemSublabel"
+            [attr.icon]="pgConfig.itemIcon"
+            [attr.action-icon]="pgConfig.itemActionIcon"
+            [attr.disabled]="pgConfig.itemDisabled ? '' : null"
+            (click)="onItemClick($event)"
+          ></ui-list-item>
+        </ui-list>
+      </div>
+    </div>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

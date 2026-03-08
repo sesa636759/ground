@@ -1,11 +1,10 @@
-import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+﻿import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'app-preferences-settings-section',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="settings-section">
@@ -429,3 +428,6 @@ export class PreferencesSettingsSectionComponent {
     this.confirmDelete.set(true);
   }
 }
+
+
+

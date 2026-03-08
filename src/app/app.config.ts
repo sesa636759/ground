@@ -1,4 +1,4 @@
-import {
+﻿import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
@@ -16,8 +16,8 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideAppInitializer(() => setUiLoader(window)),
     provideAppInitializer(() => appUiLibrary(window)),
+    provideAppInitializer(() => setUiLoader(window)),
     provideAppInitializer(() => chartLibrary(window)),
   ],
 };

@@ -1,0 +1,66 @@
+@use '../../../../styles/demo-base.scss';
+
+.demo-card {
+  &.h-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.08),
+      rgba(var(--primary-rgb), 0.02)
+    );
+  }
+}
+
+.panel-box {
+  height: 250px;
+  background: rgba(var(--bg-secondary-rgb), 0.3);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  &.large-box {
+    height: 500px;
+  }
+}
+
+.p-content {
+  height: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-weight: 500;
+  color: var(--text-secondary);
+  overflow-y: auto;
+
+  strong {
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: block;
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  em {
+    color: var(--text-tertiary);
+    font-style: italic;
+  }
+
+  &.dark-p {
+    background: #1e293b;
+    color: #94a3b8;
+
+    strong {
+      color: #e2e8f0;
+    }
+  }
+}

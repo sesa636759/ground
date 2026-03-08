@@ -1,0 +1,218 @@
+<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-global" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Title</label>
+      <ui-input
+        name="title"
+        type="text"
+        [(ngModel)]="pgConfig.title"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+
+    <div class="control-group">
+      <label>Extra (Header)</label>
+      <ui-input
+        name="extra"
+        type="text"
+        [(ngModel)]="pgConfig.extra"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+
+    <div class="control-group">
+      <label>Layout</label>
+      <ui-dropdown
+        name="layout"
+        [(ngModel)]="pgConfig.layout"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Vertical', value: 'vertical' },
+          { label: 'Horizontal', value: 'horizontal' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        name="size"
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Small', value: 'small' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        name="variant"
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Primary', value: 'primary' },
+          { label: 'Success', value: 'success' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Danger', value: 'danger' },
+          { label: 'Info', value: 'info' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        name="type"
+        [(ngModel)]="pgConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Inner', value: 'inner' },
+        ]"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Ribbon Text</label>
+      <ui-input
+        name="ribbon"
+        type="text"
+        [(ngModel)]="pgConfig.ribbon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+
+    <div class="control-group">
+      <label>Ribbon Pos</label>
+      <ui-dropdown
+        name="ribbonPosition"
+        [(ngModel)]="pgConfig.ribbonPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Top Right', value: 'top-right' },
+          { label: 'Top Left', value: 'top-left' },
+        ]"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <div slot="content-behavior" class="checkbox-grid" style="padding: 16px">
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="hoverable"
+        [(ngModel)]="pgConfig.hoverable"
+        (ngModelChange)="updateConfig()"
+      />
+      Hoverable
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="bordered"
+        [(ngModel)]="pgConfig.bordered"
+        (ngModelChange)="updateConfig()"
+      />
+      Bordered
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox name="loading" [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" />
+      Loading
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="flippable"
+        [(ngModel)]="pgConfig.flippable"
+        (ngModelChange)="updateConfig()"
+      />
+      Flippable
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="closable"
+        [(ngModel)]="pgConfig.closable"
+        (ngModelChange)="updateConfig()"
+      />
+      Closable
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox name="glass" [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" />
+      Glass
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="collapsible"
+        [(ngModel)]="pgConfig.collapsible"
+        (ngModelChange)="updateConfig()"
+      />
+      Collapsible
+    </label>
+    <label class="checkbox-item">
+      <ui-checkbox
+        name="selectable"
+        [(ngModel)]="pgConfig.selectable"
+        (ngModelChange)="updateConfig()"
+      />
+      Selectable
+    </label>
+  </div>
+
+  <div preview [class.glass-bg]="pgConfig.glass">
+    <div class="preview-stage">
+      <app-card
+        #cardSet
+        [attr.card-title]="pgConfig.title"
+        [attr.extra]="pgConfig.extra"
+        [attr.cover]="pgConfig.cover"
+        [attr.actions]="pgConfig.actions"
+        [attr.hoverable]="pgConfig.hoverable ? '' : null"
+        [attr.size]="pgConfig.size"
+        [attr.bordered]="pgConfig.bordered ? '' : null"
+        [attr.type]="pgConfig.type"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.flippable]="pgConfig.flippable ? '' : null"
+        [attr.flip-trigger]="pgConfig.flipTrigger"
+        [attr.closable]="pgConfig.closable ? '' : null"
+        [attr.menu-actions]="pgConfig.menuActions"
+        [attr.layout]="pgConfig.layout"
+        [attr.glass]="pgConfig.glass ? '' : null"
+        [attr.variant]="pgConfig.variant"
+        [attr.ribbon]="pgConfig.ribbon"
+        [attr.ribbon-position]="pgConfig.ribbonPosition"
+        [attr.ribbon-color]="pgConfig.ribbonColor"
+        [attr.collapsible]="pgConfig.collapsible ? '' : null"
+        [attr.collapsed]="pgConfig.collapsed ? '' : null"
+        [attr.selectable]="pgConfig.selectable ? '' : null"
+        [attr.selected]="pgConfig.selected ? '' : null"
+        [attr.avatar]="pgConfig.avatar"
+        [attr.avatar-icon]="pgConfig.avatarIcon"
+        (cardAction)="onCardAction($event)"
+        (cardClose)="onCardClose()"
+        (cardCollapse)="onCardCollapse($event)"
+        (cardSelect)="onCardSelect($event)"
+        style="width: 100%; max-width: 400px"
+      >
+        <p>This is dynamic content from the playground. You can change properties on the left.</p>
+        <div slot="back">
+          <div style="padding: 24px; text-align: center">
+            <h3>Flipped Content</h3>
+            <p>This is what you see on the back!</p>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

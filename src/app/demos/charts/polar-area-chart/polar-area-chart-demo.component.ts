@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PolarAreaChartPlaygroundComponent } from './components/polar-area-chart-playground/polar-area-chart-playground.component';
+import { DmPolarAreaChartPlaygroundComponent } from '../../../playground/charts/polar-area-chart-playground/polar-area-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-polar-area-chart-demo',
+  selector: 'dm-polar-area-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    PolarAreaChartPlaygroundComponent,
+    DmPolarAreaChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './polar-area-chart-demo.component.html',
   styleUrl: './polar-area-chart-demo.component.scss',
 })
-export class PolarAreaChartDemoComponent extends BaseDemoComponent {
+export class DmPolarAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'skills', title: 'Skills Radar', icon: '🌐', color: '#6366f1' },

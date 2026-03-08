@@ -1,53 +1,60 @@
-<div class="demo-container">
-  <app-demo-header
+﻿<div class="demo-container">
+  <pg-demo-header
     icon="🪜"
     title="Step Line Chart"
     description="A line chart variant where values change in discrete steps rather than continuous curves. Ideal for depicting state changes, process flows, and threshold-based data."
-  ></app-demo-header>
+  ></pg-demo-header>
 
-  <demo-tabs>
+  <pg-demo-tabs>
     <div slot="playground">
-      <app-step-line-chart-playground></app-step-line-chart-playground>
+      <dm-step-line-chart-playground></dm-step-line-chart-playground>
     </div>
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <app-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></app-demo-sidebar>
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-
           <section class="demo-section" id="price" style="margin-top: 0">
             <div class="section-header">
               <h2>🪜 Price Steps</h2>
               <p>Visualize discrete price changes over time using a stepped line.</p>
             </div>
             <div class="demo-card">
-              <svg width="580" height="280" style="display:block;margin:0 auto">
+              <svg width="580" height="280" style="display: block; margin: 0 auto">
                 <!-- Grid -->
-                <line x1="50" y1="20" x2="50" y2="230" stroke="#e5e7eb"/>
-                <line x1="50" y1="230" x2="560" y2="230" stroke="#e5e7eb"/>
-                <line x1="50" y1="180" x2="560" y2="180" stroke="#f3f4f6" stroke-dasharray="4,3"/>
-                <line x1="50" y1="130" x2="560" y2="130" stroke="#f3f4f6" stroke-dasharray="4,3"/>
-                <line x1="50" y1="80" x2="560" y2="80" stroke="#f3f4f6" stroke-dasharray="4,3"/>
+                <line x1="50" y1="20" x2="50" y2="230" stroke="#e5e7eb" />
+                <line x1="50" y1="230" x2="560" y2="230" stroke="#e5e7eb" />
+                <line x1="50" y1="180" x2="560" y2="180" stroke="#f3f4f6" stroke-dasharray="4,3" />
+                <line x1="50" y1="130" x2="560" y2="130" stroke="#f3f4f6" stroke-dasharray="4,3" />
+                <line x1="50" y1="80" x2="560" y2="80" stroke="#f3f4f6" stroke-dasharray="4,3" />
                 <!-- Step fill -->
-                <path d="M60,200 H160 V160 H260 V120 H360 V146 H460 V100 H560 L560,230 L60,230Z"
-                  fill="#6366f1" opacity="0.12"/>
+                <path
+                  d="M60,200 H160 V160 H260 V120 H360 V146 H460 V100 H560 L560,230 L60,230Z"
+                  fill="#6366f1"
+                  opacity="0.12"
+                />
                 <!-- Step line -->
-                <path d="M60,200 H160 V160 H260 V120 H360 V146 H460 V100 H560"
-                  fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linejoin="miter"/>
+                <path
+                  d="M60,200 H160 V160 H260 V120 H360 V146 H460 V100 H560"
+                  fill="none"
+                  stroke="#6366f1"
+                  stroke-width="2.5"
+                  stroke-linejoin="miter"
+                />
                 <!-- Data points -->
-                <circle cx="60"  cy="200" r="4" fill="#6366f1"/>
-                <circle cx="160" cy="160" r="4" fill="#6366f1"/>
-                <circle cx="260" cy="120" r="4" fill="#6366f1"/>
-                <circle cx="360" cy="146" r="4" fill="#6366f1"/>
-                <circle cx="460" cy="100" r="4" fill="#6366f1"/>
-                <circle cx="560" cy="100" r="4" fill="#6366f1"/>
+                <circle cx="60" cy="200" r="4" fill="#6366f1" />
+                <circle cx="160" cy="160" r="4" fill="#6366f1" />
+                <circle cx="260" cy="120" r="4" fill="#6366f1" />
+                <circle cx="360" cy="146" r="4" fill="#6366f1" />
+                <circle cx="460" cy="100" r="4" fill="#6366f1" />
+                <circle cx="560" cy="100" r="4" fill="#6366f1" />
                 <!-- Y Labels -->
                 <text x="44" y="204" text-anchor="end" font-size="10" fill="#9ca3af">$30</text>
                 <text x="44" y="164" text-anchor="end" font-size="10" fill="#9ca3af">$40</text>
                 <text x="44" y="124" text-anchor="end" font-size="10" fill="#9ca3af">$50</text>
-                <text x="44" y="84"  text-anchor="end" font-size="10" fill="#9ca3af">$60</text>
+                <text x="44" y="84" text-anchor="end" font-size="10" fill="#9ca3af">$60</text>
                 <!-- X Labels -->
-                <text x="60"  y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Jan</text>
+                <text x="60" y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Jan</text>
                 <text x="160" y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Feb</text>
                 <text x="260" y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Mar</text>
                 <text x="360" y="248" text-anchor="middle" font-size="10" fill="#9ca3af">Apr</text>
@@ -69,23 +76,28 @@
               <p>Track system state changes (online/degraded/offline) as discrete step levels.</p>
             </div>
             <div class="demo-card">
-              <svg width="580" height="240" style="display:block;margin:0 auto">
+              <svg width="580" height="240" style="display: block; margin: 0 auto">
                 <!-- Grid -->
-                <line x1="50" y1="20" x2="50" y2="200" stroke="#e5e7eb"/>
-                <line x1="50" y1="200" x2="560" y2="200" stroke="#e5e7eb"/>
+                <line x1="50" y1="20" x2="50" y2="200" stroke="#e5e7eb" />
+                <line x1="50" y1="200" x2="560" y2="200" stroke="#e5e7eb" />
                 <!-- Online band -->
-                <rect x="50" y="40" width="510" height="40" fill="#10b98120" rx="0"/>
+                <rect x="50" y="40" width="510" height="40" fill="#10b98120" rx="0" />
                 <!-- Degraded band -->
-                <rect x="50" y="100" width="510" height="40" fill="#f59e0b20" rx="0"/>
+                <rect x="50" y="100" width="510" height="40" fill="#f59e0b20" rx="0" />
                 <!-- Offline band -->
-                <rect x="50" y="160" width="510" height="40" fill="#f43f5e20" rx="0"/>
+                <rect x="50" y="160" width="510" height="40" fill="#f43f5e20" rx="0" />
                 <!-- Labels -->
-                <text x="44" y="64"  text-anchor="end" font-size="10" fill="#10b981">Online</text>
+                <text x="44" y="64" text-anchor="end" font-size="10" fill="#10b981">Online</text>
                 <text x="44" y="124" text-anchor="end" font-size="10" fill="#f59e0b">Degraded</text>
                 <text x="44" y="184" text-anchor="end" font-size="10" fill="#f43f5e">Offline</text>
                 <!-- Status step line -->
-                <path d="M60,60 H160 V120 H220 V60 H380 V180 H440 V120 H480 V60 H560"
-                  fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linejoin="miter"/>
+                <path
+                  d="M60,60 H160 V120 H220 V60 H380 V180 H440 V120 H480 V60 H560"
+                  fill="none"
+                  stroke="#6366f1"
+                  stroke-width="2.5"
+                  stroke-linejoin="miter"
+                />
               </svg>
             </div>
             <ui-code-preview
@@ -95,13 +107,13 @@
               expanded="true"
             ></ui-code-preview>
           </section>
-
         </div>
       </div>
     </div>
 
     <div slot="docs">
-      <app-component-documentation componentId="step-line-chart"></app-component-documentation>
+      <pg-component-documentation componentId="step-line-chart"></pg-component-documentation>
     </div>
-  </demo-tabs>
+  </pg-demo-tabs>
 </div>
+

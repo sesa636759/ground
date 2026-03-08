@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StepLineChartPlaygroundComponent } from './components/step-line-chart-playground/step-line-chart-playground.component';
+import { DmStepLineChartPlaygroundComponent } from '../../../playground/charts/step-line-chart-playground/step-line-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-step-line-chart-demo',
+  selector: 'dm-step-line-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    StepLineChartPlaygroundComponent,
+    DmStepLineChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './step-line-chart-demo.component.html',
   styleUrl: './step-line-chart-demo.component.scss',
 })
-export class StepLineChartDemoComponent extends BaseDemoComponent {
+export class DmStepLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'price', title: 'Price Steps', icon: '🪜', color: '#6366f1' },

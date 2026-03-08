@@ -1,0 +1,343 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="📋"
+    title="Context Menu Component"
+    description="Flexible multilevel context menus with nested submenus, interactive triggers, and rich customization options."
+  ></pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content">
+        <!-- Right Click Trigger -->
+        <section class="demo-section" id="right-click">
+          <div class="section-header">
+            <h2>🖱️ Right Click Trigger</h2>
+            <p>Open context menu with right-click</p>
+          </div>
+          <div class="demo-card">
+            <h3>Basic Right Click Area</h3>
+            <div #basicRightTrigger class="context-zone">Right-click here to open menu</div>
+            <app-context-menu
+              [triggerElement]="basicRightTrigger"
+              trigger="rightClick"
+              [items]="basicItems"
+            ></app-context-menu>
+            <ui-code-preview
+              [htmlCode]="rightClickCode()"
+              [label]="'Right Click Code'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </div>
+        </section>
+
+        <!-- Click Trigger -->
+        <section class="demo-section" id="click-trigger">
+          <div class="section-header">
+            <h2>👆 Click Trigger</h2>
+            <p>Open context menu with button click</p>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-card">
+              <h3>Click Button Trigger</h3>
+              <ui-button #clickTrigger class="btn-trigger" label="More Actions"></ui-button>
+              <app-context-menu
+                [triggerElement]="clickTrigger"
+                trigger="click"
+                [items]="basicItems"
+              ></app-context-menu>
+              <ui-code-preview
+                [htmlCode]="clickTriggerCode()"
+                [label]="'Click Trigger Code'"
+                activeLang="html"
+                expanded="true"
+              ></ui-code-preview>
+            </div>
+            <div class="demo-card">
+              <h3>Hover Trigger</h3>
+              <div #hoverTrigger class="context-zone hover-zone">Hover here</div>
+              <app-context-menu
+                [triggerElement]="hoverTrigger"
+                trigger="hover"
+                [items]="basicItems"
+              ></app-context-menu>
+            </div>
+          </div>
+        </section>
+
+        <!-- Nested Menus -->
+        <section class="demo-section" id="nested-menus">
+          <div class="section-header">
+            <h2>🌳 Nested Menus</h2>
+            <p>Multi-level submenus with edge detection and smooth animations</p>
+          </div>
+          <div class="demo-card full-width">
+            <h3>Deep Nested Structure</h3>
+            <div #nestedTrigger class="context-zone">Right-click for nested menu</div>
+            <app-context-menu
+              [triggerElement]="nestedTrigger"
+              trigger="rightClick"
+              [items]="nestedItems"
+              [animated]="true"
+            ></app-context-menu>
+            <ui-code-preview
+              [htmlCode]="nestedCode()"
+              [label]="'Nested Menu Code'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </div>
+        </section>
+
+        <!-- List Item Context -->
+        <section class="demo-section" id="list-context">
+          <div class="section-header">
+            <h2>📝 List Item Context</h2>
+            <p>Context menus for list items with dynamic content</p>
+          </div>
+          <div class="demo-card full-width">
+            <h3>Right-click on Items</h3>
+            <div class="list-container">
+              <div class="list-item">
+                <span class="item-icon" style="color: #4f46e5">
+                  <i class="fas fa-folder-open"></i>
+                </span>
+                <span class="item-name">Project Files</span>
+                <span class="item-action">Right-click here</span>
+              </div>
+              <app-context-menu
+                #listItem1
+                [triggerElement]="listItem1"
+                trigger="rightClick"
+                [items]="basicItems"
+              ></app-context-menu>
+
+              <div class="list-item">
+                <span class="item-icon" style="color: #f59e0b">
+                  <i class="fas fa-file-alt"></i>
+                </span>
+                <span class="item-name">Documents</span>
+                <span class="item-action">Right-click here</span>
+              </div>
+              <app-context-menu
+                #listItem2
+                [triggerElement]="listItem2"
+                trigger="rightClick"
+                [items]="basicItems"
+              ></app-context-menu>
+
+              <div class="list-item">
+                <span class="item-icon" style="color: #ec4899">
+                  <i class="fas fa-images"></i>
+                </span>
+                <span class="item-name">Images</span>
+                <span class="item-action">Right-click here</span>
+              </div>
+              <app-context-menu
+                #listItem3
+                [triggerElement]="listItem3"
+                trigger="rightClick"
+                [items]="basicItems"
+              ></app-context-menu>
+
+              <div class="list-item">
+                <span class="item-icon" style="color: #06b6d4">
+                  <i class="fas fa-video"></i>
+                </span>
+                <span class="item-name">Videos</span>
+                <span class="item-action">Right-click here</span>
+              </div>
+              <app-context-menu
+                #listItem4
+                [triggerElement]="listItem4"
+                trigger="rightClick"
+                [items]="basicItems"
+              ></app-context-menu>
+            </div>
+            <ui-code-preview
+              [htmlCode]="listContextCode()"
+              [label]="'List Context Code'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </div>
+        </section>
+
+        <!-- Command Palette -->
+        <section class="demo-section" id="command-palette">
+          <div class="section-header">
+            <h2>⚡ Command Palette</h2>
+            <p>Quick command launcher with searchable actions (Premium)</p>
+          </div>
+          <div class="demo-card">
+            <h3>Command Launcher</h3>
+            <div class="palette-info">
+              <p>Press <kbd>Ctrl+K</kbd> or click the button to open command palette</p>
+            </div>
+            <ui-button
+              #paletteTrigger
+              class="btn-trigger"
+              label="Open Command Palette (Ctrl+K)"
+            ></ui-button>
+            <app-context-menu
+              [triggerElement]="paletteTrigger"
+              trigger="click"
+              mode="commandPalette"
+              [items]="nestedItems"
+              searchable="true"
+              searchPlaceholder="Search commands..."
+            ></app-context-menu>
+            <ui-code-preview
+              [htmlCode]="commandPaletteCode()"
+              [label]="'Command Palette Code'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </div>
+        </section>
+
+        <!-- Menu Item Types -->
+        <section class="demo-section" id="menu-items">
+          <div class="section-header">
+            <h2>✅ Menu Item Types</h2>
+            <p>Checkbox, radio buttons, and grouped items (Premium)</p>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-card">
+              <h3>Checkbox Items</h3>
+              <ui-button #settingsTrigger class="btn-trigger" label="Settings"></ui-button>
+              <app-context-menu
+                [triggerElement]="settingsTrigger"
+                trigger="click"
+                [items]="settingsItems"
+              ></app-context-menu>
+            </div>
+            <div class="demo-card">
+              <h3>Grouped Items</h3>
+              <ui-button #fileMenuTrigger class="btn-trigger" label="File Menu"></ui-button>
+              <app-context-menu
+                [triggerElement]="fileMenuTrigger"
+                trigger="click"
+                [items]="fileMenuItems"
+              ></app-context-menu>
+            </div>
+          </div>
+          <ui-code-preview
+            [htmlCode]="checkboxRadioCode()"
+            [label]="'Item Types Code'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </section>
+
+        <!-- Themes & Effects -->
+        <section class="demo-section" id="themes">
+          <div class="section-header">
+            <h2>🌙 Themes & Effects</h2>
+            <p>Dark theme, animations, and glassmorphism effects</p>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-card">
+              <h3>Animated Menu</h3>
+              <ui-button #animTrigger class="btn-trigger" label="Staggered Entry"></ui-button>
+              <app-context-menu
+                [triggerElement]="animTrigger"
+                trigger="click"
+                [items]="basicItems"
+                [animated]="true"
+                [staggered]="true"
+              ></app-context-menu>
+            </div>
+            <div class="demo-card">
+              <h3>Dark Theme</h3>
+              <ui-button #darkTrigger class="btn-trigger" label="Dark Menu"></ui-button>
+              <app-context-menu
+                [triggerElement]="darkTrigger"
+                trigger="click"
+                [items]="basicItems"
+                theme="dark"
+                [animated]="true"
+              ></app-context-menu>
+            </div>
+            <div class="demo-card">
+              <h3>Glassmorphism</h3>
+              <div class="glass-context-bg">
+                <ui-button
+                  #glassTrigger
+                  class="btn-trigger glass-btn"
+                  label="Glass Effect"
+                ></ui-button>
+              </div>
+              <app-context-menu
+                [triggerElement]="glassTrigger"
+                trigger="click"
+                [items]="basicItems"
+                variant="glass"
+                backdropBlur="12px"
+              ></app-context-menu>
+            </div>
+          </div>
+          <ui-code-preview
+            [htmlCode]="darkThemeCode()"
+            [label]="'Themes Code'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </section>
+
+        <!-- Advanced Features -->
+        <section class="demo-section" id="advanced">
+          <div class="section-header">
+            <h2>💎 Advanced Features</h2>
+            <p>Deep nesting, keyboard navigation, and premium polish</p>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-card full-width">
+              <h3>5-Level Deep Nesting with Edge Detection</h3>
+              <div #deepNestedTrigger class="context-zone">Right-click for 5-level deep menu</div>
+              <app-context-menu
+                [triggerElement]="deepNestedTrigger"
+                trigger="rightClick"
+                [items]="deepNestedItems"
+                [edgeDetection]="true"
+                [animated]="true"
+              ></app-context-menu>
+            </div>
+            <div class="demo-card">
+              <h3>Features</h3>
+              <ul class="feature-list">
+                <li>✓ Keyboard navigation support</li>
+                <li>✓ Edge detection &amp; repositioning</li>
+                <li>✓ Pinnable menu items</li>
+                <li>✓ Custom styling &amp; animations</li>
+                <li>✓ Rich content support</li>
+                <li>✓ Touch gesture support</li>
+              </ul>
+            </div>
+          </div>
+          <ui-code-preview
+            [htmlCode]="advancedCode()"
+            [label]="'Advanced Features Code'"
+            activeLang="html"
+            expanded="true"
+          ></ui-code-preview>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-set-context-menu-playground></dm-set-context-menu-playground>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="context-menu"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeSelectorComponent } from '../../../components/theme-selector/theme-selector.component';
 
@@ -123,3 +123,6 @@ import { ThemeSelectorComponent } from '../../../components/theme-selector/theme
   ],
 })
 export class ThemeSettingsSectionComponent {}
+
+
+

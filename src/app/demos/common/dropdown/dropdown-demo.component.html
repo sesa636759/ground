@@ -1,0 +1,80 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="💧"
+    title="Dropdown Component"
+    description="A robust and interactive selection component. Supports single/multi-selection, search filtering, hierarchical cascading data, and screen-reader optimizations."
+  >
+  </pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-dropdown-playground></dm-dropdown-playground>
+    </div>
+
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Basic -->
+        <pg-example-section
+          id="basic"
+          title="Basic Dropdown"
+          description="Standard single-selection dropdown"
+          [code]="basicCode"
+        >
+          <ui-dropdown [options]="basicOptions" placeholder="Select an option"></ui-dropdown>
+        </pg-example-section>
+
+        <!-- Multi Selection -->
+        <pg-example-section
+          id="multi-select"
+          title="Multi-Select Mode"
+          description="Allow users to select multiple options with an intuitive interface"
+          [code]="multiSelectCode"
+        >
+          <ui-dropdown
+            multi-select
+            [options]="basicOptions"
+            placeholder="Select multiple items"
+          ></ui-dropdown>
+        </pg-example-section>
+
+        <!-- Cascading -->
+        <pg-example-section
+          id="cascading"
+          title="Hierarchical / Cascading"
+          description="Organize complex data structures into expandable parent-child groups"
+          [code]="cascadingCode"
+        >
+          <ui-dropdown
+            cascading
+            [options]="cascadingOptions"
+            placeholder="Explore categories"
+          ></ui-dropdown>
+        </pg-example-section>
+
+        <!-- Sizes -->
+        <pg-example-section
+          id="sizes"
+          title="Size Scaling"
+          description="Adapt the dropdown footprint to your UI density requirements"
+          [code]="sizesCode"
+        >
+          <div class="demo-grid col-3">
+            <ui-dropdown size="sm" [options]="basicOptions" placeholder="Small"></ui-dropdown>
+            <ui-dropdown size="md" [options]="basicOptions" placeholder="Medium"></ui-dropdown>
+            <ui-dropdown size="lg" [options]="basicOptions" placeholder="Large"></ui-dropdown>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="dropdown"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

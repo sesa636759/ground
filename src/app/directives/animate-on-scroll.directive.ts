@@ -1,6 +1,6 @@
-import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+﻿import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 
-export type AnimationType = 
+export type AnimationType =
   | 'fade-in'
   | 'slide-up'
   | 'slide-down'
@@ -13,7 +13,7 @@ export type AnimationType =
   | 'rotate-in';
 
 @Directive({
-  selector: '[appAnimateOnScroll]',
+  selector: '[uiAnimateOnScroll]',
   standalone: true,
 })
 export class AnimateOnScrollDirective implements OnInit, OnDestroy {
@@ -28,7 +28,7 @@ export class AnimateOnScrollDirective implements OnInit, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) {}
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class AnimateOnScrollDirective implements OnInit, OnDestroy {
     // Set initial state
     this.renderer.setStyle(this.el.nativeElement, 'opacity', '0');
     this.renderer.setStyle(this.el.nativeElement, 'transition', `all ${this.duration}ms ease-out`);
-    
+
     // Apply initial transform based on animation type
     const initialTransform = this.getInitialTransform();
     if (initialTransform) {

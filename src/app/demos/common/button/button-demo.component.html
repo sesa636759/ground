@@ -1,0 +1,133 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🔘"
+    title="Button Component"
+    description="An interactive component used to trigger actions or navigate through the application, featuring multiple styles, sizes, and states."
+  >
+  </pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Visual Variants -->
+        <pg-example-section
+          id="visual-variants"
+          title="Visual Variants"
+          description="Different styles for different visual hierarchies"
+          [code]="variantsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button label="Primary" variant="primary"></ui-button>
+            <ui-button label="Secondary" variant="secondary"></ui-button>
+            <ui-button label="Outline" variant="outline"></ui-button>
+            <ui-button label="Ghost" variant="ghost"></ui-button>
+            <ui-button label="Success" variant="success"></ui-button>
+            <ui-button label="Danger" variant="danger"></ui-button>
+            <ui-button label="Warning" variant="warning"></ui-button>
+            <ui-button label="Info" variant="info"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Sizes -->
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Scalable sizes from extra small to extra large"
+          [code]="sizesCode"
+        >
+          <div class="demo-flex-wrap items-center">
+            <ui-button label="Extra Small" size="xs"></ui-button>
+            <ui-button label="Small" size="sm"></ui-button>
+            <ui-button label="Medium" size="md"></ui-button>
+            <ui-button label="Large" size="lg"></ui-button>
+            <ui-button label="Extra Large" size="xl"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Icons & Badges -->
+        <pg-example-section
+          id="icons-badges"
+          title="Icons & Badges"
+          description="Enhance buttons with visual cues and status indicators"
+          [code]="iconsBadgesCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button label="Settings" icon="⚙️"></ui-button>
+            <ui-button label="Checkout" icon="🛒" variant="success"></ui-button>
+            <ui-button label="Trash" icon="🗑️" variant="danger" icon-position="right"></ui-button>
+            <ui-button label="Notifications" icon="🔔" badge="9" variant="warning"></ui-button>
+            <ui-button icon="🔍" icon-only pill variant="primary"></ui-button>
+            <ui-button icon="➕" icon-only rounded variant="outline"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- Icon Libraries -->
+        <pg-example-section
+          id="icon-libraries"
+          title="Icon Libraries"
+          description="Support for various popular icon libraries and custom SVGs"
+          [code]="iconLibrariesCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button
+              label="SVG Path"
+              icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              variant="primary"
+            ></ui-button>
+            <ui-button label="Material" icon="face"></ui-button>
+            <ui-button
+              label="Lucide"
+              icon="search"
+              icon-library="lucide"
+              variant="success"
+            ></ui-button>
+            <ui-button
+              label="Ionicons"
+              icon="heart"
+              icon-library="ionicons"
+              variant="danger"
+            ></ui-button>
+            <ui-button
+              label="Bootstrap SVG"
+              icon="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M14 14.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v2.5z"
+              variant="warning"
+            ></ui-button>
+            <ui-button label="Emoji" icon="🚀" variant="info"></ui-button>
+            <ui-button label="Custom Size" icon="🎨" icon-size="28" variant="secondary"></ui-button>
+          </div>
+        </pg-example-section>
+
+        <!-- States -->
+        <pg-example-section
+          id="states"
+          title="Functional States"
+          description="Communicate interaction availability and background processes"
+          [code]="statesCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-button label="Normal" variant="primary"></ui-button>
+            <ui-button label="Disabled" disabled variant="primary"></ui-button>
+            <ui-button label="Loading" loading variant="primary"></ui-button>
+            <ui-button label="Pill Style" pill variant="outline"></ui-button>
+            <ui-button label="Full Width Action" full-width variant="secondary"></ui-button>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-button-playground></dm-button-playground>
+    </div>
+
+    <!-- Documentation Slot — demo-tabs provides the sidebar via [docLinks] -->
+    <div slot="docs">
+      <app-component-documentation componentId="button"></app-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

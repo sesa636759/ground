@@ -1,0 +1,297 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🔘"
+    title="Radio Group Component"
+    description="Flexible radio group component supporting multiple visual styles, layouts, card variants, and button group modes."
+  >
+  </pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Premium Variants -->
+        <pg-example-section
+          id="premium-variants"
+          title="Premium Variants"
+          description="Advanced visual styles including cards and underlined variants"
+          [code]="premiumVariantsCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Card Variant (Grid Layout)</h4>
+              <ui-radio-group
+                name="plans"
+                variant="card"
+                layout="grid"
+                columns="2"
+                [options]="planOptions"
+              ></ui-radio-group>
+            </div>
+            <div class="demo-grid col-2">
+              <div class="demo-card">
+                <h4 class="demo-sub-title">Bordered Variant</h4>
+                <ui-radio-group
+                  name="bord"
+                  variant="bordered"
+                  [options]="basicOptions"
+                ></ui-radio-group>
+              </div>
+              <div class="demo-card">
+                <h4 class="demo-sub-title">Underlined Variant</h4>
+                <ui-radio-group
+                  name="und"
+                  variant="underlined"
+                  color="success"
+                  [options]="basicOptions"
+                ></ui-radio-group>
+              </div>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Button Groups -->
+        <pg-example-section
+          id="button-groups"
+          title="Button Groups"
+          description="Radio options styled as a unified button group"
+          [code]="buttonGroupsCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Horizontal Button Group</h4>
+              <ui-radio-group
+                name="btn-h"
+                button-group="true"
+                layout="horizontal"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Vertical Button Group</h4>
+              <ui-radio-group
+                name="btn-v"
+                button-group="true"
+                layout="vertical"
+                color="danger"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Loading Skeleton -->
+        <pg-example-section
+          id="loading-skeleton"
+          title="Loading Skeleton"
+          description="Skeleton states for async data loading"
+          [code]="loadingSkeletonCode"
+        >
+          <div class="demo-card">
+            <ui-radio-group name="load" skeleton [options]="basicOptions"></ui-radio-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Color Variants -->
+        <pg-example-section
+          id="color-variants"
+          title="Color Variants"
+          description="Theme-based colors for radio indicators"
+          [code]="colorVariantsCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Primary</h4>
+              <ui-radio-group name="c1" color="primary" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Success</h4>
+              <ui-radio-group name="c2" color="success" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Warning</h4>
+              <ui-radio-group name="c3" color="warning" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Indigo</h4>
+              <ui-radio-group name="c4" color="indigo" [options]="basicOptions"></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Layouts -->
+        <pg-example-section
+          id="layouts"
+          title="Layout Options"
+          description="Vertical, horizontal, and grid layout configurations"
+          [code]="layoutsCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Vertical (Default)</h4>
+              <ui-radio-group name="l1" layout="vertical" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Horizontal</h4>
+              <ui-radio-group
+                name="l2"
+                layout="horizontal"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Grid (2 Columns)</h4>
+              <ui-radio-group
+                name="l3"
+                layout="grid"
+                columns="2"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Sizes -->
+        <pg-example-section
+          id="sizes"
+          title="Component Sizes"
+          description="Adjustable sizes for different UI densities"
+          [code]="sizesCode"
+        >
+          <div class="demo-grid col-3">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Small</h4>
+              <ui-radio-group name="s1" size="small" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Medium</h4>
+              <ui-radio-group name="s2" size="medium" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Large</h4>
+              <ui-radio-group name="s3" size="large" [options]="basicOptions"></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- States -->
+        <pg-example-section
+          id="states"
+          title="Radio States"
+          description="Interactive states including disabled, readonly, and invalid"
+          [code]="statesCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Disabled</h4>
+              <ui-radio-group name="st1" disabled="true" [options]="basicOptions"></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Readonly</h4>
+              <ui-radio-group
+                name="st2"
+                readonly="true"
+                value="option1"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Error State</h4>
+              <ui-radio-group
+                name="st3"
+                invalid="true"
+                error-message="Selection is required"
+                [options]="basicOptions"
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Slotted & Clearable -->
+        <pg-example-section
+          id="slotted-clearable"
+          title="Slotted & Clearable"
+          description="Declarative radio options and clearable selection support"
+          [code]="slottedClearableCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Declarative (Slotted)</h4>
+              <ui-radio-group name="slots" label="Manual Composition">
+                <ui-radio value="1" label="Option 1"></ui-radio>
+                <ui-radio value="2" label="Option 2"></ui-radio>
+                <ui-radio value="3" label="Option 3"></ui-radio>
+              </ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Clearable Selection</h4>
+              <p style="font-size: 12px; color: #666; margin-bottom: 12px">
+                Click selected item to deselect
+              </p>
+              <ui-radio-group
+                name="clearable"
+                label="Filter Status"
+                allow-empty="true"
+                [options]="clearableOptions"
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Form Example -->
+        <pg-example-section
+          id="form-example"
+          title="Form Integration"
+          description="A checkout form example with shipping and payment selection"
+          [code]="formExampleCode"
+        >
+          <div class="demo-card">
+            <div style="display: grid; gap: 24px">
+              <div>
+                <h4 class="demo-sub-title" style="margin-bottom: 12px">Shipping Method</h4>
+                <ui-radio-group
+                  [(ngModel)]="formShipping"
+                  name="ship"
+                  required
+                  [invalid]="shippingInvalid"
+                  [options]="deliveryOptions"
+                ></ui-radio-group>
+              </div>
+              <div>
+                <h4 class="demo-sub-title" style="margin-bottom: 12px">Payment Method</h4>
+                <ui-radio-group
+                  [(ngModel)]="formPayment"
+                  name="pay"
+                  variant="card"
+                  layout="grid"
+                  columns="2"
+                  [invalid]="paymentInvalid"
+                  [options]="paymentOptions"
+                ></ui-radio-group>
+              </div>
+            </div>
+            <div style="margin-top: 32px">
+              <ui-button (click)="onSubmit()" color="primary">Complete Purchase</ui-button>
+              <p style="margin-top: 12px; font-weight: 600" [style.color]="formMessageColor">
+                {{ formMessage }}
+              </p>
+            </div>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-radio-playground />
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="radio"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>

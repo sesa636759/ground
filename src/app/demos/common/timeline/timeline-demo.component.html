@@ -1,0 +1,80 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="⏳"
+    title="Timeline"
+    description="Visualize a series of events chronologically. Highly flexible component supporting vertical/horizontal orientations, alternating alignments, and custom templates for markers and content."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-timeline-playground></dm-timeline-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Alignments -->
+          <section class="demo-section" id="alignments" style="margin-top: 0">
+            <div class="section-header">
+              <h2>📏 Alignments</h2>
+              <p>Position markers and content on different sides of the timeline axis.</p>
+            </div>
+            <div class="demo-card">
+              <div style="width: 100%; max-width: 500px">
+                <span>Alternating:</span>
+                <ui-timeline align="alternate" [value]="events">
+                  <ng-template let-item>
+                    <div style="font-weight: 600">{{ item.status }}</div>
+                    <div slot="opposite" style="font-size: 0.85rem; opacity: 0.7">
+                      {{ item.date }}
+                    </div>
+                  </ng-template>
+                </ui-timeline>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="alignmentsCode"
+              [label]="'Alignment Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+
+          <!-- Orientations -->
+          <section class="demo-section" id="orientations">
+            <div class="section-header">
+              <h2>📐 Orientations</h2>
+              <p>Use horizontal layout for compact workflows or vertical for detailed histories.</p>
+            </div>
+            <div class="demo-card">
+              <div style="width: 100%">
+                <span>Horizontal:</span>
+                <ui-timeline orientation="horizontal" [value]="events">
+                  <ng-template let-item>
+                    <div style="font-weight: 600">{{ item.status }}</div>
+                    <div style="font-size: 0.8rem">{{ item.date }}</div>
+                  </ng-template>
+                </ui-timeline>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="orientationsCode"
+              [label]="'Orientation Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="timeline"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

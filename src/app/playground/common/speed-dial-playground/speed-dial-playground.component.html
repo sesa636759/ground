@@ -1,0 +1,79 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="defaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Direction</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.direction"
+        (ngModelChange)="updateConfig()"
+        [options]="standardDirectionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.type"
+        (ngModelChange)="updateConfig()"
+        [options]="typeOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Radius (for circles)</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.radius"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="checkbox-grid" style="margin-top: 16px">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.ripple" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Ripple Effect
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.mask" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Display Mask
+      </label>
+    </div>
+  </div>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 300px;
+      padding: 40px;
+    "
+  >
+    <ui-speed-dial
+      [attr.direction]="pgConfig.direction"
+      [attr.type]="pgConfig.type"
+      [attr.radius]="pgConfig.radius"
+      [attr.ripple]="pgConfig.ripple ? '' : null"
+      [attr.mask]="pgConfig.mask ? '' : null"
+      [model]="modelJson"
+      button-class="ui-button-primary"
+    ></ui-speed-dial>
+
+    <p style="position: absolute; bottom: 20px; font-size: 0.8rem; color: var(--text-secondary)">
+      Direction: {{ pgConfig.direction }} | Type: {{ pgConfig.type }}
+    </p>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GanttChartPlaygroundComponent } from './components/gantt-chart-playground/gantt-chart-playground.component';
+import { DmGanttChartPlaygroundComponent } from '../../../playground/charts/gantt-chart-playground/gantt-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-gantt-chart-demo',
+  selector: 'dm-gantt-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    GanttChartPlaygroundComponent,
+    DmGanttChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './gantt-chart-demo.component.html',
   styleUrl: './gantt-chart-demo.component.scss',
 })
-export class GanttChartDemoComponent extends BaseDemoComponent {
+export class DmGanttChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' },

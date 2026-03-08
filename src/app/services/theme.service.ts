@@ -1,6 +1,12 @@
-import { Injectable, signal, effect } from '@angular/core';
+﻿import { Injectable, signal, effect } from '@angular/core';
 
-export type Theme = 'light' | 'dark' | 'auto' | 'schneider-green' | 'schneider-blue' | 'high-contrast';
+export type Theme =
+  | 'light'
+  | 'dark'
+  | 'auto'
+  | 'schneider-green'
+  | 'schneider-blue'
+  | 'high-contrast';
 export type NavigationLayout = 'sidebar' | 'topbar';
 
 @Injectable({
@@ -69,7 +75,14 @@ export class ThemeService {
 
   toggleTheme() {
     const current = this.currentTheme();
-    const themes: Theme[] = ['light', 'dark', 'auto', 'schneider-green', 'schneider-blue', 'high-contrast'];
+    const themes: Theme[] = [
+      'light',
+      'dark',
+      'auto',
+      'schneider-green',
+      'schneider-blue',
+      'high-contrast',
+    ];
     const currentIndex = themes.indexOf(current);
     const nextIndex = (currentIndex + 1) % themes.length;
     this.setTheme(themes[nextIndex]);
@@ -144,3 +157,6 @@ export class ThemeService {
     }
   }
 }
+
+
+

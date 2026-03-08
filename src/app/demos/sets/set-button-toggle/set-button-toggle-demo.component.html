@@ -1,0 +1,324 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="🔘"
+    title="Button Toggle Group"
+    description="Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support."
+  >
+  </pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Segmented Controls -->
+        <pg-example-section
+          id="segmented"
+          title="Segmented Controls"
+          description="Multiple buttons with single selection and gliding animation"
+          [code]="segmentedCode"
+        >
+          <app-button-toggle-group
+            mode="segmented"
+            label="Select View Mode"
+            value="list"
+            color="primary"
+            [options]="viewOptions"
+          ></app-button-toggle-group>
+        </pg-example-section>
+
+        <!-- Gliding Animation -->
+        <pg-example-section
+          id="gliding"
+          title="Gliding Pill Animation"
+          description="Premium smooth animation for pill-style toggles"
+          [code]="glidingCode"
+        >
+          <app-button-toggle-group
+            mode="segmented"
+            value="day"
+            color="info"
+            variant="soft"
+            [options]="timeOptions"
+          ></app-button-toggle-group>
+        </pg-example-section>
+
+        <!-- Color Variants -->
+        <pg-example-section
+          id="colors"
+          title="Color Variants"
+          description="Six built-in color themes to match your application's brand"
+          [code]="colorCode"
+        >
+          <div class="demo-grid col-2">
+            @for (
+              color of ['primary', 'secondary', 'success', 'danger', 'warning', 'info'];
+              track color
+            ) {
+              <div class="demo-card">
+                <h4 class="demo-sub-title">{{ color | titlecase }}</h4>
+                <app-button-toggle-group
+                  value="option2"
+                  [attr.color]="color"
+                  [options]="basicOptions"
+                ></app-button-toggle-group>
+              </div>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- Style Variants -->
+        <pg-example-section
+          id="styles"
+          title="Style Variants"
+          description="Multiple button styles: Filled, Outlined, Text, Soft, Classic, Solid, Surface"
+          [code]="styleCode"
+        >
+          <div class="demo-grid col-2">
+            @for (
+              style of ['filled', 'outlined', 'text', 'soft', 'classic', 'solid', 'surface'];
+              track style
+            ) {
+              <div class="demo-card">
+                <h4 class="demo-sub-title">{{ style | titlecase }}</h4>
+                <app-button-toggle-group
+                  value="option2"
+                  color="primary"
+                  [attr.variant]="style"
+                  [options]="basicOptions"
+                ></app-button-toggle-group>
+              </div>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- Sizes -->
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Three size options: Small, Medium, and Large"
+          [code]="sizeCode"
+        >
+          <div class="demo-grid col-1">
+            @for (size of ['small', 'medium', 'large']; track size) {
+              <div class="demo-card">
+                <h4 class="demo-sub-title">{{ size | titlecase }}</h4>
+                <app-button-toggle-group
+                  value="option2"
+                  [attr.size]="size"
+                  [options]="basicOptions"
+                ></app-button-toggle-group>
+              </div>
+            }
+          </div>
+        </pg-example-section>
+
+        <!-- With Icons -->
+        <pg-example-section
+          id="icons"
+          title="With Icons"
+          description="Icon support for segmented controls and dropdowns"
+          [code]="iconCode"
+        >
+          <div class="demo-grid col-2">
+            <app-button-toggle-group
+              label="View Modes"
+              value="grid"
+              color="primary"
+              [options]="viewOptions"
+            ></app-button-toggle-group>
+            <app-button-toggle-group
+              label="Text Align"
+              value="center"
+              color="secondary"
+              [options]="alignOptions"
+            ></app-button-toggle-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Icon Only -->
+        <pg-example-section
+          id="icon-only"
+          title="Icon Only"
+          description="Compact toggle buttons with icons and no label text — ideal for toolbars"
+          [code]="iconOnlyCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">View Modes</h4>
+              <app-button-toggle-group
+                label="View"
+                value="grid"
+                color="primary"
+                display-mode="icon-only"
+                [options]="iconOnlyOptions"
+              ></app-button-toggle-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Text Alignment</h4>
+              <app-button-toggle-group
+                label="Align"
+                value="center"
+                color="secondary"
+                display-mode="icon-only"
+                [options]="iconOnlyAlignOptions"
+              ></app-button-toggle-group>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <pg-example-section
+          id="dropdown"
+          title="Dropdown Mode"
+          description="Single button with a dropdown menu for selection"
+          [code]="dropdownCode"
+        >
+          <app-button-toggle-group
+            mode="dropdown"
+            label="Export Options"
+            value="pdf"
+            [options]="exportOptions"
+          ></app-button-toggle-group>
+        </pg-example-section>
+
+        <!-- Split Button -->
+        <pg-example-section
+          id="split-button"
+          title="Split Button"
+          description="Action button with a separate dropdown for additional options"
+          [code]="splitButtonCode"
+        >
+          <div class="demo-grid col-2">
+            <app-button-toggle-group
+              mode="dropdown"
+              keep-button-label="true"
+              label="File Operations"
+              value="file"
+              [options]="actionsMenuOptions"
+            ></app-button-toggle-group>
+            <app-button-toggle-group
+              mode="dropdown"
+              keep-button-label="false"
+              label="Select Action"
+              value="new"
+              [options]="actionsMenuOptions"
+            ></app-button-toggle-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Display Modes -->
+        <pg-example-section
+          id="display-modes"
+          title="Display Modes"
+          description="Choose between Label Only, Icon Only, or both"
+          [code]="displayCode"
+        >
+          <div class="demo-grid col-2">
+            <app-button-toggle-group
+              label="Label Only"
+              value="medium"
+              display-mode="label-only"
+              [options]="labelOnlyOptions"
+            ></app-button-toggle-group>
+            <app-button-toggle-group
+              label="Icon Only"
+              value="grid"
+              display-mode="icon-only"
+              [options]="iconOnlyOptions"
+            ></app-button-toggle-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Orientations -->
+        <pg-example-section
+          id="orientations"
+          title="Orientations"
+          description="Horizontal and vertical layout support"
+          [code]="orientationCode"
+        >
+          <div class="demo-grid col-2">
+            <app-button-toggle-group
+              orientation="horizontal"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+            <app-button-toggle-group
+              orientation="vertical"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </pg-example-section>
+
+        <!-- Custom Content Slots -->
+        <pg-example-section
+          id="custom-slots"
+          title="Custom Content Slots"
+          description="Render any custom HTML content inside the dropdown"
+          [code]="customSlotCode"
+        >
+          <app-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
+            <div slot="dropdown-content">
+              <div style="padding: 16px; min-width: 220px">
+                <h4 style="margin-top: 0">Filter Content</h4>
+                <p>Custom HTML or components can be projected here.</p>
+                <ui-button style="width: 100%; padding: 8px">Apply Changes</ui-button>
+              </div>
+            </div>
+          </app-button-toggle-group>
+        </pg-example-section>
+
+        <!-- Loading States -->
+        <pg-example-section
+          id="loading"
+          title="Loading States"
+          description="Built-in loading indicator for asynchronous actions"
+          [code]="loadingCode"
+        >
+          <app-button-toggle-group
+            mode="dropdown"
+            label="Save Document"
+            value="cloud"
+            [attr.loading]="true"
+            [options]="saveOptions"
+          ></app-button-toggle-group>
+        </pg-example-section>
+
+        <!-- States -->
+        <pg-example-section
+          id="states"
+          title="States"
+          description="Default and disabled interaction states"
+          [code]="stateCode"
+        >
+          <div class="demo-grid col-2">
+            <app-button-toggle-group
+              label="Default"
+              value="option2"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+            <app-button-toggle-group
+              label="Disabled"
+              value="option2"
+              [attr.disabled]="true"
+              [options]="basicOptions"
+            ></app-button-toggle-group>
+          </div>
+        </pg-example-section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-button-toggle-playground />
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="button-toggle"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../services/theme.service';
 
@@ -549,3 +549,6 @@ import { ThemeService } from '../../services/theme.service';
 export class ThemeSelectorComponent {
   constructor(public themeService: ThemeService) {}
 }
+
+
+

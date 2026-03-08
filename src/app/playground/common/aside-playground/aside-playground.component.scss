@@ -1,0 +1,23 @@
+@use '../../../../styles/playground-base.scss';
+
+.aside-content-demo {
+  padding: 24px;
+
+  h2 {
+    margin-top: 0;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+}
+
+.aside-footer-demo {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

@@ -1,0 +1,28 @@
+@use '../../../../styles/playground-base.scss';
+
+.preview-stage {
+  height: 400px;
+  position: relative; // Added for playground-actions positioning
+
+  // Grid background pattern
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  .playground-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+  }
+
+  .tooltip-target-wrapper {
+    position: relative;
+  }
+
+  // Remove hardcoded styles as ui-button handles it
+  .playground-target-btn {
+    i {
+      font-size: 1.1em;
+    }
+  }
+}

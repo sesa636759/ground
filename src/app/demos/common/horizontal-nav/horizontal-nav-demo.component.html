@@ -1,0 +1,79 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="↔️"
+    title="Horizontal Navigation"
+    description="A horizontal menu bar component for primary navigation. Ideal for top-level navigation with support for sticky positioning, themes, and icon integration."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-horizontal-nav-playground></dm-horizontal-nav-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- Themes -->
+          <section class="demo-section" id="themes" style="margin-top: 0">
+            <div class="section-header">
+              <h2>🎨 Themes</h2>
+              <p>Switch between light and dark themes to match your application design.</p>
+            </div>
+            <div class="demo-card">
+              <div
+                style="border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden"
+              >
+                <ui-horizontal-nav theme="dark" [model]="navItems"></ui-horizontal-nav>
+                <div style="padding: 40px; background: #1e293b; color: white">
+                  <h3>Dark Theme Navigation</h3>
+                  <p>Perfect for modern, sleek interfaces.</p>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="themesCode"
+              [label]="'Theme Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <div class="demo-container">
+            <section class="demo-section">
+              <div class="section-header">
+                <h2>📖 Documentation</h2>
+                <p>Links, API references, and detailed usage notes</p>
+              </div>
+              <div class="demo-card" style="padding: 24px">
+                <p>
+                  The documentation for this component is currently being compiled. Our technical
+                  writers are working to provide comprehensive API references, accessibility
+                  guidelines, and best practices.
+                </p>
+                <p>
+                  In the meantime, please explore the <strong>Playground</strong> for interactive
+                  testing and the <strong>Examples</strong> tab for common implementation patterns.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </pg-demo-tabs>
+</div>
+

@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   signal,
   computed,
@@ -6,8 +6,7 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PLAYGROUND_IMPORTS } from '../../shared/components/demo-playground/playground.constants';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { categoryNavItems } from '../../data/navigation.data';
@@ -16,9 +15,9 @@ import { COMPONENT_SVG_MAP } from '../../shared/utils/component-svg-map';
 import { ComponentCardComponent } from '../../shared/components/component-card/component-card.component';
 
 @Component({
-  selector: 'app-overview',
+  selector: 'pg-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppMasonryComponent, ComponentCardComponent],
+  imports: [...PLAYGROUND_IMPORTS, AppMasonryComponent, ComponentCardComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
@@ -36,7 +35,7 @@ export class OverviewComponent implements AfterViewInit, OnDestroy {
   private scrollContainer: Element | null = null;
   private boundScrollHandler = this._onContainerScroll.bind(this);
 
-  /** Masonry responsive breakpoints — passed to <app-masonry> */
+  /** Masonry responsive breakpoints — passed to <ui-masonry> */
   masonryBp: Record<number, number> = { 1600: 3, 1200: 2, 768: 1, 0: 1 };
   listBp: Record<number, number> = { 0: 1 };
 

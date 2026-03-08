@@ -1,8 +1,8 @@
-import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
+﻿import { Component, Input, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-example-section',
+  selector: 'pg-example-section',
   standalone: true,
   imports: [CommonModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -19,5 +19,8 @@ export class ExampleSectionComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(_changes: any): void {}
+  ngOnChanges(): void {}
 }
+
+
+

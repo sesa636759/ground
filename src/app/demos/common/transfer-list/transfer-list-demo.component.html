@@ -1,0 +1,46 @@
+﻿<div class="demo-container">
+  <pg-demo-header
+    icon="↔️"
+    title="Transfer List"
+    description="A double-column list component used for moving items from one list to another. It's often used for assignment tasks like user roles, permissions, or feature selection."
+  ></pg-demo-header>
+
+  <pg-demo-tabs>
+    <div slot="playground">
+      <dm-transfer-list-playground></dm-transfer-list-playground>
+    </div>
+
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <!-- Sidebar Navigation -->
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+        <!-- Main Content Area -->
+        <div class="examples-content">
+          <!-- UI Controls -->
+          <section class="demo-section" id="features" style="margin-top: 0">
+            <div class="section-header">
+              <h2>⚙️ UI Controls</h2>
+              <p>Configure search visibility and interaction availability.</p>
+            </div>
+            <div class="demo-card">
+              <ui-transfer-list [source]="sourceItems" [target]="targetItems" [show-search]="false">
+              </ui-transfer-list>
+            </div>
+            <ui-code-preview
+              [htmlCode]="featuresCode"
+              [label]="'Configuration Examples'"
+              activeLang="html"
+              expanded="true"
+            ></ui-code-preview>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div slot="docs">
+      <pg-component-documentation componentId="transfer-list"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+

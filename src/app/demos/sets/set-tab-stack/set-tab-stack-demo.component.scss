@@ -1,0 +1,12 @@
+@use '../../../../styles/demo-base.scss';
+
+.preview-box {
+  min-height: 200px;
+  align-items: flex-start;
+
+  &.tab-demo {
+    min-height: 300px;
+    padding: 0;
+    overflow: hidden;
+  }
+}

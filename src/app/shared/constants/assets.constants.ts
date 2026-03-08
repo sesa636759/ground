@@ -1,4 +1,4 @@
-export const ASSETS = {
+﻿export const ASSETS = {
   LOGOS: {
     SCHNEIDER: 'assets/images/Schneider-Electric-Logo.jpg',
     GOOGLE: 'assets/images/google-logo.png',
@@ -7,3 +7,6 @@ export const ASSETS = {
     BRAND: 'assets/images/Schneider-Electric-Logo.jpg',
   },
 };
+
+
+

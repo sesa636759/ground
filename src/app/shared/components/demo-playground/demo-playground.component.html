@@ -1,0 +1,47 @@
+<div class="playground-layout" [class.layout-col]="layout === 'column'">
+  <!-- Controls Side -->
+  <div class="playground-controls">
+    <ui-accordion [items]="parsedItems" [defaultOpen]="parsedDefaultOpen" multiple variant="card">
+      <ng-content></ng-content>
+    </ui-accordion>
+    <div class="playground-controls-actions">
+      <ui-button
+        class="reset-btn"
+        icon="rotate-ccw"
+        icon-position="left"
+        icon-library="lucide"
+        variant="secondary"
+        (click)="reset.emit()"
+        label="Reset Configuration"
+      ></ui-button>
+    </div>
+  </div>
+
+  <!-- Preview Side -->
+  <div class="playground-preview">
+    <ng-content select="[preview]"></ng-content>
+
+    <!-- Actions/Reset area -->
+    <div class="preview-actions">
+      <ng-content select="[actions]"></ng-content>
+    </div>
+
+    <!-- Code Preview -->
+    <div class="code-preview-area">
+      <ng-content select="[code]"></ng-content>
+      @if (code) {
+        <ui-code-preview
+          [htmlCode]="code"
+          label="Generated Code"
+          activeLang="html"
+          expanded="false"
+        ></ui-code-preview>
+      }
+    </div>
+
+    <!-- Event Log Slot -->
+    <div class="playground-events-area">
+      <ng-content select="[events]"></ng-content>
+    </div>
+  </div>
+</div>

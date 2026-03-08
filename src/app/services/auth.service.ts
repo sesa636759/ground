@@ -1,6 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+﻿import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-
 
 export interface User {
   id: string;
@@ -51,7 +50,7 @@ export class AuthService {
   private ensureDemoUser(): void {
     const users = this.loadUsers();
     const demoEmail = 'demo@example.com';
-    if (!users.some(u => u.email === demoEmail)) {
+    if (!users.some((u) => u.email === demoEmail)) {
       users.push({
         id: 'demo',
         username: 'demouser',
@@ -62,7 +61,7 @@ export class AuthService {
         role: 'admin',
         createdAt: new Date(),
         lastLogin: new Date(),
-        password: 'demo123'
+        password: 'demo123',
       });
       this.saveUsers(users);
     }
@@ -76,7 +75,7 @@ export class AuthService {
         this.currentUserSignal.set(user);
         this.isAuthenticatedSignal.set(true);
       } catch (error) {
-        console.error('Failed to parse stored user:', error);
+        console.error('Failed to parse stored user: ', error);
         sessionStorage.removeItem('currentUser');
       }
     }
@@ -93,14 +92,16 @@ export class AuthService {
 
   private updateUser(updatedUser: User): void {
     let users = this.loadUsers();
-    users = users.map(user => user.id === updatedUser.id ? updatedUser : user);
+    users = users.map((user) => (user.id === updatedUser.id ? updatedUser : user));
     this.saveUsers(users);
   }
 
   async login(credentials: LoginCredentials): Promise<{ success: boolean; message: string }> {
     await this.delay(1000);
     const users = this.loadUsers();
-    const user = users.find(u => u.email === credentials.email && u.password === credentials.password);
+    const user = users.find(
+      (u) => u.email === credentials.email && u.password === credentials.password,
+    );
     if (user) {
       this.currentUserSignal.set(user);
       this.isAuthenticatedSignal.set(true);
@@ -110,10 +111,12 @@ export class AuthService {
     return { success: false, message: 'Invalid email or password' };
   }
 
-  async register(data: RegisterData & { password: string }): Promise<{ success: boolean; message: string }> {
+  async register(
+    data: RegisterData & { password: string },
+  ): Promise<{ success: boolean; message: string }> {
     await this.delay(1500);
     const users = this.loadUsers();
-    if (users.some(u => u.email === data.email)) {
+    if (users.some((u) => u.email === data.email)) {
       return { success: false, message: 'Email already registered' };
     }
     if (!data.acceptTerms) {
@@ -128,7 +131,7 @@ export class AuthService {
       role: 'user',
       createdAt: new Date(),
       lastLogin: new Date(),
-      password: data.password
+      password: data.password,
     } as User & { password: string };
     users.push(user);
     this.saveUsers(users);

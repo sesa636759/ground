@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, tap, delay } from 'rxjs/operators';
@@ -14,7 +14,6 @@ import {
   Permission,
 } from '../models/user.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,9 +25,8 @@ export class UserService {
   // Mock data for demonstration
   private mockUsers: User[] = [];
 
-  constructor(
+  constructor() {
     //private _http: HttpClient
-    ) {
     this.initializeMockData();
   }
 
@@ -434,3 +432,6 @@ export class UserService {
     };
   }
 }
+
+
+

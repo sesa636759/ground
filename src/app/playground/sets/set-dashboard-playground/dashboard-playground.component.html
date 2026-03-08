@@ -1,0 +1,202 @@
+﻿<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <div slot="content-global">
+    <div class="control-section">
+      <h3>Visual Settings</h3>
+      <div class="control-grid">
+        <div class="control-group">
+          <label>Theme</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.theme"
+            (ngModelChange)="onConfigChange('theme', $event)"
+            [options]="[
+              { label: 'Light', value: 'light' },
+              { label: 'Dark', value: 'dark' },
+            ]"
+          ></ui-dropdown>
+        </div>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showGrid"
+            (ngModelChange)="onConfigChange('showGrid', $event)"
+          />
+          Show Grid
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.autoSave"
+            (ngModelChange)="onConfigChange('autoSave', $event)"
+          />
+          Auto Save
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.batchActions"
+            (ngModelChange)="onConfigChange('batchActions', $event)"
+          />
+          Batch Actions
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.loadingState"
+            (ngModelChange)="onConfigChange('loadingState', $event)"
+          />
+          Loading State
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox [(ngModel)]="pgConfig.showAddButton" /> Show Add Button
+        </label>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Grid Settings</h3>
+      <div class="control-grid">
+        <div class="control-group">
+          <label>Columns ({{ pgConfig.columns }})</label>
+          <ui-input
+            type="range"
+            min="2"
+            max="24"
+            [(ngModel)]="pgConfig.columns"
+            (ngModelChange)="onConfigChange('columns', $event)"
+          />
+        </div>
+        <div class="control-group">
+          <label>Row Height ({{ pgConfig.rowHeight }}px)</label>
+          <ui-input
+            type="range"
+            min="50"
+            max="300"
+            [(ngModel)]="pgConfig.rowHeight"
+            (ngModelChange)="onConfigChange('rowHeight', $event)"
+          />
+        </div>
+        <div class="control-group">
+          <label>Gap ({{ pgConfig.gap }}px)</label>
+          <ui-input
+            type="range"
+            min="0"
+            max="50"
+            [(ngModel)]="pgConfig.gap"
+            (ngModelChange)="onConfigChange('gap', $event)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Interaction</h3>
+      <div class="checkbox-grid">
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.enableDrag"
+            (ngModelChange)="onConfigChange('enableDrag', $event)"
+            label="Enable Drag"
+          ></ui-checkbox>
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.enableResize"
+            (ngModelChange)="onConfigChange('enableResize', $event)"
+            label="Enable Resize"
+          ></ui-checkbox>
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.compact"
+            (ngModelChange)="onConfigChange('compact', $event)"
+          />
+          Compact Mode
+        </label>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Widget Settings</h3>
+      <div class="control-grid">
+        <div class="control-group">
+          <label>Selection Mode</label>
+          <ui-dropdown
+            [(ngModel)]="pgConfig.widgetSelectionMode"
+            (ngModelChange)="onConfigChange('widgetSelectionMode', $event)"
+            [options]="[
+              { label: 'Single', value: 'single' },
+              { label: 'Multi', value: 'multi' },
+            ]"
+          ></ui-dropdown>
+        </div>
+      </div>
+      <div class="checkbox-grid">
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showWidgetHeader"
+            (ngModelChange)="onConfigChange('showWidgetHeader', $event)"
+          />
+          Header
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.showWidgetFooter"
+            (ngModelChange)="onConfigChange('showWidgetFooter', $event)"
+          />
+          Footer
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.widgetDrag"
+            (ngModelChange)="onConfigChange('widgetDrag', $event)"
+          />
+          Widget Drag
+        </label>
+        <label class="checkbox-item">
+          <ui-checkbox
+            [(ngModel)]="pgConfig.widgetResize"
+            (ngModelChange)="onConfigChange('widgetResize', $event)"
+          />
+          Widget Resize
+        </label>
+      </div>
+    </div>
+  </div>
+  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div class="toolbar">
+      <ui-button (click)="triggerAction('undo')" label="Undo"></ui-button>
+      <ui-button (click)="triggerAction('redo')" label="Redo"></ui-button>
+      <ui-button (click)="triggerAction('save')" label="Save Layout"></ui-button>
+      <ui-button (click)="triggerAction('load')" label="Load Layout"></ui-button>
+      <ui-button (click)="triggerAction('reset')" class="danger" label="Reset"></ui-button>
+    </div>
+
+    <div class="preview-stage" [class.dark-theme]="pgConfig.theme === 'dark'">
+      <ui-dashboard
+        #dashboard
+        id="dashboard"
+        enable-search="true"
+        enable-multi-select="true"
+        enable-keyboard="true"
+        enable-fullscreen="true"
+        [attr.show-add-button]="pgConfig.showAddButton"
+        [attr.breakpoints]="pgConfig.breakpoints"
+        [attr.theme]="pgConfig.theme"
+      ></ui-dashboard>
+    </div>
+
+    <div class="event-log-container" *ngIf="eventLog().length > 0">
+      <strong>Event Log</strong>
+      <div class="log-items">
+        <div *ngFor="let log of eventLog()" class="log-item">{{ log }}</div>
+      </div>
+    </div>
+    <ui-code-preview
+      [htmlCode]="generatedCode()"
+      [label]="'Generated Code'"
+      activeLang="html"
+      expanded="true"
+    ></ui-code-preview>
+  </div>
+</pg-playground>

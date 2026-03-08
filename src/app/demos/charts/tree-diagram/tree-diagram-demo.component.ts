@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TreeDiagramPlaygroundComponent } from './components/tree-diagram-playground/tree-diagram-playground.component';
+import { DmTreeDiagramPlaygroundComponent } from '../../../playground/charts/tree-diagram-playground/tree-diagram-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-tree-diagram-demo',
+  selector: 'dm-tree-diagram-demo',
   standalone: true,
   imports: [
     CommonModule,
-    TreeDiagramPlaygroundComponent,
+    DmTreeDiagramPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './tree-diagram-demo.component.html',
   styleUrl: './tree-diagram-demo.component.scss',
 })
-export class TreeDiagramDemoComponent extends BaseDemoComponent {
+export class DmTreeDiagramDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'org', title: 'Org Chart', icon: '🏢', color: '#6366f1' },

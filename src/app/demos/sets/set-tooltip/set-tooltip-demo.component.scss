@@ -1,0 +1,187 @@
+@use '../../../../styles/demo-base.scss';
+
+// Extend/Override global preview-box for tooltips
+.preview-box {
+  align-items: center; // Tooltips usually want their target centered
+  min-height: 140px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    border-color: var(--primary-light);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &.glass-accent {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.08));
+  }
+
+  &.no-padding {
+    padding: 0;
+  }
+
+  .preview-label {
+    position: absolute;
+    bottom: 12px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+// 8-way directional grid
+.position-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 80px);
+  gap: 1rem;
+  max-width: 440px;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background: var(--surface-muted);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+
+  .pos-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.center {
+      background: var(--surface-card);
+      border: 1px dashed var(--border-subtle);
+      border-radius: 10px;
+    }
+  }
+
+  .pos-target {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    cursor: help;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: scale(1.1);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+// Rich profile card within tooltip
+.profile-tooltip {
+  padding: 1.25rem;
+  min-width: 260px;
+
+  .profile-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--gradient-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      strong {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        line-height: 1.2;
+      }
+
+      span {
+        font-size: 0.8rem;
+        color: var(--text-tertiary);
+      }
+    }
+  }
+
+  .profile-stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.75rem;
+
+    .stat {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+
+      span {
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+// Interactive surface for mouse tracking
+.track-area {
+  height: 200px;
+  overflow: hidden;
+
+  .tracking-surface {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-muted);
+    background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: crosshair;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--surface-hover);
+      color: var(--primary);
+    }
+  }
+}
+
+// Global tooltip visibility fixes
+:host ::ng-deep {
+  .examples-content,
+  .demo-container,
+  .preview-box {
+    overflow: visible !important;
+  }
+
+  ui-tooltip {
+    display: inline-block;
+  }
+}

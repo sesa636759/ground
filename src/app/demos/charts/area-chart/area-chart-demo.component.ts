@@ -1,19 +1,20 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AreaChartPlaygroundComponent } from './components/area-chart-playground/area-chart-playground.component';
+
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
+import { DmAreaChartPlaygroundComponent } from '../../../playground/charts/area-chart-playground/area-chart-playground.component';
 
 @Component({
-  selector: 'app-area-chart-demo',
+  selector: 'dm-area-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    AreaChartPlaygroundComponent,
+    DmAreaChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +24,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './area-chart-demo.component.html',
   styleUrl: './area-chart-demo.component.scss',
 })
-export class AreaChartDemoComponent extends BaseDemoComponent {
+export class DmAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic Area', icon: '🏔️', color: '#6366f1' },

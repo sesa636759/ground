@@ -1,7 +1,7 @@
-import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OhlcChartPlaygroundComponent } from './components/ohlc-chart-playground/ohlc-chart-playground.component';
+import { DmOhlcChartPlaygroundComponent } from '../../../playground/charts/ohlc-chart-playground/ohlc-chart-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -9,11 +9,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'app-ohlc-chart-demo',
+  selector: 'dm-ohlc-chart-demo',
   standalone: true,
   imports: [
     CommonModule,
-    OhlcChartPlaygroundComponent,
+    DmOhlcChartPlaygroundComponent,
     DemoTabsComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
@@ -23,7 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   templateUrl: './ohlc-chart-demo.component.html',
   styleUrl: './ohlc-chart-demo.component.scss',
 })
-export class OhlcChartDemoComponent extends BaseDemoComponent {
+export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
