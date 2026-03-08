@@ -147,5 +147,7 @@ export class DmSetEmptyStateDemoComponent extends BaseDemoComponent implements O
   primary-action="Continue"
 ></ui-empty-state>`);
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('set-empty-state-demo.component.ts');
+  }
 }

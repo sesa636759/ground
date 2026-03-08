@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-checkbox[ngModel], dm-checkbox[formControl], dm-checkbox[formControlName]',
+  selector: 'ui-dropdown[ngModel], ui-dropdown[formControl], ui-dropdown[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmCheckboxValueAccessorDirective),
+      useExisting: forwardRef(() => DmDropdownValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
+export class DmDropdownValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -21,18 +21,21 @@ export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('checkboxChange', ['$event'])
-  onInput(event: CustomEvent): void {
-    this.onChange(event.detail.checked);
+  @HostListener('valueChange', ['$event'])
+  _handleInput(event: Event): void {
+    // DropdownChangeEvent usually contains value
+    const detail = (event as CustomEvent).detail;
+    this.onChange(detail?.value);
   }
 
-  @HostListener('blur')
+  @HostListener('dropdownClose')
   onBlur(): void {
     this.onTouched();
   }
 
   writeValue(value: any): void {
-    this.renderer.setProperty(this.el.nativeElement, 'checked', !!value);
+    const normalizedValue = value == null ? '' : value;
+    this.renderer.setProperty(this.el.nativeElement, 'value', normalizedValue);
   }
 
   registerOnChange(fn: any): void {
@@ -47,7 +50,3 @@ export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
-
-
-
-

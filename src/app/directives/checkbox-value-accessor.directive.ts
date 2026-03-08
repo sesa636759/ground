@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-switch[ngModel], dm-switch[formControl], dm-switch[formControlName]',
+  selector: 'ui-checkbox[ngModel], ui-checkbox[formControl], ui-checkbox[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmSwitchValueAccessorDirective),
+      useExisting: forwardRef(() => DmCheckboxValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
+export class DmCheckboxValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -21,21 +21,18 @@ export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('switchChange', ['$event'])
-  _handleInput(event: Event): void {
-    // switchChange emits a CustomEvent with detail: { checked: boolean }
-    const detail = (event as CustomEvent).detail;
-    this.onChange(detail?.checked);
+  @HostListener('checkboxChange', ['$event'])
+  onInput(event: CustomEvent): void {
+    this.onChange(event.detail.checked);
   }
 
-  @HostListener('switchBlur')
+  @HostListener('blur')
   onBlur(): void {
     this.onTouched();
   }
 
   writeValue(value: any): void {
-    const normalizedValue = value == null ? false : value;
-    this.renderer.setProperty(this.el.nativeElement, 'checked', normalizedValue);
+    this.renderer.setProperty(this.el.nativeElement, 'checked', !!value);
   }
 
   registerOnChange(fn: any): void {
@@ -50,7 +47,3 @@ export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
-
-
-
-

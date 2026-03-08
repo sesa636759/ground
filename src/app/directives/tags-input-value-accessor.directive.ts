@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
   // Since selector is a list, and it seems to be app-tags-input component based on previous investigation
-  selector: 'app-tags-input[ngModel], app-tags-input[formControl], app-tags-input[formControlName]',
+  selector: 'ui-tags-input[ngModel], ui-tags-input[formControl], ui-tags-input[formControlName]',
   standalone: true,
   providers: [
     {
@@ -51,7 +51,3 @@ export class DmTagsInputValueAccessorDirective implements ControlValueAccessor {
     this.renderer.setProperty(this.el.nativeElement, 'disabled', isDisabled);
   }
 }
-
-
-
-

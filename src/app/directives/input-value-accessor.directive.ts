@@ -2,17 +2,17 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: 'dm-dropdown[ngModel], dm-dropdown[formControl], dm-dropdown[formControlName]',
+  selector: 'ui-input[ngModel], ui-input[formControl], ui-input[formControlName]',
   standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmDropdownValueAccessorDirective),
+      useExisting: forwardRef(() => DmInputValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmDropdownValueAccessorDirective implements ControlValueAccessor {
+export class DmInputValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
@@ -21,14 +21,15 @@ export class DmDropdownValueAccessorDirective implements ControlValueAccessor {
     private renderer: Renderer2,
   ) {}
 
-  @HostListener('valueChange', ['$event'])
-  _handleInput(event: Event): void {
-    // DropdownChangeEvent usually contains value
-    const detail = (event as CustomEvent).detail;
-    this.onChange(detail?.value);
+  @HostListener('input', ['$event'])
+  @HostListener('change', ['$event'])
+  @HostListener('uiInput', ['$event'])
+  onInput(event: Event): void {
+    const value = (event.target as any).value;
+    this.onChange(value);
   }
 
-  @HostListener('dropdownClose')
+  @HostListener('blur')
   onBlur(): void {
     this.onTouched();
   }
