@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+
+.guide-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.guide-card {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.guide-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.guide-card p {
+  margin: 0;
+}
+
+.guide-list {
+  padding-left: 20px;
+  margin: 0 0 24px;
+}
+
+.guide-list li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.code-block {
+  margin: 0 0 24px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-2);
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}

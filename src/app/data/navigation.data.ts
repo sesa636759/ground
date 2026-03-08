@@ -1,4 +1,4 @@
-﻿export interface NavItem {
+export interface NavItem {
   id: string;
   label: string;
   icon?: string;
@@ -23,9 +23,21 @@ export const topNavItems: NavItem[] = [
     iconLibrary: 'lucide',
   },
   {
+    id: 'installation',
+    label: 'Installation',
+    icon: 'download-cloud',
+    iconLibrary: 'lucide',
+  },
+  {
     id: 'documentation',
     label: 'Documentation',
     icon: 'book-open',
+    iconLibrary: 'lucide',
+  },
+  {
+    id: 'components-guide',
+    label: 'Components Guide',
+    icon: 'book-marked',
     iconLibrary: 'lucide',
   },
   {
