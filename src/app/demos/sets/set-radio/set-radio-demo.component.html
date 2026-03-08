@@ -210,6 +210,37 @@
           </div>
         </pg-example-section>
 
+        <!-- Slotted & Clearable -->
+        <pg-example-section
+          id="slotted-clearable"
+          title="Slotted & Clearable"
+          description="Declarative radio options and clearable selection support"
+          [code]="slottedClearableCode"
+        >
+          <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Declarative (Slotted)</h4>
+              <ui-radio-group name="slots" label="Manual Composition">
+                <ui-radio value="1" label="Option 1"></ui-radio>
+                <ui-radio value="2" label="Option 2"></ui-radio>
+                <ui-radio value="3" label="Option 3"></ui-radio>
+              </ui-radio-group>
+            </div>
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Clearable Selection</h4>
+              <p style="font-size: 12px; color: #666; margin-bottom: 12px">
+                Click selected item to deselect
+              </p>
+              <ui-radio-group
+                name="clearable"
+                label="Filter Status"
+                allow-empty="true"
+                [options]="clearableOptions"
+              ></ui-radio-group>
+            </div>
+          </div>
+        </pg-example-section>
+
         <!-- Form Example -->
         <pg-example-section
           id="form-example"
