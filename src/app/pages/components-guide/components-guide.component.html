@@ -1,0 +1,69 @@
+<pg-docs-page-layout
+  title="Components Guide"
+  description="Practical guidance for choosing, importing, and composing Ground components in real applications."
+  [sections]="sections"
+>
+  <section id="when-to-use" class="doc-section">
+    <h2 class="section-heading">When to Use Components</h2>
+    <p>
+      Prefer a Ground component when you need consistent behavior, design-token alignment, and
+      accessibility support out of the box. Build custom wrappers only for product-specific
+      behavior.
+    </p>
+    <div class="guide-card-list">
+      <div class="guide-card">
+        <h3>Use directly</h3>
+        <p>Buttons, inputs, overlays, and navigation controls with standard interaction patterns.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Wrap lightly</h3>
+        <p>Add domain defaults, labels, and validation while keeping base component APIs intact.</p>
+      </div>
+      <div class="guide-card">
+        <h3>Avoid forking</h3>
+        <p>Do not copy component internals unless there is a strict platform-level requirement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="import-pattern" class="doc-section">
+    <h2 class="section-heading">Import Pattern</h2>
+    <p>Import only the components you render to keep bundles smaller and code easier to review.</p>
+    <pre class="code-block"><code>import &#123; Component, CUSTOM_ELEMENTS_SCHEMA &#125; from '@angular/core';
+
+@Component(&#123;
+  selector: 'app-invoice-toolbar',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    &lt;ui-button variant="primary"&gt;Save&lt;/ui-button&gt;
+    &lt;ui-button variant="outline"&gt;Preview&lt;/ui-button&gt;
+  `,
+&#125;)
+export class InvoiceToolbarComponent &#123;&#125;</code></pre>
+  </section>
+
+  <section id="composition-rules" class="doc-section">
+    <h2 class="section-heading">Composition Rules</h2>
+    <p>
+      Compose components around user workflows. Keep state in containers and keep presentational
+      components stateless whenever possible.
+    </p>
+    <ul class="guide-list">
+      <li>Keep one primary action per view and de-emphasize secondary actions.</li>
+      <li>Group related fields in cards or panels, not arbitrary nested layouts.</li>
+      <li>Use feedback components (snackbar, dialog) only after user intent is clear.</li>
+    </ul>
+  </section>
+
+  <section id="accessibility" class="doc-section">
+    <h2 class="section-heading">Accessibility Checklist</h2>
+    <p>Before shipping, verify these checks in each page that uses components:</p>
+    <ul class="guide-list">
+      <li>Every interactive element is keyboard reachable.</li>
+      <li>Focus order matches visual order.</li>
+      <li>Labels, helper text, and errors are announced by assistive tech.</li>
+      <li>Contrast and touch targets meet your baseline accessibility criteria.</li>
+    </ul>
+  </section>
+</pg-docs-page-layout>

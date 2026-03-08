@@ -1,4 +1,4 @@
-﻿import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
@@ -36,11 +36,23 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/showroom/showroom.component').then((m) => m.ShowroomComponent),
   },
+  {
+    path: 'installation',
+    loadComponent: () =>
+      import('./pages/installation/installation.component').then((m) => m.InstallationComponent),
+  },
 
   {
     path: 'documentation',
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
+  },
+  {
+    path: 'components-guide',
+    loadComponent: () =>
+      import('./pages/components-guide/components-guide.component').then(
+        (m) => m.ComponentsGuideComponent,
+      ),
   },
   {
     path: 'documentation/:section',
