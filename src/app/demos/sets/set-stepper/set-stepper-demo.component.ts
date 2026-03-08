@@ -36,7 +36,9 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
     { id: 'flow', title: 'Workflow Logic', icon: '⚡', color: '#10b981' },
     { id: 'content', title: 'Content & Navigation', icon: '📦', color: '#8b5cf6' },
     { id: 'steps-count', title: 'Sizing & Counts', icon: '🔢', color: '#ec4899' },
-    { id: 'connectors', title: 'Custom Connectors', icon: '🔗', color: '#06b6d4' },
+    { id: 'nested', title: 'Nested Steps', icon: '🌿', color: '#10b981' },
+    { id: 'shapes', title: 'Step Shapes', icon: '💠', color: '#8b5cf6' },
+    { id: 'percent', title: 'Progress Percent', icon: '📈', color: '#f59e0b' },
     { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#64748b' },
     { id: 'validation', title: 'Validation & Controls', icon: '🛡️', color: '#ef4444' },
     { id: 'colors', title: 'Color Schemes', icon: '🌈', color: '#3b82f6' },
@@ -45,23 +47,23 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
   ];
 
   horizontalSteps = [
-    { label: 'Login', description: 'Step 1' },
-    { label: 'Profile', description: 'Step 2' },
-    { label: 'Review', description: 'Step 3' },
-    { label: 'Success', description: 'Step 4' },
+    { id: '1', label: 'Login', description: 'Step 1' },
+    { id: '2', label: 'Profile', description: 'Step 2' },
+    { id: '3', label: 'Review', description: 'Step 3' },
+    { id: '4', label: 'Success', description: 'Step 4' },
   ];
 
   verticalSteps = [
-    { label: 'Start Order', description: 'Customer details' },
-    { label: 'Configure', description: 'Select options' },
-    { label: 'Payment', description: 'Billing info' },
-    { label: 'Finalize', description: 'Review & submit' },
+    { id: 'v1', label: 'Start Order', description: 'Customer details' },
+    { id: 'v2', label: 'Configure', description: 'Select options' },
+    { id: 'v3', label: 'Payment', description: 'Billing info' },
+    { id: 'v4', label: 'Finalize', description: 'Review & submit' },
   ];
 
   threeSteps = [
-    { label: 'Account', description: 'Set up details' },
-    { label: 'Plan', description: 'Choose your plan' },
-    { label: 'Payment', description: 'Enter billing info' },
+    { id: '1', label: 'Account', description: 'Set up details' },
+    { id: '2', label: 'Plan', description: 'Choose your plan' },
+    { id: '3', label: 'Payment', description: 'Enter billing info' },
   ];
 
   fiveSteps = [
@@ -73,19 +75,44 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
   ];
 
   sevenSteps = [
-    { label: 'Step 1', description: 'First', status: 'success' },
-    { label: 'Step 2', description: 'Second', status: 'success' },
-    { label: 'Step 3', description: 'Third', status: 'success' },
+    { label: 'Step 1', description: 'First', status: 'completed' },
+    { label: 'Step 2', description: 'Second', status: 'completed' },
+    { label: 'Step 3', description: 'Third', status: 'completed' },
     { label: 'Step 4', description: 'Fourth', status: 'info' },
     { label: 'Step 5', description: 'Fifth', status: 'waiting' },
     { label: 'Step 6', description: 'Sixth', status: 'waiting' },
     { label: 'Step 7', description: 'Seventh', status: 'waiting' },
   ];
 
-  customIconSteps = [
-    { label: 'Payment', status: 'success', icon: '<i class="fas fa-credit-card"></i>' },
-    { label: 'Security', status: 'info', icon: '<i class="fas fa-shield-alt"></i>' },
-    { label: 'Support', status: 'waiting', icon: '<i class="fas fa-headset"></i>' },
+  extraStatusSteps = [
+    { label: 'Verified', status: 'completed', description: 'Done' },
+    { label: 'Processing', status: 'waiting', description: 'Please wait...' },
+    { label: 'Review', status: 'info', description: 'Read only' },
+    { label: 'Warning', status: 'warning', description: 'Check details' },
+    { label: 'Blocked', status: 'disabled', description: 'Not available' },
+    { label: 'Failed', status: 'failed', description: 'Critical error' },
+  ];
+
+  percentSteps = [
+    { id: '1', label: 'Uploaded', status: 'completed' },
+    { id: '2', label: 'Processing', status: 'active', percent: 75, icon: 'refresh' },
+    { id: '3', label: 'Finished', status: 'pending' },
+  ];
+
+  nestedSteps = [
+    { id: '1', label: 'Design Phase', status: 'completed' },
+    {
+      id: '2',
+      label: 'Implementation',
+      status: 'active',
+      description: 'Building the core modules',
+      children: [
+        { id: '2-1', label: 'Setup Environment', status: 'completed' },
+        { id: '2-2', label: 'Develop UI', status: 'active' },
+        { id: '2-3', label: 'Connect Backend', status: 'pending' },
+      ],
+    },
+    { id: '3', label: 'Launch', status: 'pending' },
   ];
 
   twentySteps = Array.from({ length: 20 }, (_, i) => ({
@@ -93,13 +120,46 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
     description: `Description for step ${i + 1}`,
   }));
 
+  customIconSteps = [
+    {
+      id: '1',
+      label: 'User Info',
+      description: 'Profile setup',
+      icon: 'user',
+      status: 'completed',
+    },
+    {
+      id: '2',
+      label: 'Verification',
+      description: 'Email confirmed',
+      svgIcon:
+        '<svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+      status: 'active',
+    },
+    {
+      id: '3',
+      label: 'Settings',
+      description: 'Preferences',
+      icon: 'settings',
+      status: 'pending',
+    },
+  ];
+
   currentStep25 = 0;
-  generate25Steps() {
-    return Array.from({ length: 25 }, (_, i) => ({
-      label: `Phase ${i + 1}`,
-      description: `Task details for phase ${i + 1}`,
-    }));
-  }
+  stressTestSteps = Array.from({ length: 25 }, (_, i) => ({
+    id: `x${i + 1}`,
+    label:
+      i === 0
+        ? 'Account'
+        : i === 1
+          ? 'Profile'
+          : i === 2
+            ? 'Verify'
+            : i === 24
+              ? 'Done'
+              : `Step ${i + 1}`,
+    description: `Info for step ${i + 1}`,
+  }));
 
   nextStep25() {
     if (this.currentStep25 < 24) this.currentStep25++;
@@ -114,17 +174,22 @@ export class DmSetStepperDemoComponent extends BaseDemoComponent {
   }
 
   // Code snippets
-  horizontalBasicCode = `<app-stepper-container [steps]="steps" orientation="horizontal"></app-stepper-container>`;
-  verticalBasicCode = `<app-stepper-container [steps]="steps" orientation="vertical" label-position="right"></app-stepper-container>`;
-  indicatorTypeCode = `<app-stepper-container orientation="horizontal"></app-stepper-container>\n<app-stepper-container orientation="horizontal" progress-dot></app-stepper-container>`;
-  labelPlacementCode = `<app-stepper-container label-position="bottom" ...></app-stepper-container>`;
-  flowLogicCode = `<app-stepper-container flow="linear"></app-stepper-container>\n<app-stepper-container flow="non-linear"></app-stepper-container>`;
-  contentNavigationCode = `<app-stepper-container show-content-area="true" show-controls="true" ...>\n  <div slot="step-0">...</div>\n</app-stepper-container>`;
-  stepsCountCode = `<app-stepper-container size="sm" ...></app-stepper-container>`;
-  connectorCode = `<app-step-connector slot="connector-0-1" mode="horizontal" flex="2"></app-step-connector>`;
-  variantCode = `<app-stepper-container variant="snack" ...></app-stepper-container>`;
-  validationCode = `<app-stepper-container show-controls label-fail="Report Error" ...></app-stepper-container>`;
-  colorSchemeCode = `<app-stepper-container color-scheme="success" ...></app-stepper-container>`;
-  scrollableCode = `<app-stepper-container scrollable ...></app-stepper-container>`;
+  horizontalBasicCode = `<ui-stepper [steps]="steps" orientation="horizontal"></ui-stepper>`;
+  verticalBasicCode = `<ui-stepper [steps]="steps" orientation="vertical" label-position="right"></ui-stepper>`;
+  indicatorTypeCode = `<ui-stepper orientation="horizontal"></ui-stepper>\n<ui-stepper orientation="horizontal" progress-dot></ui-stepper>`;
+  labelPlacementCode = `<ui-stepper label-position="bottom" ...></ui-stepper>`;
+  flowLogicCode = `<ui-stepper flow="linear"></ui-stepper>\n<ui-stepper flow="non-linear"></ui-stepper>`;
+  contentNavigationCode = `<ui-stepper [steps]="steps" orientation="vertical" active-step="0">
+  <div slot="content-1">...</div>
+  <div slot="content-2">...</div>
+</ui-stepper>`;
+  stepsCountCode = `<ui-stepper size="sm" [steps]="threeSteps"></ui-stepper>`;
+  nestedStepsCode = `<ui-stepper [steps]="nestedSteps" orientation="vertical"></ui-stepper>`;
+  shapesCode = `<ui-stepper step-shape="square-active" ...></ui-stepper>`;
+  percentCode = `<ui-stepper [steps]="percentSteps" ...></ui-stepper>`;
+  variantCode = `<ui-stepper variant="snack" steps-per-page="5" show-progress="true" ...></ui-stepper>`;
+  validationCode = `<ui-stepper show-controls label-fail="Report Error" ...></ui-stepper>`;
+  colorSchemeCode = `<ui-stepper color-scheme="success" ...></ui-stepper>`;
+  scrollableCode = `<ui-stepper scrollable compact="true" ...></ui-stepper>`;
   interactiveCode = `<!-- Complex 25-step interactive demo -->`;
 }

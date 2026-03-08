@@ -608,13 +608,13 @@ export const routes: Routes = [
             (m) => m.DmDropdownDemoComponent,
           ),
       },
-      {
-        path: 'stepper',
-        loadComponent: () =>
-          import('./demos/common/stepper/stepper-demo.component').then(
-            (m) => m.DmStepperDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'stepper',
+      //   loadComponent: () =>
+      //     import('./demos/common/stepper/stepper-demo.component').then(
+      //       (m) => m.DmStepperDemoComponent,
+      //     ),
+      // },
 
       {
         path: 'pill',

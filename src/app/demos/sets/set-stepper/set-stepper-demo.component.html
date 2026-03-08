@@ -29,29 +29,29 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h3>Standard Labels</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 active-step="0"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Bottom Labels</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 label-position="bottom"
                 active-step="0"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Top Labels</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 label-position="top"
                 active-step="0"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
           </div>
         </pg-example-section>
@@ -67,23 +67,23 @@
             <div class="demo-card">
               <h3>Right Labels</h3>
               <div style="min-height: 250px">
-                <app-stepper-container
+                <ui-stepper
                   orientation="vertical"
                   label-position="right"
                   active-step="2"
                   [steps]="verticalSteps"
-                ></app-stepper-container>
+                ></ui-stepper>
               </div>
             </div>
             <div class="demo-card">
               <h3>Left Labels</h3>
               <div style="min-height: 250px">
-                <app-stepper-container
+                <ui-stepper
                   orientation="vertical"
                   label-position="left"
                   active-step="2"
                   [steps]="verticalSteps"
-                ></app-stepper-container>
+                ></ui-stepper>
               </div>
             </div>
           </div>
@@ -99,20 +99,20 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h3>Classic Numbers</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 active-step="1"
                 [steps]="threeSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Progress Dots</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 progress-dot
                 active-step="1"
                 [steps]="threeSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
           </div>
         </pg-example-section>
@@ -127,18 +127,18 @@
           <div class="demo-card">
             <h3>Alternating Labels</h3>
             <div style="display: flex; flex-direction: column; gap: 2rem">
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 label-position="bottom"
                 active-step="1"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
-              <app-stepper-container
+              ></ui-stepper>
+              <ui-stepper
                 orientation="horizontal"
                 label-position="top"
                 active-step="1"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
           </div>
         </pg-example-section>
@@ -153,21 +153,21 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h3>Linear Flow (Strict Sequential)</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 flow="linear"
                 active-step="1"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Non-Linear Flow (Free Navigation)</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 flow="non-linear"
                 active-step="2"
                 [steps]="horizontalSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
           </div>
         </pg-example-section>
@@ -180,26 +180,98 @@
           [code]="contentNavigationCode"
         >
           <div class="demo-card">
-            <app-stepper-container
+            <ui-stepper
               orientation="horizontal"
               show-content-area="true"
               show-controls="true"
               active-step="0"
               [steps]="threeSteps"
             >
-              <div slot="step-0" class="step-content-box">
+              <div slot="content-1" class="step-content-box">
                 <h4>Step 1: Account Setup</h4>
                 <p>Configure your basic account information.</p>
               </div>
-              <div slot="step-1" class="step-content-box">
+              <div slot="content-2" class="step-content-box">
                 <h4>Step 2: Profile Details</h4>
                 <p>Add personal information and preferences.</p>
               </div>
-              <div slot="step-2" class="step-content-box">
+              <div slot="content-3" class="step-content-box">
                 <h4>Step 3: Verification</h4>
                 <p>Review and submit your application.</p>
               </div>
-            </app-stepper-container>
+            </ui-stepper>
+          </div>
+        </pg-example-section>
+
+        <!-- Sizing & Counts -->
+        <pg-example-section
+          id="steps-count"
+          title="Sizing & Counts"
+          description="Different step counts and size variations"
+          [code]="stepsCountCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Small Scale (3 Steps)</h3>
+              <ui-stepper size="sm" [steps]="threeSteps"></ui-stepper>
+            </div>
+            <div class="demo-card">
+              <h3>Medium Scale (5 Steps)</h3>
+              <ui-stepper size="md" active-step="2" [steps]="fiveSteps"></ui-stepper>
+            </div>
+            <div class="demo-card">
+              <h3>Large Scale (7 Steps)</h3>
+              <ui-stepper size="lg" active-step="3" [steps]="sevenSteps"></ui-stepper>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Nested -->
+        <pg-example-section
+          id="nested"
+          title="Nested Steps"
+          description="Hierarchical sub-tasks within main steps"
+          [code]="nestedStepsCode"
+        >
+          <div class="demo-card">
+            <div style="min-height: 400px">
+              <ui-stepper orientation="vertical" active-step="1" [steps]="nestedSteps"></ui-stepper>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Shapes -->
+        <pg-example-section
+          id="shapes"
+          title="Step Shapes"
+          description="Customize the indicator shape globally or for the active step only"
+          [code]="shapesCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Square Indicators (All)</h3>
+              <ui-stepper step-shape="square" [steps]="threeSteps"></ui-stepper>
+            </div>
+            <div class="demo-card">
+              <h3>Square Active (Active Only)</h3>
+              <ui-stepper
+                step-shape="square-active"
+                active-step="1"
+                [steps]="threeSteps"
+              ></ui-stepper>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Percent -->
+        <pg-example-section
+          id="percent"
+          title="Progress Percent"
+          description="Detailed progress tracking on the active step icon"
+          [code]="percentCode"
+        >
+          <div class="demo-card">
+            <ui-stepper [steps]="percentSteps" active-step="1"></ui-stepper>
           </div>
         </pg-example-section>
 
@@ -213,28 +285,20 @@
           <div class="demo-grid col-1">
             <div class="demo-card">
               <h3>Snack Variant (Snake Layout)</h3>
-              <app-stepper-container
+              <ui-stepper
                 orientation="horizontal"
                 variant="snack"
                 active-step="2"
                 [steps]="fiveSteps"
-              ></app-stepper-container>
+              ></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Outlined Style</h3>
-              <app-stepper-container
-                variant="outlined"
-                active-step="1"
-                [steps]="horizontalSteps"
-              ></app-stepper-container>
+              <ui-stepper variant="outlined" active-step="1" [steps]="horizontalSteps"></ui-stepper>
             </div>
             <div class="demo-card">
               <h3>Filled Style</h3>
-              <app-stepper-container
-                variant="filled"
-                active-step="1"
-                [steps]="horizontalSteps"
-              ></app-stepper-container>
+              <ui-stepper variant="filled" active-step="1" [steps]="horizontalSteps"></ui-stepper>
             </div>
           </div>
         </pg-example-section>
@@ -248,7 +312,7 @@
         >
           <div class="demo-card">
             <h3>Custom Label Buttons</h3>
-            <app-stepper-container
+            <ui-stepper
               orientation="horizontal"
               show-controls
               label-next="Go Forward"
@@ -257,7 +321,83 @@
               label-finish="Place Order"
               active-step="1"
               [steps]="threeSteps"
-            ></app-stepper-container>
+            ></ui-stepper>
+          </div>
+          <div class="demo-card" style="margin-top: 1rem">
+            <h3>Extended Statuses</h3>
+            <ui-stepper
+              orientation="horizontal"
+              active-step="0"
+              [steps]="extraStatusSteps"
+            ></ui-stepper>
+          </div>
+        </pg-example-section>
+
+        <!-- Colors -->
+        <pg-example-section
+          id="colors"
+          title="Color Schemes"
+          description="Semantic color themes for different workflows"
+          [code]="colorSchemeCode"
+        >
+          <div class="demo-grid col-1">
+            <div class="demo-card">
+              <h3>Success Theme</h3>
+              <ui-stepper color-scheme="success" active-step="1" [steps]="threeSteps"></ui-stepper>
+            </div>
+            <div class="demo-card">
+              <h3>Warning Theme</h3>
+              <ui-stepper color-scheme="warning" active-step="1" [steps]="threeSteps"></ui-stepper>
+            </div>
+            <div class="demo-card">
+              <h3>Danger Theme</h3>
+              <ui-stepper color-scheme="danger" active-step="1" [steps]="threeSteps"></ui-stepper>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Scrolling -->
+        <pg-example-section
+          id="scrolling"
+          title="Large Scale & Scrolling"
+          description="Smooth navigation through sequences with many steps"
+          [code]="scrollableCode"
+        >
+          <div class="demo-card">
+            <ui-stepper
+              scrollable
+              compact="true"
+              [steps]="twentySteps"
+              active-step="10"
+            ></ui-stepper>
+          </div>
+        </pg-example-section>
+
+        <!-- Interactive -->
+        <pg-example-section
+          id="interactive"
+          title="Interactive Stress Test"
+          description="25-step interactive demo with programmatic control"
+          [code]="interactiveCode"
+        >
+          <div class="demo-card">
+            <div class="stress-test-controls">
+              <ui-button (click)="previousStep25()" variant="secondary">Previous</ui-button>
+              <ui-button (click)="nextStep25()" variant="primary">Next Step</ui-button>
+              <ui-button (click)="jumpToEnd25()" variant="outline">Jump to End</ui-button>
+              <span class="step-counter" style="margin-left: 1rem; font-weight: 500">
+                Current: {{ currentStep25 + 1 }} / 25
+              </span>
+            </div>
+            <div style="margin-top: 2rem">
+              <ui-stepper
+                variant="snack"
+                show-progress="true"
+                steps-per-page="5"
+                [attr.active-step]="currentStep25"
+                [steps]="stressTestSteps"
+              ></ui-stepper>
+            </div>
           </div>
         </pg-example-section>
       </div>
