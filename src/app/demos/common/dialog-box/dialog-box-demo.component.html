@@ -195,6 +195,112 @@
           </div>
         </pg-example-section>
 
+        <!-- Form Inputs Dialog -->
+        <pg-example-section
+          id="form"
+          title="Form Inputs Dialog"
+          description="Complex dialog containing various form controls and inputs."
+          [code]="formCode"
+        >
+          <div class="demo-card">
+            <ui-button
+              label="Open Registration Form"
+              variant="primary"
+              style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none"
+              (click)="toggle('form')"
+            ></ui-button>
+
+            <ui-dialog-box
+              [open]="dialogVisible['form']"
+              (dialogClosed)="toggle('form', false)"
+              dialog-title="Complete Form Registration"
+              width="550px"
+              icon-library="lucide"
+            >
+              <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 0.5rem">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+                  <ui-input
+                    label="First Name"
+                    placeholder="John"
+                    icon="user"
+                    icon-library="lucide"
+                  ></ui-input>
+                  <ui-input label="Last Name" placeholder="Doe"></ui-input>
+                </div>
+
+                <ui-input
+                  label="Email Address"
+                  type="email"
+                  placeholder="john.doe@example.com"
+                  icon="mail"
+                  icon-library="lucide"
+                ></ui-input>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+                  <ui-dropdown
+                    label="Department"
+                    placeholder="Select Department"
+                    [options]="[
+                      { label: 'Engineering', value: 'eng' },
+                      { label: 'Marketing', value: 'mkt' },
+                      { label: 'Design', value: 'dsgn' },
+                      { label: 'Sales', value: 'sls' },
+                    ]"
+                  ></ui-dropdown>
+
+                  <ui-input label="Joining Date" type="date"></ui-input>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.75rem">
+                  <label style="font-size: 14px; font-weight: 500; color: #374151"
+                    >Preferences & Settings</label
+                  >
+                  <div style="display: flex; align-items: center; gap: 2rem">
+                    <ui-checkbox label="Subscribe to Newsletter" checked="true"></ui-checkbox>
+                    <ui-switch label="Dark Mode" checked="false"></ui-switch>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 2rem">
+                    <ui-toggle label="Enable Notifications" checked="true"></ui-toggle>
+                    <div style="display: flex; align-items: center; gap: 0.5rem">
+                      <span style="font-size: 14px; color: #4b5563">Experience Level:</span>
+                      <ui-rating value="4" max="5"></ui-rating>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.5rem">
+                  <label style="font-size: 14px; font-weight: 500; color: #374151"
+                    >Account Type</label
+                  >
+                  <div style="display: flex; gap: 1.5rem">
+                    <ui-radio
+                      name="account-type"
+                      label="Personal"
+                      value="personal"
+                      checked="true"
+                    ></ui-radio>
+                    <ui-radio name="account-type" label="Business" value="business"></ui-radio>
+                    <ui-radio name="account-type" label="Enterprise" value="enterprise"></ui-radio>
+                  </div>
+                </div>
+              </div>
+
+              <div slot="footer">
+                <ui-button
+                  label="Cancel"
+                  variant="secondary"
+                  (click)="toggle('form', false)"
+                ></ui-button>
+                <ui-button
+                  label="Submit Registration"
+                  variant="primary"
+                  (click)="toggle('form', false)"
+                ></ui-button>
+              </div>
+            </ui-dialog-box>
+          </div>
+        </pg-example-section>
+
         <!-- Variants & Status -->
         <pg-example-section
           id="variants"
