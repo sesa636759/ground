@@ -29,7 +29,7 @@ export class DemoPlaygroundComponent implements OnInit, OnChanges {
   @Output() reset = new EventEmitter<void>();
 
   showCodePreview = true;
-  isExpanded = false;
+  isExpanded = true;
 
   get parsedItems(): any[] {
     if (typeof this.items === 'string' && this.items.trim()) {
@@ -59,6 +59,7 @@ export class DemoPlaygroundComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['code'] && !changes['code'].firstChange) {
+      console.log('Playground: Code updated', changes['code'].currentValue.length);
       this.refreshCode();
     }
   }
@@ -69,7 +70,7 @@ export class DemoPlaygroundComponent implements OnInit, OnChanges {
     setTimeout(() => {
       this.showCodePreview = true;
       this.cd.detectChanges();
-    }, 10);
+    }, 50);
   }
 
   handleExpandedChange(event: any) {

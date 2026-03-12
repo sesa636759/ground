@@ -162,7 +162,7 @@ export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   updateConfigFromDom(element: ElementRef | undefined, tagName: string, innerContent: string = '') {
     setTimeout(() => {
       this.generatedCode.set(this.getCleanFormattedDom(element, tagName, innerContent));
-    }, 50);
+    }, 100);
   }
 
   /**
