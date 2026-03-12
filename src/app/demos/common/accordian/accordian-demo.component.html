@@ -137,6 +137,26 @@
         >
           <ui-accordion [items]="denseItems" dense></ui-accordion>
         </pg-example-section>
+        
+        <!-- Card Variant -->
+        <pg-example-section
+          id="card"
+          title="Card Variant"
+          description="A separated card layout with icon pills and a right-chevron."
+          [code]="cardAccordionCode"
+        >
+          <ui-accordion [items]="cardAccordionItems" variant="card"></ui-accordion>
+        </pg-example-section>
+
+        <!-- Card List Variant -->
+        <pg-example-section
+          id="card-list"
+          title="Card List Variant"
+          description="A more compact separated card list layout."
+          [code]="cardListAccordionCode"
+        >
+          <ui-accordion [items]="cardAccordionItems" variant="card-list"></ui-accordion>
+        </pg-example-section>
 
         <!-- Events -->
         <pg-example-section

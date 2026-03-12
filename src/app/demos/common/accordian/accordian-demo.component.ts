@@ -38,6 +38,8 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     { id: 'loading', title: 'Loading', icon: '⏳', color: '#a855f7' },
     { id: 'rtl', title: 'RTL', icon: '🌍', color: '#06b6d4' },
     { id: 'dense', title: 'Dense', icon: '📦', color: '#84cc16' },
+    { id: 'card', title: 'Card Variant', icon: '💳', color: '#3b82f6' },
+    { id: 'card-list', title: 'Card List', icon: '📇', color: '#6366f1' },
     { id: 'events', title: 'Events', icon: '📣', color: '#f97316' },
     { id: 'controlled', title: 'Controlled', icon: '🎮', color: '#2563eb' },
     { id: 'async-lazy', title: 'Async & Lazy', icon: '⚡', color: '#7c3aed' },
@@ -222,6 +224,33 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     content: `Compact content for item ${i + 1}`,
   }));
   denseCode = `<ui-accordion [items]="items" dense></ui-accordion>`;
+
+  cardAccordionItems = [
+    {
+      id: 'card1',
+      title: 'Security Settings',
+      subtitle: 'Manage your passwords and 2FA',
+      icon: 'shield',
+      content: '<p>Enhanced security options for your account protection.</p>',
+    },
+    {
+      id: 'card2',
+      title: 'Notification Center',
+      subtitle: 'Stay updated with your activities',
+      icon: 'bell',
+      content: '<p>Configure how you receive alerts and updates.</p>',
+    },
+    {
+      id: 'card3',
+      title: 'Data Privacy',
+      subtitle: 'Control your personal information',
+      icon: 'lock',
+      content: '<p>Review and manage your personal data sharing preferences.</p>',
+    },
+  ];
+  cardAccordionCode = `<ui-accordion [items]="cardAccordionItems" variant="card"></ui-accordion>`;
+
+  cardListAccordionCode = `<ui-accordion [items]="cardAccordionItems" variant="card-list"></ui-accordion>`;
 
   eventsItems = [
     { id: 'e1', title: 'Event Source 1', content: 'Interact with me' },

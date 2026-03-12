@@ -295,11 +295,11 @@ export const routes: Routes = [
             (m) => m.DmDockOverlayDemoComponent,
           ),
       },
-      {
-        path: 'label',
-        loadComponent: () =>
-          import('./demos/sets/label/label-demo.component').then((m) => m.DmLabelDemoComponent),
-      },
+      // {
+      //   path: 'label',
+      //   loadComponent: () =>
+      //     import('./demos/sets/label/label-demo.component').then((m) => m.DmLabelDemoComponent),
+      // },
       {
         path: 'avatar-group',
         loadComponent: () =>
