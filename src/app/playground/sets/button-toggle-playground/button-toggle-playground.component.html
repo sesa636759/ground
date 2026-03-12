@@ -114,15 +114,15 @@
       </div>
       <div class="control-group">
         <label>Group Label</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></ui-input>
       </div>
       <div class="control-group">
         <label>Name</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()"></ui-input>
       </div>
       <div class="control-group">
         <label>Helper Text</label>
-        <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
+        <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()"></ui-input>
       </div>
       <div class="control-group">
         <label>Error Message</label>
@@ -130,7 +130,7 @@
           type="text"
           [(ngModel)]="pgConfig.errorMessage"
           (ngModelChange)="updateConfig()"
-        />
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Action Label</label>
@@ -138,7 +138,7 @@
           type="text"
           [(ngModel)]="pgConfig.buttonActionLabel"
           (ngModelChange)="updateConfig()"
-        />
+        ></ui-input>
       </div>
       <div class="control-group">
         <label>Advanced Theme</label>
@@ -146,56 +146,56 @@
           type="text"
           [(ngModel)]="pgConfig.advancedTheme"
           (ngModelChange)="updateConfig()"
-        />
+        ></ui-input>
       </div>
     </div>
 
     <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()" /> Full Width
+        <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()"></ui-checkbox> Full Width
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.keepButtonLabel" (ngModelChange)="updateConfig()"></ui-checkbox>
         Keep Label
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.customContent" (ngModelChange)="updateConfig()"></ui-checkbox>
         Custom Content
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox> Disabled
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()" /> Readonly
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox> Readonly
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" /> Loading
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox> Loading
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()" /> Required
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox> Required
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()" /> Invalid
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox> Invalid
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()" /> Multi
+        <ui-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()"></ui-checkbox> Multi
         Select
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.batchActions" (ngModelChange)="updateConfig()" /> Batch
+        <ui-checkbox [(ngModel)]="pgConfig.batchActions" (ngModelChange)="updateConfig()"></ui-checkbox> Batch
         Actions
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.searchEnabled" (ngModelChange)="updateConfig()" /> Search
+        <ui-checkbox [(ngModel)]="pgConfig.searchEnabled" (ngModelChange)="updateConfig()"></ui-checkbox> Search
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.exportEnabled" (ngModelChange)="updateConfig()" /> Export
+        <ui-checkbox [(ngModel)]="pgConfig.exportEnabled" (ngModelChange)="updateConfig()"></ui-checkbox> Export
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.importEnabled" (ngModelChange)="updateConfig()" /> Import
+        <ui-checkbox [(ngModel)]="pgConfig.importEnabled" (ngModelChange)="updateConfig()"></ui-checkbox> Import
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.analyticsEnabled" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.analyticsEnabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Analytics
       </label>
     </div>
@@ -203,7 +203,7 @@
 
   <div preview>
     <div class="preview-stage h-scrollable" style="padding: 24px">
-      <app-button-toggle-group
+      <ui-button-toggle-group
         #pgGroup
         [attr.mode]="pgConfig.mode"
         [attr.orientation]="pgConfig.orientation"
@@ -240,9 +240,9 @@
       >
         <div *ngIf="pgConfig.customContent" slot="dropdown-content" class="custom-slot-content">
           <p>Custom Playground Content</p>
-          <ui-input type="text" placeholder="Enter something..." />
+          <ui-input type="text" placeholder="Enter something..."></ui-input>
         </div>
-      </app-button-toggle-group>
+      </ui-button-toggle-group>
     </div>
   </div>
 
