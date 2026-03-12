@@ -1,4 +1,4 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="🎯"
     title="Accordion Component"
@@ -21,6 +21,16 @@
           [code]="basicAccordionCode"
         >
           <ui-accordion [items]="basicAccordionItems"></ui-accordion>
+        </pg-example-section>
+
+        <!-- Form Inside Accordion -->
+        <pg-example-section
+          id="forms"
+          title="Forms in Accordions"
+          description="Accordions can contain complex arbitrary content such as forms with various field types."
+          [code]="formAccordionCode"
+        >
+          <ui-accordion [items]="formAccordionItems"></ui-accordion>
         </pg-example-section>
 
         <!-- Subtitles -->

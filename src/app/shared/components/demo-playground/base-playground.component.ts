@@ -1,4 +1,4 @@
-﻿import {
+import {
   signal,
   ChangeDetectorRef,
   OnInit,
@@ -136,17 +136,12 @@ export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Refreshes the code preview by temporarily hiding and showing it.
-   * This triggers Angular's change detection and ensures the preview is updated.
+   * Refreshes the code preview.
+   * Now handled automatically by the playground component via ngOnChanges.
+   * Keeping this as a no-op for backward compatibility with existing playgrounds.
    */
-  refreshCode() {
-    setTimeout(() => {
-      this.showCode = false;
-      this.cd.detectChanges();
-      this.showCode = true;
-      this.cd.detectChanges();
-    }, 0);
-  }
+  refreshCode() {}
+
 
   /**
    * Helper to generate code from a DOM element using playground-utils.
@@ -167,7 +162,6 @@ export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   updateConfigFromDom(element: ElementRef | undefined, tagName: string, innerContent: string = '') {
     setTimeout(() => {
       this.generatedCode.set(this.getCleanFormattedDom(element, tagName, innerContent));
-      this.refreshCode();
     }, 50);
   }
 

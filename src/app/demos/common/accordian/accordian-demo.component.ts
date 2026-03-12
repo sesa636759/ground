@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DmAccordianPlaygroundComponent } from '../../../playground/common/accordian-playground/accordian-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -29,6 +29,7 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
+    { id: 'forms', title: 'Forms', icon: '📋', color: '#8b5cf6' },
     { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
     { id: 'search', title: 'Search', icon: '🔍', color: '#f59e0b' },
     { id: 'actions', title: 'Actions', icon: '⚡', color: '#ef4444' },
@@ -64,6 +65,46 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
     },
   ];
   basicAccordionCode = `<ui-accordion [items]="items"></ui-accordion>`;
+
+  formAccordionItems = [
+    {
+      id: 'user-details',
+      title: 'User Details',
+      subtitle: 'Complete your profile',
+      content: `
+        <form style="display: flex; flex-direction: column; gap: 1rem;">
+          <ui-input type="text" label="First Name" placeholder="Enter first name"></ui-input>
+          <ui-input type="text" label="Last Name" placeholder="Enter last name"></ui-input>
+          <ui-input type="email" label="Email Address" placeholder="alex@example.com"></ui-input>
+          <ui-input type="password" label="Password" show-password-toggle="true" placeholder="Enter password"></ui-input>
+          <ui-input type="tel" label="Phone Number" placeholder="+1 (555) 000-0000"></ui-input>
+          <ui-input type="number" label="Age" min="18" max="120" show-steppers="true"></ui-input>
+          <ui-input type="date" label="Date of Birth"></ui-input>
+          <ui-input type="time" label="Preferred Meeting Time"></ui-input>
+          <ui-input type="color" label="Favorite Color" value="#667eea"></ui-input>
+          <ui-input type="file" label="Profile Picture" accept="image/*"></ui-input>
+          <ui-input type="range" label="Experience Level" min="1" max="100" value="50"></ui-input>
+          <ui-input multiline="true" label="Bio" placeholder="Tell us about yourself" rows="4"></ui-input>
+          <div style="margin-top: 1rem; text-align: right;">
+            <ui-button label="Save Details" variant="primary"></ui-button>
+          </div>
+        </form>
+      `,
+    },
+    {
+       id: 'preferences',
+       title: 'Preferences',
+       content: `
+         <form style="display: flex; flex-direction: column; gap: 1rem;">
+           <ui-checkbox label="Subscribe to newsletter" checked="true"></ui-checkbox>
+           <ui-switch label="Enable notifications" checked="true"></ui-switch>
+           <ui-radio-group label="Theme" options="[{&quot;label&quot;:&quot;Light&quot;,&quot;value&quot;:&quot;light&quot;},{&quot;label&quot;:&quot;Dark&quot;,&quot;value&quot;:&quot;dark&quot;},{&quot;label&quot;:&quot;System&quot;,&quot;value&quot;:&quot;system&quot;}]" value="system"></ui-radio-group>
+           <ui-dropdown label="Role" placeholder="Select a role" options="[{&quot;label&quot;:&quot;Admin&quot;,&quot;value&quot;:&quot;admin&quot;},{&quot;label&quot;:&quot;User&quot;,&quot;value&quot;:&quot;user&quot;}]"></ui-dropdown>
+         </form>
+       `
+    }
+  ];
+  formAccordionCode = '<ui-accordion [items]="formAccordionItems"></ui-accordion>';
 
   subtitlesItems = [
     {
