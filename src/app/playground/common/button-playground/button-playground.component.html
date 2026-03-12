@@ -25,10 +25,18 @@
     <div class="control-group">
       <label>Icon Library</label>
       <ui-dropdown
-        [(ngModel)]="pgConfig.iconLibrary"
+        [ignoreParentPosition]="true"
         (ngModelChange)="updateConfig()"
         [options]="iconLibraryOptions"
       ></ui-dropdown>
+      <ui-smart-location-dropdown>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.iconLibrary"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. ⭐, user, rocket"
+        ></ui-input>
+      </ui-smart-location-dropdown>
     </div>
     <div class="control-group">
       <label>Badge</label>
@@ -44,6 +52,7 @@
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
+        [ignoreParentPosition]="false"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
@@ -52,6 +61,7 @@
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
+        [ignoreParentPosition]="false"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
@@ -70,6 +80,7 @@
     <div class="control-group">
       <label>Icon Position</label>
       <ui-dropdown
+        [ignoreParentPosition]="false"
         [(ngModel)]="pgConfig.iconPosition"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
@@ -150,6 +161,7 @@
       <div class="control-group" *ngIf="pgConfig.loading">
         <label>Loading Pos</label>
         <ui-dropdown
+          [ignoreParentPosition]="false"
           [(ngModel)]="pgConfig.loadingPosition"
           (ngModelChange)="updateConfig()"
           [options]="positionOptions"
@@ -162,6 +174,7 @@
     <div class="control-group">
       <label>Type</label>
       <ui-dropdown
+        [ignoreParentPosition]="false"
         [(ngModel)]="pgConfig.type"
         (ngModelChange)="updateConfig()"
         [options]="typeOptions"

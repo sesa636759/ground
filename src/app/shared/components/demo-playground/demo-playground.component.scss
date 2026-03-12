@@ -47,6 +47,17 @@
 
 ui-accordion {
   flex: 1;
+  overflow: visible !important;
+
+  &::part(content) {
+    overflow: visible !important;
+  }
+}
+
+::ng-deep ui-accordion-item {
+  &::part(content-wrapper) {
+    overflow: visible !important;
+  }
 }
 
 .playground-controls-actions {
@@ -144,8 +155,9 @@ ui-button.reset-btn {
   .playground-preview {
     position: sticky;
     // top: 1rem;
-    max-height: calc(100vh - 25rem);
-    overflow-y: auto;
+    // max-height: calc(100vh - 25rem);
+    // overflow-y: auto;
+    overflow: visible;
     outline: 2px solid var(--border-color);
     outline-offset: -2px;
     padding: 1rem;

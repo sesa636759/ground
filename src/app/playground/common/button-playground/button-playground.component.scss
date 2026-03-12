@@ -1,1 +1,8 @@
 @use '../../../../styles/playground-base.scss';
+
+// Keep dropdown menu anchored to its own trigger inside the playground accordion.
+:host ::ng-deep ui-dropdown {
+  position: relative;
+  display: block;
+  width: 100%;
+}
