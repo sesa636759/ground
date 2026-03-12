@@ -26,20 +26,20 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmButtonToggleDemoComponent extends BaseDemoComponent {
   variants = [
-    { id: 'segmented', title: 'Segmented Controls', icon: '??' },
-    { id: 'gliding', title: 'Gliding Pill Animation', icon: '??' },
-    { id: 'colors', title: 'Color Variants', icon: '??' },
-    { id: 'styles', title: 'Style Variants', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'icons', title: 'With Icons', icon: '??' },
-    { id: 'icon-only', title: 'Icon Only', icon: '??' },
-    { id: 'dropdown', title: 'Dropdown Mode', icon: '??' },
-    { id: 'split-button', title: 'Split Button', icon: '??' },
-    { id: 'display-modes', title: 'Display Modes', icon: '??' },
-    { id: 'orientations', title: 'Orientations', icon: '??' },
-    { id: 'custom-slots', title: 'Custom Content Slots', icon: '?' },
-    { id: 'loading', title: 'Loading States', icon: '?' },
-    { id: 'states', title: 'States', icon: '??' },
+    { id: 'segmented', title: 'Segmented Controls', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'gliding', title: 'Gliding Pill Animation', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'styles', title: 'Style Variants', icon: 'swatch-book', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'With Icons', icon: 'star', iconLibrary: 'lucide' },
+    { id: 'icon-only', title: 'Icon Only', icon: 'image', iconLibrary: 'lucide' },
+    { id: 'dropdown', title: 'Dropdown Mode', icon: 'chevron-down', iconLibrary: 'lucide' },
+    { id: 'split-button', title: 'Split Button', icon: 'columns-2', iconLibrary: 'lucide' },
+    { id: 'display-modes', title: 'Display Modes', icon: 'monitor', iconLibrary: 'lucide' },
+    { id: 'orientations', title: 'Orientations', icon: 'move-vertical', iconLibrary: 'lucide' },
+    { id: 'custom-slots', title: 'Custom Content Slots', icon: 'box', iconLibrary: 'lucide' },
+    { id: 'loading', title: 'Loading States', icon: 'refresh-cw', iconLibrary: 'lucide' },
+    { id: 'states', title: 'States', icon: 'check-square', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {

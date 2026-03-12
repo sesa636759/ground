@@ -24,11 +24,10 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmThemeSwitcherDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'variants', title: 'Visual Variants', icon: '??' },
-    { id: 'sizes', title: 'Size Variants', icon: '??' },
-    { id: 'icons', title: 'Icon Options', icon: '??' },
-    { id: 'premium', title: 'Premium Features', icon: '??' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Size Variants', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'Icon Options', icon: 'smile', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   themes = [

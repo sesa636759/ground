@@ -19,8 +19,8 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmScrollTopDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'variants', title: 'Style Variants', icon: '??' },
-    { id: 'features', title: 'Premium Features', icon: '??' },
+    { id: 'variants', title: 'Style Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Premium Features', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<app-scroll-top

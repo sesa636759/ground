@@ -27,14 +27,13 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??', color: '#8b5cf6' },
-    { id: 'color-variants', title: 'Color Variants', icon: '??' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: '?' },
-    { id: 'skeleton', title: 'Skeleton State', icon: '?' },
-    { id: 'sizes-variants', title: 'Sizes & Variants', icon: '??' },
-    { id: 'states', title: 'States', icon: '??' },
-    { id: 'groups', title: 'Checkbox Groups', icon: '??' },
-    { id: 'form', title: 'Form Example', icon: '??' },
+    { id: 'color-variants', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'skeleton', title: 'Skeleton State', icon: 'ghost', iconLibrary: 'lucide' },
+    { id: 'sizes-variants', title: 'Sizes & Variants', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'states', title: 'States', icon: 'list-checks', iconLibrary: 'lucide' },
+    { id: 'groups', title: 'Checkbox Groups', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'form', title: 'Form Example', icon: 'clipboard-list', iconLibrary: 'lucide' },
   ];
 
   // Select All Group State
@@ -121,12 +120,12 @@ export class DmCheckboxDemoComponent extends BaseDemoComponent implements OnInit
 
   onSubmit() {
     if (!this.formTerms || !this.formPrivacy) {
-      this.formMessage = '?? Please accept the required terms to continue';
+      this.formMessage = 'Please accept the required terms to continue';
       this.formMessageColor = '#dc2626';
       this.termsInvalid = !this.formTerms;
       this.privacyInvalid = !this.formPrivacy;
     } else {
-      this.formMessage = '? Account created successfully!';
+      this.formMessage = 'Account created successfully!';
       this.formMessageColor = '#16a34a';
       this.termsInvalid = false;
       this.privacyInvalid = false;

@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmPanelPlaygroundComponent } from '../../../playground/common/panel-playground/panel-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -27,11 +27,10 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmPanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
-    { id: 'themes', title: 'Themes', icon: '🌈' },
-    { id: 'interactivity', title: 'Interactive', icon: '🕹️' },
-    { id: 'glassmorphism', title: 'Glassmorphism', icon: '🔮' },
+    { id: 'visual-styles', title: 'Visual Styles', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'themes', title: 'Themes', icon: 'swatch-book', iconLibrary: 'lucide' },
+    { id: 'interactivity', title: 'Interactive', icon: 'mouse-pointer-click', iconLibrary: 'lucide' },
+    { id: 'glassmorphism', title: 'Glassmorphism', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-panel variant="elevated" panel-title="Elevated Panel">

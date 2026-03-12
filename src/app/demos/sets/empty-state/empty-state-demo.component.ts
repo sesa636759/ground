@@ -26,16 +26,16 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmEmptyStateDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'all-types', title: 'All Types', icon: '??', color: '#3b82f6' },
-    { id: 'variants', title: 'Visual Variants', icon: '??', color: '#10b981' },
-    { id: 'sizes', title: 'Size Options', icon: '??', color: '#f59e0b' },
-    { id: 'alignment', title: 'Alignment Options', icon: '??', color: '#ef4444' },
-    { id: 'showcase', title: 'Premium Showcase', icon: '?', color: '#3b82f6' },
-    { id: 'suggestions', title: 'Suggestion Items', icon: '??', color: '#ec4899' },
-    { id: 'actions', title: 'Multiple Actions', icon: '??', color: '#06b6d4' },
-    { id: 'images', title: 'Custom Images', icon: '???', color: '#8b5cf6' },
-    { id: 'features', title: 'Special Features', icon: '?', color: '#64748b' },
-    { id: 'premium', title: 'Premium Features', icon: '??', color: '#3b82f6' },
+    { id: 'all-types', title: 'All Types', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Size Options', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'alignment', title: 'Alignment Options', icon: 'align-center', iconLibrary: 'lucide' },
+    { id: 'showcase', title: 'Premium Showcase', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'suggestions', title: 'Suggestion Items', icon: 'lightbulb', iconLibrary: 'lucide' },
+    { id: 'actions', title: 'Multiple Actions', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'images', title: 'Custom Images', icon: 'image', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Special Features', icon: 'star', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Features', icon: 'award', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {

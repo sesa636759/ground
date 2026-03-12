@@ -24,18 +24,18 @@ import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component
 })
 export class DmTreeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic-tree', title: 'Basic Tree', icon: '??' },
-    { id: 'icons-colors', title: 'Icons & Colors', icon: '??' },
-    { id: 'badges-counters', title: 'Badges & Counters', icon: '??' },
-    { id: 'selectable', title: 'Selectable Tree', icon: '?' },
-    { id: 'checkboxes', title: 'With Checkboxes', icon: '??' },
-    { id: 'searchable', title: 'Searchable Tree', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'variants', title: 'Variants', icon: '??' },
-    { id: 'org-chart', title: 'Org Chart', icon: '??' },
-    { id: 'premium', title: 'Premium Aesthetics', icon: '??' },
-    { id: 'drag-drop', title: 'Drag & Drop', icon: '??' },
-    { id: 'dark-theme', title: 'Dark Theme', icon: '??' },
+    { id: 'basic-tree', title: 'Basic Tree', icon: 'tree-pine', iconLibrary: 'lucide' },
+    { id: 'icons-colors', title: 'Icons & Colors', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'badges-counters', title: 'Badges & Counters', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'selectable', title: 'Selectable Tree', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'checkboxes', title: 'With Checkboxes', icon: 'list-checks', iconLibrary: 'lucide' },
+    { id: 'searchable', title: 'Searchable Tree', icon: 'search', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Variants', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'org-chart', title: 'Org Chart', icon: 'users', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Aesthetics', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'drag-drop', title: 'Drag & Drop', icon: 'move', iconLibrary: 'lucide' },
+    { id: 'dark-theme', title: 'Dark Theme', icon: 'moon', iconLibrary: 'lucide' },
   ];
 
   // Basic simple tree

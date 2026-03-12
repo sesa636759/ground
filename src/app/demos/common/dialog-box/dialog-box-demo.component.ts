@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDialogBoxPlaygroundComponent } from '../../../playground/common/dialog-box-playground/dialog-box-playground.component';
@@ -26,7 +26,6 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dialog', icon: '📝' },
     { id: 'slots', title: 'Custom Slots', icon: '🧩' },
     { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },

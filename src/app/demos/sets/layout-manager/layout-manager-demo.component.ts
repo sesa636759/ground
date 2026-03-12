@@ -28,9 +28,14 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmLayoutManagerDemoComponent extends BaseDemoComponent implements AfterViewInit {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Three-Column Layout', icon: '??' },
-    { id: 'ide', title: 'IDE-Style Layout', icon: '??' },
-    { id: 'dashboard', title: 'Dashboard Layout', icon: '??' },
+    {
+      id: 'basic',
+      title: 'Basic Three-Column Layout',
+      icon: 'layout-columns',
+      iconLibrary: 'lucide',
+    },
+    { id: 'ide', title: 'IDE-Style Layout', icon: 'code-2', iconLibrary: 'lucide' },
+    { id: 'dashboard', title: 'Dashboard Layout', icon: 'layout-dashboard', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<app-layout-manager
@@ -77,7 +82,7 @@ export class DmLayoutManagerDemoComponent extends BaseDemoComponent implements A
       regionId: 'left',
       title: 'File Explorer',
       icon: 'fas fa-folder-tree',
-      html: '<div class="panel-content"><h3>?? Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
+      html: '<div class="panel-content"><h3>Files</h3><ul><li>src/</li><li>public/</li><li>package.json</li></ul></div>',
     });
 
     await layout.addPanel({
@@ -91,7 +96,7 @@ export class DmLayoutManagerDemoComponent extends BaseDemoComponent implements A
       regionId: 'right',
       title: 'Properties',
       icon: 'fas fa-sliders',
-      html: '<div class="panel-content"><h3>?? Properties</h3><p>Configure your settings here.</p></div>',
+      html: '<div class="panel-content"><h3>Properties</h3><p>Configure your settings here.</p></div>',
     });
   }
 
@@ -136,7 +141,7 @@ export class DmLayoutManagerDemoComponent extends BaseDemoComponent implements A
       regionId: 'nav',
       title: 'Menu',
       icon: 'fas fa-bars',
-      html: '<div class="panel-content"><nav><ul><li>?? Dashboard</li><li>?? Analytics</li><li>?? Settings</li></ul></nav></div>',
+      html: '<div class="panel-content"><nav><ul><li>Dashboard</li><li>Analytics</li><li>Settings</li></ul></nav></div>',
     });
 
     await layout.addPanel({

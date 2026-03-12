@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmAsidePlaygroundComponent } from '../../../playground/common/aside-playground/aside-playground.component';
@@ -26,7 +26,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmAsideDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'directions', title: 'Directions', icon: '🧭' },
     { id: 'visual-styles', title: 'Visual Styles', icon: '🎨' },
     { id: 'resizable', title: 'Resizable', icon: '↔️' },

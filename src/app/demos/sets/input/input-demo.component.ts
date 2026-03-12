@@ -26,19 +26,18 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'basic-types', title: 'Basic Input Types', icon: '??' },
-    { id: 'variants', title: 'Input Variants', icon: '??' },
-    { id: 'sizes', title: 'Input Sizes', icon: '??' },
-    { id: 'validation', title: 'Validation States', icon: '?' },
-    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: '??' },
-    { id: 'advanced', title: 'Advanced Features', icon: '??' },
-    { id: 'floating-labels', title: 'Floating Labels', icon: '???' },
-    { id: 'multiline', title: 'Multiline Input', icon: '??' },
-    { id: 'color-input', title: 'Color Input', icon: '??' },
-    { id: 'file-upload', title: 'File Upload', icon: '??' },
-    { id: 'input-masking', title: 'Input Masking', icon: '??' },
-    { id: 'input-states', title: 'Input States', icon: '??' },
+    { id: 'basic-types', title: 'Basic Input Types', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Input Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Input Sizes', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'validation', title: 'Validation States', icon: 'check-circle', iconLibrary: 'lucide' },
+    { id: 'prefix-suffix', title: 'Prefix & Suffix', icon: 'at-sign', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'floating-labels', title: 'Floating Labels', icon: 'arrow-up-to-line', iconLibrary: 'lucide' },
+    { id: 'multiline', title: 'Multiline Input', icon: 'align-left', iconLibrary: 'lucide' },
+    { id: 'color-input', title: 'Color Input', icon: 'pipette', iconLibrary: 'lucide' },
+    { id: 'file-upload', title: 'File Upload', icon: 'file-up', iconLibrary: 'lucide' },
+    { id: 'input-masking', title: 'Input Masking', icon: 'shield-check', iconLibrary: 'lucide' },
+    { id: 'input-states', title: 'Input States', icon: 'info', iconLibrary: 'lucide' },
   ];
 
   skeletonState = false;

@@ -26,32 +26,32 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmAvatarDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'basic', title: 'Basic Shapes & Sizes', icon: '??' },
-    { id: 'types', title: 'Avatar Types', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'auto-scale', title: 'Auto-scale Font', icon: '??' },
-    { id: 'badge', title: 'With Badge', icon: '??' },
-    { id: 'avatar-group', title: 'Avatar Groups', icon: '??' },
-    { id: 'custom-colors', title: 'Custom Colors', icon: '??' },
-    { id: 'responsive', title: 'Responsive Size', icon: '??' },
-    { id: 'status', title: 'Status Indicators', icon: '??' },
-    { id: 'borders', title: 'Custom Borders', icon: '?' },
-    { id: 'tooltips', title: 'Tooltips & Popovers', icon: '??' },
-    { id: 'icons', title: 'Different Icons', icon: '?' },
-    { id: 'badge-overlay', title: 'Badge Overlay', icon: '?' },
-    { id: 'verified', title: 'Verified Badge', icon: '?' },
-    { id: 'editable', title: 'Editable/Upload', icon: '??' },
-    { id: 'loading', title: 'Loading State', icon: '?' },
-    { id: 'image-fit', title: 'Image Fit Options', icon: '???' },
-    { id: 'auto-color', title: 'Auto Color from Name', icon: '??' },
-    { id: 'gradients', title: 'Gradient Backgrounds', icon: '??' },
-    { id: 'animations', title: 'Animations', icon: '?' },
-    { id: 'clickable', title: 'Clickable Avatars', icon: '???' },
-    { id: 'ring-color', title: 'Ring Color', icon: '??' },
-    { id: 'lazy-loading', title: 'Lazy Loading', icon: '?' },
-    { id: 'premium', title: 'Premium Features', icon: '??' },
-    { id: 'premium-showcase', title: 'Premium Showcase', icon: '??' },
-    { id: 'animated-groups', title: 'Animated Groups', icon: '??' },
+    { id: 'basic', title: 'Basic Shapes & Sizes', icon: 'square', iconLibrary: 'lucide' },
+    { id: 'types', title: 'Avatar Types', icon: 'user', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'auto-scale', title: 'Auto-scale Font', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'badge', title: 'With Badge', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'avatar-group', title: 'Avatar Groups', icon: 'users', iconLibrary: 'lucide' },
+    { id: 'custom-colors', title: 'Custom Colors', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'responsive', title: 'Responsive Size', icon: 'smartphone', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Status Indicators', icon: 'circle-dot', iconLibrary: 'lucide' },
+    { id: 'borders', title: 'Custom Borders', icon: 'frame', iconLibrary: 'lucide' },
+    { id: 'tooltips', title: 'Tooltips & Popovers', icon: 'message-square', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'Different Icons', icon: 'user-cog', iconLibrary: 'lucide' },
+    { id: 'badge-overlay', title: 'Badge Overlay', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'verified', title: 'Verified Badge', icon: 'check-circle', iconLibrary: 'lucide' },
+    { id: 'editable', title: 'Editable/Upload', icon: 'upload', iconLibrary: 'lucide' },
+    { id: 'loading', title: 'Loading State', icon: 'loader', iconLibrary: 'lucide' },
+    { id: 'image-fit', title: 'Image Fit Options', icon: 'aspect-ratio', iconLibrary: 'lucide' },
+    { id: 'auto-color', title: 'Auto Color from Name', icon: 'wand-2', iconLibrary: 'lucide' },
+    { id: 'gradients', title: 'Gradient Backgrounds', icon: 'brush', iconLibrary: 'lucide' },
+    { id: 'animations', title: 'Animations', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'clickable', title: 'Clickable Avatars', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'ring-color', title: 'Ring Color', icon: 'circle', iconLibrary: 'lucide' },
+    { id: 'lazy-loading', title: 'Lazy Loading', icon: 'clock', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Features', icon: 'award', iconLibrary: 'lucide' },
+    { id: 'premium-showcase', title: 'Premium Showcase', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'animated-groups', title: 'Animated Groups', icon: 'users-2', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {
@@ -132,7 +132,7 @@ export class DmAvatarDemoComponent extends BaseDemoComponent implements OnInit {
 <app-avatar icon="fa fa-user"></app-avatar>
 <app-avatar icon="fa fa-star"></app-avatar>
 <app-avatar icon="fa fa-heart"></app-avatar>
-<app-avatar icon="??"></app-avatar>`;
+<app-avatar icon="fa fa-cog"></app-avatar>`;
 
   badgeOverlayCode = `<!-- Badge with custom positions -->
 <app-avatar name="User" badge="3" badge-position="top-right"></app-avatar>

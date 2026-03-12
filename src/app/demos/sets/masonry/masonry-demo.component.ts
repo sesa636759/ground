@@ -26,15 +26,14 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmMasonryDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??', color: '#8b5cf6' },
-    { id: 'masonry', title: 'Masonry Layout', icon: '??', color: '#8b5cf6' },
-    { id: 'grid', title: 'Grid Layout', icon: '??', color: '#3b82f6' },
-    { id: 'columns', title: 'Columns Layout', icon: '??', color: '#10b981' },
-    { id: 'responsive', title: 'Responsive Design', icon: '??', color: '#f59e0b' },
-    { id: 'filtering', title: 'Filtering & Sorting', icon: '??', color: '#ef4444' },
-    { id: 'selection', title: 'Multi-Select', icon: '?', color: '#ec4899' },
-    { id: 'lightbox', title: 'Lightbox Gallery', icon: '??', color: '#06b6d4' },
-    { id: 'skeleton', title: 'Skeleton Loading', icon: '??', color: '#64748b' },
+    { id: 'masonry', title: 'Masonry Layout', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'grid', title: 'Grid Layout', icon: 'grid-3x3', iconLibrary: 'lucide' },
+    { id: 'columns', title: 'Columns Layout', icon: 'columns-3', iconLibrary: 'lucide' },
+    { id: 'responsive', title: 'Responsive Design', icon: 'tablet', iconLibrary: 'lucide' },
+    { id: 'filtering', title: 'Filtering & Sorting', icon: 'filter', iconLibrary: 'lucide' },
+    { id: 'selection', title: 'Multi-Select', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'lightbox', title: 'Lightbox Gallery', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'skeleton', title: 'Skeleton Loading', icon: 'ghost', iconLibrary: 'lucide' },
   ];
 
   // Sample items for different layouts

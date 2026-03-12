@@ -27,41 +27,41 @@ import { DmAnchorPlaygroundComponent } from '../../../playground/sets/anchor-pla
 export class DmAnchorDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     // Basic Layouts
-    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: '??', color: '#3b82f6' },
-    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: '??', color: '#3b82f6' },
-    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: '??', color: '#3b82f6' },
+    { id: 'vertical-left', title: 'Vertical Navigation (Left)', icon: 'panel-left', iconLibrary: 'lucide' },
+    { id: 'vertical-right', title: 'Vertical Navigation (Right)', icon: 'panel-right', iconLibrary: 'lucide' },
+    { id: 'horizontal-top', title: 'Horizontal Navigation (Top)', icon: 'panel-top', iconLibrary: 'lucide' },
     {
       id: 'horizontal-bottom',
       title: 'Horizontal Navigation (Bottom)',
-      icon: '??',
-      color: '#3b82f6',
+      icon: 'panel-bottom',
+      iconLibrary: 'lucide',
     },
     // Features
-    { id: 'with-badges', title: 'Anchor with Badges', icon: '??', color: '#f59e0b' },
-    { id: 'with-events', title: 'Horizontal with Events', icon: '?', color: '#f59e0b' },
+    { id: 'with-badges', title: 'Anchor with Badges', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'with-events', title: 'Horizontal with Events', icon: 'zap', iconLibrary: 'lucide' },
     // Sizes
-    { id: 'size-small', title: 'Small Size', icon: '??', color: '#10b981' },
-    { id: 'size-medium', title: 'Medium Size (Default)', icon: '??', color: '#10b981' },
-    { id: 'size-large', title: 'Large Size', icon: '??', color: '#10b981' },
+    { id: 'size-small', title: 'Small Size', icon: 'minimize-2', iconLibrary: 'lucide' },
+    { id: 'size-medium', title: 'Medium Size (Default)', icon: 'maximize-2', iconLibrary: 'lucide' },
+    { id: 'size-large', title: 'Large Size', icon: 'maximize', iconLibrary: 'lucide' },
     // Themes
-    { id: 'theme-light', title: 'Light Theme', icon: '??', color: '#ef4444' },
-    { id: 'theme-dark', title: 'Dark Theme', icon: '??', color: '#ef4444' },
-    { id: 'theme-custom', title: 'Custom Theme', icon: '??', color: '#ef4444' },
+    { id: 'theme-light', title: 'Light Theme', icon: 'sun', iconLibrary: 'lucide' },
+    { id: 'theme-dark', title: 'Dark Theme', icon: 'moon', iconLibrary: 'lucide' },
+    { id: 'theme-custom', title: 'Custom Theme', icon: 'palette', iconLibrary: 'lucide' },
     // Number Styles
-    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: '1??', color: '#8b5cf6' },
-    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: '??', color: '#8b5cf6' },
-    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: '??', color: '#8b5cf6' },
-    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: '?', color: '#8b5cf6' },
+    { id: 'number-numeric', title: 'Numeric Style (1, 2, 3)', icon: 'list-ordered', iconLibrary: 'lucide' },
+    { id: 'number-decimal', title: 'Decimal Style (01, 02, 03)', icon: 'list-ordered', iconLibrary: 'lucide' },
+    { id: 'number-alpha', title: 'Alphabetic Style (a, b, c)', icon: 'a-large-small', iconLibrary: 'lucide' },
+    { id: 'number-roman', title: 'Roman Style (i, ii, iii)', icon: 'list', iconLibrary: 'lucide' },
     // Alignment
-    { id: 'align-left', title: 'Horizontal Left Aligned', icon: '??', color: '#ec4899' },
-    { id: 'align-center', title: 'Horizontal Center Aligned', icon: '??', color: '#ec4899' },
-    { id: 'align-right', title: 'Horizontal Right Aligned', icon: '??', color: '#ec4899' },
+    { id: 'align-left', title: 'Horizontal Left Aligned', icon: 'align-left', iconLibrary: 'lucide' },
+    { id: 'align-center', title: 'Horizontal Center Aligned', icon: 'align-center', iconLibrary: 'lucide' },
+    { id: 'align-right', title: 'Horizontal Right Aligned', icon: 'align-right', iconLibrary: 'lucide' },
     // Advanced
-    { id: 'affix-behavior', title: 'Affix Behavior', icon: '??', color: '#06b6d4' },
-    { id: 'progress-indicator', title: 'Progress Indicator', icon: '??', color: '#06b6d4' },
-    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: '??', color: '#06b6d4' },
-    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: '??', color: '#06b6d4' },
-    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: '??', color: '#06b6d4' },
+    { id: 'affix-behavior', title: 'Affix Behavior', icon: 'pin', iconLibrary: 'lucide' },
+    { id: 'progress-indicator', title: 'Progress Indicator', icon: 'loader', iconLibrary: 'lucide' },
+    { id: 'hash-sync', title: 'Hash/URL Synchronization', icon: 'link', iconLibrary: 'lucide' },
+    { id: 'keyboard-nav', title: 'Keyboard Navigation', icon: 'keyboard', iconLibrary: 'lucide' },
+    { id: 'nested-items', title: 'Nested & Collapsible Items', icon: 'hierarchy', iconLibrary: 'lucide' },
   ];
 
   // Sample data for anchor items

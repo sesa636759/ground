@@ -27,18 +27,18 @@ import { DmTooltipPlaygroundComponent } from '../../../playground/sets/tooltip-p
 })
 export class DmTooltipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'triggers', title: 'Triggers', icon: '?' },
-    { id: 'positioning', title: 'Positioning', icon: '??' },
-    { id: 'variants', title: 'Variants & Themes', icon: '??' },
-    { id: 'shapes-animations', title: 'Shapes & Animations', icon: '?' },
-    { id: 'advanced-features', title: 'Advanced Features', icon: '??' },
-    { id: 'rich-content', title: 'Rich HTML Content', icon: '??' },
-    { id: 'use-cases', title: 'Practical Use Cases', icon: '??' },
-    { id: 'custom-content', title: 'Custom Content & Slots', icon: '??' },
-    { id: 'custom-colors', title: 'Custom Colors', icon: '??' },
-    { id: 'arrow-customization', title: 'Arrow Customization', icon: '??' },
-    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: '???' },
-    { id: 'auto-shift', title: 'Auto-Shift', icon: '??' },
+    { id: 'triggers', title: 'Triggers', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'positioning', title: 'Positioning', icon: 'move', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Variants & Themes', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'shapes-animations', title: 'Shapes & Animations', icon: 'box', iconLibrary: 'lucide' },
+    { id: 'advanced-features', title: 'Advanced Features', icon: 'settings-2', iconLibrary: 'lucide' },
+    { id: 'rich-content', title: 'Rich HTML Content', icon: 'file-text', iconLibrary: 'lucide' },
+    { id: 'use-cases', title: 'Practical Use Cases', icon: 'briefcase', iconLibrary: 'lucide' },
+    { id: 'custom-content', title: 'Custom Content & Slots', icon: 'layout-template', iconLibrary: 'lucide' },
+    { id: 'custom-colors', title: 'Custom Colors', icon: 'brush', iconLibrary: 'lucide' },
+    { id: 'arrow-customization', title: 'Arrow Customization', icon: 'navigation', iconLibrary: 'lucide' },
+    { id: 'mouse-tracking', title: 'Mouse Tracking', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'auto-shift', title: 'Auto-Shift', icon: 'refresh-ccw', iconLibrary: 'lucide' },
   ];
 
   hoverCode = `<ui-tooltip content="I appear on hover" position="top">

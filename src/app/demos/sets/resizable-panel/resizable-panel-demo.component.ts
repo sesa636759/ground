@@ -26,14 +26,13 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmResizablePanelDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'horizontal', title: 'Basic Horizontal Split', icon: '??' },
-    { id: 'vertical', title: 'Basic Vertical Split', icon: '??' },
-    { id: 'triple', title: 'Triple Split Panel', icon: '??' },
-    { id: 'nested', title: 'Nested Resizable Panels', icon: '??' },
-    { id: 'collapsible', title: 'Collapsible Panels', icon: '??' },
-    { id: 'themes', title: 'Dark Theme', icon: '??' },
-    { id: 'snap', title: 'Snap to Edge', icon: '??' },
+    { id: 'horizontal', title: 'Basic Horizontal Split', icon: 'columns-2', iconLibrary: 'lucide' },
+    { id: 'vertical', title: 'Basic Vertical Split', icon: 'rows-2', iconLibrary: 'lucide' },
+    { id: 'triple', title: 'Triple Split Panel', icon: 'columns-3', iconLibrary: 'lucide' },
+    { id: 'nested', title: 'Nested Resizable Panels', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'collapsible', title: 'Collapsible Panels', icon: 'panel-left-close', iconLibrary: 'lucide' },
+    { id: 'themes', title: 'Dark Theme', icon: 'moon', iconLibrary: 'lucide' },
+    { id: 'snap', title: 'Snap to Edge', icon: 'magnet', iconLibrary: 'lucide' },
   ];
 
   basicHPanels = [

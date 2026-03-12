@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 //import { DmTransferListPlaygroundComponent } from '../../../common/transfer-list-playground/transfer-list-playground.component';
@@ -26,8 +26,7 @@ import { DmTransferListPlaygroundComponent } from '../../../playground/common/tr
 })
 export class DmTransferListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'features', title: 'UI Controls', icon: '⚙️', color: '#3b82f6' },
+    { id: 'features', title: 'UI Controls', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
   sourceItems = [

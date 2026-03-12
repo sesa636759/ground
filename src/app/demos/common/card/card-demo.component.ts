@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -28,7 +28,6 @@ import { CardExamplesComponent } from './components/card-examples/card-examples.
 })
 export class DmCardDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
     { id: 'basic', title: 'Core Structure', icon: '📋' },
     { id: 'media', title: 'Media Enhancements', icon: '🖼️' },

@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
@@ -20,16 +20,11 @@ import { DmWaffleChartPlaygroundComponent } from '../../../playground/common/waf
   styleUrl: './waffle-chart-demo.component.scss',
 })
 export class DmWaffleChartDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'basic', name: 'Basic', icon: '🧇', color: '#6366f1' },
-    { id: 'colors', name: 'Colors', icon: '🎨', color: '#f59e0b' },
-    { id: 'grid-sizes', name: 'Grid Sizes', icon: '📐', color: '#10b981' },
+  exampleVariants = [
+    { id: 'basic', title: 'Basic', icon: 'grid-3x3', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Colors', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'grid-sizes', title: 'Grid Sizes', icon: 'ruler', iconLibrary: 'lucide' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   basicCode = `<chart-waffle
   value="72"

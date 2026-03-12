@@ -25,12 +25,11 @@ import { DmTabStackPlaygroundComponent } from '../../../playground/sets/tab-stac
 })
 export class DmTabStackDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'orientations', title: 'Orientation Options', icon: '??' },
-    { id: 'variants', title: 'Visual Variants', icon: '??' },
-    { id: 'features', title: 'Advanced Features', icon: '??' },
-    { id: 'sizes', title: 'Size Variants', icon: '??' },
-    { id: 'premium', title: 'Premium Features', icon: '??' },
+    { id: 'orientations', title: 'Orientation Options', icon: 'move', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Size Variants', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   tabs = [

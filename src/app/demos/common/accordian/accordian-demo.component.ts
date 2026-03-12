@@ -27,7 +27,6 @@ import { PlaygroundEventLogComponent } from '../../../shared/components/playgrou
 })
 export class DmAccordianDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic', icon: '📁', color: '#3b82f6' },
     { id: 'forms', title: 'Forms', icon: '📋', color: '#8b5cf6' },
     { id: 'subtitles', title: 'Subtitles', icon: '📝', color: '#10b981' },
@@ -92,17 +91,19 @@ export class DmAccordianDemoComponent extends BaseDemoComponent {
       `,
     },
     {
-       id: 'preferences',
-       title: 'Preferences',
-       content: `
+      id: 'preferences',
+      title: 'Preferences',
+      content: `
          <form style="display: flex; flex-direction: column; gap: 1rem;">
            <ui-checkbox label="Subscribe to newsletter" checked="true"></ui-checkbox>
            <ui-switch label="Enable notifications" checked="true"></ui-switch>
            <ui-radio-group label="Theme" options="[{&quot;label&quot;:&quot;Light&quot;,&quot;value&quot;:&quot;light&quot;},{&quot;label&quot;:&quot;Dark&quot;,&quot;value&quot;:&quot;dark&quot;},{&quot;label&quot;:&quot;System&quot;,&quot;value&quot;:&quot;system&quot;}]" value="system"></ui-radio-group>
-           <ui-dropdown label="Role" placeholder="Select a role" options="[{&quot;label&quot;:&quot;Admin&quot;,&quot;value&quot;:&quot;admin&quot;},{&quot;label&quot;:&quot;User&quot;,&quot;value&quot;:&quot;user&quot;}]"></ui-dropdown>
+           <ui-dropdown label="Role" placeholder="Select a role" o
+           ptions="[{&quot;label&quot;:&quot;Admin&quot;,&quot;value&quot;:&quot;admin&quot;},
+           {&quot;label&quot;:&quot;User&quot;,&quot;value&quot;:&quot;user&quot;}]"></ui-dropdown>
          </form>
-       `
-    }
+       `,
+    },
   ];
   formAccordionCode = '<ui-accordion [items]="formAccordionItems"></ui-accordion>';
 

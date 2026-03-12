@@ -28,16 +28,20 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmRadioDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'premium-variants', title: 'Premium Variants', icon: '?' },
-    { id: 'button-groups', title: 'Button Groups', icon: '??' },
-    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: '?' },
-    { id: 'color-variants', title: 'Color Variants', icon: '??' },
-    { id: 'layouts', title: 'Layouts', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'states', title: 'States', icon: '??' },
-    { id: 'slotted-clearable', title: 'Slotted & Clearable', icon: '??' },
-    { id: 'form-example', title: 'Form Example', icon: '??' },
+    { id: 'premium-variants', title: 'Premium Variants', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'button-groups', title: 'Button Groups', icon: 'square', iconLibrary: 'lucide' },
+    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: 'ghost', iconLibrary: 'lucide' },
+    { id: 'color-variants', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'layouts', title: 'Layouts', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'states', title: 'States', icon: 'toggle-left', iconLibrary: 'lucide' },
+    {
+      id: 'slotted-clearable',
+      title: 'Slotted & Clearable',
+      icon: 'x-circle',
+      iconLibrary: 'lucide',
+    },
+    { id: 'form-example', title: 'Form Example', icon: 'clipboard-list', iconLibrary: 'lucide' },
   ];
 
   basicOptions = [
@@ -122,12 +126,12 @@ export class DmRadioDemoComponent extends BaseDemoComponent {
 
   onSubmit() {
     if (!this.formShipping || !this.formPayment) {
-      this.formMessage = '?? Please select both shipping and payment methods';
+      this.formMessage = 'Please select both shipping and payment methods';
       this.formMessageColor = '#dc2626';
       this.shippingInvalid = !this.formShipping;
       this.paymentInvalid = !this.formPayment;
     } else {
-      this.formMessage = '? Order placed successfully!';
+      this.formMessage = 'Order placed successfully!';
       this.formMessageColor = '#16a34a';
       this.shippingInvalid = false;
       this.paymentInvalid = false;

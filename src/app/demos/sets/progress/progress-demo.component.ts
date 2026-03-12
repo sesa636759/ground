@@ -26,19 +26,18 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmProgressDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'line', title: 'Line Progress', icon: '??' },
-    { id: 'circle', title: 'Circle Progress', icon: '?' },
-    { id: 'dashboard', title: 'Dashboard Progress', icon: '??' },
-    { id: 'status', title: 'Progress Status', icon: '?' },
-    { id: 'indeterminate', title: 'Indeterminate State', icon: '??' },
-    { id: 'colors', title: 'Custom Colors', icon: '??' },
-    { id: 'gradient', title: 'Gradient Progress', icon: '??' },
-    { id: 'steps', title: 'Steps Progress', icon: '??' },
-    { id: 'stroke', title: 'Stroke Width', icon: '??' },
-    { id: 'linecap', title: 'Stroke Linecap', icon: '??' },
-    { id: 'hide-info', title: 'Hide Info Text', icon: '??' },
-    { id: 'premium', title: 'Premium Styles', icon: '??' },
+    { id: 'line', title: 'Line Progress', icon: 'minus', iconLibrary: 'lucide' },
+    { id: 'circle', title: 'Circle Progress', icon: 'circle', iconLibrary: 'lucide' },
+    { id: 'dashboard', title: 'Dashboard Progress', icon: 'gauge', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Progress Status', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'indeterminate', title: 'Indeterminate State', icon: 'loader-2', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Custom Colors', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'gradient', title: 'Gradient Progress', icon: 'wind', iconLibrary: 'lucide' },
+    { id: 'steps', title: 'Steps Progress', icon: 'columns-3', iconLibrary: 'lucide' },
+    { id: 'stroke', title: 'Stroke Width', icon: 'move-vertical', iconLibrary: 'lucide' },
+    { id: 'linecap', title: 'Stroke Linecap', icon: 'square', iconLibrary: 'lucide' },
+    { id: 'hide-info', title: 'Hide Info Text', icon: 'eye-off', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Styles', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   progressValue = 50;

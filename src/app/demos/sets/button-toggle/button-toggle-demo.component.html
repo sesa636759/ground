@@ -1,6 +1,6 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="??"
+    icon="ðŸ”˜"
     title="Button Toggle Group"
     description="Flexible segmented controls and dropdown buttons with gliding animation, multiple color/style variants, and full accessibility support."
   >
@@ -20,13 +20,13 @@
           description="Multiple buttons with single selection and gliding animation"
           [code]="segmentedCode"
         >
-          <app-button-toggle-group
+          <ui-button-toggle-group
             mode="segmented"
             label="Select View Mode"
             value="list"
             color="primary"
             [options]="viewOptions"
-          ></app-button-toggle-group>
+          ></ui-button-toggle-group>
         </pg-example-section>
 
         <!-- Gliding Animation -->
@@ -36,13 +36,13 @@
           description="Premium smooth animation for pill-style toggles"
           [code]="glidingCode"
         >
-          <app-button-toggle-group
+          <ui-button-toggle-group
             mode="segmented"
             value="day"
             color="info"
             variant="soft"
             [options]="timeOptions"
-          ></app-button-toggle-group>
+          ></ui-button-toggle-group>
         </pg-example-section>
 
         <!-- Color Variants -->
@@ -59,11 +59,11 @@
             ) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ color | titlecase }}</h4>
-                <app-button-toggle-group
+                <ui-button-toggle-group
                   value="option2"
                   [attr.color]="color"
                   [options]="basicOptions"
-                ></app-button-toggle-group>
+                ></ui-button-toggle-group>
               </div>
             }
           </div>
@@ -83,12 +83,12 @@
             ) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ style | titlecase }}</h4>
-                <app-button-toggle-group
+                <ui-button-toggle-group
                   value="option2"
                   color="primary"
                   [attr.variant]="style"
                   [options]="basicOptions"
-                ></app-button-toggle-group>
+                ></ui-button-toggle-group>
               </div>
             }
           </div>
@@ -105,11 +105,11 @@
             @for (size of ['small', 'medium', 'large']; track size) {
               <div class="demo-card">
                 <h4 class="demo-sub-title">{{ size | titlecase }}</h4>
-                <app-button-toggle-group
+                <ui-button-toggle-group
                   value="option2"
                   [attr.size]="size"
                   [options]="basicOptions"
-                ></app-button-toggle-group>
+                ></ui-button-toggle-group>
               </div>
             }
           </div>
@@ -123,18 +123,18 @@
           [code]="iconCode"
         >
           <div class="demo-grid col-2">
-            <app-button-toggle-group
+            <ui-button-toggle-group
               label="View Modes"
               value="grid"
               color="primary"
               [options]="viewOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
+            ></ui-button-toggle-group>
+            <ui-button-toggle-group
               label="Text Align"
               value="center"
               color="secondary"
               [options]="alignOptions"
-            ></app-button-toggle-group>
+            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -142,29 +142,29 @@
         <pg-example-section
           id="icon-only"
           title="Icon Only"
-          description="Compact toggle buttons with icons and no label text — ideal for toolbars"
+          description="Compact toggle buttons with icons and no label text ï¿½ ideal for toolbars"
           [code]="iconOnlyCode"
         >
           <div class="demo-grid col-2">
             <div class="demo-card">
               <h4 class="demo-sub-title">View Modes</h4>
-              <app-button-toggle-group
+              <ui-button-toggle-group
                 label="View"
                 value="grid"
                 color="primary"
                 display-mode="icon-only"
                 [options]="iconOnlyOptions"
-              ></app-button-toggle-group>
+              ></ui-button-toggle-group>
             </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Text Alignment</h4>
-              <app-button-toggle-group
+              <ui-button-toggle-group
                 label="Align"
                 value="center"
                 color="secondary"
                 display-mode="icon-only"
                 [options]="iconOnlyAlignOptions"
-              ></app-button-toggle-group>
+              ></ui-button-toggle-group>
             </div>
           </div>
         </pg-example-section>
@@ -175,12 +175,12 @@
           description="Single button with a dropdown menu for selection"
           [code]="dropdownCode"
         >
-          <app-button-toggle-group
+          <ui-button-toggle-group
             mode="dropdown"
             label="Export Options"
             value="pdf"
             [options]="exportOptions"
-          ></app-button-toggle-group>
+          ></ui-button-toggle-group>
         </pg-example-section>
 
         <!-- Split Button -->
@@ -191,20 +191,20 @@
           [code]="splitButtonCode"
         >
           <div class="demo-grid col-2">
-            <app-button-toggle-group
+            <ui-button-toggle-group
               mode="dropdown"
               keep-button-label="true"
               label="File Operations"
               value="file"
               [options]="actionsMenuOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
+            ></ui-button-toggle-group>
+            <ui-button-toggle-group
               mode="dropdown"
               keep-button-label="false"
               label="Select Action"
               value="new"
               [options]="actionsMenuOptions"
-            ></app-button-toggle-group>
+            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -216,18 +216,18 @@
           [code]="displayCode"
         >
           <div class="demo-grid col-2">
-            <app-button-toggle-group
+            <ui-button-toggle-group
               label="Label Only"
               value="medium"
               display-mode="label-only"
               [options]="labelOnlyOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
+            ></ui-button-toggle-group>
+            <ui-button-toggle-group
               label="Icon Only"
               value="grid"
               display-mode="icon-only"
               [options]="iconOnlyOptions"
-            ></app-button-toggle-group>
+            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -239,16 +239,16 @@
           [code]="orientationCode"
         >
           <div class="demo-grid col-2">
-            <app-button-toggle-group
+            <ui-button-toggle-group
               orientation="horizontal"
               value="option2"
               [options]="basicOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
+            ></ui-button-toggle-group>
+            <ui-button-toggle-group
               orientation="vertical"
               value="option2"
               [options]="basicOptions"
-            ></app-button-toggle-group>
+            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
 
@@ -259,7 +259,7 @@
           description="Render any custom HTML content inside the dropdown"
           [code]="customSlotCode"
         >
-          <app-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
+          <ui-button-toggle-group mode="dropdown" label="Advanced Filters" custom-content="true">
             <div slot="dropdown-content">
               <div style="padding: 16px; min-width: 220px">
                 <h4 style="margin-top: 0">Filter Content</h4>
@@ -267,7 +267,7 @@
                 <ui-button style="width: 100%; padding: 8px">Apply Changes</ui-button>
               </div>
             </div>
-          </app-button-toggle-group>
+          </ui-button-toggle-group>
         </pg-example-section>
 
         <!-- Loading States -->
@@ -277,13 +277,13 @@
           description="Built-in loading indicator for asynchronous actions"
           [code]="loadingCode"
         >
-          <app-button-toggle-group
+          <ui-button-toggle-group
             mode="dropdown"
             label="Save Document"
             value="cloud"
             [attr.loading]="true"
             [options]="saveOptions"
-          ></app-button-toggle-group>
+          ></ui-button-toggle-group>
         </pg-example-section>
 
         <!-- States -->
@@ -294,17 +294,17 @@
           [code]="stateCode"
         >
           <div class="demo-grid col-2">
-            <app-button-toggle-group
+            <ui-button-toggle-group
               label="Default"
               value="option2"
               [options]="basicOptions"
-            ></app-button-toggle-group>
-            <app-button-toggle-group
+            ></ui-button-toggle-group>
+            <ui-button-toggle-group
               label="Disabled"
               value="option2"
               [attr.disabled]="true"
               [options]="basicOptions"
-            ></app-button-toggle-group>
+            ></ui-button-toggle-group>
           </div>
         </pg-example-section>
       </div>
@@ -321,5 +321,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-

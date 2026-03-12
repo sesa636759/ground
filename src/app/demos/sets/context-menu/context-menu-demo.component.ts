@@ -23,14 +23,19 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmContextMenuDemoComponent {
   exampleVariants = [
-    { id: 'right-click', title: 'Right Click Trigger', icon: '???' },
-    { id: 'click-trigger', title: 'Click Trigger', icon: '??' },
-    { id: 'nested-menus', title: 'Nested Menus', icon: '??' },
-    { id: 'list-context', title: 'List Item Context', icon: '??' },
-    { id: 'command-palette', title: 'Command Palette', icon: '?' },
-    { id: 'menu-items', title: 'Menu Item Types', icon: '?' },
-    { id: 'themes', title: 'Themes & Effects', icon: '??' },
-    { id: 'advanced', title: 'Advanced Features', icon: '??' },
+    {
+      id: 'right-click',
+      title: 'Right Click Trigger',
+      icon: 'mouse-pointer-2',
+      iconLibrary: 'lucide',
+    },
+    { id: 'click-trigger', title: 'Click Trigger', icon: 'mouse-pointer', iconLibrary: 'lucide' },
+    { id: 'nested-menus', title: 'Nested Menus', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'list-context', title: 'List Item Context', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'command-palette', title: 'Command Palette', icon: 'terminal', iconLibrary: 'lucide' },
+    { id: 'menu-items', title: 'Menu Item Types', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'themes', title: 'Themes & Effects', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
   // Basic menu items
@@ -97,17 +102,17 @@ export class DmContextMenuDemoComponent {
     {
       id: 'alice',
       label: 'Alice Johnson',
-      avatar: '??',
+      avatar: 'user',
       description: 'Product Lead',
-      badge: '??',
+      badge: 'circle-dot',
     },
-    { id: 'bob', label: 'Bob Smith', avatar: '??', description: 'Developer', badge: '??' },
+    { id: 'bob', label: 'Bob Smith', avatar: 'user', description: 'Developer', badge: 'circle-dot' },
     {
       id: 'charlie',
       label: 'Charlie Brown',
-      avatar: '??',
+      avatar: 'user',
       description: 'Designer',
-      badge: '??',
+      badge: 'circle-dot',
     },
   ];
 

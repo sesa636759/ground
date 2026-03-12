@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
@@ -25,7 +25,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmTabsDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'styles', name: 'Visual Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'layouts', name: 'Orientations', icon: '📐', color: '#10b981' },
     { id: 'tab-stack', name: 'Tab Stack', icon: '📚', color: '#f59e0b' },

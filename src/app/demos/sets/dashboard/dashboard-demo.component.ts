@@ -21,7 +21,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './dashboard-demo.component.scss',
 })
 export class DmDashboardDemoComponent extends BaseDemoComponent {
-  exampleVariants = [{ id: 'features', title: 'Key Features', icon: '??' }];
+  exampleVariants = [{ id: 'features', title: 'Key Features', icon: 'layout-dashboard', iconLibrary: 'lucide' }];
 
   // Code examples
   playgroundCode = `<ui-dashboard

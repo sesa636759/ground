@@ -25,19 +25,18 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Interactive Playground', icon: '??' },
-    { id: 'basic', title: 'Basic Lists', icon: '??' },
-    { id: 'colors', title: 'Color Variants', icon: '??' },
-    { id: 'sizes', title: 'Size Variants', icon: '??' },
-    { id: 'nested', title: 'Nested Lists', icon: '??' },
-    { id: 'features', title: 'Special Features', icon: '?' },
-    { id: 'context-menu', title: 'Context Menu', icon: '??' },
-    { id: 'advanced-menu', title: 'Advanced Menu', icon: '??' },
-    { id: 'grouping', title: 'Grouping & Multiselect', icon: '??' },
-    { id: 'selection', title: 'Interactive Selection', icon: '??' },
-    { id: 'checkboxes', title: 'Checkboxes & Badges', icon: '??' },
-    { id: 'tags', title: 'Tags & Pills', icon: '???' },
-    { id: 'config', title: 'Configuration Demo', icon: '??' },
+    { id: 'basic', title: 'Basic Lists', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Size Variants', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'nested', title: 'Nested Lists', icon: 'list-tree', iconLibrary: 'lucide' },
+    { id: 'features', title: 'Special Features', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'context-menu', title: 'Context Menu', icon: 'mouse-pointer-click', iconLibrary: 'lucide' },
+    { id: 'advanced-menu', title: 'Advanced Menu', icon: 'menu', iconLibrary: 'lucide' },
+    { id: 'grouping', title: 'Grouping & Multiselect', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'selection', title: 'Interactive Selection', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'checkboxes', title: 'Checkboxes & Badges', icon: 'list-checks', iconLibrary: 'lucide' },
+    { id: 'tags', title: 'Tags & Pills', icon: 'tag', iconLibrary: 'lucide' },
+    { id: 'config', title: 'Configuration Demo', icon: 'settings', iconLibrary: 'lucide' },
   ];
 
   // Code examples for each section

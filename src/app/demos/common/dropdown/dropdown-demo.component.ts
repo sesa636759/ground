@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDropdownPlaygroundComponent } from '../../../playground/common/dropdown-playground/dropdown-playground.component';
@@ -26,7 +26,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDropdownDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dropdown', icon: '📝' },
     { id: 'multi-select', title: 'Multi Selection', icon: '✅' },
     { id: 'cascading', title: 'Hierarchical', icon: '🌳' },

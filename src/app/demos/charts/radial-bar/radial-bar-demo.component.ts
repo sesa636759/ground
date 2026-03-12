@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmRadialBarPlaygroundComponent } from '../../../playground/charts/radial-bar-playground/radial-bar-playground.component';
@@ -25,7 +25,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRadialBarDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'kpi', title: 'KPI Rings', icon: '🎯', color: '#6366f1' },
     { id: 'skills', title: 'Skills Radar', icon: '💼', color: '#10b981' },
   ];

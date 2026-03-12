@@ -27,38 +27,38 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     // Transition Effects
-    { id: 'fade-transition', title: 'Fade Transition Effect', icon: '??', color: '#8b5cf6' },
-    { id: 'slide-transition', title: 'Slide Transition Effect', icon: '??', color: '#3b82f6' },
+    { id: 'fade-transition', title: 'Fade Transition Effect', icon: 'images', iconLibrary: 'lucide' },
+    { id: 'slide-transition', title: 'Slide Transition Effect', icon: 'square-play', iconLibrary: 'lucide' },
     // Layout Modes
-    { id: 'center-mode', title: 'Center Mode', icon: '??', color: '#10b981' },
-    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: '??', color: '#f59e0b' },
-    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: '??', color: '#ef4444' },
-    { id: 'infinite-loop', title: 'Infinite Loop', icon: '??', color: '#ec4899' },
+    { id: 'center-mode', title: 'Center Mode', icon: 'layout-panel-top', iconLibrary: 'lucide' },
+    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: 'layout-grid', iconLibrary: 'lucide' },
+    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: 'arrows-up-down', iconLibrary: 'lucide' },
+    { id: 'infinite-loop', title: 'Infinite Loop', icon: 'repeat', iconLibrary: 'lucide' },
     // Interaction & Controls
-    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: '??', color: '#06b6d4' },
+    { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: 'hand', iconLibrary: 'lucide' },
     {
       id: 'autoplay-control',
       title: 'Autoplay with Pause Control',
-      icon: '??',
-      color: '#64748b',
+      icon: 'play-circle',
+      iconLibrary: 'lucide',
     },
-    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: '??', color: '#8b5cf6' },
-    { id: 'animation-easing', title: 'Animation Easing Effects', icon: '??', color: '#3b82f6' },
+    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: 'mouse-pointer', iconLibrary: 'lucide' },
+    { id: 'animation-easing', title: 'Animation Easing Effects', icon: 'zap', iconLibrary: 'lucide' },
     // Indicators & Navigation
-    { id: 'dots-indicators', title: 'Dots Indicators', icon: '�', color: '#10b981' },
-    { id: 'number-indicators', title: 'Number Indicators', icon: '??', color: '#f59e0b' },
-    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: '??', color: '#ef4444' },
+    { id: 'dots-indicators', title: 'Dots Indicators', icon: 'circle-ellipsis', iconLibrary: 'lucide' },
+    { id: 'number-indicators', title: 'Number Indicators', icon: 'list-ordered', iconLibrary: 'lucide' },
+    { id: 'progress-bar', title: 'Progress Bar Indicator', icon: 'loader', iconLibrary: 'lucide' },
     // Size Variants
-    { id: 'size-small', title: 'Small Size', icon: '??', color: '#ec4899' },
-    { id: 'size-medium', title: 'Medium Size', icon: '??', color: '#06b6d4' },
-    { id: 'size-large', title: 'Large Size', icon: '??', color: '#64748b' },
+    { id: 'size-small', title: 'Small Size', icon: 'minimize-2', iconLibrary: 'lucide' },
+    { id: 'size-medium', title: 'Medium Size', icon: 'maximize-2', iconLibrary: 'lucide' },
+    { id: 'size-large', title: 'Large Size', icon: 'maximize', iconLibrary: 'lucide' },
     // Speed Variants
-    { id: 'speed-fast', title: 'Fast Animation', icon: '?', color: '#8b5cf6' },
-    { id: 'speed-normal', title: 'Normal Speed', icon: '??', color: '#3b82f6' },
-    { id: 'speed-slow', title: 'Slow Animation', icon: '??', color: '#10b981' },
+    { id: 'speed-fast', title: 'Fast Animation', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'speed-normal', title: 'Normal Speed', icon: 'clock', iconLibrary: 'lucide' },
+    { id: 'speed-slow', title: 'Slow Animation', icon: 'snail', iconLibrary: 'lucide' },
     // Advanced Features
-    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: '??', color: '#f59e0b' },
-    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: '??', color: '#ef4444' },
+    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: 'smartphone', iconLibrary: 'lucide' },
+    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: 'settings-2', iconLibrary: 'lucide' },
   ];
 
   // Basic Layout Examples

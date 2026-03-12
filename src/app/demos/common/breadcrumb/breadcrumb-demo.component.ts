@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmBreadcrumbPlaygroundComponent } from '../../../playground/common/breadcrumb-playground/breadcrumb-playground.component';
@@ -26,7 +26,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmBreadcrumbDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'separators', title: 'Separators', icon: '➖' },
     { id: 'collapsing', title: 'Collapsing', icon: '📉' },
     { id: 'visuals', title: 'Visual Variants', icon: '🎨' },

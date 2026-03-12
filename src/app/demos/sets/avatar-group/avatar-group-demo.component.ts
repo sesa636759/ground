@@ -27,19 +27,19 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmAvatarGroupDemoComponent extends BaseDemoComponent implements OnInit {
   variants = [
-    { id: 'basic', title: 'Basic Group', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'max-display', title: 'Max Display', icon: '??' },
-    { id: 'layouts', title: 'Layouts', icon: '??' },
-    { id: 'shapes', title: 'Shapes', icon: '?' },
-    { id: 'spacing', title: 'Spacing', icon: '??' },
-    { id: 'borders', title: 'Borders', icon: '??' },
-    { id: 'tooltips', title: 'Tooltips', icon: '??' },
-    { id: 'status', title: 'Status', icon: '??' },
-    { id: 'interaction', title: 'Interaction', icon: '???' },
-    { id: 'grid', title: 'Grid Layout', icon: '?' },
-    { id: 'overflow', title: 'Overflow', icon: '??' },
-    { id: 'combined', title: 'Combined', icon: '??' },
+    { id: 'basic', title: 'Basic Group', icon: 'users', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'max-display', title: 'Max Display', icon: 'list-filter', iconLibrary: 'lucide' },
+    { id: 'layouts', title: 'Layouts', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'shapes', title: 'Shapes', icon: 'component', iconLibrary: 'lucide' },
+    { id: 'spacing', title: 'Spacing', icon: 'arrow-left-right', iconLibrary: 'lucide' },
+    { id: 'borders', title: 'Borders', icon: 'frame', iconLibrary: 'lucide' },
+    { id: 'tooltips', title: 'Tooltips', icon: 'message-square', iconLibrary: 'lucide' },
+    { id: 'status', title: 'Status', icon: 'circle-dot', iconLibrary: 'lucide' },
+    { id: 'interaction', title: 'Interaction', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'grid', title: 'Grid Layout', icon: 'grid', iconLibrary: 'lucide' },
+    { id: 'overflow', title: 'Overflow', icon: 'more-horizontal', iconLibrary: 'lucide' },
+    { id: 'combined', title: 'Combined', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {

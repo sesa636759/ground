@@ -24,12 +24,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmTagsInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '??' },
-    { id: 'basic', title: 'Basic Usage', icon: '??' },
-    { id: 'colors', title: 'Color Variants', icon: '??' },
-    { id: 'sizes', title: 'Size Variants', icon: '??' },
-    { id: 'premium', title: 'Premium Features', icon: '??' },
-    { id: 'states', title: 'Component States', icon: '??' },
+    { id: 'basic', title: 'Basic Usage', icon: 'tag', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Size Variants', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'premium', title: 'Premium Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Component States', icon: 'toggle-left', iconLibrary: 'lucide' },
   ];
 
   defaultTags = ['Angular', 'TypeScript', 'Stencil'];

@@ -51,14 +51,14 @@
         </div>
 
         <div class="view-toggle">
-          <app-button-toggle-group
+          <ui-button-toggle-group
             mode="segmented"
             display-mode="icon-only"
             variant="surface"
             [value]="viewMode()"
             [options]="viewOptions"
             (buttonToggleGroupChange)="viewMode.set($event.detail.value)"
-          ></app-button-toggle-group>
+          ></ui-button-toggle-group>
         </div>
       </div>
     </div>

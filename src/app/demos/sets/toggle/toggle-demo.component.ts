@@ -26,13 +26,13 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmToggleDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
-    { id: 'layouts', title: 'Layouts', icon: '??' },
-    { id: 'visual-variants', title: 'Visual Variants', icon: '??' },
-    { id: 'sizes', title: 'Sizes', icon: '??' },
-    { id: 'colors', title: 'Colors', icon: '??' },
-    { id: 'icons', title: 'Icons Support', icon: '?' },
-    { id: 'states', title: 'States', icon: '??' },
-    { id: 'advanced', title: 'Advanced UX', icon: '??' },
+    { id: 'layouts', title: 'Layouts', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Colors', icon: 'droplet', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'Icons Support', icon: 'smile', iconLibrary: 'lucide' },
+    { id: 'states', title: 'States', icon: 'toggle-left', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced UX', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
   notificationOptions = [

@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -26,7 +26,6 @@ import { DmAreaChartPlaygroundComponent } from '../../../playground/charts/area-
 })
 export class DmAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic Area', icon: '🏔️', color: '#6366f1' },
     { id: 'stacked', title: 'Stacked', icon: '📚', color: '#10b981' },
     { id: 'gradient', title: 'Gradient', icon: '🌈', color: '#f59e0b' },

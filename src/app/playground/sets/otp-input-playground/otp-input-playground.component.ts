@@ -3,7 +3,7 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
 @Component({
-  selector: 'ui-otp-input-playground',
+  selector: 'dm-otp-input-playground',
   standalone: true,
   imports: [...PLAYGROUND_IMPORTS],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
