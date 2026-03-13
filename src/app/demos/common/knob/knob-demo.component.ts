@@ -1,7 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-
 import { DmKnobPlaygroundComponent } from '../../../playground/common/knob-playground/knob-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
@@ -15,9 +14,9 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
     ...PLAYGROUND_IMPORTS,
     DmKnobPlaygroundComponent,
     DemoTabsComponent,
-    DemoSidebarComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
+    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './knob-demo.component.html',
@@ -25,18 +24,16 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmKnobDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'styles', title: 'Visual Styles', icon: '🎨', color: '#3b82f6' },
-    { id: 'readonly', title: 'States', icon: '🔒', color: '#10b981' },
+    { id: 'visuals', title: 'Color & Aesthetics', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'gauges', title: 'Functional Gauges', icon: 'gauge', iconLibrary: 'lucide' },
+    { id: 'ticks', title: 'Ticks & Labels', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Input', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Interactive States', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-knob [value]="50" [size]="150" value-color="#3b82f6"></ui-knob>`;
-
-  stylesCode = `<!-- Custom Colors & Stroke -->
-<ui-knob value-color="#10b981" [stroke-width]="20"></ui-knob>
-
-<!-- Small Compact Knob -->
-<ui-knob [size]="80" [show-value]="false"></ui-knob>`;
-
-  readonlyCode = `<!-- Readonly Display -->
-<ui-knob [value]="75" readonly></ui-knob>`;
+  visualsCode = signal(`<ui-knob value="65" color="#3b82f6" track-color="#e2e8f0" size="120"></ui-knob>`);
+  gaugesCode = signal(`<ui-knob type="gauge" min="0" max="220" value="120" start-angle="135" end-angle="45"></ui-knob>`);
+  ticksCode = signal(`<ui-knob show-ticks tick-count="12" show-labels [label-step]="30"></ui-knob>`);
+  behaviorCode = signal(`<ui-knob snap [snap-step]="10" allow-input enable-wheel></ui-knob>`);
+  statesCode = signal(`<ui-knob value="45" disabled></ui-knob>\n<ui-knob value="75" readonly></ui-knob>`);
 }

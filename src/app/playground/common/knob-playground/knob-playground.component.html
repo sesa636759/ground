@@ -1,10 +1,11 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-value" class="control-grid" style="padding: 16px">
+  <!-- Global Configuration -->
+  <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Current Value</label>
       <ui-input
@@ -14,7 +15,7 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Min</label>
+      <label>Min Value</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
@@ -22,7 +23,7 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Max</label>
+      <label>Max Value</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
@@ -30,18 +31,27 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Step</label>
+      <label>Step Increment</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Value Suffix</label>
+      <ui-input
+        [(ngModel)]="pgConfig.valueSuffix"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. %, °, dB"
+      ></ui-input>
+    </div>
   </div>
 
+  <!-- Visual Appearance -->
   <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Size</label>
+      <label>Knob Size (px)</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.size"
@@ -57,28 +67,111 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Color</label>
+      <label>Active Color</label>
       <ui-input
         type="color"
-        [(ngModel)]="pgConfig.valueColor"
+        [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
+    <div class="control-group">
+      <label>Track Color</label>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.trackColor"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Start Angle</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.startAngle"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>End Angle</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.endAngle"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <!-- Behavior -->
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showValue" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Value Label
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showMinMax" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Min/Max Labels
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Disabled
+      </label>
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
         Readonly
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showValue"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show Value
+        <ui-checkbox [(ngModel)]="pgConfig.enableWheel" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Enable Mouse Wheel
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.snap" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Snap to Step
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.allowInput" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Allow Input (Double Click)
       </label>
     </div>
   </div>
 
+  <!-- Ticks & Labels -->
+  <div slot="content-ticks" class="control-grid" style="padding: 16px">
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.showTicks" (ngModelChange)="updateConfig()"></ui-checkbox>
+      Show Tick Marks
+    </label>
+    <div class="control-group" *ngIf="pgConfig.showTicks">
+      <label>Tick Count</label>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.tickCount"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.showTicks">
+      <label>Tick Color</label>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.tickColor"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.showTicks">
+      <label>Tick Length (0-1)</label>
+      <ui-input
+        type="number"
+        step="0.05"
+        [(ngModel)]="pgConfig.tickLength"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <label class="checkbox-item">
+      <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()"></ui-checkbox>
+      Show Scale Labels
+    </label>
+  </div>
+
+  <!-- Preview Area -->
   <div
     preview
     class="preview-stage"
@@ -89,6 +182,7 @@
       align-items: center;
       flex-direction: column;
       padding: 40px;
+      min-height: 300px;
     "
   >
     <ui-knob
@@ -99,11 +193,29 @@
       [attr.step]="pgConfig.step"
       [attr.size]="pgConfig.size"
       [attr.stroke-width]="pgConfig.strokeWidth"
-      [attr.value-color]="pgConfig.valueColor"
-      [attr.readonly]="pgConfig.readonly ? '' : null"
+      [attr.color]="pgConfig.color"
+      [attr.track-color]="pgConfig.trackColor"
       [attr.show-value]="pgConfig.showValue ? '' : null"
+      [attr.value-suffix]="pgConfig.valueSuffix"
+      [attr.show-min-max]="pgConfig.showMinMax ? '' : null"
+      [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.readonly]="pgConfig.readonly ? '' : null"
+      [attr.start-angle]="pgConfig.startAngle"
+      [attr.end-angle]="pgConfig.endAngle"
+      [attr.enable-wheel]="pgConfig.enableWheel ? '' : null"
+      [attr.show-ticks]="pgConfig.showTicks ? '' : null"
+      [attr.tick-count]="pgConfig.tickCount"
+      [attr.tick-color]="pgConfig.tickColor"
+      [attr.tick-length]="pgConfig.tickLength"
+      [attr.show-labels]="pgConfig.showLabels ? '' : null"
+      [attr.snap]="pgConfig.snap ? '' : null"
+      [attr.allow-input]="pgConfig.allowInput ? '' : null"
       (knobChange)="onValueChange($event)"
     ></ui-knob>
+
+    <div style="margin-top: 24px; color: #64748b; font-size: 14px">
+      Current Value: <strong>{{ pgConfig.value }}{{ pgConfig.valueSuffix }}</strong>
+    </div>
   </div>
 
   <pg-playground-event-log

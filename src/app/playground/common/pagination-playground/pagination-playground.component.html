@@ -1,141 +1,149 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
+  <!-- Core Settings -->
   <div slot="content-settings" class="control-grid" style="padding: 16px">
     <div class="control-group">
+      <label>Current Page</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.currentPage" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
       <label>Total Items</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.totalItems"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <ui-input type="number" [(ngModel)]="pgConfig.totalItems" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Items Per Page</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.itemsPerPage"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <ui-input type="number" [(ngModel)]="pgConfig.itemsPerPage" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
-      <label>Max Visible Pages</label>
-      <ui-input
-        type="number"
-        [(ngModel)]="pgConfig.maxVisiblePages"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Max Visible Buttons</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.maxVisiblePages" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
+  <!-- Styling & Layout -->
   <div slot="content-appearance" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Type</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.type"
-        (ngModelChange)="updateConfig()"
-        [options]="typeOptions"
-      ></ui-dropdown>
+      <label>Display Type</label>
+      <ui-dropdown [options]="typeOptions" [(ngModel)]="pgConfig.type" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.size"
-        (ngModelChange)="updateConfig()"
-        [options]="standardSizeOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="sizeOptions" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.variant"
-        (ngModelChange)="updateConfig()"
-        [options]="variantOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="variantOptions" [(ngModel)]="pgConfig.variant" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Theme</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.theme"
-        (ngModelChange)="updateConfig()"
-        [options]="themeOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="themeOptions" [(ngModel)]="pgConfig.theme" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Shape</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.shape"
-        (ngModelChange)="updateConfig()"
-        [options]="shapeOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="shapeOptions" [(ngModel)]="pgConfig.shape" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
-  </div>
-
-  <div slot="content-features" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.keyboardNav"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Keyboard Nav
+        <ui-checkbox [(ngModel)]="pgConfig.iconOnly" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Icons Only
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.responsiveMode"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Responsive
+        <ui-checkbox [(ngModel)]="pgConfig.compact" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Compact Mode
       </label>
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
-        RTL Mode
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showFirstLast"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show First/Last
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showPageSize"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show Page Size
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showTotal"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show Total
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showJumpTo"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show Jump To
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.iconOnly" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Icon Only
+        RTL Support
       </label>
     </div>
   </div>
 
+  <!-- Controls -->
+  <div slot="content-controls" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showFirstLast" (ngModelChange)="updateConfig()"></ui-checkbox>
+        First/Last Buttons
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showPrevNext" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Prev/Next Buttons
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showPageSize" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Page Size Selector
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showTotal" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Total Items
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showJumpTo" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Jump To
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.quickJump" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Enable Quick Jump
+      </label>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.quickJump">
+      <label>Quick Jump Step</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.quickJumpStep" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+  </div>
+
+  <!-- Advanced -->
+  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Infinite Scroll Style
+      </label>
+      <label class="checkbox-item" *ngIf="pgConfig.infinite">
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Infinite Loading State
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showProgress" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Progress Bar
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoHide" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Auto Hide (Single Page)
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.keyboardNav" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Keyboard Navigation
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.sticky" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Sticky Position
+      </label>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
   <div
     preview
     class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 60px 40px;
+      background: #fdfdfd;
+      min-height: 400px;
+    "
   >
     <ui-pagination
       #pagination
+      [attr.current-page]="pgConfig.currentPage"
       [attr.total-items]="pgConfig.totalItems"
       [attr.items-per-page]="pgConfig.itemsPerPage"
       [attr.max-visible-pages]="pgConfig.maxVisiblePages"
@@ -144,17 +152,30 @@
       [attr.variant]="pgConfig.variant"
       [attr.theme]="pgConfig.theme"
       [attr.shape]="pgConfig.shape"
-      [attr.keyboard-nav]="pgConfig.keyboardNav ? 'true' : 'false'"
-      [attr.responsive-mode]="pgConfig.responsiveMode ? 'true' : 'false'"
-      [attr.rtl]="pgConfig.rtl ? 'true' : null"
-      [attr.show-first-last]="pgConfig.showFirstLast ? 'true' : 'false'"
-      [attr.show-page-size]="pgConfig.showPageSize ? 'true' : null"
-      [attr.show-total]="pgConfig.showTotal ? 'true' : null"
-      [attr.show-jump-to]="pgConfig.showJumpTo ? 'true' : null"
-      [attr.icon-only]="pgConfig.iconOnly ? 'true' : null"
-      [attr.current-page]="pgConfig.currentPage"
+      [attr.show-first-last]="pgConfig.showFirstLast ? '' : null"
+      [attr.show-prev-next]="pgConfig.showPrevNext ? '' : null"
+      [attr.icon-only]="pgConfig.iconOnly ? '' : null"
+      [attr.show-page-size]="pgConfig.showPageSize ? '' : null"
+      [attr.show-total]="pgConfig.showTotal ? '' : null"
+      [attr.show-jump-to]="pgConfig.showJumpTo ? '' : null"
+      [attr.quick-jump]="pgConfig.quickJump ? '' : null"
+      [attr.quick-jump-step]="pgConfig.quickJumpStep"
+      [attr.infinite]="pgConfig.infinite ? '' : null"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.auto-hide]="pgConfig.autoHide ? '' : null"
+      [attr.show-progress]="pgConfig.showProgress ? '' : null"
+      [attr.keyboard-nav]="pgConfig.keyboardNav ? '' : null"
+      [attr.sticky]="pgConfig.sticky ? '' : null"
+      [attr.sticky-position]="pgConfig.stickyPosition"
+      [attr.rtl]="pgConfig.rtl ? '' : null"
+      [attr.compact]="pgConfig.compact ? '' : null"
       (pageChange)="onPageChange($event)"
     ></ui-pagination>
+
+    <div style="margin-top: 32px; text-align: center; color: #64748b; font-size: 14px; padding: 12px; border-radius: 8px; background: #f1f5f9;">
+      <p>Data View Simulator</p>
+      <strong>Page {{ pgConfig.currentPage }} / {{ Math.ceil(pgConfig.totalItems / pgConfig.itemsPerPage) }}</strong>
+    </div>
   </div>
 
   <pg-playground-event-log

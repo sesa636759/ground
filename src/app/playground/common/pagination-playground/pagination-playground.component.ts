@@ -1,11 +1,11 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
   ElementRef,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -18,27 +18,36 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './pagination-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent {
+export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
   @ViewChild('pagination') pagination!: ElementRef;
 
   pgConfig = this.getDefaultConfig();
+  protected readonly Math = Math;
 
   pgAccordionItems = [
-    { id: 'settings', title: 'Basic Settings', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'settings', title: 'Core Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Styling & Layout', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'controls', title: 'Navigation Controls', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Logic', icon: 'database', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = ['settings'];
+  accordionDefaultOpen = ['settings', 'appearance'];
 
   typeOptions = [
     { label: 'Basic', value: 'basic' },
     { label: 'Compact', value: 'compact' },
     { label: 'Detailed', value: 'detailed' },
     { label: 'Minimal', value: 'minimal' },
+    { label: 'Advanced', value: 'advanced' },
     { label: 'Dropdown', value: 'dropdown' },
     { label: 'Input', value: 'input' },
     { label: 'Indicator', value: 'indicator' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'sm' },
+    { label: 'Medium', value: 'md' },
+    { label: 'Large', value: 'lg' },
   ];
 
   variantOptions = [
@@ -62,14 +71,14 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Pill', value: 'pill' },
   ];
 
-  constructor() {
-    super();
+  ngOnInit() {
+    this.updateConfig();
   }
 
   getDefaultConfig() {
     return {
       currentPage: 1,
-      totalItems: 100,
+      totalItems: 120,
       itemsPerPage: 10,
       maxVisiblePages: 5,
       type: 'basic',
@@ -77,27 +86,77 @@ export class DmPaginationPlaygroundComponent extends BasePlaygroundComponent {
       variant: 'default',
       theme: 'default',
       shape: 'default',
-      keyboardNav: true,
+      // Appearance
+      showFirstLast: true,
+      showPrevNext: true,
+      iconOnly: false,
+      compact: false,
       responsiveMode: true,
       rtl: false,
-      showFirstLast: true,
+      // Controls
       showPageSize: false,
       showTotal: false,
       showJumpTo: false,
-      iconOnly: false,
+      quickJump: false,
+      quickJumpStep: 5,
+      // Logic
+      infinite: false,
+      loading: false,
+      autoHide: false,
+      showProgress: false,
+      keyboardNav: true,
+      sticky: false,
+      stickyPosition: 'bottom',
+      ellipsisTooltip: true,
     };
   }
 
   updateConfig() {
-    this.updateConfigFromDom(this.pagination, 'ui-pagination');
+    const config = this.pgConfig;
+    let code = `<ui-pagination\n`;
+    code += `  [current-page]="${config.currentPage}"\n`;
+    code += `  [total-items]="${config.totalItems}"\n`;
+    code += `  [items-per-page]="${config.itemsPerPage}"\n`;
+    code += `  type="${config.type}"\n`;
+    if (config.size !== 'md') code += `  size="${config.size}"\n`;
+    if (config.variant !== 'default') code += `  variant="${config.variant}"\n`;
+    if (config.theme !== 'default') code += `  theme="${config.theme}"\n`;
+    if (config.shape !== 'default') code += `  shape="${config.shape}"\n`;
+    if (!config.showFirstLast) code += `  [show-first-last]="false"\n`;
+    if (!config.showPrevNext) code += `  [show-prev-next]="false"\n`;
+    if (config.iconOnly) code += `  icon-only\n`;
+    if (config.compact) code += `  compact\n`;
+    if (config.showPageSize) code += `  show-page-size\n`;
+    if (config.showTotal) code += `  show-total\n`;
+    if (config.showJumpTo) code += `  show-jump-to\n`;
+    if (config.quickJump) {
+      code += `  quick-jump\n`;
+      code += `  [quick-jump-step]="${config.quickJumpStep}"\n`;
+    }
+    if (config.infinite) {
+      code += `  infinite\n`;
+      if (config.loading) code += `  loading\n`;
+    }
+    if (config.autoHide) code += `  auto-hide\n`;
+    if (config.showProgress) code += `  show-progress\n`;
+    if (config.sticky) {
+      code += `  sticky\n`;
+      code += `  sticky-position="${config.stickyPosition}"\n`;
+    }
+    if (!config.ellipsisTooltip) code += `  [ellipsis-tooltip]="false"\n`;
+    code += `  (pageChange)="onPageChange($event)"\n`;
+    code += `></ui-pagination>`;
+
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   onPageChange(event: any) {
-    this.pgConfig.currentPage = event.detail;
-    this.logEvent(`Navigated to page: ${event.detail}`);
+    this.pgConfig.currentPage = event.detail.page ?? event.detail;
+    if (event.detail.itemsPerPage) {
+      this.pgConfig.itemsPerPage = event.detail.itemsPerPage;
+    }
+    this.logEvent(`Navigated to page: ${this.pgConfig.currentPage}`);
     this.updateConfig();
   }
 }
-
-
-
