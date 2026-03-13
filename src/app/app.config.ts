@@ -16,7 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAppInitializer(() => appUiLibrary(window)),
-    provideAppInitializer(() => setUiLoader(window)),
     provideAppInitializer(() => chartLibrary(window)),
   ],
 };
