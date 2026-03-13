@@ -26,40 +26,72 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmOtpInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Usage', icon: 'hash', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Digits', icon: 'hash', iconLibrary: 'lucide' },
     { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'grouping', title: 'Grouping & Layout', icon: 'grid-3x3', iconLibrary: 'lucide' },
-    { id: 'validation', title: 'Feedback & States', icon: 'check-circle', iconLibrary: 'lucide' },
-    { id: 'types', title: 'Input Types', icon: 'type', iconLibrary: 'lucide' },
-    { id: 'sizes', title: 'Sizes & Colors', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'advanced', title: 'Advanced States', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizing Options', icon: 'maximize', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Color Palette', icon: 'droplet', iconLibrary: 'lucide' },
+    { id: 'grouping', title: 'Grouping Logic', icon: 'grid-3x3', iconLibrary: 'lucide' },
+    { id: 'secure', title: 'Secure PIN Mode', icon: 'lock', iconLibrary: 'lucide' },
+    { id: 'numeric', title: 'Numeric Type', icon: 'binary', iconLibrary: 'lucide' },
+    { id: 'alphanumeric', title: 'Alphanumeric Type', icon: 'at-sign', iconLibrary: 'lucide' },
+    { id: 'placeholders', title: 'Placeholders', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'invalid', title: 'Error State', icon: 'alert-circle', iconLibrary: 'lucide' },
+    { id: 'feedback', title: 'Rich Feedback', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'behaviors', title: 'Auto Behaviors', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'disabled', title: 'Disabled State', icon: 'ban', iconLibrary: 'lucide' },
+    { id: 'readonly', title: 'Read-only State', icon: 'eye', iconLibrary: 'lucide' },
+    { id: 'skeleton', title: 'Skeleton Loader', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'prefilled', title: 'Initial Values', icon: 'key-round', iconLibrary: 'lucide' },
   ];
 
-  basicCode = signal(`<ui-otp-input label="Verification Code" length="4"></ui-otp-input>
-<ui-otp-input length="6" placeholder="0"></ui-otp-input>`);
+  basicCode = signal(`<ui-otp-input label="4-Digit Code" length="4"></ui-otp-input>
+<ui-otp-input label="6-Digit Code" length="6"></ui-otp-input>
+<ui-otp-input label="8-Digit Code" length="8"></ui-otp-input>`);
 
   variantsCode = signal(`<ui-otp-input variant="default" label="Default"></ui-otp-input>
 <ui-otp-input variant="underlined" label="Underlined"></ui-otp-input>
 <ui-otp-input variant="flushed" label="Flushed"></ui-otp-input>
 <ui-otp-input variant="separated" label="Separated"></ui-otp-input>`);
 
-  groupingCode = signal(`<ui-otp-input length="6" group-size="3" label="Grouped (3-3)"></ui-otp-input>
-<ui-otp-input length="8" group-size="4" label="Grouped (4-4)"></ui-otp-input>`);
-
-  validationCode = signal(`<ui-otp-input validation-state="error" invalid error-text="Invalid code" label="Error State"></ui-otp-input>
-<ui-otp-input color="success" helper-text="Check your phone" label="Success Theme"></ui-otp-input>`);
-
-  typesCode = signal(`<ui-otp-input type="number" label="Numeric Only"></ui-otp-input>
-<ui-otp-input type="alphanumeric" label="Alphanumeric"></ui-otp-input>
-<ui-otp-input secure label="Secure (PIN)"></ui-otp-input>`);
-
   sizesCode = signal(`<ui-otp-input size="small" label="Small"></ui-otp-input>
-<ui-otp-input size="large" label="Large"></ui-otp-input>
-<ui-otp-input color="warning" label="Warning Color"></ui-otp-input>`);
+<ui-otp-input size="medium" label="Medium"></ui-otp-input>
+<ui-otp-input size="large" label="Large"></ui-otp-input>`);
 
-  advancedCode = signal(`<ui-otp-input disabled value="1234" label="Disabled"></ui-otp-input>
-<ui-otp-input readonly value="5678" label="Readonly"></ui-otp-input>
-<ui-otp-input skeleton label="Skeleton"></ui-otp-input>`);
+  colorsCode = signal(`<ui-otp-input color="primary" label="Primary"></ui-otp-input>
+<ui-otp-input color="secondary" label="Secondary"></ui-otp-input>
+<ui-otp-input color="success" label="Success"></ui-otp-input>
+<ui-otp-input color="danger" label="Danger"></ui-otp-input>
+<ui-otp-input color="warning" label="Warning"></ui-otp-input>
+<ui-otp-input color="info" label="Info"></ui-otp-input>`);
+
+  groupingCode = signal(`<ui-otp-input length="6" group-size="3" label="Grouped (3-3)"></ui-otp-input>
+<ui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)"></ui-otp-input>
+<ui-otp-input length="4" group-size="2" label="Grouped (2-2)"></ui-otp-input>`);
+
+  secureCode = signal(`<ui-otp-input secure label="Masked Entry" length="4"></ui-otp-input>`);
+
+  numericCode = signal(`<ui-otp-input type="number" label="Strict Numeric"></ui-otp-input>`);
+
+  alphanumericCode = signal(`<ui-otp-input type="alphanumeric" label="Alphanumeric"></ui-otp-input>`);
+
+  placeholderCode = signal(`<ui-otp-input placeholder="-" label="Dash"></ui-otp-input>
+<ui-otp-input placeholder="•" label="Bullet"></ui-otp-input>
+<ui-otp-input placeholder="*" label="Star"></ui-otp-input>`);
+
+  invalidCode = signal(`<ui-otp-input invalid error-text="Verification failed" label="Error State"></ui-otp-input>`);
+
+  feedbackCode = signal(`<ui-otp-input helper-text="Check your registration email" label="Helper Text"></ui-otp-input>`);
+
+  behaviorsCode = signal(`<ui-otp-input auto-focus label="Auto Focused"></ui-otp-input>
+<ui-otp-input auto-submit label="Auto Submit on Complete"></ui-otp-input>`);
+
+  disabledCode = signal(`<ui-otp-input disabled value="1234" label="Disabled"></ui-otp-input>`);
+
+  readonlyCode = signal(`<ui-otp-input readonly value="5678" label="Read-only"></ui-otp-input>`);
+
+  skeletonCode = signal(`<ui-otp-input skeleton label="Loading..."></ui-otp-input>`);
+
+  prefilledCode = signal(`<ui-otp-input value="123456" label="Pre-filled PIN"></ui-otp-input>`);
 
   onOtpChange(event: any) {
     console.log('OTP Changed:', event.detail);
@@ -67,6 +99,5 @@ export class DmOtpInputDemoComponent extends BaseDemoComponent {
 
   onOtpComplete(event: any) {
     console.log('OTP Complete:', event.detail);
-    alert(`Code entered: ${event.detail.value}`);
   }
 }

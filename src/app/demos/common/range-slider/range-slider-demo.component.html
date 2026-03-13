@@ -1,85 +1,143 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
-    icon="↔️"
+    icon="🎚️"
     title="Range Slider"
-    description="An interactive control for selecting a single value or a range between two bounds. Supports custom steps, tooltips, and vertical orientation."
-  ></pg-demo-header>
+    description="A component that allows users to select a value or a range of values by moving a thumb along a track."
+  >
+  </pg-demo-header>
 
   <pg-demo-tabs>
-    <div slot="playground">
-      <dm-range-slider-playground></dm-range-slider-playground>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Basic Usage -->
+        <pg-example-section
+          id="basic"
+          title="Single Slider"
+          description="Standard slider for selecting a single numeric value."
+          [code]="basicCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <ui-range-slider value="30" label="Select Intensity"></ui-range-slider>
+            <ui-range-slider step="10" show-marks value="50" label="Stepped Input (Increments of 10)"></ui-range-slider>
+          </div>
+        </pg-example-section>
+
+        <!-- Dual Range -->
+        <pg-example-section
+          id="range"
+          title="Dual Range Mode"
+          description="Enables two thumbs for selecting a range of values (min and max)."
+          [code]="rangeCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <ui-range-slider range start-value="20" end-value="80" label="Price Range"></ui-range-slider>
+            <ui-range-slider range start-value="40" end-value="60" color="#10b981" label="Operating Window"></ui-range-slider>
+          </div>
+        </pg-example-section>
+
+        <!-- Visual Styles -->
+        <pg-example-section
+          id="visuals"
+          title="Visual Styles"
+          description="Customize size, color, and tooltip behavior."
+          [code]="visualsCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <ui-range-slider size="sm" label="Small Tier Slider"></ui-range-slider>
+            <ui-range-slider size="lg" color="#8b5cf6" value="70" label="Large Tier with Custom Purple"></ui-range-slider>
+            <ui-range-slider tooltip-always-visible value="45" label="Tooltip Stays Visible"></ui-range-slider>
+          </div>
+        </pg-example-section>
+
+        <!-- Step Marks -->
+        <pg-example-section
+          id="marks"
+          title="Step Marks & Scale"
+          description="Display visual indicators for steps or specific values across the track."
+          [code]="marksCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <ui-range-slider show-marks step="25" label="Quarterly Benchmarks"></ui-range-slider>
+            <ui-range-slider 
+                show-marks 
+                [attr.marks]="'[{&quot;value&quot;: 0, &quot;label&quot;: &quot;Low&quot;}, {&quot;value&quot;: 50, &quot;label&quot;: &quot;Medium&quot;}, {&quot;value&quot;: 100, &quot;label&quot;: &quot;High&quot;}]'"
+                label="Named Marks"
+            ></ui-range-slider>
+          </div>
+        </pg-example-section>
+
+        <!-- Advanced Scaling -->
+        <pg-example-section
+          id="advanced"
+          title="Advanced Scaling"
+          description="Control value snapping and use non-linear coordinate mapping."
+          [code]="advancedCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <div>
+              <p style="margin-bottom: 8px; font-weight: 500;">Restricted Values (Only specific points allowed)</p>
+              <ui-range-slider 
+                [attr.restricted-values]="'[0, 25, 50, 75, 100]'" 
+                show-marks 
+                value="25"
+              ></ui-range-slider>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px; font-weight: 500;">Custom Steps (Non-linear distribution)</p>
+              <ui-range-slider 
+                [attr.custom-steps]="'[0, 10, 20, 50, 100, 200, 500]'" 
+                [attr.max]="500"
+                show-marks 
+                value="50"
+              ></ui-range-slider>
+            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Vertical Mode -->
+        <pg-example-section
+          id="vertical"
+          title="Vertical Orientation"
+          description="Sliders can be oriented vertically for UI layouts like audio mixers."
+          [code]="verticalCode()"
+        >
+          <div class="demo-flex" style="height: 300px; gap: 60px; justify-content: center; padding: 20px;">
+            <ui-range-slider vertical value="60"></ui-range-slider>
+            <ui-range-slider vertical range start-value="30" end-value="70" color="#ef4444"></ui-range-slider>
+            <ui-range-slider vertical show-marks step="20" value="40" color="#f59e0b"></ui-range-slider>
+          </div>
+        </pg-example-section>
+
+        <!-- Icons -->
+        <pg-example-section
+          id="icons"
+          title="Functional Icons"
+          description="Add context by placing icons at the start and end of the track."
+          [code]="iconsCode()"
+        >
+          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+            <ui-range-slider 
+              start-icon="volume-X" 
+              end-icon="volume-2" 
+              value="60"
+              label="Audio Control"
+            ></ui-range-slider>
+            <ui-range-slider 
+              start-icon="sun" 
+              end-icon="moon" 
+              value="30" 
+              color="#f59e0b"
+              label="Brightness/Gamma"
+            ></ui-range-slider>
+          </div>
+        </pg-example-section>
+      </div>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Slider Modes -->
-          <section class="demo-section" id="modes" style="margin-top: 0">
-            <div class="section-header">
-              <h2>↔️ Slider Modes</h2>
-              <p>Switch between single point selection and range selection.</p>
-            </div>
-            <div class="demo-card">
-              <div class="slider-preview">
-                <span>Single Selection:</span>
-                <ui-range-slider [value]="45" [min]="0" [max]="100" show-value></ui-range-slider>
-              </div>
-              <div class="slider-preview">
-                <span>Range Selection:</span>
-                <ui-range-slider
-                  range
-                  [value]="[25, 75]"
-                  [min]="0"
-                  [max]="100"
-                  show-value
-                ></ui-range-slider>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="modesCode"
-              [label]="'Mode Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-
-          <!-- Layouts & Constraints -->
-          <section class="demo-section" id="layouts">
-            <div class="section-header">
-              <h2>📐 Layouts & Constraints</h2>
-              <p>Adjust orientation and stepping behavior.</p>
-            </div>
-            <div class="demo-card" style="flex-direction: row; justify-content: space-around">
-              <div style="display: flex; flex-direction: column; align-items: center; gap: 20px">
-                <span>Vertical:</span>
-                <div style="height: 200px">
-                  <ui-range-slider orientation="vertical" [value]="60" show-value></ui-range-slider>
-                </div>
-              </div>
-              <div class="slider-preview" style="justify-content: center">
-                <span>Discrete Steps (10 units):</span>
-                <ui-range-slider
-                  [step]="10"
-                  [min]="0"
-                  [max]="100"
-                  [value]="30"
-                  show-value
-                ></ui-range-slider>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
-      </div>
+    <div slot="playground">
+      <dm-range-slider-playground />
     </div>
 
     <div slot="docs">
@@ -87,4 +145,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

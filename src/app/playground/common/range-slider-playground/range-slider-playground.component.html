@@ -1,13 +1,12 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
   <!-- Global Configuration -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Min</label>
+      <label>Minimum Value</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.min"
@@ -15,7 +14,7 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Max</label>
+      <label>Maximum Value</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.max"
@@ -23,7 +22,7 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Step</label>
+      <label>Step Increment</label>
       <ui-input
         type="number"
         [(ngModel)]="pgConfig.step"
@@ -31,12 +30,54 @@
       ></ui-input>
     </div>
     <div class="control-group">
-      <label>Orientation</label>
+        <label>Display Format</label>
+        <ui-input
+          [(ngModel)]="pgConfig.displayFormat"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. {value}%"
+        ></ui-input>
+      </div>
+  </div>
+
+  <!-- Visuals & Labels -->
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size tier</label>
       <ui-dropdown
-        [(ngModel)]="pgConfig.orientation"
+        [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-        [options]="standardOrientationOptions"
+        [options]="standardSizeOptions"
       ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Active Track Color</label>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Base Track Color</label>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.trackColor"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Start Icon (Lucide)</label>
+      <ui-input
+        [(ngModel)]="pgConfig.startIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>End Icon (Lucide)</label>
+      <ui-input
+        [(ngModel)]="pgConfig.endIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
@@ -45,48 +86,73 @@
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.range" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Range Mode (Dual)
+        Dual Range Mode
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showValue"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.vertical" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Vertical Orient
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showTooltip" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Tooltip
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.tooltipAlwaysVisible" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Tooltip Static
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showMarks" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Step Marks
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showValue" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Value Label
       </label>
     </div>
   </div>
 
+  <!-- Preview -->
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    "
+    class="preview-stage"
+    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    [style.height]="pgConfig.vertical ? '400px' : 'auto'"
   >
-    <div
-      class="slider-container"
-      [style.height]="pgConfig.orientation === 'vertical' ? '250px' : 'auto'"
-      [style.width]="'100%'"
-    >
+    <div style="width: 100%; max-width: 500px">
       <ui-range-slider
         #demoElement
         [attr.min]="pgConfig.min"
         [attr.max]="pgConfig.max"
         [attr.step]="pgConfig.step"
-        [attr.orientation]="pgConfig.orientation"
+        [attr.value]="pgConfig.range ? null : pgConfig.value"
+        [attr.start-value]="pgConfig.range ? pgConfig.startValue : null"
+        [attr.end-value]="pgConfig.range ? pgConfig.endValue : null"
         [attr.range]="pgConfig.range ? '' : null"
+        [attr.vertical]="pgConfig.vertical ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
+        [attr.tooltip-always-visible]="pgConfig.tooltipAlwaysVisible ? '' : null"
+        [attr.show-marks]="pgConfig.showMarks ? '' : null"
         [attr.show-value]="pgConfig.showValue ? '' : null"
-        [value]="currentValue"
-        (rangeChange)="onValueChange($event)"
+        [attr.color]="pgConfig.color"
+        [attr.track-color]="pgConfig.trackColor"
+        [attr.size]="pgConfig.size"
+        [attr.start-icon]="pgConfig.startIcon || null"
+        [attr.end-icon]="pgConfig.endIcon || null"
+        [attr.display-format]="pgConfig.displayFormat || null"
+        (sliderChange)="onSliderChange($event)"
       ></ui-range-slider>
-    </div>
-    <div style="margin-top: 24px; font-weight: 600; color: var(--text-primary)">
-      Current Value: {{ currentValue | json }}
+      
+      <div style="margin-top: 32px; color: var(--text-secondary); font-size: 14px; text-align: center;">
+         Computed Output: 
+         <span style="font-weight: 600; color: var(--text-primary);">
+            {{ pgConfig.range ? (pgConfig.startValue + ' to ' + pgConfig.endValue) : pgConfig.value }}
+         </span>
+      </div>
     </div>
   </div>
 

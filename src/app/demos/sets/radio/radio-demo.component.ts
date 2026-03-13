@@ -1,26 +1,25 @@
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
+
 import { DmRadioPlaygroundComponent } from '../../../playground/sets/radio-playground/radio-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
-import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
-import { RadioGroupValueAccessorDirective } from '../../../directives/radio-group-value-accessor.directive';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 @Component({
-  selector: 'ds-radio-demo',
+  selector: 'dm-radio-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
     DmRadioPlaygroundComponent,
     DemoTabsComponent,
+    DemoSidebarComponent,
+    DemoHeaderComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
-    RadioGroupValueAccessorDirective,
-    DemoHeaderComponent,
-    DemoSidebarComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './radio-demo.component.html',
@@ -28,113 +27,111 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmRadioDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'premium-variants', title: 'Premium Variants', icon: 'zap', iconLibrary: 'lucide' },
-    { id: 'button-groups', title: 'Button Groups', icon: 'square', iconLibrary: 'lucide' },
-    { id: 'loading-skeleton', title: 'Loading Skeleton', icon: 'ghost', iconLibrary: 'lucide' },
-    { id: 'color-variants', title: 'Color Variants', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'layouts', title: 'Layouts', icon: 'layout', iconLibrary: 'lucide' },
-    { id: 'sizes', title: 'Sizes', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'states', title: 'States', icon: 'toggle-left', iconLibrary: 'lucide' },
-    {
-      id: 'slotted-clearable',
-      title: 'Slotted & Clearable',
-      icon: 'x-circle',
-      iconLibrary: 'lucide',
-    },
-    { id: 'form-example', title: 'Form Example', icon: 'clipboard-list', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Usage', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'layouts', title: 'Layout Options', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'rich', title: 'Rich Content', icon: 'file-text', iconLibrary: 'lucide' },
+    { id: 'buttons', title: 'Button Groups', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'validation', title: 'Validation', icon: 'shield-check', iconLibrary: 'lucide' },
+    { id: 'options-prop', title: 'Options Prop', icon: 'list-plus', iconLibrary: 'lucide' },
+    { id: 'misc', title: 'Special Features', icon: 'plus-circle', iconLibrary: 'lucide' },
   ];
 
-  basicOptions = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-  ];
+  basicCode = signal(`<ui-radio-group label="Choose Plan">
+  <ui-radio value="free" label="Free Trial"></ui-radio>
+  <ui-radio value="pro" label="Pro Monthly"></ui-radio>
+  <ui-radio value="ent" label="Enterprise"></ui-radio>
+</ui-radio-group>`);
 
-  deliveryOptions = [
-    { value: 'standard', label: 'Standard', description: '5-7 business days, Free' },
-    { value: 'express', label: 'Express', description: '2-3 business days, $10' },
-    { value: 'overnight', label: 'Overnight', description: 'Next day, $25' },
-  ];
-
-  planOptions = [
-    { value: 'basic', label: 'Basic', description: '$9/month - Essential features' },
-    { value: 'pro', label: 'Pro', description: '$29/month - Advanced features' },
-  ];
-
-  paymentOptions = [
-    { value: 'card', label: 'Credit Card', description: 'Visa, MasterCard' },
-    { value: 'paypal', label: 'PayPal', description: 'Pay with PayPal' },
-  ];
-
-  clearableOptions = [
-    { value: 'active', label: 'Active Only' },
-    { value: 'archived', label: 'Archived Only' },
-  ];
-
-  // Form State
-  formShipping = '';
-  formPayment = '';
-  formMessage = '';
-  formMessageColor = 'inherit';
-  shippingInvalid = false;
-  paymentInvalid = false;
-
-  // Code snippets
-  premiumVariantsCode = `<ui-radio-group
-  variant="card"
-  layout="grid"
-  columns="2"
-  [options]="planOptions"
-></ui-radio-group>`;
-
-  buttonGroupsCode = `<ui-radio-group
-  button-group="true"
-  layout="horizontal"
-  [options]="basicOptions"
-></ui-radio-group>`;
-
-  layoutsCode = `<ui-radio-group layout="vertical" [options]="basicOptions"></ui-radio-group>
-<ui-radio-group layout="horizontal" [options]="basicOptions"></ui-radio-group>`;
-
-  loadingSkeletonCode = `<ui-radio-group skeleton [options]="basicOptions"></ui-radio-group>`;
-
-  colorVariantsCode = `<ui-radio-group color="primary" [options]="basicOptions"></ui-radio-group>
-<ui-radio-group color="success" [options]="basicOptions"></ui-radio-group>`;
-
-  sizesCode = `<ui-radio-group size="small" [options]="basicOptions"></ui-radio-group>
-<ui-radio-group size="large" [options]="basicOptions"></ui-radio-group>`;
-
-  statesCode = `<ui-radio-group disabled [options]="basicOptions"></ui-radio-group>
-<ui-radio-group invalid error-message="Selection required" [options]="basicOptions"></ui-radio-group>`;
-
-  formExampleCode = `<ui-radio-group
-  [(ngModel)]="shipping"
-  name="shipping"
-  required
-  [options]="deliveryOptions"
-></ui-radio-group>`;
-
-  slottedClearableCode = `<ui-radio-group name="slots" label="Manual Composition">
-  <ui-radio value="1" label="Option 1"></ui-radio>
-  <ui-radio value="2" label="Option 2"></ui-radio>
+  layoutsCode = signal(`<!-- Horizontal -->
+<ui-radio-group layout="horizontal" label="Select Gender">
+  <ui-radio value="m" label="Male"></ui-radio>
+  <ui-radio value="f" label="Female"></ui-radio>
 </ui-radio-group>
 
-<ui-radio-group 
-  allow-empty="true" 
-  [options]="clearableOptions"
-></ui-radio-group>`;
+<!-- Grid (2 Columns) -->
+<ui-radio-group layout="grid" columns="2" label="Preferred Days">
+  <ui-radio value="mon" label="Monday"></ui-radio>
+  <ui-radio value="tue" label="Tuesday"></ui-radio>
+  <ui-radio value="wed" label="Wednesday"></ui-radio>
+  <ui-radio value="thu" label="Thursday"></ui-radio>
+</ui-radio-group>`);
 
-  onSubmit() {
-    if (!this.formShipping || !this.formPayment) {
-      this.formMessage = 'Please select both shipping and payment methods';
-      this.formMessageColor = '#dc2626';
-      this.shippingInvalid = !this.formShipping;
-      this.paymentInvalid = !this.formPayment;
-    } else {
-      this.formMessage = 'Order placed successfully!';
-      this.formMessageColor = '#16a34a';
-      this.shippingInvalid = false;
-      this.paymentInvalid = false;
-    }
+  variantsCode = signal(`<ui-radio-group variant="bordered" label="Bordered Variant">
+  <ui-radio value="a" label="Option A"></ui-radio>
+  <ui-radio value="b" label="Option B"></ui-radio>
+</ui-radio-group>
+
+<ui-radio-group variant="underlined" label="Underlined Style">
+  <ui-radio value="1" label="Selection 1"></ui-radio>
+  <ui-radio value="2" label="Selection 2"></ui-radio>
+</ui-radio-group>`);
+
+  richCode = signal(`<ui-radio-group label="Shipping Method">
+  <ui-radio 
+    value="standard" 
+    label="Standard Shipping" 
+    description="3-5 business days delivery"
+    badge="$5.00"
+  ></ui-radio>
+  <ui-radio 
+    value="express" 
+    label="Express Shipping" 
+    description="Next day guaranteed"
+    badge="$15.00"
+    custom-icon="zap"
+  ></ui-radio>
+</ui-radio-group>`);
+
+  buttonsCode = signal(`<ui-radio-group button-group label="Selection Mode">
+  <ui-radio value="view" label="View Mode"></ui-radio>
+  <ui-radio value="edit" label="Edit Mode"></ui-radio>
+  <ui-radio value="admin" label="Admin Mode"></ui-radio>
+</ui-radio-group>`);
+
+  validationCode = signal(`<ui-radio-group 
+  required 
+  invalid 
+  label="Required Selection"
+  error-message="Please select at least one option to proceed."
+>
+  <ui-radio value="1" label="Accept terms"></ui-radio>
+  <ui-radio value="0" label="Decline"></ui-radio>
+</ui-radio-group>`);
+
+  optionsPropCode = signal(`<ui-radio-group 
+  label="Dynamic Options" 
+  [options]="[
+    { value: 'low', label: 'Low priority' },
+    { value: 'med', label: 'Medium priority' },
+    { value: 'high', label: 'High priority' }
+  ]"
+></ui-radio-group>`);
+
+  miscCode = signal(`<!-- Allow Empty (Deselectable) -->
+<ui-radio-group allow-empty label="Can Deselect" value="1">
+  <ui-radio value="1" label="Selection (Click again to clear)"></ui-radio>
+</ui-radio-group>
+
+<!-- No Dot Style -->
+<ui-radio-group [show-dot]="false" label="Hiding the Dot Indicator">
+  <ui-radio value="A" label="Option A"></ui-radio>
+  <ui-radio value="B" label="Option B"></ui-radio>
+</ui-radio-group>
+
+<!-- Label Position Left -->
+<ui-radio-group label-position="left" label="Labels on Left Side">
+  <ui-radio value="left" label="Choice A"></ui-radio>
+  <ui-radio value="right" label="Choice B"></ui-radio>
+</ui-radio-group>
+
+<!-- Skeleton Mode -->
+<ui-radio-group skeleton label="Loading choices...">
+  <ui-radio label="Hidden Label"></ui-radio>
+  <ui-radio label="Hidden Label"></ui-radio>
+</ui-radio-group>`);
+
+  onRadioChange(event: any) {
+    console.log('Value changed:', event.detail);
   }
 }

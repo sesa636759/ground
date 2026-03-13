@@ -1,54 +1,265 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="📋"
-    title="Picklist"
-    description="Move items between two lists with ease. Features multi-selection, drag-and-drop support, reordering within lists, and dedicated filtering for both source and target."
-  ></pg-demo-header>
-
+    title="Picklist (Dropdown Select)"
+    description="A highly customizable dropdown picker with support for single/multi selection, searching, grouping, rich indicators, and premium behavioral extensions."
+  >
+  </pg-demo-header>
   <pg-demo-tabs>
-    <div slot="playground">
-      <dm-picklist-playground></dm-picklist-playground>
-    </div>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Basic Picklist -->
+        <pg-example-section
+          id="basic"
+          title="Basic Picklist"
+          description="Default single-selection dropdown with options."
+          [code]="basicCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-picklist
+              [options]="fruitOptions"
+              placeholder="Pick a fruit"
+              (picklistChange)="onChange($event)"
+            ></ui-picklist>
+            <ui-picklist [options]="fruitOptions" value="cherry" label="Pre-selected"></ui-picklist>
+          </div>
+        </pg-example-section>
 
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- UI Controls -->
-          <section class="demo-section" id="features" style="margin-top: 0">
-            <div class="section-header">
-              <h2>⚙️ UI Controls</h2>
-              <p>Configure visibility of reordering buttons and filtering capabilities.</p>
-            </div>
-            <div class="demo-card">
-              <ui-picklist
-                [source]="sourceItems"
-                [target]="targetItems"
-                [show-source-controls]="false"
-                [show-target-controls]="false"
-                source-header="Minimal Source"
-                target-header="Minimal Target"
-              >
-                <ng-template let-item>{{ item.name }}</ng-template>
-              </ui-picklist>
-            </div>
-            <ui-code-preview
-              [htmlCode]="featuresCode"
-              [label]="'Configuration Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
+        <!-- Visual Variants -->
+        <pg-example-section
+          id="variants"
+          title="Visual Variants"
+          description="Choose from default (box), bordered, or ghost architectural styles."
+          [code]="variantsCode()"
+        >
+          <div class="demo-grid col-3">
+            <ui-picklist
+              variant="default"
+              [options]="fruitOptions"
+              placeholder="Default"
+            ></ui-picklist>
+            <ui-picklist
+              variant="bordered"
+              [options]="fruitOptions"
+              placeholder="Bordered"
+            ></ui-picklist>
+            <ui-picklist variant="ghost" [options]="fruitOptions" placeholder="Ghost"></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Sizes -->
+        <pg-example-section
+          id="sizes"
+          title="Sizes"
+          description="Direct comparison between small, medium, and large scaling tiers."
+          [code]="sizesCode()"
+        >
+          <div class="demo-flex-wrap" style="align-items: flex-end">
+            <ui-picklist size="sm" [options]="fruitOptions" placeholder="Small"></ui-picklist>
+            <ui-picklist size="md" [options]="fruitOptions" placeholder="Medium"></ui-picklist>
+            <ui-picklist size="lg" [options]="fruitOptions" placeholder="Large"></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Multi-Select -->
+        <pg-example-section
+          id="multi"
+          title="Multi-Select"
+          description="Enable multiple selection with tag-based visualization and Select All capabilities."
+          [code]="multiCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-picklist
+              mode="multi"
+              [options]="fruitOptions"
+              placeholder="Multiple Selection"
+              full-width
+            ></ui-picklist>
+            <ui-picklist
+              mode="multi"
+              show-select-all
+              [options]="fruitOptions"
+              placeholder="With Select All"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Searchable -->
+        <pg-example-section
+          id="search"
+          title="Searchable"
+          description="Support for filtering large option sets via search input."
+          [code]="searchCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist
+              searchable
+              search-placeholder="Filter fruits..."
+              [options]="fruitOptions"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Grouped Options -->
+        <pg-example-section
+          id="grouped"
+          title="Grouped Options"
+          description="Organize options into logical categories."
+          [code]="groupedCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist
+              grouped
+              [options]="groupedData"
+              placeholder="Categorized Systems"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Icons & Libraries -->
+        <pg-example-section
+          id="icons"
+          title="Icons & Libraries"
+          description="Rich option rendering with custom labels, icons, and support for multiple libraries."
+          [code]="iconsCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-picklist
+              [options]="richOptions"
+              icon-library="ionicons"
+              placeholder="Ionicons Support"
+              full-width
+            ></ui-picklist>
+            <ui-picklist
+              [options]="fruitOptions"
+              icon-library="lucide"
+              placeholder="Lucide Icons"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Custom Trigger -->
+        <pg-example-section
+          id="trigger"
+          title="Custom Trigger"
+          description="Override the default dropdown button with any custom UI element using slots."
+          [code]="triggerCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist custom-trigger [options]="fruitOptions">
+              <ui-button slot="trigger" variant="outline" color="secondary" size="md">
+                <ui-icon name="plus" library="lucide"></ui-icon>
+                Custom Trigger Button
+              </ui-button>
+            </ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Clearable -->
+        <pg-example-section
+          id="clearable"
+          title="Clearable"
+          description="Allow users to reset selection with a single click."
+          [code]="clearableCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-picklist clearable [options]="fruitOptions" value="apple"></ui-picklist>
+            <ui-picklist
+              clearable
+              mode="multi"
+              [options]="fruitOptions"
+              [value]="['banana', 'cherry']"
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- States -->
+        <pg-example-section
+          id="loading"
+          title="Functional States"
+          description="Visual indicators for data fetching or disabled interactions."
+          [code]="loadingCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-picklist loading placeholder="Fetching data..."></ui-picklist>
+            <ui-picklist disabled value="banana" [options]="fruitOptions"></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Premium Suite -->
+        <pg-example-section
+          id="premium"
+          title="Premium Features"
+          description="Advanced interactive extensions for professional product configurations."
+          [code]="premiumCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist
+              mode="multi"
+              reorderable
+              creatable
+              show-select-all
+              searchable
+              [options]="fruitOptions"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Reorderable Tags -->
+        <pg-example-section
+          id="reorder"
+          title="Reorderable Selection"
+          description="Drag and drop selected tags to define custom order in multi-mode."
+          [code]="reorderCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist
+              mode="multi"
+              reorderable
+              [options]="fruitOptions"
+              [value]="['apple', 'banana', 'cherry']"
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
+
+        <!-- Creatable Options -->
+        <pg-example-section
+          id="creatable"
+          title="Creatable Options"
+          description="Enable users to add custom entries dynamically into the list."
+          [code]="creatableCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-picklist
+              creatable
+              searchable
+              placeholder="Search or type new option..."
+              full-width
+            ></ui-picklist>
+          </div>
+        </pg-example-section>
       </div>
     </div>
 
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <dm-picklist-playground />
+    </div>
+
+    <!-- Documentation Slot -->
     <div slot="docs">
       <pg-component-documentation componentId="picklist"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
-

@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -25,10 +25,9 @@ export class DmRangeSliderPlaygroundComponent extends BasePlaygroundComponent im
 
   pgAccordionItems = [
     { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'visuals', title: 'Visuals & Labels', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'zap', iconLibrary: 'lucide' },
   ];
-
-  currentValue: any = [20, 80];
 
   constructor() {
     super();
@@ -43,37 +42,40 @@ export class DmRangeSliderPlaygroundComponent extends BasePlaygroundComponent im
       min: 0,
       max: 100,
       step: 1,
-      orientation: 'horizontal',
-      range: true,
+      value: 50,
+      startValue: 20,
+      endValue: 80,
+      range: false,
+      disabled: false,
+      showTooltip: true,
+      tooltipAlwaysVisible: false,
+      color: '#3b82f6',
+      trackColor: '#e5e7eb',
+      size: 'md',
+      startIcon: '',
+      endIcon: '',
+      showMarks: false,
+      vertical: false,
       showValue: true,
+      displayFormat: '{value}',
     };
   }
 
   updateConfig() {
-    let code = '<ui-range-slider\n';
-    code += `  [min]="${this.pgConfig.min}"\n`;
-    code += `  [max]="${this.pgConfig.max}"\n`;
-    code += `  [step]="${this.pgConfig.step}"\n`;
-    code += `  orientation="${this.pgConfig.orientation}"\n`;
-    if (this.pgConfig.range) code += `  range\n`;
-    code += `  [value]="${JSON.stringify(this.currentValue)}"\n`;
-    code += '></ui-range-slider>';
-
-    this.generatedCode.set(code);
-    this.refreshCode();
+    this.updateConfigFromDom(this.demoElement, 'ui-range-slider');
   }
 
-  onValueChange(event: any) {
-    this.currentValue = event.detail.value;
+  onSliderChange(event: any) {
+    const detail = event.detail;
+    if (this.pgConfig.range) {
+      if (detail && typeof detail === 'object') {
+        this.pgConfig.startValue = detail.start;
+        this.pgConfig.endValue = detail.end;
+      }
+    } else {
+      this.pgConfig.value = typeof detail === 'number' ? detail : (detail?.value ?? detail);
+    }
+    this.logEvent(`Value changed: ${JSON.stringify(detail)}`);
     this.updateConfig();
-    this.logEvent(`Value changed: ${JSON.stringify(this.currentValue)}`);
-  }
-
-  override resetConfig() {
-    super.resetConfig();
-    this.currentValue = [20, 80];
   }
 }
-
-
-

@@ -1,65 +1,157 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
-    icon="🎭"
+    icon="⌨️"
     title="Pattern Input"
-    description="An input field with built-in masking capabilities for structured data entry. Automatically formats user input according to predefined patterns like phone numbers, dates, credit cards, and more."
-  ></pg-demo-header>
+    description="A specialized input component that enforces specific character patterns, mask formatting, and input restrictions."
+  >
+  </pg-demo-header>
 
   <pg-demo-tabs>
-    <div slot="playground">
-      <dm-pattern-input-playground></dm-pattern-input-playground>
+    <div slot="examples" class="examples-split-layout">
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Common Patterns -->
+        <pg-example-section
+          id="basic"
+          title="Common Patterns"
+          description="Standard mask patterns for phone numbers, cards, and dates."
+          [code]="basicCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input pattern="(###) ###-####" label="Phone Number"></ui-pattern-input>
+            <ui-pattern-input pattern="#### #### #### ####" label="Credit Card"></ui-pattern-input>
+            <ui-pattern-input pattern="##/##/####" placeholder="MM/DD/YYYY" label="Date"></ui-pattern-input>
+            <ui-pattern-input pattern="###-##-####" label="SSN"></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Contact & Identity -->
+        <pg-example-section
+          id="identity"
+          title="Contact & Identity"
+          description="Patterns for government IDs, postal codes, and licenses."
+          [code]="identityCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input label="Canadian Postal Code" pattern="A#A #A#" input-type="alphanumeric" placeholder="K1A 0B1"></ui-pattern-input>
+            <ui-pattern-input label="Driver License" pattern="A-####-####-##" input-type="alphanumeric" placeholder="X-1234-5678-90"></ui-pattern-input>
+            <ui-pattern-input label="Passport ID" pattern="AAAAAAAAA" input-type="alphanumeric" placeholder="A12345678"></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Date & Time Formats -->
+        <pg-example-section
+          id="temporal"
+          title="Date & Time"
+          description="Auto-formatting for temporal data input with various separators."
+          [code]="temporalCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input label="Time (24h)" pattern="##:##:##" placeholder="14:30:59"></ui-pattern-input>
+            <ui-pattern-input label="Month/Year" pattern="##/####" placeholder="12/2025"></ui-pattern-input>
+            <ui-pattern-input label="YYYY/MM/DD" pattern="####/##/##" placeholder="2024/12/31"></ui-pattern-input>
+            <ui-pattern-input label="Date (DD-MM-YYYY)" pattern="##-##-####" placeholder="31-12-2024"></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Tech & Network -->
+        <pg-example-section
+          id="tech"
+          title="Tech & Network"
+          description="Patterns for IP addresses, MACs, and system identifiers."
+          [code]="techCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input label="IPv4 Address" pattern="###.###.###.###" placeholder="192.168.001.001"></ui-pattern-input>
+            <ui-pattern-input label="MAC Address" pattern="AA:AA:AA:AA:AA:AA" placeholder="00:1A:2B:3C:4D:5E"></ui-pattern-input>
+            <ui-pattern-input label="Hex Color" pattern="#AAAAAA" allowed-chars="[0-9A-Fa-f]" input-type="custom" placeholder="#3B82F6"></ui-pattern-input>
+            <ui-pattern-input label="UUID / GUID" pattern="AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA" placeholder="550e8400-e29b-..."></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Business Formats -->
+        <pg-example-section
+          id="business"
+          title="Business & SKU"
+          description="Standard business formats, license keys, and product codes."
+          [code]="businessCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input label="Product SKU" pattern="AAA-####-AA" input-type="alphanumeric" placeholder="PRD-2024-XL"></ui-pattern-input>
+            <ui-pattern-input label="Order ID" pattern="#-######-###" placeholder="1-453920-888"></ui-pattern-input>
+            <ui-pattern-input label="License Key" pattern="AAAA-AAAA-AAAA-AAAA" placeholder="ABCD-EFGH-1234-5678"></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Finance & Banking -->
+        <pg-example-section
+          id="finance"
+          title="Finance & Banking"
+          description="Banking identifiers and security code formats."
+          [code]="financeCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input label="Bank Routing (US)" pattern="####-####-#" placeholder="1234-5678-9"></ui-pattern-input>
+            <ui-pattern-input label="IBAN (Short)" pattern="AA## #### #### ####" placeholder="DE89 3704 ..."></ui-pattern-input>
+            <ui-pattern-input label="CVV / CVC" pattern="###" maxLength="3" placeholder="123"></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Input Restrictions -->
+        <pg-example-section
+          id="restrictions"
+          title="Strict Restrictions"
+          description="Enforce keyboard-level filtering for numeric, alpha, or alphanumeric sets."
+          [code]="restrictionsCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input input-type="numeric" label="Numeric Only"></ui-pattern-input>
+            <ui-pattern-input input-type="alpha" label="Alpha Only"></ui-pattern-input>
+            <ui-pattern-input input-type="alphanumeric" label="Alphanumeric"></ui-pattern-input>
+            <ui-pattern-input
+              input-type="custom"
+              allowed-chars="[A-F0-9]"
+              label="HEX Restricted"
+              placeholder="F0E1"
+            ></ui-pattern-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Validation & States -->
+        <pg-example-section
+          id="validation"
+          title="Validation & States"
+          description="Interactive validation with success and error indicators."
+          [code]="validationCode()"
+        >
+          <div class="demo-grid col-2">
+            <ui-pattern-input
+              required
+              pattern="AAA-###"
+              label="Required Pattern"
+              error-message="Must match AAA-### format"
+            ></ui-pattern-input>
+            <ui-pattern-input
+              disabled
+              value="ABC-123"
+              pattern="AAA-###"
+              label="Disabled"
+            ></ui-pattern-input>
+            <ui-pattern-input
+              validation-regex="^\\+1\\d{10}$"
+              auto-format="false"
+              placeholder="+12345678901"
+              label="Regex (E.164 Phone)"
+              error-message="Invalid phone format"
+            ></ui-pattern-input>
+          </div>
+        </pg-example-section>
+      </div>
     </div>
 
-    <div slot="examples">
-      <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
-        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
-
-        <!-- Main Content Area -->
-        <div class="examples-content">
-          <!-- Common Patterns -->
-          <section class="demo-section" id="patterns" style="margin-top: 0">
-            <div class="section-header">
-              <h2>🎭 Common Patterns</h2>
-              <p>Pre-configured masks for typical use cases.</p>
-            </div>
-            <div class="demo-card">
-              <div style="display: flex; flex-direction: column; gap: 24px">
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Phone Number</label
-                  >
-                  <ui-pattern-input
-                    mask="(999) 999-9999"
-                    placeholder="(555) 123-4567"
-                  ></ui-pattern-input>
-                </div>
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Credit Card</label
-                  >
-                  <ui-pattern-input
-                    mask="9999-9999-9999-9999"
-                    placeholder="1234-5678-9012-3456"
-                  ></ui-pattern-input>
-                </div>
-                <div>
-                  <label style="display: block; margin-bottom: 8px; font-weight: 600"
-                    >Date (MM/DD/YYYY)</label
-                  >
-                  <ui-pattern-input mask="99/99/9999" placeholder="12/31/2024"></ui-pattern-input>
-                </div>
-              </div>
-            </div>
-            <ui-code-preview
-              [htmlCode]="patternsCode"
-              [label]="'Pattern Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
-          </section>
-        </div>
-      </div>
+    <div slot="playground">
+      <dm-pattern-input-playground />
     </div>
 
     <div slot="docs">
@@ -67,4 +159,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

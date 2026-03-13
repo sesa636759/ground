@@ -2,7 +2,7 @@
   <pg-demo-header
     icon="🔢"
     title="OTP Input Component"
-    description="A specialized input component for One-Time Passwords, PINs, and verification codes with automatic focus management and grouping support."
+    description="An exhaustive guide to every property and behavioral variant of the specialized verification input."
   >
   </pg-demo-header>
   <pg-demo-tabs>
@@ -13,16 +13,17 @@
 
       <!-- Main Content Area -->
       <div class="examples-content" id="examples-scroll-area">
-        <!-- Basic Usage -->
+        <!-- Basic Digits -->
         <pg-example-section
           id="basic"
-          title="Basic Usage"
-          description="Default OTP input with configurable length and optional labels."
+          title="Basic Digits"
+          description="Configurable lengths for different security requirements."
           [code]="basicCode()"
         >
-          <div class="demo-flex-wrap">
-            <ui-otp-input label="Enter 4-digit PIN" length="4"></ui-otp-input>
-            <ui-otp-input label="Enter 6-digit Code" length="6" placeholder="0"></ui-otp-input>
+          <div class="demo-grid col-1">
+            <ui-otp-input label="4-Digit Code" length="4" full-width></ui-otp-input>
+            <ui-otp-input label="6-Digit Code" length="6" full-width></ui-otp-input>
+            <ui-otp-input label="8-Digit Code" length="8" full-width></ui-otp-input>
           </div>
         </pg-example-section>
 
@@ -30,84 +31,194 @@
         <pg-example-section
           id="variants"
           title="Visual Variants"
-          description="Different architectural styles for the input boxes."
+          description="Four distinct architectural styles to match your design system."
           [code]="variantsCode()"
         >
           <div class="demo-grid col-2">
-            <ui-otp-input variant="default" label="Default (Boxed)"></ui-otp-input>
-            <ui-otp-input variant="underlined" label="Underlined"></ui-otp-input>
-            <ui-otp-input variant="flushed" label="Flushed (No Border)"></ui-otp-input>
-            <ui-otp-input variant="separated" label="Separated"></ui-otp-input>
+            <ui-otp-input variant="default" label="Boxed (Default)" full-width></ui-otp-input>
+            <ui-otp-input variant="underlined" label="Underlined" full-width></ui-otp-input>
+            <ui-otp-input variant="flushed" label="Flushed / Borderless" full-width></ui-otp-input>
+            <ui-otp-input variant="separated" label="Separated (Gapped)" full-width></ui-otp-input>
           </div>
         </pg-example-section>
 
-        <!-- Grouping & Layout -->
-        <pg-example-section
-          id="grouping"
-          title="Grouping & Layout"
-          description="Improve readability for longer codes by adding visual groups."
-          [code]="groupingCode()"
-        >
-          <div class="demo-grid col-1">
-            <ui-otp-input length="6" group-size="3" label="Grouped (3-3)"></ui-otp-input>
-            <ui-otp-input length="8" group-size="4" label="Grouped (4-4)"></ui-otp-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Feedback & States -->
-        <pg-example-section
-          id="validation"
-          title="Feedback & States"
-          description="Communicate success, errors, and helpful hints."
-          [code]="validationCode()"
-        >
-          <div class="demo-grid col-1">
-            <ui-otp-input invalid error-text="Verification code is incorrect" label="Error Feedback"></ui-otp-input>
-            <ui-otp-input color="success" helper-text="Check your SMS for the code" label="Success Context"></ui-otp-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Input Types -->
-        <pg-example-section
-          id="types"
-          title="Input Types"
-          description="Restrict input to numbers, alphanumeric, or mask as passwords."
-          [code]="typesCode()"
-        >
-          <div class="demo-grid col-2">
-            <ui-otp-input type="number" label="Numeric Only"></ui-otp-input>
-            <ui-otp-input type="alphanumeric" label="Alphanumeric"></ui-otp-input>
-            <ui-otp-input secure label="Secure PIN (Masked)"></ui-otp-input>
-            <ui-otp-input type="numeric" label="Mobile numeric"></ui-otp-input>
-          </div>
-        </pg-example-section>
-
-        <!-- Sizes & Colors -->
+        <!-- Sizing Options -->
         <pg-example-section
           id="sizes"
-          title="Sizes & Colors"
-          description="Scalable dimensions and semantic color themes."
+          title="Sizing Options"
+          description="Support for small, medium, and large scaling tiers."
           [code]="sizesCode()"
         >
           <div class="demo-flex-wrap" style="align-items: flex-end;">
-            <ui-otp-input size="small" label="Compact Size"></ui-otp-input>
-            <ui-otp-input size="large" label="Prominent Size"></ui-otp-input>
-            <ui-otp-input color="secondary" label="Secondary Color"></ui-otp-input>
-            <ui-otp-input color="warning" label="Warning Color"></ui-otp-input>
+            <ui-otp-input size="small" label="Compact" length="4"></ui-otp-input>
+            <ui-otp-input size="medium" label="Standard" length="4"></ui-otp-input>
+            <ui-otp-input size="large" label="Prominent" length="4"></ui-otp-input>
           </div>
         </pg-example-section>
 
-        <!-- Advanced States -->
+        <!-- Color Palette -->
         <pg-example-section
-          id="advanced"
-          title="Advanced States"
-          description="Interactive and non-interactive component states."
-          [code]="advancedCode()"
+          id="colors"
+          title="Color Palette"
+          description="Support for the complete semantic brand palette."
+          [code]="colorsCode()"
+        >
+          <div class="demo-grid col-3">
+            <ui-otp-input color="primary" label="Primary" length="4"></ui-otp-input>
+            <ui-otp-input color="secondary" label="Secondary" length="4"></ui-otp-input>
+            <ui-otp-input color="success" label="Success" length="4"></ui-otp-input>
+            <ui-otp-input color="danger" label="Danger" length="4"></ui-otp-input>
+            <ui-otp-input color="warning" label="Warning" length="4"></ui-otp-input>
+            <ui-otp-input color="info" label="Info" length="4"></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Grouping Logic -->
+        <pg-example-section
+          id="grouping"
+          title="Grouping Logic"
+          description="Break long codes into readable chunks using mathematical grouping."
+          [code]="groupingCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input length="6" group-size="3" label="Grouped (3-3)" full-width></ui-otp-input>
+            <ui-otp-input length="8" group-size="2" label="Grouped (2-2-2-2)" full-width></ui-otp-input>
+            <ui-otp-input length="4" group-size="2" label="Grouped (2-2)" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Secure PIN Mode -->
+        <pg-example-section
+          id="secure"
+          title="Secure PIN Mode"
+          description="Mask digits for privacy during entry."
+          [code]="secureCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input secure label="Secure Masked Entry" length="4" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Numeric Type -->
+        <pg-example-section
+          id="numeric"
+          title="Numeric Type"
+          description="Restrict input to digits only."
+          [code]="numericCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input type="number" label="Numeric Numbers" length="6" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Alphanumeric Type -->
+        <pg-example-section
+          id="alphanumeric"
+          title="Alphanumeric Type"
+          description="Allow both letters and numbers."
+          [code]="alphanumericCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input type="alphanumeric" label="Letters & Numbers" length="6" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Placeholders -->
+        <pg-example-section
+          id="placeholders"
+          title="Placeholders"
+          description="Guide users with visual hints inside empty boxes."
+          [code]="placeholderCode()"
+        >
+          <div class="demo-grid col-3">
+            <ui-otp-input placeholder="-" label="Dash Hint" length="4"></ui-otp-input>
+            <ui-otp-input placeholder="•" label="Bullet Hint" length="4"></ui-otp-input>
+            <ui-otp-input placeholder="*" label="Star Hint" length="4"></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Error State -->
+        <pg-example-section
+          id="invalid"
+          title="Error State"
+          description="Visual indicators for failed verification."
+          [code]="invalidCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input invalid error-text="The code entered is incorrect" label="Failed Entry" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Rich Feedback -->
+        <pg-example-section
+          id="feedback"
+          title="Rich Feedback"
+          description="Use helper text to provide context."
+          [code]="feedbackCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input helper-text="Enter the 6-digit code sent to +1 234 *** 78" label="SMS Verification" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Auto Behaviors -->
+        <pg-example-section
+          id="behaviors"
+          title="Auto Behaviors"
+          description="Manage focus and form submission automatically."
+          [code]="behaviorsCode()"
         >
           <div class="demo-grid col-2">
-            <ui-otp-input disabled value="1234" label="Disabled State"></ui-otp-input>
-            <ui-otp-input readonly value="5678" label="Readonly State"></ui-otp-input>
-            <ui-otp-input skeleton label="Skeleton Loader"></ui-otp-input>
+            <ui-otp-input auto-focus label="Auto-Focused Field" full-width></ui-otp-input>
+            <ui-otp-input auto-submit label="Submits on Completion" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Disabled State -->
+        <pg-example-section
+          id="disabled"
+          title="Disabled State"
+          description="Inert state for non-editable components."
+          [code]="disabledCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input disabled value="1234" label="Disabled Input" length="4" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Read-only State -->
+        <pg-example-section
+          id="readonly"
+          title="Read-only State"
+          description="View-only state with accessible values."
+          [code]="readonlyCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input readonly value="5678" label="Read-only PIN" length="4" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Skeleton Loader -->
+        <pg-example-section
+          id="skeleton"
+          title="Skeleton Loader"
+          description="Skeleton state for loading phases."
+          [code]="skeletonCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input skeleton label="Loading Component" length="6" full-width></ui-otp-input>
+          </div>
+        </pg-example-section>
+
+        <!-- Initial Values -->
+        <pg-example-section
+          id="prefilled"
+          title="Initial Values"
+          description="Pre-populating the input with existing values."
+          [code]="prefilledCode()"
+        >
+          <div class="demo-grid col-1">
+            <ui-otp-input value="123456" label="Existing Verification PIN" length="6" full-width></ui-otp-input>
           </div>
         </pg-example-section>
       </div>

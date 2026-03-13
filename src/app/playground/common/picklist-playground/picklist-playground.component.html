@@ -1,78 +1,140 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
+  <!-- Global Configuration -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Source Header</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.sourceHeader"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Placeholder</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
-      <label>Target Header</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.targetHeader"
+      <label>Selection Mode</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.mode"
         (ngModelChange)="updateConfig()"
-      ></ui-input>
+        [options]="modeOptions"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Filter Placeholder</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.filterPlaceholder"
+      <label>Max Options to Display</label>
+      <ui-input 
+        type="number" 
+        [(ngModel)]="pgConfig.maxOptions" 
         (ngModelChange)="updateConfig()"
+        min="1"
+        max="1000"
       ></ui-input>
     </div>
   </div>
 
-  <div slot="content-states" style="padding: 16px">
+  <!-- Appearance & Styles -->
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="sizeOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
+  <!-- Behavioral States -->
+  <div slot="content-states" class="control-grid" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showSourceControls"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Source Controls
+        <ui-checkbox [(ngModel)]="pgConfig.searchable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Searchable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showTargetControls"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Target Controls
+        <ui-checkbox [(ngModel)]="pgConfig.clearable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Clearable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Loading state
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.grouped" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Enable Grouping
+      </label>
+    </div>
+    
+    <div class="control-group" *ngIf="pgConfig.searchable">
+      <label>Search Placeholder</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.searchPlaceholder" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+  </div>
+
+  <!-- Data Options (Premium Features) -->
+  <div slot="content-data" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.creatable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Allow Creating New (Premium)
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showSelectAll" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Select All (Multi)
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.reorderable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Reorderable Tags (Multi)
       </label>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
-  >
-    <ui-picklist
-      #demoElement
-      [attr.source-header]="pgConfig.sourceHeader"
-      [attr.target-header]="pgConfig.targetHeader"
-      [attr.show-source-controls]="pgConfig.showSourceControls ? '' : null"
-      [attr.show-target-controls]="pgConfig.showTargetControls ? '' : null"
-      [attr.filter-placeholder]="pgConfig.filterPlaceholder"
-      [source]="sourceJson"
-      [target]="targetJson"
-    >
-      <!-- We can't really pass ng-template to a web component easily in raw HTML, but let's assume it works here. -->
-      <ng-template let-item>
-        <div style="display: flex; align-items: center; gap: 8px">
-          <span>{{ item.icon }}</span>
-          <span>{{ item.name }}</span>
-        </div>
-      </ng-template>
-    </ui-picklist>
+  <!-- Preview Area -->
+  <div preview class="preview-stage" style="padding: 80px; min-height: 400px; justify-content: flex-start; align-items: center; flex-direction: column;">
+    <div style="width: 100%; max-width: 400px;">
+      <ui-picklist
+        #demoElement
+        [options]="pgConfig.options"
+        [value]="pgConfig.value"
+        [attr.mode]="pgConfig.mode"
+        [attr.variant]="pgConfig.variant"
+        [attr.size]="pgConfig.size"
+        [attr.placeholder]="pgConfig.placeholder"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.searchable]="pgConfig.searchable ? '' : null"
+        [attr.search-placeholder]="pgConfig.searchPlaceholder"
+        [attr.clearable]="pgConfig.clearable ? '' : null"
+        [attr.grouped]="pgConfig.grouped ? '' : null"
+        [attr.icon-library]="pgConfig.iconLibrary"
+        [attr.creatable]="pgConfig.creatable ? '' : null"
+        [attr.show-select-all]="pgConfig.showSelectAll ? '' : null"
+        [attr.reorderable]="pgConfig.reorderable ? '' : null"
+        [attr.max-options]="pgConfig.maxOptions"
+        (picklistChange)="onChange($event)"
+      ></ui-picklist>
+    </div>
+    
+    <div style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
+      Selected Value: {{ pgConfig.value | json }}
+    </div>
   </div>
 
   <pg-playground-event-log

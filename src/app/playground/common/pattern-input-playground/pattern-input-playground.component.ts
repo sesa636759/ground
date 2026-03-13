@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -25,15 +25,33 @@ export class DmPatternInputPlaygroundComponent extends BasePlaygroundComponent {
 
   pgAccordionItems = [
     { id: 'global', title: 'Global Configuration', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'states', title: 'Behavioral States', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'labels', title: 'Labels & Text', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'logic', title: 'Pattern & Logic', icon: 'binary', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Behavioral States', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'labels', title: 'Labels & Messages', icon: 'type', iconLibrary: 'lucide' },
   ];
 
   patternOptions = [
-    { label: 'Phone: (999) 999-9999', value: '(999) 999-9999' },
-    { label: 'Date: 99/99/9999', value: '99/99/9999' },
-    { label: 'Card: ****-****-****-****', value: '****-****-****-****' },
+    { label: 'None', value: '' },
+    { label: 'Phone: (###) ###-####', value: '(###) ###-####' },
+    { label: 'Date: ##/##/####', value: '##/##/####' },
+    { label: 'Card: ####-####-####-####', value: '####-####-####-####' },
+    { label: 'SSN: ###-##-####', value: '###-##-####' },
+    { label: 'MAC: XX:XX:XX:XX:XX:XX', value: 'XX:XX:XX:XX:XX:XX' },
+    { label: 'Time: ##:##:##', value: '##:##:##' },
+    { label: 'Key: ****-****-****-****', value: '****-****-****-****' },
+    { label: 'Postal: A#A #A#', value: 'A#A #A#' },
+    { label: 'IBAN: AA## #### #### ####', value: 'AA## #### #### ####' },
+    { label: 'SKU: AAA-####-AA', value: 'AAA-####-AA' },
+    { label: 'IPv4: ###.###.###.###', value: '###.###.###.###' },
     { label: 'Custom: AAA-999', value: 'AAA-999' },
+  ];
+
+  inputTypeOptions = [
+    { label: 'Text', value: 'text' },
+    { label: 'Numeric', value: 'numeric' },
+    { label: 'Alpha', value: 'alpha' },
+    { label: 'Alphanumeric', value: 'alphanumeric' },
+    { label: 'Custom', value: 'custom' },
   ];
 
   constructor() {
@@ -42,27 +60,33 @@ export class DmPatternInputPlaygroundComponent extends BasePlaygroundComponent {
 
   getDefaultConfig() {
     return {
-      pattern: '(999) 999-9999',
+      pattern: '(###) ###-####',
       placeholder: 'Enter phone number',
       label: 'Phone Number',
       size: 'md',
-      maskChar: '9',
-      maxLength: 0,
-      helperText: '',
-      errorMessage: '',
+      maskChar: '#',
+      maxLength: 14,
+      helperText: 'Format: (123) 456-7890',
+      errorMessage: 'Invalid entry detected',
+      successMessage: 'Validated successfully',
       disabled: false,
-      readonly: false,
       required: false,
       showValidation: true,
       autoFormat: true,
       showCounter: false,
+      inputType: 'text',
+      allowedChars: '',
+      validationRegex: '',
+      value: ''
     };
   }
 
   updateConfig() {
     this.updateConfigFromDom(this.demoElement, 'ui-pattern-input');
   }
+
+  onPatternInputChange(event: any) {
+    this.pgConfig.value = event.detail.formatted;
+    this.logEvent(`Changed: ${JSON.stringify(event.detail)}`);
+  }
 }
-
-
-
