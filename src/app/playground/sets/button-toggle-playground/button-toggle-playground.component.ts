@@ -23,6 +23,72 @@ export class DmButtonTogglePlaygroundComponent extends BasePlaygroundComponent {
     { value: 'cards', label: 'Cards View', icon: 'fas fa-id-card' },
   ];
 
+  pgAccordionItems = [
+    { id: 'global', title: 'Global Settings', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'appearance', title: 'Appearance & Style', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & States', icon: 'activity', iconLibrary: 'lucide' },
+    { id: 'advanced', title: 'Advanced Features', icon: 'zap', iconLibrary: 'lucide' },
+  ];
+
+  accordionDefaultOpen = ['global'];
+
+  modeOptions = [
+    { label: 'Segmented', value: 'segmented' },
+    { label: 'Dropdown', value: 'dropdown' },
+  ];
+
+  orientationOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
+
+  sizeOptions = [
+    { label: 'Small', value: 'small' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Large', value: 'large' },
+  ];
+
+  colorOptions = [
+    { label: 'Primary', value: 'primary' },
+    { label: 'Secondary', value: 'secondary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  variantOptions = [
+    { label: 'Filled', value: 'filled' },
+    { label: 'Outlined', value: 'outlined' },
+    { label: 'Text', value: 'text' },
+    { label: 'Soft', value: 'soft' },
+    { label: 'Classic', value: 'classic' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Surface', value: 'surface' },
+  ];
+
+  shapeOptions = [
+    { label: 'Rectangle', value: 'rectangle' },
+    { label: 'Round', value: 'round' },
+    { label: 'Pill', value: 'pill' },
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
+  ];
+
+  iconPositionOptions = [
+    { label: 'Left', value: 'left' },
+    { label: 'Right', value: 'right' },
+    { label: 'Top', value: 'top' },
+    { label: 'Both', value: 'both' },
+  ];
+
+  displayModeOptions = [
+    { label: 'Icon + Label', value: 'icon-label' },
+    { label: 'Label Only', value: 'label-only' },
+    { label: 'Icon Only', value: 'icon-only' },
+    { label: 'Both Sides', value: 'both-sides' },
+  ];
+
   constructor() {
     super();
   }

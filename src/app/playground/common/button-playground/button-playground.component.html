@@ -1,4 +1,4 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
@@ -37,6 +37,14 @@
         [(ngModel)]="pgConfig.badge"
         (ngModelChange)="updateConfig()"
       ></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.badge">
+      <label>Badge Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.badgePosition"
+        (ngModelChange)="updateConfig()"
+        [options]="badgePositionOptions"
+      ></ui-dropdown>
     </div>
   </div>
 
@@ -127,6 +135,10 @@
         <ui-checkbox [(ngModel)]="pgConfig.noRipple" (ngModelChange)="updateConfig()"></ui-checkbox>
         No Ripple
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
+        RTL
+      </label>
     </div>
     <div class="control-grid" style="margin-top: 16px">
       <div class="control-group">
@@ -209,6 +221,7 @@
       [attr.icon-position]="pgConfig.iconPosition"
       [attr.icon-size]="pgConfig.iconSize"
       [attr.badge]="pgConfig.badge"
+      [attr.badge-position]="pgConfig.badgePosition"
       [attr.variant]="pgConfig.variant"
       [attr.size]="pgConfig.size"
       [attr.elevation]="pgConfig.elevation"
@@ -216,6 +229,7 @@
       [attr.loading]="pgConfig.loading ? '' : null"
       [attr.loading-position]="pgConfig.loadingPosition"
       [attr.disabled]="pgConfig.disabled ? '' : null"
+      [attr.rtl]="pgConfig.rtl ? '' : null"
       [attr.pill]="pgConfig.pill ? '' : null"
       [attr.rounded]="pgConfig.rounded ? '' : null"
       [attr.full-width]="pgConfig.fullWidth ? '' : null"

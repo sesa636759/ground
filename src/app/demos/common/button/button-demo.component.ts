@@ -29,8 +29,11 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
     { id: 'visual-variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
     { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
     { id: 'icons-badges', title: 'Icons & Badges', icon: 'tag', iconLibrary: 'lucide' },
+    { id: 'badge-positions', title: 'Badge Positions', icon: 'layout', iconLibrary: 'lucide' },
     { id: 'icon-libraries', title: 'Icon Libraries', icon: 'library', iconLibrary: 'lucide' },
     { id: 'states', title: 'States', icon: 'toggle-left', iconLibrary: 'lucide' },
+    { id: 'elevations', title: 'Elevations', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'link-extra', title: 'Link & Extra', icon: 'external-link', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;
@@ -57,6 +60,15 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button icon="🔍" icon-only pill></ui-button>
 <ui-button label="Profile" icon="👤" icon-position="right"></ui-button>`;
 
+  badgePositionsCode = `<!-- Absolute Positions -->
+<ui-button label="Notifications" icon="🔔" badge="9" badge-position="top-right"></ui-button>
+<ui-button label="Messages" icon="✉️" badge="5" badge-position="top-left"></ui-button>
+<ui-button label="Alerts" icon="⚠️" badge="!" badge-position="bottom-right"></ui-button>
+
+<!-- Inline Positions -->
+<ui-button label="Inbox" badge="12" badge-position="inline-right" variant="outline"></ui-button>
+<ui-button label="Tasks" badge="4" badge-position="inline-left" variant="outline"></ui-button>`;
+
   iconLibrariesCode = `<!-- SVG Path -->
 <ui-button label="SVG Path" icon="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" icon-library="default" variant="primary"></ui-button>
 
@@ -79,4 +91,20 @@ export class DmButtonDemoComponent extends BaseDemoComponent {
 <ui-button label="Disabled" disabled></ui-button>
 <ui-button label="Loading" loading></ui-button>
 <ui-button label="Full Width" full-width></ui-button>`;
+
+  elevationsCode = `<ui-button label="Elevation 1" elevation="1"></ui-button>
+<ui-button label="Elevation 2" elevation="2"></ui-button>
+<ui-button label="Elevation 3" elevation="3"></ui-button>
+<ui-button label="Elevation 4" elevation="4"></ui-button>
+<ui-button label="Elevation 5" elevation="5"></ui-button>`;
+
+  linkExtraCode = `<!-- Link Button -->
+<ui-button label="Go to Google" href="https://google.com" target="_blank"></ui-button>
+
+<!-- RTL Support -->
+<ui-button label="RTL Button" icon="🚀" rtl></ui-button>
+
+<!-- Loading Positions -->
+<ui-button label="Loading Top" loading loading-position="top"></ui-button>
+<ui-button label="Loading Right" loading loading-position="right"></ui-button>`;
 }

@@ -48,7 +48,7 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     },
     {
       id: 'link',
-      title: 'Link & Type',
+      title: 'Link & Extra',
       icon: 'settings',
       library: 'lucide',
       iconLibrary: 'lucide',
@@ -104,6 +104,15 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
     { label: 'Reset', value: 'reset' },
   ];
 
+  badgePositionOptions = [
+    { label: 'Top Right', value: 'top-right' },
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Bottom Right', value: 'bottom-right' },
+    { label: 'Bottom Left', value: 'bottom-left' },
+    { label: 'Inline Left', value: 'inline-left' },
+    { label: 'Inline Right', value: 'inline-right' },
+  ];
+
   constructor() {
     super();
   }
@@ -139,6 +148,8 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
       href: '',
       target: '',
       rel: '',
+      rtl: false,
+      badgePosition: 'top-right',
     };
   }
 

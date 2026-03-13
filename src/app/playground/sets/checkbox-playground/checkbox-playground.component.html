@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <!-- Accordion Slots -->
+  <!-- Global Settings -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
@@ -15,26 +15,27 @@
       <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()" />
     </div>
     <div class="control-group">
-      <label>Variant</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.variant"
-        (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Default', value: 'default' },
-          { label: 'Switch', value: 'switch' },
-        ]"
-      ></ui-dropdown>
+      <label>Error Message</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.errorMessage" (ngModelChange)="updateConfig()" />
     </div>
+    <div class="control-group">
+      <label>Value</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Name</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()" />
+    </div>
+  </div>
+
+  <!-- Visual Styles -->
+  <div slot="content-visual" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Small', value: 'small' },
-          { label: 'Medium', value: 'medium' },
-          { label: 'Large', value: 'large' },
-        ]"
+        [options]="sizeOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -42,17 +43,33 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.color"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Primary', value: 'primary' },
-          { label: 'Success', value: 'success' },
-          { label: 'Warning', value: 'warning' },
-          { label: 'Danger', value: 'danger' },
-        ]"
+        [options]="colorOptions"
       ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="variantOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Label Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.labelPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="labelPositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Custom Class</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.customClass" (ngModelChange)="updateConfig()" />
     </div>
   </div>
 
-  <div slot="content-states" class="control-grid" style="padding: 16px">
+  <!-- Behavior & States -->
+  <div slot="content-behavior" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -66,12 +83,16 @@
         Indeterminate
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Required
-      </label>
-      <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Readonly
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Required
       </label>
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -81,28 +102,99 @@
         <ui-checkbox [(ngModel)]="pgConfig.skeleton" (ngModelChange)="updateConfig()"></ui-checkbox>
         Skeleton
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
+        RTL
+      </label>
+    </div>
+
+    <div class="checkbox-grid" style="margin-top: 16px; border-top: 1px solid #eee; padding-top: 16px;">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Animate
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rippleEffect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Ripple
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.labelClickable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Label Clickable
+      </label>
+    </div>
+  </div>
+
+  <!-- Advanced & Icons -->
+  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Badge Text</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Tooltip</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.tooltip" (ngModelChange)="updateConfig()" />
+    </div>
+    <div class="control-group">
+      <label>Tooltip Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.tooltipPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="tooltipPositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Custom Check Icon (lucide)</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.customCheckIcon" (ngModelChange)="updateConfig()" placeholder="check" />
+    </div>
+    <div class="control-group">
+      <label>Custom Indeterminate Icon (lucide)</label>
+      <ui-input type="text" [(ngModel)]="pgConfig.customIndeterminateIcon" (ngModelChange)="updateConfig()" placeholder="minus" />
+    </div>
+    <div class="control-group">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showCheckIcon" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Check Icon
+      </label>
     </div>
   </div>
 
   <!-- Preview Area -->
   <div preview>
-    <ui-checkbox
-      #demoElement
-      [attr.label]="pgConfig.label"
-      [attr.helper-text]="pgConfig.helperText"
-      [attr.size]="pgConfig.size"
-      [attr.color]="pgConfig.color"
-      [attr.variant]="pgConfig.variant"
-      [attr.checked]="pgConfig.checked ? '' : null"
-      [attr.indeterminate]="pgConfig.indeterminate ? '' : null"
-      [attr.disabled]="pgConfig.disabled ? '' : null"
-      [attr.required]="pgConfig.required ? '' : null"
-      [attr.invalid]="pgConfig.invalid ? '' : null"
-      [attr.skeleton]="pgConfig.skeleton ? '' : null"
-      (checkboxChange)="onCheckboxChange($event)"
-      (checkboxFocus)="onCheckboxFocus()"
-      (checkboxBlur)="onCheckboxBlur()"
-    ></ui-checkbox>
+    <div class="preview-stage" style="padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 150px;">
+      <ui-checkbox
+        #demoElement
+        [attr.label]="pgConfig.label"
+        [attr.helper-text]="pgConfig.helperText"
+        [attr.error-message]="pgConfig.errorMessage"
+        [attr.value]="pgConfig.value"
+        [attr.name]="pgConfig.name"
+        [attr.size]="pgConfig.size"
+        [attr.color]="pgConfig.color"
+        [attr.variant]="pgConfig.variant"
+        [attr.checked]="pgConfig.checked ? '' : null"
+        [attr.indeterminate]="pgConfig.indeterminate ? '' : null"
+        [attr.disabled]="pgConfig.disabled ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.invalid]="pgConfig.invalid ? '' : null"
+        [attr.skeleton]="pgConfig.skeleton ? '' : null"
+        [attr.label-position]="pgConfig.labelPosition"
+        [attr.show-check-icon]="pgConfig.showCheckIcon ? '' : null"
+        [attr.custom-check-icon]="pgConfig.customCheckIcon"
+        [attr.custom-indeterminate-icon]="pgConfig.customIndeterminateIcon"
+        [attr.badge]="pgConfig.badge"
+        [attr.tooltip]="pgConfig.tooltip"
+        [attr.tooltip-position]="pgConfig.tooltipPosition"
+        [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
+        [attr.ripple-effect]="pgConfig.rippleEffect ? '' : null"
+        [attr.label-clickable]="pgConfig.labelClickable ? '' : null"
+        [attr.rtl]="pgConfig.rtl ? '' : null"
+        [attr.custom-class]="pgConfig.customClass"
+        (checkboxChange)="onCheckboxChange($event)"
+        (checkboxFocus)="onCheckboxFocus()"
+        (checkboxBlur)="onCheckboxBlur()"
+      ></ui-checkbox>
+    </div>
   </div>
 
   <!-- Events -->

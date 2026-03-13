@@ -33,47 +33,38 @@
           </div>
         </pg-example-section>
 
-        <!-- Premium Variants -->
+        <!-- Premium Styles -->
         <pg-example-section
-          id="premium-variants"
-          title="Premium Variants"
-          description="Visual styles including button, chip, and soft variants"
-          [code]="premiumVariantsCode"
+          id="premium-styles"
+          title="Premium Styles"
+          description="Enhanced visual variants including filled, soft, button, and chip styles"
+          [code]="premiumStylesCode"
         >
           <div class="demo-flex-wrap">
-            <ui-checkbox
-              label="Button Variant"
-              variant="button"
-              color="primary"
-              checked
-            ></ui-checkbox>
-            <ui-checkbox label="Chip Variant" variant="chip" color="info" checked></ui-checkbox>
-            <ui-checkbox label="Soft Variant" variant="soft" color="success" checked></ui-checkbox>
+            <ui-checkbox label="Filled Variant" variant="filled" color="primary" checked></ui-checkbox>
+            <ui-checkbox label="Tick Only" variant="tick" color="success" checked></ui-checkbox>
+            <ui-checkbox label="Soft Variant" variant="soft" color="info" checked></ui-checkbox>
+            <ui-checkbox label="Button Style" variant="button" color="danger" checked></ui-checkbox>
+            <ui-checkbox label="Chip Style" variant="chip" color="warning" checked></ui-checkbox>
           </div>
         </pg-example-section>
 
-        <!-- Skeleton State -->
+        <!-- Shapes & Sizes -->
         <pg-example-section
-          id="skeleton"
-          title="Skeleton State"
-          description="Loading states for better perceived performance"
-          [code]="skeletonCode"
-        >
-          <div class="demo-flex-wrap">
-            <ui-checkbox skeleton size="small"></ui-checkbox>
-            <ui-checkbox skeleton size="medium"></ui-checkbox>
-            <ui-checkbox skeleton size="large"></ui-checkbox>
-          </div>
-        </pg-example-section>
-
-        <!-- Sizes & Variants -->
-        <pg-example-section
-          id="sizes-variants"
-          title="Sizes & Shapes"
-          description="Multiple sizes and shape variations including rounded and pill"
-          [code]="sizesVariantsCode"
+          id="shapes-sizes"
+          title="Shapes & Sizes"
+          description="Multiple sizes from XXXS to XXXL and various geometric shapes"
+          [code]="shapesSizesCode"
         >
           <div class="demo-grid col-2">
+            <div class="demo-card">
+              <h4 class="demo-sub-title">Shapes</h4>
+              <div class="demo-flex-wrap">
+                <ui-checkbox label="Rounded" variant="rounded" checked></ui-checkbox>
+                <ui-checkbox label="Square" variant="square" checked></ui-checkbox>
+                <ui-checkbox label="Round Color" variant="round-color" checked></ui-checkbox>
+              </div>
+            </div>
             <div class="demo-card">
               <h4 class="demo-sub-title">Sizes</h4>
               <div class="demo-flex-wrap">
@@ -82,14 +73,51 @@
                 <ui-checkbox label="Large" size="large" checked></ui-checkbox>
               </div>
             </div>
-            <div class="demo-card">
-              <h4 class="demo-sub-title">Shapes</h4>
-              <div class="demo-flex-wrap">
-                <ui-checkbox label="Rounded" variant="rounded" checked></ui-checkbox>
-                <ui-checkbox label="Square" variant="square" checked></ui-checkbox>
-                <ui-checkbox label="Pill" variant="pill" checked></ui-checkbox>
-              </div>
-            </div>
+          </div>
+        </pg-example-section>
+
+        <!-- Label Positions -->
+        <pg-example-section
+          id="label-positions"
+          title="Label Positions"
+          description="Position the label on any side of the checkbox"
+          [code]="labelPositionsCode"
+        >
+          <div class="demo-grid col-2">
+            <ui-checkbox label="Right (Default)" label-position="right"></ui-checkbox>
+            <ui-checkbox label="Left Position" label-position="left"></ui-checkbox>
+            <ui-checkbox label="Top Position" label-position="top"></ui-checkbox>
+            <ui-checkbox label="Bottom Position" label-position="bottom"></ui-checkbox>
+          </div>
+        </pg-example-section>
+
+        <!-- Custom Icons -->
+        <pg-example-section
+          id="custom-icons"
+          title="Custom Icons"
+          description="Replace the default checkmark with any icon from the library"
+          [code]="customIconsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-checkbox label="Star Icon" custom-check-icon="star" checked></ui-checkbox>
+            <ui-checkbox label="Heart Icon" custom-check-icon="heart" color="danger" checked></ui-checkbox>
+            <ui-checkbox label="Smile Icon" custom-check-icon="smile" color="success" checked></ui-checkbox>
+            <ui-checkbox label="Custom Indeterminate" custom-indeterminate-icon="help-circle" indeterminate></ui-checkbox>
+          </div>
+        </pg-example-section>
+
+        <!-- Badges & Tooltips -->
+        <pg-example-section
+          id="badges-tooltips"
+          title="Badges & Tooltips"
+          description="Premium interaction features for providing more context"
+          [code]="badgesTooltipsCode"
+        >
+          <div class="demo-flex-wrap">
+            <ui-checkbox label="Notifications" badge="99+" color="primary" checked></ui-checkbox>
+            <ui-checkbox label="Beta Feature" badge="New" color="success"></ui-checkbox>
+            <ui-checkbox label="With Tooltip" tooltip="This setting cannot be changed" tooltip-position="top" disabled checked></ui-checkbox>
+            <ui-checkbox label="More Info" tooltip="Click to learn more about this setting" tooltip-position="right"></ui-checkbox>
           </div>
         </pg-example-section>
 
@@ -123,6 +151,14 @@
                   error-message="Please accept terms"
                 ></ui-checkbox>
               </div>
+            </div>
+          </div>
+          <div class="demo-card" style="margin-top: 16px;">
+            <h4 class="demo-sub-title">Skeleton Loading</h4>
+            <div class="demo-flex-wrap">
+              <ui-checkbox skeleton size="small"></ui-checkbox>
+              <ui-checkbox skeleton size="medium"></ui-checkbox>
+              <ui-checkbox skeleton size="large"></ui-checkbox>
             </div>
           </div>
         </pg-example-section>
@@ -162,7 +198,7 @@
           </div>
         </pg-example-section>
 
-        <!-- Form Example -->
+        <!-- Form Integration -->
         <pg-example-section
           id="form"
           title="Form Integration"
@@ -215,4 +251,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
