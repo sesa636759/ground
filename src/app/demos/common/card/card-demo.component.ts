@@ -7,7 +7,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 
-import { DmCardPlaygroundComponent } from 'src/app/playground/common/card-playground/card-playground.component';
+import { DmCardPlaygroundComponent } from '../../../playground/common/card-playground/card-playground.component';
 import { CardExamplesComponent } from './components/card-examples/card-examples.component';
 
 @Component({
