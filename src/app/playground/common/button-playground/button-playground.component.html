@@ -52,6 +52,7 @@
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
         [options]="variantOptions"
@@ -60,6 +61,7 @@
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
         [options]="sizeOptions"
@@ -78,6 +80,7 @@
     <div class="control-group">
       <label>Icon Position</label>
       <ui-dropdown
+        [ignoreParentPosition]="true"
         [(ngModel)]="pgConfig.iconPosition"
         (ngModelChange)="updateConfig()"
         [options]="positionOptions"
@@ -162,6 +165,7 @@
       <div class="control-group" *ngIf="pgConfig.loading">
         <label>Loading Pos</label>
         <ui-dropdown
+          [ignoreParentPosition]="true"
           [(ngModel)]="pgConfig.loadingPosition"
           (ngModelChange)="updateConfig()"
           [options]="positionOptions"

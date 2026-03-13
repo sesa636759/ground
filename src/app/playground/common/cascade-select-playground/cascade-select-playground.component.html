@@ -1,4 +1,4 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
@@ -68,7 +68,7 @@
         [attr.show-full-path]="pgConfig.showFullPath ? 'true' : 'false'"
         [attr.separator]="pgConfig.separator"
         [attr.change-on-select]="pgConfig.changeOnSelect ? '' : null"
-        [options]="optionsJson"
+        [options]="options"
         (cascadeChange)="onValueChange($event)"
       ></ui-cascade-select>
 

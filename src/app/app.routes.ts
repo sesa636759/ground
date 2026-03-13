@@ -23,32 +23,38 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/profile/profile.component').then((m) => m.ProfileComponent),
   },
   {
     path: 'overview',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/overview/overview.component').then((m) => m.OverviewComponent),
   },
   {
     path: 'showroom',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/showroom/showroom.component').then((m) => m.ShowroomComponent),
   },
   {
     path: 'installation',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/installation/installation.component').then((m) => m.InstallationComponent),
   },
 
   {
     path: 'documentation',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
   },
   {
     path: 'components-guide',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/components-guide/components-guide.component').then(
         (m) => m.ComponentsGuideComponent,
@@ -56,12 +62,14 @@ export const routes: Routes = [
   },
   {
     path: 'documentation/:section',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/documentation/documentation.component').then((m) => m.DocumentationComponent),
   },
 
   {
     path: 'component-documentation',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/component-documentation/component-documentation.component').then(
         (m) => m.ComponentDocumentationComponent,
@@ -70,11 +78,13 @@ export const routes: Routes = [
 
   {
     path: 'settings',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/settings/settings.component').then((m) => m.SettingsComponent),
   },
   {
     path: 'user-management',
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./features/user-management/components/user-list.component').then(
         (m) => m.UserListComponent,
@@ -82,6 +92,7 @@ export const routes: Routes = [
   },
   {
     path: 'demos',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'button-toggle',
