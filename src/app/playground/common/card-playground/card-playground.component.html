@@ -4,9 +4,10 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
+  <!-- Appearance Section -->
   <div slot="content-appearance" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Design Variant</label>
+      <label>Variant</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
@@ -14,226 +15,252 @@
       ></ui-dropdown>
     </div>
 
-    <div
-      class="control-grid"
-      style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0"
-    >
-      <div class="control-group">
-        <label>Width</label>
-        <ui-input
-          type="text"
-          [(ngModel)]="pgConfig.width"
-          (ngModelChange)="updateConfig()"
-        ></ui-input>
-      </div>
-      <div class="control-group">
-        <label>Radius</label>
-        <ui-input
-          type="text"
-          [(ngModel)]="pgConfig.borderRadius"
-          (ngModelChange)="updateConfig()"
-        ></ui-input>
-      </div>
-    </div>
-
     <div class="control-group">
-      <label>Content Layout</label>
+      <label>Size</label>
       <ui-dropdown
-        [(ngModel)]="pgConfig.layout"
+        [(ngModel)]="pgConfig.size"
         (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Vertical stacking', value: 'vertical' },
-          { label: 'Horizontal flow', value: 'horizontal' },
-        ]"
+        [options]="sizeOptions"
       ></ui-dropdown>
     </div>
 
-    <div class="control-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px">
-      <div class="control-group">
-        <label>Importance</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.importance"
-          (ngModelChange)="updateConfig()"
-          [options]="importanceOptions"
-        ></ui-dropdown>
-      </div>
-      <div class="control-group">
-        <label>Pattern</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.pattern"
-          (ngModelChange)="updateConfig()"
-          [options]="patternOptions"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Layout</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.layout"
+        (ngModelChange)="updateConfig()"
+        [options]="[{label: 'Vertical', value: 'vertical'}, {label: 'Horizontal', value: 'horizontal'}]"
+      ></ui-dropdown>
     </div>
 
-    <div class="control-group" style="margin-top: 16px">
-      <label>Ribbon Text</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.ribbon"
+    <div class="control-group">
+      <label>Importance</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.importance"
         (ngModelChange)="updateConfig()"
-        placeholder="e.g. Sale"
+        [options]="importanceOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Pattern</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.pattern"
+        (ngModelChange)="updateConfig()"
+        [options]="patternOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group">
+      <label>Border Radius</label>
+      <ui-input
+        [(ngModel)]="pgConfig.borderRadius"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 16px"
       ></ui-input>
     </div>
 
-    <div class="control-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px">
-      <div class="control-group">
-        <label>Ribbon Color</label>
-        <ui-input
-          type="color"
-          [(ngModel)]="pgConfig.ribbonColor"
-          (ngModelChange)="updateConfig()"
-        ></ui-input>
-      </div>
-      <div class="control-group">
-        <label>Ribbon Position</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.ribbonPosition"
-          (ngModelChange)="updateConfig()"
-          [options]="ribbonPositionOptions"
-        ></ui-dropdown>
-      </div>
+    <div class="control-group">
+      <label>Width</label>
+      <ui-input
+        [(ngModel)]="pgConfig.width"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 100%"
+      ></ui-input>
     </div>
 
-    <div class="control-group" style="margin-top: 16px">
-      <label>Special Effects</label>
-      <div class="checkbox-grid">
-        <label class="checkbox-item">
-          <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></ui-checkbox>
-          Glassmorphism
-        </label>
-        <label class="checkbox-item">
-          <ui-checkbox
-            [(ngModel)]="pgConfig.hoverable"
-            (ngModelChange)="updateConfig()"
-          ></ui-checkbox>
-          Raise on hover
-        </label>
-      </div>
+    <div class="control-group">
+      <label>Height</label>
+      <ui-input
+        [(ngModel)]="pgConfig.height"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. auto"
+      ></ui-input>
     </div>
   </div>
 
-  <div slot="content-features" class="control-grid" style="padding: 16px">
-    <div class="checkbox-grid">
+  <!-- Features Section -->
+  <div slot="content-features" class="checkbox-grid" style="padding: 16px">
+    <div class="control-group full-width" style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.flippable"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.hoverable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Hoverable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glass Effect
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.bordered" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Bordered
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.flippable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Flippable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Skeleton
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showMenu" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Menu
+        <ui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Collapsible
       </label>
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.closable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Closable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.selectable"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()"></ui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.collapsible"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Collapsible
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Loading
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Clickable
+      </label>
+       <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoScroll" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Auto Scroll
+      </label>
+    </div>
+
+    <div class="control-group" *ngIf="pgConfig.flippable">
+      <label>Flip Trigger</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.flipTrigger"
+        (ngModelChange)="updateConfig()"
+        [options]="flipTriggerOptions"
+      ></ui-dropdown>
+    </div>
+
+    <div class="control-group" *ngIf="pgConfig.autoScroll">
+      <label>Scroll Behavior</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.scrollBehavior"
+        (ngModelChange)="updateConfig()"
+        [options]="scrollBehaviorOptions"
+      ></ui-dropdown>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
-  >
+  <!-- Content & Style Section -->
+  <div slot="content-content" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Card Title</label>
+      <ui-input [(ngModel)]="pgConfig.cardTitle" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+     <div class="control-group">
+      <label>Description</label>
+      <ui-input [(ngModel)]="pgConfig.description" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Tag Text</label>
+      <ui-input [(ngModel)]="pgConfig.tag" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Action Comma List</label>
+      <ui-input [(ngModel)]="pgConfig.actions" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Ribbon Text</label>
+      <ui-input [(ngModel)]="pgConfig.ribbon" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group" *ngIf="pgConfig.ribbon">
+      <label>Ribbon Position</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.ribbonPosition"
+        (ngModelChange)="updateConfig()"
+        [options]="ribbonPositionOptions"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+        <label>Extra (Header)</label>
+        <ui-input [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+        <label>HREF (Clickable)</label>
+        <ui-input [(ngModel)]="pgConfig.href" (ngModelChange)="updateConfig()" placeholder="https://..."></ui-input>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div preview style="padding: 40px; display: flex; justify-content: center; min-height: 400px; background: #f8fafc;">
     <ui-card
       #demoElement
+      [attr.card-id]="pgConfig.cardId"
+      [attr.card-title]="pgConfig.cardTitle"
       [attr.variant]="pgConfig.variant"
-      [attr.hoverable]="pgConfig.hoverable ? '' : null"
-      [attr.flippable]="pgConfig.flippable ? '' : null"
-      [attr.loading]="pgConfig.loading ? '' : null"
-      [attr.show-menu]="pgConfig.showMenu ? '' : null"
-      [attr.closable]="pgConfig.closable ? '' : null"
-      [attr.selectable]="pgConfig.selectable ? '' : null"
-      [attr.collapsible]="pgConfig.collapsible ? '' : null"
-      [attr.glass]="pgConfig.glass ? '' : null"
-      [attr.layout]="pgConfig.layout"
       [attr.size]="pgConfig.size"
+      [attr.layout]="pgConfig.layout"
+      [attr.importance]="pgConfig.importance"
+      [attr.pattern]="pgConfig.pattern"
       [attr.type]="pgConfig.type"
-      [importance]="pgConfig.importance"
-      [pattern]="pgConfig.pattern"
-      [ribbon]="pgConfig.ribbon || null"
-      [ribbon-color]="pgConfig.ribbon ? pgConfig.ribbonColor : null"
-      [ribbon-position]="pgConfig.ribbon ? pgConfig.ribbonPosition : null"
+      [attr.glass]="pgConfig.glass ? '' : null"
+      [attr.bordered]="pgConfig.bordered ? 'true' : 'false'"
       [attr.border-radius]="pgConfig.borderRadius"
       [attr.width]="pgConfig.width"
+      [attr.height]="pgConfig.height"
+      [attr.aspect-ratio]="pgConfig.aspectRatio"
+      [attr.hoverable]="pgConfig.hoverable ? '' : null"
+      [attr.flippable]="pgConfig.flippable ? '' : null"
+      [attr.flip-trigger]="pgConfig.flipTrigger"
+      [attr.collapsible]="pgConfig.collapsible ? '' : null"
+      [attr.closable]="pgConfig.closable ? '' : null"
+      [attr.selectable]="pgConfig.selectable ? '' : null"
+      [attr.clickable]="pgConfig.clickable ? '' : null"
+      [attr.href]="pgConfig.href"
+      [attr.target]="pgConfig.target"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.auto-scroll]="pgConfig.autoScroll ? '' : null"
+      [attr.scroll-behavior]="pgConfig.scrollBehavior"
+      [attr.ribbon]="pgConfig.ribbon"
+      [attr.ribbon-position]="pgConfig.ribbonPosition"
+      [attr.ribbon-color]="pgConfig.ribbonColor"
+      [attr.cover]="pgConfig.cover"
+      [attr.cover-alt]="pgConfig.coverAlt"
+      [attr.avatar]="pgConfig.avatar"
+      [attr.avatar-icon]="pgConfig.avatarIcon"
+      [attr.description]="pgConfig.description"
+      [attr.tag]="pgConfig.tag"
+      [attr.button-text]="pgConfig.buttonText"
+      [attr.actions]="pgConfig.actions"
+      [attr.show-menu]="pgConfig.showMenu ? '' : null"
+      [attr.menu-actions]="pgConfig.menuActions"
+      [attr.icon-library]="pgConfig.iconLibrary"
       [menuItems]="menuJson"
-      (cardClick)="logEvent('Card Clicked')"
-      (cardClose)="logEvent('Card Closed')"
+      (cardClick)="onCardClick()"
+      (cardClose)="onCardClose()"
+      (cardToggle)="onCardCollapse($event)"
+      (cardSelect)="onCardSelect($event)"
+      (cardFlip)="onCardFlip($event)"
     >
-      <div
-        slot="cover"
-        class="demo-cover-image"
-        style="
-          background: #2563eb;
-          height: 160px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          border-top-left-radius: inherit;
-          border-top-right-radius: inherit;
-        "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-        </svg>
-      </div>
-      <div slot="header">
-        <h3 style="margin: 0; font-weight: 700">Exploring the Alps</h3>
-      </div>
-      <div slot="content" class="demo-card-content">
-        <p>
-          Experience the breathtaking views and serene landscapes of the highest mountain range in
-          Europe. Perfect for adventure seekers!
-        </p>
-      </div>
-      <div slot="footer" style="display: flex; gap: 12px; width: 100%">
-        <ui-button variant="primary" style="flex: 1" label="Book Now"></ui-button>
-        <ui-button variant="secondary" label="Details"></ui-button>
-      </div>
-      <div slot="back-content" style="padding: 24px">
-        <h3 style="color: var(--primary-color); margin-bottom: 16px; margin-top: 0">
-          Tour Statistics
-        </h3>
-        <ul style="padding-left: 20px; color: var(--text-secondary); line-height: 2; margin: 0">
-          <li>Elevation: 4,808m</li>
-          <li>Length: 1,200km</li>
-          <li>Area: 200,000 km²</li>
-          <li>Duration: 5-7 Days</li>
-        </ul>
-      </div>
+        <!-- Mixed content demo -->
+        <div slot="tabs" *ngIf="pgConfig.pattern === 'default'">
+            <ui-tabs>
+                <ui-tab-panel label="Info" icon="info" icon-library="lucide">Information content</ui-tab-panel>
+                <ui-tab-panel label="Settings" icon="settings" icon-library="lucide">Settings content</ui-tab-panel>
+            </ui-tabs>
+        </div>
+
+        <div slot="back" *ngIf="pgConfig.flippable">
+            <div style="padding: 24px; text-align: center;">
+                <ui-icon name="shield-check" library="lucide" size="3em" color="var(--ui-success)"></ui-icon>
+                <h3 style="margin-top: 16px;">Security Verified</h3>
+                <p>This side is perfectly secure for sensitive data.</p>
+                <ui-button label="Verify" variant="success"></ui-button>
+            </div>
+        </div>
+
+        <div slot="content" *ngIf="!pgConfig.description">
+            <p>This is the main content slot of the card. You can use full HTML here.</p>
+        </div>
+
+        <div slot="footer" *ngIf="!pgConfig.buttonText && !pgConfig.actions">
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                <ui-button label="Cancel" variant="ghost"></ui-button>
+                <ui-button label="Submit" variant="primary"></ui-button>
+            </div>
+        </div>
     </ui-card>
   </div>
 

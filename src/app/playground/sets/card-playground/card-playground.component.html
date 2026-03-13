@@ -1,6 +1,6 @@
 <pg-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
+  [defaultOpen]="['global', 'behavior', 'style']"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
@@ -47,59 +47,7 @@
         [options]="[
           { label: 'Default', value: 'default' },
           { label: 'Small', value: 'small' },
-        ]"
-      ></ui-dropdown>
-    </div>
-
-    <div class="control-group">
-      <label>Variant</label>
-      <ui-dropdown
-        name="variant"
-        [(ngModel)]="pgConfig.variant"
-        (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Default', value: 'default' },
-          { label: 'Primary', value: 'primary' },
-          { label: 'Success', value: 'success' },
-          { label: 'Warning', value: 'warning' },
-          { label: 'Danger', value: 'danger' },
-          { label: 'Info', value: 'info' },
-        ]"
-      ></ui-dropdown>
-    </div>
-
-    <div class="control-group">
-      <label>Type</label>
-      <ui-dropdown
-        name="type"
-        [(ngModel)]="pgConfig.type"
-        (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Default', value: 'default' },
-          { label: 'Inner', value: 'inner' },
-        ]"
-      ></ui-dropdown>
-    </div>
-
-    <div class="control-group">
-      <label>Ribbon Text</label>
-      <ui-input
-        name="ribbon"
-        type="text"
-        [(ngModel)]="pgConfig.ribbon"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-
-    <div class="control-group">
-      <label>Ribbon Pos</label>
-      <ui-dropdown
-        name="ribbonPosition"
-        [(ngModel)]="pgConfig.ribbonPosition"
-        (ngModelChange)="updateConfig()"
-        [options]="[
-          { label: 'Top Right', value: 'top-right' },
-          { label: 'Top Left', value: 'top-left' },
+          { label: 'Large', value: 'large' },
         ]"
       ></ui-dropdown>
     </div>
@@ -162,52 +110,123 @@
       />
       Selectable
     </label>
+    <label class="checkbox-item">
+        <ui-checkbox
+          name="clickable"
+          [(ngModel)]="pgConfig.clickable"
+          (ngModelChange)="updateConfig()"
+        />
+        Clickable
+      </label>
   </div>
 
-  <div preview [class.glass-bg]="pgConfig.glass">
-    <div class="preview-stage">
-      <app-card
-        #cardSet
-        [attr.card-title]="pgConfig.title"
-        [attr.extra]="pgConfig.extra"
-        [attr.cover]="pgConfig.cover"
-        [attr.actions]="pgConfig.actions"
-        [attr.hoverable]="pgConfig.hoverable ? '' : null"
-        [attr.size]="pgConfig.size"
-        [attr.bordered]="pgConfig.bordered ? '' : null"
-        [attr.type]="pgConfig.type"
-        [attr.loading]="pgConfig.loading ? '' : null"
-        [attr.flippable]="pgConfig.flippable ? '' : null"
-        [attr.flip-trigger]="pgConfig.flipTrigger"
-        [attr.closable]="pgConfig.closable ? '' : null"
-        [attr.menu-actions]="pgConfig.menuActions"
-        [attr.layout]="pgConfig.layout"
-        [attr.glass]="pgConfig.glass ? '' : null"
-        [attr.variant]="pgConfig.variant"
-        [attr.ribbon]="pgConfig.ribbon"
-        [attr.ribbon-position]="pgConfig.ribbonPosition"
-        [attr.ribbon-color]="pgConfig.ribbonColor"
-        [attr.collapsible]="pgConfig.collapsible ? '' : null"
-        [attr.collapsed]="pgConfig.collapsed ? '' : null"
-        [attr.selectable]="pgConfig.selectable ? '' : null"
-        [attr.selected]="pgConfig.selected ? '' : null"
-        [attr.avatar]="pgConfig.avatar"
-        [attr.avatar-icon]="pgConfig.avatarIcon"
-        (cardAction)="onCardAction($event)"
-        (cardClose)="onCardClose()"
-        (cardCollapse)="onCardCollapse($event)"
-        (cardSelect)="onCardSelect($event)"
-        style="width: 100%; max-width: 400px"
-      >
-        <p>This is dynamic content from the playground. You can change properties on the left.</p>
-        <div slot="back">
-          <div style="padding: 24px; text-align: center">
-            <h3>Flipped Content</h3>
-            <p>This is what you see on the back!</p>
-          </div>
-        </div>
-      </app-card>
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+        <label>Variant</label>
+        <ui-dropdown
+          name="variant"
+          [(ngModel)]="pgConfig.variant"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Elevated', value: 'elevated' },
+            { label: 'Outlined', value: 'outlined' },
+            { label: 'Filled', value: 'filled' },
+            { label: 'Primary', value: 'primary' },
+            { label: 'Success', value: 'success' },
+            { label: 'Warning', value: 'warning' },
+            { label: 'Danger', value: 'danger' },
+            { label: 'Info', value: 'info' },
+          ]"
+        ></ui-dropdown>
     </div>
+    <div class="control-group">
+        <label>Importance</label>
+        <ui-dropdown
+          name="importance"
+          [(ngModel)]="pgConfig.importance"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Standard', value: 'standard' },
+            { label: 'Emphasized', value: 'emphasized' },
+          ]"
+        ></ui-dropdown>
+    </div>
+    <div class="control-group">
+        <label>Pattern</label>
+        <ui-dropdown
+          name="pattern"
+          [(ngModel)]="pgConfig.pattern"
+          (ngModelChange)="updateConfig()"
+          [options]="[
+            { label: 'Default', value: 'default' },
+            { label: 'Product', value: 'product' },
+            { label: 'Shortcut', value: 'shortcut' },
+          ]"
+        ></ui-dropdown>
+    </div>
+    <div class="control-group">
+        <label>Ribbon Text</label>
+        <ui-input
+          name="ribbon"
+          type="text"
+          [(ngModel)]="pgConfig.ribbon"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+    </div>
+  </div>
+
+  <div preview class="preview-stage" style="padding: 40px; display: flex; justify-content: center">
+    <ui-card
+      #cardSet
+      [attr.card-title]="pgConfig.title"
+      [attr.extra]="pgConfig.extra"
+      [attr.cover]="pgConfig.cover"
+      [attr.actions]="pgConfig.actions"
+      [attr.hoverable]="pgConfig.hoverable ? '' : null"
+      [attr.size]="pgConfig.size"
+      [attr.bordered]="pgConfig.bordered ? 'true' : 'false'"
+      [attr.type]="pgConfig.type"
+      [attr.loading]="pgConfig.loading ? '' : null"
+      [attr.flippable]="pgConfig.flippable ? '' : null"
+      [attr.flip-trigger]="pgConfig.flipTrigger"
+      [attr.closable]="pgConfig.closable ? '' : null"
+      [attr.menu-actions]="pgConfig.menuActions"
+      [attr.layout]="pgConfig.layout"
+      [attr.glass]="pgConfig.glass ? '' : null"
+      [attr.variant]="pgConfig.variant"
+      [attr.importance]="pgConfig.importance"
+      [attr.pattern]="pgConfig.pattern"
+      [attr.ribbon]="pgConfig.ribbon"
+      [attr.ribbon-position]="pgConfig.ribbonPosition"
+      [attr.ribbon-color]="pgConfig.ribbonColor"
+      [attr.collapsible]="pgConfig.collapsible ? '' : null"
+      [attr.collapsed]="pgConfig.collapsed ? '' : null"
+      [attr.selectable]="pgConfig.selectable ? '' : null"
+      [attr.selected]="pgConfig.selected ? '' : null"
+      [attr.avatar]="pgConfig.avatar"
+      [attr.avatar-icon]="pgConfig.avatarIcon"
+      [attr.description]="pgConfig.description"
+      [attr.tag]="pgConfig.tag"
+      [attr.button-text]="pgConfig.buttonText"
+      [attr.clickable]="pgConfig.clickable ? '' : null"
+      [attr.href]="pgConfig.href"
+      [attr.target]="pgConfig.target"
+      (cardAction)="onCardAction($event)"
+      (cardClose)="onCardClose()"
+      (cardToggle)="onCardCollapse($event)"
+      (cardSelect)="onCardSelect($event)"
+      (cardFlip)="onCardFlip($event)"
+      style="width: 100%; max-width: 400px"
+    >
+      <p>Dynamic content area for the card set playground.</p>
+      <div slot="back">
+          <div style="padding: 20px; text-align: center;">
+              <h3>Back Side</h3>
+              <p>Custom content in the <code>back</code> slot.</p>
+          </div>
+      </div>
+    </ui-card>
   </div>
 
   <pg-playground-event-log
