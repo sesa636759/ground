@@ -17,7 +17,7 @@ export const PLAYGROUND_IMPORTS = [
   InputValueAccessorDirective,
   RadioGroupValueAccessorDirective,
   SwitchValueAccessorDirective,
-  ToggleGroupValueAccessorDirective,
   TagsInputValueAccessorDirective,
+
   DemoPlaygroundComponent,
 ];

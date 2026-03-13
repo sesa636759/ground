@@ -562,7 +562,7 @@ export const routes: Routes = [
       //   path: 'smart-stepper',
       //   loadComponent: () =>
       //     import('./demos/common/smart-stepper/smart-stepper-demo.component').then(
-      //       (m) => m.Dm,
+      //       (m) => m.DmSmartStepperDemoComponent,
       //     ),
       // },
       {
