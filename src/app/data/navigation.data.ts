@@ -190,7 +190,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'checkbox', label: 'Checkbox', icon: 'check-square', iconLibrary: 'lucide' },
       { id: 'dropdown', label: 'Dropdown', icon: 'chevron-down-square', iconLibrary: 'lucide' },
       { id: 'input', label: 'Input', icon: 'pencil', iconLibrary: 'lucide' },
-      { id: 'label', label: 'Label', icon: 'tag', iconLibrary: 'lucide' },
+
       { id: 'otp-input', label: 'OTP Input', icon: 'hash', iconLibrary: 'lucide' },
       { id: 'pattern-input', label: 'Pattern Input', icon: 'regex', iconLibrary: 'lucide' },
       { id: 'picklist', label: 'Picklist', icon: 'list-checks', iconLibrary: 'lucide' },
