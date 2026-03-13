@@ -1,8 +1,8 @@
 <div class="demo-container">
   <pg-demo-header
-    icon="🔘"
+    icon="🎛️"
     title="Knob"
-    description="A highly customizable circular control for selecting values, featuring gauge modes, tick marks, keyboard input, and smooth animations."
+    description="A versatile circular control for numeric input, supporting snapping, custom track styles, and gauge-style arc rotation."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -15,143 +15,68 @@
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content">
-          <!-- Color & Aesthetics -->
-          <section class="demo-section" id="visuals" style="margin-top: 0">
-            <div class="section-header">
-              <h2>Color & Aesthetics</h2>
-              <p>Customize the visual style of the knob with specific colors for the value arc and the track background.</p>
+          <!-- Size -->
+          <section class="demo-section" id="size">
+            <div class="section-header"><h2>Size Variants</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob size="60" value="30"></ui-knob>
+              <ui-knob size="100" value="50"></ui-knob>
+              <ui-knob size="150" value="70"></ui-knob>
             </div>
-            <div class="demo-card grid-3">
-              <div class="knob-item">
-                <p>Primary Blue</p>
-                <ui-knob value="65" color="#3b82f6" track-color="#e2e8f0"></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Success Green</p>
-                <ui-knob value="80" color="#10b981" track-color="#ecfdf5"></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Danger Red</p>
-                <ui-knob value="35" color="#ef4444" track-color="#fef2f2" size="100"></ui-knob>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="visualsCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Functional Gauges -->
-          <section class="demo-section" id="gauges">
-            <div class="section-header">
-              <h2>Functional Gauges</h2>
-              <p>Configure the start and end angles to create specific gauge types like speedometers or dials.</p>
+          <!-- Colors -->
+          <section class="demo-section" id="colors">
+            <div class="section-header"><h2>Custom Colors</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob color="#ef4444" track-color="#fee2e2" thumb-color="#b91c1c" value="60"></ui-knob>
+              <ui-knob color="#22c55e" track-color="#dcfce7" value="80"></ui-knob>
+              <ui-knob color="#3b82f6" track-color="#dbeafe" value="40"></ui-knob>
             </div>
-            <div class="demo-card grid-2">
-              <div class="knob-item">
-                <p>Speedometer (270° Sweep)</p>
-                <ui-knob
-                  min="0"
-                  max="240"
-                  value="120"
-                  start-angle="135"
-                  end-angle="45"
-                  color="#6366f1"
-                  value-suffix=" km/h"
-                ></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Semi-Circle Dial</p>
-                <ui-knob
-                  min="0"
-                  max="100"
-                  value="50"
-                  start-angle="180"
-                  end-angle="0"
-                  color="#f59e0b"
-                ></ui-knob>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="gaugesCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Ticks & Labels -->
+          <!-- Arc -->
+          <section class="demo-section" id="arc">
+            <div class="section-header"><h2>Arc & Gauge Styles</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob type="gauge" start-angle="135" end-angle="45" value="50"></ui-knob>
+              <ui-knob type="gauge" start-angle="180" end-angle="0" value="30"></ui-knob>
+            </div>
+          </section>
+
+          <!-- Ticks -->
           <section class="demo-section" id="ticks">
-            <div class="section-header">
-              <h2>Ticks & Labels</h2>
-              <p>Add visual reference points and numeric labels around the dial for better readability.</p>
+            <div class="section-header"><h2>Ticks & Subticks</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob show-ticks tick-count="12" sub-ticks="4" value="25"></ui-knob>
+              <ui-knob show-ticks tick-count="5" labels="LO,MED,HI,EXTREME" value="2"></ui-knob>
             </div>
-            <div class="demo-card grid-2">
-              <div class="knob-item">
-                <p>Clock Style Ticks</p>
-                <ui-knob
-                  show-ticks
-                  tick-count="12"
-                  tick-length="10"
-                  tick-color="#94a3b8"
-                  value="15"
-                  max="60"
-                ></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Labeled Scale</p>
-                <ui-knob
-                  show-ticks
-                  tick-count="10"
-                  show-labels
-                  label-step="20"
-                  max="100"
-                  value="40"
-                  color="#8b5cf6"
-                ></ui-knob>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="ticksCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Behavior & Input -->
-          <section class="demo-section" id="behavior">
-            <div class="section-header">
-              <h2>Behavior & Input</h2>
-              <p>Control how users interact with the knob using mouse wheel, keyboard, or numeric input.</p>
+          <!-- Snap -->
+          <section class="demo-section" id="snap">
+            <div class="section-header"><h2>Snapping & Steps</h2></div>
+            <div class="demo-card knob-grid">
+              <div><p>Snap to 10</p><ui-knob snap [snap-step]="10" value="50"></ui-knob></div>
+              <div><p>Step 0.1</p><ui-knob [step]="0.1" value="0.5" min="0" max="1"></ui-knob></div>
             </div>
-            <div class="demo-card grid-2">
-              <div class="knob-item">
-                <p>Stepped Snapping</p>
-                <ui-knob
-                  snap
-                  snap-step="10"
-                  value="30"
-                  color="#06b6d4"
-                ></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Keyboard & Wheel Entry</p>
-                <ui-knob
-                  allow-input
-                  enable-wheel
-                  value="75"
-                  color="#f43f5e"
-                ></ui-knob>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="behaviorCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Interactive States -->
+          <!-- Interaction -->
+          <section class="demo-section" id="interaction">
+            <div class="section-header"><h2>Mouse Wheel & Multi-Touch</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob enable-wheel keyboard-step="5" value="45"></ui-knob>
+            </div>
+          </section>
+
+          <!-- States -->
           <section class="demo-section" id="states">
-            <div class="section-header">
-              <h2>Interactive States</h2>
-              <p>Demonstrate the appearance and behavior of the knob when disabled or in read-only mode.</p>
+            <div class="section-header"><h2>Disabled & Readonly</h2></div>
+            <div class="demo-card knob-grid">
+              <ui-knob disabled value="40"></ui-knob>
+              <ui-knob readonly value="80"></ui-knob>
             </div>
-            <div class="demo-card grid-2">
-              <div class="knob-item">
-                <p>Disabled State</p>
-                <ui-knob value="45" disabled></ui-knob>
-              </div>
-              <div class="knob-item">
-                <p>Readonly Mode</p>
-                <ui-knob value="85" readonly color="#64748b"></ui-knob>
-              </div>
-            </div>
-            <ui-code-preview [htmlCode]="statesCode()" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -164,8 +89,7 @@
 </div>
 
 <style>
-  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .knob-item { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px; border-radius: 12px; background: rgba(0,0,0,0.02); }
-  .knob-item p { margin: 0; font-size: 13px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+  .knob-grid { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 32px; flex-wrap: wrap; }
+  .knob-grid div { text-align: center; }
+  .knob-grid p { font-size: 11px; margin-bottom: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; }
 </style>

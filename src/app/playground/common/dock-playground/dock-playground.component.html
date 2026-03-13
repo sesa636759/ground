@@ -1,105 +1,61 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="defaultOpen"
+  [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-settings" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Position</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.position"
-        (ngModelChange)="updateConfig()"
-        [options]="positionOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="positionOptions" [(ngModel)]="pgConfig.position" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Breakpoint</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.breakpoint"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Size</label>
+      <ui-dropdown [options]="sizeOptions" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
-  </div>
-
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown [options]="iconLibraryOptions" [(ngModel)]="pgConfig.iconLibrary" (ngModelChange)="updateConfig()"></ui-dropdown>
+    </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.autoZIndex"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Auto Z-Index
-      </label>
-      <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.magnify" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Magnify
+        Magnify Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.blurEffect"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Blur Effect
+        <ui-checkbox [(ngModel)]="pgConfig.blurEffect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Glass/Blur Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showLabels"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Labels
       </label>
     </div>
   </div>
 
-  <div preview class="preview-stage">
-    <div
-      style="
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        height: 400px;
-        background: var(--surface-2);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-      "
-    >
-      <ui-dock
-        #demoElement
-        [attr.position]="pgConfig.position"
-        [attr.breakpoint]="pgConfig.breakpoint"
-        [attr.auto-z-index]="pgConfig.autoZIndex ? '' : null"
-        [attr.magnify]="pgConfig.magnify ? true : false"
-        [attr.blur-effect]="pgConfig.blurEffect ? true : false"
-        [attr.show-labels]="pgConfig.showLabels ? true : false"
-        icon-library="lucide"
-        [items]="modelJson"
-      ></ui-dock>
-
-      <div
-        *ngIf="lastAction"
-        style="
-          position: absolute;
-          top: 20px;
-          padding: 8px 16px;
-          background: var(--surface-1);
-          border-radius: 20px;
-          font-size: 0.85rem;
-          color: var(--primary-color);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        "
-      >
-        Last Action: <strong>{{ lastAction }}</strong>
-      </div>
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group full-width">
+      <label>Items (JSON Array)</label>
+      <ui-input type="textarea" [(ngModel)]="pgConfig.items" (ngModelChange)="onJsonChange()" placeholder='[{"label":"App","icon":"app"}]' [rows]="8"></ui-input>
     </div>
   </div>
 
-  <pg-playground-event-log
-    events
-    [logs]="eventLog()"
-    (clear)="eventLog.set([])"
-  ></pg-playground-event-log>
+  <div preview>
+    <div class="preview-stage" style="padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 400px; background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
+      <!-- Mimic a desktop background -->
+      <div style="position: absolute; top: 20px; right: 20px; color: white; font-weight: 500; font-size: 14px;">Friday, Oct 25 10:45 AM</div>
+      
+      <ui-dock
+        [attr.items]="pgConfig.items"
+        [attr.position]="pgConfig.position"
+        [attr.size]="pgConfig.size"
+        [attr.magnify]="pgConfig.magnify ? '' : null"
+        [attr.blur-effect]="pgConfig.blurEffect ? '' : null"
+        [attr.show-labels]="pgConfig.showLabels ? '' : null"
+        [attr.icon-library]="pgConfig.iconLibrary"
+        (dockItemClick)="onDockItemClick($event)"
+        (itemsOrderChange)="onOrderChange($event)"
+      ></ui-dock>
+    </div>
+  </div>
 </pg-playground>

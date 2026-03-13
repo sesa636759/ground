@@ -4,110 +4,114 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
-    <div class="control-grid">
-      <div class="control-group">
-        <label>Direction</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.direction"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Horizontal', value: 'horizontal' },
-            { label: 'Vertical', value: 'vertical' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Theme</label>
-        <ui-dropdown
-          [(ngModel)]="pgConfig.theme"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Light', value: 'light' },
-            { label: 'Dark', value: 'dark' },
-            { label: 'Auto', value: 'auto' },
-          ]"
-        ></ui-dropdown>
-      </div>
-
-      <div class="control-group">
-        <label>Gutter Size (px)</label>
-        <ui-input
-          type="number"
-          [(ngModel)]="pgConfig.gutterSize"
-          min="4"
-          max="20"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
-
-      <div class="control-group">
-        <label>Snap Threshold (%)</label>
-        <ui-input
-          type="number"
-          [(ngModel)]="pgConfig.snapThreshold"
-          min="0"
-          max="50"
-          (ngModelChange)="updateConfig()"
-        />
-      </div>
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Orientation</label>
+      <ui-dropdown [options]="directionOptions" [(ngModel)]="pgConfig.direction" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
+    <div class="control-group">
+      <label>Gutter Size (px)</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.gutterSize" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Snap Threshold</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.snapThreshold" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Gutter Handle
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.rtl" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Right-to-Left
+      </label>
+    </div>
+  </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+  <div slot="content-style" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Theme</label>
+      <ui-dropdown [options]="themeOptions" [(ngModel)]="pgConfig.theme" (ngModelChange)="updateConfig()"></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Gutter Base Color</label>
+      <ui-input type="color" [(ngModel)]="pgConfig.gutterColor" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Gutter Hover Color</label>
+      <ui-input type="color" [(ngModel)]="pgConfig.gutterHoverColor" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
-        Animated
+        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Rounded Gutter
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
-      </label>
-      <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()" />
+        <ui-checkbox [(ngModel)]="pgConfig.elevated" (ngModelChange)="updateConfig()"></ui-checkbox>
         Elevated
       </label>
+    </div>
+  </div>
+
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showGutterIcon" (ngModelChange)="updateConfig()" />
-        Show Icon
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Animated Transitions
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (ngModelChange)="updateConfig()" />
-        DB Click Collapse
+        <ui-checkbox [(ngModel)]="pgConfig.doubleClickCollapse" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Double Click to Collapse
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.keyboardNavigation" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Keyboard Navigation
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.persistState" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Persist State (Local Storage)
       </label>
     </div>
   </div>
 
-  <div preview class="preview-stage h-scrollable">
-    <ui-splitter
-      [attr.direction]="pgConfig.direction"
-      [attr.theme]="pgConfig.theme"
-      [gutterSize]="pgConfig.gutterSize"
-      [snapThreshold]="pgConfig.snapThreshold"
-      [animated]="pgConfig.animated"
-      [rounded]="pgConfig.rounded"
-      [elevated]="pgConfig.elevated"
-      [showGutterIcon]="pgConfig.showGutterIcon"
-      [doubleClickCollapse]="pgConfig.doubleClickCollapse"
-      (sizeChange)="onSizeChange($event)"
-      (panelCollapse)="onPanelCollapse($event)"
-      (splitterDragStart)="onDragStart($event)"
-      (splitterDragEnd)="onDragEnd($event)"
-      style="height: 100%; width: 100%"
-    >
-      <div slot="panel-0" class="panel-content highlight">
-        <h3>Left Panel</h3>
-        <p>Drag the gutter to resize.</p>
-      </div>
-      <div slot="panel-1" class="panel-content">
-        <h3>Right Panel</h3>
-        <p>Resizable content area.</p>
-      </div>
-    </ui-splitter>
+  <div preview>
+    <div class="preview-stage" style="padding: 24px; min-height: 400px; display: flex; align-items: stretch; background: #f1f5f9; width: 100%; border-radius: 8px;">
+      <ui-splitter
+        [attr.direction]="pgConfig.direction"
+        [attr.gutter-size]="pgConfig.gutterSize"
+        [attr.gutter-color]="pgConfig.gutterColor"
+        [attr.gutter-hover-color]="pgConfig.gutterHoverColor"
+        [attr.snap-threshold]="pgConfig.snapThreshold"
+        [attr.theme]="pgConfig.theme"
+        [attr.animated]="pgConfig.animated ? '' : null"
+        [attr.rounded]="pgConfig.rounded ? '' : null"
+        [attr.elevated]="pgConfig.elevated ? '' : null"
+        [attr.show-gutter-icon]="pgConfig.showGutterIcon ? '' : null"
+        [attr.double-click-collapse]="pgConfig.doubleClickCollapse ? '' : null"
+        [attr.keyboard-navigation]="pgConfig.keyboardNavigation ? '' : null"
+        [attr.persist-state]="pgConfig.persistState ? '' : null"
+        [attr.rtl]="pgConfig.rtl ? '' : null"
+        (sizeChange)="onSizeChange($event)"
+        (panelCollapse)="onPanelCollapse($event)"
+        style="width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; background: white;"
+      >
+        <div slot="panel-0" style="padding: 20px; display: flex; flex-direction: column; gap: 12px; overflow: auto;">
+          <h4 style="margin: 0">File Explorer</h4>
+          <div style="color: #64748b; font-size: 13px;">
+            <p>src/</p>
+            <p style="padding-left: 12px;">app/</p>
+            <p style="padding-left: 24px;">main.ts</p>
+            <p style="padding-left: 24px;">app.component.ts</p>
+          </div>
+        </div>
+        <div slot="panel-1" style="padding: 20px; display: flex; flex-direction: column; gap: 12px; overflow: auto;">
+          <h4 style="margin: 0">Code Editor</h4>
+          <pre style="background: #f8fafc; padding: 12px; border-radius: 4px; font-size: 12px;"><code>export class AppComponent &#123;
+  title = 'AngularGround';
+&#125;</code></pre>
+        </div>
+      </ui-splitter>
+    </div>
   </div>
-
-  <pg-playground-event-log
-    events
-    [logs]="eventLog()"
-    (clear)="eventLog.set([])"
-  ></pg-playground-event-log>
 </pg-playground>

@@ -1,8 +1,6 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ViewChild,
-  ElementRef,
   ViewEncapsulation,
   OnInit,
 } from '@angular/core';
@@ -19,7 +17,6 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   encapsulation: ViewEncapsulation.None,
 })
 export class DmStackPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
-  @ViewChild('stack') stack!: ElementRef;
   numBoxes = 5;
   get boxes() {
     return Array.from({ length: this.numBoxes }, (_, i) => i + 1);
@@ -28,16 +25,20 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'layout', title: 'Layout Settings', icon: 'ruler', iconLibrary: 'lucide' },
-    { id: 'behavior', title: 'Behavior', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'content', title: 'Content', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout & Box Model', icon: 'grid', iconLibrary: 'lucide' },
+    { id: 'visual', title: 'Visual & Dividers', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'content', title: 'Item Configuration', icon: 'layers', iconLibrary: 'lucide' },
   ];
-
-  accordionDefaultOpen = ['layout'];
 
   directionOptions = [
     { label: 'Horizontal', value: 'horizontal' },
     { label: 'Vertical', value: 'vertical' },
+  ];
+
+  wrapOptions = [
+    { label: 'No Wrap', value: 'nowrap' },
+    { label: 'Wrap', value: 'wrap' },
+    { label: 'Wrap Reverse', value: 'wrap-reverse' },
   ];
 
   alignOptions = [
@@ -54,6 +55,12 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
     { label: 'Space Between', value: 'space-between' },
   ];
 
+  dividerOptions = [
+    { label: 'Solid', value: 'solid' },
+    { label: 'Dashed', value: 'dashed' },
+    { label: 'Dotted', value: 'dotted' },
+  ];
+
   constructor() {
     super();
   }
@@ -65,36 +72,43 @@ export class DmStackPlaygroundComponent extends BasePlaygroundComponent implemen
   getDefaultConfig() {
     return {
       direction: 'horizontal',
+      wrap: 'nowrap',
       spacing: '16px',
       align: 'center',
-      justify: 'center',
+      justify: 'start',
       max: 0,
       overlap: false,
       showDividers: false,
+      dividerType: 'solid',
     };
   }
 
   updateConfig() {
-    setTimeout(() => {
-      if (!this.stack) return;
-      let code = this.getCleanFormattedDom(this.stack, 'ui-stack');
-      const itemsContent = Array.from(
-        { length: Math.min(this.numBoxes, 3) },
-        (_, i) => `  <div>Item ${i + 1}</div>`,
-      ).join('\n');
-      const suffix = this.numBoxes > 3 ? `  <!-- ${this.numBoxes - 3} more items... -->\n` : '';
-      code = code.replace('></ui-stack>', `>\n${itemsContent}\n${suffix}</ui-stack>`);
+    let code = `<ui-stack\n`;
+    if (this.pgConfig.direction !== 'horizontal') code += `  direction="${this.pgConfig.direction}"\n`;
+    if (this.pgConfig.wrap !== 'nowrap') code += `  wrap="${this.pgConfig.wrap}"\n`;
+    if (this.pgConfig.spacing !== '8px') code += `  spacing="${this.pgConfig.spacing}"\n`;
+    if (this.pgConfig.align !== 'center') code += `  align="${this.pgConfig.align}"\n`;
+    if (this.pgConfig.justify !== 'start') code += `  justify="${this.pgConfig.justify}"\n`;
+    if (this.pgConfig.max > 0) code += `  [max]="${this.pgConfig.max}"\n`;
+    if (this.pgConfig.overlap) code += `  overlap\n`;
+    if (this.pgConfig.showDividers) {
+      code += `  show-dividers\n`;
+      if (this.pgConfig.dividerType !== 'solid') code += `  divider-type="${this.pgConfig.dividerType}"\n`;
+    }
+    
+    code += `>\n`;
+    code += `  <div>1</div>\n`;
+    code += `  <div>2</div>\n`;
+    code += `</ui-stack>`;
 
-      this.generatedCode.set(code);
-      this.refreshCode();
-    }, 50);
+    this.generatedCode.set(code);
+    this.refreshCode();
   }
 
   override resetConfig() {
     super.resetConfig();
     this.numBoxes = 5;
+    this.updateConfig();
   }
 }
-
-
-

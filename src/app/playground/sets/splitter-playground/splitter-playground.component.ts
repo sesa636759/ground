@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -11,63 +11,32 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './splitter-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent {
-  // Playground State
-  pgConfig = {
-    direction: 'horizontal',
-    gutterSize: 8,
-    snapThreshold: 20,
-    theme: 'light',
-    animated: true,
-    rounded: false,
-    elevated: false,
-    showGutterIcon: true,
-    doubleClickCollapse: true,
-  };
+export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent implements OnInit {
+  pgConfig = this.getDefaultConfig();
+
+  pgAccordionItems = [
+    { id: 'layout', title: 'Layout & Handles', icon: 'ruler', iconLibrary: 'lucide' },
+    { id: 'style', title: 'Styling', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior', icon: 'zap', iconLibrary: 'lucide' },
+  ];
+
+  themeOptions = [
+    { label: 'Auto', value: 'auto' },
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
+
+  directionOptions = [
+    { label: 'Horizontal', value: 'horizontal' },
+    { label: 'Vertical', value: 'vertical' },
+  ];
 
   constructor() {
     super();
+  }
+
+  ngOnInit() {
     this.updateConfig();
-  }
-
-  updateConfig() {
-    let code = `<ui-splitter\n`;
-    code += `  direction="${this.pgConfig.direction}"\n`;
-    if (this.pgConfig.gutterSize !== 8) code += `  [gutterSize]="${this.pgConfig.gutterSize}"\n`;
-    if (this.pgConfig.snapThreshold !== 20)
-      code += `  [snapThreshold]="${this.pgConfig.snapThreshold}"\n`;
-    if (this.pgConfig.theme !== 'light') code += `  theme="${this.pgConfig.theme}"\n`;
-    if (!this.pgConfig.animated) code += `  [animated]="false"\n`;
-    if (this.pgConfig.rounded) code += `  rounded="true"\n`;
-    if (this.pgConfig.elevated) code += `  elevated="true"\n`;
-    if (!this.pgConfig.showGutterIcon) code += `  [showGutterIcon]="false"\n`;
-    if (this.pgConfig.doubleClickCollapse) code += `  double-click-collapse\n`;
-    code += `>\n`;
-    code += `  <div slot="panel-0">Panel 1 Content</div>\n`;
-    code += `  <div slot="panel-1">Panel 2 Content</div>\n`;
-    code += `</ui-splitter>`;
-
-    this.generatedCode.set(code);
-    this.refreshCode();
-  }
-
-  onSizeChange(event: any) {
-    const sizes = event.detail.sizes.map((s: any) => `${s.toFixed(1)}%`).join(', ');
-    this.logEvent(`Sizes changed: [${sizes}]`);
-  }
-
-  onPanelCollapse(event: any) {
-    this.logEvent(
-      `Panel ${event.detail.index} ${event.detail.collapsed ? 'collapsed' : 'expanded'}`,
-    );
-  }
-
-  onDragStart(event: any) {
-    this.logEvent(`Drag started on gutter ${event.detail.index}`);
-  }
-
-  onDragEnd(_event: any) {
-    this.logEvent(`Drag ended`);
   }
 
   getDefaultConfig() {
@@ -75,12 +44,51 @@ export class DmSplitterPlaygroundComponent extends BasePlaygroundComponent {
       direction: 'horizontal',
       gutterSize: 8,
       snapThreshold: 20,
-      theme: 'light',
+      theme: 'auto',
       animated: true,
       rounded: false,
       elevated: false,
       showGutterIcon: true,
       doubleClickCollapse: true,
+      keyboardNavigation: true,
+      persistState: false,
+      rtl: false,
+      gutterColor: '#e5e7eb',
+      gutterHoverColor: '#3b82f6',
     };
+  }
+
+  updateConfig() {
+    let code = `<ui-splitter\n`;
+    if (this.pgConfig.direction !== 'horizontal') code += `  direction="${this.pgConfig.direction}"\n`;
+    if (this.pgConfig.gutterSize !== 8) code += `  [gutter-size]="${this.pgConfig.gutterSize}"\n`;
+    if (this.pgConfig.snapThreshold !== 20) code += `  [snap-threshold]="${this.pgConfig.snapThreshold}"\n`;
+    if (this.pgConfig.theme !== 'auto') code += `  theme="${this.pgConfig.theme}"\n`;
+    if (!this.pgConfig.animated) code += `  [animated]="false"\n`;
+    if (this.pgConfig.rounded) code += `  rounded\n`;
+    if (this.pgConfig.elevated) code += `  elevated\n`;
+    if (!this.pgConfig.showGutterIcon) code += `  [show-gutter-icon]="false"\n`;
+    if (!this.pgConfig.doubleClickCollapse) code += `  [double-click-collapse]="false"\n`;
+    if (!this.pgConfig.keyboardNavigation) code += `  [keyboard-navigation]="false"\n`;
+    if (this.pgConfig.persistState) code += `  persist-state\n`;
+    if (this.pgConfig.rtl) code += `  rtl\n`;
+    if (this.pgConfig.gutterColor !== '#e5e7eb') code += `  gutter-color="${this.pgConfig.gutterColor}"\n`;
+    if (this.pgConfig.gutterHoverColor !== '#3b82f6') code += `  gutter-hover-color="${this.pgConfig.gutterHoverColor}"\n`;
+
+    code += `>\n`;
+    code += `  <div slot="panel-0">Left Panel</div>\n`;
+    code += `  <div slot="panel-1">Right Panel</div>\n`;
+    code += `</ui-splitter>`;
+
+    this.generatedCode.set(code);
+    this.refreshCode();
+  }
+
+  onSizeChange(ev: any) {
+    this.logEvent(`Sizes changed: ${JSON.stringify(ev.detail.sizes)}`);
+  }
+
+  onPanelCollapse(ev: any) {
+    this.logEvent(`Panel ${ev.detail.index} ${ev.detail.collapsed ? 'collapsed' : 'expanded'}`);
   }
 }

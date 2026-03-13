@@ -4,7 +4,6 @@ import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/p
 import { DmDividerPlaygroundComponent } from '../../../playground/common/divider-playground/divider-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
 
@@ -15,7 +14,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
     ...PLAYGROUND_IMPORTS,
     DmDividerPlaygroundComponent,
     DemoTabsComponent,
-    ExampleSectionComponent,
     ComponentDocumentationComponent,
     DemoSidebarComponent,
     DemoHeaderComponent,
@@ -26,32 +24,41 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDividerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'variants', title: 'Line Variants', icon: '🎨', color: '#3b82f6' },
-    { id: 'text-content', title: 'Text & Content', icon: '📝', color: '#10b981' },
-    { id: 'vertical', title: 'Vertical Orientation', icon: '↕️', color: '#f59e0b' },
-    { id: 'shapes', title: 'Decorative Shapes', icon: '🔷', color: '#ef4444' },
+    { id: 'variants', title: 'Line Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'content', title: 'Text & Icons', icon: 'type', iconLibrary: 'lucide' },
+    { id: 'vertical', title: 'Vertical Dividers', icon: 'separator-vertical', iconLibrary: 'lucide' },
+    { id: 'patterns', title: 'Visual Patterns', icon: 'grid-3x3', iconLibrary: 'lucide' },
+    { id: 'shapes', title: 'Shape Dividers', icon: 'shapes', iconLibrary: 'lucide' },
+    { id: 'effects', title: 'Premium Effects', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  playgroundCode = `<ui-divider text="SECTION 1" variant="dashed" size="lg"></ui-divider>`;
-
   variantsCode = `<ui-divider variant="solid"></ui-divider>
-<ui-divider variant="dashed"></ui-divider>
-<ui-divider variant="dotted"></ui-divider>
-<ui-divider variant="gradient" color="linear-gradient(to right, #8b5cf6, #ec4899)"></ui-divider>`;
+<ui-divider variant="dashed" size="lg"></ui-divider>
+<ui-divider variant="double-solid" size="lg"></ui-divider>
+<ui-divider variant="gradient" color="linear-gradient(to right, #3b82f6, #ec4899)"></ui-divider>`;
 
-  textContentCode = `<ui-divider text="Centered Text"></ui-divider>
-<ui-divider text="Left Text" text-align="left"></ui-divider>
-<ui-divider icon="⭐" variant="dashed" size="lg"></ui-divider>
-<ui-divider badge="NEW" color="primary"></ui-divider>`;
+  contentCode = `<ui-divider text="Label"></ui-divider>
+<ui-divider text="Left Align" text-align="left"></ui-divider>
+<ui-divider icon="⭐"></ui-divider>
+<ui-divider text="New Section" badge="Updated" color="primary"></ui-divider>`;
 
-  verticalCode = `<div style="display: flex; height: 100px; align-items: center; justify-content: center;">
-  <span>Left Panel</span>
-  <ui-divider orientation="vertical" gap="2rem"></ui-divider>
-  <span>Middle Panel</span>
-  <ui-divider orientation="vertical" variant="dashed" gap="2rem"></ui-divider>
-  <span>Right Panel</span>
+  verticalCode = `<div style="display: flex; height: 100px; align-items: center;">
+  <span>Section A</span>
+  <ui-divider orientation="vertical" gap="0 24px"></ui-divider>
+  <span>Section B</span>
+  <ui-divider orientation="vertical" variant="dashed" vertical-align="top" gap="0 24px"></ui-divider>
+  <span>Section C</span>
 </div>`;
 
-  shapesCode = `<ui-divider shape="wave" shape-color="#f3f4f6"></ui-divider>
-<ui-divider shape="tilt" shape-color="#fef2f2" style="height: 50px"></ui-divider>`;
+  patternsCode = `<ui-divider pattern="dots" color="#94a3b8"></ui-divider>
+<ui-divider pattern="stripes" size="lg"></ui-divider>
+<ui-divider pattern="zigzag" size="lg"></ui-divider>`;
+
+  shapesCode = `<ui-divider shape="wave" shape-color="#f8fafc"></ui-divider>
+<ui-divider shape="tilt" shape-color="#f1f5f9"></ui-divider>
+<ui-divider shape="triangle" shape-color="#e2e8f0"></ui-divider>`;
+
+  effectsCode = `<ui-divider loading></ui-divider>
+<ui-divider text="Hover Me" clickable glow color="primary"></ui-divider>
+<ui-divider shadow variant="double-solid" size="lg"></ui-divider>`;
 }
