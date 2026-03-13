@@ -452,23 +452,7 @@
       (focus)="onInputFocus()"
       (blur)="onInputBlur()"
       (clear)="onInputClear()"
-    >
-      @if (pgConfig.prefixIcon && pgConfig.prefixIconLibrary !== 'lucide') {
-        <ui-icon
-          slot="prefix"
-          [attr.library]="pgConfig.prefixIconLibrary"
-          [attr.name]="pgConfig.prefixIcon"
-        ></ui-icon>
-      }
-
-      @if (pgConfig.suffixIcon && pgConfig.suffixIconLibrary !== 'lucide') {
-        <ui-icon
-          slot="suffix"
-          [attr.library]="pgConfig.suffixIconLibrary"
-          [attr.name]="pgConfig.suffixIcon"
-        ></ui-icon>
-      }
-    </ui-input>
+    />
   </div>
 
   <pg-playground-event-log
