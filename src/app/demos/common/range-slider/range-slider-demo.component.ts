@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
@@ -26,9 +26,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRangeSliderDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'modes', title: 'Slider Modes', icon: '↔️', color: '#3b82f6' },
-    { id: 'layouts', title: 'Layouts', icon: '📐', color: '#10b981' },
+    { id: 'modes', title: 'Slider Modes', icon: 'sliders-horizontal', iconLibrary: 'lucide' },
+    { id: 'layouts', title: 'Layouts', icon: 'layout', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-range-slider [min]="0" [max]="100" [value]="[20, 80]" range></ui-range-slider>`;

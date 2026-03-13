@@ -29,12 +29,13 @@
     <!-- Code Preview -->
     <div class="code-preview-area">
       <ng-content select="[code]"></ng-content>
-      @if (code) {
+      @if (code && showCodePreview) {
         <ui-code-preview
           [htmlCode]="code"
           label="Generated Code"
           activeLang="html"
-          expanded="false"
+          [attr.expanded]="isExpanded"
+          (expandedChange)="handleExpandedChange($event)"
         ></ui-code-preview>
       }
     </div>

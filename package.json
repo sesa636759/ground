@@ -36,12 +36,11 @@
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@quartzds/core-angular": "^1.0.0-beta.91",
-    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.1.38.tgz",
+    "app-ui-library": "file:../../stencil/lib/app-ui/app-ui-library-0.1.54.tgz",
     "chart-library": "file:../../stencil/chart-library/chart-library-0.0.1.tgz",
     "lucide-angular": "^0.575.0",
     "puppeteer": "^24.37.5",
     "rxjs": "~7.8.0",
-    "set-ui-lib": "file:../../stencil/set-ui-lib/set-ui-lib-0.0.10.tgz",
     "tslib": "^2.8.1",
     "zone.js": "~0.16.0"
   },
@@ -57,6 +56,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.0",
     "jsdom": "^27.1.0",
+    "playwright": "^1.58.2",
     "prettier": "^3.0.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"

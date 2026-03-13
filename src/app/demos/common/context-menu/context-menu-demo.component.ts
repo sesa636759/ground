@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmContextMenuPlaygroundComponent } from '../../../playground/common/context-menu-playground/context-menu-playground.component';
@@ -25,10 +25,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './context-menu-demo.component.scss',
 })
 export class DmContextMenuDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'targets', title: 'Multiple Targets', icon: '🎯' },
-  ];
+  exampleVariants = [{ id: 'targets', title: 'Multiple Targets', icon: '🎯' }];
 
   fileItems = [
     { label: 'Open', icon: '📁' },

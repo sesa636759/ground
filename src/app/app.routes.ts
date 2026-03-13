@@ -1,4 +1,4 @@
-﻿import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 
 export const routes: Routes = [
@@ -84,89 +84,79 @@ export const routes: Routes = [
     path: 'demos',
     children: [
       {
-        path: 'button-toggle-set',
+        path: 'button-toggle',
         loadComponent: () =>
-          import('./demos/sets/set-button-toggle/set-button-toggle-demo.component').then(
-            (m) => m.DmSetButtonToggleDemoComponent,
+          import('./demos/sets/button-toggle/button-toggle-demo.component').then(
+            (m) => m.DmButtonToggleDemoComponent,
           ),
       },
       {
-        path: 'checkbox-set',
+        path: 'checkbox',
         loadComponent: () =>
-          import('./demos/sets/set-checkbox/set-checkbox-demo.component').then(
-            (m) => m.DmSetCheckboxDemoComponent,
+          import('./demos/sets/checkbox/checkbox-demo.component').then(
+            (m) => m.DmCheckboxDemoComponent,
           ),
       },
       {
-        path: 'input-set',
+        path: 'input',
         loadComponent: () =>
-          import('./demos/sets/set-input/set-input-demo.component').then(
-            (m) => m.DmSetInputDemoComponent,
+          import('./demos/sets/input/input-demo.component').then((m) => m.DmInputDemoComponent),
+      },
+      {
+        path: 'radio',
+        loadComponent: () =>
+          import('./demos/sets/radio/radio-demo.component').then((m) => m.DmRadioDemoComponent),
+      },
+      {
+        path: 'card',
+        loadComponent: () =>
+          import('./demos/sets/card/card-demo.component').then((m) => m.DmCardDemoComponent),
+      },
+      {
+        path: 'context-menu',
+        loadComponent: () =>
+          import('./demos/sets/context-menu/context-menu-demo.component').then(
+            (m) => m.DmContextMenuDemoComponent,
           ),
       },
       {
-        path: 'radio-set',
+        path: 'tree',
         loadComponent: () =>
-          import('./demos/sets/set-radio/set-radio-demo.component').then(
-            (m) => m.DmSetRadioDemoComponent,
+          import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
+      },
+      // {
+      //   path: 'tabs',
+      //   loadComponent: () =>
+      //     import('./demos/sets/tabs/tabs-demo.component').then((m) => m.DmTabsDemoComponent),
+      // },
+      {
+        path: 'resizable-panel',
+        loadComponent: () =>
+          import('./demos/sets/resizable-panel/resizable-panel-demo.component').then(
+            (m) => m.DmResizablePanelDemoComponent,
           ),
       },
       {
-        path: 'card-set',
+        path: 'splitter',
         loadComponent: () =>
-          import('./demos/sets/set-card/set-card-demo.component').then(
-            (m) => m.DmSetCardDemoComponent,
+          import('./demos/sets/splitter/splitter-demo.component').then(
+            (m) => m.DmSplitterDemoComponent,
           ),
       },
       {
-        path: 'context-menu-set',
+        path: 'scroll-top',
         loadComponent: () =>
-          import('./demos/sets/set-context-menu/set-context-menu-demo.component').then(
-            (m) => m.DmSetContextMenuDemoComponent,
+          import('./demos/sets/scroll-top/scroll-top-demo.component').then(
+            (m) => m.DmScrollTopDemoComponent,
           ),
       },
-      {
-        path: 'tree-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tree/set-tree-demo.component').then(
-            (m) => m.DmSetTreeDemoComponent,
-          ),
-      },
-      {
-        path: 'tabs-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tabs/set-tabs-demo.component').then(
-            (m) => m.DmSetTabsDemoComponent,
-          ),
-      },
-      {
-        path: 'resizable-panel-set',
-        loadComponent: () =>
-          import('./demos/sets/set-resizable-panel/set-resizable-panel-demo.component').then(
-            (m) => m.DmSetResizablePanelDemoComponent,
-          ),
-      },
-      {
-        path: 'splitter-set',
-        loadComponent: () =>
-          import('./demos/sets/set-splitter/set-splitter-demo.component').then(
-            (m) => m.DmSetSplitterDemoComponent,
-          ),
-      },
-      {
-        path: 'scroll-top-set',
-        loadComponent: () =>
-          import('./demos/sets/set-scroll-top/set-scroll-top-demo.component').then(
-            (m) => m.DmSetScrollTopDemoComponent,
-          ),
-      },
-      {
-        path: 'modern-sidebar-set',
-        loadComponent: () =>
-          import('./demos/sets/set-modern-sidebar/set-modern-sidebar-demo.component').then(
-            (m) => m.DmSetModernSidebarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'modern-sidebar',
+      //   loadComponent: () =>
+      //     import('./demos/sets/modern-sidebar/modern-sidebar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'accordian',
         loadComponent: () =>
@@ -175,172 +165,160 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'anchor-set',
+        path: 'anchor',
         loadComponent: () =>
-          import('./demos/sets/set-anchor/set-anchor-demo.component').then(
-            (m) => m.DmSetAnchorDemoComponent,
+          import('./demos/sets/anchor/anchor-demo.component').then((m) => m.DmAnchorDemoComponent),
+      },
+      {
+        path: 'tooltip',
+        loadComponent: () =>
+          import('./demos/sets/tooltip/tooltip-demo.component').then(
+            (m) => m.DmTooltipDemoComponent,
           ),
       },
       {
-        path: 'tooltip-set',
+        path: 'tree',
         loadComponent: () =>
-          import('./demos/sets/set-tooltip/set-tooltip-demo.component').then(
-            (m) => m.DmSetTooltipDemoComponent,
+          import('./demos/sets/tree/tree-demo.component').then((m) => m.DmTreeDemoComponent),
+      },
+      // {
+      //   path: 'timeline',
+      //   loadComponent: () =>
+      //     import('./demos/sets/timeline/timeline-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      {
+        path: 'progress',
+        loadComponent: () =>
+          import('./demos/sets/progress/progress-demo.component').then(
+            (m) => m.DmProgressDemoComponent,
           ),
       },
       {
-        path: 'tree-set',
+        path: 'toggle',
         loadComponent: () =>
-          import('./demos/sets/set-tree/set-tree-demo.component').then(
-            (m) => m.DmSetTreeDemoComponent,
-          ),
-      },
-      {
-        path: 'timeline-set',
-        loadComponent: () =>
-          import('./demos/sets/set-timeline/set-timeline-demo.component').then(
-            (m) => m.DmSetTimelineDemoComponent,
-          ),
-      },
-      {
-        path: 'progress-set',
-        loadComponent: () =>
-          import('./demos/sets/set-progress/set-progress-demo.component').then(
-            (m) => m.DmSetProgressDemoComponent,
-          ),
-      },
-      {
-        path: 'toggle-set',
-        loadComponent: () =>
-          import('./demos/sets/set-toggle/set-toggle-demo.component').then(
-            (m) => m.DmSetToggleDemoComponent,
-          ),
+          import('./demos/sets/toggle/toggle-demo.component').then((m) => m.DmToggleDemoComponent),
       },
 
       {
-        path: 'list-set',
+        path: 'list',
         loadComponent: () =>
-          import('./demos/sets/set-list/set-list-demo.component').then(
-            (m) => m.DmSetListDemoComponent,
+          import('./demos/sets/list/list-demo.component').then((m) => m.DmListDemoComponent),
+      },
+      {
+        path: 'masonry',
+        loadComponent: () =>
+          import('./demos/sets/masonry/masonry-demo.component').then(
+            (m) => m.DmMasonryDemoComponent,
           ),
       },
       {
-        path: 'masonry-set',
+        path: 'empty-state',
         loadComponent: () =>
-          import('./demos/sets/set-masonry/set-masonry-demo.component').then(
-            (m) => m.DmSetMasonryDemoComponent,
+          import('./demos/sets/empty-state/empty-state-demo.component').then(
+            (m) => m.DmEmptyStateDemoComponent,
           ),
       },
       {
-        path: 'empty-state-set',
+        path: 'avatar',
         loadComponent: () =>
-          import('./demos/sets/set-empty-state/set-empty-state-demo.component').then(
-            (m) => m.DmSetEmptyStateDemoComponent,
+          import('./demos/sets/avatar/avatar-demo.component').then((m) => m.DmAvatarDemoComponent),
+      },
+      {
+        path: 'carousel',
+        loadComponent: () =>
+          import('./demos/sets/carousel/carousel-demo.component').then(
+            (m) => m.DmCarouselDemoComponent,
+          ),
+      },
+      // {
+      //   path: 'stepper',
+      //   loadComponent: () =>
+      //     import('./demos/sets/stepper/stepper-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      {
+        path: 'otp-input',
+        loadComponent: () =>
+          import('./demos/sets/otp-input/otp-input-demo.component').then(
+            (m) => m.DmOtpInputDemoComponent,
           ),
       },
       {
-        path: 'avatar-set',
+        path: 'code-editor',
         loadComponent: () =>
-          import('./demos/sets/set-avatar/set-avatar-demo.component').then(
-            (m) => m.DmSetAvatarDemoComponent,
+          import('./demos/sets/code-editor/code-editor-demo.component').then(
+            (m) => m.DmCodeEditorDemoComponent,
           ),
       },
       {
-        path: 'carousel-set',
+        path: 'dashboard',
         loadComponent: () =>
-          import('./demos/sets/set-carousel/set-carousel-demo.component').then(
-            (m) => m.DmSetCarouselDemoComponent,
+          import('./demos/sets/dashboard/dashboard-demo.component').then(
+            (m) => m.DmDashboardDemoComponent,
           ),
       },
       {
-        path: 'stepper-set',
+        path: 'tags-input',
         loadComponent: () =>
-          import('./demos/sets/set-stepper/set-stepper-demo.component').then(
-            (m) => m.DmSetStepperDemoComponent,
+          import('./demos/sets/tags-input/tags-input-demo.component').then(
+            (m) => m.DmTagsInputDemoComponent,
           ),
       },
       {
-        path: 'otp-input-set',
+        path: 'theme-switcher',
         loadComponent: () =>
-          import('./demos/sets/set-otp-input/set-otp-input-demo.component').then(
-            (m) => m.DmSetOtpInputDemoComponent,
+          import('./demos/sets/theme-switcher/theme-switcher-demo.component').then(
+            (m) => m.DmThemeSwitcherDemoComponent,
+          ),
+      },
+      // {
+      //   path: 'sidebar',
+      //   loadComponent: () =>
+      //     import('./demos/sets/sidebar/sidebar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      {
+        path: 'animate-on-scroll',
+        loadComponent: () =>
+          import('./demos/sets/animate-on-scroll/animate-on-scroll-demo.component').then(
+            (m) => m.DmAnimateOnScrollDemoComponent,
           ),
       },
       {
-        path: 'code-editor-set',
+        path: 'dock-overlay',
         loadComponent: () =>
-          import('./demos/sets/set-code-editor/set-code-editor-demo.component').then(
-            (m) => m.DmSetCodeEditorDemoComponent,
+          import('./demos/sets/dock-overlay/dock-overlay-demo.component').then(
+            (m) => m.DmDockOverlayDemoComponent,
+          ),
+      },
+      // {
+      //   path: 'label',
+      //   loadComponent: () =>
+      //     import('./demos/sets/label/label-demo.component').then((m) => m.DmLabelDemoComponent),
+      // },
+      {
+        path: 'avatar-group',
+        loadComponent: () =>
+          import('./demos/sets/avatar-group/avatar-group-demo.component').then(
+            (m) => m.DmAvatarGroupDemoComponent,
           ),
       },
       {
-        path: 'dashboard-set',
+        path: 'tab-stack',
         loadComponent: () =>
-          import('./demos/sets/set-dashboard/set-dashboard-demo.component').then(
-            (m) => m.DmSetDashboardDemoComponent,
+          import('./demos/sets/tab-stack/tab-stack-demo.component').then(
+            (m) => m.DmTabStackDemoComponent,
           ),
       },
       {
-        path: 'tags-input-set',
+        path: 'layout-manager',
         loadComponent: () =>
-          import('./demos/sets/set-tags-input/set-tags-input-demo.component').then(
-            (m) => m.DmSetTagsInputDemoComponent,
-          ),
-      },
-      {
-        path: 'theme-switcher-set',
-        loadComponent: () =>
-          import('./demos/sets/set-theme-switcher/set-theme-switcher-demo.component').then(
-            (m) => m.DmSetThemeSwitcherDemoComponent,
-          ),
-      },
-      {
-        path: 'sidebar-set',
-        loadComponent: () =>
-          import('./demos/sets/set-sidebar/set-sidebar-demo.component').then(
-            (m) => m.DmSetSidebarDemoComponent,
-          ),
-      },
-      {
-        path: 'animate-on-scroll-set',
-        loadComponent: () =>
-          import('./demos/sets/set-animate-on-scroll/set-animate-on-scroll-demo.component').then(
-            (m) => m.DmSetAnimateOnScrollDemoComponent,
-          ),
-      },
-      {
-        path: 'dock-overlay-set',
-        loadComponent: () =>
-          import('./demos/sets/set-dock-overlay/set-dock-overlay-demo.component').then(
-            (m) => m.DmSetDockOverlayDemoComponent,
-          ),
-      },
-      {
-        path: 'label-set',
-        loadComponent: () =>
-          import('./demos/sets/set-label/set-label-demo.component').then(
-            (m) => m.DmSetLabelDemoComponent,
-          ),
-      },
-      {
-        path: 'avatar-group-set',
-        loadComponent: () =>
-          import('./demos/sets/set-avatar-group/set-avatar-group-demo.component').then(
-            (m) => m.DmSetAvatarGroupDemoComponent,
-          ),
-      },
-      {
-        path: 'tab-stack-set',
-        loadComponent: () =>
-          import('./demos/sets/set-tab-stack/set-tab-stack-demo.component').then(
-            (m) => m.DmSetTabStackDemoComponent,
-          ),
-      },
-      {
-        path: 'layout-manager-set',
-        loadComponent: () =>
-          import('./demos/sets/set-layout-manager/set-layout-manager-demo.component').then(
-            (m) => m.DmSetLayoutManagerDemoComponent,
+          import('./demos/sets/layout-manager/layout-manager-demo.component').then(
+            (m) => m.DmLayoutManagerDemoComponent,
           ),
       },
 
@@ -390,13 +368,13 @@ export const routes: Routes = [
             (m) => m.DmSwitchDemoComponent,
           ),
       },
-      {
-        path: 'avatar',
-        loadComponent: () =>
-          import('./demos/common/avatar/avatar-demo.component').then(
-            (m) => m.DmAvatarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'avatar',
+      //   loadComponent: () =>
+      //     import('./demos/common/avatar/avatar-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'popover',
         loadComponent: () =>
@@ -423,13 +401,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demos/common/aside/aside-demo.component').then((m) => m.DmAsideDemoComponent),
       },
-      {
-        path: 'anchor',
-        loadComponent: () =>
-          import('./demos/common/anchor/anchor-demo.component').then(
-            (m) => m.DmAnchorDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'anchor',
+      //   loadComponent: () =>
+      //     import('./demos/common/anchor/anchor-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'breadcrumb',
         loadComponent: () =>
@@ -453,7 +431,7 @@ export const routes: Routes = [
       //   path: 'stepper',
       //   loadComponent: () =>
       //     import('./demos/common/stepper/stepper-demo.component').then(
-      //       (m) => m.DmStepperDemoComponent,
+      //       (m) => m.Dm,
       //     ),
       // },
 
@@ -601,20 +579,20 @@ export const routes: Routes = [
             (m) => m.DmAdvancedDataTableDemoComponent,
           ),
       },
-      {
-        path: 'nav-bar',
-        loadComponent: () =>
-          import('./demos/common/nav-bar/nav-bar-demo.component').then(
-            (m) => m.DmNavBarDemoComponent,
-          ),
-      },
-      {
-        path: 'top-bar',
-        loadComponent: () =>
-          import('./demos/common/top-bar/top-bar-demo.component').then(
-            (m) => m.DmTopBarDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'nav-bar',
+      //   loadComponent: () =>
+      //     import('./demos/common/nav-bar/nav-bar-demo.component').then(
+      //       (m) => m.DmNavBarDemoComponent,
+      //     ),
+      // },
+      // {
+      //   path: 'top-bar',
+      //   loadComponent: () =>
+      //     import('./demos/common/top-bar/top-bar-demo.component').then(
+      //       (m) => m.DmTopBarDemoComponent,
+      //     ),
+      // },
       {
         path: 'pattern-input',
         loadComponent: () =>
@@ -622,27 +600,27 @@ export const routes: Routes = [
             (m) => m.DmPatternInputDemoComponent,
           ),
       },
-      {
-        path: 'avatar-group',
-        loadComponent: () =>
-          import('./demos/common/avatar-group/avatar-group-demo.component').then(
-            (m) => m.DmAvatarGroupDemoComponent,
-          ),
-      },
-      {
-        path: 'horizontal-nav',
-        loadComponent: () =>
-          import('./demos/common/horizontal-nav/horizontal-nav-demo.component').then(
-            (m) => m.DmHorizontalNavDemoComponent,
-          ),
-      },
-      {
-        path: 'smart-menu',
-        loadComponent: () =>
-          import('./demos/common/smart-menu/smart-menu-demo.component').then(
-            (m) => m.DmSmartMenuDemoComponent,
-          ),
-      },
+      // {
+      //   path: 'avatar-group',
+      //   loadComponent: () =>
+      //     import('./demos/common/avatar-group/avatar-group-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      // {
+      //   path: 'horizontal-nav',
+      //   loadComponent: () =>
+      //     import('./demos/common/horizontal-nav/horizontal-nav-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
+      // {
+      //   path: 'smart-menu',
+      //   loadComponent: () =>
+      //     import('./demos/common/smart-menu/smart-menu-demo.component').then(
+      //       (m) => m.Dm,
+      //     ),
+      // },
       {
         path: 'tree-list',
         loadComponent: () =>

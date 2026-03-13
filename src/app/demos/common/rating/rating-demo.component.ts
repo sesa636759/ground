@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -25,10 +25,9 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmRatingDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', title: 'Rating Types', icon: '✨', color: '#3b82f6' },
-    { id: 'colors', title: 'Colors & sizes', icon: '🌈', color: '#10b981' },
-    { id: 'custom', title: 'Custom Labels', icon: '📝', color: '#f59e0b' },
+    { id: 'types', title: 'Rating Types', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Colors & sizes', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'custom', title: 'Custom Labels', icon: 'type', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-rating type="star" [value]="3" max="5"></ui-rating>`;

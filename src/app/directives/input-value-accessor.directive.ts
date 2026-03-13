@@ -2,22 +2,19 @@
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-<<<<<<<< HEAD:src/app/directives/input-value-accessor.directive.ts
+
   selector: 'ui-input[ngModel], ui-input[formControl], ui-input[formControlName]',
-========
-  selector:
-    'dm-input[ngModel], dm-input[formControl], dm-input[formControlName], app-input[ngModel], app-input[formControl], app-input[formControlName]',
->>>>>>>> main:src/app/directives/dm-input-value-accessor.directive.ts
-  standalone: true,
+
+ standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmInputValueAccessorDirective),
+      useExisting: forwardRef(() => InputValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmInputValueAccessorDirective implements ControlValueAccessor {
+export class InputValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 

@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmSkeletonPlaygroundComponent } from '../../../playground/common/skeleton-playground/skeleton-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -27,11 +27,10 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmSkeletonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'shapes', title: 'Shapes & Animations', icon: '🌀' },
-    { id: 'card-layout', title: 'Card Layout', icon: '🃏' },
-    { id: 'list-layout', title: 'List Layout', icon: '📋' },
-    { id: 'profile-layout', title: 'Profile Layout', icon: '👤' },
+    { id: 'shapes', title: 'Shapes & Animations', icon: 'loader', iconLibrary: 'lucide' },
+    { id: 'card-layout', title: 'Card Layout', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'list-layout', title: 'List Layout', icon: 'list', iconLibrary: 'lucide' },
+    { id: 'profile-layout', title: 'Profile Layout', icon: 'user', iconLibrary: 'lucide' },
   ];
 
   shapesCode = `<!-- Circle (avatar) -->

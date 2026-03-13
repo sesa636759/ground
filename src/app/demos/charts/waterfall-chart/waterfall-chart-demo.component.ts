@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -25,7 +25,6 @@ import { DmWaterfallChartPlaygroundComponent } from '../../../playground/charts/
 })
 export class DmWaterfallChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'revenue', title: 'Revenue', icon: '💰', color: '#10b981' },
     { id: 'pl', title: 'P&L Statement', icon: '📊', color: '#6366f1' },
   ];

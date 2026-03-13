@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDialogBoxPlaygroundComponent } from '../../../playground/common/dialog-box-playground/dialog-box-playground.component';
@@ -26,10 +26,10 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
 })
 export class DmDialogBoxDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic Dialog', icon: '📝' },
     { id: 'slots', title: 'Custom Slots', icon: '🧩' },
     { id: 'sizes', title: 'Predefined Sizes', icon: '📏' },
+    { id: 'form', title: 'Form Inputs Dialog', icon: '📝' },
     { id: 'variants', title: 'Variants & Status', icon: '🎨' },
     { id: 'positions', title: 'Positions', icon: '📍' },
     { id: 'scroll', title: 'Scroll Behaviors', icon: '📜' },
@@ -148,5 +148,62 @@ export class DmDialogBoxDemoComponent extends BaseDemoComponent {
    <div style="height: 100%; display: flex; flex-direction: column;">
       <textarea placeholder="Type your notes here... I won't lose them if you close me!" style="flex: 1; border: none; outline: none; resize: none; width: 100%; padding: 4px;"></textarea>
    </div>
+</ui-dialog-box>`;
+
+  formCode = `<!-- Form Inputs Dialog -->
+<ui-dialog-box 
+  [open]="dialogVisible['form']" 
+  (dialogClosed)="toggle('form', false)"
+  dialog-title="Complete Form Registration"
+  width="550px"
+  icon-library="lucide">
+  <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 0.5rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <ui-input label="First Name" placeholder="John" icon="user" icon-library="lucide"></ui-input>
+      <ui-input label="Last Name" placeholder="Doe"></ui-input>
+    </div>
+    
+    <ui-input label="Email Address" type="email" placeholder="john.doe@example.com" icon="mail" icon-library="lucide"></ui-input>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <ui-dropdown label="Department" placeholder="Select Department" [options]="[
+        { label: 'Engineering', value: 'eng' },
+        { label: 'Marketing', value: 'mkt' },
+        { label: 'Design', value: 'dsgn' },
+        { label: 'Sales', value: 'sls' }
+      ]"></ui-dropdown>
+      
+      <ui-input label="Joining Date" type="date"></ui-input>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <label style="font-size: 14px; font-weight: 500; color: #374151;">Preferences & Settings</label>
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <ui-checkbox label="Subscribe to Newsletter" checked="true"></ui-checkbox>
+        <ui-switch label="Dark Mode" checked="false"></ui-switch>
+      </div>
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <ui-toggle label="Enable Notifications" checked="true"></ui-toggle>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 14px; color: #4b5563;">Experience Level:</span>
+          <ui-rating value="4" max="5"></ui-rating>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <label style="font-size: 14px; font-weight: 500; color: #374151;">Account Type</label>
+      <div style="display: flex; gap: 1.5rem;">
+        <ui-radio name="account-type" label="Personal" value="personal" checked="true"></ui-radio>
+        <ui-radio name="account-type" label="Business" value="business"></ui-radio>
+        <ui-radio name="account-type" label="Enterprise" value="enterprise"></ui-radio>
+      </div>
+    </div>
+  </div>
+  
+  <div slot="footer">
+    <ui-button label="Cancel" variant="secondary" (click)="toggle('form', false)"></ui-button>
+    <ui-button label="Submit Registration" variant="primary" (click)="toggle('form', false)"></ui-button>
+  </div>
 </ui-dialog-box>`;
 }

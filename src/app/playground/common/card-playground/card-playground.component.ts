@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewEncapsulation,
@@ -28,13 +28,34 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     { id: 'features', title: 'Features', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['appearance'];
+  defaultOpen = ['appearance', 'features'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
     { label: 'Elevated', value: 'elevated' },
     { label: 'Outlined', value: 'outlined' },
     { label: 'Filled', value: 'filled' },
+    { label: 'Primary', value: 'primary' },
+    { label: 'Success', value: 'success' },
+    { label: 'Warning', value: 'warning' },
+    { label: 'Danger', value: 'danger' },
+    { label: 'Info', value: 'info' },
+  ];
+
+  importanceOptions = [
+    { label: 'Standard', value: 'standard' },
+    { label: 'Emphasized', value: 'emphasized' },
+  ];
+
+  patternOptions = [
+    { label: 'Default', value: 'default' },
+    { label: 'Product', value: 'product' },
+    { label: 'Shortcut', value: 'shortcut' },
+  ];
+
+  ribbonPositionOptions = [
+    { label: 'Top Left', value: 'top-left' },
+    { label: 'Top Right', value: 'top-right' },
   ];
 
   menuItems = [
@@ -68,10 +89,13 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
       collapsible: false,
       glass: false,
       layout: 'vertical',
-      size: 'medium',
+      size: 'default',
       type: 'default',
       ribbon: '',
-      ribbonColor: 'blue',
+      ribbonColor: '#3b82f6',
+      ribbonPosition: 'top-right',
+      importance: 'standard',
+      pattern: 'default',
     };
   }
 
@@ -85,6 +109,3 @@ export class DmCardPlaygroundComponent extends BasePlaygroundComponent implement
     }, 50);
   }
 }
-
-
-

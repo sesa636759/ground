@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmButtonPlaygroundComponent } from '../../../playground/common/button-playground/button-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -26,12 +26,11 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmButtonDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'visual-variants', title: 'Visual Variants', icon: '🎨' },
-    { id: 'sizes', title: 'Sizes', icon: '📏' },
-    { id: 'icons-badges', title: 'Icons & Badges', icon: '🏷️' },
-    { id: 'icon-libraries', title: 'Icon Libraries', icon: '🎨' },
-    { id: 'states', title: 'States', icon: '⚙️' },
+    { id: 'visual-variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes', icon: 'scaling', iconLibrary: 'lucide' },
+    { id: 'icons-badges', title: 'Icons & Badges', icon: 'tag', iconLibrary: 'lucide' },
+    { id: 'icon-libraries', title: 'Icon Libraries', icon: 'library', iconLibrary: 'lucide' },
+    { id: 'states', title: 'States', icon: 'toggle-left', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-button label="Submit" variant="primary" size="md"></ui-button>`;

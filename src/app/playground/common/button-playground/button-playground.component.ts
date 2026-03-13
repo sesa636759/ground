@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -143,9 +143,7 @@ export class DmButtonPlaygroundComponent extends BasePlaygroundComponent impleme
   }
 
   updateConfig() {
-    setTimeout(() => {
-      this.updateConfigFromDom(this.demoElement, 'ui-button');
-    }, 50);
+    this.updateConfigFromDom(this.demoElement, 'ui-button');
   }
 
   onButtonClick(event: any) {

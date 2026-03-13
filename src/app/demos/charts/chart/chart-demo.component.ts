@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmChartPlaygroundComponent } from '../../../playground/charts/chart-playground/chart-playground.component';
@@ -24,10 +24,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './chart-demo.component.scss',
 })
 export class DmChartDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'types', title: 'Chart Types', icon: '📈', color: '#3b82f6' },
-  ];
+  exampleVariants = [{ id: 'types', title: 'Chart Types', icon: '📈', color: '#3b82f6' }];
 
   chartData = {
     labels: ['A', 'B', 'C', 'D'],

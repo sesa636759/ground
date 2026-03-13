@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmTimerPlaygroundComponent } from '../../../playground/common/timer-playground/timer-playground.component';
@@ -22,15 +22,10 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   styleUrl: './timer-demo.component.scss',
 })
 export class DmTimerDemoComponent {
-  variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'modes', name: 'Timer Modes', icon: '⏲️', color: '#3b82f6' },
-    { id: 'formats', name: 'Display Formats', icon: '🕰️', color: '#10b981' },
+  exampleVariants = [
+    { id: 'modes', title: 'Timer Modes', icon: 'timer', iconLibrary: 'lucide' },
+    { id: 'formats', title: 'Display Formats', icon: 'clock', iconLibrary: 'lucide' },
   ];
-
-  get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
-  }
 
   playgroundCode = `<ui-timer [duration]="60" mode="countdown" format="mm:ss"></ui-timer>`;
 

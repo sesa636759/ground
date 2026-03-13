@@ -1,17 +1,17 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
-import { DmStepperPlaygroundComponent } from '../../../playground/common/stepper-playground/stepper-playground.component';
+import { DmStepperPlaygroundComponent } from '../../../playground/sets/stepper-playground/stepper-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo-header.component';
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 
 @Component({
-  selector: 'dm-stepper-demo',
-
+  selector: 'ds-stepper-demo',
   imports: [
     ...PLAYGROUND_IMPORTS,
     DmStepperPlaygroundComponent,
@@ -19,94 +19,177 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
     DemoSidebarComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
+    ExampleSectionComponent,
   ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stepper-demo.component.html',
-  styleUrl: './stepper-demo.component.scss',
+  // styleUrl: './stepper-demo.component.scss',
 })
 export class DmStepperDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'orientation', title: 'Orientation', icon: '📐', color: '#3b82f6' },
-    { id: 'visuals', title: 'Visual Types', icon: '🎨', color: '#10b981' },
-    { id: 'validation', title: 'Logic & Flow', icon: '⚡', color: '#f59e0b' },
-    { id: 'api', title: 'Programmatic API', icon: '🔧', color: '#3b82f6' },
-    { id: 'sizes', title: 'Size Variations', icon: '📏', color: '#10b981' },
+    { id: 'horizontal', title: 'Horizontal Modes', icon: '➡️', color: '#3b82f6' },
+    { id: 'vertical', title: 'Vertical Modes', icon: '⬇️', color: '#10b981' },
+    { id: 'indicators', title: 'Indicator Types', icon: '🔘', color: '#8b5cf6' },
+    { id: 'labels', title: 'Label Placement', icon: '🏷️', color: '#f59e0b' },
+    { id: 'flow', title: 'Workflow Logic', icon: '⚡', color: '#10b981' },
+    { id: 'content', title: 'Content & Navigation', icon: '📦', color: '#8b5cf6' },
+    { id: 'steps-count', title: 'Sizing & Counts', icon: '🔢', color: '#ec4899' },
+    { id: 'nested', title: 'Nested Steps', icon: '🌿', color: '#10b981' },
+    { id: 'shapes', title: 'Step Shapes', icon: '💠', color: '#8b5cf6' },
+    { id: 'percent', title: 'Progress Percent', icon: '📈', color: '#f59e0b' },
+    { id: 'variants', title: 'Visual Variants', icon: '🎨', color: '#64748b' },
+    { id: 'validation', title: 'Validation & Controls', icon: '🛡️', color: '#ef4444' },
+    { id: 'colors', title: 'Color Schemes', icon: '🌈', color: '#3b82f6' },
+    { id: 'scrolling', title: 'Large Scale', icon: '📜', color: '#10b981' },
+    { id: 'interactive', title: 'Interactive Demo', icon: '🎯', color: '#f59e0b' },
   ];
 
-  steps = [
-    { id: '1', label: 'Start', status: 'completed' },
-    { id: '2', label: 'Processing', status: 'active' },
-    { id: '3', label: 'Verification' },
-    { id: '4', label: 'Done' },
+  horizontalSteps = [
+    { id: '1', label: 'Login', description: 'Step 1' },
+    { id: '2', label: 'Profile', description: 'Step 2' },
+    { id: '3', label: 'Review', description: 'Step 3' },
+    { id: '4', label: 'Success', description: 'Step 4' },
   ];
 
-  playgroundCode = `<ui-stepper 
-  [steps]="steps" 
-  orientation="horizontal" 
-  active-step="1"
-></ui-stepper>`;
+  verticalSteps = [
+    { id: 'v1', label: 'Start Order', description: 'Customer details' },
+    { id: 'v2', label: 'Configure', description: 'Select options' },
+    { id: 'v3', label: 'Payment', description: 'Billing info' },
+    { id: 'v4', label: 'Finalize', description: 'Review & submit' },
+  ];
 
-  orientationCode = `<!-- Horizontal Stepper -->
-<ui-stepper orientation="horizontal"></ui-stepper>
+  threeSteps = [
+    { id: '1', label: 'Account', description: 'Set up details' },
+    { id: '2', label: 'Plan', description: 'Choose your plan' },
+    { id: '3', label: 'Payment', description: 'Enter billing info' },
+  ];
 
-<!-- Vertical Stepper -->
-<ui-stepper orientation="vertical"></ui-stepper>`;
+  fiveSteps = [
+    { id: '1', label: 'Step 1', status: 'completed' },
+    { id: '2', label: 'Step 2', status: 'completed' },
+    { id: '3', label: 'Step 3', status: 'active' },
+    { id: '4', label: 'Step 4', status: 'waiting' },
+    { id: '5', label: 'Step 5', status: 'waiting' },
+  ];
 
-  visualsCode = `<!-- Minimal Dot Style -->
-<ui-stepper progress-dot></ui-stepper>
+  sevenSteps = [
+    { label: 'Step 1', description: 'First', status: 'completed' },
+    { label: 'Step 2', description: 'Second', status: 'completed' },
+    { label: 'Step 3', description: 'Third', status: 'completed' },
+    { label: 'Step 4', description: 'Fourth', status: 'info' },
+    { label: 'Step 5', description: 'Fifth', status: 'waiting' },
+    { label: 'Step 6', description: 'Sixth', status: 'waiting' },
+    { label: 'Step 7', description: 'Seventh', status: 'waiting' },
+  ];
 
-<!-- Modern Variant -->
-<ui-stepper variant="modern"></ui-stepper>`;
+  extraStatusSteps = [
+    { label: 'Verified', status: 'completed', description: 'Done' },
+    { label: 'Processing', status: 'waiting', description: 'Please wait...' },
+    { label: 'Review', status: 'info', description: 'Read only' },
+    { label: 'Warning', status: 'warning', description: 'Check details' },
+    { label: 'Blocked', status: 'disabled', description: 'Not available' },
+    { label: 'Failed', status: 'failed', description: 'Critical error' },
+  ];
 
-  flowCode = `<!-- Non-linear: users can jump to any step -->
-<ui-stepper flow="non-linear"></ui-stepper>
+  percentSteps = [
+    { id: '1', label: 'Uploaded', status: 'completed' },
+    { id: '2', label: 'Processing', status: 'active', percent: 75, icon: 'refresh' },
+    { id: '3', label: 'Finished', status: 'pending' },
+  ];
 
-<!-- Linear: strict sequential completion -->
-<ui-stepper flow="linear"></ui-stepper>`;
+  nestedSteps = [
+    { id: '1', label: 'Design Phase', status: 'completed' },
+    {
+      id: '2',
+      label: 'Implementation',
+      status: 'active',
+      description: 'Building the core modules',
+      children: [
+        { id: '2-1', label: 'Setup Environment', status: 'completed' },
+        { id: '2-2', label: 'Develop UI', status: 'active' },
+        { id: '2-3', label: 'Connect Backend', status: 'pending' },
+      ],
+    },
+    { id: '3', label: 'Launch', status: 'pending' },
+  ];
 
-  apiCode = `<!-- Programmatic controls using refs or bindings -->
-<div class="controls">
-  <button (click)="stepper.prev()">Prev</button>
-  <button (click)="stepper.next()">Next</button>
-</div>
-<ui-stepper #stepper [steps]="steps" [activeStep]="currentStep"></ui-stepper>`;
+  twentySteps = Array.from({ length: 20 }, (_, i) => ({
+    label: `Step ${i + 1}`,
+    description: `Description for step ${i + 1}`,
+  }));
 
-  sizesCode = `<ui-stepper size="sm"></ui-stepper>
-<ui-stepper size="md"></ui-stepper>
-<ui-stepper size="lg"></ui-stepper>`;
+  customIconSteps = [
+    {
+      id: '1',
+      label: 'User Info',
+      description: 'Profile setup',
+      icon: 'user',
+      status: 'completed',
+    },
+    {
+      id: '2',
+      label: 'Verification',
+      description: 'Email confirmed',
+      svgIcon:
+        '<svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+      status: 'active',
+    },
+    {
+      id: '3',
+      label: 'Settings',
+      description: 'Preferences',
+      icon: 'settings',
+      status: 'pending',
+    },
+  ];
 
-  visualOptionsCode = `<ui-stepper [show-numbers]="true" [show-descriptions]="true"></ui-stepper>
-<ui-stepper [show-numbers]="false" [show-descriptions]="true"></ui-stepper>`;
+  currentStep25 = 0;
+  stressTestSteps = Array.from({ length: 25 }, (_, i) => ({
+    id: `x${i + 1}`,
+    label:
+      i === 0
+        ? 'Account'
+        : i === 1
+          ? 'Profile'
+          : i === 2
+            ? 'Verify'
+            : i === 24
+              ? 'Done'
+              : `Step ${i + 1}`,
+    description: `Info for step ${i + 1}`,
+  }));
 
-  responsiveCode = `<ui-stepper [max-visible-steps]="3"></ui-stepper>`;
-
-  dynamicStepsCode = `<ui-stepper [steps]="steps"></ui-stepper>
-<button (click)="changeSteps()">Change Steps</button>`;
-
-  changeSteps() {
-    this.steps = [
-      { id: 'a', label: 'Step A', status: 'completed' },
-      { id: 'b', label: 'Step B', status: 'active' },
-    ];
+  nextStep25() {
+    if (this.currentStep25 < 24) this.currentStep25++;
   }
 
-  showStatus() {
-    alert(`Current Step Index: ${this.currentStep}`);
+  previousStep25() {
+    if (this.currentStep25 > 0) this.currentStep25--;
   }
 
-  currentStep = 1;
-
-  onPrevious() {
-    this.currentStep = Math.max(0, this.currentStep - 1);
+  jumpToEnd25() {
+    this.currentStep25 = 24;
   }
 
-  onNext() {
-    this.currentStep = Math.min(this.steps.length - 1, this.currentStep + 1);
-  }
-
-  onGoTo(index: number) {
-    this.currentStep = index;
-  }
+  // Code snippets
+  horizontalBasicCode = `<ui-stepper [steps]="steps" orientation="horizontal"></ui-stepper>`;
+  verticalBasicCode = `<ui-stepper [steps]="steps" orientation="vertical" label-position="right"></ui-stepper>`;
+  indicatorTypeCode = `<ui-stepper orientation="horizontal"></ui-stepper>\n<ui-stepper orientation="horizontal" progress-dot></ui-stepper>`;
+  labelPlacementCode = `<ui-stepper label-position="bottom" ...></ui-stepper>`;
+  flowLogicCode = `<ui-stepper flow="linear"></ui-stepper>\n<ui-stepper flow="non-linear"></ui-stepper>`;
+  contentNavigationCode = `<ui-stepper [steps]="steps" orientation="vertical" active-step="0">
+  <div slot="content-1">...</div>
+  <div slot="content-2">...</div>
+</ui-stepper>`;
+  stepsCountCode = `<ui-stepper size="sm" [steps]="threeSteps"></ui-stepper>`;
+  nestedStepsCode = `<ui-stepper [steps]="nestedSteps" orientation="vertical"></ui-stepper>`;
+  shapesCode = `<ui-stepper step-shape="square-active" ...></ui-stepper>`;
+  percentCode = `<ui-stepper [steps]="percentSteps" ...></ui-stepper>`;
+  variantCode = `<ui-stepper variant="snack" steps-per-page="5" show-progress="true" ...></ui-stepper>`;
+  validationCode = `<ui-stepper show-controls label-fail="Report Error" ...></ui-stepper>`;
+  colorSchemeCode = `<ui-stepper color-scheme="success" ...></ui-stepper>`;
+  scrollableCode = `<ui-stepper scrollable compact="true" ...></ui-stepper>`;
+  interactiveCode = `<!-- Complex 25-step interactive demo -->`;
 }

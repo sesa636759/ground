@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDividerPlaygroundComponent } from '../../../playground/common/divider-playground/divider-playground.component';
@@ -26,11 +26,10 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDividerDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Line Variants', icon: '🎨', color: '#3b82f6' },
     { id: 'text-content', title: 'Text & Content', icon: '📝', color: '#10b981' },
     { id: 'vertical', title: 'Vertical Orientation', icon: '↕️', color: '#f59e0b' },
-    { id: 'shapes', title: 'Decorative Shapes', icon: '📐', color: '#ef4444' },
+    { id: 'shapes', title: 'Decorative Shapes', icon: '🔷', color: '#ef4444' },
   ];
 
   playgroundCode = `<ui-divider text="SECTION 1" variant="dashed" size="lg"></ui-divider>`;

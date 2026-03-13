@@ -2,13 +2,12 @@
 
 .demo-container {
   height: 100%;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-sizing: border-box;
-  //max-width: 90%;
-  //margin: 0 auto;
-  padding: var(--space-2xl);
+  padding: var(--space-lg) var(--space-lg) 0 var(--space-lg);
   animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -176,11 +175,13 @@
   display: flex;
   gap: 1rem;
   position: relative;
-  height: 100vh;
+  flex: 1;
+  min-height: 0;
+  height: 100%; 
   box-sizing: border-box;
   overflow: hidden;
   padding: 1rem;
-  background: #f4faf6; // subtle green-tinted background between the two boxes
+  background: #f4faf6;
 
   .examples-sidebar {
     width: 226px;
@@ -189,6 +190,7 @@
     min-height: 0; // allows shrinking so overflow-y triggers
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     background: #ffffff;
     padding: 1.5rem 1rem;
     border-radius: 16px;
@@ -241,6 +243,7 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     position: relative;
     /* needed for reliable getBoundingClientRect scroll calc */
     padding: 2rem;

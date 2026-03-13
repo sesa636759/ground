@@ -1,0 +1,59 @@
+<div class="demo-container">
+  <pg-demo-header
+    icon="📊"
+    title="Dashboard Component"
+    description="A flexible drag-and-drop dashboard system for data visualization and widgets."
+  >
+  </pg-demo-header>
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples">
+      <!-- Features List -->
+      <section class="demo-section" id="features">
+        <div class="section-header">
+          <h2>?? Key Features</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="icon"><i class="fas fa-arrows-alt"></i></div>
+            <h3>Drag & Drop</h3>
+            <p>Intuitive drag and drop interface with auto-layout and collision handling.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon"><i class="fas fa-compress-alt"></i></div>
+            <h3>Resizable</h3>
+            <p>Resize widgets from any corner with min/max constraints.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Responsive</h3>
+            <p>Define custom breakpoints for different screen sizes (mobile, tablet, desktop).</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon"><i class="fas fa-save"></i></div>
+            <h3>State Management</h3>
+            <p>Built-in save, load, undo, redo, and export capabilities.</p>
+          </div>
+        </div>
+        <ui-code-preview
+          [htmlCode]="featuresCode"
+          [label]="'Key Features Overview'"
+          activeLang="html"
+          expanded="true"
+        ></ui-code-preview>
+      </section>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <ds-dashboard-playground></ds-dashboard-playground>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="dashboard"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+
+

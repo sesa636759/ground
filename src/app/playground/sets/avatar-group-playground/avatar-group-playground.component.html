@@ -1,0 +1,188 @@
+<pg-playground
+  [items]="pgAccordionItems"
+  [defaultOpen]="accordionDefaultOpen"
+  [code]="generatedCode()"
+  (reset)="resetConfig()"
+>
+  <!-- Layout Section -->
+  <div slot="content-layout" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Size</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Small', value: 'small' },
+          { label: 'Medium', value: 'medium' },
+          { label: 'Large', value: 'large' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Max Display</label>
+      <ui-input
+        type="number"
+        min="1"
+        max="10"
+        [(ngModel)]="pgConfig.max"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Layout Type</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.layout"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Stacked', value: 'stacked' },
+          { label: 'Spaced', value: 'spaced' },
+          { label: 'Grid', value: 'grid' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Direction</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.direction"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Horizontal', value: 'horizontal' },
+          { label: 'Vertical', value: 'vertical' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    @if (pgConfig.layout === 'grid') {
+      <div class="control-group">
+        <label>Grid Columns</label>
+        <ui-input
+          type="number"
+          min="1"
+          max="6"
+          [(ngModel)]="pgConfig.columns"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+    }
+    <div class="control-group">
+      <label>Spacing</label>
+      <ui-input
+        type="number"
+        min="0"
+        max="40"
+        [(ngModel)]="pgConfig.spacing"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <!-- Visuals Section -->
+  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Shape</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Circle', value: 'circle' },
+          { label: 'Rounded', value: 'rounded' },
+          { label: 'Square', value: 'square' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Hover Effect</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.hoverEffect"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'None', value: 'none' },
+          { label: 'Zoom', value: 'zoom' },
+          { label: 'Lift', value: 'lift' },
+          { label: 'Glow', value: 'glow' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Border Width</label>
+      <ui-input
+        type="number"
+        min="0"
+        max="10"
+        [(ngModel)]="pgConfig.borderWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Border Color</label>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.borderColor"
+        (ngModelChange)="updateConfig()"
+        style="width: 100%; height: 40px; border: none; background: none; cursor: pointer"
+      ></ui-input>
+    </div>
+  </div>
+
+  <!-- Behavior Section -->
+  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showTooltips" (ngModelChange)="updateConfig()" />
+        Show Tooltips
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()" />
+        Clickable
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showPopover" (ngModelChange)="updateConfig()" />
+        Show Popover
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()" />
+        Animated Transitions
+      </label>
+    </div>
+  </div>
+
+  <div
+    preview
+    style="
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+    "
+  >
+    <div class="preview-stage h-scrollable">
+      <app-avatar-group
+        #avatarGroupElement
+        [attr.size]="pgConfig.size"
+        [attr.max]="pgConfig.max"
+        [attr.layout]="pgConfig.layout"
+        [attr.shape]="pgConfig.shape"
+        [attr.direction]="pgConfig.direction"
+        [attr.spacing]="pgConfig.spacing"
+        [attr.border-width]="pgConfig.borderWidth"
+        [attr.border-color]="pgConfig.borderColor"
+        [attr.show-tooltips]="pgConfig.showTooltips ? '' : null"
+        [attr.clickable]="pgConfig.clickable ? '' : null"
+        [attr.show-popover]="pgConfig.showPopover ? '' : null"
+        [attr.animated]="pgConfig.animated ? '' : null"
+        [attr.hover-effect]="pgConfig.hoverEffect"
+        [attr.columns]="pgConfig.columns"
+        [users]="users"
+      ></app-avatar-group>
+    </div>
+  </div>
+
+  <pg-playground-event-log
+    events
+    [logs]="eventLog()"
+    (clear)="eventLog.set([])"
+  ></pg-playground-event-log>
+</pg-playground>

@@ -7,12 +7,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmRadioGroupValueAccessorDirective),
+      useExisting: forwardRef(() => RadioGroupValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmRadioGroupValueAccessorDirective implements ControlValueAccessor {
+export class RadioGroupValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 

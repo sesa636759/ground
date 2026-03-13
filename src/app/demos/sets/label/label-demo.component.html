@@ -1,0 +1,68 @@
+<pg-docs-page-layout
+  title="Testing Label Component"
+  description="Best practices for testing the Label component using Angular Testing Library and Jest/Vitest."
+  [sections]="pageSections"
+  [prevLink]="{ label: 'Previous', title: 'Server Components', url: '#' }"
+  [nextLink]="{ label: 'Next', title: 'Typography', url: '#' }"
+>
+  <section id="setup">
+    <h2>Setup</h2>
+    <p>
+      When testing components like <code class="inline-code">Label</code> or
+      <code class="inline-code">app-label</code>, you'll need a stable testing environment. We
+      recommend using <code class="inline-code">&#64;testing-library/angular</code> because it
+      encourages testing from a user's perspective.
+    </p>
+    <ui-code-preview
+      active-lang="ts"
+      [tsCode]="setupCode"
+      label="testing/render.spec.ts"
+      expanded="true"
+    ></ui-code-preview>
+  </section>
+
+  <section id="configuration">
+    <h2>Configuration</h2>
+    <p>
+      You may also need to configure global providers if your Labels depend on specific theme
+      providers or localization injection tokens.
+    </p>
+    <div class="alert-box info">
+      <div class="alert-icon">??</div>
+      <div class="alert-content">
+        <strong>Optional:</strong> For simple components like Label, global providers might be
+        optional unless you rely on custom theme injection.
+      </div>
+    </div>
+  </section>
+
+  <section id="custom-render">
+    <h2>Custom Render</h2>
+    <p>
+      To avoid wrapping your <code class="inline-code">LabelComponent</code> manually in every test
+      file, create a custom render function.
+    </p>
+    <ui-code-preview
+      active-lang="ts"
+      [tsCode]="customRenderCode"
+      label="testing/custom-render.ts"
+      expanded="true"
+    ></ui-code-preview>
+  </section>
+
+  <section id="testing-components">
+    <h2>Testing Components</h2>
+    <p>
+      Now you can use your custom <code class="inline-code">render</code> function to test the
+      component behavior. For example, testing the secondary variant:
+    </p>
+    <ui-code-preview
+      active-lang="ts"
+      [tsCode]="testingComponentsCode"
+      label="label.component.spec.ts"
+      expanded="true"
+    ></ui-code-preview>
+  </section>
+</pg-docs-page-layout>
+
+

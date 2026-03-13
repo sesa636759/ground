@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,6 @@ import { DmLineChartPlaygroundComponent } from '../../../playground/common/line-
 })
 export class DmLineChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic', icon: '💹', color: '#6366f1' },
     { id: 'multi-series', title: 'Multi Series', icon: '📈', color: '#10b981' },
     { id: 'stepped', title: 'Stepped Line', icon: '🪜', color: '#0ea5e9' },

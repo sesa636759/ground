@@ -1,10 +1,14 @@
-﻿import {
+import {
   Component,
   Input,
   Output,
   EventEmitter,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,12 +20,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './demo-playground.component.html',
   styleUrl: './demo-playground.component.scss',
 })
-export class DemoPlaygroundComponent implements OnInit {
+export class DemoPlaygroundComponent implements OnInit, OnChanges {
+  private cd = inject(ChangeDetectorRef);
   @Input() items: any[] | string = [];
   @Input() defaultOpen: any[] | string = [];
   @Input() code: string = '';
   @Input() layout: 'row' | 'column' = 'row';
   @Output() reset = new EventEmitter<void>();
+
+  showCodePreview = true;
+  isExpanded = true;
 
   get parsedItems(): any[] {
     if (typeof this.items === 'string' && this.items.trim()) {
@@ -48,4 +56,24 @@ export class DemoPlaygroundComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['code'] && !changes['code'].firstChange) {
+      console.log('Playground: Code updated', changes['code'].currentValue.length);
+      this.refreshCode();
+    }
+  }
+
+  refreshCode() {
+    this.showCodePreview = false;
+    this.cd.detectChanges();
+    setTimeout(() => {
+      this.showCodePreview = true;
+      this.cd.detectChanges();
+    }, 50);
+  }
+
+  handleExpandedChange(event: any) {
+    this.isExpanded = event.detail;
+  }
 }
