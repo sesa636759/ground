@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -24,10 +24,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   styleUrl: './layout-manager-demo.component.scss',
 })
 export class DmLayoutManagerDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' },
-  ];
+  exampleVariants = [{ id: 'modes', title: 'Layout Modes', icon: '🗂️', color: '#3b82f6' }];
 
   playgroundCode = `<ui-layout-manager mode="docking" resizable closable>
   <div slot="panel-1">Main Content</div>

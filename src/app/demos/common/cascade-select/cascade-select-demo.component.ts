@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmCascadeSelectPlaygroundComponent } from '../../../playground/common/cascade-select-playground/cascade-select-playground.component';
@@ -25,9 +25,8 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmCascadeSelectDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'triggers', title: 'Triggers & Display', icon: '⚡', color: '#3b82f6' },
-    { id: 'selection', title: 'Selection Logic', icon: '🎯', color: '#10b981' },
+    { id: 'triggers', title: 'Triggers & Display', icon: '⚡' },
+    { id: 'selection', title: 'Selection Logic', icon: '🖱️' },
   ];
 
   fileSystemOptions = [

@@ -1,4 +1,4 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="📱"
     title="Aside Panel"
@@ -29,22 +29,22 @@
             <ui-button
               variant="secondary"
               label="Left Panel"
-              (click)="sidebars.left = true"
+              (buttonClick)="togglePanel('left')"
             ></ui-button>
             <ui-button
               variant="secondary"
               label="Right Panel"
-              (click)="sidebars.right = true"
+              (buttonClick)="togglePanel('right')"
             ></ui-button>
             <ui-button
               variant="secondary"
               label="Top Panel"
-              (click)="sidebars.top = true"
+              (buttonClick)="togglePanel('top')"
             ></ui-button>
             <ui-button
               variant="secondary"
               label="Bottom Panel"
-              (click)="sidebars.bottom = true"
+              (buttonClick)="togglePanel('bottom')"
             ></ui-button>
           </div>
         </pg-example-section>
@@ -60,12 +60,12 @@
             <ui-button
               variant="primary"
               label="Default Panel"
-              (click)="sidebars.default = true"
+              (buttonClick)="togglePanel('default')"
             ></ui-button>
             <ui-button
               variant="secondary"
               label="Glass Panel"
-              (click)="sidebars.glass = true"
+              (buttonClick)="togglePanel('glass')"
             ></ui-button>
           </div>
         </pg-example-section>
@@ -80,7 +80,7 @@
           <ui-button
             variant="secondary"
             label="Open Resizable Panel"
-            (click)="sidebars.resizable = true"
+            (buttonClick)="togglePanel('resizable')"
           ></ui-button>
         </pg-example-section>
 
@@ -95,12 +95,12 @@
             <ui-button
               variant="secondary"
               label="Close on Escape"
-              (click)="sidebars.escClose = true"
+              (buttonClick)="togglePanel('escClose')"
             ></ui-button>
             <ui-button
               variant="secondary"
               label="Close on Overlay"
-              (click)="sidebars.overlayClose = true"
+              (buttonClick)="togglePanel('overlayClose')"
             ></ui-button>
           </div>
         </pg-example-section>
@@ -119,32 +119,24 @@
 <!-- ===================== Panels ===================== -->
 
 <!-- Left -->
-<aside-panel
-  [attr.open]="sidebars.left ? '' : null"
-  direction="left"
-  (asideClosed)="sidebars.left = false"
->
+<!-- <ui-aside-panel [open]="sidebars.left" direction="left" (asideClosed)="sidebars.left = false">
   <div slot="header"><h3>Left Panel</h3></div>
   <div slot="content" style="padding: 20px">
     Main navigation links or profile settings usually live here.
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Right -->
-<aside-panel
-  [attr.open]="sidebars.right ? '' : null"
-  direction="right"
-  (asideClosed)="sidebars.right = false"
->
+<!-- <ui-aside-panel [open]="sidebars.right" direction="right" (asideClosed)="sidebars.right = false">
   <div slot="header"><h3>Right Panel</h3></div>
   <div slot="content" style="padding: 20px">
     Detail views, filters, or contextual information go here.
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Top -->
-<aside-panel
-  [attr.open]="sidebars.top ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.top"
   direction="top"
   size="200px"
   (asideClosed)="sidebars.top = false"
@@ -153,11 +145,11 @@
   <div slot="content" style="padding: 20px">
     A top panel is great for site-wide announcements or temporary notifications.
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Bottom -->
-<aside-panel
-  [attr.open]="sidebars.bottom ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.bottom"
   direction="bottom"
   size="300px"
   (asideClosed)="sidebars.bottom = false"
@@ -166,11 +158,11 @@
   <div slot="content" style="padding: 20px">
     Bottom panels work well for media controls or mobile-friendly contextual menus.
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Default Style -->
-<aside-panel
-  [attr.open]="sidebars.default ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.default"
   direction="right"
   (asideClosed)="sidebars.default = false"
 >
@@ -178,11 +170,11 @@
   <div slot="content" style="padding: 24px">
     <p>Clean, solid background with standard styling. Works great for most use cases.</p>
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Glass Style -->
-<aside-panel
-  [attr.open]="sidebars.glass ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.glass"
   variant="glass"
   backdrop-blur="12px"
   direction="right"
@@ -203,11 +195,11 @@
       Content inherits the blurred background effect!
     </div>
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Resizable -->
-<aside-panel
-  [attr.open]="sidebars.resizable ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.resizable"
   resizable
   min-size="200"
   max-size="700"
@@ -218,29 +210,28 @@
   <div slot="content" style="padding: 24px">
     <p>Drag the left edge to resize this panel between 200px and 700px.</p>
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Escape Close -->
-<aside-panel
-  [attr.open]="sidebars.escClose ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.escClose"
   close-on-escape
   direction="right"
-  (asideClosed)="sidebars.escClose = false"
+  (asideClosed)="sidebars.escClose = true"
 >
   <div slot="header"><h3>Close on Escape</h3></div>
   <div slot="content" style="padding: 24px">
     Press the <kbd>Escape</kbd> key to dismiss this panel.
   </div>
-</aside-panel>
+</ui-aside-panel> -->
 
 <!-- Overlay Close -->
-<aside-panel
-  [attr.open]="sidebars.overlayClose ? '' : null"
+<!-- <ui-aside-panel
+  [open]="sidebars.overlayClose"
   close-on-overlay-click
   direction="right"
-  (asideClosed)="sidebars.overlayClose = false"
+  (asideClosed)="sidebars.overlayClose = true"
 >
   <div slot="header"><h3>Close on Overlay Click</h3></div>
   <div slot="content" style="padding: 24px">Click anywhere outside this panel to dismiss it.</div>
-</aside-panel>
-
+</ui-aside-panel> -->

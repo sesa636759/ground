@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -25,8 +25,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPatternInputDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'patterns', title: 'Common Patterns', icon: '🎭', color: '#3b82f6' },
+    { id: 'patterns', title: 'Common Patterns', icon: 'grid-3x3', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-pattern-input mask="(999) 999-9999" placeholder="Phone"></ui-pattern-input>`;

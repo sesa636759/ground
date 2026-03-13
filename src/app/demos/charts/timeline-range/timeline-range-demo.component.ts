@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmTimelineRangePlaygroundComponent } from '../../../playground/charts/timeline-range-playground/timeline-range-playground.component';
@@ -25,7 +25,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmTimelineRangeDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'project', title: 'Project Schedule', icon: '📋', color: '#6366f1' },
     { id: 'team', title: 'Team Schedule', icon: '👥', color: '#10b981' },
   ];

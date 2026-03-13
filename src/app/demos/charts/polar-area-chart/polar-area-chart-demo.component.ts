@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmPolarAreaChartPlaygroundComponent } from '../../../playground/charts/polar-area-chart-playground/polar-area-chart-playground.component';
@@ -25,7 +25,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmPolarAreaChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'skills', title: 'Skills Radar', icon: '🌐', color: '#6366f1' },
     { id: 'sales', title: 'Sales Regions', icon: '🗺️', color: '#10b981' },
     { id: 'multi', title: 'Multi-Dataset', icon: '📊', color: '#0ea5e9' },

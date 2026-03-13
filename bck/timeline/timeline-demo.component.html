@@ -1,0 +1,145 @@
+<div class="demo-container">
+  <pg-demo-header
+    icon="??"
+    title="Timeline Component"
+    description="An interactive timeline component supporting vertical, horizontal, and snake layouts with extensive customization options."
+  >
+  </pg-demo-header>
+
+  <pg-demo-tabs>
+    <!-- Examples Slot -->
+    <div slot="examples" class="examples-split-layout">
+      <!-- Sidebar Navigation -->
+      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+
+      <!-- Main Content Area -->
+      <div class="examples-content" id="examples-scroll-area">
+        <!-- Layouts -->
+        <section class="demo-section" id="layouts" style="margin-top: 0">
+          <div class="section-header">
+            <h2>?? Versatile Layouts</h2>
+            <p>Standard layouts for any use case</p>
+          </div>
+          <div class="demo-grid col-2">
+            <!-- Vertical Alternate -->
+            <div class="demo-card">
+              <h3>Vertical Alternate</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  align="alternate"
+                  [items]="roadmapItems"
+                ></app-timeline>
+              </div>
+            </div>
+
+            <!-- Vertical Left -->
+            <div class="demo-card">
+              <h3>Vertical Left</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  align="left"
+                  [items]="historyItems"
+                  variant="filled"
+                ></app-timeline>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horizontal -->
+          <div class="demo-card mt-4">
+            <h3>Horizontal Scroll</h3>
+            <div class="preview-box">
+              <app-timeline
+                orientation="horizontal"
+                [items]="historyItems"
+                align="top"
+              ></app-timeline>
+            </div>
+          </div>
+        </section>
+
+        <!-- Snake Layout -->
+        <section class="demo-section" id="snake-layout">
+          <div class="section-header">
+            <h2>?? Snake Layout</h2>
+            <p>Perfect for long processes or step-by-step guides using `wrap="true"`</p>
+          </div>
+          <div class="demo-card">
+            <div class="preview-box h-auto">
+              <app-timeline
+                orientation="horizontal"
+                wrap="true"
+                align="alternate"
+                [items]="snakeItems"
+              ></app-timeline>
+            </div>
+          </div>
+        </section>
+
+        <!-- Variants -->
+        <section class="demo-section" id="variants">
+          <div class="section-header">
+            <h2>?? Style Variants</h2>
+            <p>Different visual styles for various contexts</p>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-card">
+              <h3>Filled</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  variant="filled"
+                  [items]="roadmapItemsSliced"
+                ></app-timeline>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h3>Outlined</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  variant="outlined"
+                  [items]="roadmapItemsSliced"
+                ></app-timeline>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h3>Minimal</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  variant="minimal"
+                  [items]="roadmapItemsSliced"
+                ></app-timeline>
+              </div>
+            </div>
+            <div class="demo-card">
+              <h3>Dots Only</h3>
+              <div class="preview-box h-auto">
+                <app-timeline
+                  orientation="vertical"
+                  variant="dots-only"
+                  [items]="roadmapItemsSliced"
+                ></app-timeline>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Playground Slot -->
+    <div slot="playground">
+      <ds-timeline-playground></ds-timeline-playground>
+    </div>
+
+    <!-- Documentation Slot -->
+    <div slot="docs">
+      <pg-component-documentation componentId="timeline"></pg-component-documentation>
+    </div>
+  </pg-demo-tabs>
+</div>
+
+

@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmPopoverPlaygroundComponent } from '../../../playground/common/popover-playground/popover-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -27,11 +27,10 @@ import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/de
 })
 export class DmPopoverDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'triggers', title: 'Triggers', icon: '⚡' },
-    { id: 'placements', title: 'Placements', icon: '📍' },
-    { id: 'styles', title: 'Styles & Themes', icon: '🎨' },
-    { id: 'rich-content', title: 'Rich Content', icon: '📝' },
+    { id: 'triggers', title: 'Triggers', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'placements', title: 'Placements', icon: 'map-pin', iconLibrary: 'lucide' },
+    { id: 'styles', title: 'Styles & Themes', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'rich-content', title: 'Rich Content', icon: 'file-text', iconLibrary: 'lucide' },
   ];
 
   triggersCode = `<!-- Click trigger (default) -->

@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmGanttChartPlaygroundComponent } from '../../../playground/charts/gantt-chart-playground/gantt-chart-playground.component';
@@ -24,10 +24,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './gantt-chart-demo.component.scss',
 })
 export class DmGanttChartDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' },
-  ];
+  exampleVariants = [{ id: 'project', title: 'Project Plan', icon: '📋', color: '#6366f1' }];
 
   tasks = [
     { id: '1', name: 'Requirements', start: 0, end: 10, color: '#6366f1' },

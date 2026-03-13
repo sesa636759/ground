@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmSparklinePlaygroundComponent } from '../../../playground/charts/sparkline-playground/sparkline-playground.component';
@@ -24,10 +24,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './sparkline-demo.component.scss',
 })
 export class DmSparklineDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'inline', title: 'Inline Metrics', icon: '📈', color: '#6366f1' },
-  ];
+  exampleVariants = [{ id: 'inline', title: 'Inline Metrics', icon: '📈', color: '#6366f1' }];
 
   inlineKpiSparklines = [
     { label: 'Revenue', trend: 12.4, color: '#6366f1', points: [42, 55, 48, 70, 65, 80, 75, 95] },

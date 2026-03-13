@@ -1,4 +1,4 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
@@ -46,6 +46,54 @@
           { label: 'Horizontal flow', value: 'horizontal' },
         ]"
       ></ui-dropdown>
+    </div>
+
+    <div class="control-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px">
+      <div class="control-group">
+        <label>Importance</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.importance"
+          (ngModelChange)="updateConfig()"
+          [options]="importanceOptions"
+        ></ui-dropdown>
+      </div>
+      <div class="control-group">
+        <label>Pattern</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.pattern"
+          (ngModelChange)="updateConfig()"
+          [options]="patternOptions"
+        ></ui-dropdown>
+      </div>
+    </div>
+
+    <div class="control-group" style="margin-top: 16px">
+      <label>Ribbon Text</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.ribbon"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. Sale"
+      ></ui-input>
+    </div>
+
+    <div class="control-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px">
+      <div class="control-group">
+        <label>Ribbon Color</label>
+        <ui-input
+          type="color"
+          [(ngModel)]="pgConfig.ribbonColor"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Ribbon Position</label>
+        <ui-dropdown
+          [(ngModel)]="pgConfig.ribbonPosition"
+          (ngModelChange)="updateConfig()"
+          [options]="ribbonPositionOptions"
+        ></ui-dropdown>
+      </div>
     </div>
 
     <div class="control-group" style="margin-top: 16px">
@@ -123,8 +171,11 @@
       [attr.layout]="pgConfig.layout"
       [attr.size]="pgConfig.size"
       [attr.type]="pgConfig.type"
-      [attr.ribbon]="pgConfig.ribbon || null"
-      [attr.ribbon-color]="pgConfig.ribbon ? pgConfig.ribbonColor : null"
+      [importance]="pgConfig.importance"
+      [pattern]="pgConfig.pattern"
+      [ribbon]="pgConfig.ribbon || null"
+      [ribbon-color]="pgConfig.ribbon ? pgConfig.ribbonColor : null"
+      [ribbon-position]="pgConfig.ribbon ? pgConfig.ribbonPosition : null"
       [attr.border-radius]="pgConfig.borderRadius"
       [attr.width]="pgConfig.width"
       [menuItems]="menuJson"

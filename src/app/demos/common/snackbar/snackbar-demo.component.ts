@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ElementRef } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmSnackbarPlaygroundComponent } from '../../../playground/common/snackbar-playground/snackbar-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
@@ -34,9 +34,9 @@ export class DmSnackbarDemoComponent extends BaseDemoComponent {
   @ViewChild('snackbarBottomRight') snackbarBottomRight!: ElementRef;
 
   exampleVariants = [
-    { id: 'types', title: 'Types', icon: '📊' },
-    { id: 'positions', title: 'Positions', icon: '📍' },
-    { id: 'card-stack', title: 'Card Stacking', icon: '📚' },
+    { id: 'types', title: 'Types', icon: 'info', iconLibrary: 'lucide' },
+    { id: 'positions', title: 'Positions', icon: 'map-pin', iconLibrary: 'lucide' },
+    { id: 'card-stack', title: 'Card Stacking', icon: 'layers', iconLibrary: 'lucide' },
   ];
 
   typesCode = `// Add different notification types

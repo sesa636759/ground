@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
@@ -26,7 +26,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmMeterGroupDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'displays', title: 'Display Types', icon: '📊', color: '#3b82f6' },
     { id: 'layouts', title: 'Advanced Layouts', icon: '📐', color: '#10b981' },
   ];

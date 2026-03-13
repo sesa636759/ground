@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDockPlaygroundComponent } from '../../../playground/common/dock-playground/dock-playground.component';
@@ -26,12 +26,11 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDockDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
-    { id: 'basic', title: 'Basic', icon: '🟦', color: '#3b82f6' },
-    { id: 'positions', title: 'Positions', icon: '📍', color: '#10b981' },
-    { id: 'sizes', title: 'Sizes', icon: '📏', color: '#f59e0b' },
-    { id: 'badges', title: 'With Badges', icon: '🔔', color: '#ef4444' },
-    { id: 'os', title: 'OS Experience', icon: '✨', color: '#ec4899' },
+    { id: 'basic', title: 'Basic', icon: '⏹️' },
+    { id: 'positions', title: 'Positions', icon: '📍' },
+    { id: 'sizes', title: 'Sizes', icon: '📏' },
+    { id: 'badges', title: 'With Badges', icon: '🔔' },
+    { id: 'os', title: 'OS Experience', icon: '⚡' },
   ];
 
   basicItems = [

@@ -79,6 +79,16 @@
       ></ui-dropdown>
     </div>
 
+    <div class="control-group" style="margin-top: 16px">
+      <label>Default Open (IDs, comma-separated)</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.defaultOpen"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. p1, p2"
+      ></ui-input>
+    </div>
+
     <div class="checkbox-grid" style="margin-top: 16px">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
@@ -135,6 +145,7 @@
       #demoElement
       [items]="playgroundItems"
       [multiple]="pgConfig.multiple"
+      [defaultOpen]="getParsedDefaultOpen()"
       [variant]="pgConfig.variant"
       [size]="pgConfig.size"
       [attr.icon-position]="pgConfig.iconPosition"

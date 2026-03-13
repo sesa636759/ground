@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmRoseChartPlaygroundComponent } from '../../../playground/charts/rose-chart-playground/rose-chart-playground.component';
@@ -25,7 +25,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmRoseChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'monthly', title: 'Monthly Revenue', icon: '🌹', color: '#6366f1' },
     { id: 'performance', title: 'Performance', icon: '📊', color: '#10b981' },
     { id: 'wind', title: 'Wind Direction', icon: '💨', color: '#0ea5e9' },

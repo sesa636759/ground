@@ -1,4 +1,4 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
@@ -54,6 +54,13 @@
       </label>
       <label class="checkbox-item">
         <ui-checkbox
+          [(ngModel)]="pgConfig.closeOnEscape"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Close on Escape
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
           [(ngModel)]="pgConfig.resizable"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
@@ -64,6 +71,36 @@
         Loading State
       </label>
     </div>
+
+    <ui-divider></ui-divider>
+
+    <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group">
+        <label>Min Size (px)</label>
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.minSize"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Max Size (px)</label>
+        <ui-input
+          type="number"
+          [(ngModel)]="pgConfig.maxSize"
+          (ngModelChange)="updateConfig()"
+        ></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Persist Key</label>
+        <ui-input
+          type="text"
+          [(ngModel)]="pgConfig.persistKey"
+          (ngModelChange)="updateConfig()"
+          placeholder="e.g. settings-panel"
+        ></ui-input>
+      </div>
+    </div>
   </div>
 
   <div preview class="preview-stage">
@@ -71,23 +108,28 @@
       <p style="margin-bottom: 20px">Click the button below to trigger the Aside Panel.</p>
       <ui-button
         variant="primary"
-        (click)="pgConfig.open = true; logEvent('Opening panel'); updateConfig()"
+        (buttonClick)="pgConfig.open = true; logEvent('Opening panel'); updateConfig()"
         label="Open Panel"
       ></ui-button>
     </div>
 
-    <ui-aside
+    <ui-aside-panel
       #demoElement
       [attr.open]="pgConfig.open ? '' : null"
-      [attr.direction]="pgConfig.direction"
-      [attr.size]="pgConfig.size"
-      [attr.variant]="pgConfig.variant"
-      [attr.closeable]="pgConfig.closeable ? '' : null"
-      [attr.close-on-overlay-click]="pgConfig.closeOnOverlayClick ? '' : null"
-      [attr.resizable]="pgConfig.resizable ? '' : null"
-      [attr.backdrop-blur]="pgConfig.backdropBlur"
-      [attr.loading]="pgConfig.loading ? '' : null"
-      (asideClosed)="pgConfig.open = false; onAsideChange({ detail: { open: false } })"
+      [direction]="pgConfig.direction"
+      [size]="pgConfig.size"
+      [variant]="pgConfig.variant"
+      [closeable]="pgConfig.closeable"
+      [closeOnOverlayClick]="pgConfig.closeOnOverlayClick"
+      [closeOnEscape]="pgConfig.closeOnEscape"
+      [resizable]="pgConfig.resizable"
+      [minSize]="pgConfig.minSize"
+      [maxSize]="pgConfig.maxSize"
+      [backdropBlur]="pgConfig.backdropBlur"
+      [loading]="pgConfig.loading"
+      [persistKey]="pgConfig.persistKey"
+      (asideOpened)="logEvent('Aside opened')"
+      (asideClosed)="pgConfig.open = false; logEvent('Aside closed'); updateConfig()"
     >
       <div slot="header">
         <h3 style="margin: 0">Panel Settings</h3>
@@ -139,18 +181,18 @@
       >
         <ui-button
           variant="secondary"
-          (click)="pgConfig.open = false"
+          (buttonClick)="pgConfig.open = false"
           label="Cancel"
           style="flex: 1"
         ></ui-button>
         <ui-button
           variant="primary"
-          (click)="pgConfig.open = false; logEvent('Changes saved')"
+          (buttonClick)="pgConfig.open = false; logEvent('Changes saved')"
           label="Save"
           style="flex: 1"
         ></ui-button>
       </div>
-    </ui-aside>
+    </ui-aside-panel>
   </div>
 
   <pg-playground-event-log

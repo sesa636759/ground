@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -26,7 +26,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmChipDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'variants', title: 'Variants', icon: '🎨', color: '#8b5cf6' },
     { id: 'shapes-sizes', title: 'Shapes & Sizes', icon: '📏', color: '#3b82f6' },
     { id: 'avatars-icons', title: 'Avatars & Icons', icon: '👤', color: '#10b981' },

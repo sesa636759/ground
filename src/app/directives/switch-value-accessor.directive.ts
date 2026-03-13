@@ -7,12 +7,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DmSwitchValueAccessorDirective),
+      useExisting: forwardRef(() => SwitchValueAccessorDirective),
       multi: true,
     },
   ],
 })
-export class DmSwitchValueAccessorDirective implements ControlValueAccessor {
+export class SwitchValueAccessorDirective implements ControlValueAccessor {
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 

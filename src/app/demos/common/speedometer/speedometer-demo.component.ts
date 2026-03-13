@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 
@@ -25,13 +25,12 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmSpeedometerDemoComponent {
   variants = [
-    { id: 'playground', name: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'modes', name: 'Color Modes', icon: '🌈', color: '#3b82f6' },
     { id: 'sizes', name: 'Scaling', icon: '📐', color: '#10b981' },
   ];
 
   get exampleVariants() {
-    return this.variants.filter((v) => v.id !== 'playground');
+    return this.variants;
   }
 
   playgroundCode = `<ui-speedometer [value]="65" label="MPH" color-mode="gradient"></ui-speedometer>`;

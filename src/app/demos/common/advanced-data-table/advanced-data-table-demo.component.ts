@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmAdvancedDataTablePlaygroundComponent } from '../../../playground/common/advanced-data-table-playground/advanced-data-table-playground.component';
@@ -23,10 +23,7 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
   styleUrl: './advanced-data-table-demo.component.scss',
 })
 export class DmAdvancedDataTableDemoComponent extends BaseDemoComponent {
-  exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
-    { id: 'features', title: 'Key Features', icon: '💎', color: '#3b82f6' },
-  ];
+  exampleVariants = [{ id: 'features', title: 'Key Features', icon: '💎' }];
 
   sampleData = [
     { id: 1, name: 'Service A', load: '45%', uptime: '99.9%' },

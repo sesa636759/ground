@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DmOhlcChartPlaygroundComponent } from '../../../playground/charts/ohlc-chart-playground/ohlc-chart-playground.component';
@@ -25,7 +25,6 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmOhlcChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'basic', title: 'Basic OHLC', icon: '📊', color: '#6366f1' },
     { id: 'withma', title: 'With MA', icon: '📉', color: '#0ea5e9' },
     { id: 'weekly', title: 'Weekly', icon: '📅', color: '#10b981' },

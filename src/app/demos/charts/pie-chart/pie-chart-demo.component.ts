@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
@@ -25,7 +25,6 @@ import { DmPieChartPlaygroundComponent } from '../../../playground/charts/pie-ch
 })
 export class DmPieChartDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮', color: '#8b5cf6' },
     { id: 'pie', title: 'Pie Chart', icon: '🥧', color: '#6366f1' },
     { id: 'doughnut', title: 'Doughnut', icon: '🍩', color: '#f59e0b' },
     { id: 'polar-area', title: 'Polar Area', icon: '🌐', color: '#10b981' },

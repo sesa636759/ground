@@ -1,4 +1,4 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmPaginationPlaygroundComponent } from '../../../playground/common/pagination-playground/pagination-playground.component';
@@ -26,7 +26,6 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPaginationDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'playground', title: 'Playground', icon: '🎮' },
     { id: 'basic', title: 'Basic & Compact', icon: '📄' },
     { id: 'detailed', title: 'Detailed', icon: '📋' },
     { id: 'minimal', title: 'Minimal', icon: '➖' },
