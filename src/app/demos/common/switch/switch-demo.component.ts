@@ -30,6 +30,7 @@ export class DmSwitchDemoComponent {
     { id: 'icons', name: 'Icons & Text', icon: 'image', iconLibrary: 'lucide' },
     { id: 'states', name: 'Behavior & States', icon: 'activity', iconLibrary: 'lucide' },
     { id: 'visuals', name: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
+    { id: 'forms', name: 'Form Integration', icon: 'file-text', iconLibrary: 'lucide' },
   ];
 
   get exampleVariants() {
@@ -79,6 +80,21 @@ export class DmSwitchDemoComponent {
 <ui-switch label="Confirmation Required" require-confirmation confirmation-message="Are you really sure?"></ui-switch>
 <ui-switch label="Success Feedback" show-success-feedback></ui-switch>
 <ui-switch label="Tooltip" show-tooltip tooltip-text="This is a tooltip"></ui-switch>`;
+
+  formsCode = `<form action="/submit" method="POST">
+  <ui-switch 
+    name="marketing_emails" 
+    value="subscribed" 
+    label="Subscribe to newsletter"
+    checked
+  ></ui-switch>
+
+  <ui-switch 
+    name="auto_save" 
+    label="Auto-submit on change" 
+    auto-submit
+  ></ui-switch>
+</form>`;
 
   scrollToSection(id: string) {
     const element = document.getElementById(id);

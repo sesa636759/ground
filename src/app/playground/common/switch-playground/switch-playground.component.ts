@@ -107,6 +107,7 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
       autoSubmit: false,
       formId: '',
       value: 'notifications',
+      name: 'notification_toggle',
       switchTabIndex: 0,
     };
   }
@@ -180,8 +181,10 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
 
     if (this.pgConfig.autoSubmit) code += `  auto-submit\n`;
     if (this.pgConfig.formId) code += `  form-id="${this.pgConfig.formId}"\n`;
+    if (this.pgConfig.name) code += `  name="${this.pgConfig.name}"\n`;
     if (this.pgConfig.value) code += `  value="${this.pgConfig.value}"\n`;
     if (this.pgConfig.ariaLabel) code += `  aria-label="${this.pgConfig.ariaLabel}"\n`;
+    if (this.pgConfig.switchTabIndex !== 0) code += `  switch-tab-index="${this.pgConfig.switchTabIndex}"\n`;
 
     code += '></ui-switch>';
 
@@ -194,5 +197,21 @@ export class DmSwitchPlaygroundComponent extends BasePlaygroundComponent {
     this.pgConfig.checked = isChecked;
     this.logEvent(`Switch changed to: ${isChecked}`);
     this.updateConfig();
+  }
+
+  onSwitchFocus() {
+    this.logEvent('Switch focused');
+  }
+
+  onSwitchBlur() {
+    this.logEvent('Switch blurred');
+  }
+
+  onSwitchConfirm(event: any) {
+    this.logEvent(`Confirmation: ${event.detail.confirmed ? 'Accepted' : 'Cancelled'}`);
+  }
+
+  onSwitchSuccess() {
+    this.logEvent('Success feedback triggered');
   }
 }

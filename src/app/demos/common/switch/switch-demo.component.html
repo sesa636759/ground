@@ -153,6 +153,30 @@
               activeLang="html"
             ></ui-code-preview>
           </section>
+
+          <!-- Form Integration -->
+          <section class="demo-section" id="forms">
+            <div class="section-header">
+              <h2>📄 Form Integration</h2>
+              <p>Switch components support name, value, and auto-submit features for seamless form usage.</p>
+            </div>
+            <div class="demo-card">
+              <div class="preview-box" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+                <div style="width: 100%; background: var(--surface-low); padding: 16px; border-radius: 8px; border: 1px dashed var(--border-subtle);">
+                    <ui-switch name="marketing" value="opt-in" label="Subscribe to Product Updates" checked variant="primary"></ui-switch>
+                </div>
+                <div style="width: 100%; background: var(--surface-low); padding: 16px; border-radius: 8px; border: 1px dashed var(--border-subtle);">
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Auto-submit sends the form contents instantly when the state changes.</p>
+                    <ui-switch name="save_mode" label="Auto-save Settings" auto-submit variant="success"></ui-switch>
+                </div>
+              </div>
+            </div>
+            <ui-code-preview
+              [htmlCode]="formsCode"
+              [label]="'Form Integration Example'"
+              activeLang="html"
+            ></ui-code-preview>
+          </section>
         </div>
       </div>
 

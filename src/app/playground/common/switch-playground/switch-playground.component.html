@@ -185,6 +185,10 @@
         <ui-input type="text" [(ngModel)]="pgConfig.formId" (ngModelChange)="updateConfig()"></ui-input>
       </div>
       <div class="control-group">
+        <label>Name (Form Attribute)</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
         <label>Value</label>
         <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()"></ui-input>
       </div>
@@ -234,10 +238,15 @@
         [attr.confirmation-message]="pgConfig.requireConfirmation ? pgConfig.confirmationMessage : null"
         [attr.auto-submit]="pgConfig.autoSubmit ? '' : null"
         [attr.form-id]="pgConfig.formId"
+        [attr.name]="pgConfig.name"
         [attr.value]="pgConfig.value"
         [attr.aria-label]="pgConfig.ariaLabel"
-        [attr.switch-tab-index]="pgConfig.switchTabIndex"
+        [attr.tabindex]="pgConfig.switchTabIndex"
         (switchChange)="onSwitchChange($event)"
+        (switchFocus)="onSwitchFocus()"
+        (switchBlur)="onSwitchBlur()"
+        (switchConfirm)="onSwitchConfirm($event)"
+        (switchSuccess)="onSwitchSuccess()"
       ></ui-switch>
     </div>
   </div>
