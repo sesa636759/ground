@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseDemoComponent } from 'src/app/shared/base-demo.component';
-import { ExampleSectionComponent } from 'src/app/shared/components/example-section/example-section.component';
-import { PLAYGROUND_IMPORTS } from 'src/app/shared/components/demo-playground/playground.constants';
+import { BaseDemoComponent } from '../../../../../shared/base-demo.component';
+import { ExampleSectionComponent } from '../../../../../shared/components/example-section/example-section.component';
+import { PLAYGROUND_IMPORTS } from '../../../../../shared/components/demo-playground/playground.constants';
 
 @Component({
   selector: 'app-card-examples',
