@@ -1,24 +1,21 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
-  [defaultOpen]="accordionDefaultOpen"
+  [defaultOpen]="['global']"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
+  <!-- Global Configuration -->
   <div slot="content-global" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Label</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.label"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
         [(ngModel)]="pgConfig.variant"
         (ngModelChange)="updateConfig()"
-        [options]="standardColorOptions"
+        [options]="variantOptions"
       ></ui-dropdown>
     </div>
     <div class="control-group">
@@ -61,99 +58,140 @@
         [options]="orientationOptions"
       ></ui-dropdown>
     </div>
-    <div class="control-group">
-      <label>Icon On</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.iconOn"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Icon Off</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.iconOff"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Checked Text</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.checkedText"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Unchecked Text</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.uncheckedText"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Helper Text</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.helperText"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
-    <div class="control-group">
-      <label>Error Message</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.errorMessage"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
-    </div>
   </div>
 
+  <!-- Behavioral States -->
   <div slot="content-states" style="padding: 16px">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Checked
+        <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox> Checked
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Disabled
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox> Disabled
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Loading
+        <ui-checkbox [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()"></ui-checkbox> Loading
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showDefaultIcons"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Default Icons
+        <ui-checkbox [(ngModel)]="pgConfig.readonly" (ngModelChange)="updateConfig()"></ui-checkbox> Readonly
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showTrackText"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Track Text
+        <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox> Invalid
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.indeterminate"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Indeterminate
+        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox> Required
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Gradient
+        <ui-checkbox [(ngModel)]="pgConfig.indeterminate" (ngModelChange)="updateConfig()"></ui-checkbox> Indeterminate
+      </label>
+    </div>
+
+    <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group">
+        <label>Helper Text</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.invalid">
+        <label>Error Message</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.errorMessage" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual & Feedback -->
+  <div slot="content-visual" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showIcons" (ngModelChange)="updateConfig()"></ui-checkbox> Show Icons
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.required" (ngModelChange)="updateConfig()"></ui-checkbox>
-        Required
+        <ui-checkbox [(ngModel)]="pgConfig.showDefaultIcons" (ngModelChange)="updateConfig()"></ui-checkbox> Default Icons
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showTrackText" (ngModelChange)="updateConfig()"></ui-checkbox> Track Text
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.gradient" (ngModelChange)="updateConfig()"></ui-checkbox> Gradient
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()"></ui-checkbox> Animation
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showTooltip" (ngModelChange)="updateConfig()"></ui-checkbox> Tooltip
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showSuccessFeedback" (ngModelChange)="updateConfig()"></ui-checkbox> Success Feedback
+      </label>
+    </div>
+
+    <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group" *ngIf="pgConfig.showIcons">
+        <label>Icon Library</label>
+        <ui-dropdown [(ngModel)]="pgConfig.iconLibrary" (ngModelChange)="updateConfig()" [options]="iconLibraryOptions"></ui-dropdown>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.showIcons">
+        <label>Icon On</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.iconOn" (ngModelChange)="updateConfig()" placeholder="e.g. check"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.showIcons">
+        <label>Icon Off</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.iconOff" (ngModelChange)="updateConfig()" placeholder="e.g. x"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.showTrackText">
+        <label>Checked Text</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.checkedText" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.showTrackText">
+        <label>Unchecked Text</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.uncheckedText" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.gradient">
+        <label>Gradient Colors (JSON)</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.gradientColors" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Elevation (0-5)</label>
+        <ui-input type="number" min="0" max="5" [(ngModel)]="pgConfig.elevation" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group" *ngIf="pgConfig.showTooltip">
+        <label>Tooltip Text</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.tooltipText" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advanced & Forms -->
+  <div slot="content-advanced" style="padding: 16px">
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.requireConfirmation" (ngModelChange)="updateConfig()"></ui-checkbox> Confirm Before Change
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.autoSubmit" (ngModelChange)="updateConfig()"></ui-checkbox> Auto Submit Form
+      </label>
+    </div>
+
+    <div class="control-grid" style="margin-top: 16px">
+      <div class="control-group" *ngIf="pgConfig.requireConfirmation">
+        <label>Confirmation Message</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.confirmationMessage" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Aria Label</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.ariaLabel" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Form ID</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.formId" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Value</label>
+        <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
+      <div class="control-group">
+        <label>Tab Index</label>
+        <ui-input type="number" [(ngModel)]="pgConfig.switchTabIndex" (ngModelChange)="updateConfig()"></ui-input>
+      </div>
     </div>
   </div>
 
@@ -165,27 +203,40 @@
         [attr.checked]="pgConfig.checked ? '' : null"
         [attr.disabled]="pgConfig.disabled ? '' : null"
         [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.readonly]="pgConfig.readonly ? '' : null"
+        [attr.invalid]="pgConfig.invalid ? '' : null"
+        [attr.required]="pgConfig.required ? '' : null"
+        [attr.indeterminate]="pgConfig.indeterminate ? '' : null"
         [attr.size]="pgConfig.size"
         [attr.variant]="pgConfig.variant"
         [attr.shape]="pgConfig.shape"
         [attr.thumb-shape]="pgConfig.thumbShape"
         [attr.label-position]="pgConfig.labelPosition"
         [attr.orientation]="pgConfig.orientation"
-        [attr.icon-on]="pgConfig.iconOn || null"
-        [attr.icon-off]="pgConfig.iconOff || null"
-        [attr.checked-text]="
-          pgConfig.showTrackText && pgConfig.checkedText ? pgConfig.checkedText : null
-        "
-        [attr.unchecked-text]="
-          pgConfig.showTrackText && pgConfig.uncheckedText ? pgConfig.uncheckedText : null
-        "
         [attr.helper-text]="pgConfig.helperText || null"
-        [attr.error-message]="pgConfig.errorMessage || null"
+        [attr.error-message]="pgConfig.invalid ? pgConfig.errorMessage : null"
+        [attr.show-icons]="pgConfig.showIcons ? '' : null"
+        [attr.icon-on]="pgConfig.showIcons ? pgConfig.iconOn : null"
+        [attr.icon-off]="pgConfig.showIcons ? pgConfig.iconOff : null"
+        [attr.icon-library]="pgConfig.showIcons ? pgConfig.iconLibrary : null"
         [attr.show-default-icons]="pgConfig.showDefaultIcons ? '' : null"
         [attr.show-track-text]="pgConfig.showTrackText ? '' : null"
-        [attr.indeterminate]="pgConfig.indeterminate ? '' : null"
+        [attr.checked-text]="pgConfig.showTrackText ? pgConfig.checkedText : null"
+        [attr.unchecked-text]="pgConfig.showTrackText ? pgConfig.uncheckedText : null"
         [attr.gradient]="pgConfig.gradient ? '' : null"
-        [attr.required]="pgConfig.required ? '' : null"
+        [attr.gradient-colors]="pgConfig.gradient ? pgConfig.gradientColors : null"
+        [attr.elevation]="pgConfig.elevation"
+        [attr.enable-animation]="pgConfig.enableAnimation ? '' : null"
+        [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
+        [attr.tooltip-text]="pgConfig.showTooltip ? pgConfig.tooltipText : null"
+        [attr.show-success-feedback]="pgConfig.showSuccessFeedback ? '' : null"
+        [attr.require-confirmation]="pgConfig.requireConfirmation ? '' : null"
+        [attr.confirmation-message]="pgConfig.requireConfirmation ? pgConfig.confirmationMessage : null"
+        [attr.auto-submit]="pgConfig.autoSubmit ? '' : null"
+        [attr.form-id]="pgConfig.formId"
+        [attr.value]="pgConfig.value"
+        [attr.aria-label]="pgConfig.ariaLabel"
+        [attr.switch-tab-index]="pgConfig.switchTabIndex"
         (switchChange)="onSwitchChange($event)"
       ></ui-switch>
     </div>

@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { DmDockOverlayPlaygroundComponent } from '../../../playground/sets/dock-overlay-playground/dock-overlay-playground.component';
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 
 @Component({
@@ -11,6 +12,7 @@ import { ComponentDocumentationComponent } from '../../../pages/component-docume
     ...PLAYGROUND_IMPORTS,
     DmDockOverlayPlaygroundComponent,
     DemoTabsComponent,
+    DemoSidebarComponent,
     ComponentDocumentationComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

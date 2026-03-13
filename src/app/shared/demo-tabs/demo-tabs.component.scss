@@ -36,6 +36,16 @@ ui-tabs {
   --content-bg: #f0fdf4;
 }
 
+.pane-playground,
+.pane-examples,
+.pane-docs {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
