@@ -29,6 +29,15 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+  scrollbar-gutter: stable;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body.ui-aside-open {
+  overflow: hidden !important;
 }
 
 /* Material Icons Support */

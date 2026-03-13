@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -51,40 +51,27 @@ export class DmAsidePlaygroundComponent extends BasePlaygroundComponent implemen
       variant: 'default',
       closeable: true,
       closeOnOverlayClick: true,
+      closeOnEscape: true,
       resizable: true,
+      minSize: '200px',
+      maxSize: '800px',
       backdropBlur: '0',
       loading: false,
+      persistKey: '',
     };
   }
 
   updateConfig() {
-    let code = '<ui-aside\n';
-    code += `  [open]="${this.pgConfig.open}"\n`;
-    code += `  direction="${this.pgConfig.direction}"\n`;
-    code += `  size="${this.pgConfig.size}"\n`;
-    code += `  variant="${this.pgConfig.variant}"\n`;
-    if (!this.pgConfig.closeable) code += `  [closeable]="false"\n`;
-    if (!this.pgConfig.closeOnOverlayClick) code += `  [close-on-overlay-click]="false"\n`;
-    if (this.pgConfig.resizable) code += `  resizable\n`;
-    if (this.pgConfig.backdropBlur !== '0')
-      code += `  backdrop-blur="${this.pgConfig.backdropBlur}"\n`;
-    if (this.pgConfig.loading) code += `  loading\n`;
-    code += '>\n';
-    code += '  <div slot="header"><h3>Header Content</h3></div>\n';
-    code += '  <div slot="content">Main body content goes here...</div>\n';
-    code += '  <div slot="footer">Footer actions</div>\n';
-    code += '</ui-aside>';
-
-    this.generatedCode.set(code);
-    this.refreshCode();
-  }
-
-  onAsideChange(event: any) {
-    this.pgConfig.open = event.detail?.open || false;
-    this.logEvent(`Aside open state: ${this.pgConfig.open}`);
-    this.updateConfig();
+    this.updateConfigFromDom(this.demoElement, 'ui-aside-panel', `
+  <div slot="header">
+    <h3 style="margin: 0">Panel Title</h3>
+  </div>
+  <div slot="content" style="padding: 24px">
+    <p>Main body content goes here...</p>
+  </div>
+  <div slot="footer" style="padding: 16px; border-top: 1px solid var(--border-color); display: flex; gap: 12px">
+    <ui-button variant="secondary" label="Cancel" style="flex: 1"></ui-button>
+    <ui-button variant="primary" label="Save" style="flex: 1"></ui-button>
+  </div>`);
   }
 }
-
-
-

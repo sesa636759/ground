@@ -89,10 +89,10 @@ export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
   ];
 
   protected standardDirectionOptions = [
-    { label: 'Up', value: 'up' },
-    { label: 'Down', value: 'down' },
-    { label: 'Left', value: 'left' },
-    { label: 'Right', value: 'right' },
+    { label: 'top', value: 'top' },
+    { label: 'bottom', value: 'bottom' },
+    { label: 'left', value: 'left' },
+    { label: 'right', value: 'right' },
   ];
 
   protected standardPlacementOptions = [
@@ -141,7 +141,6 @@ export abstract class BasePlaygroundComponent implements OnInit, AfterViewInit {
    * Keeping this as a no-op for backward compatibility with existing playgrounds.
    */
   refreshCode() {}
-
 
   /**
    * Helper to generate code from a DOM element using playground-utils.

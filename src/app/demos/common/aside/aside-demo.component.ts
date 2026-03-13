@@ -46,43 +46,43 @@ export class DmAsideDemoComponent extends BaseDemoComponent {
 
   // Code Snippets
   directionsCode = `<!-- Left (default) -->
-<aside-panel direction="left" [open]="leftOpen" (asideClosed)="leftOpen = false">
+<ui-aside-panel direction="left" [open]="leftOpen" (asideClosed)="leftOpen = false">
   <div slot="header"><h3>Left Panel</h3></div>
   <div slot="content">Navigation links or profile info.</div>
-</aside-panel>
+ </ui-aside-panel>
 
 <!-- Right -->
-<aside-panel direction="right" [open]="rightOpen" (asideClosed)="rightOpen = false">
+<ui-aside-panel direction="right" [open]="rightOpen" (asideClosed)="rightOpen = false">
   <div slot="header"><h3>Right Panel</h3></div>
   <div slot="content">Details, filters, or settings.</div>
-</aside-panel>
+ </ui-aside-panel>
 
 <!-- Top -->
-<aside-panel direction="top" size="200px" [open]="topOpen" (asideClosed)="topOpen = false">
+<ui-aside-panel direction="top" size="200px" [open]="topOpen" (asideClosed)="topOpen = false">
   <div slot="header"><h3>Announcement</h3></div>
   <div slot="content">A top bar for notices or notifications.</div>
-</aside-panel>
+ </ui-aside-panel>
 
 <!-- Bottom -->
-<aside-panel direction="bottom" size="300px" [open]="bottomOpen" (asideClosed)="bottomOpen = false">
+<ui-aside-panel direction="bottom" size="300px" [open]="bottomOpen" (asideClosed)="bottomOpen = false">
   <div slot="header"><h3>Media Player</h3></div>
   <div slot="content">Bottom panels for media controls or mobile menus.</div>
-</aside-panel>`;
+ </ui-aside-panel>`;
 
   visualStylesCode = `<!-- Default solid panel -->
-<aside-panel [open]="defaultOpen" (asideClosed)="defaultOpen = false">
+<ui-aside-panel [open]="defaultOpen" (asideClosed)="defaultOpen = false">
   <div slot="header"><h3>Default Panel</h3></div>
   <div slot="content">Clean, solid background with standard styling.</div>
-</aside-panel>
+ </ui-aside-panel>
 
 <!-- Glassmorphism panel -->
-<aside-panel variant="glass" backdrop-blur="12px" [open]="glassOpen" (asideClosed)="glassOpen = false">
+<ui-aside-panel variant="glass" backdrop-blur="12px" [open]="glassOpen" (asideClosed)="glassOpen = false">
   <div slot="header"><h3>Glass Panel</h3></div>
   <div slot="content">Translucent with blur backdrop for a premium feel.</div>
-</aside-panel>`;
+ </ui-aside-panel>`;
 
   resizableCode = `<!-- Resizable panel with min/max constraints -->
-<aside-panel
+<ui-aside-panel
   resizable
   min-size="200"
   max-size="700"
@@ -92,19 +92,25 @@ export class DmAsideDemoComponent extends BaseDemoComponent {
 >
   <div slot="header"><h3>Resizable Panel</h3></div>
   <div slot="content">Drag the edge to resize between 200px and 700px.</div>
-</aside-panel>`;
+ </ui-aside-panel>`;
 
   closeBehaviorCode = `<!-- Close on Escape key -->
-<aside-panel close-on-escape [open]="escOpen" (asideClosed)="escOpen = false">
+<ui-aside-panel close-on-escape [open]="escOpen" (asideClosed)="escOpen = false">
   <div slot="content">Press Escape to dismiss.</div>
-</aside-panel>
+ </ui-aside-panel>
 
 <!-- Close on overlay click -->
-<aside-panel close-on-overlay-click [open]="overlayOpen" (asideClosed)="overlayOpen = false">
+<ui-aside-panel close-on-overlay-click [open]="overlayOpen" (asideClosed)="overlayOpen = false">
   <div slot="content">Click outside the panel to close.</div>
-</aside-panel>`;
+ </ui-aside-panel>`;
 
   togglePanel(key: keyof typeof DmAsideDemoComponent.prototype.sidebars) {
-    this.sidebars[key] = !this.sidebars[key];
+    const currentState = this.sidebars[key];
+    // Close all first
+    Object.entries(this.sidebars).forEach(([k]) => {
+      this.sidebars[k as keyof typeof DmAsideDemoComponent.prototype.sidebars] = false;
+    });
+    // Set the one we want
+    this.sidebars[key] = !currentState;
   }
 }

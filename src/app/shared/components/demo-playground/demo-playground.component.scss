@@ -59,11 +59,12 @@ ui-accordion {
 ::ng-deep ui-accordion-item {
   &::part(content-wrapper) {
     overflow: visible !important;
+    padding-bottom: var(--space-xl); // Add space so sticky footer doesn't overlap content
   }
 }
 
 .playground-controls-actions {
-  padding: var(--space-md);
+  padding: var(--space-lg);
   border-top: 1px solid var(--border-color);
   background: var(--surface-2);
   border-bottom-left-radius: var(--radius-xl);
@@ -76,6 +77,7 @@ ui-accordion {
   position: sticky;
   bottom: 0;
   z-index: 2;
+  margin-top: auto; // Push to bottom
 }
 
 ui-button.reset-btn {
@@ -159,6 +161,7 @@ ui-button.reset-btn {
   .playground-controls,
   .playground-preview {
     overflow-y: auto;
+    scrollbar-gutter: stable;
     display: flex;
     flex-direction: column;
 

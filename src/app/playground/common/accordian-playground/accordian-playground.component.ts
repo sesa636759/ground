@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -122,6 +122,7 @@ export class DmAccordianPlaygroundComponent extends BasePlaygroundComponent impl
       animationTiming: 'ease',
       lazy: false,
       headerLevel: 3,
+      defaultOpen: 'p1', // Comma separated IDs
     };
   }
 
@@ -135,10 +136,11 @@ export class DmAccordianPlaygroundComponent extends BasePlaygroundComponent impl
     }, 50);
   }
 
+  getParsedDefaultOpen() {
+    return this.pgConfig.defaultOpen ? this.pgConfig.defaultOpen.split(',').map(id => id.trim()) : [];
+  }
+
   onAccordionChange(event: any) {
     this.logEvent(`Accordion items changed/expanded`);
   }
 }
-
-
-
