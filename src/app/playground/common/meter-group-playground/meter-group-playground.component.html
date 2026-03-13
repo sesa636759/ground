@@ -1,89 +1,79 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="accordionDefaultOpen"
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-settings" class="control-grid" style="padding: 16px">
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.orientation"
-        (ngModelChange)="updateConfig()"
-        [options]="standardOrientationOptions"
-      ></ui-dropdown>
+      <ui-dropdown [options]="orientationOptions" [(ngModel)]="pgConfig.orientation" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Label Orientation</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.labelOrientation"
-        (ngModelChange)="updateConfig()"
-        [options]="labelOrientationOptions"
-      ></ui-dropdown>
+      <label>Shape</label>
+      <ui-dropdown [options]="shapeOptions" [(ngModel)]="pgConfig.shape" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
     <div class="control-group">
-      <label>Label Position</label>
-      <ui-dropdown
-        [(ngModel)]="pgConfig.labelPosition"
-        (ngModelChange)="updateConfig()"
-        [options]="labelPositionOptions"
-      ></ui-dropdown>
+      <label>Size</label>
+      <ui-dropdown [options]="sizeOptions" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-dropdown>
     </div>
-  </div>
-
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Min Height (H) / Width (V)</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.meterHeight"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <label>Min Value</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.min" (ngModelChange)="updateConfig()"></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Max Value</label>
+      <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showLabels"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Interactive
+      </label>
+    </div>
+  </div>
+
+  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown [options]="iconLibraryOptions" [(ngModel)]="pgConfig.iconLibrary" (ngModelChange)="updateConfig()"></ui-dropdown>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()"></ui-checkbox>
         Show Labels
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.showMarkers"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
-        Show Markers
+        <ui-checkbox [(ngModel)]="pgConfig.showValues" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Values
       </label>
+      <label class="checkbox-item">
+        <ui-checkbox [(ngModel)]="pgConfig.showLegend" (ngModelChange)="updateConfig()"></ui-checkbox>
+        Show Legend
+      </label>
+    </div>
+    <div class="control-group full-width">
+      <label>Values (JSON Array)</label>
+      <ui-input type="textarea" [(ngModel)]="pgConfig.values" (ngModelChange)="onJsonChange()" placeholder='[{"label":"A","value":10}]' [rows]="5"></ui-input>
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
-  >
-    <div
-      class="meter-wrapper"
-      [style.height]="pgConfig.orientation === 'vertical' ? '300px' : 'auto'"
-      style="width: 100%; display: flex; justify-content: center"
-    >
+  <div preview>
+    <div class="preview-stage" style="padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 400px; background: #fff; width: 100%;">
       <ui-meter-group
-        #meterElement
+        style="width: 100%; max-width: 600px;"
+        [attr.values]="pgConfig.values"
         [attr.orientation]="pgConfig.orientation"
-        [attr.label-orientation]="pgConfig.labelOrientation"
-        [attr.label-position]="pgConfig.labelPosition"
-        [attr.meter-height]="pgConfig.meterHeight"
+        [attr.size]="pgConfig.size"
+        [attr.shape]="pgConfig.shape"
         [attr.show-labels]="pgConfig.showLabels ? '' : null"
-        [attr.show-markers]="pgConfig.showMarkers ? '' : null"
-        [values]="valuesJson"
+        [attr.show-values]="pgConfig.showValues ? '' : null"
+        [attr.show-legend]="pgConfig.showLegend ? '' : null"
+        [attr.icon-library]="pgConfig.iconLibrary"
+        [attr.min]="pgConfig.min"
+        [attr.max]="pgConfig.max"
+        [attr.interactive]="pgConfig.interactive ? '' : null"
       ></ui-meter-group>
     </div>
   </div>
-
-  <pg-playground-event-log
-    events
-    [logs]="eventLog()"
-    (clear)="eventLog.set([])"
-  ></pg-playground-event-log>
 </pg-playground>

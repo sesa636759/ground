@@ -1,8 +1,8 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="🏎️"
-    title="Speedometer / Gauge"
-    description="A visually rich gauge component for representing numerical data on an arc. Highly effective for KPIs, speed indicators, and capacity monitoring."
+    title="Speedometer"
+    description="Highly customizable gauge component with support for threshold ranges, custom angles, multiple needle shapes, and interactive dragging."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -12,79 +12,111 @@
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Color Modes -->
-          <section class="demo-section" id="modes" style="margin-top: 0">
+          <!-- Basic Gauges -->
+          <section class="demo-section" id="basic">
             <div class="section-header">
-              <h2>🌈 Color Modes</h2>
-              <p>Standardize visual feedback using solid, gradient, or segmented arcs.</p>
+              <h2>Basic Gauges</h2>
+              <p>Simple numeric displays for speed or capacity.</p>
             </div>
-            <div class="demo-card">
-              <div style="text-align: center">
-                <ui-speedometer
-                  [value]="30"
-                  color-mode="solid"
-                  [size]="180"
-                  label="Solid"
-                ></ui-speedometer>
-              </div>
-              <div style="text-align: center">
-                <ui-speedometer
-                  [value]="60"
-                  color-mode="gradient"
-                  [size]="180"
-                  label="Gradient"
-                ></ui-speedometer>
-              </div>
-              <div style="text-align: center">
-                <ui-speedometer
-                  [value]="90"
-                  color-mode="segments"
-                  [size]="180"
-                  label="Segments"
-                ></ui-speedometer>
-              </div>
+            <div class="demo-card gauge-row">
+              <ui-speedometer [value]="65" label="Speed" unit="km/h"></ui-speedometer>
+              <ui-speedometer [value]="85" label="Performance" unit="%" show-percentage></ui-speedometer>
             </div>
-            <ui-code-preview
-              [htmlCode]="modesCode"
-              [label]="'Color Configuration'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Scaling -->
-          <section class="demo-section" id="sizes">
+          <!-- Color Thresholds -->
+          <section class="demo-section" id="ranges">
             <div class="section-header">
-              <h2>📐 Scaling</h2>
-              <p>
-                Adapt the gauge size to different container widths while maintaining proportions.
-              </p>
+              <h2>Threshold Ranges</h2>
+              <p>Dynamic arc coloring based on value ranges (e.g., Warning/Critical zones).</p>
             </div>
-            <div class="demo-card">
-              <ui-speedometer
-                [size]="120"
-                [arc-width]="8"
-                [value]="50"
-                label="Tiny"
-              ></ui-speedometer>
-              <ui-speedometer
-                [size]="300"
-                [arc-width]="30"
-                [value]="75"
-                label="Hero"
-              ></ui-speedometer>
+            <div class="demo-card gauge-row">
+              <div class="gauge-item">
+                <p>Fuel Gauge (E/F)</p>
+                <ui-speedometer [value]="15" [attr.ranges]="fuelRanges"></ui-speedometer>
+              </div>
+              <div class="gauge-item">
+                <p>Credit Score (Red-Yellow-Green)</p>
+                <ui-speedometer [value]="75" [attr.ranges]="scoreRanges" [size]="200"></ui-speedometer>
+              </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="sizesCode"
-              [label]="'Sizing Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="rangesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Custom Arcs -->
+          <section class="demo-section" id="angles">
+            <div class="section-header">
+              <h2>Custom Arc Angles</h2>
+              <p>Adjust the start and end angles to create semi-circles or full circles.</p>
+            </div>
+            <div class="demo-card gauge-row">
+              <ui-speedometer [start-angle]="-90" [end-angle]="90" [value]="45" label="180° Half" [size]="200"></ui-speedometer>
+              <ui-speedometer [start-angle]="0" [end-angle]="360" [value]="270" label="360° Full" [size]="200"></ui-speedometer>
+              <ui-speedometer [start-angle]="-45" [end-angle]="45" [value]="10" label="90° Small" [size]="150"></ui-speedometer>
+            </div>
+            <ui-code-preview [htmlCode]="anglesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Needle Shapes -->
+          <section class="demo-section" id="shapes">
+            <div class="section-header">
+              <h2>Needle Customization</h2>
+              <p>Various needle shapes and colors to match your UI design.</p>
+            </div>
+            <div class="demo-card gauge-row">
+              <ui-speedometer needle-shape="arrow" [value]="80" needle-color="#3b82f6" label="Arrow"></ui-speedometer>
+              <ui-speedometer needle-shape="line" [value]="40" needle-color="#ff4d4f" label="Line"></ui-speedometer>
+              <ui-speedometer needle-shape="triangle" [value]="60" label="Triangle"></ui-speedometer>
+            </div>
+            <ui-code-preview [htmlCode]="shapesCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Interactive Mode -->
+          <section class="demo-section" id="interactive">
+            <div class="section-header">
+              <h2>Interactive Mode</h2>
+              <p>Enable users to change the value by dragging the needle directly.</p>
+            </div>
+            <div class="demo-card gauge-row">
+              <ui-speedometer interactive [value]="30" label="Drag Me"></ui-speedometer>
+            </div>
+            <ui-code-preview [htmlCode]="interactiveCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Custom Labels -->
+          <section class="demo-section" id="labels">
+            <div class="section-header">
+              <h2>Custom Tick Labels</h2>
+              <p>Map specific values to text labels for non-numeric gauges.</p>
+            </div>
+            <div class="demo-card gauge-row">
+              <ui-speedometer [attr.custom-labels]="customMap" [value]="50" label="Tank Capacity"></ui-speedometer>
+              <ui-speedometer [attr.custom-labels]="'{&quot;0&quot;:&quot;Low&quot;,&quot;50&quot;:&quot;Med&quot;,&quot;100&quot;:&quot;High&quot;}'" [value]="0"></ui-speedometer>
+            </div>
+            <ui-code-preview [htmlCode]="labelsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Secondary & Export -->
+          <section class="demo-section" id="advanced">
+            <div class="section-header">
+              <h2>Advanced Features</h2>
+              <p>Ghost needles for comparison and gradient arcs.</p>
+            </div>
+            <div class="demo-card gauge-row">
+              <div class="gauge-item">
+                <p>Comparison (Secondary Value)</p>
+                <ui-speedometer [value]="80" [secondary-value]="45" label="Actual vs Target"></ui-speedometer>
+              </div>
+              <div class="gauge-item">
+                <p>Gradient Arc</p>
+                <ui-speedometer [value]="90" gradient-colors="red, yellow, green"></ui-speedometer>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="advancedCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -96,3 +128,8 @@
   </pg-demo-tabs>
 </div>
 
+<style>
+  .gauge-row { display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 32px; padding: 32px; }
+  .gauge-item { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .gauge-item p { font-size: 11px; font-weight: 700; color: #94a3b8; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
+</style>

@@ -1,8 +1,8 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="📊"
     title="Meter Group"
-    description="Display a group of values as parts of a single whole. Ideal for storage usage breakdown, budget allocation, and resource monitoring."
+    description="Multi-segment progress indicators for representing proportions, disk usage, or breakdown of data in linear or circular shapes."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -12,61 +12,112 @@
 
     <div slot="examples">
       <div class="examples-split-layout">
-        <!-- Sidebar Navigation -->
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-        <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Display Styles -->
-          <section class="demo-section" id="displays" style="margin-top: 0">
+          <!-- Basic Layouts -->
+          <section class="demo-section" id="basic">
             <div class="section-header">
-              <h2>📊 Display Styles</h2>
-              <p>Configure how individual segments and markers are presented.</p>
+              <h2>Basic Layouts</h2>
+              <p>Simple multi-segment display for resource breakdown.</p>
             </div>
-            <div class="demo-card">
-              <div class="preview-item">
-                <span>Standard with Labels:</span>
-                <ui-meter-group [values]="storageValues" show-labels></ui-meter-group>
+            <div class="demo-card meter-stack">
+              <div class="demo-row">
+                <p>Horizontal Meter (Default)</p>
+                <ui-meter-group [attr.values]="diskValues"></ui-meter-group>
               </div>
-              <div class="preview-item">
-                <span>Thick Meter with Markers:</span>
-                <ui-meter-group
-                  [values]="storageValues"
-                  meter-height="24px"
-                  show-markers
-                ></ui-meter-group>
+              <div class="demo-row" style="height: 200px">
+                <p>Vertical Meter</p>
+                <ui-meter-group orientation="vertical" [attr.values]="taskValues"></ui-meter-group>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="displaysCode"
-              [label]="'Visual Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Advanced Layouts -->
-          <section class="demo-section" id="layouts">
+          <!-- Line vs Circle -->
+          <section class="demo-section" id="shapes">
             <div class="section-header">
-              <h2>📐 Advanced Layouts</h2>
-              <p>Switch orientations and label positioning for different UI contexts.</p>
+              <h2>Shapes: Line vs Circle</h2>
+              <p>Switch between a linear bar or a circular donut chart representation.</p>
             </div>
-            <div class="demo-card">
-              <div class="preview-item">
-                <span>Legend at Start:</span>
-                <ui-meter-group [values]="storageValues" label-position="start"></ui-meter-group>
+            <div class="demo-card meter-row">
+              <div class="meter-item">
+                <p>Linear Shape</p>
+                <ui-meter-group [attr.values]="diskValues" shape="line"></ui-meter-group>
               </div>
-              <div class="preview-item" style="height: 300px">
-                <span>Vertical Orientation:</span>
-                <ui-meter-group orientation="vertical" [values]="storageValues"></ui-meter-group>
+              <div class="meter-item">
+                <p>Circular Shape</p>
+                <ui-meter-group [attr.values]="diskValues" shape="circle" size="lg"></ui-meter-group>
               </div>
             </div>
-            <ui-code-preview
-              [htmlCode]="layoutsCode"
-              [label]="'Layout Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+            <ui-code-preview [htmlCode]="shapeCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Sizes & Thickness -->
+          <section class="demo-section" id="sizing">
+            <div class="section-header">
+              <h2>Sizes & Thickness</h2>
+              <p>Predefined size variants for different layout needs.</p>
+            </div>
+            <div class="demo-card meter-stack">
+              <div class="demo-row">
+                <p>Small (sm)</p>
+                <ui-meter-group size="sm" [attr.values]="diskValues"></ui-meter-group>
+              </div>
+              <div class="demo-row">
+                <p>Medium (md)</p>
+                <ui-meter-group size="md" [attr.values]="diskValues"></ui-meter-group>
+              </div>
+              <div class="demo-row">
+                <p>Large (lg)</p>
+                <ui-meter-group size="lg" [attr.values]="diskValues"></ui-meter-group>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="sizingCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Legends & Labels -->
+          <section class="demo-section" id="legend">
+            <div class="section-header">
+              <h2>Legends & Labels</h2>
+              <p>Show or hide segment labels, values, and decorative legends.</p>
+            </div>
+            <div class="demo-card meter-stack">
+              <div class="demo-row">
+                <p>With Legend</p>
+                <ui-meter-group show-legend [attr.values]="diskValues"></ui-meter-group>
+              </div>
+              <div class="demo-row">
+                <p>Segments Only (No Labels/Values)</p>
+                <ui-meter-group [attr.show-labels]="false" [attr.show-values]="false" [attr.values]="diskValues"></ui-meter-group>
+              </div>
+            </div>
+            <ui-code-preview [htmlCode]="legendCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Icons & Libraries -->
+          <section class="demo-section" id="icons">
+            <div class="section-header">
+              <h2>Icons & Libraries</h2>
+              <p>Enhance the legend with icons from various supported libraries.</p>
+            </div>
+            <div class="demo-card meter-stack">
+              <ui-meter-group show-legend icon-library="lucide" [attr.values]="diskValues"></ui-meter-group>
+            </div>
+            <ui-code-preview [htmlCode]="iconsCode" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Interactive Mode -->
+          <section class="demo-section" id="interactive">
+            <div class="section-header">
+              <h2>Interactive Mode</h2>
+              <p>Clickable segments and legend items for drilling down into data.</p>
+            </div>
+            <div class="demo-card meter-stack">
+              <ui-meter-group interactive [attr.values]="taskValues" show-legend></ui-meter-group>
+              <p style="margin-top: 16px; font-style: italic; color: #64748b;">(Check conservation log for click events)</p>
+            </div>
+            <ui-code-preview [htmlCode]="interactiveCode" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -78,3 +129,10 @@
   </pg-demo-tabs>
 </div>
 
+<style>
+  .meter-stack { display: flex; flex-direction: column; gap: 40px; }
+  .meter-row { display: flex; align-items: flex-start; justify-content: space-around; flex-wrap: wrap; gap: 32px; }
+  .meter-item { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 400px; }
+  .demo-row { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+  .demo-row p, .meter-item p { font-size: 11px; font-weight: 700; color: #94a3b8; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
+</style>
