@@ -216,6 +216,51 @@
         </div>
     </pg-example-section>
 
+    <!-- Specialized Behaviors -->
+    <pg-example-section
+      title="Specialized Behaviors"
+      description="Advanced card features like collapsibility, auto-scrolling, and nested inner cards."
+      [code]="specializedCode"
+      id="specialized"
+    >
+      <div class="card-grid">
+        <!-- Collapsible Card -->
+        <ui-card collapsible card-title="System Diagnostics" width="340px">
+          <div slot="content">
+            <p>Comprehensive system logs and diagnostic information can be tucked away when not needed.</p>
+            <div style="padding: 12px; background: #f1f5f9; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+                [CPU] Usage: 12%<br>
+                [MEM] Available: 8.4GB<br>
+                [DSK] Healthy
+            </div>
+          </div>
+        </ui-card>
+
+        <!-- Auto-Scrolling Card -->
+        <ui-card auto-scroll height="200px" width="340px" card-title="Live Activity Trace">
+          <div slot="content">
+            <p style="margin: 4px 0;">[21:20:01] User login: Felix</p>
+            <p style="margin: 4px 0;">[21:20:05] Session started.</p>
+            <p style="margin: 4px 0;">[21:20:10] Resource fetched: /api/v1/data</p>
+            <p style="margin: 4px 0;">[21:20:15] Buffer overflow prevented.</p>
+            <p style="margin: 4px 0;">[21:20:20] Security audit passed.</p>
+            <p style="margin: 4px 0;">[21:20:25] Data sync completed.</p>
+            <p style="margin: 4px 0;">[21:20:30] User logout.</p>
+            <p style="margin: 4px 0;">[21:20:35] Background task scheduled.</p>
+          </div>
+        </ui-card>
+        
+        <!-- Inner Type -->
+        <ui-card card-title="Workspace Overview" width="400px">
+          <div slot="content">
+            <p>Managing nested project structures is easy with the <code>inner</code> card type.</p>
+            <ui-card type="inner" card-title="Sub-project Alpha" description="Development phase" variant="outlined"></ui-card>
+            <ui-card type="inner" card-title="Sub-project Beta" description="Planning phase" variant="outlined" style="margin-top: 12px;"></ui-card>
+          </div>
+        </ui-card>
+      </div>
+    </pg-example-section>
+
     <!-- Variants -->
     <pg-example-section
       title="Design Variants"

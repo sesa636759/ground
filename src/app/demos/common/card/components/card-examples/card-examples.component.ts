@@ -16,10 +16,11 @@ export class CardExamplesComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'playground-hero', title: 'Premium Showcase', icon: '✨' },
     { id: 'basic', title: 'Core Structure', icon: '📋' },
-    { id: 'patterns', title: 'Importance & Patterns', icon: '🏗️' },
-    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
     { id: 'interactions', title: 'Rich Interactions', icon: '⚡' },
-    { id: 'advanced-slots', title: 'Advanced Slots (Tabs/Grid)', icon: '🚀' },
+    { id: 'patterns', title: 'Hierarchy & Patterns', icon: '🏗️' },
+    { id: 'media', title: 'Media Enhancements', icon: '🖼️' },
+    { id: 'specialized', title: 'Specialized Behaviors', icon: '🛠️' },
+    { id: 'advanced-slots', title: 'Advanced Slots', icon: '🚀' },
     { id: 'variants-showcase', title: 'Design Variants', icon: '🎨' },
     { id: 'responsive', title: 'Adaptive Layouts', icon: '📱' },
     { id: 'states', title: 'Functional States', icon: '⏳' },
@@ -30,10 +31,39 @@ export class CardExamplesComponent extends BaseDemoComponent {
   <ui-card importance="emphasized" card-title="Emphasized Card" description="Used for high-priority items."></ui-card>
   
   <!-- Product Pattern -->
-  <ui-card pattern="product" card-title="Smart Watch Pro" tag="Sale -20%" price="$199" rating="4.5" cover="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"></ui-card>
+  <ui-card pattern="product" card-title="Smart Watch Pro" tag="Sale -20%" cover="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"></ui-card>
   
   <!-- Shortcut Pattern -->
   <ui-card pattern="shortcut" card-title="Quick Settings" avatar-icon="fas fa-cog"></ui-card>
+</div>`;
+
+  specializedCode = `<div class="card-grid">
+  <!-- Collapsible Card -->
+  <ui-card collapsible card-title="Collapsible Details">
+    <div slot="content">Detailed performance logs and system status information that can be hidden.</div>
+  </ui-card>
+
+  <!-- Auto-Scrolling Card -->
+  <ui-card auto-scroll height="200px" card-title="Real-time Logs">
+    <div slot="content">
+      <p style="margin: 4px 0;">[10:00:01] System boot started...</p>
+      <p style="margin: 4px 0;">[10:00:05] Kernel loaded.</p>
+      <p style="margin: 4px 0;">[10:00:10] Services initializing...</p>
+      <p style="margin: 4px 0;">[10:00:15] Network interface active.</p>
+      <p style="margin: 4px 0;">[10:00:20] Database connection established.</p>
+      <p style="margin: 4px 0;">[10:00:25] API Gateway ready.</p>
+      <p style="margin: 4px 0;">[10:00:30] System operational.</p>
+    </div>
+  </ui-card>
+  
+  <!-- Inner Type for Nesting -->
+  <ui-card card-title="Project Management">
+    <div slot="content">
+      <p>Main project overview content.</p>
+      <ui-card type="inner" card-title="Sub-task A" description="Due in 2 days" variant="outlined"></ui-card>
+      <ui-card type="inner" card-title="Sub-task B" description="Completed" variant="outlined" style="margin-top: 8px;"></ui-card>
+    </div>
+  </ui-card>
 </div>`;
 
   advancedSlotsCode = `<ui-card>
