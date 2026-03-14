@@ -1,1 +1,17 @@
+.resizable-global-section {
+  padding: 16px;
+}
+
+.resizable-checkbox-section {
+  margin-top: 16px;
+}
+
+.resizable-panel-block {
+  height: 100%;
+  width: 100%;
+}
+
+.panel-title {
+  margin: 0;
+}
 @use '../../../../styles/playground-base.scss';

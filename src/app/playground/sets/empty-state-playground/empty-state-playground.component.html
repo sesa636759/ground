@@ -1,6 +1,6 @@
 <pg-playground [items]="pgAccordionItems" [defaultOpen]="defaultOpen">
   <!-- General Section -->
-  <div slot="content-general" class="control-grid" style="padding: 16px">
+  <div slot="content-general" class="control-grid empty-general-section">
     <div class="control-group">
       <label>Type</label>
       <ui-dropdown
@@ -65,7 +65,7 @@
   </div>
 
   <!-- Content Section -->
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid empty-content-section">
     <div class="control-group full-width">
       <label>Heading</label>
       <ui-input
@@ -84,14 +84,7 @@
         (ngModelChange)="updateConfig()"
         placeholder="Default"
         rows="3"
-        style="
-          width: 100%;
-          border-radius: 8px;
-          border: 1px solid var(--border-color);
-          background: var(--surface-1);
-          color: var(--text-primary);
-          padding: 8px;
-        "
+        class="empty-message-textarea"
       ></textarea>
     </div>
 
@@ -107,7 +100,7 @@
   </div>
 
   <!-- Actions Section -->
-  <div slot="content-actions" class="control-grid" style="padding: 16px">
+  <div slot="content-actions" class="control-grid empty-actions-section">
     <div class="control-group">
       <label>Primary Action</label>
       <ui-input type="text" [(ngModel)]="pgConfig.primaryAction" (ngModelChange)="updateConfig()" />
@@ -151,7 +144,7 @@
   </div>
 
   <!-- Visuals Section -->
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid empty-visuals-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.rounded" (ngModelChange)="updateConfig()" /> Rounded
@@ -168,19 +161,7 @@
     </div>
   </div>
 
-  <div
-    preview
-    style="
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      background: var(--bg-secondary);
-      border-radius: 12px;
-    "
-  >
+  <div preview class="empty-preview">
     <ui-empty-state
       #emptyStateElement
       [attr.type]="pgConfig.type"
@@ -224,9 +205,9 @@
 </pg-playground>
 
 <!-- All possible variants/examples -->
-<div style="margin-top: 32px">
+<div class="empty-variants-section">
   <h3>All Variants & Examples</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+  <div class="empty-variants-grid">
     <ui-empty-state
       type="no-data"
       variant="default"

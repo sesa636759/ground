@@ -1,3 +1,17 @@
+.brand-section,
+.user-section,
+.style-section {
+  padding: 16px;
+}
+
+.style-checkbox-group {
+  margin-top: 16px;
+}
+
+.sidebar-block {
+  display: block;
+  height: 100%;
+}
 @use '../../../../styles/playground-base.scss';
 
 .section-title {

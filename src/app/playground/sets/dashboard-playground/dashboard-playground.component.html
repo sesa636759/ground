@@ -163,7 +163,7 @@
       </div>
     </div>
   </div>
-  <div preview style="width: 100%; display: flex; justify-content: center; align-items: center">
+  <div preview class="dashboard-preview">
     <div class="toolbar">
       <ui-button (click)="triggerAction('undo')" label="Undo"></ui-button>
       <ui-button (click)="triggerAction('redo')" label="Redo"></ui-button>
@@ -202,9 +202,9 @@
 </pg-playground>
 
 <!-- All possible variants/examples -->
-<div style="margin-top: 32px">
+<div class="dashboard-variants-section">
   <h3>All Variants & Examples</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+  <div class="dashboard-variants-grid">
     <ui-dashboard
       [widgets]="initialWidgets"
       theme="light"

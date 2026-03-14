@@ -5,7 +5,7 @@
   (reset)="resetConfig()"
 >
   <!-- Appearance Section -->
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid appearance-section">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -29,7 +29,10 @@
       <ui-dropdown
         [(ngModel)]="pgConfig.layout"
         (ngModelChange)="updateConfig()"
-        [options]="[{label: 'Vertical', value: 'vertical'}, {label: 'Horizontal', value: 'horizontal'}]"
+        [options]="[
+          { label: 'Vertical', value: 'vertical' },
+          { label: 'Horizontal', value: 'horizontal' },
+        ]"
       ></ui-dropdown>
     </div>
 
@@ -80,10 +83,13 @@
   </div>
 
   <!-- Features Section -->
-  <div slot="content-features" class="checkbox-grid" style="padding: 16px">
-    <div class="control-group full-width" style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+  <div slot="content-features" class="checkbox-grid features-section">
+    <div class="control-group full-width features-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.hoverable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.hoverable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Hoverable
       </label>
       <label class="checkbox-item">
@@ -95,11 +101,17 @@
         Bordered
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.flippable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.flippable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Flippable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.collapsible" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.collapsible"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Collapsible
       </label>
       <label class="checkbox-item">
@@ -107,7 +119,10 @@
         Closable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.selectable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
@@ -115,11 +130,17 @@
         Loading
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.clickable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Clickable
       </label>
-       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoScroll" (ngModelChange)="updateConfig()"></ui-checkbox>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoScroll"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Scroll
       </label>
     </div>
@@ -144,12 +165,12 @@
   </div>
 
   <!-- Content & Style Section -->
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid content-section">
     <div class="control-group">
       <label>Card Title</label>
       <ui-input [(ngModel)]="pgConfig.cardTitle" (ngModelChange)="updateConfig()"></ui-input>
     </div>
-     <div class="control-group">
+    <div class="control-group">
       <label>Description</label>
       <ui-input [(ngModel)]="pgConfig.description" (ngModelChange)="updateConfig()"></ui-input>
     </div>
@@ -174,17 +195,21 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-        <label>Extra (Header)</label>
-        <ui-input [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()"></ui-input>
+      <label>Extra (Header)</label>
+      <ui-input [(ngModel)]="pgConfig.extra" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
-        <label>HREF (Clickable)</label>
-        <ui-input [(ngModel)]="pgConfig.href" (ngModelChange)="updateConfig()" placeholder="https://..."></ui-input>
+      <label>HREF (Clickable)</label>
+      <ui-input
+        [(ngModel)]="pgConfig.href"
+        (ngModelChange)="updateConfig()"
+        placeholder="https://..."
+      ></ui-input>
     </div>
   </div>
 
   <!-- Preview Area -->
-  <div preview class="preview-stage" style="padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 700px; background: #f8fafc;">
+  <div preview class="preview-stage card-preview">
     <ui-card
       #demoElement
       [attr.card-id]="pgConfig.cardId"
@@ -234,33 +259,42 @@
       (cardSelect)="onCardSelect($event)"
       (cardFlip)="onCardFlip($event)"
     >
-        <!-- Mixed content demo -->
-        <div slot="tabs" *ngIf="pgConfig.pattern === 'default'">
-            <ui-tabs>
-                <ui-tab-panel label="Info" icon="info" icon-library="lucide">Information content</ui-tab-panel>
-                <ui-tab-panel label="Settings" icon="settings" icon-library="lucide">Settings content</ui-tab-panel>
-            </ui-tabs>
-        </div>
+      <!-- Mixed content demo -->
+      <div slot="tabs" *ngIf="pgConfig.pattern === 'default'">
+        <ui-tabs>
+          <ui-tab-panel label="Info" icon="info" icon-library="lucide"
+            >Information content</ui-tab-panel
+          >
+          <ui-tab-panel label="Settings" icon="settings" icon-library="lucide"
+            >Settings content</ui-tab-panel
+          >
+        </ui-tabs>
+      </div>
 
-        <div slot="back" *ngIf="pgConfig.flippable">
-            <div style="padding: 24px; text-align: center;">
-                <ui-icon name="shield-check" library="lucide" size="3em" color="var(--ui-success)"></ui-icon>
-                <h3 style="margin-top: 16px;">Security Verified</h3>
-                <p>This side is perfectly secure for sensitive data.</p>
-                <ui-button label="Verify" variant="success"></ui-button>
-            </div>
+      <div slot="back" *ngIf="pgConfig.flippable">
+        <div class="card-back-content">
+          <ui-icon
+            name="shield-check"
+            library="lucide"
+            size="3em"
+            color="var(--ui-success)"
+          ></ui-icon>
+          <h3 class="card-back-title">Security Verified</h3>
+          <p>This side is perfectly secure for sensitive data.</p>
+          <ui-button label="Verify" variant="success"></ui-button>
         </div>
+      </div>
 
-        <div slot="content" *ngIf="!pgConfig.description">
-            <p>This is the main content slot of the card. You can use full HTML here.</p>
-        </div>
+      <div slot="content" *ngIf="!pgConfig.description">
+        <p>This is the main content slot of the card. You can use full HTML here.</p>
+      </div>
 
-        <div slot="footer" *ngIf="!pgConfig.buttonText && !pgConfig.actions">
-            <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                <ui-button label="Cancel" variant="ghost"></ui-button>
-                <ui-button label="Submit" variant="primary"></ui-button>
-            </div>
+      <div slot="footer" *ngIf="!pgConfig.buttonText && !pgConfig.actions">
+        <div class="card-footer-actions">
+          <ui-button label="Cancel" variant="ghost"></ui-button>
+          <ui-button label="Submit" variant="primary"></ui-button>
         </div>
+      </div>
     </ui-card>
   </div>
 

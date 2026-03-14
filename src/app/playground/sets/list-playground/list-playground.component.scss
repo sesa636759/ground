@@ -1,1 +1,19 @@
+.list-global-section,
+.list-item-section,
+.list-features-section {
+  padding: 16px;
+}
+
+.list-preview {
+  width: 100%;
+  padding: 40px;
+  background: #f8fafc;
+  min-height: 400px;
+}
+
+.list-preview-inner {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
 @use '../../../../styles/playground-base.scss';

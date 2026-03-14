@@ -5,68 +5,115 @@
   (reset)="resetConfig()"
 >
   <!-- Layout & Columns -->
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid masonry-layout-section">
     <div class="control-group">
       <label>Layout Strategy</label>
-      <ui-dropdown [options]="layoutTypeOptions" [(ngModel)]="pgConfig.layoutType" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="layoutTypeOptions"
+        [(ngModel)]="pgConfig.layoutType"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Base Columns</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.columns" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.columns"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Gap (px)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.gap" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.gap"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Min Item Width</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.itemMinWidth" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.itemMinWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Max Item Width</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.itemMaxWidth" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.itemMaxWidth"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <!-- Filtering & Sorting -->
-  <div slot="content-data" class="control-grid" style="padding: 16px">
+  <div slot="content-data" class="control-grid masonry-data-section">
     <div class="control-group">
       <label>Filter By Category</label>
-      <ui-input [(ngModel)]="pgConfig.filterBy" (ngModelChange)="updateConfig()" placeholder="category:nature"></ui-input>
+      <ui-input
+        [(ngModel)]="pgConfig.filterBy"
+        (ngModelChange)="updateConfig()"
+        placeholder="category:nature"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Sort By</label>
-      <ui-dropdown [options]="sortByOptions" [(ngModel)]="pgConfig.sortBy" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="sortByOptions"
+        [(ngModel)]="pgConfig.sortBy"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Sort Order</label>
-      <ui-dropdown [options]="sortOrderOptions" [(ngModel)]="pgConfig.sortOrder" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="sortOrderOptions"
+        [(ngModel)]="pgConfig.sortOrder"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showFilters" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showFilters"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Built-in Filters
       </label>
     </div>
   </div>
 
   <!-- Behavior & Interaction -->
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid masonry-behavior-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableAnimation" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableAnimation"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Enable Animation
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.selectable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.selectable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Selectable
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.multiSelect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.multiSelect"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Multi-Select
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showBatchActions" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showBatchActions"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Batch Actions
       </label>
       <label class="checkbox-item">
@@ -74,7 +121,10 @@
         Lightbox Mode
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.loadingState" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.loadingState"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Loading State (Skeleton)
       </label>
     </div>
@@ -85,26 +135,33 @@
   </div>
 
   <!-- Advanced Optimization -->
-  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+  <div slot="content-advanced" class="control-grid masonry-advanced-section">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.lazyLoad" (ngModelChange)="updateConfig()"></ui-checkbox>
         Lazy Load Images
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.infiniteScroll" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.infiniteScroll"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Infinite Scroll
       </label>
     </div>
     <div class="control-group">
       <label>Infinite Scroll Distance</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.infiniteScrollDistance" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.infiniteScrollDistance"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <!-- Preview -->
   <div preview>
-    <div class="preview-stage" style="padding: 24px; min-height: 600px; background: #fff; width: 100%; border-radius: 8px;">
+    <div class="preview-stage masonry-preview">
       <ui-masonry
         [attr.items]="playgroundItems | json"
         [attr.columns]="pgConfig.columns"

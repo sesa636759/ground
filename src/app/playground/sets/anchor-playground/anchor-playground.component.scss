@@ -1,1 +1,13 @@
+.anchor-global-section,
+.anchor-appearance-section,
+.anchor-behavior-section {
+  padding: 16px;
+}
+
+.anchor-preview {
+  padding: 32px;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 8px;
+}
 @use '../../../../styles/playground-base.scss';

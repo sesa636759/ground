@@ -1,3 +1,39 @@
+.empty-general-section,
+.empty-content-section,
+.empty-actions-section,
+.empty-visuals-section {
+  padding: 16px;
+}
+
+.empty-message-textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  padding: 8px;
+}
+
+.empty-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+}
+
+.empty-variants-section {
+  margin-top: 32px;
+}
+
+.empty-variants-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
 @use '../../../../styles/playground-base.scss';
 
 .playground-controls {

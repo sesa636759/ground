@@ -1,4 +1,43 @@
+.features-section {
+  padding: 16px;
+}
+
+.features-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.card-back-title {
+  margin-top: 16px;
+}
 @use '../../../../styles/playground-base.scss';
+
+.appearance-section,
+.content-section {
+  padding: 16px;
+}
+
+.card-preview {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 700px;
+  background: #f8fafc;
+}
+
+.card-back-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.card-footer-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
 
 .preview {
   max-width: 100%;

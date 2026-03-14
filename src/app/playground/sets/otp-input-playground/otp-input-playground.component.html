@@ -1,19 +1,19 @@
-<pg-playground
-  [items]="pgAccordionItems"
-  [code]="generatedCode()"
-  (reset)="resetConfig()"
->
+<pg-playground [items]="pgAccordionItems" [code]="generatedCode()" (reset)="resetConfig()">
   <!-- Global Configuration -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid otp-global-section">
     <div class="control-group">
       <label>Label</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.label" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.label"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Length</label>
-      <ui-input 
-        type="number" 
-        [(ngModel)]="pgConfig.length" 
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.length"
         (ngModelChange)="updateConfig()"
         min="1"
         max="10"
@@ -21,17 +21,25 @@
     </div>
     <div class="control-group">
       <label>Placeholder</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.placeholder" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.placeholder"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Initial Value</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.value" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.value"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Group Size (0 for none)</label>
-      <ui-input 
-        type="number" 
-        [(ngModel)]="pgConfig.groupSize" 
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.groupSize"
         (ngModelChange)="updateConfig()"
         min="0"
         max="5"
@@ -48,7 +56,7 @@
   </div>
 
   <!-- Appearance & Styles -->
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid otp-appearance-section">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -86,18 +94,26 @@
   </div>
 
   <!-- Behavioral States -->
-  <div slot="content-states" class="control-grid" style="padding: 16px">
+  <div slot="content-states" class="control-grid otp-states-section">
     <div class="checkbox-item">
       <ui-checkbox [(ngModel)]="pgConfig.invalid" (ngModelChange)="updateConfig()"></ui-checkbox>
       Invalid State
     </div>
     <div class="control-group">
       <label>Helper Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.helperText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group" *ngIf="pgConfig.invalid">
       <label>Error Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.errorText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
@@ -113,19 +129,25 @@
         Required
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoFocus" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoFocus"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Focus
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoSubmit" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoSubmit"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Submit
       </label>
     </div>
   </div>
 
   <!-- Preview Area -->
-  <div preview class="preview-stage" style="padding: 40px; justify-content: center; align-items: center; flex-direction: column;">
-    <div style="width: 100%; display: flex; justify-content: center;">
+  <div preview class="preview-stage otp-preview">
+    <div class="otp-preview-inner">
       <ui-otp-input
         #demoElement
         [attr.length]="pgConfig.length"
