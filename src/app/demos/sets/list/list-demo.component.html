@@ -87,7 +87,7 @@
               <p>Infinite nesting with collapsible groups and indentation levels.</p>
             </div>
             <div class="demo-card">
-              <ui-list variant="soft" style="max-width: 320px">
+              <ui-list variant="soft" class="max-w-400">
                 <ui-list-item label="Personal Files" icon="folder" icon-library="lucide" collapsible expanded>
                   <div slot="children">
                     <ui-list-item label="Documents" icon="file-text" icon-library="lucide" level="1" collapsible>
@@ -159,9 +159,9 @@
                 <p>Context Menu (Dropdown Style)</p>
                 <ui-list variant="soft">
                   <ui-list-item label="Right-click or Click Menu" context-menu icon="more-vertical" icon-library="lucide">
-                    <div slot="context" style="padding: 8px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
-                      <div style="padding: 4px 8px; cursor: pointer;">Edit Item</div>
-                      <div style="padding: 4px 8px; cursor: pointer; color: red;">Delete Item</div>
+                    <div slot="context" class="context-menu-demo">
+                      <div class="menu-item">Edit Item</div>
+                      <div class="menu-item delete">Delete Item</div>
                     </div>
                   </ui-list-item>
                 </ui-list>
@@ -246,9 +246,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .list-stack { display: flex; flex-direction: column; gap: 32px; }
-  .list-example p, .list-stack p, .grid-2 p, .grid-3 p { font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-</style>
+

@@ -77,7 +77,7 @@
           description="Support for three distinct size tiers: small, medium, and large."
           [code]="sizesCode"
         >
-          <div class="demo-flex-wrap" style="align-items: flex-end">
+          <div class="demo-flex-wrap flex-items-end">
             <ui-input size="small" label="Compact" full-width></ui-input>
             <ui-input size="medium" label="Standard" full-width></ui-input>
             <ui-input size="large" label="Prominent" full-width></ui-input>
@@ -217,7 +217,7 @@
           description="Fuzzy matching suggestions for faster input entry."
           [code]="suggestionsCode"
         >
-          <div style="max-width: 400px">
+          <div class="max-w-400">
             <ui-input 
               label="Framework" 
               [attr.suggestions]="'Angular,React,Vue,Svelte,Solid,Stencil'" 

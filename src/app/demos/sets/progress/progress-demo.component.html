@@ -122,13 +122,13 @@
               <h2>Premium Visual Effects</h2>
               <p>Advanced animations and styling for high-end interfaces.</p>
             </div>
-            <div class="demo-card progress-stack" style="background: #111; padding: 32px;">
+            <div class="demo-card progress-stack bg-dark p-32">
               <div class="demo-row">
-                <p style="color: #fff">Liquid Wave Effect</p>
+                <p class="text-white">Liquid Wave Effect</p>
                 <ui-progress [percent]="65" liquid stroke-color="#00f2fe"></ui-progress>
               </div>
               <div class="demo-row">
-                <p style="color: #fff">Glassmorphism & Glow</p>
+                <p class="text-white">Glassmorphism & Glow</p>
                 <ui-progress [percent]="80" glass glow stroke-color="#fff" trail-color="rgba(255,255,255,0.1)"></ui-progress>
               </div>
             </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="demo-card progress-stack">
               <ui-progress [percent]="45" show-pause-button show-time-estimate estimated-time="150"></ui-progress>
-              <div style="display: flex; gap: 8px; margin-top: 16px;">
+              <div class="display-flex gap-8 mt-16">
                 <ui-button (click)="increaseProgress()">+10%</ui-button>
                 <ui-button (click)="decreaseProgress()">-10%</ui-button>
               </div>
@@ -179,9 +179,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .progress-stack { display: flex; flex-direction: column; gap: 32px; }
-  .progress-row { display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
-  .demo-row { display: flex; flex-direction: column; gap: 12px; }
-  .demo-row p { font-size: 11px; font-weight: 700; color: #94a3b8; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
-</style>
+

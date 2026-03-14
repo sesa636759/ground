@@ -83,6 +83,11 @@
   }
 }
 
+.mx-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 // Responsive adjustments
 @media (max-width: 1024px) {
   .slide.item-slide {
@@ -134,3 +139,4 @@ ui-carousel {
   display: block;
   width: 100%;
 }
+

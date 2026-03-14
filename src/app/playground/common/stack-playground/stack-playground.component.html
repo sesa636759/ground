@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Direction</label>
       <ui-dropdown [options]="directionOptions" [(ngModel)]="pgConfig.direction" (ngModelChange)="updateConfig()"></ui-dropdown>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Divider Style</label>
       <ui-dropdown [options]="dividerOptions" [(ngModel)]="pgConfig.dividerType" (ngModelChange)="updateConfig()"></ui-dropdown>
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Max Visible Items</label>
       <ui-input type="number" [(ngModel)]="pgConfig.max" (ngModelChange)="updateConfig()"></ui-input>
@@ -56,7 +56,7 @@
   </div>
 
   <div preview>
-    <div class="preview-stage" style="padding: 32px; min-height: 200px; background: #fff; width: 100%; border-radius: 8px; border: 1px dashed #cbd5e1;">
+    <div class="preview-stage p-32 min-h-200 bg-white w-full rounded-8 border border-dashed">
       <ui-stack
         [attr.direction]="pgConfig.direction"
         [attr.wrap]="pgConfig.wrap"
@@ -76,24 +76,4 @@
   </div>
 </pg-playground>
 
-<style>
-  .box-item {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f1f5f9;
-    border: 2px solid #3b82f6;
-    border-radius: 8px;
-    color: #1e293b;
-    font-weight: 700;
-    font-size: 16px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-  .stack-overlap .box-item {
-    background: #3b82f6;
-    color: white;
-    border-color: white;
-  }
-</style>
+

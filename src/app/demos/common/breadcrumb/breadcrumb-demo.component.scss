@@ -1,1 +1,22 @@
 @use '../../../../styles/demo-base.scss';
+
+.breadcrumb-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px;
+}
+
+.glass-bg {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  padding: 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ui-breadcrumb {
+    --breadcrumb-glass-color: rgba(255, 255, 255, 0.8);
+  }
+}
+

@@ -3,11 +3,18 @@
 .preview-box {
   min-height: 200px;
   position: relative;
+  background: var(--surface-muted);
+  border-radius: 8px;
 
   &.dock-demo {
     min-height: 300px;
     padding: 0;
     overflow: hidden;
+  }
+
+  &.glass-preview {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
   }
 }
 
@@ -17,3 +24,4 @@
   font-size: 1.1rem;
   color: var(--text-secondary);
 }
+

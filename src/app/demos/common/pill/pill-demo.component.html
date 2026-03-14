@@ -42,11 +42,11 @@
                 <ui-pill label="Danger" color="danger"></ui-pill>
                 <ui-pill label="Info" color="info"></ui-pill>
               </div>
-              <div class="demo-flex" style="margin-top: 24px;">
+              <div class="demo-flex mt-24">
                 <ui-pill label="Custom" custom-color="#6366f1" custom-text-color="#ffffff"></ui-pill>
                 <ui-pill label="Neon" custom-color="#00ff00" custom-text-color="#000000"></ui-pill>
               </div>
-              <div class="demo-flex" style="margin-top: 24px;">
+              <div class="demo-flex mt-24">
                 <ui-pill label="Small" size="sm" color="default"></ui-pill>
                 <ui-pill label="Medium" size="md" color="default"></ui-pill>
                 <ui-pill label="Large" size="lg" color="default"></ui-pill>
@@ -73,7 +73,7 @@
           <section class="demo-section" id="orientations">
             <div class="section-header"><h2>Vertical Layouts</h2><p>Alternate layouts for specific UI patterns like pipelines or sidebars.</p></div>
             <div class="demo-card">
-              <div class="demo-flex" style="height: 120px; align-items: center;">
+              <div class="demo-flex h-120 flex-items-center">
                 <ui-pill label="Horizontal" orientation="horizontal"></ui-pill>
                 <ui-pill label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-pill>
                 <ui-pill label="Vertical Text" orientation="vertical-text"></ui-pill>
@@ -92,7 +92,7 @@
                 <ui-pill label="Toggleable" clickable selected (pillSelect)="onPillSelect($event)"></ui-pill>
                 <ui-pill label="Removable" removable color="danger" (pillRemove)="onPillRemove()"></ui-pill>
               </div>
-              <div class="demo-flex" style="margin-top: 24px;">
+              <div class="demo-flex mt-24">
                 <ui-pill label="Loading" loading color="info"></ui-pill>
                 <ui-pill label="Disabled" disabled></ui-pill>
                 <ui-pill label="Hover me" color="success" tooltip="Click to explore!"></ui-pill>
@@ -123,8 +123,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .demo-flex { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-  .pill-stack { display: flex; flex-direction: column; gap: 8px; }
-  .demo-section { scroll-margin-top: 100px; margin-bottom: 64px; }
-</style>
+

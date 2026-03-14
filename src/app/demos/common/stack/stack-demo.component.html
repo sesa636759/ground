@@ -39,7 +39,7 @@
           <!-- Wrap -->
           <section class="demo-section" id="wrap">
             <div class="section-header"><h2>Flow Wrapping</h2><p>Automatically move items to a new line when space is limited.</p></div>
-            <div class="demo-card stack-wrap" style="max-width: 200px;">
+            <div class="demo-card stack-wrap max-w-400">
               <ui-stack wrap="wrap" spacing="10px">
                 <div class="box-sm" *ngFor="let b of [1,2,3,4,5,6,7,8]">#{{b}}</div>
               </ui-stack>
@@ -75,10 +75,10 @@
             <div class="section-header"><h2>Avatar Facepile (Overlap)</h2><p>Classic overlapping circles common in group chats.</p></div>
             <div class="demo-card">
               <ui-stack overlap spacing="-15px">
-                <div class="avatar" style="background:#3b82f6">JD</div>
-                <div class="avatar" style="background:#ef4444">AS</div>
-                <div class="avatar" style="background:#10b981">MK</div>
-                <div class="avatar" style="background:#f59e0b">TH</div>
+                <div class="avatar bg-blue">JD</div>
+                <div class="avatar bg-soft-red">AS</div>
+                <div class="avatar bg-green">MK</div>
+                <div class="avatar bg-orange">TH</div>
               </ui-stack>
             </div>
             <ui-code-preview [htmlCode]="overlapCode" activeLang="html"></ui-code-preview>
@@ -89,7 +89,7 @@
             <div class="section-header"><h2>Overflow Management</h2><p>Limit visibility and show a '+N' indicator.</p></div>
             <div class="demo-card">
               <ui-stack overlap spacing="-12px" [max]="3">
-                <div class="avatar" *ngFor="let a of avatars" style="background: #6366f1">{{a}}</div>
+                <div class="avatar bg-indigo" *ngFor="let a of avatars">{{a}}</div>
               </ui-stack>
             </div>
             <ui-code-preview [htmlCode]="maxCode" activeLang="html"></ui-code-preview>
@@ -104,11 +104,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .stack-wrap { padding: 20px; background: rgba(0,0,0,0.02); border-radius: 8px; }
-  .stack-stack { display: flex; flex-direction: column; gap: 32px; padding: 16px; }
-  .stack-stack p { font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; }
-  .box { width: 60px; height: 40px; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #475569; }
-  .box-sm { width: 32px; height: 32px; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; }
-  .avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
-</style>
+

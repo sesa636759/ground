@@ -6,18 +6,44 @@
       center;
     background-size: cover;
     position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
 
     &::before {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(0, 0, 0, 0.2);
-      border-radius: 12px;
     }
 
-    ui-empty-state {
+    app-empty-state, ui-empty-state {
       width: 90%;
       z-index: 10;
     }
   }
 }
+
+.compact-sidebar {
+  max-width: 320px;
+  margin: 0 auto;
+  background: var(--surface-color);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  height: 100%;
+}
+
+.celebration-zone {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  padding: 20px;
+  border: 1px dashed var(--border-subtle);
+  
+  &.active {
+    background: rgba(16, 185, 129, 0.1);
+  }
+}
+

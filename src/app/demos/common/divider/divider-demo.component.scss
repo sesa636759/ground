@@ -1,1 +1,50 @@
 @use '../../../../styles/demo-base.scss';
+
+.divider-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 24px;
+}
+
+.demo-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.vertical-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  gap: 24px;
+  background: var(--surface-muted);
+  border-radius: 8px;
+}
+
+.shapes-preview {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.shape-block {
+  height: 100px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+
+  &.bg-blue { background: #3b82f6; }
+  &.bg-green { background: #10b981; }
+  &.bg-orange { background: #f59e0b; }
+}

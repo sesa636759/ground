@@ -20,13 +20,13 @@
             <div class="section-header"><h2>Basic Usage</h2><p>Positioned on an element to display numeric counts, unread status, or dots.</p></div>
             <div class="demo-card badge-grid">
               <ui-badge value="4">
-                <ui-icon name="bell" library="lucide" size="2em" style="padding: 8px; background: #f1f5f9; border-radius: 8px;"></ui-icon>
+                <ui-icon name="bell" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
               </ui-badge>
               <ui-badge [attr.value]="120" [attr.max]="99">
-                <ui-icon name="mail" library="lucide" size="2em" style="padding: 8px; background: #f1f5f9; border-radius: 8px;"></ui-icon>
+                <ui-icon name="mail" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
               </ui-badge>
               <ui-badge dot>
-                <ui-icon name="message-square" library="lucide" size="2em" style="padding: 8px; background: #f1f5f9; border-radius: 8px;"></ui-icon>
+                <ui-icon name="message-square" library="lucide" size="2em" class="icon-wrapper"></ui-icon>
               </ui-badge>
             </div>
             <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
@@ -49,7 +49,7 @@
           <!-- Variants -->
           <section class="demo-section" id="variants">
             <div class="section-header"><h2>Style Variants</h2><p>Soft, outlined, and bordered configurations for varying emphasis.</p></div>
-            <div class="demo-card badge-row" style="background: #fafafa">
+            <div class="demo-card badge-row bg-surface-muted">
               <ui-badge variant="standard" value="Standard"></ui-badge>
               <ui-badge variant="soft" color="success" value="Soft"></ui-badge>
               <ui-badge variant="outlined" color="primary" value="Outlined"></ui-badge>
@@ -100,7 +100,7 @@
               <ui-badge value="Alert" animation="pulse" color="danger"></ui-badge>
               <ui-badge value="New" animation="bounce" color="primary"></ui-badge>
               <ui-badge value="Error" animation="shake" color="warning"></ui-badge>
-              <div style="padding: 16px; background: #0f172a; border-radius: 8px;">
+              <div class="p-16 bg-dark rounded-8">
                 <ui-badge value="Glowing" glow color="success"></ui-badge>
               </div>
             </div>
@@ -128,9 +128,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .badge-grid { display: flex; gap: 48px; padding: 32px; flex-wrap: wrap; }
-  .badge-row { display: flex; gap: 24px; padding: 32px; flex-wrap: wrap; align-items: center; }
-  .badge-stack { display: flex; flex-direction: column; gap: 24px; }
-  .box { width: 64px; height: 64px; background: #e2e8f0; border-radius: 8px; border: 1px dashed #94a3b8; }
-</style>
+

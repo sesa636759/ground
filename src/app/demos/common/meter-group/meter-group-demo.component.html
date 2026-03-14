@@ -36,7 +36,7 @@
           <!-- Vertical -->
           <section class="demo-section" id="vertical">
             <div class="section-header"><h2>Vertical Orientation</h2></div>
-            <div class="demo-card meter-panel" style="height: 300px;">
+            <div class="demo-card meter-panel h-300">
               <ui-meter-group orientation="vertical" [attr.values]="diskValues"></ui-meter-group>
             </div>
             <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
@@ -85,9 +85,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .meter-panel { padding: 32px; background: #fff; border-radius: 8px; border: 1px solid #e2e8f0; }
-  .meter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 24px; align-items: start; }
-  .meter-stack { display: flex; flex-direction: column; gap: 32px; padding: 24px; }
-  .meter-grid p, .meter-stack p { font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 12px; text-transform: uppercase; }
-</style>
+

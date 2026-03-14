@@ -45,7 +45,7 @@
                 <ui-chip label="Square" shape="square" color="info"></ui-chip>
                 <ui-chip label="Circle" shape="circle" icon="star" icon-library="lucide" color="info"></ui-chip>
               </div>
-              <div class="demo-flex" style="margin-top: 24px;">
+              <div class="demo-flex mt-24">
                 <ui-chip label="Small" size="sm" color="secondary"></ui-chip>
                 <ui-chip label="Medium" size="md" color="secondary"></ui-chip>
                 <ui-chip label="Large" size="lg" color="secondary"></ui-chip>
@@ -90,7 +90,7 @@
             [code]="orientationsCode"
           >
             <div class="demo-card">
-              <div class="demo-flex" style="height: 120px; align-items: center;">
+              <div class="demo-flex h-120 flex-items-center">
                 <ui-chip label="Horizontal" orientation="horizontal"></ui-chip>
                 <ui-chip label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-chip>
                 <ui-chip label="Vertical Text" orientation="vertical-text"></ui-chip>
@@ -111,7 +111,7 @@
                 <ui-chip label="Removable" removable variant="soft" color="danger" (chipRemove)="onChipRemove()"></ui-chip>
                 <ui-chip label="Selectable" clickable selected color="primary" (chipSelect)="onChipSelect($event)"></ui-chip>
               </div>
-              <div class="demo-flex" style="margin-top: 24px;">
+              <div class="demo-flex mt-24">
                 <ui-chip label="Loading" loading color="secondary"></ui-chip>
                 <ui-chip label="Disabled" disabled color="secondary"></ui-chip>
                 <ui-chip label="Hover me" color="success" tooltip="Hello world!"></ui-chip>
@@ -144,8 +144,4 @@
   </pg-demo-tabs>
 </div>
 
-<style>
-  .demo-flex { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
-  .chip-stack { display: flex; flex-direction: column; gap: 8px; }
-  .demo-section { scroll-margin-top: 100px; }
-</style>
+
