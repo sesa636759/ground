@@ -13,11 +13,11 @@ import { ExampleSectionComponent } from 'src/app/shared/components/example-secti
 })
 export class CardExamplesComponent extends BaseDemoComponent {
   variants = [
-    { id: 'basic-cards', name: 'Basic Cards', icon: '??' },
-    { id: 'media-covers', name: 'Media & Covers', icon: '???' },
-    { id: 'flippable-cards', name: 'Flippable Cards', icon: '??' },
-    { id: 'premium-features', name: 'Premium Layouts', icon: '??' },
-    { id: 'states-interaction', name: 'States & Interaction', icon: '??' },
+    { id: 'basic-cards', name: 'Basic Cards', icon: '🃏' },
+    { id: 'media-covers', name: 'Media & Covers', icon: '🖼️' },
+    { id: 'flippable-cards', name: 'Flippable Cards', icon: '🔄' },
+    { id: 'premium-features', name: 'Premium Layouts', icon: '💎' },
+    { id: 'states-interaction', name: 'States & Interaction', icon: '⚙️' },
   ];
 
   get exampleVariants() {
@@ -147,4 +147,3 @@ export class CardExamplesComponent extends BaseDemoComponent {
   <p>Card content goes here</p>
 </app-card>`;
 }
-

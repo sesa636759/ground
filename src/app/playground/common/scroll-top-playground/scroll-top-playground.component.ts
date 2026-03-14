@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
@@ -46,7 +46,7 @@ export class DmScrollTopPlaygroundComponent extends BasePlaygroundComponent impl
   getDefaultConfig() {
     return {
       threshold: 200,
-      icon: '??',
+      icon: '🔝',
       shape: 'circle',
       speed: 400,
     };
@@ -64,6 +64,3 @@ export class DmScrollTopPlaygroundComponent extends BasePlaygroundComponent impl
     this.refreshCode();
   }
 }
-
-
-

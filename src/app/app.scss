@@ -816,7 +816,7 @@
 }
 
 /* ============================================================
-   ?? ui-navigation Popover Alignment & Scroll Fix
+    ui-navigation Popover Alignment & Scroll Fix
    Fixes: Navigation sub-menus jumping to top and lack of scroll
    ============================================================ */
 ui-navigation,
@@ -872,7 +872,7 @@ ui-navigation ::part(arrow) {
 }
 
 /* ============================================================
-   ??  Floating Theme Switcher FAB (Global)
+    Floating Theme Switcher FAB (Global)
    ============================================================ */
 @keyframes fabOptionIn {
   from {
@@ -1094,7 +1094,8 @@ ui-cascade-select {
   }
 
   /* Global selector for web component item containers if parts are missing */
-  &, * {
+  &,
+  * {
     .cascade-select-item,
     li:has(span) {
       display: flex !important;
@@ -1125,12 +1126,12 @@ ui-cascade-select {
 }
 
 /* 🔓 Ensure dropdowns and cascade select menus are never clipped by parents */
-ui-dropdown, 
+ui-dropdown,
 ui-cascade-select,
 ui-popover {
   overflow: visible !important;
   contain: none !important;
-  
+
   /* Higher z-index for the portal-able menus if not handled by body portaling */
   &::part(menu-container),
   &::part(overlay) {
