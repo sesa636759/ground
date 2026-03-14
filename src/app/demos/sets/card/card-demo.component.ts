@@ -8,7 +8,7 @@ import { CardExamplesComponent } from './components/card-examples/card-examples.
 import { DsCardPlaygroundComponent } from '../../../playground/sets/card-playground/card-playground.component';
 
 @Component({
-  selector: 'ds-card-demo',
+  selector: 'dm-card-demo',
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
@@ -22,7 +22,7 @@ import { DsCardPlaygroundComponent } from '../../../playground/sets/card-playgro
   templateUrl: './card-demo.component.html',
   styleUrl: './card-demo.component.scss',
 })
-export class DsCardDemoComponent implements OnInit {
+export class DmCardDemoComponent implements OnInit {
   playgroundCode = `<ui-card
   variant="elevated"
   [hoverable]="true"
