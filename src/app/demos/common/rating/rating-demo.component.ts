@@ -27,12 +27,13 @@ import { ExampleSectionComponent } from '../../../shared/components/example-sect
 })
 export class DmRatingDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Star Rating', icon: 'star', iconLibrary: 'lucide' },
-    { id: 'half', title: 'Half Ratings', icon: 'star-half', iconLibrary: 'lucide' },
-    { id: 'smileys', title: 'Smiley Feedback', icon: 'smile', iconLibrary: 'lucide' },
-    { id: 'thumbs', title: 'Thumb Up/Down', icon: 'thumbs-up', iconLibrary: 'lucide' },
-    { id: 'visuals', title: 'Custom Visuals', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'states', title: 'States & Labels', icon: 'shield-check', iconLibrary: 'lucide' },
+    { id: 'playground', title: 'Interactive Playground', icon: '🎮', iconLibrary: 'emoji' },
+    { id: 'basic', title: 'Star Rating', icon: '⭐', iconLibrary: 'emoji' },
+    { id: 'half', title: 'Half Ratings', icon: '🌓', iconLibrary: 'emoji' },
+    { id: 'smileys', title: 'Smiley Feedback', icon: '😊', iconLibrary: 'emoji' },
+    { id: 'thumbs', title: 'Thumb Up/Down', icon: '👍', iconLibrary: 'emoji' },
+    { id: 'visuals', title: 'Custom Visuals', icon: '🎨', iconLibrary: 'emoji' },
+    { id: 'states', title: 'States & Labels', icon: '🔘', iconLibrary: 'emoji' },
   ];
 
   basicCode = signal(`<ui-rating value="3"></ui-rating>

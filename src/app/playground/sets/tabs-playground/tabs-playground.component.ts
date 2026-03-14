@@ -16,10 +16,38 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
   pgConfig = this.getDefaultConfig();
 
   tabs = [
-    { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
-    { label: 'Analytics', value: 'tab2', icon: 'fas fa-bolt', badge: '', badgeColor: 'primary' },
-    { label: 'Config', value: 'tab3', icon: 'fas fa-star', badge: 'New', badgeColor: 'success' },
-    { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
+    {
+      label: 'Overview',
+      value: 'tab1',
+      icon: 'fas fa-cube',
+      iconLibrary: 'fa',
+      badge: '',
+      badgeColor: 'primary',
+    },
+    {
+      label: 'Analytics',
+      value: 'tab2',
+      icon: 'fas fa-bolt',
+      iconLibrary: 'fa',
+      badge: '',
+      badgeColor: 'primary',
+    },
+    {
+      label: 'Config',
+      value: 'tab3',
+      icon: 'fas fa-star',
+      iconLibrary: 'fa',
+      badge: 'New',
+      badgeColor: 'success',
+    },
+    {
+      label: 'History',
+      value: 'tab4',
+      icon: 'fas fa-history',
+      iconLibrary: 'fa',
+      badge: '',
+      badgeColor: 'primary',
+    },
   ];
 
   pgAccordionItems = [
@@ -91,6 +119,7 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
       label: `Dynamic ${this.tabs.length + 1}`,
       value: newId,
       icon: 'fas fa-plus-circle',
+      iconLibrary: 'fa',
       badge: '',
       badgeColor: 'primary',
     });
@@ -107,10 +136,38 @@ export class DmTabsPlaygroundComponent extends BasePlaygroundComponent {
   override resetConfig() {
     super.resetConfig();
     this.tabs = [
-      { label: 'Overview', value: 'tab1', icon: 'fas fa-cube', badge: '', badgeColor: 'primary' },
-      { label: 'Analytics', value: 'tab2', icon: 'fas fa-bolt', badge: '', badgeColor: 'primary' },
-      { label: 'Config', value: 'tab3', icon: 'fas fa-star', badge: 'New', badgeColor: 'success' },
-      { label: 'History', value: 'tab4', icon: 'fas fa-history', badge: '', badgeColor: 'primary' },
+      {
+        label: 'Overview',
+        value: 'tab1',
+        icon: 'fas fa-cube',
+        iconLibrary: 'fa',
+        badge: '',
+        badgeColor: 'primary',
+      },
+      {
+        label: 'Analytics',
+        value: 'tab2',
+        icon: 'fas fa-bolt',
+        iconLibrary: 'fa',
+        badge: '',
+        badgeColor: 'primary',
+      },
+      {
+        label: 'Config',
+        value: 'tab3',
+        icon: 'fas fa-star',
+        iconLibrary: 'fa',
+        badge: 'New',
+        badgeColor: 'success',
+      },
+      {
+        label: 'History',
+        value: 'tab4',
+        icon: 'fas fa-history',
+        iconLibrary: 'fa',
+        badge: '',
+        badgeColor: 'primary',
+      },
     ];
     this.updateConfig();
   }

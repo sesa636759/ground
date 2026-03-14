@@ -6,10 +6,6 @@
   ></pg-demo-header>
 
   <pg-demo-tabs>
-    <div slot="playground">
-      <dm-advanced-data-table-playground></dm-advanced-data-table-playground>
-    </div>
-
     <div slot="examples">
       <div class="examples-split-layout">
         <!-- Sidebar Navigation -->
@@ -18,365 +14,327 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Basic -->
-          <section class="demo-section mt-0" id="basic">
-            <div class="section-header">
-              <h2>📝 Basic Usage</h2>
-              <p>Standard data table with sorting, searching, and pagination.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [sortable]="true"
-                [searchable]="true"
-                [pagination]="true"
-                [pageSize]="5"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="basic"
+            title="Basic Usage"
+            description="Standard data table with sorting, searching, and pagination."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [sortable]="true"
+              [searchable]="true"
+              [pagination]="true"
+              [pageSize]="5"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Selection -->
-          <section class="demo-section" id="selection">
-            <div class="section-header">
-              <h2>✅ Row Selection</h2>
-              <p>Enable single or multiple row selection with checkboxes.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [selectable]="true"
-                [multiSelect]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="selection"
+            title="Row Selection"
+            description="Enable single or multiple row selection with checkboxes."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [selectable]="true"
+              [multiSelect]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Row Actions -->
-          <section class="demo-section" id="actions">
-            <div class="section-header">
-              <h2>⚡ Row Actions</h2>
-              <p>Built-in actions menu for each row with edit and delete events.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [showActions]="true"
-                (rowAction)="onRowAction($event)"
-                (rowEdit)="onRowAction($event)"
-                (rowDelete)="onRowAction($event)"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="actions"
+            title="Row Actions"
+            description="Built-in actions menu for each row with edit and delete events."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [showActions]="true"
+              (rowAction)="onRowAction($event)"
+              (rowEdit)="onRowAction($event)"
+              (rowDelete)="onRowAction($event)"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Editable -->
-          <section class="demo-section" id="editable">
-            <div class="section-header">
-              <h2>✏️ Editable Mode</h2>
-              <p>Double-click cells to edit data directly in the table.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="editableColumns"
-                [editable]="true"
-                (cellEdit)="onCellEdit($event)"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="editable"
+            title="Editable Mode"
+            description="Double-click cells to edit data directly in the table."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="editableColumns"
+              [editable]="true"
+              (cellEdit)="onCellEdit($event)"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Skeleton -->
-          <section class="demo-section" id="skeleton">
-            <div class="section-header">
-              <h2>⏳ Skeleton Loading</h2>
-              <p>Visual feedback during data fetch operations.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="[]"
-                [columns]="columns"
-                [loading]="true"
-                [showSkeleton]="true"
-                [skeletonRows]="5"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="skeleton"
+            title="Skeleton Loading"
+            description="Visual feedback during data fetch operations."
+          >
+            <ui-advanced-data-table
+              [data]="[]"
+              [columns]="columns"
+              [loading]="true"
+              [showSkeleton]="true"
+              [skeletonRows]="5"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Input Types -->
-          <section class="demo-section" id="input-types">
-            <div class="section-header">
-              <h2>⌨️ Cell Input Types</h2>
-              <p>Rich editing experience with diverse input types (double-click to edit).</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="inputTypesColumns"
-                [editable]="true"
-                (cellEdit)="onCellEdit($event)"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="input-types"
+            title="Cell Input Types"
+            description="Rich editing experience with diverse input types (double-click to edit)."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="inputTypesColumns"
+              [editable]="true"
+              (cellEdit)="onCellEdit($event)"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- col-grouping -->
-          <section class="demo-section" id="col-grouping">
-            <div class="section-header">
-              <h2>📁 Column Grouping</h2>
-              <p>Organize related columns under common parent headers.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="groupedColumns"
-                [columnGrouping]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="col-grouping"
+            title="Column Grouping"
+            description="Organize related columns under common parent headers."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="groupedColumns"
+              [columnGrouping]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- row-grouping -->
-          <section class="demo-section" id="row-grouping">
-            <div class="section-header">
-              <h2>📂 Row Grouping</h2>
-              <p>Group rows by specific field values with expand/collapse support.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [grouping]="true"
-                group-by="department"
-                [showGroupCount]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="row-grouping"
+            title="Row Grouping"
+            description="Group rows by specific field values with expand/collapse support."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [grouping]="true"
+              group-by="department"
+              [showGroupCount]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Pinning -->
-          <section class="demo-section" id="pinning">
-            <div class="section-header">
-              <h2>📌 Column & Row Pinning</h2>
-              <p>Fix important columns or rows to stay visible during scrolling.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [columnPinning]="true"
-                [rowPinning]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="pinning"
+            title="Column & Row Pinning"
+            description="Fix important columns or rows to stay visible during scrolling."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [columnPinning]="true"
+              [rowPinning]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Reorder -->
-          <section class="demo-section" id="reorder">
-            <div class="section-header">
-              <h2>↕️ Row Reordering</h2>
-              <p>Drag and drop rows to change their order.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [rowReorder]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="reorder"
+            title="Row Reordering"
+            description="Drag and drop rows to change their order."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [rowReorder]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Filters -->
-          <section class="demo-section" id="filters">
-            <div class="section-header">
-              <h2>🔍 Advanced Filters</h2>
-              <p>Multi-column filtering with complex operators.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [multiFilter]="true"
-                [showFilterPanel]="false"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="filters"
+            title="Advanced Filters"
+            description="Multi-column filtering with complex operators."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [multiFilter]="true"
+              [showFilterPanel]="false"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Panels -->
-          <section class="demo-section" id="panels">
-            <div class="section-header">
-              <h2>🎛️ Visibility & Filter Panels</h2>
-              <p>Side panels for advanced column management and filtering.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [showColumnPanel]="false"
-                [showFilterPanel]="false"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="panels"
+            title="Visibility & Filter Panels"
+            description="Side panels for advanced column management and filtering."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [showColumnPanel]="false"
+              [showFilterPanel]="false"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Search -->
-          <section class="demo-section" id="search">
-            <div class="section-header">
-              <h2>🔎 External Search</h2>
-              <p>Connect external search inputs to the table's search capability.</p>
+          <pg-example-section
+            id="search"
+            title="External Search"
+            description="Connect external search inputs to the table's search capability."
+          >
+            <div class="control-box p-16 border rounded bg-muted display-flex items-center gap-12">
+              <input
+                #tableSearch
+                type="text"
+                placeholder="Search table..."
+                class="p-8 border rounded w-240"
+              />
+              <span class="text-xs text-muted">Binding to [search] prop</span>
             </div>
-            <div class="demo-card">
-              <div class="p-16 border-bottom bg-muted flex items-center gap-12">
-                <input #tableSearch type="text" placeholder="Search table..." class="p-8 border rounded w-240" />
-                <span class="text-xs text-muted">Binding to [search] prop</span>
-              </div>
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [search]="tableSearch.value"
-                [searchable]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [search]="tableSearch.value"
+              [searchable]="true"
+              class="mt-16"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Tree -->
-          <section class="demo-section" id="tree">
-            <div class="section-header">
-              <h2>🌲 Tree Data</h2>
-              <p>Display hierarchical data structures with nested rows.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="treeData"
-                [columns]="columns"
-                [treeData]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="tree"
+            title="Tree Data"
+            description="Display hierarchical data structures with nested rows."
+          >
+            <ui-advanced-data-table
+              [data]="treeData"
+              [columns]="columns"
+              [treeData]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Sparklines -->
-          <section class="demo-section" id="sparklines">
-            <div class="section-header">
-              <h2>📈 Sparklines</h2>
-              <p>Micro-charts embedded in cells to show data trends.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sparklineData"
-                [columns]="sparklineColumns"
-                [enableSparklines]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="sparklines"
+            title="Sparklines"
+            description="Micro-charts embedded in cells to show data trends."
+          >
+            <ui-advanced-data-table
+              [data]="sparklineData"
+              [columns]="sparklineColumns"
+              [enableSparklines]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Lazy Load -->
-          <section class="demo-section" id="lazy-load">
-            <div class="section-header">
-              <h2>⏳ Lazy Loading</h2>
-              <p>High performance rendering for massive datasets using virtual scroll.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [virtualScroll]="true"
-                [virtualRowHeight]="48"
-                [lazyLoad]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="lazy-load"
+            title="Lazy Loading"
+            description="High performance rendering for massive datasets using virtual scroll."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [virtualScroll]="true"
+              [virtualRowHeight]="48"
+              [lazyLoad]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Export -->
-          <section class="demo-section" id="export">
-            <div class="section-header">
-              <h2>📄 Data Export</h2>
-              <p>Export table data to PDF, Excel, and CSV formats.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [exportable]="true"
-                [excelExport]="true"
-                [pdfExport]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="export"
+            title="Data Export"
+            description="Export table data to PDF, Excel, and CSV formats."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [exportable]="true"
+              [excelExport]="true"
+              [pdfExport]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Mobile -->
-          <section class="demo-section" id="mobile">
-            <div class="section-header">
-              <h2>📱 Mobile & Context</h2>
-              <p>Responsive card view for mobile devices and right-click context menus.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [mobileCardView]="true"
-                [contextMenu]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="mobile"
+            title="Mobile & Context"
+            description="Responsive card view for mobile devices and right-click context menus."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [mobileCardView]="true"
+              [contextMenu]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Undo/Redo -->
-          <section class="demo-section" id="undo-redo">
-            <div class="section-header">
-              <h2>↩️ Undo / Redo</h2>
-              <p>Track history of sorting, filtering, and selection changes.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [undoRedo]="true"
-                [sortable]="true"
-                [filterable]="true"
-                [selectable]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="undo-redo"
+            title="Undo / Redo"
+            description="Track history of sorting, filtering, and selection changes."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [undoRedo]="true"
+              [sortable]="true"
+              [filterable]="true"
+              [selectable]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Range -->
-          <section class="demo-section" id="range">
-            <div class="section-header">
-              <h2>🟦 Range Selection</h2>
-              <p>Excel-like cell range selection and copy-paste support.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [rangeSelection]="true"
-                [copyPaste]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="range"
+            title="Range Selection"
+            description="Excel-like cell range selection and copy-paste support."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [rangeSelection]="true"
+              [copyPaste]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Conditional -->
-          <section class="demo-section" id="conditional">
-            <div class="section-header">
-              <h2>🎨 Conditional Formatting</h2>
-              <p>Dynamic cell styling based on data-driven rules.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="sampleData"
-                [columns]="columns"
-                [conditionalFormatting]="true"
-                [formattingRules]="formattingRules"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="conditional"
+            title="Conditional Formatting"
+            description="Dynamic cell styling based on data-driven rules."
+          >
+            <ui-advanced-data-table
+              [data]="sampleData"
+              [columns]="columns"
+              [conditionalFormatting]="true"
+              [formattingRules]="formattingRules"
+            ></ui-advanced-data-table>
+          </pg-example-section>
 
           <!-- Aggregation -->
-          <section class="demo-section" id="aggregation">
-            <div class="section-header">
-              <h2>∑ Data Aggregation</h2>
-              <p>Calculate and display column summaries like Sum, Avg, and Count.</p>
-            </div>
-            <div class="demo-card">
-              <ui-advanced-data-table
-                [data]="salesData"
-                [columns]="salesColumns"
-                [columnAggregation]="true"
-              ></ui-advanced-data-table>
-            </div>
-          </section>
+          <pg-example-section
+            id="aggregation"
+            title="Data Aggregation"
+            description="Calculate and display column summaries like Sum, Avg, and Count."
+          >
+            <ui-advanced-data-table
+              [data]="salesData"
+              [columns]="salesColumns"
+              [columnAggregation]="true"
+            ></ui-advanced-data-table>
+          </pg-example-section>
         </div>
       </div>
     </div>

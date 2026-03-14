@@ -8,6 +8,8 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
 import { ADVANCED_TABLE_DATA, ADVANCED_TABLE_COLUMNS } from '../../../data/advanced-table.data';
 
+import { ExampleSectionComponent } from '../../../shared/components/example-section/example-section.component';
+
 @Component({
   selector: 'dm-advanced-data-table-demo',
   standalone: true,
@@ -15,6 +17,7 @@ import { ADVANCED_TABLE_DATA, ADVANCED_TABLE_COLUMNS } from '../../../data/advan
     ...PLAYGROUND_IMPORTS,
     DmAdvancedDataTablePlaygroundComponent,
     DemoTabsComponent,
+    ExampleSectionComponent,
     DemoSidebarComponent,
     ComponentDocumentationComponent,
     DemoHeaderComponent,
@@ -25,6 +28,7 @@ import { ADVANCED_TABLE_DATA, ADVANCED_TABLE_COLUMNS } from '../../../data/advan
 })
 export class DmAdvancedDataTableDemoComponent extends BaseDemoComponent {
   exampleVariants = [
+    { id: 'playground', title: 'Playground', icon: '🎮', iconLibrary: 'emoji' },
     { id: 'basic', title: 'Basic Usage', icon: '📝', iconLibrary: 'emoji' },
     { id: 'selection', title: 'Selection', icon: '✅', iconLibrary: 'emoji' },
     { id: 'actions', title: 'Row Actions', icon: '⚡', iconLibrary: 'emoji' },

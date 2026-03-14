@@ -18,14 +18,14 @@
           description="Standard star-based rating system."
           [code]="basicCode()"
         >
-          <div class="demo-grid col-1 gap-32" >
+          <div class="demo-grid col-1 gap-32">
             <div>
               <p class="demo-label">Standard (5 Stars)</p>
               <ui-rating value="3"></ui-rating>
             </div>
             <div>
               <p class="demo-label">Extended (10 Stars, Primary Color)</p>
-               <ui-rating max="10" value="7" color="primary"></ui-rating>
+              <ui-rating max="10" value="7" color="primary"></ui-rating>
             </div>
           </div>
         </pg-example-section>
@@ -37,7 +37,7 @@
           description="Allows users to select ratings in 0.5 increments."
           [code]="halfCode()"
         >
-          <div class="demo-grid col-1 gap-32" >
+          <div class="demo-grid col-1 gap-32">
             <ui-rating allow-half value="3.5" show-value></ui-rating>
             <ui-rating allow-half value="4.5" color="success" size="lg" show-value></ui-rating>
           </div>
@@ -50,16 +50,16 @@
           description="A more emotive way to capture user satisfaction."
           [code]="smileysCode()"
         >
-          <div class="demo-grid col-1 gap-32" >
+          <div class="demo-grid col-1 gap-32">
             <div>
               <p class="demo-label">Standard Smileys</p>
               <ui-rating type="smiley" max="5" value="4"></ui-rating>
             </div>
             <div>
               <p class="demo-label">With Descriptive Labels</p>
-              <ui-rating 
-                type="smiley" 
-                [attr.labels]="'[&quot;Very Poor&quot;, &quot;Poor&quot;, &quot;Neutral&quot;, &quot;Good&quot;, &quot;Excellent&quot;]'" 
+              <ui-rating
+                type="smiley"
+                [attr.labels]="'[&quot;Very Poor&quot;, &quot;Poor&quot;, &quot;Neutral&quot;, &quot;Good&quot;, &quot;Excellent&quot;]'"
                 value="5"
                 show-value
               ></ui-rating>
@@ -74,14 +74,14 @@
           description="Simple upvote or downvote selection."
           [code]="thumbsCode()"
         >
-          <div class="demo-grid col-1 gap-32" >
+          <div class="demo-grid col-1 gap-32">
             <div>
-               <p class="demo-label">Positive Feedback</p>
-               <ui-rating type="thumb" value="1"></ui-rating>
+              <p class="demo-label">Positive Feedback</p>
+              <ui-rating type="thumb" value="1"></ui-rating>
             </div>
             <div>
-               <p class="demo-label">Negative Feedback with Label</p>
-               <ui-rating type="thumb" value="-1" show-value></ui-rating>
+              <p class="demo-label">Negative Feedback with Label</p>
+              <ui-rating type="thumb" value="-1" show-value></ui-rating>
             </div>
           </div>
         </pg-example-section>
@@ -114,12 +114,12 @@
         >
           <div class="demo-grid col-2">
             <div>
-               <p class="demo-label">Read-only (Display Only)</p>
-               <ui-rating readonly value="4" show-value></ui-rating>
+              <p class="demo-label">Read-only (Display Only)</p>
+              <ui-rating readonly value="4" show-value></ui-rating>
             </div>
             <div>
-               <p class="demo-label">Disabled State</p>
-               <ui-rating disabled value="3"></ui-rating>
+              <p class="demo-label">Disabled State</p>
+              <ui-rating disabled value="3"></ui-rating>
             </div>
           </div>
         </pg-example-section>
