@@ -4,18 +4,30 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-settings" class="control-grid" style="padding: 16px">
+  <div slot="content-settings" class="control-grid control-grid-padded">
     <div class="control-group">
       <label>Position</label>
-      <ui-dropdown [options]="positionOptions" [(ngModel)]="pgConfig.position" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="positionOptions"
+        [(ngModel)]="pgConfig.position"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size</label>
-      <ui-dropdown [options]="sizeOptions" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="sizeOptions"
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
-      <ui-dropdown [options]="iconLibraryOptions" [(ngModel)]="pgConfig.iconLibrary" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="iconLibraryOptions"
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
@@ -23,11 +35,17 @@
         Magnify Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.blurEffect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.blurEffect"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Glass/Blur Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showLabels" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showLabels"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Labels
       </label>
     </div>
@@ -36,15 +54,46 @@
   <div slot="content-style" class="control-grid" style="padding: 16px">
     <div class="control-group full-width">
       <label>Items (JSON Array)</label>
-      <ui-input type="textarea" [(ngModel)]="pgConfig.items" (ngModelChange)="onJsonChange()" placeholder='[{"label":"App","icon":"app"}]' [rows]="8"></ui-input>
+      <ui-input
+        type="textarea"
+        [(ngModel)]="pgConfig.items"
+        (ngModelChange)="onJsonChange()"
+        placeholder='[{"label":"App","icon":"app"}]'
+        [rows]="8"
+      ></ui-input>
     </div>
   </div>
 
   <div preview>
-    <div class="preview-stage" style="padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 400px; background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
+    <div
+      class="preview-stage"
+      style="
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover;
+        position: relative;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+      "
+    >
       <!-- Mimic a desktop background -->
-      <div style="position: absolute; top: 20px; right: 20px; color: white; font-weight: 500; font-size: 14px;">Friday, Oct 25 10:45 AM</div>
-      
+      <div
+        style="
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          color: white;
+          font-weight: 500;
+          font-size: 14px;
+        "
+      >
+        Friday, Oct 25 10:45 AM
+      </div>
+
       <ui-dock
         [attr.items]="pgConfig.items"
         [attr.position]="pgConfig.position"

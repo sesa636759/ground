@@ -10,4 +10,49 @@
 .carousel-animation-checkbox-grid {
   margin-top: 16px;
 }
+.preview-full {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.carousel-preview-container {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  background: var(--surface-1);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.slide-full {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.slide-content-centered {
+  text-align: center;
+}
+
+.slide-title-large {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.slide-desc-faded {
+  opacity: 0.8;
+}
+
+.control-grid-padded {
+  padding: 16px;
+}
+
 @use '../../../../styles/playground-base.scss';

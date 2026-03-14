@@ -98,7 +98,7 @@
   </div>
 
   <!-- Controls Section -->
-  <div slot="content-controls" class="control-grid" style="padding: 16px">
+  <div slot="content-controls" class="control-grid control-grid-padded">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.arrows" (ngModelChange)="updateConfig()" />
@@ -116,7 +116,7 @@
   </div>
 
   <!-- Behavior Section -->
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid control-grid-padded">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.infinite" (ngModelChange)="updateConfig()" />
@@ -141,29 +141,10 @@
     </div>
   </div>
 
-  <div
-    preview
-    style="
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-    "
-  >
+  <div preview class="preview-full">
     <div
-      class="carousel-container"
+      class="carousel-container carousel-preview-container"
       [class.vertical-mode]="pgConfig.vertical"
-      style="
-        width: 100%;
-        max-width: 800px;
-        height: 400px;
-        background: var(--surface-1);
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid var(--border-color);
-      "
     >
       <ui-carousel
         #carouselElement
@@ -188,20 +169,12 @@
       >
         <div
           *ngFor="let slide of dummySlides"
-          class="slide"
+          class="slide slide-full"
           [style.background]="slide.color"
-          style="
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-          "
         >
-          <div class="slide-content" style="text-align: center">
-            <h3 style="font-size: 2rem; margin: 0">{{ slide.title }}</h3>
-            <p style="opacity: 0.8">{{ slide.desc }}</p>
+          <div class="slide-content slide-content-centered">
+            <h3 class="slide-title-large">{{ slide.title }}</h3>
+            <p class="slide-desc-faded">{{ slide.desc }}</p>
           </div>
         </div>
       </ui-carousel>
