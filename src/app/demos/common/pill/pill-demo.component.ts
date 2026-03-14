@@ -25,27 +25,61 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmPillDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'styling', title: 'Styling Variants', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'features', title: 'Special Features', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'colors', title: 'Colors & Gradients', icon: 'droplet', iconLibrary: 'lucide' },
+    { id: 'media', title: 'Icons & Avatars', icon: 'user', iconLibrary: 'lucide' },
+    { id: 'orientations', title: 'Vertical Layouts', icon: 'move-vertical', iconLibrary: 'lucide' },
+    { id: 'actions', title: 'Actions & States', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'animations', title: 'Animations', icon: 'sparkles', iconLibrary: 'lucide' },
   ];
 
   playgroundCode = `<ui-pill label="New Tag" variant="soft" color="primary"></ui-pill>`;
 
-  stylingCode = `<!-- Filled (Default) -->
-<ui-pill label="Success" color="success" variant="filled"></ui-pill>
+  variantsCode = `<ui-pill label="Filled" variant="filled"></ui-pill>
+<ui-pill label="Outlined" variant="outlined"></ui-pill>
+<ui-pill label="Soft" variant="soft" color="success"></ui-pill>
+<ui-pill label="Bordered" variant="bordered" color="danger"></ui-pill>
+<ui-pill label="Gradient" variant="gradient" gradient="blue-purple"></ui-pill>`;
 
-<!-- Soft Style -->
-<ui-pill label="Info" color="info" variant="soft"></ui-pill>
+  colorsCode = `<ui-pill label="Primary" color="primary"></ui-pill>
+<ui-pill label="Success" color="success"></ui-pill>
+<ui-pill label="Custom Color" custom-color="#ff00ff" custom-text-color="#ffffff"></ui-pill>
 
-<!-- Bordered Style -->
-<ui-pill label="Warning" color="warning" variant="bordered"></ui-pill>`;
+<ui-pill label="Small" size="sm"></ui-pill>
+<ui-pill label="Medium" size="md"></ui-pill>
+<ui-pill label="Large" size="lg"></ui-pill>`;
 
-  featuresCode = `<!-- With Counters -->
-<ui-pill label="Messages" counter="5" color="primary"></ui-pill>
+  mediaCode = `<ui-pill label="Start Icon" icon="star" icon-library="lucide"></ui-pill>
+<ui-pill label="End Icon" icon="check-circle" icon-library="lucide" icon-position="end"></ui-pill>
+<ui-pill label="John Doe" avatar="https://i.pravatar.cc/150?u=1"></ui-pill>
+<ui-pill label="Analytics" icon="bar-chart" icon-library="lucide" counter="24"></ui-pill>`;
 
-<!-- Removable -->
-<ui-pill label="Removable Item" removable (pillRemove)="handleRemove()"></ui-pill>
+  orientationsCode = `<ui-pill label="Horizontal" orientation="horizontal"></ui-pill>
+<ui-pill label="Vertical" orientation="vertical" icon="move-vertical" icon-library="lucide"></ui-pill>
+<ui-pill label="Vertical Text" orientation="vertical-text"></ui-pill>
+<ui-pill label="Vertical Rotated" orientation="vertical-rotated"></ui-pill>`;
 
-<!-- Loading State -->
-<ui-pill loading label="Saving..."></ui-pill>`;
+  actionsCode = `<ui-pill label="Clickable" clickable (pillClick)="onPillClick()"></ui-pill>
+<ui-pill label="Selectable" clickable selected (pillSelect)="onPillSelect($event)"></ui-pill>
+<ui-pill label="Removable" removable (pillRemove)="onPillRemove()"></ui-pill>
+<ui-pill label="Loading" loading></ui-pill>
+<ui-pill label="Disabled" disabled></ui-pill>
+<ui-pill label="With Tooltip" tooltip="Important information!"></ui-pill>`;
+
+  animationsCode = `<ui-pill label="Scale" animation="scale"></ui-pill>
+<ui-pill label="Fade" animation="fade"></ui-pill>
+<ui-pill label="Slide" animation="slide"></ui-pill>
+<ui-pill label="None" animation="none"></ui-pill>`;
+
+  onPillClick() {
+    console.log('Pill clicked');
+  }
+
+  onPillRemove() {
+    console.log('Pill removed');
+  }
+
+  onPillSelect(ev: any) {
+    console.log('Pill selected:', ev.detail);
+  }
 }

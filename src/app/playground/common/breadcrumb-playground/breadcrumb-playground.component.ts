@@ -46,6 +46,23 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
 
   itemsJson = JSON.stringify(this.items);
 
+  // Edge case: items with icons/badges
+  longItems = [
+    { label: 'Home', icon: 'fas fa-home', badge: 'New', href: '/' },
+    { label: 'Category', icon: 'fas fa-folder', href: '/category' },
+    { label: 'Subcategory', icon: 'fas fa-tags', badge: '!', href: '/category/sub' },
+    { label: 'Product', icon: 'fas fa-box', href: '/category/sub/product' },
+    { label: 'Details', active: true },
+  ];
+  longItemsJson = JSON.stringify(this.longItems);
+
+  // Edge case: very long breadcrumb path
+  veryLongItems = Array.from({ length: 12 }, (_, i) => ({
+    label: `Step ${i + 1}`,
+    href: `/step/${i + 1}`,
+  })).concat([{ label: 'Final', href: '/step/final' }]);
+  veryLongItemsJson = JSON.stringify(this.veryLongItems);
+
   constructor() {
     super();
   }
@@ -78,6 +95,3 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
     this.logEvent(`Breadcrumb clicked: ${event.detail?.label || event.detail}`);
   }
 }
-
-
-

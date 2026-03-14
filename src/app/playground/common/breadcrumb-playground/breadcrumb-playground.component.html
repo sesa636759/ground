@@ -74,21 +74,72 @@
     </div>
   </div>
 
-    <!-- All possible variants/examples -->
-    <div style="margin-top: 32px">
-      <h3>All Variants & Examples</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="default" show-home></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator=">" variant="pills" show-home></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="•" variant="glass" show-home></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="default" [attr.max-items]="2"></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="pills" [attr.max-items]="3"></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="glass" [attr.max-items]="4"></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="default"></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="pills"></ui-breadcrumb>
-        <ui-breadcrumb [items]="itemsJson" separator="/" variant="glass"></ui-breadcrumb>
-      </div>
+  <!-- All possible variants/examples -->
+  <div style="margin-top: 32px">
+    <h3>All Variants & Examples</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px">
+      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default" show-home></ui-breadcrumb>
+      <ui-breadcrumb [items]="itemsJson" separator=">" variant="pills" show-home></ui-breadcrumb>
+      <ui-breadcrumb [items]="itemsJson" separator="•" variant="glass" show-home></ui-breadcrumb>
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="/"
+        variant="default"
+        [attr.max-items]="2"
+      ></ui-breadcrumb>
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="/"
+        variant="pills"
+        [attr.max-items]="3"
+      ></ui-breadcrumb>
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="/"
+        variant="glass"
+        [attr.max-items]="4"
+      ></ui-breadcrumb>
+      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default"></ui-breadcrumb>
+      <ui-breadcrumb [items]="itemsJson" separator="/" variant="pills"></ui-breadcrumb>
+      <ui-breadcrumb [items]="itemsJson" separator="/" variant="glass"></ui-breadcrumb>
+      <!-- Edge cases -->
+      <!-- Collapsed, custom separator, no home -->
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="~"
+        variant="default"
+        [attr.max-items]="2"
+      ></ui-breadcrumb>
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="|"
+        variant="glass"
+        [attr.max-items]="3"
+      ></ui-breadcrumb>
+      <ui-breadcrumb
+        [items]="itemsJson"
+        separator="/"
+        variant="pills"
+        [attr.max-items]="2"
+      ></ui-breadcrumb>
+      <!-- No home icon -->
+      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default"></ui-breadcrumb>
+      <!-- Items with icons/badges -->
+      <ui-breadcrumb
+        [items]="longItemsJson"
+        separator="/"
+        variant="default"
+        show-home
+      ></ui-breadcrumb>
+      <!-- Very long breadcrumb path -->
+      <ui-breadcrumb
+        [items]="veryLongItemsJson"
+        separator="/"
+        variant="default"
+        [attr.max-items]="4"
+      ></ui-breadcrumb>
     </div>
+  </div>
 
   <pg-playground-event-log
     events

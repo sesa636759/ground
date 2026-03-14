@@ -201,17 +201,51 @@
   </div>
 </pg-playground>
 
-  <!-- All possible variants/examples -->
-  <div style="margin-top: 32px">
-    <h3>All Variants & Examples</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-      <ui-dashboard [widgets]="initialWidgets" theme="light" columns="12" show-add-button></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="6" show-add-button></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="glass" columns="4" show-add-button></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="light" columns="8" enable-drag enable-resize></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" compact></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="glass" columns="6" enable-drag enable-resize compact></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="light" columns="12" batch-actions loading-state></ui-dashboard>
-      <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" auto-save></ui-dashboard>
-    </div>
+<!-- All possible variants/examples -->
+<div style="margin-top: 32px">
+  <h3>All Variants & Examples</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="light"
+      columns="12"
+      show-add-button
+    ></ui-dashboard>
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="dark"
+      columns="6"
+      show-add-button
+    ></ui-dashboard>
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="glass"
+      columns="4"
+      show-add-button
+    ></ui-dashboard>
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="light"
+      columns="8"
+      enable-drag
+      enable-resize
+    ></ui-dashboard>
+    <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" compact></ui-dashboard>
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="glass"
+      columns="6"
+      enable-drag
+      enable-resize
+      compact
+    ></ui-dashboard>
+    <ui-dashboard
+      [widgets]="initialWidgets"
+      theme="light"
+      columns="12"
+      batch-actions
+      loading-state
+    ></ui-dashboard>
+    <ui-dashboard [widgets]="initialWidgets" theme="dark" columns="12" auto-save></ui-dashboard>
   </div>
+</div>

@@ -71,20 +71,36 @@
     </p>
   </div>
 
-    <!-- All possible variants/examples -->
-    <div style="margin-top: 32px">
-      <h3>All Variants & Examples</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 24px;">
-        <ui-speed-dial [model]="modelJson" direction="up" type="linear" ripple mask></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="down" type="quarter-circle" ripple></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="right" type="half-circle" mask></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="left" type="circle" [attr.radius]="120" ripple></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="up" type="circle" [attr.radius]="80"></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="down" type="linear"></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="right" type="quarter-circle"></ui-speed-dial>
-        <ui-speed-dial [model]="modelJson" direction="left" type="half-circle"></ui-speed-dial>
-      </div>
+  <!-- All possible variants/examples -->
+  <div style="margin-top: 32px">
+    <h3>All Variants & Examples</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px">
+      <ui-speed-dial [model]="modelJson" direction="up" type="linear" ripple mask></ui-speed-dial>
+      <ui-speed-dial
+        [model]="modelJson"
+        direction="down"
+        type="quarter-circle"
+        ripple
+      ></ui-speed-dial>
+      <ui-speed-dial [model]="modelJson" direction="right" type="half-circle" mask></ui-speed-dial>
+      <ui-speed-dial
+        [model]="modelJson"
+        direction="left"
+        type="circle"
+        [attr.radius]="120"
+        ripple
+      ></ui-speed-dial>
+      <ui-speed-dial
+        [model]="modelJson"
+        direction="up"
+        type="circle"
+        [attr.radius]="80"
+      ></ui-speed-dial>
+      <ui-speed-dial [model]="modelJson" direction="down" type="linear"></ui-speed-dial>
+      <ui-speed-dial [model]="modelJson" direction="right" type="quarter-circle"></ui-speed-dial>
+      <ui-speed-dial [model]="modelJson" direction="left" type="half-circle"></ui-speed-dial>
     </div>
+  </div>
 
   <pg-playground-event-log
     events

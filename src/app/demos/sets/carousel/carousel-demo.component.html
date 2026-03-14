@@ -1,870 +1,208 @@
 <div class="demo-container">
   <pg-demo-header
     icon="🎠"
-    title="Carousel Component"
-    description="Flexible and responsive carousel/slideshow component with multiple transition effects, autoplay, responsive layouts, and extensive customization options."
+    title="Carousel"
+    description="A responsive slider for showcasing multiple pieces of content in a compact area. Supports gestures, autoplay, and complex layouts."
   ></pg-demo-header>
 
   <pg-demo-tabs>
-    <!-- Playground Slot -->
     <div slot="playground">
-      <ds-carousel-playground></ds-carousel-playground>
+      <dm-carousel-playground></dm-carousel-playground>
     </div>
 
-    <!-- Examples Slot -->
-    <div slot="examples" class="examples-split-layout">
-      <!-- Sidebar Navigation -->
-      <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
+    <div slot="examples">
+      <div class="examples-split-layout">
+        <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
-      <!-- Main Content Area -->
-      <div class="examples-content" id="examples-scroll-area">
-        <!-- Fade Transition -->
-        <pg-example-section
-          id="fade-transition"
-          title="Fade Transition Effect"
-          description="Premium cross-fade effect for smooth presentation"
-          [code]="fadeTransitionCode"
-          style="margin-top: 0"
-        >
-          <ui-carousel effect="fade" autoplay="true" autoplay-interval="4000" show-progress="true">
-            <div
-              class="slide"
-              style="background: #1e293b; padding: 60px; color: white; text-align: center"
-            >
-              <h3>Nature</h3>
-              <p>Breathtaking landscapes</p>
+        <div class="examples-content" id="examples-scroll-area">
+          <!-- Basic -->
+          <section class="demo-section" id="basic">
+            <div class="section-header"><h2>Basic Usage</h2><p>Auto-sliding carousel with navigation dots and arrows.</p></div>
+            <div class="demo-card">
+              <ui-carousel autoplay="true" autoplay-interval="4000" indicators="true" arrows="true" height="300px">
+                <div class="slide bg-gradient-blue"><h3>Premium Experience</h3><p>Smooth transitions out of the box.</p></div>
+                <div class="slide bg-gradient-purple"><h3>Fully Responsive</h3><p>Adapts to any screen size seamlessly.</p></div>
+                <div class="slide bg-gradient-pink"><h3>Interactive Controls</h3><p>Touch, mouse, and keyboard support.</p></div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="background: #0f172a; padding: 60px; color: white; text-align: center"
-            >
-              <h3>Forest</h3>
-              <p>Into the wild</p>
-            </div>
-            <div
-              class="slide"
-              style="background: #334155; padding: 60px; color: white; text-align: center"
-            >
-              <h3>Mountains</h3>
-              <p>Peak experience</p>
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Slide Transition -->
-        <pg-example-section
-          id="slide-transition"
-          title="Slide Transition Effect"
-          description="Classic sliding animation with smooth transitions"
-          [code]="slideTransitionCode"
-        >
-          <ui-carousel
-            effect="slide"
-            autoplay="true"
-            autoplay-interval="3000"
-            arrows="true"
-            indicators="true"
-          >
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              <h3>Slide 1</h3>
-              <p>Beautiful auto-playing carousel</p>
+          <!-- Vertical -->
+          <section class="demo-section" id="vertical">
+            <div class="section-header"><h2>Vertical Mode</h2><p>Slides move vertically for unique stacked presentations.</p></div>
+            <div class="demo-card">
+              <ui-carousel vertical="true" height="300px" autoplay="true" indicators="true">
+                <div class="slide bg-soft-blue">Vertical Slide 1</div>
+                <div class="slide bg-soft-indigo">Vertical Slide 2</div>
+                <div class="slide bg-soft-violet">Vertical Slide 3</div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              <h3>Slide 2</h3>
-              <p>With smooth transitions</p>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              <h3>Slide 3</h3>
-              <p>And responsive design</p>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              <h3>Slide 4</h3>
-              <p>Easy to customize</p>
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="verticalCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Center Mode -->
-        <pg-example-section
-          id="center-mode"
-          title="Center Mode"
-          description="Highlight the active slide with partial side visibility"
-          [code]="centerModeCode"
-        >
-          <ui-carousel center-mode="true" slides-to-show="1" center-padding="20%" arrows="true">
-            <div
-              class="slide"
-              style="
-                background: #e11d48;
-                padding: 40px;
-                color: white;
-                text-align: center;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              Item 1
+          <!-- Multi Slide -->
+          <section class="demo-section" id="multi-slide">
+            <div class="section-header"><h2>Multiple Slides</h2><p>Display and scroll multiple items at once.</p></div>
+            <div class="demo-card">
+              <ui-carousel slides-to-show="3" slides-to-scroll="1" infinite="true" arrows="true" indicators="true">
+                <div class="slide-item">1</div>
+                <div class="slide-item">2</div>
+                <div class="slide-item">3</div>
+                <div class="slide-item">4</div>
+                <div class="slide-item">5</div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="
-                background: #db2777;
-                padding: 40px;
-                color: white;
-                text-align: center;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              Item 2
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #c026d3;
-                padding: 40px;
-                color: white;
-                text-align: center;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              Item 3
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #9333ea;
-                padding: 40px;
-                color: white;
-                text-align: center;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              Item 4
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #7c3aed;
-                padding: 40px;
-                color: white;
-                text-align: center;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              Item 5
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="multiSlideCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Multiple Slides -->
-        <pg-example-section
-          id="multiple-slides"
-          title="Multiple Slides Display"
-          description="Show multiple slides at once"
-          [code]="multipleItemsCode"
-        >
-          <ui-carousel
-            slides-to-show="3"
-            slides-to-scroll="1"
-            infinite="true"
-            arrows="true"
-            indicators="true"
-          >
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 1</h4>
+          <!-- Center Mode -->
+          <section class="demo-section" id="center-mode">
+            <div class="section-header"><h2>Center Mode</h2><p>Highlight the active slide with partial side visibility using padding.</p></div>
+            <div class="demo-card">
+              <ui-carousel center-mode="true" center-padding="80px" slides-to-show="1" arrows="true">
+                <div class="slide-box bg-primary">Featured Item 1</div>
+                <div class="slide-box bg-success">Featured Item 2</div>
+                <div class="slide-box bg-warning">Featured Item 3</div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 2</h4>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 3</h4>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 4</h4>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 5</h4>
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #f0f9ff;
-                padding: 30px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                border-radius: 8px;
-                margin: 0 10px;
-              "
-            >
-              <h4>Slide 6</h4>
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="centerModeCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Vertical Carousel -->
-        <pg-example-section
-          id="vertical-carousel"
-          title="Vertical Carousel"
-          description="Slides move vertically instead of horizontally"
-          [code]="verticalCode"
-        >
-          <div style="height: 400px; width: 100%">
-            <ui-carousel
-              direction="vertical"
-              slides-to-show="1"
-              autoplay="true"
-              autoplay-interval="3000"
-            >
-              <div
-                class="slide"
-                style="
-                  background: #dbeafe;
-                  padding: 60px;
-                  text-align: center;
-                  border: 2px solid #3b82f6;
-                "
-              >
-                Vertical Slide 1
-              </div>
-              <div
-                class="slide"
-                style="
-                  background: #dbeafe;
-                  padding: 60px;
-                  text-align: center;
-                  border: 2px solid #3b82f6;
-                "
-              >
-                Vertical Slide 2
-              </div>
-              <div
-                class="slide"
-                style="
-                  background: #dbeafe;
-                  padding: 60px;
-                  text-align: center;
-                  border: 2px solid #3b82f6;
-                "
-              >
-                Vertical Slide 3
-              </div>
-            </ui-carousel>
-          </div>
-        </pg-example-section>
+          <!-- Autoplay -->
+          <section class="demo-section" id="autoplay">
+            <div class="section-header"><h2>Autoplay & Progress</h2><p>Visual progress bar and hover-pause capability.</p></div>
+            <div class="demo-card">
+              <ui-carousel autoplay="true" autoplay-interval="3000" show-progress="true" pause-on-hover="true">
+                <div class="slide border-dashed">Hover me to pause</div>
+                <div class="slide border-dashed">Watch the progress bar</div>
+                <div class="slide border-dashed">Automatic cycling</div>
+              </ui-carousel>
+            </div>
+            <ui-code-preview [htmlCode]="autoplayCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Infinite Loop -->
-        <pg-example-section
-          id="infinite-loop"
-          title="Infinite Loop"
-          description="Seamless continuous looping carousel"
-          [code]="infiniteLoopCode"
-        >
-          <ui-carousel infinite="true" loop="true" autoplay="true" autoplay-interval="2000">
-            <div
-              class="slide"
-              style="background: #ff6b6b; padding: 60px; color: white; text-align: center"
-            >
-              Loop Item 1
+          <!-- Interaction -->
+          <section class="demo-section" id="interaction">
+            <div class="section-header"><h2>Gestures & Keyboard</h2><p>Enable touch swiping, mouse dragging, and keyboard arrows.</p></div>
+            <div class="demo-card">
+              <ui-carousel swipe="true" enable-drag="true" keyboard="true" indicators="true">
+                <div class="slide interaction-slide">
+                  <ui-icon name="hand" library="lucide" size="3em"></ui-icon>
+                  <p>Try dragging or swiping this slide!</p>
+                </div>
+                <div class="slide interaction-slide">
+                  <ui-icon name="keyboard" library="lucide" size="3em"></ui-icon>
+                  <p>Use ← and → keys on your keyboard!</p>
+                </div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="background: #ffd93d; padding: 60px; color: white; text-align: center"
-            >
-              Loop Item 2
-            </div>
-            <div
-              class="slide"
-              style="background: #6bcf7f; padding: 60px; color: white; text-align: center"
-            >
-              Loop Item 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="interactionCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Swipe & Drag -->
-        <pg-example-section
-          id="swipe-drag"
-          title="Touch Swipe & Mouse Drag"
-          description="Full touch and mouse interaction support"
-          [code]="swipeGestureCode"
-        >
-          <ui-carousel
-            swipe="true"
-            drag="true"
-            mouse-drag="true"
-            autoplay="true"
-            touch-threshold="5"
-          >
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(to right, #ff9a56, #ff6a88);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              Swipe/Drag 1
+          <!-- Custom Controls -->
+          <section class="demo-section" id="custom-controls">
+            <div class="section-header"><h2>Custom Navigation</h2><p>Replace default arrows with custom text or icons.</p></div>
+            <div class="demo-card">
+              <ui-carousel prev-arrow="PREV" next-arrow="NEXT" arrows="true">
+                <div class="slide-centered">Slide A</div>
+                <div class="slide-centered">Slide B</div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(to right, #667eea, #764ba2);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              Swipe/Drag 2
-            </div>
-            <div
-              class="slide"
-              style="
-                background: linear-gradient(to right, #f093fb, #f5576c);
-                padding: 60px;
-                color: white;
-                text-align: center;
-              "
-            >
-              Swipe/Drag 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="customControlsCode" activeLang="html"></ui-code-preview>
+          </section>
 
-        <!-- Autoplay Control -->
-        <pg-example-section
-          id="autoplay-control"
-          title="Autoplay with Pause Control"
-          description="Automatic playback with hover and focus pause"
-          [code]="scrollAutoplayCode"
-        >
-          <ui-carousel
-            autoplay="true"
-            autoplay-interval="3000"
-            pause-on-hover="true"
-            pause-on-focus="true"
-          >
-            <div
-              class="slide"
-              style="background: #3b82f6; padding: 60px; color: white; text-align: center"
-            >
-              Hover to pause
+          <!-- Responsive -->
+          <section class="demo-section" id="responsive">
+            <div class="section-header"><h2>Responsive Breakpoints</h2><p>Define how many slides to show at different screen widths.</p></div>
+            <div class="demo-card">
+              <ui-carousel slides-to-show="3" [attr.responsive]="responsiveData" arrows="true">
+                <div class="slide-item">Mobile: 1</div>
+                <div class="slide-item">Tablet: 2</div>
+                <div class="slide-item">Desktop: 3</div>
+                <div class="slide-item">4</div>
+                <div class="slide-item">5</div>
+              </ui-carousel>
             </div>
-            <div
-              class="slide"
-              style="background: #8b5cf6; padding: 60px; color: white; text-align: center"
-            >
-              Focus to pause
-            </div>
-            <div
-              class="slide"
-              style="background: #ec4899; padding: 60px; color: white; text-align: center"
-            >
-              Auto resume
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Drag Threshold -->
-        <pg-example-section
-          id="drag-threshold"
-          title="Customizable Drag Threshold"
-          description="Fine-tune swipe sensitivity and drag distance"
-          [code]="thresholdCode"
-        >
-          <ui-carousel drag="true" swipe="true" drag-threshold="10" touch-threshold="5">
-            <div
-              class="slide"
-              style="background: #10b981; padding: 60px; color: white; text-align: center"
-            >
-              Threshold 1
-            </div>
-            <div
-              class="slide"
-              style="background: #06b6d4; padding: 60px; color: white; text-align: center"
-            >
-              Threshold 2
-            </div>
-            <div
-              class="slide"
-              style="background: #f59e0b; padding: 60px; color: white; text-align: center"
-            >
-              Threshold 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Animation Easing -->
-        <pg-example-section
-          id="animation-easing"
-          title="Animation Easing Effects"
-          description="Control animation timing with CSS easing functions"
-          [code]="easingCode"
-        >
-          <ui-carousel animation-duration="800" animation-easing="ease-in-out" autoplay="true">
-            <div
-              class="slide"
-              style="background: #a78bfa; padding: 60px; color: white; text-align: center"
-            >
-              EaseInOut 1
-            </div>
-            <div
-              class="slide"
-              style="background: #c084fc; padding: 60px; color: white; text-align: center"
-            >
-              EaseInOut 2
-            </div>
-            <div
-              class="slide"
-              style="background: #e879f9; padding: 60px; color: white; text-align: center"
-            >
-              EaseInOut 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Dots Indicators -->
-        <pg-example-section
-          id="dots-indicators"
-          title="Dots Indicators"
-          description="Classic dot pagination for slide navigation"
-          [code]="dotsIndicatorsCode"
-        >
-          <ui-carousel
-            indicators="true"
-            indicator-type="dots"
-            indicator-position="bottom"
-            show-arrows="true"
-          >
-            <div
-              class="slide"
-              style="background: #ec4899; padding: 60px; color: white; text-align: center"
-            >
-              Slide 1
-            </div>
-            <div
-              class="slide"
-              style="background: #f43f5e; padding: 60px; color: white; text-align: center"
-            >
-              Slide 2
-            </div>
-            <div
-              class="slide"
-              style="background: #f97316; padding: 60px; color: white; text-align: center"
-            >
-              Slide 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Number Indicators -->
-        <pg-example-section
-          id="number-indicators"
-          title="Number Indicators"
-          description="Numeric pagination showing slide numbers"
-          [code]="numberIndicatorsCode"
-        >
-          <ui-carousel indicators="true" indicator-type="numbers" indicator-position="bottom">
-            <div
-              class="slide"
-              style="background: #06b6d4; padding: 60px; color: white; text-align: center"
-            >
-              Slide 1
-            </div>
-            <div
-              class="slide"
-              style="background: #0ea5e9; padding: 60px; color: white; text-align: center"
-            >
-              Slide 2
-            </div>
-            <div
-              class="slide"
-              style="background: #3b82f6; padding: 60px; color: white; text-align: center"
-            >
-              Slide 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Progress Bar -->
-        <pg-example-section
-          id="progress-bar"
-          title="Progress Bar Indicator"
-          description="Visual progress bar showing autoplay timing"
-          [code]="progressBarCode"
-        >
-          <ui-carousel show-progress="true" autoplay="true" autoplay-interval="3000">
-            <div
-              class="slide"
-              style="background: #10b981; padding: 60px; color: white; text-align: center"
-            >
-              Progress 1
-            </div>
-            <div
-              class="slide"
-              style="background: #059669; padding: 60px; color: white; text-align: center"
-            >
-              Progress 2
-            </div>
-            <div
-              class="slide"
-              style="background: #047857; padding: 60px; color: white; text-align: center"
-            >
-              Progress 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Size Small -->
-        <pg-example-section
-          id="size-small"
-          title="Small Size"
-          description="Compact carousel with reduced height"
-          [code]="sizeSmallCode"
-        >
-          <ui-carousel height="200px" slides-to-show="1">
-            <div
-              class="slide"
-              style="background: #fbbf24; padding: 40px; color: white; text-align: center"
-            >
-              Small 1
-            </div>
-            <div
-              class="slide"
-              style="background: #fb923c; padding: 40px; color: white; text-align: center"
-            >
-              Small 2
-            </div>
-            <div
-              class="slide"
-              style="background: #f87171; padding: 40px; color: white; text-align: center"
-            >
-              Small 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Size Medium -->
-        <pg-example-section
-          id="size-medium"
-          title="Medium Size"
-          description="Standard carousel height for most use cases"
-          [code]="sizeMediumCode"
-        >
-          <ui-carousel height="400px" slides-to-show="2">
-            <div
-              class="slide"
-              style="background: #5c7caf; padding: 60px; color: white; text-align: center"
-            >
-              Medium 1
-            </div>
-            <div
-              class="slide"
-              style="background: #45b7d1; padding: 60px; color: white; text-align: center"
-            >
-              Medium 2
-            </div>
-            <div
-              class="slide"
-              style="background: #96ceb4; padding: 60px; color: white; text-align: center"
-            >
-              Medium 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Size Large -->
-        <pg-example-section
-          id="size-large"
-          title="Large Size"
-          description="Full-height carousel for hero sections"
-          [code]="sizeLargeCode"
-        >
-          <ui-carousel height="600px" slides-to-show="3">
-            <div
-              class="slide"
-              style="background: #667eea; padding: 80px; color: white; text-align: center"
-            >
-              Large 1
-            </div>
-            <div
-              class="slide"
-              style="background: #764ba2; padding: 80px; color: white; text-align: center"
-            >
-              Large 2
-            </div>
-            <div
-              class="slide"
-              style="background: #f093fb; padding: 80px; color: white; text-align: center"
-            >
-              Large 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Speed Fast -->
-        <pg-example-section
-          id="speed-fast"
-          title="Fast Animation"
-          description="Quick transitions and short autoplay interval"
-          [code]="speedFastCode"
-        >
-          <ui-carousel animation-duration="300" autoplay-interval="2000" autoplay="true">
-            <div
-              class="slide"
-              style="background: #ff6b6b; padding: 60px; color: white; text-align: center"
-            >
-              Fast 1
-            </div>
-            <div
-              class="slide"
-              style="background: #feca57; padding: 60px; color: white; text-align: center"
-            >
-              Fast 2
-            </div>
-            <div
-              class="slide"
-              style="background: #48dbfb; padding: 60px; color: white; text-align: center"
-            >
-              Fast 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Speed Normal -->
-        <pg-example-section
-          id="speed-normal"
-          title="Normal Speed"
-          description="Balanced timing for comfortable viewing"
-          [code]="speedNormalCode"
-        >
-          <ui-carousel animation-duration="500" autoplay-interval="3000" autoplay="true">
-            <div
-              class="slide"
-              style="background: #5c7caf; padding: 60px; color: white; text-align: center"
-            >
-              Normal 1
-            </div>
-            <div
-              class="slide"
-              style="background: #45b7d1; padding: 60px; color: white; text-align: center"
-            >
-              Normal 2
-            </div>
-            <div
-              class="slide"
-              style="background: #96ceb4; padding: 60px; color: white; text-align: center"
-            >
-              Normal 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Speed Slow -->
-        <pg-example-section
-          id="speed-slow"
-          title="Slow Animation"
-          description="Relaxed transitions for detailed content"
-          [code]="speedSlowCode"
-        >
-          <ui-carousel animation-duration="1000" autoplay-interval="5000" autoplay="true">
-            <div
-              class="slide"
-              style="background: #667eea; padding: 60px; color: white; text-align: center"
-            >
-              Slow 1
-            </div>
-            <div
-              class="slide"
-              style="background: #764ba2; padding: 60px; color: white; text-align: center"
-            >
-              Slow 2
-            </div>
-            <div
-              class="slide"
-              style="background: #f093fb; padding: 60px; color: white; text-align: center"
-            >
-              Slow 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Responsive Breakpoints -->
-        <pg-example-section
-          id="responsive-layout"
-          title="Responsive Breakpoints"
-          description="Adapts slide count based on screen width"
-          [code]="responsiveCode"
-        >
-          <ui-carousel
-            slides-to-show="3"
-            responsive="[{breakpoint: 1024, settings: {slidesToShow: 2}}, {breakpoint: 640, settings: {slidesToShow: 1}}]"
-          >
-            <div
-              class="slide"
-              style="
-                background: #e0f2fe;
-                padding: 40px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                margin: 0 10px;
-              "
-            >
-              Responsive 1
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #e0f2fe;
-                padding: 40px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                margin: 0 10px;
-              "
-            >
-              Responsive 2
-            </div>
-            <div
-              class="slide"
-              style="
-                background: #e0f2fe;
-                padding: 40px;
-                text-align: center;
-                border: 2px solid #0ea5e9;
-                margin: 0 10px;
-              "
-            >
-              Responsive 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
-
-        <!-- Custom Controls -->
-        <pg-example-section
-          id="custom-controls"
-          title="Custom Navigation Controls"
-          description="Extensive control over navigation appearance and behavior"
-          [code]="customControlsCode"
-        >
-          <ui-carousel
-            arrows="true"
-            indicators="true"
-            show-progress="true"
-            autoplay="true"
-            pause-on-hover="true"
-          >
-            <div
-              class="slide"
-              style="background: #6366f1; padding: 60px; color: white; text-align: center"
-            >
-              Slide 1
-            </div>
-            <div
-              class="slide"
-              style="background: #4f46e5; padding: 60px; color: white; text-align: center"
-            >
-              Slide 2
-            </div>
-            <div
-              class="slide"
-              style="background: #4338ca; padding: 60px; color: white; text-align: center"
-            >
-              Slide 3
-            </div>
-          </ui-carousel>
-        </pg-example-section>
+            <ui-code-preview [htmlCode]="responsiveCode" activeLang="html"></ui-code-preview>
+          </section>
+        </div>
       </div>
     </div>
 
-    <!-- Documentation Slot -->
     <div slot="docs">
       <pg-component-documentation componentId="carousel"></pg-component-documentation>
     </div>
   </pg-demo-tabs>
 </div>
+
+<style>
+  .slide { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100%; 
+    color: white; 
+    padding: 40px; 
+    text-align: center;
+  }
+  .slide h3 { margin: 0 0 8px 0; }
+  .slide p { margin: 0; opacity: 0.9; }
+
+  .slide-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #64748b;
+    margin: 0 12px;
+  }
+
+  .slide-box {
+    height: 200px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    margin: 0 10px;
+  }
+
+  .slide-centered {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: #f1f5f9;
+  }
+
+  .interaction-slide {
+    background: #fff;
+    color: #334155;
+    gap: 16px;
+  }
+
+  .border-dashed { border: 2px dashed #cbd5e1; color: #64748b; }
+  
+  .bg-gradient-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .bg-gradient-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+  .bg-gradient-pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+  .bg-soft-blue { background: #eff6ff; color: #1e40af; }
+  .bg-soft-indigo { background: #eef2ff; color: #3730a3; }
+  .bg-soft-violet { background: #f5f3ff; color: #5b21b6; }
+
+  .bg-soft-primary { background: #e0e7ff; color: #4338ca; }
+  .bg-soft-success { background: #dcfce7; color: #15803d; }
+  .bg-soft-warning { background: #fef9c3; color: #854d0e; }
+
+  .demo-section { scroll-margin-top: 100px; }
+</style>
