@@ -1,4 +1,4 @@
-﻿export interface NavItem {
+export interface NavItem {
   id: string;
   label: string;
   icon?: string;
@@ -116,9 +116,9 @@ export const categoryNavItems: NavItem[] = [
     iconLibrary: 'lucide',
     children: [
       { id: 'card', label: 'Card', icon: 'credit-card', iconLibrary: 'lucide' },
-      { id: 'card-set', label: 'Card Set', icon: 'layers', iconLibrary: 'lucide' },
+      // { id: 'card-set', label: 'Card Set', icon: 'layers', iconLibrary: 'lucide' },
       { id: 'divider', label: 'Divider', icon: 'minus', iconLibrary: 'lucide' },
-      { id: 'dock', label: 'Dock', icon: 'anchor', iconLibrary: 'lucide' },
+      { id: 'dock', label: 'Dock', icon: '⚓' },
       // { id: 'dock-host', label: 'Dock Host' },  not working as of now//
       {
         id: 'layout-manager',
@@ -133,7 +133,7 @@ export const categoryNavItems: NavItem[] = [
         icon: 'layout-dashboard',
         iconLibrary: 'lucide',
       },
-      { id: 'masonry', label: 'Masonry', icon: 'wall', iconLibrary: 'lucide' },
+      { id: 'masonry', label: 'Masonry', icon: 'layout-dashboard', iconLibrary: 'lucide' },
       {
         id: 'splitter',
         label: 'Splitter',

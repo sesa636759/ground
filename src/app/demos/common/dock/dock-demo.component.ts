@@ -24,45 +24,45 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 })
 export class DmDockDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic Layout', icon: 'square', iconLibrary: 'lucide' },
-    { id: 'positions', title: 'Dock Positions', icon: 'layout', iconLibrary: 'lucide' },
-    { id: 'sizes', title: 'Size Variants', icon: 'maximize', iconLibrary: 'lucide' },
-    { id: 'magnify', title: 'Magnification Effect', icon: 'zoom-in', iconLibrary: 'lucide' },
-    { id: 'blur', title: 'Glassmorphism (Blur)', icon: 'droplets', iconLibrary: 'lucide' },
-    { id: 'badges', title: 'Badges & Indicators', icon: 'bell', iconLibrary: 'lucide' },
-    { id: 'os', title: 'Desktop Experience', icon: 'monitor', iconLibrary: 'lucide' },
-    { id: 'interactive', title: 'Events & Reorder', icon: 'hand-metal', iconLibrary: 'lucide' },
+    { id: 'basic', title: 'Basic Layout', icon: '📦', iconLibrary: 'emoji' },
+    { id: 'positions', title: 'Dock Positions', icon: '🌍', iconLibrary: 'emoji' },
+    { id: 'sizes', title: 'Size Variants', icon: '📏', iconLibrary: 'emoji' },
+    { id: 'magnify', title: 'Magnification Effect', icon: '🔍', iconLibrary: 'emoji' },
+    { id: 'blur', title: 'Glassmorphism (Blur)', icon: '✨', iconLibrary: 'emoji' },
+    { id: 'badges', title: 'Badges & Indicators', icon: '🔔', iconLibrary: 'emoji' },
+    { id: 'os', title: 'Desktop Experience', icon: '💻', iconLibrary: 'emoji' },
+    { id: 'interactive', title: 'Events & Reorder', icon: '👈', iconLibrary: 'emoji' },
   ];
 
   basicItems = [
-    { id: 'finder', label: 'Finder', icon: 'search' },
-    { id: 'mail', label: 'Mail', icon: 'mail' },
-    { id: 'browser', label: 'Browser', icon: 'globe' },
-    { id: 'music', label: 'Music', icon: 'music' },
-    { id: 'photos', label: 'Photos', icon: 'image' },
+    { id: 'finder', label: 'Finder', icon: '🔍', iconLibrary: 'emoji' },
+    { id: 'mail', label: 'Mail', icon: '✉️', iconLibrary: 'emoji' },
+    { id: 'browser', label: 'Browser', icon: '🌐', iconLibrary: 'emoji' },
+    { id: 'music', label: 'Music', icon: '🎵', iconLibrary: 'emoji' },
+    { id: 'photos', label: 'Photos', icon: '🖼️', iconLibrary: 'emoji' },
   ];
 
   badgeItems = [
-    { id: 'mail', label: 'Mail', icon: 'mail', badge: 12 },
-    { id: 'messages', label: 'Messages', icon: 'message-square', badge: 5 },
-    { id: 'notifications', label: 'Notifications', icon: 'bell', badge: 99 },
-    { id: 'tasks', label: 'Tasks', icon: 'check-square', badge: 3 },
+    { id: 'mail', label: 'Mail', icon: '✉️', badge: 12, iconLibrary: 'emoji' },
+    { id: 'messages', label: 'Messages', icon: '💬', badge: 5, iconLibrary: 'emoji' },
+    { id: 'notifications', label: 'Notifications', icon: '🔔', badge: 99, iconLibrary: 'emoji' },
+    { id: 'tasks', label: 'Tasks', icon: '✅', badge: 3, iconLibrary: 'emoji' },
   ];
 
   osItems = [
-    { id: 'finder', label: 'Finder', icon: 'search', active: true },
-    { id: 'safari', label: 'Safari', icon: 'compass', active: true },
-    { id: 'mail', label: 'Mail', icon: 'mail', badge: 3, bounce: true },
+    { id: 'finder', label: 'Finder', icon: '🔍', active: true, iconLibrary: 'emoji' },
+    { id: 'safari', label: 'Safari', icon: '🧭', active: true, iconLibrary: 'emoji' },
+    { id: 'mail', label: 'Mail', icon: '✉️', badge: 3, bounce: true, iconLibrary: 'emoji' },
     { separator: true },
-    { id: 'music', label: 'Music', icon: 'music', active: true },
-    { id: 'trash', label: 'Trash', icon: 'trash-2' },
+    { id: 'music', label: 'Music', icon: '🎵', active: true, iconLibrary: 'emoji' },
+    { id: 'trash', label: 'Trash', icon: '🗑️', iconLibrary: 'emoji' },
   ];
 
-  basicCode = `<ui-dock [items]="items" icon-library="lucide"></ui-dock>`;
-  positionsCode = `<ui-dock position="left" [items]="items" icon-library="lucide"></ui-dock>`;
-  magnifyCode = `<ui-dock magnify [items]="items" icon-library="lucide"></ui-dock>`;
-  blurCode = `<ui-dock blur-effect [items]="items" icon-library="lucide"></ui-dock>`;
-  osCode = `<ui-dock [items]="osItems" magnify blur-effect icon-library="lucide"></ui-dock>`;
+  basicCode = `<ui-dock [items]="items"></ui-dock>`;
+  positionsCode = `<ui-dock position="left" [items]="items"></ui-dock>`;
+  magnifyCode = `<ui-dock magnify [items]="items"></ui-dock>`;
+  blurCode = `<ui-dock blur-effect [items]="items"></ui-dock>`;
+  osCode = `<ui-dock [items]="osItems" magnify blur-effect></ui-dock>`;
 
   handleItemClick(ev: any) {
     console.log(`Dock Item Clicked: ${ev.detail.itemId}`);
