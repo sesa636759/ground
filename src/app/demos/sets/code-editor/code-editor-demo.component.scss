@@ -6,6 +6,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+
+    i {
+      &.js-color { color: #f7df1e; }
+      &.py-color { color: #3776ab; }
+      &.html-color { color: #e34f26; }
+      &.java-color { color: #007396; }
+    }
   }
 
   .badge {
@@ -23,3 +30,4 @@
     font-size: 0.9rem;
   }
 }
+

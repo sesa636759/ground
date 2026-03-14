@@ -153,7 +153,7 @@
               </div>
             </div>
           </div>
-          <div class="demo-card" style="margin-top: 16px;">
+          <div class="demo-card mt-16">
             <h4 class="demo-sub-title">Skeleton Loading</h4>
             <div class="demo-flex-wrap">
               <ui-checkbox skeleton size="small"></ui-checkbox>
@@ -178,15 +178,7 @@
               (checkboxChange)="onMasterChange($event)"
             >
             </ui-checkbox>
-            <div
-              style="
-                margin-left: 24px;
-                margin-top: 12px;
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-              "
-            >
+            <div class="sub-items">
               <ui-checkbox
                 *ngFor="let item of groupItems"
                 [label]="item.label"
@@ -206,7 +198,7 @@
           [code]="formExampleCode"
         >
           <div class="demo-card">
-            <div style="display: grid; gap: 16px">
+            <div class="display-grid gap-16">
               <ui-checkbox
                 [(ngModel)]="formTerms"
                 label="I accept the Terms and Conditions"
@@ -229,9 +221,9 @@
                 color="success"
               ></ui-checkbox>
             </div>
-            <div style="margin-top: 24px">
+            <div class="mt-24">
               <ui-button (click)="onSubmit()" color="primary">Create Account</ui-button>
-              <p style="margin-top: 12px; font-weight: 600" [style.color]="formMessageColor">
+              <p class="mt-12 fw-600" [style.color]="formMessageColor">
                 {{ formMessage }}
               </p>
             </div>

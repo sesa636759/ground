@@ -36,12 +36,20 @@
 .max-w-400 { max-width: 400px !important; }
 .max-w-500 { max-width: 500px !important; }
 .max-w-600 { max-width: 600px !important; }
+.p-8 { padding: 0.5rem !important; }
+
 .min-w-120 { min-width: 120px !important; }
 .min-w-180 { min-width: 180px !important; }
+.min-w-220 { min-width: 220px !important; }
 .min-w-260 { min-width: 260px !important; }
 
 // Layout
 .display-flex { display: flex !important; }
+.display-grid { display: grid !important; }
+.display-block { display: block !important; }
+
+.text-primary { color: var(--primary) !important; }
+
 .flex-column { display: flex !important; flex-direction: column !important; }
 .flex-wrap { display: flex !important; flex-wrap: wrap !important; }
 .flex-center { display: flex !important; align-items: center !important; justify-content: center !important; }

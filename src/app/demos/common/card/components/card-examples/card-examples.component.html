@@ -153,7 +153,7 @@
             <span class="hint">Click to flip</span>
           </div>
           <div slot="back">
-            <div style="padding: 24px;">
+          <div class="p-24">
                 <h3>Employee ID: 8829</h3>
                 <p>Access Level: Admin</p>
                 <p>Department: Engineering</p>
@@ -177,13 +177,13 @@
                 <div slot="tabs">
                   <ui-tabs>
                     <ui-tab-panel label="General" icon="info" icon-library="lucide">
-                        <div style="padding: 16px;">General system information and status overview.</div>
+                        <div class="p-16">General system information and status overview.</div>
                     </ui-tab-panel>
                     <ui-tab-panel label="Performance" icon="zap" icon-library="lucide">
-                        <div style="padding: 16px;">Real-time performance metrics and resource usage.</div>
+                        <div class="p-16">Real-time performance metrics and resource usage.</div>
                     </ui-tab-panel>
                     <ui-tab-panel label="Logs" icon="list" icon-library="lucide">
-                        <div style="padding: 16px;">Recent system logs and audit trail.</div>
+                        <div class="p-16">Recent system logs and audit trail.</div>
                     </ui-tab-panel>
                   </ui-tabs>
                 </div>
@@ -194,20 +194,20 @@
 
             <ui-card width="350px">
                 <div slot="header"><h3>Feature Overview</h3></div>
-                <div slot="grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #e2e8f0; border-top: 1px solid #e2e8f0;">
-                  <div style="background: white; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <div slot="grid" class="feature-grid">
+                  <div class="grid-item">
                       <ui-icon name="cloud" library="lucide" size="1.5em" color="#3b82f6"></ui-icon>
                       <span>Cloud Sync</span>
                   </div>
-                  <div style="background: white; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <div class="grid-item">
                       <ui-icon name="shield" library="lucide" size="1.5em" color="#10b981"></ui-icon>
                       <span>Security</span>
                   </div>
-                  <div style="background: white; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <div class="grid-item">
                       <ui-icon name="cpu" library="lucide" size="1.5em" color="#f59e0b"></ui-icon>
                       <span>Compute</span>
                   </div>
-                  <div style="background: white; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                  <div class="grid-item">
                       <ui-icon name="database" library="lucide" size="1.5em" color="#8b5cf6"></ui-icon>
                       <span>Storage</span>
                   </div>
@@ -228,7 +228,7 @@
         <ui-card collapsible card-title="System Diagnostics" width="340px">
           <div slot="content">
             <p>Comprehensive system logs and diagnostic information can be tucked away when not needed.</p>
-            <div style="padding: 12px; background: #f1f5f9; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+            <div class="code-preview">
                 [CPU] Usage: 12%<br>
                 [MEM] Available: 8.4GB<br>
                 [DSK] Healthy
@@ -239,14 +239,14 @@
         <!-- Auto-Scrolling Card -->
         <ui-card auto-scroll height="200px" width="340px" card-title="Live Activity Trace">
           <div slot="content">
-            <p style="margin: 4px 0;">[21:20:01] User login: Felix</p>
-            <p style="margin: 4px 0;">[21:20:05] Session started.</p>
-            <p style="margin: 4px 0;">[21:20:10] Resource fetched: /api/v1/data</p>
-            <p style="margin: 4px 0;">[21:20:15] Buffer overflow prevented.</p>
-            <p style="margin: 4px 0;">[21:20:20] Security audit passed.</p>
-            <p style="margin: 4px 0;">[21:20:25] Data sync completed.</p>
-            <p style="margin: 4px 0;">[21:20:30] User logout.</p>
-            <p style="margin: 4px 0;">[21:20:35] Background task scheduled.</p>
+            <p class="activity-line">[21:20:01] User login: Felix</p>
+            <p class="activity-line">[21:20:05] Session started.</p>
+            <p class="activity-line">[21:20:10] Resource fetched: /api/v1/data</p>
+            <p class="activity-line">[21:20:15] Buffer overflow prevented.</p>
+            <p class="activity-line">[21:20:20] Security audit passed.</p>
+            <p class="activity-line">[21:20:25] Data sync completed.</p>
+            <p class="activity-line">[21:20:30] User logout.</p>
+            <p class="activity-line">[21:20:35] Background task scheduled.</p>
           </div>
         </ui-card>
         
@@ -255,7 +255,7 @@
           <div slot="content">
             <p>Managing nested project structures is easy with the <code>inner</code> card type.</p>
             <ui-card type="inner" card-title="Sub-project Alpha" description="Development phase" variant="outlined"></ui-card>
-            <ui-card type="inner" card-title="Sub-project Beta" description="Planning phase" variant="outlined" style="margin-top: 12px;"></ui-card>
+            <ui-card type="inner" card-title="Sub-project Beta" description="Planning phase" variant="outlined" class="mt-12"></ui-card>
           </div>
         </ui-card>
       </div>
@@ -296,14 +296,14 @@
       id="responsive"
     >
       <ui-card layout="horizontal" width="100%" hoverable>
-        <div slot="cover" style="width: 260px">
+        <div slot="cover" class="horizontal-cover">
           <img
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
-            style="height: 100%; object-fit: cover"
+            class="h-full"
           />
         </div>
         <div slot="header">
-          <h3 style="margin: 0">Nature Retreat: Autumn Sale</h3>
+          <h3 class="m-0">Nature Retreat: Autumn Sale</h3>
         </div>
         <div slot="content">
           <p>

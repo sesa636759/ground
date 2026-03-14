@@ -4,7 +4,8 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <!-- Layout Section -->
+  <div slot="content-layout" class="control-grid card-layout-section">
     <div class="control-group">
       <label>Title</label>
       <ui-input
@@ -53,130 +54,132 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="checkbox-grid" style="padding: 16px">
-    <label class="checkbox-item">
+  <!-- Animation Section -->
+  <div slot="content-animation" class="control-grid card-animation-section">
+    <div class="control-group">
+      <label>Hoverable</label>
       <ui-checkbox
         name="hoverable"
         [(ngModel)]="pgConfig.hoverable"
         (ngModelChange)="updateConfig()"
       />
-      Hoverable
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Bordered</label>
       <ui-checkbox
         name="bordered"
         [(ngModel)]="pgConfig.bordered"
         (ngModelChange)="updateConfig()"
       />
-      Bordered
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Loading</label>
       <ui-checkbox name="loading" [(ngModel)]="pgConfig.loading" (ngModelChange)="updateConfig()" />
-      Loading
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Flippable</label>
       <ui-checkbox
         name="flippable"
         [(ngModel)]="pgConfig.flippable"
         (ngModelChange)="updateConfig()"
       />
-      Flippable
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Closable</label>
       <ui-checkbox
         name="closable"
         [(ngModel)]="pgConfig.closable"
         (ngModelChange)="updateConfig()"
       />
-      Closable
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Glass</label>
       <ui-checkbox name="glass" [(ngModel)]="pgConfig.glass" (ngModelChange)="updateConfig()" />
-      Glass
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Collapsible</label>
       <ui-checkbox
         name="collapsible"
         [(ngModel)]="pgConfig.collapsible"
         (ngModelChange)="updateConfig()"
       />
-      Collapsible
-    </label>
-    <label class="checkbox-item">
+    </div>
+    <div class="control-group">
+      <label>Selectable</label>
       <ui-checkbox
         name="selectable"
         [(ngModel)]="pgConfig.selectable"
         (ngModelChange)="updateConfig()"
       />
-      Selectable
-    </label>
-    <label class="checkbox-item">
-        <ui-checkbox
-          name="clickable"
-          [(ngModel)]="pgConfig.clickable"
-          (ngModelChange)="updateConfig()"
-        />
-        Clickable
-      </label>
-  </div>
-
-  <div slot="content-style" class="control-grid" style="padding: 16px">
-    <div class="control-group">
-        <label>Variant</label>
-        <ui-dropdown
-          name="variant"
-          [(ngModel)]="pgConfig.variant"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Elevated', value: 'elevated' },
-            { label: 'Outlined', value: 'outlined' },
-            { label: 'Filled', value: 'filled' },
-            { label: 'Primary', value: 'primary' },
-            { label: 'Success', value: 'success' },
-            { label: 'Warning', value: 'warning' },
-            { label: 'Danger', value: 'danger' },
-            { label: 'Info', value: 'info' },
-          ]"
-        ></ui-dropdown>
     </div>
     <div class="control-group">
-        <label>Importance</label>
-        <ui-dropdown
-          name="importance"
-          [(ngModel)]="pgConfig.importance"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Standard', value: 'standard' },
-            { label: 'Emphasized', value: 'emphasized' },
-          ]"
-        ></ui-dropdown>
-    </div>
-    <div class="control-group">
-        <label>Pattern</label>
-        <ui-dropdown
-          name="pattern"
-          [(ngModel)]="pgConfig.pattern"
-          (ngModelChange)="updateConfig()"
-          [options]="[
-            { label: 'Default', value: 'default' },
-            { label: 'Product', value: 'product' },
-            { label: 'Shortcut', value: 'shortcut' },
-          ]"
-        ></ui-dropdown>
-    </div>
-    <div class="control-group">
-        <label>Ribbon Text</label>
-        <ui-input
-          name="ribbon"
-          type="text"
-          [(ngModel)]="pgConfig.ribbon"
-          (ngModelChange)="updateConfig()"
-        ></ui-input>
+      <label>Clickable</label>
+      <ui-checkbox
+        name="clickable"
+        [(ngModel)]="pgConfig.clickable"
+        (ngModelChange)="updateConfig()"
+      />
     </div>
   </div>
 
-  <div preview class="preview-stage" style="padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; background: #f8fafc;">
+  <!-- Style Section -->
+  <div slot="content-style" class="control-grid card-style-section">
+    <div class="control-group">
+      <label>Variant</label>
+      <ui-dropdown
+        name="variant"
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Elevated', value: 'elevated' },
+          { label: 'Outlined', value: 'outlined' },
+          { label: 'Filled', value: 'filled' },
+          { label: 'Primary', value: 'primary' },
+          { label: 'Success', value: 'success' },
+          { label: 'Warning', value: 'warning' },
+          { label: 'Danger', value: 'danger' },
+          { label: 'Info', value: 'info' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Importance</label>
+      <ui-dropdown
+        name="importance"
+        [(ngModel)]="pgConfig.importance"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Standard', value: 'standard' },
+          { label: 'Emphasized', value: 'emphasized' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Pattern</label>
+      <ui-dropdown
+        name="pattern"
+        [(ngModel)]="pgConfig.pattern"
+        (ngModelChange)="updateConfig()"
+        [options]="[
+          { label: 'Default', value: 'default' },
+          { label: 'Product', value: 'product' },
+          { label: 'Shortcut', value: 'shortcut' },
+        ]"
+      ></ui-dropdown>
+    </div>
+    <div class="control-group">
+      <label>Ribbon Text</label>
+      <ui-input
+        name="ribbon"
+        type="text"
+        [(ngModel)]="pgConfig.ribbon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+  </div>
+
+  <div preview class="preview-stage card-preview">
     <ui-card
       #cardSet
       [attr.card-title]="pgConfig.title"
@@ -217,14 +220,14 @@
       (cardToggle)="onCardCollapse($event)"
       (cardSelect)="onCardSelect($event)"
       (cardFlip)="onCardFlip($event)"
-      style="width: 100%; max-width: 400px"
+      class="card-set-preview"
     >
       <p>Dynamic content area for the card set playground.</p>
       <div slot="back">
-          <div style="padding: 20px; text-align: center;">
-              <h3>Back Side</h3>
-              <p>Custom content in the <code>back</code> slot.</p>
-          </div>
+        <div class="card-back-content">
+          <h3>Back Side</h3>
+          <p>Custom content in the <code>back</code> slot.</p>
+        </div>
       </div>
     </ui-card>
   </div>
