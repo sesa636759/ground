@@ -184,6 +184,48 @@
       </label>
       <label class="checkbox-item">
         <ui-checkbox
+          [(ngModel)]="pgConfig.rowPinning"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Row Pinning
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.columnAggregation"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Aggregation
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.undoRedo"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Undo/Redo
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.rangeSelection"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Range Select
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.copyPaste"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Copy/Paste
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.conditionalFormatting"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Condit. Format
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
           [(ngModel)]="pgConfig.exportable"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
@@ -198,10 +240,24 @@
       </label>
       <label class="checkbox-item">
         <ui-checkbox
+          [(ngModel)]="pgConfig.pdfExport"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        PDF Export
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
           [(ngModel)]="pgConfig.rowDetails"
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
         Row Details
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showActions"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Show Actions
       </label>
     </div>
   </div>
@@ -222,6 +278,13 @@
           (ngModelChange)="updateConfig()"
         ></ui-checkbox>
         Grouping UI
+      </label>
+      <label class="checkbox-item">
+        <ui-checkbox
+          [(ngModel)]="pgConfig.columnGrouping"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
+        Col Grouping
       </label>
     </div>
   </div>
@@ -250,35 +313,55 @@
   <div
     preview
     class="preview-stage h-scrollable w-full display-flex justify-center items-center p-40"
-    
   >
     <div class="table-container w-full" >
       <ui-advanced-data-table
         #demoElement
-        [data]="data"
-        [columns]="columns"
-        [selectable]="pgConfig.selectable"
-        [multiSelect]="pgConfig.multiSelect"
-        [editable]="pgConfig.editable"
-        [stickyHeader]="pgConfig.stickyHeader"
-        [pagination]="pgConfig.pagination"
-        [pageSize]="pgConfig.pageSize"
-        [paginationTheme]="pgConfig.paginationTheme"
-        [paginationShape]="pgConfig.paginationShape"
-        [paginationSticky]="pgConfig.paginationSticky"
-        [virtualScroll]="pgConfig.virtualScroll"
-        [searchable]="pgConfig.searchable"
-        [sortable]="pgConfig.sortable"
-        [filterable]="pgConfig.filterable"
-        [rowHeight]="pgConfig.rowHeight"
-        [striped]="pgConfig.striped"
-        [hoverable]="pgConfig.hoverable"
-        [bordered]="pgConfig.bordered"
-        [loading]="pgConfig.loading"
-        [emptyMessage]="pgConfig.emptyMessage"
-        [theme]="pgConfig.theme"
-        [grouping]="pgConfig.grouping"
-        [treeData]="pgConfig.treeData"
+        [attr.data]="dataJson"
+        [attr.columns]="columnsJson"
+        [attr.selectable]="pgConfig.selectable ? '' : null"
+        [attr.multi-select]="pgConfig.multiSelect"
+        [attr.editable]="pgConfig.editable ? '' : null"
+        [attr.sticky-header]="pgConfig.stickyHeader"
+        [attr.pagination]="pgConfig.pagination"
+        [attr.page-size]="pgConfig.pageSize"
+        [attr.pagination-theme]="pgConfig.paginationTheme"
+        [attr.pagination-shape]="pgConfig.paginationShape"
+        [attr.pagination-sticky]="pgConfig.paginationSticky"
+        [attr.virtual-scroll]="pgConfig.virtualScroll ? '' : null"
+        [attr.virtual-row-height]="pgConfig.virtualRowHeight"
+        [attr.searchable]="pgConfig.searchable"
+        [attr.sortable]="pgConfig.sortable"
+        [attr.filterable]="pgConfig.filterable"
+        [attr.row-height]="pgConfig.rowHeight"
+        [attr.striped]="pgConfig.striped"
+        [attr.hoverable]="pgConfig.hoverable"
+        [attr.bordered]="pgConfig.bordered"
+        [attr.loading]="pgConfig.loading ? '' : null"
+        [attr.show-skeleton]="pgConfig.showSkeleton"
+        [attr.skeleton-rows]="pgConfig.skeletonRows"
+        [attr.empty-message]="pgConfig.emptyMessage"
+        [attr.theme]="pgConfig.theme"
+        [attr.grouping]="pgConfig.grouping ? '' : null"
+        [attr.tree-data]="pgConfig.treeData ? '' : null"
+        [attr.column-pinning]="pgConfig.columnPinning"
+        [attr.row-pinning]="pgConfig.rowPinning"
+        [attr.multi-filter]="pgConfig.multiFilter"
+        [attr.show-filter-panel]="pgConfig.advancedFilters"
+        [attr.exportable]="pgConfig.exportable"
+        [attr.excel-export]="pgConfig.excelExport"
+        [attr.pdf-export]="pgConfig.pdfExport"
+        [attr.row-details]="pgConfig.rowDetails"
+        [attr.show-grouping-controls]="pgConfig.showGroupingControls"
+        [attr.show-actions]="pgConfig.showActions"
+        [attr.column-reorder]="pgConfig.columnReorder"
+        [attr.column-visibility]="pgConfig.columnVisibility"
+        [attr.range-selection]="pgConfig.rangeSelection"
+        [attr.copy-paste]="pgConfig.copyPaste"
+        [attr.conditional-formatting]="pgConfig.conditionalFormatting"
+        [attr.undo-redo]="pgConfig.undoRedo"
+        [attr.column-aggregation]="pgConfig.columnAggregation"
+        [attr.icon-library]="pgConfig.iconLibrary"
         (rowSelect)="onRowSelect($event)"
         (cellEdit)="onCellEdit($event)"
         (sortChange)="onSortChange($event)"

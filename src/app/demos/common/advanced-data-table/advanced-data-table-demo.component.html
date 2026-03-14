@@ -27,9 +27,9 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                sortable
-                searchable
-                pagination
+                [sortable]="true"
+                [searchable]="true"
+                [pagination]="true"
                 [pageSize]="5"
               ></ui-advanced-data-table>
             </div>
@@ -45,8 +45,8 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                selectable
-                multi-select
+                [selectable]="true"
+                [multiSelect]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -61,7 +61,10 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                show-actions
+                [showActions]="true"
+                (rowAction)="onRowAction($event)"
+                (rowEdit)="onRowAction($event)"
+                (rowDelete)="onRowAction($event)"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -76,7 +79,8 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="editableColumns"
-                editable
+                [editable]="true"
+                (cellEdit)="onCellEdit($event)"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -91,9 +95,25 @@
               <ui-advanced-data-table
                 [data]="[]"
                 [columns]="columns"
-                loading
-                show-skeleton
+                [loading]="true"
+                [showSkeleton]="true"
                 [skeletonRows]="5"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Input Types -->
+          <section class="demo-section" id="input-types">
+            <div class="section-header">
+              <h2>⌨️ Cell Input Types</h2>
+              <p>Rich editing experience with diverse input types (double-click to edit).</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="inputTypesColumns"
+                [editable]="true"
+                (cellEdit)="onCellEdit($event)"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -108,7 +128,7 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="groupedColumns"
-                column-grouping
+                [columnGrouping]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -123,9 +143,9 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                grouping
+                [grouping]="true"
                 group-by="department"
-                show-group-count
+                [showGroupCount]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -140,8 +160,23 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                column-pinning
-                row-pinning
+                [columnPinning]="true"
+                [rowPinning]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Reorder -->
+          <section class="demo-section" id="reorder">
+            <div class="section-header">
+              <h2>↕️ Row Reordering</h2>
+              <p>Drag and drop rows to change their order.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [rowReorder]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -156,8 +191,44 @@
               <ui-advanced-data-table
                 [data]="sampleData"
                 [columns]="columns"
-                multi-filter
-                show-filter-panel
+                [multiFilter]="true"
+                [showFilterPanel]="false"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Panels -->
+          <section class="demo-section" id="panels">
+            <div class="section-header">
+              <h2>🎛️ Visibility & Filter Panels</h2>
+              <p>Side panels for advanced column management and filtering.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [showColumnPanel]="false"
+                [showFilterPanel]="false"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Search -->
+          <section class="demo-section" id="search">
+            <div class="section-header">
+              <h2>🔎 External Search</h2>
+              <p>Connect external search inputs to the table's search capability.</p>
+            </div>
+            <div class="demo-card">
+              <div class="p-16 border-bottom bg-muted flex items-center gap-12">
+                <input #tableSearch type="text" placeholder="Search table..." class="p-8 border rounded w-240" />
+                <span class="text-xs text-muted">Binding to [search] prop</span>
+              </div>
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [search]="tableSearch.value"
+                [searchable]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -172,7 +243,122 @@
               <ui-advanced-data-table
                 [data]="treeData"
                 [columns]="columns"
-                tree-data
+                [treeData]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Sparklines -->
+          <section class="demo-section" id="sparklines">
+            <div class="section-header">
+              <h2>📈 Sparklines</h2>
+              <p>Micro-charts embedded in cells to show data trends.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sparklineData"
+                [columns]="sparklineColumns"
+                [enableSparklines]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Lazy Load -->
+          <section class="demo-section" id="lazy-load">
+            <div class="section-header">
+              <h2>⏳ Lazy Loading</h2>
+              <p>High performance rendering for massive datasets using virtual scroll.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [virtualScroll]="true"
+                [virtualRowHeight]="48"
+                [lazyLoad]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Export -->
+          <section class="demo-section" id="export">
+            <div class="section-header">
+              <h2>📄 Data Export</h2>
+              <p>Export table data to PDF, Excel, and CSV formats.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [exportable]="true"
+                [excelExport]="true"
+                [pdfExport]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Mobile -->
+          <section class="demo-section" id="mobile">
+            <div class="section-header">
+              <h2>📱 Mobile & Context</h2>
+              <p>Responsive card view for mobile devices and right-click context menus.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [mobileCardView]="true"
+                [contextMenu]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Undo/Redo -->
+          <section class="demo-section" id="undo-redo">
+            <div class="section-header">
+              <h2>↩️ Undo / Redo</h2>
+              <p>Track history of sorting, filtering, and selection changes.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [undoRedo]="true"
+                [sortable]="true"
+                [filterable]="true"
+                [selectable]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Range -->
+          <section class="demo-section" id="range">
+            <div class="section-header">
+              <h2>🟦 Range Selection</h2>
+              <p>Excel-like cell range selection and copy-paste support.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [rangeSelection]="true"
+                [copyPaste]="true"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Conditional -->
+          <section class="demo-section" id="conditional">
+            <div class="section-header">
+              <h2>🎨 Conditional Formatting</h2>
+              <p>Dynamic cell styling based on data-driven rules.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                [conditionalFormatting]="true"
+                [formattingRules]="formattingRules"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -187,7 +373,7 @@
               <ui-advanced-data-table
                 [data]="salesData"
                 [columns]="salesColumns"
-                column-aggregation
+                [columnAggregation]="true"
               ></ui-advanced-data-table>
             </div>
           </section>
@@ -200,4 +386,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
