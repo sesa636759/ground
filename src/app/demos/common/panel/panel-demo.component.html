@@ -26,7 +26,7 @@
           <div class="demo-grid col-2">
             @for (v of ['elevated', 'outlined', 'filled', 'flat']; track v) {
               <ui-panel [attr.variant]="v" [attr.panel-title]="v | titlecase">
-                <div slot="content" style="padding: 16px">{{ v | titlecase }} panel style.</div>
+                <div slot="content" class="p-16">{{ v | titlecase }} panel style.</div>
               </ui-panel>
             }
           </div>
@@ -42,7 +42,7 @@
           <div class="demo-grid col-2">
             @for (t of ['primary', 'success', 'warning', 'danger']; track t) {
               <ui-panel [attr.theme]="t" [attr.panel-title]="t | titlecase">
-                <div slot="content" style="padding: 16px">{{ t | titlecase }} theme panel.</div>
+                <div slot="content" class="p-16">{{ t | titlecase }} theme panel.</div>
               </ui-panel>
             }
           </div>
@@ -63,9 +63,7 @@
             is-draggable
             panel-title="Full Interactive Panel"
           >
-            <div slot="content" style="padding: 16px">
-              Drag, resize, minimize, maximize or toggle me!
-            </div>
+            <div slot="content" class="p-16">Drag, resize, minimize, maximize or toggle me!</div>
           </ui-panel>
         </pg-example-section>
 
@@ -99,4 +97,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-

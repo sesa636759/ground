@@ -65,7 +65,7 @@
   </div>
 
   <!-- Behavioral States -->
-  <div slot="content-states" style="padding: 16px">
+  <div slot="content-states" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.checked" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -100,7 +100,7 @@
       </label>
     </div>
 
-    <div class="control-grid" style="margin-top: 16px">
+    <div class="control-grid mt-16">
       <div class="control-group">
         <label>Helper Text</label>
         <ui-input
@@ -121,7 +121,7 @@
   </div>
 
   <!-- Visual & Feedback -->
-  <div slot="content-visual" style="padding: 16px">
+  <div slot="content-visual" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -171,7 +171,7 @@
       </label>
     </div>
 
-    <div class="control-grid" style="margin-top: 16px">
+    <div class="control-grid mt-16">
       <div class="control-group" *ngIf="pgConfig.showIcons">
         <label>Icon Library</label>
         <ui-dropdown
@@ -244,7 +244,7 @@
   </div>
 
   <!-- Advanced & Forms -->
-  <div slot="content-advanced" style="padding: 16px">
+  <div slot="content-advanced" class="p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox
@@ -262,7 +262,7 @@
       </label>
     </div>
 
-    <div class="control-grid" style="margin-top: 16px">
+    <div class="control-grid mt-16">
       <div class="control-group" *ngIf="pgConfig.requireConfirmation">
         <label>Confirmation Message</label>
         <ui-input

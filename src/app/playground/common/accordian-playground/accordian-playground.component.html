@@ -52,7 +52,7 @@
       ></ui-input>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.hideArrow" (ngModelChange)="updateConfig()" /> Hide Arrow
       </label>
@@ -79,7 +79,7 @@
       ></ui-dropdown>
     </div>
 
-    <div class="control-group" style="margin-top: 16px">
+    <div class="control-group mt-16">
       <label>Default Open (IDs, comma-separated)</label>
       <ui-input
         type="text"
@@ -89,7 +89,7 @@
       ></ui-input>
     </div>
 
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()" /> Disabled
       </label>
@@ -133,7 +133,7 @@
         [options]="timingOptions"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-grid" style="margin-top: 16px">
+    <div class="checkbox-grid mt-16">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.lazy" (ngModelChange)="updateConfig()" /> Lazy Load
       </label>
