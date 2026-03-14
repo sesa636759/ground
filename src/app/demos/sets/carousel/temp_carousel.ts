@@ -1,7 +1,8 @@
-﻿import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
+import { DemoSidebarComponent } from '../../../shared/components/demo-sidebar/demo-sidebar.component';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
-import { DmCarouselPlaygroundComponent } from '../../../playground/sets/carousel-playground/carousel-playground.component';
+import { DsCarouselPlaygroundComponent } from '../../../playground/sets/carousel-playground/carousel-playground.component';
+
 import { DemoTabsComponent } from '../../../shared/demo-tabs/demo-tabs.component';
 import { ComponentDocumentationComponent } from '../../../pages/component-documentation/component-documentation.component';
 import { BaseDemoComponent } from '../../../shared/base-demo.component';
@@ -13,7 +14,7 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
   standalone: true,
   imports: [
     ...PLAYGROUND_IMPORTS,
-    DmCarouselPlaygroundComponent,
+    DsCarouselPlaygroundComponent,
     DemoTabsComponent,
     ComponentDocumentationComponent,
     ExampleSectionComponent,
@@ -27,12 +28,32 @@ import { DemoHeaderComponent } from '../../../shared/components/demo-header/demo
 export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit {
   exampleVariants = [
     // Transition Effects
-    { id: 'fade-transition', title: 'Fade Transition Effect', icon: 'images', iconLibrary: 'lucide' },
-    { id: 'slide-transition', title: 'Slide Transition Effect', icon: 'square-play', iconLibrary: 'lucide' },
+    {
+      id: 'fade-transition',
+      title: 'Fade Transition Effect',
+      icon: 'images',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'slide-transition',
+      title: 'Slide Transition Effect',
+      icon: 'square-play',
+      iconLibrary: 'lucide',
+    },
     // Layout Modes
     { id: 'center-mode', title: 'Center Mode', icon: 'layout-panel-top', iconLibrary: 'lucide' },
-    { id: 'multiple-slides', title: 'Multiple Slides Display', icon: 'layout-grid', iconLibrary: 'lucide' },
-    { id: 'vertical-carousel', title: 'Vertical Carousel', icon: 'arrows-up-down', iconLibrary: 'lucide' },
+    {
+      id: 'multiple-slides',
+      title: 'Multiple Slides Display',
+      icon: 'layout-grid',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'vertical-carousel',
+      title: 'Vertical Carousel',
+      icon: 'arrows-up-down',
+      iconLibrary: 'lucide',
+    },
     { id: 'infinite-loop', title: 'Infinite Loop', icon: 'repeat', iconLibrary: 'lucide' },
     // Interaction & Controls
     { id: 'swipe-drag', title: 'Touch Swipe & Mouse Drag', icon: 'hand', iconLibrary: 'lucide' },
@@ -42,11 +63,31 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
       icon: 'play-circle',
       iconLibrary: 'lucide',
     },
-    { id: 'drag-threshold', title: 'Customizable Drag Threshold', icon: 'mouse-pointer', iconLibrary: 'lucide' },
-    { id: 'animation-easing', title: 'Animation Easing Effects', icon: 'zap', iconLibrary: 'lucide' },
+    {
+      id: 'drag-threshold',
+      title: 'Customizable Drag Threshold',
+      icon: 'mouse-pointer',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'animation-easing',
+      title: 'Animation Easing Effects',
+      icon: 'zap',
+      iconLibrary: 'lucide',
+    },
     // Indicators & Navigation
-    { id: 'dots-indicators', title: 'Dots Indicators', icon: 'circle-ellipsis', iconLibrary: 'lucide' },
-    { id: 'number-indicators', title: 'Number Indicators', icon: 'list-ordered', iconLibrary: 'lucide' },
+    {
+      id: 'dots-indicators',
+      title: 'Dots Indicators',
+      icon: 'circle-ellipsis',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'number-indicators',
+      title: 'Number Indicators',
+      icon: 'list-ordered',
+      iconLibrary: 'lucide',
+    },
     { id: 'progress-bar', title: 'Progress Bar Indicator', icon: 'loader', iconLibrary: 'lucide' },
     // Size Variants
     { id: 'size-small', title: 'Small Size', icon: 'minimize-2', iconLibrary: 'lucide' },
@@ -57,8 +98,18 @@ export class DmCarouselDemoComponent extends BaseDemoComponent implements OnInit
     { id: 'speed-normal', title: 'Normal Speed', icon: 'clock', iconLibrary: 'lucide' },
     { id: 'speed-slow', title: 'Slow Animation', icon: 'snail', iconLibrary: 'lucide' },
     // Advanced Features
-    { id: 'responsive-layout', title: 'Responsive Breakpoints', icon: 'smartphone', iconLibrary: 'lucide' },
-    { id: 'custom-controls', title: 'Custom Navigation Controls', icon: 'settings-2', iconLibrary: 'lucide' },
+    {
+      id: 'responsive-layout',
+      title: 'Responsive Breakpoints',
+      icon: 'smartphone',
+      iconLibrary: 'lucide',
+    },
+    {
+      id: 'custom-controls',
+      title: 'Custom Navigation Controls',
+      icon: 'settings-2',
+      iconLibrary: 'lucide',
+    },
   ];
 
   // Basic Layout Examples

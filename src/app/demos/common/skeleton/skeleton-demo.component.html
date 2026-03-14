@@ -23,11 +23,11 @@
           description="All shape variants — circle, text, rectangle, avatar, card, list-item, button, image — with pulse and wave animations"
           [code]="shapesCode"
         >
-          <div style="display: flex; flex-direction: column; gap: 20px; width: 100%">
+          <div  class="display-flex flex-col gap-20 w-full">
             <!-- Avatar + text row -->
-            <div style="display: flex; align-items: center; gap: 12px">
+            <div  class="display-flex items-center gap-12">
               <skeleton-loader shape="avatar" size="lg"></skeleton-loader>
-              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
+              <div  class="flex-1 display-flex flex-col gap-8">
                 <skeleton-loader shape="text" width="60%" animation-type="pulse"></skeleton-loader>
                 <skeleton-loader shape="text" width="40%" animation-type="pulse"></skeleton-loader>
               </div>
@@ -40,7 +40,7 @@
               animation-type="wave"
             ></skeleton-loader>
             <!-- Button, circle, square row -->
-            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+            <div  class="display-flex gap-12 items-center wrap">
               <skeleton-loader shape="circle" width="48px" height="48px"></skeleton-loader>
               <skeleton-loader shape="square" width="48px" height="48px"></skeleton-loader>
               <skeleton-loader shape="button" width="100px" size="md"></skeleton-loader>
@@ -63,23 +63,15 @@
           [code]="cardLayoutCode"
         >
           <div
-            style="
-              display: flex;
-              gap: 12px;
-              padding: 16px;
-              border: 1px solid var(--color-border);
-              border-radius: 8px;
-              width: 100%;
-              box-sizing: border-box;
-            "
+             class="display-flex gap-12 p-16 border-color-border rounded-8 w-full box-border"
           >
             <skeleton-loader
               shape="rectangle"
               width="80px"
               height="80px"
-              style="flex-shrink: 0"
+               class="flex-shrink-0"
             ></skeleton-loader>
-            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px">
+            <div  class="flex-1 display-flex flex-col gap-8">
               <skeleton-loader shape="text" width="70%" height="18px"></skeleton-loader>
               <skeleton-loader shape="text" width="40%" height="14px"></skeleton-loader>
               <skeleton-loader shape="text" width="55%" height="14px"></skeleton-loader>
@@ -94,7 +86,7 @@
           description="Row-by-row skeleton for list or feed views using the built-in list-item shape"
           [code]="listLayoutCode"
         >
-          <div style="display: flex; flex-direction: column; gap: 10px; width: 100%">
+          <div  class="display-flex flex-col gap-10 w-full">
             @for (item of [1, 2, 3, 4]; track item) {
               <skeleton-loader shape="list-item" width="100%"></skeleton-loader>
             }
@@ -108,29 +100,29 @@
           description="Centered skeleton for user profile pages"
           [code]="profileLayoutCode"
         >
-          <div style="text-align: center; padding: 24px; width: 100%">
+          <div  class="text-center p-24 w-full">
             <skeleton-loader
               shape="avatar"
               size="2xl"
-              style="margin: 0 auto; display: block"
+               class="m-0-auto display-block"
             ></skeleton-loader>
             <skeleton-loader
               shape="text"
               width="120px"
               height="20px"
-              style="margin: 12px auto 0; display: block"
+               class="mt-12 m-0-auto display-block"
             ></skeleton-loader>
             <skeleton-loader
               shape="text"
               width="80px"
               height="14px"
-              style="margin: 8px auto 0; display: block"
+               class="mt-8 m-0-auto display-block"
             ></skeleton-loader>
             <skeleton-loader
               shape="button"
               width="160px"
               size="lg"
-              style="margin: 16px auto 0; display: block"
+               class="mt-16 m-0-auto display-block"
             ></skeleton-loader>
           </div>
         </pg-example-section>

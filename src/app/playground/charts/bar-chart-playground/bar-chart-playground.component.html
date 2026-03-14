@@ -34,7 +34,7 @@
             [(ngModel)]="pgConfig.barWidth"
             (ngModelChange)="updateConfig()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+          <span  class="fs-08rem text-muted"
             >{{ pgConfig.barWidth }}%</span
           >
         </div>
@@ -48,7 +48,7 @@
             [(ngModel)]="pgConfig.borderRadius"
             (ngModelChange)="updateConfig()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+          <span  class="fs-08rem text-muted"
             >{{ pgConfig.borderRadius }}px</span
           >
         </div>
@@ -109,14 +109,7 @@
   </div>
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-    "
+     class="w-full display-flex flex-col gap-16 justify-center items-center"
   >
     <ui-bar-chart
       [attr.orientation]="pgConfig.orientation"
@@ -130,7 +123,7 @@
       [attr.show-tooltip]="pgConfig.showTooltip ? '' : null"
       [labels]="labelsJson"
       [datasets]="datasetsJson"
-      style="width: 100%; height: 380px"
+       class="w-full h-380"
     ></ui-bar-chart>
   </div>
 </pg-playground>

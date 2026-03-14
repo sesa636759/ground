@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.rowH"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.rowH }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.rowH }}px</span>
         </div>
         <div class="control-group">
           <label>Corner Radius</label>
@@ -28,7 +28,7 @@
             [(ngModel)]="cfg.radius"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.radius }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.radius }}px</span>
         </div>
         <div class="checkbox-group">
           <ui-checkbox
@@ -73,11 +73,11 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <div style="width: 100%; max-width: 720px; overflow-x: auto">
-      <svg [attr.width]="svgW" [attr.height]="svgH" style="display: block; font-family: inherit">
+    <div  class="w-full max-w-720 overflow-x-auto">
+      <svg [attr.width]="svgW" [attr.height]="svgH"  class="display-block font-inherit">
         <!-- Header -->
         <rect x="0" y="0" [attr.width]="svgW" [attr.height]="headerH" fill="#f9fafb" />
         <text x="4" [attr.y]="headerH - 8" font-size="11" font-weight="600" fill="#6b7280">

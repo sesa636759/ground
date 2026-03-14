@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .dashboard-preview {
   width: 100%;
   display: flex;
@@ -14,4 +16,3 @@
   flex-wrap: wrap;
   gap: 24px;
 }
-@use '../../../../styles/playground-base.scss';

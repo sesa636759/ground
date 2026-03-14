@@ -102,19 +102,11 @@
 
   <div preview>
     <div
-      class="preview-stage"
-      style="
-        padding: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 400px;
-        background: #fff;
-        width: 100%;
-      "
+      class="preview-stage p-40 display-flex items-center justify-center min-h-400 bg-white w-full"
+      
     >
       <ui-meter-group
-        style="width: 100%; max-width: 600px"
+         class="w-full max-w-600"
         [attr.values]="pgConfig.values"
         [attr.orientation]="pgConfig.orientation"
         [attr.size]="pgConfig.size"

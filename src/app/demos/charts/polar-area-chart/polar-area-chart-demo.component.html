@@ -14,19 +14,19 @@
       <div class="examples-split-layout">
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
         <div class="examples-content">
-          <section class="demo-section" id="skills" style="margin-top: 0">
+          <section class="demo-section mt-0" id="skills" >
             <div class="section-header">
               <h2>🌐 Skills Assessment</h2>
               <p>Compare proficiency levels across technical skill categories.</p>
             </div>
-            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+            <div class="demo-card display-flex justify-center p-24" >
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="right"
                 [responsive]="true"
                 [data]="skillsData"
-                style="width: 520px; height: 380px"
+                 class="w-520 h-380"
               ></app-chart>
             </div>
             <ui-code-preview
@@ -42,14 +42,14 @@
               <h2>🗺️ Sales by Region</h2>
               <p>Visualize regional sales distribution in a polar area format.</p>
             </div>
-            <div class="demo-card" style="display: flex; justify-content: center; padding: 24px">
+            <div class="demo-card display-flex justify-center p-24" >
               <app-chart
                 chartType="polarArea"
                 [showLegend]="true"
                 legendPosition="bottom"
                 [responsive]="true"
                 [data]="salesData"
-                style="width: 520px; height: 380px"
+                 class="w-520 h-380"
               ></app-chart>
             </div>
             <ui-code-preview

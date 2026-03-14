@@ -132,17 +132,8 @@
 
   <div preview>
     <div
-      class="preview-stage"
-      style="
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 450px;
-        background: #fff;
-        width: 100%;
-      "
+      class="preview-stage p-40 display-flex flex-col items-center justify-center min-h-400 bg-white w-full"
+      
     >
       <ui-timer
         #timer
@@ -163,7 +154,7 @@
         [attr.target-date]="pgConfig.targetDate"
       ></ui-timer>
 
-      <div class="control-buttons" style="margin-top: 32px; display: flex; gap: 12px">
+      <div class="control-buttons mt-32 display-flex gap-12" >
         <ui-button (click)="timerStart(timer)" variant="filled" theme="primary">Start</ui-button>
         <ui-button (click)="timerPause(timer)" variant="outlined">Pause</ui-button>
         <ui-button (click)="timerReset(timer)" variant="ghost">Reset</ui-button>

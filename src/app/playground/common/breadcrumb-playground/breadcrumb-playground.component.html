@@ -78,17 +78,11 @@
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
     <div
-      style="
-        background: var(--surface-1);
-        padding: 16px 24px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-        min-width: 300px;
-      "
+       class="bg-surface-1 p-16-24 rounded-8 border min-w-300"
       [style.background]="
         pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''
       "

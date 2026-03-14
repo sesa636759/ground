@@ -18,13 +18,13 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Triggers & Display -->
-          <section class="demo-section" id="triggers" style="margin-top: 0">
+          <section class="demo-section mt-0" id="triggers" >
             <div class="section-header">
               <h2>⚡ Triggers & Display</h2>
               <p>Control how columns expand and how the selected path is rendered.</p>
             </div>
             <div class="demo-card">
-              <div style="width: 300px">
+              <div  class="w-300">
                 <span>Expand on Click:</span>
                 <ui-cascade-select
                   expand-trigger="click"
@@ -32,7 +32,7 @@
                   placeholder="Click to expand"
                 ></ui-cascade-select>
               </div>
-              <div style="width: 300px">
+              <div  class="w-300">
                 <span>Leaf Only Display:</span>
                 <ui-cascade-select
                   [show-full-path]="false"
@@ -56,7 +56,7 @@
               <p>Choose whether to allow selecting intermediate nodes or only leaf nodes.</p>
             </div>
             <div class="demo-card">
-              <div style="width: 300px">
+              <div  class="w-300">
                 <span>Change on Select (Any level):</span>
                 <ui-cascade-select
                   change-on-select

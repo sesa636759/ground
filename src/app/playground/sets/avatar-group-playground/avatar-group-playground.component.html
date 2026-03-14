@@ -118,7 +118,7 @@
         type="color"
         [(ngModel)]="pgConfig.borderColor"
         (ngModelChange)="updateConfig()"
-        style="width: 100%; height: 40px; border: none; background: none; cursor: pointer"
+         class="w-full h-40 border-none bg-none cursor-pointer"
       ></ui-input>
     </div>
   </div>
@@ -147,16 +147,7 @@
 
   <div
     preview
-    style="
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      background: var(--bg-secondary);
-      border-radius: 12px;
-    "
+     class="w-full h-full display-flex justify-center items-center p-40 bg-secondary rounded-12"
   >
     <div class="preview-stage h-scrollable">
       <app-avatar-group

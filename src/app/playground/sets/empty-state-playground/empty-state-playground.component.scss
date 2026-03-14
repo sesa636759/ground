@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .empty-general-section,
 .empty-content-section,
 .empty-actions-section,
@@ -34,7 +36,6 @@
   flex-wrap: wrap;
   gap: 24px;
 }
-@use '../../../../styles/playground-base.scss';
 
 .playground-controls {
   .full-width {

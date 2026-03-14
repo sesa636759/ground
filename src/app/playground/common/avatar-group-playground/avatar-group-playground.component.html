@@ -79,7 +79,7 @@
         (ngModelChange)="updateConfig()"
       ></ui-input>
     </div>
-    <div class="checkbox-grid" style="grid-column: 1 / -1; margin-top: 16px">
+    <div class="checkbox-grid col-span-all mt-16" >
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()"></ui-checkbox>
         Animated
@@ -96,8 +96,8 @@
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
     <ui-avatar-group
       #avatarGroupElement

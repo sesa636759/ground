@@ -107,9 +107,9 @@
               [attr.fill]="s.color"
             />
           </svg>
-          <span style="font-size: 11px; color: #6b7280; font-weight: 500">{{ s.label }}</span>
+          <span  class="fs-11 text-gray-500 font-medium">{{ s.label }}</span>
           <span
-            style="font-size: 14px; font-weight: 700"
+             class="fs-14 font-bold"
             [style.color]="s.trend >= 0 ? '#10b981' : '#f43f5e'"
           >
             {{ s.trend >= 0 ? '+' : '' }}{{ s.trend }}%

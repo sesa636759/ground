@@ -17,7 +17,7 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Visual Colors -->
-          <section class="demo-section" id="colors" style="margin-top: 0">
+          <section class="demo-section mt-0" id="colors" >
             <div class="section-header">
               <h2>🌈 Visual Colors</h2>
               <p>Standard color palettes for different semantic meanings.</p>
@@ -75,7 +75,7 @@
                 <ui-switch label="Rounded" shape="rounded" checked></ui-switch>
                 <ui-switch label="Pill" shape="pill" checked></ui-switch>
                 <ui-switch label="Square" shape="square" checked></ui-switch>
-                <div style="width: 100%; border-top: 1px solid var(--border-color); margin-top: 16px; padding-top: 16px;">
+                <div  class="w-full border-top mt-16 pt-16">
                    <ui-switch label="Square Thumb" thumb-shape="square" checked variant="info"></ui-switch>
                 </div>
               </div>
@@ -115,7 +115,7 @@
               <p>Functional states including loading, disabled, and validation error modes.</p>
             </div>
             <div class="demo-card">
-              <div class="preview-box" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+              <div class="preview-box flex-col items-start gap-16" >
                 <ui-switch label="Disabled" disabled checked></ui-switch>
                 <ui-switch label="Readonly" readonly checked variant="secondary"></ui-switch>
                 <ui-switch label="Loading State" loading checked variant="info"></ui-switch>
@@ -138,7 +138,7 @@
               <p>Advanced effects like gradients, elevation, and interactive feedback.</p>
             </div>
             <div class="demo-card">
-              <div class="preview-box" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+              <div class="preview-box flex-col items-start gap-20" >
                 <ui-switch label="Elevation Level 3" elevation="3" checked></ui-switch>
                 <ui-switch label="Gradient Track" gradient checked></ui-switch>
                 <ui-switch label="Custom Gradient" gradient gradient-colors='["#f43f5e", "#fb923c"]' checked></ui-switch>
@@ -161,12 +161,12 @@
               <p>Switch components support name, value, and auto-submit features for seamless form usage.</p>
             </div>
             <div class="demo-card">
-              <div class="preview-box" style="flex-direction: column; align-items: flex-start; gap: 20px;">
-                <div style="width: 100%; background: var(--surface-low); padding: 16px; border-radius: 8px; border: 1px dashed var(--border-subtle);">
+              <div class="preview-box flex-col items-start gap-20" >
+                <div  class="w-full bg-surface-low p-16 rounded-8 border-subtle-dashed">
                     <ui-switch name="marketing" value="opt-in" label="Subscribe to Product Updates" checked variant="primary"></ui-switch>
                 </div>
-                <div style="width: 100%; background: var(--surface-low); padding: 16px; border-radius: 8px; border: 1px dashed var(--border-subtle);">
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 8px;">Auto-submit sends the form contents instantly when the state changes.</p>
+                <div  class="w-full bg-surface-low p-16 rounded-8 border-subtle-dashed">
+                    <p  class="fs-12 text-muted mb-8">Auto-submit sends the form contents instantly when the state changes.</p>
                     <ui-switch name="save_mode" label="Auto-save Settings" auto-submit variant="success"></ui-switch>
                 </div>
               </div>

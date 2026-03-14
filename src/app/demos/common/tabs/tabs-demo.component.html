@@ -18,7 +18,7 @@
         <!-- Main Content Area -->
         <div class="examples-content">
           <!-- Visual Variants -->
-          <section class="demo-section" id="styles" style="margin-top: 0">
+          <section class="demo-section mt-0" id="styles" >
             <div class="section-header">
               <h2>🎨 Visual Variants</h2>
               <p>Choose the presentation style that matches your application's design system.</p>
@@ -63,7 +63,7 @@
               <p>Switch between horizontal and vertical flows for different navigation patterns.</p>
             </div>
             <div class="demo-card">
-              <div class="tab-preview-box" style="display: flex; flex-direction: column; gap: 20px">
+              <div class="tab-preview-box display-flex flex-col gap-20" >
                 <span>Vertical Orientation:</span>
                 <ui-tabs orientation="vertical">
                   <ui-tab label="Inbox" icon="📥"></ui-tab>
@@ -101,13 +101,13 @@
                 <span>Tab Stack with Multiple Features:</span>
                 <app-tab-stack active-tab="t1" variant="pills">
                   <app-tab label="Dashboard" value="t1" icon="fas fa-home">
-                    <div style="padding: 20px">Dashboard content</div>
+                    <div  class="p-20">Dashboard content</div>
                   </app-tab>
                   <app-tab label="Analytics" value="t2" icon="fas fa-chart-line">
-                    <div style="padding: 20px">Analytics content</div>
+                    <div  class="p-20">Analytics content</div>
                   </app-tab>
                   <app-tab label="Settings" value="t3" icon="fas fa-cog">
-                    <div style="padding: 20px">Settings content</div>
+                    <div  class="p-20">Settings content</div>
                   </app-tab>
                 </app-tab-stack>
               </div>

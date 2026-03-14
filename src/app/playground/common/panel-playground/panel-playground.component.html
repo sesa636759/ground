@@ -94,7 +94,7 @@
   </div>
 
   <div preview class="preview-stage h-scrollable">
-    <div style="width: 100%; max-width: 600px">
+    <div  class="w-full max-w-600">
       <ui-panel
         [attr.panel-title]="pgConfig.panelTitle"
         [attr.panel-subtitle]="pgConfig.panelSubtitle"
@@ -122,13 +122,13 @@
             This interactive panel demonstrates various layout and behavioral capabilities. You can
             titles, subtitles, badges, and control which actions are available in the header.
           </p>
-          <div style="margin-top: 16px; display: flex; gap: 8px">
+          <div  class="mt-16 display-flex gap-8">
             <ui-button label="Action 1" variant="solid"></ui-button>
             <ui-button label="Action 2" variant="soft"></ui-button>
           </div>
         </div>
         <div slot="footer">
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">
+          <span  class="fs-08rem text-muted">
             Last updated: Today at 10:45 AM
           </span>
         </div>

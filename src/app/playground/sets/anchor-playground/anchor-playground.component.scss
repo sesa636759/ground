@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .anchor-global-section,
 .anchor-appearance-section,
 .anchor-behavior-section {
@@ -10,4 +12,3 @@
   background: #fff;
   border-radius: 8px;
 }
-@use '../../../../styles/playground-base.scss';

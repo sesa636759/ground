@@ -18,7 +18,7 @@
           description="Standard slider for selecting a single numeric value."
           [code]="basicCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <ui-range-slider value="30" label="Select Intensity"></ui-range-slider>
             <ui-range-slider step="10" show-marks value="50" label="Stepped Input (Increments of 10)"></ui-range-slider>
           </div>
@@ -31,7 +31,7 @@
           description="Enables two thumbs for selecting a range of values (min and max)."
           [code]="rangeCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <ui-range-slider range start-value="20" end-value="80" label="Price Range"></ui-range-slider>
             <ui-range-slider range start-value="40" end-value="60" color="#10b981" label="Operating Window"></ui-range-slider>
           </div>
@@ -44,7 +44,7 @@
           description="Customize size, color, and tooltip behavior."
           [code]="visualsCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <ui-range-slider size="sm" label="Small Tier Slider"></ui-range-slider>
             <ui-range-slider size="lg" color="#8b5cf6" value="70" label="Large Tier with Custom Purple"></ui-range-slider>
             <ui-range-slider tooltip-always-visible value="45" label="Tooltip Stays Visible"></ui-range-slider>
@@ -58,7 +58,7 @@
           description="Display visual indicators for steps or specific values across the track."
           [code]="marksCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <ui-range-slider show-marks step="25" label="Quarterly Benchmarks"></ui-range-slider>
             <ui-range-slider 
                 show-marks 
@@ -75,9 +75,9 @@
           description="Control value snapping and use non-linear coordinate mapping."
           [code]="advancedCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Restricted Values (Only specific points allowed)</p>
+              <p  class="mb-8 font-medium">Restricted Values (Only specific points allowed)</p>
               <ui-range-slider 
                 [attr.restricted-values]="'[0, 25, 50, 75, 100]'" 
                 show-marks 
@@ -85,7 +85,7 @@
               ></ui-range-slider>
             </div>
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Custom Steps (Non-linear distribution)</p>
+              <p  class="mb-8 font-medium">Custom Steps (Non-linear distribution)</p>
               <ui-range-slider 
                 [attr.custom-steps]="'[0, 10, 20, 50, 100, 200, 500]'" 
                 [attr.max]="500"
@@ -103,7 +103,7 @@
           description="Sliders can be oriented vertically for UI layouts like audio mixers."
           [code]="verticalCode()"
         >
-          <div class="demo-flex" style="height: 300px; gap: 60px; justify-content: center; padding: 20px;">
+          <div class="demo-flex h-300 gap-60 justify-center p-20" >
             <ui-range-slider vertical value="60"></ui-range-slider>
             <ui-range-slider vertical range start-value="30" end-value="70" color="#ef4444"></ui-range-slider>
             <ui-range-slider vertical show-marks step="20" value="40" color="#f59e0b"></ui-range-slider>
@@ -117,7 +117,7 @@
           description="Add context by placing icons at the start and end of the track."
           [code]="iconsCode()"
         >
-          <div class="demo-grid col-1" style="max-width: 500px; gap: 40px">
+          <div class="demo-grid col-1 max-w-500 gap-40" >
             <ui-range-slider 
               start-icon="volume-X" 
               end-icon="volume-2" 

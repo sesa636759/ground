@@ -85,6 +85,7 @@
   --surface-1: #ffffff;
   --surface-2: #fafbfc;
   --surface-3: #f5f7fa;
+  --surface-low: var(--surface-2);
   --surface-elevated: #ffffff;
 
   /* Stencil Compatibility Tokens */
@@ -95,10 +96,20 @@
   --scroll-color-rgb: 61, 205, 88;
 
   --text-primary: #0f172a;
+  --text-color: var(--text-primary);
   --text-secondary: #475569;
   --text-tertiary: #94a3b8;
   --text-muted: #cbd5e1;
+  --color-neutral-500: #6b7280;
+  --color-neutral-800: #1f2937;
+  --color-emerald-500: #10b981;
+  --color-cyan-500: #0ea5e9;
+  --color-slate-50: #f8fafc;
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-blue-100: #dbeafe;
   --border-color: #e2e8f0;
+  --border-subtle: var(--border-color);
   --border-light: #f1f5f9;
   --border-strong: #cbd5e1;
   --overlay: rgba(0, 0, 0, 0.5);
@@ -114,6 +125,7 @@
   --surface-1: #0a1a0e;
   --surface-2: #0d2a1a;
   --surface-3: #1a3321;
+  --surface-low: var(--surface-2);
   --surface-elevated: #0d2a1a;
 
   /* Stencil Compatibility Tokens */
@@ -124,10 +136,12 @@
   --scroll-color-rgb: 61, 205, 88;
 
   --text-primary: #f1f5f9;
+  --text-color: var(--text-primary);
   --text-secondary: #cbd5e1;
   --text-tertiary: #94a3b8;
   --text-muted: #64748b;
   --border-color: rgba(61, 205, 88, 0.1);
+  --border-subtle: var(--border-color);
   --border-light: rgba(61, 205, 88, 0.05);
   --border-strong: rgba(61, 205, 88, 0.2);
   --overlay: rgba(0, 0, 0, 0.75);

@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .timeline-range-row-label {
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -21,7 +23,6 @@
   display: block;
   margin: 0 auto;
 }
-@use '../../../../styles/playground-base.scss';
 
 .chart-preview-wrapper {
   display: flex;

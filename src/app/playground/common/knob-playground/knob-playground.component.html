@@ -186,16 +186,8 @@
   <!-- Preview Area -->
   <div
     preview
-    class="preview-stage"
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 40px;
-      min-height: 300px;
-    "
+    class="preview-stage w-full display-flex justify-center items-center flex-col p-40 min-h-300"
+    
   >
     <ui-knob
       #demoElement
@@ -225,7 +217,7 @@
       (knobChange)="onValueChange($event)"
     ></ui-knob>
 
-    <div style="margin-top: 24px; color: #64748b; font-size: 14px">
+    <div  class="mt-24 text-slate-500 fs-14">
       Current Value: <strong>{{ pgConfig.value }}{{ pgConfig.valueSuffix }}</strong>
     </div>
   </div>

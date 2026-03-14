@@ -218,22 +218,12 @@
   <!-- Preview -->
   <div preview>
     <div
-      class="preview-stage"
+      class="preview-stage p-40 display-flex flex-col items-center justify-center min-h-200 bg-white rounded-8 w-full"
       [style.height]="pgConfig.orientation === 'vertical' ? '400px' : 'auto'"
-      style="
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 200px;
-        background: #fff;
-        border-radius: 8px;
-        width: 100%;
-      "
+      
     >
-      <div *ngIf="pgConfig.orientation === 'horizontal'" style="width: 100%">
-        <p style="color: #94a3b8; font-size: 12px; margin-bottom: 20px">
+      <div *ngIf="pgConfig.orientation === 'horizontal'"  class="w-full">
+        <p  class="text-slate-400 fs-12 mb-20">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua.
         </p>
@@ -272,7 +262,7 @@
           [attr.shape-color]="pgConfig.shapeColor"
           (dividerClick)="onDividerClick()"
         ></ui-divider>
-        <p style="color: #94a3b8; font-size: 12px; margin-top: 20px">
+        <p  class="text-slate-400 fs-12 mt-20">
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
           commodo consequat.
         </p>
@@ -280,7 +270,7 @@
 
       <div
         *ngIf="pgConfig.orientation === 'vertical'"
-        style="display: flex; height: 100%; align-items: center; gap: 24px"
+         class="display-flex h-full items-center gap-24"
       >
         <span>Left Content</span>
         <ui-divider

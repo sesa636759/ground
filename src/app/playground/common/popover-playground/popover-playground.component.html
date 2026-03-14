@@ -16,14 +16,7 @@
     <div class="control-group">
       <label>Body Content (HTML)</label>
       <textarea
-        style="
-          width: 100%;
-          border: 1px solid var(--border-color);
-          border-radius: 8px;
-          padding: 12px;
-          background: var(--surface-1);
-          color: var(--text-primary);
-        "
+         class="w-full border rounded-8 p-12 bg-surface-1 text-primary-color"
         rows="4"
         [(ngModel)]="pgConfig.content"
         (ngModelChange)="updateConfig()"
@@ -90,7 +83,7 @@
   </div>
 
   <div preview class="preview-stage">
-    <div style="width: 100%; display: flex; justify-content: center; align-items: center">
+    <div  class="w-full display-flex justify-center items-center">
       <ui-popover
         #popover
         [attr.heading]="pgConfig.heading"

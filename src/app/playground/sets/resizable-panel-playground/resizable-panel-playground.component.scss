@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .resizable-global-section {
   padding: 16px;
 }
@@ -14,4 +16,3 @@
 .panel-title {
   margin: 0;
 }
-@use '../../../../styles/playground-base.scss';

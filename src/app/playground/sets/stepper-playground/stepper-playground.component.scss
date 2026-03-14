@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .stepper-global-section {
   padding: 16px;
 }
@@ -23,4 +25,3 @@
   flex-wrap: wrap;
   gap: 24px;
 }
-@use '../../../../styles/playground-base.scss';

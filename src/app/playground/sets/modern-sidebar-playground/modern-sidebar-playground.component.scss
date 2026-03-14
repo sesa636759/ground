@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .brand-section,
 .user-section,
 .style-section {
@@ -12,7 +14,6 @@
   display: block;
   height: 100%;
 }
-@use '../../../../styles/playground-base.scss';
 
 .section-title {
   font-size: 0.95rem;

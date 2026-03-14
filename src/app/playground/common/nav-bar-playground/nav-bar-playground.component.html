@@ -38,19 +38,13 @@
 
   <div
     preview
-    class="preview-stage"
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: stretch;
-      padding: 0;
-    "
+    class="preview-stage w-full display-flex justify-start items-stretch p-0"
+    
   >
     <div
-      class="nav-container"
+      class="nav-container h-full border-right"
       [style.width]="pgConfig.collapsed ? '80px' : '280px'"
-      style="height: 100%; border-right: 1px solid var(--border-color)"
+      
     >
       <ui-nav-bar
         #demoElement
@@ -60,24 +54,10 @@
       >
         <div
           slot="header"
-          style="
-            padding: 20px;
-            font-weight: 800;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            height: 60px;
-          "
+           class="p-20 font-extrabold fs-12rem display-flex items-center gap-12 h-60"
         >
           <div
-            style="
-              width: 32px;
-              height: 32px;
-              border-radius: 8px;
-              background: var(--primary-color);
-              flex-shrink: 0;
-            "
+             class="w-32 h-32 rounded-8 bg-primary-color flex-shrink-0"
           ></div>
           <span *ngIf="!pgConfig.collapsed">APPLOGO</span>
         </div>
@@ -85,32 +65,20 @@
         <div
           *ngIf="pgConfig.showFooter"
           slot="footer"
-          style="
-            padding: 20px;
-            border-top: 1px solid var(--border-color);
-            height: 80px;
-            display: flex;
-            align-items: center;
-          "
+           class="p-20 border-top h-80 display-flex items-center"
         >
-          <div style="display: flex; align-items: center; gap: 12px">
+          <div  class="display-flex items-center gap-12">
             <div
-              style="
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-                background: var(--surface-3);
-                flex-shrink: 0;
-              "
+               class="w-32 h-32 rounded-50 bg-surface-3 flex-shrink-0"
             ></div>
-            <div *ngIf="!pgConfig.collapsed" style="font-weight: 500">User Name</div>
+            <div *ngIf="!pgConfig.collapsed"  class="font-medium">User Name</div>
           </div>
         </div>
       </ui-nav-bar>
     </div>
-    <div class="content-area" style="flex: 1; padding: 40px; background: var(--bg-secondary)">
-      <h1 style="margin: 0 0 16px 0; color: var(--text-color)">Page Content</h1>
-      <p style="color: var(--text-secondary); margin: 0">
+    <div class="content-area flex-1 p-40 bg-secondary" >
+      <h1  class="m-0-0-16 text-color">Page Content</h1>
+      <p  class="text-muted m-0">
         The navigation bar is pinned to the side.
       </p>
     </div>

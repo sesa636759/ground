@@ -91,29 +91,13 @@
 
   <div
     preview
-    style="
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: stretch;
-      width: 100%;
-      padding: 40px;
-    "
+     class="display-flex flex-col gap-16 items-stretch w-full p-40"
   >
     <!-- Right-click zone (used when triggerMode = 'zone') -->
     @if (pgConfig.triggerMode === 'zone' || pgConfig.triggerMode === 'no-target') {
       <div
         id="pg-zone"
-        style="
-          padding: 64px 24px;
-          border: 2px dashed var(--color-border, #ccc);
-          border-radius: 12px;
-          text-align: center;
-          cursor: context-menu;
-          user-select: none;
-          color: var(--text-secondary);
-          box-sizing: border-box;
-        "
+         class="p-60 border-dashed-muted rounded-12 text-center cursor-context-menu user-select-none text-muted box-border"
       >
         @if (pgConfig.triggerMode === 'zone') {
           🖱️ <strong>Right-click anywhere in this area</strong> to open the menu
@@ -126,8 +110,8 @@
 
     <!-- Button trigger (used when triggerMode = 'button') -->
     @if (pgConfig.triggerMode === 'button') {
-      <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start">
-        <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem">
+      <div  class="display-flex flex-col gap-8 items-start">
+        <p  class="m-0 text-muted fs-0875rem">
           Click the button to open the menu at its position via <code>el.show(x, y)</code>
         </p>
         <ui-button

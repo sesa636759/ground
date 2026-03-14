@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.size"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.size }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.size }}px</span>
         </div>
         <div class="control-group">
           <label>Track Width</label>
@@ -28,7 +28,7 @@
             [(ngModel)]="cfg.trackWidth"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
+          <span  class="fs-08rem text-muted"
             >{{ cfg.trackWidth }}px</span
           >
         </div>
@@ -42,7 +42,7 @@
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.gap }}px</span>
         </div>
       </div>
       <div class="control-section">
@@ -79,11 +79,11 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <div style="position: relative; display: inline-block">
-      <svg [attr.width]="cfg.size" [attr.height]="cfg.size" style="display: block">
+    <div  class="relative display-inline-block">
+      <svg [attr.width]="cfg.size" [attr.height]="cfg.size"  class="display-block">
         <g
           *ngFor="let bar of bars; let i = index"
           [attr.transform]="'translate(' + cfg.size / 2 + ',' + cfg.size / 2 + ')'"

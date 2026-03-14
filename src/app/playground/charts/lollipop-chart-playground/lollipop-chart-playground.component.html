@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.circleR"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.circleR }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.circleR }}px</span>
         </div>
         <div class="control-group">
           <label>Stick Width</label>
@@ -28,7 +28,7 @@
             [(ngModel)]="cfg.stickW"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.stickW }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.stickW }}px</span>
         </div>
         <div class="control-group">
           <label>Orientation</label>
@@ -73,10 +73,10 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <svg width="580" height="320" style="display: block; font-family: inherit">
+    <svg width="580" height="320"  class="display-block font-inherit">
       <!-- Y grid -->
       <g *ngFor="let t of yTicks">
         <line

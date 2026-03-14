@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .features-section {
   padding: 16px;
 }
@@ -11,7 +13,6 @@
 .card-back-title {
   margin-top: 16px;
 }
-@use '../../../../styles/playground-base.scss';
 
 .appearance-section,
 .content-section {

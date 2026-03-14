@@ -44,24 +44,11 @@
 
   <div
     preview
-    style="
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px;
-    "
+     class="w-full display-flex justify-center items-start p-40"
   >
     <div
-      class="timeline-container"
-      style="
-        width: 100%;
-        max-width: 600px;
-        background: var(--surface-1);
-        padding: 24px;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-      "
+      class="timeline-container w-full max-w-600 bg-surface-1 p-24 rounded-12 border"
+      
     >
       <ui-timeline
         [attr.orientation]="pgConfig.orientation"
@@ -69,14 +56,14 @@
         [value]="valueJson"
       >
         <ng-template let-item>
-          <div style="font-weight: 600">{{ item.status }}</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary)">{{ item.date }}</div>
+          <div  class="font-semibold">{{ item.status }}</div>
+          <div  class="fs-085rem text-muted">{{ item.date }}</div>
           <div *ngIf="pgConfig.showOpposite" slot="opposite">{{ item.description }}</div>
           <div
             *ngIf="pgConfig.customMarker"
             slot="marker"
             [style.background]="item.color"
-            style="width: 12px; height: 12px; border-radius: 50%"
+             class="w-12 h-12 rounded-50"
           ></div>
         </ng-template>
       </ui-timeline>

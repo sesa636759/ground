@@ -48,7 +48,7 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-      <label class="checkbox-item" style="margin-top: 24px">
+      <label class="checkbox-item mt-24" >
         <ui-checkbox
           [(ngModel)]="pgConfig.allowHalf"
           (ngModelChange)="updateConfig()"
@@ -58,7 +58,7 @@
       </label>
     </div>
     <div class="control-group">
-      <label class="checkbox-item" style="margin-top: 24px">
+      <label class="checkbox-item mt-24" >
         <ui-checkbox
           [(ngModel)]="pgConfig.showValue"
           (ngModelChange)="updateConfig()"
@@ -85,10 +85,10 @@
   <!-- Preview -->
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
   >
-    <div style="text-align: center">
+    <div  class="text-center">
       <ui-rating
         #ratingElement
         [attr.type]="pgConfig.type"
@@ -104,9 +104,9 @@
         (ratingChange)="onRatingChange($event)"
       ></ui-rating>
 
-      <div style="margin-top: 24px; color: var(--text-secondary); font-size: 14px">
+      <div  class="mt-24 text-muted fs-14">
         Submitted Rating:
-        <span style="font-weight: 600; color: var(--text-primary); font-size: 18px">
+        <span  class="font-semibold text-primary-color fs-18">
           {{ pgConfig.value }}
         </span>
       </div>

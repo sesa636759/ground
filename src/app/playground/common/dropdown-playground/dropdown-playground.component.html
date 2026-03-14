@@ -100,7 +100,7 @@
       ></ui-checkbox>
     </div>
     <div class="control-group small">
-      <small style="color: var(--text-muted); display: block; margin-top: 4px">
+      <small  class="text-muted display-block mt-4">
         Fixes orientation issues when nested in transformed/scrollable containers.
       </small>
     </div>
@@ -108,16 +108,10 @@
 
   <div
     preview
-    class="preview-stage"
-    style="
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
-      padding: 40px;
-      min-height: 250px;
-    "
+    class="preview-stage flex-col items-stretch gap-16 p-40 min-h-200"
+    
   >
-    <label class="preview-label" style="font-weight: 500; font-size: 0.9rem">
+    <label class="preview-label font-medium fs-09rem" >
       Pick your favorite tech stack:
     </label>
     <ui-dropdown
@@ -140,14 +134,7 @@
 
     <div
       *ngIf="currentValue"
-      style="
-        margin-top: 12px;
-        padding: 12px;
-        background: var(--surface-2);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        font-size: 0.85rem;
-      "
+       class="mt-12 p-12 bg-surface-2 border rounded-md-token fs-085rem"
     >
       <strong>Selected Value:</strong> {{ currentValue }}
     </div>

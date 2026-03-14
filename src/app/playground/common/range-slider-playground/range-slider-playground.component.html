@@ -120,11 +120,11 @@
   <!-- Preview -->
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 40px"
+    class="preview-stage w-full display-flex justify-center items-center p-40"
+    
     [style.height]="pgConfig.vertical ? '400px' : 'auto'"
   >
-    <div style="width: 100%; max-width: 500px">
+    <div  class="w-full max-w-500">
       <ui-range-slider
         #demoElement
         [attr.min]="pgConfig.min"
@@ -150,10 +150,10 @@
       ></ui-range-slider>
 
       <div
-        style="margin-top: 32px; color: var(--text-secondary); font-size: 14px; text-align: center"
+         class="mt-32 text-muted fs-14 text-center"
       >
         Computed Output:
-        <span style="font-weight: 600; color: var(--text-primary)">
+        <span  class="font-semibold text-primary-color">
           {{ pgConfig.range ? pgConfig.startValue + ' to ' + pgConfig.endValue : pgConfig.value }}
         </span>
       </div>

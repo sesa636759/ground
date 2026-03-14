@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .masonry-layout-section,
 .masonry-data-section,
 .masonry-behavior-section,
@@ -12,7 +14,6 @@
   width: 100%;
   border-radius: 8px;
 }
-@use '../../../../styles/playground-base.scss';
 
 .section-title {
   font-size: 0.95rem;

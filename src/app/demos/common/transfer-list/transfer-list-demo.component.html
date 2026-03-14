@@ -18,7 +18,7 @@
           description="Standard list-based transfer with search and select-all capabilities."
           [code]="basicCode()"
         >
-          <div class="demo-box" style="max-width: 800px">
+          <div class="demo-box max-w-800" >
             <ui-transfer-list 
               [attr.source-items]="sourceData | json" 
               [attr.target-items]="targetData | json"
@@ -36,7 +36,7 @@
           description="Switch between List, Table (for multi-column data), and Tree (for hierarchical data)."
           [code]="modesCode()"
         >
-          <div class="demo-grid col-1" style="gap: 48px">
+          <div class="demo-grid col-1 gap-48" >
             <div>
               <p class="demo-label">Table Mode (with Columns)</p>
               <ui-transfer-list 
@@ -115,7 +115,7 @@
           [code]="customRenderCode()"
         >
           <div class="demo-box">
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">This example demonstrates items with badges and rich metadata via custom HTML injection.</p>
+            <p  class="fs-13 text-muted mb-16">This example demonstrates items with badges and rich metadata via custom HTML injection.</p>
             <ui-transfer-list 
               [attr.source-items]="'[{&quot;key&quot;:&quot;1&quot;,&quot;label&quot;:&quot;Urgent Fix&quot;,&quot;priority&quot;:&quot;High&quot;},{&quot;key&quot;:&quot;2&quot;,&quot;label&quot;:&quot;UI Polish&quot;,&quot;priority&quot;:&quot;Low&quot;}]'"
               [attr.item-renderer]="'(item) => \`<div><div>\${item.label}</div><small style=&quot;color:var(--text-tertiary)&quot;>\${item.priority} Priority</small></div>\`'"
@@ -146,7 +146,7 @@
           [code]="filterCode()"
         >
           <div class="demo-box">
-             <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">This component is configured to match against both label and description simultaneously.</p>
+             <p  class="fs-13 text-muted mb-16">This component is configured to match against both label and description simultaneously.</p>
             <ui-transfer-list 
               [attr.source-items]="sourceData | json"
               [attr.filter-option]="'(input, item) => item.label.toLowerCase().includes(input) || (item.description && item.description.toLowerCase().includes(input))'"

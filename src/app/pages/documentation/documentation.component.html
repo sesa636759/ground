@@ -10,16 +10,16 @@
         <h1 class="animate-slide-up">
           Next-Gen <span class="text-gradient">Component</span> Interface
         </h1>
-        <p class="hero-lead animate-slide-up" style="animation-delay: 0.1s">
+        <p class="hero-lead animate-slide-up delay-100" >
           The industry's most sophisticated Design System. Build high-performance applications with
           pre-built components, intelligent design tokens, and a rock-solid foundation.
         </p>
 
         <!-- 🔍 High-Performance Hub Search -->
-        <div class="hub-search-vessel animate-slide-up" style="animation-delay: 0.2s">
+        <div class="hub-search-vessel animate-slide-up delay-200" >
           <div class="search-input-group" [class.focused]="isSearchFocused()">
             <ui-input
-              style="width: 100%"
+               class="w-full"
               type="search"
               size="xxl"
               variant="ghost"
@@ -55,7 +55,7 @@
         </div>
 
         <!-- 📊 Hero Stats Bar -->
-        <div class="hero-stats animate-slide-up" style="animation-delay: 0.35s">
+        <div class="hero-stats animate-slide-up delay-350" >
           <div class="stat-item">
             <div class="stat-value">{{ components().length || 73 }}+</div>
             <div class="stat-label">Core Components</div>
@@ -94,7 +94,7 @@
     </div>
 
     <!-- 🧭 Quick Access Navigation -->
-    <nav class="hub-quick-nav animate-slide-up" style="animation-delay: 0.3s" *ngIf="isHubArea()">
+    <nav class="hub-quick-nav animate-slide-up delay-300"  *ngIf="isHubArea()">
       <div
         class="nav-card"
         [class.active]="activeTab() === 'components'"
@@ -140,8 +140,8 @@
 
     <!-- 🌟 Professional Framework Support Block -->
     <section
-      class="hub-frameworks animate-slide-up"
-      style="animation-delay: 0.4s"
+      class="hub-frameworks animate-slide-up delay-400"
+      
       *ngIf="isHubArea() && !searchText()"
     >
       <div class="framework-container">
@@ -173,8 +173,8 @@
 
     <!-- 💎 Core Pillars / Features Section -->
     <section
-      class="hub-features animate-slide-up"
-      style="animation-delay: 0.5s"
+      class="hub-features animate-slide-up delay-500"
+      
       *ngIf="isHubArea() && !searchText()"
     >
       <div class="section-badge">Why Ground?</div>
@@ -218,8 +218,8 @@
 
     <!-- 🚀 Visual Workflow / Getting Started -->
     <section
-      class="hub-workflow animate-slide-up"
-      style="animation-delay: 0.6s"
+      class="hub-workflow animate-slide-up delay-600"
+      
       *ngIf="isHubArea() && !searchText()"
     >
       <div class="section-badge">Workflow</div>
@@ -280,8 +280,8 @@
 
     <!-- 🛡️ Enterprise Architecture Block -->
     <section
-      class="hub-architecture animate-slide-up"
-      style="animation-delay: 0.65s"
+      class="hub-architecture animate-slide-up delay-650"
+      
       *ngIf="isHubArea() && !searchText()"
     >
       <div class="architecture-container">
@@ -340,8 +340,8 @@
 
     <!-- ⚡ Call to Action Banner -->
     <section
-      class="hub-cta animate-slide-up"
-      style="animation-delay: 0.7s"
+      class="hub-cta animate-slide-up delay-700"
+      
       *ngIf="isHubArea() && !searchText()"
     >
       <div class="cta-banner">
@@ -445,7 +445,7 @@
                   <div class="framework-instructions">
                     <div class="fw-block">
                       <h4>
-                        <i class="fab fa-angular" style="color: #dd0031"></i> Angular Integration
+                        <i class="fab fa-angular text-brand-angular" ></i> Angular Integration
                       </h4>
                       <p>
                         Import <code>CUSTOM_ELEMENTS_SCHEMA</code> and initialize the component
@@ -469,7 +469,7 @@ defineCustomElements();
                     </div>
 
                     <div class="fw-block">
-                      <h4><i class="fab fa-react" style="color: #61dafb"></i> React Integration</h4>
+                      <h4><i class="fab fa-react text-brand-react" ></i> React Integration</h4>
                       <p>
                         We provide first-class React wrapper components so you don't have to
                         manually bind custom DOM events.
@@ -491,7 +491,7 @@ export default function App() {
 
                     <div class="fw-block">
                       <h4>
-                        <i class="fab fa-vuejs" style="color: #42b883"></i> Vue.js Integration
+                        <i class="fab fa-vuejs text-brand-vue" ></i> Vue.js Integration
                       </h4>
                       <p>
                         Vue 3 supports custom elements natively. Just call the web component loader.

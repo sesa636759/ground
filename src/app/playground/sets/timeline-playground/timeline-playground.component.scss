@@ -1,10 +1,11 @@
+@use '../../../../styles/playground-base.scss';
+
 .timeline-preview {
   padding: 32px;
   min-height: 400px;
   background: #fff;
   border-radius: 8px;
 }
-@use '../../../../styles/playground-base.scss';
 
 .control-group {
   input[type='color'] {

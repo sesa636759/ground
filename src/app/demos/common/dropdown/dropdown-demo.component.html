@@ -20,7 +20,7 @@
           description="Standard single selection dropdown with customizable placeholder"
           [code]="basicCode"
         >
-          <div style="max-width: 320px">
+          <div  class="max-w-320">
             <ui-dropdown [options]="jsonOptions(basicOptions)" placeholder="Select one..."></ui-dropdown>
           </div>
         </pg-example-section>
@@ -32,7 +32,7 @@
           description="Options with icons, subtitles, metadata tags, and right-hand decorators"
           [code]="premiumCode"
         >
-          <div style="max-width: 320px">
+          <div  class="max-w-320">
             <ui-dropdown 
               [options]="jsonOptions(premiumOptions)" 
               placeholder="Infrastructure types"
@@ -74,7 +74,7 @@
           description="Integrated search bar with fuzzy filtering for large lists"
           [code]="searchCode"
         >
-          <div style="max-width: 320px">
+          <div  class="max-w-320">
             <ui-dropdown 
               searchable 
               [options]="jsonOptions(premiumOptions)" 
@@ -112,7 +112,7 @@
           description="Three standard sizes to fit any UI density"
           [code]="sizesCode"
         >
-          <div class="demo-flex-wrap" style="align-items: flex-end">
+          <div class="demo-flex-wrap items-end" >
             <ui-dropdown size="sm" [options]="jsonOptions(basicOptions)" placeholder="Small"></ui-dropdown>
             <ui-dropdown size="md" [options]="jsonOptions(basicOptions)" placeholder="Medium"></ui-dropdown>
             <ui-dropdown size="lg" [options]="jsonOptions(basicOptions)" placeholder="Large"></ui-dropdown>

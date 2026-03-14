@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .sparkline-width-label,
 .sparkline-height-label,
 .sparkline-stroke-label {
@@ -26,7 +28,6 @@
   display: block;
   overflow: visible;
 }
-@use '../../../../styles/playground-base.scss';
 
 .chart-preview-wrapper {
   display: flex;

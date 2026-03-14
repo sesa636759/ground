@@ -1,3 +1,5 @@
+@use '../../../../styles/playground-base.scss';
+
 .otp-global-section,
 .otp-appearance-section,
 .otp-states-section {
@@ -16,6 +18,5 @@
   display: flex;
   justify-content: center;
 }
-@use '../../../../styles/playground-base.scss';
 
 /* Playground-specific overrides */

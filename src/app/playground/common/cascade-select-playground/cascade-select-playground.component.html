@@ -59,7 +59,7 @@
   </div>
 
   <div preview class="preview-stage">
-    <div style="width: 100%; display: flex; flex-direction: column; align-items: center">
+    <div  class="w-full display-flex flex-col items-center">
       <ui-cascade-select
         #demoElement
         [attr.placeholder]="pgConfig.placeholder"
@@ -74,15 +74,7 @@
 
       @if (currentValue) {
         <div
-          style="
-            margin-top: 40px;
-            padding: 12px;
-            background: var(--surface-2);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-          "
+           class="mt-40 p-12 bg-surface-2 border rounded-8 font-mono-var fs-08rem"
         >
           Selection Value: {{ currentValue | json }}
         </div>

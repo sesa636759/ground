@@ -230,14 +230,8 @@
   <!-- Preview Area -->
   <div preview>
     <div
-      class="preview-stage h-scrollable"
-      style="
-        padding: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 200px;
-      "
+      class="preview-stage h-scrollable p-24 display-flex justify-center items-center min-h-200"
+      
     >
       <ui-button-toggle-group
         #demoElement
@@ -277,12 +271,12 @@
         <div
           *ngIf="pgConfig.customContent"
           slot="dropdown-content"
-          class="custom-slot-content"
-          style="padding: 12px; min-width: 200px"
+          class="custom-slot-content p-12 min-w-200"
+          
         >
-          <p style="margin: 0 0 8px 0; font-weight: 600">Custom Filter Content</p>
+          <p  class="mb-8-only font-semibold">Custom Filter Content</p>
           <ui-input type="text" placeholder="Filter results..."></ui-input>
-          <div style="display: flex; gap: 8px; margin-top: 12px">
+          <div  class="display-flex gap-8 mt-12">
             <ui-button label="Apply" size="xs" variant="primary"></ui-button>
             <ui-button label="Clear" size="xs" variant="outline"></ui-button>
           </div>

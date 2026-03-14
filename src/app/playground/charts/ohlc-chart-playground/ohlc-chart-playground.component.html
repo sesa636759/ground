@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.barW"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.barW }}px</span>
+          <span  class="fs-08rem text-muted">{{ cfg.barW }}px</span>
         </div>
         <div class="control-group">
           <label>Up Color</label>
@@ -69,10 +69,10 @@
   </div>
   <div
     preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
+    class="chart-preview-wrapper w-full display-flex justify-center"
+    
   >
-    <svg width="620" height="340" style="display: block; font-family: inherit">
+    <svg width="620" height="340"  class="display-block font-inherit">
       <!-- Grid -->
       <g *ngFor="let t of yTicks">
         <line
