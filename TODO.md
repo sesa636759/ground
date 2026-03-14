@@ -1,29 +1,19 @@
-# CSS Refactor: Inline Styles to Classes
+# Merge playground-base.scss and playground-common.scss (Option 1)
 
-## Phase 1: Open-tab playgrounds (6 files)
+## Overview
 
-- [x] carousel-playground: Extract preview/carousel styles to .scss
-- [x] context-menu-playground: Extract trigger-area/preview styles
-- [x] dock-overlay-playground: Extract dock-overlay-preview styles
-- [ ] otp-input-playground: Read & refactor inline styles
-- [x] card-playground: Read & refactor (minimal expected)
-- [x] layout-manager-playground: Read & refactor inline styles
+Append playground-common.scss content into playground-base.scss, delete playground-common.scss, and remove @use '../../../../styles/playground-common.scss'; lines from selective playground component SCSS files.
 
-## Phase 2: High-impact files (10+)
+**Status: [0/7] In Progress**
 
-- [ ] empty-state-playground
-- [ ] code-editor-playground
-- [ ] button-toggle-playground
-- [ ] avatar-group-playground
-- [ ] etc. from search results
+## Steps
 
-## Phase 3: Remaining playgrounds
+- [ ] Step 1: Read open/visible playground SCSS files to confirm @use patterns (carousel, context-menu, dock).
+      **Status: [6/7]**
+- [x] Step 5: Run `ng build` to check SCSS compilation. ✅ (No errors)
+- [ ] Step 6: Test affected playground demos.
+- [ ] Step 7: Update status to Complete, attempt_completion.
 
-- Scan & batch common patterns
+## Risks
 
-## Post-edit
-
-- [ ] ng serve & visual check
-- [ ] ng lint
-- [ ] Commit to blackboxai/css-refactor branch
-- [ ] Update CSS_REFACTORING.md
+- Missing a @use playground-common in some playground → styles missing (mitigate: search_files post-merge).
