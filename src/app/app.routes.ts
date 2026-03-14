@@ -121,7 +121,7 @@ export const routes: Routes = [
       {
         path: 'card',
         loadComponent: () =>
-          import('./demos/sets/card/card-demo.component').then((m) => m.DmCardDemoComponent),
+          import('./demos/common/card/card-demo.component').then((m) => m.DmCardDemoComponent),
       },
       {
         path: 'context-menu',

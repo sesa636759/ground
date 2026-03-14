@@ -17,7 +17,7 @@ import { BasePlaygroundComponent } from '../../../shared/components/demo-playgro
   styleUrl: './card-playground.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class DmCardPlaygroundComponent extends BasePlaygroundComponent {
+export class DsCardPlaygroundComponent extends BasePlaygroundComponent {
   @ViewChild('cardSet') cardSet!: ElementRef;
 
   // Playground State

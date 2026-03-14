@@ -1,4 +1,4 @@
-﻿<pg-playground
+<pg-playground
   [items]="pgAccordionItems"
   [defaultOpen]="defaultOpen"
   [code]="generatedCode()"
@@ -6,7 +6,7 @@
 >
   <div slot="content-config" class="control-grid" style="padding: 16px">
     <div class="control-group">
-      <label>Separator</label>
+      <label>Separator Text</label>
       <ui-input
         type="text"
         [(ngModel)]="pgConfig.separator"
@@ -48,6 +48,34 @@
     </div>
   </div>
 
+  <div slot="content-icons" class="control-grid" style="padding: 16px">
+    <div class="control-group">
+      <label>Separator Icon</label>
+      <ui-input
+        type="text"
+        placeholder="e.g., chevron-right"
+        [(ngModel)]="pgConfig.separatorIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Home Icon</label>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.homeIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
+    </div>
+    <div class="control-group">
+      <label>Icon Library</label>
+      <ui-dropdown
+        [(ngModel)]="pgConfig.iconLibrary"
+        (ngModelChange)="updateConfig()"
+        [options]="iconLibraryOptions"
+      ></ui-dropdown>
+    </div>
+  </div>
+
   <div
     preview
     class="preview-stage"
@@ -59,84 +87,24 @@
         padding: 16px 24px;
         border-radius: 8px;
         border: 1px solid var(--border-color);
+        min-width: 300px;
       "
+      [style.background]="pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''"
     >
       <ui-breadcrumb
         #demoElement
         [attr.separator]="pgConfig.separator"
+        [attr.separator-icon]="pgConfig.separatorIcon"
+        [attr.separator-icon-library]="pgConfig.separatorIconLibrary"
         [attr.max-items]="pgConfig.maxItems"
         [attr.size]="pgConfig.size"
         [attr.variant]="pgConfig.variant"
         [attr.show-home]="pgConfig.showHome ? '' : null"
+        [attr.home-icon]="pgConfig.homeIcon"
+        [attr.home-icon-library]="pgConfig.homeIconLibrary"
+        [attr.icon-library]="pgConfig.iconLibrary"
         [items]="itemsJson"
         (breadcrumbClick)="onBreadcrumbClick($event)"
-      ></ui-breadcrumb>
-    </div>
-  </div>
-
-  <!-- All possible variants/examples -->
-  <div style="margin-top: 32px">
-    <h3>All Variants & Examples</h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 24px">
-      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default" show-home></ui-breadcrumb>
-      <ui-breadcrumb [items]="itemsJson" separator=">" variant="pills" show-home></ui-breadcrumb>
-      <ui-breadcrumb [items]="itemsJson" separator="•" variant="glass" show-home></ui-breadcrumb>
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="/"
-        variant="default"
-        [attr.max-items]="2"
-      ></ui-breadcrumb>
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="/"
-        variant="pills"
-        [attr.max-items]="3"
-      ></ui-breadcrumb>
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="/"
-        variant="glass"
-        [attr.max-items]="4"
-      ></ui-breadcrumb>
-      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default"></ui-breadcrumb>
-      <ui-breadcrumb [items]="itemsJson" separator="/" variant="pills"></ui-breadcrumb>
-      <ui-breadcrumb [items]="itemsJson" separator="/" variant="glass"></ui-breadcrumb>
-      <!-- Edge cases -->
-      <!-- Collapsed, custom separator, no home -->
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="~"
-        variant="default"
-        [attr.max-items]="2"
-      ></ui-breadcrumb>
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="|"
-        variant="glass"
-        [attr.max-items]="3"
-      ></ui-breadcrumb>
-      <ui-breadcrumb
-        [items]="itemsJson"
-        separator="/"
-        variant="pills"
-        [attr.max-items]="2"
-      ></ui-breadcrumb>
-      <!-- No home icon -->
-      <ui-breadcrumb [items]="itemsJson" separator="/" variant="default"></ui-breadcrumb>
-      <!-- Items with icons/badges -->
-      <ui-breadcrumb
-        [items]="longItemsJson"
-        separator="/"
-        variant="default"
-        show-home
-      ></ui-breadcrumb>
-      <!-- Very long breadcrumb path -->
-      <ui-breadcrumb
-        [items]="veryLongItemsJson"
-        separator="/"
-        variant="default"
-        [attr.max-items]="4"
       ></ui-breadcrumb>
     </div>
   </div>

@@ -15,9 +15,12 @@
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content" id="examples-scroll-area">
-          <!-- Variants -->
-          <section class="demo-section" id="variants">
-            <div class="section-header"><h2>Visual Variants</h2><p>Different visual styles for various contexts.</p></div>
+          <pg-example-section
+            id="variants"
+            title="Visual Variants"
+            description="Different visual styles for various contexts."
+            [code]="variantsCode"
+          >
             <div class="demo-card">
               <div class="demo-flex">
                 <ui-chip label="Filled" variant="filled" color="primary"></ui-chip>
@@ -27,12 +30,14 @@
                 <ui-chip label="Text Only" variant="text" color="danger"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="variantsCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Shapes & Sizes -->
-          <section class="demo-section" id="shapes-sizes">
-            <div class="section-header"><h2>Shapes & Sizes</h2><p>Control the geometry and scale of the chip.</p></div>
+          <pg-example-section
+            id="shapes-sizes"
+            title="Shapes & Sizes"
+            description="Control the geometry and scale of the chip."
+            [code]="shapesSizesCode"
+          >
             <div class="demo-card chip-stack">
               <div class="demo-flex">
                 <ui-chip label="Pill" shape="pill" color="info"></ui-chip>
@@ -46,12 +51,14 @@
                 <ui-chip label="Large" size="lg" color="secondary"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="shapesSizesCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Media -->
-          <section class="demo-section" id="media">
-            <div class="section-header"><h2>Icons, Avatars & Media</h2><p>Embed rich media like icons, images, or user avatars.</p></div>
+          <pg-example-section
+            id="media"
+            title="Icons, Avatars & Media"
+            description="Embed rich media like icons, images, or user avatars."
+            [code]="mediaCode"
+          >
             <div class="demo-card">
               <div class="demo-flex">
                 <ui-chip label="Github" icon="github" icon-library="lucide"></ui-chip>
@@ -59,12 +66,14 @@
                 <ui-chip label="Scenic View" image="https://picsum.photos/20/20"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="mediaCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Indicators -->
-          <section class="demo-section" id="indicators">
-            <div class="section-header"><h2>Badges & Counters</h2><p>Display numeric or text status indicators within the chip.</p></div>
+          <pg-example-section
+            id="indicators"
+            title="Badges & Counters"
+            description="Display numeric or text status indicators within the chip."
+            [code]="indicatorsCode"
+          >
             <div class="demo-card">
               <div class="demo-flex">
                 <ui-chip label="Notifications" badge="99" color="danger"></ui-chip>
@@ -72,12 +81,14 @@
                 <ui-chip label="Status" counter="Critical" color="danger" variant="soft"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="indicatorsCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Orientations -->
-          <section class="demo-section" id="orientations">
-            <div class="section-header"><h2>Vertical & Rotated</h2><p>Unique layouts for vertical pipelines or rotated sidebar navigation.</p></div>
+          <pg-example-section
+            id="orientations"
+            title="Vertical & Rotated"
+            description="Unique layouts for vertical pipelines or rotated sidebar navigation."
+            [code]="orientationsCode"
+          >
             <div class="demo-card">
               <div class="demo-flex" style="height: 120px; align-items: center;">
                 <ui-chip label="Horizontal" orientation="horizontal"></ui-chip>
@@ -86,12 +97,14 @@
                 <ui-chip label="Vertical Rotated" orientation="vertical-rotated"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="orientationsCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Actions -->
-          <section class="demo-section" id="actions">
-            <div class="section-header"><h2>Actions & States</h2><p>Interactive behaviors and states for selection or processing.</p></div>
+          <pg-example-section
+            id="actions"
+            title="Actions & States"
+            description="Interactive behaviors and states for selection or processing."
+            [code]="actionsCode"
+          >
             <div class="demo-card chip-stack">
               <div class="demo-flex">
                 <ui-chip label="Clickable" clickable color="info" (chipClick)="onChipClick()"></ui-chip>
@@ -104,12 +117,14 @@
                 <ui-chip label="Hover me" color="success" tooltip="Hello world!"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="actionsCode" activeLang="html"></ui-code-preview>
-          </section>
+          </pg-example-section>
 
-          <!-- Animations -->
-          <section class="demo-section" id="animations">
-            <div class="section-header"><h2>Animations</h2><p>Control how the chip appears or disappears.</p></div>
+          <pg-example-section
+            id="animations"
+            title="Animations"
+            description="Control how the chip appears or disappears."
+            [code]="animationsCode"
+          >
             <div class="demo-card">
               <div class="demo-flex">
                 <ui-chip label="Scale" animation="scale" color="primary"></ui-chip>
@@ -118,9 +133,7 @@
                 <ui-chip label="Bounce" animation="bounce" color="danger"></ui-chip>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="animationsCode" activeLang="html"></ui-code-preview>
-          </section>
-
+          </pg-example-section>
         </div>
       </div>
     </div>

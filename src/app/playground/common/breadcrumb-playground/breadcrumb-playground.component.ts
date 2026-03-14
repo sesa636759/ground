@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -27,9 +27,10 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
   pgAccordionItems = [
     { id: 'config', title: 'Configuration', icon: 'settings', iconLibrary: 'lucide' },
     { id: 'appearance', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'icons', title: 'Icons & Separators', icon: 'icons', iconLibrary: 'lucide' },
   ];
 
-  defaultOpen = ['config'];
+  defaultOpen = ['config', 'appearance'];
 
   variantOptions = [
     { label: 'Default', value: 'default' },
@@ -46,23 +47,6 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
 
   itemsJson = JSON.stringify(this.items);
 
-  // Edge case: items with icons/badges
-  longItems = [
-    { label: 'Home', icon: 'fas fa-home', badge: 'New', href: '/' },
-    { label: 'Category', icon: 'fas fa-folder', href: '/category' },
-    { label: 'Subcategory', icon: 'fas fa-tags', badge: '!', href: '/category/sub' },
-    { label: 'Product', icon: 'fas fa-box', href: '/category/sub/product' },
-    { label: 'Details', active: true },
-  ];
-  longItemsJson = JSON.stringify(this.longItems);
-
-  // Edge case: very long breadcrumb path
-  veryLongItems = Array.from({ length: 12 }, (_, i) => ({
-    label: `Step ${i + 1}`,
-    href: `/step/${i + 1}`,
-  })).concat([{ label: 'Final', href: '/step/final' }]);
-  veryLongItemsJson = JSON.stringify(this.veryLongItems);
-
   constructor() {
     super();
   }
@@ -74,10 +58,15 @@ export class DmBreadcrumbPlaygroundComponent extends BasePlaygroundComponent imp
   getDefaultConfig() {
     return {
       separator: '/',
+      separatorIcon: '',
+      separatorIconLibrary: 'lucide',
       maxItems: 0,
       size: 'md',
       variant: 'default',
       showHome: true,
+      homeIcon: 'home',
+      homeIconLibrary: 'lucide',
+      iconLibrary: 'lucide'
     };
   }
 

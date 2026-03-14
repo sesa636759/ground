@@ -1,4 +1,4 @@
-﻿import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -16,16 +16,23 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
   pgAccordionItems = [
     { id: 'content', title: 'Content & Value', icon: 'settings', iconLibrary: 'lucide' },
     { id: 'appearance', title: 'Appearance & Style', icon: 'palette', iconLibrary: 'lucide' },
-    { id: 'behavior', title: 'Behavior & Animation', icon: 'settings', iconLibrary: 'lucide' },
+    { id: 'layout', title: 'Layout & Position', icon: 'move', iconLibrary: 'lucide' },
+    { id: 'behavior', title: 'Behavior & Interaction', icon: 'zap', iconLibrary: 'lucide' },
   ];
 
-  accordionDefaultOpen = ['content'];
+  accordionDefaultOpen = ['content', 'appearance'];
 
   variantOptions = [
     { label: 'Standard', value: 'standard' },
     { label: 'Outlined', value: 'outlined' },
     { label: 'Bordered', value: 'bordered' },
     { label: 'Soft', value: 'soft' },
+  ];
+
+  shapeOptions = [
+    { label: 'Default (Pill)', value: 'default' },
+    { label: 'Circle', value: 'circle' },
+    { label: 'Square', value: 'square' },
   ];
 
   positionOptions = [
@@ -42,6 +49,18 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     { label: 'Shake', value: 'shake' },
   ];
 
+  iconPositionOptions = [
+    { label: 'Start', value: 'start' },
+    { label: 'End', value: 'end' },
+  ];
+
+  gradientOptions = [
+    { label: 'None', value: '' },
+    { label: 'Blue Purple', value: 'blue-purple' },
+    { label: 'Green Teal', value: 'green-teal' },
+    { label: 'Orange Red', value: 'orange-red' },
+  ];
+
   getDefaultConfig() {
     return {
       value: '5',
@@ -49,11 +68,20 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
       color: 'danger',
       size: 'md',
       variant: 'standard',
+      shape: 'default',
       position: 'top-right',
       animation: 'none',
       dot: false,
       glow: false,
       icon: '',
+      iconPosition: 'start',
+      iconLibrary: 'lucide',
+      offsetX: 0,
+      offsetY: 0,
+      gradient: '',
+      interactive: false,
+      closeable: false,
+      showZero: false
     };
   }
 
@@ -61,22 +89,43 @@ export class DmBadgePlaygroundComponent extends BasePlaygroundComponent {
     let code = '<ui-badge\n';
     if (!this.pgConfig.dot) code += `  value="${this.pgConfig.value}"\n`;
     if (this.pgConfig.max !== 99) code += `  [max]="${this.pgConfig.max}"\n`;
+    
     code += `  color="${this.pgConfig.color}"\n`;
     code += `  size="${this.pgConfig.size}"\n`;
     code += `  variant="${this.pgConfig.variant}"\n`;
+    code += `  shape="${this.pgConfig.shape}"\n`;
     code += `  position="${this.pgConfig.position}"\n`;
+    
     if (this.pgConfig.animation !== 'none') code += `  animation="${this.pgConfig.animation}"\n`;
     if (this.pgConfig.dot) code += `  dot\n`;
     if (this.pgConfig.glow) code += `  glow\n`;
-    if (this.pgConfig.icon) code += `  icon="${this.pgConfig.icon}"\n`;
+    if (this.pgConfig.interactive) code += `  interactive\n`;
+    if (this.pgConfig.closeable) code += `  closeable\n`;
+    if (this.pgConfig.showZero) code += `  show-zero\n`;
+    
+    if (this.pgConfig.icon) {
+      code += `  icon="${this.pgConfig.icon}"\n`;
+      code += `  icon-position="${this.pgConfig.iconPosition}"\n`;
+      code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+    }
+    
+    if (this.pgConfig.gradient) code += `  gradient="${this.pgConfig.gradient}"\n`;
+    if (this.pgConfig.offsetX !== 0) code += `  [offset-x]="${this.pgConfig.offsetX}"\n`;
+    if (this.pgConfig.offsetY !== 0) code += `  [offset-y]="${this.pgConfig.offsetY}"\n`;
+    
     code += '>\n';
-    code += '  <icon>🔔</icon>\n';
+    code += '  <div style="width: 48px; height: 48px; background: var(--surface-2); border-radius: 8px;"></div>\n';
     code += '</ui-badge>';
 
     this.generatedCode.set(code);
     this.refreshCode();
   }
+
+  onBadgeClick() {
+    this.logEvent('Badge Clicked');
+  }
+
+  onBadgeClose() {
+    this.logEvent('Badge Closed');
+  }
 }
-
-
-
