@@ -24,40 +24,31 @@ import { BaseDemoComponent } from '../../../shared/base-demo.component';
 })
 export class DmListDemoComponent extends BaseDemoComponent {
   exampleVariants = [
-    { id: 'basic', title: 'Basic & Variants', icon: 'list', iconLibrary: 'lucide' },
-    { id: 'layouts', title: 'Layout Modes', icon: 'layout-template', iconLibrary: 'lucide' },
-    { id: 'nesting', title: 'Nesting & Hierarchy', icon: 'list-tree', iconLibrary: 'lucide' },
-    { id: 'selection', title: 'Selection & Interactivity', icon: 'check-square', iconLibrary: 'lucide' },
-    { id: 'grouping', title: 'Grouping & Headers', icon: 'layers', iconLibrary: 'lucide' },
-    { id: 'context', title: 'Context Menus', icon: 'mouse-pointer-click', iconLibrary: 'lucide' },
-    { id: 'visuals', title: 'Visual Enhancements', icon: 'sparkles', iconLibrary: 'lucide' },
-    { id: 'advanced', title: 'Data & States', icon: 'database', iconLibrary: 'lucide' },
+    { id: 'variants', title: 'Visual Variants', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'layouts', title: 'Layout Orientations', icon: 'layout', iconLibrary: 'lucide' },
+    { id: 'nesting', title: 'Nesting & Tree', icon: 'list-tree', iconLibrary: 'lucide' },
+    { id: 'selection', title: 'Selection Modes', icon: 'check-square', iconLibrary: 'lucide' },
+    { id: 'headers', title: 'Headers & Groups', icon: 'layers', iconLibrary: 'lucide' },
+    { id: 'interactive', title: 'Interactive Features', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
+    { id: 'performance', title: 'Performance & Data', icon: 'zap', iconLibrary: 'lucide' },
+    { id: 'states', title: 'Loading & Empty', icon: 'ghost', iconLibrary: 'lucide' },
+    { id: 'sizes', title: 'Sizes & Spacing', icon: 'move-vertical', iconLibrary: 'lucide' },
   ];
 
-  basicCode = signal(`<ui-list variant="filled" color="primary">
-  <ui-list-item label="Item 1" icon="fas fa-star"></ui-list-item>
-  <ui-list-item label="Item 2" icon="fas fa-heart"></ui-list-item>
-</ui-list>`);
+  basicCode = `<ui-list variant="filled" color="primary">
+  <ui-list-item label="Item 1" icon="lucide-star"></ui-list-item>
+  <ui-list-item label="Item 2" icon="lucide-heart"></ui-list-item>
+</ui-list>`;
 
-  layoutCode = signal(`<ui-list horizontal>
-  <ui-list-item label="H-Item 1"></ui-list-item>
-  <ui-list-item label="H-Item 2"></ui-list-item>
-</ui-list>
+  layoutCode = `<ui-list horizontal>...</ui-list>\n<ui-list numbered>...</ui-list>`;
 
-<ui-list numbered>
-  <ui-list-item label="First Step"></ui-list-item>
-  <ui-list-item label="Second Step"></ui-list-item>
-</ui-list>`);
+  nestingCode = `<ui-list-item label="Parent" collapsible expanded>
+  <div slot="children">
+    <ui-list-item label="Child" level="1"></ui-list-item>
+  </div>
+</ui-list-item>`;
 
-  nestingCode = signal(`<ui-list variant="soft">
-  <ui-list-item label="Parent" collapsible expanded>
-    <div slot="children">
-      <ui-list-item label="Child" level="1"></ui-list-item>
-    </div>
-  </ui-list-item>
-</ui-list>`);
+  selectionCode = `<ui-list selectable multi-select checkbox-selection>...</ui-list>`;
 
-  selectionCode = signal(`<ui-list selectable multi-select checkbox-selection>
-  <ui-list-item label="Multi-select Task"></ui-list-item>
-</ui-list>`);
+  performanceCode = `<ui-list virtual-scroll [attr.items]="largeData"></ui-list>`;
 }

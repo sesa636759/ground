@@ -27,8 +27,12 @@
                 <ui-pagination variant="filled" theme="primary" [attr.total-items]="100" [attr.items-per-page]="10"></ui-pagination>
               </div>
               <div class="demo-row">
-                <p>Outlined Shape</p>
-                <ui-pagination variant="outlined" shape="rounded" theme="success" [attr.total-items]="80"></ui-pagination>
+                <p>Soft Theme</p>
+                <ui-pagination variant="soft" theme="info" [attr.total-items]="100"></ui-pagination>
+              </div>
+              <div class="demo-row">
+                <p>Outlined Style</p>
+                <ui-pagination variant="outlined" theme="success" [attr.total-items]="80"></ui-pagination>
               </div>
             </div>
             <ui-code-preview [htmlCode]="basicCode()" activeLang="html"></ui-code-preview>
@@ -38,7 +42,7 @@
           <section class="demo-section" id="detailed">
             <div class="section-header">
               <h2>Detailed Controls</h2>
-              <p>Combines total counts, page sizing, and direct "jump to" input for complex data management.</p>
+              <p>Combines total counts, page sizing, and direct "jump to" input.</p>
             </div>
             <div class="demo-card">
               <ui-pagination
@@ -57,11 +61,10 @@
           <section class="demo-section" id="minimal">
             <div class="section-header">
               <h2>Minimalist Styles</h2>
-              <p>Simplified controls for lean interfaces.</p>
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
-                <p>Minimal Type</p>
+                <p>Minimal Type (Arrow only)</p>
                 <ui-pagination type="minimal" [attr.total-items]="100" size="sm"></ui-pagination>
               </div>
               <div class="demo-row">
@@ -79,7 +82,7 @@
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
-                <p>Infinite Style (Static)</p>
+                <p>Infinite Style (Load More)</p>
                 <ui-pagination infinite [attr.total-items]="1000" [attr.items-per-page]="50"></ui-pagination>
               </div>
               <div class="demo-row">
@@ -94,7 +97,6 @@
           <section class="demo-section" id="modes">
             <div class="section-header">
               <h2>Selector Modes</h2>
-              <p>Alternate interaction models using standard form inputs.</p>
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
@@ -113,7 +115,7 @@
           <section class="demo-section" id="visuals">
             <div class="section-header">
               <h2>Visual Progress</h2>
-              <p>Dot indicators for carousels and progress bars for wizard flows.</p>
+              <p>Dot indicators for carousels and progress bars.</p>
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
@@ -121,54 +123,61 @@
                 <ui-pagination type="indicator" theme="primary" [attr.total-items]="50"></ui-pagination>
               </div>
               <div class="demo-row">
-                <p>Progress Tracker</p>
+                <p>Progress Bar Mode</p>
                 <ui-pagination show-progress theme="success" [attr.total-items]="100" [attr.current-page]="6"></ui-pagination>
               </div>
             </div>
           </section>
 
-          <!-- Themes & Shapes -->
-          <section class="demo-section" id="themes">
+          <!-- Shapes & Borders -->
+          <section class="demo-section" id="shapes">
             <div class="section-header">
-              <h2>Themes & Layout Refinement</h2>
-              <p>Customizing labels, icons, and RTL support.</p>
+              <h2>Shapes & Borders</h2>
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
-                <p>Custom Labels</p>
-                <ui-pagination
-                  first-text="START"
-                  last-text="END"
-                  prev-text="PREV"
-                  next-text="NEXT"
-                  [attr.total-items]="100"
-                ></ui-pagination>
+                <p>Pill Shape</p>
+                <ui-pagination shape="pill" variant="filled" [attr.total-items]="100"></ui-pagination>
               </div>
               <div class="demo-row">
-                <p>RTL Layout (Right-to-Left)</p>
-                <ui-pagination rtl [attr.total-items]="100" theme="secondary"></ui-pagination>
+                <p>Rounded Square</p>
+                <ui-pagination shape="rounded" variant="outlined" [attr.total-items]="100"></ui-pagination>
+              </div>
+              <div class="demo-row">
+                <p>Sharp Square</p>
+                <ui-pagination shape="square" variant="soft" [attr.total-items]="100"></ui-pagination>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="labelsCode()" activeLang="html"></ui-code-preview>
+          </section>
+
+          <!-- Color Themes -->
+          <section class="demo-section" id="themes">
+            <div class="section-header">
+              <h2>Color Themes</h2>
+            </div>
+            <div class="demo-card pagination-stack">
+              <ui-pagination theme="warning" [attr.total-items]="100"></ui-pagination>
+              <ui-pagination theme="error" [attr.total-items]="100"></ui-pagination>
+              <ui-pagination theme="secondary" [attr.total-items]="100"></ui-pagination>
+            </div>
           </section>
 
           <!-- Behavioral Logic -->
           <section class="demo-section" id="logic">
             <div class="section-header">
               <h2>Behavioral Logic</h2>
-              <p>Keyboard navigation, persistence, and smart responsive switching.</p>
             </div>
             <div class="demo-card pagination-stack">
               <div class="demo-row">
-                <p>Quick Jump (+5/-5)</p>
-                <ui-pagination quick-jump [attr.quick-jump-step]="5" [attr.total-items]="1000" [attr.current-page]="10"></ui-pagination>
+                <p>Quick Jump Step (+10)</p>
+                <ui-pagination quick-jump [attr.quick-jump-step]="10" [attr.total-items]="1000" [attr.current-page]="50"></ui-pagination>
               </div>
               <div class="demo-row">
-                <p>Smart Compact (Threshold: 10 pages)</p>
-                <ui-pagination smart-compact [attr.smart-compact-threshold]="10" [attr.total-items]="500" theme="warning"></ui-pagination>
+                <p>Smart Compact Mode</p>
+                <ui-pagination smart-compact [attr.smart-compact-threshold]="5" [attr.total-items]="500" theme="warning"></ui-pagination>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="advancedCode()" activeLang="html"></ui-code-preview>
+            <ui-code-preview [htmlCode]="logicCode()" activeLang="html"></ui-code-preview>
           </section>
         </div>
       </div>
@@ -181,7 +190,7 @@
 </div>
 
 <style>
-  .pagination-stack { display: flex; flex-direction: column; gap: 32px; }
+  .pagination-stack { display: flex; flex-direction: column; gap: 32px; padding: 20px; }
   .demo-row { display: flex; flex-direction: column; gap: 12px; }
-  .demo-row p { font-size: 13px; font-weight: 600; color: #64748b; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; }
+  .demo-row p { font-size: 11px; font-weight: 700; color: #94a3b8; margin: 0; text-transform: uppercase; }
 </style>

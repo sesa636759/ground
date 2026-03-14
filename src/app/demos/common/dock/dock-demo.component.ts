@@ -65,6 +65,6 @@ export class DmDockDemoComponent extends BaseDemoComponent {
   osCode = `<ui-dock [items]="osItems" magnify blur-effect icon-library="lucide"></ui-dock>`;
 
   handleItemClick(ev: any) {
-    this.logEvent(`Dock Item Clicked: ${ev.detail.itemId}`);
+    console.log(`Dock Item Clicked: ${ev.detail.itemId}`);
   }
 }

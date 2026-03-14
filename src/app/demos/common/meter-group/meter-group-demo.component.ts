@@ -26,41 +26,26 @@ export class DmMeterGroupDemoComponent extends BaseDemoComponent {
   exampleVariants = [
     { id: 'basic', title: 'Basic Layouts', icon: 'ruler', iconLibrary: 'lucide' },
     { id: 'shapes', title: 'Line vs Circle', icon: 'shapes', iconLibrary: 'lucide' },
+    { id: 'vertical', title: 'Vertical Ticks', icon: 'move-vertical', iconLibrary: 'lucide' },
     { id: 'sizing', title: 'Sizes & Thickness', icon: 'maximize-2', iconLibrary: 'lucide' },
     { id: 'legend', title: 'Legends & Labels', icon: 'list', iconLibrary: 'lucide' },
     { id: 'icons', title: 'Icons & Libraries', icon: 'sparkles', iconLibrary: 'lucide' },
-    { id: 'interactive', title: 'Interactive Mode', icon: 'touch-interaction', iconLibrary: 'lucide' },
+    { id: 'interactive', title: 'Interactive Mode', icon: 'mouse-pointer-2', iconLibrary: 'lucide' },
   ];
 
   diskValues = JSON.stringify([
     { label: 'Apps', value: 45, color: '#3b82f6', icon: 'app-window' },
     { label: 'System', value: 20, color: '#94a3b8', icon: 'settings' },
     { label: 'Media', value: 15, color: '#f59e0b', icon: 'video' },
-    { label: 'Documents', value: 10, color: '#10b981', icon: 'file-text' },
-    { label: 'Free', value: 10, color: '#e5e7eb', icon: 'cloud' }
-  ]);
-
-  taskValues = JSON.stringify([
-    { label: 'Completed', value: 75, color: '#10b981' },
-    { label: 'Pending', value: 25, color: '#f59e0b' }
+    { label: 'Documents', value: 10, color: '#10b981', icon: 'file' },
+    { label: 'Free', value: 10, color: '#e2e8f0', icon: 'cloud' }
   ]);
 
   basicCode = `<ui-meter-group [values]="diskValues"></ui-meter-group>`;
-
-  shapeCode = `<ui-meter-group [values]="values" shape="circle"></ui-meter-group>
-<ui-meter-group [values]="values" shape="line" orientation="vertical"></ui-meter-group>`;
-
-  sizingCode = `<ui-meter-group size="sm" [values]="values"></ui-meter-group>
-<ui-meter-group size="lg" [values]="values"></ui-meter-group>`;
-
-  legendCode = `<ui-meter-group show-legend [values]="values"></ui-meter-group>
-<ui-meter-group [show-labels]="false" [show-values]="false" [values]="values"></ui-meter-group>`;
-
-  iconsCode = `<ui-meter-group icon-library="lucide" [values]="valuesWithIcons"></ui-meter-group>`;
-
-  interactiveCode = `<ui-meter-group interactive (meterClick)="handleMeterClick($event)" [values]="values"></ui-meter-group>`;
+  shapeCode = `<ui-meter-group shape="circle" [values]="diskValues"></ui-meter-group>`;
+  verticalCode = `<ui-meter-group orientation="vertical" [values]="diskValues" height="200px"></ui-meter-group>`;
 
   handleMeterClick(ev: any) {
-    console.log('Meter clicked:', ev.detail);
+    console.log(`Meter Clicked: ${ev.detail.label} (${ev.detail.value})`);
   }
 }

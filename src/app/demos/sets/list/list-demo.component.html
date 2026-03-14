@@ -2,7 +2,7 @@
   <pg-demo-header
     icon="📜"
     title="List Component"
-    description="The most complete list implementation including all layouts (Horizontal, Numbered), Nesting, Selection, Groups, and Context Menus."
+    description="Comprehensive list system with multiple layouts, tree-based nesting, selection, groups, virtual scrolling, and context menu support."
   ></pg-demo-header>
 
   <pg-demo-tabs>
@@ -15,215 +15,223 @@
         <pg-demo-sidebar [variants]="exampleVariants" [useAnchor]="true"></pg-demo-sidebar>
 
         <div class="examples-content">
-          <!-- Basic & Variants -->
-          <section class="demo-section" id="basic" style="margin-top: 0">
+          <!-- Visual Variants -->
+          <section class="demo-section" id="variants">
             <div class="section-header">
-              <h2>Basic & Variants</h2>
-              <p>Standard lists with four main visual styles and semantic colors.</p>
+              <h2>Visual Variants</h2>
+              <p>Four distinct styles for different UI requirements.</p>
             </div>
             <div class="demo-card grid-2">
               <div class="list-example">
-                <h4>Filled Primary</h4>
+                <p>Filled Primary</p>
                 <ui-list variant="filled" color="primary">
-                  <ui-list-item label="Dashboard" icon="fas fa-th-large"></ui-list-item>
-                  <ui-list-item label="Messages" icon="fas fa-envelope"></ui-list-item>
+                  <ui-list-item label="Dashboard" icon="layout" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Analytics" icon="bar-chart" icon-library="lucide"></ui-list-item>
                 </ui-list>
               </div>
               <div class="list-example">
-                <h4>Soft Information</h4>
-                <ui-list variant="soft" color="info">
-                  <ui-list-item label="Profile Settings" icon="fas fa-user-cog"></ui-list-item>
-                  <ui-list-item label="Security" icon="fas fa-shield-alt"></ui-list-item>
+                <p>Soft Success</p>
+                <ui-list variant="soft" color="success">
+                  <ui-list-item label="Approved" icon="check-circle" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Verified" icon="shield-check" icon-library="lucide"></ui-list-item>
+                </ui-list>
+              </div>
+              <div class="list-example">
+                <p>Outlined info</p>
+                <ui-list variant="outlined" color="info">
+                  <ui-list-item label="Instructions" icon="info" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Guide" icon="book-open" icon-library="lucide"></ui-list-item>
+                </ui-list>
+              </div>
+              <div class="list-example">
+                <p>Text Only (Ghost)</p>
+                <ui-list variant="text" color="secondary">
+                  <ui-list-item label="Settings" icon="settings" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Profile" icon="user" icon-library="lucide"></ui-list-item>
                 </ui-list>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="basicCode()" activeLang="html"></ui-code-preview>
+            <ui-code-preview [htmlCode]="basicCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Layout Modes -->
+          <!-- Layout Orientations -->
           <section class="demo-section" id="layouts">
             <div class="section-header">
-              <h2>Layout Modes</h2>
-              <p>Beyond vertical lists: implementation of horizontal carousels, numbered steps, and flush styling.</p>
+              <h2>Layout Orientations</h2>
+              <p>Standard vertical, horizontal strips, and numbered sequences.</p>
             </div>
-            <div class="demo-card spacer-v">
-              <div class="list-example">
-                <h4>Horizontal List</h4>
-                <ui-list horizontal elevated variant="soft" color="secondary">
-                  <ui-list-item label="Tab 1" icon="fas fa-home"></ui-list-item>
-                  <ui-list-item label="Tab 2" icon="fas fa-search"></ui-list-item>
-                  <ui-list-item label="Tab 3" icon="fas fa-bell"></ui-list-item>
+            <div class="demo-card list-stack">
+              <div>
+                <p>Horizontal List</p>
+                <ui-list horizontal variant="soft" color="primary">
+                  <ui-list-item label="Home" icon="home" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Search" icon="search" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Profile" icon="user" icon-library="lucide"></ui-list-item>
                 </ui-list>
               </div>
-              
-              <div class="list-example">
-                <h4>Numbered List (Steps)</h4>
-                <ui-list numbered variant="text" color="primary">
-                  <ui-list-item label="Initialize Project"></ui-list-item>
-                  <ui-list-item label="Configure Dependencies"></ui-list-item>
-                  <ui-list-item label="Run Dev Server"></ui-list-item>
-                </ui-list>
-              </div>
-
-              <div class="list-example">
-                <h4>Flush (No Outer Padding/Border)</h4>
-                <ui-list flush variant="outlined">
-                  <ui-list-item label="Flush Item A"></ui-list-item>
-                  <ui-list-item label="Flush Item B"></ui-list-item>
+              <div>
+                <p>Numbered (Steps)</p>
+                <ui-list numbered variant="outlined">
+                  <ui-list-item label="Review Contract"></ui-list-item>
+                  <ui-list-item label="Sign Electronically"></ui-list-item>
+                  <ui-list-item label="Verify Payment"></ui-list-item>
                 </ui-list>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="layoutCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Nesting & Hierarchy -->
+          <!-- Nesting & Tree -->
           <section class="demo-section" id="nesting">
             <div class="section-header">
-              <h2>Nesting & Hierarchy</h2>
-              <p>Deeply nested structures with <code>collapsible</code> toggles and automatic indentation.</p>
+              <h2>Nesting & Tree Structure</h2>
+              <p>Infinite nesting with collapsible groups and indentation levels.</p>
             </div>
             <div class="demo-card">
               <ui-list variant="soft" style="max-width: 320px">
-                <ui-list-item label="Applications" icon="fas fa-folder" collapsible expanded>
+                <ui-list-item label="Personal Files" icon="folder" icon-library="lucide" collapsible expanded>
                   <div slot="children">
-                    <ui-list-item label="Design" icon="fas fa-paint-brush" level="1" collapsible>
+                    <ui-list-item label="Documents" icon="file-text" icon-library="lucide" level="1" collapsible>
                       <div slot="children">
-                        <ui-list-item label="Photoshop" level="2"></ui-list-item>
-                        <ui-list-item label="Illustrator" level="2"></ui-list-item>
+                        <ui-list-item label="Resume.pdf" level="2"></ui-list-item>
+                        <ui-list-item label="Budget.xlsx" level="2"></ui-list-item>
                       </div>
                     </ui-list-item>
-                    <ui-list-item label="Development" icon="fas fa-code" level="1"></ui-list-item>
+                    <ui-list-item label="Photos" icon="image" icon-library="lucide" level="1"></ui-list-item>
                   </div>
                 </ui-list-item>
               </ui-list>
             </div>
-            <ui-code-preview [htmlCode]="nestingCode()" activeLang="html"></ui-code-preview>
+            <ui-code-preview [htmlCode]="nestingCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Selection & Interactivity -->
+          <!-- Selection Modes -->
           <section class="demo-section" id="selection">
             <div class="section-header">
-              <h2>Selection & Interactivity</h2>
-              <p>Standard selection, Multi-select, and Checkbox-driven selection lists.</p>
+              <h2>Selection Modes</h2>
+              <p>Single vs multi-selection with optional checkbox UI.</p>
             </div>
             <div class="demo-card grid-2">
-              <div class="list-example">
-                <h4>Checkbox Selection</h4>
-                <ui-list selectable multi-select checkbox-selection variant="filled" color="primary">
-                  <ui-list-item label="Task #102"></ui-list-item>
-                  <ui-list-item label="Task #103"></ui-list-item>
+              <div>
+                <p>Single Select (Highlight Only)</p>
+                <ui-list selectable variant="soft">
+                  <ui-list-item label="Option A"></ui-list-item>
+                  <ui-list-item label="Option B"></ui-list-item>
                 </ui-list>
               </div>
-              <div class="list-example">
-                <h4>Standard Multi-select</h4>
-                <ui-list selectable multi-select variant="soft" color="success">
-                  <ui-list-item label="Option One"></ui-list-item>
-                  <ui-list-item label="Option Two"></ui-list-item>
+              <div>
+                <p>Multi Select + Checkboxes</p>
+                <ui-list selectable multi-select checkbox-selection variant="filled" color="primary">
+                  <ui-list-item label="Task #1"></ui-list-item>
+                  <ui-list-item label="Task #2"></ui-list-item>
                 </ui-list>
               </div>
             </div>
-            <ui-code-preview [htmlCode]="selectionCode()" activeLang="html"></ui-code-preview>
           </section>
 
-          <!-- Grouping & Headers -->
-          <section class="demo-section" id="grouping">
+          <!-- Headers & Groups -->
+          <section class="demo-section" id="headers">
             <div class="section-header">
-              <h2>Grouping & Headers</h2>
-              <p>Organize items with sticky headers and distinct groups.</p>
+              <h2>Headers & Groups</h2>
             </div>
             <div class="demo-card">
-              <ui-list subheader="SYSTEM PREFERENCES" variant="text" dividers>
-                <ui-list-item label="Appearance" icon="fas fa-sun"></ui-list-item>
-                <ui-list-item label="Accessibility" icon="fas fa-universal-access"></ui-list-item>
+              <ui-list subheader="ORGANIZATION" variant="text" dividers>
+                <ui-list-item label="Users" icon="users" icon-library="lucide"></ui-list-item>
+                <ui-list-item label="Permissions" icon="lock" icon-library="lucide"></ui-list-item>
               </ui-list>
               <br>
               <ui-list grouped variant="soft" color="info">
-                <ui-list-group label="TODAY">
-                  <ui-list-item label="Morning Sync"></ui-list-item>
-                  <ui-list-item label="Project Review"></ui-list-item>
+                <ui-list-group label="RECENT DOCUMENTS">
+                  <ui-list-item label="Annual_Report_2023.doc"></ui-list-item>
+                  <ui-list-item label="Meeting_Notes.txt"></ui-list-item>
                 </ui-list-group>
               </ui-list>
             </div>
           </section>
 
-          <!-- Context Menus -->
-          <section class="demo-section" id="context">
+          <!-- Interactive Features -->
+          <section class="demo-section" id="interactive">
             <div class="section-header">
-              <h2>Context Menus</h2>
-              <p>Attach rich menus to list items via click or right-click.</p>
+              <h2>Interactive Features</h2>
+              <p>Drag and drop, Context menus, and Swipe actions.</p>
             </div>
-            <div class="demo-card grid-2">
-              <div class="list-example">
-                <h4>Dropdown Trigger</h4>
+            <div class="demo-card list-stack">
+              <div>
+                <p>Context Menu (Dropdown Style)</p>
                 <ui-list variant="soft">
-                  <ui-list-item label="Settings Action" context-menu>
-                    <app-context-menu slot="context">
-                      <app-context-menu-item label="Manage"></app-context-menu-item>
-                      <app-context-menu-item label="History"></app-context-menu-item>
-                    </app-context-menu>
+                  <ui-list-item label="Right-click or Click Menu" context-menu icon="more-vertical" icon-library="lucide">
+                    <div slot="context" style="padding: 8px; background: white; border: 1px solid #e2e8f0; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1)">
+                      <div style="padding: 4px 8px; cursor: pointer;">Edit Item</div>
+                      <div style="padding: 4px 8px; cursor: pointer; color: red;">Delete Item</div>
+                    </div>
                   </ui-list-item>
                 </ui-list>
               </div>
-              <div class="list-example">
-                <h4>Right Click Only</h4>
-                <ui-list variant="outlined">
-                  <ui-list-item label="Secondary Options" context-menu-trigger="rightClick" context-menu>
-                    <app-context-menu slot="context">
-                      <app-context-menu-item label="Copy JSON"></app-context-menu-item>
-                    </app-context-menu>
-                  </ui-list-item>
+              <div>
+                <p>Draggable Reordering</p>
+                <ui-list is-draggable variant="outlined">
+                  <ui-list-item label="Draggable One" icon="grip-vertical" icon-library="lucide"></ui-list-item>
+                  <ui-list-item label="Draggable Two" icon="grip-vertical" icon-library="lucide"></ui-list-item>
                 </ui-list>
               </div>
             </div>
           </section>
 
-          <!-- Visual Enhancements -->
-          <section class="demo-section" id="visuals">
+          <!-- Performance -->
+          <section class="demo-section" id="performance">
             <div class="section-header">
-              <h2>Visual Enhancements</h2>
-              <p>Add depth and structure with Badges, Counters, Rounded corners, and Elevations.</p>
-            </div>
-            <div class="demo-card spacer-v">
-              <ui-list variant="filled" color="primary" rounded elevated>
-                <ui-list-item label="Premium Account" badge="PRO" icon="fas fa-crown"></ui-list-item>
-                <ui-list-item label="Files Uploaded" counter="42" icon="fas fa-cloud-upload-alt"></ui-list-item>
-              </ui-list>
-              
-              <ui-list variant="soft" color="danger" dense dividers>
-                <ui-list-item label="High Density Item 1"></ui-list-item>
-                <ui-list-item label="High Density Item 2" sublabel="Compact spacing"></ui-list-item>
-              </ui-list>
-            </div>
-          </section>
-
-          <!-- Data & States -->
-          <section class="demo-section" id="advanced">
-            <div class="section-header">
-              <h2>Data & States</h2>
-              <p>Built-in pagination, search, and loading placeholders for high-performance apps.</p>
+              <h2>Performance & Large Data</h2>
+              <p>Virtual scrolling and Pagination for thousands of items.</p>
             </div>
             <div class="demo-card">
-              <ui-list
-                searchable
-                paginated
-                [attr.items-per-page]="2"
-                subheader="Inventory Search"
-                variant="outlined"
-              >
-                <ui-list-item label="SKU: 001-A" sublabel="In Stock"></ui-list-item>
-                <ui-list-item label="SKU: 002-B" sublabel="Backordered"></ui-list-item>
-                <ui-list-item label="SKU: 003-C" sublabel="In Stock"></ui-list-item>
+              <ui-list searchable paginated [attr.items-per-page]="3" variant="soft" color="primary">
+                <ui-list-item label="Index Item 1"></ui-list-item>
+                <ui-list-item label="Index Item 2"></ui-list-item>
+                <ui-list-item label="Index Item 3"></ui-list-item>
+                <ui-list-item label="Index Item 4"></ui-list-item>
+                <ui-list-item label="Index Item 5"></ui-list-item>
               </ui-list>
-              <br>
-              <div class="list-example">
-                <h4>Loading Placeholder</h4>
+            </div>
+          </section>
+
+          <!-- States -->
+          <section class="demo-section" id="states">
+            <div class="section-header">
+              <h2>Loading & Empty States</h2>
+            </div>
+            <div class="demo-card grid-2">
+              <div>
+                <p>Skeleton Loading</p>
                 <ui-list loading variant="soft"></ui-list>
               </div>
-              <div class="list-example">
-                <h4>Draggable List (Manual)</h4>
-                <ui-list is-draggable variant="soft" color="secondary">
-                  <ui-list-item label="Drag Handle Item A"></ui-list-item>
-                  <ui-list-item label="Drag Handle Item B"></ui-list-item>
+              <div>
+                <p>Empty State</p>
+                <ui-list empty-message="No items found in this collection." variant="outlined"></ui-list>
+              </div>
+            </div>
+          </section>
+
+          <!-- Sizes -->
+          <section class="demo-section" id="sizes">
+            <div class="section-header">
+              <h2>Sizes & Spacing</h2>
+            </div>
+            <div class="demo-card grid-3">
+              <div>
+                <p>Small (SM)</p>
+                <ui-list size="sm" variant="filled">
+                  <ui-list-item label="Small Item"></ui-list-item>
+                </ui-list>
+              </div>
+              <div>
+                <p>Medium (MD)</p>
+                <ui-list size="md" variant="filled">
+                  <ui-list-item label="Medium Item"></ui-list-item>
+                </ui-list>
+              </div>
+              <div>
+                <p>Large (LG)</p>
+                <ui-list size="lg" variant="filled">
+                  <ui-list-item label="Large Item"></ui-list-item>
                 </ui-list>
               </div>
             </div>
@@ -239,8 +247,8 @@
 </div>
 
 <style>
-  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .list-example h4 { margin-top: 0; margin-bottom: 12px; font-size: 13px; color: #64748b; text-transform: uppercase; }
-  .spacer-v { display: flex; flex-direction: column; gap: 24px; }
+  .list-stack { display: flex; flex-direction: column; gap: 32px; }
+  .list-example p, .list-stack p, .grid-2 p, .grid-3 p { font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
 </style>
