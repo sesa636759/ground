@@ -1,4 +1,4 @@
-﻿import {
+import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ViewChild,
@@ -28,18 +28,13 @@ export class DmAdvancedDataTablePlaygroundComponent
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'core', title: 'Core & Data', icon: 'database', iconLibrary: 'lucide' },
-    { id: 'selection', title: 'Selection & Editing', icon: 'check-square', iconLibrary: 'lucide' },
-    { id: 'pagination', title: 'Pagination Settings', icon: 'list', iconLibrary: 'lucide' },
-    { id: 'layout', title: 'Layout & Styling', icon: 'layout', iconLibrary: 'lucide' },
-    {
-      id: 'advanced',
-      title: 'Advanced Features',
-      icon: 'sparkles',
-      iconLibrary: 'lucide',
-    },
-    { id: 'grouping', title: 'Grouping & Tree', icon: 'git-branch', iconLibrary: 'lucide' },
-    { id: 'json', title: 'JSON Data Editor', icon: 'code', iconLibrary: 'lucide' },
+    { id: 'core', title: 'Core & Data', icon: '🗄️', iconLibrary: 'emoji' },
+    { id: 'selection', title: 'Selection & Editing', icon: '✔️', iconLibrary: 'emoji' },
+    { id: 'pagination', title: 'Pagination Settings', icon: '📄', iconLibrary: 'emoji' },
+    { id: 'layout', title: 'Layout & Styling', icon: '🎨', iconLibrary: 'emoji' },
+    { id: 'advanced', title: 'Advanced Features', icon: '✨', iconLibrary: 'emoji' },
+    { id: 'grouping', title: 'Grouping & Tree', icon: '🌳', iconLibrary: 'emoji' },
+    { id: 'json', title: 'JSON Data Editor', icon: '⚙️', iconLibrary: 'emoji' },
   ];
 
   accordionDefaultOpen = ['core'];
@@ -290,6 +285,26 @@ export class DmAdvancedDataTablePlaygroundComponent
     } catch (e) {
       // Keep existing columns on parse error
     }
+  }
+
+  onRowSelect(event: any) {
+    this.logEvent(`Row Selected: ${JSON.stringify(event.detail.selectedRows)}`);
+  }
+
+  onCellEdit(event: any) {
+    this.logEvent(`Cell Edited: Row ${event.detail.rowId}, Field ${event.detail.field}, Value: ${event.detail.value}`);
+  }
+
+  onSortChange(event: any) {
+    this.logEvent(`Sort Changed: ${event.detail.field} ${event.detail.direction}`);
+  }
+
+  onPageChange(event: any) {
+    this.logEvent(`Page Changed: Page ${event.detail.page}, Size ${event.detail.pageSize}`);
+  }
+
+  onSearchChange(event: any) {
+    this.logEvent(`Search Query: ${event.detail.query}`);
   }
 }
 

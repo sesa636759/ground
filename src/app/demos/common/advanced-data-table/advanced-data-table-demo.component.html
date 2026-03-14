@@ -1,4 +1,4 @@
-﻿<div class="demo-container">
+<div class="demo-container">
   <pg-demo-header
     icon="📊"
     title="Advanced Data Table"
@@ -17,26 +17,179 @@
 
         <!-- Main Content Area -->
         <div class="examples-content">
-          <!-- Key Features -->
-          <section class="demo-section mt-0" id="features" >
+          <!-- Basic -->
+          <section class="demo-section mt-0" id="basic">
             <div class="section-header">
-              <h2>💎 Key Features</h2>
-              <p>Data Table provides rich API for managing complex data interactions.</p>
+              <h2>📝 Basic Usage</h2>
+              <p>Standard data table with sorting, searching, and pagination.</p>
             </div>
             <div class="demo-card">
               <ui-advanced-data-table
-                [value]="sampleData"
-                [columns]="sampleCols"
-                [paginator]="false"
-              >
-              </ui-advanced-data-table>
+                [data]="sampleData"
+                [columns]="columns"
+                sortable
+                searchable
+                pagination
+                [pageSize]="5"
+              ></ui-advanced-data-table>
             </div>
-            <ui-code-preview
-              [htmlCode]="featuresCode"
-              [label]="'Configuration Examples'"
-              activeLang="html"
-              expanded="true"
-            ></ui-code-preview>
+          </section>
+
+          <!-- Selection -->
+          <section class="demo-section" id="selection">
+            <div class="section-header">
+              <h2>✅ Row Selection</h2>
+              <p>Enable single or multiple row selection with checkboxes.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                selectable
+                multi-select
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Row Actions -->
+          <section class="demo-section" id="actions">
+            <div class="section-header">
+              <h2>⚡ Row Actions</h2>
+              <p>Built-in actions menu for each row with edit and delete events.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                show-actions
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Editable -->
+          <section class="demo-section" id="editable">
+            <div class="section-header">
+              <h2>✏️ Editable Mode</h2>
+              <p>Double-click cells to edit data directly in the table.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="editableColumns"
+                editable
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Skeleton -->
+          <section class="demo-section" id="skeleton">
+            <div class="section-header">
+              <h2>⏳ Skeleton Loading</h2>
+              <p>Visual feedback during data fetch operations.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="[]"
+                [columns]="columns"
+                loading
+                show-skeleton
+                [skeletonRows]="5"
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- col-grouping -->
+          <section class="demo-section" id="col-grouping">
+            <div class="section-header">
+              <h2>📁 Column Grouping</h2>
+              <p>Organize related columns under common parent headers.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="groupedColumns"
+                column-grouping
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- row-grouping -->
+          <section class="demo-section" id="row-grouping">
+            <div class="section-header">
+              <h2>📂 Row Grouping</h2>
+              <p>Group rows by specific field values with expand/collapse support.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                grouping
+                group-by="department"
+                show-group-count
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Pinning -->
+          <section class="demo-section" id="pinning">
+            <div class="section-header">
+              <h2>📌 Column & Row Pinning</h2>
+              <p>Fix important columns or rows to stay visible during scrolling.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                column-pinning
+                row-pinning
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Filters -->
+          <section class="demo-section" id="filters">
+            <div class="section-header">
+              <h2>🔍 Advanced Filters</h2>
+              <p>Multi-column filtering with complex operators.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="sampleData"
+                [columns]="columns"
+                multi-filter
+                show-filter-panel
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Tree -->
+          <section class="demo-section" id="tree">
+            <div class="section-header">
+              <h2>🌲 Tree Data</h2>
+              <p>Display hierarchical data structures with nested rows.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="treeData"
+                [columns]="columns"
+                tree-data
+              ></ui-advanced-data-table>
+            </div>
+          </section>
+
+          <!-- Aggregation -->
+          <section class="demo-section" id="aggregation">
+            <div class="section-header">
+              <h2>∑ Data Aggregation</h2>
+              <p>Calculate and display column summaries like Sum, Avg, and Count.</p>
+            </div>
+            <div class="demo-card">
+              <ui-advanced-data-table
+                [data]="salesData"
+                [columns]="salesColumns"
+                column-aggregation
+              ></ui-advanced-data-table>
+            </div>
           </section>
         </div>
       </div>
