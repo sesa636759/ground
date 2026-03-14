@@ -5,7 +5,7 @@
   (reset)="resetConfig()"
 >
   <!-- Global Settings -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Placeholder</label>
       <ui-input
@@ -16,10 +16,7 @@
     </div>
     <div class="control-group">
       <label>Full Width</label>
-      <ui-checkbox
-        [(ngModel)]="pgConfig.fullWidth"
-        (ngModelChange)="updateConfig()"
-      ></ui-checkbox>
+      <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()"></ui-checkbox>
     </div>
     <div class="control-group">
       <label>Max Height (px)</label>
@@ -32,7 +29,7 @@
   </div>
 
   <!-- Appearance & Style -->
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
@@ -51,10 +48,7 @@
     </div>
     <div class="control-group">
       <label>Show Arrow</label>
-      <ui-checkbox
-        [(ngModel)]="pgConfig.showArrow"
-        (ngModelChange)="updateConfig()"
-      ></ui-checkbox>
+      <ui-checkbox [(ngModel)]="pgConfig.showArrow" (ngModelChange)="updateConfig()"></ui-checkbox>
     </div>
   </div>
 
@@ -90,17 +84,14 @@
         Cascading
       </label>
       <label class="checkbox-item">
-        <ui-checkbox
-          [(ngModel)]="pgConfig.disabled"
-          (ngModelChange)="updateConfig()"
-        ></ui-checkbox>
+        <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
         Disabled
       </label>
     </div>
   </div>
 
   <!-- Advanced Features -->
-  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+  <div slot="content-advanced" class="control-grid p-16">
     <div class="control-group">
       <label>Ignore Parent Offset</label>
       <ui-checkbox
@@ -109,7 +100,7 @@
       ></ui-checkbox>
     </div>
     <div class="control-group small">
-      <small style="color: var(--text-muted); display: block; margin-top: 4px;">
+      <small style="color: var(--text-muted); display: block; margin-top: 4px">
         Fixes orientation issues when nested in transformed/scrollable containers.
       </small>
     </div>
@@ -118,7 +109,13 @@
   <div
     preview
     class="preview-stage"
-    style="flex-direction: column; align-items: stretch; gap: 1rem; padding: 40px; min-height: 250px;"
+    style="
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+      padding: 40px;
+      min-height: 250px;
+    "
   >
     <label class="preview-label" style="font-weight: 500; font-size: 0.9rem">
       Pick your favorite tech stack:

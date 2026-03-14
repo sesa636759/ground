@@ -5,7 +5,7 @@
   (reset)="resetConfig()"
 >
   <!-- Global Configuration -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Current Value</label>
       <ui-input
@@ -49,7 +49,7 @@
   </div>
 
   <!-- Visual Appearance -->
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Knob Size (px)</label>
       <ui-input
@@ -101,14 +101,20 @@
   </div>
 
   <!-- Behavior -->
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showValue" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showValue"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Value Label
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showMinMax" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showMinMax"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Min/Max Labels
       </label>
       <label class="checkbox-item">
@@ -120,7 +126,10 @@
         Readonly
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableWheel" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableWheel"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Enable Mouse Wheel
       </label>
       <label class="checkbox-item">
@@ -128,14 +137,17 @@
         Snap to Step
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.allowInput" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.allowInput"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Allow Input (Double Click)
       </label>
     </div>
   </div>
 
   <!-- Ticks & Labels -->
-  <div slot="content-ticks" class="control-grid" style="padding: 16px">
+  <div slot="content-ticks" class="control-grid p-16">
     <label class="checkbox-item">
       <ui-checkbox [(ngModel)]="pgConfig.showTicks" (ngModelChange)="updateConfig()"></ui-checkbox>
       Show Tick Marks

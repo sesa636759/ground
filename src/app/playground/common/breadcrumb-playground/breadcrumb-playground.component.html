@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-config" class="control-grid" style="padding: 16px">
+  <div slot="content-config" class="control-grid p-16">
     <div class="control-group">
       <label>Separator Text</label>
       <ui-input
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Size</label>
       <ui-dropdown
@@ -48,7 +48,7 @@
     </div>
   </div>
 
-  <div slot="content-icons" class="control-grid" style="padding: 16px">
+  <div slot="content-icons" class="control-grid p-16">
     <div class="control-group">
       <label>Separator Icon</label>
       <ui-input
@@ -89,7 +89,9 @@
         border: 1px solid var(--border-color);
         min-width: 300px;
       "
-      [style.background]="pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''"
+      [style.background]="
+        pgConfig.variant === 'glass' ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' : ''
+      "
     >
       <ui-breadcrumb
         #demoElement

@@ -4,52 +4,91 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-settings" class="control-grid" style="padding: 16px">
+  <div slot="content-settings" class="control-grid p-16">
     <div class="control-group">
       <label>Mode</label>
-      <ui-dropdown [options]="modeOptions" [(ngModel)]="pgConfig.mode" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="modeOptions"
+        [(ngModel)]="pgConfig.mode"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Duration (sec)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.duration" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.duration"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Precision</label>
-      <ui-dropdown [options]="precisionOptions" [(ngModel)]="pgConfig.precision" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="precisionOptions"
+        [(ngModel)]="pgConfig.precision"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Flow</label>
-      <ui-dropdown [options]="flowOptions" [(ngModel)]="pgConfig.flow" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="flowOptions"
+        [(ngModel)]="pgConfig.flow"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Target Date (ISO)</label>
-      <ui-input [(ngModel)]="pgConfig.targetDate" (ngModelChange)="updateConfig()" placeholder="2024-12-31T23:59:59"></ui-input>
+      <ui-input
+        [(ngModel)]="pgConfig.targetDate"
+        (ngModelChange)="updateConfig()"
+        placeholder="2024-12-31T23:59:59"
+      ></ui-input>
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown [options]="variantOptions" [(ngModel)]="pgConfig.variant" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="variantOptions"
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Format</label>
-      <ui-dropdown [options]="formatOptions" [(ngModel)]="pgConfig.format" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="formatOptions"
+        [(ngModel)]="pgConfig.format"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Progress Type</label>
-      <ui-dropdown [options]="progressTypeOptions" [(ngModel)]="pgConfig.progressType" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="progressTypeOptions"
+        [(ngModel)]="pgConfig.progressType"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Alert Threshold (%)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.alertThreshold" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.alertThreshold"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoStart" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoStart"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Start
       </label>
       <label class="checkbox-item">
@@ -57,26 +96,54 @@
         Loop
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableNotifications" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableNotifications"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Notify
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.enableSound" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.enableSound"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Sound
       </label>
     </div>
     <div class="control-group">
       <label>Persist Key</label>
-      <ui-input [(ngModel)]="pgConfig.persist" (ngModelChange)="updateConfig()" placeholder="storage-key"></ui-input>
+      <ui-input
+        [(ngModel)]="pgConfig.persist"
+        (ngModelChange)="updateConfig()"
+        placeholder="storage-key"
+      ></ui-input>
     </div>
     <div class="control-group full-width">
       <label>Steps (JSON)</label>
-      <ui-input type="textarea" [(ngModel)]="pgConfig.steps" (ngModelChange)="onStepsChange()" placeholder='[{"label":"Work","duration":25}]' [rows]="3"></ui-input>
+      <ui-input
+        type="textarea"
+        [(ngModel)]="pgConfig.steps"
+        (ngModelChange)="onStepsChange()"
+        placeholder='[{"label":"Work","duration":25}]'
+        [rows]="3"
+      ></ui-input>
     </div>
   </div>
 
   <div preview>
-    <div class="preview-stage" style="padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 450px; background: #fff; width: 100%;">
+    <div
+      class="preview-stage"
+      style="
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 450px;
+        background: #fff;
+        width: 100%;
+      "
+    >
       <ui-timer
         #timer
         [attr.duration]="pgConfig.duration"
@@ -96,11 +163,13 @@
         [attr.target-date]="pgConfig.targetDate"
       ></ui-timer>
 
-      <div class="control-buttons" style="margin-top: 32px; display: flex; gap: 12px;">
+      <div class="control-buttons" style="margin-top: 32px; display: flex; gap: 12px">
         <ui-button (click)="timerStart(timer)" variant="filled" theme="primary">Start</ui-button>
         <ui-button (click)="timerPause(timer)" variant="outlined">Pause</ui-button>
         <ui-button (click)="timerReset(timer)" variant="ghost">Reset</ui-button>
-        <ui-button (click)="timerNext(timer)" variant="ghost" *ngIf="pgConfig.steps">Next</ui-button>
+        <ui-button (click)="timerNext(timer)" variant="ghost" *ngIf="pgConfig.steps"
+          >Next</ui-button
+        >
       </div>
     </div>
   </div>

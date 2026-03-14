@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Value</label>
       <ui-input
@@ -24,11 +24,7 @@
     </div>
     <div class="control-group">
       <label>Icon Name</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.icon"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>
     </div>
     <div class="control-group">
       <label>Icon Library</label>
@@ -40,7 +36,7 @@
     </div>
   </div>
 
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -83,7 +79,7 @@
     </div>
   </div>
 
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid p-16">
     <div class="control-group">
       <label>Position</label>
       <ui-dropdown
@@ -110,7 +106,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Animation</label>
       <ui-dropdown
@@ -129,11 +125,17 @@
         Glow Effect
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.interactive" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.interactive"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Interactive
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.closeable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.closeable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Closeable
       </label>
       <label class="checkbox-item">
@@ -171,18 +173,19 @@
       (badgeClick)="onBadgeClick()"
       (badgeClose)="onBadgeClose()"
     >
-      <div 
+      <div
         style="
-          width: 60px; 
-          height: 60px; 
-          background: linear-gradient(135deg, var(--surface-3), var(--surface-2)); 
+          width: 60px;
+          height: 60px;
+          background: linear-gradient(135deg, var(--surface-3), var(--surface-2));
           border: 1px solid var(--border-color);
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 24px;
-        ">
+        "
+      >
         <ui-icon name="bell" library="lucide"></ui-icon>
       </div>
     </ui-badge>

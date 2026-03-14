@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid p-16">
     <div class="control-group">
       <label>Threshold (px)</label>
       <ui-input
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Icon</label>
       <ui-input type="text" [(ngModel)]="pgConfig.icon" (ngModelChange)="updateConfig()"></ui-input>

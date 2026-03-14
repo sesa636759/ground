@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-profile" class="control-grid" style="padding: 16px">
+  <div slot="content-profile" class="control-grid p-16">
     <div class="control-group">
       <label>Name (Initials)</label>
       <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()"></ui-input>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div slot="content-style" class="control-grid" style="padding: 16px">
+  <div slot="content-style" class="control-grid p-16">
     <div class="control-group">
       <label>Shape</label>
       <ui-dropdown
@@ -99,7 +99,7 @@
     </div>
   </div>
 
-  <div slot="content-status" class="control-grid" style="padding: 16px">
+  <div slot="content-status" class="control-grid p-16">
     <div class="control-group">
       <label>Status</label>
       <ui-dropdown

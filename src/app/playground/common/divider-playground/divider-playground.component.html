@@ -5,13 +5,17 @@
   (reset)="resetConfig()"
 >
   <!-- Content & Layout -->
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid p-16">
     <div class="control-group">
       <label>Orientation</label>
-      <ui-dropdown [options]="[
-        { label: 'Horizontal', value: 'horizontal' },
-        { label: 'Vertical', value: 'vertical' }
-      ]" [(ngModel)]="pgConfig.orientation" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="[
+          { label: 'Horizontal', value: 'horizontal' },
+          { label: 'Vertical', value: 'vertical' },
+        ]"
+        [(ngModel)]="pgConfig.orientation"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Text Content</label>
@@ -31,35 +35,63 @@
     </div>
     <div class="control-group">
       <label>Text Align</label>
-      <ui-dropdown [options]="textAlignOptions" [(ngModel)]="pgConfig.textAlign" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="textAlignOptions"
+        [(ngModel)]="pgConfig.textAlign"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group" *ngIf="pgConfig.orientation === 'vertical'">
       <label>Vertical Align</label>
-      <ui-dropdown [options]="verticalAlignOptions" [(ngModel)]="pgConfig.verticalAlign" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="verticalAlignOptions"
+        [(ngModel)]="pgConfig.verticalAlign"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Responsive Switch</label>
-      <ui-dropdown [options]="responsiveOptions" [(ngModel)]="pgConfig.responsive" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="responsiveOptions"
+        [(ngModel)]="pgConfig.responsive"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
   </div>
 
   <!-- Visual Appearance -->
-  <div slot="content-style" class="control-grid" style="padding: 16px">
+  <div slot="content-style" class="control-grid p-16">
     <div class="control-group">
       <label>Variant</label>
-      <ui-dropdown [options]="variantOptions" [(ngModel)]="pgConfig.variant" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="variantOptions"
+        [(ngModel)]="pgConfig.variant"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Size Preset</label>
-      <ui-dropdown [options]="sizeOptions" [(ngModel)]="pgConfig.size" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="sizeOptions"
+        [(ngModel)]="pgConfig.size"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Precise Thickness</label>
-      <ui-input [(ngModel)]="pgConfig.thickness" (ngModelChange)="updateConfig()" placeholder="e.g. 4px"></ui-input>
+      <ui-input
+        [(ngModel)]="pgConfig.thickness"
+        (ngModelChange)="updateConfig()"
+        placeholder="e.g. 4px"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Color (Theme/CSS)</label>
-      <ui-input [(ngModel)]="pgConfig.color" (ngModelChange)="updateConfig()" placeholder="primary, #f00"></ui-input>
+      <ui-input
+        [(ngModel)]="pgConfig.color"
+        (ngModelChange)="updateConfig()"
+        placeholder="primary, #f00"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Text Color</label>
@@ -67,51 +99,94 @@
     </div>
     <div class="control-group">
       <label>Text Transform</label>
-      <ui-dropdown [options]="textTransformOptions" [(ngModel)]="pgConfig.textTransform" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="textTransformOptions"
+        [(ngModel)]="pgConfig.textTransform"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Pattern</label>
-      <ui-dropdown [options]="patternOptions" [(ngModel)]="pgConfig.pattern" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="patternOptions"
+        [(ngModel)]="pgConfig.pattern"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Inset Style</label>
-      <ui-dropdown [options]="insetOptions" [(ngModel)]="pgConfig.inset" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="insetOptions"
+        [(ngModel)]="pgConfig.inset"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Spacing Preset</label>
-      <ui-dropdown [options]="spacingOptions" [(ngModel)]="pgConfig.spacing" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="spacingOptions"
+        [(ngModel)]="pgConfig.spacing"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Visible Lines</label>
-      <ui-dropdown [options]="linesOptions" [(ngModel)]="pgConfig.lines" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="linesOptions"
+        [(ngModel)]="pgConfig.lines"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Line Cap</label>
-      <ui-dropdown [options]="linecapOptions" [(ngModel)]="pgConfig.linecap" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="linecapOptions"
+        [(ngModel)]="pgConfig.linecap"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group">
       <label>Opacity (0-1)</label>
-      <ui-input type="number" step="0.1" min="0" max="1" [(ngModel)]="pgConfig.opacity" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        step="0.1"
+        min="0"
+        max="1"
+        [(ngModel)]="pgConfig.opacity"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <!-- Shapes -->
-  <div slot="content-shapes" class="control-grid" style="padding: 16px">
+  <div slot="content-shapes" class="control-grid p-16">
     <div class="control-group">
       <label>Shape Type</label>
-      <ui-dropdown [options]="shapeOptions" [(ngModel)]="pgConfig.shape" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="shapeOptions"
+        [(ngModel)]="pgConfig.shape"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="control-group" *ngIf="pgConfig.shape !== 'none'">
       <label>Shape Color</label>
-      <ui-input type="color" [(ngModel)]="pgConfig.shapeColor" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="color"
+        [(ngModel)]="pgConfig.shapeColor"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
   <!-- Special Effects -->
-  <div slot="content-effects" class="control-grid" style="padding: 16px">
+  <div slot="content-effects" class="control-grid p-16">
     <div class="control-group">
       <label>Animation</label>
-      <ui-dropdown [options]="animationOptions" [(ngModel)]="pgConfig.animation" (ngModelChange)="updateConfig()"></ui-dropdown>
+      <ui-dropdown
+        [options]="animationOptions"
+        [(ngModel)]="pgConfig.animation"
+        (ngModelChange)="updateConfig()"
+      ></ui-dropdown>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
@@ -123,7 +198,10 @@
         Loading Shimmer
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.clickable"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Clickable
       </label>
       <label class="checkbox-item">
@@ -139,9 +217,26 @@
 
   <!-- Preview -->
   <div preview>
-    <div class="preview-stage" [style.height]="pgConfig.orientation === 'vertical' ? '400px' : 'auto'" style="padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; background: #fff; border-radius: 8px; width: 100%;">
+    <div
+      class="preview-stage"
+      [style.height]="pgConfig.orientation === 'vertical' ? '400px' : 'auto'"
+      style="
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        background: #fff;
+        border-radius: 8px;
+        width: 100%;
+      "
+    >
       <div *ngIf="pgConfig.orientation === 'horizontal'" style="width: 100%">
-        <p style="color: #94a3b8; font-size: 12px; margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p style="color: #94a3b8; font-size: 12px; margin-bottom: 20px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </p>
         <ui-divider
           [attr.text]="pgConfig.text"
           [attr.icon]="pgConfig.icon"
@@ -177,10 +272,16 @@
           [attr.shape-color]="pgConfig.shapeColor"
           (dividerClick)="onDividerClick()"
         ></ui-divider>
-        <p style="color: #94a3b8; font-size: 12px; margin-top: 20px;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p style="color: #94a3b8; font-size: 12px; margin-top: 20px">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </p>
       </div>
 
-      <div *ngIf="pgConfig.orientation === 'vertical'" style="display: flex; height: 100%; align-items: center; gap: 24px;">
+      <div
+        *ngIf="pgConfig.orientation === 'vertical'"
+        style="display: flex; height: 100%; align-items: center; gap: 24px"
+      >
         <span>Left Content</span>
         <ui-divider
           [attr.text]="pgConfig.text"

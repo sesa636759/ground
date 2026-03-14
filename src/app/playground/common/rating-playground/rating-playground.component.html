@@ -1,10 +1,6 @@
-<pg-playground
-  [items]="pgAccordionItems"
-  [code]="generatedCode()"
-  (reset)="resetConfig()"
->
+<pg-playground [items]="pgAccordionItems" [code]="generatedCode()" (reset)="resetConfig()">
   <!-- Rating Configuration -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid p-16">
     <div class="control-group">
       <label>Rating Type</label>
       <ui-dropdown
@@ -32,17 +28,17 @@
       ></ui-dropdown>
     </div>
     <div class="control-group">
-        <label>Rating Labels (JSON Array)</label>
-        <ui-input
-          [(ngModel)]="pgConfig.labels"
-          (ngModelChange)="updateConfig()"
-          placeholder='["Poor", "Fair", "Good"...]'
-        ></ui-input>
-      </div>
+      <label>Rating Labels (JSON Array)</label>
+      <ui-input
+        [(ngModel)]="pgConfig.labels"
+        (ngModelChange)="updateConfig()"
+        placeholder='["Poor", "Fair", "Good"...]'
+      ></ui-input>
+    </div>
   </div>
 
   <!-- Visual Appearance -->
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid p-16">
     <div class="control-group">
       <label>Active Color</label>
       <ui-dropdown
@@ -53,13 +49,20 @@
     </div>
     <div class="control-group">
       <label class="checkbox-item" style="margin-top: 24px">
-        <ui-checkbox [(ngModel)]="pgConfig.allowHalf" (ngModelChange)="updateConfig()" [disabled]="pgConfig.type !== 'star'"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.allowHalf"
+          (ngModelChange)="updateConfig()"
+          [disabled]="pgConfig.type !== 'star'"
+        ></ui-checkbox>
         Allow Half-Stars
       </label>
     </div>
     <div class="control-group">
       <label class="checkbox-item" style="margin-top: 24px">
-        <ui-checkbox [(ngModel)]="pgConfig.showValue" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showValue"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Value/Label
       </label>
     </div>
@@ -100,12 +103,12 @@
         [attr.labels]="pgConfig.labels || null"
         (ratingChange)="onRatingChange($event)"
       ></ui-rating>
-      
-      <div style="margin-top: 24px; color: var(--text-secondary); font-size: 14px;">
-         Submitted Rating: 
-         <span style="font-weight: 600; color: var(--text-primary); font-size: 18px;">
-            {{ pgConfig.value }}
-         </span>
+
+      <div style="margin-top: 24px; color: var(--text-secondary); font-size: 14px">
+        Submitted Rating:
+        <span style="font-weight: 600; color: var(--text-primary); font-size: 18px">
+          {{ pgConfig.value }}
+        </span>
       </div>
     </div>
   </div>
