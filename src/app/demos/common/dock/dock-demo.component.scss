@@ -1,8 +1,75 @@
 @use '../../../../styles/demo-base.scss';
 
 // Custom styles specific to dock demo
-.demo-card {
-  gap: 80px;
-  min-height: 250px;
-  position: relative;
+.examples-content {
+  .demo-card {
+    gap: 80px;
+    min-height: 250px;
+    position: relative;
+    
+    &.dock-panel {
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+
+    &.dock-position-card {
+      height: 300px;
+      position: relative;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    &.dock-top-position-card {
+      height: 300px;
+      margin-top: 24px;
+      position: relative;
+      background: #f8fafc;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    &.dock-blur-demo-card {
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    }
+
+    &.os-mock {
+      height: 250px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+      border-radius: 12px;
+      background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  .dock-label {
+    color: #94a3b8;
+    font-size: 13px;
+    z-index: 10;
+    
+    &.top-label {
+      margin-top: auto;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+/* Ensure ui-dock stays within its bounds in the demo */
+ui-dock {
+  display: inline-flex !important;
+  position: relative !important;
+  z-index: 5;
 }

@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-content" class="control-grid" style="padding: 16px">
+  <div slot="content-content" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Label</label>
       <ui-input
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -98,7 +98,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.clickable" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -125,8 +125,8 @@
 
   <div
     preview
-    class="preview-stage"
-    style="width: 100%; display: flex; justify-content: center; align-items: center; padding: 60px"
+    class="preview-stage flex-center"
+    style="padding: 60px"
   >
     <ui-pill
       [attr.label]="pgConfig.label"

@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-layout" class="control-grid" style="padding: 16px">
+  <div slot="content-layout" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Orientation</label>
       <ui-dropdown [options]="directionOptions" [(ngModel)]="pgConfig.direction" (ngModelChange)="updateConfig()"></ui-dropdown>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div slot="content-style" class="control-grid" style="padding: 16px">
+  <div slot="content-style" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Theme</label>
       <ui-dropdown [options]="themeOptions" [(ngModel)]="pgConfig.theme" (ngModelChange)="updateConfig()"></ui-dropdown>
@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.animated" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -76,7 +76,7 @@
   </div>
 
   <div preview>
-    <div class="preview-stage" style="padding: 24px; min-height: 400px; display: flex; align-items: stretch; background: #f1f5f9; width: 100%; border-radius: 8px;">
+    <div class="preview-stage splitter-demo-container flex-stretch">
       <ui-splitter
         [attr.direction]="pgConfig.direction"
         [attr.gutter-size]="pgConfig.gutterSize"
@@ -94,20 +94,21 @@
         [attr.rtl]="pgConfig.rtl ? '' : null"
         (sizeChange)="onSizeChange($event)"
         (panelCollapse)="onPanelCollapse($event)"
-        style="width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; background: white;"
+        class="w-full h-full"
+        style="border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; background: white;"
       >
-        <div slot="panel-0" style="padding: 20px; display: flex; flex-direction: column; gap: 12px; overflow: auto;">
-          <h4 style="margin: 0">File Explorer</h4>
-          <div style="color: #64748b; font-size: 13px;">
+        <div slot="panel-0" class="splitter-panel-content flex-column gap-12">
+          <h4 class="m-0">File Explorer</h4>
+          <div class="text-muted-sm">
             <p>src/</p>
-            <p style="padding-left: 12px;">app/</p>
-            <p style="padding-left: 24px;">main.ts</p>
-            <p style="padding-left: 24px;">app.component.ts</p>
+            <p class="pl-12">app/</p>
+            <p class="pl-24">main.ts</p>
+            <p class="pl-24">app.component.ts</p>
           </div>
         </div>
-        <div slot="panel-1" style="padding: 20px; display: flex; flex-direction: column; gap: 12px; overflow: auto;">
-          <h4 style="margin: 0">Code Editor</h4>
-          <pre style="background: #f8fafc; padding: 12px; border-radius: 4px; font-size: 12px;"><code>export class AppComponent &#123;
+        <div slot="panel-1" class="splitter-panel-content flex-column gap-12">
+          <h4 class="m-0">Code Editor</h4>
+          <pre class="code-block-minimal"><code>export class AppComponent &#123;
   title = 'AngularGround';
 &#125;</code></pre>
         </div>

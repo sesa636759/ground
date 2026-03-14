@@ -26,12 +26,23 @@
 
           <!-- Positions -->
           <section class="demo-section" id="positions">
-            <div class="section-header"><h2>Dock Positions</h2><p>Position the dock on top, bottom, left, or right.</p></div>
-            <div class="demo-card" style="height: 300px; position: relative; background: #f8fafc; display: flex; align-items: center; justify-content: center;">
-              <ui-dock position="left" [attr.items]="basicItems | json" icon-library="lucide"></ui-dock>
-              <ui-dock position="right" [attr.items]="basicItems | json" icon-library="lucide"></ui-dock>
-              <div style="color: #94a3b8; font-size: 13px;">Left and Right Docks</div>
+            <div class="section-header"><h2>Dock Positions</h2><p>Position the dock on any edge of a container.</p></div>
+            <div class="demo-grid col-2">
+              <div class="demo-card dock-position-card">
+                <ui-dock position="left" [attr.items]="basicItems | json" icon-library="lucide"></ui-dock>
+                <div class="dock-label">Left Position</div>
+              </div>
+              <div class="demo-card dock-position-card">
+                <ui-dock position="right" [attr.items]="basicItems | json" icon-library="lucide"></ui-dock>
+                <div class="dock-label">Right Position</div>
+              </div>
             </div>
+            
+            <div class="demo-card dock-top-position-card">
+              <ui-dock position="top" [attr.items]="basicItems | json" icon-library="lucide"></ui-dock>
+              <div class="dock-label top-label">Top Position</div>
+            </div>
+            
             <ui-code-preview [htmlCode]="positionsCode" activeLang="html"></ui-code-preview>
           </section>
 
@@ -47,7 +58,7 @@
           <!-- Blur -->
           <section class="demo-section" id="blur">
             <div class="section-header"><h2>Glassmorphism (Blur)</h2><p>Adds a semi-transparent, blurred background to the dock.</p></div>
-            <div class="demo-card dock-panel" style="background: linear-gradient(45deg, #3b82f6, #8b5cf6);">
+            <div class="demo-card dock-panel dock-blur-demo-card">
               <ui-dock [attr.items]="basicItems | json" blur-effect icon-library="lucide"></ui-dock>
             </div>
             <ui-code-preview [htmlCode]="blurCode" activeLang="html"></ui-code-preview>
@@ -86,8 +97,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-<style>
-  .dock-panel { padding: 48px; display: flex; align-items: center; justify-content: center; min-height: 120px; }
-  .os-mock { height: 250px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px; border-radius: 12px; background: url('https://w.wallhaven.cc/full/pk/wallhaven-pkvv2e.jpg') center/cover; position: relative; overflow: hidden; }
-</style>
