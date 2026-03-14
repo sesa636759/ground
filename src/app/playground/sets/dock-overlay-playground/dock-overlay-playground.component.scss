@@ -1,3 +1,12 @@
+.dock-overlay-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dock-overlay-panel-content {
+  padding: 20px;
+}
 .dock-overlay-global-section,
 .dock-overlay-appearance-section,
 .dock-overlay-behavior-section {

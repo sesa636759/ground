@@ -4,7 +4,7 @@
   [code]="generatedCode()"
   (reset)="resetConfig()"
 >
-  <div slot="content-global" class="control-grid pg-panel-container">
+  <div slot="content-global" class="control-grid stepper-global-section">
     <div class="control-section">
       <h3>Layout</h3>
       <div class="control-group">
@@ -171,10 +171,7 @@
     </div>
   </div>
 
-  <div
-    preview
-    class="preview-stage flex-center flex-column p-32"
-  >
+  <div preview class="preview-stage stepper-preview">
     <ui-stepper
       [attr.orientation]="pgConfig.orientation"
       [attr.size]="pgConfig.size"
@@ -203,16 +200,16 @@
       (stepperFail)="onEvent($event, 'stepperFail')"
     ></ui-stepper>
 
-    <div class="step-content-preview mt-32 text-center">
+    <div class="step-content-preview stepper-content-preview">
       <h3>{{ steps[pgConfig.activeStep]?.label }}</h3>
       <p>{{ steps[pgConfig.activeStep]?.description }}</p>
     </div>
   </div>
 
   <!-- All possible variants/examples -->
-  <div class="mt-32">
+  <div class="stepper-variants-section">
     <h3>All Variants & Examples</h3>
-    <div class="flex-wrap gap-24">
+    <div class="stepper-variants-grid">
       <ui-stepper
         [steps]="stepsJson"
         orientation="horizontal"

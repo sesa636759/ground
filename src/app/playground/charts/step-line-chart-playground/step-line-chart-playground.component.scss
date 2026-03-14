@@ -1,3 +1,20 @@
+.step-line-stroke-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.step-line-point-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.step-line-preview {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.step-line-svg {
+  display: block;
+  font-family: inherit;
+}
 @use '../../../../styles/playground-base.scss';
 
 .chart-preview-wrapper {

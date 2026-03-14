@@ -50,7 +50,7 @@
         <ui-button (click)="addRegion('start')" class="btn secondary" label="Add Start"></ui-button>
         <ui-button (click)="addRegion('end')" class="btn secondary" label="Add End"></ui-button>
       </div>
-      <div class="control-group" style="margin-top: 10px">
+      <div class="control-group layout-manager-remove-group">
         <label>Remove Region</label>
         <ui-dropdown [(ngModel)]="removeRegionId" [options]="regionSelectOptions"></ui-dropdown>
         <ui-button

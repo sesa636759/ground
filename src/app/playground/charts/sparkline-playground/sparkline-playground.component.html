@@ -16,7 +16,7 @@
             [(ngModel)]="cfg.width"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.width }}px</span>
+          <span class="sparkline-width-label">{{ cfg.width }}px</span>
         </div>
         <div class="control-group">
           <label>Height</label>
@@ -28,7 +28,7 @@
             [(ngModel)]="cfg.height"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.height }}px</span>
+          <span class="sparkline-height-label">{{ cfg.height }}px</span>
         </div>
         <div class="control-group">
           <label>Stroke Width</label>
@@ -40,7 +40,7 @@
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.strokeWidth }}</span>
+          <span class="sparkline-stroke-label">{{ cfg.strokeWidth }}</span>
         </div>
       </div>
       <div class="control-section">
@@ -75,30 +75,11 @@
       <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
-  >
+  <div preview class="chart-preview-wrapper sparkline-preview">
     <div class="chart-preview-wrapper">
-      <div
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          gap: 32px;
-          justify-content: center;
-          align-items: center;
-        "
-      >
-        <div
-          *ngFor="let s of sparklines"
-          style="display: flex; flex-direction: column; align-items: center; gap: 8px"
-        >
-          <svg
-            [attr.width]="cfg.width"
-            [attr.height]="cfg.height"
-            style="display: block; overflow: visible"
-          >
+      <div class="sparkline-grid">
+        <div *ngFor="let s of sparklines" class="sparkline-item">
+          <svg [attr.width]="cfg.width" [attr.height]="cfg.height" class="sparkline-svg">
             <defs>
               <linearGradient [attr.id]="'sg' + s.id" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" [attr.stop-color]="s.color" stop-opacity="0.35" />

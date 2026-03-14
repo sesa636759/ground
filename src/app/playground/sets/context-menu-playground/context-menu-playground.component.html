@@ -5,7 +5,7 @@
   (reset)="resetConfig()"
 >
   <!-- Core Configuration Slot -->
-  <div slot="content-core" class="control-grid" style="padding: 16px">
+  <div slot="content-core" class="control-grid context-menu-core-section">
     <div class="control-group">
       <label>Trigger</label>
       <ui-dropdown
@@ -36,7 +36,7 @@
         placeholder="e.g. 400px"
       ></ui-input>
     </div>
-    <div class="checkbox-group" style="margin-top: 12px">
+    <div class="checkbox-group context-menu-core-checkbox-group">
       <ui-checkbox
         id="searchable"
         [(ngModel)]="pgConfig.searchable"
@@ -55,7 +55,7 @@
   </div>
 
   <!-- Visual & Animation Slot -->
-  <div slot="content-visuals" class="control-grid" style="padding: 16px">
+  <div slot="content-visuals" class="control-grid context-menu-visuals-section">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -79,7 +79,7 @@
         ]"
       ></ui-dropdown>
     </div>
-    <div class="checkbox-group" style="margin-top: 12px">
+    <div class="checkbox-group context-menu-visuals-checkbox-group">
       <ui-checkbox
         id="animated"
         [(ngModel)]="pgConfig.animated"
@@ -100,13 +100,13 @@
         id="reflection"
         [(ngModel)]="pgConfig.reflection"
         (ngModelChange)="updateConfig()"
-        label="Glass Reflection"
+        label="Reflection"
       ></ui-checkbox>
     </div>
   </div>
 
   <!-- Advanced Behavior Slot -->
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid context-menu-behavior-section">
     <div class="checkbox-group">
       <ui-checkbox
         id="backdrop"

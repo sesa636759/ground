@@ -1,5 +1,5 @@
 ﻿<pg-playground
-  [items]="[{ id: 'cfg', title: 'Configuration', icon: '⚙️' }]"
+  [items]="[{ id: 'cfg', title: 'Configuration', icon: '\u2699\ufe0f' }]"
   [defaultOpen]="['cfg']"
 >
   <div slot="content-cfg">
@@ -16,9 +16,7 @@
             [(ngModel)]="cfg.strokeWidth"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)"
-            >{{ cfg.strokeWidth }}px</span
-          >
+          <span class="step-line-stroke-label">{{ cfg.strokeWidth }}px</span>
         </div>
         <div class="control-group">
           <label>Point Radius</label>
@@ -30,7 +28,7 @@
             [(ngModel)]="cfg.pointR"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.pointR }}px</span>
+          <span class="step-line-point-label">{{ cfg.pointR }}px</span>
         </div>
         <div class="control-group">
           <label>Color</label>
@@ -73,13 +71,9 @@
       <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
-  >
+  <div preview class="chart-preview-wrapper step-line-preview">
     <div class="chart-preview-wrapper">
-      <svg width="600" height="300" style="display: block; font-family: inherit">
+      <svg width="600" height="300" class="step-line-svg">
         <defs>
           <linearGradient id="slg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" [attr.stop-color]="cfg.color" stop-opacity="0.3" />

@@ -32,7 +32,7 @@
             [(ngModel)]="cfg.nodeR"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.nodeR }}px</span>
+          <span class="tree-diagram-node-label">{{ cfg.nodeR }}px</span>
         </div>
       </div>
       <div class="control-section">
@@ -67,18 +67,10 @@
       <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
-  >
+  <div preview class="chart-preview-wrapper tree-diagram-preview">
     <div class="chart-preview-wrapper">
-      <div style="width: 100%; overflow: auto">
-        <svg
-          [attr.width]="svgW"
-          [attr.height]="svgH"
-          style="display: block; margin: 0 auto; font-family: inherit"
-        >
+      <div class="tree-diagram-svg-wrapper">
+        <svg [attr.width]="svgW" [attr.height]="svgH" class="tree-diagram-svg">
           <!-- Lines -->
           <g *ngIf="cfg.showLines">
             <g *ngFor="let edge of edges">

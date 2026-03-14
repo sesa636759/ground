@@ -24,7 +24,7 @@
             [(ngModel)]="cfg.rowHeight"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.rowHeight }}px</span>
+          <span class="timeline-range-row-label">{{ cfg.rowHeight }}px</span>
         </div>
       </div>
       <div class="control-section">
@@ -39,7 +39,7 @@
             [(ngModel)]="cfg.radius"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.radius }}px</span>
+          <span class="timeline-range-radius-label">{{ cfg.radius }}px</span>
         </div>
         <div class="checkbox-group">
           <ui-checkbox
@@ -63,18 +63,10 @@
       <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
-  >
+  <div preview class="chart-preview-wrapper timeline-range-preview">
     <div class="chart-preview-wrapper">
-      <div style="width: 100%; max-width: 700px; overflow-x: auto">
-        <svg
-          [attr.width]="svgWidth"
-          [attr.height]="svgHeight"
-          style="font-family: inherit; display: block; margin: 0 auto"
-        >
+      <div class="timeline-range-svg-wrapper">
+        <svg [attr.width]="svgWidth" [attr.height]="svgHeight" class="timeline-range-svg">
           <!-- Grid lines -->
           <g *ngFor="let col of gridCols">
             <line

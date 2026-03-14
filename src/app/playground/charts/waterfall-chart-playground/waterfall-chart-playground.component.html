@@ -32,7 +32,7 @@
             [(ngModel)]="cfg.gap"
             (ngModelChange)="update()"
           ></ui-input>
-          <span style="font-size: 0.8rem; color: var(--text-secondary)">{{ cfg.gap }}px</span>
+          <span class="waterfall-gap-label">{{ cfg.gap }}px</span>
         </div>
       </div>
       <div class="control-section">
@@ -67,13 +67,9 @@
       <ui-button variant="secondary" (click)="reset()" label="Reset"></ui-button>
     </div>
   </div>
-  <div
-    preview
-    class="chart-preview-wrapper"
-    style="width: 100%; display: flex; justify-content: center"
-  >
+  <div preview class="chart-preview-wrapper waterfall-chart-preview">
     <div class="chart-preview-wrapper">
-      <svg width="620" height="340" style="display: block; font-family: inherit">
+      <svg width="620" height="340" class="waterfall-chart-svg">
         <!-- Y Axis -->
         <g *ngFor="let tick of yTicks">
           <line
