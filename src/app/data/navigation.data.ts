@@ -118,7 +118,7 @@ export const categoryNavItems: NavItem[] = [
       { id: 'card', label: 'Card', icon: 'credit-card', iconLibrary: 'lucide' },
       // { id: 'card-set', label: 'Card Set', icon: 'layers', iconLibrary: 'lucide' },
       { id: 'divider', label: 'Divider', icon: 'minus', iconLibrary: 'lucide' },
-      { id: 'dock', label: 'Dock', icon: '⚓' },
+      { id: 'dock', label: 'Dock', icon: '⚓', iconLibrary: 'emoji' },
       // { id: 'dock-host', label: 'Dock Host' },  not working as of now//
       {
         id: 'layout-manager',
@@ -186,7 +186,7 @@ export const categoryNavItems: NavItem[] = [
         icon: 'toggle-left',
         iconLibrary: 'lucide',
       },
-      { id: 'cascade-select', label: 'Cascade Select', icon: 'target', iconLibrary: 'lucide' },
+      // { id: 'cascade-select', label: 'Cascade Select', icon: 'target', iconLibrary: 'lucide' },
       { id: 'checkbox', label: 'Checkbox', icon: 'check-square', iconLibrary: 'lucide' },
       { id: 'dropdown', label: 'Dropdown', icon: 'chevron-down-square', iconLibrary: 'lucide' },
       { id: 'input', label: 'Input', icon: 'pencil', iconLibrary: 'lucide' },

@@ -1,9 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ViewEncapsulation,
-  OnInit,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation, OnInit } from '@angular/core';
 import { PLAYGROUND_IMPORTS } from '../../../shared/components/demo-playground/playground.constants';
 import { BasePlaygroundComponent } from '../../../shared/components/demo-playground/base-playground.component';
 
@@ -20,8 +15,8 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
   pgConfig = this.getDefaultConfig();
 
   pgAccordionItems = [
-    { id: 'settings', title: 'Core Settings', icon: 'settings', iconLibrary: 'lucide' },
-    { id: 'style', title: 'Appearance', icon: 'palette', iconLibrary: 'lucide' },
+    { id: 'settings', title: 'Core Settings', icon: '⚙️', iconLibrary: 'emoji' },
+    { id: 'style', title: 'Appearance', icon: '🎨', iconLibrary: 'emoji' },
   ];
 
   accordionDefaultOpen = ['settings'];
@@ -40,6 +35,7 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
   ];
 
   iconLibraryOptions = [
+    { label: 'Emoji', value: 'emoji' },
     { label: 'Default', value: 'default' },
     { label: 'Lucide', value: 'lucide' },
     { label: 'Ionicons', value: 'ionicons' },
@@ -48,12 +44,12 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
   ];
 
   items = [
-    { id: 'finder', label: 'Finder', icon: 'search' },
-    { id: 'appstore', label: 'App Store', icon: 'shopping-bag' },
-    { id: 'photos', label: 'Photos', icon: 'image' },
+    { id: 'finder', label: 'Finder', icon: '🔍', iconLibrary: 'emoji' },
+    { id: 'appstore', label: 'App Store', icon: '🛍️', iconLibrary: 'emoji' },
+    { id: 'photos', label: 'Photos', icon: '🖼️', iconLibrary: 'emoji' },
     { separator: true },
-    { id: 'settings', label: 'Settings', icon: 'settings', active: true },
-    { id: 'trash', label: 'Trash', icon: 'trash-2', badge: 3 },
+    { id: 'settings', label: 'Settings', icon: '⚙️', active: true, iconLibrary: 'emoji' },
+    { id: 'trash', label: 'Trash', icon: '🗑️', badge: 3, iconLibrary: 'emoji' },
   ];
 
   itemsJson = JSON.stringify(this.items, null, 2);
@@ -69,19 +65,19 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
   getDefaultConfig() {
     return {
       items: JSON.stringify([
-        { id: 'finder', label: 'Finder', icon: 'search' },
-        { id: 'appstore', label: 'App Store', icon: 'shopping-bag' },
-        { id: 'photos', label: 'Photos', icon: 'image' },
+        { id: 'finder', label: 'Finder', icon: '🔍', iconLibrary: 'emoji' },
+        { id: 'appstore', label: 'App Store', icon: '🛍️', iconLibrary: 'emoji' },
+        { id: 'photos', label: 'Photos', icon: '🖼️', iconLibrary: 'emoji' },
         { separator: true },
-        { id: 'settings', label: 'Settings', icon: 'settings' },
-        { id: 'trash', label: 'Trash', icon: 'trash-2' },
+        { id: 'settings', label: 'Settings', icon: '⚙️', iconLibrary: 'emoji' },
+        { id: 'trash', label: 'Trash', icon: '🗑️', iconLibrary: 'emoji' },
       ]),
       position: 'bottom',
       size: 'md',
       magnify: true,
       blurEffect: true,
       showLabels: true,
-      iconLibrary: 'lucide',
+      iconLibrary: 'emoji',
     };
   }
 
@@ -93,7 +89,8 @@ export class DmDockPlaygroundComponent extends BasePlaygroundComponent implement
     if (!this.pgConfig.magnify) code += `  [magnify]="false"\n`;
     if (!this.pgConfig.blurEffect) code += `  [blur-effect]="false"\n`;
     if (!this.pgConfig.showLabels) code += `  [show-labels]="false"\n`;
-    if (this.pgConfig.iconLibrary !== 'default') code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
+    if (this.pgConfig.iconLibrary !== 'default')
+      code += `  icon-library="${this.pgConfig.iconLibrary}"\n`;
 
     code += `></ui-dock>`;
 
