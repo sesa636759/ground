@@ -222,3 +222,18 @@
     ></ui-code-preview>
   }
 </pg-playground>
+
+  <!-- All possible variants/examples -->
+  <div style="margin-top: 32px">
+    <h3>All Variants & Examples</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+      <ui-empty-state type="no-data" variant="default" size="medium" align="center" heading="No Data" message="No data available." rounded></ui-empty-state>
+      <ui-empty-state type="no-results" variant="outlined" size="large" align="left" heading="No Results" message="Try another search." elevated></ui-empty-state>
+      <ui-empty-state type="empty-cart" variant="filled" size="small" align="right" heading="Empty Cart" message="Your cart is empty." compact></ui-empty-state>
+      <ui-empty-state type="error" variant="glass" size="medium" align="center" heading="Error" message="Something went wrong." animated></ui-empty-state>
+      <ui-empty-state type="404" variant="minimal" size="large" align="center" heading="404 Not Found" message="Page not found." show-back-button></ui-empty-state>
+      <ui-empty-state type="coming-soon" variant="minimalistic" size="medium" align="center" heading="Coming Soon" message="Stay tuned!" primary-action="Notify Me" primary-action-icon="fas fa-bell"></ui-empty-state>
+      <ui-empty-state type="maintenance" variant="default" size="medium" align="center" heading="Maintenance" message="We'll be back soon." secondary-action="Learn More" secondary-action-icon="fas fa-book"></ui-empty-state>
+      <ui-empty-state type="custom" variant="glass" size="large" align="right" heading="Custom State" message="Custom illustration." illustration="https://via.placeholder.com/150"></ui-empty-state>
+    </div>
+  </div>

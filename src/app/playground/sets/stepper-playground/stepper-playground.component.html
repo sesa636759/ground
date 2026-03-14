@@ -216,6 +216,21 @@
     </div>
   </div>
 
+    <!-- All possible variants/examples -->
+    <div style="margin-top: 32px">
+      <h3>All Variants & Examples</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+        <ui-stepper [steps]="stepsJson" orientation="horizontal" variant="default" color-scheme="primary" show-numbers show-descriptions></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="vertical" variant="panel" color-scheme="success" show-controls></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="horizontal" variant="navigation" color-scheme="warning" progress-dot></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="vertical" variant="outlined" color-scheme="danger" animated></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="horizontal" variant="minimal" color-scheme="primary" compact></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="vertical" variant="filled" color-scheme="success" scrollable></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="horizontal" variant="snack" color-scheme="warning" clickable></ui-stepper>
+        <ui-stepper [steps]="stepsJson" orientation="vertical" variant="inline" color-scheme="danger" show-progress></ui-stepper>
+      </div>
+    </div>
+
   <pg-playground-event-log
     events
     [logs]="eventLog()"
