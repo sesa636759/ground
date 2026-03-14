@@ -20,7 +20,7 @@
             <h3>Left Panel - Right Panel Layout</h3>
             <div class="panel-box">
               <ui-resizable-panel [panels]="basicHPanels">
-                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="p1" class="p-content bg-secondary">
                   <strong>Left Panel</strong>
                   <p>Drag the handle to resize this panel horizontally.</p>
                   <p>
@@ -28,7 +28,7 @@
                     Smooth transitions
                   </p>
                 </div>
-                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                <div slot="p2" class="p-content bg-tertiary">
                   <strong>Right Panel</strong>
                   <p>This panel automatically adjusts as you resize the left panel.</p>
                 </div>
@@ -47,11 +47,11 @@
             <h3>Top Panel - Bottom Panel Layout</h3>
             <div class="panel-box">
               <ui-resizable-panel [panels]="basicVPanels" direction="vertical">
-                <div slot="t1" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="t1" class="p-content bg-secondary">
                   <strong>Top Panel</strong>
                   <p>Drag the handle below to resize this panel vertically.</p>
                 </div>
-                <div slot="t2" class="p-content" style="background: var(--bg-tertiary)">
+                <div slot="t2" class="p-content bg-tertiary">
                   <strong>Bottom Panel</strong>
                   <p>Vertical resizing works just like horizontal, but in a different direction.</p>
                 </div>
@@ -70,15 +70,15 @@
             <h3>Three Independent Panels</h3>
             <div class="panel-box large-box">
               <ui-resizable-panel [panels]="triplePanels" direction="horizontal">
-                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="p1" class="p-content bg-secondary">
                   <strong>Panel 1</strong>
                   <p>First panel with 30% initial width</p>
                 </div>
-                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                <div slot="p2" class="p-content bg-tertiary">
                   <strong>Panel 2</strong>
                   <p>Middle panel with 40% initial width</p>
                 </div>
-                <div slot="p3" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="p3" class="p-content bg-secondary">
                   <strong>Panel 3</strong>
                   <p>Last panel with 30% initial width</p>
                 </div>
@@ -97,13 +97,13 @@
             <h3>IDE Layout (Sidebar + Editor + Terminal)</h3>
             <div class="panel-box large-box">
               <ui-resizable-panel [panels]="nestedOuter" direction="horizontal">
-                <div slot="sidebar" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="sidebar" class="p-content bg-secondary">
                   <strong>Sidebar</strong>
                   <p>? Navigation<br />? Tree View<br />? File Explorer<br />? Settings</p>
                 </div>
-                <div slot="main" style="height: 100%; overflow: hidden">
+                <div slot="main" class="h-full overflow-hidden">
                   <ui-resizable-panel [panels]="nestedInner" direction="vertical">
-                    <div slot="editor" class="p-content" style="background: var(--bg-tertiary)">
+                    <div slot="editor" class="p-content bg-tertiary">
                       <strong>Main Code Editor</strong>
                       <p>
                         function example() <span>{{ '{' }}</span
@@ -112,7 +112,7 @@
                         }}</span>
                       </p>
                     </div>
-                    <div slot="terminal" class="p-content" style="background: #1a1a1a; color: #0f0">
+                    <div slot="terminal" class="p-content bg-terminal text-green">
                       <strong>Build Output / Terminal</strong>
                       <p>$ npm run build<br />? Build complete in 2.3s</p>
                     </div>
@@ -133,7 +133,7 @@
             <h3>Collapsible Left Panel</h3>
             <div class="panel-box large-box">
               <ui-resizable-panel [panels]="collapsiblePanels" direction="horizontal">
-                <div slot="left" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="left" class="p-content bg-secondary">
                   <strong>Collapsible Left Panel</strong>
                   <p>Click the collapse button on the resize handle to hide/show this panel.</p>
                   <p>
@@ -143,7 +143,7 @@
                     >
                   </p>
                 </div>
-                <div slot="main" class="p-content" style="background: var(--bg-tertiary)">
+                <div slot="main" class="p-content bg-tertiary">
                   <strong>Main Content Area</strong>
                   <p>This area expands when the left panel is collapsed.</p>
                 </div>
@@ -163,11 +163,11 @@
               <h3>Dark Theme</h3>
               <div class="panel-box">
                 <ui-resizable-panel [panels]="basicHPanels" theme="dark">
-                  <div slot="p1" class="p-content" style="background: #2a2a2a; color: #fff">
+                  <div slot="p1" class="p-content bg-dark text-white">
                     <strong>Dark Sidebar</strong>
                     <p>Perfect for applications that support dark mode.</p>
                   </div>
-                  <div slot="p2" class="p-content" style="background: #333; color: #fff">
+                  <div slot="p2" class="p-content bg-dark text-white">
                     <strong>Dark Main</strong>
                     <p>Scrollbars, handles, and content automatically adapt to the theme.</p>
                   </div>
@@ -202,7 +202,7 @@
             <h3>Snap to Edge Demo</h3>
             <div class="panel-box large-box">
               <ui-resizable-panel [panels]="basicHPanels" snap-to-edge="true" [snapThreshold]="50">
-                <div slot="p1" class="p-content" style="background: var(--bg-secondary)">
+                <div slot="p1" class="p-content bg-secondary">
                   <strong>Snap Demo</strong>
                   <p>Drag the handle close to the left edge and it will snap closed.</p>
                   <p>
@@ -212,7 +212,7 @@
                     >
                   </p>
                 </div>
-                <div slot="p2" class="p-content" style="background: var(--bg-tertiary)">
+                <div slot="p2" class="p-content bg-tertiary">
                   <strong>Main Panel</strong>
                   <p>Try dragging the handle to the left or right edge to see the snap effect.</p>
                 </div>

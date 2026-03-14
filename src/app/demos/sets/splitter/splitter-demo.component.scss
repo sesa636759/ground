@@ -1,5 +1,32 @@
 @use '../../../../styles/demo-base.scss';
 
+.splitter-wrapper {
+  height: 180px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.panel-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100%;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(148, 163, 184, 0.05);
+
+  &.fixed-150 { flex: 0 0 150px; }
+  &.fixed-50 { flex: 0 0 50px; }
+  &.fixed-40 { flex: 0 0 40px; }
+}
+
+.demo-section h2 {
+  margin-bottom: 8px !important;
+}
+
 .p-content {
   height: 100%;
   padding: 24px;
@@ -30,28 +57,5 @@
     strong {
       color: #e2e8f0;
     }
-  }
-}
-
-.code-example {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--primary);
-  margin-top: var(--space-sm);
-  line-height: 1.5;
-}
-
-.panel-box {
-  height: 350px;
-  background: var(--surface-2);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-
-  &.large-box {
-    height: 600px;
   }
 }

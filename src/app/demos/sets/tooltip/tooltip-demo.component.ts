@@ -101,7 +101,7 @@ export class DmTooltipDemoComponent extends BaseDemoComponent {
 </ui-tooltip>`;
 
   pillShapeCode = `<ui-tooltip content="Pill Shape" shape="pill" position="top">
-  <ui-button slot="target" style="border-radius: 99px" label="Pill Button"></ui-button>
+  <ui-button slot="target" class="rounded-full" label="Pill Button"></ui-button>
 </ui-tooltip>`;
 
   bounceAnimationCode = `<ui-tooltip content="Boing!" animation="bounce" position="top">
@@ -161,15 +161,15 @@ export class DmTooltipDemoComponent extends BaseDemoComponent {
   useCasesCode = `<p>
   Welcome to our platform!
   <ui-tooltip content="Click here to learn more" variant="info" position="top">
-    <span slot="target" style="cursor: help; text-decoration: underline;">Details</span>
+    <span slot="target" class="cursor-help underline">Details</span>
   </ui-tooltip>
 </p>`;
 
   customSlotCode = `<ui-tooltip position="top" variant="light" interactive="true" max-width="350">
   <ui-button slot="target" label="User Profile"></ui-button>
-  <div style="display: flex; gap: 15px; padding: 10px;">
-    <img src="..." style="width: 50px; height: 50px; border-radius: 50%" />
-    <div style="text-align: left">
+  <div class="display-flex gap-16 p-16">
+    <img src="..." class="h-40 w-40 rounded-full" />
+    <div class="text-left">
       <strong>Praveen Kumar</strong>
       <span>Lead Architect</span>
     </div>

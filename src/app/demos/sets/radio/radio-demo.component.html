@@ -34,9 +34,9 @@
           description="Radio groups support vertical, horizontal, and multi-column grid layouts."
           [code]="layoutsCode()"
         >
-          <div class="demo-grid col-1" style="gap: 32px">
+          <div class="demo-grid col-1 gap-32">
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Horizontal Layout</p>
+              <p class="mb-8 font-semibold">Horizontal Layout</p>
               <ui-radio-group layout="horizontal" value="m">
                 <ui-radio value="m" label="Male"></ui-radio>
                 <ui-radio value="f" label="Female"></ui-radio>
@@ -44,7 +44,7 @@
               </ui-radio-group>
             </div>
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Grid Layout (2 Columns)</p>
+              <p class="mb-8 font-semibold">Grid Layout (2 Columns)</p>
               <ui-radio-group layout="grid" columns="2" value="mon">
                 <ui-radio value="mon" label="Monday"></ui-radio>
                 <ui-radio value="tue" label="Tuesday"></ui-radio>
@@ -120,7 +120,7 @@
               <ui-radio value="admin" label="Full Control"></ui-radio>
             </ui-radio-group>
             
-            <ui-radio-group button-group variant="card" label="Card Variant Mode" value="light" style="margin-top: 24px;">
+            <ui-radio-group button-group variant="card" label="Card Variant Mode" value="light" class="mt-24">
               <ui-radio value="light" label="Light Theme" description="Optimized for day time"></ui-radio>
               <ui-radio value="dark" label="Dark Theme" description="Easy on the eyes"></ui-radio>
             </ui-radio-group>
@@ -155,7 +155,7 @@
           description="Pass an array of objects to the options prop as an alternative to using child components."
           [code]="optionsPropCode()"
         >
-          <div class="demo-box" style="max-width: 400px">
+          <div class="demo-box max-w-400">
             <ui-radio-group 
               label="Priority Selection" 
               [attr.options]="'[{&quot;value&quot;: &quot;low&quot;, &quot;label&quot;: &quot;Low Priority&quot;}, {&quot;value&quot;: &quot;med&quot;, &quot;label&quot;: &quot;Medium Priority&quot;}, {&quot;value&quot;: &quot;high&quot;, &quot;label&quot;: &quot;High Priority&quot;}]'"
@@ -170,16 +170,16 @@
           description="Advanced behaviors like deselecting, loading states, and custom indicator positioning."
           [code]="miscCode()"
         >
-          <div class="demo-grid col-1" style="gap: 40px">
+          <div class="demo-grid col-1 gap-40">
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Allow Empty (Deselectable)</p>
+              <p class="mb-8 font-semibold">Allow Empty (Deselectable)</p>
               <ui-radio-group [attr.allow-empty]="''" value="X">
                 <ui-radio value="X" label="Selection (Click again to clear)"></ui-radio>
               </ui-radio-group>
             </div>
 
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">No Dot Indicator (Custom Button Look)</p>
+              <p class="mb-8 font-semibold">No Dot Indicator (Custom Button Look)</p>
               <ui-radio-group [attr.show-dot]="'false'" layout="horizontal" value="A">
                 <ui-radio value="A" label="Choice A"></ui-radio>
                 <ui-radio value="B" label="Choice B"></ui-radio>
@@ -187,14 +187,14 @@
             </div>
 
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Label Position (Left)</p>
+              <p class="mb-8 font-semibold">Label Position (Left)</p>
               <ui-radio-group label-position="left" value="1">
                 <ui-radio value="1" label="Option with Left Label"></ui-radio>
               </ui-radio-group>
             </div>
 
             <div>
-              <p style="margin-bottom: 8px; font-weight: 500;">Skeleton (Loading State)</p>
+              <p class="mb-8 font-semibold">Skeleton (Loading State)</p>
               <ui-radio-group [attr.skeleton]="''">
                 <ui-radio label="Hidden"></ui-radio>
                 <ui-radio label="Hidden"></ui-radio>

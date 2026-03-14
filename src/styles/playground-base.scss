@@ -156,37 +156,10 @@
   }
 }
 
-// ── Utility Classes for Playgrounds ──────────────────────────────────────────
-.m-0 { margin: 0 !important; }
-.p-0 { padding: 0 !important; }
-.w-full { width: 100% !important; }
-.h-full { height: 100% !important; }
+// ── Utility Classes for Playgrounds (handled by utilities.scss) ────────────────
 
-.flex-center {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.flex-stretch {
-  display: flex !important;
-  align-items: stretch !important;
-}
-
-.flex-column {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.text-muted-sm {
-  color: #64748b;
-  font-size: 0.8125rem;
-}
-
-.pl-12 { padding-left: 12px !important; }
-.pl-24 { padding-left: 24px !important; }
-
-.gap-12 { gap: 12px !important; }
+.mt-16 { @extend .mt-16; }
+.p-16 { @extend .p-16; }
 
 .code-block-minimal {
   background: #f8fafc;

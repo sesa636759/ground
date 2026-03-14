@@ -4,7 +4,7 @@
   (reset)="resetConfig()"
 >
   <!-- Global & Identity -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Type</label>
       <ui-dropdown
@@ -48,7 +48,7 @@
   </div>
 
   <!-- Aesthetics & Style -->
-  <div slot="content-appearance" class="control-grid" style="padding: 16px">
+  <div slot="content-appearance" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Variant</label>
       <ui-dropdown
@@ -90,7 +90,7 @@
   </div>
 
   <!-- Decorators -->
-  <div slot="content-decorators" class="control-grid" style="padding: 16px">
+  <div slot="content-decorators" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Prefix Icon (Lucide)</label>
       <ui-input type="text" [(ngModel)]="pgConfig.prefixIcon" (ngModelChange)="updateConfig()"></ui-input>
@@ -128,7 +128,7 @@
   </div>
 
   <!-- Behavior -->
-  <div slot="content-behavior" class="control-grid" style="padding: 16px">
+  <div slot="content-behavior" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.disabled" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -166,7 +166,7 @@
   </div>
 
   <!-- Validation -->
-  <div slot="content-validation" class="control-grid" style="padding: 16px">
+  <div slot="content-validation" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Validation State</label>
       <ui-dropdown
@@ -202,7 +202,7 @@
   </div>
 
   <!-- Special Types -->
-  <div slot="content-special" class="control-grid" style="padding: 16px">
+  <div slot="content-special" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.multiline" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -232,8 +232,8 @@
   </div>
 
   <!-- Preview Area -->
-  <div preview class="preview-stage" style="padding: 40px; justify-content: flex-start; align-items: stretch; flex-direction: column;">
-    <div style="max-width: 500px; width: 100%; margin: 0 auto;">
+  <div preview class="preview-stage p-40 flex-column flex-items-start">
+    <div class="max-w-500 w-full m-0-auto">
       <ui-input
         #demoElement
         [attr.type]="pgConfig.type"

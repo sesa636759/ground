@@ -5,7 +5,7 @@
   (reset)="resetConfig()"
 >
   <!-- Global Configuration -->
-  <div slot="content-global" class="control-grid" style="padding: 16px">
+  <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Type</label>
       <ui-dropdown
@@ -98,7 +98,7 @@
   </div>
 
   <!-- Visual Enhancements -->
-  <div slot="content-visual" class="control-grid" style="padding: 16px">
+  <div slot="content-visual" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Stroke Color</label>
       <ui-input type="color" [(ngModel)]="pgConfig.strokeColor" (ngModelChange)="updateConfig()"></ui-input>
@@ -144,7 +144,7 @@
   </div>
 
   <!-- Advanced Controls -->
-  <div slot="content-advanced" class="control-grid" style="padding: 16px">
+  <div slot="content-advanced" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
         <ui-checkbox [(ngModel)]="pgConfig.showBuffer" (ngModelChange)="updateConfig()"></ui-checkbox>
@@ -196,9 +196,9 @@
 
   <!-- Preview -->
   <div preview>
-    <div class="preview-stage" style="padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; background: #fff; border-radius: 8px;">
+    <div class="preview-stage demo-preview-stage">
       <ui-progress
-        style="width: 100%;"
+        class="w-full"
         [percent]="pgConfig.percent"
         [attr.type]="pgConfig.type"
         [attr.status]="pgConfig.status"

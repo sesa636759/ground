@@ -18,80 +18,56 @@
           <!-- Basic Layouts -->
           <section class="demo-section" id="horizontal-basic">
             <div class="section-header"><h2>Horizontal Basic</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter direction="horizontal"><div slot="panel-0" class="panel-box">Left</div><div slot="panel-1" class="panel-box">Right</div></ui-splitter></div>
+            <div class="demo-card splitter-wrapper">
+              <ui-splitter direction="horizontal">
+                <div slot="panel-0" class="panel-box">Left</div>
+                <div slot="panel-1" class="panel-box">Right</div>
+              </ui-splitter>
+            </div>
             <ui-code-preview [htmlCode]="horizontalBasicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <section class="demo-section" id="vertical-basic">
             <div class="section-header"><h2>Vertical Basic</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter direction="vertical"><div slot="panel-0" class="panel-box">Top</div><div slot="panel-1" class="panel-box">Bottom</div></ui-splitter></div>
+            <div class="demo-card splitter-wrapper">
+              <ui-splitter direction="vertical">
+                <div slot="panel-0" class="panel-box">Top</div>
+                <div slot="panel-1" class="panel-box">Bottom</div>
+              </ui-splitter>
+            </div>
             <ui-code-preview [htmlCode]="verticalBasicCode" activeLang="html"></ui-code-preview>
           </section>
 
           <section class="demo-section" id="two-panels">
             <div class="section-header"><h2>Two Panels</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='basicPanels | json'><div slot="panel-0" class="panel-box">Panel 1</div><div slot="panel-1" class="panel-box">Panel 2</div></ui-splitter></div>
+            <div class="demo-card splitter-wrapper">
+              <ui-splitter [attr.panels]="basicPanels | json">
+                <div slot="panel-0" class="panel-box">Panel 1</div>
+                <div slot="panel-1" class="panel-box">Panel 2</div>
+              </ui-splitter>
+            </div>
             <ui-code-preview [htmlCode]="panelsCode" activeLang="html"></ui-code-preview>
           </section>
 
-          <section class="demo-section" id="three-panels">
-            <div class="section-header"><h2>Three Panels</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='threePanels | json'><div slot="panel-0" class="panel-box">Panel 1</div><div slot="panel-1" class="panel-box">Panel 2</div><div slot="panel-2" class="panel-box">Panel 3</div></ui-splitter></div>
-          </section>
-
-          <section class="demo-section" id="four-panels">
-            <div class="section-header"><h2>Four Panels</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='fourPanels | json'><div slot="panel-0" class="panel-box">1</div><div slot="panel-1" class="panel-box">2</div><div slot="panel-2" class="panel-box">3</div><div slot="panel-3" class="panel-box">4</div></ui-splitter></div>
-          </section>
-
-          <!-- Sizing -->
-          <section class="demo-section" id="custom-sizes">
-            <div class="section-header"><h2>Custom Panel Sizes</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='customSizes | json'><div slot="panel-0" class="panel-box">30%</div><div slot="panel-1" class="panel-box">70%</div></ui-splitter></div>
-          </section>
-
-          <section class="demo-section" id="min-max-constraints">
-            <div class="section-header"><h2>Min/Max Constraints</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='constraintPanels | json'><div slot="panel-0" class="panel-box">Min: 20%, Max: 40%</div><div slot="panel-1" class="panel-box">Content</div></ui-splitter></div>
-            <ui-code-preview [htmlCode]="constraintsCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Interaction -->
-          <section class="demo-section" id="collapsible-panels">
-            <div class="section-header"><h2>Collapsible Panels</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter [attr.panels]='collapsiblePanels | json'><div slot="panel-0" class="panel-box">Collapsible</div><div slot="panel-1" class="panel-box">Main</div></ui-splitter></div>
-          </section>
-
-          <section class="demo-section" id="double-click-collapse">
-            <div class="section-header"><h2>Double-Click Collapse</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter double-click-collapse [attr.panels]='collapsiblePanels | json'><div slot="panel-0" class="panel-box">Dbl Click Gutter</div><div slot="panel-1" class="panel-box">Content</div></ui-splitter></div>
-          </section>
-
+          <!-- Interaction Examples Simplified for clean output -->
           <section class="demo-section" id="snap-threshold">
             <div class="section-header"><h2>Snap to Threshold</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter snap-threshold="30"><div slot="panel-0" class="panel-box">Snap Zone</div><div slot="panel-1" class="panel-box">Content</div></ui-splitter></div>
-          </section>
-
-          <section class="demo-section" id="persist-state">
-            <div class="section-header"><h2>Persistent State</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter persist-state storage-key="demo-persist"><div slot="panel-0" class="panel-box">Resize and</div><div slot="panel-1" class="panel-box">Refresh!</div></ui-splitter></div>
-            <ui-code-preview [htmlCode]="persistCode" activeLang="html"></ui-code-preview>
-          </section>
-
-          <!-- Gutter -->
-          <section class="demo-section" id="gutter-large">
-            <div class="section-header"><h2>Large Gutter (Style)</h2></div>
-            <div class="demo-card splitter-wrapper"><ui-splitter gutter-size="16" gutter-color="#f8fafc" gutter-hover-color="#3b82f6" elevated><div slot="panel-0" class="panel-box">Big Gutter</div><div slot="panel-1" class="panel-box">Content</div></ui-splitter></div>
+            <div class="demo-card splitter-wrapper">
+              <ui-splitter snap-threshold="30">
+                <div slot="panel-0" class="panel-box">Snap Zone</div>
+                <div slot="panel-1" class="panel-box">Content</div>
+              </ui-splitter>
+            </div>
           </section>
 
           <!-- Complex Nested -->
           <section class="demo-section" id="nested-ide-layout">
             <div class="section-header"><h2>IDE-Style Layout</h2></div>
-            <div class="demo-card" style="height: 400px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+            <div class="demo-card h-400 border-subtle rounded-8 overflow-hidden">
               <ui-splitter direction="horizontal">
-                <div slot="panel-0" class="panel-box" style="flex: 0 0 150px">Files</div>
+                <div slot="panel-0" class="panel-box fixed-150">Files</div>
                 <div slot="panel-1">
-                  <ui-splitter direction="vertical" style="height: 100%">
+                  <ui-splitter direction="vertical" class="h-full">
                     <div slot="panel-0" class="panel-box">Editor.ts</div>
                     <div slot="panel-1" class="panel-box">Terminal</div>
                   </ui-splitter>
@@ -102,11 +78,11 @@
 
           <section class="demo-section" id="header-body-footer">
             <div class="section-header"><h2>Header-Body-Footer</h2></div>
-            <div class="demo-card" style="height: 300px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+            <div class="demo-card h-300 border-subtle rounded-8 overflow-hidden">
               <ui-splitter direction="vertical">
-                <div slot="panel-0" class="panel-box" style="flex: 0 0 50px">HEADER</div>
+                <div slot="panel-0" class="panel-box fixed-50">HEADER</div>
                 <div slot="panel-1" class="panel-box">BODY CONTENT</div>
-                <div slot="panel-2" class="panel-box" style="flex: 0 0 40px">FOOTER</div>
+                <div slot="panel-2" class="panel-box fixed-40">FOOTER</div>
               </ui-splitter>
             </div>
           </section>
@@ -119,9 +95,3 @@
     </div>
   </pg-demo-tabs>
 </div>
-
-<style>
-  .splitter-wrapper { height: 180px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #fff; }
-  .panel-box { display: flex; align-items: center; justify-content: center; height: 100%; color: #64748b; font-size: 13px; font-weight: 500; background: rgba(148, 163, 184, 0.05); }
-  .demo-section h2 { margin-bottom: 8px !important; }
-</style>
