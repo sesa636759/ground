@@ -100,9 +100,9 @@ export class DmAsideDemoComponent extends BaseDemoComponent {
  </ui-aside-panel>
 
 <!-- Close on overlay click -->
-<ui-aside-panel close-on-overlay-click [open]="overlayOpen" (asideClosed)="overlayOpen = false">
-  <div slot="content">Click outside the panel to close.</div>
- </ui-aside-panel>`;
+// <ui-aside-panel close-on-overlay-click [open]="overlayOpen" (asideClosed)="overlayOpen = false">
+//   <div slot="content">Click outside the panel to close.</div>
+//  </ui-aside-panel>`;
 
   togglePanel(key: keyof typeof DmAsideDemoComponent.prototype.sidebars) {
     const currentState = this.sidebars[key];

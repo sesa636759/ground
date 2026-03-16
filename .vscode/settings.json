@@ -3,6 +3,10 @@
     "/^Get-Content \"c:\\\\Praveen\\\\Personal-repo\\\\Duplicate\\\\AngularGround\\\\node_modules\\\\@stencil\\\\core\\\\internal\\\\client\\\\index\\.js\" \\| Select-String \"function transformTag\\|transformTag=\" \\| Select-Object -First 3 \\| ForEach-Object \\{ \\$_\\.Line \\}$/": {
       "approve": true,
       "matchCommandLine": true
+    },
+    "/^Set-Location 'c:\\\\Praveen\\\\Personal-repo\\\\Duplicate\\\\AngularGround'; node -e \"const \\{ chromium \\} = require\\('playwright'\\); \\(async\\(\\)=>\\{ const browser = await chromium\\.launch\\(\\{headless:true\\}\\); const page = await browser\\.newPage\\(\\); const client = await page\\.context\\(\\)\\.newCDPSession\\(page\\); await client\\.send\\('Runtime\\.enable'\\); client\\.on\\('Runtime\\.exceptionThrown', evt => \\{ const d = evt\\.exceptionDetails; console\\.log\\('exception:' \\+ JSON\\.stringify\\(\\{ text: d\\.text, url: d\\.url, line: d\\.lineNumber, column: d\\.columnNumber, exception: d\\.exception && d\\.exception\\.description, stack: d\\.stackTrace \\}, null, 2\\)\\); \\}\\); page\\.on\\('console', msg => \\{ if \\(msg\\.type\\(\\)==='error'\\) console\\.log\\('consoleerr:'\\+msg\\.text\\(\\)\\); \\}\\); await page\\.goto\\('http://localhost:56966/demos/input', \\{waitUntil:'networkidle'\\}\\); await page\\.waitForTimeout\\(3000\\); await browser\\.close\\(\\); \\}\\)\\(\\)\\.catch\\(err=>\\{ console\\.error\\(err\\); process\\.exit\\(1\\); \\}\\);\"$/": {
+      "approve": true,
+      "matchCommandLine": true
     }
   },
   "editor.formatOnSave": true,

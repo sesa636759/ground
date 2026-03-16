@@ -1,8 +1,4 @@
-<pg-playground
-  [items]="pgAccordionItems"
-  [code]="generatedCode()"
-  (reset)="resetConfig()"
->
+<pg-playground [items]="pgAccordionItems" [code]="generatedCode()" (reset)="resetConfig()">
   <!-- Global & Identity -->
   <div slot="content-global" class="control-grid pg-panel-container">
     <div class="control-group">
@@ -39,11 +35,7 @@
     </div>
     <div class="control-group">
       <label>Name</label>
-      <ui-input
-        type="text"
-        [(ngModel)]="pgConfig.name"
-        (ngModelChange)="updateConfig()"
-      ></ui-input>
+      <ui-input type="text" [(ngModel)]="pgConfig.name" (ngModelChange)="updateConfig()"></ui-input>
     </div>
   </div>
 
@@ -67,11 +59,17 @@
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.fullWidth" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.fullWidth"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Full Width
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.floatingLabel" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.floatingLabel"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Floating Label
       </label>
       <label class="checkbox-item">
@@ -83,7 +81,10 @@
         RTL Mode
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.rippleEffect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.rippleEffect"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Ripple Effect
       </label>
     </div>
@@ -93,27 +94,50 @@
   <div slot="content-decorators" class="control-grid pg-panel-container">
     <div class="control-group">
       <label>Prefix Icon (Lucide)</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.prefixIcon" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.prefixIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Suffix Icon (Lucide)</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.suffixIcon" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.suffixIcon"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Prefix Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.prefixText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.prefixText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Suffix Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.suffixText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.suffixText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Badge</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.badge" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.badge"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showClear" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showClear"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Clear Button
       </label>
       <label class="checkbox-item">
@@ -121,7 +145,10 @@
         Show Copy Button
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.showPasswordToggle" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showPasswordToggle"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Password Toggle
       </label>
     </div>
@@ -147,7 +174,10 @@
         Loading
       </label>
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.autoSelect" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoSelect"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Select
       </label>
       <label class="checkbox-item">
@@ -157,11 +187,19 @@
     </div>
     <div class="control-group">
       <label>Debounce (ms)</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.debounce" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.debounce"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Suggestions (comma separated)</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.suggestions" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.suggestions"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
   </div>
 
@@ -177,11 +215,19 @@
     </div>
     <div class="control-group">
       <label>Helper Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.helperText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.helperText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Error Text</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.errorText" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.errorText"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group">
       <label>Mask</label>
@@ -193,10 +239,17 @@
     </div>
     <div class="control-group">
       <label>Max Length</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.maxLength" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.maxLength"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="checkbox-item">
-      <ui-checkbox [(ngModel)]="pgConfig.showCounter" (ngModelChange)="updateConfig()"></ui-checkbox>
+      <ui-checkbox
+        [(ngModel)]="pgConfig.showCounter"
+        (ngModelChange)="updateConfig()"
+      ></ui-checkbox>
       Show Counter
     </div>
   </div>
@@ -205,25 +258,42 @@
   <div slot="content-special" class="control-grid pg-panel-container">
     <div class="checkbox-grid">
       <label class="checkbox-item">
-        <ui-checkbox [(ngModel)]="pgConfig.multiline" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.multiline"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Multiline (Textarea)
       </label>
       <label class="checkbox-item" *ngIf="pgConfig.multiline">
-        <ui-checkbox [(ngModel)]="pgConfig.autoResize" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.autoResize"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Auto Resize
       </label>
       <label class="checkbox-item" *ngIf="pgConfig.type === 'number'">
-        <ui-checkbox [(ngModel)]="pgConfig.showSteppers" (ngModelChange)="updateConfig()"></ui-checkbox>
+        <ui-checkbox
+          [(ngModel)]="pgConfig.showSteppers"
+          (ngModelChange)="updateConfig()"
+        ></ui-checkbox>
         Show Steppers
       </label>
     </div>
     <div class="control-group" *ngIf="pgConfig.multiline">
       <label>Rows</label>
-      <ui-input type="number" [(ngModel)]="pgConfig.rows" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="number"
+        [(ngModel)]="pgConfig.rows"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="control-group" *ngIf="pgConfig.type === 'file'">
       <label>Accept (e.g. .pdf, image/*)</label>
-      <ui-input type="text" [(ngModel)]="pgConfig.accept" (ngModelChange)="updateConfig()"></ui-input>
+      <ui-input
+        type="text"
+        [(ngModel)]="pgConfig.accept"
+        (ngModelChange)="updateConfig()"
+      ></ui-input>
     </div>
     <div class="checkbox-item" *ngIf="pgConfig.type === 'file'">
       <ui-checkbox [(ngModel)]="pgConfig.multiple" (ngModelChange)="updateConfig()"></ui-checkbox>
