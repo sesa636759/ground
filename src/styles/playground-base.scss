@@ -235,7 +235,14 @@ $pg-overlay-bg: rgba(0, 0, 0, 0.05);
 @mixin pg-overlay($pos: absolute, $top-right: true) {
   position: $pos;
   border-radius: $pg-border-radius-lg;
-  #{$top-right ? 'top: 20px; right: 20px;' : 'bottom: 24px; left: 24px; right: 24px;'};
+  @if $top-right {
+    top: 20px;
+    right: 20px;
+  } @else {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+  }
 }
 
 // ── Refactored Classes (using mixins/vars) ────────────────────────────────────
@@ -307,7 +314,7 @@ $pg-overlay-bg: rgba(0, 0, 0, 0.05);
 }
 
 .dock-time-overlay {
-  @include pg-overlay(top-right: true);
+  @include pg-overlay(absolute, true);
   color: white;
   font-weight: 500;
   font-size: 14px;

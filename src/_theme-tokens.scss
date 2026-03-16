@@ -365,3 +365,65 @@ body {
 .animate-scale-in {
   animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
+
+// Theme Tokens Partial
+
+// Colors
+$color-bg-primary: #fff;
+$color-bg-secondary: #f8fafc;
+$color-text-primary: #222;
+$color-text-secondary: #6b7280;
+$color-border: #e5e7eb;
+
+// Spacing
+$space-xs: 8px;
+$space-sm: 16px;
+$space-md: 24px;
+$space-lg: 32px;
+$space-xl: 40px;
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-preview {
+  padding: $space-xl;
+  @include flex-column;
+  align-items: center;
+  min-height: 500px;
+  background: $color-bg-secondary;
+}
+
+@mixin rounded {
+  border-radius: $radius-sm;
+}
+
+@mixin preview-stage {
+  width: 100%;
+  background: $color-bg-primary;
+  @include rounded;
+}
+
+// Fragments/Partials
+%preview-stage-base {
+  @include preview-stage;
+}
+%flex-center-base {
+  @include flex-center;
+}
+%flex-column-base {
+  @include flex-column;
+}
